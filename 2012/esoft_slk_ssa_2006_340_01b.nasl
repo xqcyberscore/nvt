@@ -1,0 +1,124 @@
+# OpenVAS Vulnerability Test
+# $Id: esoft_slk_ssa_2006_340_01b.nasl 5356 2017-02-20 10:49:58Z cfi $
+# Description: Auto-generated from the corresponding slackware advisory
+#
+# Authors:
+# Thomas Reinke <reinke@securityspace.com>
+#
+# Copyright:
+# Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com
+# Text descriptions are largely excerpted from the referenced
+# advisory, and are Copyright (c) the respective author(s)
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2,
+# or at your option, GNU General Public License version 3,
+# as published by the Free Software Foundation
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+
+include("revisions-lib.inc");
+tag_insight = "Hello,
+
+As many people have pointed out, the last advisory (SSA:2006-340-01)
+was not signed with the usual Slackware Security Team key
+(fingerprint 40102233).  I did some reconfiguration on the box that
+does the distribution signing and it had some unintended
+side-effects.  :-/  Several CHECKSUMS.md5.asc files were also signed
+with the wrong key.
+
+The affected CHECKSUMS.md5 files have been resigned and uploaded, and
+this announcement has also been signed (and verified :-) using the
+usual primary Slackware signing key.
+
+Also, it was noticed that the URL given to lists.gnupg.org was either
+incorrect or has changed since the advisory was issued.  This error
+has also been corrected.
+
+Sorry for any confusion.
+
+Pat
+
+Corrected advisory follows:
+
++-----------+
+
+[slackware-security]  gnupg (SSA:2006-340-01)
+
+New gnupg packages are available for Slackware 9.0, 9.1, 10.0, 10.1,
+10.2, and 11.0 to fix security issues.
+
+More details about the issues may be found here:
+http://lists.gnupg.org/pipermail/gnupg-announce/2006q4/000246.html";
+tag_summary = "The remote host is missing an update as announced
+via advisory SSA:2006-340-01b.";
+
+tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2006-340-01b";
+                                                                                
+if(description)
+{
+ script_id(57712);
+ script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
+ script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_cve_id("CVE-2006-6235", "CVE-2006-6169");
+ script_tag(name:"cvss_base", value:"10.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 5356 $");
+ name = "Slackware Advisory SSA:2006-340-01b gnupg [resigned] ";
+ script_name(name);
+
+
+ script_summary("Slackware Advisory SSA:2006-340-01b gnupg [resigned]");
+
+ script_category(ACT_GATHER_INFO);
+
+ script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
+ script_family("Slackware Local Security Checks");
+ script_dependencies("gather-package-list.nasl");
+ script_mandatory_keys("login/SSH/success", "ssh/login/slackpack");
+ script_tag(name : "solution" , value : tag_solution);
+ script_tag(name : "insight" , value : tag_insight);
+ script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"qod_type", value:"package");
+ script_tag(name:"solution_type", value:"VendorFix");
+ exit(0);
+}
+
+#
+# The script code starts here
+#
+
+include("pkg-lib-slack.inc");
+vuln = 0;
+if(isslkpkgvuln(pkg:"gnupg", ver:"1.4.6-i386-1_slack9.0", rls:"SLK9.0")) {
+    vuln = 1;
+}
+if(isslkpkgvuln(pkg:"gnupg", ver:"1.4.6-i486-1_slack9.1", rls:"SLK9.1")) {
+    vuln = 1;
+}
+if(isslkpkgvuln(pkg:"gnupg", ver:"1.4.6-i486-1_slack10.0", rls:"SLK10.0")) {
+    vuln = 1;
+}
+if(isslkpkgvuln(pkg:"gnupg", ver:"1.4.6-i486-1_slack10.1", rls:"SLK10.1")) {
+    vuln = 1;
+}
+if(isslkpkgvuln(pkg:"gnupg", ver:"1.4.6-i486-1_slack10.2", rls:"SLK10.2")) {
+    vuln = 1;
+}
+if(isslkpkgvuln(pkg:"gnupg", ver:"1.4.6-i486-1_slack11.0", rls:"SLK11.0")) {
+    vuln = 1;
+}
+
+if(vuln) {
+    security_message(0);
+} else if (__pkg_match) {
+    exit(99); # Not vulnerable.
+}

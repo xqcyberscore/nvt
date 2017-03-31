@@ -1,0 +1,240 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# SuSE Update for glibc openSUSE-SU-2012:0064-1 (glibc)
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+tag_affected = "glibc on openSUSE 11.4, openSUSE 11.3";
+tag_insight = "Specially crafted time zone files could cause a heap
+  overflow in glibc (CVE-2009-5029).";
+tag_solution = "Please Install the Updated Packages.";
+
+
+
+if(description)
+{
+  script_xref(name : "URL" , value : "http://195.135.221.135/opensuse-security-announce/2012-01/msg00040.html");
+  script_id(850275);
+  script_version("$Revision: 3049 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:02:28 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"creation_date", value:"2012-08-02 23:17:17 +0530 (Thu, 02 Aug 2012)");
+  script_cve_id("CVE-2009-5029");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name: "openSUSE-SU", value: "2012:0064_1");
+  script_name("SuSE Update for glibc openSUSE-SU-2012:0064-1 (glibc)");
+
+  script_summary("Check for the Version of glibc");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "openSUSE11.4")
+{
+
+  if ((res = isrpmvuln(pkg:"glibc", rpm:"glibc~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-devel", rpm:"glibc-devel~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-html", rpm:"glibc-html~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-i18ndata", rpm:"glibc-i18ndata~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-info", rpm:"glibc-info~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-locale", rpm:"glibc-locale~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-obsolete", rpm:"glibc-obsolete~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-profile", rpm:"glibc-profile~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"nscd", rpm:"nscd~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-32bit", rpm:"glibc-32bit~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-devel-32bit", rpm:"glibc-devel-32bit~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-locale-32bit", rpm:"glibc-locale-32bit~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-profile-32bit", rpm:"glibc-profile-32bit~2.11.3~12.21.1", rls:"openSUSE11.4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "openSUSE11.3")
+{
+
+  if ((res = isrpmvuln(pkg:"glibc", rpm:"glibc~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-devel", rpm:"glibc-devel~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-html", rpm:"glibc-html~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-i18ndata", rpm:"glibc-i18ndata~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-info", rpm:"glibc-info~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-locale", rpm:"glibc-locale~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-obsolete", rpm:"glibc-obsolete~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-profile", rpm:"glibc-profile~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"nscd", rpm:"nscd~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-32bit", rpm:"glibc-32bit~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-devel-32bit", rpm:"glibc-devel-32bit~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-locale-32bit", rpm:"glibc-locale-32bit~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"glibc-profile-32bit", rpm:"glibc-profile-32bit~2.11.2~3.7.1", rls:"openSUSE11.3")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

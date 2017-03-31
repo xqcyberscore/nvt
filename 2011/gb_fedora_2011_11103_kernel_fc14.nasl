@@ -1,0 +1,84 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Fedora Update for kernel FEDORA-2011-11103
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+tag_affected = "kernel on Fedora 14";
+tag_insight = "The kernel package contains the Linux kernel (vmlinuz), the core of any
+  Linux operating system.  The kernel handles the basic functions
+  of the operating system: memory allocation, process allocation, device
+  input and output, etc.";
+tag_solution = "Please Install the Updated Packages.";
+
+
+if(description)
+{
+  script_xref(name : "URL" , value : "http://lists.fedoraproject.org/pipermail/package-announce/2011-August/064393.html");
+  script_id(863447);
+  script_version("$Revision: 3078 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-04-15 14:08:28 +0200 (Fri, 15 Apr 2016) $");
+  script_tag(name:"creation_date", value:"2011-08-27 16:37:49 +0200 (Sat, 27 Aug 2011)");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_xref(name: "FEDORA", value: "2011-11103");
+  script_cve_id("CVE-2011-2905", "CVE-2011-2695", "CVE-2011-2497", "CVE-2011-2517", "CVE-2011-2699", "CVE-2011-1770", "CVE-2011-1494", "CVE-2011-1495", "CVE-2011-1745", "CVE-2011-1746", "CVE-2010-4668", "CVE-2010-4073", "CVE-2010-4072", "CVE-2010-3880", "CVE-2010-2962", "CVE-2010-3698", "CVE-2010-2963", "CVE-2010-3904", "CVE-2011-1598", "CVE-2011-1748", "CVE-2011-2213", "CVE-2011-2484", "CVE-2011-2183");
+  script_name("Fedora Update for kernel FEDORA-2011-11103");
+
+  script_summary("Check for the Version of kernel");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Fedora Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "FC14")
+{
+
+  if ((res = isrpmvuln(pkg:"kernel", rpm:"kernel~2.6.35.14~95.fc14", rls:"FC14")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

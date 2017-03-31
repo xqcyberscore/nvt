@@ -1,0 +1,86 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Fedora Update for libreoffice FEDORA-2016-962
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.807440");
+  script_version("$Revision: 2773 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-03-03 14:45:48 +0100 (Thu, 03 Mar 2016) $");
+  script_tag(name:"creation_date", value:"2016-02-29 06:24:45 +0100 (Mon, 29 Feb 2016)");
+  script_cve_id("CVE-2016-0794", "CVE-2016-0795");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_name("Fedora Update for libreoffice FEDORA-2016-962");
+  script_tag(name: "summary", value: "Check the version of libreoffice");
+ 
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
+  of detect NVT and check if the version is vulnerable or not.");
+
+  script_tag(name: "insight", value: "LibreOffice is an Open Source, community-
+  developed, office productivity suite. It includes the key desktop applications,
+  such as a word processor, spreadsheet, presentation manager, formula editor
+  and drawing program, with a user interface and feature set similar to other
+  office suites.  Sophisticated and flexible, LibreOffice also works
+  transparently with a variety of file formats, including Microsoft Office
+  File Formats.");
+
+  script_tag(name: "affected", value: "libreoffice on Fedora 22");
+  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+
+  script_xref(name: "FEDORA", value: "2016-962");
+  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/178036.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_summary("Check for the Version of libreoffice");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Fedora Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  exit(0);
+}
+
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "FC22")
+{
+
+  if ((res = isrpmvuln(pkg:"libreoffice", rpm:"libreoffice~4.4.7.2~3.fc22", rls:"FC22")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

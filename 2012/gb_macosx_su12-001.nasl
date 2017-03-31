@@ -1,0 +1,131 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_macosx_su12-001.nasl 3046 2016-04-11 13:53:51Z benallard $
+#
+# Mac OS X Multiple Vulnerabilities (2012-001)
+#
+# Authors:
+# Rachana Shetty <srachana@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_impact = "Successful exploitation could allow attackers to execute arbitrary code in
+  the context of the browser, inject scripts, bypass certain security
+  restrictions or cause a denial-of-service condition.
+  Impact Level: System/Application";
+tag_affected = "Address Book, Apache, CFNetwork, ColorSync, CoreAudio, CoreText, CoreUI
+  curl, Data Security, dovecot, filecmds, ImageIO, Internet Sharing, Libinfo,
+  libresolv, libsecurity, OpenGL, PHP, QuickTime, SquirrelMail, X11, Webmail,
+  Tomcat, WebDAV Sharing.";
+tag_insight = "For more information on the vulnerabilities refer the reference section.";
+tag_solution = "Upgrade to Mac OS X 10.7.3 or
+  Run Mac Updates and update the Security Update 2012-001
+  For updates refer to http://support.apple.com/kb/HT1222";
+tag_summary = "This host is missing an important security update according to
+  Mac OS X Update/Mac OS X Security Update 2012-001.";
+
+if(description)
+{
+  script_id(802392);
+  script_version("$Revision: 3046 $");
+  script_cve_id("CVE-2011-3444", "CVE-2011-3348", "CVE-2011-3389", "CVE-2011-3246",
+                "CVE-2011-3447", "CVE-2011-0200", "CVE-2011-3252", "CVE-2011-3448",
+                "CVE-2011-3449", "CVE-2011-3450", "CVE-2011-2192", "CVE-2011-2895",
+                "CVE-2011-3452", "CVE-2011-3441", "CVE-2011-3453", "CVE-2011-3422",
+                "CVE-2011-3457", "CVE-2011-1148", "CVE-2011-1657", "CVE-2011-1938",
+                "CVE-2011-2202", "CVE-2011-2483", "CVE-2011-3182", "CVE-2011-3189",
+                "CVE-2011-3267", "CVE-2011-3268", "CVE-2011-3256", "CVE-2011-3328",
+                "CVE-2011-3458", "CVE-2011-3248", "CVE-2011-3459", "CVE-2011-3250",
+                "CVE-2011-3460", "CVE-2011-3249", "CVE-2010-1637", "CVE-2010-2813",
+                "CVE-2010-4554", "CVE-2010-4555", "CVE-2011-2023", "CVE-2011-1752",
+                "CVE-2011-1783", "CVE-2011-1921", "CVE-2011-3462", "CVE-2011-2204",
+                "CVE-2011-3463", "CVE-2011-2937", "CVE-2011-0241", "CVE-2011-1167");
+  script_bugtraq_id(51810, 49616, 49778, 50115, 51813, 48416, 50065, 51817, 51812,
+                    51815, 48434, 49124, 48833, 46951, 49744, 51819, 50641, 51807,
+                    49429, 51808, 46843, 49252, 47950, 48259, 49241, 49249, 49376,
+                    50155, 51809, 50400, 51811, 50401, 51814, 50404, 40291, 42399,
+                    48648, 48091, 51818, 48456, 51816, 49229, 47820, 49303, 50092,
+                    50112, 50091, 50099, 48007, 48566, 37118);
+  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"creation_date", value:"2012-02-06 17:42:28 +0530 (Mon, 06 Feb 2012)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Mac OS X Multiple Vulnerabilities (2012-001)");
+  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5130");
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/47843/");
+  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026627");
+  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/Feb/msg00001.html");
+
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_summary("Checks for existence of Mac OS X 10.6.8/10.7 Update/Mac OS X Security Update 2012-001");
+  script_category(ACT_GATHER_INFO);
+  script_family("Mac OS X Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_require_keys("ssh/login/uname", "ssh/login/osx_name", "ssh/login/osx_version");
+  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("version_func.inc");
+include("pkg-lib-macosx.inc");
+
+## Variables Initialization
+osName = "";
+osVer  = NULL;
+
+## Get the OS name
+osName = get_kb_item("ssh/login/osx_name");
+if(!osName){
+  exit (0);
+}
+
+## Get the OS Version
+osVer = get_kb_item("ssh/login/osx_version");
+if(!osVer){
+ exit(0);
+}
+
+## Check for the Mac OS X and Mac OS X Server
+if("Mac OS X" >< osName)
+{
+  ## Check the affected OS versions
+  if(version_is_equal(version:osVer, test_version:"10.6.8"))
+  {
+    ## Check for the security update 2011.006
+    if(isosxpkgvuln(fixed:"com.apple.pkg.update.security.", diff:"2012.001"))
+    {
+      security_message(0);
+      exit(0);
+    }
+  }
+
+  ## Check if OS is 10.7 through 10.7.2
+  if(version_in_range(version:osVer, test_version:"10.7", test_version2:"10.7.2"))
+  {
+    security_message(0);
+    exit(0);
+  }
+}

@@ -1,0 +1,77 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Fedora Update for gtk-vnc FEDORA-2017-ab04a91edd
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.872352");
+  script_version("$Revision: 5511 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-08 09:17:42 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2017-02-20 11:38:44 +0100 (Mon, 20 Feb 2017)");
+  script_cve_id("CVE-2017-5884", "CVE-2017-5885");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_name("Fedora Update for gtk-vnc FEDORA-2017-ab04a91edd");
+  script_tag(name: "summary", value: "Check the version of gtk-vnc");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "insight", value: "gtk-vnc is a VNC viewer widget for GTK2. It is built using coroutines
+allowing it to be completely asynchronous while remaining single threaded.
+");
+  script_tag(name: "affected", value: "gtk-vnc on Fedora 25");
+  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+
+  script_xref(name: "FEDORA", value: "2017-ab04a91edd");
+  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LGPQ5MQR6SN4DYTEFACHP2PP5RR26KYK");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Fedora Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  exit(0);
+}
+
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "FC25")
+{
+
+  if ((res = isrpmvuln(pkg:"gtk-vnc", rpm:"gtk-vnc~0.7.0~1.fc25", rls:"FC25")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

@@ -1,0 +1,141 @@
+##############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_kaspersky_total_security_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+#
+# Kaspersky Total Security Version Detection
+#
+# Authors:
+# Kashinath T <tkashinath@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.806853");
+  script_version("$Revision: 5351 $");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2016-02-09 15:43:00 +0530 (Tue, 09 Feb 2016)");
+  script_tag(name:"qod_type", value:"registry");
+  script_name("Kaspersky Total Security Version Detection");
+
+  script_tag(name: "summary" , value: "Detection of installed version of
+  Kaspersky Total security  on Windows.
+
+  The script logs in via smb, searches for kaspersky in the registry, gets the
+  kaspersky total security installation path from registry and fetches version.");
+
+  script_summary("Detection of installed version of Kaspersky Total security on Windows");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
+  script_require_ports(139, 445);
+  exit(0);
+}
+
+
+include("smb_nt.inc");
+include("secpod_smb_func.inc");
+include("cpe.inc");
+include("host_details.inc");
+
+
+TOTALSEC_LIST = make_list( "^(15\..*)", "cpe:/a:kaspersky:total_security_2015:",
+                           "^(16\..*)", "cpe:/a:kaspersky:total_security_2016:");
+TOTALSEC_MAX = max_index(TOTALSEC_LIST);
+
+## functions for script
+function register_cpe(tmpVers, tmpExpr, tmpBase, insloc, app)
+{
+  local_var cpe;
+
+  ## build cpe and store it as host_detail
+  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
+  if(cpe)
+  {
+    register_product(cpe:cpe, location:insloc);
+    log_message(data: build_detection_report(app: app,
+                                           version: tmpVers,
+                                           install: insloc,
+                                           cpe: cpe,
+                                           concluded: tmpVers));
+  }
+}
+
+## Variable Initialization
+os_arch = "";
+key_list = "";
+prdtName = "";
+ktsVer = "";
+
+# Get OS Architecture
+os_arch = get_kb_item("SMB/Windows/Arch");
+if(!os_arch){
+  exit(-1);
+}
+
+## Check for 32 bit platform
+if("x86" >< os_arch){
+  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+}
+
+## Check for 64 bit platform, Currently only 32-bit application is available
+else if("x64" >< os_arch){
+  key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
+}
+
+if(isnull(key)){
+  exit(0);
+}
+
+##Confirm Application
+if(!registry_key_exists(key:"SOFTWARE\KasperskyLab")){
+  exit(0);
+}
+
+foreach item (registry_enum_keys(key:key))
+{
+  prdtName = registry_get_sz(key:key + item, item:"DisplayName");
+
+  ## Check for Kaspersky Total security 
+  if("Kaspersky Total Security" >< prdtName)
+  {
+      ktsVer = registry_get_sz(key:key + item, item:"DisplayVersion"); 
+      insloc = registry_get_sz(key:key + item, item:"InstallLocation");
+      if(!insloc){
+        insloc = "Could not determine install Path";
+      }
+      
+      if(ktsVer != NULL)
+      {
+        set_kb_item(name:"Kaspersky/TotalSecurity/Ver", value:ktsVer);
+
+        ## build cpe and store it as host_detail
+        for (i = 0; i < TOTALSEC_MAX-1; i = i + 2)
+        {
+          register_cpe(tmpVers:ktsVer, tmpExpr:TOTALSEC_LIST[i],
+                 tmpBase:TOTALSEC_LIST[i+1], insloc:insloc ,
+                 app:"Kaspersky Total Security");
+        }
+
+      }    
+  }
+}

@@ -1,0 +1,108 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# CentOS Update for netpbm CESA-2008:0131-01 centos2 i386
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+tag_insight = "The netpbm package contains a library of functions for editing and
+  converting between various graphics file formats, including .pbm (portable
+  bitmaps), .pgm (portable graymaps), .pnm (portable anymaps), .ppm (portable
+  pixmaps) and others. The package includes no interactive tools and is
+  primarily used by other programs (eg CGI scripts that manage web-site
+  images).
+
+  An input validation flaw was discovered in the GIF-to-PNM converter
+  (giftopnm) shipped with the netpbm package. An attacker could create a
+  carefully crafted GIF file which could cause giftopnm to crash or possibly
+  execute arbitrary code as the user running giftopnm. (CVE-2008-0554)
+  
+  All users are advised to upgrade to these updated packages which contain a
+  backported patch which resolves this issue.";
+
+tag_affected = "netpbm on CentOS 2";
+tag_solution = "Please Install the Updated Packages.";
+
+
+
+if(description)
+{
+  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2008-March/014758.html");
+  script_id(880006);
+  script_version("$Revision: 3212 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-05-03 13:45:47 +0200 (Tue, 03 May 2016) $");
+  script_tag(name:"creation_date", value:"2009-02-27 08:36:45 +0100 (Fri, 27 Feb 2009)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_xref(name: "CESA", value: "2008:0131-01");
+  script_cve_id("CVE-2008-0554");
+  script_name( "CentOS Update for netpbm CESA-2008:0131-01 centos2 i386");
+
+  script_summary("Check for the Version of netpbm");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "CentOS2")
+{
+
+  if ((res = isrpmvuln(pkg:"netpbm", rpm:"netpbm~9.24~9.AS21.7", rls:"CentOS2")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"netpbm-devel", rpm:"netpbm-devel~9.24~9.AS21.7", rls:"CentOS2")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"netpbm-progs", rpm:"netpbm-progs~9.24~9.AS21.7", rls:"CentOS2")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

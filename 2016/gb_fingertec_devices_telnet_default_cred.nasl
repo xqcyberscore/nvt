@@ -1,0 +1,126 @@
+###############################################################################
+# $Id: gb_fingertec_devices_telnet_default_cred.nasl 5101 2017-01-25 11:40:28Z antu123 $
+#
+# FingerTec Devices Telnet Default Credentials Vulnerability
+#
+# Authors:
+# Rinu Kuriakose <krinu@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.807525");
+  script_version("$Revision: 5101 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"creation_date", value:"2016-03-16 15:57:40 +0530 (Wed, 16 Mar 2016)");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_name("FingerTec Devices Telnet Default Credentials Vulnerability");
+  
+  script_tag(name:"summary" , value:"This host is installed with FingerTec 
+  device and is prone to default credentials vulnerability.");
+
+  script_tag(name:"vuldetect" , value:"Check if it is possible to do telnet 
+  login into the FingerTec device.");
+
+  script_tag(name:"insight" , value:"The flaw is due to default user:passwords
+  which is publicly known and documented.");
+
+  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  attackers to gain unauthorized root access to affected devices and completely
+  compromise the devices.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected" , value:"FingerTec Devices.");
+
+  script_tag(name:"solution" , value:"No solution or patch is available as
+  of 25th January, 2017. Information regarding this issue will be updated once
+  the solution details are available.
+  For updates refer to http://www.fingertec.com");
+
+  script_tag(name:"solution_type", value:"NoneAvailable");
+
+  script_xref(name:"URL" , value:"https://digital-panther.com");
+  script_xref(name:"URL" , value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
+
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Default Accounts");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/telnet", 23);
+  exit(0);
+}
+
+
+include("telnet_func.inc");
+
+fingport = get_kb_item("Services/telnet");
+if(!fingport) fingport = 23;
+
+##checking port state
+if(!get_port_state(fingport)) exit(0);
+
+if(!banner = get_telnet_banner(port:fingport)) exit(0);
+
+##Confirm application
+if("ZEM" >!< banner) exit(0);
+
+soc = open_sock_tcp(port);
+if(!soc) exit(0);
+
+##Making credentials set
+creds = make_array("root", "founder88",
+                   "root", "colorkey",
+                   "root", "solokey",
+                   "root","swsbzkgn",
+                   "admin", "admin",
+                   "888", "manage",
+                   "manage", "888",
+                   "asp", "test",
+                   "888", "asp",
+                   "root", "root",
+                   "admin","1234");
+
+##Try to login with default credentials
+foreach cred ( keys( creds ) ) 
+{
+  recv = recv( socket:soc, length:2048 );
+  if ("login:" >< recv) 
+  {
+    send(socket:soc, data: cred + '\r\n');
+    recv = recv(socket:soc, length:128);
+    if("Password:" >< recv) 
+    {
+      send(socket:soc, data: creds[cred] + '\r\n');
+      recv = recv(socket:soc, length:1024);
+
+      ##Confirm exploit
+      if(recv =~ "BusyBox v([0-9.]+)") 
+      {
+        report += "\n\n" + cred + ":" + creds[cred] + "\n";
+        security_message(port:fingport, data:report);
+        close(soc);
+      }
+    }
+  }
+}
+
+close(soc);

@@ -1,0 +1,98 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# SuSE Update for clamav openSUSE-SU-2015:0285-1 (clamav)
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.850635");
+  script_version("$Revision: 3353 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"creation_date", value:"2015-02-14 05:03:08 +0100 (Sat, 14 Feb 2015)");
+  script_cve_id("CVE-2014-9328", "CVE-2015-1461", "CVE-2015-1462", "CVE-2015-1463");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_name("SuSE Update for clamav openSUSE-SU-2015:0285-1 (clamav)");
+  script_tag(name: "summary", value: "Check the version of clamav");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "insight", value: "
+  clamav was updated to version 0.98.6 that fixes bugs and several security
+  issues:
+
+  * bsc#916217, CVE-2015-1461: Remote attackers can have unspecified impact
+  via Yoda's crypter or mew packer files.
+  * bsc#916214, CVE-2015-1462: Unspecified impact via acrafted upx packer
+  file.
+  * bsc#916215, CVE-2015-1463: Remote attackers can cause a denial
+  of service via a crafted petite packer file.
+  * bsc#915512, CVE-2014-9328: heap out of bounds condition with crafted
+  upack packer files.");
+  script_tag(name: "affected", value: "clamav on openSUSE 13.1");
+  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_xref(name: "openSUSE-SU", value: "2015:0285_1");
+  script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-02/msg00014.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_summary("Check for the Version of clamav");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("SuSE Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:novell:opensuse", "login/SSH/success", "ssh/login/release");
+  exit(0);
+}
+
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "openSUSE13.1")
+{
+
+  if ((res = isrpmvuln(pkg:"clamav", rpm:"clamav~0.98.6~30.1", rls:"openSUSE13.1")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"clamav-debuginfo", rpm:"clamav-debuginfo~0.98.6~30.1", rls:"openSUSE13.1")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"clamav-debugsource", rpm:"clamav-debugsource~0.98.6~30.1", rls:"openSUSE13.1")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

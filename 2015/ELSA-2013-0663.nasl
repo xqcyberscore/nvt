@@ -1,0 +1,106 @@
+# OpenVAS Vulnerability Test 
+# Description: Oracle Linux Local Check 
+# $Id: ELSA-2013-0663.nasl 4513 2016-11-15 09:37:48Z cfi $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@solinor.com> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.123658");
+script_version("$Revision: 4513 $");
+script_tag(name:"creation_date", value:"2015-10-06 14:06:53 +0300 (Tue, 06 Oct 2015)");
+script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_name("Oracle Linux Local Check: ELSA-2013-0663");
+script_tag(name: "insight", value: "ELSA-2013-0663 -  sssd security and bug fix update - [1.9.2-82.4]- Resolves: rhbz#911298 - sssd: simple access provider flaw prevents intended ACL use when client to an AD provider[1.9.2-82.3]- Fix pwd_expiration_warning=0- Resolves: rhbz#914671 - pwd_expiration_warning has wrong default for Kerberos[1.9.2-82.2]- Resolves: rhbz#914671 - pwd_expiration_warning has wrong default for Kerberos- Fix the NVR[1.9.2-82.1]- Resolves: rhbz#907362 - Serious performance regression in sssd"); 
+script_tag(name : "solution", value : "update software");
+script_tag(name : "solution_type", value : "VendorFix");
+script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2013-0663");
+script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2013-0663.html");
+script_cve_id("CVE-2013-0287");
+script_tag(name:"cvss_base", value:"4.9");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_summary("Oracle Linux Local Security Checks ELSA-2013-0663");
+script_copyright("Eero Volotinen");
+script_family("Oracle Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "OracleLinux6")
+{
+  if ((res = isrpmvuln(pkg:"libipa_hbac", rpm:"libipa_hbac~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libipa_hbac-devel", rpm:"libipa_hbac-devel~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libipa_hbac-python", rpm:"libipa_hbac-python~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libsss_autofs", rpm:"libsss_autofs~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libsss_idmap", rpm:"libsss_idmap~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libsss_idmap-devel", rpm:"libsss_idmap-devel~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libsss_sudo", rpm:"libsss_sudo~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libsss_sudo-devel", rpm:"libsss_sudo-devel~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"sssd", rpm:"sssd~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"sssd-client", rpm:"sssd-client~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"sssd-tools", rpm:"sssd-tools~1.9.2~82.4.el6_4", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+

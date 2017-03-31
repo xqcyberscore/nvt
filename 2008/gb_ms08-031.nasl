@@ -1,0 +1,358 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_ms08-031.nasl 5344 2017-02-18 17:43:17Z cfi $
+#
+# Cumulative Security Update for Internet Explorer (950759)
+#
+# Authors:
+# Veerendra GG <veerendragg@secpod.com>
+#
+#  Updated by Madhuri D <dmadhuri@secpod.com> on 2010-12-09
+#    - To detect the 'mshtml.dll' file version on Windows vista and 2008 server
+#
+# Copyright:
+# Copyright (c) 2008 Intevation GmbH, http://www.intevation.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_impact = "Successful exploitation allow remote attackers to execute arbitrary
+  code by tricking user into visiting a specially crafted web page and to read
+  data from a Web page in another domain in Internet Explorer. Attackers can
+  use above issues to poison web caches, steal credentials, launch cross-site
+  scripting, HTML-injection, and session-hijacking attacks.
+  Impact Level: Application";
+tag_summary = "This host has Microsoft Internet Explorer installed, which is
+  prone to HTTP request splitting/smuggling and HTML Objects Memory Corruption
+  Vulnerabilities.";
+
+tag_affected = "Microsoft Internet Explorer 5.01 & 6 SP1 for Microsoft Windows 2000
+  Microsoft Internet Explorer 6 for Microsoft Windows 2003 and XP
+  Microsoft Internet Explorer 7 for Microsoft Windows 2003 and XP
+  Microsoft Internet Explorer 7 on MS Windows 2008 and Vista";
+tag_insight = "The flaws are due to
+  - a memory corruption error while processing a Web page that contains certain
+    unexpected method calls to HTML objects.
+  - failure of setRequestHeader method of the XMLHttpRequest object to block
+    dangerous HTTP request headers when certain 8-bit character sequences are
+    appended to a header name.";
+tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link.
+  http://www.microsoft.com/technet/security/bulletin/ms08-031.mspx";
+
+if(description)
+{
+  script_id(800103);
+  script_version("$Revision: 5344 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2008-09-29 16:48:05 +0200 (Mon, 29 Sep 2008)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2008-1442","CVE-2008-1544");
+  script_bugtraq_id(28379, 29556);
+  script_xref(name:"CB-A", value:"08-0096");
+  script_name("Cumulative Security Update for Internet Explorer (950759)");
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/30575");
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/29453");
+  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/0980");
+  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/1778");
+  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-031.mspx");
+
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"executable_version");
+  script_copyright("Copyright (C) 2008 Intevation GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  exit(0);
+}
+
+
+include("smb_nt.inc");
+include("secpod_reg.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
+include("secpod_ie_supersede.inc");
+
+# Check the hotfix applicability to each OS
+if(hotfix_check_sp(win2k:5, xp:4, win2003:3, win2008:2, winVista:2) <= 0){
+  exit(0);
+}
+
+
+function Get_FileVersion()
+{
+  sysFile = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
+                            item:"Install Path");
+  if(!sysFile){
+    exit(0);
+  }
+
+  sysFile += "\mshtml.dll";
+  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysFile);
+  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:sysFile);
+
+  soc = open_sock_tcp(port);
+  if(!soc){
+    exit(0);
+  }
+
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  prot = smb_neg_prot(soc:soc);
+  if(!prot)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  r = smb_session_setup(soc:soc, login:login, password:pass,
+                        domain:domain, prot:prot);
+  if(!r)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  uid = session_extract_uid(reply:r);
+  if(!uid)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
+  if(!r)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  tid = tconx_extract_tid(reply:r);
+  if(!tid)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
+  if(!fid)
+  {
+    close(soc);
+    exit(0);
+  }
+
+  v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod",
+                 offset:2000000);
+  close(soc);
+  return v;
+}
+
+ieVer = registry_get_sz(key:"SOFTWARE\Microsoft\Internet Explorer",
+                        item:"Version");
+if(!ieVer){
+  ieVer = registry_get_sz(item:"IE",
+                   key:"SOFTWARE\Microsoft\Internet Explorer\Version Vector");
+}
+
+if(!ieVer){
+  exit(0);
+}
+
+# Supersede check for MS08-045 and later
+if(ie_latest_hotfix_update(bulletin:"MS08-031")){
+  exit(0);
+}
+
+# MS08-031 Hotfix check
+if(hotfix_missing(name:"950759") == 0){
+  exit(0);
+}
+
+if(hotfix_check_sp(win2k:5) > 0)
+{
+  vers = Get_FileVersion();
+  if(vers == NULL){
+    exit(0);
+  }
+
+  # Check for IE version 5
+  if(ereg(pattern:"^5\..*", string:ieVer))
+  {
+    if(ereg(pattern:"(5\.00\.(([0-2]?[0-9]?[0-9]?[0-9]|3?([0-7][0-9][0-9]" +
+                    "|8([0-5][0-9]|6[0-3])))(\..*)|3864\.(0?[0-9]?[0-9]?"  +
+                    "[0-9]|1[0-7][0-9][0-9])))$", string:vers)){
+      security_message(get_kb_item("SMB/transport"));
+    }
+    exit(0);
+  }
+
+  # Check for IE version 6
+  if(ereg(pattern:"^6\..*", string:ieVer))
+  {
+    if(ereg(pattern:"(6\.00\.(([01]?[0-9]?[0-9]?[0-9]|2([0-7][0-9][0-9]" +
+                    "))(\..*)|2800\.(0?[0-9]?[0-9]?[0-9]|1([0-5][0-9]" +
+                    "[0-9]|6(0[0-9]|10)))))$", string:vers)){
+      security_message(get_kb_item("SMB/transport"));
+    }
+    exit(0);
+  }
+}
+
+if(hotfix_check_sp(xp:4) > 0)
+{
+  vers = Get_FileVersion();
+  if(vers == NULL){
+    exit(0);
+  } 
+
+  SP = get_kb_item("SMB/WinXP/ServicePack");
+  #Check for IE version 6
+  if(ereg(pattern:"^6\..*", string:ieVer))
+  {
+    if("Service Pack 2" >< SP)
+    {
+      if(ereg(pattern:"(6\.00\.(([01]?[0-9]?[0-9]?[0-9]|2([0-8][0-9]" +
+                      "[0-9]))(\..*)|2900\.([0-2]?[0-9]?[0-9]?[0-9]|3(" +
+                      "[0-2][0-9][0-9]|3([0-4][0-9]|5[0-3])))))$",
+              string:vers)){
+        security_message(get_kb_item("SMB/transport"));
+      }
+      exit(0);
+    }
+    if("Service Pack 3" >< SP)
+    {
+      if(ereg(pattern:"(6\.00\.(([01]?[0-9?[0-9]?[0-9]|2[0-8][0-9][0-9]" +
+                      ")(\..*)|2900\.([0-4]?[0-9]?[0-9]?[0-9]|5([0-4]" +
+                      "[0-9][0-9]|5([0-7][0-9]|8[0-2])))))$",
+              string:vers)){
+        security_message(get_kb_item("SMB/transport"));
+      }
+      exit(0);
+    }
+  }
+
+  # Check for IE version 7
+  if(ereg(pattern:"^7\..*", string:ieVer))
+  {
+    if(ereg(pattern:"(7\.00\.([0-5]?[0-9]?[0-9]?[0-9]\..*|6000\.(0?[0-9]?" +
+                    "[0-9]?[0-9]?[0-9]|1([0-5][0-9][0-9][0-9]|6([0-5]" +
+                    "[0-9][0-9]|6([0-6][0-9]|7[0-3]))))))$",
+            string:vers)){
+      security_message(get_kb_item("SMB/transport"));
+    }
+    exit(0);
+  }
+}
+
+if(hotfix_check_sp(win2003:3) > 0)
+{
+  vers = Get_FileVersion();
+  if(vers == NULL){
+    exit(0);
+  }
+
+  SP = get_kb_item("SMB/Win2003/ServicePack");
+  #Check for IE version 6
+  if(ereg(pattern:"^6\..*", string:ieVer))
+  {
+    if("Service Pack 2" >< SP)
+    {
+      if(ereg(pattern:"(6\.00\.(([0-2]?[0-9]?[0-9][0-9]|3([0-6][0-9][0-9]" +
+                      "|7[0-8][0-9]))(\..*)|3790\.([0-3]?[0-9]?[0-9]?[0-9]" +
+                      "|4([01][0-9][0-9]|2([0-6][0-9]|7[0-4])))))$",
+              string:vers)){
+        security_message(get_kb_item("SMB/transport"));
+      }
+      exit(0);
+    }
+    if("Service Pack 1" >< SP)
+    {
+      if(ereg(pattern:"(6\.00\.(([0-2]?[0-9]?[0-9]?[0-9]|3([0-6][0-9]" +
+                       "[0-9]|7[0-8][0-9]))(\..*)|3790\.([0-2]?[0-9]?" +
+                       "[0-9]?[0-9]|3(0[0-9][0-9]|1([01][0-9]|2[0-2]" +
+                       ")))))$", string:vers)){
+         security_message(get_kb_item("SMB/transport"));
+      }
+      exit(0);
+    }
+  }
+
+  #Check for IE version 7
+  if(ereg(pattern:"^7\..*", string:ieVer))
+  {
+    if(ereg(pattern:"(7\.00\.([0-5]?[0-9]?[0-9]?[0-9]\..*|6000\.(0?[0-9]?" +
+                    "[0-9]?[0-9]?[0-9]|1([0-5][0-9][0-9][0-9]|6([0-5]" +
+                    "[0-9][0-9]|6([0-6][0-9]|7[0-3]))))))$",
+            string:vers)){
+      security_message(get_kb_item("SMB/transport"));
+    }
+    exit(0);
+  }
+}
+
+## Get the 'mshtml.dll' path for Windows Vista and 2008 Server
+ dllPath = registry_get_sz(item:"PathName",
+          key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+ if(!dllPath){
+   exit(0);
+ }
+
+ share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
+ file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
+                     string:dllPath + "\system32\mshtml.dll");
+ dllVer = GetVer(file:file, share:share);
+ if(dllVer)
+ {
+   # Windows Vista
+   if(hotfix_check_sp(winVista:2) > 0)
+   {
+     SP = get_kb_item("SMB/WinVista/ServicePack");
+     if("Service Pack 1" >< SP)
+     {
+       # Grep for mshtml.dll version < 7.0.6001.18063
+       if(version_in_range(version:dllVer, test_version:"7.0", test_version2:"7.0.6001.18062")){
+          security_message(0);
+       }
+         exit(0);
+     }
+   }
+
+   # Windows Server 2008
+   else if(hotfix_check_sp(win2008:2) > 0)
+   {
+     SP = get_kb_item("SMB/Win2008/ServicePack");
+     if("Service Pack 1" >< SP)
+     {
+       # Grep for mshtml.dll version < 7.0.6001.18063
+       if(version_in_range(version:dllVer, test_version:"7.0", test_version2:"7.0.6001.18062")){
+          security_message(0);
+       }
+         exit(0);
+     }
+   }
+ }
+

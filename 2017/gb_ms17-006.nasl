@@ -1,0 +1,216 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_ms17-006.nasl 5582 2017-03-15 15:50:24Z antu123 $
+#
+# Microsoft Internet Explorer Multiple Vulnerabilities (4013073) 
+#
+# Authors:
+# Shakeel <bshakeel@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+CPE = "cpe:/a:microsoft:ie";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.810625");
+  script_version("$Revision: 5582 $");
+  script_cve_id("CVE-2017-0008", "CVE-2017-0009", "CVE-2017-0012", "CVE-2017-0018",
+                "CVE-2017-0033", "CVE-2017-0037", "CVE-2017-0040", "CVE-2017-0049",
+                "CVE-2017-0059", "CVE-2017-0130", "CVE-2017-0149", "CVE-2017-0154");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2017-03-15 12:07:36 +0530 (Wed, 15 Mar 2017)");
+  script_tag(name:"qod_type", value:"executable_version");
+  script_name("Microsoft Internet Explorer Multiple Vulnerabilities (4013073)");
+
+  script_tag(name:"summary", value:"This host is missing a critical security
+  update according to Microsoft Bulletin MS17-006.");
+
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
+  check appropriate patch is applied or not.");
+
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  - Multiple errors in the components handling objects in memory.
+  - Microsoft browsers improperly access objects in memory.
+  - An error in Microsoft browser which does not properly parse HTTP responses.
+  - Multiple errors in JScript and VBScript engines rendering when handling
+    objects in memory.
+  - An error in Internet Explorer which does not properly enforce cross-domain
+    policies.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to gain elevated privileges, gain access to potentially sensitive
+  information, execute arbitrary code in the context of the current user and
+  conduct spoofing attacks.
+
+  Impact Level: System/Application");
+
+  script_tag(name: "affected" , value:"Microsoft Internet Explorer version
+  9.x/10.x/11.x");
+
+  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  hotfixes or download and update mentioned hotfixes in the advisory from the
+  https://technet.microsoft.com/library/security/MS17-006");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4013073");
+  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-006");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("gb_ms_ie_detect.nasl");
+  script_mandatory_keys("MS/IE/Version");
+  exit(0);
+}
+
+include("smb_nt.inc");
+include("secpod_reg.inc");
+include("host_details.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
+
+## Variables Initialization
+iePath = "";
+ieVer   = "";
+iedllVer  = NULL;
+
+## Check for OS and Service Pack
+if(hotfix_check_sp(winVista:3, winVistax64:3, win2008x64:3, win2008x64:3, win2012:1,
+                   win7:2, win7x64:2, win2008r2:2, win2012R2:1, win8_1:1, win8_1x64:1,
+                   win10:1, win10x64:1, win2016:1) <= 0){
+  exit(0);
+}
+
+## Get System Path
+iePath = smb_get_systemroot();
+if(!iePath ){
+  exit(0);
+}
+
+## Get Version from Mshtml.dll
+iedllVer = fetch_file_version(sysPath:iePath, file_name:"system32\Mshtml.dll");
+oleVer = fetch_file_version(sysPath:iePath, file_name:"System32\Inetcomm.dll");
+edgeVer = fetch_file_version(sysPath:iePath, file_name:"System32\edgehtml.dll");
+if(!iedllVer && !oleVer && !edgeVer){
+  exit(0);
+}
+
+## Windows Vista and Server 2008
+if(hotfix_check_sp(winVista:3, win2008:3, winVistax64:3, win2008x64:3) > 0)
+{
+  ## Check for Mshtml.dll version
+  if(version_in_range(version:iedllVer, test_version:"9.0.8112.16000", test_version2:"9.0.8112.16870") && iedllVer)
+  {
+    Vulnerable_range = "9.0.8112.16000 - 9.0.8112.16870";
+    VULN = TRUE ;
+  }
+  else if(version_in_range(version:iedllVer, test_version:"9.0.8112.20000", test_version2:"9.0.8112.20984") && iedllVer)
+  {
+    Vulnerable_range = "9.0.8112.20000 - 9.0.8112.20984";
+    VULN = TRUE ;
+  }
+
+  ## Check for 'Inetcomm.dll' version
+  else if(version_is_less(version:oleVer, test_version:"6.0.6002.19728") && oleVer)
+  {
+    Vulnerable_range = "Less than 6.0.6002.19728";
+    VULN1 = TRUE ;
+  }
+  else if(version_in_range(version:oleVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.24051") && oleVer)
+  {
+    Vulnerable_range = "6.0.6002.23000 - 6.0.6002.24051";
+    VULN1 = TRUE ;
+  }
+}
+
+## Win 2012
+else if(hotfix_check_sp(win2012:1) > 0 && iedllVer)
+{
+  ## Check for Mshtml.dll version
+  if(version_is_less(version:iedllVer, test_version:"10.0.9200.22104"))
+  {
+    Vulnerable_range = "Less than 10.0.9200.22104";
+    VULN = TRUE ;
+  }
+}
+
+##Windows 7, Windows Server 2008 R2, Windows 8.1, Windows 2012R2
+if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8_1:1, win8_1x64:1, win2012R2:1) > 0 && iedllVer)
+{
+  ## Check for Mshtml.dll version
+  if(version_is_less(version:iedllVer, test_version:"11.0.9600.18618"))
+  {
+    Vulnerable_range = "Less than 11.0.9600.18618";
+    VULN = TRUE ;
+  }
+}
+
+## Windows 10
+else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0 && edgeVer)
+{
+  ## Check for Edgehtml.dll version
+  if(version_is_less(version:edgeVer, test_version:"11.0.10240.17319"))
+  {
+    Vulnerable_range = "Less than 11.0.10240.17319";
+    VULN2 = TRUE ;
+  }
+
+  ## Windows 10 Version 1511
+  else if(version_in_range(version:edgeVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.838"))
+  {
+    Vulnerable_range = "11.0.10586.0 - 11.0.10586.839";
+    VULN2 = TRUE ;
+  }
+
+  ## Windows 10 version 1607 and Windows Server 2016
+  else if(version_in_range(version:edgeVer, test_version:"11.0.14393.0", test_version2:"11.0.14393.952"))
+  {
+    Vulnerable_range = "11.0.14393.0 - 11.0.14393.952";
+    VULN2 = TRUE ;
+  }
+}
+
+
+if(VULN)
+{
+  report = 'File checked:     ' + iePath + "\system32\Mshtml.dll" + '\n' +
+           'File version:     ' + iedllVer  + '\n' +
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+  security_message(data:report);
+  exit(0);
+}
+
+else if(VULN1)
+{
+  report = 'File checked:     ' + iePath + "\System32\Inetcomm.dll" + '\n' +
+           'File version:     ' + oleVer  + '\n' +
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+  security_message(data:report);
+  exit(0);
+}
+
+else if(VULN2)
+{
+  report = 'File checked:     ' + iePath + "\System32\edgehtml.dll" + '\n' +
+           'File version:     ' + edgeVer  + '\n' +
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+  security_message(data:report);
+  exit(0);
+}
+exit(0);

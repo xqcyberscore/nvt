@@ -1,0 +1,190 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: os_detection.nasl 5435 2017-02-27 13:35:00Z cfi $
+#
+# OS Detection Consolidation and Reporting
+#
+# Authors:
+# Christian Kuersteiner <christian.kuersteiner@greenbone.net>
+#
+# Copyright:
+# Copyright (c) 2016 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.105937");
+  script_version("$Revision: 5435 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-27 14:35:00 +0100 (Mon, 27 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("OS Detection Consolidation and Reporting");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Service detection");
+  # Keep order the same as in host_details.inc. Also add OS register NVTs there if adding here.
+  script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",
+                      "gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
+                      "gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl",
+                      "gb_ssh_cisco_ios_get_version.nasl", "gb_cisco_cucmim_version.nasl",
+                      "gb_cisco_cucm_version.nasl", "gb_cisco_nx_os_version.nasl",
+                      "gb_cyclades_detect.nasl", "gb_fortios_detect.nasl",
+                      "gb_cisco_esa_version.nasl", "gb_cisco_wsa_version.nasl",
+                      "gb_cisco_csma_version.nasl", "gb_cisco_ip_phone_detect.nasl",
+                      "gb_cisco_ios_xr_version.nasl", "gb_ssh_junos_get_version.nasl",
+                      "gb_palo_alto_panOS_version.nasl", "gb_screenos_version.nasl",
+                      "gb_cisco_asa_version_snmp.nasl", "gb_cisco_asa_version.nasl",
+                      "gb_arista_eos_snmp_detect.nasl", "gb_xenserver_version.nasl",
+                      "gb_cisco_ios_xe_version.nasl", "gb_mcafee_email_gateway_version.nasl",
+                      "gb_brocade_netiron_snmp_detect.nasl", "gb_arubaos_detect.nasl",
+                      "gb_windows_cpe_detect.nasl", "gather-package-list.nasl",
+                      "gb_cisco_pis_version.nasl", "gb_smb_windows_detect.nasl",
+                      "gb_ssh_os_detection.nasl", "gb_junos_snmp_version.nasl",
+                      "gb_snmp_os_detection.nasl", "gb_dns_os_detection.nasl",
+                      "gb_ftp_os_detection.nasl", "smb_nativelanman.nasl",
+                      "gb_ucs_detect.nasl",
+                      "sw_http_os_detection.nasl", "sw_mail_os_detection.nasl",
+                      "sw_telnet_os_detection.nasl", "ntp_open.nasl",
+                      "smb_reg_service_pack.nasl", "remote-detect-MDNS.nasl",
+                      "gb_apple_tv_version.nasl", "gb_apple_tv_detect.nasl",
+                      "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
+
+  script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.
+
+  Furthermore it reports all previously collected information leading to this best matching OS. It also reports possible additional informations
+  which might help to improve the OS detection.
+
+  If any of this information is wrong or could be improved please consider to report these to openvas-plugins@wald.intevation.org.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
+}
+
+include("host_details.inc");
+
+found_best = FALSE;
+
+# Check CPE entries
+foreach oid( OS_CPE_SRC ) {
+  os = get_kb_list("HostDetails/NVT/" + oid + "/OS");
+  if( ! isnull( os ) ) {
+    res =  make_list( os );
+    foreach entry( res ) {
+      # Discard non CPE entries
+      if( "cpe:/" >!< entry )
+        continue;
+
+      desc = get_kb_item( "HostDetails/NVT/" + oid );
+
+      if( ! found_best ) {
+
+        os_reports = get_kb_list( "os_detection_report/" + oid + "/*" );
+        if( ! os_reports ) continue;
+
+        # Use keys to be able to extract the port and proto later
+        foreach key( keys( os_reports ) ) {
+
+          # We need the port and proto for the host_runs kb entry later
+          tmp = split( key, sep:"/", keep:FALSE );
+          port = tmp[2];
+          proto = tmp[3];
+
+          os_report = get_kb_item( key );
+          if( ! found_best ) {
+            report = 'Best matching OS:\n\n' + os_report;
+            found_best = TRUE;
+            best_match = entry;
+            best_match_oid = oid;
+            best_match_desc = desc;
+
+            host_runs_list = get_kb_list( "os_detection_report/host_runs/" + oid + "/" + port + "/" + proto );
+
+            # We could have multiple host_runs entries on the same port (e.g. http)
+            # Choose the first match here
+            foreach host_runs( host_runs_list ) {
+              if( host_runs == "unixoide" ) {
+                set_key = "Host/runs_unixoide";
+              } else if( host_runs == "windows" ) {
+                set_key = "Host/runs_windows";
+              } else {
+                set_key = "Host/runs_unknown";
+              }
+              if( ! get_kb_item( set_key ) ) {
+                set_kb_item( name:set_key, value:TRUE );
+                report += '\nSetting key "' + set_key + '" based on this information';
+              }
+            }
+          } else {
+            if( os_report >!< found_os )
+              found_os += os_report + '\n\n';
+          }
+        }
+      } else {
+        os_reports = get_kb_list( "os_detection_report/" + oid + "/*" );
+        foreach os_report( os_reports ) {
+          if( os_report >!< found_os )
+            found_os += os_report + '\n\n';
+        }
+      }
+    }
+  }
+}
+
+if( ! found_best ) {
+  report += "No Best matching OS identified. Please see below for possible ways to identify this OS.";
+} else {
+  # TBD: Move into host_details.nasl?
+  set_kb_item( name:"HostDetails/OS/BestMatch", value:best_match );
+  set_kb_item( name:"HostDetails/OS/BestMatch/Details", value:best_match_oid + ';' + best_match_desc );
+}
+
+if( found_os )
+  report += '\n\nOther OS detections (in order of reliability):\n\n' + found_os;
+
+unknown_banners = get_kb_list( "os_detection_report/unknown_os_banner/*/banner" );
+if( unknown_banners ) {
+
+  report += '\n\nUnknown banners have been collected which might help to identify the OS running on this host. ';
+  report += 'If these banners containing information about the host OS please report the following information ';
+  report += 'to openvas-plugins@wald.intevation.org:';
+
+  # Sort to not report changes on delta reports if just the order is different
+  keys = sort( keys( unknown_banners ) );
+
+  foreach key( keys ) {
+    tmp = split( key, sep:"/", keep:FALSE );
+    oid = tmp[2];
+    port = tmp[3];
+    proto = tmp[4];
+    banner_type_short = tmp[5];
+
+    banner = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/banner" );
+    type = get_kb_item( "os_detection_report/unknown_os_banner/" + oid + "/" + port + "/" + proto + "/" + banner_type_short + "/type_full" );
+
+    report += '\n\nBanner: ' + banner + '\n';
+    report += "Identified from: " + type;
+
+    if( port && port != "0" )
+      report += " on port " + port + "/" + proto;
+  }
+}
+
+log_message( port:0, data:report );
+
+exit( 0 );

@@ -1,0 +1,121 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_office_suite_ms16-015.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+#
+# Microsoft Office Suite Remote Code Execution Vulnerabilities (3134226)
+#
+# Authors:
+# Antu Sanadi <santu@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.807302");
+  script_version("$Revision: 5351 $");
+  script_cve_id("CVE-2016-0022", "CVE-2016-0052", "CVE-2016-0053", "CVE-2016-0054",
+                "CVE-2016-0055", "CVE-2016-0056");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2016-02-10 10:23:22 +0530 (Wed, 10 Feb 2016)");
+  script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3134226)");
+
+  script_tag(name:"summary", value:"This host is missing a critical security
+  update according to Microsoft Bulletin MS16-015.");
+
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
+  appropriate patch is applied or not.");
+
+  script_tag(name:"insight", value:"Multiple flaws exists when,
+  - The Office software improperly handles objects in memory while parsing
+    specially crafted Office files.
+  - The Office software fails to properly handle rich text format files in
+    memory.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to run arbitrary code in the context of the current user and
+  to perform actions in the security context of the current user.
+
+  Impact Level: System/Application");
+
+  script_tag(name:"affected", value:"
+  Microsoft Office 2007 Service Pack 3 and prior
+  Microsoft Office 2010 Service Pack 2 and prior.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
+  hotfixes or download and update mentioned hotfixes in the advisory from the
+  below link, https://technet.microsoft.com/en-us/security/bulletin/ms16-015");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"executable_version");
+
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3134226");
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114752");
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114742");
+  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-015");
+  script_summary("Check for the vulnerable file version");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_ms_office_detection_900025.nasl");
+  script_mandatory_keys("MS/Office/Ver");
+  exit(0);
+}
+
+
+include("smb_nt.inc");
+include("secpod_reg.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
+
+exeVer = "";
+InsPath = "";
+offsubver = "";
+
+## MS Office 2007,2010, 2015
+if(get_kb_item("MS/Office/Ver") =~ "^(12|14|15).*")
+{
+  ## Get Office File Path
+  InsPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
+                       item:"CommonFilesDir");
+  if(InsPath)
+  {
+    ## Get Version from Mso.dll
+    offPath = InsPath + "\Microsoft Shared\" + "Office12";
+
+    exeVer = fetch_file_version(sysPath:offPath, file_name:"Mso.dll");
+    if(exeVer)
+    {
+      if(exeVer =~ "^(12)")
+      {
+        ## Get Version from mso.dll file version
+        ## For office 2010 Wwlibcxm.dll is mentioned and it is not available so ignoring
+        ## Check for mso.dll version
+        if(version_in_range(version:exeVer, test_version:"12.0", test_version2:"12.0.6743.4999"))
+        {
+          report = 'File checked:     ' + offPath + "\mso.dll" + '\n' +
+                   'File version:     ' + exeVer  + '\n' +
+                   'Vulnerable range: 12.0 - 12.0.6743.4999 \n' ;
+          security_message(data:report);
+          exit(0);
+        }
+      }
+    }
+  }
+}

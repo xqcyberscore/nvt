@@ -1,0 +1,333 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_ssh_os_detection.nasl 5094 2017-01-25 06:43:45Z cfi $
+#
+# SSH OS Identification
+#
+# Authors:
+# Michael Meyer <michael.meyer@greenbone.net>
+#
+# Copyright:
+# Copyright (c) 2016 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.105586");
+  script_version("$Revision: 5094 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-01-25 07:43:45 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("SSH OS Identification");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("ssh_detect.nasl");
+  script_require_ports("Services/ssh", 22);
+
+  script_tag(name:"summary", value:"This script performs SSH banner based OS detection.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
+}
+
+include("ssh_func.inc");
+include("host_details.inc");
+
+SCRIPT_DESC = "SSH OS Identification";
+BANNER_TYPE = "SSH banner";
+
+port = get_kb_item( "Services/ssh" );
+if( ! port ) port = 22;
+if( ! get_port_state( port ) ) exit( 0 );
+
+banner = get_kb_item( "SSH/banner/" + port );
+if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+
+#TODO: Also check "SSH/textbanner/" + port ?
+
+# Order matters, as some banners can include several keywords.
+if( "ubuntu" >< banner )
+{
+  if( "SSH-2.0-OpenSSH_4.1p1 Debian-7ubuntu4" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"5.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_4.2p1 Debian-7ubuntu3" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"6.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_4.3p2 Debian-8ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"7.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_4.6p1 Debian-5ubuntu0" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"7.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_4.7p1 Debian-8ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"8.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.1p1 Debian-3ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"8.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.1p1 Debian-5ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"9.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.1p1 Debian-6ubuntu2" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"9.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu3" >< banner || "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu4" >< banner ||
+      "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu5" >< banner || "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu6" >< banner ||
+      "SSH-2.0-OpenSSH_5.3p1 Debian-3ubuntu7" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"10.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu4" >< banner || "SSH-2.0-OpenSSH_5.5p1 Debian-4ubuntu5" >< banner)
+  {
+    register_and_report_os( os:"Ubuntu", version:"10.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.8p1 Debian-1ubuntu3" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"11.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.8p1 Debian-7ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"11.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.9p1 Debian-5ubuntu" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"12.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.0p1 Debian-3ubuntu" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"12.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.1p1 Debian-3ubuntu" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"13.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.2p2 Ubuntu-6" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"13.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.6p1 Ubuntu-2" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"14.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-8" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"14.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.7p1 Ubuntu-5ubuntu1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"15.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.9p1 Ubuntu-2" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"15.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.2p2 Ubuntu-4" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"16.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.3p1 Ubuntu-1" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"16.10", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # We don't know the OS version
+  register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+else if( "Debian" >< banner )
+{
+  if( "SSH-2.0-OpenSSH_5.1p1 Debian" >< banner )
+  {
+    register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.5p1 Debian-6" >< banner )
+  {
+    register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.0p1 Debian-4" >< banner )
+  {
+    register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.7p1 Debian-5" >< banner )
+  {
+    register_and_report_os( os:"Debian GNU/Linux", version:"8.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # We don't know the OS version
+  register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+else if( "FreeBSD" >< banner )
+{
+  if( "SSH-2.0-OpenSSH_4.5p1 FreeBSD-20061110" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"7.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.1p1 FreeBSD-20080901" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"7.2", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.2p1 FreeBSD-20090522" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"8.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.4p1 FreeBSD-20100308" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"8.1", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_5.8p2_hpn13v11 FreeBSD-20110503" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"9.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  # We don't know the OS version
+  register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+else if( "OpenBSD" >< banner )
+{
+  # We don't know the OS version
+  register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+else if( "NetBSD" >< banner )
+{
+  # We don't know the OS version
+  register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+else if( "CISCO_WLC" >< banner )
+{
+  register_and_report_os( os:"Cisco Wireless Lan Controller", cpe:"cpe:/o:cisco:wireless_lan_controller", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  exit( 0 );
+}
+
+else if( eregmatch( string:banner, pattern:"cisco|FIPS User Access Verification", icase:TRUE ) )
+{
+  register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  exit( 0 );
+}
+
+else if( "SSH-2.0-Sun" >< banner )
+{
+  register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  exit( 0 );
+}
+
+else if( "SSH-2.0-NetScreen" >< banner )
+{
+  register_and_report_os( os:"NetScreen ScreenOS", cpe:"cpe:/o:juniper:netscreen_screenos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  exit( 0 );
+}
+
+else if( eregmatch( string:banner, pattern:"SSH-2.0-xxxxxxx|FortiSSH" ) )
+{
+  register_and_report_os( os:"FortiOS", cpe:"cpe:/o:fortinet:fortios", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" );
+  exit( 0 );
+}
+
+else if( "OpenVMS" >< banner )
+{
+  register_and_report_os( os:"OpenVMS", cpe:"cpe:/o:hp:openvms", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknonw" );
+  exit( 0 );
+}
+
+else if( "SSH-2.0-MS_" >< banner )
+{
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows_10:::iot", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"ssh_banner", port:port );
+
+exit( 0 );

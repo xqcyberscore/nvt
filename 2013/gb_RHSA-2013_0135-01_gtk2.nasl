@@ -1,0 +1,122 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# RedHat Update for gtk2 RHSA-2013:0135-01
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (c) 2013 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+tag_insight = "GIMP Toolkit (GTK+) is a multi-platform toolkit for creating graphical user
+  interfaces.
+
+  An integer overflow flaw was found in the X BitMap (XBM) image file loader
+  in GTK+. A remote attacker could provide a specially-crafted XBM image file
+  that, when opened in an application linked against GTK+ (such as Nautilus),
+  would cause the application to crash. (CVE-2012-2370)
+
+  This update also fixes the following bugs:
+
+  * Due to a bug in the Input Method GTK+ module, the usage of the Taiwanese
+  Big5 (zh_TW.Big-5) locale led to the unexpected termination of certain
+  applications, such as the GDM greeter. The bug has been fixed, and the
+  Taiwanese locale no longer causes applications to terminate unexpectedly.
+  (BZ#487630)
+
+  * When a file was initially selected after the GTK+ file chooser dialog was
+  opened and the Location field was visible, pressing the Enter key did not
+  open the file. With this update, the initially selected file is opened
+  regardless of the visibility of the Location field. (BZ#518483)
+
+  * When a file was initially selected after the GTK+ file chooser dialog was
+  opened and the Location field was visible, pressing the Enter key did not
+  change into the directory. With this update, the dialog changes into the
+  initially selected directory regardless of the visibility of the Location
+  field. (BZ#523657)
+
+  Description truncated, for more information please check the Reference URL";
+
+
+tag_affected = "gtk2 on Red Hat Enterprise Linux (v. 5 server)";
+tag_solution = "Please Install the Updated Packages.";
+
+
+
+if(description)
+{
+  script_xref(name : "URL" , value : "https://www.redhat.com/archives/rhsa-announce/2013-January/msg00018.html");
+  script_id(870883);
+  script_version("$Revision: 2876 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-03-17 10:10:52 +0100 (Thu, 17 Mar 2016) $");
+  script_tag(name:"creation_date", value:"2013-01-11 16:42:28 +0530 (Fri, 11 Jan 2013)");
+  script_cve_id("CVE-2012-2370");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_xref(name: "RHSA", value: "2013:0135-01");
+  script_name("RedHat Update for gtk2 RHSA-2013:0135-01");
+
+  script_summary("Check for the Version of gtk2");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Red Hat Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:redhat:enterprise_linux", "login/SSH/success", "ssh/login/release");
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "RHENT_5")
+{
+
+  if ((res = isrpmvuln(pkg:"gtk2", rpm:"gtk2~2.10.4~29.el5", rls:"RHENT_5")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"gtk2-debuginfo", rpm:"gtk2-debuginfo~2.10.4~29.el5", rls:"RHENT_5")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"gtk2-devel", rpm:"gtk2-devel~2.10.4~29.el5", rls:"RHENT_5")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

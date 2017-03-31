@@ -1,0 +1,86 @@
+# OpenVAS Vulnerability Test 
+# Description: Oracle Linux Local Check 
+# $Id: ELSA-2011-1691.nasl 4513 2016-11-15 09:37:48Z cfi $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@solinor.com> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.122032");
+script_version("$Revision: 4513 $");
+script_tag(name:"creation_date", value:"2015-10-06 14:11:58 +0300 (Tue, 06 Oct 2015)");
+script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_name("Oracle Linux Local Check: ELSA-2011-1691");
+script_tag(name: "insight", value: "ELSA-2011-1691 -  util-linux-ng security, bug fix, and enhancement update - [2.17.2-12.4]- fix CVE-2011-1675 - mount fails to anticipate RLIMIT_FSIZE- fix CVE-2011-1677 - umount may fail to remove /etc/mtab~ lock file[2.17.2-12.3]- fix fatal typos in patch for #723546[2.17.2-12.2]- rename /etc/hushlogin to /etc/hushlogins (#696731)[2.17.2-12.1]- fix #723546 - Defects revealed by Coverity scan- fix #723352 - cfdisk cannot read default installer partitioning- fix #712158 - uid/gid overflow in ipcs- fix #696959 - wipefs(8) reject partitioned devices- fix #694648 - document blank line at head of fstab- fix #684203 - umount fails on inconsistent fstab- fix #679831 --lines does not work- fix #679741 - canonicalize swap device- fix #692119 - include fstrim tool- fix #675999 - blkid crashes on a server with more than 128 storage devices- fix #696731 - display failed login attempts- fix #726092 - Pass host name from agetty to login- fix #716995 - Remove Deprecation Statement in /etc/udev/rules.d/60-raw.rules- fix #712808 - uuidd should depend on chkconfig- fix #723638 - Backport upstream extensions for lsblk (RHEL6.2)"); 
+script_tag(name : "solution", value : "update software");
+script_tag(name : "solution_type", value : "VendorFix");
+script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2011-1691");
+script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2011-1691.html");
+script_cve_id("CVE-2011-1675","CVE-2011-1677");
+script_tag(name:"cvss_base", value:"4.6");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_summary("Oracle Linux Local Security Checks ELSA-2011-1691");
+script_copyright("Eero Volotinen");
+script_family("Oracle Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "OracleLinux6")
+{
+  if ((res = isrpmvuln(pkg:"libblkid", rpm:"libblkid~2.17.2~12.4.el6", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libblkid-devel", rpm:"libblkid-devel~2.17.2~12.4.el6", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libuuid", rpm:"libuuid~2.17.2~12.4.el6", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"libuuid-devel", rpm:"libuuid-devel~2.17.2~12.4.el6", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"util-linux-ng", rpm:"util-linux-ng~2.17.2~12.4.el6", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"uuidd", rpm:"uuidd~2.17.2~12.4.el6", rls:"OracleLinux6")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+

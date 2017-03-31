@@ -1,0 +1,98 @@
+# OpenVAS Vulnerability Test 
+# Description: Oracle Linux Local Check 
+# $Id: ELSA-2008-0561.nasl 4513 2016-11-15 09:37:48Z cfi $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@solinor.com> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.122569");
+script_version("$Revision: 4513 $");
+script_tag(name:"creation_date", value:"2015-10-08 14:48:17 +0300 (Thu, 08 Oct 2015)");
+script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_name("Oracle Linux Local Check: ELSA-2008-0561");
+script_tag(name: "insight", value: "ELSA-2008-0561 -  ruby security update - [1.8.5-5.el5_2.3]- CVE-2008-2376: Integer overflow in rb_ary_fill().[1.8.5-5.el5_2.1]- security fixes. (#451928)- CVE-2008-2662: Integer overflow in rb_str_buf_append().- CVE-2008-2663: Integer overflow in rb_ary_store().- CVE-2008-2664: Unsafe use of alloca in rb_str_format().- CVE-2008-2725: Integer overflow in rb_ary_splice().- CVE-2008-2726: Integer overflow in rb_ary_splice()."); 
+script_tag(name : "solution", value : "update software");
+script_tag(name : "solution_type", value : "VendorFix");
+script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2008-0561");
+script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2008-0561.html");
+script_cve_id("CVE-2008-2376","CVE-2008-2662","CVE-2008-2663","CVE-2008-2664","CVE-2008-2725","CVE-2008-2726");
+script_tag(name:"cvss_base", value:"10.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_summary("Oracle Linux Local Security Checks ELSA-2008-0561");
+script_copyright("Eero Volotinen");
+script_family("Oracle Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "OracleLinux5")
+{
+  if ((res = isrpmvuln(pkg:"ruby", rpm:"ruby~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-devel", rpm:"ruby-devel~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-docs", rpm:"ruby-docs~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-irb", rpm:"ruby-irb~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-libs", rpm:"ruby-libs~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-mode", rpm:"ruby-mode~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-rdoc", rpm:"ruby-rdoc~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-ri", rpm:"ruby-ri~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"ruby-tcltk", rpm:"ruby-tcltk~1.8.5~5.el5_2.3", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+

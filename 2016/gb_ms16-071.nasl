@@ -1,0 +1,134 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_ms16-071.nasl 5527 2017-03-09 10:00:25Z teissa $
+#
+# Microsoft Windows DNS Server Remote Code Execution Vulnerability (3164065)
+#
+# Authors:
+# Kashinath T <tkashinath@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.808161");
+  script_version("$Revision: 5527 $");
+  script_cve_id("CVE-2016-3227");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2016-06-15 08:10:05 +0530 (Wed, 15 Jun 2016)");
+  script_name("Microsoft Windows DNS Server Remote Code Execution Vulnerability (3164065)");
+
+  script_tag(name:"summary", value:"This host is missing an critical security
+  update according to Microsoft Bulletin MS16-071");
+
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
+  check appropriate patch is applied or not.");
+
+  script_tag(name:"insight", value:"The flaw is due to improper handling of requests
+  in Dns severs. ");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attacker to run arbitrary code in the context of the Local System Account. 
+
+  Impact Level: System");
+
+  script_tag(name:"affected", value:"
+  Microsoft Windows Server 2012/2012R2");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the
+  listed hotfixes or download and update mentioned hotfixes in the advisory
+  from the below link,
+  https://technet.microsoft.com/library/security/MS16-071");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3161951");
+  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-071");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_mandatory_keys("SMB/WindowsVersion");
+  exit(0);
+}
+
+
+include("smb_nt.inc");
+include("secpod_reg.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
+
+## Variables Initialization
+sysPath = "";
+sysVer = "";
+
+## Check for OS and Service Pack
+if(hotfix_check_sp(win2012:1, win2012R2:1) <= 0){
+  exit(0);
+}
+
+if(!registry_key_exists(key:"SYSTEM\CurrentControlSet\Services\DNS")){
+  exit(0);
+}
+
+## Get System Path
+sysPath = smb_get_systemroot();
+if(!sysPath ){
+  exit(0);
+}
+
+##Fetch the version of Dns.exe
+sysVer = fetch_file_version(sysPath, file_name:"System32\Dns.exe");
+if(!sysVer){
+  exit(0);
+}
+
+## Windows Server 2012
+if(hotfix_check_sp(win2012:1, win2012R2:1) > 0)
+{
+  ## Presently GDR information is not available. 
+  ## Check for Dns.exe version
+  if(version_is_less(version:sysVer, test_version:"6.2.9200.21872")){
+     VULN = TRUE ;
+     Vulnerable_range = "Less than 6.2.9200.21872";
+  }
+}
+
+## Windows Server 2012 R2 
+else if(hotfix_check_sp(win2012R2:1) > 0)
+{
+  ## Check for Dns.exe version
+  if(version_is_less(version:sysVer, test_version:"6.3.9600.18340")){
+    VULN = TRUE ;
+    Vulnerable_range = "Less than 6.3.9600.18340";
+  }
+}
+
+if(VULN)
+{
+  report = 'File checked:     ' + sysPath + "\system32\Dns.exe" + '\n' +
+           'File version:     ' + sysVer  + '\n' +
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+  security_message(data:report);
+  exit(0);
+}

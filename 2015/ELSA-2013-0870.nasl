@@ -1,0 +1,106 @@
+# OpenVAS Vulnerability Test 
+# Description: Oracle Linux Local Check 
+# $Id: ELSA-2013-0870.nasl 4513 2016-11-15 09:37:48Z cfi $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@solinor.com> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.123618");
+script_version("$Revision: 4513 $");
+script_tag(name:"creation_date", value:"2015-10-06 14:06:21 +0300 (Tue, 06 Oct 2015)");
+script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_name("Oracle Linux Local Check: ELSA-2013-0870");
+script_tag(name: "insight", value: "ELSA-2013-0870 -  tomcat5 security update - [0:5.5.23-0jpp.40]- Related: CVE-2013-1976 It was found during additional testing- that the tomcat5 init may fail to start because the user- shell is set to sbin/nologin. Fixed in init scrip. SU now- uses -s /bin/sh during startup[0:5.5.23-0jpp.39]- Resolves: CVE-2013-1976 Improper TOMCAT_LOG management in- initscript. Change location of TOMCAT_LOG to /var/log so- only root can write to it. Touching TOMCAT_LOG is no longer- required during initscript startup. Permissions and ownership- changed to 0755 tomcat:root for logdir"); 
+script_tag(name : "solution", value : "update software");
+script_tag(name : "solution_type", value : "VendorFix");
+script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2013-0870");
+script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2013-0870.html");
+script_cve_id("CVE-2013-1976");
+script_tag(name:"cvss_base", value:"6.9");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_summary("Oracle Linux Local Security Checks ELSA-2013-0870");
+script_copyright("Eero Volotinen");
+script_family("Oracle Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "OracleLinux5")
+{
+  if ((res = isrpmvuln(pkg:"tomcat5", rpm:"tomcat5~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-admin-webapps", rpm:"tomcat5-admin-webapps~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-common-lib", rpm:"tomcat5-common-lib~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-jasper", rpm:"tomcat5-jasper~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-jasper-javadoc", rpm:"tomcat5-jasper-javadoc~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-jsp", rpm:"tomcat5-jsp~2.0~api~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-jsp", rpm:"tomcat5-jsp~2.0~api~javadoc~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-server-lib", rpm:"tomcat5-server-lib~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-servlet", rpm:"tomcat5-servlet~2.4~api~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-servlet", rpm:"tomcat5-servlet~2.4~api~javadoc~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+  if ((res = isrpmvuln(pkg:"tomcat5-webapps", rpm:"tomcat5-webapps~5.5.23~0jpp.40.el5_9", rls:"OracleLinux5")) != NULL) {
+    security_message(data:res);
+    exit(0);  
+  }
+
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+

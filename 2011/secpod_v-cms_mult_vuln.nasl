@@ -1,0 +1,131 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: secpod_v-cms_mult_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+#
+# V-CMS Multiple Vulnerabilities
+#
+# Authors:
+# Rachana Shetty <srachana@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2011 SecPod, http://www.secpod.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.902498");
+  script_version("$Revision: 3114 $");
+  script_cve_id("CVE-2011-4826", "CVE-2011-4827", "CVE-2011-4828");
+  script_bugtraq_id(50706);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"creation_date", value:"2011-12-23 12:08:49 +0530 (Fri, 23 Dec 2011)");
+  script_name("V-CMS Multiple Vulnerabilities");
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/46861");
+  script_xref(name : "URL" , value : "http://bugs.v-cms.org/view.php?id=53");
+  script_xref(name : "URL" , value : "http://bugs.v-cms.org/changelog_page.php");
+  script_xref(name : "URL" , value : "http://www.autosectools.com/Advisory/V-CMS-1.0-Arbitrary-Upload-236");
+  script_xref(name : "URL" , value : "http://www.autosectools.com/Advisory/V-CMS-1.0-Reflected-Cross-site-Scripting-234");
+
+  script_summary("Check for V-CMS is vulnerable to XSS");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2011 SecPod");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  HTML and script code in a user's browser session in the context of a vulnerable
+  site and to cause SQL Injection attack to gain sensitive information.
+
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "V-CMS version 1.0 and prior.");
+  script_tag(name : "insight" , value : "The flaws are due to improper validation of user-supplied input
+  via the 'p' parameter to redirect.php and 'user' parameter to process.php and
+  'includes/inline_image_upload.php' script, which fails to restrict non-logged
+  in users to upload any files.");
+  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
+  script_tag(name : "summary" , value : "This host is running V-CMS and is prone to multiple vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_app");
+  exit(0);
+}
+
+##
+## The script code starts here
+##
+
+include("http_func.inc");
+include("http_keepalive.inc");
+
+## Get HTTP Port
+port = get_http_port(default:80);
+
+## Check Host Supports PHP
+if(!can_host_php(port:port)){
+  exit(0);
+}
+
+##Get Host name
+host = http_host_name(port:port);
+
+## Iterate over possible paths
+## Get V-CMS Installed Locatioin
+foreach dir (make_list_unique("/vcms", "/v-cms", cgi_dirs(port:port)))
+{
+
+  if(dir == "/") dir = "";
+  url = dir + "/index.php";
+
+  ## Construct the POST request
+  req = string("GET ", url, " HTTP/1.1\r\n",
+               "Host: ", host, "\r\n",
+               "Cookie: PHPSESSID=b6a966eb752adf23a35fb8b0d5f208f3\r\n\r\n");
+
+  res = http_keepalive_send_recv(port:port, data:req);
+
+  ## COnfirm the application
+  if(">V-CMS-Powered by V-CMS" >< res)
+  {
+    ## Construct the attack request
+    url = dir + "/redirect.php?p=%3C/script%3E%3Cscript%3Ealert(" +
+                "document.cookie)%3C/script%3E%27";
+
+    #Construct the GET request
+    req = string("GET ", url, " HTTP/1.1\r\n",
+                 "Host: ", host, "\r\n",
+                 "Cookie: PHPSESSID=b6a966eb752adf23a35fb8b0d5f208f3\r\n\r\n");
+
+    ## Try XSS Attack
+    res = http_keepalive_send_recv(port:port, data:req);
+
+    ## Try attack and check the response to confirm vulnerability
+    if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) &&
+             "</script><script>alert(document.cookie)</script>" >< res)
+    {
+      security_message(port:port);
+      exit(0);
+    }
+  }
+}
+
+exit(99);

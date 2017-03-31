@@ -1,0 +1,88 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_allocPS_47860.nasl 5424 2017-02-25 16:52:36Z teissa $
+#
+# allocPSA 'login/login.php' Cross Site Scripting Vulnerability
+#
+# Authors:
+# Michael Meyer <michael.meyer@greenbone.net>
+#
+# Copyright:
+# Copyright (c) 2011 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_summary = "allocPSA is prone to a cross-site scripting vulnerability because it
+fails to sufficiently sanitize user-supplied data.
+
+An attacker may leverage this issue to execute arbitrary script code
+in the browser of an unsuspecting user in the context of the affected
+site. This may allow the attacker to steal cookie-based authentication
+credentials and to launch other attacks.
+
+allocPSA 1.7.4 is vulnerable; other versions may also be affected.";
+
+
+if (description)
+{
+ script_id(103168);
+ script_version("$Revision: 5424 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_tag(name:"creation_date", value:"2011-06-03 14:27:02 +0200 (Fri, 03 Jun 2011)");
+ script_bugtraq_id(47860);
+ script_tag(name:"cvss_base", value:"2.6");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+ script_name("allocPSA 'login/login.php' Cross Site Scripting Vulnerability");
+
+ script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/47860");
+ script_xref(name : "URL" , value : "http://allocpsa.com/index.php");
+ script_xref(name : "URL" , value : "http://www.autosectools.com/Advisory/allocPSA-1.7.4-Reflected-Cross-site-Scripting-212");
+
+ script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_family("Web application abuses");
+ script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+ script_dependencies("find_service.nasl", "http_version.nasl");
+ script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+ script_tag(name : "summary" , value : tag_summary);
+ exit(0);
+}
+
+include("http_func.inc");
+include("host_details.inc");
+include("http_keepalive.inc");
+include("global_settings.inc");
+   
+port = get_http_port(default:80);
+if(!get_port_state(port))exit(0);
+
+if(!can_host_php(port:port))exit(0);
+
+dirs = make_list(cgi_dirs());
+
+foreach dir (dirs) {
+   
+  url = string(dir, "/login/login.php?sessID=<script>alert(/openvas-xss-test/)</script>"); 
+
+  if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",extra_check:"<title>allocPSA", check_header:TRUE)) {
+     
+    security_message(port:port);
+    exit(0);
+
+  }
+}
+
+exit(0);

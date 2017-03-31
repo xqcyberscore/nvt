@@ -1,0 +1,107 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_joomla_com_payplans_sql_injection_vuln.nasl 60064 2016-06-14 12:38:28Z June$
+#
+# Joomla Payplans Extension SQL Injection Vulnerability
+#
+# Authors:
+# Rinu Kuriakose <krinu@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:joomla:joomla";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.808223");
+  script_version("$Revision: 5101 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"creation_date", value:"2016-06-14 12:38:28 +0530 (Tue, 14 Jun 2016)");
+  script_name("Joomla Payplans Extension SQL Injection Vulnerability");
+
+  script_tag(name:"summary", value:"This host is installed with Joomla component
+  Payplans and is prone to sql injection vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
+  and check whether it is able to execute sql query or not.");
+
+  script_tag(name:"insight", value:"The flaw exist due to an insufficient
+  validation of user supplied input via 'group_id' parameter to
+  'index.php' script.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to inject or manipulate SQL queries in the back-end database,
+  allowing for the manipulation or disclosure of arbitrary data.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"Joomla PayPlans Extension 3.3.6");
+
+  script_tag(name:"solution", value:"No solution or patch is available as of
+  24th January, 2017. Information regarding this issue will be updated once the
+  solution details are available.
+  For updates refer to http://extensions.joomla.org/extension/payplans");
+
+  script_tag(name:"solution_type", value:"NoneAvailable");
+
+  script_tag(name:"qod_type", value:"remote_analysis");
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39936");
+
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("joomla_detect.nasl");
+  script_mandatory_keys("joomla/installed");
+  script_require_ports("Services/www", 80);
+  exit(0);
+}
+
+include("http_func.inc");
+include("http_keepalive.inc");
+include("host_details.inc");
+
+## Variable Initialization
+http_port = 0;
+url = "";
+dir = "";
+
+## Get HTTP Port
+if(!http_port = get_app_port(cpe:CPE)){
+  exit(0);
+}
+
+## Get Joomla Location
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
+  exit(0);
+}
+
+## Construct the attack request
+url = dir + "/index.php?option=com_payplans&group_id=4'SQL-INJECTION-TEST";
+
+## Check the response to confirm vulnerability
+if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
+               pattern:"You have an error in your SQL syntax",
+               extra_check:"SQL-INJECTION-TEST"))
+{
+  report = report_vuln_url(port:http_port, url:url);
+  security_message(port:http_port, data:report);
+  exit(0);
+}

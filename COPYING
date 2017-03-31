@@ -1,0 +1,16 @@
+License information for OpenVAS Network Vulnerability Tests
+-----------------------------------------------------------
+
+The effective license as a whole for the OpenVAS Network
+Vulnerability Tests (NVT's) is the GNU General Public License
+Version 2 (GNU GPLv2).
+
+The prefered license for new NVT's is "GNU GPLv2 or any
+later version" (GNU GPLv2+). There are, however, several
+NVT's licensed under "GNU GPLv2" and "GPLv2 or GPLv3".
+
+GPLv2: See file COPYING.GPLv2
+
+The detailed list on which NVT is released under which
+license is created automatically and stored in file
+"COPYING.files".

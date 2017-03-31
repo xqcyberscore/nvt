@@ -1,0 +1,89 @@
+# OpenVAS Vulnerability Test
+# $
+# Description: Auto generated from Gentoo's XML based advisory
+#
+# Authors:
+# Thomas Reinke <reinke@securityspace.com>
+#
+# Copyright:
+# Copyright (c) 2008 E-Soft Inc. http://www.securityspace.com
+# Text descriptions are largely excerpted from the referenced
+# advisories, and are Copyright (c) the respective author(s)
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2,
+# as published by the Free Software Foundation
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+
+include("revisions-lib.inc");
+tag_insight = "Adobe Acrobat Reader is vulnerable to a buffer overflow that could lead to
+remote execution of arbitrary code.";
+tag_solution = "Since Adobe will most likely not update the 5.0 series of Adobe Acrobat
+Reader for Linux, all users should upgrade to the latest available version
+of the 7.0 series:
+
+    # emerge --sync
+    # emerge --ask --oneshot --verbose '>=app-text/acroread-7.0'
+
+http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200507-09
+http://bugs.gentoo.org/show_bug.cgi?id=98101
+http://www.idefense.com/application/poi/display?id=279&type=vulnerabilities&flashstatus=true
+http://www.adobe.com/support/techdocs/329083.html";
+tag_summary = "The remote host is missing updates announced in
+advisory GLSA 200507-09.";
+
+                                                                                
+
+if(description)
+{
+ script_id(54985);
+ script_version("$Revision: 4286 $");
+ script_tag(name:"last_modification", value:"$Date: 2016-10-17 09:24:15 +0200 (Mon, 17 Oct 2016) $");
+ script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
+ script_cve_id("CVE-2005-1625");
+ script_tag(name:"cvss_base", value:"5.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+ script_name("Gentoo Security Advisory GLSA 200507-09 (acroread)");
+
+
+
+ script_category(ACT_GATHER_INFO);
+
+ script_copyright("Copyright (c) 2005 E-Soft Inc. http://www.securityspace.com");
+ script_family("Gentoo Local Security Checks");
+ script_dependencies("gather-package-list.nasl");
+ script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+ script_tag(name : "insight" , value : tag_insight);
+ script_tag(name : "solution" , value : tag_solution);
+ script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"qod_type", value:"package");
+ script_tag(name:"solution_type", value:"VendorFix");
+ exit(0);
+}
+
+#
+# The script code starts here
+#
+
+include("pkg-lib-gentoo.inc");
+
+res = "";
+report = "";
+if ((res = ispkgvuln(pkg:"app-text/acroread", unaffected: make_list("ge 7.0"), vulnerable: make_list("le 5.10"))) != NULL) {
+    report += res;
+}
+
+if (report != "") {
+    security_message(data:report);
+} else if (__pkg_match) {
+    exit(99); # Not vulnerable.
+}

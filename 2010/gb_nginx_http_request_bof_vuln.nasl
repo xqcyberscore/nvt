@@ -1,0 +1,128 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_nginx_http_request_bof_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+#
+# nginx HTTP Request Remote Buffer Overflow Vulnerability
+#
+# Authors:
+# Sooraj KS <kssooraj@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.801636");
+  script_version("$Revision: 5323 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
+  script_cve_id("CVE-2009-2629");
+  script_bugtraq_id(36384);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("nginx HTTP Request Remote Buffer Overflow Vulnerability");
+
+  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/180065");
+  script_xref(name : "URL" , value : "http://sysoev.ru/nginx/patch.180065.txt");
+
+  script_category(ACT_MIXED_ATTACK);
+  script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
+  script_family("Buffer overflow");
+  script_dependencies("http_version.nasl","nginx_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_require_keys("nginx/installed");
+
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary code
+  within the context of the affected application. Failed exploit attempts
+  will result in a denial-of-service condition.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "nginx versions 0.1.0 through 0.5.37, 0.6.x before 0.6.39, 0.7.x before 0.7.62,
+  and 0.8.x before 0.8.15.");
+  script_tag(name : "insight" , value : "The flaw is due to an error in 'src/http/ngx_http_parse.c' which
+  allows remote attackers to execute arbitrary code via crafted HTTP requests.");
+  script_tag(name : "solution" , value : "Upgrade to nginx versions 0.5.38, 0.6.39, 0.7.62 or 0.8.15,
+  For updates refer to http://nginx.org/en/download.html");
+  script_tag(name : "summary" , value : "This host is running nginx and is prone to buffer-overflow
+  vulnerability.");
+
+  script_tag(name : "solution_type", value : "VendorFix");
+
+  script_tag(name: "qod_type", value: "remote_vul");
+
+  exit(0);
+}
+
+
+include("http_func.inc");
+include("version_func.inc");
+
+## Get HTTP Port
+port = get_http_port(default:80);
+if(!port){
+  exit(0);
+}
+
+## Get Banner
+banner = get_http_banner(port: port);
+if(!banner) {
+  exit(0);
+}
+
+## Confirm the application
+if("Server: nginx" >< banner) {
+
+  if(safe_checks()) {
+
+    version = eregmatch(pattern:"Server: nginx/([0-9.]+)" , string:banner);
+    if(isnull(version[1]))exit(0);
+
+    if(version_in_range(version: version[1], test_version:"0.1.0", test_version2:"0.5.37")
+       || version_in_range(version: version[1], test_version:"0.6.0", test_version2:"0.6.38")
+       || version_in_range(version: version[1], test_version:"0.7.0", test_version2:"0.7.61")) {
+
+      security_message(port:port);
+      exit(0);
+    }
+  } else {
+
+    ## Construct Attack Request
+    req = http_get(item: crap(4079), port:port);
+
+    ## Open Socket
+    soc = http_open_socket(port);
+    if(!soc) {
+      exit(0);
+    }
+
+    ## Sending Attack
+    for(i=0; i<2; i++)
+    {
+      snd = send(socket: soc, data: req);
+      sleep(2);
+    
+      ## Check Socket status
+      if(snd < 0)
+      {
+        security_message(port:port);
+        exit(0);
+      }
+    }
+    http_close_socket(soc);
+  }
+}
+
+exit(99);

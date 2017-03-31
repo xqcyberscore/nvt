@@ -1,0 +1,79 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_smbv1_enabled.nasl 5455 2017-03-01 13:56:12Z cfi $
+#
+# SMBv1 Unspecified Remote Code Execution
+#
+# Authors:
+# Michael Meyer <michael.meyer@greenbone.net>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.140151");
+  script_version("$Revision: 5455 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2017-02-04 09:33:13 +0100 (Sat, 04 Feb 2017)");
+  script_name("SMBv1 Unspecified Remote Code Execution (Shadow Brokers)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Windows");
+  script_dependencies("gb_smb_version_detect.nasl", "netbios_name_get.nasl",
+                      "smb_nativelanman.nasl", "os_detection.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("smb_v1/supported", "Host/runs_windows");
+  script_exclude_keys("SMB/samba");
+
+  script_tag(name:"summary", value:"The remote Windows host is prone to an unspecified remote code execution vulnerability in SMBv1 protocol.");
+  script_tag(name:"insight", value:"The remote Windows host is supporting SMBv1 and is therefore prone to an unspecified remote code execution vulnerability. This vulnerability is related to the `Shadow Brokers` group.");
+  script_tag(name:"solution", value:"Disable SMB v1 and/or block all versions of SMB at the network boundary by blocking TCP port 445 with related protocols on UDP ports 137-138 and TCP port 139, for all boundary devices.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name: "solution_type", value: "Workaround");
+
+  script_xref(name:"URL", value:"https://www.us-cert.gov/ncas/current-activity/2017/01/16/SMB-Security-Best-Practices");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2696547");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/204279");
+
+  exit(0);
+}
+
+include("smb_nt.inc");
+include("host_details.inc");
+
+if( host_runs( "Windows" ) != "yes" ) exit( 0 );
+
+if( get_kb_item( "SMB/samba" ) ) exit( 99 );
+if( "samba" >< tolower( get_kb_item( "SMB/SERVER" ) ) ) exit( 99 );
+
+port = kb_smb_transport();
+
+if( ! port ) port = 139;
+if( ! get_port_state( port ) ) exit( 0 );
+
+if( get_kb_item( "smb_v1/supported" ) )
+{
+  security_message( port:port );
+  exit( 0 );
+}
+
+exit( 99 );
+

@@ -1,0 +1,75 @@
+# OpenVAS Vulnerability Test
+# Description: Gentoo Linux security check
+# $Id: glsa-201510-05.nasl 4513 2016-11-15 09:37:48Z cfi $
+
+# Authors:
+# Eero Volotinen <eero.volotinen@solinor.com>
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://solinor.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.121418");
+script_version("$Revision: 4513 $");
+script_tag(name:"creation_date", value:"2015-11-08 13:04:38 +0200 (Sun, 08 Nov 2015)");
+script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201510-05");
+script_tag(name: "insight", value: "Multiple vulnerabilities have been discovered in MediaWiki. Please review the CVE identifiers referenced below for details."); 
+script_tag(name : "solution", value : "update software");
+script_tag(name : "solution_type", value : "VendorFix");
+script_xref(name : "URL" , value : "https://security.gentoo.org/glsa/201510-05");
+script_cve_id("CVE-2015-2931","CVE-2015-2932","CVE-2015-2933","CVE-2015-2934","CVE-2015-2935","CVE-2015-2936","CVE-2015-2937","CVE-2015-2938","CVE-2015-2939","CVE-2015-2940","CVE-2015-2941","CVE-2015-2942","CVE-2015-6728","CVE-2015-6729","CVE-2015-6730","CVE-2015-6731","CVE-2015-6732","CVE-2015-6733","CVE-2015-6734","CVE-2015-6735","CVE-2015-6736","CVE-2015-6737");
+script_tag(name:"cvss_base", value:"7.5");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");
+script_category(ACT_GATHER_INFO);
+script_summary("Gentoo Linux Local Security Checks https://security.gentoo.org/glsa/201510-05");
+script_copyright("Eero Volotinen");
+script_family("Gentoo Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+
+include("pkg-lib-gentoo.inc");
+
+res = "";
+report = "";
+
+if((res=ispkgvuln(pkg:"www-apps/mediawiki", unaffected: make_list("ge 1.25.2"), vulnerable: make_list() )) != NULL) {
+
+  report += res;
+}
+if((res=ispkgvuln(pkg:"www-apps/mediawiki", unaffected: make_list("ge 1.24.3"), vulnerable: make_list() )) != NULL) {
+
+  report += res;
+}
+if((res=ispkgvuln(pkg:"www-apps/mediawiki", unaffected: make_list("ge 1.23.10"), vulnerable: make_list() )) != NULL) {
+
+  report += res;
+}
+if((res=ispkgvuln(pkg:"www-apps/mediawiki", unaffected: make_list(), vulnerable: make_list("lt 1.25.2"))) != NULL) {
+
+  report += res;
+}
+
+if(report != "") {
+    security_message(data:report);
+} else if (__pkg_match) {
+    exit(99); # Not vulnerable.
+}

@@ -1,0 +1,68 @@
+# OpenVAS
+# $Id: smb_authorization.nasl 2837 2016-03-11 09:19:51Z benallard $
+# Description: Set information for smb authorization in KB.
+#
+# Authors:
+# Jan-Oliver Wagner <jan-oliver.wagner@greenbone.net>
+#
+# Copyright:
+# Copyright (C) 2008, 2014 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# The two entries "SMB/dont_send_ntlmv1" and "SMB/dont_send_in_cleartext"
+# are not handled here yet. They are still managed in logins.nasl.
+
+# Unlike the old code in logins.nasl, here only a single
+# set of credentials in managed. Thus the strange name
+# used for the KB.
+
+if(description)
+{
+ script_id(90023);
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 2837 $");
+ script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_tag(name:"creation_date", value:"2008-06-02 00:42:27 +0200 (Mon, 02 Jun 2008)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_name("SMB Authorization");
+
+ tag_summary = "This script allows users to enter the information
+required to authorize and login via SMB.
+
+These data are used by tests that require authentication.";
+
+
+ script_summary("Sets SMB authorization");
+ script_category(ACT_SETTINGS);
+ script_tag(name:"qod_type", value:"registry");
+ script_copyright("Copyright 2008, 2014 Greenbone Networks GmbH");
+ script_family("Credentials");
+
+ script_add_preference(name:"SMB login:", type:"entry", value:"");
+ script_add_preference(name:"SMB password:", type:"password", value:"");
+ script_add_preference(name:"SMB domain (optional):", type:"entry", value:"");
+
+ script_tag(name : "summary" , value : tag_summary);
+ exit(0);
+}
+
+smb_login = script_get_preference("SMB login:");
+smb_password = script_get_preference("SMB password:");
+smb_domain = script_get_preference("SMB domain (optional):");
+
+if (smb_login) set_kb_item(name: "SMB/login_filled/0", value: smb_login);
+if (smb_password) set_kb_item(name:"SMB/password_filled/0", value:smb_password);
+if (smb_domain) set_kb_item(name: "SMB/domain_filled/0", value: smb_domain);

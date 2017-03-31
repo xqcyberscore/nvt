@@ -1,0 +1,148 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: sw_telnet_os_detection.nasl 5094 2017-01-25 06:43:45Z cfi $
+#
+# Telnet OS Identification
+#
+# Authors:
+# Christian Fischer <info@schutzwerk.com>
+#
+# Copyright:
+# Copyright (c) 2015 SCHUTZWERK GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.111069");
+  script_version("$Revision: 5094 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-01-25 07:43:45 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Telnet OS Identification");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/telnet", 23);
+
+  script_tag(name:"summary", value:"This script performs Telnet banner based OS detection.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
+}
+
+include("host_details.inc");
+include("telnet_func.inc");
+
+SCRIPT_DESC = "Telnet OS Identification";
+BANNER_TYPE = "Telnet banner";
+
+port = get_telnet_port( default:23 );
+
+banner = get_telnet_banner( port:port );
+
+if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+
+if( "Welcome to Microsoft Telnet Service" >< banner ) {
+  register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+  exit( 0 );
+}
+
+if( "FreeBSD/" >< banner && ( "(tty" >< banner || "(pts" >< banner ) ) {
+  register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+if( "NetBSD/" >< banner && ( "(tty" >< banner || "(pts" >< banner ) ) {
+  register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+if( "SunOS" >< banner && "login:" >< banner ) {
+  register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+  exit( 0 );
+}
+
+if( "login:" >< banner ) {
+
+  if( "Debian GNU/Linux" >< banner ) {
+    version = eregmatch( pattern:"Debian GNU/Linux ([0-9.]+)", string:banner );
+    if( ! isnull( version[1] ) ) {
+      register_and_report_os( os:"Debian GNU/Linux", version:version[1], cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+        if( "lenny" >< banner ) {
+          register_and_report_os( os:"Debian GNU/Linux", version:"5.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "squeeze" >< banner ) {
+          register_and_report_os( os:"Debian GNU/Linux", version:"6.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "wheezy" >< banner ) {
+          register_and_report_os( os:"Debian GNU/Linux", version:"7.0", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "jessie" >< banner ) {
+          register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else {
+          register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        }
+    }
+    exit( 0 );
+  }
+
+  if( "Ubuntu" >< banner ) {
+    register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "CentOS release" >< banner ) {
+    register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "Fedora release" >< banner ) {
+    register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "Fedora Core release" >< banner ) {
+    register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "Red Hat Enterprise Linux" >< banner ) {
+    register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "Red Hat Linux release" >< banner ) {
+    register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "-gentoo-" >< banner ) {
+    register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "Welcome to SUSE Linux" >< banner || "Welcome to SuSE Linux" >< banner ) {
+    register_and_report_os( os:"SUSE Linux", cpe:"cpe:/o:novell:suse_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  register_unknown_os_banner( banner:banner, banner_type_name:BANNER_TYPE, banner_type_short:"telnet_banner", port:port );
+
+}
+
+exit( 0 );

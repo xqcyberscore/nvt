@@ -1,0 +1,133 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_nginx_mult_dos_vuln01_jan16.nasl 3463 2016-06-09 17:31:49Z cfi $
+#
+# Nginx Server Multiple Denial Of Service Vulnerabilities 01 - Jan16
+#
+# Authors:
+# Kashinath T <tkashinath@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:nginx:nginx";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.806849");
+  script_version("$Revision: 3463 $");
+  script_cve_id("CVE-2016-0742","CVE-2016-0746","CVE-2016-0747");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2016-06-09 19:31:49 +0200 (Thu, 09 Jun 2016) $");
+  script_tag(name:"creation_date", value:"2016-01-27 17:26:59 +0530 (Wed, 27 Jan 2016)");
+  script_name("Nginx Server Multiple Denial Of Service Vulnerabilities 01 - Jan16");
+
+  script_tag(name: "summary" , value: "This host is installed with nginx server
+  and is prone to multiple denial of service vulnerabilities.");
+
+  script_tag(name: "vuldetect" , value: "Get the installed version with the help
+  of detect NVT and check the version is vulnerable or not.");
+
+  script_tag(name: "insight" , value: "Multiple flaws as,
+  - An invalid pointer dereference might occur during DNS server response
+    processing.
+  - The use-after-free condition might occur during CNAME response processing.
+  - The CNAME resolution was insufficiently limited.");
+
+  script_tag(name: "impact" , value: "Successful exploitation will allow
+  remote attackers to trigger arbitrary name resolution to cause excessive
+  resource consumption in worker processes, to forge UDP packets from the DNS
+  server to cause worker process crash.
+
+  Impact Level: Application.");
+
+  script_tag(name: "affected" , value:"nginx versions from 0.6.18 to 1.9.9, note
+  1.8.1 is not vulnerable");
+ 
+  script_tag(name: "solution" , value:"Upgrade to nginx version 1.9.10 or 1.8.1,
+  or later. For updates refer to https://www.nginx.com");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  script_xref(name: "URL" , value : "http://mailman.nginx.org/pipermail/nginx/2016-January/049700.html");
+
+  script_summary("Check for the vulnerable version of Nginx server");
+  script_category(ACT_GATHER_INFO);
+  script_family("Denial of Service");
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("nginx_detect.nasl");
+  script_mandatory_keys("nginx/installed");
+  script_require_ports("Services/www", 80);
+  exit(0);
+}
+
+
+include("version_func.inc");
+include("host_details.inc");
+
+## Variable initialisation
+ngxPort = "";
+ngxVer = "";
+
+## Get Application HTTP Port
+if(!ngxPort = get_app_port(cpe:CPE)){
+  exit(0);
+}
+
+##Get nginx version
+if(!ngxVer = get_app_version(cpe:CPE, port:ngxPort)){
+  exit(0);
+}
+
+## check nginx version 0.6 to 0.8
+## version history refered from https://en.wikipedia.org/wiki/Nginx
+if(ngxVer =~ "^0\.")
+{
+  if(version_in_range(version:ngxVer, test_version:"0.6", test_version2:"0.8.55"))
+  {
+    report = report_fixed_ver( installed_version:ngxVer, fixed_version:"1.9.10/1.8.1");
+    security_message(port:ngxPort, data:report);
+    exit(0);
+  }
+}
+
+##check nginx version 1.x to 1.8.1
+if(ngxVer =~ "^1\.")
+{
+  if(version_is_less(version:ngxVer, test_version:"1.8.1"))
+  {
+    report = report_fixed_ver(installed_version:ngxVer, fixed_version:"1.9.10/1.8.1");
+    security_message(port:ngxPort, data:report);
+    exit(0);
+  }
+}
+
+##check nginx version 1.9 to 1.9.9
+if(ngxVer =~ "^1\.9")
+{
+  if(version_is_less(version:ngxVer, test_version:"1.9.10"))
+  {
+    report = report_fixed_ver( installed_version:ngxVer, fixed_version:"1.9.10");
+    security_message(port:ngxPort, data:report);
+    exit(0);
+   }
+}
+
+exit(99);

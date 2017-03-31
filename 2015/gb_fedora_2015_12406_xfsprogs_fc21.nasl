@@ -1,0 +1,89 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Fedora Update for xfsprogs FEDORA-2015-12406
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.869885");
+  script_version("$Revision: 3342 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"creation_date", value:"2015-08-20 06:42:42 +0200 (Thu, 20 Aug 2015)");
+  script_cve_id("CVE-2012-2150");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_name("Fedora Update for xfsprogs FEDORA-2015-12406");
+  script_tag(name: "summary", value: "Check the version of xfsprogs");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help
+of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "insight", value: "A set of commands to use the XFS
+filesystem, including mkfs.xfs.
+
+XFS is a high performance journaling filesystem which originated
+on the SGI IRIX platform.  It is completely multi-threaded, can
+support large files and large filesystems, extended attributes,
+variable block sizes, is extent based, and makes extensive use of
+Btrees (directories, extents, free space) to aid both performance
+and scalability.
+
+Refer to the documentation at 'http://oss.sgi.com/projects/xfs/'
+for complete details.  This implementation is on-disk compatible
+with the IRIX version of XFS.
+");
+  script_tag(name: "affected", value: "xfsprogs on Fedora 21");
+  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_xref(name: "FEDORA", value: "2015-12406");
+  script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-August/164189.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_summary("Check for the Version of xfsprogs");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Fedora Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:fedoraproject:fedora", "login/SSH/success", "ssh/login/release");
+  exit(0);
+}
+
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "FC21")
+{
+
+  if ((res = isrpmvuln(pkg:"xfsprogs", rpm:"xfsprogs~3.2.2~2.fc21", rls:"FC21")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

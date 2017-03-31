@@ -1,0 +1,115 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# CentOS Update for evolution28-evolution-data-server CESA-2009:0354 centos4 i386
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+tag_insight = "Evolution Data Server provides a unified back-end for applications which
+  interact with contacts, task, and calendar information. Evolution Data
+  Server was originally developed as a back-end for Evolution, but is now
+  used by multiple other applications.
+
+  Evolution Data Server did not properly check the Secure/Multipurpose
+  Internet Mail Extensions (S/MIME) signatures used for public key encryption
+  and signing of e-mail messages. An attacker could use this flaw to spoof a
+  signature by modifying the text of the e-mail message displayed to the
+  user. (CVE-2009-0547)
+  
+  It was discovered that Evolution Data Server did not properly validate NTLM
+  (NT LAN Manager) authentication challenge packets. A malicious server using
+  NTLM authentication could cause an application using Evolution Data Server
+  to disclose portions of its memory or crash during user authentication.
+  (CVE-2009-0582)
+  
+  Multiple integer overflow flaws which could cause heap-based buffer
+  overflows were found in the Base64 encoding routines used by Evolution Data
+  Server. This could cause an application using Evolution Data Server to
+  crash, or, possibly, execute an arbitrary code when large untrusted data
+  blocks were Base64-encoded. (CVE-2009-0587)
+  
+  All users of evolution-data-server and evolution28-evolution-data-server
+  are advised to upgrade to these updated packages, which contain backported
+  patches to correct these issues. All running instances of Evolution Data
+  Server and applications using it (such as Evolution) must be restarted for
+  the update to take effect.";
+tag_solution = "Please Install the Updated Packages.";
+
+tag_affected = "evolution28-evolution-data-server on CentOS 4";
+
+
+if(description)
+{
+  script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2009-May/015900.html");
+  script_id(880940);
+  script_version("$Revision: 3070 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-04-15 10:08:33 +0200 (Fri, 15 Apr 2016) $");
+  script_tag(name:"creation_date", value:"2011-08-09 08:20:34 +0200 (Tue, 09 Aug 2011)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name: "CESA", value: "2009:0354");
+  script_cve_id("CVE-2009-0547", "CVE-2009-0582", "CVE-2009-0587");
+  script_name("CentOS Update for evolution28-evolution-data-server CESA-2009:0354 centos4 i386");
+
+  script_summary("Check for the Version of evolution28-evolution-data-server");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "CentOS4")
+{
+
+  if ((res = isrpmvuln(pkg:"evolution28-evolution-data-server", rpm:"evolution28-evolution-data-server~1.8.0~37.el4_7.2", rls:"CentOS4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"evolution28-evolution-data-server-devel", rpm:"evolution28-evolution-data-server-devel~1.8.0~37.el4_7.2", rls:"CentOS4")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

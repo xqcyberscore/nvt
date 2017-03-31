@@ -1,0 +1,186 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_microsoft_windows_gdi32dll_info_disclose_vuln.nasl 5542 2017-03-10 15:39:04Z teissa $
+#
+# Microsoft Graphics Component 'gdi32.dll' Information Disclosure Vulnerability
+#
+# Authors:
+# Kashinath T <tkashinath@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.809889");
+  script_version("$Revision: 5542 $");
+  script_cve_id("CVE-2017-0038");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-10 16:39:04 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2017-02-21 17:10:32 +0530 (Tue, 21 Feb 2017)");
+  script_tag(name:"qod_type", value:"executable_version");
+  script_name("Microsoft Graphics Component 'gdi32.dll' Information Disclosure Vulnerability");
+
+  script_tag(name: "summary" , value:"This host is installed with 'gdi32.dll'
+  Graphics Device Interface which is prone to information disclosure vulnerability.");
+
+  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  appropriate patch is applied or not.");
+
+  script_tag(name: "insight" , value:"The flaw exist due to multiple bugs related
+  to the handling of DIBs (Device Independent Bitmaps) embedded in EMF records.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
+  to obtain sensitive information from process heap memory
+
+  Impact Level: System");
+
+  script_tag(name:"affected", value:"
+  Microsoft Windows 8.1 x32/x64 Edition
+  Microsoft Windows 10 x32/x64
+  Microsoft Windows Server 2012/2012R2
+  Microsoft Windows 10 Version 1511, 1607 x32/x64
+  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+  Microsoft Windows 7 x32/x64 Edition Service Pack 1
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
+
+  script_tag(name:"solution", value:"No solution or patch is available as of 21st
+  February 2017, Information regarding this issue will be update once the solution
+  details are made available.
+  For updates refer to https://technet.microsoft.com");
+
+  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_xref(name : "URL" , value : "https://bugs.chromium.org/p/project-zero/issues/detail?id=992");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_mandatory_keys("SMB/WindowsVersion");
+  exit(0);
+}
+
+include("smb_nt.inc");
+include("secpod_reg.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
+
+##Reference nvt gb_ms16-074.nasl
+##Version is checked as less and equal here, as the vulnerability was not patched properly
+
+## Variables Initialization
+sysPath = "";
+dllVer = "";
+
+## Check for OS and Service Pack
+if(hotfix_check_sp(winVista:3, winVistax64:3, win2008x64:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
+                   win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
+  exit(0);
+}
+
+## Get System Path
+sysPath = smb_get_systemroot();
+if(!sysPath ){
+  exit(0);
+}
+
+##Fetch the version of 'Gdi32.dll'
+dllver1 = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
+if(!dllver1){
+  exit(0);
+}
+
+##Windows 7 and Windows Server 2008 R2
+if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
+{
+    ## Check for Gdi32.dll version
+    if(version_is_less_equal(version:dllver1, test_version:"6.1.7601.23457"))
+    {
+      Vulnerable_range = "Version 6.1.7601.23457 and prior";
+      VULN1 = TRUE ;
+    }
+}
+
+##Windows Vista and Windows Server 2008
+else if(hotfix_check_sp(winVista:3, win2008:3, win2008x64:3, winVistax64:3) > 0)
+{
+    ## Check for Gdi32.dll version
+    if(version_is_less_equal(version:dllver1, test_version:"6.0.6002.19660"))
+    {
+      Vulnerable_range = "Version 6.0.6002.19660 and prior";
+      VULN1 = TRUE ;
+    }
+    else if(version_in_range(version:dllver1, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23975"))
+    {
+      Vulnerable_range = "6.0.6002.23000 - 6.0.6002.6.0.6002.23975";
+      VULN1 = TRUE ;
+    }
+}
+
+##Windows 8.1 and Windows Server 2012 R2
+else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
+{
+    ## Check for Gdi32.dll version
+    if(version_is_less_equal(version:dllver1, test_version:"6.3.9600.18344"))
+    {
+      Vulnerable_range = "Version 6.3.9600.18344 and prior";
+      VULN1 = TRUE ;
+    }
+}
+
+##Windows Server 2012
+else if(hotfix_check_sp(win2012:1) > 0)
+{ 
+    ## Check for Gdi32.dll version
+    if(version_is_less_equal(version:dllver1, test_version:"6.2.9200.21881"))
+    {
+      Vulnerable_range = "Version 6.2.9200.21881 and prior";
+      VULN1 = TRUE ;
+    }
+}
+
+##Windows 10
+##Windows 10 1607 is not considered as version info is not yet available.
+##Windows server 2016 is not considered as version info is not yet available.
+else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
+{ 
+    ## Check for Gdi32.dll version
+    if(version_is_less_equal(version:dllver1, test_version:"10.0.10240.16942"))
+    {
+      Vulnerable_range = "Version 10.0.10240.16942 and prior";
+      VULN1 = TRUE ;
+    }
+    ##Windows 10 Version 1511
+    else if(version_in_range(version:dllver1, test_version:"10.0.10586.0", test_version2:"10.0.10586.420"))
+    {
+      Vulnerable_range = "10.0.10586.0 - 10.0.10586.420";
+      VULN1 = TRUE ;
+    }
+}
+
+if(VULN1)
+{
+  report = 'File checked:     ' + sysPath + "\System32\Gdi32.dll" + '\n' +
+           'File version:     ' + dllver1  + '\n' +
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+  security_message(data:report);
+  exit(0);
+}
+
+exit(0);

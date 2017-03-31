@@ -1,0 +1,161 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Ubuntu Update for libgd2 USN-3213-1
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.843069");
+  script_version("$Revision: 5491 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-06 08:06:49 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2017-03-01 05:46:21 +0100 (Wed, 01 Mar 2017)");
+  script_cve_id("CVE-2016-10166", "CVE-2016-10167", "CVE-2016-10168", "CVE-2016-6906", "CVE-2016-6912", "CVE-2016-9317", "CVE-2016-9933");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"qod_type", value:"package");
+  script_name("Ubuntu Update for libgd2 USN-3213-1");
+  script_tag(name: "summary", value: "Check the version of libgd2");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "insight", value: "Stefan Esser discovered that the GD library incorrectly handled memory when
+processing certain images. If a user or automated system were tricked into
+processing a specially crafted image, an attacker could cause a denial of
+service, or possibly execute arbitrary code. This issue only affected
+Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2016-10166)
+
+It was discovered that the GD library incorrectly handled certain malformed
+images. If a user or automated system were tricked into processing a
+specially crafted image, an attacker could cause a denial of service.
+(CVE-2016-10167)
+
+It was discovered that the GD library incorrectly handled certain malformed
+images. If a user or automated system were tricked into processing a
+specially crafted image, an attacker could cause a denial of service, or
+possibly execute arbitrary code. (CVE-2016-10168)
+
+Ibrahim El-Sayed discovered that the GD library incorrectly handled certain
+malformed TGA images. If a user or automated system were tricked into
+processing a specially crafted TGA image, an attacker could cause a denial
+of service. This issue only affected Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and
+Ubuntu 16.10. (CVE-2016-6906)
+
+Ibrahim El-Sayed discovered that the GD library incorrectly handled certain
+malformed WebP images. If a user or automated system were tricked into
+processing a specially crafted WebP image, an attacker could cause a denial
+of service, or possibly execute arbitrary code. This issue only affected
+Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2016-6912)
+
+It was discovered that the GD library incorrectly handled creating
+oversized images. If a user or automated system were tricked into creating
+a specially crafted image, an attacker could cause a denial of service.
+(CVE-2016-9317)
+
+It was discovered that the GD library incorrectly handled filling certain
+images. If a user or automated system were tricked into filling an image,
+an attacker could cause a denial of service. (CVE-2016-9933)");
+  script_tag(name: "affected", value: "libgd2 on Ubuntu 16.10 ,
+  Ubuntu 16.04 LTS ,
+  Ubuntu 14.04 LTS ,
+  Ubuntu 12.04 LTS");
+  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+
+  script_xref(name: "USN", value: "3213-1");
+  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2017-February/003751.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  exit(0);
+}
+
+include("revisions-lib.inc");
+include("pkg-lib-deb.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "UBUNTU14.04 LTS")
+{
+
+  if ((res = isdpkgvuln(pkg:"libgd3", ver:"2.1.0-3ubuntu0.6", rls:"UBUNTU14.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "UBUNTU16.10")
+{
+
+  if ((res = isdpkgvuln(pkg:"libgd3", ver:"2.2.1-1ubuntu3.3", rls:"UBUNTU16.10")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "UBUNTU12.04 LTS")
+{
+
+  if ((res = isdpkgvuln(pkg:"libgd2-noxpm", ver:"2.0.36~rc1~dfsg-6ubuntu2.4", rls:"UBUNTU12.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"libgd2-xpm", ver:"2.0.36~rc1~dfsg-6ubuntu2.4", rls:"UBUNTU12.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "UBUNTU16.04 LTS")
+{
+
+  if ((res = isdpkgvuln(pkg:"libgd3", ver:"2.1.1-4ubuntu0.16.04.6", rls:"UBUNTU16.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

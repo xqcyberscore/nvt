@@ -1,0 +1,187 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Ubuntu Update for pidgin USN-2100-1
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2014 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+
+if(description)
+{
+  script_id(841705);
+  script_version("$Revision: 2810 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-03-09 12:41:27 +0100 (Wed, 09 Mar 2016) $");
+  script_tag(name:"creation_date", value:"2014-02-11 10:44:51 +0530 (Tue, 11 Feb 2014)");
+  script_cve_id("CVE-2012-6152", "CVE-2013-6477", "CVE-2013-6478", "CVE-2013-6479",
+                "CVE-2013-6481", "CVE-2013-6482", "CVE-2013-6483", "CVE-2013-6484",
+                "CVE-2013-6485", "CVE-2013-6487", "CVE-2013-6489", "CVE-2013-6490",
+                "CVE-2014-0020");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Ubuntu Update for pidgin USN-2100-1");
+
+  tag_insight = "Thijs Alkemade and Robert Vehse discovered that Pidgin
+incorrectly handled the Yahoo! protocol. A remote attacker could use this issue
+to cause Pidgin to crash, resulting in a denial of service. (CVE-2012-6152)
+
+Jaime Breva Ribes discovered that Pidgin incorrectly handled the XMPP
+protocol. A remote attacker could use this issue to cause Pidgin to crash,
+resulting in a denial of service. (CVE-2013-6477)
+
+It was discovered that Pidgin incorrecly handled long URLs. A remote
+attacker could use this issue to cause Pidgin to crash, resulting in a
+denial of service. (CVE-2013-6478)
+
+Jacob Appelbaum discovered that Pidgin incorrectly handled certain HTTP
+responses. A malicious remote server or a man in the middle could use this
+issue to cause Pidgin to crash, resulting in a denial of service.
+(CVE-2013-6479)
+
+Daniel Atallah discovered that Pidgin incorrectly handled the Yahoo!
+protocol. A remote attacker could use this issue to cause Pidgin to crash,
+resulting in a denial of service. (CVE-2013-6481)
+
+Fabian Yamaguchi and Christian Wressnegger discovered that Pidgin
+incorrectly handled the MSN protocol. A remote attacker could use this
+issue to cause Pidgin to crash, resulting in a denial of service.
+(CVE-2013-6482)
+
+Fabian Yamaguchi and Christian Wressnegger discovered that Pidgin
+incorrectly handled XMPP iq replies. A remote attacker could use this
+issue to spoof messages. (CVE-2013-6483)
+
+It was discovered that Pidgin incorrectly handled STUN server responses. A
+remote attacker could use this issue to cause Pidgin to crash, resulting in
+a denial of service. (CVE-2013-6484)
+
+Matt Jones discovered that Pidgin incorrectly handled certain chunked HTTP
+responses. A malicious remote server or a man in the middle could use this
+issue to cause Pidgin to crash, resulting in a denial of service, or
+possibly execute arbitrary code. (CVE-2013-6485)
+
+Yves Younan and Ryan Pentney discovered that Pidgin incorrectly handled
+certain Gadu-Gadu HTTP messages. A malicious remote server or a man in the
+middle could use this issue to cause Pidgin to crash, resulting in a denial
+of service, or possibly execute arbitrary code. (CVE-2013-6487)
+
+Yves Younan and Pawel Janic discovered that Pidgin incorrectly handled MXit
+emoticons. A remote attacker could use this issue to cause Pidgin to crash,
+resulting in a denial of service, or possibly execute arbitrary code.
+(CVE-2013-6489)
+
+Yves Younan discovered that Pidgin incorrectly handled SIMPLE headers. A
+remote attacker could use this issue to cause Pidgin to crash, resulting in
+a denial of service, or possibly execute arbitrary code. (CVE ... 
+
+  Description truncated, for more information please check the Reference URL";
+
+  tag_affected = "pidgin on Ubuntu 13.10 ,
+  Ubuntu 12.10 ,
+  Ubuntu 12.04 LTS";
+
+  tag_solution = "Please Install the Updated Packages.";
+
+
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name: "USN", value: "2100-1");
+  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2014-February/002392.html");
+  script_summary("Check for the Version of pidgin");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  exit(0);
+}
+
+
+include("pkg-lib-deb.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "UBUNTU12.04 LTS")
+{
+
+  if ((res = isdpkgvuln(pkg:"libpurple0", ver:"1:2.10.3-0ubuntu1.4", rls:"UBUNTU12.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"pidgin", ver:"1:2.10.3-0ubuntu1.4", rls:"UBUNTU12.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "UBUNTU13.10")
+{
+
+  if ((res = isdpkgvuln(pkg:"libpurple0", ver:"1:2.10.7-0ubuntu4.1.13.10.1", rls:"UBUNTU13.10")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"pidgin", ver:"1:2.10.7-0ubuntu4.1.13.10.1", rls:"UBUNTU13.10")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "UBUNTU12.10")
+{
+
+  if ((res = isdpkgvuln(pkg:"libpurple0", ver:"1:2.10.6-0ubuntu2.3", rls:"UBUNTU12.10")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isdpkgvuln(pkg:"pidgin", ver:"1:2.10.6-0ubuntu2.3", rls:"UBUNTU12.10")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

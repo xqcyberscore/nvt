@@ -1,0 +1,143 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# Ubuntu Update for firefox USN-2702-1
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.842406");
+  script_version("$Revision: 2740 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_tag(name:"creation_date", value:"2015-08-12 05:08:55 +0200 (Wed, 12 Aug 2015)");
+  script_cve_id("CVE-2015-4473", "CVE-2015-4474", "CVE-2015-4475", "CVE-2015-4477",
+                "CVE-2015-4478", "CVE-2015-4479", "CVE-2015-4480", "CVE-2015-4493",
+                "CVE-2015-4484", "CVE-2015-4485", "CVE-2015-4486", "CVE-2015-4487",
+                "CVE-2015-4488", "CVE-2015-4489", "CVE-2015-4490", "CVE-2015-4491",
+                "CVE-2015-4492");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"package");
+  script_name("Ubuntu Update for firefox USN-2702-1");
+  script_tag(name: "summary", value: "Check the version of firefox");
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
+detect NVT and check if the version is vulnerable or not.");
+  script_tag(name: "insight", value: "Gary Kwong, Christian Holler, Byron Campen,
+Tyson Smith, Bobby Holley, Chris Coulson, and Eric Rahm discovered multiple memory
+safety issues in Firefox. If a user were tricked in to opening a specially crafted
+website, an attacker could potentially exploit these to cause a denial of service
+via application crash, or execute arbitrary code with the privileges of
+the user invoking Firefox. (CVE-2015-4473, CVE-2015-4474)
+
+Aki Helin discovered an out-of-bounds read when playing malformed MP3
+content in some circumstances. If a user were tricked in to opening a
+specially crafted website, an attacker could potentially exploit this to
+obtain sensitive information, cause a denial of service via application
+crash, or execute arbitrary code with the privileges of the user invoking
+Firefox. (CVE-2015-4475)
+
+A use-after-free was discovered during MediaStream playback in some
+circumstances. If a user were tricked in to opening a specially crafted
+website, an attacker could potentially exploit this to cause a denial of
+service via application crash or execute arbitrary code with the
+priviliges of the user invoking Firefox. (CVE-2015-4477)
+
+Andr&#233  Bargull discovered that non-configurable properties on javascript
+objects could be redefined when parsing JSON. If a user were tricked in to
+opening a specially crafted website, an attacker could potentially exploit
+this to bypass same-origin restrictions. (CVE-2015-4478)
+
+Multiple integer overflows were discovered in libstagefright. If a user
+were tricked in to opening a specially crafted website, an attacker could
+potentially exploit these to cause a denial of service via application
+crash, or execute arbitrary code with the privileges of the user invoking
+Firefox. (CVE-2015-4479, CVE-2015-4480, CVE-2015-4493)
+
+Jukka Jyl&#228 nki discovered a crash that occurs because javascript does not
+properly gate access to Atomics or SharedArrayBuffers in some
+circumstances. If a user were tricked in to opening a specially crafted
+website, an attacker could potentially exploit this to cause a denial of
+service. (CVE-2015-4484)
+
+Abhishek Arya discovered 2 buffer overflows in libvpx when decoding
+malformed WebM content in some circumstances. If a user were tricked in
+to opening a specially crafted website, an attacker could potentially
+exploit these to cause a denial of service via application crash, or
+execute arbitrary code with the privileges of the user invoking Firefox.
+(CVE-2015-4485, CVE-2015-4486)
+
+Ronald Crane reported 3 security issues. If a user were tricked in to
+opening a specially crafted website, an attacker could potentially
+exploi ... 
+
+  Description truncated, for more information please check the Reference URL");
+  script_tag(name: "affected", value: "firefox on Ubuntu 14.04 LTS ,
+  Ubuntu 12.04 LTS");
+  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_xref(name: "USN", value: "2702-1");
+  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-August/003077.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_summary("Check for the Version of firefox");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Ubuntu Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success", "HostDetails/OS/cpe:/o:canonical:ubuntu_linux", "ssh/login/release");
+  exit(0);
+}
+
+include("revisions-lib.inc");
+include("pkg-lib-deb.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "UBUNTU14.04 LTS")
+{
+
+  if ((res = isdpkgvuln(pkg:"firefox", ver:"40.0+build4-0ubuntu0.14.04.1", rls:"UBUNTU14.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
+
+
+if(release == "UBUNTU12.04 LTS")
+{
+
+  if ((res = isdpkgvuln(pkg:"firefox", ver:"40.0+build4-0ubuntu0.12.04.1", rls:"UBUNTU12.04 LTS")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}

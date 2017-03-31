@@ -1,0 +1,106 @@
+##############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_apache_wicket_dos.nasl 4946 2017-01-05 06:55:35Z antu123 $
+#
+# Apache Wicket Denial of Service Vulnerability
+#
+# Authors:
+# Tameem Eissa <tameem.eissa@greenbone.net>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:apache:wicket";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.107117");
+  script_version("$Revision: 4946 $");
+  script_cve_id("CVE-2016-6793");
+  script_tag(name: "cvss_base", value: "7.8");
+  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-01-05 07:55:35 +0100 (Thu, 05 Jan 2017) $");
+  script_tag(name:"creation_date", value: "2017-01-02 13:26:09 +0700 (Mon, 02 Jan 2017)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_name("Apache Wicket Denial of Service Vulnerability");
+
+  script_tag(name:"summary", value:"This host is running Apache Wicket and is
+  prone to Denial of Service vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Get the installed version with the help
+  of detect NVT and check the version is vulnerable or not.");
+
+  script_tag(name:"insight", value:"Depending on the ISerializer set in the
+  Wicket application, it's possible that a Wicket's object deserialized from
+  an untrusted source and utilized by the application to causes the code to
+  enter in an infinite loop. ");
+
+  script_tag(name:"impact", value:"Successful exploitation will allows remote
+  attackers to cause the application to enter an infinite loop and consume excessive CPU resources, resulting in denial-of-service conditions.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"Apache Wicket versions 6.x and 1.5.x are vulnerable. ");
+
+  script_tag(name:"solution", value:"Update to 1.5.17 or 6.25.0. For updates refer to http://wicket.apache.org");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/95168");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_apache_wicket_detect.nasl");
+  script_mandatory_keys("Apache/Wicket/Installed");
+  script_require_ports("Services/www", 8080);
+  exit(0);
+}
+
+include("host_details.inc");
+include("version_func.inc");
+
+
+if(!Port = get_app_port(cpe:CPE)){
+  exit(0);
+}
+
+Ver = get_app_version(cpe:CPE, port:Port);
+
+if(!Ver || Ver == "unknown"){
+  exit(0);
+}
+
+if(version_in_range(version:Ver, test_version:"1.5.0", test_version2:"1.5.16"))
+{
+  fix = "1.5.17";
+  VULN = TRUE ;
+}
+
+else if(version_in_range(version:Ver, test_version:"6.0", test_version2:"6.24.0"))
+{
+  fix = "6.25.0";
+  VULN = TRUE ;
+}
+
+
+if(VULN)
+{
+  report = report_fixed_ver(installed_version:Ver, fixed_version:fix);
+  security_message(data:report, port:Port);
+  exit(0);
+}
+exit(0);

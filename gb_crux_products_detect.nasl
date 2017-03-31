@@ -1,0 +1,146 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_crux_products_detect.nasl 5128 2017-01-28 11:43:14Z cfi $
+#
+# CruxSoftware Products Version Detection
+#
+# Authors:
+# Antu Sanadi <santu@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.801381");
+  script_version("$Revision: 5128 $");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-01-28 12:43:14 +0100 (Sat, 28 Jan 2017) $");
+  script_tag(name:"creation_date", value:"2010-07-19 10:09:06 +0200 (Mon, 19 Jul 2010)");
+  script_name("CruxSoftware Products Version Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Greenbone : Copyright (C) 2010 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"This script finds the running
+  CruxSoftware Products version and saves the result in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
+}
+
+include("http_func.inc");
+include("http_keepalive.inc");
+include("cpe.inc");
+include("host_details.inc");
+
+function register_cpe( tmpVers, tmpExpr, tmpBase, app, insloc, cmsport, concl ) {
+
+  local_var cpe, tmpVers, tmpExpr, tmpBase, app, insloc, cmsport, concl;
+
+  cpe = build_cpe( value:tmpVers, exp:tmpExpr, base:tmpBase );
+  if( cpe ) {
+    register_product( cpe:cpe, location:insloc, port:cmsport );
+    log_message( data:build_detection_report( app:app,
+                                              version:tmpVers,
+                                              install:insloc,
+                                              cpe:cpe,
+                                              concluded:concl ),
+                                              port:cmsport );
+  }
+}
+
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
+
+## For CruxCMS
+foreach dir( make_list_unique( "/CruxCMS", "/CruxCMS300/manager", "/cms", "/", cgi_dirs( port:port ) ) ) {
+
+  install = dir;
+  if( dir == "/" ) dir = "";
+
+  res = http_get_cache( item:dir + "/login.php", port:port );
+
+  if( res =~ "HTTP/1\.. 404" ) {
+    res = http_get_cache( item:dir + "/index.php", port:port );
+  }
+
+  if( res =~ "HTTP/1\.. 200" && ">Crux CMS<" >< res ) {
+
+    foreach filename( make_list( "/../Docs/ReadMe.txt", "/../Docs/ChangeLog.txt",
+                                 "/Docs/ChangeLog.txt", "/Docs/ReadMe.txt" ) ) {
+
+      res = http_get_cache( item:dir + filename, port:port );
+
+      if( res =~ "HTTP/1\.. 200" && "CruxCMS" >< res ) {
+
+        cmsVer = eregmatch( pattern:"Version ([0-9.]+)", string:res );
+        if( cmsVer[1] != NULL ) {
+
+          tmp_version = cmsVer[1] + " under " + install;
+          set_kb_item( name:"www/" + port + "/CruxCMS", value:tmp_version );
+
+          register_cpe( tmpVers:cmsVer[1], tmpExpr:"^([0-9.]+)",
+                        tmpBase:"cpe:/a:cruxsoftware:cruxcms:", app:"CruxCMS", insloc:install,
+                        cmsport:port, concl:cmsVer[0] );
+        }
+      }
+      break;
+    }
+  }
+}
+
+## For CruxPA
+foreach dir( make_list_unique( "/CruxPA200", "/CruxPA200/Manager", "/", cgi_dirs( port:port ) ) ) {
+
+  install = dir;
+  if( dir == "/" ) dir = "";
+
+  res = http_get_cache( item:dir + "/login.php", port:port );
+
+  # TODO: This is still really weak...
+  if( res =~ "HTTP/1\.. 200" && "CruxPA" >< res ) {
+
+    foreach filename( make_list( "/../Docs/ReadMe.txt", "/../Docs/ChangeLog.txt",
+                                 "/Docs/ChangeLog.txt", "/Docs/ReadMe.txt" ) ) {
+
+      res = http_get_cache( item:dir + filename, port:port );
+
+      if( res =~ "HTTP/1\.. 200" && "CruxPA" >< res ) {
+
+        cmspaVer = eregmatch( pattern:"Version ([0-9.]+)", string:res );
+        if( cmspaVer[1] != NULL ) {
+
+          tmp_version = cmspaVer[1] + " under " + install;
+          set_kb_item( name:"www/" + port + "/CruxPA", value:tmp_version );
+
+          register_cpe( tmpVers:cmspaVer[1], tmpExpr:"^([0-9.]+)",
+                        tmpBase:"cpe:/a:cruxsoftware:cruxpa:", app:"CruxPA", insloc:install,
+                        cmsport:port, concl:cmspaVer[0] );
+        }
+      }
+      break;
+    }
+  }
+}
+
+exit( 0 );

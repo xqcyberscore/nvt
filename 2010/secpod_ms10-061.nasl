@@ -1,0 +1,194 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: secpod_ms10-061.nasl 5361 2017-02-20 11:57:13Z cfi $
+#
+# Microsoft Windows Print Spooler Service Remote Code Execution Vulnerability (2347290)
+#
+# Authors:
+# Sooraj KS <kssooraj@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2010 SecPod, http://www.secpod.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_impact = "Successful exploitation could allow remote attackers to take complete control
+  of an affected system.
+  Impact Level: System/Application";
+tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows 2K3 Service Pack 2 and prior.
+  Microsoft Windows Vista Service Pack 2 and prior.
+  Microsoft Windows Server 2008 Service Pack 2 and prior.
+  Micorsoft Windows 7";
+tag_insight = "The flaw is due to the Windows Print Spooler insufficiently
+  restricting user permissions to access print spoolers, which could allow
+  remote unauthenticated attackers to create a malicious file in a Windows
+  system directory by sending a specially crafted print request to a shared
+  printer.";
+tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms10-061.mspx";
+tag_summary = "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-061.";
+
+if(description)
+{
+  script_id(901150);
+  script_version("$Revision: 5361 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"creation_date", value:"2010-09-15 17:01:07 +0200 (Wed, 15 Sep 2010)");
+  script_cve_id("CVE-2010-2729");
+  script_bugtraq_id(43073);
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("Microsoft Windows Print Spooler Service Remote Code Execution Vulnerability(2347290)");
+  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2347290");
+  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2382");
+  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms10-061.mspx");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2010 SecPod");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("smb_nt.inc");
+include("secpod_reg.inc");
+include("version_func.inc");
+include("secpod_smb_func.inc");
+
+## This function will return the version of the given file
+function get_file_version(sysPath, file_name)
+{
+  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
+  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
+                       string:sysPath + "\" + file_name);
+
+  sysVer = GetVer(file:file, share:share);
+  if(!sysVer){
+    return(FALSE);
+  }
+
+  return(sysVer);
+}
+
+if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:1) <= 0){
+  exit(0);
+}
+
+## Hotfix check
+if(hotfix_missing(name:"2347290") == 0){
+  exit(0);
+}
+
+## Get System32 path
+sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
+                          item:"Install Path");
+if(sysPath)
+{
+  sysVer = get_file_version(sysPath, file_name:"Spoolsv.exe");
+  if(sysVer)
+  {
+    ## Windows XP
+    if(hotfix_check_sp(xp:4) > 0)
+    {
+      SP = get_kb_item("SMB/WinXP/ServicePack");
+      if("Service Pack 3" >< SP)
+      {
+        ## Grep for Spoolsv.exe version < 5.1.2600.6024
+         if(version_is_less(version:sysVer, test_version:"5.1.2600.6024")){
+          security_message(0);
+        }
+        exit(0);
+      }
+      security_message(0);
+    }
+    ## Windows 2003
+    else if(hotfix_check_sp(win2003:3) > 0)
+    {
+      SP = get_kb_item("SMB/Win2003/ServicePack");
+      if("Service Pack 2" >< SP)
+      {
+        ## Grep for Spoolsv.exe version < 5.2.3790.4759
+        if(version_is_less(version:sysVer, test_version:"5.2.3790.4759")){
+          security_message(0);
+        }
+        exit(0);
+      }
+      security_message(0);
+    }
+  }
+}
+
+sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
+                      item:"PathName");
+if(!sysPath){
+  exit(0);
+}
+
+sysVer = get_file_version(sysPath, file_name:"system32\Spoolsv.exe");
+if(!sysVer){
+  exit(0);
+}
+
+## Windows Vista and Windows Server 2008
+if(hotfix_check_sp(winVista:2, win2008:2) > 0)
+{
+  SP = get_kb_item("SMB/WinVista/ServicePack");
+
+  if(!SP) {
+    SP = get_kb_item("SMB/Win2008/ServicePack");
+  }
+
+  if("Service Pack 1" >< SP)
+  {
+    ## Grep for Spoolsv.exe version < 6.0.6001.18511
+    if(version_is_less(version:sysVer, test_version:"6.0.6001.18511")){
+      security_message(0);
+    }
+    exit(0);
+  }
+
+  if("Service Pack 2" >< SP)
+  {
+    ## Grep for Spoolsv.exe version < 6.0.6002.18294
+    if(version_is_less(version:sysVer, test_version:"6.0.6002.18294")){
+      security_message(0);
+    }
+    exit(0);
+  }
+  security_message(0);
+}
+
+## Windows 7
+else if(hotfix_check_sp(win7:1) > 0)
+{
+  ## Grep for Spoolsv.exe version < 6.1.7600.16661
+  if(version_is_less(version:sysVer, test_version:"6.1.7600.16661")){
+    security_message(0);
+  }
+}

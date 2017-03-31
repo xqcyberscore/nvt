@@ -1,0 +1,67 @@
+# OpenVAS Vulnerability Test 
+# Description: Mageia Linux security check 
+# $Id: mgasa-2016-0051.nasl 5580 2017-03-15 10:00:34Z teissa $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@solinor.com> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://www.solinor.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.131209");
+script_version("$Revision: 5580 $");
+script_tag(name:"creation_date", value:"2016-02-08 19:55:16 +0200 (Mon, 08 Feb 2016)");
+script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_name("Mageia Linux Local Check: mgasa-2016-0051");
+script_tag(name: "insight", value: "Password suggestion functionality uses Math.random() which does not provide cryptographically secure random numbers (CVE-2016-1927). By calling some scripts that are part of phpMyAdmin in an unexpected way, it is possible to trigger phpMyAdmin to display a PHP error message which contains the full path of the directory where phpMyAdmin is installed (CVE-2016-2038). The XSRF/CSRF token is generated with a weak algorithm using functions that do not return cryptographically secure values (CVE-2016-2039). With a crafted table name it is possible to trigger an XSS attack in the database search page. With a crafted SET value or a crafted search query, it is possible to trigger an XSS attacks in the zoom search page. With a crafted hostname header, it is possible to trigger an XSS attacks in the home page (CVE-2016-2040). The comparison of the XSRF/CSRF token parameter with the value saved in the session is vulnerable to timing attacks. Moreover, the comparison could be bypassed if the XSRF/CSRF token matches a particular pattern (CVE-2016-2041). The phpmyadmin package has been updated to version 4.4.15.4 in the 4.4.x stable branch, and the phpseclib dependency has been updated to version 2.0.1."); 
+script_tag(name : "solution", value : "update software");
+script_tag(name : "solution_type", value : "VendorFix");
+script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2016-0051.html");
+script_cve_id("CVE-2016-1927","CVE-2016-2038","CVE-2016-2039","CVE-2016-2040","CVE-2016-2041");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0051");
+script_copyright("Eero Volotinen");
+script_family("Mageia Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "MAGEIA5")
+{
+if ((res = isrpmvuln(pkg:"phpmyadmin", rpm:"phpmyadmin~4.4.15.4~1.mga5", rls:"MAGEIA5")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"phpseclib", rpm:"phpseclib~2.0.1~1.mga5", rls:"MAGEIA5")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+}

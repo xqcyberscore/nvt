@@ -1,0 +1,88 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: phpBugTracker_35125.nasl 5016 2017-01-17 09:06:21Z teissa $
+#
+# phpBugTracker 'include.php' SQL Injection Vulnerability
+#
+# Authors
+# Michael Meyer
+#
+# Copyright:
+# Copyright (c) 2009 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_summary = "According to its version number, the remote version of phpBugTracker
+  is prone to an SQL-injection vulnerability because it fails to
+  sufficiently sanitize user-supplied data before using it in an SQL
+  query.
+
+  Exploiting this issue could allow an attacker to compromise the
+  application, access or modify data, or exploit latent
+  vulnerabilities in the underlying database.
+
+  phpBugTracker 1.0.4 and prior versions are vulnerable.";
+
+
+if (description)
+{
+ script_id(100218);
+ script_version("$Revision: 5016 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
+ script_cve_id("CVE-2009-1851");
+ script_bugtraq_id(35125);
+ script_tag(name:"cvss_base", value:"7.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
+ script_name("phpBugTracker 'include.php' SQL Injection Vulnerability");
+
+
+ script_tag(name:"qod_type", value:"remote_banner");
+ script_category(ACT_GATHER_INFO);
+ script_family("Web application abuses");
+ script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+ script_dependencies("phpBugTracker_detect.nasl");
+ script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+ script_tag(name : "summary" , value : tag_summary);
+ script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/35125");
+ exit(0);
+}
+
+include("http_func.inc");
+include("version_func.inc");
+
+port = get_http_port(default:80);
+
+if(!get_port_state(port))exit(0);
+if(!can_host_php(port:port))exit(0);
+
+if(!version = get_kb_item(string("www/", port, "/phpBugTracker")))exit(0);
+if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+
+vers = matches[1];
+
+if(!isnull(vers) && vers >!< "unknown") {
+
+  if(version_is_less_equal(version: vers, test_version: "1.0.4"))
+  {
+      security_message(port:port);
+      exit(0);
+  }  
+
+}   
+
+exit(0);

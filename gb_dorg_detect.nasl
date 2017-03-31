@@ -1,0 +1,106 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_dorg_detect.nasl 3000 2016-04-06 11:04:29Z antu123 $
+#
+# Disc Organization System (DORG) Remote Version Detection
+#
+# Authors:
+# Shakeel <bshakeel@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2016 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.806696");
+  script_version("$Revision: 3000 $");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2016-04-06 13:04:29 +0200 (Wed, 06 Apr 2016) $");
+  script_tag(name:"creation_date", value:"2016-04-06 16:24:58 +0530 (Wed, 06 Apr 2016)");
+  script_name("Disc Organization System (DORG) Remote Version Detection");
+
+  script_tag(name:"summary", value:"Detection of Disc Organization System (DORG).
+
+  This script sends HTTP GET request and checks for the presence of
+  the application.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_summary("Check for the presence of DORG Application");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  exit(0);
+}
+
+
+include("http_func.inc");
+include("http_keepalive.inc");
+include("cpe.inc");
+include("host_details.inc");
+
+##Variable initialize
+dorgPort = 0;
+dir = "";
+dorgReq = "";
+dorgRes = "";
+
+##Get HTTP Port
+if(!dorgPort = get_http_port( default:80)){
+  exit(0);
+}
+
+##Iterate over possible paths
+foreach dir(make_list_unique( "/", "/dorg", cgi_dirs(port:dorgPort)))
+{
+  install = dir;
+  if(dir == "/") dir = "";
+
+  ##admin page
+  url = dir + "/admin_panel/index.php";
+
+  ##Send Request and receive response
+  dorgReq = http_get(port:dorgPort, item: url);
+  dorgRes = http_keepalive_send_recv(port:dorgPort, data:dorgReq);
+
+  ## Confirm the application
+  if(dorgRes =~ '<title>DORG.*admin panel<' && '>Disc Organization System<' >< dorgRes)
+  {
+    version = "unknown";
+
+    ## Set the KB value
+    set_kb_item(name:"www/" + dorgPort + "/dorg", value:version);
+    set_kb_item( name:"DORG/Installed", value:TRUE);
+
+    ##NO CPE NAME, taking CPE name as cpe:/a:dorg:dorg
+    ##Need to update once CPE name is assigned
+    cpe = "cpe:/a:dorg:dorg";
+
+    register_product(cpe:cpe, location:install, port:dorgPort);
+
+    log_message( data:build_detection_report( app:"Disc Organization System - DORG",
+                                              version:version,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version),
+                                              port:dorgPort);
+  }
+}
+exit( 0 );

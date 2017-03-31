@@ -1,0 +1,131 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+#
+# Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)
+#
+# Authors:
+# Rachana Shetty <srachana@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_solution = "Upgrade to Mozilla Firefox version 14.0 or ESR version 10.0.6 or later,
+  For updates refer to http://www.mozilla.com/en-US/firefox/all.html
+
+  Upgrade to SeaMonkey version to 2.11 or later,
+  http://www.mozilla.org/projects/seamonkey/
+
+  Upgrade to Thunderbird version to 14.0 or ESR 10.0.6 or later,
+  http://www.mozilla.org/en-US/thunderbird/";
+
+tag_impact = "Successful exploitation could allow attackers to gain sensitive information
+  or bypass certain security restrictions.
+  Impact Level: Application";
+tag_affected = "SeaMonkey version before 2.10
+  Thunderbird version 5.0 through 12.0
+  Mozilla Firefox version 4.x through 12.0
+  Thunderbird ESR version 10.x before 10.0.6
+  Mozilla Firefox ESR version 10.x before 10.0.6 on Windows";
+tag_insight = "The certificate warning functionality in
+  browser/components/certerror/content/aboutCertError.xhtml fails to handle
+  attempted clickjacking of the 'about:certerror' page, allowing
+  man-in-the-middle attackers to trick users into adding an unintended
+  exception via an IFRAME element";
+tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey and is
+  prone to clickjacking vulnerability.";
+
+if(description)
+{
+  script_id(802893);
+  script_version("$Revision: 3565 $");
+  script_cve_id("CVE-2012-1964");
+  script_bugtraq_id(54581);
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
+  script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)");
+
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/49965");
+  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027256");
+  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027257");
+  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-54.html");
+
+  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey on Windows");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
+                      "gb_thunderbird_detect_win.nasl");
+  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
+}
+
+
+include("version_func.inc");
+
+# Firefox Check
+ffVer = "";
+ffVer = get_kb_item("Firefox/Win/Ver");
+
+if(ffVer)
+{
+  # Grep for Firefox version
+  if(version_in_range(version:ffVer, test_version:"4.0", test_version2:"10.0.5")||
+     version_in_range(version:ffVer, test_version:"11.0", test_version2:"12.0"))
+  {
+    security_message(0);
+    exit(0);
+  }
+}
+
+# SeaMonkey Check
+seaVer = "";
+seaVer = get_kb_item("Seamonkey/Win/Ver");
+
+if(seaVer)
+{
+  # Grep for SeaMonkey version
+  if(version_is_less(version:seaVer, test_version:"2.10"))
+  {
+    security_message(0);
+    exit(0);
+  }
+}
+
+# Thunderbird Check
+tbVer = "";
+tbVer = get_kb_item("Thunderbird/Win/Ver");
+
+if(tbVer)
+{
+  # Grep for Thunderbird version
+  if(version_in_range(version:tbVer, test_version:"5.0", test_version2:"10.0.5")||
+     version_in_range(version:tbVer, test_version:"11.0", test_version2:"12.0"))
+  {
+    security_message(0);
+    exit(0);
+  }
+}

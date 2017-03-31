@@ -1,0 +1,88 @@
+# OpenVAS Vulnerability Test 
+# Description: Amazon Linux security check 
+# $Id: alas-2012-35.nasl 4516 2016-11-15 10:25:21Z cfi $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@iki.fi> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.120218");
+script_version("$Revision: 4516 $");
+script_tag(name:"creation_date", value:"2015-09-08 13:20:37 +0200 (Tue, 08 Sep 2015)");
+script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_name("Amazon Linux Local Check: ALAS-2012-35");
+script_tag(name: "insight", value: "Ruby (aka CRuby) before 1.8.7-p357 computes hash values without restricting the ability to trigger hash collisions predictably, which allows context-dependent attackers to cause a denial of service (CPU consumption) via crafted input to an application that maintains a hash table."); 
+script_tag(name : "solution", value : "Run yum update ruby to update your system.");
+script_tag(name : "solution_type", value : "VendorFix");
+script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2012-35.html");
+script_cve_id("CVE-2011-4815");
+script_tag(name:"cvss_base", value:"7.8");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
+script_summary("Amazon Linux Local Security Checks ALAS-2012-35");
+script_copyright("Eero Volotinen");
+script_family("Amazon Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "AMAZON")
+{
+if ((res = isrpmvuln(pkg:"ruby", rpm:"ruby~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"ruby-static", rpm:"ruby-static~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"ruby-libs", rpm:"ruby-libs~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"ruby-ri", rpm:"ruby-ri~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"ruby-debuginfo", rpm:"ruby-debuginfo~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"ruby-irb", rpm:"ruby-irb~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"ruby-rdoc", rpm:"ruby-rdoc~1.8.7.357~1.10.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+}

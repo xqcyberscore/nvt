@@ -1,0 +1,75 @@
+# OpenVAS Vulnerability Test 
+# Description: Amazon Linux security check 
+# $Id: alas-2016-652.nasl 5580 2017-03-15 10:00:34Z teissa $
+ 
+# Authors: 
+# Eero Volotinen <eero.volotinen@iki.fi> 
+#
+# Copyright:
+# Copyright (c) 2015 Eero Volotinen, http://ping-viini.org 
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+if(description)
+ {
+script_oid("1.3.6.1.4.1.25623.1.0.120642");
+script_version("$Revision: 5580 $");
+script_tag(name:"creation_date", value:"2016-02-11 07:16:49 +0200 (Thu, 11 Feb 2016)");
+script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+script_name("Amazon Linux Local Check: alas-2016-652");
+script_tag(name: "insight", value: "The ConnectionExists function in lib/url.c in libcurl before 7.47.0 does not properly re-use NTLM-authenticated proxy connections, which might allow remote attackers to authenticate as other users via a request, a similar issue to CVE-2014-0015 . (CVE-2016-0755 )"); 
+script_tag(name : "solution", value : "Run yum update curl to update your system.");
+script_tag(name : "solution_type", value : "VendorFix");
+script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2016-652.html");
+script_cve_id("CVE-2016-0755","CVE-2014-0015");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+script_tag(name:"qod_type", value:"package");
+script_dependencies("gather-package-list.nasl");
+script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
+script_category(ACT_GATHER_INFO);
+script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
+script_copyright("Eero Volotinen");
+script_family("Amazon Linux Local Security Checks");
+exit(0);
+}
+include("revisions-lib.inc");
+include("pkg-lib-rpm.inc");
+release = get_kb_item("ssh/login/release");
+res = "";
+if(release == NULL)
+{
+ exit(0);
+}
+if(release == "AMAZON")
+{
+if ((res = isrpmvuln(pkg:"libcurl-devel", rpm:"libcurl-devel~7.40.0~8.54.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"curl", rpm:"curl~7.40.0~8.54.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"curl-debuginfo", rpm:"curl-debuginfo~7.40.0~8.54.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if ((res = isrpmvuln(pkg:"libcurl", rpm:"libcurl~7.40.0~8.54.amzn1", rls:"AMAZON")) != NULL) {
+  security_message(data:res);
+  exit(0);
+}
+if (__pkg_match) exit(99); #Not vulnerable
+  exit(0);
+}

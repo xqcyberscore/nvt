@@ -1,0 +1,115 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+#
+# CentOS Update for gnutls CESA-2014:0247 centos5 
+#
+# Authors:
+# System Generated Check
+#
+# Copyright:
+# Copyright (C) 2014 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+include("revisions-lib.inc");
+
+if(description)
+{
+  script_id(881895);
+  script_version("$Revision: 2775 $");
+  script_tag(name:"last_modification", value:"$Date: 2016-03-04 10:00:27 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"creation_date", value:"2014-03-12 09:28:40 +0530 (Wed, 12 Mar 2014)");
+  script_cve_id("CVE-2009-5138", "CVE-2014-0092");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
+  script_name("CentOS Update for gnutls CESA-2014:0247 centos5 ");
+
+  tag_insight = "The GnuTLS library provides support for cryptographic algorithms and for
+protocols such as Transport Layer Security (TLS).
+
+It was discovered that GnuTLS did not correctly handle certain errors that
+could occur during the verification of an X.509 certificate, causing it to
+incorrectly report a successful verification. An attacker could use this
+flaw to create a specially crafted certificate that could be accepted by
+GnuTLS as valid for a site chosen by the attacker. (CVE-2014-0092)
+
+A flaw was found in the way GnuTLS handled version 1 X.509 certificates.
+An attacker able to obtain a version 1 certificate from a trusted
+certificate authority could use this flaw to issue certificates for other
+sites that would be accepted by GnuTLS as valid. (CVE-2009-5138)
+
+The CVE-2014-0092 issue was discovered by Nikos Mavrogiannopoulos of the
+Red Hat Security Technologies Team.
+
+Users of GnuTLS are advised to upgrade to these updated packages, which
+correct these issues. For the update to take effect, all applications
+linked to the GnuTLS library must be restarted.
+";
+
+  tag_affected = "gnutls on CentOS 5";
+
+  tag_solution = "Please Install the Updated Packages.";
+
+
+  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name: "CESA", value: "2014:0247");
+  script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2014-March/020183.html");
+  script_summary("Check for the Version of gnutls");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("CentOS Local Security Checks");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("HostDetails/OS/cpe:/o:centos:centos", "login/SSH/success", "ssh/login/release");
+  exit(0);
+}
+
+
+include("pkg-lib-rpm.inc");
+
+release = get_kb_item("ssh/login/release");
+
+res = "";
+if(release == NULL){
+  exit(0);
+}
+
+if(release == "CentOS5")
+{
+
+  if ((res = isrpmvuln(pkg:"gnutls", rpm:"gnutls~1.4.1~14.el5_10", rls:"CentOS5")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"gnutls-devel", rpm:"gnutls-devel~1.4.1~14.el5_10", rls:"CentOS5")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if ((res = isrpmvuln(pkg:"gnutls-utils", rpm:"gnutls-utils~1.4.1~14.el5_10", rls:"CentOS5")) != NULL)
+  {
+    security_message(data:res);
+    exit(0);
+  }
+
+  if (__pkg_match) exit(99); # Not vulnerable.
+  exit(0);
+}
