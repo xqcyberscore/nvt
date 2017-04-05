@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-010.nasl 5637 2017-03-21 07:30:30Z antu123 $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities (4013389) 
 #
@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810810");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5637 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 09:07:19 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities (4013389)");
@@ -92,7 +92,7 @@ sysVer = "";
 
 ## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVistax64:3, win2008x64:3,
-                   win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
+                   win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
@@ -103,83 +103,77 @@ if(!sysPath ){
 }
 
 ##Fetch the version of files
-vistVer = fetch_file_version(sysPath, file_name:"System32\IME\IMEJP10\Imjppdmg.exe");
+vistVer = fetch_file_version(sysPath, file_name:"System32\drivers\srv.sys");
+winVer  = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
 
 if(vistVer)
 {
   ## Windows Vista and Server 2008
-  if(hotfix_check_sp(winVista:3, win2008:3) > 0)
+  if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
   {
-    ## Check for Imjppdmg.exe version
-    if(version_is_less(version:vistVer, test_version:"10.0.6002.19729"))
+    ## Check for srv.sys version
+    if(version_is_less(version:vistVer, test_version:"6.0.6002.19743"))
     {
-      Vulnerable_range1 = "Less than 10.0.6002.19729";
-      VULN1 = True;
+      Vulnerable_range1 = "Less than 6.0.6002.19743";
+      VULN1 = TRUE ;
     }
 
-    else if(version_in_range(version:vistVer, test_version:"10.0.6002.23000", test_version2:"10.0.6002.24051"))
+    else if(version_in_range(version:vistVer, test_version:"6.0.6002.22000", test_version2:"6.0.6002.24066"))
     {
-      Vulnerable_range1 = "10.0.6002.23000 - 10.0.6002.24051";
-      VULN1 = True;
+      Vulnerable_range1 = "6.0.6002.22000 - 6.0.6002.24066";
+      VULN1 = TRUE ;
+    }
+  
+    if(VULN1)
+    {
+      report = 'File checked:     ' + sysPath + "\System32\drivers\srv.sys" + '\n' +
+               'File version:     ' + vistVer  + '\n' +
+               'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
+      security_message(data:report);
+      exit(0);
     }
   }
-
-  ## Windows 7 and Windows Server 2008 R2
-  else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
+}
+ 
+## Windows 7 and Windows Server 2008 R2
+if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && winVer)
+{
+  if(version_is_less(version:winVer, test_version:"6.1.7601.23677"))
   {
-    if(version_is_less(version:vistVer, test_version:"10.1.7601.23656"))
-    {
-      Vulnerable_range1 = "Less than 10.0.6002.19729";
-      VULN1 = True;
-    }
-  }
-
-  if(VULN1)
-  {
-    report = 'File checked:     ' + sysPath + "\System32\IME\IMEJP10\Imjppdmg.exe" + '\n' +
-             'File version:     ' + vistVer  + '\n' +
-             'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
-    security_message(data:report);
-    exit(0);
+    Vulnerable_range = "Less than 6.1.7601.23677";
+    VULN = TRUE ;
   }
 }
 
 ## Windows Server 2012
-if(hotfix_check_sp(win2012:1) > 0)
+else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ##Fetch the version of files
-  lsaVer = fetch_file_version(sysPath, file_name:"System32\Lsass.exe");
-  if(!lsaVer){
-    exit(0);
-  }
-  ## Check for Lsass.exe version
-  if(version_is_less(version:lsaVer, test_version:"6.2.9200.20521"))
+  ## Check for win32k.sys version
+  if(version_is_less(version:winVer, test_version:"6.2.9200.22097"))
   {
-    report = 'File checked:     ' + sysPath + "\system32\Lsass.exe" + '\n' +
-             'File version:     ' + lsaVer  + '\n' +
-             'Vulnerable range:  Less than 6.2.9200.20521 \n' ;
-    security_message(data:report);
-    exit(0);
+    Vulnerable_range = "Less than 6.2.9200.22097";
+    VULN = TRUE ;
   }
 }
 
 ## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ##Fetch the version of files
-  vmsVer = fetch_file_version(sysPath, file_name:"System32\Vmswitch.sys");
-  if(!vmsVer){
-    exit(0);
-  }
-  ## Check for Vmswitch.sys version
-  if(version_is_less(version:vmsVer, test_version:"6.3.9600.18589"))
+  ## Check for win32k.sys version
+  if(version_is_less(version:winVer, test_version:"6.3.9600.18603"))
   {
-    report = 'File checked:     ' + sysPath + "\system32\Vmswitch.sys" + '\n' +
-             'File version:     ' + vmsVer  + '\n' +
-             'Vulnerable range:  Less than 6.3.9600.18589\n' ;
-    security_message(data:report);
-    exit(0);
+    Vulnerable_range = "Less than 6.3.9600.18603";
+    VULN = TRUE ;
   }
+}
+
+if(VULN)
+{
+   report = 'File checked:     ' + sysPath + "\system32\win32k.sys" + '\n' +
+            'File version:     ' + winVer  + '\n' +
+            'Vulnerable range: ' + Vulnerable_range + '\n' ;
+   security_message(data:report);
+   exit(0);
 }
 
 ##Fetch the version of 'Edgehtml.dll'

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 5368 2017-02-20 14:34:16Z cfi $
+# $Id: gb_ms_windows_help_n_support_center_code_exec_vuln.nasl 5660 2017-03-21 11:29:28Z cfi $
 #
 # MS Windows Help and Support Center Remote Code Execution Vulnerability
 #
@@ -56,17 +56,16 @@ tag_summary = "This host is prone to remote code execution vulnerability.";
 if(description)
 {
   script_id(801358);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
-  script_cve_id("CVE-2010-1885","CVE-2010-2265"); 
+  script_cve_id("CVE-2010-1885", "CVE-2010-2265"); 
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("MS Windows Help and Support Center Remote Code Execution Vulnerability");
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/59267");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/1417");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-1885");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/advisory/2219475.mspx");
  
   script_tag(name:"qod_type", value:"registry");

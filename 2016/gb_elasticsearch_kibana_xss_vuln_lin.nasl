@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_kibana_xss_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_elasticsearch_kibana_xss_vuln_lin.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Elasticsearch Kibana Cross-site scripting (XSS) Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:kibana";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808503");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2015-4093");
   script_bugtraq_id(75107);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 18:20:50 +0530 (Tue, 28 Jun 2016)");
   script_name("Elasticsearch Kibana Cross-site scripting (XSS) Vulnerability (Linux)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535726/100/0/threaded");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerbale version of Elasticsearch Kibana on Linux.");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_kibana_detect.nasl", "os_detection.nasl");

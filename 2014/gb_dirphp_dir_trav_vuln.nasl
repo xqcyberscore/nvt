@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dirphp_dir_trav_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_dirphp_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # DirPHP 'path/index.php' Local File Include Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804738");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5628 $");
   script_cve_id("CVE-2014-5115");
   script_bugtraq_id(68943);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-08-11 19:18:06 +0530 (Mon, 11 Aug 2014)");
   script_name("DirPHP 'path/index.php' Local File Include Vulnerability");
 
@@ -61,7 +61,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842819");
-  script_version("$Revision: 3692 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-01 05:25:19 +0200 (Fri, 01 Jul 2016)");
   script_cve_id("CVE-2016-4324");
   script_tag(name:"cvss_base", value:"6.8");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "USN", value: "3022-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3022-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libreoffice");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

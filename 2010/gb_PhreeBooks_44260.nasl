@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PhreeBooks_44260.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_PhreeBooks_44260.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # PhreeBooks Multiple Remote Vulnerabilities
 #
@@ -40,8 +40,8 @@ PhreeBooks 2.1 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100863);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5652 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-21 13:52:26 +0200 (Thu, 21 Oct 2010)");
  script_bugtraq_id(44260);
  script_tag(name:"cvss_base", value:"2.6");
@@ -58,7 +58,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_PhreeBooks_detect.nasl");
+ script_dependencies("gb_PhreeBooks_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

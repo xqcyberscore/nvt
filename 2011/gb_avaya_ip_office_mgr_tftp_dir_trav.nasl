@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_avaya_ip_office_mgr_tftp_dir_trav.nasl 5651 2017-03-21 10:09:09Z cfi $
 #
 # Avaya IP Office Manager TFTP Server Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802027");
-  script_version("$Revision: 3099 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 5651 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-07-14 13:16:44 +0200 (Thu, 14 Jul 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Remote file access");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to read arbitrary files on the

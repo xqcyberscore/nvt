@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809948");
-  script_version("$Revision: 4495 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 13:57:05 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:00:49 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-2776");
   script_tag(name:"cvss_base", value:"7.8");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-cbef6c8619");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5X67RYUPEGML7DZT7FSUUOB5ZP3PFPOT");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of bind99");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

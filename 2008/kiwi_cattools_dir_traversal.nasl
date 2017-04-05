@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kiwi_cattools_dir_traversal.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: kiwi_cattools_dir_traversal.nasl 5631 2017-03-20 15:46:35Z cfi $
 # Description: Kiwi CatTools < 3.2.9 Directory Traversal
 #
 # Authors:
@@ -24,8 +24,8 @@
 
 if (description) {
  script_oid("1.3.6.1.4.1.25623.1.0.200001");
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 5631 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:46:35 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,7 +39,7 @@ if (description) {
  script_family("Remote file access");
  script_copyright("This script is Copyright (C) 2007 Ferdy Riphagen");
 
- script_dependencies("tftpd_detect.nasl");
+ script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
  script_require_udp_ports("Services/udp/tftp", 69);
 
  script_tag(name : "solution" , value : "Upgrade to Kiwi CatTools version 3.2.9 or later.");

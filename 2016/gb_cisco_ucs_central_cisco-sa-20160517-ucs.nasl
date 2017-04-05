@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_central_cisco-sa-20160517-ucs.nasl 3356 2016-05-18 14:48:18Z mime $
+# $Id: gb_cisco_ucs_central_cisco-sa-20160517-ucs.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco Unified Computing System Central Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1401");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3356 $");
+ script_version ("$Revision: 5650 $");
 
  script_name("Cisco Unified Computing System Central Cross-Site Scripting Vulnerability");
 
@@ -49,9 +49,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-18 16:48:18 +0200 (Wed, 18 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-18 09:41:46 +0200 (Wed, 18 May 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

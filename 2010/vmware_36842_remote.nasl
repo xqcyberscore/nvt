@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vmware_36842_remote.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: vmware_36842_remote.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # VMware Products Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100502");
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_version("$Revision: 5616 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
  script_bugtraq_id(36842);
  script_cve_id("CVE-2009-3733");
@@ -45,9 +45,12 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Remote file access");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esx_web_detect.nasl","gb_vmware_esx_snmp_detect.nasl");
+ script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 8222);
+ script_mandatory_keys("Host/runs_unixoide"); # only vmware running under linux is affected
  script_require_keys("VMware/ESX/installed");
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "impact" , value : "Successful exploitation will let the remote/local attacker to disclose
  sensitive information.
  Impact Level: System");

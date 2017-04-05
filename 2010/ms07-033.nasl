@@ -34,19 +34,13 @@ tag_summary = "Microsoft Internet Explorer 5.01, 6, and 7 allows remote attacker
 if(description)
 {
   script_id(102057);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(24418, 24423, 24372, 24429, 24426, 22966);
-  script_cve_id("CVE-2007-1751","CVE-2007-1750","CVE-2007-0218",
-                "CVE-2007-3027","CVE-2007-2222","CVE-2007-1499");
+  script_cve_id("CVE-2007-1751", "CVE-2007-1750", "CVE-2007-0218",
+                "CVE-2007-3027", "CVE-2007-2222", "CVE-2007-1499");
   script_name("Cumulative Security Update for Internet Explorer (933566)");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1751");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1750");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-0218");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3027");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-2222");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1499");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/471210/100/0/threaded");
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-07-038.html");
   script_tag(name:"qod_type", value:"executable_version");

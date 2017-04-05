@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_94585.nasl 4651 2016-11-30 16:53:13Z mime $
+# $Id: gb_dell_drac_94585.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability
 #
@@ -34,14 +34,13 @@ if (description)
  script_cve_id("CVE-2016-5685");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 4651 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("Dell iDRAC7 and iDRAC8 Devices Code Injection Vulnerability");
 
  script_xref(name:"URL", value:"http://en.community.dell.com/techcenter/extras/m/white_papers/20443326");
- script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5685");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-30 17:53:13 +0100 (Wed, 30 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-11-30 13:23:23 +0100 (Wed, 30 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

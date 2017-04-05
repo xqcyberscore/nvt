@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msnslp_dos_vuln_lin.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pidgin_msnslp_dos_vuln_lin.nasl 5660 2017-03-21 11:29:28Z cfi $
 #
 # Pidgin MSN Protocol Plugin Denial Of Service Vulnerability (Linux)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:pidgin:pidgin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800424");
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -43,7 +43,6 @@ if(description)
   script_mandatory_keys("Pidgin/Lin/Ver");
 
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2010/01/07/2");
-  script_xref(name:"URL", value:"http://cve.mitre.org/cgi-bin/cvename.cgi?name=2010-0277");
 
   script_tag(name:"impact", value:"Attackers can exploit this issue to cause a denial of service (memory corruption)
   or possibly have unspecified other impact via unknown vectors.

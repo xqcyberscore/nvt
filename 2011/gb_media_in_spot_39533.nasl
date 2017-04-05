@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_media_in_spot_39533.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_media_in_spot_39533.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # Media in Spot CMS 'page' Parameter Local File Include Vulnerability
 #
@@ -37,8 +37,8 @@ also possible.";
 if (description)
 {
  script_id(103166);
- script_version("$Revision: 3100 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5647 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-05-31 13:49:33 +0200 (Tue, 31 May 2011)");
  script_bugtraq_id(39533);
  script_tag(name:"cvss_base", value:"5.1");
@@ -54,7 +54,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

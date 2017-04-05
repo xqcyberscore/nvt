@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2003_308_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2003_308_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -39,12 +39,7 @@ and new PHP packages have been prepared for Slackware 8.1, 9.0, and
 - -current (9.1 already uses PHP 4.3.3).  In -current, these packages
 also move the Apache module directory from /usr/libexec to
 /usr/libexec/apache.  Links for all of these related packages are
-provided below.
-
-More details about the Apache issue may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2003-0542";
+provided below.";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2003-308-01.";
 
@@ -54,12 +49,12 @@ if(description)
 {
  script_id(53878);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_bugtraq_id(9504, 8911);
  script_cve_id("CVE-2003-0542");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2003-308-01 apache security update ";
  script_name(name);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3698.nasl 4345 2016-10-25 12:47:48Z antu123 $
+# $Id: deb_3698.nasl 5650 2017-03-21 10:00:45Z teissa $
 # Auto-generated from advisory DSA 3698-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703698);
-    script_version("$Revision: 4345 $");
+    script_version("$Revision: 5650 $");
     
     script_name("Debian Security Advisory DSA 3698-1 (php5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-25 14:47:48 +0200 (Tue, 25 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-10-24 00:00:00 +0200 (Mon, 24 Oct 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3698.html");
 
-    script_summary("Debian Security Advisory DSA 3698-1 (php5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

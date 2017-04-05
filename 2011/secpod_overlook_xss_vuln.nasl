@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_xss_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_overlook_xss_vuln.nasl 5668 2017-03-21 14:16:34Z cfi $
 #
 # OPEN IT OverLook 'title.php' Cross Site Scripting Vulnerability
 #
@@ -30,7 +30,7 @@ affected site.
 
 Impact Level: Application";
 
-tag_affected = "OPEN IT OverLook Verson 5.0";
+tag_affected = "OPEN IT OverLook Version 5.0";
 
 tag_insight = "The flaw is caused by improper validation of user-supplied input
 passed via the 'frame' parameter to title.php, which allows attackers to execute
@@ -48,18 +48,15 @@ vulnerability.";
 if(description)
 {
   script_id(902514);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5668 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2010-4792");
   script_bugtraq_id(43872);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("OPEN IT OverLook 'title.php' Cross Site Scripting Vulnerability");
-
-
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of OverLook");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
@@ -92,7 +89,7 @@ if(!can_host_php(port:port)) {
   exit(0);
 }
 
-## Check for OverLook Verson 5.0
+## Check for OverLook Version 5.0
 if(vers = get_version_from_kb(port:port,app:"OverLook"))
 {
   if(version_is_equal(version:vers, test_version:"5.0")){

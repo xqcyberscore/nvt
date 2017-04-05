@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX213313.nasl 3486 2016-06-13 05:14:29Z antu123 $
+# $Id: gb_citrix_netscaler_CTX213313.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Login Form Hijacking Vulnerability in Citrix NetScaler Gateway (CTX213313)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-4945");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3486 $");
+ script_version ("$Revision: 5650 $");
 
  script_name("Login Form Hijacking Vulnerability in Citrix NetScaler Gateway (CTX213313)");
 
@@ -54,9 +54,8 @@ Versions 10.5, 10.5.e and 10.1 are unaffected by this vulnerability.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 07:14:29 +0200 (Mon, 13 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-30 12:38:48 +0200 (Mon, 30 May 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

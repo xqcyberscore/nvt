@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_was_sec_bypass_vuln.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: secpod_ibm_was_sec_bypass_vuln.nasl 5659 2017-03-21 11:24:51Z cfi $
 #
 # IBM WebSphere Application Server (WAS) Security Bypass Vulnerability
 #
@@ -41,15 +41,14 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 if(description)
 {
   script_id(902292);
-  script_version("$Revision: 3775 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+  script_version("$Revision: 5659 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2008-7274");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("IBM WebSphere Application Server (WAS) Security Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1PK54565");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-7274");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_summary("Check for the version of IBM WebSphere Application Server");

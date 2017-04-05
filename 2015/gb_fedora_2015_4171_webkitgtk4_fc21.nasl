@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869137");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 5606 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-30 07:02:16 +0200 (Mon, 30 Mar 2015)");
   script_cve_id("CVE-2015-2330");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for webkitgtk4 FEDORA-2015-4171");
   script_tag(name: "summary", value: "Check the version of webkitgtk4");

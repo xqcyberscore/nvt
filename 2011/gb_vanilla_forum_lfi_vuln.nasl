@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vanilla_forum_lfi_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_vanilla_forum_lfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # Vanilla Forum Local File Inclusion Vulnerability
 #
@@ -46,8 +46,8 @@ inclusion vulnerability.";
 if(description)
 {
   script_id(801794);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,8 +61,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_lussumo_vanilla_detect.nasl");
+  script_dependencies("gb_lussumo_vanilla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

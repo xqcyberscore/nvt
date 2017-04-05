@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_57490.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_movable_type_57490.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # Movable Type Multiple SQL Injection and Command Injection Vulnerabilities
 #
@@ -49,21 +49,21 @@ if (description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5670 $");
 
  script_name("Movable Type Multiple SQL Injection and Command Injection Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57490");
  script_xref(name : "URL" , value : "http://www.sixapart.com/movabletype/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-01-31 13:27:06 +0100 (Thu, 31 Jan 2013)");
  script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("mt_detect.nasl");
+ script_dependencies("mt_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("movabletype/installed");

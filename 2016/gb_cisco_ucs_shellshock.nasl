@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_shellshock.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ucs_shellshock.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Cisco UCS GNU Bash Environment Variable Command Injection Vulnerability (Shellshock)
 #
@@ -33,16 +33,15 @@ if (description)
  script_cve_id("CVE-2014-6278");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5612 $");
 
  script_name("Cisco UCS GNU Bash Environment Variable Command Injection Vulnerability (Shellshock)");
 
  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140926-bash");
  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCur01379");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-03-17 09:25:23 +0100 (Thu, 17 Mar 2016)");
- script_summary("Try to execute the `id' command");
  script_category(ACT_ATTACK);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

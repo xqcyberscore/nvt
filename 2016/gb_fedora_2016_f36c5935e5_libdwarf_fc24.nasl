@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808418");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:29:14 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-2091", "CVE-2016-2050");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ and Fortran.  Please see <a href='http://www.dwarfstd.org' rel='nofollow'>http:/
   script_xref(name: "FEDORA", value: "2016-f36c5935e5");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CSMWGIIQTEPYCQ756IBTC7ZZUJ64NZV4");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libdwarf");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xibo_61352.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_xibo_61352.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Xibo 'index.php' Multiple Directory Traversal Vulnerabilities
 #
@@ -56,21 +56,21 @@ if (description)
  script_cve_id("CVE-2013-5979");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 5627 $");
 
  script_name("Xibo 'index.php' Multiple Directory Traversal Vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61352");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-10-07 11:05:49 +0200 (Mon, 07 Oct 2013)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 

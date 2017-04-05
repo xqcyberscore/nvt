@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dahua_auth_bypass_03_17.nasl 5574 2017-03-14 18:04:39Z mime $
+# $Id: gb_dahua_auth_bypass_03_17.nasl 5610 2017-03-20 08:09:51Z teissa $
 #
 # Dahua Devices Authentication Bypass Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = 'cpe:/a:dahua:nvr';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140185");
- script_version ("$Revision: 5574 $");
+ script_version ("$Revision: 5610 $");
  script_cve_id("CVE-2017-6432");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+ script_tag(name:"cvss_base", value:"9.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
  script_name("Dahua Devices Authentication Bypass Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 19:04:39 +0100 (Tue, 14 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:09:51 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-03-14 14:30:19 +0100 (Tue, 14 Mar 2017)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");

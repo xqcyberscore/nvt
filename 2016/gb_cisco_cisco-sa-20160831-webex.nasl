@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cisco-sa-20160831-webex.nasl 4440 2016-11-08 08:41:35Z teissa $
+# $Id: gb_cisco_cisco-sa-20160831-webex.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco WebEx Meetings Player Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:webex_wrf_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107075");
-  script_version("$Revision: 4440 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-1415");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-08 09:41:35 +0100 (Tue, 08 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-08 11:19:11 +0530 (Tue, 08 Nov 2016)");
   script_name("Cisco WebEx Meetings Player Denial of Service Vulnerability (Windows)");
 
@@ -58,7 +58,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160831-webex");
 
-  script_summary("Check for the vulnerable version of Cisco WebEx Meetings Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

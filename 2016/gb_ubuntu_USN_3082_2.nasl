@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842893");
-  script_version("$Revision: 4156 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 13:31:11 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-20 05:41:59 +0200 (Tue, 20 Sep 2016)");
   script_cve_id("CVE-2016-3857");
   script_tag(name:"cvss_base", value:"9.3");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "USN", value: "3082-2");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3082-2/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

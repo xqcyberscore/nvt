@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_dos_vuln_jan16.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_dos_vuln_jan16.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # OpenSSH Denial of Service Vulnerability - Jan16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806671");
-  script_version("$Revision: 4336 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-1907");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-28 12:15:36 +0530 (Thu, 28 Jan 2016)");
   script_name("OpenSSH Denial of Service Vulnerability - Jan16");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://anongit.mindrot.org/openssh.git/commit/?id=2fecfd486bdba9f51b3a789277bb0733ca36e1c0");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of openssh");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl");

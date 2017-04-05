@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_utility_belt_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_php_utility_belt_mult_vuln.nasl 5609 2017-03-20 08:08:00Z teissa $
 #
 # Php Utility Belt Multiple Vulnerabilities 
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:php_utility_belt:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807614");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5609 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:08:00 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-16 10:38:20 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Php Utility Belt Multiple Vulnerabilities");
@@ -53,12 +53,9 @@ if(description)
 
   script_tag(name:"affected", value:"Php Utility Belt");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be reported once the
-  update is available.
-  For updates refer to https://github.com/nevstokes/Utility-Belt");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/38901");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/39554");

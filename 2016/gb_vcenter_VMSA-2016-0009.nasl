@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2016-0009.nasl 5357 2017-02-20 11:05:23Z cfi $
+# $Id: gb_vcenter_VMSA-2016-0009.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # VMSA-2016-0009 VMware vCenter Server updates address an important reflective cross-site scripting issue
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-6931");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5357 $");
+ script_version ("$Revision: 5621 $");
  script_name("VMSA-2016-0009: VMware vCenter Server updates address an important reflective cross-site scripting issue");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0009.html");
@@ -52,14 +52,13 @@ vCenter Server 5.0 prior to 5.0 update 3g ");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:05:23 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-15 12:04:27 +0200 (Wed, 15 Jun 2016)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vcenter_detect.nasl", "os_detection.nasl" );
- script_mandatory_keys("VMware_vCenter/version","VMware_vCenter/build");
+ script_dependencies("gb_vmware_vcenter_detect.nasl");
+ script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
 
  exit(0);
 

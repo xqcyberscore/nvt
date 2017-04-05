@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_ip_camera_lfi_n_cred_disc_vuln.nasl 5261 2017-02-10 13:25:38Z teissa $
+# $Id: gb_honeywell_ip_camera_lfi_n_cred_disc_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Honeywell IP-Camera LFI and Credential Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:honeywell:honeywell_ip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807354");
-  script_version("$Revision: 5261 $");
+  script_version("$Revision: 5626 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:25:38 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("Honeywell IP-Camera LFI and Credential Disclosure Vulnerabilities");
 
@@ -71,7 +71,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_honeywell_ip_camera_detect.nasl");
+  script_dependencies("gb_honeywell_ip_camera_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Honeywell/IP_Camera/Installed");
   script_require_ports("Services/www", 80);
   exit(0);

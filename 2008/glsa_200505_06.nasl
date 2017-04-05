@@ -30,15 +30,8 @@ remote Denial of Service attack.";
 tag_solution = "All TCPDump users should upgrade to the latest available version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=net-analyzer/tcpdump-3.8.3-r3'
+    # emerge --ask --oneshot --verbose '>=net-analyzer/tcpdump-3.8.3-r3'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200505-06
-http://bugs.gentoo.org/show_bug.cgi?id=90541
-http://bugs.gentoo.org/show_bug.cgi?id=95349
-http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1267
-http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1278
-http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1279
-http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1280";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200505-06.";
 
@@ -47,15 +40,17 @@ advisory GLSA 200505-06.";
 if(description)
 {
  script_id(54938);
- script_version("$Revision: 4286 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-17 09:24:15 +0200 (Mon, 17 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2005-1267", "CVE-2005-1278", "CVE-2005-1279", "CVE-2005-1280");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("Gentoo Security Advisory GLSA 200505-06 (tcpdump)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200505-06");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=90541");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=95349");
 
  script_category(ACT_GATHER_INFO);
 

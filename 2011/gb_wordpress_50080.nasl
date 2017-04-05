@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_50080.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_50080.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # WordPress Light Post Plugin 'abspath' Parameter Remote File Include Vulnerability
 #
@@ -44,8 +44,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 5647 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-14 12:50:33 +0200 (Fri, 14 Oct 2011)");
  script_bugtraq_id(50080);
  script_tag(name:"cvss_base", value:"7.5");
@@ -58,9 +58,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("secpod_wordpress_detect_900182.nasl");
+ script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

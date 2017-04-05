@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geoserver_xxe_08_15.nasl 2581 2016-02-05 08:26:01Z benallard $
+# $Id: gb_geoserver_xxe_08_15.nasl 5629 2017-03-20 15:36:33Z cfi $
 #
 # Geoserver XML External Entity Information Disclosure Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105320");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2581 $");
+ script_version ("$Revision: 5629 $");
 
  script_name("Geoserver XML External Entity Information Disclosure Vulnerability");
 
@@ -47,13 +47,13 @@ information; this may lead to further attacks.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:26:01 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-08-17 13:57:49 +0200 (Mon, 17 Aug 2015)");
  script_summary("Try to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("secpod_geoserver_detect.nasl");
+ script_dependencies("secpod_geoserver_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("GeoServer/installed");

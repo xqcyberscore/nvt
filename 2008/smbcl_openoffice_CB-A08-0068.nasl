@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_openoffice_CB-A08-0068.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: smbcl_openoffice_CB-A08-0068.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: OpenOffice.org <= 2.4.1 vulnerability (Windows)
 #
 # Authors:
@@ -44,22 +44,20 @@ tag_summary = "The remote host is probably affected by the vulnerabilities descr
 
 tag_solution = "All OpenOffice.org users should upgrade to the latest version:";
 
-# $Revision: 4557 $
+# $Revision: 5661 $
 
 if(description)
 {
 
   script_id(90030);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-09-09 22:57:12 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2008-2152");
+  script_cve_id("CVE-2008-2152", "CVE-2008-3282");
   script_bugtraq_id(29622);
   script_name("OpenOffice.org <= 2.4.1 vulnerability (Windows)");
- script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2152");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-3282");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

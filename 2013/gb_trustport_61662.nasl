@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trustport_61662.nasl 4685 2016-12-06 09:14:19Z cfi $
+# $Id: gb_trustport_61662.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # TrustPort WebFilter 'help.php' Arbitrary File Access Vulnerability
 #
@@ -51,7 +51,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_cve_id("CVE-2013-5301");
  script_bugtraq_id(61662);
- script_version ("$Revision: 4685 $");
+ script_version ("$Revision: 5627 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
  script_name("TrustPort WebFilter 'help.php' Arbitrary File Access Vulnerability");
@@ -59,14 +59,14 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61662");
  
- script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:14:19 +0100 (Tue, 06 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-08-08 10:35:29 +0200 (Thu, 08 Aug 2013)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 4849);
  script_exclude_keys("Settings/disable_cgi_scanning");
 

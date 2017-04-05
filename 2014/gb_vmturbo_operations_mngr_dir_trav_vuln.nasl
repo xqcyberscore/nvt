@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 2492 2016-01-22 14:46:36Z benallard $
+# $Id: gb_vmturbo_operations_mngr_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # VM Turbo Operations Manager Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804448");
-  script_version("$Revision: 2492 $");
+  script_version("$Revision: 5628 $");
   script_cve_id("CVE-2014-3806");
   script_bugtraq_id(67292);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:46:36 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-05-09 14:42:04 +0530 (Fri, 09 May 2014)");
   script_name("VM Turbo Operations Manager Directory Traversal Vulnerability");
 
@@ -57,7 +57,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

@@ -32,13 +32,12 @@ tag_summary = "Kaspersky AntiVirus Engine 6.0.1.411 for Windows allows remote
 if(description)
 {
   script_id(102051);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2007-1281");
   script_bugtraq_id(22795);
   script_name("Kaspersky Antivirus UPX Denial of Service vulnerability");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1281");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_category(ACT_GATHER_INFO);

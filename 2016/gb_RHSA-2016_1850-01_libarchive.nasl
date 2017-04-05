@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871660");
-  script_version("$Revision: 4176 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-29 09:41:00 +0200 (Thu, 29 Sep 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-13 05:46:07 +0200 (Tue, 13 Sep 2016)");
   script_cve_id("CVE-2015-8920", "CVE-2015-8921", "CVE-2015-8932", "CVE-2016-4809",
 		"CVE-2016-5418", "CVE-2016-5844", "CVE-2016-7166");
@@ -82,7 +82,6 @@ Red Hat would like to thank Insomnia Security for reporting CVE-2016-5418.
   script_xref(name: "RHSA", value: "2016:1850-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-September/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libarchive");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_denial_of_service_vuln_march16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_squid_denial_of_service_vuln_march16_win.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Squid 'http.cc' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807450");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-2572");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-03 11:34:15 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Squid 'http.cc' Denial of Service Vulnerability (Windows)");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "https://access.redhat.com/security/cve/cve-2016-2572");
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2016_2.txt");
 
-  script_summary("Check for the vulnerable version of squid on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

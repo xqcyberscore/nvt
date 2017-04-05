@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807464");
-  script_version("$Revision: 2841 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 13:35:57 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-06 05:07:04 +0100 (Sun, 06 Mar 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-8411497132");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/178493.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of drupal6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

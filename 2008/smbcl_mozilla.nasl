@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_mozilla.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: smbcl_mozilla.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Windows)
 #
 # Authors:
@@ -44,25 +44,20 @@ tag_solution = "All Users should upgrade to the latest versions of Firefox, Thun
   http://www.seamonkey-project.org/releases/
   http://www.mozillamessaging.com/en-US/thunderbird/all.html";
 
-# $Revision: 4557 $
+# $Revision: 5661 $
 
 if(description)
 {
   script_id(90013);
-  script_version("$Revision: 4557 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_cve_id("CVE-2008-1238", "CVE-2008-1240", "CVE-2008-1241");
+  script_cve_id("CVE-2008-0412", "CVE-2008-0416", "CVE-2008-1238", "CVE-2008-1240", "CVE-2008-1241");
   script_bugtraq_id(28448);
   script_name("Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Windows)");
  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-14.html");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0412");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0416");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1238");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1240");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1241");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

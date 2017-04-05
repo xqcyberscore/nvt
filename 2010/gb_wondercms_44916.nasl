@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wondercms_44916.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wondercms_44916.nasl 5653 2017-03-21 10:19:58Z cfi $
 #
 # WonderCMS 'page' Parameter Cross Site Scripting And Information Disclosure Vulnerabilities
 #
@@ -41,8 +41,8 @@ tag_solution = "Vendor patch is available. Please see the reference for more det
 if (description)
 {
  script_id(100908);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5653 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-18 13:10:44 +0100 (Thu, 18 Nov 2010)");
  script_bugtraq_id(44916);
  script_tag(name:"cvss_base", value:"5.0");
@@ -56,7 +56,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

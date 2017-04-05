@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_mgmt_dir_trav_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_novell_zenworks_mobile_mgmt_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Novell ZENworks Mobile Management Directory Traversal Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:novell:zenworks_mobile_management";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5627 $");
   script_cve_id("CVE-2013-1082");
   script_bugtraq_id(60179);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-14 11:06:05 +0530 (Fri, 14 Jun 2013)");
   script_name("Novell ZENworks Mobile Management Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52545");
@@ -58,7 +58,7 @@ if (description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_novell_zenworks_mobile_management_detect.nasl");
+  script_dependencies("gb_novell_zenworks_mobile_management_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("zenworks_mobile_management/installed");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);

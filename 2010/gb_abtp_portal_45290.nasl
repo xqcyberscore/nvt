@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abtp_portal_45290.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_abtp_portal_45290.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # Abtp Portal Project 'ABTPV_BLOQUE_CENT' Parameter Local and Remote File Include Vulnerabilities
 #
@@ -39,8 +39,8 @@ be affected.";
 if (description)
 {
  script_id(100942);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 5652 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
  script_bugtraq_id(45290);
 
@@ -55,7 +55,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

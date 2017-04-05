@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_method_arbitrary_file_download_06_14.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_wordpress_theme_method_arbitrary_file_download_06_14.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # Wordpress Theme Method Arbitrary File Download Vulnerability 
 #
@@ -32,19 +32,19 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105051");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2827 $");
+ script_version ("$Revision: 5628 $");
 
  script_name("Wordpress Theme Method Arbitrary File Download Vulnerability");
 
  script_xref(name:"URL", value:"http://1337day.com/exploit/22350");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-06-26 14:02:57 +0200 (Thu, 26 Jun 2014)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("secpod_wordpress_detect_900182.nasl");
+ script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("wordpress/installed");
  script_exclude_keys("Settings/disable_cgi_scanning");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_093_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2007_093_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -32,12 +32,7 @@ tag_insight = "New file packages are available for Slackware 8.1, 9.0, 9.1,
 NOTE:  In Slackware 11.0 and earlier, the file utility was part
 of the required 'bin' package, so this patch is needed even if
 your machine does not have a 'file' package installed (which,
-if you're not running Slackware -current, it probably does not).
-
-More details about this issue may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1536";
+if you're not running Slackware -current, it probably does not).";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2007-093-01.";
 
@@ -47,11 +42,11 @@ if(description)
 {
  script_id(58195);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2007-1536");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2007-093-01 file [and bin package] ";
  script_name(name);
 

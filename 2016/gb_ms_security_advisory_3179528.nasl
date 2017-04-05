@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_advisory_3179528.nasl 3868 2016-08-23 06:13:26Z antu123 $
+# $Id: gb_ms_security_advisory_3179528.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Microsoft Kernel Mode Blacklist Update Security Advisory (3179528)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808655");
-  script_version("$Revision: 3868 $");
+  script_version("$Revision: 5650 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-23 08:13:26 +0200 (Tue, 23 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-17 11:46:52 +0530 (Wed, 17 Aug 2016)");
   script_name("Microsoft Kernel Mode Blacklist Update Security Advisory (3179528)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3176492");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3179528");
 
-  script_summary("Check for the vulnerable 'edgehtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

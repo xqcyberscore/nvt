@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160127-ntpd.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160127-ntpd.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Multiple Vulnerabilities in Network Time Protocol Daemon Affecting Cisco Products: January 2016
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7974","CVE-2015-7975","CVE-2015-7976","CVE-2015-7978","CVE-2015-7977","CVE-2015-7979","CVE-2015-8138","CVE-2015-8139","CVE-2015-8140","CVE-2015-8158","CVE-2015-7973");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
- script_version ("$Revision: 5441 $");
+ script_version ("$Revision: 5612 $");
 
  script_name("Multiple Vulnerabilities in Network Time Protocol Daemon Affecting Cisco Products: January 2016");
 
@@ -67,9 +67,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-09 17:40:21 +0200 (Mon, 09 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

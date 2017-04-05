@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850847");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 5654 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 12:15:01 +0200 (Thu, 15 Oct 2015)");
   script_cve_id("CVE-2013-4282");
   script_tag(name:"cvss_base", value:"5.0");
@@ -40,7 +40,7 @@ if(description)
   The remote desktop software SPICE was updated to address one security
   issue.
 
-  The following vulnerabilitiy was fixed:
+  The following vulnerability was fixed:
 
   * A stack-based buffer overflow in the password handling code allowed
   remote attackers to cause a denial of service (crash) via a long

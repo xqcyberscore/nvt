@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_scriptegrator_plugin_lfi_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_joomla_scriptegrator_plugin_lfi_vuln.nasl 5646 2017-03-21 09:37:44Z cfi $
 #
 # Joomla! Scriptegrator plugin Multiple Local File Inclusion Vulnerabilities
 #
@@ -46,8 +46,8 @@ prone to multiple local file inclusion vulnerabilities.";
 if(description)
 {
   script_id(802026);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,9 +60,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("joomla_detect.nasl");
+  script_dependencies("joomla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

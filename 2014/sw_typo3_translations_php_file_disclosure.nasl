@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_typo3_translations_php_file_disclosure.nasl 2795 2016-03-08 12:30:10Z cfi $
+# $Id: sw_typo3_translations_php_file_disclosure.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # TYPO3 Translations.php File Disclosure Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105141");
-  script_version("$Revision: 2795 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:30:10 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 5628 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-12 12:00:00 +0100 (Fri, 12 Dec 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2014 SCHUTZWERK GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_typo3_detect.nasl");
+  script_dependencies("gb_typo3_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");

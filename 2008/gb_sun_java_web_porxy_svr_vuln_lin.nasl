@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_porxy_svr_vuln_lin.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_sun_java_web_porxy_svr_vuln_lin.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # Sun Java System Web Proxy Server Two Vulnerabilities (Linux)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host has Sun Java Web Proxy Server running, which is prone
 if(description)
 {
   script_id(800026);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/32227");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/45782");
   script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/2781");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?execution=e3s1");
   script_xref(name : "URL" , value : "http://sunsolve.sun.com/search/document.do?assetkey=1-66-242986-1");
 
   script_category(ACT_GATHER_INFO);

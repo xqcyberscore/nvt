@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_spam_virus_fw_rce_vuln.nasl 3756 2016-07-25 08:59:05Z ckuerste $
+# $Id: gb_barracuda_spam_virus_fw_rce_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Barracuda Spam and Virus Firewall Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:barracuda_networks:barracuda_spam_firewall';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106153");
-  script_version("$Revision: 3756 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-25 10:59:05 +0200 (Mon, 25 Jul 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-07-25 14:44:02 +0700 (Mon, 25 Jul 2016)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -52,7 +52,6 @@ if (description)
   script_tag(name: "summary", value: "Barracuda Spam & Virus Firewall is prone to a remote code exectuion
 vulnerability.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

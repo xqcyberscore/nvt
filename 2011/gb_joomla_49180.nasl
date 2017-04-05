@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_49180.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_49180.nasl 5642 2017-03-21 08:49:30Z cfi $
 #
 # Joomla! JoomTouch Component 'controller' Parameter Local File Include Vulnerability
 #
@@ -40,8 +40,8 @@ JoomTouch 1.0.2 is affected; other versions may also be vulnerable.";
 if (description)
 {
  script_id(103211);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 5642 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-08-18 15:52:07 +0200 (Thu, 18 Aug 2011)");
  script_bugtraq_id(49180);
  script_tag(name:"cvss_base", value:"5.1");
@@ -56,9 +56,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl");
+ script_dependencies("joomla_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

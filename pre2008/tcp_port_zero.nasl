@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_port_zero.nasl 5309 2017-02-16 11:37:40Z mime $
-# Description: Port TCP:0
+# $Id: tcp_port_zero.nasl 5614 2017-03-20 12:04:28Z cfi $
+#
+# Port TCP:0 Open
 #
 # Authors:
 # Michel Arboi <mikhail@nessus.org>
@@ -20,13 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "TCP port 0 is open on the remote host.
-This is highly suspicious as this TCP port is reserved
-and should not be used. This might be a backdoor (REx).";
-
-tag_solution = "Check your system";
+###############################################################################
 
 # See:
 # http://www.simovits.com/trojans/tr_data/y2814.html
@@ -34,40 +30,31 @@ tag_solution = "Check your system";
 
 if(description)
 {
- script_id(18164);
- script_version("$Revision: 5309 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- name = "Port TCP:0";
- script_name(name);
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.18164");
+  script_version("$Revision: 5614 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 13:04:28 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Port TCP:0 Open");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
+  script_family("Malware");
+  script_dependencies("find_service.nasl");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
+  tag_summary = "TCP port 0 is open on the remote host. This is highly suspicious as
+  this TCP port is reserved and should not be used. This might be a backdoor (REx).";
 
+  tag_solution = "Check your system";
 
- summary = "Open a TCP connection to port 0";
- script_summary(summary);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
- script_copyright("This script is Copyright (C) 2005 Michel Arboi");
 
- family = "Malware";
- script_family(family);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
- exit(0);
+  exit(0);
 }
-
-# I'm not sure this works with any OS, so I wrote a pcap version
-# s = open_sock_tcp(0);
-# if (s) 
-# {
-#  security_message(port: 0);	# OpenVAS API cannot really handle this
-#  close(s);
-# }
 
 if ( islocalhost() ) exit(0);
 if ( TARGET_IS_IPV6() ) exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cnpilot_rbn_183.nasl 5574 2017-03-14 18:04:39Z mime $
+# $Id: gb_cnpilot_rbn_183.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # cnPilot R200/201 RSA Keys Vulnerability
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/o:cambium_networks:cnpilot_series_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140187");
-  script_version("$Revision: 5574 $");
+  script_version("$Revision: 5655 $");
+  script_cve_id("CVE-2017-5859");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 19:04:39 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value: "2017-03-14 17:34:31 +0100 (Tue, 14 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("cnPilot R200/201 RSA Keys Vulnerability");
@@ -47,7 +48,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-5859");
   script_xref(name:"URL", value:"https://support.cambiumnetworks.com/file/3f88842a39f37b0d4ce5d43e5aa21bf1c4f9f1ca");
 
   script_category(ACT_GATHER_INFO);

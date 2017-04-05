@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_internet_security_buffer_overflow_vuln.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_avast_internet_security_buffer_overflow_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Avast Internet Security Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:avast_internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808055");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:38:06 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Internet Security Heap-Based Buffer Overflow Vulnerability");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/94");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Avast Internet Security on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_avast_internet_security_detect.nasl");

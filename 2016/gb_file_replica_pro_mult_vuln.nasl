@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_file_replica_pro_mult_vuln.nasl 3324 2016-05-16 07:41:10Z antu123 $
+# $Id: gb_file_replica_pro_mult_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # File Replication Pro Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:file:replication:pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806689");
-  script_version("$Revision: 3324 $");
+  script_version("$Revision: 5650 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-16 09:41:10 +0200 (Mon, 16 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:28 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("File Replication Pro Multiple Vulnerabilities");
@@ -61,11 +61,10 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/61");
 
-  script_summary("Check if File Replication Pro is prone to directory traversal vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_file_replica_pro_detect.nasl");
+  script_dependencies("gb_file_replica_pro_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("FileReplicationPro/Installed");
   script_require_ports("Services/www", 9100);
   exit(0);

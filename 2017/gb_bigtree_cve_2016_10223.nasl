@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_cve_2016_10223.nasl 5329 2017-02-17 12:25:45Z mime $
+# $Id: gb_bigtree_cve_2016_10223.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # Bigtree CMS Potential XSS Attack
 #
@@ -29,10 +29,11 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140164");
-  script_version("$Revision: 5329 $");
+  script_version("$Revision: 5655 $");
+  script_cve_id("CVE-2016-10223");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 13:25:45 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-17 10:34:05 +0100 (Fri, 17 Feb 2017)");
   script_name("Bigtree CMS Potential XSS Attack");
 
@@ -52,8 +53,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_xref(name : "URL" , value : "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-10223");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

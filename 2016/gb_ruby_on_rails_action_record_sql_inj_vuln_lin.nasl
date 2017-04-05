@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_record_sql_inj_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_ruby_on_rails_action_record_sql_inj_vuln_lin.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Ruby on Rails Active Record SQL Injection Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807378");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-6317");
   script_bugtraq_id(92434);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 14:29:38 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Active Record SQL Injection Vulnerability (Linux)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/08/11/4");
   script_xref(name : "URL" , value : "https://groups.google.com/forum/#!topic/ruby-security-ann/WccgKSKiPZA");
   script_xref(name : "URL" , value : "http://weblog.rubyonrails.org/2016/8/11/Rails-5-0-0-1-4-2-7-2-and-3-2-22-3-have-been-released");
-  script_summary("Check for the vulnerable version of Ruby on Rails on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

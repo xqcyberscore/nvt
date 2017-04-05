@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_kernel_memory_leak_vuln_win.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_openafs_kernel_memory_leak_vuln_win.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # OpenAFS Kernel Memory Leak Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808078");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2015-3284");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 19:45:07 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Kernel Memory Leak Vulnerability (Windows)");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name: "URL" , value : "http://www.openafs.org/pages/security/OPENAFS-SA-2015-003.txt");
 
-  script_summary("Check for the vulnerable version of OpenAFS on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

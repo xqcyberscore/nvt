@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10743.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_JSA10743.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Junos Multiple cURL and libcurl Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106069");
-  script_version ("$Revision: 3817 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_version ("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-07 00:05:01 +0200 (Sat, 07 May 2016)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -55,7 +55,6 @@ if (description)
 
   script_tag(name: "summary", value: "Junos OS is prone to multiple vulnerabilities in
 cURL and libcurl.");
-  script_summary("Check the OS build");
 
   script_tag(name: "vuldetect" , value: "Check the OS build.");
 

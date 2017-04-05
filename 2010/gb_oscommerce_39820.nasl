@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscommerce_39820.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_oscommerce_39820.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # osCommerce Local File Include and HTML Injection Vulnerabilities
 #
@@ -43,8 +43,8 @@ osCommerce 3.0a5 is affected; other versions may also be vulnerable.";
 if (description)
 {
  script_id(100616);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5652 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-05-04 12:32:13 +0200 (Tue, 04 May 2010)");
  script_bugtraq_id(39820);
  script_tag(name:"cvss_base", value:"5.0");
@@ -60,9 +60,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("oscommerce_detect.nasl");
+ script_dependencies("oscommerce_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Software/osCommerce");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

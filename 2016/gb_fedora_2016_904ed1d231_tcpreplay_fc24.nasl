@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808840");
-  script_version("$Revision: 5132 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:55:07 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-6160");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ capture files.
   script_xref(name: "FEDORA", value: "2016-904ed1d231");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3DGPAHY2W4YEJ25X6IBWSK6B5RYII4QP");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tcpreplay");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

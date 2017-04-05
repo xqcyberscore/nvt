@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_dos_vuln_april16_win.nasl 3175 2016-04-27 05:25:38Z antu123 $
+# $Id: gb_putty_dos_vuln_april16_win.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # PuTTY Denial Of Service Vulnerability April16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807915");
-  script_version("$Revision: 3175 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-2563");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-27 07:25:38 +0200 (Wed, 27 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-21 10:16:59 +0530 (Thu, 21 Apr 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Denial Of Service Vulnerability April16 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-pscp-sink-sscanf.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of PuTTY on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_putty_version.nasl");

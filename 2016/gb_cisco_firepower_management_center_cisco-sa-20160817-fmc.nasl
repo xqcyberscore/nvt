@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160817-fmc.nasl 3852 2016-08-18 09:32:26Z ckuerste $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160817-fmc.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Cisco Firepower Management Center Remote Command Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1457");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 3852 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("Cisco Firepower Management Center Remote Command Execution Vulnerability");
 
@@ -57,9 +57,8 @@ vulnerability are not available.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-18 11:32:26 +0200 (Thu, 18 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-18 14:37:41 +0700 (Thu, 18 Aug 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

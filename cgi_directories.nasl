@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 4964 2017-01-06 14:48:44Z cfi $
+# $Id: cgi_directories.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 4964 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-06 15:48:44 +0100 (Fri, 06 Jan 2017) $");
+  script_version("$Revision: 5616 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,8 +49,6 @@ if(description)
   - Web mirroring / webmirror.nasl (OID: 1.3.6.1.4.1.25623.1.0.10662)
 
   - Directory Scanner / DDI_Directory_Scanner.nasl (OID: 1.3.6.1.4.1.25623.1.0.11032)
-
-  - Various OS fingerprinting methods
 
   - The configured 'cgi_path' within the 'Scanner Preferences' of the scan config in use");
 
@@ -83,13 +81,6 @@ excludedDirList = get_kb_list( "www/" + port + "/content/excluded_directories" )
 #report = 'The hostname "' + http_host_name( port:port ) + '" is used.\n\n'; #TODO is this forking?
 
 #TODO: Add no404.nasl
-
-#TBD: Also report unknown os?
-if( host_runs( "windows" ) == "yes" ) {
-  report = 'The host seems to be running on a Windows operating system.\n\n';
-} else if( host_runs( "linux" ) == "yes" ) {
-  report = 'The host seems to be running on a Unix-like operating system.\n\n';
-}
 
 if( can_host_php( port:port ) ) {
   report += 'The host seems to be able to host PHP scripts.\n\n';

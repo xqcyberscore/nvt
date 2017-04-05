@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_340_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2006_340_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -30,9 +30,7 @@ tag_insight = "New gnupg packages are available for Slackware 9.0, 9.1, 10.0, 10
 10.2, and 11.0 to fix security issues.
 
 More details about the issues may be found here:
-http://lists.gnupg.org/pipermail/gnupg-announce/2006q4/000491.html
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6235
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-6169";
+http://lists.gnupg.org/pipermail/gnupg-announce/2006q4/000491.html";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2006-340-01.";
 
@@ -42,11 +40,11 @@ if(description)
 {
  script_id(57701);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2006-6235", "CVE-2006-6169");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2006-340-01 gnupg";
  script_name(name);
 

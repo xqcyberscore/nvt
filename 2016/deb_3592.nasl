@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3592.nasl 3604 2016-06-27 05:18:57Z antu123 $
+# $Id: deb_3592.nasl 5612 2017-03-20 10:00:41Z teissa $
 # Auto-generated from advisory DSA 3592-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703592);
-    script_version("$Revision: 3604 $");
+    script_version("$Revision: 5612 $");
     script_cve_id("CVE-2016-4450");
     script_name("Debian Security Advisory DSA 3592-1 (nginx - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-27 07:18:57 +0200 (Mon, 27 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-06-01 00:00:00 +0200 (Wed, 01 Jun 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3592.html");
 
-    script_summary("Debian Security Advisory DSA 3592-1 (nginx - security update)");
 
     script_category(ACT_GATHER_INFO);
 

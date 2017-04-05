@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_mul_vul_win.nasl 5084 2017-01-24 11:27:12Z cfi $
+# $Id: gb_manageengine_admanager_plus_mul_vul_win.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # ManageEngine ADManager Plus Multiple Vulnerabilitie (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:admanager:plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107128");
-  script_version("$Revision: 5084 $");
+  script_version("$Revision: 5621 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:27:12 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-17 16:11:25 +0530 (Tue, 17 Jan 2017)");
   script_name("ManageEngine ADManager Plus Multiple Vulnerabilities (Windows)");
 
@@ -56,7 +56,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_manageengine_admanager_plus_detection.nasl", "os_detection.nasl");
+  script_dependencies("gb_manageengine_admanager_plus_detection.nasl");
   script_mandatory_keys("admanager/plus/installed");
   exit(0);
 }

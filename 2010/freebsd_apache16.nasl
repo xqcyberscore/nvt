@@ -50,30 +50,26 @@ tag_insight = "The following packages are affected:
    apache+mod_ssl+mod_snmp+mod_deflate+ipv6
    apache+mod_ssl+mod_snmp+mod_accel+mod_deflate+ipv6";
 tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+software upgrades.";
 
-http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0010
-http://www.security-database.com/detail.php?alert=CVE-2010-0010
-http://security-tracker.debian.org/tracker/CVE-2010-0010
-http://www.vupen.com/english/Reference-CVE-2010-0010.php
-http://www.vuxml.org/freebsd/cae01d7b-110d-11df-955a-00219b0fc4d8.html";
 tag_summary = "The remote host is missing an update to the system
 as announced in the referenced advisory.";
-
-
 
 
 if(description)
 {
  script_id(66816);
- script_version("$Revision: 5245 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+ script_version("$Revision: 5656 $");
+ script_cve_id("CVE-2010-0010");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-02-10 21:51:26 +0100 (Wed, 10 Feb 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_name("FreeBSD Ports: apache");
 
-
+ script_xref(name:"URL", value:"http://www.security-database.com/detail.php?alert=CVE-2010-0010");
+ script_xref(name:"URL", value:"http://www.vupen.com/english/Reference-CVE-2010-0010.php");
+ script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/cae01d7b-110d-11df-955a-00219b0fc4d8.html");
 
  script_category(ACT_GATHER_INFO);
 

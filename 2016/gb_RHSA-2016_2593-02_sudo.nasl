@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871687");
-  script_version("$Revision: 4899 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 08:35:17 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:46 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-7091");
   script_tag(name:"cvss_base", value:"4.9");
@@ -68,7 +68,6 @@ Enterprise Linux 7.3 Release Notes linked from the References section.
   script_xref(name: "RHSA", value: "2016:2593-02");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00029.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of sudo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

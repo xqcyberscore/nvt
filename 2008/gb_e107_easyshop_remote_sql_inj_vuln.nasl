@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_e107_easyshop_remote_sql_inj_vuln.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_e107_easyshop_remote_sql_inj_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # e107 EasyShop plugin easyshop.php SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800302");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-11 09:00:11 +0100 (Tue, 11 Nov 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,6 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/6852");
-  script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4786");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   SQL commands.

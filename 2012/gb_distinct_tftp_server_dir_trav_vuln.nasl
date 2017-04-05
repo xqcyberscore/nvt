@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
 #
 # Distinct TFTP Server Directory Traversal Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802623");
   script_bugtraq_id(52938);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5641 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 15:15:15 +0530 (Mon, 09 Apr 2012)");
   script_name("Distinct TFTP Server Directory Traversal Vulnerability");
 
@@ -43,6 +43,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Remote file access");
+  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation allows an attacker to obtain sensitive

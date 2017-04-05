@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_orangehrm_lfi_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_orangehrm_lfi_vuln.nasl 5646 2017-03-21 09:37:44Z cfi $
 #
 # OrangeHRM 'PluginController.php' Local File Inclusion Vulnerability
 #
@@ -46,8 +46,8 @@ inclusion vulnerability.";
 if(description)
 {
   script_id(902367);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5646 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ if(description)
   script_summary("Check for local file inclusion vulnerability in OrangeHRM");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
-  script_dependencies("gb_orangehrm_detect.nasl");
+  script_dependencies("gb_orangehrm_detect.nasl", "os_detection.nasl");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);

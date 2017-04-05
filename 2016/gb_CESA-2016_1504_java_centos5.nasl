@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882528");
-  script_version("$Revision: 3784 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:54:49 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3500", "CVE-2016-3508", "CVE-2016-3550", 
                 "CVE-2016-3598", "CVE-2016-3606", "CVE-2016-3610");
@@ -63,7 +63,6 @@ bypass certain Java sandbox restrictions. (CVE-2016-3458, CVE-2016-3550)
 
   script_xref(name: "CESA", value: "2016:1504");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-July/021998.html");
-  script_summary("Check for the Version of java");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

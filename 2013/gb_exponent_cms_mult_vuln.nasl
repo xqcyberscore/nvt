@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponent_cms_mult_vuln.nasl 5227 2017-02-08 07:26:04Z cfi $
+# $Id: gb_exponent_cms_mult_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Exponent CMS Multiple Vulnerabilities
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803702");
-  script_version("$Revision: 5227 $");
+  script_version("$Revision: 5627 $");
   script_cve_id("CVE-2013-3294", "CVE-2013-3295");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 08:26:04 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-05-23 14:56:02 +0530 (Thu, 23 May 2013)");
   script_name("Exponent CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_exponet_cms_detect.nasl");
+  script_dependencies("gb_exponet_cms_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ExponentCMS/installed");
 

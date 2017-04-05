@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_mult_vuln.nasl 3724 2016-07-19 08:06:13Z antu123 $
+# $Id: gb_mcafee_email_gateway_mult_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # McAfee Email Gateway Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:mcafee:email_gateway";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807868");
-  script_version("$Revision: 3724 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2013-7103", "CVE-2013-7104", "CVE-2013-7092");
   script_bugtraq_id(64150);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-19 10:06:13 +0200 (Tue, 19 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 11:01:01 +0530 (Thu, 14 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("McAfee Email Gateway Multiple Vulnerabilities");
@@ -67,7 +67,6 @@ if (description)
 
   script_xref(name : "URL" , value : "https://www.us-cert.gov/ncas/bulletins/SB13-357");
 
-  script_summary("Check for the vulnerable version of McAfee Email Gateway");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

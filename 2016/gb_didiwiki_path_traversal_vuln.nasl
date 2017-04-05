@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_didiwiki_path_traversal_vuln.nasl 3123 2016-04-20 06:55:49Z antu123 $
+# $Id: gb_didiwiki_path_traversal_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # DidiWiki Path Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:didiwiki_project:didiwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807528");
-  script_version("$Revision: 3123 $");
+  script_version("$Revision: 5626 $");
   script_cve_id("CVE-2013-7448");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-20 08:55:49 +0200 (Wed, 20 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-12 10:34:57 +0530 (Tue, 12 Apr 2016)");
   script_name("DidiWiki Path Traversal Vulnerability");
 
@@ -66,7 +66,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_didiwiki_detect.nasl");
+  script_dependencies("gb_didiwiki_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("DidiWiki/Installed");
   script_require_ports("Services/www", 8000);
   exit(0);

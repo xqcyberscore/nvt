@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_lfi_vuln.nasl 5251 2017-02-09 15:54:34Z teissa $
+# $Id: gb_videoiq_camera_lfi_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # VideoIQ Camera Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:videoiq:videoiq_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807356");
-  script_version("$Revision: 5251 $");
+  script_version("$Revision: 5626 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 16:54:34 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("VideoIQ Camera Local File Inclusion Vulnerability");
 
@@ -63,7 +63,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_videoiq_camera_detect.nasl");
+  script_dependencies("gb_videoiq_camera_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("VideoIQ/Camera/Installed");
   script_require_ports("Services/www", 8080);
   exit(0);

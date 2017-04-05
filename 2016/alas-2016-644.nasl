@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-644.nasl 4507 2016-11-14 15:50:04Z mime $
+# $Id: alas-2016-644.nasl 5650 2017-03-21 10:00:45Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120634");
-script_version("$Revision: 4507 $");
+script_version("$Revision: 5650 $");
 script_tag(name:"creation_date", value:"2016-02-11 07:16:43 +0200 (Thu, 11 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:50:04 +0100 (Mon, 14 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-644");
 script_tag(name: "insight", value: "It was found that python-rsa is vulnerable to Bleichenbacher'06 attack, allowing attacker to fake signatures for any public key with low exponent. (CVE-2016-1494 )"); 
 script_tag(name : "solution", value : "Run yum update python-rsa to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2016-644");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

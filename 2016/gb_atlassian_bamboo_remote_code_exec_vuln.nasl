@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_remote_code_exec_vuln.nasl 2761 2016-03-03 06:47:29Z antu123 $
+# $Id: gb_atlassian_bamboo_remote_code_exec_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Atlassian Bamboo Remote Code Execution Vulnerability Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:atlassian:bamboo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807275");
-  script_version("$Revision: 2761 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2015-8360");
   script_bugtraq_id(83111);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 07:47:29 +0100 (Thu, 03 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 10:03:11 +0530 (Fri, 19 Feb 2016)");
   script_name("Atlassian Bamboo Remote Code Execution Vulnerability Feb16");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://jira.atlassian.com/browse/BAM-17101");
 
-  script_summary("Check for the vulnerable version of Atlassian Bamboo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

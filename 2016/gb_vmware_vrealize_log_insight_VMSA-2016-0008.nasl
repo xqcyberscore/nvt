@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_log_insight_VMSA-2016-0008.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_vmware_vrealize_log_insight_VMSA-2016-0008.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # VMSA-2016-0008: VMware vRealize Log Insight addresses important and moderate security issues.
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-2081","CVE-2016-2082");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5612 $");
  script_name("VMSA-2016-0008: VMware vRealize Log Insight addresses important and moderate security issues");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0008.html");
@@ -52,11 +52,10 @@ VMware vRealize Log Insight contains a vulnerability that may allow for a cross-
 
  script_tag(name: "affected" , value:"VMware vRealize Log Insight prior to 3.3.2");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-10 12:19:55 +0200 (Fri, 10 Jun 2016)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Checks for installed version.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

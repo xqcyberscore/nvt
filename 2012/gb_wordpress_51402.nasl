@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_51402.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_51402.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(51402);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5633 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities");
@@ -54,14 +54,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51402");
  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/count-per-day/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-13 10:18:15 +0100 (Fri, 13 Jan 2012)");
  script_summary("Determine if installed WordPress is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("secpod_wordpress_detect_900182.nasl");
+ script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");

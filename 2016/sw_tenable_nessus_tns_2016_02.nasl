@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tenable_nessus_tns_2016_02.nasl 2667 2016-02-16 10:22:07Z cfi $
+# $Id: sw_tenable_nessus_tns_2016_02.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Tenable Nessus Multiple Vulnerabilities Feb16
 #
@@ -29,14 +29,13 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111087");
-  script_version("$Revision: 2667 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-82000", "CVE-2016-82001");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-16 11:22:07 +0100 (Tue, 16 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-16 09:00:00 +0100 (Tue, 16 Feb 2016)");
   script_name("Tenable Nessus Multiple Vulnerabilities Feb16");
-  script_summary("Check if Nessus is vulnerable to multiple vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Web application abuses");

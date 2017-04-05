@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_77653.nasl 3777 2016-07-30 10:14:39Z cfi $
+# $Id: gb_ibm_websphere_77653.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # IBM WebSphere Application Server Remote Code Execution Vulnerability (Active check)
 #
@@ -35,7 +35,7 @@ if (description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_version ("$Revision: 3777 $");
+ script_version ("$Revision: 5616 $");
 
  script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability (Active check)");
 
@@ -56,13 +56,13 @@ Version 7.0");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-30 12:14:39 +0200 (Sat, 30 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-29 15:54:10 +0200 (Fri, 29 Jul 2016)");
  script_summary("Try to ping the scanner");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_websphere_detect.nasl");
+ script_dependencies("gb_ibm_websphere_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80, 8880);
  script_exclude_keys("Settings/disable_cgi_scanning");
 

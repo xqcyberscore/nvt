@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exponet_cms_44095.nasl 5227 2017-02-08 07:26:04Z cfi $
+# $Id: gb_exponet_cms_44095.nasl 5653 2017-03-21 10:19:58Z cfi $
 #
 # Exponent CMS Multiple Input Validation Vulnerabilities
 #
@@ -29,9 +29,9 @@ CPE = "cpe:/a:exponentcms:exponent_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100938");
-  script_version("$Revision: 5227 $");
+  script_version("$Revision: 5653 $");
   script_bugtraq_id(44095);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 08:26:04 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-  script_dependencies("gb_exponet_cms_detect.nasl");
+  script_dependencies("gb_exponet_cms_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ExponentCMS/installed");
 

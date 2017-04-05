@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gale_sec_bypass_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_gale_sec_bypass_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Gale EVP_VerifyFinal() Security Bypass Vulnerability
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is running Gale and is prone to security bypass
 if(description)
 {
   script_id(800340);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-01-19 13:47:40 +0100 (Mon, 19 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if(description)
   script_name("Gale EVP_VerifyFinal() Security Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/499855");
   script_xref(name : "URL" , value : "http://www.ocert.org/advisories/ocert-2008-016.html");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0047");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);

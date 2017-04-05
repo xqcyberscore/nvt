@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysqldumper_mult_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_mysqldumper_mult_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # MySQLDumper Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mysqldumper:mysqldumper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902675");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5633 $");
   script_cve_id("CVE-2012-4251", "CVE-2012-4252", "CVE-2012-4253",
                 "CVE-2012-4254", "CVE-2012-4255");
   script_bugtraq_id(53306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-04-30 15:02:29 +0530 (Mon, 30 Apr 2012)");
   script_name("MySQLDumper Multiple Vulnerabilities");
 
@@ -51,7 +51,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("sw_mysqldumper_detect.nasl");
+  script_dependencies("sw_mysqldumper_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("mysqldumper/installed");
 

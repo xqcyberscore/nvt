@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_41929.nasl 4158 2016-09-27 12:23:16Z cfi $
+# $Id: gb_twonky_41929.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Twonky Server Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108004");
-  script_version("$Revision: 4158 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 14:23:16 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:00:00 +0200 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_bugtraq_id(41929);
   script_name("Twonky Server Cross Site Scripting and HTML Injection Vulnerabilities");
-  script_summary("Check for the vulnerable version of Twonky server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

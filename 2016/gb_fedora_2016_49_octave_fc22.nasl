@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807416");
-  script_version("$Revision: 3735 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 10:03:07 +0200 (Wed, 20 Jul 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-24 06:24:59 +0100 (Wed, 24 Feb 2016)");
   script_cve_id("CVE-2015-8808");
   script_tag(name:"cvss_base", value:"4.3");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-49");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177836.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of octave");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

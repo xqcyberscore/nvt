@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160715-bgp.nasl 3718 2016-07-18 07:14:48Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20160715-bgp.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Cisco IOS Software Border Gateway Protocol Message Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1459");
  script_tag(name:"cvss_base", value:"4.9");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 3718 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("Cisco IOS Software Border Gateway Protocol Message Processing Denial of Service Vulnerability");
 
@@ -58,9 +58,8 @@ BGP MIBs.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-18 09:14:48 +0200 (Mon, 18 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-18 13:39:39 +0700 (Mon, 18 Jul 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_39013.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_openssl_39013.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # OpenSSL 'ssl3_get_record()' Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:openssl:openssl";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100587");
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5621 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-04-20 13:41:39 +0200 (Tue, 20 Apr 2010)");
  script_bugtraq_id(39013);
  script_cve_id("CVE-2010-0740");
@@ -50,7 +50,7 @@ if (description)
  script_category(ACT_GATHER_INFO);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
+ script_dependencies("gb_openssl_detect.nasl");
  script_mandatory_keys("OpenSSL/installed");
 
  script_tag(name : "solution" , value : "Updates are available. Please see the references for more information.");

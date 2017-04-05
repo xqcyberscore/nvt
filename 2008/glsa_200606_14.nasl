@@ -30,12 +30,8 @@ privileges.";
 tag_solution = "All GDM users should upgrade to the latest version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=gnome-base/gdm-2.8.0.8'
+    # emerge --ask --oneshot --verbose '>=gnome-base/gdm-2.8.0.8'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200606-14
-http://bugs.gentoo.org/show_bug.cgi?id=135027
-http://bugzilla.gnome.org/show_bug.cgi?id=343476
-http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2006-2452";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200606-14.";
 
@@ -44,15 +40,17 @@ advisory GLSA 200606-14.";
 if(description)
 {
  script_id(56960);
- script_version("$Revision: 4339 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:03:30 +0200 (Tue, 25 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2006-2452");
  script_tag(name:"cvss_base", value:"3.7");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
  script_name("Gentoo Security Advisory GLSA 200606-14 (gdm)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200606-14");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=135027");
+ script_xref(name:"URL" , value:"http://bugzilla.gnome.org/show_bug.cgi?id=343476");
 
  script_category(ACT_GATHER_INFO);
 

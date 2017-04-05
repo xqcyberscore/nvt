@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ajax_store_locator_dir_trav_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_wordpress_ajax_store_locator_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # WordPress Ajax Store Locator Plugin Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805209");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 5628 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-12 13:27:38 +0530 (Fri, 12 Dec 2014)");
   script_name("WordPress Ajax Store Locator Plugin Directory Traversal Vulnerability");
 
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   exit(0);

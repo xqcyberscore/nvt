@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_zoho_plugin_dir_trav_vuln.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_ajaxplorer_zoho_plugin_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # AjaXplorer zoho plugin Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803970");
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 5627 $");
   script_cve_id("CVE-2013-6226", "CVE-2013-6227");
   script_bugtraq_id(63647, 63662);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-11-26 12:27:43 +0530 (Tue, 26 Nov 2013)");
   script_name("AjaXplorer zoho plugin Directory Traversal Vulnerability");
 
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
 
 

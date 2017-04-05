@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882451");
-  script_version("$Revision: 3692 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-14 05:18:10 +0200 (Thu, 14 Apr 2016)");
   script_cve_id("CVE-2015-5370", "CVE-2016-2110", "CVE-2016-2111", "CVE-2016-2112", 
                 "CVE-2016-2113", "CVE-2016-2114", "CVE-2016-2115", "CVE-2016-2118");
@@ -94,7 +94,6 @@ protection for LDAP connections. A man-in-the-middle attacker could u ...
 
   script_xref(name: "CESA", value: "2016:0612");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-April/021822.html");
-  script_summary("Check for the Version of ldb-tools");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_log_viewer_dos_vuln.nasl 5382 2017-02-21 09:16:45Z mime $
+# $Id: gb_mcafee_agent_log_viewer_dos_vuln.nasl 5606 2017-03-17 17:09:01Z cfi $
 #
 # McAfee Agent (MA) 'log viewer' Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810602");
-  script_version("$Revision: 5382 $");
+  script_version("$Revision: 5606 $");
   script_cve_id("CVE-2017-3896");
   script_bugtraq_id(95903);
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 10:16:45 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-16 12:13:05 +0530 (Thu, 16 Feb 2017)");
   script_name("McAfee Agent (MA) 'log viewer' Denial of Service Vulnerability");
 

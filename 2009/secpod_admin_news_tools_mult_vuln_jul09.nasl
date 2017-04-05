@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_admin_news_tools_mult_vuln_jul09.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_admin_news_tools_mult_vuln_jul09.nasl 5631 2017-03-20 15:46:35Z cfi $
 #
 # Admin News Tools Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:adminnewstools:admin_news_tools";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900905");
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5631 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:46:35 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-07-31 07:37:13 +0200 (Fri, 31 Jul 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
-  script_dependencies("secpod_admin_news_tools_detect.nasl");
+  script_dependencies("secpod_admin_news_tools_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("ANT/installed");
   script_require_ports("Services/www", 80);
 

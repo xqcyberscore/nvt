@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_whatsup_mult_vuln.nasl 3785 2016-08-02 10:07:03Z ckuerste $
+# $Id: gb_ipswitch_whatsup_mult_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Ipswitch WhatsUp Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ipswitch:whatsup_gold';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106163");
-  script_version("$Revision: 3785 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-08-02 12:07:03 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-08-02 08:27:33 +0700 (Tue, 02 Aug 2016)");
   script_tag(name: "cvss_base", value: "6.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name: "summary", value: "Ipswitch WhatsUp Gold is prone to multiple vulnerabilities.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

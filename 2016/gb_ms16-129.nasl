@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-129.nasl 4485 2016-11-14 05:15:37Z antu123 $
+# $Id: gb_ms16-129.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Microsoft Edge Multiple Vulnerabities (3199057)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809091");
-  script_version("$Revision: 4485 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-7195", "CVE-2016-7196", "CVE-2016-7198", "CVE-2016-7199",
                 "CVE-2016-7200", "CVE-2016-7201", "CVE-2016-7202", "CVE-2016-7203",
                 "CVE-2016-7204", "CVE-2016-7208", "CVE-2016-7209", "CVE-2016-7227",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(92828, 92834, 92789, 92830, 92829, 92832, 92807, 92793);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 06:15:37 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 08:52:24 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Edge Multiple Vulnerabities (3199057)");
 
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3199057");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-129");
 
-  script_summary("Check for the vulnerable file 'Edgehtml.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

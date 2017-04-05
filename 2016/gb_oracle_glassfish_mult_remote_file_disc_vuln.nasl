@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_mult_remote_file_disc_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_oracle_glassfish_mult_remote_file_disc_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Oracle GlassFish Server Multiple Remote File Disclosure Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808231");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5626 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 11:16:21 +0530 (Tue, 21 Jun 2016)");
   script_name("Oracle GlassFish Server Multiple Remote File Disclosure Vulnerabilities");
 
@@ -71,7 +71,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("GlassFish_detect.nasl");
+  script_dependencies("GlassFish_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("GlassFish/installed");
   script_require_ports("Services/www", 4848);
   exit(0);

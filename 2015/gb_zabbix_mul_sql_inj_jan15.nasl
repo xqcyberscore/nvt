@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 3412 2016-05-31 20:14:15Z jan $
+# $Id: gb_zabbix_mul_sql_inj_jan15.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # Zabbix Multiple SQL injection Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805319");
-  script_version("$Revision: 3412 $");
+  script_version("$Revision: 5616 $");
   script_cve_id("CVE-2014-9450");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-31 22:14:15 +0200 (Tue, 31 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-06-16 10:22:50 +0530 (Mon, 16 Jun 2014)");
   script_name("Zabbix Multiple SQL injection Vulnerabilities - Jan15");
 
@@ -105,10 +105,4 @@ if(!zbVer = get_app_version(cpe:CPE, port:zbPort)){
   exit(0);
 }
 
-## windows
-if(host_runs("Windows") == "yes"){
-  check_zabbix_ver(chVer:zbVer, chPort:zbPort);
-}
-
-## Linux
 check_zabbix_ver(chVer:zbVer, chPort:zbPort);

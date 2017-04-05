@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln03_feb16.nasl 2761 2016-03-03 06:47:29Z antu123 $
+# $Id: gb_phpmyadmin_mult_vuln03_feb16.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # phpMyAdmin Multiple Vulnerabilities -03 Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807079");
-  script_version("$Revision: 2761 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-2042", "CVE-2016-2043");
   script_bugtraq_id(82097, 82101);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 07:47:29 +0100 (Thu, 03 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-23 10:17:05 +0530 (Tue, 23 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("phpMyAdmin Multiple Vulnerabilities -03 Feb16");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-6");
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-7");
 
-  script_summary("Check if phpMyAdmin is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

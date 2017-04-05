@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851223");
-  script_version("$Revision: 2910 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-04 06:42:46 +0100 (Fri, 04 Mar 2016)");
   script_cve_id("CVE-2013-0166", "CVE-2013-0169", "CVE-2014-0076", "CVE-2014-0195", 
                 "CVE-2014-0221", "CVE-2014-0224", "CVE-2014-3470", "CVE-2014-3505", 
@@ -107,7 +107,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0640_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00011.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libopenssl0_9_8");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

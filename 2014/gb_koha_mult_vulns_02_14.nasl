@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_mult_vulns_02_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_koha_mult_vulns_02_14.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # Koha Multiple Vulnerabilities
 #
@@ -55,21 +55,21 @@ if (description)
  script_cve_id("CVE-2014-1922","CVE-2014-1923","CVE-2014-1924","CVE-2014-1925");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 5628 $");
 
  script_name("Koha Multiple Vulnerabilities");
 
 
  script_xref(name:"URL", value:"http://koha-community.org/security-release-february-2014/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-02-10 15:39:58 +0100 (Mon, 10 Feb 2014)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 

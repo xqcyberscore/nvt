@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_cisco-sa-20160928-fmc1.nasl 4179 2016-09-29 09:16:39Z ckuerste $
+# $Id: gb_cisco_firesight_cisco-sa-20160928-fmc1.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco FireSIGHT System Software Privilege Escalation Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6420");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 4179 $");
+ script_version ("$Revision: 5650 $");
 
  script_name("Cisco FireSIGHT System Software Privilege Escalation Vulnerability");
 
@@ -57,9 +57,8 @@ for which they are not authorized by the Firepower Management Center.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-29 11:16:39 +0200 (Thu, 29 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 14:36:21 +0700 (Thu, 29 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

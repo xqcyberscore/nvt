@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgrind_lfi_02_2012.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_webgrind_lfi_02_2012.nasl 5642 2017-03-21 08:49:30Z cfi $
 #
 # webgrind 1.0 (file param) Local File Inclusion Vulnerability
 #
@@ -38,7 +38,7 @@ Webgrind 1.0 (v1.02 in trunk on github) are vulnerable; other versions may also 
 if (description)
 {
  script_id(103439);
- script_version ("$Revision: 3058 $");
+ script_version ("$Revision: 5642 $");
 
  script_name("webgrind 1.0 (file param) Local File Inclusion Vulnerability");
 
@@ -47,14 +47,14 @@ if (description)
  script_cve_id("CVE-2011-3047");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-28 11:24:22 +0100 (Tue, 28 Feb 2012)");
  script_summary("Determine if Webgrind is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

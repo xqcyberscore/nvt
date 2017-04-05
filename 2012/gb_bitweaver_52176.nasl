@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_52176.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_bitweaver_52176.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # Bitweaver 'rankings.php' Local File Include Vulnerability
 #
@@ -43,7 +43,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(52176);
  script_cve_id("CVE-2010-5086");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5633 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Bitweaver 'rankings.php' Local File Include Vulnerability");
@@ -51,14 +51,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52176");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/bitweaver/files/bitweaver2.x/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-28 11:12:27 +0100 (Tue, 28 Feb 2012)");
  script_summary("Determine if Bitweaver is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("secpod_bitweaver_detect.nasl");
+ script_dependencies("secpod_bitweaver_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

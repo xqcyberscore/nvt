@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_cert_handling_dos_vuln_jun16_lin.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_mongodb_cert_handling_dos_vuln_jun16_lin.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808151");
-  script_version("$Revision: 5104 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2014-3971");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:43:02 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability (Linux)");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "https://github.com/mongodb/mongo/commit/c151e0660b9736fe66b224f1129a16871165251b");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Determine if installed MongoDB version is vulnerable on Linux");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_family("Databases");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mitm_vuln_feb16.nasl 2650 2016-02-12 10:16:08Z antu123 $
+# $Id: gb_apache_subversion_mitm_vuln_feb16.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Apache Subversion Certificate Validation Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806858");
-  script_version("$Revision: 2650 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2014-3522");
   script_bugtraq_id(69237);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:16:08 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-08 18:19:08 +0530 (Mon, 08 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Certificate Validation Information Disclosure Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2014-3522-advisory.txt");
 
-  script_summary("Check for the vulnerable version of Apache Subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

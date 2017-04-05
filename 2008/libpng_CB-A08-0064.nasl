@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: libpng_CB-A08-0064.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: libpng_CB-A08-0064.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: libpng vulnerability
 #
 # Authors:
@@ -35,22 +35,20 @@ Impact
 
 tag_solution = "All users should upgrade to the latest libpng version of their Linux Distribution.";
 
-# $Revision: 5158 $
+# $Revision: 5661 $
 
 if(description)
 {
 
  script_id(90021);
- script_version("$Revision: 5158 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+ script_version("$Revision: 5661 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2008-1382");
  name = "libpng vulnerability";
  script_name(name);
-
- script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1382");
 
  summary = "Determines the Version of libpng";
  script_category(ACT_GATHER_INFO);

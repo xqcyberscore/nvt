@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: clamav-CB-A08-0001.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: clamav-CB-A08-0001.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: ClamAV < 0.93.1 vulnerability
 #
 # Authors:
@@ -59,27 +59,19 @@ tag_summary = "The remote host is probably affected by the
 
 tag_solution = "All ClamAV users should upgrade to the latest version:";
 
-# $Revision: 5158 $
+# $Revision: 5661 $
 
 if(description)
 {
 
   script_id(90000);
-  script_version("$Revision: 5158 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-02-29 23:43:58 +0100 (Fri, 29 Feb 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2007-6335", "CVE-2007-6336", "CVE-2007-6337", "CVE-2008-0318", "CVE-2008-1100", "CVE-2008-1387", "CVE-2008-2713");
   script_name("ClamAV < 0.93.1 vulnerability");
-
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-2713");
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1387");
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1100");
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0318");
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6337");
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6336");
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6335");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");

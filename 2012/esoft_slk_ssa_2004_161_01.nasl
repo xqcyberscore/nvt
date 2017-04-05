@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_161_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2004_161_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -28,16 +28,8 @@
 include("revisions-lib.inc");
 tag_insight = "New cvs packages that have been upgraded to cvs-1.11.17 are available
 for Slackware 8.1, 9.0, 9.1, and -current to fix various security
-issues.  Sites running a CVS server should upgrade to the new CVS
-package right away.
-
-More details about the issues may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0416
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0417
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0418
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0414";
+issues. Sites running a CVS server should upgrade to the new CVS
+package right away.";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2004-161-01.";
 
@@ -47,11 +39,11 @@ if(description)
 {
  script_id(53925);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2004-0416", "CVE-2004-0417", "CVE-2004-0418", "CVE-2004-0414");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2004-161-01 cvs ";
  script_name(name);
 

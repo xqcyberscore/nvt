@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843030");
-  script_version("$Revision: 5178 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 07:56:31 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 5610 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:09:51 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-03 12:11:07 +0530 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2016-7553", "CVE-2017-5193", "CVE-2017-5194", "CVE-2017-5195",
 		"CVE-2017-5196", "CVE-2017-5356");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for irssi USN-3184-1");
   script_tag(name: "summary", value: "Check the version of irssi");

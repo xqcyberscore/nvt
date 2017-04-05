@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_73342.nasl 2641 2016-02-11 16:51:04Z mime $
+# $Id: gb_citrix_netscaler_73342.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability
 #
@@ -34,13 +34,9 @@ if (description)
  script_cve_id("CVE-2015-2840","CVE-2015-2838","CVE-2015-2839");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2641 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability");
-
- script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2838");
- script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2839");
- script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2840");
 
  script_tag(name: "impact" , value:"An attacker may leverage this issue to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected site. This may help the attacker
@@ -79,7 +75,7 @@ to properly sanitize user-supplied input.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 17:51:04 +0100 (Thu, 11 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:10:00 +0200 (Tue, 12 May 2015)");
  script_summary("Check the version");
  script_category(ACT_GATHER_INFO);

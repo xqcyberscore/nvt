@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809924");
-  script_version("$Revision: 5430 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 11:10:01 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 17:59:01 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-7510", "CVE-2016-7410");
   script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-328754be1c");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/BAY2RUJ3JMNC6SAZMITICJ4C6C4RDG36");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libdwarf");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

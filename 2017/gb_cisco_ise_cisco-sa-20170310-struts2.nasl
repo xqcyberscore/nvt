@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20170310-struts2.nasl 5575 2017-03-15 06:07:53Z ckuerste $
+# $Id: gb_cisco_ise_cisco-sa-20170310-struts2.nasl 5608 2017-03-20 04:16:04Z ckuerste $
 #
 # Cisco Identity Services Engine Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-5638");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5575 $");
+ script_version ("$Revision: 5608 $");
 
  script_name("Cisco Identity Services Engine Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability");
 
@@ -41,8 +41,7 @@ if (description)
 
  script_tag(name: "vuldetect", value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 14th March, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
 
  script_tag(name: "summary", value: "Cisco ISE is prone to a vulnerability in Apache Struts2.");
 
@@ -51,9 +50,9 @@ parser used in Apache Struts2 that could allow an attacker to execute commands r
 using a crafted Content-Type header value.");
 
  script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "NoneAvailable");
+ script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-15 07:07:53 +0100 (Wed, 15 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-20 05:16:04 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name: "creation_date", value: "2017-03-13 11:35:28 +0700 (Mon, 13 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -75,11 +74,12 @@ affected = make_list('1.3.0.876',
                      '2.0.0.306',
                      '2.2.0.470',
                      '2.0.1.130',
+                     '2.1.0.474',
                      '2.2.0.471');
 
 foreach af (affected) {
   if (version == af) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "None");
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
     security_message(port: 0, data: report);
     exit(0);
   }

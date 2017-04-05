@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_44765.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_webid_44765.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # WeBid Multiple Input Validation Vulnerabilities
 #
@@ -45,8 +45,8 @@ CPE = "cpe:/a:webidsupport:webid";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5652 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-11 13:24:47 +0100 (Thu, 11 Nov 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -64,9 +64,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_webid_detect.nasl");
+ script_dependencies("gb_webid_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("webid/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

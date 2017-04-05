@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882491");
-  script_version("$Revision: 3354 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 15:39:51 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:39:21 +0200 (Tue, 17 May 2016)");
   script_cve_id("CVE-2016-2805", "CVE-2016-2807");
   script_tag(name:"cvss_base", value:"10.0");
@@ -58,7 +58,6 @@ the original reporters.
 
   script_xref(name: "CESA", value: "2016:1041");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-May/021892.html");
-  script_summary("Check for the Version of thunderbird");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

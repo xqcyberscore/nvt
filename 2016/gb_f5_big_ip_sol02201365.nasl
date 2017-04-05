@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol02201365.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol02201365.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # F5 BIG-IP - SOL02201365 - SLOTH: TLS 1.2 handshake vulnerability CVE-2015-7575
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7575");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 5650 $");
 
  script_name("F5 BIG-IP - SOL02201365 - SLOTH: TLS 1.2 handshake vulnerability CVE-2015-7575");
 
@@ -49,9 +49,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-16 16:20:45 +0100 (Tue, 16 Feb 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

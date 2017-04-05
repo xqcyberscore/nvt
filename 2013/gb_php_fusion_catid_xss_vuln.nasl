@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fusion_catid_xss_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_php_fusion_catid_xss_vuln.nasl 5668 2017-03-21 14:16:34Z cfi $
 #
 # PHP-Fusion 'cat-id' Cross Site Scripting Vulnerability
 #
@@ -24,77 +24,76 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to insert arbitrary HTML and
-  script code, which will be executed in a user's browser session in the
-  context of an affected site when the malicious data is being viewed.
-  Impact Level: Application";
-tag_affected = "PHP-Fusion version 7.02.04";
-
-
-tag_insight = "The flaw is due to input passed via the 'cat_id' parameter to
-  'downloads.php' is not properly sanitized before being it is
-  returned to the user.";
-tag_solution = "Apply the patch or upgrade to 7.02.05 or later,
-  For updates refer to http://www.php-fusion.co.uk/index.php";
-tag_summary = "This host is installed with PHP-Fusion and is prone cross site
-  scripting vulnerability.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803221";
 CPE = "cpe:/a:php-fusion:php-fusion";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 2939 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803221");
+  script_version("$Revision: 5668 $");
   script_cve_id("CVE-2012-6043");
   script_bugtraq_id(51365);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 10:26:58 +0530 (Fri, 01 Feb 2013)");
   script_name("PHP-Fusion 'cat-id' Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51365/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/108542/phpfusion70204-xss.txt");
-
-  script_summary("Check if PHP-Fusion is vulnerable to XSS");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_php_fusion_detect.nasl");
-  script_require_keys("php-fusion/installed");
   script_require_ports("Services/www", 80);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_mandatory_keys("php-fusion/installed");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51365/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/108542/phpfusion70204-xss.txt");
+
+  tag_impact = "Successful exploitation will allow attacker to insert arbitrary HTML and
+  script code, which will be executed in a user's browser session in the
+  context of an affected site when the malicious data is being viewed.
+
+  Impact Level: Application";
+
+  tag_affected = "PHP-Fusion version 7.02.04";
+
+  tag_insight = "The flaw is due to input passed via the 'cat_id' parameter to
+  'downloads.php' is not properly sanitized before being it is
+  returned to the user.";
+
+  tag_solution = "Apply the patch or upgrade to 7.02.05 or later,
+  For updates refer to http://www.php-fusion.co.uk/index.php";
+
+  tag_summary = "This host is installed with PHP-Fusion and is prone cross site
+  scripting vulnerability.";
+
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
-if(!pfPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check Host Supports PHP
-if(!can_host_php(port:pfPort)){
-  exit(0);
-}
-
-## Get PHP-Fusion Installed Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:pfPort))exit(0);
+if( dir == "/" ) dir = "";
 
 ## Construct XSS attack request
 url = dir + '/downloads.php?cat_id="<script>alert(document.cookie)</script>';
 
 ## Confirm exploit worked properly or not
-if(http_vuln_check(port:pfPort, url:url, check_header:TRUE,
-                   pattern:"<script>alert\(document.cookie\)</script>"))
-{
-  security_message(pfPort);
-  exit(0);
+if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"<script>alert\(document\.cookie\)</script>" ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pulse_cms_45186.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_pulse_cms_45186.nasl 5660 2017-03-21 11:29:28Z cfi $
 #
 # Pulse CMS Basic Local File Include Vulnerability
 #
@@ -40,8 +40,8 @@ confirmed this. Please contact the vendor for more information.";
 if (description)
 {
  script_id(100935);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5660 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-12-06 15:55:47 +0100 (Mon, 06 Dec 2010)");
  script_bugtraq_id(45186);
  script_tag(name:"cvss_base", value:"6.8");
@@ -51,7 +51,6 @@ if (description)
  script_name("Pulse CMS Basic Local File Include Vulnerability");
 
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45186");
- script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-4330");
  script_xref(name : "URL" , value : "http://pulsecms.com/");
  script_xref(name : "URL" , value : "http://www.uncompiled.com/2010/12/pulse-cms-basic-local-file-inclusion-vulnerability-cve-2010-4330/");
 
@@ -59,7 +58,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

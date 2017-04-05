@@ -24,7 +24,7 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerabilitiy has been found and corrected in apache:
+tag_insight = "A vulnerability has been found and corrected in apache:
 
   The ap_read_request function in server/protocol.c in the Apache HTTP
   Server 2.2.x before 2.2.15, when a multithreaded MPM is used, does
@@ -57,8 +57,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00018.php");
   script_id(830931);
-  script_version("$Revision: 3150 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:08:03 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 5654 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-03-12 17:02:32 +0100 (Fri, 12 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");

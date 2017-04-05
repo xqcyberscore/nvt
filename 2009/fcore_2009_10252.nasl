@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_10252.nasl 4665 2016-12-02 15:53:15Z teissa $
+# $Id: fcore_2009_10252.nasl 5663 2017-03-21 11:58:31Z cfi $
 # Description: Auto-generated from advisory FEDORA-2009-10252 (dnsmasq)
 #
 # Authors:
@@ -28,9 +28,7 @@
 include("revisions-lib.inc");
 tag_insight = "Update Information:
 
-This update fixes two security issues with dnsmasq's tftp server:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2957
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2958
+This update fixes two security issues with dnsmasq's tftp server.
 
 ChangeLog:
 
@@ -52,8 +50,8 @@ announced via advisory FEDORA-2009-10252.";
 if(description)
 {
  script_id(66043);
- script_version("$Revision: 4665 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-02 16:53:15 +0100 (Fri, 02 Dec 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-10-19 21:50:22 +0200 (Mon, 19 Oct 2009)");
  script_cve_id("CVE-2009-2957", "CVE-2009-2958");
  script_tag(name:"cvss_base", value:"6.8");

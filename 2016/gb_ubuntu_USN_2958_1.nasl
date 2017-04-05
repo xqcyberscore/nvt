@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842727");
-  script_version("$Revision: 3323 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-16 09:13:47 +0200 (Mon, 16 May 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:17 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2013-4473", "CVE-2013-4474", "CVE-2015-8868");
   script_tag(name:"cvss_base", value:"9.3");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name: "USN", value: "2958-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003395.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of poppler");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

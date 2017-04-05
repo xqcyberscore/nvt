@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cisco-sa-20140507-webex-arf.nasl 4468 2016-11-10 16:24:56Z teissa $
+# $Id: gb_cisco_cisco-sa-20140507-webex-arf.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Cisco WebEx Advanced Recording Format (ARF) Player Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:webex_arf_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107077");
-  script_version("$Revision: 4468 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2014-2132", "CVE-2014-2133", "CVE-2014-2134", "CVE-2014-2135", "CVE-2014-2136");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 17:24:56 +0100 (Thu, 10 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-25 11:19:11 +0530 (Tue, 25 Oct 2016)");
   script_name("Cisco WebEx Advanced Recording Format (ARF) Player Multiple Vulnerabilities (Windows)");
 
@@ -54,7 +54,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name: "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140507-webex");
-  script_summary("Check for the vulnerable version of Cisco WebEx Meetings Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

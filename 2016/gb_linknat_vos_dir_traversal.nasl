@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_dir_traversal.nasl 3777 2016-07-30 10:14:39Z cfi $
+# $Id: gb_linknat_vos_dir_traversal.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Linknat VOS3000/2009 Direcory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:linknat:vos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106088");
-  script_version("$Revision: 3777 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-30 12:14:39 +0200 (Sat, 30 Jul 2016) $");
+  script_version("$Revision: 5626 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-05-27 12:47:53 +0700 (Fri, 27 May 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -46,11 +46,10 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_linknat_vos_detect_http.nasl");
+  script_dependencies("gb_linknat_vos_detect_http.nasl", "os_detection.nasl");
   script_mandatory_keys("linknat_vos/detected");
 
   script_tag(name: "summary", value: "Linknat VOS3000/2009 is prone to an directory traversal vulnerability");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3460.nasl 3319 2016-05-13 10:33:42Z benallard $
+# $Id: deb_3460.nasl 5650 2017-03-21 10:00:45Z teissa $
 # Auto-generated from advisory DSA 3460-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703460);
-    script_version("$Revision: 3319 $");
+    script_version("$Revision: 5650 $");
     script_cve_id("CVE-2016-1982", "CVE-2016-1983");
     script_name("Debian Security Advisory DSA 3460-1 (privoxy - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-02-05 13:14:34 +0530 (Fri, 05 Feb 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3460.html");
 
-    script_summary("Debian Security Advisory DSA 3460-1 (privoxy - security update)");
 
     script_category(ACT_GATHER_INFO);
 

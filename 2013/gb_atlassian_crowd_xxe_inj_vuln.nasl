@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if(description)
 {
   script_id(803830);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 5627 $");
   script_cve_id("CVE-2013-3925");
   script_bugtraq_id(60899);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-07-09 15:27:15 +0530 (Tue, 09 Jul 2013)");
   script_name("Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability");
 
@@ -78,7 +78,7 @@ For updates refer to http://www.atlassian.com/software/crowd/download";
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8095);
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   exit(0);
 }
 

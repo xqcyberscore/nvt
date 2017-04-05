@@ -33,13 +33,12 @@ tag_summary = "Buffer overflow in Panda Antivirus before 20-07-2007
 if(description)
 {
  script_id(102052);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 5660 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
  script_cve_id("CVE-2007-3969");
  script_bugtraq_id(24989);
  script_name("Panda Antivirus Buffer Overflow");
- script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3969");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/474247/100/0/threaded");
  script_xref(name : "URL" , value : "http://secunia.com/advisories/26171");
  script_tag(name:"qod_type", value:"registry");

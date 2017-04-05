@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3777.nasl 5178 2017-02-03 06:56:31Z antu123 $
+# $Id: deb_3777.nasl 5644 2017-03-21 09:07:05Z teissa $
 # Auto-generated from advisory DSA 3777-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,14 +30,14 @@
 if(description)
 {
     script_id(703777);
-    script_version("$Revision: 5178 $");
+    script_version("$Revision: 5644 $");
     script_cve_id("CVE-2016-10166", "CVE-2016-10167", "CVE-2016-10168", "CVE-2016-6906",
                   "CVE-2016-6912", "CVE-2016-9317");
     script_name("Debian Security Advisory DSA 3777-1 (libgd2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-02-03 07:56:31 +0100 (Fri, 03 Feb 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
     script_tag(name:"creation_date", value:"2017-02-03 12:11:12 +0530 (Fri, 03 Feb 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

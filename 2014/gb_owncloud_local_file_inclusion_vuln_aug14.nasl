@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_local_file_inclusion_vuln_aug14.nasl 5081 2017-01-24 11:05:06Z cfi $
+# $Id: gb_owncloud_local_file_inclusion_vuln_aug14.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # ownCloud Local File Inclusion Vulnerability -01 Aug14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804821");
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 5621 $");
   script_cve_id("CVE-2014-4929");
   script_bugtraq_id(68975);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-08-25 21:35:23 +0530 (Mon, 25 Aug 2014)");
   script_name("ownCloud Local File Inclusion Vulnerability -01 Aug14");
 
@@ -79,7 +79,7 @@ For updates refer to http://owncloud.org";
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_owncloud_detect.nasl", "os_detection.nasl");
+  script_dependencies("gb_owncloud_detect.nasl");
   script_mandatory_keys("owncloud/installed");
   script_require_ports("Services/www", 80);
   exit(0);

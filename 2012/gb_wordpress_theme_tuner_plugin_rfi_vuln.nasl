@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_tuner_plugin_rfi_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_theme_tuner_plugin_rfi_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
 #
 # WordPress Theme Tuner Plugin 'tt-abspath' Parameter Remote File Inclusion Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5640 $");
   script_bugtraq_id(51636);
   script_cve_id("CVE-2012-0934");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-02-03 12:12:12 +0530 (Fri, 03 Feb 2012)");
   script_name("WordPress Theme Tuner Plugin 'tt-abspath' Parameter Remote File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47722");
@@ -61,8 +61,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("secpod_wordpress_detect_900182.nasl");
-  script_require_keys("wordpress/installed");
+  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
+  script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

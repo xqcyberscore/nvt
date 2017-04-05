@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3673.nasl 4186 2016-09-30 04:45:51Z antu123 $
+# $Id: deb_3673.nasl 5612 2017-03-20 10:00:41Z teissa $
 # Auto-generated from advisory DSA 3673-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703673);
-    script_version("$Revision: 4186 $");
+    script_version("$Revision: 5612 $");
     script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2180",
                   "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-2183", "CVE-2016-6302",
                   "CVE-2016-6303", "CVE-2016-6304", "CVE-2016-6306");
     script_name("Debian Security Advisory DSA 3673-1 (openssl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-09-30 06:45:51 +0200 (Fri, 30 Sep 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-09-22 00:00:00 +0200 (Thu, 22 Sep 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -44,7 +44,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3673.html");
 
-    script_summary("Debian Security Advisory DSA 3673-1 (openssl - security update)");
 
     script_category(ACT_GATHER_INFO);
 

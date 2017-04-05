@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln01_jul14.nasl 5081 2017-01-24 11:05:06Z cfi $
+# $Id: gb_php_mult_vuln01_jul14.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # PHP Multiple Vulnerabilities - 01 - Jul14
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804683");
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 5621 $");
   script_cve_id("CVE-2014-3478", "CVE-2014-3515", "CVE-2014-0207", "CVE-2014-3487",
                 "CVE-2014-3479", "CVE-2014-3480");
   script_bugtraq_id(68239, 68237, 68243, 68120, 68241, 68238);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-07-18 16:56:10 +0530 (Fri, 18 Jul 2014)");
   script_name("PHP Multiple Vulnerabilities - 01 - Jul14");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
-  script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
+  script_dependencies("gb_php_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("php/installed");
 

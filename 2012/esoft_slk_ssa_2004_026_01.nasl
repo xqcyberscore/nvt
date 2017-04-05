@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_026_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2004_026_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_insight = "GAIM is a GTK2-based Instant Messaging (IM) client.
 New GAIM packages are available for Slackware 9.0, 9.1, and -current.
 12 vulnerabilities were found in the instant messenger GAIM that
 allow remote compromise.  All sites using GAIM should upgrade to these
-new packages.  These are based on GAIM 0.75 with patches for all 12
-security issues.  Thanks to Stefan Esser of e-matters GmbH for
+new packages. These are based on GAIM 0.75 with patches for all 12
+security issues. Thanks to Stefan Esser of e-matters GmbH for
 finding and reporting these bugs.
 
 For more details, see the e-matters GmbH advisory here:
@@ -46,10 +46,10 @@ if(description)
 {
  script_id(53947);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2004-026-01 GAIM security update ";
  script_name(name);
 

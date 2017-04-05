@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 4018 2016-09-09 07:49:16Z cfi $
+# $Id: gb_hp_data_protector_multiple_vuln_apr16.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # HP Data Protector Multiple Vulnerabilities - Apr16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807814");
-  script_version("$Revision: 4018 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-2004", "CVE-2016-2005", "CVE-2016-2006", "CVE-2016-2007",
                 "CVE-2016-2008", "CVE-2015-2808");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 09:49:16 +0200 (Fri, 09 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-26 18:03:24 +0530 (Tue, 26 Apr 2016)");
   script_name("HP Data Protector Multiple Vulnerabilities - Apr16");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05085988");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of HP Data Protector");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("hp_data_protector_installed.nasl");

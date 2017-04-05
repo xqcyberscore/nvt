@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20160113-ise2.nasl 4761 2016-12-14 07:26:20Z antu123 $
+# $Id: gb_cisco_ise_cisco-sa-20160113-ise2.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Cisco Identity Services Engine Unauthorized Access Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6317");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:N");
- script_version ("$Revision: 4761 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("Cisco Identity Services Engine Unauthorized Access Vulnerability ");
 
@@ -48,9 +48,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-14 08:26:20 +0100 (Wed, 14 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-01-20 12:43:15 +0100 (Wed, 20 Jan 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

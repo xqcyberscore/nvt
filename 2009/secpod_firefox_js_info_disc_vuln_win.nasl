@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_firefox_js_info_disc_vuln_win.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_firefox_js_info_disc_vuln_win.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Firefox Information Disclosure Vulnerability Jan09 (Windows)
 #
@@ -39,15 +39,14 @@ tag_summary = "The host is installed with Mozilla Firefox browser and is prone
 if(description)
 {
   script_id(900448);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-01-28 13:27:12 +0100 (Wed, 28 Jan 2009)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:N/I:P/A:N");
-  script_cve_id("CVE-2009-5913");
+  script_cve_id("CVE-2008-5913");
   script_bugtraq_id(33276);
   script_name("Firefox Information Disclosure Vulnerability Jan09 (Windows)");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5913");
   script_xref(name : "URL" , value : "http://www.trusteer.com/files/In-session-phishing-advisory-2.pdf");
  
   script_category(ACT_GATHER_INFO);

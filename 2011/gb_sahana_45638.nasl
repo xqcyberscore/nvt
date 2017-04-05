@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sahana_45638.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_sahana_45638.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # Sahana Disaster Management System 'sel' Parameter SQL Injection Vulnerability
 #
@@ -39,8 +39,8 @@ may also be vulnerable.";
 if (description)
 {
  script_id(103014);
- script_version("$Revision: 5079 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+ script_version("$Revision: 5621 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-05 15:07:33 +0100 (Wed, 05 Jan 2011)");
  script_bugtraq_id(45638);
  script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("sahana_detect.nasl","os_detection.nasl");
+ script_dependencies("sahana_detect.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

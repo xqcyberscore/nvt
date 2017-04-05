@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_info_disc_vuln.nasl 4883 2016-12-30 07:47:11Z antu123 $
+# $Id: gb_apache_tika_server_info_disc_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Apache Tika Server 'fileUrl' Header Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810252");
-  script_version("$Revision: 4883 $");
+  script_version("$Revision: 5626 $");
   script_cve_id("CVE-2015-3271");
   script_bugtraq_id(9502);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 08:47:11 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-20 17:03:54 +0530 (Tue, 20 Dec 2016)");
   script_name("Apache Tika Server 'fileUrl' Header Information Disclosure Vulnerability");
   script_tag(name:"summary", value:"The host is installed with Apache Tika Server
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_apache_tika_server_detect.nasl");
+  script_dependencies("gb_apache_tika_server_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Apache/Tika/Server/Installed");
   script_require_ports("Services/www", 9998);
   exit(0);

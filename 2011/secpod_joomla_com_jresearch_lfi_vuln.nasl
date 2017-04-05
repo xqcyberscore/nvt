@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_joomla_com_jresearch_lfi_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
 #
 # Joomla Component 'com_jresearch' Local File Inclusion Vulnerability
 #
@@ -47,8 +47,8 @@ vulnerability.";
 if(description)
 {
   script_id(902386);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,9 +61,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("joomla_detect.nasl");
+  script_dependencies("joomla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

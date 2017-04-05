@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1066.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2015-1066.nasl 5650 2017-03-21 10:00:45Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122874");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5650 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:01:42 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1066");
 script_tag(name: "insight", value: "ELSA-2015-1066 -  php54 security and bug fix update - php54[2.0-1]- fix incorrect selinux contexts #1194332php54-php[5.4.40-1]- rebase to PHP 5.4.40 for various security fix #1209887[5.4.37-1]- rebase to PHP 5.4.37[5.4.36-1]- rebase to PHP 5.4.36 #1168193- fix package name in description- php-fpm own session dirphp54-php-pecl-zendopcache[7.0.4-3]- fix use after free CVE-2015-1351[7.0.4-2]- add upstream patch for failed test[7.0.4-1]- Update to 7.0.4[7.0.3-1]- update to 7.0.3 #1055927"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1066");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

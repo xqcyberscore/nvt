@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opencart_mult_vuln.nasl 5642 2017-03-21 08:49:30Z cfi $
 #
 # OpenCart Multiple Vulnerabilities
 #
@@ -49,11 +49,11 @@ vulnerabilities.";
 if(description)
 {
   script_id(802751);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5642 $");
   script_bugtraq_id(52957);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-04-18 18:47:56 +0530 (Wed, 18 Apr 2012)");
   script_name("OpenCart Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48762");
@@ -65,8 +65,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("opencart_detect.nasl");
-  script_require_keys("OpenCart/installed");
+  script_dependencies("opencart_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("OpenCart/installed");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

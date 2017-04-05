@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842743");
-  script_version("$Revision: 3374 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:01:05 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 05:21:30 +0200 (Tue, 10 May 2016)");
   script_cve_id("CVE-2015-7515", "CVE-2015-8830", "CVE-2015-1805", "CVE-2016-0774",
  		"CVE-2016-0821", "CVE-2016-2184", "CVE-2016-2185", "CVE-2016-2186",
@@ -99,7 +99,6 @@ if(description)
   script_xref(name: "USN", value: "2968-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003412.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-trusty");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

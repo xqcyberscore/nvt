@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_zingiri_web_shop_rfi_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_wordpress_zingiri_web_shop_rfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # WordPress Zingiri Web Shop Plugin Remote File Inclusion Vulnerability
 #
@@ -48,8 +48,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-09-22 10:24:03 +0200 (Thu, 22 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,9 +61,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
+  script_mandatory_keys("wordpress/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

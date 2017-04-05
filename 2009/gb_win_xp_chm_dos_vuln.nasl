@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_win_xp_chm_dos_vuln.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: gb_win_xp_chm_dos_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Microsoft Windows XP SP3 denial of service vulnerability.
 #
@@ -49,8 +49,8 @@ denial of service vulnerability.";
 if(description)
 {
   script_id(800504);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-01-19 13:47:40 +0100 (Mon, 19 Jan 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,8 +58,6 @@ if(description)
   script_bugtraq_id(33204);
   script_name("Microsoft Windows XP SP3 denial of service vulnerability");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/7720");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?execution=e3s1");
-  script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2009-0119");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);

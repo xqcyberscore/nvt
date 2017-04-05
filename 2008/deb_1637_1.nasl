@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_1637_1.nasl 3925 2016-09-01 04:57:14Z teissa $
+# $Id: deb_1637_1.nasl 5654 2017-03-21 10:23:47Z cfi $
 # Description: Auto-generated from advisory DSA 1637-1 (git-core)
 #
 # Authors:
@@ -32,7 +32,7 @@ maliciously crafted repositories or changes, could enable a stack
 buffer overflow and potentially the execution of arbitrary code.
 
 The Common Vulnerabilities and Exposures project identifies this
-vulnerabilitiy as CVE-2008-3546.
+vulnerability as CVE-2008-3546.
 
 For the stable distribution (etch), this problem has been fixed in
 version 1.4.4.4-2.1+etch1.
@@ -50,8 +50,8 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(61595);
- script_version("$Revision: 3925 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-01 06:57:14 +0200 (Thu, 01 Sep 2016) $");
+ script_version("$Revision: 5654 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-17 04:23:15 +0200 (Wed, 17 Sep 2008)");
  script_cve_id("CVE-2008-3546");
  script_tag(name:"cvss_base", value:"7.5");

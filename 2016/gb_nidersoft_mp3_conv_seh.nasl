@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nidersoft_mp3_conv_seh.nasl 4806 2016-12-19 15:45:27Z teissa $
+# $Id: gb_nidersoft_mp3_conv_seh.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:Nidesoft:mp3_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107108");
-  script_version("$Revision: 4806 $");
+  script_version("$Revision: 5612 $");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 16:45:27 +0100 (Mon, 19 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-19 11:19:11 +0530 (Mon, 19 Dec 2016)");
   script_name("Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)");
   script_tag(name: "summary" , value: "This host is installed with Nidesoft MP3 Converter and is prone to SEH Local Buffer Overflow.");
@@ -53,7 +53,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://www.exploit-db.com/exploits/40917/");
 
-  script_summary("Check for the vulnerable version of Nidesoft MP3 Converter on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Buffer overflow");

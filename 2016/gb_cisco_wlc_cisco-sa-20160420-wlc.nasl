@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20160420-wlc.nasl 3415 2016-06-01 15:34:04Z mime $
+# $Id: gb_cisco_wlc_cisco-sa-20160420-wlc.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability
 #
@@ -31,8 +31,8 @@ if (description)
  script_cve_id("CVE-2016-1362");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3415 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-01 17:34:04 +0200 (Wed, 01 Jun 2016) $");
+ script_version ("$Revision: 5612 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-01 11:56:51 +0200 (Wed, 01 Jun 2016)");
  script_name("Cisco Wireless LAN Controller Management Interface Denial of Service Vulnerability");
 
@@ -49,7 +49,6 @@ Release 7.6.100.0");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

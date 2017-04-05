@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-062.nasl 3300 2016-05-12 11:57:52Z antu123 $
+# $Id: gb_ms16-062.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3158222)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808018");
-  script_version("$Revision: 3300 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-0171", "CVE-2016-0173", "CVE-2016-0174", "CVE-2016-0196",
                 "CVE-2016-0175", "CVE-2016-0176", "CVE-2016-0197");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 13:57:52 +0200 (Thu, 12 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 09:35:43 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Kernel-Mode Drivers Privilege Elevation Vulnerabilities (3158222)");
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3158222");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-062");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20160323-sip.nasl 2995 2016-04-05 13:31:26Z mime $
+# $Id: gb_cisco_cucm_cisco-sa-20160323-sip.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Cisco Unified Communications Manager Software Session Initiation Protocol Memory Leak Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1350");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2995 $");
+ script_version ("$Revision: 5612 $");
 
  script_name("Cisco Unified Communications Manager Software Session Initiation Protocol Memory Leak Vulnerability");
 
@@ -50,9 +50,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-05 15:31:26 +0200 (Tue, 05 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-04-04 12:02:56 +0200 (Mon, 04 Apr 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

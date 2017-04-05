@@ -32,13 +32,12 @@ tag_summary = "Panda Software Antivirus/Internet Security before 20070402 allows
 if(description)
 {
   script_id(102049);
-  script_version("$Revision: 4919 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 16:22:45 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2007-1670");
   script_bugtraq_id(23823);
   script_name("Panda AntiVirus Zoo Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1670");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/467646/100/0/threaded");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/25152");
   script_tag(name:"qod_type", value:"registry");

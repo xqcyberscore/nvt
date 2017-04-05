@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3483.nasl 2845 2016-03-14 07:13:16Z antu123 $
+# $Id: deb_3483.nasl 5650 2017-03-21 10:00:45Z teissa $
 # Auto-generated from advisory DSA 3483-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703483);
-    script_version("$Revision: 2845 $");
+    script_version("$Revision: 5650 $");
     script_cve_id("CVE-2016-2037");
     script_name("Debian Security Advisory DSA 3483-1 (cpio - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-14 08:13:16 +0100 (Mon, 14 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-02-19 00:00:00 +0100 (Fri, 19 Feb 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3483.html");
 
-    script_summary("Debian Security Advisory DSA 3483-1 (cpio - security update)");
 
     script_category(ACT_GATHER_INFO);
 

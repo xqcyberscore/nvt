@@ -29,11 +29,8 @@ tag_insight = "capi4k-utils is vulnerable to a buffer overflow in the bufprint()
 tag_solution = "All capi4k-utils users should upgrade to the latest version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=net-dialup/capi4k-utils-20050718-r3'
+    # emerge --ask --oneshot --verbose '>=net-dialup/capi4k-utils-20050718-r3'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200704-23
-http://bugs.gentoo.org/show_bug.cgi?id=170870
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2007-1217";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200704-23.";
 
@@ -42,15 +39,16 @@ advisory GLSA 200704-23.";
 if(description)
 {
  script_id(58250);
- script_version("$Revision: 4377 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-28 10:30:42 +0200 (Fri, 28 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2007-1217");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
  script_name("Gentoo Security Advisory GLSA 200704-23 (capi4k-utils)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200704-23");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=170870");
 
  script_category(ACT_GATHER_INFO);
 

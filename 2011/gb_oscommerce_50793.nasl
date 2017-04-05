@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscommerce_50793.nasl 3512 2016-06-14 10:29:04Z teissa $
+# $Id: gb_oscommerce_50793.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # osCommerce Multiple Local File Include Vulnerabilities
 #
@@ -42,7 +42,7 @@ if (description)
  script_id(103345);
  script_cve_id("CVE-2011-4543");
  script_bugtraq_id(50793);
- script_version ("$Revision: 3512 $");
+ script_version ("$Revision: 5647 $");
 
  script_name("osCommerce Multiple Local File Include Vulnerabilities");
 
@@ -52,16 +52,15 @@ if (description)
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 12:29:04 +0200 (Tue, 14 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-24 09:57:26 +0100 (Thu, 24 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_summary("Determine if installed osCommerce is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("oscommerce_detect.nasl");
+ script_dependencies("oscommerce_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Software/osCommerce");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 4712 2016-12-08 10:26:10Z cfi $
+# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # Limny admin/preview.php theme Parameter Directory Traversal Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:limny:limny";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802984");
-  script_version("$Revision: 4712 $");
+  script_version("$Revision: 5633 $");
   script_cve_id("CVE-2011-5210");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 11:26:10 +0100 (Thu, 08 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-10-12 15:41:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Limny admin/preview.php theme Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_limny_detect.nasl");
+  script_dependencies("gb_limny_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("limny/installed");
 

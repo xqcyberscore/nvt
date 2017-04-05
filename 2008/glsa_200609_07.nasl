@@ -32,12 +32,8 @@ tag_solution = "All libXfont users should upgrade to the latest version:
     # emerge --sync
     # emerge --ask --oneshot --verbose '>=x11-libs/libXfont-1.2.1'
 
-All monolithic X.org users are advised to migrate to modular X.org.
+All monolithic X.org users are advised to migrate to modular X.org.";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200609-07
-http://bugs.gentoo.org/show_bug.cgi?id=145513
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-3739
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-3740";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200609-07.";
 
@@ -46,15 +42,16 @@ advisory GLSA 200609-07.";
 if(description)
 {
  script_id(57885);
- script_version("$Revision: 4339 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:03:30 +0200 (Tue, 25 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2006-3739", "CVE-2006-3740");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Gentoo Security Advisory GLSA 200609-07 (libxfont)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200609-07");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=145513");
 
  script_category(ACT_GATHER_INFO);
 

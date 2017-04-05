@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_some_lfi_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_joomla_com_some_lfi_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
 #
 # Joomla Some Component Local File Inclusion Vulnerability
 #
@@ -47,10 +47,10 @@ file inclusion vulnerability.";
 if(description)
 {
   script_id(802570);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5640 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-01-23 16:56:59 +0530 (Mon, 23 Jan 2012)");
   script_name("Joomla Some Component Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108906/joomlasome-lfi.txt");
@@ -60,9 +60,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("joomla_detect.nasl");
+  script_dependencies("joomla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

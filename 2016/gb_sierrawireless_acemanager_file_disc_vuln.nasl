@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sierrawireless_acemanager_file_disc_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_sierrawireless_acemanager_file_disc_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Sierra Wireless AceManager File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:sierra_wireless:acemanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106076");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-05-17 09:27:34 +0700 (Tue, 17 May 2016)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name: "summary", value: "Sierra Wireless AceManager is prone to a file disclosure
 vulnerability");
-  script_summary("Checks if the file filteredlogs.txt is accessible");
 
   script_tag(name: "vuldetect", value: "Checks if the file filteredlogs.txt is accessible.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zencart_44636.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_zencart_44636.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # Zen Cart 'includes/initsystem.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ Zen Cart 1.3.9h is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100894);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5652 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44636);
  script_tag(name:"cvss_base", value:"5.0");
@@ -55,7 +55,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xuezhuli_filesharing_path_trav_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_xuezhuli_filesharing_path_trav_vuln.nasl 5643 2017-03-21 09:06:09Z teissa $
 #
 # XuezhuLi FileSharing 'filename' Parameter Path Traversal Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:xuezhuLi:xuezhuli_filesharing";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808176");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5643 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:06:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("XuezhuLi FileSharing 'filename' Parameter Path Traversal Vulnerability");
 
@@ -55,7 +55,7 @@ if (description)
   script_tag(name: "affected" , value:"XuezhuLi FileSharing all versions");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be addressed once the
+  21th March, 2017. Information regarding this issue will be addressed once the
   updates are available. For updates refer to https://github.com/XuezhuLi");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -67,7 +67,7 @@ if (description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_xuezhuli_filesharing_detect.nasl");
+  script_dependencies("gb_xuezhuli_filesharing_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("XuezhuLi/FileSharing/Installed");
   script_require_ports("Services/www", 80);
   exit(0);

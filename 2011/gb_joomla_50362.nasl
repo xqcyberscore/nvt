@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_50362.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_50362.nasl 5646 2017-03-21 09:37:44Z cfi $
 #
 # Joomla YJ Contact us Component 'view' Parameter Local File Include Vulnerability
 #
@@ -38,8 +38,8 @@ also possible.";
 if (description)
 {
  script_id(103315);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 5646 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-26 13:58:20 +0200 (Wed, 26 Oct 2011)");
  script_bugtraq_id(50362);
  script_tag(name:"cvss_base", value:"5.1");
@@ -54,9 +54,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl");
+ script_dependencies("joomla_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

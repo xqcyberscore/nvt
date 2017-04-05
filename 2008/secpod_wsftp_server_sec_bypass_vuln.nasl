@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: secpod_wsftp_server_sec_bypass_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # WS_FTP Server Manager Security Bypass Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is installed with WS_FTP Server and is prone to Securit
 if(description)
 {
   script_id(900451);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -64,8 +64,7 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://secunia.com/advisories/28822");
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/wsftpweblog-adv.txt");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5692");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5693");
+
   exit(0);
 }
 

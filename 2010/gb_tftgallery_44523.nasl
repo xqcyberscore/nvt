@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tftgallery_44523.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_tftgallery_44523.nasl 5653 2017-03-21 10:19:58Z cfi $
 #
 # TFTgallery 'thumbnailformpost.inc.php' Local File Include Vulnerability
 #
@@ -41,8 +41,8 @@ for more information.";
 if (description)
 {
  script_id(100879);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5653 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-29 12:58:08 +0200 (Fri, 29 Oct 2010)");
  script_bugtraq_id(44523);
 
@@ -58,7 +58,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("tftgallery_detect.nasl");
+ script_dependencies("tftgallery_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

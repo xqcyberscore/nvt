@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_protection_advisor_dir_trav_vuln.nasl 5131 2017-01-30 06:12:36Z ckuerste $
+# $Id: gb_emc_data_protection_advisor_dir_trav_vuln.nasl 5606 2017-03-17 17:09:01Z cfi $
 #
 # EMC Data Protection Advisor Directory Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:emc:data_protection_advisor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106549");
-  script_version("$Revision: 5131 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-30 07:12:36 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 5606 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-8211");
 

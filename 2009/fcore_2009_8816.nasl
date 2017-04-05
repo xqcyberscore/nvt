@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_8816.nasl 4806 2016-12-19 15:45:27Z teissa $
+# $Id: fcore_2009_8816.nasl 5656 2017-03-21 11:03:12Z cfi $
 # Description: Auto-generated from advisory FEDORA-2009-8816 (afuse)
 #
 # Authors:
@@ -28,9 +28,6 @@
 include("revisions-lib.inc");
 tag_insight = "Update Information:
 
-Fixes CVE-2008-2232:
-http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-2232
-
 ChangeLog:
 
 * Mon Aug 17 2009 Tom spot Callaway  - 0.2-4
@@ -53,8 +50,8 @@ announced via advisory FEDORA-2009-8816.";
 if(description)
 {
  script_id(64720);
- script_version("$Revision: 4806 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 16:45:27 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 5656 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-09-02 04:58:39 +0200 (Wed, 02 Sep 2009)");
  script_cve_id("CVE-2008-2232");
  script_tag(name:"cvss_base", value:"4.6");

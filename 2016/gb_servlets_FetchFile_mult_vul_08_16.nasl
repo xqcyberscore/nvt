@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servlets_FetchFile_mult_vul_08_16.nasl 3816 2016-08-09 13:06:03Z mime $
+# $Id: gb_servlets_FetchFile_mult_vul_08_16.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Multiple Vendors '/servlets/FetchFile' Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105858");
- script_version ("$Revision: 3816 $");
+ script_version ("$Revision: 5626 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -45,12 +45,12 @@ execution, arbitrary file download (with directory traversal), use of a weak alg
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-09 15:06:03 +0200 (Tue, 09 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-09 10:38:38 +0200 (Tue, 09 Aug 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 9090);
  script_exclude_keys("Settings/disable_cgi_scanning");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnaLIMS_96823.nasl 5563 2017-03-13 16:09:17Z mime $
+# $Id: gb_dnaLIMS_96823.nasl 5604 2017-03-17 16:42:21Z mime $
 #
 # dnaLIMS Multiple Security Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2017-6526","CVE-2017-6527","CVE-2017-6528","CVE-2017-6529");
- script_version ("$Revision: 5563 $");
+ script_version ("$Revision: 5604 $");
 
  script_name("dnaLIMS Multiple Security Vulnerabilities");
 
@@ -61,12 +61,12 @@ context of the affected application. This may lead to further attacks.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-13 17:09:17 +0100 (Mon, 13 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 17:42:21 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-03-13 16:53:47 +0100 (Mon, 13 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("gb_dnaLIMS_detect.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 

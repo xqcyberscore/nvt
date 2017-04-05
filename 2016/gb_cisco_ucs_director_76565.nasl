@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_director_76565.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: gb_cisco_ucs_director_76565.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # UCS Director Arbitrary File Overwrite Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-6259");
  script_tag(name:"cvss_base", value:"9.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
- script_version ("$Revision: 2910 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("UCS Director Arbitrary File Overwrite Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-03-17 16:14:29 +0100 (Thu, 17 Mar 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3497.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: deb_3497.nasl 5598 2017-03-17 10:00:43Z teissa $
 # Auto-generated from advisory DSA 3497-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703497);
-    script_version("$Revision: 3164 $");
+    script_version("$Revision: 5598 $");
     script_cve_id("CVE-2016-2228");
     script_name("Debian Security Advisory DSA 3497-1 (php-horde - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:33 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3497.html");
 
-    script_summary("Debian Security Advisory DSA 3497-1 (php-horde - security update)");
 
     script_category(ACT_GATHER_INFO);
 

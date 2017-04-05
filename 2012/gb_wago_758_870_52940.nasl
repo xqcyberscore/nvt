@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_758_870_52940.nasl 2866 2016-03-16 10:59:43Z antu123 $
+# $Id: gb_wago_758_870_52940.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities
 #
@@ -30,19 +30,17 @@ if (description)
 {
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52940");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52942");
- script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3013");
- script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4879");
  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-12-249-02.pdf");
  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICS-ALERT-12-097-01.pdf");
  script_xref(name : "URL" , value : "http://www.wago.com/wagoweb/documentation/app_note/a1176/a117600e.pdf");
  script_oid("1.3.6.1.4.1.25623.1.0.103465");
  script_bugtraq_id(52940,52942);
  script_cve_id("CVE-2012-4879","CVE-2012-3013");
- script_version ("$Revision: 2866 $");
+ script_version ("$Revision: 5656 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C"); 
  script_name("WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2016-03-16 11:59:43 +0100 (Wed, 16 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-04-12 11:29:33 +0200 (Thu, 12 Apr 2012)"); 
 
 

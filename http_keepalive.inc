@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_keepalive.inc 5509 2017-03-07 17:29:23Z mime $
+# $Id: http_keepalive.inc 5670 2017-03-21 15:13:03Z cfi $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5509 $
+# $Revision: 5670 $
 #
 ###############################################################################
 
@@ -607,6 +607,7 @@ function traversal_files() {
 
 function exploit_commands() {
 
+  if( ! defined_func( "host_runs" ) ) include( "host_details.inc" );
   res = host_runs( "windows" );
 
   if( res == "yes" ) {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wintftp_server_dir_trav_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_wintftp_server_dir_trav_vuln.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # WinTFTP Server Pro Remote Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902271");
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5652 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:49:11 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Remote file access");
-  script_dependencies("tftpd_detect.nasl");
+  script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to read arbitrary

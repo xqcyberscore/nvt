@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_209_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2006_209_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -29,11 +29,6 @@ include("revisions-lib.inc");
 tag_insight = "New Apache packages are available for Slackware 8.1, 9.0, 9.1, 10.0, 10.1,
 10.2, and -current to fix a security issue with mod_rewrite.
 
-More details about the issues may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-3747
-
 In addition, new mod_ssl packages for Apache 1.3.37 are available for
 all of these versions of Slackware.  This additional package does not
 fix a security issue, but may be required on your system depending on
@@ -47,11 +42,11 @@ if(description)
 {
  script_id(57168);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2006-3747");
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2006-209-01 Apache httpd ";
  script_name(name);
 

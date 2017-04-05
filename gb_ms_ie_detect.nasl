@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_ms_ie_detect.nasl 5662 2017-03-21 11:54:36Z antu123 $
 #
 # Microsoft Internet Explorer Version Detection (Windows)
 #
@@ -30,29 +30,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800209";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 2835 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.800209");
+  script_version("$Revision: 5662 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:54:36 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-12-19 13:40:09 +0100 (Fri, 19 Dec 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Internet Explorer Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Microsoft Internet Explorer.
+  script_tag(name : "summary" , value : "Detection of installed version of
+  Microsoft Internet Explorer.
 
-The script logs in via smb, detects the version of Microsoft Internet Explorer
-on remote host and sets the KB.";
+  The script logs in via smb, detects the version of Microsoft Internet Explorer
+  on remote host and sets the KB.");
 
-
-  script_tag(name : "summary" , value : tag_summary);
-
-  script_summary("Check for Internet Explorer version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -107,6 +101,7 @@ exePath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
 if(ver != NULL)
 {
   set_kb_item(name:"MS/IE/Version", value:ver);
+  set_kb_item(name:"MS/IE/Installed", value:TRUE);
 
   ## Build CPE
   cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:ie:");
@@ -125,6 +120,7 @@ if(exePath != NULL)
   if(ieVer)
   {
     set_kb_item(name:"MS/IE/EXE/Ver", value:ieVer);
+    set_kb_item(name:"MS/IE/Installed", value:TRUE);
 
     ## Build CPE
     cpe = build_cpe(value:ieVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:ie:");

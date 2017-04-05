@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_soappy_xxe_05_14.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_soappy_xxe_05_14.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # SOAPpy XML External Entities Information Disclosure Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105017");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5628 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -36,13 +36,13 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.pnigos.com/?p=260");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-05-06 11:10:06 +0200 (Tue, 06 May 2014)");
  script_summary("Determine if it  is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
+ script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
  script_mandatory_keys("SOAPpy/banner");
  script_require_ports("Services/www", 80);
 

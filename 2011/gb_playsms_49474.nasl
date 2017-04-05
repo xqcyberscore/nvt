@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_playsms_49474.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_playsms_49474.nasl 5645 2017-03-21 09:32:09Z cfi $
 #
 # PlaySMS 'apps_path[themes]' Parameter Multiple Remote File Include Vulnerabilities
 #
@@ -40,8 +40,8 @@ PlaySMS 0.9.5.2 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103271);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5645 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
  script_bugtraq_id(49474);
 
@@ -57,7 +57,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

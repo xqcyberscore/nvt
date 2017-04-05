@@ -30,14 +30,8 @@ unprivileged users to gain administrator rights.";
 tag_solution = "http://www.postgresql.org/about/news.315
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose dev-db/postgresql
+    # emerge --ask --oneshot --verbose dev-db/postgresql";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200505-12
-http://bugs.gentoo.org/show_bug.cgi?id=91231
-http://www.postgresql.org/about/news.315
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1409
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1410
-http://www.postgresql.org/about/news.315";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200505-12.";
 
@@ -46,15 +40,17 @@ advisory GLSA 200505-12.";
 if(description)
 {
  script_id(54944);
- script_version("$Revision: 4286 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-17 09:24:15 +0200 (Mon, 17 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2005-1409", "CVE-2005-1410");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Gentoo Security Advisory GLSA 200505-12 (postgresql)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200505-12");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=91231");
+ script_xref(name:"URL" , value:"http://www.postgresql.org/about/news.315");
 
  script_category(ACT_GATHER_INFO);
 

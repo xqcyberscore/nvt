@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alienvault_ossim_usm_mult_vuln.nasl 5526 2017-03-09 09:46:12Z ckuerste $
+# $Id: gb_alienvault_ossim_usm_mult_vuln.nasl 5644 2017-03-21 09:07:05Z teissa $
 #
 # AlienVault OSSIM/USM Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106617");
-  script_version("$Revision: 5526 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-09 10:46:12 +0100 (Thu, 09 Mar 2017) $");
+  script_version("$Revision: 5644 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-7955");
 

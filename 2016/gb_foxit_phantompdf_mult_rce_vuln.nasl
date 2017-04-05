@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_rce_vuln.nasl 3192 2016-04-29 06:34:11Z antu123 $
+# $Id: gb_foxit_phantompdf_mult_rce_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Foxit PhantomPDF Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807555");
-  script_version("$Revision: 3192 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-4059", "CVE-2016-4060", "CVE-2016-4061", "CVE-2016-4062", 
                 "CVE-2016-4063", "CVE-2016-4064", "CVE-2016-4065");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-29 08:34:11 +0200 (Fri, 29 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 16:44:43 +0530 (Mon, 25 Apr 2016)");
   script_name("Foxit PhantomPDF Multiple Remote Code Execution Vulnerabilities");
 
@@ -77,7 +77,6 @@ if(description)
   script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Foxit PhantomPDF");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");

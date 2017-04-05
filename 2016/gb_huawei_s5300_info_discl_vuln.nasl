@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_s5300_info_discl_vuln.nasl 3773 2016-07-29 10:23:46Z ckuerste $
+# $Id: gb_huawei_s5300_info_discl_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Huawei S5300 Campus Series Switches information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106157");
-  script_version("$Revision: 3773 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-29 12:23:46 +0200 (Fri, 29 Jul 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
   script_tag(name: "cvss_base", value: "2.1");
   script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if (description)
   script_tag(name: "summary", value: "Huawei S5300 Campus Series switches are prone to a local information
 disclosure vulnerability.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

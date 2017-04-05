@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 5428 2017-02-27 07:50:09Z cfi $
+# $Id: secpod_hp_openview_nnm_xss_vuln_900403.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # HP OpenView Network Node Manager XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:openview_network_node_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900403");
-  script_version("$Revision: 5428 $");
+  script_version("$Revision: 5657 $");
   script_bugtraq_id(26838,27237);
-  script_cve_id("CVE-2007-5000","CVE-2007-6388");
+  script_cve_id("CVE-2007-5000", "CVE-2007-6388");
   script_copyright("Copyright (C) 2008 SecPod");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 08:50:09 +0100 (Mon, 27 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,7 +45,6 @@ if(description)
   script_mandatory_keys("Host/runs_unixoide", "HP/OVNNM/installed");
 
   script_xref(name:"URL", value:"http://secunia.com/Advisories/32800");
-  script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-5000");
 
   tag_impact = "Successful exploitation will allow attacker to execute arbitrary codes.
 

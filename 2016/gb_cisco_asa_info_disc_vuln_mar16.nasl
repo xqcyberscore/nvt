@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_info_disc_vuln_mar16.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_info_disc_vuln_mar16.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco ASA Information Disclosure Vulnerability March16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807094");
-  script_version("$Revision: 5000 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-1295");
   script_bugtraq_id(80881);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-02 15:10:26 +0530 (Wed, 02 Mar 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Information Disclosure Vulnerability March16");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160111-asa");
 
-  script_summary("Check for the vulnerable version of Cisco ASA Software");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

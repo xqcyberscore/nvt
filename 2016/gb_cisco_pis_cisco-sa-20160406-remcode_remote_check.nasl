@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160406-remcode_remote_check.nasl 3779 2016-08-01 11:42:12Z mime $
+# $Id: gb_cisco_pis_cisco-sa-20160406-remcode_remote_check.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco Prime Infrastructure Remote Code Execution Vulnerability (Active Check)
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-1291");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3779 $");
+ script_version ("$Revision: 5650 $");
 
  script_name("Cisco Prime Infrastructure Remote Code Execution Vulnerability (Active Check)");
 
@@ -47,9 +47,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-01 13:42:12 +0200 (Mon, 01 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-31 16:10:11 +0200 (Sun, 31 Jul 2016)");
- script_summary("Try to execute a command by sending a special crafted java object via HTTP POST request");
  script_category(ACT_ATTACK);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

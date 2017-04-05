@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_local_file_inclusion_vuln_sep16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_owncloud_local_file_inclusion_vuln_sep16_win.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # ownCloud Local File Inclusion Vulnerability Sep16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809294");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2015-4716");
   script_bugtraq_id(76688);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 15:37:47 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Local File Inclusion Vulnerability Sep16 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2015-006");
 
-  script_summary("Check for the vulnerable version of ownCloud on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

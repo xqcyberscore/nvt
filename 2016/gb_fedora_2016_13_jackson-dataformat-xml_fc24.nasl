@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808026");
-  script_version("$Revision: 3807 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-08 10:01:14 +0200 (Mon, 08 Aug 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 05:22:35 +0200 (Wed, 11 May 2016)");
   script_cve_id("CVE-2016-3720");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-13");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/184561.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of jackson-dataformat-xml");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

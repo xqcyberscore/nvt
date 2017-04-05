@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_magmi_lfi.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_magento_magmi_lfi.nasl 5629 2017-03-20 15:36:33Z cfi $
 #
 # Magmi database client for Magento Local File Disclosure Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:magmi:magmi';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111041");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 5629 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-10-14 18:00:00 +0200 (Wed, 14 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,7 @@ if(description)
 
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");
-  script_dependencies("sw_magento_magmi_detect.nasl");
+  script_dependencies("sw_magento_magmi_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("magmi/installed");
   script_exclude_keys("Settings/disable_cgi_scanning");

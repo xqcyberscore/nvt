@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 5592 2017-03-16 14:49:23Z cfi $
+# $Id: ssl_funcs.inc 5603 2017-03-17 14:27:56Z cfi $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5592 $
+# $Revision: 5603 $
 #
 ###############################################################################
 
@@ -104,6 +104,12 @@ npn_alpn_name_mapping['spdy/3']   = "SPDY/3";
 npn_alpn_name_mapping['spdy/3.1'] = "SPDY/3.1";
 npn_alpn_name_mapping['spdy/4']   = "SPDY/4";
 npn_alpn_name_mapping['h2']       = "HTTP/2";
+
+# Experimental, see https://github.com/grpc/grpc/pull/8377
+application_layer_protocol_negotiation['grpc-exp'] = raw_string( 0x67, 0x72, 0x70, 0x63, 0x2d, 0x65, 0x78, 0x70 );
+npn_alpn_name_mapping['grpc-exp'] = "gRPC";
+
+npn_alpn_protocol_list = make_list( "http/1.1", "spdy/1", "spdy/2", "spdy/3", "spdy/3.1", "spdy/4", "h2", "grpc-exp" );
 
 version_kb_string_mapping[SSL_v2] = 'sslv2';
 version_kb_string_mapping[SSL_v3] = 'sslv3';
@@ -552,7 +558,8 @@ global_var SSLv3_ALERT_FATAL, SSLv3_ALERT_UNEXPECTED_MESSAGE, SSLv3_ALERT_BAD_RE
 global_var SSLv3_ALERT_INAPPROPRIATE_FALLBACK;
 
 global_var version_string, version_kb_string_mapping, SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12;
-global_var elliptic_curves, ec_point_formats, sslv3_tls_raw_ciphers, compression_methods, application_layer_protocol_negotiation, npn_alpn_name_mapping;
+global_var elliptic_curves, ec_point_formats, sslv3_tls_raw_ciphers, compression_methods;
+global_var application_layer_protocol_negotiation, npn_alpn_name_mapping, npn_alpn_protocol_list;
 
 function get_cert_from_port( port, extensions )
 {
@@ -745,10 +752,10 @@ function check_cert_validity(fprlist, port, vhost, check_for, now, timeframe) {
 }
 
 # Don't use this directly, please use ssl_hello instead
-function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method )
+function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol )
 {
   local_var hello, data, hello_len, hde_len, hde, hello_data, time, clen, _ciphers, version;
-  local_var extensions, session_id, add_tls_fallback_scsv, compression_method;
+  local_var extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol;
 
   if( ! version ) version = TLS_10;
 
@@ -1270,8 +1277,14 @@ function add_ssl_extension( extensions )
     {
       # For ALPN we need to pass our protocols to get an answer
       ret += raw_string( 0x00, 0x10 );
-      foreach alpn( application_layer_protocol_negotiation ) {
-        alpn_ret += mkbyte( strlen( alpn ) ) + alpn;
+      if( alpn_protocol ) {
+        alpn = application_layer_protocol_negotiation[alpn_protocol];
+        if( ! alpn ) return;
+        alpn_ret = mkbyte( strlen( alpn ) ) + alpn;
+      } else {
+        foreach alpn( application_layer_protocol_negotiation ) {
+          alpn_ret += mkbyte( strlen( alpn ) ) + alpn;
+        }
       }
       ret += mkword( strlen( alpn_ret ) + 2 ) + mkword( strlen( alpn_ret ) ) + alpn_ret;
     }
@@ -1673,9 +1686,9 @@ function ssl_recv( socket )
 # Example to use the session_id:
 # record = search_ssl_record( data:data, search:make_array( "handshake_typ", SSLv3_SERVER_HELLO ) );
 # if( record ) session_id = record["session_id"];
-function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method )
+function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol )
 {
-  local_var ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method;
+  local_var ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol;
 
   if( ! version ) version = TLS_10;
 
@@ -1683,9 +1696,9 @@ function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_s
     return ssl2_hello( ciphers:ciphers, session_id:session_id );
   else
     return _ssl3_tls_hello( ciphers:ciphers, version:version, extensions:extensions, session_id:session_id,
-                            add_tls_fallback_scsv:add_tls_fallback_scsv, compression_method:compression_method );
+                            add_tls_fallback_scsv:add_tls_fallback_scsv, compression_method:compression_method,
+                            alpn_protocol:alpn_protocol );
 }
-
 
 function search_ssl_record( data, search ) {
 
@@ -1729,7 +1742,7 @@ function search_ssl_record( data, search ) {
 
 function read_ssl_record( data, part )
 {
-  local_var record, data, part, max_len, data_len, len, typ, x, l, pos, version, start, end;
+  local_var record, data, part, max_len, data_len, len, typ, x, l, pos, version;
 
   if( ! data ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#read_ssl_record" );
@@ -1834,14 +1847,28 @@ function read_ssl_record( data, part )
           }
           else if( typ == 0x3374 )
           {
+            record["extension_npn_supported"] = TRUE;
+
             if( ord( data[record['pos'] + j + 3] ) > 0 ) {
-              start = record['pos'] + j + 5;
-              end = start + ord( data[record['pos'] + j + 3] );
-              record["extension_next_protocol_negotiation_raw"] = substr( data, start, end );
+
+              npn_supported_protocols = parse_npn_alpn_prot( data:data, pos:record['pos'], j:j );
+
+              if( is_array( npn_supported_protocols ) )
+                 record["extension_npn_supported_protocols"] = npn_supported_protocols;
             }
           }
           else if( typ == 0x0010 )
-            record["extension_application_layer_protocol_negotiation"] = TRUE;
+          {
+            record["extension_alpn_supported"] = TRUE;
+
+            if( ord( data[record['pos'] + j + 3] ) > 0 ) {
+
+              alpn_supported_protocols = parse_npn_alpn_prot( data:data, pos:record['pos'], j:j, alpn:TRUE );
+
+              if( is_array( alpn_supported_protocols ) )
+                 record["extension_alpn_supported_protocols"] = alpn_supported_protocols;
+            }
+          }
           else if( typ == 0x00 )
             record["extension_sni"] = TRUE;
         }
@@ -1981,6 +2008,47 @@ function read_ssl_record( data, part )
      }
   }
   return;
+}
+
+function parse_npn_alpn_prot( data, pos, j, alpn ) {
+
+  local_var data, pos, start, end, _pos, j, l, alpn, offset;
+  local_var parsed_protocols, protocols_raw, protocols_raw_len, protocol;
+
+  # The ALPN repsonse contains an additional with the ALPN Extension length
+  # so add an offset for this here.
+  if( alpn )
+    offset = 1;
+  else
+    offset = 0;
+
+  start = pos + j + 4 + offset;
+  end = start + ord( data[pos + j + 3] );
+
+  protocols_raw = substr( data, start, end );
+  protocols_raw_len = strlen( protocols_raw );
+  _pos = offset;
+
+  parsed_protocols = make_list();
+
+  while( _pos < strlen( protocols_raw ) ) {
+
+    l = ord( protocols_raw[ _pos ]);
+
+    if( l == 0 || ( _pos + l ) > protocols_raw_len )
+      break;
+
+    _pos++;
+
+    protocol = substr( protocols_raw, _pos, ( _pos + l ) - 1  );
+    _pos += l;
+
+    if( strlen( protocol ) != l )
+      continue;
+
+    parsed_protocols = make_list( parsed_protocols, protocol );
+  }
+  return parsed_protocols;
 }
 
 function get_3byte_len( data, pos )

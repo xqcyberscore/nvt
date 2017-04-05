@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_color_control_panel_priv_escalation.nasl 5341 2017-02-18 16:59:12Z cfi $
+# $Id: gb_ms_win_color_control_panel_priv_escalation.nasl 5659 2017-03-21 11:24:51Z cfi $
 #
 # Microsoft Windows Color Control Panel Privilege Escalation Vulnerability
 #
@@ -49,19 +49,18 @@ This NVT has been replaced by NVT secpod_ms12-012.nasl
 if(description)
 {
   script_id(802383);
-  script_version("$Revision: 5341 $");
+  script_version("$Revision: 5659 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2010-5082");
   script_bugtraq_id(44157);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 17:59:12 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-01-19 16:17:52 +0530 (Thu, 19 Jan 2012)");
   script_name("Microsoft Windows Color Control Panel Privilege Escalation Vulnerability");
 
   script_xref(name : "URL" , value : "http://www.koszyk.org/b/archives/82");
   script_xref(name : "URL" , value : "http://shinnai.altervista.org/exploits/SH-006-20100914.html");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2010-5082");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);

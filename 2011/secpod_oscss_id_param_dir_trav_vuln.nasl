@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oscss_id_param_dir_trav_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_oscss_id_param_dir_trav_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # osCSS2 '_ID' parameter Directory Traversal Vulnerability
 #
@@ -39,10 +39,10 @@ tag_summary = "This host is running osCSS2 and is to prone directory traversal
 if(description)
 {
   script_id(902763);
-  script_version("$Revision: 3114 $");
+  script_version("$Revision: 5647 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-12-12 03:17:35 +0530 (Mon, 12 Dec 2011)");
   script_name("osCSS2 '_ID' parameter Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46741");
@@ -56,7 +56,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("secpod_oscss_detect.nasl");
+  script_dependencies("secpod_oscss_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

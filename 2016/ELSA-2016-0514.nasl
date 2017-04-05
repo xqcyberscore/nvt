@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0514.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0514.nasl 5598 2017-03-17 10:00:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122913");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5598 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:06:16 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0514");
 script_tag(name: "insight", value: "ELSA-2016-0514 -  java-1.8.0-openjdk security update - [1:1.8.0.77-0.b03]- Remove what remains of the SunEC sources in the remove-intree-libraries script.- Resolves: rhbz#1320661[1:1.8.0.77-0.b03]- Update to u77b03.- Drop 8146566 which is applied upstream.- Replace s390 Java options patch with general version from IcedTea.- Apply s390 patches unconditionally to avoid arch-specific patch failures.- Remove fragment of s390 size_t patch that unnecessarily removes a cast, breaking ppc64le.- Remove aarch64-specific suffix as update/build version are now the same as for other archs.- Only use z format specifier on s390, not s390x.- Adjust tarball generation script to allow ecc_impl.h to be included.- Correct spelling mistakes in tarball generation script.- Synchronise minor changes from Fedora.- Use a simple backport for PR2462/8074839.- Don't backport the crc check for pack.gz. It's not tested well upstream.- Resolves: rhbz#1320661"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0514");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

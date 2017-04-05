@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_310_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2006_310_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -39,12 +39,7 @@ Both of these issues are essentially the same as ones discovered in OpenSSL at
 the end of September 2006, only now there's protection against compiling using
 the wrong OpenSSL version.  RSA keys using exponent 3 (which was previously
 BIND's default) will need to be regenerated to protect against the forging of
-RRSIGs.
-
-More details about this issue may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-4339";
+RRSIGs.";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2006-310-01.";
 
@@ -54,11 +49,11 @@ if(description)
 {
  script_id(57698);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2006-4339");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2006-310-01 bind";
  script_name(name);
 

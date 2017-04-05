@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3809.nasl 5591 2017-03-16 13:56:13Z teissa $
+# $Id: deb_3809.nasl 5606 2017-03-17 17:09:01Z cfi $
 # Auto-generated from advisory DSA 3809-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703809);
-    script_version("$Revision: 5591 $");
+    script_version("$Revision: 5606 $");
     script_cve_id("CVE-2017-3302", "CVE-2017-3313");
     script_name("Debian Security Advisory DSA 3809-1 (mariadb-10.0 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-16 14:56:13 +0100 (Thu, 16 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
     script_tag(name: "creation_date", value: "2017-03-14 00:00:00 +0100 (Tue, 14 Mar 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

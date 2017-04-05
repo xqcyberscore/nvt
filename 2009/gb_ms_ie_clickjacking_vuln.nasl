@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_clickjacking_vuln.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: gb_ms_ie_clickjacking_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Microsoft Internet Explorer Clickjacking Vulnerability
 #
@@ -41,15 +41,14 @@ tag_summary = "This host has installed Internet Explorer and is prone to
 if(description)
 {
   script_id(800347);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2009-0369");
   script_name("Microsoft Internet Explorer Clickjacking Vulnerability");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/7912");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0369");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

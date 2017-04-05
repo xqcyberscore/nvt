@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aspen_server_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_aspen_server_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Aspen Sever Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803367");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5627 $");
   script_cve_id("CVE-2013-2619");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-04-04 12:47:57 +0530 (Thu, 04 Apr 2013)");
   script_name("Aspen Sever Directory Traversal Vulnerability");
 
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_require_ports("Services/www", 8080);
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_mandatory_keys("Aspen/banner");
   script_exclude_keys("Settings/disable_cgi_scanning");
 

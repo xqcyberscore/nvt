@@ -30,14 +30,8 @@ exploited to allow the execution of arbitrary code by a remote attacker.";
 tag_solution = "All OpenOffice.org users should upgrade to the latest version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=app-office/openoffice-2.0.3'
+    # emerge --ask --oneshot --verbose '>=app-office/openoffice-2.0.3'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200607-12
-http://bugs.gentoo.org/show_bug.cgi?id=138545
-http://www.openoffice.org/security/bulletin-20060629.html
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-2199
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-2198
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-3117";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200607-12.";
 
@@ -46,15 +40,17 @@ advisory GLSA 200607-12.";
 if(description)
 {
  script_id(57849);
- script_version("$Revision: 4339 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:03:30 +0200 (Tue, 25 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2006-2199", "CVE-2006-2198", "CVE-2006-3117");
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
  script_name("Gentoo Security Advisory GLSA 200607-12 (OpenOffice.org)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200607-12");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=138545");
+ script_xref(name:"URL" , value:"http://www.openoffice.org/security/bulletin-20060629.html");
 
  script_category(ACT_GATHER_INFO);
 

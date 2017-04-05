@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_restws_rce_07_16.nasl 3766 2016-07-27 16:18:00Z cfi $
+# $Id: gb_drupal_restws_rce_07_16.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # Drupal RESTWS Remote Code Execution
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:drupal:drupal";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105817");
- script_version ("$Revision: 3766 $");
+ script_version ("$Revision: 5670 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -46,13 +46,12 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-27 18:18:00 +0200 (Wed, 27 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-20 12:15:23 +0200 (Wed, 20 Jul 2016)");
- script_summary("Try to execute the `id` command");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("drupal_detect.nasl");
+ script_dependencies("drupal_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("drupal/installed");

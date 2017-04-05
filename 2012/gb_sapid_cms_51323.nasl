@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sapid_cms_51323.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_sapid_cms_51323.nasl 5640 2017-03-21 08:12:48Z cfi $
 #
 # SAPID CMS Multiple Remote File Include Vulnerabilities
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_id(103382);
  script_bugtraq_id(51323);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5640 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("SAPID CMS Multiple Remote File Include Vulnerabilities");
@@ -49,14 +49,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51323");
  script_xref(name : "URL" , value : "http://sapid.sourceforge.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-10 11:23:59 +0100 (Tue, 10 Jan 2012)");
  script_summary("Determine if installed SAPID CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

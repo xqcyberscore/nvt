@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842768");
-  script_version("$Revision: 3472 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 07:37:16 +0200 (Fri, 10 Jun 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:21:09 +0200 (Thu, 19 May 2016)");
   script_cve_id("CVE-2016-0718");
   script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "USN", value: "2983-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003434.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of expat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

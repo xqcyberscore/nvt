@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weberp_54236.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_weberp_54236.nasl 5640 2017-03-21 08:12:48Z cfi $
 #
 # webERP Multiple Remote and Local File Include Vulnerabilities
 #
@@ -43,21 +43,21 @@ if (description)
  script_bugtraq_id(54236);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3058 $");
+ script_version ("$Revision: 5640 $");
 
  script_name("webERP Multiple Remote and Local File Include Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54236");
  script_xref(name : "URL" , value : "http://www.weberp.org/HomePage");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-02 11:58:46 +0200 (Mon, 02 Jul 2012)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

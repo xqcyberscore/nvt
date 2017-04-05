@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_51623.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_51623.nasl 5641 2017-03-21 08:24:30Z cfi $
 #
 # Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability
 #
@@ -44,21 +44,21 @@ if (description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5641 $");
 
  script_name("Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51623");
  script_xref(name : "URL" , value : "http://www.joomla.org");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-24 10:42:33 +0100 (Tue, 24 Jan 2012)");
  script_summary("Determine if installed joomla is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl");
+ script_dependencies("joomla_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");

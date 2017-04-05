@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842778");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-01 05:24:20 +0200 (Wed, 01 Jun 2016)");
   script_cve_id("CVE-2014-2497", "CVE-2014-9709", "CVE-2015-8874", "CVE-2015-8877", "CVE-2016-3074");
   script_tag(name:"cvss_base", value:"7.5");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name: "USN", value: "2987-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003443.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libgd2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

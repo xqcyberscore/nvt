@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_revslider_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_wordpress_revslider_mult_vuln.nasl 5643 2017-03-21 09:06:09Z teissa $
 #
 # Wordpress Revslider Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808202");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5643 $");
   script_cve_id("CVE-2015-5151");
   script_bugtraq_id(68692);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:06:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-23 17:16:21 +0530 (Mon, 23 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Revslider Multiple Vulnerabilities");
@@ -62,7 +62,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Revslider version 4.2.2");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be updated once the
+  21th March, 2017. Information regarding this issue will be updated once the
   solution details are available. For updates refer to
   http://revolution.themepunch.com");
 

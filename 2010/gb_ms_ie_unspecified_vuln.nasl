@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_unspecified_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_ms_ie_unspecified_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Microsoft Internet Explorer Unspecified vulnerability
 #
@@ -46,14 +46,13 @@ prone to unspecified vulnerability.";
 if(description)
 {
   script_id(800742);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-04-06 08:47:09 +0200 (Tue, 06 Apr 2010)");
   script_cve_id("CVE-2010-1175");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft Internet Explorer Unspecified vulnerability");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-1175");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/510280/100/0/threaded");
 
   script_tag(name:"qod_type", value:"registry");

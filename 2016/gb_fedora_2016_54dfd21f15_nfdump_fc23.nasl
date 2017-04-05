@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808473");
-  script_version("$Revision: 3586 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-22 14:18:19 +0200 (Wed, 22 Jun 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 06:40:46 +0200 (Tue, 21 Jun 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-54dfd21f15");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5FZU4Q3MKBOKDMX5KAROI7BFU672V5H5");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nfdump");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ta.cms_50773.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_ta.cms_50773.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # TA.CMS Local File Include and SQL Injection Vulnerabilities
 #
@@ -38,21 +38,21 @@ if (description)
 {
  script_id(103346);
  script_bugtraq_id(50773);
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 5648 $");
 
  script_name("TA.CMS Local File Include and SQL Injection Vulnerabilities");
 
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-24 10:43:43 +0100 (Thu, 24 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_summary("Determine if installed TA.CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

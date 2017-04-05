@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_batavi_46467.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_batavi_46467.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # Batavi Multiple Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -44,8 +44,8 @@ Batavi 1.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103087);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5648 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-02-22 13:26:53 +0100 (Tue, 22 Feb 2011)");
  script_bugtraq_id(46467);
  script_tag(name:"cvss_base", value:"5.0");
@@ -60,7 +60,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_batavi_detect.nasl");
+ script_dependencies("gb_batavi_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

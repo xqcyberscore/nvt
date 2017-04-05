@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_166_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2006_166_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -33,10 +33,7 @@ Sendmail's complete advisory may be found here:
 http://www.sendmail.com/security/advisories/SA-200605-01.txt.asc
 
 Sendmail has also provided an FAQ about this issue:
-http://www.sendmail.com/security/advisories/SA-200605-01/faq.shtml
-
-The CVE entry for this issue may be found here:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1173";
+http://www.sendmail.com/security/advisories/SA-200605-01/faq.shtml";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2006-166-01.";
 
@@ -46,11 +43,11 @@ if(description)
 {
  script_id(56966);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2006-1173");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2006-166-01 sendmail ";
  script_name(name);
 

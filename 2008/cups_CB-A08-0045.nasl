@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cups_CB-A08-0045.nasl 4917 2017-01-02 14:43:20Z cfi $
+# $Id: cups_CB-A08-0045.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: Cups < 1.3.8 vulnerability
 #
 # Authors:
@@ -43,22 +43,19 @@ Impact
 
 tag_solution = "All Cups users should upgrade to the latest version:";
 
-# $Revision: 4917 $
+# $Revision: 5661 $
 
 if(description)
 {
   script_id(90017);
-  script_version("$Revision: 4917 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:43:20 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
-  script_cve_id("CVE-2008-1722");
+  script_cve_id("CVE-2008-1722", "CVE-2008-0047");
   script_bugtraq_id(28781);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_name("Cups < 1.3.8 vulnerability");
-
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0047");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1722");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");

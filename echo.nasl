@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: echo.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: echo.nasl 5615 2017-03-20 12:34:43Z cfi $
 #
-# Check for echo Service
+# Check for echo Service (TCP)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100075");
-  script_version("$Revision: 4378 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 5615 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 13:34:43 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-24 15:43:44 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   #However we still should report such a configuration issue with a criticality so this has been commented
   #out to avoid that the automatic CVSS score correction is setting the CVSS back to 0.0
   #script_cve_id("CVE-1999-0635");
-  script_name("Check for echo Service");
+  script_name("Check for echo Service (TCP)");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Useless services");
@@ -45,7 +45,7 @@ if(description)
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0635");
 
-  tag_summary = "Echo Service is running at this Host.
+  tag_summary = "An echo Service is running at this Host.
 
   The echo service is an Internet protocol defined in RFC 862. It was
   originally proposed for testing and measurement of round-trip times in IP
@@ -53,7 +53,7 @@ if(description)
   and measurement is now performed with the Internet Control Message Protocol
   (ICMP), using the applications ping and traceroute.";
 
-  tag_solution = "Disable echo Service.";
+  tag_solution = "Disable the echo Service.";
 
   script_tag(name:"solution", value:tag_solution);
   script_tag(name:"summary", value:tag_summary);
@@ -68,38 +68,21 @@ include("misc_func.inc");
 
 port = get_kb_item( "Services/echo" );
 if( ! port ) port = 7;
+if( ! get_port_state( port ) ) exit( 0 );
 
-echo_string = string( "OpenVAS-Echo-Test" );
+soc = open_sock_tcp( port );
+if( ! soc ) exit( 0 );
 
-if( get_port_state( port ) ) {
+echo_string = "OpenVAS-Echo-Test";
 
-  soc = open_sock_tcp( port );
-  if( soc ) {
+send( socket:soc, data:echo_string );
+buf = recv( socket:soc, length:4096 );
+close( soc );
 
-    send( socket:soc, data:echo_string );
-    buf = recv( socket:soc, length:4096 );
-    close( soc );
-
-    if( buf == echo_string ) {
-      register_service( port:port, proto:"echo", ipproto:"tcp" );
-      security_message( port:port, protocol:"tcp" );
-    }
-  }
+if( buf == echo_string ) {
+  register_service( port:port, proto:"echo" );
+  security_message( port:port );
+  exit( 0 );
 }
 
-if( get_udp_port_state( port ) ) {
-
-  soc = open_sock_udp( port );
-  if( soc ) {
-
-    send( socket:soc, data:echo_string );
-    buf = recv( socket:soc, length:4096 );
-    close( soc );
-    if( buf == echo_string ) {
-      register_service( port:port, proto:"echo", ipproto:"udp" );
-      security_message( port:port, protocol:"udp" );
-    }
-  }
-}
-
-exit( 0 );
+exit( 99 );

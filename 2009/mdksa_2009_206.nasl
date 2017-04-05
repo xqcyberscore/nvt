@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mdksa_2009_206.nasl 4989 2017-01-11 16:57:11Z teissa $
+# $Id: mdksa_2009_206.nasl 5663 2017-03-21 11:58:31Z cfi $
 # Description: Auto-generated from advisory MDVSA-2009:206 (wget)
 #
 # Authors:
@@ -28,8 +28,7 @@
 include("revisions-lib.inc");
 tag_insight = "A vulnerability has been found and corrected in wget:
 
-SUSE discovered a security issue in wget related to
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-2408
+SUSE discovered a security issue in wget related to CVE-2009-2408
 
 This update provides a solution to this vulnerability.
 
@@ -46,8 +45,8 @@ announced via advisory MDVSA-2009:206.";
 if(description)
 {
  script_id(64678);
- script_version("$Revision: 4989 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-11 17:57:11 +0100 (Wed, 11 Jan 2017) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-09-02 04:58:39 +0200 (Wed, 02 Sep 2009)");
  script_cve_id("CVE-2009-2408");
  script_tag(name:"cvss_base", value:"6.8");

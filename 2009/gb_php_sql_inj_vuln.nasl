@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_sql_inj_vuln.nasl 4504 2016-11-14 15:04:32Z cfi $
+# $Id: gb_php_sql_inj_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # PHP FILTER_UNSAFE_RAW SQL Injection Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800333");
-  script_version("$Revision: 4504 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:04:32 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://bugs.php.net/bug.php?id=42718");
   script_xref(name:"URL", value:"http://www.php.net/archive/2008.php#id2008-12-08-1");
-  script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5844");
 
   tag_impact = "Successful exploitation could allow attackers to inject SQL code in the
   affected user application, and this may lead to other attacks also.

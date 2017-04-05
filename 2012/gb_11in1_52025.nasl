@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_11in1_52025.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_11in1_52025.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # 11in1 Cross Site Request Forgery and Local File Include Vulnerabilities
 #
@@ -41,7 +41,7 @@ if (description)
  script_id(103424);
  script_bugtraq_id(52025);
  script_cve_id("CVE-2012-0996","CVE-2012-0997");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5633 $");
 
  script_name("11in1 Cross Site Request Forgery and Local File Include Vulnerabilities");
 
@@ -51,14 +51,14 @@ if (description)
 
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 11:39:18 +0100 (Thu, 16 Feb 2012)");
  script_summary("Determine if installed 11in1 is vulnerable");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

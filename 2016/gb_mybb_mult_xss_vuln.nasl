@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_xss_vuln.nasl 4525 2016-11-16 06:19:19Z antu123 $
+# $Id: gb_mybb_mult_xss_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # MyBB Multiple Cross Site Scripting Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:mybb:mybb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809094");
-  script_version("$Revision: 4525 $");
+  script_version("$Revision: 5598 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 07:19:19 +0100 (Wed, 16 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-15 12:12:12 +0530 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("MyBB Multiple Cross Site Scripting Vulnerabilities");
@@ -70,7 +70,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Nov/57");
 
-  script_summary("Check if MyBB forum is vulnerable to reflected xss");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

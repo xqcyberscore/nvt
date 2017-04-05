@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0020.nasl 4945 2017-01-05 06:51:30Z antu123 $
+# $Id: gb_vmware_vrealize_operations_manager_VMSA-2016-0020.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-7462");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:C");
- script_version ("$Revision: 4945 $");
+ script_version ("$Revision: 5598 $");
  script_name("VMSA-2016-0020: vRealize Operations REST API Deserialization Vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0020.html");
@@ -47,11 +47,10 @@ if (description)
 
  script_tag(name: "affected" , value:"vRealize Operations 6.x < 6.4.0");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-05 07:51:30 +0100 (Thu, 05 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-11-16 15:53:11 +0100 (Wed, 16 Nov 2016)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Checks for installed version.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

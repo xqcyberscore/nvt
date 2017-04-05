@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807484");
-  script_version("$Revision: 2869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-16 12:21:24 +0100 (Wed, 16 Mar 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:11:53 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2016-2562", "CVE-2016-2559", "CVE-2016-2561", "CVE-2016-2560");
   script_tag(name:"cvss_base", value:"5.8");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-65");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/178564.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php-udan11-sql-parser");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

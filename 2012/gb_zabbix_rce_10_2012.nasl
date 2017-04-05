@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_10_2012.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_zabbix_rce_10_2012.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution
 #
@@ -41,7 +41,7 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5670 $");
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
 
@@ -50,14 +50,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zabbix.com/");
  script_xref(name : "URL" , value : "http://www.ush.it/team/ush/hack-zabbix_162/adv.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-10-02 10:27:14 +0200 (Tue, 02 Oct 2012)");
  script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("zabbix_detect.nasl","zabbix_web_detect.nasl");
+ script_dependencies("zabbix_detect.nasl", "zabbix_web_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Zabbix/installed");

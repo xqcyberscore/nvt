@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_jan16_win.nasl 2467 2016-01-21 08:01:52Z antu123 $
+# $Id: gb_apple_quicktime_mult_vuln_jan16_win.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Apple QuickTime Multiple Vulnerabilities Jan16 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806963");
-  script_version("$Revision: 2467 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2015-7117", "CVE-2015-7092", "CVE-2015-7091", "CVE-2015-7090",
                 "CVE-2015-7089", "CVE-2015-7088", "CVE-2015-7087", "CVE-2015-7086",
                 "CVE-2015-7085" );
   script_bugtraq_id(80020, 80170);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-21 09:01:52 +0100 (Thu, 21 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-18 10:15:22 +0530 (Mon, 18 Jan 2016)");
   script_name("Apple QuickTime Multiple Vulnerabilities Jan16 (Windows)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205638");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2016/Jan/msg00000.html");
 
-  script_summary("Check for the vulnerable version of Apple QuickTime on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

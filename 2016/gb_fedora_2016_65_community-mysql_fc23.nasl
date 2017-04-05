@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807487");
-  script_version("$Revision: 2869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-16 12:21:24 +0100 (Wed, 16 Mar 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:13:03 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2015-4766", "CVE-2015-4791", "CVE-2015-4792", "CVE-2015-4800",
                 "CVE-2015-4802", "CVE-2015-4807", "CVE-2015-4815", "CVE-2015-4819",
@@ -62,7 +62,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-65");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/178643.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of community-mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

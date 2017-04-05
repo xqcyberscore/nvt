@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail2_sec_bypass_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_hastymail2_sec_bypass_vuln.nasl 5659 2017-03-21 11:24:51Z cfi $
 #
 # Hastymail2 Session Cookie Security Bypass Vulnerability
 #
@@ -38,15 +38,14 @@ tag_summary = "The host is running Hastymail2 and is prone to security bypass
 if(description)
 {
   script_id(801577);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5659 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_cve_id("CVE-2009-5051");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Hastymail2 Session Cookie Security Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://www.hastymail.org/security/");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=2009-5051");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_summary("Check for the version of Hastymail2");

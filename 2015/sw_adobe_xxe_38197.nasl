@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_adobe_xxe_38197.nasl 2894 2016-03-19 12:35:23Z cfi $
+# $Id: sw_adobe_xxe_38197.nasl 5629 2017-03-20 15:36:33Z cfi $
 #
 # Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities
 #
@@ -30,19 +30,19 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105211");
- script_version ("$Revision: 2894 $");
+ script_version ("$Revision: 5629 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_name("Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities");
  script_bugtraq_id(38197);
  script_cve_id("CVE-2009-3960");
- script_tag(name:"last_modification", value:"$Date: 2016-03-19 13:35:23 +0100 (Sat, 19 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-02-11 14:56:42 +0100 (Wed, 11 Feb 2015)");
  script_summary("Determine if Adobe BlazeDS is prone to an XXE attack");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_require_ports("Services/www", 80);
 

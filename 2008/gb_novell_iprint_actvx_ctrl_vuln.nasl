@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_actvx_ctrl_vuln.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: gb_novell_iprint_actvx_ctrl_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # Novell iPrint ActiveX control Stack-based BOF Vulnerability
 #
@@ -39,14 +39,13 @@ tag_summary = "The host is installed with Novell iPrint, and is prone to stack
 if(description)
 {
   script_id(800070);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-5231");
   script_name("Novell iPrint ActiveX control Stack-based BOF Vulnerability");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5231");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

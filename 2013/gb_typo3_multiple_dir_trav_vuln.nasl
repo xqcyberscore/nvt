@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_multiple_dir_trav_vuln.nasl 2832 2016-03-11 08:12:36Z antu123 $
+# $Id: gb_typo3_multiple_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Typo3 Multiple Directory Traversal Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803776");
-  script_version("$Revision: 2832 $");
+  script_version("$Revision: 5627 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:12:36 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-11-20 11:33:55 +0530 (Wed, 20 Nov 2013)");
   script_name("Typo3 Multiple Directory Traversal Vulnerabilities");
 
@@ -61,7 +61,7 @@ vulnerabilities.");
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_typo3_detect.nasl");
+  script_dependencies("gb_typo3_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");

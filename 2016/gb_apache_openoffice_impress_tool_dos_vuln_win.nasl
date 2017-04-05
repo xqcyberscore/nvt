@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_impress_tool_dos_vuln_win.nasl 3877 2016-08-24 09:10:50Z antu123 $
+# $Id: gb_apache_openoffice_impress_tool_dos_vuln_win.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Apache OpenOffice 'Impress Tool' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808653");
-  script_version("$Revision: 3877 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-1513");
   script_bugtraq_id(92079);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-24 11:10:50 +0200 (Wed, 24 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 14:06:15 +0530 (Tue, 16 Aug 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Apache OpenOffice 'Impress Tool' Denial of Service Vulnerability (Windows)");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2016-1513.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache OpenOffice on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_openoffice_detect_win.nasl");

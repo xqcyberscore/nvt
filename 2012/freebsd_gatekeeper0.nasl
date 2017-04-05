@@ -35,12 +35,7 @@ the status port, which allows remote attackers to cause a denial of
 service (connection and thread consumption) via a large number of
 connections.";
 tag_solution = "Update your system with the appropriate patches or
-software upgrades.
-
-http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3534
-http://www.openwall.com/lists/oss-security/2012/08/25/4
-http://www.gnugk.org/gnugk-3.1.html
-http://www.vuxml.org/freebsd/342176a8-f464-11e1-8bd8-0022156e8794.html";
+software upgrades.";
 tag_summary = "The remote host is missing an update to the system
 as announced in the referenced advisory.";
 
@@ -52,14 +47,18 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-3534");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5656 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-09-07 11:47:17 -0400 (Fri, 07 Sep 2012)");
  script_name("FreeBSD Ports: gatekeeper");
 
  script_summary("FreeBSD Ports: gatekeeper");
 
  script_category(ACT_GATHER_INFO);
+
+ script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/08/25/4");
+ script_xref(name:"URL", value:"http://www.gnugk.org/gnugk-3.1.html");
+ script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/342176a8-f464-11e1-8bd8-0022156e8794.html");
 
  script_copyright("Copyright (c) 2012 E-Soft Inc. http://www.securityspace.com");
  script_family("FreeBSD Local Security Checks");

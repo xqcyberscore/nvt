@@ -38,11 +38,8 @@ remote attackers to cause a denial of service (memory consumption) by
 triggering many strtotime function calls, which are not properly
 handled by the php_date_parse_tzfile cache.";
 tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+software upgrades.";
 
-https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-0789
-https://bugs.php.net/bug.php?id=53502
-http://www.vuxml.org/freebsd/9b2a5e88-02b8-11e2-92d1-000d601460a4.html";
 tag_summary = "The remote host is missing an update to the system
 as announced in the referenced advisory.";
 
@@ -54,10 +51,13 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-0789");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-09-19 11:49:14 -0400 (Wed, 19 Sep 2012)");
  script_name("FreeBSD Ports: php5");
+
+ script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=53502");
+ script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/9b2a5e88-02b8-11e2-92d1-000d601460a4.html");
 
  script_summary("FreeBSD Ports: php5");
 

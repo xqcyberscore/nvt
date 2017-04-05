@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Cuppa CMS Remote/Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803805");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 5627 $");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 10:36:14 +0530 (Thu, 06 Jun 2013)");
   script_name("Cuppa CMS Remote/Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploit/20855");
@@ -44,7 +44,7 @@ if(description)
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to read
   or include arbitrary files from the local system using directory traversal

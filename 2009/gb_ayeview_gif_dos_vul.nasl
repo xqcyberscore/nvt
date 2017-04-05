@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ayeview_gif_dos_vul.nasl 5369 2017-02-20 14:48:07Z cfi $ 
+# $Id: gb_ayeview_gif_dos_vul.nasl 5656 2017-03-21 11:03:12Z cfi $ 
 # 
 # AyeView GIF Image Handling Denial of Service Vulnerability
 #
@@ -41,16 +41,14 @@ tag_summary = "The host has AyeView Image Viewer installed and is prone to denia
 if(description)
 {
   script_id(800503);
-  script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2008-5884");
   script_bugtraq_id(31572);
   script_name("AyeView GIF Image Handling Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?execution=e1s1");
-  script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2008-5884");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/497045/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);

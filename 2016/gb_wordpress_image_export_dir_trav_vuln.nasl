@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_image_export_dir_trav_vuln.nasl 5249 2017-02-09 10:46:07Z teissa $
+# $Id: gb_wordpress_image_export_dir_trav_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Wordpress Image Export Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807625");
-  script_version("$Revision: 5249 $");
+  script_version("$Revision: 5626 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:46:07 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:31 +0530 (Fri, 01 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Image Export Directory Traversal Vulnerability");
@@ -64,7 +64,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-026.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms16-026.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Microsoft Graphic Fonts Multiple Vulnerabilities (3143148)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807513");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-0121", "CVE-2016-0120");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:23:23 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphic Fonts Multiple Vulnerabilities (3143148)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3140735");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-026");
 
-  script_summary("Check for the vulnerable file 'Atmfd.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872318");
-  script_version("$Revision: 5142 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 09:48:18 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 5644 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-30 05:46:51 +0100 (Mon, 30 Jan 2017)");
   script_cve_id("CVE-2017-5522");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mapserver FEDORA-2017-93ed1d1687");
   script_tag(name: "summary", value: "Check the version of mapserver");

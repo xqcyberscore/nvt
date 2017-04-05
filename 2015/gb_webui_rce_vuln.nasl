@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webui_rce_vuln.nasl 3232 2016-05-06 05:15:10Z antu123 $
+# $Id: gb_webui_rce_vuln.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # WebUI Remote Command Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805175");
-  script_version("$Revision: 3232 $");
+  script_version("$Revision: 5616 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-06 07:15:10 +0200 (Fri, 06 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-04-27 17:26:29 +0530 (Mon, 27 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("WebUI Remote Command Execution Vulnerability");
@@ -66,8 +66,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 

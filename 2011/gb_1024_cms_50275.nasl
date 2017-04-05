@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_1024_cms_50275.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_1024_cms_50275.nasl 5651 2017-03-21 10:09:09Z cfi $
 #
 # 1024 CMS 1.1.0 Beta 'force_download.php' Local File Include Vulnerability
 #
@@ -40,8 +40,8 @@ affected.";
 if (description)
 {
  script_id(103307);
- script_version("$Revision: 5424 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_version("$Revision: 5651 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50275);
  script_tag(name:"cvss_base", value:"6.8");
@@ -56,7 +56,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: samba_CB-A08-0085.nasl 4917 2017-01-02 14:43:20Z cfi $
+# $Id: samba_CB-A08-0085.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: Samba 3.0.0 > 3.0.29 vulnerability
 #
 # Authors:
@@ -37,20 +37,18 @@ Impact
 
 tag_solution = "All Samba users should upgrade to the latest version.";
 
-# $Revision: 4917 $
+# $Revision: 5661 $
 
 if(description)
 {
   script_id(90028);
-  script_version("$Revision: 4917 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:43:20 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-09-06 20:50:27 +0200 (Sat, 06 Sep 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2008-1105");
   script_name("Samba 3.0.0 > 3.0.29 vulnerability");
-
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1105");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");

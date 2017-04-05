@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160620-iosxe.nasl 3585 2016-06-22 09:59:46Z mime $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160620-iosxe.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Cisco IOS XE Software SNMP Subsystem Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1428");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 3585 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("Cisco IOS XE Software SNMP Subsystem Denial of Service Vulnerability");
 
@@ -57,9 +57,8 @@ vulnerability are not available.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-22 11:59:46 +0200 (Wed, 22 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-21 10:14:35 +0200 (Tue, 21 Jun 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

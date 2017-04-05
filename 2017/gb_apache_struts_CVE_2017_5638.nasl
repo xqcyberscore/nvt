@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_5638.nasl 5593 2017-03-16 14:57:14Z cfi $
+# $Id: gb_apache_struts_CVE_2017_5638.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # Apache Struts Remote Code Execution Vulnerability (Active Check)
 #
@@ -44,14 +44,14 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
 
  script_tag(name:"qod_type", value:"exploit");
- script_version("$Revision: 5593 $");
+ script_version("$Revision: 5670 $");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 15:57:14 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-03-08 12:19:09 +0100 (Wed, 08 Mar 2017)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("webmirror.nasl");
+ script_dependencies("webmirror.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("www/action_jsp_do");
@@ -62,6 +62,7 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
+include("host_details.inc");
 
 port = get_http_port( default:80 );
 

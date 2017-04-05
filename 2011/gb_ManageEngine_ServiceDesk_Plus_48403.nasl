@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_ManageEngine_ServiceDesk_Plus_48403.nasl 5646 2017-03-21 09:37:44Z cfi $
 #
 # ManageEngine ServiceDesk Plus 'FILENAME' Parameter Directory Traversal Vulnerability
 #
@@ -41,8 +41,8 @@ also be affected.";
 if (description)
 {
  script_id(103184);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5646 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-06-29 13:12:40 +0200 (Wed, 29 Jun 2011)");
  script_cve_id("CVE-2011-2757");
  script_bugtraq_id(48403);
@@ -59,7 +59,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl");
+ script_dependencies("gb_ManageEngine_ServiceDesk_Plus_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 8080);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

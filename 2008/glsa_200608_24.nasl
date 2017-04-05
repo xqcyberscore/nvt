@@ -31,11 +31,8 @@ tag_solution = "AlsaPlayer has been masked in Portage pending the resolution of 
 issues. AlsaPlayer users are advised to uninstall the package until
 further notice:
 
-    # emerge --ask --unmerge 'media-sound/alsaplayer'
+    # emerge --ask --unmerge 'media-sound/alsaplayer'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200608-24
-http://bugs.gentoo.org/show_bug.cgi?id=143402
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=2006-4089";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200608-24.";
 
@@ -44,15 +41,16 @@ advisory GLSA 200608-24.";
 if(description)
 {
  script_id(57874);
- script_version("$Revision: 4339 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:03:30 +0200 (Tue, 25 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2006-4089");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("Gentoo Security Advisory GLSA 200608-24 (AlsaPlayer)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200608-24");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=143402");
 
  script_category(ACT_GATHER_INFO);
 

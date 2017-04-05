@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ops_old_post_spinner_plugin_ops_file_dir_trav.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_wordpress_ops_old_post_spinner_plugin_ops_file_dir_trav.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # WordPress OPS Old Post Spinner Plugin 'ops_file' Parameter Directory Traversal Vulnerability
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3108 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -66,7 +66,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
   script_tag(name : "impact" , value : tag_impact);

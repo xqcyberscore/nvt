@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_liblime_koha_kohaopaclanguage_param_lfi_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_liblime_koha_kohaopaclanguage_param_lfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # LibLime Koha 'KohaOpacLanguage' Parameter Local File Inclusion Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902593");
-  script_version("$Revision: 3570 $");
+  script_version("$Revision: 5648 $");
   script_cve_id("CVE-2011-4715");
   script_bugtraq_id(50812);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-11-29 17:17:17 +0530 (Tue, 29 Nov 2011)");
   script_name("LibLime Koha 'KohaOpacLanguage' Parameter Local File Inclusion Vulnerability");
 
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

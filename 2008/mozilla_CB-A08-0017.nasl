@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_CB-A08-0017.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: mozilla_CB-A08-0017.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Linux)
 #
 # Authors:
@@ -43,27 +43,22 @@ Impact
 
 tag_solution = "All Users should upgrade to the latest versions of Firefox, Thunderbird or Seamonkey.";
 
-# $Revision: 5158 $
+# $Revision: 5661 $
 
 if(description)
 {
 
  script_id(90014);
- script_version("$Revision: 5158 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+ script_version("$Revision: 5661 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_cve_id("CVE-2008-1238","CVE-2008-1240","CVE-2008-1241");
+ script_cve_id("CVE-2008-1238", "CVE-2008-1240", "CVE-2008-1241", "CVE-2008-0412", "CVE-2008-0416");
  name = "Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys (Linux)";
  script_name(name);
 
-script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-14.html");
-script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0412");
-script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0416");
-script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1238");
-script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1240");
-script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1241");
+ script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2008/mfsa2008-14.html");
 
  summary = "Mozilla Firefox, Thunderbird, Seamonkey. Several vulnerabilitys";
  script_category(ACT_GATHER_INFO);

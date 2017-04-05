@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0082.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0082.nasl 5612 2017-03-20 10:00:41Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131243");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5612 $");
 script_tag(name:"creation_date", value:"2016-02-25 09:28:26 +0200 (Thu, 25 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0082");
 script_tag(name: "insight", value: "Updated libssh packages fix security vulnerability: libssh versions 0.1 and above have a bits/bytes confusion bug and generate an abnormally short ephemeral secret for the diffie-hellman-group1 and diffie-hellman-group14 key exchange methods. The resulting secret is 128 bits long, instead of the recommended sizes of 1024 and 2048 bits respectively. Both client and server are are vulnerable, pre-authentication. This vulnerability could be exploited by an eavesdropper with enough resources to decrypt or intercept SSH sessions (CVE-2016-0739)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0082");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0082");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

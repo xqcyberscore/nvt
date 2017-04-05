@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3620.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: deb_3620.nasl 5612 2017-03-20 10:00:41Z teissa $
 # Auto-generated from advisory DSA 3620-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703620);
-    script_version("$Revision: 5070 $");
+    script_version("$Revision: 5612 $");
     script_cve_id("CVE-2016-2365", "CVE-2016-2366", "CVE-2016-2367", "CVE-2016-2368",
                   "CVE-2016-2369", "CVE-2016-2370", "CVE-2016-2371", "CVE-2016-2372",
                   "CVE-2016-2373", "CVE-2016-2374", "CVE-2016-2375", "CVE-2016-2376",
                   "CVE-2016-2377", "CVE-2016-2378", "CVE-2016-2380", "CVE-2016-4323");
     script_name("Debian Security Advisory DSA 3620-1 (pidgin - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-07-15 00:00:00 +0200 (Fri, 15 Jul 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3620.html");
 
-    script_summary("Debian Security Advisory DSA 3620-1 (pidgin - security update)");
 
     script_category(ACT_GATHER_INFO);
 

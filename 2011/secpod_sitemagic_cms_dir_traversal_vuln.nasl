@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability
 #
@@ -45,8 +45,8 @@ traversal vulnerability.";
 if(description)
 {
   script_id(902452);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_bugtraq_id(48399);
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,8 +59,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

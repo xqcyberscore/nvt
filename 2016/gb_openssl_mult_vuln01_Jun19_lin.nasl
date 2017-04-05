@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_Jun19_lin.nasl 5588 2017-03-16 10:00:36Z teissa $
+# $Id: gb_openssl_mult_vuln01_Jun19_lin.nasl 5655 2017-03-21 10:44:19Z cfi $
 # OpenSSL Multiple Vulnerabilities -19 Jun16 (Linux)
 #
 # Authors:
@@ -45,11 +45,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107015");
-  script_version("$Revision: 5588 $");
+  script_version("$Revision: 5655 $");
   script_cve_id("CVE-2016-2177", "CVE-2016-2178");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-29 12:46:24 +0530 (Wed, 29 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -19 Jun16 (Linux)");
@@ -65,8 +65,6 @@ if(description)
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
-  script_xref(name : "URL" , value : "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2177");
-  script_xref(name : "URL" , value : "https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2178");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

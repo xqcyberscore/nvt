@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nhttpd_46880.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_nhttpd_46880.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # nostromo nhttpd Directory Traversal Remote Command Execution Vulnerability
 #
@@ -37,8 +37,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(103119);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5647 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-21 13:19:58 +0100 (Mon, 21 Mar 2011)");
  script_bugtraq_id(46880);
  script_tag(name:"cvss_base", value:"7.5");
@@ -56,10 +56,9 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl", "http_version.nasl");
+ script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
  script_mandatory_keys("nostromo/banner");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

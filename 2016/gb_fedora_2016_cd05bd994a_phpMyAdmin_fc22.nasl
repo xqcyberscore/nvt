@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808324");
-  script_version("$Revision: 3683 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-11 07:25:10 +0200 (Mon, 11 Jul 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:38:28 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-5097", "CVE-2016-5098", "CVE-2016-5099");
   script_tag(name:"cvss_base", value:"5.0");
@@ -61,7 +61,6 @@ like displaying BLOB-data as image or download-link and much more...
   script_xref(name: "FEDORA", value: "2016-cd05bd994a");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZMEL2FBUCN66IW6U3FEBHI2AEVB7ZBSE");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-08_lin.nasl 3849 2016-08-17 08:27:51Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-08_lin.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-08)-Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808295");
-  script_version("$Revision: 3849 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-5141", "CVE-2016-5142", "CVE-2016-5139", "CVE-2016-5140", 
                 "CVE-2016-5145", "CVE-2016-5143", "CVE-2016-5144", "CVE-2016-5146");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-17 10:27:51 +0200 (Wed, 17 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 15:10:25 +0530 (Thu, 04 Aug 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-08)-Linux");
 
@@ -72,7 +72,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/08/stable-channel-update-for-desktop.html");
 
-  script_summary("Check for the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

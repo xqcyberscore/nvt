@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_mult_vuln_07_14.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_bitdefender_mult_vuln_07_14.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # BitDefender Products HTTP Daemon Directory Traversal Vulnerability
 #
@@ -46,21 +46,21 @@ if (description)
  script_bugtraq_id(68669);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5628 $");
 
  script_name("BitDefender Products HTTP Daemon Directory Traversal Vulnerability");
 
 
  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20140716-3_Bitdefender_GravityZone_Multiple_critical_vulnerabilities_v10.txt");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-07-17 12:10:53 +0200 (Thu, 17 Jul 2014)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
+ script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
  script_mandatory_keys("Arrakis/banner");
  script_require_ports("Services/www", 80, 7074);
  script_exclude_keys("Settings/disable_cgi_scanning");

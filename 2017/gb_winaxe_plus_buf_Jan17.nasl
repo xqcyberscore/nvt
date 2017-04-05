@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winaxe_plus_buf_Jan17.nasl 5084 2017-01-24 11:27:12Z cfi $
+# $Id: gb_winaxe_plus_buf_Jan17.nasl 5621 2017-03-20 13:56:15Z cfi $
 #
 # WinaXe Plus Buffer Overflow Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:winaxe:plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107126");
-  script_version("$Revision: 5084 $");
+  script_version("$Revision: 5621 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:27:12 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-17 16:11:25 +0530 (Tue, 17 Jan 2017)");
   script_name("WinaXe Plus Buffer Overflow Vulnerability (Windows)");
 
@@ -55,7 +55,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("gb_winaxe_plus_detection.nasl", "os_detection.nasl");
+  script_dependencies("gb_winaxe_plus_detection.nasl");
   script_mandatory_keys("Winaxeplus/Win/installed");
   exit(0);
 }

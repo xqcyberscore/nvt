@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_58016.nasl 5226 2017-02-07 16:35:25Z cfi $
+# $Id: gb_piwigo_58016.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities
 #
@@ -31,16 +31,16 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103670");
   script_bugtraq_id(58016);
-  script_version("$Revision: 5226 $");
+  script_version("$Revision: 5627 $");
   script_name("Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 17:35:25 +0100 (Tue, 07 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-02-26 14:16:03 +0100 (Tue, 26 Feb 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
-  script_dependencies("gb_piwigo_detect.nasl");
+  script_dependencies("gb_piwigo_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("piwigo/installed");
 

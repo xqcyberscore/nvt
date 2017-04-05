@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871663");
-  script_version("$Revision: 4215 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 12:35:24 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-05 15:43:03 +0530 (Wed, 05 Oct 2016)");
   script_cve_id("CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179", "CVE-2016-2180",
                 "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-6302", "CVE-2016-6304",
@@ -99,7 +99,6 @@ way OpenSSL parsed TLS session tickets. A remo ...
   script_xref(name: "RHSA", value: "2016:1940-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-September/msg00029.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

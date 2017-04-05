@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_struts_dmi_rce.nasl 3425 2016-06-03 06:11:24Z mwiegand $
+# $Id: apache_struts_dmi_rce.nasl 5598 2017-03-17 10:00:43Z teissa $
 #Apache Struts Dynamic Method Invocation Remote Code Execution
 #
 # Authors:
@@ -40,13 +40,11 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107007");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3425 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-03 08:11:24 +0200 (Fri, 03 Jun 2016) $");
+ script_version("$Revision: 5598 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-01 10:42:39 +0100 (Wed, 01 Jun 2016)");
  script_tag(name:"qod_type", value:"exploit");
  script_name("Apache Struts Dynamic Method Invocation Remote Code Execution");
- script_summary("Checks for the presence of Apache Struts2 and tell wether it is vulnerable to Dynamic Method Invocation Remote 
- Code Execution vulnerability");
  script_xref(name:"URL", value:"https://struts.apache.org/docs/s2-032.html");
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/136856/Apache-Struts-2.3.28-Dynamic-Method-Invocation-Remote-Code-Execution.html");
  script_category(ACT_ATTACK);

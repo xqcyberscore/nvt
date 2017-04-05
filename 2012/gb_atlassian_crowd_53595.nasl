@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_53595.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_atlassian_crowd_53595.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # Atlassian Crowd XML Parsing Denial of Service Vulnerability 
 #
@@ -39,7 +39,7 @@ if (description)
  script_cve_id("CVE-2012-2926");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 3014 $");
+ script_version ("$Revision: 5633 $");
 
  script_name("Atlassian Crowd XML Parsing Denial of Service Vulnerability");
 
@@ -48,15 +48,17 @@ if (description)
  script_xref(name : "URL" , value : "http://www.atlassian.com/software/jira/");
  script_xref(name : "URL" , value : "http://confluence.atlassian.com/display/JIRA/JIRA+Security+Advisory+2012-05-17");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-11 15:40:23 +0200 (Wed, 11 Jul 2012)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 8095);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

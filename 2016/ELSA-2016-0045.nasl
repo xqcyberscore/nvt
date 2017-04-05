@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0045.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0045.nasl 5598 2017-03-17 10:00:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122855");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5598 $");
 script_tag(name:"creation_date", value:"2016-01-21 07:29:52 +0200 (Thu, 21 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0045");
 script_tag(name: "insight", value: "ELSA-2016-0045 -  kernel security update - kernel[2.6.18-408]- [net] udp: fix behavior of wrong checksums (Denys Vlasenko) [1240757] {CVE-2015-5364 CVE-2015-5366}- [net] ipv6/udp: Use correct var to determine non-blocking cond (Denys Vlasenko) [1240757] {CVE-2015-5364 CVE-2015-5366}- [net] SNMP: Restore Udp6InErrors incrementation (Denys Vlasenko) [1240757] {CVE-2015-5364 CVE-2015-5366}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0045");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

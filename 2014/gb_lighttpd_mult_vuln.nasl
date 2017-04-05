@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lighttpd_mult_vuln.nasl 3524 2016-06-15 13:10:28Z benallard $
+# $Id: gb_lighttpd_mult_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # Lighttpd Multiple vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:lighttpd:lighttpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802072");
-  script_version("$Revision: 3524 $");
+  script_version("$Revision: 5628 $");
   script_cve_id("CVE-2014-2323", "CVE-2014-2324");
   script_bugtraq_id(66153, 66157);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:10:28 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-05-13 12:18:43 +0530 (Tue, 13 May 2014)");
   script_name("Lighttpd Multiple vulnerabilities");
 
@@ -60,7 +60,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web Servers");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("sw_lighttpd_detect.nasl");
+  script_dependencies("sw_lighttpd_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("lighttpd/installed");
 

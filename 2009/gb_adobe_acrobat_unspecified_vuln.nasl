@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_unspecified_vuln.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_adobe_acrobat_unspecified_vuln.nasl 5660 2017-03-21 11:29:28Z cfi $
 #
 # Adobe Acrobat Unspecified vulnerability
 #
@@ -39,15 +39,14 @@ tag_solution = "Upgrade to Adobe Acrobat version 9.2
 if(description)
 {
   script_id(800959);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-10-22 15:34:45 +0200 (Thu, 22 Oct 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-3461");
   script_bugtraq_id(36638);
   script_name("Adobe Acrobat Unspecified vulnerability");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2009-3461");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb09-15.html");
 
   script_category(ACT_GATHER_INFO);

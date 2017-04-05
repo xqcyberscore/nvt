@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: zml_cgi_traversal.nasl 3778 2016-07-30 15:56:56Z cfi $
+# $Id: zml_cgi_traversal.nasl 5630 2017-03-20 15:42:16Z cfi $
 #
 # zml.cgi Directory Traversal
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10830"); 
-  script_version("$Revision: 3778 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-30 17:56:56 +0200 (Sat, 30 Jul 2016) $");
+  script_version("$Revision: 5630 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3759);
   script_cve_id("CVE-2001-1209");
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 H D Moore & Drew Hintz ( http://guh.nu )");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

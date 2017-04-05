@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809242");
-  script_version("$Revision: 5383 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 10:27:02 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-10 06:03:40 +0200 (Sat, 10 Sep 2016)");
   script_cve_id("CVE-2016-6866");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-7e817cbf55");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3VZYLWZDI7EXV4L3AFXZ2WOOLF53PZG7");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of slock");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_read_mode_dos_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_quick_tftp_server_read_mode_dos_vuln.nasl 5609 2017-03-20 08:08:00Z teissa $
 #
 # Quick Tftp Server Read Mode Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807479");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5609 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:08:00 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-14 10:59:12 +0530 (Mon, 14 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Quick Tftp Server Read Mode Denial of Service Vulnerability");
@@ -52,12 +52,9 @@ if(description)
   
   script_tag(name:"affected" , value:"Quick Tftp Server Pro 2.3");
 
-  script_tag(name:"solution" , value:"No solution or patch is available as
-  of 24th January, 2017. Information regarding this issue will be updated once
-  the solution details are available.
-  For updates refer to http://www.tallsoft.com/tftpserver.htm");
+  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. ");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39516/");
 

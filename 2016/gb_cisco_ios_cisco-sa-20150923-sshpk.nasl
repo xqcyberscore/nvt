@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20150923-sshpk.nasl 3222 2016-05-03 17:49:32Z mime $
+# $Id: gb_cisco_ios_cisco-sa-20150923-sshpk.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6280");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3222 $");
+ script_version ("$Revision: 5612 $");
 
  script_name("Cisco IOS and IOS XE Software SSH Version 2 RSA-Based User Authentication Bypass Vulnerability");
 
@@ -66,9 +66,8 @@ http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep15.html
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-03 19:49:32 +0200 (Tue, 03 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-03 19:31:26 +0200 (Tue, 03 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

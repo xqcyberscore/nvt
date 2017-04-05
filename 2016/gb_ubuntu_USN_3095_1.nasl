@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842904");
-  script_version("$Revision: 4250 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-12 09:24:11 +0200 (Wed, 12 Oct 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-05 05:43:33 +0200 (Wed, 05 Oct 2016)");
   script_cve_id("CVE-2016-7124", "CVE-2016-7125", "CVE-2016-7127", "CVE-2016-7128",
  		"CVE-2016-7129", "CVE-2016-7130", "CVE-2016-7131", "CVE-2016-7132",
@@ -103,7 +103,6 @@ It was discovered that PH ...
   script_xref(name: "USN", value: "3095-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3095-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php7.0");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

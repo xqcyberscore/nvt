@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20161005-ftmc2.nasl 4221 2016-10-06 06:32:23Z ckuerste $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20161005-ftmc2.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco Firepower Management Center Console Local File Inclusion Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6435");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 4221 $");
+ script_version ("$Revision: 5650 $");
 
  script_name("Cisco Firepower Management Center Console Local File Inclusion Vulnerability");
 
@@ -57,9 +57,8 @@ vulnerability to read some of the files on the underlying operating system.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-06 08:32:23 +0200 (Thu, 06 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 11:16:38 +0700 (Thu, 06 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

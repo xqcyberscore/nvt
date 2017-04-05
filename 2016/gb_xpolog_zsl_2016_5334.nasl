@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xpolog_zsl_2016_5334.nasl 3696 2016-07-13 09:18:12Z mime $
+# $Id: gb_xpolog_zsl_2016_5334.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # XpoLog Center V6 Multiple Remote Vulnerabilities 
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:xpolog:xpolog_center";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105808");
- script_version ("$Revision: 3696 $");
+ script_version ("$Revision: 5650 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("XpoLog Center V6 Multiple Remote Vulnerabilities ");
@@ -43,9 +43,8 @@ if (description)
  script_tag(name: "affected" , value:"XpoLog <= 6.4469");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"last_modification", value:"$Date: 2016-07-13 11:18:12 +0200 (Wed, 13 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-12 14:56:54 +0200 (Tue, 12 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

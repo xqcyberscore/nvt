@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_roundcube_96817.nasl 5561 2017-03-13 14:17:05Z cfi $
+# $Id: gb_roundcube_96817.nasl 5606 2017-03-17 17:09:01Z cfi $
 #
 # Roundcube Webmail CVE-2017-6820 Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:roundcube:webmail';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108097");
-  script_version("$Revision: 5561 $");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 15:17:05 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 5606 $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-13 14:00:00 +0100 (Mon, 13 Mar 2017)");
   script_bugtraq_id(96817);
   script_cve_id("CVE-2017-6820");

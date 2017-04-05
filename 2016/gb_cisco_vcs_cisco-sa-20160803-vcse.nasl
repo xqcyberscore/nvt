@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_cisco-sa-20160803-vcse.nasl 3849 2016-08-17 08:27:51Z antu123 $
+# $Id: gb_cisco_vcs_cisco-sa-20160803-vcse.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Cisco TelePresence Video Communication Server Expressway Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1468");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 3849 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("Cisco TelePresence Video Communication Server Expressway Command Injection Vulnerability");
 
@@ -58,9 +58,8 @@ commands on the affected system.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-17 10:27:51 +0200 (Wed, 17 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-04 13:00:53 +0700 (Thu, 04 Aug 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

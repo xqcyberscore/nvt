@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_62598.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_dell_drac_62598.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability
 #
@@ -60,16 +60,15 @@ if (description)
  script_cve_id("CVE-2013-3589");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62598");
- script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3589");
  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/920038");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 11:13:22 +0200 (Mon, 14 Oct 2013)");
  script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installshield_privilege_escalation_vuln.nasl 3877 2016-08-24 09:10:50Z antu123 $
+# $Id: gb_flexera_installshield_privilege_escalation_vuln.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Flexera InstallShield Privilege Escalation Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:flexerasoftware:installshield:2015:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809006");
-  script_version("$Revision: 3877 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-2542");
   script_bugtraq_id(84213);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-24 11:10:50 +0200 (Wed, 24 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 19:16:31 +0530 (Fri, 19 Aug 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Flexera InstallShield Privilege Escalation Vulnerability");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://flexeracommunity.force.com/customer/articles/INFO/Best-Practices-to-Avoid-Windows-Setup-Launcher-Executable-Issues");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Flexera InstallShield");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_flexera_installshield_detect_win.nasl");

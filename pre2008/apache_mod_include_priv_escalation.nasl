@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_mod_include_priv_escalation.nasl 5076 2017-01-24 10:49:12Z cfi $
+# $Id: apache_mod_include_priv_escalation.nasl 5621 2017-03-20 13:56:15Z cfi $
 # Description: Apache mod_include privilege escalation
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Disable SSI or upgrade to a newer version when available.";
 if(description)
 {
  script_id(15554);
- script_version("$Revision: 5076 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:49:12 +0100 (Tue, 24 Jan 2017) $");
+ script_version("$Revision: 5621 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(11471);
  script_cve_id("CVE-2004-0940");
@@ -62,7 +62,7 @@ if(description)
 
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
  script_family("Web Servers");
- script_dependencies("http_version.nasl", "os_detection.nasl");
+ script_dependencies("http_version.nasl");
  script_require_keys("www/apache");
  script_require_ports("Services/www", 80);
  script_tag(name : "solution" , value : tag_solution);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glass_fish_dir_trav_vuln.nasl 5168 2017-02-02 14:02:42Z teissa $
+# $Id: gb_oracle_glass_fish_dir_trav_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Oracle Glass Fish Server Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806848");
-  script_version("$Revision: 5168 $");
+  script_version("$Revision: 5626 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 15:02:42 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-27 14:43:03 +0530 (Wed, 27 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Oracle Glass Fish Server Directory Traversal Vulnerability");
@@ -65,7 +65,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("GlassFish_detect.nasl");
+  script_dependencies("GlassFish_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("GlassFish/installed");
   script_require_ports("Services/www", 4848, 8080, 8181);
   exit(0);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809116");
-  script_version("$Revision: 3862 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-22 08:36:56 +0200 (Mon, 22 Aug 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-11 05:45:27 +0200 (Thu, 11 Aug 2016)");
   script_cve_id("CVE-2016-6515");
   script_tag(name:"cvss_base", value:"7.8");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-4a3debc3a6");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/X2L6RW34VFNXYNVVN2CN73YAGJ5VMTFU");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

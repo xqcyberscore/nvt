@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # WordPress Content Source Control Plugin Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804904");
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 5628 $");
   script_cve_id("CVE-2014-5368");
   script_bugtraq_id(69278);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-09-19 10:28:34 +0530 (Fri, 19 Sep 2014)");
   script_name("WordPress Content Source Control Plugin Directory Traversal Vulnerability");
 
@@ -67,7 +67,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   exit(0);

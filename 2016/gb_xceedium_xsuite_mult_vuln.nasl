@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xceedium_xsuite_mult_vuln.nasl 5501 2017-03-06 13:59:39Z teissa $
+# $Id: gb_xceedium_xsuite_mult_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Xceedium Xsuite Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:xceedium:xsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807086");
-  script_version("$Revision: 5501 $");
+  script_version("$Revision: 5626 $");
   script_cve_id("CVE-2015-4665", "CVE-2015-4666", "CVE-2015-4667", "CVE-2015-4668", 
                 "CVE-2015-4669", "CVE-2015-4664");
   script_bugtraq_id(76501, 76500);
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:59:39 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:47 +0530 (Thu, 03 Mar 2016)");
   script_name("Xceedium Xsuite Multiple Vulnerabilities");
 
@@ -76,7 +76,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_xceedium_xsuite_remote_detect.nasl");
+  script_dependencies("gb_xceedium_xsuite_remote_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Xceedium/Xsuite/Installed");
   script_require_ports("Services/www", 80);
   exit(0);

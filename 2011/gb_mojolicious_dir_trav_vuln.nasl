@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mojolicious_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_mojolicious_dir_trav_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
 #
 # Mojolicious Directory Traversal Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is running Mojolicious and is prone to directory travers
 if(description)
 {
   script_id(801882);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-05-18 15:37:30 +0200 (Wed, 18 May 2011)");
   script_bugtraq_id(47402);
   script_cve_id("CVE-2011-1589");
@@ -56,7 +56,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_mandatory_keys("Mojolicious/banner");
   script_require_ports("Services/www", 3000);
   script_tag(name : "impact" , value : tag_impact);

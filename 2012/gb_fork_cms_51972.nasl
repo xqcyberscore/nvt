@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fork_cms_51972.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_fork_cms_51972.nasl 5641 2017-03-21 08:24:30Z cfi $
 #
 # Fork CMS Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -43,7 +43,7 @@ if (description)
  script_id(103433);
  script_bugtraq_id(51972);
  script_cve_id("CVE-2012-1209","CVE-2012-1208","CVE-2012-1207");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5641 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Fork CMS Cross Site Scripting and Local File Include Vulnerabilities");
@@ -54,14 +54,14 @@ if (description)
  script_xref(name : "URL" , value : "https://github.com/forkcms/forkcms/commit/c8ec9c58a6b3c46cdd924532c1de99bcda6072ed");
  script_xref(name : "URL" , value : "https://github.com/forkcms/forkcms/commit/df75e0797a6540c4d656969a2e7df7689603b2cf");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-22 14:53:24 +0100 (Wed, 22 Feb 2012)");
  script_summary("Determine if installed Fork cms is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

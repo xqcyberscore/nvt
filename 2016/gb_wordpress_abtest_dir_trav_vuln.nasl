@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_abtest_dir_trav_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_wordpress_abtest_dir_trav_vuln.nasl 5643 2017-03-21 09:06:09Z teissa $
 #
 # Wordpress Abtest Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807641");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5643 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:06:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:45 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Abtest Local File Inclusion Vulnerability");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Abtest plugin version 1.0.7");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be addressed once the
+  21th March, 2017. Information regarding this issue will be addressed once the
   updates are available. 
   For updates refer to https://wordpress.org/plugins/tags/abtest");
 

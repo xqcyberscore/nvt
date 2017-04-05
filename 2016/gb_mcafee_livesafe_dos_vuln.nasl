@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_livesafe_dos_vuln.nasl 3736 2016-07-20 10:32:19Z antu123 $
+# $Id: gb_mcafee_livesafe_dos_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # McAfee LiveSafe Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:livesafe";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808082");
-  script_version("$Revision: 3736 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-4535");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 12:32:19 +0200 (Wed, 20 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-10 13:58:57 +0530 (Fri, 10 Jun 2016)");
   script_name("McAfee LiveSafe Denial of Service Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39770");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of McAfee LiveSafe on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_mcafee_livesafe_detect.nasl");

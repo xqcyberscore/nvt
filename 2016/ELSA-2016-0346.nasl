@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0346.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0346.nasl 5650 2017-03-21 10:00:45Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122891");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5650 $");
 script_tag(name:"creation_date", value:"2016-03-03 11:50:33 +0200 (Thu, 03 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0346");
 script_tag(name: "insight", value: "ELSA-2016-0346 -  postgresql security update - [9.2.15-1]- update to 9.2.15 per release notes http://www.postgresql.org/docs/9.2/static/release-9-2-15.html"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0346");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

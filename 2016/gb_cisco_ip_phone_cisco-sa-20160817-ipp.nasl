@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_cisco-sa-20160817-ipp.nasl 3904 2016-08-29 10:43:18Z antu123 $
+# $Id: gb_cisco_ip_phone_cisco-sa-20160817-ipp.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Cisco IP Phone 8800 Series Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106188");
-  script_version("$Revision: 3904 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-08-29 12:43:18 +0200 (Mon, 29 Aug 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-08-18 15:00:49 +0700 (Thu, 18 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -51,7 +51,6 @@ if (description)
 
   script_tag(name: "summary", value: "A vulnerability in the web server of the Cisco IP Phone 8800 Series
 could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.");
-  script_summary("Check the version");
   script_tag(name: "vuldetect", value: "Checks the version.");
 
   script_tag(name: "insight", value: "The vulnerability is due to improper validation of user-supplied input

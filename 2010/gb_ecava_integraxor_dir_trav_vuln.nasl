@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_dir_trav_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ecava_integraxor_dir_trav_vuln.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # Ecava IntegraXor Directory Traversal Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:ecava:integraxor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801496");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5652 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_cve_id("CVE-2010-4598");
   script_bugtraq_id(45535);
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_ecava_integraxor_detect.nasl");
+  script_dependencies("gb_ecava_integraxor_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 7131);
   script_mandatory_keys("EcavaIntegraXor/Installed");
 

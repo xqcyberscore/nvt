@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_EasySiteEdit_49258.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_EasySiteEdit_49258.nasl 5642 2017-03-21 08:49:30Z cfi $
 #
 # EasySiteEdit 'sublink.php' Remote File Include Vulnerability
 #
@@ -35,8 +35,8 @@ possible.";
 if (description)
 {
  script_id(103274);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5642 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-23 10:55:34 +0200 (Fri, 23 Sep 2011)");
  script_bugtraq_id(49258);
  script_tag(name:"cvss_base", value:"7.5");
@@ -52,7 +52,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

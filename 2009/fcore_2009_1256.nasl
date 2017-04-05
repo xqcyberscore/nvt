@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_1256.nasl 4670 2016-12-05 08:06:45Z teissa $
+# $Id: fcore_2009_1256.nasl 5660 2017-03-21 11:29:28Z cfi $
 # Description: Auto-generated from advisory FEDORA-2009-1256 (roundcubemail)
 #
 # Authors:
@@ -62,8 +62,8 @@ announced via advisory FEDORA-2009-1256.";
 if(description)
 {
  script_id(63327);
- script_version("$Revision: 4670 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-05 09:06:45 +0100 (Mon, 05 Dec 2016) $");
+ script_version("$Revision: 5660 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-02-10 15:52:40 +0100 (Tue, 10 Feb 2009)");
  script_cve_id("CVE-2009-0413");
  script_tag(name:"cvss_base", value:"4.3");
@@ -84,7 +84,6 @@ if(description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=484052");
- script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0413");
  script_xref(name : "URL" , value : "http://trac.roundcube.net/changeset/2245");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/33372");
  script_xref(name : "URL" , value : "http://secunia.com/advisories/33622");

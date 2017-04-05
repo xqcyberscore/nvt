@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # TomatoCart 'json.php' Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901302");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5633 $");
   script_cve_id("CVE-2012-5907");
   script_bugtraq_id(52766);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-11-28 10:32:05 +0530 (Wed, 28 Nov 2012)");
   script_name("TomatoCart 'json.php' Directory Traversal Vulnerability");
 
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

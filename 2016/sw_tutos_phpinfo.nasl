@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tutos_phpinfo.nasl 3540 2016-06-16 17:14:29Z cfi $
+# $Id: sw_tutos_phpinfo.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # TUTOS phpinfo() information disclosure
 #
@@ -29,14 +29,13 @@ CPE = 'cpe:/a:tutos:tutos';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111106");
-  script_version("$Revision: 3540 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-16 19:14:29 +0200 (Thu, 16 Jun 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-16 16:40:16 +0200 (Thu, 16 Jun 2016)");
   script_cve_id("CVE-2008-0149");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("TUTOS phpinfo() information disclosure"); 
-  script_summary("Checks for the presence of the php/admin/phpinfo.php file");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Web application abuses");

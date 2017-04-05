@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0613.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0613.nasl 5598 2017-03-17 10:00:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122938");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5598 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:54 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0613");
 script_tag(name: "insight", value: "ELSA-2016-0613 -  samba3x security update - [3.6.23-12.0.1]- Remove use-after-free talloc_tos() inlined function problem (John Haxby) [orabug 19973497][3.6.23-12]- related: #1322685 - Update CVE patchset[3.6.23-11]- related: #1322685 - Update CVE patchset[3.6.23-10]- resolves: #1322685 - Fix CVE-2015-5370- resolves: #1322685 - Fix CVE-2016-2110- resolves: #1322685 - Fix CVE-2016-2111- resolves: #1322685 - Fix CVE-2016-2112- resolves: #1322685 - Fix CVE-2016-2115- resolves: #1322685 - Fix CVE-2016-2118 (Known as Badlock)"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0613");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

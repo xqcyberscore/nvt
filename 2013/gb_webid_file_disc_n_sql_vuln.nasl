@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_file_disc_n_sql_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_webid_file_disc_n_sql_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # WeBid Local File Disclosure and SQL Injection Vulnerabilities
 #
@@ -52,10 +52,10 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 5627 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-05-09 17:11:32 +0530 (Thu, 09 May 2013)");
   script_name("WeBid Local File Disclosure and SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploit/20730");
@@ -66,7 +66,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_webid_detect.nasl");
+  script_dependencies("gb_webid_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("webid/installed");
   script_tag(name : "impact" , value : tag_impact);

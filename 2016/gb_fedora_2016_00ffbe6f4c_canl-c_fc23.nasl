@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809209");
-  script_version("$Revision: 3982 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:01:29 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-07 10:08:57 +0530 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-00ffbe6f4c");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AHNFLVYZOGQ7DEYM4BYPKUGY3DIQI23Z");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of canl-c");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

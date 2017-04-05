@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_tcp_seq.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_nmap_tcp_seq.nasl 5658 2017-03-21 11:17:56Z cfi $
 #
 # TCP/IP Predictable TCP Initial Sequence Number Vulnerability
 #
@@ -34,20 +34,19 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(670,107);
- script_cve_id("CVE-1999-0077","CVE-2000-0916","CVE-2001-0288");
+ script_cve_id("CVE-1999-0077", "CVE-2000-0916", "CVE-2001-0288");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5658 $");
 
  script_name("TCP/IP Predictable TCP Initial Sequence Number Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/670");
  script_xref(name:"URL", value:"http://teso.scene.at/");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20010301-ios-tcp-isn-random");
- script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0077");
  script_xref(name:"URL", value:"ftp://ftp.freebsd.org/pub/FreeBSD/CERT/advisories/FreeBSD-SA-00:52.tcp-iss.asc");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:17:56 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-04-22 11:14:29 +0200 (Mon, 22 Apr 2013)");
  script_summary("Determine if the remote host has predictable TCP sequence numbers");
  script_category(ACT_ATTACK);

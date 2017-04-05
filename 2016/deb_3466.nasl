@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3466.nasl 2845 2016-03-14 07:13:16Z antu123 $
+# $Id: deb_3466.nasl 5650 2017-03-21 10:00:45Z teissa $
 # Auto-generated from advisory DSA 3466-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703466);
-    script_version("$Revision: 2845 $");
+    script_version("$Revision: 5650 $");
     script_cve_id("CVE-2015-8629", "CVE-2015-8630", "CVE-2015-8631");
     script_name("Debian Security Advisory DSA 3466-1 (krb5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-14 08:13:16 +0100 (Mon, 14 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-02-04 00:00:00 +0100 (Thu, 04 Feb 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3466.html");
 
-    script_summary("Debian Security Advisory DSA 3466-1 (krb5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

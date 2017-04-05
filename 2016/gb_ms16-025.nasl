@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-025.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: gb_ms16-025.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Microsoft Windows Library Loading Remote Code Execution Vulnerability (3140709)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806896");
-  script_version("$Revision: 2910 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-0100");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:53:44 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows Library Loading Remote Code Execution Vulnerability (3140709)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3140709");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-025");
 
-  script_summary("Check for the vulnerable 'wab32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

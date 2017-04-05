@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_sql_inj.nasl 3777 2016-07-30 10:14:39Z cfi $
+# $Id: gb_linknat_vos_sql_inj.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Linknat VOS3000/2009 SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:linknat:vos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106085");
-  script_version("$Revision: 3777 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-30 12:14:39 +0200 (Sat, 30 Jul 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-05-25 12:52:24 +0700 (Wed, 25 May 2016)");
   script_tag(name: "cvss_base", value: "9.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -50,7 +50,6 @@ if (description)
   script_mandatory_keys("linknat_vos/detected");
 
   script_tag(name: "summary", value: "Linknat VOS3000/2009 is prone to an SQL Injection vulnerability");
-  script_summary("Send a special crafted HTTP POST request and check the response");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
 

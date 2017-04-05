@@ -30,11 +30,8 @@ file injection and XSS.";
 tag_solution = "All Mailman users should upgrade to the latest version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=net-mail/mailman-2.1.9_rc1'
+    # emerge --ask --oneshot --verbose '>=net-mail/mailman-2.1.9_rc1'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200609-12
-http://bugs.gentoo.org/show_bug.cgi?id=139976
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=cve-2006-3636";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200609-12.";
 
@@ -43,15 +40,16 @@ advisory GLSA 200609-12.";
 if(description)
 {
  script_id(57890);
- script_version("$Revision: 4339 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 08:03:30 +0200 (Tue, 25 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_cve_id("CVE-2006-2941", "CVE-2006-3636");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_name("Gentoo Security Advisory GLSA 200609-12 (mailman)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200609-12");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=139976");
 
  script_category(ACT_GATHER_INFO);
 

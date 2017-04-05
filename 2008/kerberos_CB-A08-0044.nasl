@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerberos_CB-A08-0044.nasl 4917 2017-01-02 14:43:20Z cfi $
+# $Id: kerberos_CB-A08-0044.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: Kerberos < 1.6.4 vulnerability
 #
 # Authors:
@@ -55,24 +55,20 @@ Impact
 
 tag_solution = "All Kerberos users should upgrade to the latest version:";
 
-# $Revision: 4917 $
+# $Revision: 5661 $
 
 if(description)
 {
   script_id(90016);
-  script_version("$Revision: 4917 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:43:20 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-06-17 20:22:38 +0200 (Tue, 17 Jun 2008)");
   script_cve_id("CVE-2008-0948", "CVE-2008-0947", "CVE-2008-0063", "CVE-2008-0062");
-  script_bugtraq_id(28302,28303);
+  script_bugtraq_id(28302, 28303);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Kerberos < 1.6.4 vulnerability");
 
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0062");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0063");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0947");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0948");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");

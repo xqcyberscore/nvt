@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybackup_08_10.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_mybackup_08_10.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # MyBackup 1.4.0 Multiple Security Vulnerabilities
 #
@@ -38,15 +38,12 @@ MyBackup 1.4.0 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100768);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5656 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-08-31 14:30:50 +0200 (Tue, 31 Aug 2010)");
  script_cve_id("CVE-2009-4977","CVE-2009-4978");
 
  script_name("MyBackup 1.4.0 Multiple Security Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4978");
- script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-4977");
 
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-011.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-011.nasl 5637 2017-03-21 07:30:30Z antu123 $
 #
 # Microsoft Uniscribe Multiple Vulnerabilities (4013076)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810812");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5637 $");
   script_cve_id("CVE-2017-0072", "CVE-2017-0083", "CVE-2017-0084", "CVE-2017-0085",
 		"CVE-2017-0086", "CVE-2017-0087", "CVE-2017-0088", "CVE-2017-0089",
 		"CVE-2017-0090", "CVE-2017-0091", "CVE-2017-0092", "CVE-2017-0111",
@@ -42,7 +42,7 @@ if(description)
 		    96674, 96675);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 10:00:42 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Uniscribe Multiple Vulnerabilities (4013076)");
@@ -174,16 +174,11 @@ else if(hotfix_check_sp(win2012:1) > 0 && mshVer)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ##Fetch the version of files
-  vmsVer = fetch_file_version(sysPath, file_name:"System32\Vmswitch.sys");
-  if(!vmsVer){
-    exit(0);
-  }
-  ## Check for Vmswitch.sys version
-  if(version_is_less(version:vmsVer, test_version:"6.3.9600.18589"))
+  ## Check for icm32.dll version
+  if(version_is_less(version:icmVer, test_version:"6.3.9600.18589"))
   {
-    report = 'File checked:     ' + sysPath + "\system32\Vmswitch.sys" + '\n' +
-             'File version:     ' + vmsVer  + '\n' +
+    report = 'File checked:     ' + sysPath + "\system32\Icm32.dll" + '\n' +
+             'File version:     ' + icmVer  + '\n' +
              'Vulnerable range:  Less than 6.3.9600.18589\n' ;
     security_message(data:report);
     exit(0);

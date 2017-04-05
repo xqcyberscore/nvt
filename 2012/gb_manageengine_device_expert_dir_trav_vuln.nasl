@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_device_expert_dir_trav_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_manageengine_device_expert_dir_trav_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
 #
 # Zoho ManageEngine Device Expert Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802720");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5641 $");
   script_bugtraq_id(52559);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 15:57:28 +0530 (Tue, 20 Mar 2012)");
   script_name("Zoho ManageEngine Device Expert Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48456/");
@@ -43,7 +43,8 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 6060);
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to perform
   directory traversal attacks and read arbitrary files on the affected

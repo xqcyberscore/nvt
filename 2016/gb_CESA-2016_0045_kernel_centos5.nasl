@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882369");
-  script_version("$Revision: 3319 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-20 06:16:08 +0100 (Wed, 20 Jan 2016)");
   script_cve_id("CVE-2015-5364", "CVE-2015-5366");
   script_tag(name:"cvss_base", value:"7.8");
@@ -56,7 +56,6 @@ rebooted for this update to take effect.
 
   script_xref(name: "CESA", value: "2016:0045");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-January/021616.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

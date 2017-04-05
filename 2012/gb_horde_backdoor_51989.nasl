@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_backdoor_51989.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_horde_backdoor_51989.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # Horde Groupware Source Packages Backdoor Vulnerability
 #
@@ -41,21 +41,21 @@ if (description)
  script_id(103423);
  script_bugtraq_id(51989);
  script_cve_id("CVE-2012-0209");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5616 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
  script_name("Horde Groupware Source Packages Backdoor Vulnerability");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 09:13:01 +0100 (Thu, 16 Feb 2012)");
  script_summary("Determine if Horde is installed with a backdoor");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("horde_detect.nasl");
+ script_dependencies("horde_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("horde/installed");

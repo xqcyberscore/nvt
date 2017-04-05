@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_struts_vuln.nasl 5575 2017-03-15 06:07:53Z ckuerste $
+# $Id: gb_atlassian_bamboo_struts_vuln.nasl 5654 2017-03-21 10:23:47Z cfi $
 #
 # Atlassian Bamboo Struts2 RCE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:atlassian:bamboo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106652");
-  script_version("$Revision: 5575 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-15 07:07:53 +0100 (Wed, 15 Mar 2017) $");
+  script_version("$Revision: 5654 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-03-15 11:39:14 +0700 (Wed, 15 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,7 @@ if (description)
   script_dependencies("gb_atlassian_bamboo_detect.nasl");
   script_mandatory_keys("AtlassianBamboo/Installed");
 
-  script_tag(name: "summary", value: "Atlassian Bamboo is prone to a remote code execution vulnerabilitiy in
+  script_tag(name: "summary", value: "Atlassian Bamboo is prone to a remote code execution vulnerability in
 Struts2.");
 
   script_tag(name: "vuldetect", value: "Checks the version.");

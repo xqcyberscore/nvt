@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smbcl_gnutls_CB-A08-0079.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: smbcl_gnutls_CB-A08-0079.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: GnuTLS < 2.2.4 vulnerability (Windows)
 #
 # Authors:
@@ -60,23 +60,19 @@ Impact
 
 tag_solution = "All GnuTLS users should upgrade to the latest version.";
 
-# $Revision: 4557 $
+# $Revision: 5661 $
 
 if(description)
 {
 
  script_id(90027);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 5661 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-06 20:50:27 +0200 (Sat, 06 Sep 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2008-1948");
+ script_cve_id("CVE-2008-1948", "CVE-2008-1949", "CVE-2008-1950");
  script_name("GnuTLS < 2.2.4 vulnerability (Windows)");
-
-script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1948");
- script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1949");
- script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1950");
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

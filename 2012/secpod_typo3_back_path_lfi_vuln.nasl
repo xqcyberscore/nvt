@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_back_path_lfi_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_typo3_back_path_lfi_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902795");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5633 $");
   script_cve_id("CVE-2011-4614");
   script_bugtraq_id(51090);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-02-22 13:46:49 +0530 (Wed, 22 Feb 2012)");
   script_name("TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability");
 
@@ -60,7 +60,7 @@ of 4.7");
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("gb_typo3_detect.nasl");
+  script_dependencies("gb_typo3_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");

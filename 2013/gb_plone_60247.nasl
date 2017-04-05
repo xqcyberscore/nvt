@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_60247.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_plone_60247.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # PloneFormGen Arbitrary Code Execution Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(60247);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5670 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
 
@@ -53,14 +53,14 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60247");
  script_xref(name:"URL", value:"http://plone.org/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-06-12 11:35:33 +0200 (Wed, 12 Jun 2013)");
  script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_plone_detect.nasl");
+ script_dependencies("gb_plone_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("plone/installed");

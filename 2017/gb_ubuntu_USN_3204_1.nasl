@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843056");
-  script_version("$Revision: 5407 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 14:53:44 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5606 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 05:48:53 +0100 (Tue, 21 Feb 2017)");
   script_cve_id("CVE-2017-6056");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tomcat7 USN-3204-1");
   script_tag(name: "summary", value: "Check the version of tomcat7");

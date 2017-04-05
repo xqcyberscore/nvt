@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_encryption_search_path_vuln.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_symantec_endpoint_encryption_search_path_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Symantec Endpoint Encryption Unquoted Windows Search Path Vulnerability
 #
@@ -29,11 +29,11 @@ CPE= "cpe:/a:symantec:endpoint_encryption";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808070");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2015-8156");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 13:01:24 +0530 (Tue, 07 Jun 2016)");
   script_name("Symantec Endpoint Encryption Unquoted Windows Search Path Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;suid=20160506_00");
 
-  script_summary("Check for the vulnerable version of Symantec Endpoint Encryption (SEE)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_55077.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_webid_55077.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # WeBid Remote File Include and SQL Injection Vulnerabilities
 #
@@ -44,21 +44,21 @@ if (description)
  script_bugtraq_id(55077);
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5633 $");
 
  script_name("WeBid Remote File Include and SQL Injection Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55077");
  script_xref(name : "URL" , value : "http://www.webidsupport.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-08-20 10:23:22 +0200 (Mon, 20 Aug 2012)");
  script_summary("Determine if it is possible to read local files");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_webid_detect.nasl");
+ script_dependencies("gb_webid_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("webid/installed");

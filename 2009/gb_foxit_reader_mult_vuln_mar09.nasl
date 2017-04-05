@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_mar09.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_foxit_reader_mult_vuln_mar09.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Foxit Reader Multiple Vulnerabilities Mar-09
 #
@@ -42,8 +42,8 @@ tag_summary = "The host is installed with Foxit  Reader and is prone to
 if(description)
 {
   script_id(800537);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-17 05:28:51 +0100 (Tue, 17 Mar 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,6 @@ if(description)
   script_bugtraq_id(34035);
   script_name("Foxit Reader Multiple Vulnerabilities Mar-09");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/369876.php");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0191");
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2009-0837");
 
   script_tag(name:"qod_type", value:"executable_version");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_50191.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_50191.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # Joomla NoNumber! Extension Manager Plugin Local File Include and PHP code Injection Vulnerabilities
 #
@@ -38,8 +38,8 @@ vendor for more information.";
 if (description)
 {
  script_id(103308);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 5647 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50191);
  script_tag(name:"cvss_base", value:"5.1");
@@ -54,9 +54,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl");
+ script_dependencies("joomla_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("joomla/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);

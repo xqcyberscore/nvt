@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_lfi_16_07_2012.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_magento_lfi_16_07_2012.nasl 5640 2017-03-21 08:12:48Z cfi $
 #
 # Magento eCommerce Local File Disclosure
 #
@@ -30,7 +30,7 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103518");
- script_version ("$Revision: 3046 $");
+ script_version ("$Revision: 5640 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -52,16 +52,15 @@ if (description)
  may be coerced to open arbitrary files and/or TCP connections.");
  script_tag(name : "summary" , value : "Updates are available. Please see the references for more information.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-16 10:24:55 +0200 (Mon, 16 Jul 2012)");
  script_summary("Determine if it is possible to read local files");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("sw_magento_detect.nasl");
+ script_dependencies("sw_magento_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("magento/installed");
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name:"qod_type", value:"remote_active");
 

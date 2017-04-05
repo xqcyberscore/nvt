@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webfilebrowser_file_download_vuln.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_webfilebrowser_file_download_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
 #
 # Web File Browser 'act' Parameter File Download Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802341");
-  script_version("$Revision: 3108 $");
+  script_version("$Revision: 5645 $");
   script_cve_id("CVE-2011-4831");
   script_bugtraq_id(50508);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 17:09:26 +0530 (Tue, 08 Nov 2011)");
   script_name("Web File Browser 'act' Parameter File Download Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71131");
@@ -43,7 +43,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

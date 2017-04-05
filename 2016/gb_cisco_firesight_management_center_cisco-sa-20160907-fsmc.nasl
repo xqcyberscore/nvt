@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_cisco-sa-20160907-fsmc.nasl 4003 2016-09-08 04:51:23Z ckuerste $
+# $Id: gb_cisco_firesight_management_center_cisco-sa-20160907-fsmc.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Cisco FireSIGHT System Software Session Fixation Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6394");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 4003 $");
+ script_version ("$Revision: 5598 $");
 
  script_name("Cisco FireSIGHT System Software Session Fixation Vulnerability");
 
@@ -57,9 +57,8 @@ this vulnerability.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"NoneAvailable");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-08 06:51:23 +0200 (Thu, 08 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-08 10:51:23 +0700 (Thu, 08 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol68785753.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol68785753.nasl 5644 2017-03-21 09:07:05Z teissa $
 #
 # F5 BIG-IP - SOL68785753 - ImageMagick vulnerability CVE-2015-8898
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140080");
  script_cve_id("CVE-2015-8898");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+ script_version ("$Revision: 5644 $");
 
  script_name("F5 BIG-IP - SOL68785753 - ImageMagick vulnerability CVE-2015-8898");
 
@@ -48,7 +48,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-11-29 09:59:41 +0100 (Tue, 29 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");

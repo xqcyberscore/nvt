@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3685.nasl 4294 2016-10-18 11:48:46Z antu123 $
+# $Id: deb_3685.nasl 5598 2017-03-17 10:00:43Z teissa $
 # Auto-generated from advisory DSA 3685-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703685);
-    script_version("$Revision: 4294 $");
+    script_version("$Revision: 5598 $");
     script_cve_id("CVE-2016-7424");
     script_name("Debian Security Advisory DSA 3685-1 (libav - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-18 13:48:46 +0200 (Tue, 18 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-10-04 00:00:00 +0200 (Tue, 04 Oct 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3685.html");
 
-    script_summary("Debian Security Advisory DSA 3685-1 (libav - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 5536 2017-03-10 13:04:45Z antu123 $
+# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 5610 2017-03-20 08:09:51Z teissa $
 #
 # MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810609");
-  script_version("$Revision: 5536 $");
+  script_version("$Revision: 5610 $");
   script_cve_id("CVE-2017-6297");
   script_bugtraq_id(96447);
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 14:04:45 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:09:51 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 16:21:26 +0530 (Thu, 09 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability");

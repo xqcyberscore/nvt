@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882482");
-  script_version("$Revision: 3234 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-06 12:23:52 +0200 (Fri, 06 May 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:06 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2015-5157", "CVE-2015-8767");
   script_tag(name:"cvss_base", value:"7.2");
@@ -96,7 +96,6 @@ insertion work as expected. (BZ#1315706)
 
   script_xref(name: "CESA", value: "2016:0715");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-May/021858.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

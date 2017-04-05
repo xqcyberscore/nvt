@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_vrde_priv_esc_vuln_macosx.nasl 4423 2016-11-07 04:52:44Z antu123 $
+# $Id: gb_oracle_virtualbox_vrde_priv_esc_vuln_macosx.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Oracle Virtualbox VRDE Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809080");
-  script_version("$Revision: 4423 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-5605");
   script_bugtraq_id(93685);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 05:52:44 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-21 14:40:28 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle Virtualbox VRDE Privilege Escalation Vulnerability (Mac OS X)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");

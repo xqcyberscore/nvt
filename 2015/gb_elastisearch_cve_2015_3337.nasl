@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_cve_2015_3337.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_elastisearch_cve_2015_3337.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # Elasticsearch Directory Traversal Vulnerability
 #
@@ -33,11 +33,9 @@ if (description)
  script_cve_id("CVE-2015-3337");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 2617 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("Elasticsearch Directory Traversal Vulnerability");
-
- script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3337");
 
  script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
 
@@ -51,13 +49,13 @@ when a site plugin is enabled, allows remote attackers to read arbitrary files."
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-05-05 15:11:20 +0200 (Tue, 05 May 2015)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_elastsearch_detect.nasl");
+ script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 9200);
  script_mandatory_keys("elastisearch/installed");
 

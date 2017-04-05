@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_basilic_54234.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_basilic_54234.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # Basilic 'diff.php' Remote Command Execution Vulnerability
 #
@@ -39,21 +39,21 @@ if (description)
  script_bugtraq_id(54234);
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5670 $");
 
  script_name("Basilic 'diff.php' Remote Command Execution Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54234");
  script_xref(name : "URL" , value : "http://artis.imag.fr/Software/Basilic/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-02 10:46:56 +0200 (Mon, 02 Jul 2012)");
  script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

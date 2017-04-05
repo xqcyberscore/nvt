@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3431.nasl 3234 2016-05-06 10:23:52Z antu123 $
+# $Id: deb_3431.nasl 5612 2017-03-20 10:00:41Z teissa $
 # Auto-generated from advisory DSA 3431-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703431);
-    script_version("$Revision: 3234 $");
+    script_version("$Revision: 5612 $");
     script_cve_id("CVE-2015-7944", "CVE-2015-7945");
     script_name("Debian Security Advisory DSA 3431-1 (ganeti - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-06 12:23:52 +0200 (Fri, 06 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-05-06 15:29:26 +0530 (Fri, 06 May 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3431.html");
 
-    script_summary("Debian Security Advisory DSA 3431-1 (ganeti - security update)");
 
     script_category(ACT_GATHER_INFO);
 

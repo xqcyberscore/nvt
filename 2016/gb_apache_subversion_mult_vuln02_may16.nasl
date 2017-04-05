@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln02_may16.nasl 3388 2016-05-26 06:22:21Z antu123 $
+# $Id: gb_apache_subversion_mult_vuln02_may16.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Apache Subversion Multiple Vulnerabilities-02 May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808106");
-  script_version("$Revision: 3388 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-2167", "CVE-2016-2168");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-26 08:22:21 +0200 (Thu, 26 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-18 09:39:48 +0530 (Wed, 18 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Multiple Vulnerabilities-02 May16");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"http://subversion.apache.org/security/CVE-2016-2167-advisory.txt");
   script_xref(name:"URL", value:"http://subversion.apache.org/security/CVE-2016-2168-advisory.txt");
 
-  script_summary("Check for the vulnerable version of Apache Subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

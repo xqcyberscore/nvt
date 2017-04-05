@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_file_disc_vuln.nasl 5353 2017-02-20 09:56:12Z ckuerste $
+# $Id: gb_kodi_file_disc_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
 #
 # Kodi Local File Inclusion Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kodi:kodi_web_server';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106586");
-  script_version("$Revision: 5353 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-20 10:56:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5626 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-02-13 10:37:26 +0700 (Mon, 13 Feb 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,7 +48,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_kodi_web_server_detect.nasl");
+  script_dependencies("gb_kodi_web_server_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("Kodi/WebServer/installed");
 
   script_tag(name: "summary", value: "Kodi is prone to an arbitrary file disclosure vulnerability.");

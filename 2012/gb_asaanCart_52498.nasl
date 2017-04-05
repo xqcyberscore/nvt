@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asaanCart_52498.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_asaanCart_52498.nasl 5640 2017-03-21 08:12:48Z cfi $
 #
 # asaanCart Multiple Input Validation Vulnerabilities
 #
@@ -49,7 +49,7 @@ if (description)
  script_cve_id("CVE-2012-5330","CVE-2012-5331");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3014 $");
+ script_version ("$Revision: 5640 $");
 
  script_name("asaanCart Multiple Input Validation Vulnerabilities");
 
@@ -57,14 +57,14 @@ if (description)
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/asaancart/");
  script_xref(name : "URL" , value : "http://asaancart.wordpress.com");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-10-23 11:48:15 +0200 (Tue, 23 Oct 2012)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

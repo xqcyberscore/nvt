@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archivo_rce_01_14.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_apache_archivo_rce_01_14.nasl 5670 2017-03-21 15:13:03Z cfi $
 #
 # Apache Archiva Multiple Remote Command Execution Vulnerabilities
 #
@@ -51,7 +51,7 @@ if (description)
  script_cve_id("CVE-2013-2251");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5670 $");
 
  script_name("Apache Archiva Multiple Remote Command Execution Vulnerabilities");
 
@@ -59,14 +59,14 @@ if (description)
  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2014010087");
  script_xref(name:"URL", value:"http://struts.apache.org/release/2.3.x/docs/s2-016.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-01-15 18:13:42 +0100 (Wed, 15 Jan 2014)");
  script_summary("Determine if it is possoible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_apache_archiva_detect.nasl");
+ script_dependencies("gb_apache_archiva_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("apache_archiva/installed");

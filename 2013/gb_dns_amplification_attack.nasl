@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_amplification_attack.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: gb_dns_amplification_attack.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # DNS Amplification Attack
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103718");
-  script_version ("$Revision: 5309 $");
+  script_version ("$Revision: 5655 $");
   script_cve_id("CVE-2006-0987");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-05-28 11:31:19 +0200 (Tue, 28 May 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,7 +45,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.us-cert.gov/ncas/alerts/TA13-088A");
   script_xref(name:"URL", value:"http://www.isotf.org/news/DNS-Amplification-Attacks.pdf");
-  script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2006-0987");
 
   tag_summary = "A misconfigured Domain Name System (DNS) server can be exploited to participate
   in a Distributed Denial of Service (DDoS) attack.";

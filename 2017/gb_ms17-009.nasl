@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-009.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-009.nasl 5644 2017-03-21 09:07:05Z teissa $
 #
 # Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810622");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5644 $");
   script_cve_id("CVE-2017-0023");
   script_bugtraq_id(96075);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:29:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows PDF Library Memory Corruption Vulnerability (4010319)");

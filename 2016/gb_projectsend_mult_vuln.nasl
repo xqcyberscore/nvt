@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_projectsend_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_projectsend_mult_vuln.nasl 5643 2017-03-21 09:06:09Z teissa $
 #
 # ProjectSend Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:projectsend:projectsend";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807550");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5643 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:06:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-19 11:50:28 +0530 (Tue, 19 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("ProjectSend Multiple Vulnerabilities");
@@ -61,14 +61,12 @@ if(description)
   script_tag(name: "affected" , value:"
   ProjectSend r582 and probably prior.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 
-  24th January, 2017. Information regarding this issue will be updated once the solution 
-  details are available. For updates refer to http://www.projectsend.org");
+  script_tag(name: "solution" , value:"Fixes had been added in https://github.com/ignacionelson/ProjectSend/pull/82. Update to the last version. For updates refer to http://www.projectsend.org");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39385");
   script_xref(name : "URL" , value : "https://www.wearesegment.com/research/Projectsend_multiple_vulnerabilities");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_xref(name : "URL" , value : "https://github.com/ignacionelson/ProjectSend/pull/82");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

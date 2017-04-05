@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oscommerce_50301.nasl 3501 2016-06-13 15:57:18Z mime $
+# $Id: gb_oscommerce_50301.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # osCommerce Remote File Upload and File Disclosure Vulnerabilities
 #
@@ -35,8 +35,8 @@ arbitrary file's content; other attacks are also possible.";
 if (description)
 {
  script_id(103309);
- script_version("$Revision: 3501 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 17:57:18 +0200 (Mon, 13 Jun 2016) $");
+ script_version("$Revision: 5647 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-24 14:18:38 +0200 (Mon, 24 Oct 2011)");
  script_bugtraq_id(50301);
  script_tag(name:"cvss_base", value:"4.6");
@@ -52,9 +52,8 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("oscommerce_detect.nasl");
+ script_dependencies("oscommerce_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("Software/osCommerce");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);

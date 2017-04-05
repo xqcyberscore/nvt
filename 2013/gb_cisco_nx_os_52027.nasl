@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_52027.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_52027.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability
 #
@@ -58,7 +58,7 @@ if (description)
  script_cve_id("CVE-2012-0352");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability");
 
@@ -85,9 +85,8 @@ Solution:
  script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9902/tsd_products_support_series_home.html");
  script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9670/");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20120215-nxos");
- script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-0352");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-10-10 11:38:56 +0200 (Thu, 10 Oct 2013)");
  script_summary("Check the installed NX-OS version");
  script_category(ACT_GATHER_INFO);

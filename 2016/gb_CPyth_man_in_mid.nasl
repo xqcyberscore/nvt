@@ -1,6 +1,6 @@
 
 # OpenVAS Vulnerability Test
-# $Id: gb_CPyth_man_in_mid.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_CPyth_man_in_mid.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # CPython Man in Middle Attack
 #
@@ -40,14 +40,14 @@ CPE = 'cpe:/a:python:python';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107021");
-  script_version("$Revision: 5505 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_version("$Revision: 5655 $");
+  script_cve_id("CVE-2013-7440");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"creation_date", value:"2016-07-04 19:31:49 +0200 (Mon, 04 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("CPython Man In Middle Attack Vulnerability");
-  script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-7440");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

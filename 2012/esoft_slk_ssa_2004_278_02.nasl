@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_278_02.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2004_278_02.nasl 5666 2017-03-21 12:57:16Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -27,12 +27,7 @@
 
 include("revisions-lib.inc");
 tag_insight = "New zlib packages are available for Slackware 10.0 and -current to
-fix a possible denial of service security issue.
-
-More details about this issue may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-797";
+fix a possible denial of service security issue.";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2004-278-02.";
 
@@ -41,11 +36,12 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
 if(description)
 {
  script_id(53906);
+ script_cve_id("CVE-2004-0797");
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:57:16 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5666 $");
  name = "Slackware Advisory SSA:2004-278-02 zlib DoS ";
  script_name(name);
 

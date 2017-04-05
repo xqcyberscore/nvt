@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_44712.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_quick_tftp_44712.nasl 5652 2017-03-21 10:14:46Z cfi $
 #
 # Quick Tftp Server Pro Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100899");
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5652 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-09 13:58:26 +0100 (Tue, 09 Nov 2010)");
  script_bugtraq_id(44712);
  script_tag(name:"cvss_base", value:"5.0");
@@ -41,7 +41,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Remote file access");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("tftpd_detect.nasl", "tftpd_backdoor.nasl");
+ script_dependencies("tftpd_detect.nasl", "tftpd_backdoor.nasl", "os_detection.nasl");
  script_require_udp_ports("Services/udp/tftp", 69);
  script_exclude_keys('tftp/backdoor');
 

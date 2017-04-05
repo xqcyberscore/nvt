@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3551.nasl 3807 2016-08-08 08:01:14Z antu123 $
+# $Id: deb_3551.nasl 5612 2017-03-20 10:00:41Z teissa $
 # Auto-generated from advisory DSA 3551-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703551);
-    script_version("$Revision: 3807 $");
+    script_version("$Revision: 5612 $");
     script_cve_id("CVE-2015-8836", "CVE-2015-8837");
     script_name("Debian Security Advisory DSA 3551-1 (fuseiso - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-08 10:01:14 +0200 (Mon, 08 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-04-16 00:00:00 +0200 (Sat, 16 Apr 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3551.html");
 
-    script_summary("Debian Security Advisory DSA 3551-1 (fuseiso - security update)");
 
     script_category(ACT_GATHER_INFO);
 

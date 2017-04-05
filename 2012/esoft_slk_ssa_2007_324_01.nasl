@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_324_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2007_324_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -33,9 +33,7 @@ JavaScript.
 
 More information about the security issues may be found here:
 http://www.mozilla.org/security/announce/2007/mfsa2007-36.html
-http://www.mozilla.org/security/announce/2007/mfsa2007-29.html
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4841
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5339";
+http://www.mozilla.org/security/announce/2007/mfsa2007-29.html";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2007-324-01.";
 
@@ -45,11 +43,11 @@ if(description)
 {
  script_id(59025);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2007-4841", "CVE-2007-5339");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2007-324-01 mozilla-thunderbird ";
  script_name(name);
 

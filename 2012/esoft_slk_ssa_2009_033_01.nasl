@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2009_033_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2009_033_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -30,13 +30,7 @@ tag_insight = "New xdg-utils packages are available for Slackware 12.2 and -curr
 fix security issues.  Applications that use /etc/mailcap could be tricked
 into running an arbitrary script through xdg-open, and a separate flaw in
 xdg-open could allow the execution of arbitrary commands embedded in untrusted
-input provided to xdg-open.
-
-More details about the issues may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0068
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-0386";
+input provided to xdg-open.";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2009-033-01.";
 
@@ -46,11 +40,11 @@ if(description)
 {
  script_id(63337);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2009-0068", "CVE-2008-0386");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2009-033-01 xdg-utils ";
  script_name(name);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_myserver_remote_dos_vuln.nasl 5418 2017-02-24 17:05:08Z cfi $
+# $Id: gb_myserver_remote_dos_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # MyServer Remote Denial of Service Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is running MyServer and is prone to denial of service
 if(description)
 {
   script_id(800306);
-  script_version("$Revision: 5418 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-24 18:05:08 +0100 (Fri, 24 Feb 2017) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,6 @@ if(description)
   script_name("MyServer Remote Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/5184");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/27981");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5160");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

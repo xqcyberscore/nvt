@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3511.nasl 3020 2016-04-11 06:07:29Z antu123 $
+# $Id: deb_3511.nasl 5598 2017-03-17 10:00:43Z teissa $
 # Auto-generated from advisory DSA 3511-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703511);
-    script_version("$Revision: 3020 $");
+    script_version("$Revision: 5598 $");
     script_cve_id("CVE-2016-1285", "CVE-2016-1286");
     script_name("Debian Security Advisory DSA 3511-1 (bind9 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-11 08:07:29 +0200 (Mon, 11 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-09 00:00:00 +0100 (Wed, 09 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3511.html");
 
-    script_summary("Debian Security Advisory DSA 3511-1 (bind9 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

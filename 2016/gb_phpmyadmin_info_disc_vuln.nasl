@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_info_disc_vuln.nasl 2652 2016-02-12 11:42:29Z antu123 $
+# $Id: gb_phpmyadmin_info_disc_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # phpMyAdmin Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807055");
-  script_version("$Revision: 2652 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2015-8669");
   script_bugtraq_id(79691);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 12:42:29 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-02 12:01:15 +0530 (Tue, 02 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("phpMyAdmin Information Disclosure Vulnerability");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2015-6");
   script_xref(name : "URL" , value : "https://github.com/phpmyadmin/phpmyadmin/commit/c4d649325b25139d7c097e56e2e46cc7187fae45");
 
-  script_summary("Check if phpMyAdmin is prone to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

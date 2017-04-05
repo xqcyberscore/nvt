@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_majordomo2_dir_trav_vuln.nasl 3603 2016-06-26 20:35:42Z cfi $
+# $Id: gb_majordomo2_dir_trav_vuln.nasl 5645 2017-03-21 09:32:09Z cfi $
 #
 # Majordomo2 Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801838");
-  script_version("$Revision: 3603 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:35:42 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 5645 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-02-07 15:21:16 +0100 (Mon, 07 Feb 2011)");
   script_bugtraq_id(46127);
   script_cve_id("CVE-2011-0049", "CVE-2011-0063");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

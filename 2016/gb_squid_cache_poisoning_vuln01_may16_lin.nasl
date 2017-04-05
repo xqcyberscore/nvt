@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_cache_poisoning_vuln01_may16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_squid_cache_poisoning_vuln01_may16_lin.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Squid Cache Poisoning Vulnerability-01 May16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808051");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-4553");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-19 19:31:22 +0530 (Thu, 19 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Cache Poisoning Vulnerability-01 May16 (Linux)");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2016_7.txt");
 
-  script_summary("Check for the vulnerable version of squid on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

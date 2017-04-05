@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15_034_remote.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15_034_remote.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)
 #
@@ -33,13 +33,12 @@ if (description)
  script_cve_id("CVE-2015-1635");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2646 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)");
 
- script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1635");
- script_xref(name:"URL" ,value:"https://support.microsoft.com/kb/3042553");
- script_xref(name:"URL" ,value: "https://technet.microsoft.com/library/security/MS15-034");
+ script_xref(name:"URL", value:"https://support.microsoft.com/kb/3042553");
+ script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-034");
  script_xref(name:"URL", value:"http://pastebin.com/ypURDPc4");
 
  script_tag(name: "impact" , value:"Successful exploitation will allow remote attackers to run arbitrary
@@ -68,7 +67,7 @@ Microsoft Windows 7 x32/x64 Service Pack 1 and prior");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-04-15 18:02:08 +0200 (Wed, 15 Apr 2015)");
  script_summary("Send a special crafted http get request");
  script_category(ACT_ATTACK);

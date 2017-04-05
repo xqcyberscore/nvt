@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gnutls_CB-A08-0079.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: gnutls_CB-A08-0079.nasl 5661 2017-03-21 11:39:13Z cfi $
 # Description: GnuTLS < 2.2.5 vulnerability (Linux)
 #
 # Authors:
@@ -54,23 +54,19 @@ tag_impact = "CVE-2008-1948
 
 tag_solution = "All GnuTLS users should upgrade to the latest version:";
 
-# $Revision: 4489 $
+# $Revision: 5661 $
 
 if(description)
 {
   script_id(90026);
-  script_version("$Revision: 4489 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 5661 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:39:13 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-09-06 11:16:56 +0200 (Sat, 06 Sep 2008)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2008-1948");
+  script_cve_id("CVE-2008-1948", "CVE-2008-1949", "CVE-2008-1950");
   name = "GnuTLS < 2.2.5 vulnerability (Linux)";
   script_name(name);
-
- script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1948");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1949");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1950");
 
   summary = "Determines GnuTLS < 2.2.5 vulnerability";
   script_category(ACT_GATHER_INFO);

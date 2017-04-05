@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ImpressPages_49798.nasl 3170 2016-04-26 13:43:37Z mime $
+# $Id: gb_ImpressPages_49798.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
  script_id(103378);
  script_cve_id("CVE-2011-4932");
  script_bugtraq_id(49798);
- script_version ("$Revision: 3170 $");
+ script_version ("$Revision: 5633 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -52,14 +52,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.impresspages.org/news/impresspages-1-0-13-security-release/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521118");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-26 15:43:37 +0200 (Tue, 26 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-06 10:27:46 +0100 (Fri, 06 Jan 2012)");
  script_summary("Determine if ImpressPages CMS is prone to a remote-code execution vulnerability");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

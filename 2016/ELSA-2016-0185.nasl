@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0185.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0185.nasl 5650 2017-03-21 10:00:45Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122884");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5650 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:24 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0185");
 script_tag(name: "insight", value: "ELSA-2016-0185 -  kernel security and bug fix update - - [3.10.0-327.10.1.OL7]- Oracle Linux certificates (Alexey Petrenko)[3.10.0-327.10.1]- [of] return NUMA_NO_NODE from fallback of_node_to_nid() (Thadeu Lima de Souza Cascardo) [1300614 1294398]- [net] openvswitch: do not allocate memory from offline numa node (Thadeu Lima de Souza Cascardo) [1300614 1294398][3.10.0-327.9.1]- [security] keys: Fix keyring ref leak in join_session_keyring() (David Howells) [1298931 1298036] {CVE-2016-0728}[3.10.0-327.8.1]- [md] dm: fix AB-BA deadlock in __dm_destroy() (Mike Snitzer) [1296566 1292481]- [md] revert 'dm-mpath: fix stalls when handling invalid ioctls' (Mike Snitzer) [1287552 1277194]- [cpufreq] intel_pstate: Fix limits->max_perf rounding error (Prarit Bhargava) [1296276 1279617]- [cpufreq] intel_pstate: Fix limits->max_policy_pct rounding error (Prarit Bhargava) [1296276 1279617]- [cpufreq] revert 'intel_pstate: fix rounding error in max_freq_pct' (Prarit Bhargava) [1296276 1279617]- [crypto] nx: 842 - Add CRC and validation support (Gustavo Duarte) [1289451 1264905]- [powerpc] eeh: More relaxed condition for enabled IO path (Steve Best) [1289101 1274731]- [security] keys: Don't permit request_key() to construct a new keyring (David Howells) [1275929 1273465] {CVE-2015-7872}- [security] keys: Fix crash when attempt to garbage collect an uninstantiated keyring (David Howells) [1275929 1273465] {CVE-2015-7872}- [security] keys: Fix race between key destruction and finding a keyring by name (David Howells) [1275929 1273465] {CVE-2015-7872}- [x86] paravirt: Replace the paravirt nop with a bona fide empty function (Mateusz Guzik) [1259582 1259583] {CVE-2015-5157}- [x86] nmi: Fix a paravirt stack-clobbering bug in the NMI code (Mateusz Guzik) [1259582 1259583] {CVE-2015-5157}- [x86] nmi: Use DF to avoid userspace RSP confusing nested NMI detection (Mateusz Guzik) [1259582 1259583] {CVE-2015-5157}- [x86] nmi: Reorder nested NMI checks (Mateusz Guzik) [1259582 1259583] {CVE-2015-5157}- [x86] nmi: Improve nested NMI comments (Mateusz Guzik) [1259582 1259583] {CVE-2015-5157}- [x86] nmi: Switch stacks on userspace NMI entry (Mateusz Guzik) [1259582 1259583] {CVE-2015-5157}[3.10.0-327.7.1]- [scsi] scsi_sysfs: protect against double execution of __scsi_remove_device() (Vitaly Kuznetsov) [1292075 1273723]- [powerpc] mm: Recompute hash value after a failed update (Gustavo Duarte) [1289452 1264920]- [misc] genwqe: get rid of atomic allocations (Hendrik Brueckner) [1289450 1270244]- [mm] use only per-device readahead limit (Eric Sandeen) [1287550 1280355]- [net] ipv6: update ip6_rt_last_gc every time GC is run (Hannes Frederic Sowa) [1285370 1270092]- [kernel] tick: broadcast: Prevent livelock from event handler (Prarit Bhargava) [1284043 1265283]- [kernel] clockevents: Serialize calls to clockevents_update_freq() in the core (Prarit Bhargava) [1284043 1265283][3.10.0-327.6.1]- [netdrv] bonding: propagate LRO disable to slave devices (Jarod Wilson) [1292072 1266578][3.10.0-327.5.1]- [net] vsock: Fix lockdep issue (Dave Anderson) [1292372 1253971]- [net] vsock: sock_put wasn't safe to call in interrupt context (Dave Anderson) [1292372 1253971]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0185");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

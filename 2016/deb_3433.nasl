@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3433.nasl 3258 2016-05-10 12:10:28Z antu123 $
+# $Id: deb_3433.nasl 5612 2017-03-20 10:00:41Z teissa $
 # Auto-generated from advisory DSA 3433-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703433);
-    script_version("$Revision: 3258 $");
+    script_version("$Revision: 5612 $");
     script_cve_id("CVE-2015-2535", "CVE-2015-3223", "CVE-2015-5252", "CVE-2015-5296",
                   "CVE-2015-5299", "CVE-2015-5330", "CVE-2015-7540", "CVE-2015-8467");
     script_name("Debian Security Advisory DSA 3433-1 (samba - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-10 14:10:28 +0200 (Tue, 10 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-05-06 15:29:32 +0530 (Fri, 06 May 2016)");
     script_tag(name:"cvss_base", value:"6.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3433.html");
 
-    script_summary("Debian Security Advisory DSA 3433-1 (samba - security update)");
 
     script_category(ACT_GATHER_INFO);
 

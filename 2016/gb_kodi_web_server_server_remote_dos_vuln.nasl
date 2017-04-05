@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_web_server_server_remote_dos_vuln.nasl 3838 2016-08-16 07:02:06Z antu123 $
+# $Id: gb_kodi_web_server_server_remote_dos_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Kodi Web Server Remote Denial Of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:kodi:kodi_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808283");
-  script_version("$Revision: 3838 $");
+  script_version("$Revision: 5612 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 09:02:06 +0200 (Tue, 16 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:13:32 +0530 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Kodi Web Server Remote Denial Of Service Vulnerability");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40208");
 
-  script_summary("Check if Kodi Web Server is vulnerable to Denial Of Service.");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

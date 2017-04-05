@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jaf_44664.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_jaf_44664.nasl 5653 2017-03-21 10:19:58Z cfi $
 #
 # JAF CMS Multiple Remote File Include and Remote Shell Command Execution Vulnerabilities
 #
@@ -44,8 +44,8 @@ JAF CMS 4.0 RC2 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(100895);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 5653 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44664);
  script_tag(name:"cvss_base", value:"7.5");
@@ -63,7 +63,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_code_inject_nd_dos_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_postgresql_code_inject_nd_dos_vuln_lin.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # PostgreSQL Code Injection and Denial of Service Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808665");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_bugtraq_id(92433, 92435);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-30 18:03:40 +0530 (Tue, 30 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Code Injection and Denial of Service Vulnerabilities (Linux)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.postgresql.org/about/news/1688/");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of PostgreSQL on linux");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("postgresql_detect.nasl","os_detection.nasl");

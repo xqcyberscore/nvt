@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_ssl_peek_dos_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_openssl_ssl_peek_dos_lin.nasl 5659 2017-03-21 11:24:51Z cfi $
 # OpenSSL SSL_peek hang on empty record DoS vulnerability (Linux)
 #
 # Authors:
@@ -39,15 +39,14 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107052");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5659 $");
   script_cve_id("CVE-2016-6305", "CVE-2016-6308", "CVE-2016-6307");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"creation_date", value:"2016-09-26 06:40:16 +0200 (Mon, 26 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_name("OpenSSL SSL_peek hang on empty record DoS vulnerability (Linux)");
-  script_xref(name:"URL", value:"https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6305");
   script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20160922.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

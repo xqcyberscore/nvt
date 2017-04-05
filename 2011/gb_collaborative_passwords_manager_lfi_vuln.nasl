@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collaborative_passwords_manager_lfi_vuln.nasl 3116 2016-04-19 10:11:19Z benallard $
+# $Id: gb_collaborative_passwords_manager_lfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
 #
 # Collaborative Passwords Manager (cPassMan) 'path' Local File Inclusion Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Collaborative Passwords Manager (cPassMan) a
 if(description)
 {
   script_id(801923);
-  script_version("$Revision: 3116 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:11:19 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5648 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 15:24:49 +0200 (Tue, 26 Apr 2011)");
   script_bugtraq_id(47379);
   script_tag(name:"cvss_base", value:"6.8");
@@ -56,9 +56,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_passman_detect.nasl");
+  script_dependencies("gb_passman_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("cpassman/installed");
+  script_mandatory_keys("cpassman/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

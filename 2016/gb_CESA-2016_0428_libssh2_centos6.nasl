@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882417");
-  script_version("$Revision: 3164 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-11 06:01:51 +0100 (Fri, 11 Mar 2016)");
   script_cve_id("CVE-2016-0787");
   script_tag(name:"cvss_base", value:"4.3");
@@ -57,7 +57,6 @@ for this update to take effect.
 
   script_xref(name: "CESA", value: "2016:0428");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021726.html");
-  script_summary("Check for the Version of libssh2");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

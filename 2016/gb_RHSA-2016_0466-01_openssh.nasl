@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871579");
-  script_version("$Revision: 2961 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 12:20:58 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-22 06:12:28 +0100 (Tue, 22 Mar 2016)");
   script_cve_id("CVE-2015-5600", "CVE-2016-3115");
   script_tag(name:"cvss_base", value:"8.5");
@@ -63,7 +63,6 @@ update, the OpenSSH server daemon (sshd) will be restarted automatically.
   script_xref(name: "RHSA", value: "2016:0466-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-March/msg00053.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

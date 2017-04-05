@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_webconsole_xss_vuln.nasl 3868 2016-08-23 06:13:26Z antu123 $
+# $Id: gb_apache_activemq_webconsole_xss_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Apache ActiveMQ Web Console Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808293");
-  script_version("$Revision: 3868 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-0782");
   script_bugtraq_id(84316);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-23 08:13:26 +0200 (Tue, 23 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-18 09:00:09 +0530 (Thu, 18 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache ActiveMQ Web Console Cross-Site Scripting Vulnerability");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://activemq.apache.org/security-advisories.data/CVE-2016-0782-announcement.txt");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache ActiveMQ");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_activemq_detect.nasl");

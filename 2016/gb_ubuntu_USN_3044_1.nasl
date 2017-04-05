@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842847");
-  script_version("$Revision: 3837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 08:15:23 +0200 (Tue, 16 Aug 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-06 05:36:37 +0200 (Sat, 06 Aug 2016)");
   script_cve_id("CVE-2016-0718", "CVE-2016-2830", "CVE-2016-2835", "CVE-2016-2836",
 		"CVE-2016-2837", "CVE-2016-2838", "CVE-2016-2839", "CVE-2016-5250",
@@ -100,7 +100,6 @@ cause a denial of service via application crash, or ex ...
   script_xref(name: "USN", value: "3044-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3044-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

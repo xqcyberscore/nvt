@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id $
+# $Id: gb_splunk_light_python_vuln.nasl 5614 2017-03-20 12:04:28Z cfi $
 #
 # Splunk Light Python Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:splunk:light';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106540");
-  script_version("$Revision: 5103 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 12:55:05 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 5614 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-20 13:04:28 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-01-24 10:40:31 +0700 (Tue, 24 Jan 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_information_disclosure_vuln.nasl 4565 2016-11-18 09:32:23Z antu123 $
+# $Id: gb_apache_ambari_information_disclosure_vuln.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Apache Ambari Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808650");
-  script_version("$Revision: 4565 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-0707", "CVE-2015-5210");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 10:32:23 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:48:58 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Information Disclosure Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version Apache Ambari.");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_ambari_detect.nasl");

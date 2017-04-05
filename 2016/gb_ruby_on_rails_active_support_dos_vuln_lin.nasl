@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_dos_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_ruby_on_rails_active_support_dos_vuln_lin.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Ruby on Rails Active Support Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807384");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2015-3227");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 16:29:55 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Active Support Denial of Service Vulnerability (Linux)");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2015/06/16/16");
   script_xref(name : "URL" , value : "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/bahr2JLnxvk/x4EocXnHPp8J");
-  script_summary("Check for the vulnerable version of Ruby on Rails on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

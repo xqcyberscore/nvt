@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842812");
-  script_version("$Revision: 3619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-29 13:04:08 +0200 (Wed, 29 Jun 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 05:25:45 +0200 (Tue, 28 Jun 2016)");
   script_cve_id("CVE-2016-4997", "CVE-2016-4482", "CVE-2016-4569", "CVE-2016-4578",
 		"CVE-2016-4580", "CVE-2016-4913", "CVE-2016-4951", "CVE-2016-4998");
@@ -79,7 +79,6 @@ information from kernel memory. (CVE-2016-4998)");
   script_xref(name: "USN", value: "3016-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3016-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

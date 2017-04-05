@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: gb_mozilla_firefox_mult_vuln_mar16_windows.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807520");
-  script_version("$Revision: 2910 $");
+  script_version("$Revision: 5650 $");
   script_cve_id("CVE-2016-1954", "CVE-2016-1955", "CVE-2016-1957", "CVE-2016-1958", 
                 "CVE-2016-1959", "CVE-2016-1960", "CVE-2016-1950", "CVE-2016-1952", 
                 "CVE-2016-1953", "CVE-2016-1961", "CVE-2016-1962", "CVE-2016-1963", 
@@ -42,7 +42,7 @@ if(description)
                 "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-14 16:41:40 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Mar16 (Windows)");
 
@@ -95,7 +95,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-25");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-19");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

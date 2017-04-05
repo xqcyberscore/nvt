@@ -39,11 +39,8 @@ service (stack memory corruption, and infinite loop or daemon crash)
 by opening a large number of files, related to (1) Winbind or (2)
 smbd.";
 tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+software upgrades.";
 
-http://www.samba.org/samba/security/CVE-2011-0719.html
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-0719
-http://www.vuxml.org/freebsd/bfdbc7ec-9c3f-11e0-9bec-6c626dd55a41.html";
 tag_summary = "The remote host is missing an update to the system
 as announced in the referenced advisory.";
 
@@ -52,15 +49,16 @@ as announced in the referenced advisory.";
 if(description)
 {
  script_id(69999);
- script_version("$Revision: 5424 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-08-03 04:36:20 +0200 (Wed, 03 Aug 2011)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2011-0719");
  script_name("FreeBSD Ports: samba34");
 
-
+ script_xref(name:"URL", value:"http://www.samba.org/samba/security/CVE-2011-0719.html");
+ script_xref(name:"URL", value:"http://www.vuxml.org/freebsd/bfdbc7ec-9c3f-11e0-9bec-6c626dd55a41.html");
 
  script_category(ACT_GATHER_INFO);
 

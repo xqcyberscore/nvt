@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_mult_vuln.nasl 4000 2016-09-07 15:16:59Z cfi $
+# $Id: gb_ecava_integraxor_mult_vuln.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # ECAVA IntegraXor Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106115");
-  script_version("$Revision: 4000 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-07 17:16:59 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-07-04 14:17:56 +0700 (Mon, 04 Jul 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
@@ -53,7 +53,6 @@ if (description)
   script_mandatory_keys("EcavaIntegraXor/Installed");
 
   script_tag(name: "summary", value: "ECAVA IntegraXor is prone to multiple vulnerabilities.");
-  script_summary("Check the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

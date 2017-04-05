@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openssl_ca_cert_bypass_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_openssl_ca_cert_bypass_vuln.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # OpenSSL CA Certificate Security Bypass Vulnerability
 #
@@ -38,14 +38,13 @@ tag_summary = "This host is running OpenSSL and is prone to Security Bypass
 if(description)
 {
   script_id(900464);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-0653");
   script_name("OpenSSL CA Certificate Security Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2009-0653");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0004.nasl 5396 2017-02-22 16:55:09Z mime $
+# $Id: gb_panos_pan_sa-2017_0004.nasl 5644 2017-03-21 09:07:05Z teissa $
 #
 # Palo Alto PAN-OS Cross-Site Scripting in the Management Web Interface
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140176");
  script_cve_id("CVE-2017-5584");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5396 $");
+ script_tag(name:"cvss_base", value:"3.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+ script_version ("$Revision: 5644 $");
 
  script_name("Palo Alto PAN-OS Cross-Site Scripting in the Management Web Interface");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 17:55:09 +0100 (Wed, 22 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-02-22 16:10:55 +0100 (Wed, 22 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

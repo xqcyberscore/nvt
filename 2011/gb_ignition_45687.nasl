@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ignition_45687.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ignition_45687.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # Ignition 'comment.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ Ignition 1.3 and prior versions are vulnerable.";
 if (description)
 {
  script_id(103016);
- script_version("$Revision: 3115 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5647 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
  script_bugtraq_id(45687);
  script_tag(name:"cvss_base", value:"5.1");
@@ -57,7 +57,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

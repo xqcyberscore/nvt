@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808431");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:54:30 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-3111");
   script_tag(name:"cvss_base", value:"10.0");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-f9db2293a8");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Q6G2UUESM7X4H5YTB77ZD7IRGH6CCI35");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pulp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

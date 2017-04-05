@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_priv_esc_vuln.nasl 5229 2017-02-08 09:47:57Z ckuerste $
+# $Id: gb_emc_isilon_onefs_priv_esc_vuln.nasl 5606 2017-03-17 17:09:01Z cfi $
 #
 # EMC Isilon OneFS Privilege Escalation Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106554");
-  script_version("$Revision: 5229 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-08 10:47:57 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 5606 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-02-02 11:01:49 +0700 (Thu, 02 Feb 2017)");
-  script_tag(name: "cvss_base", value: "8.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:M/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-9871");
 

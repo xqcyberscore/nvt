@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fretsweb_43571.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_fretsweb_43571.nasl 5651 2017-03-21 10:09:09Z cfi $
 #
 # Fretsweb Multiple Local File Include Vulnerabilities
 #
@@ -40,8 +40,8 @@ tag_solution = "Updates are available. Please see the references for details.";
 if (description)
 {
  script_id(100848);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 5651 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-08 13:09:30 +0200 (Fri, 08 Oct 2010)");
  script_bugtraq_id(43571);
  script_tag(name:"cvss_base", value:"7.5");
@@ -56,7 +56,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_int_overflow_vuln_lin_jan12.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_adobe_reader_int_overflow_vuln_lin_jan12.nasl 5659 2017-03-21 11:24:51Z cfi $
 #
 # Adobe Reader Integer Overflow Vulnerability - Jan 12 (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802421";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5659 $");
   script_cve_id("CVE-2011-4374");
   script_bugtraq_id(51557);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:24:51 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:55:01 +0530 (Mon, 23 Jan 2012)");
   script_name("Adobe Reader Integer Overflow Vulnerability - Jan 12 (Linux)");
 
@@ -73,7 +73,6 @@ For updates refer to http://www.adobe.com/";
   script_tag(name : "solution" , value : tag_solution);
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2011-4374");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb11-24.html");
   script_xref(name : "URL" , value : "http://people.canonical.com/~ubuntu-security/cve/2011/CVE-2011-4374.html");
   script_summary("Check for the version of Adobe Reader");

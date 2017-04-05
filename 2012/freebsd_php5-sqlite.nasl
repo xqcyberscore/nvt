@@ -37,10 +37,8 @@ The SQLite functionality in PHP before 5.3.15 allows remote attackers
 to bypass the open_basedir protection mechanism via unspecified
 vectors.";
 tag_solution = "Update your system with the appropriate patches or
-software upgrades.
+software upgrades.";
 
-https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-3365
-http://www.vuxml.org/freebsd/ec255bd8-02c6-11e2-92d1-000d601460a4.html";
 tag_summary = "The remote host is missing an update to the system
 as announced in the referenced advisory.";
 
@@ -52,10 +50,12 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
  script_cve_id("CVE-2012-3365");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-09-19 11:49:14 -0400 (Wed, 19 Sep 2012)");
  script_name("FreeBSD Ports: php5-sqlite");
+
+ script_xref(name:"URL" , value:"http://www.vuxml.org/freebsd/ec255bd8-02c6-11e2-92d1-000d601460a4.html");
 
  script_summary("FreeBSD Ports: php5-sqlite");
 

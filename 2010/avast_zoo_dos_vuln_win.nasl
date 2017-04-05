@@ -31,13 +31,12 @@ tag_summary = "avast! antivirus before 4.7.981 allows remote attackers to
 if(description)
 {
   script_id(102050);
-  script_version("$Revision: 5245 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_cve_id("CVE-2007-1672");
   script_bugtraq_id(23823);
   script_name("Avast! Zoo Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-1672");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_category(ACT_GATHER_INFO);

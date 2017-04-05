@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3623.nasl 3760 2016-07-26 05:01:47Z antu123 $
+# $Id: deb_3623.nasl 5598 2017-03-17 10:00:43Z teissa $
 # Auto-generated from advisory DSA 3623-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703623);
-    script_version("$Revision: 3760 $");
+    script_version("$Revision: 5598 $");
     script_cve_id("CVE-2016-5387");
     script_name("Debian Security Advisory DSA 3623-1 (apache2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-07-26 07:01:47 +0200 (Tue, 26 Jul 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-07-20 00:00:00 +0200 (Wed, 20 Jul 2016)");
     script_tag(name:"cvss_base", value:"5.1");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3623.html");
 
-    script_summary("Debian Security Advisory DSA 3623-1 (apache2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

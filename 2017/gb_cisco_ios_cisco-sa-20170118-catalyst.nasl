@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170118-catalyst.nasl 5047 2017-01-20 06:58:49Z teissa $
+# $Id: gb_cisco_ios_cisco-sa-20170118-catalyst.nasl 5608 2017-03-20 04:16:04Z ckuerste $
 #
 # Cisco IOS for Catalyst 2960X and 3750X Switches Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3803");
  script_tag(name:"cvss_base", value:"3.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5047 $");
+ script_version ("$Revision: 5608 $");
 
  script_name("Cisco IOS for Catalyst 2960X and 3750X Switches Denial of Service Vulnerability");
 
@@ -57,7 +57,7 @@ forwarding queue that would eventually lead to a partial DoS service condition."
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-20 07:58:49 +0100 (Fri, 20 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 05:16:04 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-01-19 09:15:35 +0700 (Thu, 19 Jan 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -72,7 +72,7 @@ include("version_func.inc");
 
 image = get_kb_item("cisco_ios/image");
 
-if (!image || (image !~ "^C2960X" && image != "^C3750X"))
+if (!image || (image !~ "^C2960X" && image !~ "^C3750X"))
   exit(99);
 
 if( ! version = get_app_version( cpe:CPE ) ) exit( 0 );

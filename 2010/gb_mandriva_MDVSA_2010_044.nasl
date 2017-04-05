@@ -24,7 +24,7 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerabilitiy has been found and corrected in mysql:
+tag_insight = "A vulnerability has been found and corrected in mysql:
 
   MySQL is vulnerable to a symbolic link attack when the data home
   directory contains a symlink to a different filesystem which allows
@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-02/msg00046.php");
   script_id(830902);
-  script_version("$Revision: 3150 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:08:03 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 5654 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:38:33 +0100 (Mon, 22 Feb 2010)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");

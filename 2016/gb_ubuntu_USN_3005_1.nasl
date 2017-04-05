@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842794");
-  script_version("$Revision: 3586 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-22 14:18:19 +0200 (Wed, 22 Jun 2016) $");
+  script_version("$Revision: 5598 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-11 05:27:17 +0200 (Sat, 11 Jun 2016)");
   script_cve_id("CVE-2016-2117", "CVE-2016-1583", "CVE-2015-8839", "CVE-2016-2187", "CVE-2016-3961", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4558", "CVE-2016-4565", "CVE-2016-4581");
   script_tag(name:"cvss_base", value:"7.2");
@@ -94,7 +94,6 @@ to cause a denial of service (system crash). (CVE-2016-4581)");
   script_xref(name: "USN", value: "3005-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-June/003463.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-xenial");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -33,13 +33,12 @@ tag_summary = "Remote exploitation of an integer overflow vulnerability in the
 if(description)
 {
   script_id(102053);
-  script_version("$Revision: 5368 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:34:16 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5656 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(21930);
   script_cve_id("CVE-2007-0024");
   script_name("Microsoft Windows Vector Markup Language Vulnerabilities (929969)");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2007-0024");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/122084");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/23677");
   script_xref(name : "URL" , value : "http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=462");

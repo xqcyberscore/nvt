@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 5654 2017-03-21 10:23:47Z cfi $
 #
-# Apache Tomcat Denial Of Service Vulnerabilitiy - Mar15
+# Apache Tomcat Denial Of Service Vulnerability - Mar15
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,13 +29,13 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805474");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 5654 $");
   script_cve_id("CVE-2014-0227");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 17:41:16 +0530 (Fri, 06 Mar 2015)");
-  script_name("Apache Tomcat Denial Of Service Vulnerabilitiy - Mar15");
+  script_name("Apache Tomcat Denial Of Service Vulnerability - Mar15");
 
   script_tag(name:"summary", value:"This host is installed with Apache Tomcat
   and is prone to denial of service vulnerability.");

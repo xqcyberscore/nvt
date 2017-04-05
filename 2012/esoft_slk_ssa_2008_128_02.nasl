@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2008_128_02.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2008_128_02.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -32,12 +32,7 @@ memory, as well as a JavaScript privilege escalation and arbitrary code
 execution flaw.
 
 More details about these issues may be found here:
-http://www.mozilla.org/projects/security/known-vulnerabilities.html#thunderbird
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1233
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1234
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1235
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1236
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-1237";
+http://www.mozilla.org/projects/security/known-vulnerabilities.html#thunderbird";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2008-128-02.";
 
@@ -47,11 +42,11 @@ if(description)
 {
  script_id(61456);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2008-1233", "CVE-2008-1234", "CVE-2008-1235", "CVE-2008-1236", "CVE-2008-1237");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2008-128-02 mozilla-thunderbird ";
  script_name(name);
 

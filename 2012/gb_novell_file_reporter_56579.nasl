@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_56579.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_novell_file_reporter_56579.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities
 #
@@ -32,20 +32,20 @@ if (description)
  script_cve_id("CVE-2012-4956","CVE-2012-4957","CVE-2012-4958","CVE-2012-4959");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5633 $");
 
  script_name("Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56579");
  script_xref(name : "URL" , value : "http://www.novell.com/products/file-reporter/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-12-12 17:33:48 +0100 (Wed, 12 Dec 2012)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80, 3037);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : "Novell File Reporter is prone to the following security

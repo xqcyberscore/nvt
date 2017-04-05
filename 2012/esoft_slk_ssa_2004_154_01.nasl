@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_154_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2004_154_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -33,12 +33,7 @@ code via a client certificate with a long subject DN, if mod_ssl is
 configured to trust the issuing CA.  Web sites running mod_ssl should upgrade
 to the new set of apache and mod_ssl packages.  There are new PHP packages as
 well to fix a Slackware-specific local denial-of-service issue (an additional
-Slackware advisory SSA:2004-154-02 has been issued for PHP).
-
-More details about the mod_ssl issue may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0488";
+Slackware advisory SSA:2004-154-02 has been issued for PHP).";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2004-154-01.";
 
@@ -48,12 +43,12 @@ if(description)
 {
  script_id(53926);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_bugtraq_id(10355);
  script_cve_id("CVE-2004-0488");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2004-154-01 mod_ssl ";
  script_name(name);
 

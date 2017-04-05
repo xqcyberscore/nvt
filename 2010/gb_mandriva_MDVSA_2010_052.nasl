@@ -24,7 +24,7 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerabilitiy has been found and corrected in sudo:
+tag_insight = "A vulnerability has been found and corrected in sudo:
 
   sudo 1.6.x before 1.6.9p21, when the runas_default option is used,
   does not properly set group memberships, which allows local users to
@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-03/msg00005.php");
   script_id(830935);
-  script_version("$Revision: 3150 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:08:03 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 5654 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-03-12 17:02:32 +0100 (Fri, 12 Mar 2010)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");

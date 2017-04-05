@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_monlist_enabled.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_ntp_monlist_enabled.nasl 5655 2017-03-21 10:44:19Z cfi $
 #
 # NTP Monlist Feature Enabled
 #
@@ -49,16 +49,15 @@ if (description)
  script_cve_id("CVE-2013-5211");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5655 $");
 
  script_name("NTP Monlist Feature Enabled");
 
 
  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=1532");
  script_xref(name:"URL", value:"http://lists.ntp.org/pipermail/pool/2011-December/005616.html");
- script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5211");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-01-06 14:14:08 +0100 (Mon, 06 Jan 2014)");
  script_summary("Determine if monlist command is enabled");
  script_category(ACT_ATTACK);

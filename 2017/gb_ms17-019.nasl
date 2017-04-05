@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-019.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-019.nasl 5637 2017-03-21 07:30:30Z antu123 $
 #
 # Microsoft Active Directory Federation Services Information Disclosure Vulnerability (4010320)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810813");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5637 $");
   script_cve_id("CVE-2017-0043");
   script_bugtraq_id(96628);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:04:14 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Active Directory Federation Services Information Disclosure Vulnerability (4010320)");
 
-  script_tag(name: "summary" , value:"This host is missing a critical security
+  script_tag(name: "summary" , value:"This host is missing an important security
   update according to Microsoft Bulletin MS17-019.");
 
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
@@ -64,10 +64,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/4010320");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS17-019");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -120,12 +118,12 @@ if(hotfix_check_sp(win2008r2:2) > 0)
 ## Windows Server 2008
 else if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
 {
-  filedirpath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
-                          item:"ProgramFilesDir");
-  if(filedirpath)
-  {
-    msPath = filedirpath  +  "\Active Directory Federation Services 2.0";
-    dllVer = fetch_file_version(sysPath:msPath, file_name:"microsoft.identityserver.dll");
+    adfs = registry_key_exists(key:"SOFTWARE\Microsoft\ADFS");
+    if(!adfs){
+      exit(0);
+    }
+
+    dllVer = fetch_file_version(sysPath, file_name:"\ADFS\Microsoft.identityserver.dll");
     if(!dllVer){
       exit(0);
     }
@@ -136,21 +134,20 @@ else if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
       VULN = TRUE ;
     }
 
-    else if(version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"7.0.6002.24066"))
+    else if(version_in_range(version:dllVer, test_version:"7.0.6002.22000", test_version2:"7.0.6002.24066"))
     {
-      Vulnerable_range = "6.1.7601.22000 - 7.0.6002.24066";
+      Vulnerable_range = "7.0.6002.22000 - 7.0.6002.24066";
       VULN = TRUE ;
     }
 
     if(VULN)
     {
-      report = 'File checked:     ' + msPath + "\microsoft.identityserver.dll\" + '\n' +
+      report = 'File checked:     ' + sysPath + "\ADFS\Microsoft.identityserver.dll" + '\n' +
                'File version:     ' + dllVer + '\n' +
                'Vulnerable range: ' + Vulnerable_range + '\n' ;
       security_message(data:report);
       exit(0);
     }
-  }
 }
 
 ## Windows 2012 x64

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_west_dig_rce.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_arkeia_west_dig_rce.nasl 5616 2017-03-20 13:32:41Z cfi $
 #
 # Western Digital Arkeia "ARKFS_EXEC_CMD" <= v11.0.12 Remote Code Execution
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:arkeia:western_digital_arkeia";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107041");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 5616 $");
   script_cve_id("CVE-2015-7709");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 13:16:06 +0200 (Tue, 16 Aug 2016)");
   script_name("Western Digital Arkeia Remote Code Execution");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_arkeia_virtual_appliance_detect_617.nasl");
+  script_dependencies("gb_arkeia_virtual_appliance_detect_617.nasl", "os_detection.nasl");
   script_mandatory_keys("ArkeiaAppliance/installed");
   script_require_ports("Services/arkeiad", 617);
 

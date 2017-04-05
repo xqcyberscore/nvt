@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_unspecified_sec_bypass_vuln_900167.nasl 5089 2017-01-24 11:50:42Z cfi $
+# $Id: secpod_hp_smh_unspecified_sec_bypass_vuln_900167.nasl 5657 2017-03-21 11:08:08Z cfi $
 # Description: HP SMH Unspecified Security Bypass Vulnerability
 #
 # Authors:
@@ -28,8 +28,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900167");
-  script_version("$Revision: 5089 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:50:42 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
   script_bugtraq_id(32088);
   script_cve_id("CVE-2008-4413");
@@ -40,7 +40,6 @@ if(description)
   script_family("General");
   script_name("HP SMH Unspecified Security Bypass Vulnerability");
 
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4413");
   script_xref(name : "URL" , value : "http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01586921");
 
   script_dependencies("secpod_hp_smh_detect.nasl","os_detection.nasl");

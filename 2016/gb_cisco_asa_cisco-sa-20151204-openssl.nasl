@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20151204-openssl.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_cisco-sa-20151204-openssl.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Cisco Adaptive Security Appliance Multiple Vulnerabilities in OpenSSL
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-3193","CVE-2015-3194","CVE-2015-3195","CVE-2015-3196","CVE-2015-1794");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5000 $");
+ script_version ("$Revision: 5612 $");
 
  script_name("Cisco Adaptive Security Appliance Multiple Vulnerabilities in OpenSSL");
 
@@ -67,9 +67,8 @@ remote attacker to cause a denial of service (DoS) condition (CVE-2015-1794).");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-22 11:38:29 +0700 (Thu, 22 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcore_2009_8344.nasl 4806 2016-12-19 15:45:27Z teissa $
+# $Id: fcore_2009_8344.nasl 5663 2017-03-21 11:58:31Z cfi $
 # Description: Auto-generated from advisory FEDORA-2009-8344 (dhcp)
 #
 # Authors:
@@ -29,9 +29,7 @@ include("revisions-lib.inc");
 tag_insight = "Update Information:
 
 This update to the dhcp package includes fixes for CVE-2009-0692 and
-CVE-2009-1892.  More information on these issues are available here:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-0692
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1892
+CVE-2009-1892.
 
 Note: CVE-2009-0692 had no security consequences on Fedora, thanks
 to the use of FORTIFY_SOURCE
@@ -57,8 +55,8 @@ announced via advisory FEDORA-2009-8344.";
 if(description)
 {
  script_id(64735);
- script_version("$Revision: 4806 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 16:45:27 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-09-02 04:58:39 +0200 (Wed, 02 Sep 2009)");
  script_cve_id("CVE-2009-0692", "CVE-2009-1892");
  script_tag(name:"cvss_base", value:"10.0");

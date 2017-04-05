@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xm_easyftp_dos_vuln.nasl 4487 2016-11-14 07:41:39Z cfi $
+# $Id: gb_xm_easyftp_dos_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # XM Easy Personal FTP Server Denial of Service Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running XM Easy FTP Personal FTP Server and is prone
 if(description)
 {
   script_id(800211);
-  script_version("$Revision: 4487 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:41:39 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-12-23 15:23:02 +0100 (Tue, 23 Dec 2008)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -49,7 +49,6 @@ if(description)
   script_cve_id("CVE-2008-5626");
   script_name("XM Easy Personal FTP Server Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/6741");
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5626");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

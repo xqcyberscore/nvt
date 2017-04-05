@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_ftp_clnt_xss_vuln_win.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_firefox_ftp_clnt_xss_vuln_win.nasl 5657 2017-03-21 11:08:08Z cfi $
 #
 # Firefox Web Browser FTP Client XSS Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800042");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
   script_mandatory_keys("Firefox/Win/Ver");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/31855/exploit");
-  script_xref(name:"URL", value:"http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4723");
 
   script_tag(name:"impact", value:"Successful remote attack result in injection of arbitrary web
   script or HTML code.

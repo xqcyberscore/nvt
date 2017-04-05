@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_blender_cmd_exec_lin.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_blender_cmd_exec_lin.nasl 5660 2017-03-21 11:29:28Z cfi $
 #
 # Blender .blend File Command Execution Vulnerability
 #
@@ -47,15 +47,14 @@ Command Execution Vulnerability.";
 if(description)
 {
   script_id(900252);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5660 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:29:28 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2009-3850");
   script_bugtraq_id(36838);
   script_name("Blender .blend File Command Execution Vulnerability");
-  script_xref(name : "URL" , value : "http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3850");
   script_xref(name : "URL" , value : "http://www.coresecurity.com/content/blender-scripting-injection");
 
   script_category(ACT_GATHER_INFO);

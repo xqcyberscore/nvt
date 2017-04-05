@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: phpgroupware_detect.nasl 5613 2017-03-20 10:08:39Z cfi $
 #
 # phpgroupware Detection
 #
 # Authors:
-# Michael Meyer
+# Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -24,99 +24,85 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running phpGroupWare, a web based messaging,
-  collaboration and enterprise management platform.";
-
-if (description)
+if(description)
 {
- script_id(100092);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
- script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("phpGroupWare Detection");  
+  script_oid("1.3.6.1.4.1.25623.1.0.100092");
+  script_version("$Revision: 5613 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:08:39 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("phpGroupWare Detection");  
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_summary("Checks for the presence of phpGroupWare");
- script_category(ACT_GATHER_INFO);
+  script_xref(name:"URL", value:"http://phpgroupware.org/");
+
+  script_tag(name:"summary", value:"This host is running phpGroupWare, a web based messaging,
+  collaboration and enterprise management platform.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://phpgroupware.org/");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100092";
-SCRIPT_DESC = "phpGroupWare Detection";
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-port = get_http_port(default:80);
+foreach dir( make_list_unique( "/phpgroupware", "/phpgw", cgi_dirs( port:port ) ) ) {
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port)) exit(0);
+  if( rootInstalled ) break;
 
-dirs = make_list("/phpgroupware","/phpgw",cgi_dirs());
+  install = dir;
+  if( dir == "/" ) dir = "";
 
-foreach dir (dirs) {
+  buf = http_get_cache( item: dir + "/login.php", port:port );
+  if( buf == NULL ) continue;
 
- url = string(dir, "/login.php"); 
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
- if( buf == NULL )continue;
+  if( egrep( pattern:'<meta name="AUTHOR" content="phpGroupWare http://www.phpgroupware.org" />', string:buf ) ||
+      egrep( pattern:'powered by phpGroupWare', string:buf ) ||
+      egrep( pattern:'http://www.phpgroupware.org"><img src=.*logo.gif" alt="phpGroupWare"', string:buf ) ||
+      ( egrep( pattern:">phpGroupWare [0-9.]<", string:buf ) && egrep( pattern:'type="hidden" name="passwd_type"', string:buf ) ) ) { 
 
- if(
-    egrep(pattern: '<meta name="AUTHOR" content="phpGroupWare http://www.phpgroupware.org" />', string: buf) ||
-    egrep(pattern: 'powered by phpGroupWare', string: buf) ||
-    egrep(pattern:'http://www.phpgroupware.org"><img src=.*logo.gif" alt="phpGroupWare"', string:buf) ||
-    (egrep(pattern: ">phpGroupWare [0-9.]<", string: buf) && egrep(pattern: 'type="hidden" name="passwd_type"', string: buf))
-    )
- { 
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }  
+    if( dir == "" ) rootInstalled = TRUE;
+    vers = "unknown";
+    version = eregmatch( string:buf, pattern:'<font color="#000000" size="-1">phpGroupWare ([0-9.]+)</font>' );
 
-     vers = string("unknown");
-     version = eregmatch(string: buf, pattern: '<font color="#000000" size="-1">phpGroupWare ([0-9.]+)</font>');
-
-      if ( !isnull(version[1]) ) {
-        vers=version[1];
-      }  else {
-	version = eregmatch(string: buf, pattern: '<font color="000000" size="-1">([0-9.]+)</font>');
-	if ( !isnull(version[1]) ) {
-	  vers=version[1];
-	}  
-      }	
+    if( ! isnull( version[1] ) ) {
+      vers = version[1];
+    } else {
+      version = eregmatch( string:buf, pattern:'<font color="000000" size="-1">([0-9.]+)</font>' );
+      if( ! isnull( version[1] ) ) {
+        vers = version[1];
+      }
+    }	
     
-    tmp_version = string(vers," under ",install);
-    set_kb_item(name: string("www/", port, "/phpGroupWare"), value: tmp_version);
+    tmp_version = vers + " under " + install;
+    set_kb_item( name:"www/" + port + "/phpGroupWare", value:tmp_version );
+    replace_kb_item( name:"phpGroupWare/installed", value:TRUE );
    
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:phpgroupware:phpgroupware:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:phpgroupware:phpgroupware:" );
+    if( isnull( cpe ) )
+      cpe = 'cpe:/a:phpgroupware:phpgroupware';
 
-    info = string("phpGroupWare Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n"); 
+    register_product( cpe:cpe, location:install, port:port );
 
-       if(report_verbosity > 0) {
-         log_message(port:port,data:info);
-       }	 
-       exit(0);
+    log_message( data:build_detection_report( app:"phpGroupWare",
+                                              version:vers,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                                              port:port );
   }
 }
 
-exit(0);
+exit( 0 );

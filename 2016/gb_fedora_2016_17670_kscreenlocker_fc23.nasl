@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807284");
-  script_version("$Revision: 4899 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 08:35:17 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-22 06:28:03 +0100 (Mon, 22 Feb 2016)");
   script_cve_id("CVE-2016-2312");
   script_tag(name:"cvss_base", value:"4.6");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-17670");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177557.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kscreenlocker");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -30,11 +30,8 @@ privileges.";
 tag_solution = "All util-linux users should upgrade to the latest version:
 
     # emerge --sync
-    # emerge --ask --oneshot --verbose '>=sys-apps/util-linux-2.12q-r3'
+    # emerge --ask --oneshot --verbose '>=sys-apps/util-linux-2.12q-r3'";
 
-http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200509-15
-http://bugs.gentoo.org/show_bug.cgi?id=105805
-http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2005-2876";
 tag_summary = "The remote host is missing updates announced in
 advisory GLSA 200509-15.";
 
@@ -43,8 +40,8 @@ advisory GLSA 200509-15.";
 if(description)
 {
  script_id(55395);
- script_version("$Revision: 4307 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-19 16:12:20 +0200 (Wed, 19 Oct 2016) $");
+ script_version("$Revision: 5663 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-24 21:14:03 +0200 (Wed, 24 Sep 2008)");
  script_bugtraq_id(14816);
  script_cve_id("CVE-2005-2876");
@@ -52,7 +49,8 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Gentoo Security Advisory GLSA 200509-15 (util-linux)");
 
-
+ script_xref(name:"URL" , value:"http://www.securityspace.com/smysecure/catid.html?in=GLSA%20200509-15");
+ script_xref(name:"URL" , value:"http://bugs.gentoo.org/show_bug.cgi?id=105805");
 
  script_category(ACT_GATHER_INFO);
 

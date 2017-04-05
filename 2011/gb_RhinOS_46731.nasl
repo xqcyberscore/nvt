@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RhinOS_46731.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_RhinOS_46731.nasl 5642 2017-03-21 08:49:30Z cfi $
 #
 # RhinOS 'gradient.php' Multiple Directory Traversal Vulnerabilities
 #
@@ -36,8 +36,8 @@ RhinOS 3.0 r1113 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103108);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5642 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-04 13:25:07 +0100 (Fri, 04 Mar 2011)");
  script_bugtraq_id(46731);
  script_tag(name:"cvss_base", value:"5.0");
@@ -53,7 +53,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_service_command_vuln_06_2016.nasl 4116 2016-09-20 04:49:26Z cfi $
+# $Id: gb_clamav_service_command_vuln_06_2016.nasl 5650 2017-03-21 10:00:45Z teissa $
 #
 # ClamAV Service Commands Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105762");
-  script_version("$Revision: 4116 $");
+  script_version("$Revision: 5650 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-20 06:49:26 +0200 (Tue, 20 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-13 14:28:48 +0200 (Mon, 13 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ClamAV `Service Commands` Injection Vulnerability");
@@ -38,7 +38,6 @@ if(description)
   script_tag(name: "summary" , value: "ClamAV 0.99.2, and possibly other previous versions, allow the execution of clamav commands SCAN and SHUTDOWN without authentication.");
   script_tag(name: "vuldetect", value:"Send a SCAN command and check the response");
 
-  script_summary("Send a SCAN command and check the response");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

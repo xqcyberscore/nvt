@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iexplorer_uri_spoof_vuln_900170.nasl 5370 2017-02-20 15:24:26Z cfi $
+# $Id: secpod_ms_iexplorer_uri_spoof_vuln_900170.nasl 5657 2017-03-21 11:08:08Z cfi $
 # Description: Microsoft iExplorer '&NBSP;' Address Bar URI Spoofing Vulnerability
 #
 # Authors:
@@ -42,8 +42,8 @@ For updates refer to http://windows.microsoft.com/en-us/internet-explorer/downlo
 if(description)
 {
   script_id(900170);
-  script_version("$Revision: 5370 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:24:26 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5657 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-05 06:52:23 +0100 (Wed, 05 Nov 2008)");
   script_bugtraq_id(31960);
   script_cve_id("CVE-2008-4787");
@@ -53,8 +53,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_name("Microsoft iExplorer '&NBSP;' Address Bar URI Spoofing Vulnerability");
-
-  script_xref(name : "URL" , value : "http://web.nvd.nist.gov/view/vuln/detail?execution");
 
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_egroupware_mult_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_egroupware_mult_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # eGroupware Multiple Vulnerabilities
 #
@@ -50,8 +50,8 @@ CPE = "cpe:/a:egroupware:egroupware";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5647 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_cve_id("CVE-2011-4951","CVE-2011-4950","CVE-2011-4949","CVE-2011-4948");
   script_bugtraq_id(52770);
@@ -67,9 +67,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_egroupware_detect.nasl");
+  script_dependencies("gb_egroupware_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("egroupware/installed");
+  script_mandatory_keys("egroupware/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

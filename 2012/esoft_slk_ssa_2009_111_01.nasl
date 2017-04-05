@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2009_111_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2009_111_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -30,12 +30,10 @@ tag_insight = "New udev packages are available for Slackware 10.2, 11.0, 12.0, 1
 and -current to fix security issues.
 
 The udev packages in Slackware 10.2, 11.0, 12.0, 12.1, 12.2, and -current
-contained a local root hole vulnerability:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1185
+contained a local root hole vulnerability: CVE-2009-1185
 
 The udev packages in Slackware 12.0, 12.1, 12.2, and -current had an integer
-overflow which could result in a denial of service:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1186
+overflow which could result in a denial of service: CVE-2009-1186
 
 Note that udev is only used with 2.6 kernels, which are not used by default
 with Slackware 10.2 and 11.0.";
@@ -48,11 +46,11 @@ if(description)
 {
  script_id(63895);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2009-1185", "CVE-2009-1186");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2009-111-01 udev ";
  script_name(name);
 

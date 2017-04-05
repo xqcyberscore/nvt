@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_herberlin_bremsserver_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_herberlin_bremsserver_dir_trav_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
 #
 # Herberlin Bremsserver Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902587");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5647 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-11-18 12:12:12 +0530 (Fri, 18 Nov 2011)");
   script_name("Herberlin Bremsserver Directory Traversal Vulnerability");
 
@@ -43,8 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web Servers");
   script_require_ports("Services/www", 80);
-  script_dependencies("gb_get_http_banner.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_mandatory_keys("Herberlin_Bremsserver/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_299_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2004_299_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -33,13 +33,7 @@ mod_ssl was upgraded from version mod_ssl-2.8.19-1.3.31 to version
 2.8.21-1.3.32 which corrects a flaw allowing a client to use a cipher
 which the server does not consider secure enough.
 
-A new PHP package (php-4.3.9) is also available for all of these platforms.
-
-More details about these issues may be found in the Common
-Vulnerabilities and Exposures (CVE) database:
-
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0492
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-0885";
+A new PHP package (php-4.3.9) is also available for all of these platforms.";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2004-299-01.";
 
@@ -49,11 +43,11 @@ if(description)
 {
  script_id(53903);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2004-0492", "CVE-2004-0885");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2004-299-01 apache, mod_ssl, php  ";
  script_name(name);
 

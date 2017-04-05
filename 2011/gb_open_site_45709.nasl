@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_site_45709.nasl 3101 2016-04-18 14:43:32Z benallard $
+# $Id: gb_open_site_45709.nasl 5651 2017-03-21 10:09:09Z cfi $
 #
 # openSite 'db_driver' Parameter Multiple Local File Include Vulnerabilities
 #
@@ -43,8 +43,8 @@ please mail us at: vuldb@securityfocus.com.";
 if (description)
 {
  script_id(103022);
- script_version("$Revision: 3101 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:43:32 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5651 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-10 13:28:19 +0100 (Mon, 10 Jan 2011)");
  script_bugtraq_id(45709);
  script_tag(name:"cvss_base", value:"5.1");
@@ -60,7 +60,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_open_site_detect.nasl");
+ script_dependencies("gb_open_site_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);

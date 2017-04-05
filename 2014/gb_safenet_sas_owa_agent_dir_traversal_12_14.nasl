@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_safenet_sas_owa_agent_dir_traversal_12_14.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # SafeNet SAS OWA Agent Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:safenet-inc:safenet_authentication_service_outlook_web_access_agen
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105152");
-  script_version("$Revision: 2780 $");
+  script_version("$Revision: 5628 $");
   script_cve_id("CVE-2014-5359");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-22 16:04:07 +0100 (Mon, 22 Dec 2014)");
   script_name("SafeNet SAS OWA Agent Directory Traversal Vulnerability");
 
@@ -62,7 +62,7 @@ and check whether it is able to read arbitrary files or not.");
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_safenet_sas_owa_agent_detect.nasl");
+  script_dependencies("gb_safenet_sas_owa_agent_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("ms/owa/outlook_web_access_agent/installed");
   exit(0);

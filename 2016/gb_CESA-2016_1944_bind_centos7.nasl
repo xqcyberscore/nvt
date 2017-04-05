@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882564");
-  script_version("$Revision: 4191 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 12:59:18 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5650 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-29 05:43:19 +0200 (Thu, 29 Sep 2016)");
   script_cve_id("CVE-2016-2776");
   script_tag(name:"cvss_base", value:"7.8");
@@ -57,7 +57,6 @@ Red Hat would like to thank ISC for reporting this issue.
 
   script_xref(name: "CESA", value: "2016:1944");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022097.html");
-  script_summary("Check for the Version of bind");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

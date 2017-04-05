@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_urgence_vaccin_mult_lfi_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_open_urgence_vaccin_mult_lfi_vuln.nasl 5653 2017-03-21 10:19:58Z cfi $
 #
 # Openurgence Vaccin Multiple File Inclusion Vulnerabilities 
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:francois_raynaud:openurgence_vaccin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800764");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 5653 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:59:12 +0200 (Wed, 05 May 2010)");
   script_cve_id("CVE-2010-1466", "CVE-2010-1467");
   script_bugtraq_id(39412);
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_open_urgence_vaccin_detect.nasl");
+  script_dependencies("gb_open_urgence_vaccin_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("openUrgence_Vaccin/installed");
 

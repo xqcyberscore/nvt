@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_155_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2006_155_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -37,12 +37,6 @@ Since the vulnerabilities require a valid login and/or access to the
 database server, the risk is moderate.  Slackware does not provide
 network access to a MySQL database by default.
 
-More details about the issues may be found in the Common
-Vulnerabilities and Exposures (CVE) database.
-Fixes that affect Slackware 9.1, 10.0, and 10.1:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1516
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-1517
-
 The MySQL packages in Slackware 10.2 and -current have been
 upgraded to MySQL 4.1.20 (Slackware 10.2) and MySQL 5.0.22
 (Slackware -current) to fix an SQL injection vulnerability.
@@ -50,9 +44,7 @@ upgraded to MySQL 4.1.20 (Slackware 10.2) and MySQL 5.0.22
 For more details, see the MySQL 4.1.20 release announcement here:
 http://lists.mysql.com/announce/364
 And the MySQL 5.0.22 release announcement here:
-http://lists.mysql.com/announce/365
-The CVE entry for this issue can be found here:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2753";
+http://lists.mysql.com/announce/365";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2006-155-01.";
 
@@ -62,11 +54,11 @@ if(description)
 {
  script_id(56861);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2006-1516", "CVE-2006-1517", "CVE-2006-2753");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2006-155-01 mysql ";
  script_name(name);
 

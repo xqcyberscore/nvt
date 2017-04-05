@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_crime.nasl 5594 2017-03-16 15:20:34Z cfi $
+# $Id: gb_tls_crime.nasl 5602 2017-03-17 14:11:29Z cfi $
 #
 # SSL/TLS: TLS/SPDY Protocol Information Disclosure Vulnerability (CRIME)
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108094");
-  script_version("$Revision: 5594 $");
+  script_version("$Revision: 5602 $");
   script_cve_id("CVE-2012-4929", "CVE-2012-4930");
   script_bugtraq_id(55704, 55707);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 16:20:34 +0100 (Thu, 16 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 15:11:29 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 16:00:00 +0100 (Thu, 09 Mar 2017)");
   script_name("SSL/TLS: TLS/SPDY Protocol Information Disclosure Vulnerability (CRIME)");
   script_category(ACT_GATHER_INFO);
@@ -71,8 +71,9 @@ include("misc_func.inc");
 include("byte_func.inc");
 include("ssl_funcs.inc");
 
-comp_report = 'The remote service might be vulnerable to the "CRIME" attack because it provides the following TLS compression methods:\n\nProtocol:Compression Method\n';
-npn_report  = 'The remote service might be vulnerable to the "CRIME" attack because it advertises support for the following vulnerable Network Protocol(s) via the NPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
+comp_report  = 'The remote service might be vulnerable to the "CRIME" attack because it provides the following TLS compression methods:\n\nProtocol:Compression Method\n';
+npn_report   = 'The remote service might be vulnerable to the "CRIME" attack because it advertises support for the following vulnerable Network Protocol(s) via the NPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
+alpn_report  = 'The remote service might be vulnerable to the "CRIME" attack because it advertises support for the following vulnerable Network Protocol(s) via the ALPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
 
 port = get_http_port( default:443, ignore_broken:TRUE, ignore_cgi_disabled:TRUE );
 
@@ -138,6 +139,7 @@ foreach version( versions ) {
 
   if( ! SSL_VER = version_kb_string_mapping[version] ) continue;
 
+  # This is the supported list gathered via NPN
   npn_prot_list = get_kb_list( "tls_npn_prot_supported/" + SSL_VER + "/" + port );
   foreach npn_prot( npn_prot_list ) {
     if( npn_prot =~ "spdy/[1-3]" ) {
@@ -145,11 +147,21 @@ foreach version( versions ) {
       npn_report += version_string[version] + ":" + npn_alpn_name_mapping[npn_prot] + '\n';
     }
   }
+
+  # This is the supported list gathered via ALPN
+  alpn_prot_list = get_kb_list( "tls_alpn_prot_supported/" + SSL_VER + "/" + port );
+  foreach alpn_prot( alpn_prot_list ) {
+    if( alpn_prot =~ "spdy/[1-3]" ) {
+      alpn_vuln = TRUE;
+      alpn_report += version_string[version] + ":" + npn_alpn_name_mapping[alpn_prot] + '\n';
+    }
+  }
 }
 
-if( comp_vuln || npn_vuln ) {
+if( comp_vuln || npn_vuln || alpn_vuln ) {
   if( comp_vuln ) report += comp_report;
   if( npn_vuln )  report += '\n' + npn_report;
+  if( alpn_vuln ) report += '\n' + alpn_report;
   security_message( port:port, data:report );
   exit( 0 );
 }

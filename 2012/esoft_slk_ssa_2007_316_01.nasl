@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_316_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2007_316_01.nasl 5665 2017-03-21 12:51:19Z cfi $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -38,11 +38,7 @@ use of a malformed PDF document.  It is possible that a maliciously
 crafted document could cause code to be executed in the context of the
 user running the application processing the PDF.
 
-These advisories and CVE entries cover the bugs:
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-3387
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-4352
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5392
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-5393
+This advisoriy cover the bugs:
 http://www.kde.org/info/security/advisory-20071107-1.txt";
 tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2007-316-01.";
@@ -53,11 +49,11 @@ if(description)
 {
  script_id(59020);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
  script_cve_id("CVE-2007-3387", "CVE-2007-4352", "CVE-2007-5392", "CVE-2007-5393");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5665 $");
  name = "Slackware Advisory SSA:2007-316-01 xpdf/poppler/koffice/kdegraphics ";
  script_name(name);
 

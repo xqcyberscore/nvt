@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_58402.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_novell_zenworks_mobile_management_58402.nasl 5627 2017-03-20 15:22:38Z cfi $
 #
 # Novell ZENworks Mobile Management  Local File Include Vulnerability
 #
@@ -51,21 +51,21 @@ if (description)
  script_cve_id("CVE-2013-1081");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5627 $");
 
  script_name("Novell ZENworks Mobile Management  Local File Include Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58402");
  script_xref(name:"URL", value:"http://www.novell.com/support/kb/doc.php?id=7011895");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-06-10 13:05:34 +0200 (Mon, 10 Jun 2013)");
  script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_novell_zenworks_mobile_management_detect.nasl");
+ script_dependencies("gb_novell_zenworks_mobile_management_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("zenworks_mobile_management/installed");

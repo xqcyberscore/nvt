@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_creative_cloud_apsb16-34_win.nasl 4327 2016-10-24 07:46:28Z antu123 $
+# $Id: gb_adobe_creative_cloud_apsb16-34_win.nasl 5612 2017-03-20 10:00:41Z teissa $
 #
 # Adobe Creative Cloud Security Update APSB16-34 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:creative_cloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809450");
-  script_version("$Revision: 4327 $");
+  script_version("$Revision: 5612 $");
   script_cve_id("CVE-2016-6935");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 09:46:28 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 15:55:28 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Creative Cloud Security Update APSB16-34 (Windows)");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/creative-cloud/apsb16-34.html");
 
-  script_summary("Check for the vulnerable version of Adobe Creative Cloud on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

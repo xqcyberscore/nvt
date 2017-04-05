@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842773");
-  script_version("$Revision: 3409 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-31 13:56:04 +0200 (Tue, 31 May 2016) $");
+  script_version("$Revision: 5612 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-26 05:21:59 +0200 (Thu, 26 May 2016)");
   script_cve_id("CVE-2013-2207", "CVE-2016-2856", "CVE-2014-8121", "CVE-2014-9761",
 		"CVE-2015-1781", "CVE-2015-5277", "CVE-2015-8776", "CVE-2015-8777",
@@ -99,7 +99,6 @@ if(description)
   script_xref(name: "USN", value: "2985-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003441.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

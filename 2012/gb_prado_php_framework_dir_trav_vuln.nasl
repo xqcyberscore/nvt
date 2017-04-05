@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prado_php_framework_dir_trav_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_prado_php_framework_dir_trav_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
 #
 # PRADO PHP Framework 'sr' Parameter Multiple Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803116");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5633 $");
   script_bugtraq_id(56677);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-11-27 15:16:12 +0530 (Tue, 27 Nov 2012)");
   script_name("PRADO PHP Framework 'sr' Parameter Multiple Directory Traversal Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22937/");
@@ -43,7 +43,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clearpath_mcp_cve_2017_5872.nasl 5578 2017-03-15 07:22:32Z mime $
+# $Id: gb_clearpath_mcp_cve_2017_5872.nasl 5644 2017-03-21 09:07:05Z teissa $
 #
 # Unisys ClearPath MCP Denial of Service Vulnerability
 #
@@ -32,9 +32,9 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140189");
  script_bugtraq_id(96782);
  script_cve_id("CVE-2017-5872");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5578 $");
+ script_tag(name:"cvss_base", value:"5.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+ script_version ("$Revision: 5644 $");
 
  script_name("Unisys ClearPath MCP Denial of Service Vulnerability");
 
@@ -50,7 +50,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # and at least one service offering secured connections via SSL/TLS.
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-15 08:22:32 +0100 (Wed, 15 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-03-14 18:08:09 +0100 (Tue, 14 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

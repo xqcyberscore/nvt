@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dangerous_activex_ctrl.nasl 5369 2017-02-20 14:48:07Z cfi $
+# $Id: secpod_dangerous_activex_ctrl.nasl 5656 2017-03-21 11:03:12Z cfi $
 #
 # Detection of Dangerous ActiveX Control
 #
@@ -30,8 +30,10 @@ if(description)
 {
   script_id(900188);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5369 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 15:48:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5656 $");
+  script_cve_id("CVE-2008-5002", "CVE-2008-4919", "CVE-2008-4342",
+                "CVE-2008-5232", "CVE-2008-5492");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detection of Dangerous ActiveX Control");
@@ -78,13 +80,7 @@ clsid = make_list("{3352B5B9-82E8-4FFD-9EB1-1A3E60056904}", "{BDF3E9D2-5F7A-4F4A
                   "{6FAA7D12-F331-4B51-8D72-877A3CE20E84}");
 
 refeList = make_list(
-  "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5002",
-  "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4919",
-  "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4342",
   "http://archives.neohapsis.com/archives/fulldisclosure/2008-07/0509.html",
-  "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-4342",
-  "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5232",
-  "http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2008-5492",
   "http://securityresponse.symantec.com/avcenter/venc/data/dialer.instantaccess.html",
   "http://www.viruslist.com/en/viruses/encyclopedia?virusid=67936",
   "http://www.viruslist.com/en/viruses/encyclopedia?virusid=74565",

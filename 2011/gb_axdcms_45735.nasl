@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axdcms_45735.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_axdcms_45735.nasl 5651 2017-03-21 10:09:09Z cfi $
 #
 # Ax Developer CMS 'user.php' Local File Include Vulnerability
 #
@@ -39,8 +39,8 @@ AxDCMS 0.1.1 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103025);
- script_version("$Revision: 3099 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5651 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-11 12:59:27 +0100 (Tue, 11 Jan 2011)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);

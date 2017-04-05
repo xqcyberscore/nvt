@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: trojan_horses.nasl 4752 2016-12-12 16:29:10Z cfi $
+# $Id: trojan_horses.nasl 5614 2017-03-20 12:04:28Z cfi $
 #
 # Trojan horses
 #
@@ -42,8 +42,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11157");
-  script_version("$Revision: 4752 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 17:29:10 +0100 (Mon, 12 Dec 2016) $");
+  script_version("$Revision: 5614 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 13:04:28 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,55 +54,35 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Malware");
-  script_dependencies(
-   "PC_anywhere_tcp.nasl",
-   "SHN_discard.nasl",
-   "X.nasl",
-   "apcnisd_detect.nasl",
-   "alcatel_backdoor_switch.nasl",
-   "asip-status.nasl",
-   "auth_enabled.nasl",
-   "bugbear.nasl",
-   "cifs445.nasl",
-   "dcetest.nasl",
-   "dns_server.nasl",
-   "echo.nasl",
-   "find_service1.nasl",
-   "find_service2.nasl",
-   "external_svc_ident.nasl",
-   "mldonkey_telnet.nasl",
-   "mssqlserver_detect.nasl",
-   "mysql_version.nasl",
-   "nessus_detect.nasl",
-   "qmtp_detect.nasl",
-   "radmin_detect.nasl",
-   "secpod_rpc_portmap.nasl",
-   "rpcinfo.nasl",
-   "rsh.nasl",
-   "socks.nasl",
-   "telnet.nasl",
-   "xtel_detect.nasl",
-   "xtelw_detect.nasl");
+  script_dependencies("PC_anywhere_tcp.nasl", "SHN_discard.nasl", "X.nasl", "apcnisd_detect.nasl", "alcatel_backdoor_switch.nasl",
+                      "asip-status.nasl", "auth_enabled.nasl", "bugbear.nasl", "cifs445.nasl", "dcetest.nasl", "dns_server.nasl",
+                      "echo.nasl", "find_service1.nasl", "find_service2.nasl", "external_svc_ident.nasl", "mldonkey_telnet.nasl",
+                      "mssqlserver_detect.nasl", "mysql_version.nasl", "nessus_detect.nasl", "qmtp_detect.nasl", "radmin_detect.nasl",
+                      "secpod_rpc_portmap.nasl", "rpcinfo.nasl", "rsh.nasl", "socks.nasl", "telnet.nasl", "xtel_detect.nasl",
+                      "xtelw_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/unknown");
+  script_mandatory_keys("Host/runs_windows");
 
-  tag_summary = "An unknown service runs on this port. 
-  It is sometimes opened by Trojan horses. 
-  Unless you know for sure what is behind it, you'd better
-  check your system.";
+  tag_summary = "An unknown service runs on this port. It is sometimes opened by Trojan horses.
+  Unless you know for sure what is behind it, you'd better check your system.";
 
-  tag_solution = "If a trojan horse is running, run a good antivirus scanner";
+  tag_solution = "If a trojan horse is running, run a good antivirus scanner.";
 
   script_tag(name:"solution", value:tag_solution);
   script_tag(name:"summary", value:tag_summary);
 
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
 }
 
 include("global_settings.inc");
+include("misc_func.inc");
+include("host_details.inc");
 
-#
+if( host_runs( "Windows" ) != "yes" ) exit( 0 );
+
 # This list comes from:
 # http://www.sans.org/newlook/resources/IDFAQ/oddports.htm
 # http://www.simovits.com/trojans/trojans.html
@@ -1152,11 +1132,6 @@ TCP 65530 Windows Mite
 TCP 65534 /sbin/initd
 TCP 65535 Adore worm, RC1 trojan, Sins
 ";
-
-include("misc_func.inc");
-include("host_details.inc");
-
-if (host_runs("Windows") != "yes") exit(0);
 
 # Currently, we only check TCP trojan horses
 port = get_unknown_port( nodefault:TRUE );

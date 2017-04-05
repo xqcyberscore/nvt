@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcomera_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dlink_ipcomera_mult_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
 #
 # D-link IP Camera DCS-2103 Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805031");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5628 $");
   script_cve_id("CVE-2014-9234", "CVE-2014-9238");
   script_bugtraq_id(71484);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-15 14:54:29 +0530 (Mon, 15 Dec 2014)");
   script_name("D-link IP Camera DCS-2103 Multiple Vulnerabilities");
 
@@ -71,7 +71,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("gb_get_http_banner.nasl");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_mandatory_keys("DCS-2103/banner");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");

@@ -24,7 +24,7 @@
 ###############################################################################
 
 include("revisions-lib.inc");
-tag_insight = "A vulnerabilitiy has been found and corrected in apache:
+tag_insight = "A vulnerability has been found and corrected in apache:
 
   The mod_cache and mod_dav modules in the Apache HTTP Server 2.2.x
   before 2.2.16 allow remote attackers to cause a denial of service
@@ -49,8 +49,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.mandriva.com/security-announce/2010-08/msg00010.php");
   script_id(831131);
-  script_version("$Revision: 3150 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:08:03 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 5654 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-08-20 14:57:11 +0200 (Fri, 20 Aug 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");

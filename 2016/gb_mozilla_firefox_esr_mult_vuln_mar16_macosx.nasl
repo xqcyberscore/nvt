@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_macosx.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_mar16_macosx.nasl 5598 2017-03-17 10:00:43Z teissa $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807523");
-  script_version("$Revision: 2910 $");
+  script_version("$Revision: 5598 $");
   script_cve_id("CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960", 
                 "CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1961", "CVE-2016-1962", 
                 "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1969", 
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-14 18:44:58 +0530 (Mon, 14 Mar 2016)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Mar16 (Mac OS X)");
 
@@ -85,7 +85,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-25");
   
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

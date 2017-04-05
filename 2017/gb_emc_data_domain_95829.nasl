@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_95829.nasl 5158 2017-02-01 14:53:04Z mime $
+# $Id: gb_emc_data_domain_95829.nasl 5606 2017-03-17 17:09:01Z cfi $
 #
 # EMC Data Domain OS Local Command Injection Vulnerability
 #
@@ -32,10 +32,10 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140144");
  script_bugtraq_id(95829);
  script_cve_id("CVE-2016-8216");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
+ script_tag(name:"cvss_base", value:"7.2");
+ script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
- script_version ("$Revision: 5158 $");
+ script_version ("$Revision: 5606 $");
 
  script_name("EMC Data Domain OS Local Command Injection Vulnerability");
 
@@ -58,7 +58,7 @@ EMC Data Domain OS (DD OS) 5.7 family all versions prior to 5.7.2.10");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-01 15:53:04 +0100 (Wed, 01 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-02-01 14:29:24 +0100 (Wed, 01 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
