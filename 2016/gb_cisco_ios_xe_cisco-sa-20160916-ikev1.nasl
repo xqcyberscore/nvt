@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160916-ikev1.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160916-ikev1.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco IOS XE Software IKEv1 Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6415");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 4136 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Cisco IOS XE Software IKEv1 Information Disclosure Vulnerability");
 
@@ -57,9 +57,8 @@ which could lead to the disclosure of confidential information.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"NoneAvailable");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-19 09:36:49 +0700 (Mon, 19 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

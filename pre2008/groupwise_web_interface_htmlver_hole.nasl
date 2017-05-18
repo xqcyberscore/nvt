@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: groupwise_web_interface_htmlver_hole.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: groupwise_web_interface_htmlver_hole.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # GroupWise Web Interface 'HTMLVER' hole
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10873");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-0341");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("GroupWise Web Interface 'HTMLVER' hole");
-  script_summary("GroupWise Web Interface 'HTMLVER' hole");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 SecurITeam");
   script_family("Web application abuses");

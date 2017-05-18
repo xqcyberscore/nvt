@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_spoofing_vuln_jan16_win.nasl 2478 2016-01-22 10:59:09Z antu123 $
+# $Id: gb_mozilla_firefox_spoofing_vuln_jan16_win.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Mozilla Firefox Spoofing Vulnerability - Jan16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806952");
-  script_version("$Revision: 2478 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2015-7575");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 11:59:09 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-14 10:52:36 +0530 (Thu, 14 Jan 2016)");
   script_name("Mozilla Firefox Spoofing Vulnerability - Jan16 (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-150/");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

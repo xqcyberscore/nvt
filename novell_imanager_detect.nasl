@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_imanager_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: novell_imanager_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Novell iManager Detection
 #
@@ -36,15 +36,14 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-01-11 11:18:50 +0100 (Mon, 11 Jan 2010)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Novell iManager Detection");
 
 
- script_summary("Checks for the presence of Novell iManager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

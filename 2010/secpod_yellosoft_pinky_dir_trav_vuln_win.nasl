@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_yellosoft_pinky_dir_trav_vuln_win.nasl 5347 2017-02-19 09:15:55Z cfi $
+# $Id: secpod_yellosoft_pinky_dir_trav_vuln_win.nasl 5796 2017-03-30 14:15:11Z cfi $
 #
 # YelloSoft Pinky Directory Traversal Vulnerability
 #
@@ -46,8 +46,8 @@ Traversal vulnerability.";
 if(description)
 {
   script_id(902253);
-  script_version("$Revision: 5347 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-19 10:15:55 +0100 (Sun, 19 Feb 2017) $");
+  script_version("$Revision: 5796 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,8 +60,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports(2323);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 2323);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -73,16 +74,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
+include("http_keepalive.inc");
 
-ysPort = 2323;
-if(!get_port_state(ysPort)){
-  exit(0);
-}
+ysPort = get_http_port( default:2323 );
 
-sndReq = http_get(item:string("/index.html"), port:ysPort);
-rcvRes = http_send_recv(port:ysPort, data:sndReq);
+rcvRes = http_get_cache(item:string("/index.html"), port:ysPort);
 
 ## Confirm the application
 if("<title>Pinky</title" >< rcvRes && ">YelloSoft<" >< rcvRes)
@@ -90,7 +87,7 @@ if("<title>Pinky</title" >< rcvRes && ">YelloSoft<" >< rcvRes)
   ## Construct the attack string
   request = http_get(item:"/%5C../%5C../%5C../%5C../%5C../%5C../%5C../%5C.." +
                           "/%5C../%5C../boot.ini", port:ysPort);
-  response = http_send_recv(port:ysPort, data:request);
+  response = http_keepalive_send_recv(port:ysPort, data:request);
 
   ## Confirm the working Exploit for windows
   if(("\WINDOWS" >< response) && ("boot loader" >< response)){

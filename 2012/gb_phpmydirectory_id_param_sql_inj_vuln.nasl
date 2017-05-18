@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmydirectory_id_param_sql_inj_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_phpmydirectory_id_param_sql_inj_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # phpMyDirectory 'id' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802977");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5816 $");
   script_cve_id("CVE-2012-5288");
   script_bugtraq_id(51342);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-10-05 16:54:35 +0530 (Fri, 05 Oct 2012)");
   script_name("phpMyDirectory 'id' Parameter SQL Injection Vulnerability");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72232");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18338/");
 
-  script_summary("Determine if phpMyDirectory is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -65,7 +64,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -74,25 +72,20 @@ port = "";
 dir = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
-
-## Check Host Supports PHP
-if(!can_host_php(port)){
+if(!can_host_php(port:port)){
   exit(0);
 }
 
-foreach dir (make_list_unique("/", "/phpMyDirectory", "/phpmydirectory", "/pmd", cgi_dirs(port:port)))
-{
+foreach dir (make_list_unique("/", "/phpMyDirectory", "/phpmydirectory", "/pmd", cgi_dirs(port:port))) {
 
   if(dir == "/") dir = "";
-  ## Create req
-  url = dir + '/index.php';
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirmation application
-  if(http_vuln_check(port:port, url:url, pattern:'>phpMyDirectory.com<',
-                                         check_header: TRUE))
-  {
+  if( res =~ "HTTP/1.. 200" && '>phpMyDirectory.com<' >< res ) {
+
     ## Constuct attack request
     url = dir + "/page.php?id='";
 

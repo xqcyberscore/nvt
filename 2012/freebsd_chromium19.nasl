@@ -141,12 +141,11 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2012-2889", "CVE-2012-2886", "CVE-2012-2881", "CVE-2012-2876", "CVE-2012-2883", "CVE-2012-2887", "CVE-2012-2888", "CVE-2012-2894", "CVE-2012-2877", "CVE-2012-2879", "CVE-2012-2884", "CVE-2012-2874", "CVE-2012-2875", "CVE-2012-2878", "CVE-2012-2880", "CVE-2012-2882", "CVE-2012-2885", "CVE-2012-2890", "CVE-2012-2891", "CVE-2012-2892", "CVE-2012-2893", "CVE-2012-2895");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6022 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-03 11:11:06 -0400 (Wed, 03 Oct 2012)");
  script_name("FreeBSD Ports: chromium");
 
- script_summary("FreeBSD Ports: chromium");
 
  script_category(ACT_GATHER_INFO);
 

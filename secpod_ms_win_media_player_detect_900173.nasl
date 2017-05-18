@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_media_player_detect_900173.nasl 3004 2016-04-07 07:27:20Z antu123 $
+# $Id: secpod_ms_win_media_player_detect_900173.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900173");
-  script_version("$Revision: 3004 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 09:27:20 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-11-11 15:58:44 +0100 (Tue, 11 Nov 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Media Player Version Detection");
@@ -45,7 +45,6 @@ in the registry, gets version and set it in the KB item.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Checks for the presence of Windows Media Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Product detection");

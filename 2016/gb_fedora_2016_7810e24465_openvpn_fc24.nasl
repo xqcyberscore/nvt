@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809169");
-  script_version("$Revision: 5479 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 15:40:33 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-27 05:53:29 +0200 (Sat, 27 Aug 2016)");
   script_cve_id("CVE-2016-6329");
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,7 +48,6 @@ for compression.
   script_xref(name: "FEDORA", value: "2016-7810e24465");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IIPSFOGSRZ5PCY7HRYCDJADE4DTIBMML");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openvpn");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

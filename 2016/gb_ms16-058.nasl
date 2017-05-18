@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-058.nasl 3323 2016-05-16 07:13:47Z antu123 $
+# $Id: gb_ms16-058.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Microsoft Windows IIS Remote Code Execution Vulnerability (3141083)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807323");
-  script_version("$Revision: 3323 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2016-0152");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-16 09:13:47 +0200 (Mon, 16 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:26:16 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows IIS Remote Code Execution Vulnerability (3141083)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3141083");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-058");
 
-  script_summary("Check for the vulnerable 'Aspnetca.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

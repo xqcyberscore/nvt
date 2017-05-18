@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_akips_network_monitor_detect.nasl 2883 2016-03-17 18:22:23Z mime $
+# $Id: gb_akips_network_monitor_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # AKIPS Network Monitor Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105578");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2883 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-17 19:22:23 +0100 (Thu, 17 Mar 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-03-17 17:19:28 +0100 (Thu, 17 Mar 2016)");
  script_name("AKIPS Network Monitor Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of AKIPS Network Monitor");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_webshopper.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: http_webshopper.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # Web Shopper remote file retrieval
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10533");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1776);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2000-0922");
   script_name("Web Shopper remote file retrieval");
-  script_summary("Web Shopper remote file retrieval");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2000 Thomas Reinke");
   script_family("Remote file access");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_detection_900025.nasl 3539 2016-06-16 12:36:48Z antu123 $
+# $Id: secpod_ms_office_detection_900025.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Microsoft Office Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900025");
-  script_version("$Revision: 3539 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-16 14:36:48 +0200 (Thu, 16 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Office Version Detection");
@@ -73,23 +73,6 @@ TMP_OFFICE_LIST = make_list( "^(9\..*)",  "cpe:/a:microsoft:office:2000:",
 
 MAX = max_index(TMP_OFFICE_LIST);
 
-
-## Function to Register Product and Build report
-function build_report(app, ver, exp, base, loc, con)
-{
-  cpe = build_cpe(value:ver, exp:exp, base:base);
-
-  if(!isnull(cpe))
-  {
-    register_product(cpe:cpe, location:loc);
-
-    log_message(data: build_detection_report(app: app,
-                                             version: ver,
-                                             install: loc,
-                                             cpe: cpe,
-                                             concluded: con));
-  }
-}
 
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
 {
@@ -135,7 +118,7 @@ foreach key (key_list)
 
           set_kb_item(name:"MS/Office/Viewer/Ver", value:MSOffVer);
 
-          build_report(app:MSOffName, ver:MSOffVer, loc:MSOffLoc, con:MSOffVer,
+          build_report(app:MSOffName, ver:MSOffVer, insloc:MSOffLoc, concluded:MSOffVer,
                        exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_word_viewer:");
 
           ## Register for 64 bit app on 64 bit OS once again
@@ -143,7 +126,7 @@ foreach key (key_list)
           {
             set_kb_item(name:"MS/Office/Viewer64/Ver", value:MSOffVer);
 
-            build_report(app:MSOffName, ver:MSOffVer, loc:MSOffLoc, con:MSOffVer,
+            build_report(app:MSOffName, ver:MSOffVer, insloc:MSOffLoc, concluded:MSOffVer,
                          exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_word_viewer:x64:");
           }
         }
@@ -157,9 +140,6 @@ foreach key (key_list)
         if(MSOffVer)
         {
           MSOffLoc= registry_get_sz(key:key + item, item:"InstallLocation");
-          if(!MSOffLoc){
-            MSOffLoc = "Could not find the install location from registry";
-          }
 
           if(MSOffVer != NULL)
           {
@@ -199,12 +179,7 @@ foreach key (key_list)
               }
             }
             
-            register_product(cpe:cpe_final, location:MSOffLoc);
-            log_message(data: build_detection_report(app: MSOffName,
-                                                     version: MSOffVer,
-                                                     install: MSOffLoc,
-                                                     cpe: cpe_final,
-                                                     concluded: MSOffVer));
+            build_report(app:MSOffName, ver:MSOffVer, concluded:MSOffVer, cpe:cpe_final, insloc:MSOffLoc);
           }
         }
         continue;

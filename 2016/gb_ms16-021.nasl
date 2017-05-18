@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-021.nasl 2625 2016-02-10 14:34:26Z antu123 $
+# $Id: gb_ms16-021.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Microsoft Windows NPS RADIUS Server Denial of Service Vulnerability (3133043)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806864");
-  script_version("$Revision: 2625 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-0050");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-10 15:34:26 +0100 (Wed, 10 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-10 08:17:05 +0530 (Wed, 10 Feb 2016)");
   script_name("Microsoft Windows NPS RADIUS Server Denial of Service Vulnerability (3133043)");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3133043");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-021");
 
-  script_summary("Check for the vulnerable file 'Iassam.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

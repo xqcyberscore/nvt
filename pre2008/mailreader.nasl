@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailreader.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: mailreader.nasl 5783 2017-03-30 09:03:43Z cfi $
 # Description: mailreader.com directory traversal and arbitrary command execution
 #
 # Authors:
@@ -39,28 +39,21 @@ tag_solution = "upgrade to v2.3.32 or later";
 if(description)
 {
   script_id(11780);
-  script_version("$Revision: 3359 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+  script_version("$Revision: 5783 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:03:43 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1581", "CVE-2002-1582");
   script_bugtraq_id(5393, 6055, 6058);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
   script_name("mailreader.com directory traversal and arbitrary command execution");
-
-  script_summary("Checks directory traversal & version number of mailreader.com software");
-
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("(C) Michel Arboi 2003");
-
   script_family("Web application abuses");
- 
-  script_dependencies("find_service.nasl", "no404.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -71,13 +64,12 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-
-if(! get_port_state(port)) exit(0);
-
 dirtrav = 1; version = 1;
 
-foreach dir (make_list(cgi_dirs()))
-{
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   r2 = NULL;
   if (dirtrav)
   {

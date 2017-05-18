@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851261");
-  script_version("$Revision: 2973 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-30 08:23:53 +0200 (Wed, 30 Mar 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-27 05:17:33 +0200 (Sun, 27 Mar 2016)");
   script_cve_id("CVE-2015-4477", "CVE-2015-7207", "CVE-2016-1952", "CVE-2016-1954", 
                 "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960", "CVE-2016-1961", 
@@ -83,7 +83,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0894_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00091.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of MozillaThunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

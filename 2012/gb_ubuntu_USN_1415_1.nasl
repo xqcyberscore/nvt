@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-April/001651.html");
   script_id(840974);
-  script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-05 10:20:10 +0530 (Thu, 05 Apr 2012)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "USN", value: "1415-1");
   script_name("Ubuntu Update for linux-mvl-dove USN-1415-1");
 
-  script_summary("Check for the Version of linux-mvl-dove");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

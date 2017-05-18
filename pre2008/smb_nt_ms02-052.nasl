@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-052.nasl 5455 2017-03-01 13:56:12Z cfi $
+# $Id: smb_nt_ms02-052.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Flaw in Microsoft VM Could Allow Code Execution (810030)
 #
 # Authors:
@@ -54,8 +54,8 @@ to run the test.";
 if(description)
 {
  script_id(11177);
- script_version("$Revision: 5455 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 14:56:12 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(6371, 6372);
  script_tag(name:"cvss_base", value:"10.0");
@@ -70,7 +70,6 @@ if(description)
 
  summary = "Checks for MS Hotfix Q329077, Flaw in Microsoft VM JDBC";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

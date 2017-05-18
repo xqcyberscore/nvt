@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808067");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-0785");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 13:59:43 +0530 (Tue, 07 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts Remote Code Execution vulnerability June16");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://struts.apache.org/docs/s2-029.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache Struts");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_struts_detect.nasl");

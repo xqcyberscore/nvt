@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punbb_register_lfi.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: punbb_register_lfi.nasl 5795 2017-03-30 14:04:00Z cfi $
 # Description: PunBB language Paramater Local File Include Vulnerability
 #
 # Authors:
@@ -38,43 +38,29 @@ tag_solution = "Update to version 1.2.14 or later.";
 
 if(description)
 {
- 
-	# set script identifiers
-
-	script_id(80080);;
-	script_version("$Revision: 4489 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
-	script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
-    script_tag(name:"cvss_base", value:"7.5");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-        script_cve_id("CVE-2006-5735");
-        script_bugtraq_id(20786);
-	script_xref(name:"OSVDB", value:"30132");
-
-	name = "PunBB language Paramater Local File Include Vulnerability";
-	summary = "Tries to read a local file with PunBB";
-	family = "Web application abuses";
-
-	script_name(name);
-
-	script_category(ACT_DESTRUCTIVE_ATTACK);
+  script_id(80080);
+  script_version("$Revision: 5795 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:04:00 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2006-5735");
+  script_bugtraq_id(20786);
+  script_xref(name:"OSVDB", value:"30132");
+  script_name("PunBB language Paramater Local File Include Vulnerability");
+  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
-	script_copyright("This script is Copyright (C) 2006 Justin Seitz");
-
-	script_family(family);
-
-	script_dependencies("punBB_detect.nasl");	  
-	script_require_ports("Services/www", 80);
-	script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/450055/30/0/threaded");
- script_xref(name : "URL" , value : "http://forums.punbb.org/viewtopic.php?id=13496");
-	exit(0);
+  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_family("Web application abuses");
+  script_dependencies("punBB_detect.nasl");	  
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("punBB/installed");
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/450055/30/0/threaded");
+  script_xref(name : "URL" , value : "http://forums.punbb.org/viewtopic.php?id=13496");
+  exit(0);
 }
-
-
 
 include("global_settings.inc");
 include("http_func.inc");
@@ -82,24 +68,6 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:80);
-
-#
-#
-#	Verify we can talk to the web server, if not exit
-#
-#
-
-if(!get_port_state(port)) exit(0);
-if(!can_host_php(port:port)) exit(0);
-
-
-#
-#
-#       Determine if there is a version of PunBB installed.
-#
-#
-
-
 install = get_kb_item(string("www/", port, "/punBB"));
 if (isnull(install)) exit(0);
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_beatz_com_mult_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_joomla_beatz_com_mult_xss_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Joomla! 'Beatz' Component Multiple Cross Site Scripting Vulnerabilities
 #
@@ -48,11 +48,11 @@ multiple cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(902671);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5958 $");
   script_bugtraq_id(53030);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-25 17:38:13 +0530 (Wed, 25 Apr 2012)");
   script_name("Joomla! 'Beatz' Component Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53030");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522361");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111896/joomlabeatz-xss.txt");
 
-  script_summary("Check if Joomla Beatz component is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");

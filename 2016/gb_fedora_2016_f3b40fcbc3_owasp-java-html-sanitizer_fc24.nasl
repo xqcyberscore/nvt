@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808425");
-  script_version("$Revision: 5479 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 15:40:33 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:35:43 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-3102");
   script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +48,6 @@ test suite, and has undergone adversarial security review.
   script_xref(name: "FEDORA", value: "2016-f3b40fcbc3");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZYYKALUJH7IZHFDEC3QANIX3RLUT2EKV");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of owasp-java-html-sanitizer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

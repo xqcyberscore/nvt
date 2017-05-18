@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_address_book_mult_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_php_address_book_mult_xss_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # PHP Address Book Multiple Cross Site Scripting Vulnerabilities
 #
@@ -48,16 +48,15 @@ cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(902838);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(53598);
   script_cve_id("CVE-2012-2903");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-24 15:15:15 +0530 (Thu, 24 May 2012)");
   script_name("PHP Address Book Multiple Cross Site Scripting Vulnerabilities");
 
-  script_summary("Check if PHP Address Book is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");

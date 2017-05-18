@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xnews.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: xnews.nasl 5783 2017-03-30 09:03:43Z cfi $
 # Description: x-news 1
 #
 # Authors:
@@ -44,59 +44,52 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_id(12068);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5783 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:03:43 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-1656");
  script_bugtraq_id(4283);
- name = "x-news 1";
- script_name(name);
-
- summary = "Check if version of x-news 1.x is installed";
- script_summary(summary);
+ script_name("x-news 1");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2004 Audun Larsen");
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.ifrance.com/kitetoua/tuto/x_holes.txt");
  exit(0);
 }
 
-#
-# The script code starts here
-#
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
+foreach dir( make_list_unique( "/x-news", "/x_news", "/xnews", "/news", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/x-news", "/x_news", "/xnews", "/news", cgi_dirs());
+ if( dir == "/" ) dir = "";
 
-foreach dir (dirs) {
  req = http_get(item:string(dir, "/x_news.php"), port:port);
  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if( res == NULL ) exit(0);
+ if( res == NULL ) continue;
 
- if("Powered by <a href='http://www.xqus.com'>x-news</a> v.1\.[01]" >< res)
- {
-   req2 = http_get(item:string(dir, "/db/users.txt"), port:port);
+ if("Powered by <a href='http://www.xqus.com'>x-news</a> v.1\.[01]" >< res) {
+
+   url = string(dir, "/db/users.txt");
+   req2 = http_get(item:url, port:port);
    res2 = http_keepalive_send_recv(port:port, data:req2, bodyonly:TRUE);
-   if( res2 == NULL ) exit(0);
-   if("|1" >< res2)
-   {
-      security_message(port);
-      exit(0);
+   if( res2 == NULL ) continue;
+
+   if("|1" >< res2) {
+     report = report_vuln_url( port:port, url:url );
+     security_message( port:port, data:report );
+     exit( 0 );
    } 
   } 
 }
+
+exit( 99 );

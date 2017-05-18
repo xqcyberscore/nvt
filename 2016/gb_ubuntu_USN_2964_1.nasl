@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842733");
-  script_version("$Revision: 3320 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 15:55:23 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 05:19:01 +0200 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-0686", "CVE-2016-0687", "CVE-2016-3427", "CVE-2016-0695", "CVE-2016-3425");
   script_tag(name:"cvss_base", value:"10.0");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name: "USN", value: "2964-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003403.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openjdk-7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

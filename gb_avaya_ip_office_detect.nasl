@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_detect.nasl 4206 2016-10-04 10:21:42Z ckuerste $
+# $Id: gb_avaya_ip_office_detect.nasl 5856 2017-04-04 12:59:37Z cfi $
 #
 # Avaya IP Office Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106322");
- script_version ("$Revision: 4206 $");
- script_tag(name: "last_modification", value: "$Date: 2016-10-04 12:21:42 +0200 (Tue, 04 Oct 2016) $");
+ script_version ("$Revision: 5856 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-04 14:59:37 +0200 (Tue, 04 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-10-04 13:39:10 +0700 (Tue, 04 Oct 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,7 @@ extract its version.");
 
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_family("Product detection");
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -63,11 +63,11 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-host = get_host_ip();
+host = http_host_name( port:port );
 
 req = 'GET /index.html HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: Mozilla/5.0 [en] (X11, U; OpenVAS)\r\n' +
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Connection: close\r\n\r\n';

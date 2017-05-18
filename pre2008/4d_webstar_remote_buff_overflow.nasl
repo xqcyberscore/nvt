@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: 4d_webstar_remote_buff_overflow.nasl 5391 2017-02-22 07:03:34Z cfi $
+# $Id: 4d_webstar_remote_buff_overflow.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: 4D WebStar Tomcat Plugin Remote Buffer Overflow flaw
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade to latest version of this software";
 if(description)
 {
  script_id(18212);
- script_version("$Revision: 5391 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 08:03:34 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2005-1507");
  script_bugtraq_id(13538, 14192);
@@ -54,7 +54,6 @@ if(description)
 
  summary = "Checks for 4D WebStar";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

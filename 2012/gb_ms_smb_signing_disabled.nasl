@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_smb_signing_disabled.nasl 2576 2016-02-04 15:15:03Z cfi $
+# $Id: gb_ms_smb_signing_disabled.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Microsoft SMB Signing Disabled
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802726");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2576 $");
+  script_version("$Revision: 5958 $");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-04 16:15:03 +0100 (Thu, 04 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 18:56:54 +0530 (Mon, 09 Apr 2012)");
   script_name("Microsoft SMB Signing Disabled");
-  script_summary("Check if SMB signing is disabled");
   script_category(ACT_GATHER_INFO);
   script_dependencies("smb_login.nasl");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

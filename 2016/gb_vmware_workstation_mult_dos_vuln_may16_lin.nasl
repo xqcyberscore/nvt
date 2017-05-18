@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_mult_dos_vuln_may16_lin.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_vmware_workstation_mult_dos_vuln_may16_lin.nasl 5941 2017-04-12 12:01:06Z antu123 $
 #
 # VMware Workstation Multiple Vulnerabilities May16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:workstation:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806760");
-  script_version("$Revision: 5557 $");
-  script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044");
-  script_bugtraq_id(72338, 72337, 72336);
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 5941 $");
+  script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044", "CVE-2015-2341");
+  script_bugtraq_id(72338, 72337, 72336, 75094);
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 14:01:06 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Workstation Multiple Vulnerabilities May16 (Linux)");
@@ -48,7 +48,8 @@ if(description)
   script_tag(name: "insight" , value:"Multiple flaws are due to:
   - An arbitrary file write issue.
   - An input validation issue in the Host Guest File System (HGFS).
-  - An input validation issue in VMware Authorization process (vmware-authd).");
+  - An input validation issue in VMware Authorization process (vmware-authd).
+  - An input validation issue on an RPC command.");
 
   script_tag(name: "impact" , value:"Successful exploitation will allow a
   attacker for for privilege escalation and to cause Denial of Service.
@@ -64,6 +65,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
+  script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2015-0004.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");

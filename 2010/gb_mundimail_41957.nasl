@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mundimail_41957.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_mundimail_41957.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # Mundi Mail Multiple Remote Command Execution Vulnerabilities
 #
@@ -34,12 +34,11 @@ within the context of the vulnerable system.
 MundiMail version 0.8.2 is vulnerable; other versions may also
 be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100727);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
  script_bugtraq_id(41957);
  script_tag(name:"cvss_base", value:"7.5");
@@ -62,27 +61,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/mundimail","/mail",cgi_dirs());
+foreach dir( make_list_unique( "/mundimail", "/mail", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/admin/index.php"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/admin/index.php";
+  buf = http_get_cache( item:url, port:port );
+  if( buf == NULL )continue;
 
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by Mundi Mail")) {
-    
+  if( "Powered by Mundi Mail" >< buf ) {
+
     url = string(dir,"/admin/status/index.php?action=stop&mypid=;id");
 
     if(http_vuln_check(port:port, url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*")) {
-      security_message(port:port);
-      exit(0);
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

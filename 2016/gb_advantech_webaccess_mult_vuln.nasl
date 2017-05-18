@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln.nasl 2486 2016-01-22 14:07:52Z antu123 $
+# $Id: gb_advantech_webaccess_mult_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Advantech WebAccess Multiple Vulnerabilities Jan16
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807033");
-  script_version("$Revision: 2486 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-3948", "CVE-2015-3943", "CVE-2015-3946", "CVE-2015-3947",
                 "CVE-2015-6467", "CVE-2016-0851", "CVE-2016-0852", "CVE-2016-0853",
                 "CVE-2016-0854", "CVE-2016-0855", "CVE-2016-0856", "CVE-2016-0857",
                 "CVE-2016-0858", "CVE-2016-0859", "CVE-2016-0860");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:07:52 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 10:47:51 +0530 (Fri, 22 Jan 2016)");
   script_name("Advantech WebAccess Multiple Vulnerabilities Jan16");
 
@@ -83,7 +83,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-16-014-01");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Advantech WebAccess");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_advantech_webaccess_detect.nasl");

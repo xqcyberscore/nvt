@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_propfind2.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: iis_propfind2.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: IIS 5.0 PROPFIND Vulnerability
 #
 # Authors:
@@ -37,8 +37,8 @@ http://support.microsoft.com/support/kb/articles/Q241/5/20.AS";
 if(description)
 {
  script_id(10667);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2453);
  script_cve_id("CVE-2001-0151");
@@ -49,7 +49,6 @@ if(description)
  script_name(name);
 
  summary = "Attempts to crash the Microsoft IIS server";
- script_summary(summary);
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: uebimiau_session_disclosure.nasl 3304 2016-05-12 14:37:27Z benallard $
+# $Id: uebimiau_session_disclosure.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Uebimiau Session Directory Disclosure
 #
 # Authors:
@@ -29,13 +29,12 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.16279");
- script_version("$Revision: 3304 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 16:37:27 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Uebimiau Session Directory Disclosure");
- script_summary("Checks for the presence of sessions directory of UebiMiau");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
  script_family("Web application abuses");

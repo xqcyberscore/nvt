@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_ja_t3_framework_com_dir_trav_vuln.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: secpod_joomla_ja_t3_framework_com_dir_trav_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Joomla! JA T3 Framework Component Directory Traversal Vulnerability
 #
@@ -46,18 +46,17 @@ prone to directory traversal vulnerability.";
 if(description)
 {
   script_id(902672);
-  script_version("$Revision: 5642 $");
+  script_version("$Revision: 5999 $");
   script_bugtraq_id(53039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-25 17:38:13 +0530 (Wed, 25 Apr 2012)");
   script_name("Joomla! JA T3 Framework Component Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18065");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74909");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111906/Joomla-JA-T3-Framework-Directory-Traversal.html");
 
-  script_summary("Check if Joomla! JA T3 Framework is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2008_269_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2008_269_01.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -41,8 +41,8 @@ if(description)
 {
  script_id(61675);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
- script_version("$Revision: 5356 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+ script_version("$Revision: 6022 $");
  script_cve_id("CVE-2008-0016", "CVE-2008-3835", "CVE-2008-3836", "CVE-2008-3837",
                "CVE-2008-4058", "CVE-2008-4059", "CVE-2008-4060", "CVE-2008-4061",
                "CVE-2008-4062", "CVE-2008-4065", "CVE-2008-4066", "CVE-2008-4067",
@@ -54,7 +54,6 @@ if(description)
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2008-269-01 mozilla-firefox");
 
  script_category(ACT_GATHER_INFO);
 

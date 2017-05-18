@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_multiple_xss.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_kodak_insite_multiple_xss.nasl 6005 2017-04-21 13:14:30Z cfi $
 #
 # Kodak InSite Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,87 +24,85 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary
-script code in the browser of an unsuspecting user in the context of the
-affected site. This may allow the attacker to steal cookie-based authentication
-credentials and to launch other attacks.
-
-Impact Level: Application";
-
-tag_affected = "Kodak InSite version 6.0.x and prior.";
-
-tag_insight = "Multiple flaws are due to input validation error in 'Language'
-parameter to Pages/login.aspx, 'HeaderWarning' parameter to Troubleshooting
-/DiagnosticReport.asp and 'User-Agent' header to troubleshooting/speedtest.asp,
-which allows remote attackers to inject arbitrary web script or HTML.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Kodak InSite and is prone to multiple
-cross-site scripting vulnerabilities.";
-
 if(description)
 {
-  script_id(801909);
-  script_version("$Revision: 3516 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801909");
+  script_version("$Revision: 6005 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-03-22 08:43:18 +0100 (Tue, 22 Mar 2011)");
   script_cve_id("CVE-2011-1427");
   script_bugtraq_id(46762);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Kodak InSite Multiple Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2011/Mar/73");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65941");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/516880");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/516880/100/0/threaded");
-
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for Kodak InSite Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2011/Mar/73");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65941");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/516880");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/516880/100/0/threaded");
+
+  tag_impact = "Successful exploitation will allow attackers to execute arbitrary
+  script code in the browser of an unsuspecting user in the context of the
+  affected site. This may allow the attacker to steal cookie-based authentication
+  credentials and to launch other attacks.
+
+  Impact Level: Application";
+
+  tag_affected = "Kodak InSite version 6.0.x and prior.";
+
+  tag_insight = "Multiple flaws are due to input validation error in 'Language'
+  parameter to Pages/login.aspx, 'HeaderWarning' parameter to Troubleshooting
+  /DiagnosticReport.asp and 'User-Agent' header to troubleshooting/speedtest.asp,
+  which allows remote attackers to inject arbitrary web script or HTML.";
+
+  tag_solution = "No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.";
+
+  tag_summary = "This host is running Kodak InSite and is prone to multiple
+  cross-site scripting vulnerabilities.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
-port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 sndReq = http_get(item:string("/Site/Pages/login.aspx"), port:port);
 rcvRes = http_keepalive_send_recv(port:port,data:sndReq);
 
 ## Confirm the Application
-if("InSite" >< rcvRes && "PoweredByKodak" >< rcvRes)
-{
-   ## Path of Vulnerable Page
-   url = "/Pages/login.aspx?SessionTimeout=False&Language=de%26rflp=True','" + 
-         "00000000-0000-0000-0000-000000000000');alert('XSS!-TEST'); return fal" +
-         "se; a('";
+if("InSite" >< rcvRes && "PoweredByKodak" >< rcvRes) {
 
-   ## Try attack and check the response to confirm vulnerability.
-   if(http_vuln_check(port:port, url:url, pattern:");alert\('XSS!-TEST'\);", check_header:TRUE)){
-     security_message(port);
-   }
+  url = "/Pages/login.aspx?SessionTimeout=False&Language=de%26rflp=True','" + 
+        "00000000-0000-0000-0000-000000000000');alert('XSS!-TEST'); return fal" +
+        "se; a('";
+
+  if( http_vuln_check( port:port, url:url, pattern:");alert\('XSS!-TEST'\);", check_header:TRUE ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port );
+    exit( 0 );
+  }
 }
+
+exit( 99 );

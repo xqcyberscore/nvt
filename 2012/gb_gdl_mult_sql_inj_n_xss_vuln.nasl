@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gdl_mult_sql_inj_n_xss_vuln.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_gdl_mult_sql_inj_n_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # Ganesha Digital Library Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,22 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802433");
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5814 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-06-01 13:02:10 +0530 (Fri, 01 Jun 2012)");
   script_name("Ganesha Digital Library Multiple SQL Injection and XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18392");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18953/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113132/ganesha-sqlxss.txt");
 
-
-  script_summary("Check if Ganesha Digital Library is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -70,7 +68,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -79,24 +76,21 @@ dir = "";
 url = "";
 port = 0;
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/GDL",  cgi_dirs(port:port)))
 {
   if(dir == "/") dir = "";
   url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application before trying exploit
-  if(http_vuln_check(port: port, url: url, check_header: TRUE,
-     pattern: "<title>Welcome - ACME Digital Library -  GDL"))
-  {
+  if( res =~ "HTTP/1.. 200" && ">KBPublisher<" >< res && "<title>Welcome - ACME Digital Library -  GDL" >< res ) {
+
     ## Construct attack request
     url = dir + "/publisher.php?id='mehaha!!!";
 

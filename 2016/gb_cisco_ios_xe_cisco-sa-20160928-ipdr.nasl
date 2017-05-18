@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-ipdr.nasl 4179 2016-09-29 09:16:39Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160928-ipdr.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Cisco IOS XE Software IP Detail Record Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6379");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4179 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("Cisco IOS XE Software IP Detail Record Denial of Service Vulnerability");
 
@@ -55,9 +55,8 @@ denial of service (DoS) condition.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-29 11:16:39 +0200 (Thu, 29 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 15:22:06 +0700 (Thu, 29 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: 12planet_chat_server_xss.nasl 4176 2016-09-29 07:41:00Z antu123 $
+# $Id: 12planet_chat_server_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # 12Planet Chat Server one2planet.infolet.InfoServlet XSS
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12299");
-  script_version("$Revision: 4176 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-29 09:41:00 +0200 (Thu, 29 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0678");
   script_bugtraq_id(10659);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("12Planet Chat Server one2planet.infolet.InfoServlet XSS");
-  script_summary("Checks for the presence of an XSS bug in 12Planet Chat Server");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");

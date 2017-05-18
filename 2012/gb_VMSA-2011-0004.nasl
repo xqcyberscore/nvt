@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0004.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2011-0004.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # VMSA-2011-0004.3 VMware ESX/ESXi SLPD denial of service vulnerability and ESX third party updates for Service Console packages bind, pam, and rpm.
 #
@@ -68,13 +68,12 @@ if (description)
  script_cve_id("CVE-2010-3613", "CVE-2010-3614", "CVE-2010-3762", "CVE-2010-3316", "CVE-2010-3435", "CVE-2010-3853", "CVE-2010-2059", "CVE-2010-3609");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5988 $");
  script_name("VMSA-2011-0004.3 VMware ESX/ESXi SLPD denial of service vulnerability and ESX third party updates for Service Console packages bind, pam, and rpm.");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-16 10:51:14 +0100 (Fri, 16 Mar 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

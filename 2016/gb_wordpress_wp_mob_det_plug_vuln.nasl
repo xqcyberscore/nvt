@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_mob_det_plug_vuln.nasl 3510 2016-06-14 09:13:18Z teissa $
+# $Id: gb_wordpress_wp_mob_det_plug_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
 # WordPress WP Mobile Detector Plugin 3.5 - Arbitrary File Upload Vulnerability
 #
 # Authors:
@@ -41,12 +41,11 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107012");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
- script_version("$Revision: 3510 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 11:13:18 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 5675 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-14 10:42:39 +0100 (Tue, 14 Jun 2016)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_name("WordPress WP Mobile Detector Plugin 3.5 - Arbitrary File Upload Vulnerability");
- script_summary("This script tells wether Wordpress is vulnerable to Wordpress WP Mobile Detector Arbitrary File Upload Vulnerability");
  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39891/");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");

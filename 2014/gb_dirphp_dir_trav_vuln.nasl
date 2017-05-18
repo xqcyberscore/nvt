@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dirphp_dir_trav_vuln.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_dirphp_dir_trav_vuln.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # DirPHP 'path/index.php' Local File Include Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804738");
-  script_version("$Revision: 5628 $");
+  script_version("$Revision: 5820 $");
   script_cve_id("CVE-2014-5115");
   script_bugtraq_id(68943);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-08-11 19:18:06 +0530 (Mon, 11 Aug 2014)");
   script_name("DirPHP 'path/index.php' Local File Include Vulnerability");
 
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34173");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127642");
   script_xref(name : "URL" , value : "http://bot24.blogspot.in/2014/07/dirphp-10-lfi-vulnerability.html");
-  script_summary("Check if DirPHP is prone to directory traversal vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -68,7 +67,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -78,29 +76,24 @@ http_port = 0;
 dir = "";
 url = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/phpdir", "/resources", cgi_dirs(http_port)))
+## traversal_files() function Returns Dictionary (i.e key value pair)
+## Get Content to be checked and file to be check
+files = traversal_files();
+
+foreach dir (make_list_unique("/", "/phpdir", "/resources", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
-
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ## confirm the Application
   if(">DirPHP" >< rcvRes && "Created & Maintained by Stuart Montgomery<" >< rcvRes)
   {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
-    ## Get Content to be checked and file to be check
-    files = traversal_files();
 
     foreach file (keys(files))
     {

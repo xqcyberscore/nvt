@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webedition_47047.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_webedition_47047.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # webEdition CMS HTML Injection and Local File Include Vulnerabilities
 #
@@ -37,12 +37,11 @@ the computer; other attacks are also possible.
 webEdition CMS 6.1.0.2 is vulnerable; other versions may also
 be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103134);
- script_version("$Revision: 3516 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 5751 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-28 19:09:51 +0200 (Mon, 28 Mar 2011)");
  script_bugtraq_id(47047);
  script_tag(name:"cvss_base", value:"6.8");
@@ -54,7 +53,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.webedition.org/de/index.php");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed webEdition CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -67,24 +65,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/webedition","/webEdition","/cms",cgi_dirs());
+foreach dir( make_list_unique( "/webedition", "/webEdition", "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, '/openBrowser.php?url="onload="alert(/openvas-xss-test/)'); 
+  if( dir == "/" ) dir = "";
+  url = string(dir, '/openBrowser.php?url="onload="alert(/openvas-xss-test/)');
 
   if(http_vuln_check(port:port, url:url,pattern:"alert\(/openvas-xss-test/\)",extra_check:"<title>webEdition", check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

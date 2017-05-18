@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_select_image_xss_vuln.nasl 3513 2016-06-14 11:14:20Z mime $
+# $Id: secpod_typo3_select_image_xss_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # TYPO3 select_image.php Cross Site Scripting Vulnerability
 #
@@ -24,46 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903230";
 CPE = "cpe:/a:typo3:typo3";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903230");
+  script_version("$Revision: 5843 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:14:20 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-02-25 19:17:38 +0530 (Tue, 25 Feb 2014)");
   script_name("TYPO3 select_image.php Cross Site Scripting Vulnerability");
 
-  tag_summary =
-"This host is installed with TYPO3 and is prone to cross site scripting
+  tag_summary = "This host is installed with TYPO3 and is prone to cross site scripting
 vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted HTTP GET request and check whether it is able to read the
+  tag_vuldetect = "Send a crafted HTTP GET request and check whether it is able to read the
 cookie or not.";
 
-  tag_insight =
-"Flaw is due to improper validation of user-supplied input passed to
+  tag_insight = "Flaw is due to improper validation of user-supplied input passed to
 'RTEtsConfigParams' parameter in 'select_image.php' page.";
 
-  tag_impact =
-"Successful exploitation will allow attacker to execute arbitrary HTML and
+  tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
 Impact Level: Application";
 
-  tag_affected =
-"TYPO3 6.1.7, previous versions may also be affected.";
+  tag_affected = "TYPO3 6.1.7, previous versions may also be affected.";
 
-  tag_solution =
-"No solution or patch was made available for at least one year
+  tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -74,7 +66,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/typo3-617-xss-disclosure-shell-upload");
-  script_summary("Check if TYPO3 is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 SecPod");
@@ -96,17 +87,15 @@ typo_port = 80;
 dir = "/typo";
 url = "";
 
-## Get HTTP Port
-if(!typo_port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!typo_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get TYPO3 Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:typo_port)){
+if(!dir = get_app_location(cpe:CPE, port:typo_port)){
   exit(0);
 }
 
-host = get_host_name();
+host = http_host_name(port:typo_port);
 cookie = get_typo3_login_cookie(cinstall: dir, tport:typo_port, chost:host);
 
 if(cookie)
@@ -116,9 +105,8 @@ if(cookie)
               'RTEtsConfigParams=<script>alert(document.cookie)</script>';
   req = string("GET ",url," HTTP/1.0\r\n",
                "Host: " + host + "\r\n",
-               "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0) Gecko/20100101 Firefox/14.0.1\r\n",
+               "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
                "Cookie: ",cookie,"\r\n\r\n");
-
   res = http_send_recv(port:typo_port, data:req, bodyonly:FALSE);
 
   ## Check Exploit is working

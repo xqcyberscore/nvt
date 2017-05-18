@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808491");
-  script_version("$Revision: 3836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 06:36:22 +0200 (Tue, 16 Aug 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 06:03:21 +0200 (Tue, 28 Jun 2016)");
   script_cve_id("CVE-2016-5767", "CVE-2015-8874", "CVE-2016-5766");
   script_tag(name:"cvss_base", value:"6.8");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-a4d48d6fd6");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4A7JQBF22MYDUWX4UPACSQY6S3GU4VSB");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

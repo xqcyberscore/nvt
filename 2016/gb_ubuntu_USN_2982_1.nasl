@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842766");
-  script_version("$Revision: 3553 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:26:11 +0200 (Mon, 20 Jun 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-18 05:19:40 +0200 (Wed, 18 May 2016)");
   script_cve_id("CVE-2016-4353", "CVE-2016-4354", "CVE-2016-4355", "CVE-2016-4356",
  		"CVE-2016-4574", "CVE-2016-4579");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name: "USN", value: "2982-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003432.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libksba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

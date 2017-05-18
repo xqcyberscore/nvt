@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_vuln_june16.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_cms_made_simple_mult_vuln_june16.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # CMS Made Simple Multiple Vulnerabilities - June16
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808061");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-2784");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 16:34:53 +0530 (Tue, 07 Jun 2016)");
   script_name("CMS Made Simple Multiple Vulnerabilities - June16");
 
@@ -70,7 +70,6 @@ if (description)
   script_xref(name:"URL" , value:"http://www.cmsmadesimple.org/2016/04/Announcing-CMSMS-2-1-3-Black-Point");
   script_xref(name:"URL" , value:"http://www.cmsmadesimple.org/2016/03/Announcing-CMSMS-1-12-2-kolonia");
 
-  script_summary("Check if CMS Made Simple is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

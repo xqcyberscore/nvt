@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_detect.nasl 2893 2016-03-18 13:37:54Z cfi $
+# $Id: gb_atlassian_bamboo_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Atlassian Bamboo Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807265");
-  script_version("$Revision: 2893 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-18 14:37:54 +0100 (Fri, 18 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-17 09:47:57 +0530 (Wed, 17 Feb 2016)");
   script_name("Atlassian Bamboo Version Detection");
-  script_summary("Set version of Atlassian Bamboo in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

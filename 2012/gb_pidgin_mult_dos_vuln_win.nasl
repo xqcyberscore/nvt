@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_dos_vuln_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_pidgin_mult_dos_vuln_win.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Pidgin Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -41,12 +41,12 @@ tag_summary = "This host is installed with Pidgin and is prone to multiple
 if(description)
 {
   script_id(802713);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-1178", "CVE-2011-4939");
   script_bugtraq_id(52475, 52476);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-19 17:45:29 +0530 (Mon, 19 Mar 2012)");
   script_name("Pidgin Multiple Denial of Service Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48303/");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://developer.pidgin.im/ticket/14392");
   script_xref(name : "URL" , value : "http://developer.pidgin.im/ticket/14884");
 
-  script_summary("Check for the Version of Pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_bookmark_toolbar_xss_vuln_may16.nasl 5106 2017-01-25 14:08:54Z cfi $
+# $Id: gb_typo3_bookmark_toolbar_xss_vuln_may16.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # TYPO3 Bookmark Toolbar Cross-Site Scripting Vulnerability May16 (SA-2016-006)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807828");
-  script_version("$Revision: 5106 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-4056");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 15:08:54 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 18:03:53 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Bookmark Toolbar Cross-Site Scripting Vulnerability May16 (SA-2016-006)");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-006");
 
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

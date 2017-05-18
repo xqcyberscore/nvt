@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807207");
-  script_version("$Revision: 3319 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-24 06:14:59 +0100 (Sun, 24 Jan 2016)");
   script_cve_id("CVE-2015-8745", "CVE-2015-8567", "CVE-2016-1922", "CVE-2015-8613",
                 "CVE-2015-8701", "CVE-2015-8743", "CVE-2016-1568", "CVE-2015-8568");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for qemu FEDORA-2016-42778");
   script_tag(name: "summary", value: "Check the version of qemu");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-42778");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-January/175967.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

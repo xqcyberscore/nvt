@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20161005-iosxr.nasl 4251 2016-10-12 07:37:56Z antu123 $
+# $Id: gb_cisco_ios_xr_cisco-sa-20161005-iosxr.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6428");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4251 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Cisco IOS XR Software Command-Line Interface Privilege Escalation Vulnerability");
 
@@ -57,9 +57,8 @@ logged-in to the device with valid admin credentials.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-12 09:37:56 +0200 (Wed, 12 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 11:31:48 +0700 (Thu, 06 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

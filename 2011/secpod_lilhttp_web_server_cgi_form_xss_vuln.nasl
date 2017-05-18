@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lilhttp_web_server_cgi_form_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_lilhttp_web_server_cgi_form_xss_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # LilHTTP Server 'CGI Form Demo' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902437");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5839 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -37,7 +37,6 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101758/lilhttp-xss.txt");
   script_xref(name:"URL", value:"http://www.securityhome.eu/exploits/exploit.php?eid=5477687364de02d6a4c2430.52315196");
 
-  script_summary("Check for XSS vulnerability in LilHTTP Web Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web Servers");
@@ -67,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -91,7 +89,7 @@ host = http_host_name(port:lilPort);
 ## Construct the POST request
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n", postdata);
 

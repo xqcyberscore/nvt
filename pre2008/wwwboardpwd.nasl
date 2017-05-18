@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wwwboardpwd.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: wwwboardpwd.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # wwwboard passwd.txt
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10321");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(649, 12453);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-1999-0953");
   script_name("wwwboard passwd.txt");
-  script_summary("Checks for the presence of /wwwboard/passwd.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 Jonathan Provencher");
   script_family("Web application abuses");

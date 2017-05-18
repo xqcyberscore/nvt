@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_web_server_conn_header_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_simple_web_server_conn_header_bof_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Simple Web Server Connection Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802916");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5988 $");
   script_bugtraq_id(54605);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-23 16:50:34 +0530 (Mon, 23 Jul 2012)");
   script_name("Simple Web Server Connection Header Buffer Overflow Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name:"URL", value:"http://ghostinthelab.wordpress.com/tag/shellcode/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/114892/SimpleWebServer-2.2-rc2-Remote-Buffer-Overflow.html");
 
-  script_summary("Check if Simple Web Server is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

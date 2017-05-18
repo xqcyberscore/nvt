@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ston3d_prdts_detect_win.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_ston3d_prdts_detect_win.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # StoneTrip Ston3d Products Version Detection (Windows)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of StoneTrip Ston3d
-  products application and sets the version in KB.";
-
 if(description)
 {
-  script_id(800573);
+  script_oid("1.3.6.1.4.1.25623.1.0.800573");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-16 15:11:01 +0200 (Tue, 16 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("StoneTrip Ston3d Products Version Detection (Windows)");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects the installed version
+  of StoneTrip Ston3d products application.");
   exit(0);
 }
 
@@ -52,20 +50,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800573";
-SCRIPT_DESC = "StoneTrip Ston3d Products Version Detection (Windows)";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -78,20 +62,18 @@ sapVer = registry_get_sz(key:key + "Ston3D Standalone Engine", item:"DisplayVers
 if(sapVer != NULL)
 {
   set_kb_item(name:"Ston3D/Standalone/Player/Win/Ver", value:sapVer);
-  log_message(data:"Ston3D Standalone Engine version " + sapVer +
-                         " was detected on the host");
 
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:sapVer,tmpExpr:"^([0-9.]+)",tmpBase:"cpe:/a:stonetrip:s3dplayer_standalone:");
+  register_and_report_cpe(app:"Ston3D Standalone Engine", ver:sapVer,
+                          base:"cpe:/a:stonetrip:s3dplayer_standalone:", expr:"^([0-9.]+)");
 }
 
 wpVer = registry_get_sz(key:key + "Ston3D Web Player", item:"DisplayVersion");
 if(wpVer != NULL)
 {
   set_kb_item(name:"Ston3D/Web/Player/Ver", value:wpVer);
-  log_message(data:"Ston3D Web Player version " + wpVer +
-                         " was detected on the host");
 
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:wpVer,tmpExpr:"^([0-9.]+)",tmpBase:"cpe:/a:stonetrip:s3dplayer_web:");
+  register_and_report_cpe(app:"Ston3D Web Player", ver:wpVer,
+                          base:"cpe:/a:stonetrip:s3dplayer_web:", expr:"^([0-9.]+)");
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_dir_trav_vuln_aug14.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vtiger_crm_dir_trav_vuln_aug14.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # vTiger CRM 'file' Arbitrary File Disclosure Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804748");
-  script_version("$Revision: 3555 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2014-1222");
   script_bugtraq_id(66136);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-08-25 15:26:37 +0530 (Mon, 25 Aug 2014)");
   script_name("vTiger CRM 'file' Arbitrary File Disclosure Vulnerability");
 
@@ -81,8 +81,7 @@ NOTE: Ignore this warning, if above mentioned patch is manually applied.
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57149");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125685");
   script_xref(name : "URL" , value : "https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-1222");
-  script_summary("Check for the vulnerable version of vTiger");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_vtiger_crm_detect.nasl");

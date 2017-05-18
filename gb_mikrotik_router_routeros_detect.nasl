@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_detect.nasl 5536 2017-03-10 13:04:45Z antu123 $
+# $Id: gb_mikrotik_router_routeros_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
 #
 # MikroTik Router RouterOS (OS Of RouterBOARD) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810608");
-  script_version("$Revision: 5536 $");
+  script_version("$Revision: 5829 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 14:04:45 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:28:48 +0530 (Thu, 09 Mar 2017)");
   script_name("MikroTik Router RouterOS (OS Of RouterBOARD) Detection");
 
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 10000);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -61,15 +61,9 @@ req = "";
 res = "";
 mikVer = "";
 
-##Get HTTP Port
 mikPort = get_http_port(default: 10000);
-if(!mikPort){
-  exit(0);
-}
 
-#Send Connection request
-req = http_get(port:mikPort, item: "/");
-res = http_keepalive_send_recv(port:mikPort, data:req);
+res = http_get_cache(port:mikPort, item: "/");
 
 ##Confirm Router
 if(">RouterOS router configuration page<" >< res && "mikrotik<" >< res && ">Login<" >< res)

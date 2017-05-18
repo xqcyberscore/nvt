@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms16-004.nasl 2478 2016-01-22 10:59:09Z antu123 $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms16-004.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # MS SharePoint Server and Foundation Multiple Vulnerabilities (3124585)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806660");
-  script_version("$Revision: 2478 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-0011", "CVE-2015-6117");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 11:59:09 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-13 12:19:11 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server and Foundation Multiple Vulnerabilities (3124585)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114503");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-004");
 
-  script_summary("Check for the vulnerable file 'Wsssetup.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

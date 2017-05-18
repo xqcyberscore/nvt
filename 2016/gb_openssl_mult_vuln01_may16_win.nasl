@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_may16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_openssl_mult_vuln01_may16_win.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # OpenSSL Multiple Vulnerabilities -01 May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807569");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-2176", "CVE-2016-2109", "CVE-2016-2106", "CVE-2016-2107",
                 "CVE-2016-2105");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-02 12:46:24 +0530 (Mon, 02 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities -01 May16 (Windows)");
@@ -72,7 +72,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20160503.txt");
   script_xref(name : "URL" , value : "https://mta.openssl.org/pipermail/openssl-announce/2016-April/000069.html");
-  script_summary("Check for the vulnerable version of OpenSSL on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

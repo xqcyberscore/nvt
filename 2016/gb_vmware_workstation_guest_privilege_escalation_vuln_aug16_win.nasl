@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_guest_privilege_escalation_vuln_aug16_win.nasl 3877 2016-08-24 09:10:50Z antu123 $
+# $Id: gb_vmware_workstation_guest_privilege_escalation_vuln_aug16_win.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # VMware Workstation Guest Privilege Escalation Vulnerability Aug16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:workstation:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809002");
-  script_version("$Revision: 3877 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2015-6933");
   script_bugtraq_id(79958);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-24 11:10:50 +0200 (Wed, 24 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 10:43:52 +0530 (Fri, 19 Aug 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation Guest Privilege Escalation Vulnerability Aug16 (Windows)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0001.html");
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/viewAlert.x?alertId=42939");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VMware Workstation on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");

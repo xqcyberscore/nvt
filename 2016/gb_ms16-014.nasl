@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-014.nasl 3146 2016-04-22 11:06:11Z antu123 $
+# $Id: gb_ms16-014.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Windows Multiple Vulnerabilities (3134228)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807065");
-  script_version("$Revision: 3146 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-0040", "CVE-2016-0041", "CVE-2016-0042", "CVE-2016-0044",
                 "CVE-2016-0049");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:06:11 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-10 14:13:40 +0530 (Wed, 10 Feb 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (3134228)");
@@ -86,7 +86,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3126434");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3135174");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-014");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

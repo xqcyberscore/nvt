@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871643");
-  script_version("$Revision: 3798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-04 13:01:10 +0200 (Thu, 04 Aug 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 16:27:33 +0530 (Thu, 04 Aug 2016)");
   script_cve_id("CVE-2014-8127", "CVE-2014-8129", "CVE-2014-8130", "CVE-2014-9330",
                 "CVE-2014-9655", "CVE-2015-1547", "CVE-2015-7554", "CVE-2015-8665",
@@ -70,7 +70,6 @@ CVE-2016-3945, CVE-2016-3991)
   script_xref(name: "RHSA", value: "2016:1547-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-August/msg00001.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libtiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150923-fhs.nasl 3259 2016-05-10 13:30:24Z mime $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150923-fhs.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Cisco IOS and IOS XE Software IPv6 First Hop Security Denial of Service Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6278","CVE-2015-6279");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3259 $");
+ script_version ("$Revision: 5732 $");
 
  script_name("Cisco IOS and IOS XE Software IPv6 First Hop Security Denial of Service Vulnerabilities");
 
@@ -63,9 +63,8 @@ http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep15.html
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-10 15:30:24 +0200 (Tue, 10 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-09 18:25:53 +0200 (Mon, 09 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

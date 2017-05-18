@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882553");
-  script_version("$Revision: 4136 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-06 05:38:01 +0200 (Tue, 06 Sep 2016)");
   script_cve_id("CVE-2016-5404");
   script_tag(name:"cvss_base", value:"4.0");
@@ -56,7 +56,6 @@ This issue was discovered by Fraser Tweedale (Red Hat).
 
   script_xref(name: "CESA", value: "2016:1797");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022057.html");
-  script_summary("Check for the Version of ipa-admintools");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

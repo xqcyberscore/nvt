@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_detect.nasl 2784 2016-03-07 12:32:50Z cfi $
+# $Id: secpod_xoops_detect.nasl 5952 2017-04-13 12:34:17Z cfi $
 #
 # XOOPS Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900892");
-  script_version("$Revision: 2784 $");
+  script_version("$Revision: 5952 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-07 13:32:50 +0100 (Mon, 07 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_name("XOOPS Version Detection");
-  script_summary("Set KB for the version of XOOPS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -51,49 +50,70 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/", "/htdocs", "/xoops/htdocs", "/xoops-230/htdocs", "/xoops-2014rc1/htdocs", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/xoops", cgi_dirs( port:port ) ) ) {
+
+  if( rootInstalled ) break;
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/index.php", port:port );
-  rcvRes2 = http_get_cache( item: dir + "/user.php", port:port );
+  res = http_get_cache( item: dir + "/index.php", port:port );
+  res2 = http_get_cache( item: dir + "/user.php", port:port );
 
-  if( ( rcvRes =~ "HTTP/1.. 200" && "XOOPS" >< rcvRes ) || ( rcvRes2 =~ "HTTP/1.. 200" && "XOOPS" >< rcvRes2 ) ) {
+  if( ( res =~ "HTTP/1\.[0-1] 200" && ( 'generator" content="XOOPS" />' >< res || ">Powered by XOOPS" >< res || ">The XOOPS Project<" >< res || ( "/xoops.css" >< res && "/xoops.js" >< res ) ) ) ||
+      ( res2 =~ "HTTP/1\.[0-1] 200" && ( 'generator" content="XOOPS" />' >< res || ">Powered by XOOPS" >< res || ">The XOOPS Project<" >< res || ( "/xoops.css" >< res && "/xoops.js" >< res ) ) ) ) {
 
     version = "unknown";
+    conclUrl = NULL;
+    if( install == "/" ) rootInstalled = TRUE;
 
-    sndReq = http_get( item: dir + "/../release_notes.txt", port:port );
-    rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+    # This will only work if XOOPS is incorrectly deployed (e.g. whole install archive is extracted into document root, not only the content of the /htdocs folder)
+    url = dir + "/../release_notes.txt";
+    req = http_get( item:url , port:port );
+    res = http_keepalive_send_recv( port:port, data:req );
 
-    if( rcvRes =~ "HTTP/1.. 200" && "XOOPS" >< rcvRes && "version" >< rcvRes ) {
+    if( res =~ "HTTP/1\.[0-1] 200" && "XOOPS" >< res && "version" >< res ) {
 
-      ver = eregmatch( pattern:"XOOPS ([0-9]\.[0-9.]+).?(Final|RC[0-9]|[a-z])?", string:rcvRes, icase:TRUE );
+      ver = eregmatch( pattern:"XOOPS ([0-9]\.[0-9.]+).?(Final|RC[0-9]|[a-z])?", string:res, icase:TRUE );
       if( ! isnull( ver[1] ) ) {
         if( ! isnull( ver[2] ) ) {
           version = ver[1] + "." + ver[2];
         } else {
           version = ver[1];
         }
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+      }
+    }
+
+    if( version == "unknown" ) {
+      # For newer versions (e.g. 2.5.8)
+      url = dir + "/class/libraries/composer.json";
+      req = http_get( item:url, port:port );
+      res = http_keepalive_send_recv( port:port, data:req );
+
+      ver = eregmatch( pattern:"Libraries for XOOPS ([0-9]\.[0-9.]+).?(Final|RC[0-9]|[a-z])?", string:res, icase:TRUE );
+      if( ! isnull( ver[1] ) ) {
+        if( ! isnull( ver[2] ) ) {
+          version = ver[1] + "." + ver[2];
+        } else {
+          version = ver[1];
+        }
+        conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
       }
     }
 
     tmp_version = version + " under " + install;
-    set_kb_item( name:"www/"+ port + "/XOOPS", value:tmp_version );
-    set_kb_item( name:"XOOPS/installed", value:TRUE );
+    set_kb_item( name:"www/" + port + "/XOOPS", value:tmp_version );
+    replace_kb_item( name:"XOOPS/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail##
     cpe = build_cpe( value:version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:xoops:xoops:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:xoops:xoops";
@@ -103,6 +123,7 @@ foreach dir( make_list_unique( "/", "/htdocs", "/xoops/htdocs", "/xoops-230/htdo
                                               version:version,
                                               install:install,
                                               cpe:cpe,
+                                              concludedUrl:conclUrl,
                                               concluded:ver[0] ),
                                               port:port );
   }

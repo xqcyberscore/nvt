@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dissector_mult_vuln_macosx.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wireshark_mult_dissector_mult_vuln_macosx.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Wireshark LDP PPP and HSRP dissector Multiple Vulnerabilities (Mac OS X)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(802982);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2012-5237", "CVE-2012-5238", "CVE-2012-5240");
   script_bugtraq_id(55754);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-11 17:06:48 +0530 (Thu, 11 Oct 2012)");
   script_name("Wireshark LDP PPP and HSRP dissector Multiple Vulnerabilities (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50843/");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=7668");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=7581");
 
-  script_summary("Check for the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

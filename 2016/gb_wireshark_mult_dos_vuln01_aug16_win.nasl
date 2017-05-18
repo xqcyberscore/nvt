@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_aug16_win.nasl 3819 2016-08-10 13:45:03Z antu123 $
+# $Id: gb_wireshark_mult_dos_vuln01_aug16_win.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-01 August16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808285");
-  script_version("$Revision: 3819 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2016-6512", "CVE-2016-6513");
   script_bugtraq_id(92174, 92172);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 15:45:03 +0200 (Wed, 10 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 10:31:32 +0530 (Tue, 09 Aug 2016)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-01 August16 (Windows)");
   
@@ -70,7 +70,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2016-48.html");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2016-49.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

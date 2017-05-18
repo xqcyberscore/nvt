@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cubecart_mult_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_cubecart_mult_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # CubeCart Multiple Vulnerabilities
 #
@@ -36,15 +36,14 @@ tag_solution = "Upgrade to CubeCart version 5.0 or later,
 tag_summary = "This host is installed with CubeCart and is prone to multiple
   vulnerabilities.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803090";
 CPE = "cpe:/a:cubecart:cubecart";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3565 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803090");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(57031);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-25 15:26:41 +0530 (Tue, 25 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,14 +53,13 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Dec/233");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Dec/234");
 
-  script_summary("Check if CubeCart is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_cubecart_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("cubecart/installed");
+  script_mandatory_keys("cubecart/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,10 +67,6 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("host_details.inc");
@@ -85,26 +79,16 @@ dir = "";
 ccReq = "";
 ccRes = "";
 
-## Get HTTP Port
-if(!ccPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-## Check Host Supports PHP
-if(!can_host_php(port:ccPort)) exit(0);
-
-## Get WordPress Installed Location
+if(!ccPort = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port: ccPort))exit(0);
 
-## Get Host name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
+host = http_host_name(port:ccPort);
 
 ## Construct XSS attack request
 url = dir + '/cart.php?act=cart';
 ccReq = string('GET ', url, ' HTTP/1.1\r\n',
                'Host: ', host, '\r\n',
-               'User-Agent: XSS-TEST\r\n',
+               'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
                'Referer: "/><script>alert(document.cookie)</script>\r\n\r\n');
 
 ## Send the attack request

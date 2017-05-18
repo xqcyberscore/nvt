@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_message_filter_mult_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_symantec_message_filter_mult_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Symantec Message Filter Multiple Vulnerabilities
 #
@@ -63,14 +63,13 @@ if (description)
  script_cve_id("CVE-2012-0300","CVE-2012-0301","CVE-2012-0302","CVE-2012-0303");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5977 $");
 
  script_name("Symantec Message Filter Multiple Vulnerabilities");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-06-27 12:18:39 +0200 (Wed, 27 Jun 2012)");
- script_summary("Determine if it is possible to read the about page");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

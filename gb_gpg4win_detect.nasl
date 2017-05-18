@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gpg4win_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_gpg4win_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Gpg4win And Components Version Detection (Windows)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.801128";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Gpg4win And Components Version Detection (Windows)");
@@ -49,7 +49,6 @@ and gets the version from 'DisplayVersion' string in registry.";
 
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Set KB for the version of Gpg4win");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -73,21 +72,6 @@ insloc = "";
 gpgVer = "";
 gpgPath = "";
 gpgName = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  if(!insloc)
-    insloc = "Unable to find the install location";
-
-  register_product(cpe:cpe, location:insloc, nvt:SCRIPT_OID);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");

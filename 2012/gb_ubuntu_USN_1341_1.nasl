@@ -47,14 +47,13 @@ if(description)
   script_id(840870);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 6022 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 11:15:17 +0530 (Wed, 25 Jan 2012)");
   script_cve_id("CVE-2011-1162", "CVE-2011-2203", "CVE-2011-4110");
   script_xref(name: "USN", value: "1341-1");
   script_name("Ubuntu Update for linux USN-1341-1");
 
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

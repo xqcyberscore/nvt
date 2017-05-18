@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803110");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(55767);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-23 15:27:29 +0530 (Fri, 23 Nov 2012)");
   script_name("Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50797/");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/2012-10/0026.html");
   script_xref(name : "URL" , value : "https://www.netiq.com/documentation/novelllogmanager12/log_manager_readme/data/log_manager_readme.html");
 
-  script_summary("Check Novell Sentinel Log Manager is vulnerable to security bypass");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_detect_win.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_sun_java_dir_server_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Sun Java Directory Server Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900492");
-  script_version("$Revision: 2833 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Directory Server Version Detection (Windows)");
@@ -73,18 +73,6 @@ infContent = "";
 infPath = "";
 infFile = "";
 appVer = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -123,7 +111,7 @@ if(registry_key_exists(key:key1))
       if(isnull(cpe))
         cpe = 'cpe:/a:sun:java_system_directory_server';
 
-      build_report(app:"Sun Java Directory Server", ver:ver[1], cpe:cpe, loc:path, con:ver[1]);
+      build_report(app:"Sun Java Directory Server", ver:ver[1], cpe:cpe, insloc:path, concluded:ver[1]);
     }
   }
 }
@@ -154,7 +142,7 @@ else if(registry_key_exists(key:key2))
         if(isnull(cpe))
           cpe = 'cpe:/a:sun:java_system_directory_server';
 
-        build_report(app:appregCheck, ver:appVer[1], cpe:cpe, loc:infPath, con:appVer[1]);
+        build_report(app:appregCheck, ver:appVer[1], cpe:cpe, insloc:infPath, concluded:appVer[1]);
       }
     }
   }

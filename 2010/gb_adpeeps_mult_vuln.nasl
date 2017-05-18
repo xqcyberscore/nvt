@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adpeeps_mult_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_adpeeps_mult_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # AdPeeps 'index.php' Multiple Vulnerabilities.
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801414");
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_cve_id("CVE-2009-4939", "CVE-2009-4943", "CVE-2009-4945");
   script_tag(name:"cvss_base", value:"7.5");
@@ -42,9 +42,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to insert arbitrary
   HTML and script code, which will be executed in a user's browser session in the
@@ -73,12 +73,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 adPort = get_http_port(default:80);
-
 if (!can_host_php(port:adPort)) exit(0);
 
 foreach path (make_list_unique("/", "/adpeeps", cgi_dirs(port:adPort)))
@@ -86,9 +84,7 @@ foreach path (make_list_unique("/", "/adpeeps", cgi_dirs(port:adPort)))
 
   if(path == "/") path = "";
 
-  ## Send and receive the response
-  sndReq = http_get(item:string(path, "/index.php"), port:adPort);
-  rcvRes = http_keepalive_send_recv(port:adPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(path, "/index.php"), port:adPort);
 
   ## Confirm application is Ad peeps
   if(">Ad Peeps" >< rcvRes ||

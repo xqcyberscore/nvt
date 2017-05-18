@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_detect.nasl 2658 2016-02-12 18:54:35Z cfi $
+# $Id: secpod_php_nuke_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
 #
 # PHP-Nuke Version Detection
 #
@@ -28,16 +28,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900338");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2658 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 19:54:35 +0100 (Fri, 12 Feb 2016) $");
+  script_version("$Revision: 5744 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHP-Nuke Version Detection");
-  script_summary("Set KB for the Version of PHP-Nuke");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -56,10 +55,9 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-cgidirs = make_list( "/php-nuke", "/phpnuke", "/", "/nuke", cgi_dirs( port:port ) );
+cgidirs = make_list_unique( "/php-nuke", "/phpnuke", "/", "/nuke", cgi_dirs( port:port ) );
 subdirs = make_list( "/", "/html" );
 foreach cgidir( cgidirs ) {
   foreach subdir( subdirs ) {

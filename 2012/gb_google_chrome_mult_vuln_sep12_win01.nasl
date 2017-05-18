@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_sep12_win01.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_mult_vuln_sep12_win01.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - Sep12 (Windows-01)
 #
@@ -38,7 +38,7 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(802972);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2012-2888", "CVE-2012-2887", "CVE-2012-2886", "CVE-2012-2885",
                 "CVE-2012-2884", "CVE-2012-2883", "CVE-2012-2882", "CVE-2012-2881",
                 "CVE-2012-2880", "CVE-2012-2879", "CVE-2012-2878", "CVE-2012-2877",
@@ -48,14 +48,13 @@ if(description)
   script_bugtraq_id(55676);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-28 12:49:03 +0530 (Fri, 28 Sep 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Sep12 (Windows-01)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50759/");
   script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=137852");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("General");

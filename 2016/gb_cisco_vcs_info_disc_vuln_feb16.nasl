@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 3686 2016-07-11 16:22:45Z mime $
+# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco Video Communications Server Information Disclosure Vulnerability - Feb16
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806683");
-  script_version("$Revision: 3686 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2016-1316");
   script_bugtraq_id(82948);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-11 18:22:45 +0200 (Mon, 11 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-12 11:59:34 +0530 (Fri, 12 Feb 2016)");
   script_name("Cisco Video Communications Server Information Disclosure Vulnerability - Feb16");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://tools.cisco.com/bugsearch/bug/CSCux73362");
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-vcs");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

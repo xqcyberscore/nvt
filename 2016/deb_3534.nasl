@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3534.nasl 3604 2016-06-27 05:18:57Z antu123 $
+# $Id: deb_3534.nasl 5782 2017-03-30 09:01:05Z teissa $
 # Auto-generated from advisory DSA 3534-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703534);
-    script_version("$Revision: 3604 $");
+    script_version("$Revision: 5782 $");
     script_cve_id("CVE-2012-6698", "CVE-2012-6699", "CVE-2012-6700");
     script_name("Debian Security Advisory DSA 3534-1 (dhcpcd - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-27 07:18:57 +0200 (Mon, 27 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-29 00:00:00 +0200 (Tue, 29 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3534.html");
 
-    script_summary("Debian Security Advisory DSA 3534-1 (dhcpcd - security update)");
 
     script_category(ACT_GATHER_INFO);
 

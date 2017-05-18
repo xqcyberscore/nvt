@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_dir_trav_vuln_jan16.nasl 4270 2016-10-14 06:18:19Z antu123 $
+# $Id: gb_ibm_websphere_dir_trav_vuln_jan16.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # IBM Websphere Apllication Server directory traversal vulnerability Jan16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806823");
-  script_version("$Revision: 4270 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2012-3305");
   script_bugtraq_id(55678);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 08:18:19 +0200 (Fri, 14 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-19 11:23:26 +0530 (Tue, 19 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Apllication Server directory traversal vulnerability Jan16");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://exchange.xforce.ibmcloud.com/vulnerabilities/77477");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21611313");
 
-  script_summary("Check for the vulnerable version of IBM Websphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

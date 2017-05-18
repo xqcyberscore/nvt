@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robo_help_server_apsb16-12_win.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: gb_adobe_robo_help_server_apsb16-12_win.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Adobe Robo Help Server Security Hotfix APSB16-12 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:robohelp_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807673");
-  script_version("$Revision: 3164 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-1035");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 16:13:45 +0530 (Mon, 18 Apr 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Robo Help Server Security Hotfix APSB16-12 (Windows)");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/robohelp-server/apsb16-12.html");
 
-  script_summary("Check for the vulnerable version of Adobe Robo Help Server on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.inc 5219 2017-02-07 11:33:59Z mime $
+# $Id: secpod_ssl_ciphers.inc 5987 2017-04-20 09:01:59Z cfi $
 #
 # Check SSL Weak Ciphers and Supported Ciphers
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5219 $
+# $Revision: 5987 $
 #
 ###############################################################################
 
@@ -535,7 +535,7 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
 
   ## Check for Strong ciphers
   if( "Strong cipher" >< cipher_name ) {
-    cipherName = cipher_name - " : Strong cipher";
+    cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/strong_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/nonweak_ciphers", value:cipherName );
@@ -546,7 +546,7 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
 
   ## Check for Medium ciphers
   if( "Medium cipher" >< cipher_name ) {
-    cipherName = cipher_name - " : Medium cipher";
+    cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/medium_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/nonweak_ciphers", value:cipherName );
@@ -557,8 +557,7 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
 
   ## Check for weak cipher
   if( "Weak cipher" >< cipher_name ) {
-    cipherName = cipher_name - " : Weak cipher, no authentication";
-    cipherName = cipherName - " : Weak cipher";
+    cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/weak_ciphers", value:cipherName );
     replace_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
@@ -567,12 +566,18 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
 
   ## Check for Null ciphers
   if( "Null cipher" >< cipher_name ) {
-    cipherName = cipher_name - " : Null cipher, no authentication";
-    cipherName = cipherName - " : Null cipher";
+    cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/supported_ciphers", value:cipherName );
     set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/null_ciphers", value:cipherName );
     replace_kb_item( name:"secpod_ssl_ciphers/supported_ciphers", value:TRUE );
     replace_kb_item( name:"secpod_ssl_ciphers/null_ciphers", value:TRUE );
+  }
+
+  ## Check for Anonymous ciphers
+  if( "_anon_" >< cipher_name ) {
+    cipherName = ereg_replace( pattern:" :.*", string:cipher_name, replace:"" );
+    set_kb_item( name:"secpod_ssl_ciphers/" + ssl_ver + "/" + ssl_port + "/anon_ciphers", value:cipherName );
+    replace_kb_item( name:"secpod_ssl_ciphers/anon_ciphers", value:TRUE );
   }
 }
 

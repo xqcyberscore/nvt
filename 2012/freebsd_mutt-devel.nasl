@@ -50,12 +50,11 @@ if(description)
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
  script_cve_id("CVE-2011-1429");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5999 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:59:26 -0400 (Mon, 30 Apr 2012)");
  script_name("FreeBSD Ports: mutt-devel");
 
- script_summary("FreeBSD Ports: mutt-devel");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rips_lfi_01_12.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_rips_lfi_01_12.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Rips Scanner Local File Include Vulnerability
 #
@@ -30,13 +30,12 @@ CPE = "cpe:/a:rips_scanner:rips";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103375");
-  script_version ("$Revision: 5633 $");
+  script_version ("$Revision: 6022 $");
   script_name("Rips Scanner Local File Include Vulnerability");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-02 09:57:26 +0100 (Mon, 02 Jan 2012)");
-  script_summary("Determine if installed Rips Scanner is vulnerable");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");

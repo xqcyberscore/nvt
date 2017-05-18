@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20170301-cpi.nasl 5463 2017-03-02 08:17:34Z ckuerste $
+# $Id: gb_cisco_pis_cisco-sa-20170301-cpi.nasl 5962 2017-04-18 08:01:50Z teissa $
 #
 # Cisco Prime Infrastructure Cross-Site Scripting Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106624");
  script_cve_id("CVE-2017-3848");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5463 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+ script_version("$Revision: 5962 $");
 
  script_name("Cisco Prime Infrastructure Cross-Site Scripting Vulnerability");
 
@@ -56,7 +56,7 @@ specific link.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-02 09:17:34 +0100 (Thu, 02 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name: "creation_date", value: "2017-03-02 11:11:21 +0700 (Thu, 02 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

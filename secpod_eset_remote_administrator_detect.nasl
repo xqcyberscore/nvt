@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_eset_remote_administrator_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_eset_remote_administrator_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # ESET Remote Administrator Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-tag_summary = "This script detects the installed version of ESET Remote
-  Administrator and saves the version in KB.";
-
 if(description)
 {
-  script_id(900508);
+  script_oid("1.3.6.1.4.1.25623.1.0.900508");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ESET Remote Administrator Version Detection");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects the installed
+  version of ESET Remote Administrator and saves the version in KB.");
   exit(0);
 }
 
@@ -51,20 +49,6 @@ if(description)
 include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900508";
-SCRIPT_DESC = "ESET Remote Administrator Version Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -78,12 +62,10 @@ if(registry_key_exists(key:"SOFTWARE\ESET\ESET Remote Administrator\Console"))
                                item:"ProductVersion");
   if(consoleVer != NULL){
     set_kb_item(name:"ESET/RemoteAdmin/Console/Ver", value:consoleVer);
-    log_message(data:"ESET Remote Administrator Console version " + 
-                                   consoleVer + " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:consoleVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:eset:remote_administrator:");
-
+    register_and_report_cpe(app:"ESET Remote Administrator Console", ver:consoleVer,
+                            base:"cpe:/a:eset:remote_administrator:", expr:"^([0-9.]+)");
   }
 }
 
@@ -94,12 +76,10 @@ if(registry_key_exists(key:"SOFTWARE\ESET\ESET Remote Administrator\Server"))
                             item:"ProductVersion");
   if(servVer != NULL){
     set_kb_item(name:"ESET/RemoteAdmin/Server/Ver", value:servVer);
-    log_message(data:"ESET Remote Administrator Server version " + 
-                                   servVer + " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:servVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:eset:remote_administrator:");
-
+    register_and_report_cpe(app:"ESET Remote Administrator Console", ver:servVer,
+                            base:"cpe:/a:eset:remote_administrator:", expr:"^([0-9.]+)");
   }
 
 }

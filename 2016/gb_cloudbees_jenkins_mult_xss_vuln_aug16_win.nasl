@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_xss_vuln_aug16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_cloudbees_jenkins_mult_xss_vuln_aug16_win.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Jenkins Multiple Cross Site Scripting Vulnerabilities August16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808275");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2012-0324", "CVE-2012-0325");
   script_bugtraq_id(52384);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:00:05 +0530 (Thu, 04 Aug 2016)");
   script_name("Jenkins Multiple Cross Site Scripting Vulnerabilities August16 (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value :"https://www.cloudbees.com/jenkins-security-advisory-2012-03-05");
 
-  script_summary("Check for the vulnerable version of CloudBees Jenkins on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_mult_vuln.nasl 3819 2016-08-10 13:45:03Z antu123 $
+# $Id: gb_trendmicro_internet_security_mult_vuln.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # TrendMicro Internet Security Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:trendmicro:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808638");
-  script_version("$Revision: 3819 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2016-1225", "CVE-2016-1226");
   script_bugtraq_id(90999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 15:45:03 +0200 (Wed, 10 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 12:51:56 +0530 (Fri, 05 Aug 2016)");
   script_name("TrendMicro Internet Security Multiple Vulnerabilities");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN48789425/index.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of TrendMicro Internet Security on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_trendmicro_internet_security_detect.nasl");

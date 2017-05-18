@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160810-iosxr.nasl 3835 2016-08-16 02:50:39Z ckuerste $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160810-iosxr.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6355");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3835 $");
+ script_version ("$Revision: 5850 $");
 
  script_name("Cisco IOS XR Software for Cisco ASR 9001 Aggregation Services Routers Fragmented Packet Denial of Service Vulnerability");
 
@@ -60,9 +60,8 @@ address this vulnerability. However, there are mitigations for this vulnerabilit
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-16 04:50:39 +0200 (Tue, 16 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-08-16 08:52:29 +0700 (Tue, 16 Aug 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

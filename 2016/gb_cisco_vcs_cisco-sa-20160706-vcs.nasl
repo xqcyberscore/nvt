@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_cisco-sa-20160706-vcs.nasl 3686 2016-07-11 16:22:45Z mime $
+# $Id: gb_cisco_vcs_cisco-sa-20160706-vcs.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco TelePresence Video Communication Server (VCS) Authentication Bypass Vulnerability
 #
@@ -49,12 +49,11 @@ if (description)
  script_cve_id("CVE-2016-1444");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 3686 $");
+ script_version ("$Revision: 5782 $");
  script_name("Cisco TelePresence Video Communication Server (VCS) Authentication Bypass Vulnerability");
  script_xref(name:"URL", value: "http://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-20160706-vcs.html");
- script_tag(name:"last_modification", value:"$Date: 2016-07-11 18:22:45 +0200 (Mon, 11 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-11 16:46:52 +0200 (Mon, 11 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"solution_type", value:"VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");

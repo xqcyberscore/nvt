@@ -119,15 +119,14 @@ if(description)
 {
  script_id(70593);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_cve_id("CVE-2011-3903", "CVE-2011-3904", "CVE-2011-3905", "CVE-2011-3906", "CVE-2011-3907", "CVE-2011-3908", "CVE-2011-3909", "CVE-2011-3910", "CVE-2011-3911", "CVE-2011-3912", "CVE-2011-3913", "CVE-2011-3914", "CVE-2011-3915", "CVE-2011-3916", "CVE-2011-3917");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 6018 $");
  script_name("FreeBSD Ports: chromium");
 
 
- script_summary("FreeBSD Ports: chromium");
 
  script_category(ACT_GATHER_INFO);
 

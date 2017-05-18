@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_devices_detect.nasl 3168 2016-04-26 11:24:55Z cfi $
+# $Id: gb_tandberg_devices_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Tandberg Devices Detection
 #
@@ -30,11 +30,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103694");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version ("$Revision: 3168 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 13:24:55 +0200 (Tue, 26 Apr 2016) $");
+  script_version ("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-04-11 09:34:17 +0200 (Thu, 11 Apr 2013)");
   script_name("Tandberg Devices Detection");
-  script_summary("Checks for the presence of Tandberg Devices");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

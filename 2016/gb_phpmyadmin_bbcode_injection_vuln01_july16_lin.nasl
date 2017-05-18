@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_bbcode_injection_vuln01_july16_lin.nasl 5527 2017-03-09 10:00:25Z teissa $
+# $Id: gb_phpmyadmin_bbcode_injection_vuln01_july16_lin.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # phpMyAdmin BBCode Injection Vulnerability -01 July16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808243");
-  script_version("$Revision: 5527 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2016-5701");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:45:45 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("phpMyAdmin BBCode Injection Vulnerability -01 July16 (Linux)");
@@ -63,7 +63,7 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-17");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");

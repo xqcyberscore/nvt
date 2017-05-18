@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_sec_bypass_vuln_jul14_win.nasl 5081 2017-01-24 11:05:06Z cfi $
+# $Id: gb_postgresql_sec_bypass_vuln_jul14_win.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # PostgreSQL Multiple Security Bypass Vulnerability July14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804710");
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2014-0060", "CVE-2014-0061", "CVE-2014-0062", "CVE-2014-0063",
                 "CVE-2014-0064", "CVE-2014-0065", "CVE-2014-0066");
   script_bugtraq_id(65723, 65724, 65727, 65719, 65725, 65731, 65728);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-07-07 14:54:12 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL Multiple Security Bypass Vulnerability July14 (Windows)");
 
@@ -83,8 +83,7 @@ For updates refer to http://www.postgresql.org/download";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57054");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91277");
   script_xref(name : "URL" , value : "http://wiki.postgresql.org/wiki/20140220securityrelease");
-  script_summary("Check for the vulnerable version of PostgreSQL on Windows");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("postgresql_detect.nasl","os_detection.nasl");

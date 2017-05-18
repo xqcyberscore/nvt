@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: telcondex.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: telcondex.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: TelCondex Simple Webserver Buffer Overflow
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade version 2.13 - http://www.yourinfosystem.de/download/TcS
 if(description) 
 { 
 	script_id(11927); 
-	script_version("$Revision: 3359 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+	script_version("$Revision: 6063 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 	script_cve_id("CVE-2003-1186");
 	script_bugtraq_id(8925);
@@ -44,7 +44,6 @@ if(description)
       script_name(name);
 
       summary = "Checks for TelCondex Buffer Overflow";
-	script_summary(summary);
 	script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
 	script_copyright("This script is Copyright (C) 2003 Matt North");

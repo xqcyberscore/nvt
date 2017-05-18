@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ham3d_shop_cms_ID_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_ham3d_shop_cms_ID_xss_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # HAM3D Shop Engine CMS 'ID' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804652");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-4302");
   script_bugtraq_id(68115);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-07-04 12:41:22 +0530 (Fri, 04 Jul 2014)");
   script_name("HAM3D Shop Engine CMS 'ID' Parameter Cross-Site Scripting Vulnerability");
 
@@ -56,31 +56,26 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127050");
   script_xref(name : "URL" , value : "http://www.zerodaylab.com/vulnerabilities/CVE-2014/CVE-2014-4302.html");
-  script_summary("Check if HAM3D Shop Engine CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 ## Variable Initialization
 url = "";
-req = "";
 res = "";
 cmsPort = "";
 
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
 
-## Check the support for php
 if(!can_host_php(port:cmsPort)){
   exit(0);
 }
@@ -90,8 +85,7 @@ foreach dir (make_list_unique("/", "/cms", "/HAM3D-CMS", cgi_dirs(port:cmsPort))
 
   if(dir == "/") dir = "";
 
-  req = http_get(item:string(dir, "/index.php"), port:cmsPort);
-  res = http_keepalive_send_recv(port:cmsPort, data:req);
+  res = http_get_cache(item:string(dir, "/index.php"), port:cmsPort);
 
   if(res && "HAM3D.net Shop Engine" >< res && "HAM3D.net<" >< res)
   {
@@ -101,7 +95,7 @@ foreach dir (make_list_unique("/", "/cms", "/HAM3D-CMS", cgi_dirs(port:cmsPort))
 
     ## Confirm the Exploit
     if(http_vuln_check(port:cmsPort, url:url, check_header:TRUE,
-       pattern:"<script>alert\(document.cookie\);</script>",
+       pattern:"<script>alert\(document\.cookie\);</script>",
        extra_check:'Rating Bars<'))
     {
       report = report_vuln_url( port:cmsPort, url:url );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_ssh_default_credentials.nasl 3633 2016-06-30 16:48:39Z mime $
+# $Id: gb_riverbed_steelcentral_ssh_default_credentials.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Riverbed SteelCentral SSH Default Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105791");
- script_version("$Revision: 3633 $");
+ script_version("$Revision: 5675 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Riverbed SteelCentral SSH Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-06-30 18:48:39 +0200 (Thu, 30 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-30 17:36:06 +0200 (Thu, 30 Jun 2016)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_my_news_49818.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_my_news_49818.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # MyNews 1.2 'basepath' Parameter Multiple Remote File Include Vulnerabilities
 #
@@ -36,24 +36,20 @@ are also possible.
 
 MyNews 1.2 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103281);
- script_version("$Revision: 5645 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-29 13:17:07 +0200 (Thu, 29 Sep 2011)");
  script_bugtraq_id(49818);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("MyNews 1.2 'basepath' Parameter Multiple Remote File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49818");
  script_xref(name : "URL" , value : "http://mynews.magtrb.com/");
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/105352/mynews12-rfi.txt");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed MyNews is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,31 +61,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
+include("host_details.inc");
 
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/mynews","/news",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/mynews", "/news", cgi_dirs( port:port ) ) ) {
 
-  foreach file (keys(files)) {
-   
-    url = string(dir, "/includes/tiny_mce/plugins/filemanager/classes/FileManager/FileSystems/ZipFileImpl.php?basepath=/",files[file],"%00"); 
+  if( dir == "/" ) dir = "";
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+  foreach file( keys( files ) ) {
 
+    url = dir + "/includes/tiny_mce/plugins/filemanager/classes/FileManager/FileSystems/ZipFileImpl.php?basepath=/" + files[file] + "%00";
+
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

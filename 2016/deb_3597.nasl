@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3597.nasl 3604 2016-06-27 05:18:57Z antu123 $
+# $Id: deb_3597.nasl 5813 2017-03-31 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3597-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703597);
-    script_version("$Revision: 3604 $");
+    script_version("$Revision: 5813 $");
     script_cve_id("CVE-2012-0876", "CVE-2012-6702", "CVE-2016-5300");
     script_name("Debian Security Advisory DSA 3597-1 (expat - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-27 07:18:57 +0200 (Mon, 27 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-06-07 00:00:00 +0200 (Tue, 07 Jun 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3597.html");
 
-    script_summary("Debian Security Advisory DSA 3597-1 (expat - security update)");
 
     script_category(ACT_GATHER_INFO);
 

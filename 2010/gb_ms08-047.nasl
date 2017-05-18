@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-047.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ms08-047.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Windows IPsec Policy Processing Information Disclosure Vulnerability (953733)
 #
@@ -24,26 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will result in systems ignoring IPsec policies and
-  thus transmit data otherwise intended to be encrypted in clear text.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Windows Vista Service Pack 1 and prior.
-  Microsoft Windows Server 2008 Service Pack 1 and prior.";
-tag_insight = "The flaw is caused by an error when the default IPsec policy is imported from
-  a Windows Server 2003 domain to a Windows Server 2008 domain, which could
-  cause all IPsec rules to be ignored and network traffic to be transmitted
-  in clear text.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-047.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-047.";
-
 if(description)
 {
   script_id(801484);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-21 15:57:21 +0100 (Tue, 21 Dec 2010)");
   script_cve_id("CVE-2008-2246");
   script_bugtraq_id(30634);
@@ -62,11 +47,20 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will result in systems ignoring IPsec policies and
+  thus transmit data otherwise intended to be encrypted in clear text.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Windows Vista Service Pack 1 and prior.
+  Microsoft Windows Server 2008 Service Pack 1 and prior.");
+  script_tag(name : "insight" , value : "The flaw is caused by an error when the default IPsec policy is imported from
+  a Windows Server 2003 domain to a Windows Server 2008 domain, which could
+  cause all IPsec rules to be ignored and network traffic to be transmitted
+  in clear text.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms08-047.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS08-047.");
   exit(0);
 }
 
@@ -76,20 +70,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
 
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(winVista:2, win2008:2) <= 0){
   exit(0);
@@ -101,11 +82,10 @@ if(hotfix_missing(name:"953733") == 0){
 }
   
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\Ipsecsvc.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"Ipsecsvc.dll");
   if(dllVer)
   {
     # Windows Vista

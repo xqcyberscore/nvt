@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_parameter_xss_vuln_win.nasl 5087 2017-01-24 11:37:34Z cfi $
+# $Id: gb_wordpress_theme_parameter_xss_vuln_win.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # WordPress 'theme' Parameter Cross Site Scripting Vulnerability Jan16 (Windows)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807030");
-  script_version("$Revision: 5087 $");
+  script_version("$Revision: 5732 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:37:34 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:20:15 +0530 (Mon, 18 Jan 2016)");
   script_name("WordPress 'theme' Parameter Cross Site Scripting Vulnerability Jan16 (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/8358");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of wordpress on windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");

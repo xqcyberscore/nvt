@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ComicShout_sql_injection.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: ComicShout_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
 #
 # ComicShout 'news.php' SQL Injection Vulnerability
 #
@@ -34,23 +34,19 @@ tag_summary = "ComicShout is prone to an SQL-injection vulnerability because it
 
   ComicShout 2.8 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(100044);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5768 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
  script_bugtraq_id(29464);
  script_cve_id("CVE-2008-6425");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("ComicShout 'news.php' SQL Injection Vulnerability");
-
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,24 +61,19 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dir = make_list("/comic", cgi_dirs());
-foreach d (dir)
-{ 
- url = string(d, "/news.php?news_id=4+union+all+select+0,1,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )continue;
+foreach dir( make_list_unique( "/comic", cgi_dirs( port:port ) ) ) {
 
- if( 
-     egrep(pattern: "OpenVAS-SQL-Injection-Test", string: buf)
-   )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  if( dir == "/" ) dir = "";
+
+  url = string(dir, "/news.php?news_id=4+union+all+select+0,1,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374");
+
+  if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
-exit(0);
+
+exit( 99 );

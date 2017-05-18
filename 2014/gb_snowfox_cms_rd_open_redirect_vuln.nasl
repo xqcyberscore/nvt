@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snowfox_cms_rd_open_redirect_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_snowfox_cms_rd_open_redirect_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Snowfox CMS 'rd' Parameter Open Redirect Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805208");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-9343");
   script_bugtraq_id(71174);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-11 18:21:19 +0530 (Thu, 11 Dec 2014)");
   script_name("Snowfox CMS 'rd' Parameter Open Redirect Vulnerability");
 
@@ -64,11 +64,10 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/codes/snowfox_url.txt");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129162");
 
-  script_summary("Check if Snowfox CMS is vulnerable to open redirect");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -83,23 +82,18 @@ cmsPort = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:cmsPort)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/snowfox", "/snowfoxcms", "/cms", cgi_dirs(port:cmsPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:cmsPort);
-  rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:cmsPort);
 
   ##Confirm Application
   if(rcvRes && rcvRes =~ "powered by.*>Snowfox CMS<")

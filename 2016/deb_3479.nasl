@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3479.nasl 2845 2016-03-14 07:13:16Z antu123 $
+# $Id: deb_3479.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3479-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703479);
-    script_version("$Revision: 2845 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2016-1521", "CVE-2016-1522", "CVE-2016-1523");
     script_name("Debian Security Advisory DSA 3479-1 (graphite2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-14 08:13:16 +0100 (Mon, 14 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-02-15 00:00:00 +0100 (Mon, 15 Feb 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3479.html");
 
-    script_summary("Debian Security Advisory DSA 3479-1 (graphite2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

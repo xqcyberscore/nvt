@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Oracle GlassFish Server Expression Evaluation Security Bypass Vulnerability
 #
@@ -47,12 +47,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5912 $");
   script_bugtraq_id(50846);
   script_cve_id("CVE-2011-4358");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-07 13:44:27 +0530 (Tue, 07 Aug 2012)");
   script_name("Oracle GlassFish Server Expression Evaluation Security Bypass Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2012verbose-392736.html#Oracle%20Sun%20Products%20Suit");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Oracle GlassFish Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

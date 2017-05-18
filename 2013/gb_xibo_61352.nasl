@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xibo_61352.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_xibo_61352.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # Xibo 'index.php' Multiple Directory Traversal Vulnerabilities
 #
@@ -24,8 +24,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103797";
 
 tag_insight = "Directory traversal vulnerabilities occur when user input is
 used in the construction of a filename or directory path which is subsequently
@@ -51,21 +49,16 @@ if it is possible to access a local file.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103797");
  script_bugtraq_id(61352);
  script_cve_id("CVE-2013-5979");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5627 $");
-
+ script_version("$Revision: 5699 $");
  script_name("Xibo 'index.php' Multiple Directory Traversal Vulnerabilities");
-
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61352");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-10-07 11:05:49 +0200 (Mon, 07 Oct 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -85,37 +78,30 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/xibo",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/xibo", cgi_dirs( port:port ) ) ) {
 
+  if( dir == "/" ) dir = "";
   url = dir + '/index.php';
- 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>Xibo Admin - Please Login")) {
+  buf = http_get_cache( item:url, port:port );
 
-    foreach file (keys(files)) {
-
+  if( "<title>Xibo Admin - Please Login" >< buf ) {
+    foreach file( keys( files ) ) {
       url = dir + '/index.php?p=' + crap(data:"../", length:9*6) + files[file] + '%00index&amp;q=About&amp;ajax=true&amp;_=1355779988 ';
-
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-        security_message(port:port);
-        exit(0);
-
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
       }
     }    
   }
 }
 
-exit(0);
-
+exit( 99 );

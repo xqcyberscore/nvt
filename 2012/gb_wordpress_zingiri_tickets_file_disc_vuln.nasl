@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_zingiri_tickets_file_disc_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_zingiri_tickets_file_disc_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # WordPress Zingiri Tickets Plugin File Disclosure Vulnerability
 #
@@ -49,15 +49,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5977 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-18 11:03:03 +0530 (Wed, 18 Apr 2012)");
   script_name("WordPress Zingiri Tickets Plugin File Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111904/wpzingiritickets-disclose.txt");
 
-  script_summary("Check file disclosure vulnerability in WordPress Zingiri Tickets plugin");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

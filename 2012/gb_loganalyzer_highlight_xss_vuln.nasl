@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loganalyzer_highlight_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_loganalyzer_highlight_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # Adiscon LogAnalyzer 'highlight' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802645");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5814 $");
   script_cve_id("CVE-2012-3790");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-06-21 11:11:11 +0530 (Thu, 21 Jun 2012)");
   script_name("Adiscon LogAnalyzer 'highlight' Parameter Cross Site Scripting Vulnerability");
 
@@ -41,11 +41,10 @@ if(description)
   script_xref(name : "URL" , value : "http://loganalyzer.adiscon.com/downloads/loganalyzer-v3-5-5-v3-beta");
   script_xref(name : "URL" , value : "http://loganalyzer.adiscon.com/security-advisories/loganalyzer-cross-site-scripting-vulnerability-in-highlight-parameter");
 
-  script_summary("Check if LogAnalyzer is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -68,7 +67,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -77,30 +75,27 @@ dir = "";
 url = "";
 port = 0;
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/loganalyzer", "/log", cgi_dirs(port:port)))
 {
   if(dir == "/") dir = "";
   url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application before trying exploit
-  if(http_vuln_check(port: port, url: url, check_header: TRUE,
-     pattern: ">Adiscon LogAnalyzer<"))
-  {
+  if( res =~ "HTTP/1.. 200" && ">Adiscon LogAnalyzer<" >< res ) {
+
     ## Construct attack request
     url += '/?search=Search&highlight="<script>alert(document.cookie)</script>';
 
     ## Try XSS and check the response to confirm vulnerability
     if(http_vuln_check( port: port, url: url, check_header: TRUE,
-                        pattern: "<script>alert\(document.cookie\)</script>",
+                        pattern: "<script>alert\(document\.cookie\)</script>",
                         extra_check: ">Adiscon LogAnalyzer<"))
     {
       security_message(port:port);

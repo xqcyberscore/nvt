@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-120.nasl 4269 2016-10-14 06:05:59Z antu123 $
+# $Id: gb_dotnet_framework_ms16-120.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Microsoft .NET Framework Information Disclosure Vulnerability (3192884)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809706");
-  script_version("$Revision: 4269 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-3209");
   script_bugtraq_id(93385);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 08:05:59 +0200 (Fri, 14 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-12 13:56:09 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Information Disclosure Vulnerability (3192884)");
@@ -69,7 +69,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3192884");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-120");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

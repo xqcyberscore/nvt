@@ -47,8 +47,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-June/001703.html");
   script_id(841032);
-  script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-08 10:14:05 +0530 (Fri, 08 Jun 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name: "USN", value: "1461-1");
   script_name("Ubuntu Update for postgresql-9.1 USN-1461-1");
 
-  script_summary("Check for the Version of postgresql-9.1");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

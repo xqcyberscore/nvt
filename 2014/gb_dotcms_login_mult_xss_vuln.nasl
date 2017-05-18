@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_login_mult_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_dotcms_login_mult_xss_vuln.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # DotCMS Multiple Login Page Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804294");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5820 $");
   script_cve_id("CVE-2013-3484");
   script_bugtraq_id(60741);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-05-13 16:14:20 +0530 (Tue, 13 May 2014)");
   script_name("DotCMS Multiple Login Page Cross Site Scripting Vulnerabilities");
 
@@ -53,11 +53,10 @@ if(description)
 
   script_xref(name : "URL" , value : "http://dotcms.com/security/SI-14");
   script_xref(name : "URL" , value : "http://dotcms.com/downloads/release-notes.dot");
-  script_summary("Check if DotCMS is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -77,14 +76,12 @@ url = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-#Get Host name
 host = http_host_name(port:http_port);
 
 ## Iterate over possible paths
-foreach dir (make_list_unique("/", "/dotcms", "/cms", cgi_dirs(http_port)))
+foreach dir (make_list_unique("/", "/dotcms", "/cms", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";

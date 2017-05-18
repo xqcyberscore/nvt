@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_mail_server_55507.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_icewarp_mail_server_55507.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # IceWarp Mail Server 'raw.php' Information Disclosure Vulnerability
 #
@@ -44,16 +44,15 @@ if (description)
  script_bugtraq_id(55507);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5940 $");
 
  script_name("IceWarp Mail Server 'raw.php' Information Disclosure Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55507");
  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50441");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-13 10:46:19 +0200 (Thu, 13 Sep 2012)");
- script_summary("Determine if raw.php prints out phpinfo()");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

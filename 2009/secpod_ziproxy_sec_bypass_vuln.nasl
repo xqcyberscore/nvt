@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_sec_bypass_vuln.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_ziproxy_sec_bypass_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # Ziproxy Security Bypass Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(900523);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:N/A:N");
@@ -44,6 +44,8 @@ if(description)
   script_family("Privilege escalation");
   script_dependencies("secpod_ziproxy_server_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("Ziproxy/installed");
+
   script_tag(name : "impact" , value : "This can be exploited to restrict websites or bypass a browser's
   security context protection mechanism by sending HTTP requests with
   forged HTTP Host header.
@@ -58,13 +60,10 @@ if(description)
   exit(0);
 }
 
-
+include("http_func.inc");
 include("version_func.inc");
 
-zipPort = get_kb_item("Services/www");
-if(!zipPort){
-  exit(0);
-}
+zipPort = get_http_port( default:8080 );
 
 ziproxyVer = get_kb_item("www/" + zipPort + "/Ziproxy");
 if(!ziproxyVer){

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: squid_rdos.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: squid_rdos.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Squid remote denial of service
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to squid 2.5.STABLE7 or newer";
 if(description)
 {
   script_id(15463);
-  script_version("$Revision: 3376 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11385);
   script_cve_id("CVE-2004-0918");
@@ -47,7 +47,6 @@ if(description)
   script_name("Squid remote denial of service");
 
  
-  script_summary( "Determines squid version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

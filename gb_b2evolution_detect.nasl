@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2evolution_detect.nasl 5048 2017-01-20 07:04:36Z ckuerste $
+# $Id: gb_b2evolution_detect.nasl 5818 2017-03-31 10:29:04Z cfi $
 #
 # b2evolution CMS Detection 
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106534");
-  script_version("$Revision: 5048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 08:04:36 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5818 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-20 12:59:58 +0700 (Fri, 20 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ and to extract its version.");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -63,13 +63,13 @@ include("http_keepalive.inc");
 port = get_http_port(default: 80);
 
 foreach dir (make_list_unique( "/", "/b2evolution", cgi_dirs(port: port))) {
+
   install = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
 
   foreach url (make_list("/admin.php", "/blogs/admin.php")) {
-    req = http_get(port: port, item: dir + url);
-    res = http_keepalive_send_recv(port: port, data: req);
+
+    res = http_get_cache(port: port, item: dir + url);
 
     if ("http://b2evolution.net/" >< res && "<title>Log in to your account</title>" >< res &&
         "pwd_salt" >< res) {

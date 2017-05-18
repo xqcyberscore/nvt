@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-124.nasl 4327 2016-10-24 07:46:28Z antu123 $
+# $Id: gb_ms16-124.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Microsoft Windows Registry Multiple Vulnerabilities (3193227)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809440") ;
-  script_version("$Revision: 4327 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-0070", "CVE-2016-0073", "CVE-2016-0075", "CVE-2016-0079");
   script_bugtraq_id(93354, 93355, 93356, 93357);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 09:46:28 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-12 08:40:20 +0530 (Wed, 12 Oct 2016)");
   script_name("Microsoft Windows Registry Multiple Vulnerabilities (3193227)");
 
@@ -74,7 +74,6 @@ if(description)
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3193227");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-124");
 
-  script_summary("Check for the vulnerable 'Ntoskrnl.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

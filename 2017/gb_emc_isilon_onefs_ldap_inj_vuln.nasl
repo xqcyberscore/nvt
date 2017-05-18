@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_isilon_onefs_ldap_inj_vuln.nasl 5229 2017-02-08 09:47:57Z ckuerste $
+# $Id: gb_emc_isilon_onefs_ldap_inj_vuln.nasl 5823 2017-03-31 13:57:56Z mime $
 #
 # EMC Isilon OneFS LDAP Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:emc:isilon_onefs";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106578");
-  script_version("$Revision: 5229 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-08 10:47:57 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 5823 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-02-08 14:38:14 +0700 (Wed, 08 Feb 2017)");
   script_tag(name: "cvss_base", value: "7.2");
   script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gb_emc_isilon_onefs_snmp_detect.nasl", "gb_emc_isilon_onefs_ftp_detect.nasl");
+  script_dependencies("gb_emc_isilon_onefs_snmp_detect.nasl", "gb_emc_isilon_onefs_ftp_detect.nasl","gb_emc_isilon_onefs_ntp_detect.nasl");
   script_mandatory_keys("emc_isilon_onefs/detected");
 
   script_tag(name: "summary", value: "EMC Isilon OneFS is affected by an LDAP injection vulnerability that could

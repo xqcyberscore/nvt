@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_manager_detect.nasl 2622 2016-02-09 13:03:15Z antu123 $
+# $Id: gb_cisco_ucs_manager_detect.nasl 5892 2017-04-07 13:36:48Z ckuerste $
 #
 # Cisco UCS Manager Detection
 #
@@ -30,12 +30,11 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103804");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2622 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 14:03:15 +0100 (Tue, 09 Feb 2016) $");
+ script_version ("$Revision: 5892 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 15:36:48 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-10-10 18:42:38 +0200 (Thu, 10 Oct 2013)");
  script_name("Cisco UCS Manager Detection");
 
- script_summary("Checks for the presence of Cisco UCS Manager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -57,11 +56,9 @@ include("host_details.inc");
 
 port = get_http_port(default:443);
 
-url = '/';
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req);
+buf = http_get_cache(item: "/", port:port);
 
-if("<title>Cisco UCS Manager</title>" >!< buf || ( "UCS Manager requires Java" >!< buf && "Cisco Unified Computing System (UCS) Manager" >!< buf ))exit(0);
+if("<title>Cisco UCS Manager</title>" >!< buf || ( "UCS Manager requires Java" >!< buf && "Cisco Unified Computing System (UCS) Manager" >!< buf && "Launch UCS Manager" >!< buf))exit(0);
 
 vers = 'unknown';
 
@@ -72,6 +69,9 @@ if(isnull(version[1]))
 
 if(isnull(version[1]))
   version = eregmatch(pattern:'<h1>Cisco UCS Manager - ([^<]+)</h1>', string:buf);
+
+if(isnull(version[1]))
+  version = eregmatch(pattern: '<span class="version spanCenter">([^<]+)</span>', string: buf);
 
 if(!isnull(version[1])) vers = version[1];
 

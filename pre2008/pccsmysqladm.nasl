@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: pccsmysqladm.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: pccsmysqladm.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: PCCS-Mysql User/Password Exposure
 #
 # Authors:
@@ -37,8 +37,8 @@ if(description)
  
  script_name(name);
  script_id(10783);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1557);
  script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +48,6 @@ if(description)
  
 
  summary = "Checks for dbconnect.inc";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

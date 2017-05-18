@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_demuxer_double_free_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_vlc_media_player_demuxer_double_free_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # VLC Media Player TiVo Demuxer Double Free Vulnerability (Windows)
 #
@@ -39,12 +39,12 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(802480);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-0023", "CVE-2011-5231");
   script_bugtraq_id(51147, 51231);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-02 12:41:07 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player TiVo Demuxer Double Free Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47325");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1108.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for the version (0.9.0 to 1.1.12) of VLC Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");

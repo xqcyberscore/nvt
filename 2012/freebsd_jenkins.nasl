@@ -41,15 +41,14 @@ as announced in the referenced advisory.";
 if(description)
 {
  script_id(71160);
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5912 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:35:07 -0400 (Mon, 12 Mar 2012)");
  script_tag(name:"cvss_base", value:"4.3"); 
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
 
  script_name("FreeBSD Ports: jenkins");
 
- script_summary("FreeBSD Ports: jenkins");
 
  script_category(ACT_GATHER_INFO);
 

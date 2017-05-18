@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_privilege_escalation_vuln_macosx.nasl 3914 2016-08-31 09:49:38Z antu123 $
+# $Id: gb_flexera_installanywhere_privilege_escalation_vuln_macosx.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Flexera InstallAnywhere Privilege Escalation Vulnerability (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:flexerasoftware:installanywhere";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809019");
-  script_version("$Revision: 3914 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-4560");
   script_bugtraq_id(90979);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 11:49:38 +0200 (Wed, 31 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Flexera InstallAnywhere Privilege Escalation Vulnerability (Mac OS X)");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://flexeracommunity.force.com/customer/articles/INFO/Best-Practices-to-Avoid-Windows-Setup-Launcher-Executable-Issues");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Flexera InstallAnywhere on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_flexera_installanywhere_detect_macosx.nasl");

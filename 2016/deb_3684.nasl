@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3684.nasl 4251 2016-10-12 07:37:56Z antu123 $
+# $Id: deb_3684.nasl 5836 2017-04-03 09:37:08Z teissa $
 # Auto-generated from advisory DSA 3684-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703684);
-    script_version("$Revision: 4251 $");
+    script_version("$Revision: 5836 $");
     script_cve_id("CVE-2016-1246");
     script_name("Debian Security Advisory DSA 3684-1 (libdbd-mysql-perl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-12 09:37:56 +0200 (Wed, 12 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
     script_tag(name:"creation_date", value:"2016-10-05 15:43:13 +0530 (Wed, 05 Oct 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3684.html");
 
-    script_summary("Debian Security Advisory DSA 3684-1 (libdbd-mysql-perl - security update)");
 
     script_category(ACT_GATHER_INFO);
 

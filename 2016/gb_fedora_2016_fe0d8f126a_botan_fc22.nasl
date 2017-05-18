@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808334");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:29:39 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-2849", "CVE-2015-7827", "CVE-2016-2850");
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ flavor of the library.
   script_xref(name: "FEDORA", value: "2016-fe0d8f126a");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/OTQOHMJXUGBPF6WRDF53IJ3X4YGR4A7Q");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of botan");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

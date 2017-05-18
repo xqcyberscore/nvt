@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_header_name_format_string.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: http_header_name_format_string.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Format string on HTTP header name
 #
 # Authors:
@@ -33,15 +33,14 @@ tag_solution = "upgrade your software or contact your vendor and inform him
 if(description)
 {
   script_id(15641);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
  
   script_name("Format string on HTTP header name");
  
- script_summary("Sends an HTTP request with %s in an HTTP header name");
  
  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul"); 

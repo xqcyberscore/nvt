@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ge_snmp_web_interface_mult_vuln.nasl 2750 2016-03-01 09:31:55Z antu123 $
+# $Id: gb_ge_snmp_web_interface_mult_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # GE SNMP/Web Interface Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ge:ups_snmp_web_adapter_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807075");
-  script_version("$Revision: 2750 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-0861", "CVE-2016-0862");
   script_bugtraq_id(82407);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-01 10:31:55 +0100 (Tue, 01 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:29 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("GE SNMP/Web Interface Multiple Vulnerabilities");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39408");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-16-033-02");
 
-  script_summary("Check if GE SNMP/Web Interface is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

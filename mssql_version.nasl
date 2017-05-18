@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_version.nasl 5469 2017-03-02 13:51:10Z cfi $
+# $Id: mssql_version.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Microsoft's SQL Version Query
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11217");
-  script_version("$Revision: 5469 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 14:51:10 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(1292, 2030, 2042, 2043, 2863, 3733, 4135, 4847, 5014, 5205);
   script_tag(name:"cvss_base", value:"7.5");
@@ -209,16 +209,6 @@ MSSQL_LIST = make_list("^(8\..*)", "cpe:/a:microsoft:sql_server:2000",
                        "^(9\..*)", "cpe:/a:microsoft:sql_server:2005");
 MSSQL_MAX = max_index(MSSQL_LIST);
 
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
-
 ## start script
 function GetRealFileVersion(socket, uid, tid, fid)
 {
@@ -304,8 +294,7 @@ if(rootfile)
 
   ## build cpe and store it as host_detail  
   for (i = 0; i < MSSQL_MAX-1; i = i + 2) {
-
-     register_cpe(tmpVers:value, tmpExpr:MSSQL_LIST[i], tmpBase:MSSQL_LIST[i+1]);
+     register_and_report_cpe(app:"mssql", ver:value, base:MSSQL_LIST[i+1], expr:MSSQL_LIST[i]);
   }
  }
 }
@@ -323,8 +312,7 @@ if (!value)
  
  ## build cpe and store it as host_detail  
  for (i = 0; i < MSSQL_MAX-1; i = i + 2) {
-
-    register_cpe(tmpVers:value, tmpExpr:MSSQL_LIST[i], tmpBase:MSSQL_LIST[i+1]);
+    register_and_report_cpe(app:"mssql", ver:value, base:MSSQL_LIST[i+1], expr:MSSQL_LIST[i]);
  }
 }
 

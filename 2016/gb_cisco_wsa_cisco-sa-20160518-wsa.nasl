@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160518-wsa.nasl 4116 2016-09-20 04:49:26Z cfi $
+# $Id: gb_cisco_wsa_cisco-sa-20160518-wsa.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Cisco WSA Multiple Vulnerabilities 05/16.
 #
@@ -31,10 +31,10 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105728");
   script_cve_id("CVE-2016-1382","CVE-2016-1380","CVE-2016-1381","CVE-2016-1383");
-  script_version ("$Revision: 4116 $");
+  script_version ("$Revision: 5867 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-20 06:49:26 +0200 (Tue, 20 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-23 14:16:36 +0200 (Mon, 23 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco WSA Multiple Vulnerabilities 05/16");
@@ -68,7 +68,6 @@ if (description)
   script_xref(name:"URL" , value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160518-wsa3");
   script_xref(name:"URL" , value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160518-wsa4");
 
-  script_summary("Check for the vulnerable version of Cisco WSA Software");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

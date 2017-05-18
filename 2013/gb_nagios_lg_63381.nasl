@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_lg_63381.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_nagios_lg_63381.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # Nagios Looking Glass Local File Include Vulnerability
 #
@@ -25,7 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103845";
 CPE = "cpe:/a:nagios:nagios";
 
 tag_insight = "The application fails to adequately validate user-supplied input.";
@@ -41,21 +40,16 @@ tag_vuldetect = "Try to read the s3_config.inc.php via HTTP GET request.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103845");
  script_bugtraq_id(63381);
- script_version ("$Revision: 3911 $");
+ script_version("$Revision: 5699 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-
  script_name("Nagios Looking Glass Local File Include Vulnerability");
-
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63381");
  script_xref(name:"URL", value:"http://www.nagios.org/");
- 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-12-03 10:16:11 +0100 (Tue, 03 Dec 2013)");
- script_summary("Determine if it is possible to read s3_config.inc.php");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -75,41 +69,40 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 include("misc_func.inc"); 
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/nspl_status","/nlg", cgi_dirs());
+dirs = make_list_unique( "/nspl_status", "/nlg", cgi_dirs( port:port ) );
 
-if(app_dir = get_app_location(cpe:CPE, nvt_SCRIPT_OID, port:port)) {
- dirs = make_list(app_dir, dirs);
-} 
+if( app_dir = get_app_location( cpe:CPE, port:port ) ) {
+  dirs = make_list_unique( app_dir, dirs );
+}
 
-foreach dir (dirs) {
+foreach dir( dirs ) {
 
+  if( dir == "/" ) dir = "";
   url = dir + '/server/s3_download.php';
 
-  if(http_vuln_check(port:port, url:url,pattern:'No filename given')) {
+  if( http_vuln_check( port:port, url:url, pattern:'No filename given' ) ) {
 
     url = dir + '/server/s3_download.php?filename=s3_config.inc.php&action=update';
-    req = http_get(item:url, port:port);
-    buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+    req = http_get( item:url, port:port );
+    buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if(buf !~ "HTTP/1.1 200")exit(99);
+    if( buf !~ "HTTP/1.1 200" ) continue;
 
-    buf = base64_decode(str:buf);
+    buf = base64_decode( str:buf );
 
-    if("ServerFeed_AuthUsername" >< buf || "ServerFeed_AuthPassword" >< buf || "configuration file for Network Looking Glass" >< buf) {
+    if( "ServerFeed_AuthUsername" >< buf || "ServerFeed_AuthPassword" >< buf || "configuration file for Network Looking Glass" >< buf ) {
       report = 'It was possible to read the base64 encoded s3_config.inc.php by requesting:\n\n' + url + '\n';
-      security_message(port:port, data:report);
-      exit(0);
-    }  
-
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }  
-
 }  
 
-exit(99);
+exit( 99 );

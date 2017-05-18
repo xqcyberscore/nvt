@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_andromeda_streaming_mp3_server_xss_vuln.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_andromeda_streaming_mp3_server_xss_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Andromeda Streaming MP3 Server Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802777");
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5977 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:55:03 +0530 (Mon, 14 May 2012)");
   script_name("Andromeda Streaming MP3 Server Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/18359");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112549/ZSL-2012-5087.txt");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5087.php");
 
-  script_summary("Check if Andromeda Streaming MP3 Server is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

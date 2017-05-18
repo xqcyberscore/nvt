@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_booked_scheduler_xss_04_15.nasl 2442 2016-01-18 18:04:26Z jan $
+# $Id: gb_booked_scheduler_xss_04_15.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Booked Scheduler Cross Site Scripting Vulnerability
 #
@@ -29,16 +29,15 @@ CPE = 'cpe:/a:twinkle_toes:booked_scheduler';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105260");
- script_version ("$Revision: 2442 $");
+ script_version ("$Revision: 6032 $");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
  script_name("Booked Scheduler Cross Site Scripting Vulnerability");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-01-18 19:04:26 +0100 (Mon, 18 Jan 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-04-20 14:32:41 +0200 (Mon, 20 Apr 2015)");
- script_summary("Determine if installed Booked Scheduler is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

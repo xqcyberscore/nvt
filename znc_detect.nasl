@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: znc_detect.nasl 4051 2016-09-13 11:43:02Z cfi $
+# $Id: znc_detect.nasl 5983 2017-04-19 13:28:01Z cfi $
 #
 # ZNC Detection
 #
 # Authors:
-# Michael Meyer
+# Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100243");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-13 13:43:02 +0200 (Tue, 13 Sep 2016) $");
+  script_version("$Revision: 5983 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 15:28:01 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-26 19:54:54 +0200 (Sun, 26 Jul 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ZNC Detection");
-  script_summary("Checks for the presence of ZNC");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "find_service2.nasl", "http_version.nasl");
   script_require_ports("Services/irc", "Services/www", 6667);
@@ -56,43 +55,35 @@ include("http_keepalive.inc");
 
 ports = get_kb_list( "Services/irc" );
 if ( ! ports ) ports = make_list( 6667 );
-vers = "unknown";
 
 foreach port( ports ) {
 
-  if( get_port_state( port ) ) {
+  if( ! get_port_state( port ) ) continue;
+  soc = open_sock_tcp( port );
+  if( ! soc ) continue;
 
-    soc = open_sock_tcp( port );
-    if( soc ) {
+  req = string( "USER\r\n" );
+  send( socket:soc, data:req );
 
-      req = string( "USER\r\n" );
-      send( socket: soc, data: req );
+  buf = recv_line( socket:soc, length:64 );
+  close( soc );
 
-      buf = recv_line( socket:soc, length:64 );
-      close( soc );
+  if( egrep( pattern:"irc\.znc\.in NOTICE AUTH", string:buf, icase:TRUE ) ||
+      ( "irc.znc.in" >< buf && "Password required" >< buf ) ) {
 
-      if( egrep( pattern:"irc\.znc\.in NOTICE AUTH" , string: buf, icase: TRUE )
-        || ( "irc.znc.in" >< buf && "Password required" >< buf ) ) {
+    vers = "unknown";
 
-        if( vers != "unknown" ) set_kb_item( name:"znc/version", value:vers );
-        set_kb_item( name:"znc/installed", value:TRUE );
+    replace_kb_item( name:"znc/installed", value:TRUE );
 
-        ## build cpe and store it as host_detail
-        cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:znc:znc:" );
-        if( isnull( cpe ) )
-          cpe = 'cpe:/a:znc:znc';
+    cpe = 'cpe:/a:znc:znc';
+    register_product( cpe:cpe, location:port + '/tcp', port:port, service:"irc" );
 
-        ## Register Product and Build Report
-        register_product( cpe:cpe, location:port + '/tcp', port:port, service:"irc" );
- 
-        log_message( data:build_detection_report( app:"ZNC",
-                                                  version:vers,
-                                                  install:port + '/tcp',
-                                                  cpe:cpe,
-                                                  concluded:buf ),
-                                                  port:port );
-      }
-    }
+    log_message( data:build_detection_report( app:"ZNC",
+                                              version:vers,
+                                              install:port + '/tcp',
+                                              cpe:cpe,
+                                              concluded:buf ),
+                                              port:port );
   }
 }
 
@@ -103,8 +94,10 @@ banner = get_http_banner( port:httpPort );
 
 buf = http_get_cache( item:"/", port:httpPort );
 
-# only way to get version is from webadmin-module (if enabled). 
+# only way to get version is from webadmin-module (if enabled).
 if( ( banner && "Server: ZNC" >< banner ) || ( buf && "ZNC - Web Frontend" >< buf ) ) {
+
+  vers = "unknown";
 
   version = eregmatch( string:banner, pattern:"Server: ZNC (- )?([0-9.]+)", icase:TRUE );
 
@@ -112,29 +105,24 @@ if( ( banner && "Server: ZNC" >< banner ) || ( buf && "ZNC - Web Frontend" >< bu
     vers = version[2];
   } else {
     version = eregmatch( string:buf, pattern:"ZNC (- )?([0-9.]+)", icase:TRUE );
-    if ( ! isnull( version[2] ) ) {
-      vers = version[2];
-    }
+    if ( ! isnull( version[2] ) ) vers = version[2];
   }
 
   if( vers != "unknown" ) set_kb_item( name:"znc/version", value:vers );
-  set_kb_item( name:"znc/installed", value:TRUE );
+  replace_kb_item( name:"znc/installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:znc:znc:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:znc:znc';
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, location:httpPort + '/tcp', port:httpPort, service:"www" );
- 
+
   log_message( data:build_detection_report( app:"ZNC",
                                             version:vers,
                                             install:httpPort + '/tcp',
                                             cpe:cpe,
                                             concluded:version[0] ),
                                             port:httpPort );
-
 }
 
 exit( 0 );

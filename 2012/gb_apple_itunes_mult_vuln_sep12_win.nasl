@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_sep12_win.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_apple_itunes_mult_vuln_sep12_win.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Apple iTunes Multiple Vulnerabilities - Sep 12 (Windows)
 #
@@ -38,7 +38,7 @@ tag_summary = "This host is installed with Apple iTunes and is prone to multiple
 if(description)
 {
   script_id(802962);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027", "CVE-2011-3032",
                 "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037",
                 "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041",
@@ -84,14 +84,13 @@ if(description)
                     51641, 51911, 38368, 54680, 54203, 54386, 55534);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-17 17:25:24 +0530 (Mon, 17 Sep 2012)");
   script_name("Apple iTunes Multiple Vulnerabilities - Sep 12 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5485");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50618/");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/Sep/msg00001.html");
 
-  script_summary("Check for the version of Apple iTunes on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

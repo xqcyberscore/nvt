@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_share_js_gallery_app_xss_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_nextcloud_share_js_gallery_app_xss_vuln_lin.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # nextCloud 'share.js' Gallery Application XSS Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809415");
-  script_version("$Revision: 5083 $");
-  script_cve_id("CVE-2016-7419");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5867 $");
+  script_cve_id("CVE-2016-7419", "CVE-2016-9459", "CVE-2016-9460", "CVE-2016-9461", "CVE-2016-9462");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 13:01:29 +0530 (Tue, 27 Sep 2016)");
   script_name("nextCloud 'share.js' Gallery Application XSS Vulnerability (Linux)");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://nextcloud.com/security/advisory/?id=nc-sa-2016-001");
 
-  script_summary("Check for the vulnerable version of nextCloud on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

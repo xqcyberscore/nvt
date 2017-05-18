@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yabb_xss.nasl 3480 2016-06-10 18:01:44Z cfi $
+# $Id: yabb_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: YaBB XSS and Administrator Command Execution
 #
 # Authors:
@@ -30,15 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14782");
-  script_version("$Revision: 3480 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 20:01:44 +0200 (Fri, 10 Jun 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2402", "CVE-2004-2403");
   script_bugtraq_id(11214, 11215);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("YaBB XSS and Administrator Command Execution");
-  script_summary("Checks YaBB.pl XSS");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

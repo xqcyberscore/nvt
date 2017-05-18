@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms17-014_macosx.nasl 5637 2017-03-21 07:30:30Z antu123 $
+# $Id: gb_lync_ms17-014_macosx.nasl 5706 2017-03-24 08:04:22Z teissa $
 #
 # Microsoft Lync Certificate Validation Vulnerability-4013241 (MAC OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:lync";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810817");
-  script_version("$Revision: 5637 $");
+  script_version("$Revision: 5706 $");
   script_cve_id("CVE-2017-0129");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-20 12:56:16 +0530 (Mon, 20 Mar 2017)");
   script_name("Microsoft Lync Certificate Validation Vulnerability-4013241 (MAC OS X)");
 

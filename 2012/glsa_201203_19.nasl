@@ -55,13 +55,12 @@ if(description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2011-3031", "CVE-2011-3032", "CVE-2011-3033", "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036", "CVE-2011-3037", "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040", "CVE-2011-3041", "CVE-2011-3042", "CVE-2011-3043", "CVE-2011-3044", "CVE-2011-3046", "CVE-2011-3047", "CVE-2011-3049", "CVE-2011-3050", "CVE-2011-3051", "CVE-2011-3052", "CVE-2011-3053", "CVE-2011-3054", "CVE-2011-3055", "CVE-2011-3056", "CVE-2011-3057");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 6018 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:59:57 -0400 (Mon, 30 Apr 2012)");
  script_name("Gentoo Security Advisory GLSA 201203-19 (chromium)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201203-19 (chromium)");
 
  script_category(ACT_GATHER_INFO);
 

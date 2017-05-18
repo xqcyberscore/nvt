@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_detect_win.nasl 2644 2016-02-12 06:47:32Z antu123 $
+# $Id: gb_notepadpp_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Notepad++ Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805317");
-  script_version("$Revision: 2644 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 07:47:32 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:19:25 +0530 (Fri, 09 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Notepad++ Version Detection (Windows)");
@@ -41,7 +41,6 @@ if (description)
   This script logs in via smb, searches for 'Notepad++' in the registry and
   gets the version from registry.");
 
-  script_summary("Set KB for the version of Notepad++");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

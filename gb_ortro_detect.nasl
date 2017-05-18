@@ -1,6 +1,6 @@
 ###################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ortro_detect.nasl 2634 2016-02-11 11:04:40Z cfi $
+# $Id: gb_ortro_detect.nasl 6021 2017-04-25 11:58:59Z ckuerste $
 #
 # Ortro Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800980");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2634 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-11 12:04:40 +0100 (Thu, 11 Feb 2016) $");
+  script_version("$Revision: 6021 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 13:58:59 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ortro Version Detection");
@@ -66,8 +66,7 @@ foreach dir( make_list_unique( "/", "/ortro", "/ortro/www", cgi_dirs( port:port 
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  if( ( "Powered by" >< rcvRes && "Ortro" >< rcvRes ) || "img/ortro-logo.png" >< rcvRes ) {
-
+  if( "Powered by" >< rcvRes && "Ortro" >< rcvRes && "img/ortro-logo.png" >< rcvRes ) {
     version = "unknown";
 
     ver = eregmatch(pattern:"v(([0-9.]+).([a-zA-Z0-9]+)?)", string:rcvRes );

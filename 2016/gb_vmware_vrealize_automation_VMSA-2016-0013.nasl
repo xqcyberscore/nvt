@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_automation_VMSA-2016-0013.nasl 3975 2016-09-06 09:35:42Z antu123 $
+# $Id: gb_vmware_vrealize_automation_VMSA-2016-0013.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-5335","CVE-2016-5336");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3975 $");
+ script_version ("$Revision: 5867 $");
  script_name("VMSA-2016-0013: VMware vRealize Automation updates address multiple security issues");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0013.html");
@@ -51,11 +51,10 @@ low-privileged account on the appliance.");
 
  script_tag(name: "affected" , value:"vRealize Automation 7.0.x");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-06 11:35:42 +0200 (Tue, 06 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-08-25 12:46:41 +0200 (Thu, 25 Aug 2016)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Checks for installed version.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

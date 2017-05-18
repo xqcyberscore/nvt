@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0486.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0486.nasl 5806 2017-03-31 07:21:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131161");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 5806 $");
 script_tag(name:"creation_date", value:"2015-12-28 10:39:24 +0200 (Mon, 28 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0486");
 script_tag(name: "insight", value: "Updated mediawiki packages fix security vulnerabilities: In MediaWiki before 1.23.12, an XSS vector exists when MediaWiki is configured with a non-standard configuration, from wikitext when $wgArticlePath='$1' (CVE-2015-8622). In MediaWiki before 1.23.12, tokens were being compared as strings, which could allow a timing attack (CVE-2015-8623, CVE-2015-8624). In MediaWiki before 1.23.12, parameters passed to the curl library were not sanitized, which could cause curl to upload files from the webserver to an attacker when POST variable starts with '@' (CVE-2015-8625). In MediaWiki before 1.23.12, the password reset token could be shorter than the minimum required password length (CVE-2015-8626). In MediaWiki before 1.23.12, blocking IP addresses with zero-padded octets resulted in a failure to block the IP address (CVE-2015-8627). In MediaWiki before 1.23.12, a combination of Special:MyPage redirects and pagecounts allows an external site to know the wikipedia login of an user (CVE-2015-8628)."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0486.html");
 script_cve_id("CVE-2015-8622","CVE-2015-8623","CVE-2015-8624","CVE-2015-8625","CVE-2015-8626","CVE-2015-8627","CVE-2015-8628");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"6.8");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");

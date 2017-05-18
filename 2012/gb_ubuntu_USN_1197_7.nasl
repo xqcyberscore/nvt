@@ -49,15 +49,14 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-March/001646.html");
   script_id(840966);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6022 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-29 10:05:28 +0530 (Thu, 29 Mar 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_xref(name: "USN", value: "1197-7");
   script_name("Ubuntu Update for ca-certificates-java USN-1197-7");
 
-  script_summary("Check for the Version of ca-certificates-java");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

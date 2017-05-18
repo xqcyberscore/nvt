@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_opencart_mult_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # OpenCart Multiple Vulnerabilities
 #
@@ -49,18 +49,17 @@ vulnerabilities.";
 if(description)
 {
   script_id(802751);
-  script_version("$Revision: 5642 $");
+  script_version("$Revision: 6018 $");
   script_bugtraq_id(52957);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-18 18:47:56 +0530 (Wed, 18 Apr 2012)");
   script_name("OpenCart Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48762");
   script_xref(name : "URL" , value : "http://www.waraxe.us/advisory-84.html");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522240");
 
-  script_summary("Check if OpenCart is vulnerable to directory traversal attack");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

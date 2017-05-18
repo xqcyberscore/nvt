@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jre_mult_vuln_macosx.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_jre_mult_vuln_macosx.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Java Runtime Environment Multiple Vulnerabilities (MAC OS X)
 #
@@ -37,7 +37,7 @@ tag_summary = "The host is installed with Java Runtime Environment and is prone 
 if(description)
 {
   script_id(802738);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2011-3563", "CVE-2011-5035", "CVE-2012-0497", "CVE-2012-0498",
                 "CVE-2012-0499", "CVE-2012-0500", "CVE-2012-0501", "CVE-2012-0502",
                 "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506", "CVE-2012-0507");
@@ -45,7 +45,7 @@ if(description)
                     52013, 52017, 52014, 52161);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 17:06:23 +0530 (Mon, 09 Apr 2012)");
   script_name("Java Runtime Environment Multiple Vulnerabilities (MAC OS X)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5228");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111594/Apple-Security-Advisory-2012-04-03-1.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for the version of JRE on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_jre_detect_macosx.nasl");

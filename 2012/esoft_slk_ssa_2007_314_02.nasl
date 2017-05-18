@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_314_02.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2007_314_02.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -40,15 +40,14 @@ if(description)
 {
  script_id(58756);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
- script_version("$Revision: 5356 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_version("$Revision: 5958 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  name = "Slackware Advisory SSA:2007-314-02 php for Slackware 11.0 reissued ";
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2007-314-02 php for Slackware 11.0 reissued");
 
  script_category(ACT_GATHER_INFO);
 

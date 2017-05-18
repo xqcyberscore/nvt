@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Mathopd_51872.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_Mathopd_51872.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Mathopd Directory Traversal Vulnerability
 #
@@ -40,7 +40,7 @@ if (description)
  script_id(103427);
  script_bugtraq_id(51872);
  script_cve_id("CVE-2012-1050");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5931 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
@@ -51,10 +51,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.mail-archive.com/mathopd%40mathopd.org/msg00392.html");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521507");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 15:14:41 +0100 (Thu, 16 Feb 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Mathopd version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

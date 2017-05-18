@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842751");
-  script_version("$Revision: 3640 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-04 07:07:03 +0200 (Mon, 04 Jul 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:40:01 +0200 (Tue, 17 May 2016)");
   script_cve_id("CVE-2016-3713", "CVE-2016-0758");
   script_tag(name:"cvss_base", value:"7.2");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name: "USN", value: "2979-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003426.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-xenial");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

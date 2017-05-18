@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mult_vuln01.nasl 2786 2016-03-07 18:30:29Z cfi $
+# $Id: gb_cybozu_office_mult_vuln01.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Cybozu Office Multiple Vulnerabilities-01 Feb16
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807276");
-  script_version("$Revision: 2786 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-1153", "CVE-2016-1152", "CVE-2016-1151", "CVE-2015-8489",
                 "CVE-2015-8486", "CVE-2015-8485", "CVE-2015-8484");
   script_bugtraq_id(83288, 83287, 83284);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-07 19:30:29 +0100 (Mon, 07 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:55 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cybozu Office Multiple Vulnerabilities-01 Feb16");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN48720230/index.html");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN64209269/index.html");
 
-  script_summary("Check for the vulnerable version of Cybozu Office.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

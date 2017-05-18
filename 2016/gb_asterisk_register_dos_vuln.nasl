@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_register_dos_vuln.nasl 3815 2016-08-09 02:49:31Z ckuerste $
+# $Id: gb_asterisk_register_dos_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Asterisk Long Contact URIs DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106174");
-  script_version("$Revision: 3815 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-08-09 04:49:31 +0200 (Tue, 09 Aug 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-08-09 08:53:51 +0700 (Tue, 09 Aug 2016)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -51,7 +51,6 @@ if (description)
 
   script_tag(name: "summary", value: "Asterisk is prone to a denial of service vulnerability.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

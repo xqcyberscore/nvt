@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis5_sample_cross_site.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: iis5_sample_cross_site.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: IIS 5.0 Sample App vulnerable to cross-site scripting attack
 #
 # Authors:
@@ -25,13 +25,12 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10572");
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_name("IIS 5.0 Sample App vulnerable to cross-site scripting attack");
- script_summary("IIS 5.0 Sample App vulnerable to cross-site scripting attack");
  script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2000 Matt Moore");
  script_family("Web application abuses");

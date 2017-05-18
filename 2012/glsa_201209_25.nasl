@@ -76,13 +76,12 @@ if(description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2007-5269", "CVE-2007-5503", "CVE-2007-5671", "CVE-2008-0967", "CVE-2008-1340", "CVE-2008-1361", "CVE-2008-1362", "CVE-2008-1363", "CVE-2008-1364", "CVE-2008-1392", "CVE-2008-1447", "CVE-2008-1806", "CVE-2008-1807", "CVE-2008-1808", "CVE-2008-2098", "CVE-2008-2100", "CVE-2008-2101", "CVE-2008-4915", "CVE-2008-4916", "CVE-2008-4917", "CVE-2009-0040", "CVE-2009-0909", "CVE-2009-0910", "CVE-2009-1244", "CVE-2009-2267", "CVE-2009-3707", "CVE-2009-3732", "CVE-2009-3733", "CVE-2009-4811", "CVE-2010-1137", "CVE-2010-1138", "CVE-2010-1139", "CVE-2010-1140", "CVE-2010-1141", "CVE-2010-1142", "CVE-2010-1143", "CVE-2011-3868");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5956 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-03 11:11:29 -0400 (Wed, 03 Oct 2012)");
  script_name("Gentoo Security Advisory GLSA 201209-25 (vmware-server vmware-player vmware-workstation)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201209-25 (vmware-server vmware-player vmware-workstation)");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_buf_overflow_vuln_feb16.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_apache_subversion_buf_overflow_vuln_feb16.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Apache Subversion Buffer Overflow Vulnerability -01 Feb16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806851");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2015-5259");
   script_bugtraq_id(82300);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-04 17:06:21 +0530 (Thu, 04 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Buffer Overflow Vulnerability -01 Feb16");
@@ -64,7 +64,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1034469");
   script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2015-5259-advisory.txt");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_subversion_remote_detect.nasl");

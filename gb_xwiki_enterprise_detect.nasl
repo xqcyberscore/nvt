@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_xwiki_enterprise_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # XWiki Enterprise Version Detection
 #
@@ -39,12 +39,11 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("XWiki Enterprise Version Detection");
-  script_summary("Check for XWiki Enterprise version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");

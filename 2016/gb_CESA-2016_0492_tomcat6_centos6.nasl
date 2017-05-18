@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882434");
-  script_version("$Revision: 2954 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 07:16:22 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-24 06:15:02 +0100 (Thu, 24 Mar 2016)");
   script_cve_id("CVE-2014-7810");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,6 @@ restarted for this update to take effect.
 
   script_xref(name: "CESA", value: "2016:0492");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021766.html");
-  script_summary("Check for the Version of tomcat6");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

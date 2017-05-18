@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashfxp_mult_bof_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_flashfxp_mult_bof_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # FlashFXP Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:flashfxp:flashfxp';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802965");
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-4992");
   script_bugtraq_id(52259);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-24 14:23:56 +0530 (Mon, 24 Sep 2012)");
   script_name("FlashFXP Multiple Buffer Overflow Vulnerabilities");
-  script_summary("Check for the version of FlashFXP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

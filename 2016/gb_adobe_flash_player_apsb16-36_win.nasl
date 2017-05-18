@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-36_win.nasl 4368 2016-10-27 13:26:43Z antu123 $
+# $Id: gb_adobe_flash_player_apsb16-36_win.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Adobe Flash Player Security Updates( apsb16-36 )-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809462");
-  script_version("$Revision: 4368 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2016-7855" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 15:26:43 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-27 18:41:34 +0530 (Thu, 27 Oct 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-36 )-Windows");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb16-36.html");
 
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

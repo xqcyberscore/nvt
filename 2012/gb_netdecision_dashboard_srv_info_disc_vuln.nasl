@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_dashboard_srv_info_disc_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_netdecision_dashboard_srv_info_disc_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Netmechanica NetDecision Dashboard Server Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802703");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2012-1464");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-08 17:47:52 +0530 (Thu, 08 Mar 2012)");
   script_name("Netmechanica NetDecision Dashboard Server Information Disclosure Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/exploits/SecPod_Netmechanica_NetDecision_Dashboard_Server_Info_Disc_PoC.py");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_Netmechanica_NetDecision_Dashboard_Server_Info_Disc_Vuln.txt");
 
-  script_summary("Check for the information disclosure vulnerability in NetDecision Dashboard Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

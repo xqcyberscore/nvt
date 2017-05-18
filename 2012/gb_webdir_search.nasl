@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdir_search.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_webdir_search.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Search for specified webdirs
 #
@@ -29,8 +29,8 @@ if (description)
 {
  
  script_oid("1.3.6.1.4.1.25623.1.0.103437");
- script_version("$Revision: 3694 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+ script_version("$Revision: 5956 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
@@ -47,7 +47,6 @@ if (description)
  script_require_ports("Services/www", 80);
 
  script_tag(name: "summary", value: "This Plugin is searching for the specified webdirs.");
- script_summary("This Plugin is searching for the specified webdirs.");
 
  script_add_preference(name: "Search for dir(s)", value: "/admin;/manager", type: "entry");
  script_add_preference(name: "Valid http status codes indicating that a directory was found", value: "200;301;302;401;403", type: "entry");

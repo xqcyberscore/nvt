@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle_xsql_query.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: oracle_xsql_query.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Oracle XSQL Sample Application Vulnerability
 #
 # Authors:
@@ -41,10 +41,10 @@ Reference : http://www.kb.cert.org/vuls/id/717827";
 if(description)
 {
  script_id(10613);
- script_version("$Revision: 3362 $");
+ script_version("$Revision: 6046 $");
  script_cve_id("CVE-2002-1630", "CVE-2002-1631", "CVE-2002-1632");
  script_bugtraq_id(6556);
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,7 +54,6 @@ if(description)
 
  summary = "Tests for Oracle XSQL Sample Application Vulnerability";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

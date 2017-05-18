@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: brio_dir_traversal.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: brio_dir_traversal.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Brio Unix Directory Traversal
 #
@@ -29,13 +29,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15849");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Brio Unix Directory Traversal");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_summary("Brio Unix Directory Traversal");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2003 Chris Foster");

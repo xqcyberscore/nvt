@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_whois_plugin_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_wordpress_whois_plugin_xss_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # WordPress WHOIS Plugin 'domain' Parameter Cross Site Scripting Vulnerability
 #
@@ -43,11 +43,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(51244);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-04 13:54:24 +0530 (Wed, 04 Jan 2012)");
   script_name("WordPress WHOIS Plugin 'domain' Parameter Cross-site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47428/");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108271/wpwhois-xss.txt");
   script_xref(name : "URL" , value : "http://plugins.trac.wordpress.org/changeset/482954/wordpress-whois-search");
 
-  script_summary("Check if WordPress WHOIS plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

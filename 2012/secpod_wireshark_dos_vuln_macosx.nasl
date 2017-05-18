@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dos_vuln_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_wireshark_dos_vuln_macosx.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Wireshark Denial of Service Vulnerability (Mac OS X)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is installed Wireshark and is prone to denial of servic
 if(description)
 {
   script_id(903024);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2011-0538");
   script_bugtraq_id(46167);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-25 17:03:00 +0530 (Wed, 25 Apr 2012)");
   script_name("Wireshark Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/65182");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5652");
 
   script_copyright("Copyright (C) 2012 SecPod");
-  script_summary("Check the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");

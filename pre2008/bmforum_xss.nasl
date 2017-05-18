@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bmforum_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: bmforum_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # BMForum multiple XSS flaws
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19500");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14396);
   script_xref(name:"OSVDB", value:"18306");
@@ -43,7 +43,6 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("BMForum multiple XSS flaws");
-  script_summary("Checks for XSS in topic.php");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");

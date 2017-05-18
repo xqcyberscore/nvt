@@ -48,12 +48,11 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2001-0733");
  script_bugtraq_id(2912);
- script_version("$Revision: 3562 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:53:47 +0200 (Mon, 20 Jun 2016) $");
+ script_version("$Revision: 5912 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-03 11:11:06 -0400 (Wed, 03 Oct 2012)");
  script_name("FreeBSD Ports: eperl");
 
- script_summary("FreeBSD Ports: eperl");
 
  script_category(ACT_GATHER_INFO);
 

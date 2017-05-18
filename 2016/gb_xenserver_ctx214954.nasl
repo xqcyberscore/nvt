@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6258","CVE-2016-6259");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5595 $");
+ script_version ("$Revision: 5689 $");
 
  script_name("Citrix XenServer Multiple Security Updates (CTX214954)");
 
@@ -48,9 +48,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-28 18:00:20 +0200 (Thu, 28 Jul 2016)");
- script_summary("Check the installed hotfixes");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

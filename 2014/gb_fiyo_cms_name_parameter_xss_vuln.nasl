@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fiyo_cms_name_parameter_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_fiyo_cms_name_parameter_xss_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # Fiyo CMS 'Name' POST Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804651");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5816 $");
   script_cve_id("CVE-2014-4032");
   script_bugtraq_id(67729);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-06-23 12:46:23 +0530 (Mon, 23 Jun 2014)");
   script_name("Fiyo CMS 'Name' POST Parameter Cross-Site Scripting Vulnerability");
 
@@ -56,11 +56,10 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/58833");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126856");
-  script_summary("Check if Fiyo CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -75,15 +74,11 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-#Get Host name
 host = http_host_name(port:http_port);
 
 ## Iterate over possible paths
@@ -92,11 +87,9 @@ foreach dir (make_list_unique("/", "/fiyo", "/fiyocms", "/cms", cgi_dirs(port:ht
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/login.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/login.php"),  port:http_port);
 
-    ##Confirm Application
+  ##Confirm Application
   if (">Fiyo CMS<" >< rcvRes)
   {
     ##Construct Attack Request

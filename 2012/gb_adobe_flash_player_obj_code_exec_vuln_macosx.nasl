@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_obj_code_exec_vuln_macosx.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_flash_player_obj_code_exec_vuln_macosx.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -42,19 +42,18 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(802773);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-0779");
   script_bugtraq_id(53395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-08 14:44:50 +0530 (Tue, 08 May 2012)");
   script_name("Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49096/");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027023");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-09.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

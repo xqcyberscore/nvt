@@ -46,13 +46,12 @@ if(description)
 {
  script_id(70582);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 5988 $");
  script_name("FreeBSD Ports: wordpress");
 
- script_summary("FreeBSD Ports: wordpress");
 
  script_category(ACT_GATHER_INFO);
 

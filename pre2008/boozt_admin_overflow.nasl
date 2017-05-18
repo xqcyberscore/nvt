@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: boozt_admin_overflow.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: boozt_admin_overflow.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Boozt index.cgi overflow
 #
 # Authors:
@@ -47,8 +47,8 @@ tag_solution = "upgrade your software or protect it with a filtering reverse pro
 if(description)
 {
  script_id(11082);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(6281);
  script_cve_id("CVE-2002-0098");
@@ -56,7 +56,6 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Boozt index.cgi overflow");
  
- script_summary("Buffer overflow in Boozt AdBanner index.cgi");
  
  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

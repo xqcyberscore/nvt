@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-Opentaps_ERP_CRM.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: remote-detect-Opentaps_ERP_CRM.nasl 5888 2017-04-07 09:01:53Z teissa $
 # Description: This script ensure that the Opentaps ERP + CRM is installed and running
 #
 # remote-detect-Opentaps_ERP_CRM.nasl
@@ -37,8 +37,8 @@ if(description)
 {
 script_id(101021);
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5888 $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
 script_tag(name:"creation_date", value:"2009-04-23 00:18:39 +0200 (Thu, 23 Apr 2009)");
 script_tag(name:"cvss_base", value:"0.0");
 name = "Opentaps ERP + CRM service detection";
@@ -46,8 +46,6 @@ script_name(name);
  
 
 summary = "Detect a running Opentaps Open Source ERP + CRM";
-
-script_summary(summary);
 
 script_category(ACT_GATHER_INFO);
 script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0169.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0169.nasl 5850 2017-04-04 09:01:03Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131285");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5850 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:17:48 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0169");
 script_tag(name: "insight", value: "An overflow can occur in the EVP_EncodeUpdate() function which is used for Base64 encoding of binary data. If an attacker is able to supply very large amounts of input data then a length check can overflow resulting in a heap corruption (CVE-2016-2105). An overflow can occur in the EVP_EncryptUpdate() function. If an attacker is able to supply very large amounts of input data after a previous call to EVP_EncryptUpdate() with a partial block then a length check can overflow resulting in a heap corruption (CVE-2016-2106). A MITM attacker can use a padding oracle attack to decrypt traffic when the connection uses an AES CBC cipher and the server support AES-NI (CVE-2016-2107). When ASN.1 data is read from a BIO using functions such as d2i_CMS_bio() a short invalid encoding can casuse allocation of large amounts of memory potentially consuming excessive resources or exhausting memory (CVE-2016-2109)"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0169");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0169");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

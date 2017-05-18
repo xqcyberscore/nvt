@@ -44,14 +44,13 @@ if(description)
 {
  script_id(71385);
  script_cve_id("CVE-2012-1495", "CVE-2012-1496");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5956 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:53:51 -0400 (Thu, 31 May 2012)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_name("FreeBSD Ports: WebCalendar-devel");
 
- script_summary("FreeBSD Ports: WebCalendar-devel");
 
  script_category(ACT_GATHER_INFO);
 

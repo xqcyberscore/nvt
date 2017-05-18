@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_convergedsystems_virtualization_detect.nasl 4370 2016-10-27 14:01:43Z teissa $
+# $Id: gb_hpe_sizer_convergedsystems_virtualization_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # HPE Sizer ConvergedSystems Virtualization Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809437");
-  script_version("$Revision: 4370 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 16:01:43 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-10 12:19:36 +0530 (Mon, 10 Oct 2016)");
   script_name("HPE Sizer ConvergedSystems Virtualization Version Detection (Windows)");
 
@@ -43,7 +43,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HPE Sizer for ConvergedSystems Virtualization");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

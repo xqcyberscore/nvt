@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln01_july16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_phpmyadmin_mult_vuln01_july16_lin.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # phpMyAdmin Multiple Vulnerabilities -01 July16 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808242");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2016-5739", "CVE-2016-5733", "CVE-2016-5734", "CVE-2016-5731",
                 "CVE-2016-5732", "CVE-2016-5730", "CVE-2016-5706", "CVE-2016-5704",
                 "CVE-2016-5705", "CVE-2016-5703", "CVE-2016-5702");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:45:45 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("phpMyAdmin Multiple Vulnerabilities -01 July16 (Linux)");
@@ -78,8 +78,7 @@ if(description)
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-27");
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-24");
 
-  script_summary("Check for the vulnerable version of phpMyAdmin on Linux");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");

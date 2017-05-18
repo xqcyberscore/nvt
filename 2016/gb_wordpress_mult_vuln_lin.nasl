@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln_lin.nasl 5087 2017-01-24 11:37:34Z cfi $
+# $Id: gb_wordpress_mult_vuln_lin.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # WordPress Core Multiple Vulnerabilities Feb16 (Linux)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807060");
-  script_version("$Revision: 5087 $");
+  script_version("$Revision: 5850 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:37:34 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-08 14:40:48 +0530 (Mon, 08 Feb 2016)");
   script_name("WordPress Core Multiple Vulnerabilities Feb16 (Linux)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/8376");
   script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/8377");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of wordpress on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");

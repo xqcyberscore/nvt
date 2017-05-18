@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cheopsNG_clear_text_password.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: cheopsNG_clear_text_password.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Cheops NG clear text authentication
 #
 # Authors:
@@ -42,14 +42,13 @@ the use of Cheops.";
 if(description)
 {
  script_id(20162);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
  script_name( "Cheops NG clear text authentication");
  
- script_summary( "Cheops NG agent uses clear text passwords");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2005 Michel Arboi");

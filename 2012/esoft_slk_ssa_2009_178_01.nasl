@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2009_178_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2009_178_01.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -41,8 +41,8 @@ if(description)
 {
  script_id(64315);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
- script_version("$Revision: 5356 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+ script_version("$Revision: 6022 $");
  script_cve_id("CVE-2009-1302", "CVE-2009-1303", "CVE-2009-1304", "CVE-2009-1305",
                "CVE-2009-1307", "CVE-2009-1392", "CVE-2009-1832", "CVE-2009-1833",
                "CVE-2009-1836", "CVE-2009-1838", "CVE-2009-1841", "CVE-2009-2210");
@@ -53,7 +53,6 @@ if(description)
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2009-178-01 mozilla-thunderbird");
 
  script_category(ACT_GATHER_INFO);
 

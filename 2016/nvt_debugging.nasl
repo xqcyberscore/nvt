@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nvt_debugging.nasl 5586 2017-03-16 08:22:49Z cfi $
+# $Id: nvt_debugging.nasl 5858 2017-04-04 13:51:59Z cfi $
 #
 # Report NVT debug logs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111091");
-  script_version("$Revision: 5586 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 09:22:49 +0100 (Thu, 16 Mar 2017) $");
+  script_version("$Revision: 5858 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 15:51:59 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-25 15:12:12 +0100 (Fri, 25 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_add_preference(name:"Report NVT debug logs", type:"checkbox", value:"no");
 
   script_tag(name:"summary", value:"The script reports possible issues within NVTs.
-  
+
   For best results set 'optimize_test', 'unscanned_closed' and 'unscanned_closed_udp'
   within the 'Scanner Preferences' to 'no'");
 
@@ -124,6 +124,8 @@ foreach item( items ) {
   x = split( item, sep:'#-#', keep:FALSE );
   x_oid = x[0];
   x_text = x[1];
+
+  if( "1.3.6.1.4.1.25623.1.0.802045" >< x_oid && "Host:" >< x_text ) continue; # gb_linux_rootkit_nginx_iframe_injection.nasl requires a wrong host header
 
   found = TRUE;
 

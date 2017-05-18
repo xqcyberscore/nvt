@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sip_status_server.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: sip_status_server.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: sxdesign SIPd Status Server Detection
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Access to this port should be restricted to trusted users only";
 if(description)
 {
  script_id(11945);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +43,6 @@ if(description)
  
 
  summary = "SIP Status Server Detection";
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  

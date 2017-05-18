@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802390");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-1005");
   script_bugtraq_id(51820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-02 14:49:35 +0530 (Thu, 02 Feb 2012)");
   script_name("Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18451/");
   script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_SPHINX_SOFT_Mobile_Web_Server_Mul_Persistence_XSS_Vulns.txt");
 
-  script_summary("Check if Sphinx Mobile Web Server is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

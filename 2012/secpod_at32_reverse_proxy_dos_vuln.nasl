@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_at32_reverse_proxy_dos_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: secpod_at32_reverse_proxy_dos_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # at32 Reverse Proxy Multiple HTTP Header Fields Denial Of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902825");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-5332");
   script_bugtraq_id(52553);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-29 12:12:12 +0530 (Thu, 29 Mar 2012)");
   script_name("at32 Reverse Proxy Multiple HTTP Header Fields Denial Of Service Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48460");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/110967/at32-dos.txt");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-03/0080.html");
 
-  script_summary("Check if at32 Reverse Proxy is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

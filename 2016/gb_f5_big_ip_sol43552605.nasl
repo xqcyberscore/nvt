@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol43552605.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol43552605.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # F5 BIG-IP - SOL43552605 - Out-of-bounds memory vulnerability with the BIG-IP APM system CVE-2015-8098
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-8098");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("F5 BIG-IP - SOL43552605 - Out-of-bounds memory vulnerability with the BIG-IP APM system CVE-2015-8098");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-01-08 11:49:44 +0100 (Fri, 08 Jan 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

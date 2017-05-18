@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_base_51874.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_base_51874.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # BASE 'base_qry_main.php' SQL Injection Vulnerability
 #
@@ -43,17 +43,16 @@ if (description)
  script_cve_id("CVE-2012-1017");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6022 $");
 
  script_name("BASE 'base_qry_main.php' SQL Injection Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51874");
  script_xref(name : "URL" , value : "http://base.secureideas.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-10 11:58:03 +0100 (Fri, 10 Feb 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed base version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

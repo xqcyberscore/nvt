@@ -1,11 +1,12 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10.nasl 5523 2017-03-09 07:40:45Z cfi $
+# $Id: gb_policy_orientierungshilfe_win10.nasl 6019 2017-04-24 18:55:07Z cfi $
 #
 # AKIF Orientierungshilfe Windows 10: Ueberpruefungen
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
+# Emanuel Moss <emanuel.moss@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2017 Greenbone Networks GmbH
@@ -28,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108078");
-  script_version("$Revision: 5523 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 08:40:45 +0100 (Thu, 09 Mar 2017) $");
+  script_version("$Revision: 6019 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 20:55:07 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,14 +60,14 @@ include("smb_nt.inc");
 function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg_type, reg_value, service_name, startup_type ) {
 
   local_var check_desc, check_num, check_type, reg_key, reg_name, reg_type, reg_value, service_name;
-  local_var startup_type, response, current_value, text_response, serQueryRes, cmd;
+  local_var startup_type, response, current_value, text_response, serQueryRes, cmd, extra;
 
   if( "Registry" >< check_type ) {
 
     text_response = check_desc + '||' + check_num + '||' + check_type + '||' + reg_key + '||' + reg_name + '||' + reg_type + '||' + reg_value + '||';
 
     if( reg_key == "./." ) {
-      return make_list( "unimplemented", text_response + 'Ueberpruefungs-Details in Policy Datei fehlen\n');
+      return make_list( "unimplemented", text_response + 'Ueberpruefungs-Details in Policy Datei fehlen.\n');
     }
 
     if( "HKCU\" >< reg_key ) {
@@ -76,11 +77,11 @@ function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg
       reg_key = str_replace( string:reg_key, find:"HKLM\", replace:"", count:1 );
       type = "HKLM";
     } else {
-      return make_list( "error", text_response + '(fehlerhafte "Reg-Key" Details in Policy Datei)\n' );
+      return make_list( "error", text_response + '(fehlerhafte "Reg-Key" Details in Policy Datei).\n' );
     }
 
     if( ! registry_key_exists( key:reg_key, type:type ) ) {
-      return make_list( "failed", text_response + 'Registry-Key nicht vorhanden\n' );
+      return make_list( "failed", text_response + 'Registry-Key nicht vorhanden.\n' );
     }
 
     if( "DWORD" >< reg_type ) {
@@ -88,17 +89,17 @@ function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg
     } else if( "STRING" >< reg_type ) {
       current_value = registry_get_sz( key:reg_key, item:reg_name, type:type );
     } else {
-      return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen (fehlerhafte "Reg-Type" Details in Policy Datei)\n' );
+      return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen (fehlerhafte "Reg-Type" Details in Policy Datei).\n' );
     }
 
     if( isnull( current_value ) ) {
-      return make_list( "failed", text_response + 'Registry-Name nicht vorhanden\n' );
+      return make_list( "failed", text_response + 'Registry-Name nicht vorhanden.\n' );
     } else if( current_value == reg_value ) {
       return make_list( "passed", text_response + current_value + '\n' );
     } else if( current_value != reg_value ) {
       return make_list( "failed", text_response + current_value + '\n' );
     } else {
-      return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen\n' );
+      return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen.\n' );
     }
   } else if( "Service" >< check_type ) {
 
@@ -113,7 +114,7 @@ function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg
       #START_TYPE         : 2   AUTO_START  (DELAYED)
       #START_TYPE         : 3   DEMAND_START
       #START_TYPE         : 4   DISABLED
-      if( "START_TYPE" >< serQueryRes && "SUCCESS" >< serQueryRes ) {
+      if( "START_TYPE" >< serQueryRes ) {
         if( toupper( startup_type ) >< serQueryRes ) {
           return make_list( "passed", text_response + 'Disabled\n' );
         } else if( "AUTO_START" >< serQueryRes && "DELAYED" >< serQueryRes ) {
@@ -123,17 +124,19 @@ function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg
         } else if( "DEMAND_START" >< serQueryRes ) {
           return make_list( "failed", text_response + 'Manual\n' );
         } else {
-          return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen\n' );
+          if( serQueryRes ) extra = ' Fehlermeldung: ' + chomp( serQueryRes ) + '.';
+          return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen.' + extra + '\n' );
         }
       } else if( "Access is denied" >< serQueryRes ) {
         return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen. Der Zugriff wurde verweigert.\n' );
       } else if( "The specified service does not exist as an installed service." >< serQueryRes ) {
         return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen. Der Service existiert nicht.\n' );
       } else {
-        return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen\n' );
+        if( serQueryRes ) extra = ' Fehlermeldung: ' + chomp( serQueryRes ) + '.';
+        return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen.' + extra + '\n' );
       }
     } else {
-      return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen (keine WMI Unterstuetzung vorhanden)\n' );
+      return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen (keine WMI Unterstuetzung vorhanden).\n' );
     }
   } else {
     if( reg_key ) {
@@ -141,7 +144,7 @@ function check_policy( check_desc, check_num, check_type, reg_key, reg_name, reg
     } else {
       text_response = check_desc + '||' + check_num + '||' + check_type + '||' + service_name + '||' + startup_type + '||';
     }
-    return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen (fehlerhafte "Ueberpruefung" Details in Policy Datei)\n' );
+    return make_list( "error", text_response + 'Ueberpruefung fehlgeschlagen (fehlerhafte "Ueberpruefung" Details in Policy Datei).\n' );
   }
 }
 
@@ -164,6 +167,11 @@ if( "Windows 10" >!< windows_name ) {
   set_kb_item( name:"policy/orientierungshilfe_win10/error",
                value:"Es konnte kein Windows 10 erkannt werden (erkanntes OS: " + windows_name + "). Es koennen keine Ueberpruefungen durchgefuehrt werden." );
   exit( 0 );
+}
+
+# Windows 10 LTSB (Long Term Servicing Branch) does not have Cortana, Microsoft Edge or Windows Store installed. Thus some registry entries do not have to be set or may vary (IE instead of Edge for example)
+if( "LTSB" >< windows_name ) {
+  ltsb_version = TRUE;
 }
 
 # Login for the win_cmd_exec in check_policy()
@@ -199,22 +207,27 @@ for( i = 0 ; i < max; i++ ) {
     service_name = entry[1];
   } else if( entry[0] == "Startup-Type" ) {
     startup_type = entry[1];
+  } else if( entry[0] == "Servicing-Branch" ) {
+    servicing_branch = entry[1];
   }
 
   if( ( i == max - 1 ) || ( policy_lines[ i + 1 ] == "" ) ) {
-    status = check_policy( check_desc:check_desc, check_num:check_num, check_type:check_type, reg_key:reg_key, reg_name:reg_name, reg_type:reg_type, reg_value:reg_value, service_name:service_name, startup_type:startup_type );
-    if( status[0] == "passed" ) {
-      policy_pass += status[1];
-    } else if( status[0] == "failed" ) {
-      policy_fail += status[1];
-    } else if( status[0] == "unimplemented" ) {
-      policy_error += status[1];
-    } else if( status[0] == "error" ) {
-      policy_error += status[1];
+    # there are (at least) two types if servicing branches: LTSB and CB (Current Branch). each registry-entry has a flag LTSB and / or CB
+    if( ( ltsb_version && "LTSB" >< servicing_branch ) || ( ! ltsb_version && "CB" >< servicing_branch ) || ( ! servicing_branch ) ) {
+      status = check_policy( check_desc:check_desc, check_num:check_num, check_type:check_type, reg_key:reg_key, reg_name:reg_name, reg_type:reg_type, reg_value:reg_value, service_name:service_name, startup_type:startup_type );
+      if( status[0] == "passed" ) {
+        policy_pass += status[1] + "#-#";
+      } else if( status[0] == "failed" ) {
+        policy_fail += status[1] + "#-#";
+      } else if( status[0] == "unimplemented" ) {
+        policy_error += status[1] + "#-#";
+      } else if( status[0] == "error" ) {
+        policy_error += status[1] + "#-#";
+      }
     }
 
     # Reset previous declared variables in the loop
-    check_desc = NULL; check_num = NULL; check_type = NULL; reg_key = NULL; reg_name = NULL; reg_type = NULL; reg_value = NULL; service_name = NULL; startup_type = NULL;
+    check_desc = NULL; check_num = NULL; check_type = NULL; reg_key = NULL; reg_name = NULL; reg_type = NULL; reg_value = NULL; service_name = NULL; startup_type = NULL; servicing_branch = NULL;
   }
 }
 

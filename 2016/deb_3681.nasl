@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3681.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: deb_3681.nasl 5675 2017-03-22 10:00:52Z teissa $
 # Auto-generated from advisory DSA 3681-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703681);
-    script_version("$Revision: 5070 $");
+    script_version("$Revision: 5675 $");
     script_cve_id("CVE-2016-4029", "CVE-2016-6634", "CVE-2016-6635", "CVE-2016-7168",
                   "CVE-2016-7169");
     script_name("Debian Security Advisory DSA 3681-1 (wordpress - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-10-05 15:43:20 +0530 (Wed, 05 Oct 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3681.html");
 
-    script_summary("Debian Security Advisory DSA 3681-1 (wordpress - security update)");
 
     script_category(ACT_GATHER_INFO);
 

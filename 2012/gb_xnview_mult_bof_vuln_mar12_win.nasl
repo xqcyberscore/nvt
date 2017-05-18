@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerabilities Test
-# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)
 #
@@ -46,11 +46,11 @@ tag_solution = "Update to XnView version 1.98.8 or later,
 if(description)
 {
   script_id(802815);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(52405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:56:44 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47388/");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52405/info");
   script_xref(name : "URL" , value : "http://forums.cnet.com/7726-6132_102-5285780.html");
 
-  script_summary("Check for the version of XnView");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

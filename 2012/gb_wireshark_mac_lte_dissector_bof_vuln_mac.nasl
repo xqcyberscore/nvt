@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_mac.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_mac.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -39,12 +39,12 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 if(description)
 {
   script_id(802664);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0444");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:17:17 +0530 (Mon, 30 Jul 2012)");
   script_name("Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64624");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-02.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=5530");
 
-  script_summary("Check for the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

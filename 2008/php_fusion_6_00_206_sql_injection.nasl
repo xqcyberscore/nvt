@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_fusion_6_00_206_sql_injection.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: php_fusion_6_00_206_sql_injection.nasl 5933 2017-04-11 10:42:30Z cfi $
 # Description: PHP-Fusion <= 6.00.206 Forum SQL Injection Vulnerability
 #
 # Authors:
@@ -39,20 +39,22 @@ tag_solution = "Apply the patch from the php-fusion main site:
 if(description)
 {
   script_id(200010);
-  script_version("$Revision: 4489 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2005-3740");
   script_bugtraq_id(15502);
   script_name("PHP-Fusion <= 6.00.206 Forum SQL Injection Vulnerability");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2005 Ferdy Riphagen");
   script_dependencies("secpod_php_fusion_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("php-fusion/installed");
+
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/15502");

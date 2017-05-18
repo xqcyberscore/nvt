@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_version.nasl 3597 2016-06-24 11:34:39Z ckuerste $
+# $Id: gb_simatic_s7_version.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Siemens SIMATIC S7 Device Version
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106096");
- script_version ("$Revision: 3597 $");
- script_tag(name: "last_modification", value: "$Date: 2016-06-24 13:34:39 +0200 (Fri, 24 Jun 2016) $");
+ script_version ("$Revision: 6040 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:30:33 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,6 @@ if (description)
  script_dependencies("gb_simatic_s7_cotp_detect.nasl", "gb_simatic_s7_snmp_detect.nasl", "gb_simatic_s7_http_detect.nasl");
  script_mandatory_keys("simatic_s7/detected");
 
- script_summary("Get Siemens SIMATIC S7 model and version.");
 
 
  exit(0);

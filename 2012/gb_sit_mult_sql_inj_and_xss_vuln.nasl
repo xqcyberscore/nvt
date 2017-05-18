@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_sit_mult_sql_inj_and_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is running Support Incident Tracker and is prone to
 if(description)
 {
   script_id(802388);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2011-5071", "CVE-2011-5072", "CVE-2011-5073", "CVE-2011-5074",
                 "CVE-2011-5075");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:15:30 +0530 (Wed, 01 Feb 2012)");
   script_name("Support Incident Tracker SiT! Multiple SQL Injection And XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46019");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_sit_support_incident_tracker.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Support Incident Tracker Cross-Site Scripting");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

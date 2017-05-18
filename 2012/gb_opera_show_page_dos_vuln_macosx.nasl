@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_show_page_dos_vuln_macosx.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_show_page_dos_vuln_macosx.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Opera Lenovo 'Show Page' Denial Of Service Vulnerability - (Mac OS X)
 #
@@ -37,17 +37,16 @@ tag_summary = "This host is installed with Opera and is prone to denial of
 if(description)
 {
   script_id(803004);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-4146");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-08 12:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/mac/1201/");
   script_xref(name : "URL" , value : "http://www.scaprepo.com/view.jsp?id=CVE-2012-4146");
 
-  script_summary("Check for the version of Opera for Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

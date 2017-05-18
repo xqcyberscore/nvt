@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808372");
-  script_version("$Revision: 3836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 06:36:22 +0200 (Tue, 16 Aug 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:27:57 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2015-8877", "CVE-2016-5116");
   script_tag(name:"cvss_base", value:"6.4");
@@ -49,7 +49,6 @@ browsers. Note that gd is not a paint program.
   script_xref(name: "FEDORA", value: "2016-de6e26b8aa");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JCSKCC6CXVH2OIWJPDBY656L66JXLITY");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

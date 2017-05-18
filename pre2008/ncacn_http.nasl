@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ncacn_http.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: ncacn_http.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Detect CIS ports
 #
 # Authors:
@@ -43,8 +43,8 @@ if(description)
 {
  script_id(10761);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Detect CIS ports";
@@ -52,7 +52,6 @@ if(description)
  
 
  summary = "Detect banner with ncacn_http";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

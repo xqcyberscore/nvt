@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_webdav_php_upload_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_xampp_webdav_php_upload_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # XAMPP WebDAV PHP Upload Vulnerability
 #
@@ -49,23 +49,24 @@ vulnerability.";
 if(description)
 {
   script_id(802293);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5841 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:12:12 +0530 (Tue, 17 Jan 2012)");
   script_name("XAMPP WebDAV PHP Upload Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72397");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18367");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108420/xampp_webdav_upload_php.rb.txt");
 
-  script_summary("Check if XAMPP is vulnerable to PHP upload");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_xampp_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("xampp/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -75,27 +76,15 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-
-## Check Port State
-if(!get_port_state(port)) {
-  exit(0);
-}
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Confirm the application
 if (! xamppVer = get_kb_item("www/" + port + "/XAMPP")){
   exit(0);
 }
+
+host = http_host_name(port:port);
 
 ## Send Request Without Authorization
 url = "/webdav/openvastest" + rand() + ".php";
@@ -121,8 +110,8 @@ response = hexstr(MD5(string(ha1,":",nonce,":",nc,":",cnonce,":",qop,":",ha2)));
 ## Construct Request with Default Authorization
 data = "<?php phpinfo();?>";
 req = string("PUT ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
-             "User-Agent: OpenVAS\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              'Authorization: Digest username="wampp", realm="XAMPP with WebDAV",',
              'nonce="',nonce,'",', 'uri="',url,'", algorithm=MD5,',
              'response="', response,'", qop=', qop,', nc=',nc,', cnonce="',cnonce,'"',"\r\n",

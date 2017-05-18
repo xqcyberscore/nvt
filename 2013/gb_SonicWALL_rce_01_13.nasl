@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SonicWALL_rce_01_13.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_SonicWALL_rce_01_13.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Multiple SonicWALL Products Authentication Bypass Vulnerability
 #
@@ -42,16 +42,14 @@ GMS/ViewPoint 5.0.x GMS/ViewPoint 4.1.x";
 tag_solution = "Vendor updates are available. Please see the references for more
 information.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103642";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103642");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_bugtraq_id(57445);
  script_cve_id("CVE-2013-1359","CVE-2013-1360");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 5842 $");
 
  script_name("Multiple SonicWALL Products Authentication Bypass Vulnerability");
 
@@ -59,9 +57,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.sonicwall.com/");
  script_xref(name : "URL" , value : "http://sotiriu.de/adv/NSOADV-2013-001.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-01-18 13:01:11 +0100 (Fri, 18 Jan 2013)");
- script_summary("Determine if it is possible to execute jsp code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -78,22 +75,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!port || !get_port_state(port))exit(0);
 
 url = "/";
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+buf = http_get_cache(item:url, port:port);
 
 if("<title>sonicwall" >!< tolower(buf))exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = string(
 "POST /appliance/applianceMainPage?skipSessionCheck=1 HTTP/1.1\r\n",
 "TE: deflate,gzip;q=0.3\r\n",
 "Connection: TE, close\r\n",
 "Host: ",host,"\r\n",
-"User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:11.0) Gecko/20100101 OpenVAS/11.0\r\n",
+"User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
 "Content-Length: 90\r\n",
 "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n",
 "\r\n",
@@ -137,7 +132,7 @@ req = string(
 "TE: deflate,gzip;q=0.3\r\n",
 "Connection: TE, close\r\n",
 "Host: ",host,"\r\n",
-"User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:11.0) Gecko/20100101 OpenVAS/11.0\r\n",
+"User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
 "Content-Length: ",len,"\r\n",
 "Content-Type: multipart/form-data; boundary=xYzZY\r\n",
 "\r\n",

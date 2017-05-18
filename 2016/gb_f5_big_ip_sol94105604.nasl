@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol94105604.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol94105604.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # F5 BIG-IP - SOL94105604 - Linux kernel vulnerability CVE-2015-7872
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7872");
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 5877 $");
 
  script_name("F5 BIG-IP - SOL94105604 - Linux kernel vulnerability CVE-2015-7872");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-01-19 12:01:28 +0100 (Tue, 19 Jan 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

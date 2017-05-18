@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_51212.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_op5_51212.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # op5 Appliance Multiple Remote Command Execution Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103380");
  script_bugtraq_id(51212);
  script_cve_id("CVE-2012-0261","CVE-2012-0262");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6018 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("op5 Appliance Multiple Remote Command Execution Vulnerabilities");
@@ -41,9 +41,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.op5.com/news/support-news/fixed-vulnerabilities-op5-monitor-op5-appliance/");
  script_xref(name : "URL" , value : "http://www.op5.com/accessories/appliance-server/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-09 11:07:18 +0100 (Mon, 09 Jan 2012)");
- script_summary("Determine if remote op5 Appliance is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

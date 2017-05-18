@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807983");
-  script_version("$Revision: 3273 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-11 11:46:39 +0200 (Wed, 11 May 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-08 05:18:35 +0200 (Sun, 08 May 2016)");
   script_cve_id("CVE-2016-3115");
   script_tag(name:"cvss_base", value:"5.5");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-08");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/184264.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gsi-openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

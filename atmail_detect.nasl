@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: atmail_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
 #
 # Atmail Detection
 #
@@ -35,15 +35,13 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5720 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
-
  script_name("Atmail Detection");  
- script_summary("Checks for the presence of Atmail");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,20 +61,18 @@ include("global_settings.inc");
 SCRIPT_DESC = "Atmail Detection";
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/mail","/webmail","/atmail",'/index.php/admin',cgi_dirs());
 files = make_list("/index.php/admin/","/index.php");
 
-foreach dir (dirs) {
-  foreach file ( files )
-  {  
-    url = dir + file;
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:port ) ) ) {
 
+  install = dir;
+  if( dir == "/" ) dir = "";
+
+  foreach file ( files ) {
+    url = dir + file;
+    buf = http_get_cache( item:url, port:port );
     if( buf == NULL )continue;
  
     if(
@@ -84,11 +80,6 @@ foreach dir (dirs) {
       egrep(pattern: "<title>Login to Atmail</title>", string: buf) ||
       egrep(pattern: "For more information on the WebMail service.*Atmail PHP [0-9.]+", string: buf)) 
    { 
-       if(strlen(dir)>0) {
-          install=dir;
-       } else {
-          install=string("/");
-       }  
     
       vers = string("unknown");
 

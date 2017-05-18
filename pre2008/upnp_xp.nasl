@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upnp_xp.nasl 4077 2016-09-15 14:32:39Z cfi $
+# $Id: upnp_xp.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # scan for UPNP hosts
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10829");
-  script_version("$Revision: 4077 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 16:32:39 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3723);
   script_tag(name:"cvss_base", value:"7.5");
@@ -36,7 +36,6 @@ if(description)
   script_cve_id("CVE-2001-0876");
   script_name("scan for UPNP hosts");
   # # this check was replaced by gb_upnp_detect.nasl (1.3.6.1.4.1.25623.1.0.103652)
-  script_summary("UPNP scan");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 by John Lampe");
   script_family("Windows");

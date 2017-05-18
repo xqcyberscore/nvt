@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_mult_vuln.nasl 5552 2017-03-13 07:50:17Z teissa $
+# $Id: gb_plone_mult_vuln.nasl 5849 2017-04-04 07:41:15Z cfi $
 #
 # Plone CMS Multiple Vulnerabilities
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:plone:plone";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106358");
-  script_version("$Revision: 5552 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 08:50:17 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 5849 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-04 09:41:15 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-10-31 13:26:41 +0700 (Mon, 31 Oct 2016)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2016-7135", "CVE-2016-7136", "CVE-2016-7137", "CVE-2016-7138", "CVE-2016-7139",
-                "CVE-2016-7140", "CVE-2016-7147");
+                "CVE-2016-7140", "CVE-2016-7147", "CVE-2017-5524");
 
   script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
@@ -58,6 +58,8 @@ if (description)
 
   script_tag(name: "insight", value: "Plone CMS is prone to multiple vulnerabilities:
 
+- A bypass of the sandbox protection mechanism. (CVE-2017-5524)
+
 - Several Reflected Cross-Site Scripting were found within the application. (CVE-2016-7136, CVE-2016-7138,
 CVE-2016-7139, CVE-2016-7140)
 
@@ -75,6 +77,8 @@ or redirect users to arbitrary web sites.");
   script_tag(name: "solution", value: "Apply the hotfix or update to Plone 4.3.12, 5.0.7 or later.");
 
   script_xref(name: "URL", value: "https://plone.org/security/hotfix/20160830");
+  script_xref(name: "URL", value: "https://plone.org/security/hotfix/20170117");
+  script_xref(name: "URL", value: "https://plone.org/security/hotfix/20170117/sandbox-escape");
 
   exit(0);
 }

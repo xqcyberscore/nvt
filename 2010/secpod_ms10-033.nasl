@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-033.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-033.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Media Decompression Remote Code Execution Vulnerability (979902)
 #
@@ -26,43 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_affected = "DirectX, Windows Media Encoder 9 and COM component on,
-  Micorsoft Windows 7
-  Microsoft Windows 2000 SP4
-  Microsoft Windows XP Service Pack 3 and prior
-  Microsoft Windows 2K3 Service Pack 2 and prior
-  Microsoft Windows Vista Service Pack 1/2 and prior.
-  Microsoft Windows Server 2008 Service Pack 1/2 and prior.
-
-  Windows Media Format Runtime 9 on,
-  Microsoft Windows 2000 SP4
-  Microsoft Windows XP Service Pack 3 and prior
-
-  Windows Media Format Runtime 9.5 on,
-  Microsoft Windows XP Service Pack 3 and prior
-  Microsoft Windows 2K3 Service Pack 2 and prior
-
-  Windows Media Format Runtime 11 on,
-  Microsoft Windows XP Service Pack 3 and prior";
-
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms10-033.mspx";
-
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code.
-  Impact Level: System";
-tag_insight = "An unspecified error exists while processing media files with a specially
-  crafted compression data. An attacker can exploit this vulnerability by
-  tricking a user to open a specially crafted media file.";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-033.";
-
 if(description)
 {
   script_id(900246);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_bugtraq_id(40432, 40464);
   script_cve_id("CVE-2010-1879", "CVE-2010-1880");
@@ -79,11 +47,35 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  code.
+  Impact Level: System");
+  script_tag(name : "insight" , value : "An unspecified error exists while processing media files with a specially
+  crafted compression data. An attacker can exploit this vulnerability by
+  tricking a user to open a specially crafted media file.");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-033.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms10-033.mspx");
+  script_tag(name : "affected" , value : "DirectX, Windows Media Encoder 9 and COM component on,
+  Micorsoft Windows 7
+  Microsoft Windows 2000 SP4
+  Microsoft Windows XP Service Pack 3 and prior
+  Microsoft Windows 2K3 Service Pack 2 and prior
+  Microsoft Windows Vista Service Pack 1/2 and prior.
+  Microsoft Windows Server 2008 Service Pack 1/2 and prior.
+
+  Windows Media Format Runtime 9 on,
+  Microsoft Windows 2000 SP4
+  Microsoft Windows XP Service Pack 3 and prior
+
+  Windows Media Format Runtime 9.5 on,
+  Microsoft Windows XP Service Pack 3 and prior
+  Microsoft Windows 2K3 Service Pack 2 and prior
+
+  Windows Media Format Runtime 11 on,
+  Microsoft Windows XP Service Pack 3 and prior");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -95,21 +87,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-
-## This function will return the version of the given file
-function get_file_version(dllPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:dllPath + "\" + file_name);
-
-  dllVer = GetVer(file:file, share:share);
-  if(!dllVer){
-    return(FALSE);
-  }
-
-  return(dllVer);
-}
 
 ## OS with Hotfix Check
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3, winVista:3, win7:1, win2008:3) <= 0){
@@ -131,7 +108,7 @@ if(wme9Installed)
   wmeitem = "Path";
   wmePath = registry_get_sz(key:wmekey, item:wmeitem);
 
-  dllVer = get_file_version(dllPath:wmePath, file_name:"Wmenceng.dll");
+  dllVer = fetch_file_version(sysPath:wmePath, file_name:"Wmenceng.dll");
   if(dllVer)
   {
     ## Check Wmenceng.dll version < 9.0.0.3369
@@ -144,9 +121,7 @@ if(wme9Installed)
 }
 
 ## Get System32 Path
-key = "SOFTWARE\Microsoft\COM3\Setup";
-item = "Install Path";
-system32Path = registry_get_sz(key:key, item:item);
+system32Path = smb_get_system32root();
 if(!system32Path){
   exit(0);
 }
@@ -156,7 +131,7 @@ if(hotfix_check_sp(win2k:5) > 0)
 {
 
   ## Check for Asycfilt.dll COM component vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"Asycfilt.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Asycfilt.dll");
   if(dllVer)
   {
       ## Check Asycfilt.dll version < 2.40.4534.0
@@ -171,7 +146,7 @@ if(hotfix_check_sp(win2k:5) > 0)
                                item:"Version");
   if(directXver =~ "^4\.09")
   {
-    dllVer = get_file_version(dllPath:system32Path, file_name:"Quartz.dll");
+    dllVer = fetch_file_version(sysPath:system32Path, file_name:"Quartz.dll");
     if(dllVer)
     {
       ## Grep Quartz.dll version < 6.5.1.914
@@ -184,7 +159,7 @@ if(hotfix_check_sp(win2k:5) > 0)
   }
 
   ## Check for Media Format Runtime vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"Wmvcore.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Wmvcore.dll");
   if(dllVer)
   {
       ## Check Asycfilt.dll version from 9.0  < 9.0.0.3369
@@ -202,7 +177,7 @@ else if(hotfix_check_sp(xp:4) > 0)
   SP = get_kb_item("SMB/WinXP/ServicePack");
 
   ## Check for Asycfilt.dll COM component vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"Asycfilt.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Asycfilt.dll");
   if(dllVer)
   {
     if("Service Pack 2" >< SP)
@@ -224,7 +199,7 @@ else if(hotfix_check_sp(xp:4) > 0)
   }
 
   ## Check for DirectX vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"Quartz.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Quartz.dll");
   if(dllVer)
   {
     if("Service Pack 2" >< SP)
@@ -248,7 +223,7 @@ else if(hotfix_check_sp(xp:4) > 0)
   }
 
   ## Check for Media Format Runtime vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"Wmvcore.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Wmvcore.dll");
   if(dllVer)
   {
     if("Service Pack 2" >< SP)
@@ -283,7 +258,7 @@ if(hotfix_check_sp(win2003:3) > 0)
   if("Service Pack 2" >< SP)
   {
     ## Check for Asycfilt.dll COM component vulnerability
-    dllVer = get_file_version(dllPath:system32Path, file_name:"Asycfilt.dll");
+    dllVer = fetch_file_version(sysPath:system32Path, file_name:"Asycfilt.dll");
     if(dllVer)
     {
       ## Check Asycfilt.dll version < 5.2.3790.4676
@@ -298,7 +273,7 @@ if(hotfix_check_sp(win2003:3) > 0)
                                  item:"Version");
     if(directXver =~ "^4\.09")
     {
-      dllVer = get_file_version(dllPath:system32Path, file_name:"Quartz.dll");
+      dllVer = fetch_file_version(sysPath:system32Path, file_name:"Quartz.dll");
       if(dllVer)
       {
         ## Grep Quartz.dll version 6.5 < 6.5.3790.4660
@@ -311,7 +286,7 @@ if(hotfix_check_sp(win2003:3) > 0)
     }
 
     ## Check for Media Format Runtime vulnerability
-    dllVer = get_file_version(dllPath:system32Path, file_name:"Wmvcore.dll");
+    dllVer = fetch_file_version(sysPath:system32Path, file_name:"Wmvcore.dll");
     if(dllVer)
     {
       ## Check Asycfilt.dll version from 10.0  < 10.0.0.4007
@@ -325,9 +300,7 @@ if(hotfix_check_sp(win2003:3) > 0)
 }
 
 ## Get System32 Path
-key = "SOFTWARE\Microsoft\Windows NT\CurrentVersion";
-item = "PathName";
-system32Path = registry_get_sz(key:key, item:item);
+system32Path = smb_get_system32root();
 if(!system32Path){
   exit(0);
 }
@@ -336,7 +309,7 @@ if(!system32Path){
 if(hotfix_check_sp(winVista:3) > 0)
 {
   ## Check for Asycfilt.dll COM component vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"System32\Asycfilt.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Asycfilt.dll");
   if(dllVer)
   {
     SP = get_kb_item("SMB/WinVista/ServicePack");
@@ -365,7 +338,7 @@ if(hotfix_check_sp(winVista:3) > 0)
                                item:"Version");
   if(directXver =~ "^4\.09")
   {
-    dllVer = get_file_version(dllPath:system32Path, file_name:"System32\Quartz.dll");
+    dllVer = fetch_file_version(sysPath:system32Path, file_name:"Quartz.dll");
     if(dllVer)
     {
       ## Grep Quartz.dll version 
@@ -381,7 +354,7 @@ if(hotfix_check_sp(winVista:3) > 0)
 if(hotfix_check_sp(win2008:3) > 0)
 {
   ## Check for Asycfilt.dll COM component vulnerability
-  dllVer = get_file_version(dllPath:system32Path, file_name:"System32\Asycfilt.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Asycfilt.dll");
   if(dllVer)
   {
     SP = get_kb_item("SMB/WinVista/ServicePack");
@@ -410,7 +383,7 @@ if(hotfix_check_sp(win2008:3) > 0)
                                item:"Version");
   if(directXver =~ "^4\.09")
   {
-    dllVer = get_file_version(dllPath:system32Path, file_name:"System32\Quartz.dll");
+    dllVer = fetch_file_version(sysPath:system32Path, file_name:"Quartz.dll");
     if(dllVer)
     {
       ## Grep Quartz.dll version 
@@ -425,7 +398,7 @@ if(hotfix_check_sp(win2008:3) > 0)
 ## Windows 7
 if(hotfix_check_sp(win7:1) > 0)
 {
-  dllVer = get_file_version(dllPath:system32Path, file_name:"System32\Asycfilt.dll");
+  dllVer = fetch_file_version(sysPath:system32Path, file_name:"Asycfilt.dll");
   if(dllVer)
   {
     # Grep for Asycfilt.dll version 

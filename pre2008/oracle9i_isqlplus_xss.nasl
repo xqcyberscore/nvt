@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_isqlplus_xss.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: oracle9i_isqlplus_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Oracle 9iAS iSQLplus XSS
 #
 # Authors:
@@ -42,8 +42,8 @@ users on the remote host.";
 if(description)
 {
  script_id(12112);
- script_version("$Revision: 3520 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,6 @@ if(description)
 
  summary = "Test for the possibility of an Cross-Site-Scripting XSS Attack in Oracle9i iSQLplus";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

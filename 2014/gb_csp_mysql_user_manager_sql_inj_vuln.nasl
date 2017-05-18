@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # CSP MySQL User Manager SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804229");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-1466");
   script_bugtraq_id(64731);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-01-28 11:34:43 +0530 (Tue, 28 Jan 2014)");
   script_name("CSP MySQL User Manager SQL Injection Vulnerability");
 
@@ -56,21 +56,15 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124724/");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90210");
-  script_summary("Check if we can login to CSP MySQL User Manager without credentials");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("misc_func.inc");
@@ -83,10 +77,8 @@ cspPort = "";
 cspReq = "";
 cspRes = "";
 
-## Get HTTP Port
 cspPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:cspPort)){
   exit(0);
 }
@@ -99,9 +91,7 @@ foreach dir (make_list_unique("/cmum", "/cspmum", "/", cgi_dirs(port:cspPort)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  cspReq = http_get(item:dir + "/index.php", port:cspPort);
-  cspRes = http_keepalive_send_recv(port:cspPort, data:cspReq, bodyonly:TRUE);
+  cspRes = http_get_cache(item:dir + "/index.php", port:cspPort);
 
   ## Confirm the application before trying exploit
   if(cspRes && ">:: CSP MySQL User Manager<" >< cspRes)

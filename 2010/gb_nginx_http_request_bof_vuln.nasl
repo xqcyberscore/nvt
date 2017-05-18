@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_http_request_bof_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nginx_http_request_bof_vuln.nasl 5823 2017-03-31 13:57:56Z mime $
 #
 # nginx HTTP Request Remote Buffer Overflow Vulnerability
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:nginx:nginx";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801636");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 5823 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
   script_cve_id("CVE-2009-2629");
   script_bugtraq_id(36384);
@@ -39,10 +41,10 @@ if(description)
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/180065");
   script_xref(name : "URL" , value : "http://sysoev.ru/nginx/patch.180065.txt");
 
-  script_category(ACT_MIXED_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("http_version.nasl","nginx_detect.nasl");
+  script_dependencies("nginx_detect.nasl");
   script_require_ports("Services/www", 80);
   script_require_keys("nginx/installed");
 
@@ -61,68 +63,25 @@ if(description)
 
   script_tag(name : "solution_type", value : "VendorFix");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   exit(0);
 }
 
-
-include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-## Get HTTP Port
-port = get_http_port(default:80);
-if(!port){
-  exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+
+if(version_in_range(version: version, test_version:"0.1.0", test_version2:"0.5.37") ||
+   version_in_range(version: version, test_version:"0.6.0", test_version2:"0.6.38") ||
+   version_in_range(version: version, test_version:"0.7.0", test_version2:"0.7.61"))
+{
+   report = report_fixed_ver( installed_version:version, fixed_version:"0.5.37/0.6.38/0.7.61" );
+   security_message(port:port);
+   exit(0);
 }
 
-## Get Banner
-banner = get_http_banner(port: port);
-if(!banner) {
-  exit(0);
-}
+exit( 99 );
 
-## Confirm the application
-if("Server: nginx" >< banner) {
-
-  if(safe_checks()) {
-
-    version = eregmatch(pattern:"Server: nginx/([0-9.]+)" , string:banner);
-    if(isnull(version[1]))exit(0);
-
-    if(version_in_range(version: version[1], test_version:"0.1.0", test_version2:"0.5.37")
-       || version_in_range(version: version[1], test_version:"0.6.0", test_version2:"0.6.38")
-       || version_in_range(version: version[1], test_version:"0.7.0", test_version2:"0.7.61")) {
-
-      security_message(port:port);
-      exit(0);
-    }
-  } else {
-
-    ## Construct Attack Request
-    req = http_get(item: crap(4079), port:port);
-
-    ## Open Socket
-    soc = http_open_socket(port);
-    if(!soc) {
-      exit(0);
-    }
-
-    ## Sending Attack
-    for(i=0; i<2; i++)
-    {
-      snd = send(socket: soc, data: req);
-      sleep(2);
-    
-      ## Check Socket status
-      if(snd < 0)
-      {
-        security_message(port:port);
-        exit(0);
-      }
-    }
-    http_close_socket(soc);
-  }
-}
-
-exit(99);

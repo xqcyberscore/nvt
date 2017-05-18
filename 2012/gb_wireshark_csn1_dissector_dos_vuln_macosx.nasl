@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_csn1_dissector_dos_vuln_macosx.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wireshark_csn1_dissector_dos_vuln_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Wireshark CSN.1 Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -39,18 +39,17 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 if(description)
 {
   script_id(802768);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2011-4100");
   script_bugtraq_id(50479);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-02 17:24:26 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark CSN.1 Dissector Denial of Service Vulnerability (Mac OS X)");
 
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");

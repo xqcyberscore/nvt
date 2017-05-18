@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_vuln.nasl 4407 2016-11-02 10:23:09Z ckuerste $
+# $Id: gb_zabbix_rce_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Zabbix Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106181");
-  script_version("$Revision: 4407 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-02 11:23:09 +0100 (Wed, 02 Nov 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-08-17 11:04:27 +0700 (Wed, 17 Aug 2016)");
   script_tag(name: "cvss_base", value: "8.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:N");
@@ -66,7 +66,6 @@ in api_jsonrpc.php.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/39937/");
 
-  script_summary("Checks the version");
 
   exit(0);
 }

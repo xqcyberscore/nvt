@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sun:iplanet_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902844");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5931 $");
   script_bugtraq_id(53133);
   script_cve_id("CVE-2012-0516");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-29 16:16:16 +0530 (Fri, 29 Jun 2012)");
   script_name("Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -43,7 +43,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html");
   script_xref(name : "URL" , value : "http://chingshiong.blogspot.in/2012/04/oracle-iplanet-web-server-709-multiple.html");
 
-  script_summary("Check if iPlanet WebServer is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web Servers");

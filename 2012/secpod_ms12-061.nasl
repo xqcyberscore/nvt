@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-061.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-061.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)
 #
@@ -42,18 +42,17 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903040";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5912 $");
   script_bugtraq_id(55409);
   script_cve_id("CVE-2012-1892");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 11:38:17 +0530 (Wed, 12 Sep 2012)");
   script_name("MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50463/");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-061");
 
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

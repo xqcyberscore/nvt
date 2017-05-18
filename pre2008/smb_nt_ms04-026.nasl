@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms04-026.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_ms04-026.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Vulnerability in Exchange Server 5.5 Outlook Web Access XSS (842436)
 #
 # Authors:
@@ -47,8 +47,8 @@ tag_solution = "http://www.microsoft.com/technet/security/bulletin/ms04-026.mspx
 if(description)
 {
  script_id(14254);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10902);
  script_tag(name:"cvss_base", value:"6.8");
@@ -61,7 +61,6 @@ if(description)
 
  summary = "Checks for ms04-026 via the registry";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

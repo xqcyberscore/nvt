@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 3574 2016-06-21 09:32:00Z benallard $
+# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805331");
-  script_version("$Revision: 3574 $");
+  script_version("$Revision: 5789 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 11:32:00 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 10:44:23 +0530 (Tue, 03 Feb 2015)");
   script_name("ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015");
 
@@ -63,12 +63,12 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Feb/4");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/130192/");
 
-  script_summary("Check if ZeroCMS is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -77,40 +77,26 @@ if(description)
   exit(0);
 }
 
-##Code starts from here##
 include("http_func.inc");
 include("http_keepalive.inc");
 
 ## Variable Initialization
 zeroPort = "";
-sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 zeroPort = get_http_port(default:80);
-if(!zeroPort) {
-  zeroPort = 80;
-}
 
-## Check the port status
-if(!get_port_state(zeroPort)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:zeroPort)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/cms", "/zerocms", "/ZeroCMS", cgi_dirs()))
+foreach dir (make_list_unique("/", "/cms", "/zerocms", "/ZeroCMS", cgi_dirs(port:zeroPort)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:zeroPort);
-  rcvRes = http_keepalive_send_recv(port:zeroPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:zeroPort);
+
   ##Confirm Application
   if (">zeroCMS<" >< rcvRes && "Login" >< rcvRes)
   {

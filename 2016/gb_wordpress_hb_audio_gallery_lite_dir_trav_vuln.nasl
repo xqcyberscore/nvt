@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_hb_audio_gallery_lite_dir_trav_vuln.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: gb_wordpress_hb_audio_gallery_lite_dir_trav_vuln.nasl 5831 2017-04-03 07:39:50Z teissa $
 #
 # Wordpress HB Audio Gallery Lite Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807529");
-  script_version("$Revision: 5231 $");
+  script_version("$Revision: 5831 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:39:50 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:26 +0530 (Fri, 01 Apr 2016)");
   script_name("Wordpress HB Audio Gallery Lite Directory Traversal Vulnerability");
 
@@ -53,12 +53,9 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Plugin HB Audio Gallery Lite 
   version 1.0.0");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 
-  08th February, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to
-  https://fr.wordpress.org/plugins/hb-audio-gallery-lite");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39589");
 

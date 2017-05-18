@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interworx_web_control_panel_mult_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_interworx_web_control_panel_mult_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # InterWorx Web Control Panel Information Disclosure and XSS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804779");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5827 $");
   script_cve_id("CVE-2014-2035");
   script_bugtraq_id(65734);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-10-16 18:28:59 +0530 (Thu, 16 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -67,15 +67,15 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125344");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/531191/100/0/threaded");
 
-  script_summary("Check if InterWorx is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 2443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -85,7 +85,6 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:2443);
 
 ## Iterate over possible paths
@@ -94,8 +93,7 @@ foreach dir (make_list_unique("/", "/nodeworx", "/interworx", cgi_dirs(port:2443
 
   if(dir == "/") dir = "";
 
-  sndReq = http_get(item: string(dir, "/"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item: string(dir, "/"),  port:http_port);
 
   ## confirm the Application
   if("InterWorx-CP" >< rcvRes)

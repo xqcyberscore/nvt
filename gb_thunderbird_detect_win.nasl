@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thunderbird_detect_win.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_thunderbird_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Mozilla Thunderbird Version Detection (Windows)
 #
@@ -39,10 +39,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800015");
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla Thunderbird Version Detection (Windows)");
@@ -56,7 +56,6 @@ and gets the version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Mozilla Thunderbird on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");

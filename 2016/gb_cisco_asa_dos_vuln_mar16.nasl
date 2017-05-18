@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dos_vuln_mar16.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_dos_vuln_mar16.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Cisco ASA 5500 Devices Denial of Service Vulnerability - Mar16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806690");
-  script_version("$Revision: 5000 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-1312");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-22 12:49:04 +0530 (Tue, 22 Mar 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA 5500 Devices Denial of Service Vulnerability - Mar16");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bst.cloudapps.cisco.com/bugsearch/bug/CSCue76147");
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160309-csc");
 
-  script_summary("Check for the vulnerable version of Cisco ASA");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

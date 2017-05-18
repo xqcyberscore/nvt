@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_support_xss_vuln_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_ruby_on_rails_active_support_xss_vuln_win.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Ruby on Rails Active Support Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807381");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-3226");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 15:29:50 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Active Support Cross Site Scripting Vulnerability (Windows)");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2015/06/16/17");
   script_xref(name : "URL" , value : "https://groups.google.com/forum/message/raw?msg=rubyonrails-security/7VlB_pck3hU/3QZrGIaQW6cJ");
-  script_summary("Check for the vulnerable version of Ruby on Rails on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

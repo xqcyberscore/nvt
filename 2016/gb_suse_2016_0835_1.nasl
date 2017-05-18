@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851251");
-  script_version("$Revision: 3094 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 09:59:37 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-20 06:18:10 +0100 (Sun, 20 Mar 2016)");
   script_cve_id("CVE-2016-2097", "CVE-2016-2098");
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0835_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00080.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of rubygem-actionpack-3_2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

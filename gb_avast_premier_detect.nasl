@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808031");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:35:50 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Premier Antivirus Version Detection (Windows)");
 
@@ -40,7 +40,6 @@ if(description)
   The script logs in via smb, searches for string 'Avast Premier' in the registry
   and reads the version information from registry.");
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of Avast Premier");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

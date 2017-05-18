@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882433");
-  script_version("$Revision: 2954 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 07:16:22 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-24 06:15:00 +0100 (Thu, 24 Mar 2016)");
   script_cve_id("CVE-2016-0774", "CVE-2015-1805");
   script_tag(name:"cvss_base", value:"7.2");
@@ -95,7 +95,6 @@ unavailable. As a result, all subsequent operations targette ...
 
   script_xref(name: "CESA", value: "2016:0494");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021769.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

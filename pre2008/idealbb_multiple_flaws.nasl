@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: idealbb_multiple_flaws.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: idealbb_multiple_flaws.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: IdealBB multiple flaws
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to the latest version of this software.";
 if(description)
 {
   script_id(15541);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 5786 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2207", "CVE-2004-2208", "CVE-2004-2209");
   script_bugtraq_id(11424);
@@ -47,51 +47,33 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("IdealBB multiple flaws");
- 
-
-  script_summary("Checks IdealBB version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
-  script_dependencies("http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
 
-# the code!
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-function check(req)
-{
-  buf = http_get(item:string(req,"/idealbb/default.asp"), port:port);
-  r = http_keepalive_send_recv(port:port, data:buf, bodyonly:1);
-  if( r == NULL )exit(0);
-  if(egrep(pattern:"<title>The Ideal Bulletin Board</title>.*Ideal BB Version: 0\.1\.([0-4][^0-9]|5[^.]|5\.[1-3][^0-9])", string:r))
-  {
- 	http_close_socket(soc);
- 	security_message(port);
-	exit(0);
-  }
-}
-
 port = get_http_port(default:80);
-if ( ! port ) exit(0);
-if(!get_port_state(port)) exit(0);
 if(!can_host_asp(port:port))exit(0);
 
-soc = http_open_socket(port);
-if(soc)
-{
-  foreach dir (cgi_dirs())
-  {
-    check(req:dir);
+foreach dir( make_list_unique( "/idealbb", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  r = http_get_cache(item:string(dir,"/default.asp"), port:port);
+  if( r == NULL )continue;
+  if(egrep(pattern:"<title>The Ideal Bulletin Board</title>.*Ideal BB Version: 0\.1\.([0-4][^0-9]|5[^.]|5\.[1-3][^0-9])", string:r)) {
+    security_message(port);
+    exit(0);
   }
-  http_close_socket(soc);
 }
+
 exit(0);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808530");
-  script_version("$Revision: 3683 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-11 07:25:10 +0200 (Mon, 11 Jul 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-02 06:38:46 +0200 (Sat, 02 Jul 2016)");
   script_cve_id("CVE-2016-1181", "CVE-2016-1182");
   script_tag(name:"cvss_base", value:"6.8");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-d717fdcf74");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQI2PYM3R4FWEOVHIFT7KUPTILG2DFMZ");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of struts");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871644");
-  script_version("$Revision: 3798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-04 13:01:10 +0200 (Thu, 04 Aug 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 16:27:46 +0530 (Thu, 04 Aug 2016)");
   script_cve_id("CVE-2015-8660", "CVE-2016-2143", "CVE-2016-4470");
   script_tag(name:"cvss_base", value:"7.2");
@@ -95,7 +95,6 @@ architectures. As a result, the call trace error no longer app ...
   script_xref(name: "RHSA", value: "2016:1539-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-August/msg00004.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

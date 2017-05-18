@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Avaya WinPDM Multiple Buffer Overflow Vulnerabilities
 #
@@ -52,11 +52,11 @@ tag_summary = "The host is running Avaya WinPDM and is prone to multiple buffer 
 if(description)
 {
   script_id(802469);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5912 $");
   script_bugtraq_id(47947);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-12 12:33:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Avaya WinPDM Multiple Buffer Overflow Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44062/");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://downloads.avaya.com/css/P8/documents/100140122");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117209/Avaya-WinPMD-UniteHostRouter-Buffer-Overflow.html");
 
-  script_summary("Determine if Avaya WinPDM prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

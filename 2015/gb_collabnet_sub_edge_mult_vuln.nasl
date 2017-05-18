@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collabnet_sub_edge_mult_vuln.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_collabnet_sub_edge_mult_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # CollabNet Subversion Edge Management Frontend Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805710");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-07-02 13:11:22 +0530 (Thu, 02 Jul 2015)");
   script_name("CollabNet Subversion Edge Management Frontend Multiple Vulnerabilities");
 
@@ -71,11 +71,11 @@ if (description)
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132492/csem-passwordpolicy.txt");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of CollabNet Subversion Edge Management Frontend");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 3343);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -88,20 +88,9 @@ url = "";
 req = "";
 buf = "";
 
-## Get HTTP Port
 coll_Port = get_http_port(default:3343);
-if(!coll_Port){
-  coll_Port = 3343;
-}
 
-## Check the port status
-if(!get_port_state(coll_Port)){
-  exit(0);
-}
-
-## product is low priority so detect nvt is not created.
-
-foreach dir (make_list_unique("/", "/csvn", cgi_dirs()))
+foreach dir (make_list_unique("/", "/csvn", cgi_dirs(port:coll_Port)))
 {
 
   if( dir == "/" ) dir = "";

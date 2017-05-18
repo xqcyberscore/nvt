@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_polycom_products_52301.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_polycom_products_52301.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Polycom Products Directory Traversal and Command Injection Vulnerabilities
 #
@@ -40,16 +40,15 @@ if (description)
 {
  script_id(103442);
  script_bugtraq_id(52301);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5963 $");
 
  script_name("Polycom Products Directory Traversal and Command Injection Vulnerabilities");
 
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-06 10:45:23 +0100 (Tue, 06 Mar 2012)");
- script_summary("Determine if traversal attack is possible");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

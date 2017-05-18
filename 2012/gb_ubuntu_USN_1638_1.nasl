@@ -83,8 +83,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-November/001902.html");
   script_id(841224);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6022 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-23 11:53:46 +0530 (Fri, 23 Nov 2012)");
   script_cve_id("CVE-2012-5842", "CVE-2012-5843", "CVE-2012-4202", "CVE-2012-4201",
                 "CVE-2012-5836", "CVE-2012-4203", "CVE-2012-4204", "CVE-2012-4205",
@@ -98,7 +98,6 @@ if(description)
   script_xref(name: "USN", value: "1638-1");
   script_name("Ubuntu Update for firefox USN-1638-1");
 
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

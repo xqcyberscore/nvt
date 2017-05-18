@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851262");
-  script_version("$Revision: 3023 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 09:29:22 +0200 (Mon, 11 Apr 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-11 12:47:20 +0530 (Mon, 11 Apr 2016)");
   script_cve_id("CVE-2013-4533", "CVE-2013-4537", "CVE-2013-4538", "CVE-2013-4539", 
                 "CVE-2014-0222", "CVE-2014-3689", "CVE-2014-7815", "CVE-2014-9718", 
@@ -94,7 +94,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0914_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00096.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

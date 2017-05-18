@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: invision_pwb.nasl 3502 2016-06-13 16:52:56Z mime $
+# $Id: invision_pwb.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Invision Power Board XSS
 #
 # Authors:
@@ -39,8 +39,8 @@ CPE = "cpe:/a:invision_power_services:invision_power_board";
 if(description) 
 { 
   script_oid(SCRIPT_OID); 
-  script_version("$Revision: 3502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 18:52:56 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1578");
   script_bugtraq_id(11332);
@@ -52,7 +52,6 @@ if(description)
   script_name(name); 
 
   summary = "Checks for Invision Power Board XSS";
-  script_summary(summary);
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

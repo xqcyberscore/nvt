@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_detect.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_overlook_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # OPEN IT OverLook Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(902513);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OPEN IT OverLook Version Detection");
-  script_summary("Check for OverLook version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2011 SecPod");

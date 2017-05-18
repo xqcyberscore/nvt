@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_detect_win.nasl 3914 2016-08-31 09:49:38Z antu123 $
+# $Id: gb_flexera_installanywhere_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Flexera InstallAnywhere Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809011");
-  script_version("$Revision: 3914 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 11:49:38 +0200 (Wed, 31 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_name("Flexera InstallAnywhere Version Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -40,7 +40,6 @@ if(description)
   and gets the version from 'DisplayVersion' string from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Set version of Flexera InstallAnywhere in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -55,18 +54,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## variable Initialization
 os_arch = "";

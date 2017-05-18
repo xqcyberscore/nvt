@@ -53,8 +53,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-August/001795.html");
   script_id(841117);
-  script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5912 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-17 10:22:08 +0530 (Fri, 17 Aug 2012)");
   script_cve_id("CVE-2012-1457", "CVE-2012-1459", "CVE-2012-1458");
   script_tag(name:"cvss_base", value:"4.3");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name: "USN", value: "1482-3");
   script_name("Ubuntu Update for clamav USN-1482-3");
 
-  script_summary("Check for the Version of clamav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

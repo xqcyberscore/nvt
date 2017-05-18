@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA_NSX_2016-0007.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA_NSX_2016-0007.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # VMSA-2016-0007: VMware NSX product updates address a critical information disclosure vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-2079");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5867 $");
  script_name("VMSA-2016-0007: VMware NSX product updates address a critical information disclosure vulnerability");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2016-0007.html");
@@ -48,11 +48,10 @@ to gain access to sensitive information.");
  script_tag(name: "affected" , value:"NSX 6.2 prior to 6.2.3
 NSX 6.1 prior to 6.1.7");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-06-10 12:47:00 +0200 (Fri, 10 Jun 2016)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Checks the installed version/build.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

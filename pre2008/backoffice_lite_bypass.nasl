@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: backoffice_lite_bypass.nasl 3298 2016-05-12 10:40:52Z benallard $
-# Description: Comersus BackOffice Lite Administrative Bypass
+# $Id: backoffice_lite_bypass.nasl 5992 2017-04-20 14:42:07Z cfi $
+#
+# Comersus BackOffice Lite Administrative Bypass
 #
 # Authors:
 # Noam Rathaus
@@ -20,7 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # Subject: bug report comersus Back Office Lite 6.0 and 6.0.1
 # From: "raf somers" <beltech2bugtraq@hotmail.com>
@@ -28,80 +30,72 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.16227");
- script_version("$Revision: 3298 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 12:40:52 +0200 (Thu, 12 May 2016) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2005-0301");
- script_bugtraq_id(12362);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Comersus BackOffice Lite Administrative Bypass");
- script_summary("Checks for the presence of a BackOffice Lite Administrative Bypass");
- script_category(ACT_ATTACK);
- script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
- script_family("Web application abuses");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.16227");
+  script_version("$Revision: 5992 $");
+  script_cve_id("CVE-2005-0301");
+  script_bugtraq_id(12362);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_name("Comersus BackOffice Lite Administrative Bypass");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : "Delete the file '/comersus_backoffice_install10.asp' from the
- server as it is not needed after the installation process has been completed.");
- script_tag(name : "summary" , value : "Comersus ASP shopping cart is a set of ASP scripts creating an online 
- shoppingcart. It works on a database of your own choosing, default is 
- msaccess, and includes online administration tools.");
- script_tag(name : "impact" , value : "By accessing the /comersus_backoffice_install10.asp file it is possible
- to bypass the need to authenticate as an administrative user.");
+  script_tag(name:"solution", value:"Delete the file '/comersus_backoffice_install10.asp' from the
+  server as it is not needed after the installation process has been completed.");
 
- script_tag(name:"qod_type", value:"remote_app");
- script_tag(name:"solution_type", value:"Workaround");
- exit(0);
+  script_tag(name:"summary", value:"Comersus ASP shopping cart is a set of ASP scripts creating an online 
+  shoppingcart. It works on a database of your own choosing, default is msaccess, and includes online
+  administration tools.");
+
+  script_tag(name:"impact", value:"By accessing the /comersus_backoffice_install10.asp file it is possible
+  to bypass the need to authenticate as an administrative user.");
+
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"Workaround");
+
+  exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
+
 host = http_host_name( port:port );
 
-function check(loc)
-{
+foreach dir( make_list_unique( "/comersus/backofficeLite", "/comersus", cgi_dirs( port:port ) ) ) {
 
- if(loc == "/") loc = "";
+  if( dir == "/" ) dir = "";
 
- req = http_get(item: loc + "/comersus_backoffice_install10.asp", port:port);
- r = http_keepalive_send_recv(port:port, data:req);
- if( r == NULL )exit(0);
- if('Installation complete' >< r && 'Final Step' >< r && 'Installation Wizard' >< r)
- {
-  v = eregmatch(pattern: "Set-Cookie[0-9]?: *([^; ]+)", string: r);
+  req = http_get( item:dir + "/comersus_backoffice_install10.asp", port:port );
+  r = http_keepalive_send_recv( port:port, data:req );
+  if( isnull(  r ) ) continue;
+  if( 'Installation complete' >< r && 'Final Step' >< r && 'Installation Wizard' >< r ) {
 
-  if (!isnull(v))
-  {
-   cookie = v[1];
-   req = string("GET ", loc, "/comersus_backoffice_settingsModifyForm.asp HTTP/1.1\r\n",
-   				"Host: ", host, "\r\n",
-				"Cookie: ", cookie, "\r\n",
-				"\r\n");
-									
-   r = http_keepalive_send_recv(port:port, data:req);
-   if (r == NULL) exit(0);
-   if ('Modify Store Settings' >< r && 'Basic Admin Utility' >< r)
-   {
-    security_message(port:port);
-    exit(0);
-   }
+    v = eregmatch( pattern:"Set-Cookie[0-9]?: *([^; ]+)", string:r );
+
+    if( ! isnull( v ) ) {
+      cookie = v[1];
+      req = string( "GET ", dir, "/comersus_backoffice_settingsModifyForm.asp HTTP/1.1\r\n",
+                    "Host: ", host, "\r\n",
+                    "Cookie: ", cookie, "\r\n",
+                    "\r\n" );
+      r = http_keepalive_send_recv( port:port, data:req );
+      if( isnull( r ) ) continue;
+      if( 'Modify Store Settings' >< r && 'Basic Admin Utility' >< r ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
- }
 }
 
-foreach dir (make_list_unique("/comersus/backofficeLite", "/comersus", cgi_dirs(port:port)))
-{
- check(loc:dir);
-}
-
-exit(99);
+exit( 99 );

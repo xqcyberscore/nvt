@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)
 #
@@ -38,7 +38,7 @@ tag_summary = "This host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(802924);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2011-3426", "CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027",
                 "CVE-2011-3032", "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036",
                 "CVE-2011-3037", "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040",
@@ -75,7 +75,7 @@ if(description)
                     54687, 54203, 54693, 54694, 54695, 54700, 54697, 54703);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:35:41 +0530 (Mon, 30 Jul 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5400");
@@ -83,7 +83,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027307");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/Jul/msg00000.html");
 
-  script_summary("Check for the version of Apple Safari on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

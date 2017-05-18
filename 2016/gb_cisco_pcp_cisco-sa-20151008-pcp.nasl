@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_cisco-sa-20151008-pcp.nasl 3726 2016-07-19 09:30:10Z cfi $
+# $Id: gb_cisco_pcp_cisco-sa-20151008-pcp.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Cisco Prime Collaboration Provisioning SQL Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-6329");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 3726 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("Cisco Prime Collaboration Provisioning SQL Injection Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-19 11:30:10 +0200 (Tue, 19 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-30 15:41:14 +0200 (Mon, 30 May 2016)");
- script_summary("Check the Cisco Prime Collaboration Provisioning Version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

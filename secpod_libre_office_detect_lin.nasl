@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_libre_office_detect_lin.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_libre_office_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # LibreOffice Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed LibreOffice version and saves the
-  result in KB.";
-
 if(description)
 {
-  script_id(902701);
+  script_oid("1.3.6.1.4.1.25623.1.0.902701");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 09:16:39 +0200 (Wed, 27 Jul 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("LibreOffice Version Detection (Linux)");
@@ -43,7 +40,8 @@ if(description)
   script_family("Service detection");
   script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed LibreOffice
+  version and saves the result in KB.");
   exit(0);
 }
 
@@ -52,21 +50,6 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902701";
-SCRIPT_DESC = "LibreOffice Version Detection (Linux)";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
-
 
 ## Confirm Linux, as SSH can be installed on Windows as well
 result = get_kb_item( "ssh/login/uname" );
@@ -96,25 +79,17 @@ foreach binary_officeName (officeName)
       {
         tmp_version = officeVer[1] + "." + buildVer[1];
         set_kb_item(name:"LibreOffice/Linux/Ver", value:tmp_version);
-        log_message(data:"LibreOffice version " + officeVer[1] + "." +
-                    buildVer[1] + " running at location " + binary_officeName
-                     + " was detected on the host");
-
          ## build cpe and store it as host_detail
-        register_cpe(tmpVers:tmp_version, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:libreoffice:libreoffice:");
-
+        register_and_report_cpe(app:"LibreOffice", ver:tmp_version, base:"cpe:/a:libreoffice:libreoffice:",
+                                expr:"^([0-9.]+)", insloc:binary_officeName);
       }
     }
     else
     {
       set_kb_item(name:"LibreOffice/Linux/Ver", value:officeVer[1]);
-      log_message(data:"LibreOffice version " + officeVer[1] +
-                    " running at location " + binary_officeName +
-                    " was detected on the host");
-
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:officeVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:libreoffice:libreoffice:");
-
+      register_and_report_cpe(app:"LibreOffice", ver:officeVer[1], base:"cpe:/a:libreoffice:libreoffice:",
+                              expr:"^([0-9.]+)", insloc:binary_officeName);
     }
   }
 }

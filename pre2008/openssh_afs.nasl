@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openssh_afs.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: openssh_afs.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: OpenSSH AFS/Kerberos ticket/token passing
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10954");
- script_version("$Revision: 3445 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4560);
  script_cve_id("CVE-2002-0575");
@@ -38,7 +38,6 @@ if(description)
  script_tag(name:"solution_type", value:"VendorFix");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_summary("Checks for the remote SSH version");
  script_category(ACT_GATHER_INFO);
 
  script_copyright("This script is Copyright (C) 2002 Thomas Reinke");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cvspserver_version.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: cvspserver_version.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # CVS pserver version Detection
 #
@@ -32,14 +32,13 @@ if (description)
 {
  script_id(100288);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2009-10-05 19:43:01 +0200 (Mon, 05 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("CVS pserver version");
 
- script_summary("Set Version of CVS pserver in KB");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

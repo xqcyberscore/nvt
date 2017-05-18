@@ -43,8 +43,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001875.html");
   script_id(841203);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5977 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-31 17:31:35 +0530 (Wed, 31 Oct 2012)");
   script_cve_id("CVE-2012-4466", "CVE-2012-4481");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "USN", value: "1603-2");
   script_name("Ubuntu Update for ruby1.8 USN-1603-2");
 
-  script_summary("Check for the Version of ruby1.8");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

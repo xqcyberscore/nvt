@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_apr16.nasl 3464 2016-06-09 18:01:24Z cfi $
+# $Id: gb_ntp_mult_vuln_apr16.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # NTP.org 'ntpd' Multiple Vulnerabilities
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807567");
-  script_version("$Revision: 3464 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-7973", "CVE-2015-7974", "CVE-2015-7975", "CVE-2015-7976",
                 "CVE-2015-7977", "CVE-2015-7978", "CVE-2015-7979", "CVE-2015-8138",
                 "CVE-2015-8139", "CVE-2015-8140", "CVE-2015-8158", "CVE-2016-1547",
@@ -36,7 +36,7 @@ if(description)
                 "CVE-2015-7704", "CVE-2015-7705");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-09 20:01:24 +0200 (Thu, 09 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-28 15:41:24 +0530 (Thu, 28 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP.org 'ntpd' Multiple Vulnerabilities");
@@ -83,7 +83,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.kb.cert.org/vuls/id/718152");
 
-  script_summary("Check if NTP is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

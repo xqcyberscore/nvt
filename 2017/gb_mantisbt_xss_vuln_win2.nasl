@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_xss_vuln_win2.nasl 5556 2017-03-13 09:09:23Z ckuerste $
+# $Id: gb_mantisbt_xss_vuln_win2.nasl 5965 2017-04-18 10:46:21Z cfi $
 #
 # MantisBT XSS Vulnerability (Windows)
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106644");
-  script_version("$Revision: 5556 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 10:09:23 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 5965 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-18 12:46:21 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name: "creation_date", value: "2017-03-13 14:33:08 +0700 (Mon, 13 Mar 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -80,7 +80,7 @@ if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
 if (version =~ "^2\.") {
-  if (version_in_range(version: version, test_version: "2.1.0", test_version: "2.2.0")) {
+  if (version_in_range(version: version, test_version: "2.1.0", test_version2: "2.2.0")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "2.2.1");
     security_message(port: port, data: report);
     exit(0);

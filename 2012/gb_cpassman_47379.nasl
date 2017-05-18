@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpassman_47379.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cpassman_47379.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Collaborative Passwords Manager (cPassMan) Remote Command Execution
 #
@@ -36,8 +36,8 @@ cPassMan 1.82 is vulnerable; other versions may also be affected.";
 if (description)
 {
  script_id(103436);
- script_version("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version("$Revision: 5963 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-27 10:11:37 +0200 (Mon, 27 Feb 2012)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,6 @@ if (description)
  script_xref(name : "URL" , value : "http://code.google.com/p/cpassman/");
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18522/");
  script_xref(name : "URL" , value : "http://cpassman.org/");
- script_summary("Determine if cPassMan is prone to remote command execution");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807779");
-  script_version("$Revision: 3323 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-16 09:13:47 +0200 (Mon, 16 May 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-11 14:52:07 +0200 (Mon, 11 Apr 2016)");
   script_cve_id("CVE-2016-3135", "CVE-2016-3134", "CVE-2016-3156", "CVE-2016-2184",
                 "CVE-2016-3137", "CVE-2016-2186", "CVE-2016-2185", "CVE-2016-3138",
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-81");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-April/181049.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

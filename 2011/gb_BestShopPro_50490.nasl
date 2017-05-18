@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_BestShopPro_50490.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_BestShopPro_50490.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # BestShopPro 'str' Parameter Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -33,12 +33,11 @@ based authentication credentials, compromise the application,
 access or modify data, or exploit latent vulnerabilities in the
 underlying database.";
 
-
-if (description)
+if(description)
 {
  script_id(103329);
  script_bugtraq_id(50490);
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 5747 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("BestShopPro 'str' Parameter Cross Site Scripting and SQL Injection Vulnerabilities");
@@ -46,10 +45,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50490");
  script_xref(name : "URL" , value : "http://www.bst.pl/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-03 08:00:00 +0100 (Thu, 03 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed BestShopPro is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,22 +63,18 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/bst",cgi_dirs());
+foreach dir( make_list_unique( "/bst", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/nowosci.php?a=1&str=%3Cscript%3Ealert(/openvas-xss-test/)%3C/script%3E"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/nowosci.php?a=1&str=%3Cscript%3Ealert(/openvas-xss-test/)%3C/script%3E");
 
   if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

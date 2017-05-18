@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851192");
-  script_version("$Revision: 2761 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 07:47:29 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:38 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2015-8770");
   script_tag(name:"cvss_base", value:"6.0");
@@ -53,7 +53,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0213_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-01/msg00029.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of roundcubemail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

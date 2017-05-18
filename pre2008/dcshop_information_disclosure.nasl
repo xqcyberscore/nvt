@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: dcshop_information_disclosure.nasl 3299 2016-05-12 10:48:17Z benallard $
+# $Id: dcshop_information_disclosure.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: DCShop exposes sensitive files
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10718");
- script_version("$Revision: 3299 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 12:48:17 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2889);
  script_cve_id("CVE-2001-0821");
@@ -35,7 +35,6 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
  script_name("DCShop exposes sensitive files");
- script_summary("DCShop exposes sensitive files");
 
  script_category(ACT_GATHER_INFO);
 

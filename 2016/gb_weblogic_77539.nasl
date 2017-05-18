@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weblogic_77539.nasl 5616 2017-03-20 13:32:41Z cfi $
+# $Id: gb_weblogic_77539.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Oracle WebLogic Server Java Deserialization Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-4852");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5616 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("Oracle WebLogic Server Java Deserialization Vulnerability");
 
@@ -50,9 +50,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-27 14:18:32 +0200 (Wed, 27 Jul 2016)");
- script_summary("Try to open a ssh connection to a random port on the scanner and check for the tcp syn paket");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

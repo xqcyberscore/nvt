@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cubecart_xss.nasl 3502 2016-06-13 16:52:56Z mime $
+# $Id: cubecart_xss.nasl 5781 2017-03-30 08:15:57Z cfi $
 # Description: Multiple CubeCart XSS vulnerabilities
 #
 # Authors:
@@ -33,27 +33,27 @@ tag_solution = "Upgrade to CubeCart version 3.0.4 or later.";
 if(description)
 {
   script_id(19945);
-  script_version("$Revision: 3502 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 18:52:56 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 5781 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3152");
   script_bugtraq_id(14962);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Multiple CubeCart XSS vulnerabilities");
-  script_summary("Checks for XSS in index.php");
-  script_category(ACT_ATTACK);
+  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
   script_dependencies("secpod_cubecart_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("cubecart/installed");
+
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://lostmon.blogspot.com/2005/09/cubecart-303-multiple-variable-cross.html");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -62,32 +62,29 @@ include("version_func.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port)){
-  exit(0);
-}
-
 version = get_kb_item(string("www/", port, "/cubecart"));
-if(!version){
-  exit(0);
-}
+if(!version) exit(0);
 
 if(!safe_checks())
 {
-  foreach dir (make_list("/cubecart/upload","/upload", cgi_dirs()))
-  {
+  foreach dir( make_list_unique( "/cubecart/upload", "/upload", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
     xss = "<script>alert('" + SCRIPT_NAME + "');</script>";
     exss = urlencode(str:xss);
-    req = http_get(item:string(dir, "/index.php?",'searchStr=">', exss,
-         "&act=viewCat&Submit=Go"),port:port);
-    res = http_send_recv(port:port, data:req);
-    if(res =~ "HTTP/1\.. 200" && xss >< res)
-    {
-      security_message(port);
-      exit(0);
+    req = http_get(item:string(dir, "/index.php?",'searchStr=">', exss, "&act=viewCat&Submit=Go"),port:port);
+    res = http_keepalive_send_recv(port:port, data:req);
+    if(res =~ "HTTP/1\.. 200" && xss >< res) {
+      security_message( port:port );
+      exit( 0 );
     }
   }
 }
 
 if(version_is_less_equal(version:version, test_version:"3.0.3")){
-  security_message(port);
+  security_message( port:port);
+  exit( 0 );
 }
+
+exit( 99 );

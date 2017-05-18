@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_info_disc_vuln.nasl 3742 2016-07-22 10:15:12Z ckuerste $
+# $Id: gb_sap_netweaver_info_disc_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # SAP NetWeaver WD_CHAT Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sap:netweaver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106149");
-  script_version("$Revision: 3742 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-22 12:15:12 +0200 (Fri, 22 Jul 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-07-22 14:30:27 +0700 (Fri, 22 Jul 2016)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("sap_netweaver/installed");
 
   script_tag(name: "summary", value: "SAP NetWeaver is prone to an information disclosure vulnerability.");
-  script_summary("Checks the server response.");
 
   script_tag(name: "vuldetect", value: "Checks if WD_CHAT is accessible.");
 

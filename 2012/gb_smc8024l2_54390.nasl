@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smc8024l2_54390.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_smc8024l2_54390.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # SMC Networks SMC8024L2 Switch Web Interface Authentication Bypass Vulnerability
 #
@@ -39,17 +39,16 @@ if (description)
  script_cve_id("CVE-2012-2974");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5963 $");
 
  script_name("SMC Networks SMC8024L2 Switch Web Interface Authentication Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54390");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/377915");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-12 10:05:05 +0200 (Thu, 12 Jul 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if unauthorized access to a configuration page is possible.");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872275");
-  script_version("$Revision: 5075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:46:22 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5851 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-01-20 05:43:53 +0100 (Fri, 20 Jan 2017)");
   script_cve_id("CVE-2017-5330");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ark FEDORA-2017-77ab791c90");
   script_tag(name: "summary", value: "Check the version of ark");

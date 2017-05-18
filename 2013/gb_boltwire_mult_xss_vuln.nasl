@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_boltwire_mult_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_boltwire_mult_xss_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
 #
 # BoltWire Multiple Cross Site Scripting Vulnerabilities
 #
@@ -24,47 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803961";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803961");
+  script_version("$Revision: 5798 $");
   script_cve_id("CVE-2013-2651");
   script_bugtraq_id(62907);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-11-07 16:32:49 +0530 (Thu, 07 Nov 2013)");
   script_name("BoltWire Multiple Cross Site Scripting Vulnerabilities");
 
-  tag_summary =
-"This host is installed with BoltWire and is prone to multiple cross-site
+  tag_summary = "This host is installed with BoltWire and is prone to multiple cross-site
 scripting vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted exploit string via HTTP GET request and check whether
+  tag_vuldetect = "Send a crafted exploit string via HTTP GET request and check whether
 it is able to read the string or not.";
 
-  tag_insight =
-'An error exists in the index.php script which fails to properly sanitize
+  tag_insight = 'An error exists in the index.php script which fails to properly sanitize
 user-supplied input to "p" and "content" parameter before using.';
 
-  tag_impact =
-"Successful exploitation will allow remote attackers to steal the victim's
+  tag_impact = "Successful exploitation will allow remote attackers to steal the victim's
 cookie-based authentication credentials.
 
 Impact Level: Application";
 
-  tag_affected =
-"BoltWire version 3.5 and earlier";
+  tag_affected = "BoltWire version 3.5 and earlier";
 
-  tag_solution =
-"No solution or patch was made available for at least one year
+  tag_solution = "No solution or patch was made available for at least one year
 since disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.";
-
 
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -77,16 +68,16 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/87809");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123558");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-10/0033.html");
-  script_summary("Check if BoltWire is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -97,33 +88,24 @@ req = "";
 res = "";
 url = "";
 match = "";
-rurl = "/index.php";
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  port = 80 ;
-}
 
-## Check the port status
-if(!get_port_state(port)){
+if(!can_host_php(port:port)){
   exit(0);
 }
 
-list = make_list("", "/bolt", "/boltwire", "/field", "/bolt/field", "/boltwire/field");
+foreach dir( make_list_unique( "/", "/bolt", "/boltwire", "/field", "/bolt/field", "/boltwire/field", cgi_dirs( port:port ) ) ) {
 
-## check the possible paths
-foreach dir (list)
-{
-  ## Send and Receive the response
-  req = http_get(item:string(dir, rurl), port:port);
-  res = http_keepalive_send_recv(port:port, data:req);
+  if(dir == "/") dir = "";
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
   ## Confirm the application
-  if(res && "<title>BoltWire: Main</title>" >< res && "Radical Results!" >< res)
-  {
+  if(res && "<title>BoltWire: Main</title>" >< res && "Radical Results!" >< res) {
     ## Construct the attack request
-    url = dir + rurl + '?p=%253Cscript%253Ealert(%2527XSS-TEST%2527)%253B%253C%252Fscript%253E';
+    url = url + '?p=%253Cscript%253Ealert(%2527XSS-TEST%2527)%253B%253C%252Fscript%253E';
     match = "<script>alert\('XSS-TEST'\);</script>";
 
     if(http_vuln_check(port:port, url:url, check_header:TRUE,

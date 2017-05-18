@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etouch_samepage_catid_sql_inj_vuln.nasl 3723 2016-07-19 07:24:56Z cfi $
+# $Id: gb_etouch_samepage_catid_sql_inj_vuln.nasl 5824 2017-03-31 14:27:55Z cfi $
 #
 # eTouch SamePage 'catId' Parameter SQL Injection Vulnerability
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805152");
-  script_version("$Revision: 3723 $");
+  script_version("$Revision: 5824 $");
   script_cve_id("CVE-2015-2070");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-19 09:24:56 +0200 (Tue, 19 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 16:27:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-16 16:36:52 +0530 (Mon, 16 Mar 2015)");
   script_name("eTouch SamePage 'catId' Parameter SQL Injection Vulnerability");
-  script_summary("Check if eTouch SamePage is prone to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 18080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -71,7 +70,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -80,11 +78,9 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:18080);
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/samepage", cgi_dirs(port:port)))
+foreach dir (make_list_unique("/", "/samepage", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";

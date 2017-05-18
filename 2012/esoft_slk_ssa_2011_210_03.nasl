@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2011_210_03.nasl 4794 2016-12-16 17:37:27Z cfi $
+# $Id: esoft_slk_ssa_2011_210_03.nasl 5988 2017-04-20 09:02:29Z teissa $
 # Description: Auto-generated from advisory SSA:2011-210-03
 #
 # Authors:
@@ -39,12 +39,11 @@ if(description)
  script_cve_id("CVE-2011-2522", "CVE-2011-2694");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 4794 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-16 18:37:27 +0100 (Fri, 16 Dec 2016) $");
+ script_version("$Revision: 5988 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-10 07:16:17 -0400 (Mon, 10 Sep 2012)");
  script_name("Slackware Advisory SSA:2011-210-03 samba ");
 
- script_summary("Slackware Advisory SSA:2011-210-03 samba ");
 
  script_category(ACT_GATHER_INFO);
 

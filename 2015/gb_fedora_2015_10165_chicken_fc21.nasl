@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869473");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 5851 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-06-30 06:26:55 +0200 (Tue, 30 Jun 2015)");
   script_cve_id("CVE-2015-4556");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for chicken FEDORA-2015-10165");
   script_tag(name: "summary", value: "Check the version of chicken");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gallarific_28163.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gallarific_28163.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # Gallarific Cross Site Scripting and Authentication Bypass Vulnerabilities
 #
@@ -41,8 +41,8 @@ tag_solution = "Updates are available. Please contact the vendor for details.";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100309");
- script_version("$Revision: 4865 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+ script_version("$Revision: 5820 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-10-20 18:54:22 +0200 (Tue, 20 Oct 2009)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -72,11 +72,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list_unique("/photos","/gallery",cgi_dirs());
-
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/photos", "/gallery", cgi_dirs( port:port ) ) ) {
    
   url =  string(dir,'/search.php?dosearch=true&query="><script>alert(document.cookie)</script>'); 
   req = http_get(item:url, port:port);

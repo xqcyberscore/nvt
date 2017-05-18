@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)
 #
@@ -52,12 +52,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802893);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-1964");
   script_bugtraq_id(54581);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027257");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-54.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_macosx.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Mac OS X)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Google SketchUp and is prone to
 if(description)
 {
   script_id(902681);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2011-2478");
   script_bugtraq_id(48363);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:56:42 +0530 (Mon, 21 May 2012)");
   script_name("Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/38187");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68147");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/msvr/msvr11-006");
 
-  script_summary("Check for the version of Google SketchUp on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("General");

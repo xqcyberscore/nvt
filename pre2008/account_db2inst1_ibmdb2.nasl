@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: account_db2inst1_ibmdb2.nasl 4077 2016-09-15 14:32:39Z cfi $
+# $Id: account_db2inst1_ibmdb2.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # Default password 'ibmdb2' for account 'db2inst1'
 #
@@ -30,14 +30,13 @@ password = "ibmdb2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11859");
-  script_version("$Revision: 4077 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 16:32:39 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2001-0051");
   script_name("Default password 'ibmdb2' for account 'db2inst1'");
-  script_summary("Logs into the remote host");
   script_copyright("This script is Copyright (C) 2003 Chris Foster");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");

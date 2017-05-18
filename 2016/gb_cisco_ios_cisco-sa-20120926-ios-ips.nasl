@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20120926-ios-ips.nasl 3247 2016-05-06 14:29:33Z mime $
+# $Id: gb_cisco_ios_cisco-sa-20120926-ios-ips.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2012-3950");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3247 $");
+ script_version ("$Revision: 5836 $");
 
  script_name("Cisco IOS Software Intrusion Prevention System Denial of Service Vulnerability");
 
@@ -59,9 +59,8 @@ http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep12.html
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-06 16:29:33 +0200 (Fri, 06 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-05-06 14:09:55 +0200 (Fri, 06 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_obj_info_disclosure_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mongodb_bson_obj_info_disclosure_vuln_lin.nasl 5848 2017-04-04 07:21:55Z antu123 $
 #
 # MongoDB BSON Object Information Disclosure Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808148");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5848 $");
   script_cve_id("CVE-2012-6619");
   script_bugtraq_id(64687);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 09:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:46:58 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB BSON Object Information Disclosure Vulnerability (Linux)");
 
@@ -59,7 +59,6 @@ if (description)
   For updates refer to http://www.mongodb.org");
 
   script_xref(name : "URL" , value : "https://jira.mongodb.org/browse/SERVER-7769");
-  script_summary("Determine if installed MongoDB version is vulnerable on Linux");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_family("Databases");
@@ -73,28 +72,25 @@ if (description)
 
 include("version_func.inc");
 include("host_details.inc");
-
-function check_mongodb_ver(mongodbversion, mongodbPort)
-{
-  ## check the version
-  if(version_is_less(version:mongodbversion, test_version:"2.3.2"))
-  {
-    report = report_fixed_ver(installed_version:mongodbversion, fixed_version:"2.3.2");
-    security_message(mongodbPort);
-    exit(0);
-  }
-}
+include("global_settings.inc");
 
 ## Variable initialisation
 mbPort = "";
 ver = "";
 
+## linux
 if(host_runs("Linux") != "yes"){
   exit(0);
 }
 
-if(!mbPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!mbPort = get_app_port(cpe:CPE))exit(0);
 
-if(!ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:mbPort))exit(0);
+if(!ver = get_app_version(cpe:CPE, port:mbPort))exit(0);
 
-check_mongodb_ver(mongodbversion:ver, mongodbPort:mbPort);
+## check the version
+if(version_is_less(version:ver, test_version:"2.3.2"))
+{
+  report = report_fixed_ver(installed_version:ver, fixed_version:"2.3.2");
+  security_message(data:report, port:mbPort);
+  exit(0);
+}

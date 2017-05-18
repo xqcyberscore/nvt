@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_dll_code_execution_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_igss_dll_code_execution_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Interactive Graphical SCADA System DLL Loading Arbitrary Code Execution Vulnerability
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with Interactive Graphical SCADA System
 if(description)
 {
   script_id(802297);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2011-4053");
   script_bugtraq_id(51438);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:15:15 +0530 (Mon, 23 Jan 2012)");
   script_name("Interactive Graphical SCADA System DLL Loading Arbitrary Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51438");
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-353-01.pdf");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of IGSS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcam_7_xp_52119.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_webcam_7_xp_52119.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # WebcamXP and Webcam7 Directory Traversal Vulnerability
 #
@@ -39,7 +39,7 @@ if (description)
 {
  script_id(103434);
  script_bugtraq_id(52119);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5931 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -48,9 +48,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52119");
  script_xref(name : "URL" , value : "http://www.webcamxp.com/home.aspx");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-23 11:44:32 +0100 (Thu, 23 Feb 2012)");
- script_summary("Determine if it is possible to read the boot.ini");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

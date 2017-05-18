@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpbb_2_0_18.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: phpbb_2_0_18.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: phpBB <= 2.0.18 Multiple Cross-Site Scripting Flaws
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Upgrade to phpBB version 2.0.19 or later.";
 
 if (description) {
   script_id(20379);
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,7 +49,6 @@ if (description) {
 
 
   script_name("phpBB <= 2.0.18 Multiple Cross-Site Scripting Flaws");
-  script_summary("Checks for multiple cross-site scripting flaws in phpBB <= 2.0.18");
 
  
   script_category(ACT_GATHER_INFO);

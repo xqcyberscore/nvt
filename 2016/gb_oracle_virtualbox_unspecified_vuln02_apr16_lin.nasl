@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln02_apr16_lin.nasl 3200 2016-04-29 13:26:41Z antu123 $
+# $Id: gb_oracle_virtualbox_unspecified_vuln02_apr16_lin.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Oracle Virtualbox Unspecified Vulnerability-02 Apr16 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807813");
-  script_version("$Revision: 3200 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2015-3197");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-29 15:26:41 +0200 (Fri, 29 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 18:15:12 +0530 (Mon, 25 Apr 2016)");
   script_name("Oracle Virtualbox Unspecified Vulnerability-02 Apr16 (Linux)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");

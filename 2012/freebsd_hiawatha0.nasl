@@ -42,14 +42,13 @@ if(description)
 {
  script_id(70598);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 5912 $");
  script_name("FreeBSD Ports: hiawatha");
 
 
- script_summary("FreeBSD Ports: hiawatha");
 
  script_category(ACT_GATHER_INFO);
 

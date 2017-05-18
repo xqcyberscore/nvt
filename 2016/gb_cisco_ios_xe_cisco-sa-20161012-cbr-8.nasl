@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20161012-cbr-8.nasl 4274 2016-10-14 07:54:17Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20161012-cbr-8.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco cBR-8 Converged Broadband Router vty Integrity Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6438");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 4274 $");
+ script_version ("$Revision: 5745 $");
 
  script_name("Cisco cBR-8 Converged Broadband Router vty Integrity Vulnerability");
 
@@ -55,9 +55,8 @@ targeted device.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-14 09:54:17 +0200 (Fri, 14 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-14 14:01:45 +0700 (Fri, 14 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

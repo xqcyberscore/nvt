@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xceedium_xsuite_remote_detect.nasl 3205 2016-05-01 13:00:22Z cfi $
+# $Id: gb_xceedium_xsuite_remote_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Xceedium Xsuite Remote Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807087");
-  script_version("$Revision: 3205 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-01 15:00:22 +0200 (Sun, 01 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:52 +0530 (Thu, 03 Mar 2016)");
   script_name("Xceedium Xsuite Remote Version Detection");
-  script_summary("Check for the presence of Xceedium Xsuite");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_bat_exec.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: apache_bat_exec.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Apache Remote Command Execution via .bat files
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "This bug is fixed in 1.3.24 and 2.0.34-beta, or remove /cgi-bin/
 if(description)
 {
  script_id(10938);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4335);
  script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,6 @@ if(description)
  
  summary = "Tests for presence of Apache Command Execution via .bat vulnerability";
  
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

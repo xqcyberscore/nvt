@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_parsing_redirection.nasl 2601 2016-02-06 23:53:44Z cfi $
+# $Id: sendmail_parsing_redirection.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Sendmail Parsing Redirection DOS
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = 'cpe:/a:sendmail:sendmail';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11352");
- script_version("$Revision: 2601 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-07 00:53:44 +0100 (Sun, 07 Feb 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8674);
  script_tag(name:"cvss_base", value:"5.0");
@@ -36,7 +36,6 @@ if(description)
  script_cve_id("CVE-1999-0393");
  #No bugtraq_id;
  script_name("Sendmail Parsing Redirection DOS");
- script_summary("Checks the version number");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");
  script_family("SMTP problems");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_sysaid_detect.nasl 5787 2017-03-30 10:26:10Z cfi $
 #
 # SysAid Help Desk Detection
 #
@@ -28,14 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106004");
- script_version ("$Revision: 2664 $");
- script_tag(name: "last_modification", value: "$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 5787 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
-
  script_tag(name: "qod_type", value: "remote_active");
-
  script_name("SysAid Help Desk Detection");
 
  script_tag(name: "summary" , value: "Detection of SysAid Help Desk Software
@@ -49,7 +47,6 @@ The script sends a connection request to the server and attempts to detect SysAi
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8080);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_summary("Checks for the presence of SysAid Help Desk Software.");
  exit(0);
 }
 
@@ -61,16 +58,13 @@ include("host_details.inc");
 
 port = get_http_port(default: 8080);
 
-dirs = cgi_dirs();
+foreach dir( make_list_unique( "/sysaid", cgi_dirs( port:port ) ) ) {
 
-foreach dir (make_list('/sysaid', dirs)) {
   rep_dir = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
 
   url = dir + '/Login.jsp';
-  req = http_get(item: url, port: port);
-  buf = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
+  buf = http_get_cache(item: url, port: port);
 
   if (buf =~ "HTTP/1\.. 200" && (buf =~ "SysAid Help Desk Software" ||
                                  buf =~ "Software del Servicio de asistencia de SysAid")) {

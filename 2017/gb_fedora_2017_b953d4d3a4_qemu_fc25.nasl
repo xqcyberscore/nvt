@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872282");
-  script_version("$Revision: 5075 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:46:22 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5851 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-01-21 05:44:03 +0100 (Sat, 21 Jan 2017)");
   script_cve_id("CVE-2016-6836", "CVE-2016-7909", "CVE-2016-7994", "CVE-2016-8577",
 		"CVE-2016-8578", "CVE-2016-8668", "CVE-2016-8669", "CVE-2016-8909",
@@ -37,8 +37,8 @@ if(description)
 		"CVE-2016-9911", "CVE-2016-9913", "CVE-2016-10028", "CVE-2016-9908",
 		"CVE-2016-9912", "CVE-2016-9922", "CVE-2016-9914", "CVE-2016-9915",
 		"CVE-2016-9916");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for qemu FEDORA-2017-b953d4d3a4");
   script_tag(name: "summary", value: "Check the version of qemu");

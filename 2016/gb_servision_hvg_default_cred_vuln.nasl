@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_servision_hvg_default_cred_vuln.nasl 2707 2016-02-22 13:25:45Z antu123 $
+# $Id: gb_servision_hvg_default_cred_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # SerVision HVG Default Credentials Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807072");
-  script_version("$Revision: 2707 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2015-0930");
   script_bugtraq_id(72433);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-22 14:25:45 +0100 (Mon, 22 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-16 16:15:07 +0530 (Tue, 16 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("SerVision HVG Default Credentials Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.kb.cert.org/vuls/id/522460");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/57");
 
-  script_summary("Check if SerVision HVG is prone to Hard-Coded Password vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Default Accounts");

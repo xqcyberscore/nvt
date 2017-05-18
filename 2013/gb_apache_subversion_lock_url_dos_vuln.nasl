@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities
 #
@@ -27,21 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802055");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5839 $");
   script_bugtraq_id(58897, 58323);
   script_cve_id("CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-06-11 12:32:36 +0530 (Tue, 11 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities");
-
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Mar/56");
   script_xref(name:"URL", value:"http://subversion.apache.org/security/CVE-2013-1847-advisory.txt");
   script_xref(name:"URL", value:"http://subversion.apache.org/security/CVE-2013-1849-advisory.txt");
-
-  script_summary("Check if Apache Subversion is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -70,7 +67,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("misc_func.inc");
@@ -128,7 +124,7 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
   ## Send normal request and check for normal response to confirm
   ## Subversion is working as expected
   proper_path = string("LOCK ", path, " HTTP/1.1","\r\n");
-  common_req = string("User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+  common_req = string("User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                       "Host: ", host, "\r\n",
                       "Accept: */*\r\n", "Content-Length: ",
                       strlen(lock_body), "\r\n\r\n", lock_body);

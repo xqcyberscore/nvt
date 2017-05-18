@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 5571 2017-03-14 13:04:41Z cfi $
+# $Id: smb_nt.inc 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5571 $
+# $Revision: 5934 $
 #
 ###############################################################################
 
@@ -10007,6 +10007,39 @@ function smb_get_systemroot() {
 
   if( ! isnull( sroot ) ) {
     set_kb_item( name:"SMB/SystemRoot", value:sroot );
+    return sroot;
+  } else {
+    return FALSE;
+  }
+}
+
+function smb_get_system32root() {
+
+  local_var sroot, key, item;
+
+  if( sroot = get_kb_item( "SMB/SystemRoot32" ) ) return sroot;
+
+  key = "SOFTWARE\Microsoft\COM3\Setup\";
+
+  item  = "Install Path";
+  sroot = registry_get_sz( item:item, key:key );
+
+  if ("Windows\system32" >!< sroot)
+  {
+    key = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\";
+  if( ! registry_key_exists( key:key ) ) {
+    return FALSE;
+  }
+    item  = "PathName";
+
+   sroot = registry_get_sz( item:item, key:key );
+    if('system32' >!< sroot){
+      sroot = sroot + "\system32";
+    }
+  }
+
+  if( ! isnull( sroot ) ) {
+    set_kb_item( name:"SMB/SystemRoot32", value:sroot );
     return sroot;
   } else {
     return FALSE;

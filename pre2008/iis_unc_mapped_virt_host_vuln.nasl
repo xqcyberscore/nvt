@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_unc_mapped_virt_host_vuln.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: iis_unc_mapped_virt_host_vuln.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Microsoft IIS UNC Mapped Virtual Host Vulnerability
 #
 # Authors:
@@ -29,8 +29,8 @@ pages interact and find holes in them to exploit.";
 
 if(description) {
   script_id(11443);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1081);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,7 +42,6 @@ if(description) {
 
 
   summary = "Checks IIS for .ASP/.HTR backslash vulnerability.";
-  script_summary(summary);
   script_copyright("Copyright (C) 2001 tony@libpcap.net");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

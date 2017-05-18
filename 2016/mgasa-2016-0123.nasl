@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0123.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0123.nasl 5867 2017-04-05 09:01:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131275");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5867 $");
 script_tag(name:"creation_date", value:"2016-03-31 08:05:00 +0300 (Thu, 31 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0123");
 script_tag(name: "insight", value: "It was reported that in all versions of MIT krb5, an authenticated attacker with permission to modify a principal entry can cause kadmind to dereference a null pointer by supplying an empty DB argument to the modify_principal command, if kadmind is configured to use the LDAP KDB module (CVE-2016-3119). The krb5 package has been updated to version 1.12.5 and patched to fix this issue and other bugs."); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0123");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0123");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

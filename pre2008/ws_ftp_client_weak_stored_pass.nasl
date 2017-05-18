@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ws_ftp_client_weak_stored_pass.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: ws_ftp_client_weak_stored_pass.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: WS_FTP client weak stored password
 #
 # Authors:
@@ -34,15 +34,14 @@ tag_solution = "Upgrade to the newest version of the WS_FTP client
 if(description)
 {
   script_id(14597);
-  script_version("$Revision: 5371 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(547);
   script_cve_id("CVE-1999-1078");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("WS_FTP client weak stored password");
-  script_summary("Check IPSWITCH WS_FTP version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

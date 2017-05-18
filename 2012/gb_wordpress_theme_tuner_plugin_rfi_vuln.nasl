@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_tuner_plugin_rfi_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_wordpress_theme_tuner_plugin_rfi_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # WordPress Theme Tuner Plugin 'tt-abspath' Parameter Remote File Inclusion Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(51636);
   script_cve_id("CVE-2012-0934");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-03 12:12:12 +0530 (Fri, 03 Feb 2012)");
   script_name("WordPress Theme Tuner Plugin 'tt-abspath' Parameter Remote File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47722");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://plugins.trac.wordpress.org/changeset/492167/theme-tuner#file2");
   script_xref(name : "URL" , value : "http://spareclockcycles.org/2011/09/18/exploitring-the-wordpress-extension-repos");
 
-  script_summary("Check if WordPress is vulnerable to remote file inclusion");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_active_model_security_bypass_vuln_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_ruby_on_rails_active_model_security_bypass_vuln_win.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Ruby on Rails Acrive Model Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809360");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-0753");
   script_bugtraq_id(82247);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value: "2016-10-17 18:48:40 +0530 (Mon, 17 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Ruby on Rails Acrive Model Security Bypass Vulnerability (Windows)");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/01/25/14");
 
-  script_summary("Check for the vulnerable version of Ruby on Rails on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

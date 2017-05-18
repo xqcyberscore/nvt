@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_config_info_disc_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_phpmyadmin_config_info_disc_vuln.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # phpMyAdmin 'show_config_errors.php' Information Disclosure Vulnerability
 #
@@ -43,12 +43,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 6032 $");
   script_bugtraq_id(52858);
   script_cve_id("CVE-2012-1902");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-17 12:56:58 +0530 (Tue, 17 Apr 2012)");
   script_name("phpMyAdmin 'show_config_errors.php' Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://english.securitylab.ru/nvd/422861.php");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=809146");
   script_xref(name : "URL" , value : "http://www.phpmyadmin.net/home_page/security/PMASA-2012-2.php");
 
-  script_summary("Determine the information disclosure vulnerability in phpMyAdmin");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

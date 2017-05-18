@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installshield_detect_win.nasl 3877 2016-08-24 09:10:50Z antu123 $
+# $Id: gb_flexera_installshield_detect_win.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Flexera InstallShield Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809005");
-  script_version("$Revision: 3877 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-24 11:10:50 +0200 (Wed, 24 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 19:16:31 +0530 (Fri, 19 Aug 2016)");
   script_name("Flexera InstallShield Version Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of
@@ -40,7 +40,6 @@ if(description)
   and gets the version from 'DisplayVersion' string from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Set version of Flexera InstallShield in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -61,25 +60,6 @@ TOTALSEC_LIST = make_list( "^(22\..*)", "cpe:/a:flexerasoftware:installshield:20
                            "^(21\..*)", "cpe:/a:flexerasoftware:installshield:2014:",
                            "^(20\..*)", "cpe:/a:flexerasoftware:installshield:2013:");
 TOTALSEC_MAX = max_index(TOTALSEC_LIST);
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase, insloc, app)
-{
-  local_var cpe;
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(cpe)
-  {
-    register_product(cpe:cpe, location:insloc);
-    log_message(data: build_detection_report(app: app,
-                                           version: tmpVers,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: tmpVers));
-  }
-}
-
 
 ## variable Initialization
 os_arch = "";
@@ -137,9 +117,8 @@ foreach item (registry_enum_keys(key:key))
       ## http://www.flexerasoftware.com/producer/support/additional-support/end-of-life/installshield.html
       for (i = 0; i < TOTALSEC_MAX-1; i = i + 2)
       {
-        register_cpe(tmpVers:inshieldVer, tmpExpr:TOTALSEC_LIST[i],
-                     tmpBase:TOTALSEC_LIST[i+1], insloc:inshieldPath ,
-                     app:"Flexera InstallShield");
+        register_and_report_cpe(app:"Flexera InstallShield", ver:inshieldVer, base:TOTALSEC_LIST[i+1],
+                                expr:TOTALSEC_LIST[i], insloc:inshieldPath);
       }
     }
   }

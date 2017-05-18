@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_privilege_escalation_vuln_june16_win.nasl 3431 2016-06-03 12:08:43Z antu123 $
+# $Id: gb_vmware_workstation_privilege_escalation_vuln_june16_win.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # VMware Workstation Privilege Escalation vulnerability June16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vmware:workstation:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808109");
-  script_version("$Revision: 3431 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-2077");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-03 14:08:43 +0200 (Fri, 03 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:34 +0530 (Fri, 03 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation Privilege Escalation vulnerability June16 (Windows)");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0005.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VMware Workstation on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");

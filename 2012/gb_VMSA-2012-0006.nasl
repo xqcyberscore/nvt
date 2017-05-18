@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0006.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2012-0006.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # VMSA-2012-0006 VMware ESXi and ESX address several security issues
 #
@@ -70,14 +70,13 @@ if (description)
  script_cve_id("CVE-2012-1515","CVE-2011-2482","CVE-2011-3191","CVE-2011-4348","CVE-2011-4862");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5956 $");
  script_name("VMSA-2012-0006 VMware ESXi and ESX address several security issues");
 
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-02 10:53:01 +0100 (Mon, 02 Apr 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

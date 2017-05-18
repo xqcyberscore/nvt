@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_xss_vuln_nov16.nasl 4668 2016-12-05 08:01:26Z antu123 $
+# $Id: gb_ibm_inotes_domino_xss_vuln_nov16.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM INotes and Domino Cross-site Scripting Vulnerability - Nov16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809820");
-  script_version("$Revision: 4668 $");
+  script_version("$Revision: 5701 $");
   script_cve_id("CVE-2016-0282");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-05 09:01:26 +0100 (Mon, 05 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-25 17:07:04 +0530 (Fri, 25 Nov 2016)");
   script_name("IBM INotes and Domino Cross-site Scripting Vulnerability - Nov16");
 
@@ -78,15 +78,8 @@ include("version_func.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -95,6 +88,6 @@ domVer1 = ereg_replace(pattern:"FP", string:domVer, replace: ".");
 if(version_in_range(version:domVer1, test_version:"8.5", test_version2:"8.5.3.6"))
 {
   report = report_fixed_ver(installed_version:domVer, fixed_version:"8.5.3 FP6 IF2");
-  security_message(data:report, port:domPort);
+  security_message(data:report, port:0);
   exit(0);
 }

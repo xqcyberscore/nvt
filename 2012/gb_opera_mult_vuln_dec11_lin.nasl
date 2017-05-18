@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_dec11_lin.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_mult_vuln_dec11_lin.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Opera Multiple Vulnerabilities - December11 (Linux)
 #
@@ -44,19 +44,18 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 if(description)
 {
   script_id(802834);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2011-4681", "CVE-2011-4682", "CVE-2011-4683", "CVE-2011-4684",
                 "CVE-2011-4685", "CVE-2011-4686", "CVE-2011-4687");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 16:54:45 +0530 (Mon, 09 Apr 2012)");
   script_name("Opera Multiple Vulnerabilities - December11 (Linux)");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1003/");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1005/");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/unix/1160/");
 
-  script_summary("Check for the version of Opera on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

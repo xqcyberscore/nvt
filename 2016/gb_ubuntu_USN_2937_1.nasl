@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842701");
-  script_version("$Revision: 2954 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 07:16:22 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-22 06:13:01 +0100 (Tue, 22 Mar 2016)");
   script_cve_id("CVE-2014-1748", "CVE-2015-1071", "CVE-2015-1076", "CVE-2015-1081",
 		"CVE-2015-1083", "CVE-2015-1120", "CVE-2015-1122", "CVE-2015-1127",
@@ -55,7 +55,6 @@ if(description)
   script_xref(name: "USN", value: "2937-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-March/003365.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of webkitgtk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

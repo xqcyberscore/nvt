@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netip_sentinel_7_4_1_0_2512.nasl 3231 2016-05-06 05:02:00Z antu123 $
+# $Id: gb_netip_sentinel_7_4_1_0_2512.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Multiple Security issues with NetIQ Sentinel
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-0851","CVE-2014-3576");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P"); 
- script_version ("$Revision: 3231 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("Multiple Security issues with NetIQ Sentinel");
 
@@ -54,9 +54,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-06 07:02:00 +0200 (Fri, 06 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-04-21 17:08:06 +0200 (Thu, 21 Apr 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

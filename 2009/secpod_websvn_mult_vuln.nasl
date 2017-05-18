@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_websvn_mult_vuln.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_websvn_mult_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # WebSVN Script Multiple Vulnerabilities
 #
@@ -46,8 +46,8 @@ tag_solution = "Upgrade to the latest version 2.1.0
 if(description)
 {
   script_id(900441);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-01-23 16:33:16 +0100 (Fri, 23 Jan 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -64,6 +64,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_websvn_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("WebSVN/Installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "solution" , value : tag_solution);
@@ -71,14 +73,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
-websvnPort = get_kb_item("Services/www");
-if(!websvnPort){
-  exit(0);
-}
+websvnPort = get_http_port( default:80 );
 
 if(get_port_state(websvnPort))
 {

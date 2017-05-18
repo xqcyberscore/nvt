@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snom_mult_vuln_01_15.nasl 4571 2016-11-18 10:50:30Z cfi $
+# $Id: gb_snom_mult_vuln_01_15.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # Snom Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105169");
-  script_version("$Revision: 4571 $");
+  script_version("$Revision: 5889 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 11:50:30 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-01-14 11:37:01 +0100 (Wed, 14 Jan 2015)");
   script_name("Snom Multiple Vulnerabilities");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -68,20 +68,12 @@ include("host_details.inc");
 cpe_list = make_list( "cpe:/h:snom:snom_760", "cpe:/h:snom:snom_720", "cpe:/h:snom:snom_715", "cpe:/h:snom:snom_710",
                       "cpe:/h:snom:snom_870", "cpe:/h:snom:snom_821", "cpe:/h:snom:snom_820", "cpe:/h:snom:snom_370" );
 
-if( ! port = get_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! version = get_app_version( cpe:cpe_list ) ) exit( 0 );
 
-foreach CPE( cpe_list ) {
-
-  if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) continue;
-
-  version = infos["version"];
-  proto = infos["proto"];
-
-  if( version_is_less( version:version, test_version:"8.7.5.15" ) ) {
-    report = 'Installed Firmware: ' + version + '\nFixed Version:      8.7.5.15';
-    security_message( port:port, proto:proto, data:report );
-    exit( 0 );
-  }
+if( version_is_less( version:version, test_version:"8.7.5.15" ) ) {
+  report = 'Installed Firmware: ' + version + '\nFixed Version:      8.7.5.15';
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
 exit( 99 );

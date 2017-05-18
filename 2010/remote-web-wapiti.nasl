@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-web-wapiti.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: remote-web-wapiti.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # Assess web security with wapiti
 #
@@ -36,8 +36,8 @@ if(description)
 {
  script_id(80110);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-03-24 21:54:49 +0100 (Wed, 24 Mar 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "wapiti (NASL wrapper)";
@@ -45,7 +45,6 @@ if(description)
  
 
  script_tag(name:"qod_type", value:"remote_banner");
- summary = "Assess web security with wapiti";
  
  script_category(ACT_GATHER_INFO);
  
@@ -53,21 +52,21 @@ if(description)
  family = "Web application abuses";
  script_family(family);
  script_add_preference(name:"Nice", type:"entry", value:"");
- script_dependencies("find_service.nasl", "httpver.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_timeout(0); 
  script_tag(name : "summary" , value : tag_summary);
  script_add_preference(name: 'Report broken wapiti installation', value: 'no', type: 'checkbox');
  exit(0);
 }
 
-# main code
+include("http_func.inc");
 
 cmdext = "wapiti";
 
-port = get_kb_item("Services/www");
-if (! port) port = 80;
-if (! get_port_state(port)) exit(0);
+port = get_http_port( default:80 );
 
 encaps = get_port_transport(port);
 if (encaps > ENCAPS_IP) httprefix="https://";

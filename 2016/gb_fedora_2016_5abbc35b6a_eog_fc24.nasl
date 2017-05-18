@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809177");
-  script_version("$Revision: 4052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-26 05:50:31 +0200 (Fri, 26 Aug 2016)");
   script_cve_id("CVE-2016-6855");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ eog is extensible through a plugin system.
   script_xref(name: "FEDORA", value: "2016-5abbc35b6a");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JVINHHR6VJKXTYYMAYKN5GROKHVT4UKB");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of eog");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

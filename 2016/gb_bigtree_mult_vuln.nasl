@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_mult_vuln.nasl 5329 2017-02-17 12:25:45Z mime $
+# $Id: gb_bigtree_mult_vuln.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Bigtree Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bigtree:bigtree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807792");
-  script_version("$Revision: 5329 $");
+  script_version("$Revision: 5782 $");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 13:25:45 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 14:17:30 +0530 (Mon, 18 Apr 2016)");
   script_name("Bigtree Multiple Vulnerabilities");
 
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Mar/63");
 
-  script_summary("Check for the vulnerable version of BigTree");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

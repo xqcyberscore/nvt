@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudera_manager_detect.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_cloudera_manager_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Cloudera Manager Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2662 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-01-20 16:26:22 +0100 (Tue, 20 Jan 2015)");
  script_name("Cloudera Manager Detection");
 
@@ -40,7 +40,6 @@ if (description)
 request to the server and attempts to extract the version number
 from the reply.");
 
- script_summary("Checks for the presence of Cloudera Manager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

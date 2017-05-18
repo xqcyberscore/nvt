@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_b2evolution_detect.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_b2evolution_detect.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # b2evolution Version Detection
 #
@@ -28,15 +28,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900712");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5816 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("b2evolution Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -48,15 +48,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
 b2Port = get_http_port(default:80);
-
-## Check the php support
 if(!can_host_php(port:b2Port)){
   exit(0);
 }
@@ -67,8 +64,7 @@ foreach path (make_list_unique("/blogs/htsrv", "/b2evolution/blogs/htsrv", cgi_d
   install = path;
   if(path == "/") path = "";
 
-  request  = http_get(item: path + "/login.php", port:b2Port);
-  response = http_keepalive_send_recv(port:b2Port, data:request);
+  response = http_get_cache(item: path + "/login.php", port:b2Port);
  
   if("b2evolution" >< response)
   {

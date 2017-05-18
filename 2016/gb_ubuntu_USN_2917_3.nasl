@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842718");
-  script_version("$Revision: 3177 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-27 10:08:23 +0200 (Wed, 27 Apr 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-20 05:18:30 +0200 (Wed, 20 Apr 2016)");
   script_cve_id("CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1953", "CVE-2016-1954",
                 "CVE-2016-1955", "CVE-2016-1956", "CVE-2016-1957", "CVE-2016-1958",
@@ -108,7 +108,6 @@ if(description)
   script_xref(name: "USN", value: "2917-3");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-April/003384.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

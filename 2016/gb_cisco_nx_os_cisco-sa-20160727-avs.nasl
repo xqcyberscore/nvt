@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20160727-avs.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_cisco_nx_os_cisco-sa-20160727-avs.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Cisco Nexus 1000v Application Virtual Switch Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1465");
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3775 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Cisco Nexus 1000v Application Virtual Switch Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability");
 
@@ -57,9 +57,8 @@ vulnerability are not available.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-29 18:14:02 +0200 (Fri, 29 Jul 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

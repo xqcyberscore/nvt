@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-002.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ms10-002.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (978207)
 #
@@ -27,34 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary codes via
-  specially crafted HTML page in the context of the affected system and cause
-  memory corruption.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Internet Explorer version 5.x/6.x/7.x/8.x";
-tag_insight = "The Multiple flaws are due to:
-  - Use-after-free error in the 'mshtml.dll' library
-  - Input validation error when processing URLs, which could allow a
-    malicious web site to execute a binary from the local client system
-  - Memory corruption error when the browser accesses certain objects,
-    which could be exploited by remote attackers to execute arbitrary code
-  - Browser disabling an HTML attribute in appropriately filtered response
-    data, which could be exploited to execute script in the context of the
-    logged-on user in a different Internet domain.
-  - Error when the browser attempts to access incorrectly initialized
-    memory which could be exploited by remote attackers to execute arbitrary
-    code.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS10-002";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-002.";
-
 if(description)
 {
   script_id(901097);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-01-22 16:43:14 +0100 (Fri, 22 Jan 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -70,11 +47,28 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary codes via
+  specially crafted HTML page in the context of the affected system and cause
+  memory corruption.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Internet Explorer version 5.x/6.x/7.x/8.x");
+  script_tag(name : "insight" , value : "The Multiple flaws are due to:
+  - Use-after-free error in the 'mshtml.dll' library
+  - Input validation error when processing URLs, which could allow a
+    malicious web site to execute a binary from the local client system
+  - Memory corruption error when the browser accesses certain objects,
+    which could be exploited by remote attackers to execute arbitrary code
+  - Browser disabling an HTML attribute in appropriately filtered response
+    data, which could be exploited to execute script in the context of the
+    logged-on user in a different Internet domain.
+  - Error when the browser attempts to access incorrectly initialized
+    memory which could be exploited by remote attackers to execute arbitrary
+    code.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/MS10-002");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-002.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/0187");
@@ -87,21 +81,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win7:1, win2008:3) <= 0){
   exit(0);
@@ -118,11 +97,10 @@ if(hotfix_missing(name:"978207") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"mshtml.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(dllVer)
   {
     if(hotfix_check_sp(win2k:5) > 0)
@@ -188,13 +166,12 @@ if(sysPath)
 
 
 ## Get System Path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(!sysPath){
   exit(0);
 }
 
-dllVer = get_file_version(sysPath, file_name:"System32\mshtml.dll");
+dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
 if(!dllVer){
   exit(0);
 }

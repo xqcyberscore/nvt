@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_ws_ftp-server-cpwd-bo.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: DDI_ws_ftp-server-cpwd-bo.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: WS_FTP SITE CPWD Buffer Overflow
 #
 # Authors:
@@ -41,8 +41,8 @@ http://www.ipswitch.com/support/.";
 if(description)
 {
 	script_id(11098);
-	script_version("$Revision: 3395 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+	script_version("$Revision: 6056 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 	script_bugtraq_id(5427);
     script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,6 @@ if(description)
 	name = "WS_FTP SITE CPWD Buffer Overflow";
 	script_name(name);
 		 
-	script_summary("Checks FTP server banner for vulnerable version of WS_FTP Server");
 	script_category(ACT_GATHER_INFO);
     script_tag(name:"qod_type", value:"remote_banner"); 
 	script_family("FTP");

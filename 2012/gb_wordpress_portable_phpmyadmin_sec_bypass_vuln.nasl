@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_portable_phpmyadmin_sec_bypass_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_portable_phpmyadmin_sec_bypass_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # WordPress Portable phpMyAdmin Plugin 'wp-pma-mod' Security Bypass Vulnerability
 #
@@ -43,10 +43,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-5469");
   script_bugtraq_id(56920);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-17 17:58:04 +0530 (Mon, 17 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/23356/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118805/WordPress-portable-phpMyAdmin-1.3.0-Authentication-Bypass.html");
 
-  script_summary("Check if WP Portable phpMyAdmin Plugin is vulnerable to Security Bypass");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

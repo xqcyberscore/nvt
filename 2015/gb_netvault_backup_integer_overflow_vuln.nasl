@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netvault_backup_integer_overflow_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_netvault_backup_integer_overflow_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Dell Netvault Backup Integer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dell:netvault_backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805653");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2015-4067");
   script_bugtraq_id(74841);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-06-17 14:20:46 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell Netvault Backup Integer Overflow Vulnerability");
@@ -64,8 +64,7 @@ if(description)
   script_xref(name : "URL" , value : "https://sec.hpi.de/vulndb/details/CVE-2015-4067");
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-15-240");
 
-  script_summary("Check for the vulnerable version of Dell Netvault Backup");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_dell_netvault_backup_detect.nasl");

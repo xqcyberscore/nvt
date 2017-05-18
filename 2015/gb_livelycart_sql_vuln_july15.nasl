@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livelycart_sql_vuln_july15.nasl 3736 2016-07-20 10:32:19Z antu123 $
+# $Id: gb_livelycart_sql_vuln_july15.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # LivelyCart SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805671");
-  script_version("$Revision: 3736 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 12:32:19 +0200 (Wed, 20 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-07-06 10:15:48 +0530 (Mon, 06 Jul 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("LivelyCart SQL Injection Vulnerability");
@@ -61,18 +61,14 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37325");
 
-  script_summary("Check if LivelyCart is prone to SQL");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
-##
-### Code Starts Here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -82,30 +78,16 @@ livPort = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 livPort = get_http_port(default:80);
-if(!livPort){
- livPort = 80;
-}
-
-## Check the port status
-if(!get_port_state(livPort)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:livPort)){
   exit(0);
 }
 
-# Iterate over possible paths
-# Product is low priority, detect NVT is not created.
-foreach dir (make_list_unique("/", "/livcart", "/cart",  cgi_dirs()))
+foreach dir (make_list_unique("/", "/livcart", "/cart",  cgi_dirs(port:livPort)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ##Send Request and Receive Response
   sndReq = http_get(item:string(dir,"/auth/login"), port:livPort);
   rcvRes = http_keepalive_send_recv(port:livPort, data:sndReq);
 

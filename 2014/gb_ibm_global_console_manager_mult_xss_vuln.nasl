@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_global_console_manager_mult_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_ibm_global_console_manager_mult_xss_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # IBM Global Console Manager switches Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804775");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5816 $");
   script_cve_id("CVE-2014-3080", "CVE-2014-3081", "CVE-2014-3085");
   script_bugtraq_id(68777, 68779, 68939);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-10-13 16:48:44 +0530 (Mon, 13 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -66,15 +66,15 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jul/113");
   script_xref(name : "URL" , value : "http://www.ibm.com/support/entry/portal/docdisplay?lndocid=migr-5095983");
 
-  script_summary("Check if IBM Global Console Manager switches is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -84,12 +84,9 @@ sndReq = "";
 rcvRes = "";
 http_port = "";
 
-
-## Get HTTP Port
 http_port = get_http_port(default:443);
 
-sndReq = http_get(item:"/login.php", port:http_port);
-rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+rcvRes = http_get_cache(item:"/login.php", port:http_port);
 
 if(">GCM" >< rcvRes)
 {

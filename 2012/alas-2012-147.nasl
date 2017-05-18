@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-147.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-147.nasl 5950 2017-04-13 09:02:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120176");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 5950 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:19:15 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-147");
 script_tag(name: "insight", value: "A heap-based buffer overflow flaw was found in the way libtiff processed certain TIFF images using the Pixar Log Format encoding. An attacker could create a specially-crafted TIFF file that, when opened, could cause an application using libtiff to crash or, possibly, execute arbitrary code with the privileges of the user running the application. (CVE-2012-4447 )A stack-based buffer overflow flaw was found in the way libtiff handled DOTRANGE tags. An attacker could use this flaw to create a specially-crafted TIFF file that, when opened, would cause an application linked against libtiff to crash or, possibly, execute arbitrary code. (CVE-2012-5581 )A heap-based buffer overflow flaw was found in the tiff2pdf tool. An attacker could use this flaw to create a specially-crafted TIFF file that would cause tiff2pdf to crash or, possibly, execute arbitrary code. (CVE-2012-3401 )A missing return value check flaw, leading to a heap-based buffer overflow, was found in the ppm2tiff tool. An attacker could use this flaw to create a specially-crafted PPM (Portable Pixel Map) file that would cause ppm2tiff to crash or, possibly, execute arbitrary code. (CVE-2012-4564 )"); 
 script_tag(name : "solution", value : "Run yum update libtiff to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-147");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

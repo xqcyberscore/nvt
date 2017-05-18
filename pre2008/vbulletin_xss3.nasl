@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_xss3.nasl 3978 2016-09-06 12:21:47Z cfi $
+# $Id: vbulletin_xss3.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: vBulletin XSS(3)
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to version 2.3.6 or 3.0.6";
 if(description)
 {
  script_id(16280);
- script_version("$Revision: 3978 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-06 14:21:47 +0200 (Tue, 06 Sep 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"OSVDB", value:"13150");
  script_tag(name:"cvss_base", value:"2.6");
@@ -55,7 +55,6 @@ if(description)
 
  summary = "Checks BBTag XSS flaw in vBulletin";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

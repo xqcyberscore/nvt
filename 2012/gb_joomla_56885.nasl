@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_56885.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_56885.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Joomla! JooProperty Component SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -47,16 +47,15 @@ if (description)
  script_bugtraq_id(56885);
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5999 $");
 
  script_name("Joomla! JooProperty Component SQL Injection and Cross Site Scripting Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56885");
  script_xref(name : "URL" , value : "http://www.joomla.org");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-12-12 12:59:16 +0100 (Wed, 12 Dec 2012)");
- script_summary("Determine if sql injection is possible");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

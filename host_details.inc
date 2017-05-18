@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 5574 2017-03-14 18:04:39Z mime $
+# $Id: host_details.inc 5983 2017-04-19 13:28:01Z cfi $
 #
 # Centralized and organized host informations base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5574 $
+# $Revision: 5983 $
 #
 ###############################################################################
 
@@ -114,7 +114,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.111069", # sw_telnet_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.10884",  # ntp_open.nasl
     "1.3.6.1.4.1.25623.1.0.10401",  # smb_reg_service_pack.nasl
-    # "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl # TODO: This is currently not setting a OS cpe entry
+    "1.3.6.1.4.1.25623.1.0.101013", # remote-detect-MDNS.nasl
     "1.3.6.1.4.1.25623.1.0.140000", # gb_apple_tv_version.nasl
     "1.3.6.1.4.1.25623.1.0.105899", # gb_apple_tv_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
@@ -175,17 +175,21 @@ OS_TXT_SRC = make_list(
 );
 
 
-function register_host_detail(name, value, desc) {
-  local_var tokens;
+function register_host_detail( name, value, desc ) {
+
+  local_var name, value, desc, nvt, tokens;
+
+  if( ! name ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#register_host_detail" );
+  if( ! value ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#value#-#register_host_detail" );
 
   nvt = get_script_oid();
   if( ! nvt ) return;
 
   if(name != "port") {
-      set_kb_item(name:"HostDetails", value:name);
-      set_kb_item(name:"HostDetails/NVT", value:nvt);
-      if (!isnull(desc))
-        replace_kb_item(name:"HostDetails/NVT/" + nvt, value:desc);
+    set_kb_item(name:"HostDetails", value:name);
+    set_kb_item(name:"HostDetails/NVT", value:nvt);
+    if (!isnull(desc))
+      replace_kb_item(name:"HostDetails/NVT/" + nvt, value:desc);
   }
 
   if(value)
@@ -194,12 +198,11 @@ function register_host_detail(name, value, desc) {
   # gather-package-list.nasl sets precise OS CPE keys that we use to
   # efficiently schedule LSCs.
   if (name == "OS" && "cpe:/o:" >< value && nvt == "1.3.6.1.4.1.25623.1.0.50282") {
-    tokens = split(value, sep:":", keep:0);
+    tokens = split(value, sep:":", keep:FALSE);
 
     if (tokens && tokens[0] && tokens[1] && tokens[2] && tokens[3])
       set_kb_item(name:string("HostDetails/OS/", tokens[0], ":", tokens[1], ":",
-                              tokens[2], ":", tokens[3]),
-                  value:TRUE);
+                              tokens[2], ":", tokens[3]), value:TRUE);
   }
 }
 
@@ -247,8 +250,13 @@ function host_details_list(key) {
   return get_kb_list("HostDetails/NVT/*/" + key);
 }
 
-function report_host_detail_single(name, value, nvt, desc) {
-  local_var report;
+function report_host_detail_single( name, value, nvt, desc ) {
+
+  local_var name, value, nvt, desc, report;
+
+  if( ! name ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#report_host_detail_single" );
+  if( ! value ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#value#-#report_host_detail_single" );
+  if( ! nvt ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#nvt#-#report_host_detail_single" );
 
   report = '';
 
@@ -275,8 +283,8 @@ function report_host_detail_single(name, value, nvt, desc) {
 # Iterate over the host details and report them individually. Additionally
 # report best CPE and TXT available concerning the remote OS.
 function report_host_details() {
-  local_var names, name, nvts, nvt, desc, details, item;
 
+  local_var names, name, nvts, nvt, desc, details, item;
 
   # get the names of the host details we gathered
   names = get_kb_list("HostDetails");
@@ -310,6 +318,7 @@ function host_runs() {
   local_var ospattern, best_os;
 
   ospattern = _FCT_ANON_ARGS[0];
+  if( ! ospattern ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#_FCT_ANON_ARGS[0]#-#host_runs" );
 
   #TBD/TODO: What if "best_os_txt" is "better" then "best_os_cpe"?
   best_os = best_os_cpe();
@@ -320,7 +329,8 @@ function host_runs() {
 
   #nb: update this to include possible cpes and txt from ssh_detect.nasl, gb_ssh_os_detection.nasl, gather-package-list.nasl and and other *_os_detection.nasl
   if( "linux" >< tolower( ospattern ) )
-    ospattern = '(' + ospattern + '|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|turbolinux|gentoo)';
+    ospattern = '(' + ospattern + '|ubuntu|debian|bsd|opensuse|fedora|suse|redhat|red hat|centos|mandriva|mandrake|mageia|slackware|connectiva|amazon|oracle|' +
+                'turbolinux|gentoo|cisco|apple|fortios|junos|screenos|univention|esx|xen)';
 
   if( eregmatch( pattern:ospattern, string:best_os, icase:TRUE ) )
     return "yes";
@@ -329,6 +339,7 @@ function host_runs() {
 }
 
 function best_os_cpe() {
+
   local_var oid, res, entry;
 
   foreach oid (OS_CPE_SRC) {
@@ -346,6 +357,7 @@ function best_os_cpe() {
 }
 
 function best_os_txt() {
+
   local_var oid, res, entry;
 
   foreach oid (OS_TXT_SRC) {
@@ -363,7 +375,8 @@ function best_os_txt() {
 }
 
 function report_best_os_cpe() {
-  local_var oid, res, best_os, desc;
+
+  local_var best_os, desc;
 
   best_os = get_kb_item("HostDetails/OS/BestMatch");
   if (best_os) {
@@ -375,6 +388,7 @@ function report_best_os_cpe() {
 }
 
 function report_best_os_txt() {
+
   local_var oid, res, best_os, desc;
 
   foreach oid (OS_TXT_SRC) {
@@ -402,7 +416,8 @@ function report_best_os_txt() {
 }
 
 function host_details_cpes() {
-  local_var res, name, categories, details_list, item;
+
+  local_var res, details_list, item;
 
   res = make_list();
 
@@ -423,6 +438,7 @@ function host_details_cpes() {
 }
 
 function os_conflict() {
+
   local_var oslist, bestos, is_cpe, item;
 
   oslist = _FCT_ANON_ARGS[0];
@@ -444,51 +460,52 @@ function os_conflict() {
   return FALSE;
 }
 
-function get_app(cpe, loc) {
-  local_var host_details, host_detail, res, port, loc;
+function get_app( cpe, loc ) {
 
-   host_details = get_kb_list("HostDetails/NVT/*");
+  local_var host_details, host_detail, res, port, cpe, loc, l, host_values;
 
-   if(!host_details) return NULL;
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe[0]#-#get_app" );
 
-   foreach host_detail (keys(host_details)) {
+  host_details = get_kb_list("HostDetails/NVT/*");
 
-     if(cpe >< host_detail) {
+  if(!host_details) return NULL;
 
-       host_values = split(host_detail, sep:"/", keep:FALSE);
+  foreach host_detail (keys(host_details)) {
 
-       if(isnull(host_values[2]) || isnull(host_values[4]) || "cpe:" >!< host_values[3]) return NULL;
+    if(cpe >< host_detail) {
 
-       res = make_array();
+      host_values = split(host_detail, sep:"/", keep:FALSE);
 
-       res["OID"] = host_values[2];
-       res["CPE"] = 'cpe:/' +  host_values[4];
+      if(isnull(host_values[2]) || isnull(host_values[4]) || "cpe:" >!< host_values[3]) return NULL;
 
-       port = get_kb_item("HostDetails/NVT/" + res["OID"] + "/port");  # this could fork
+      res = make_array();
 
-       if(port) {
-         res["port"] = port;
-       }
+      res["OID"] = host_values[2];
+      res["CPE"] = 'cpe:/' +  host_values[4];
 
-       if(loc) {
-         location = get_kb_item("HostDetails/NVT/" + res["OID"] + "/" + res["CPE"]); # this could fork
-         res["LOCATION"] = location;
-       } else {
-         locations = get_kb_list("HostDetails/NVT/" + res["OID"] + "/" + res["CPE"]);
-         l = make_list(locations);
-         if(max_index(l) == 1) location = l[0];
-       }
+      port = get_kb_item("HostDetails/NVT/" + res["OID"] + "/port");  # this could fork
 
-       # Store link between scripts.
-       register_host_detail(name:"detected_by", value:res["OID"]);
-       register_host_detail(name:"detected_at", value:location);
+      if(port) {
+        res["port"] = port;
+      }
 
-       return res;
+      if(loc) {
+        location = get_kb_item("HostDetails/NVT/" + res["OID"] + "/" + res["CPE"]); # this could fork
+        res["LOCATION"] = location;
+      } else {
+        locations = get_kb_list("HostDetails/NVT/" + res["OID"] + "/" + res["CPE"]);
+        l = make_list(locations);
+        if(max_index(l) == 1) location = l[0];
+      }
 
+      # Store link between scripts.
+      register_host_detail(name:"detected_by", value:res["OID"]);
+      register_host_detail(name:"detected_at", value:location);
+
+      return res;
     }
   }
-
-   return NULL;
+  return NULL;
 }
 
 # *NEVER* use get_app_version() and get_app_location() together in a single NVT.
@@ -544,26 +561,58 @@ function get_app(cpe, loc) {
 
 function get_app_version( cpe, port, service, nofork, version_regex ) {
 
-  local_var cpe, port, nofork, version_regex;
+  local_var cpe, port, service, nofork, version_regex;
 
-  if( ! cpe ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version" );
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version" );
+
+  if( typeof( cpe ) == "array" ) return get_single_app_version_from_list( cpe_list:cpe, port:port );
+
   return get_app_details( cpe:cpe, typ:"version", port:port, service:service, nofork:nofork, version_regex:version_regex );
+}
+
+function get_highest_app_version( cpe ) {
+
+  local_var cpe, ad, version, ret_version;
+
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_highest_app_version" );
+
+  ad = get_app_details( cpe:cpe, typ:"all_versions" );
+  if( ! ad ) return;
+
+  if( ! defined_func( "revcomp" ) ) include("revisions-lib.inc");
+
+  ret_version = FALSE;
+
+  foreach version ( ad )
+  {
+    if( ! ret_version )
+    {
+      ret_version = version;
+      continue;
+    }
+
+    if( revcomp( a:version, b:ret_version ) == 1 )
+      ret_version = version;
+  }
+
+  return ret_version;
 }
 
 function get_app_location( cpe, port, nofork ) {
 
   local_var cpe, port, nofork;
 
-  if( ! cpe ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location" );
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location" );
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
+
   return get_app_details( cpe:cpe, typ:"location", port:port, nofork:nofork );
 }
 
-function get_app_port_from_list( cpe_list, service ) {
+function get_single_app_port_from_list( cpe_list, service ) {
 
   local_var cpe_list, service, cpe, base_cpe, port, services;
 
-  if( ! cpe_list ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_app_port_from_list" );
+  if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_port_from_list" );
 
   foreach cpe( cpe_list ) {
     if( ! base_cpe = get_base_cpe( cpe:cpe ) )
@@ -582,13 +631,70 @@ function get_app_port_from_list( cpe_list, service ) {
   return;
 }
 
-function get_app_port( cpe, service ) {
+function get_all_app_port_from_list( cpe_list, service ) {
 
-  local_var base_cpe, port, cpe, service, services;
+  local_var cpe_list, service, cpe, base_cpe, port, ports, services, _service, infos, _infos, ret_arr;
+
+  if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_all_app_port_from_list" );
+
+  foreach cpe( cpe_list ) {
+
+    if( ! base_cpe = get_base_cpe( cpe:cpe ) )
+      continue;
+
+    if( isnull( ports = get_kb_list( "get_app/ports/" + base_cpe ) ) )
+      continue;
+
+    foreach port( ports ) {
+      if( service ) {
+        services = get_kb_list( "get_app/services/" + port + "/" + base_cpe );
+        foreach _service( services ) {
+          if( port =~ '^[0-9]{1,5}$' && _service >< service ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + port );
+        }
+      } else {
+        if( port =~ '^[0-9]{1,5}$' ) set_kb_item( name:"get_app/" + get_script_oid() + "/port_cpe", value:cpe + "#-#" + port );
+      }
+    }
+  }
+
+  infos = get_kb_item( "get_app/" + get_script_oid() + "/port_cpe" );
+  if( infos ) {
+    _infos = split( infos, sep:'#-#', keep:FALSE );
+    ret_arr['cpe']  = _infos[0];
+    ret_arr['port'] = _infos[1];
+    return ret_arr;
+  }
+
+  return;
+}
+
+function get_single_app_version_from_list( cpe_list, port ) {
+
+  local_var cpe_list, port, cpe, ap;
+
+  if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_version_from_list" );
+
+  foreach cpe( cpe_list )
+  {
+    ap = get_app_details( cpe:cpe, typ:"version", port:port );
+    if( ap )
+      return ap;
+  }
+  return;
+}
+
+function get_app_port( cpe, service, all ) {
+
+  local_var cpe, service, all, base_cpe, port, services;
 
   if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port" );
 
-  if( typeof( cpe ) == "array" ) return get_app_port_from_list( cpe_list:cpe, service:service );
+  if( typeof( cpe ) == "array" ) {
+    if( all )
+      return get_all_app_port_from_list( cpe_list:cpe, service:service );
+    else
+      return get_single_app_port_from_list( cpe_list:cpe, service:service );
+  }
 
   if( ! base_cpe = get_base_cpe( cpe:cpe ) ) {
     set_kb_item( name:"nvt_debug_cpe_syntax/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port" );
@@ -611,7 +717,7 @@ function get_app_version_and_location( cpe, port, exit_no_version ) {
 
   local_var cpe, port, exit_no_version;
 
-  if( ! cpe ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_location" );
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_location" );
   return get_app_details( cpe:cpe, typ:"version_location", port:port, exit_no_version:exit_no_version );
 }
 
@@ -619,7 +725,7 @@ function get_app_location_and_proto( cpe, port ) {
 
   local_var cpe, port;
 
-  if( ! cpe ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location_and_proto" );
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location_and_proto" );
   return get_app_details( cpe:cpe, typ:"location_proto", port:port );
 }
 
@@ -627,7 +733,7 @@ function get_app_version_and_proto( cpe, port, exit_no_version ) {
 
   local_var cpe, port, exit_no_version;
 
-  if( ! cpe ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_proto" );
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_proto" );
   return get_app_details( cpe:cpe, typ:"version_proto", port:port, exit_no_version:exit_no_version );
 }
 
@@ -635,13 +741,50 @@ function get_app_full( cpe, port ) {
 
   local_var cpe, port;
 
-  if( ! cpe ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_full" );
+  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_full" );
   return get_app_details( cpe:cpe, typ:"full", port:port );
 }
 
-function get_app_details( cpe, typ, port, exit_no_version, service, nofork, version_regex )
+# get the port from just the prefix.
+# For example "cpe:/h:qnap:ts-x53" is the full cpe but we are looking
+# for "cpe:/h:qnap" only.
+function get_app_port_from_cpe_prefix( cpe )
 {
-  local_var port, cpe, typ, bc, base_cpe, x, x_oid, x_cpe, x_loc, x_port, x_service, app_details, app_value, app_versions, ret_arr, exit_no_version, nofork, version_regex;
+  local_var cpe, port, data, entry, _cpe;
+
+  data = get_kb_list( "get_app/ports/" + cpe + '*' );
+  if( ! data )
+    return;
+
+  foreach entry ( keys( data ) )
+  {
+    if( cpe >!< entry )
+      continue;
+
+    parts = split( entry, sep:"/", keep:FALSE );
+
+    if( max_index( parts ) < 4 )
+      continue;
+
+    if( parts[2] != 'cpe:' )
+      continue;
+
+    _cpe = parts[2] + '/' + parts[3];
+
+    if( cpe >!< _cpe )
+      continue;
+
+    return get_app_port( cpe:_cpe );
+
+  }
+  return;
+}
+
+function get_app_details( cpe, typ, port, exit_no_version, service, nofork, version_regex ) {
+
+  local_var cpe, typ, port, exit_no_version, service, nofork, version_regex;
+  local_var base_cpe, version_list, ap, dt, t, t_cpe, app_versions, app_locations;
+  local_var t_oid, t_loc, app_details, x, x_oid, x_cpe, x_loc, x_port, x_proto, x_service, ret_arr;
 
   if( ! base_cpe = get_base_cpe( cpe:cpe ) ) {
     set_kb_item( name: "nvt_debug_cpe_syntax/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_details" );
@@ -650,7 +793,31 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
 
   # "1.3.6.1.4.1.25623.1.0.xxxxx#-#cpe:/a:foo:bar:1.1.0#-#/foo#-#80" or
   # "1.3.6.1.4.1.25623.1.0.xxxxx#-#cpe:/a:foo:bar:1.1.0#-#/foo#-#80#-#www"
-  if( nofork && typ == 'version' ) # nofork is currently only valid for get_app_version() and get_app_location
+  if( typ == 'all_versions' )
+  {
+    version_list = make_list();
+
+    ap = get_kb_list("get_app/" + base_cpe);
+    if( ! ap ) return;
+    foreach dt ( ap )
+    {
+      t = split( dt, sep:'#-#', keep:FALSE );
+      t_cpe = t[1];
+
+      if( ! t_cpe ) continue;
+      if( ! app_versions = get_version_from_cpe( cpe:t_cpe ) ) continue;
+
+      version_list = make_list( version_list, app_versions );
+    }
+
+    register_host_detail(name:"detected_by", value:t[0]);
+    if( ! isnull( t[2] ) )
+      register_host_detail(name:"detected_at", value:t[2]);
+
+    return version_list;
+
+  }
+  else if( nofork && typ == 'version' ) # nofork is currently only valid for get_app_version() and get_app_location
   {
     ap = get_kb_list("get_app/" + base_cpe);
     if( ! ap ) return;
@@ -884,11 +1051,11 @@ function build_detection_report( app, version, install, regpath, cpe, concluded,
   }
 
   if( strlen( concluded ) > 0 ) {
-    report += '\n\nConcluded from version identification result:\n' + concluded + '\n';
+    report += '\n\nConcluded from version/product identification result:\n' + concluded + '\n';
   }
 
   if( strlen( concludedUrl ) > 0 ) {
-    report += '\nConcluded from version identification location:\n' + concludedUrl + '\n';
+    report += '\nConcluded from version/product identification location:\n' + concludedUrl + '\n';
   }
 
   if( strlen( extra ) > 0 ) {

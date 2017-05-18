@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oraclebi_discoverer_xss_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_oraclebi_discoverer_xss_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # OracleBI Discoverer 'node' Cross Site Scripting Vulnerability
 #
@@ -51,17 +51,16 @@ CPE = "cpe:/a:oracle:oraclebi_discoverer";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5940 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-19 12:18:56 +0530 (Wed, 19 Dec 2012)");
   script_name("OracleBI Discoverer 'node' Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://ur0b0r0x.blogspot.com/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118808/oraclebi-xss.txt");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check if OracleBI Discoverer is vulnerable to xss");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_multiple_devices_default_login.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_dlink_dir_multiple_devices_default_login.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Dlink DIR Multiple Devices Default Login
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103690");
- script_version ("$Revision: 5351 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+ script_version ("$Revision: 5842 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-04-09 11:03:03 +0100 (Tue, 09 Apr 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Dlink DIR Multiple Devices Default Login");
- script_summary("Try to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -59,9 +58,7 @@ if(!port)exit(0);
 
 if(!get_port_state(port))exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 username ="admin";
 
@@ -77,7 +74,7 @@ foreach pass (passwords) {
 
   req = string("POST /session.cgi HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 OpenVAS/17.0\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                "Accept-Encoding: identity\r\n",

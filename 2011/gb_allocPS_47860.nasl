@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allocPS_47860.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_allocPS_47860.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # allocPSA 'login/login.php' Cross Site Scripting Vulnerability
 #
@@ -34,12 +34,11 @@ credentials and to launch other attacks.
 
 allocPSA 1.7.4 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103168);
- script_version("$Revision: 5424 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-06-03 14:27:02 +0200 (Fri, 03 Jun 2011)");
  script_bugtraq_id(47860);
  script_tag(name:"cvss_base", value:"2.6");
@@ -64,25 +63,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/login/login.php?sessID=<script>alert(/openvas-xss-test/)</script>"); 
 
   if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",extra_check:"<title>allocPSA", check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

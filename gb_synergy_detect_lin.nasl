@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_detect_lin.nasl 2834 2016-03-11 08:39:36Z benallard $
+# $Id: gb_synergy_detect_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Synergy Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(801874);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2834 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:39:36 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Synergy Version Detection (Linux)");
-  script_summary("Set the Version of Synergy in KB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");

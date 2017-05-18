@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809904");
-  script_version("$Revision: 5070 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:00:02 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-7563", "CVE-2016-7564");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-1b9d24c2b6");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/LVJ4OQPLR3DNVIQFVPGHPDB5GGL2R3EE");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of zathura-pdf-mupdf");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_messaging_security_virtual_appliance_version.nasl 2636 2016-02-11 13:26:05Z antu123 $
+# $Id: gb_trend_micro_interscan_messaging_security_virtual_appliance_version.nasl 6036 2017-04-27 06:04:46Z antu123 $
 #
 # Trend Micro Interscan Messaging Security Virtual Appliance Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105253");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2636 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 14:26:05 +0100 (Thu, 11 Feb 2016) $");
+ script_version ("$Revision: 6036 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 08:04:46 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-04-13 15:03:11 +0200 (Mon, 13 Apr 2015)");
  script_name("Trend Micro Interscan Messaging Security Virtual Appliance Detection");
 
@@ -60,7 +60,7 @@ cpe = 'cpe:/a:trendmicro:interscan_messaging_security_virtual_appliance';
 
 match = eregmatch( pattern:"IMSVA ([0-9.]+)-Build_Linux_([0-9]+)", string:system );
 
-rep_vers = 'unknown';
+vers = 'unknown';
 
 if( ! isnull( match[1] ) )
 {

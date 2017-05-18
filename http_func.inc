@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_func.inc 5509 2017-03-07 17:29:23Z mime $
+# $Id: http_func.inc 6008 2017-04-21 14:54:44Z cfi $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5509 $
+# $Revision: 6008 $
 #
 ###############################################################################
 
@@ -133,7 +133,7 @@ function get_http_banner( port, file, ignore_broken ) {
 # Usage: port = get_http_port( default:80 );
 function get_http_port( default, ignore_broken, ignore_cgi_disabled ) {
 
-  local_var default, port, p, ignore_broken, ignore_cgi_disabled;
+  local_var default, port, p, ignore_broken, ignore_cgi_disabled, optimize;
 
   if( ! default ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_http_port" );
 
@@ -450,7 +450,9 @@ function http_send_recv( port, data ) {
 
 function cgi_dirs( port ) {
 
-  local_var kb, optimize;
+  local_var port, kb, optimize, usercgis;
+
+  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#cgi_dirs" );
 
   if( get_kb_item( "Settings/disable_cgi_scanning" ) ) {
     optimize = get_preference( "optimize_test" );
@@ -458,7 +460,7 @@ function cgi_dirs( port ) {
       set_kb_item( name: "nvt_cgi_scanning_disabled/" + get_script_oid(), value:get_script_oid() + "#-#cgi_dirs()" );
     }
     #return NULL; # Old behaviour
-    exit( 0 ); # Throws a "nasl_array_iterator: unhandled type 57" message if cgi_dirs() is called within a foreach but not within a make_list() 
+    exit( 0 ); # Throws a "nasl_array_iterator: unhandled type 57" message if cgi_dirs() is called within a foreach but not within a make_list()
   }
 
   if( port ) {
@@ -480,94 +482,96 @@ function cgi_dirs( port ) {
 
 function can_host_php( port ) {
 
-  local_var banner, sig, files;
+  local_var port, banner, sig, files;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_php" );
+  if( ! port ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_php" );
+    return;
+  }
 
-  if( get_kb_item( "www/"+port+"/PHP" ) ) return TRUE;
+  if( get_kb_item( "www/" + port + "/PHP" ) ) return TRUE;
+
+  files = get_kb_list( "www/" + port + "/content/extensions/php*" );
+  if( ! isnull( files ) ) {
+    #display( get_host_ip(), " hosts PHP - ", files[0], "\n" );
+    return TRUE; # Hosting .php+ files
+  }
 
   banner = get_http_banner( port:port );
 
   if( ! banner ) {
-    return 0;
+    return FALSE;
   } else {
 
     if( tolower( banner ) =~ 'powered.*php' || tolower( banner ) =~ "server.*php.*" ) return TRUE;
 
-    if( egrep( pattern:"^Server:.*IceWarp", string:banner, icase:TRUE ) ) {
-      return 1;
-    }
-
-    if( egrep( pattern:"^Server:.*apache|nginx|thttpd|aolserver|pi3web|zeus|iis", string:banner, icase:TRUE ) ) {
+    if( egrep( pattern:"^Server:.*apache|nginx|thttpd|aolserver|pi3web|zeus|iis|icewarp|lighttpd|hiawatha|litespeed|caddy", string:banner, icase:TRUE ) ) {
       #display( get_host_ip(), " may host PHP\n" );
-      return 1;
+      return TRUE;
     }
   }
 
-  #TBD: Move before the banner check?
-  files = get_kb_list( "www/" + port + "/content/extensions/php*" );
-  if( ! isnull( files ) ) {
-    #display( get_host_ip(), " hosts PHP - ", files[0], "\n" );
-    return 1; # Hosting .php+ files
-  }
-
+  # TBD: This looks wrong... (See if( ! banner ) above)
   sig = banner;
   if( ! sig ) {
-    return 1; # Unknown web server - might be able to host a PHP website
+    return TRUE; # Unknown web server - might be able to host a PHP website
   }
 
   if( egrep( pattern:"apache|thttpd|aolserver|pi3web|zeus|iis", string:sig, icase:TRUE ) ) {
     #display( get_host_ip(), " may be PHP site (sig)\n" );
-    return 1;
+    return TRUE;
   } else {
     #display( get_host_ip(), " is definitely NOT a PHP site (sig) - ", sig, "\n" );
-    return 0;
+    return FALSE;
   }
 }
 
 function can_host_asp( port ) {
 
-  local_var banner, sig, files;
+  local_var port, banner, sig, files;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_asp" );
+  if( ! port ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#can_host_asp" );
+    return;
+  }
+
+  files = get_kb_list( "www/" + port + "/content/extensions/asp*" );
+  if( ! isnull( files ) ) {
+    #display( get_host_ip(), " hosts ASP - ", files[0], "\n" );
+    return TRUE; # Hosting .asp files
+  }
 
   banner = get_http_banner( port:port );
   if( ! banner ) {
-    return 0;
+    return FALSE;
   } else {
     if( egrep( pattern:"^Server:.*IIS", string:banner, icase:TRUE ) ) {
       #display( get_host_ip(), " may host ASP\n" );
-      return 1;
+      return TRUE;
     }
   }
 
   if( tolower( banner ) =~ 'powered.*asp' || tolower( banner ) =~  "server.*asp.*" ) return TRUE;
 
-  #TBD: Move before the banner check?
-  files = get_kb_list( "www/" + port + "/content/extensions/asp" );
-  if( ! isnull( files ) ) {
-    #display( get_host_ip(), " hosts ASP - ", files[0], "\n" );
-    return 1; # Hosting .asp files
-  }
-
+  # TBD: This looks wrong... (See if( ! banner ) above)
   sig = banner;
-  if( ! sig ) { #TBD: This looks wrong...
+  if( ! sig ) {
     #display( get_host_ip(), " has no sig\n" );
     # Could not fingerprint it, even though we know that IIS fingerprint
     # is quite reliable
     if( egrep( pattern:"^Server:.*", string:banner, icase:TRUE ) ) {
-      return 0;
+      return FALSE;
     } else {
-      return 1; # Unknown web server - might be able to host a ASP website
+      return TRUE; # Unknown web server - might be able to host a ASP website
     }
   }
 
   if( egrep( pattern:"iis", string:sig, icase:TRUE ) ) {
     #display( get_host_ip(), " may be ASP site (sig)\n" );
-    return 1;
+    return TRUE;
   } else {
     #display( get_host_ip(), " is definitely NOT a ASP site (sig) - ", sig, "\n" );
-    return 0;
+    return FALSE;
   }
 }
 
@@ -770,7 +774,7 @@ function extract_location_from_redirect( port, data, debug ) {
 
   if( debug ) display( 'DEBUG: Location header is: "' + location + '"\n' );
 
-  # Grab everything after Location: 
+  # Grab everything after Location:
   location -= string( "\r\n" );
   location = ereg_replace( string:location, pattern:"Location: (.*)$", replace:"\1", icase:TRUE );
 
@@ -798,4 +802,20 @@ function extract_location_from_redirect( port, data, debug ) {
     if( debug ) display( 'DEBUG: Location header is pointing to "' + location + '" on the same host/ip. Returning this location.\n' );
     return location;
   }
+}
+
+function get_cookie_from_header( buf, pattern )
+{
+  local_var buf, pattern, match;
+
+  if( ! buf ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#buf#-#get_cookie_from_header" );
+    return;
+  }
+
+  if( ! pattern )
+    pattern = 'Set-Cookie: ([^\r\n]+)';
+
+  if( match = eregmatch( pattern:pattern, string:buf ) )
+    return match[ max_index( match ) -1 ];
 }

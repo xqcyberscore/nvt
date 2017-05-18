@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ssh_keygen.nasl 3304 2016-05-12 14:37:27Z benallard $
+# $Id: ssh_keygen.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: SSH Secure-RPC Weak Encrypted Authentication
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Patch and New version are available from SSH.";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11340");
- script_version("$Revision: 3304 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 16:37:27 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2222);
  script_tag(name:"cvss_base", value:"3.6");
@@ -46,7 +46,6 @@ if(description)
  script_tag(name:"solution_type", value:"VendorFix");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_summary("Checks for the remote SSH version");
  script_category(ACT_GATHER_INFO);
 
  script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");

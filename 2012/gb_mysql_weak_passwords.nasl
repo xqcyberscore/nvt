@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_weak_passwords.nasl 5235 2017-02-08 14:09:56Z cfi $
+# $Id: gb_mysql_weak_passwords.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # MySQL / MariaDB weak password 
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103551");
-  script_version("$Revision: 5235 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:09:56 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 5889 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-23 10:38:09 +0200 (Thu, 23 Aug 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -62,7 +62,8 @@ cpe_list = make_list( "cpe:/a:mysql:mysql",
                       "cpe:/a:oracle:mysql",
                       "cpe:/a:mariadb:mariadb" );
 
-if( ! port = get_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+port = infos['port'];
 
 if( get_kb_item( "MySQL/" + port + "/blocked" ) ) exit( 0 );
 

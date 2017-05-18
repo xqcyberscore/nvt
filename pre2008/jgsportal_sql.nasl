@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: jgsportal_sql.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: jgsportal_sql.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: JGS-Portal Multiple XSS and SQL injection Vulnerabilities
 #
 # Authors:
@@ -34,29 +34,19 @@ tag_solution = "Unknown at this time";
 if(description)
 {
  script_id(18289);
- script_version("$Revision: 3362 $");
+ script_version("$Revision: 5780 $");
  script_cve_id("CVE-2005-1635", "CVE-2005-1633");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(13650);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
- name = "JGS-Portal Multiple XSS and SQL injection Vulnerabilities";
- script_name(name);
-
-
- summary = "JGS-Portal Multiple XSS and SQL injection Vulnerabilities";
-
- script_summary(summary);
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
-
+ script_name("JGS-Portal Multiple XSS and SQL injection Vulnerabilities");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
-
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -68,23 +58,21 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if ( ! can_host_php(port:port) ) exit(0);
 
-function check(url)
-{
- req = http_get(item:url + "/jgs_portal_statistik.php?meinaction=themen&month=1&year=1'", port:port);
- res = http_keepalive_send_recv(port:port, data:req);
- if ( res == NULL ) exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
- if (("SQL-DATABASE ERROR" >< res ) && ("SELECT starttime FROM bb1_threads WHERE FROM_UNIXTIME" >< res ))
- {
-     security_message(port);
-     exit(0);
- }
+  if( dir == "/" ) dir = "";
+  url = dir + "/jgs_portal_statistik.php?meinaction=themen&month=1&year=1'";
+  req = http_get(item:url, port:port);
+  res = http_keepalive_send_recv(port:port, data:req);
+  if ( res == NULL ) continue;
+
+  if (("SQL-DATABASE ERROR" >< res ) && ("SELECT starttime FROM bb1_threads WHERE FROM_UNIXTIME" >< res )) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-foreach dir ( make_list (cgi_dirs()) )
-{
-  check(url:dir);
-}
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: fcgi_echo.nasl 3477 2016-06-10 12:57:12Z mime $
+# $Id: fcgi_echo.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: FastCGI samples Cross Site Scripting
 #
 # Authors:
@@ -43,8 +43,8 @@ http://www.someserver.com/fcgi-bin/echo2.exe?blah=<SCRIPT>alert(document.domain)
 if(description)
 {
  script_id(10838);
- script_version("$Revision: 3477 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:57:12 +0200 (Fri, 10 Jun 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,6 @@ if(description)
  
  summary = "Tests for FastCGI samples Cross Site Scripting";
  
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");

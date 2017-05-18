@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_detect.nasl 2946 2016-03-24 10:29:13Z cfi $
+# $Id: gb_xcart_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # X_CART Shopping Cart Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806067");
-  script_version("$Revision: 2946 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 11:29:13 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-10-05 11:33:14 +0530 (Mon, 05 Oct 2015)");
   script_name("X_CART Shopping Cart Version Detection");
-  script_summary("Check the presence of X_CART Shopping Cart");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2008_210_07.nasl 5665 2017-03-21 12:51:19Z cfi $
+# $Id: esoft_slk_ssa_2008_210_07.nasl 5999 2017-04-21 09:02:32Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -37,16 +37,15 @@ if(description)
 {
  script_id(61471);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_cve_id("CVE-2008-0960", "CVE-2008-2292");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5665 $");
+ script_version("$Revision: 5999 $");
  name = "Slackware Advisory SSA:2008-210-07 net-snmp ";
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2008-210-07 net-snmp");
 
  script_category(ACT_GATHER_INFO);
 

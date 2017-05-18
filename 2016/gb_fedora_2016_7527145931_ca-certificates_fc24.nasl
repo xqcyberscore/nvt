@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808824");
-  script_version("$Revision: 3784 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:57:25 +0530 (Tue, 02 Aug 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,6 @@ Mozilla Foundation for use with the Internet PKI.
   script_xref(name: "FEDORA", value: "2016-7527145931");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/JBEG3PSLQBIHL5ZKOMMDOW5K5FXXEGZV");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ca-certificates");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

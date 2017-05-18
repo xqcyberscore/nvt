@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882562");
-  script_version("$Revision: 4191 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 12:59:18 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-29 05:43:13 +0200 (Thu, 29 Sep 2016)");
   script_cve_id("CVE-2016-3710", "CVE-2016-5403");
   script_tag(name:"cvss_base", value:"7.2");
@@ -73,7 +73,6 @@ described in this advisory, refer to:
 
   script_xref(name: "CESA", value: "2016:1943");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022091.html");
-  script_summary("Check for the Version of kmod-kvm");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

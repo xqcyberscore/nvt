@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 5291 2017-02-14 07:53:54Z cfi $
+# $Id: dont_print_on_printers.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -29,12 +29,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5291 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-14 08:53:54 +0100 (Tue, 14 Feb 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not print on AppSocket and socketAPI printers");
-  script_summary("Exclude defined ports on AppSocket & socketAPI printers from scan");
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2004 by Laurent Facq");
   script_family("Settings");

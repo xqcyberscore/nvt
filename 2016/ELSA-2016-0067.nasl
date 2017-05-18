@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0067.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0067.nasl 5732 2017-03-27 09:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122860");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5732 $");
 script_tag(name:"creation_date", value:"2016-01-27 07:27:54 +0200 (Wed, 27 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0067");
 script_tag(name: "insight", value: "ELSA-2016-0067 -  java-1.6.0-openjdk security update - [1.6.0.38-1.13.10.0.0.1]- Add oracle-enterprise.patch[1:1.6.0.38-1.13.10.0]- Add patch to replace -fno-strict-overflow with -fwrapv on older RHEL 5.11 GCC.- Resolves: rhbz#1295772[1:1.6.0.38-1.13.10.0]- Update to IcedTea 1.13.10 & OpenJDK 6 b38.- Resolves: rhbz#1295772"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0067");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

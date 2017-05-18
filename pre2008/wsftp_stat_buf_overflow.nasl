@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wsftp_stat_buf_overflow.nasl 3786 2016-08-02 19:21:54Z cfi $
+# $Id: wsftp_stat_buf_overflow.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # WS FTP STAT buffer overflow0
 #
@@ -29,14 +29,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14585");
-  script_version("$Revision: 3786 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 21:21:54 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3507);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("WS FTP STAT buffer overflow0");
-  script_summary("Check WS_FTP server version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("FTP");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842728");
-  script_version("$Revision: 3234 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-06 12:23:52 +0200 (Fri, 06 May 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:29 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-2804", "CVE-2016-2806", "CVE-2016-2807", "CVE-2016-2808",
 		"CVE-2016-2811", "CVE-2016-2812", "CVE-2016-2814", "CVE-2016-2816",
@@ -95,7 +95,6 @@ if(description)
   script_xref(name: "USN", value: "2936-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003397.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of oxygen-gtk3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

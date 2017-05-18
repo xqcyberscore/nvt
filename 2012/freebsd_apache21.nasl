@@ -56,12 +56,11 @@ if(description)
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-0883");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6018 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:22:17 -0400 (Fri, 10 Aug 2012)");
  script_name("FreeBSD Ports: apache");
 
- script_summary("FreeBSD Ports: apache");
 
  script_category(ACT_GATHER_INFO);
 

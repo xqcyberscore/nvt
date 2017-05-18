@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_security_bypass_vuln.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_security_bypass_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Cisco ASA Challenge-Response Tunnel Group Selection Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806686");
-  script_version("$Revision: 5000 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2014-8023");
   script_bugtraq_id(72618);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-18 12:33:59 +0530 (Thu, 18 Feb 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Challenge-Response Tunnel Group Selection Bypass Vulnerability");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://tools.cisco.com/bugsearch/bug/CSCtz48533");
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/viewAlert.x?alertId=37489");
 
-  script_summary("Check for the vulnerable version of Cisco ASA Software");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

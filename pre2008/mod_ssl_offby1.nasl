@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mod_ssl_offby1.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: mod_ssl_offby1.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: mod_ssl off by one
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "Upgrade to version 2.8.10 or newer";
 if(description)
 {
  script_id(11039);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5084);
  script_tag(name:"cvss_base", value:"4.6");
@@ -61,7 +61,6 @@ if(description)
 
  summary = "Checks for version of mod_ssl";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

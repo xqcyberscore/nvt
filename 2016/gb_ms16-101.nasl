@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-101.nasl 3849 2016-08-17 08:27:51Z antu123 $
+# $Id: gb_ms16-101.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Microsoft Windows Privilege Escalation Vulnerabilities (3178465)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808291");
-  script_version("$Revision: 3849 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-3237", "CVE-2016-3300");
   script_bugtraq_id(92290, 92296);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-17 10:27:51 +0200 (Wed, 17 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-10 08:32:49 +0530 (Wed, 10 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Privilege Escalation Vulnerabilities (3178465)");
@@ -78,7 +78,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3167679");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3177108");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-101");
-  script_summary("Check for the vulnerable file Lsasrv.dll version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

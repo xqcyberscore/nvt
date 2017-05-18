@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tetrinet_detect.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: tetrinet_detect.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Tetrinet server detection
 #
 # Authors:
@@ -38,14 +38,13 @@ if(description)
 {
  script_id(19608);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4034 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name( "Tetrinet server detection");
  
 
- script_summary( "Detect Tetrinet game server");
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_cartpress_plugin_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_wordpress_cartpress_plugin_xss_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # WordPress CartPress Plugin 'tcp_post_ids' Parameter Cross Site Scripting Vulnerability
 #
@@ -48,15 +48,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5958 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-04 13:54:24 +0530 (Wed, 04 Jan 2012)");
   script_name("WordPress CartPress Plugin 'tcp_post_ids' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108272/wpcartpress-xss.txt");
 
-  script_summary("Check if WordPress CartPress plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms16-133.nasl 4458 2016-11-09 15:06:14Z antu123 $
+# $Id: gb_ms_office_compat_pack_ms16-133.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (3199168)
 #
@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809723");
-  script_version("$Revision: 4458 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-7213", "CVE-2016-7228", "CVE-2016-7229", "CVE-2016-7231",
                 "CVE-2016-7232", "CVE-2016-7233", "CVE-2016-7234", "CVE-2016-7235");
   script_bugtraq_id(93993, 94020, 93996, 93995, 93994, 94031, 94005, 94022);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 16:06:14 +0100 (Wed, 09 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 14:52:15 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (3199168)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3127948");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-133");
 
-  script_summary("Check for the version of 'excelcnv.exe' and 'wordcnv.dll' files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

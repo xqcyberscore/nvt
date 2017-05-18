@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_booking_calendar_51119.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_php_booking_calendar_51119.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability
 #
@@ -44,17 +44,13 @@ if (description)
  script_cve_id("CVE-2011-5045");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5714 $");
  script_name("PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51119");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/bookingcalendar/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520929");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-04 15:47:28 +0100 (Wed, 04 Jan 2012)");
- script_summary("Determine if PHP Booking Calendar is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -67,28 +63,21 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
+foreach dir( make_list_unique( "/booking_calendar/", "/cal", cgi_dirs( port:port ) ) ) {
 
-if(!can_host_php(port:port))exit(0);
+  if( dir == "/" ) dir = "";
+  url = dir + "/details_view.php?event_id=1&date=2000-12-01&view=month&loc=loc1&page_info_message=<script>alert(/openvas-xss-test/)</script>";
 
-dirs = make_list("/booking_calendar/","/cal",cgi_dirs());
-
-foreach dir (dirs) {
-   
-  url = string(dir, "/details_view.php?event_id=1&date=2000-12-01&view=month&loc=loc1&page_info_message=<script>alert(/openvas-xss-test/)</script>"); 
-
-  if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE, extra_check:"Booking Calendar")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"Booking Calendar" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: jrun_getdir.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: jrun_getdir.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Allaire JRun directory browsing vulnerability
 #
 # Authors:
@@ -79,8 +79,8 @@ of the application.";
 if(description)
 {
  script_id(10814);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2001-1510");
  script_bugtraq_id(3592);
@@ -93,7 +93,6 @@ if(description)
 
 
  summary = "Allaire JRun directory browsing vulnerability";
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cometchat_57979.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_cometchat_57979.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # CometChat Remote Code Execution and Cross-Site Scripting Vulnerabilities
 #
@@ -42,63 +42,51 @@ cause denial-of-service conditions.";
 tag_solution = "Updates are available. Please see the references or vendor advisory
 for more information.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103669";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103669");
  script_bugtraq_id(57979);
- script_version ("$Revision: 2939 $");
+ script_version("$Revision: 5699 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-
  script_name("CometChat Remote Code Execution and Cross-Site Scripting Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57979");
-
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-02-26 12:54:40 +0100 (Tue, 26 Feb 2013)");
- script_summary("Determine if it is possible to execute php code");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/cometchat/", "/chat", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/cometchat/","/chat",cgi_dirs());
-
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = dir + '/index.html';
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>CometChat")) {
-
+  if( "<title>CometChat" >< buf ) {
     url = dir + '/modules/chatrooms/chatrooms.php?action=phpinfo';
-
-    if(http_vuln_check(port:port, url:url,pattern:"<title>phpinfo\(\)")) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if( http_vuln_check( port:port, url:url, pattern:"<title>phpinfo\(\)" ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }  
   }
 }
 
-exit(0);
-
+exit( 99 );

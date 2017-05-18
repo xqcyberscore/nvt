@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842638");
-  script_version("$Revision: 2878 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 11:32:13 +0100 (Thu, 17 Mar 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-16 06:28:21 +0100 (Tue, 16 Feb 2016)");
   script_cve_id("CVE-2013-7447");
   script_tag(name:"cvss_base", value:"4.3");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "USN", value: "2898-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-February/003301.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gtk+2.0");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

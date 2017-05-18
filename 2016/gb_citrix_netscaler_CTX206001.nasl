@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX206001.nasl 4384 2016-10-28 14:24:34Z mime $
+# $Id: gb_citrix_netscaler_CTX206001.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Citrix NetScaler Application Delivery Controller and NetScaler Gateway Multiple Security Updates
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-2071","CVE-2016-2072");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4384 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Citrix NetScaler Application Delivery Controller and NetScaler Gateway Multiple Security Updates (CTX206001)");
 
@@ -53,9 +53,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-28 16:24:34 +0200 (Fri, 28 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-11 17:00:25 +0100 (Thu, 11 Feb 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

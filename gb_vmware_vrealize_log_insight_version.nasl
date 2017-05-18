@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_log_insight_version.nasl 3828 2016-08-11 16:28:03Z mime $
+# $Id: gb_vmware_vrealize_log_insight_version.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # VMware vRealize Log Insight Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105751");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3828 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-11 18:28:03 +0200 (Thu, 11 Aug 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-06-10 11:52:17 +0200 (Fri, 10 Jun 2016)");
  script_name("VMware vRealize Log Insight Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_summary("Checks for the presence of VMware vRealize Log Insight");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

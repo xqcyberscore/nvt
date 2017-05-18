@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: Allied_Telesyn_web.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: Allied_Telesyn_web.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Allied Telesyn Router/Switch Web interface found with default password
 #
 # Authors:
@@ -35,15 +35,14 @@ tag_solution = "Connect to this Router/Switch and change the default password.";
 if(description)
 {
     script_id(18413);
-    script_version("$Revision: 5390 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+    script_version("$Revision: 6063 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_tag(name:"cvss_base", value:"4.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
     script_cve_id("CVE-1999-0508");
     script_name("Allied Telesyn Router/Switch Web interface found with default password");
  
-    script_summary("Logs into Allied Telesyn routers and switches Web interface with default password");
  
     script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

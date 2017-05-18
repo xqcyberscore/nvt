@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: counter.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: counter.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # counter.exe vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11725");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(267);
   script_tag(name:"cvss_base", value:"5.0");
@@ -36,7 +36,6 @@ if(description)
   script_cve_id("CVE-1999-1030");
   script_xref(name:"OSVDB", value:"9826");
   script_name("counter.exe vulnerability");
-  script_summary("Checks for the counter.exe file");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
   script_family("Web application abuses");

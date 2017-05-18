@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_n_dire_trav_vuln_lin.nasl 5106 2017-01-25 14:08:54Z cfi $
+# $Id: gb_wordpress_csrf_n_dire_trav_vuln_lin.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # WordPress Core Ajax handlers CSRF and Directory Traversal Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809157");
-  script_version("$Revision: 5106 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2016-6896", "CVE-2016-6897", "CVE-2016-10148");
   script_bugtraq_id(92573, 92572);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 15:08:54 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-26 15:12:51 +0530 (Fri, 26 Aug 2016)");
   script_name("WordPress Core Ajax handlers CSRF and Directory Traversal Vulnerabilities (Linux)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40288/");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of wordpress on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");

@@ -65,8 +65,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-January/001537.html");
   script_id(840856);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6022 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-09 13:29:45 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -75,7 +75,6 @@ if(description)
                  "CVE-2011-4516", "CVE-2011-4517");
   script_name("Ubuntu Update for ghostscript USN-1317-1");
 
-  script_summary("Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

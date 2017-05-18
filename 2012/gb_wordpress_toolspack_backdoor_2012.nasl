@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_toolspack_backdoor_2012.nasl 5670 2017-03-21 15:13:03Z cfi $
+# $Id: gb_wordpress_toolspack_backdoor_2012.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Backdoored WordPress ToolsPack Plugin
 #
@@ -41,14 +41,13 @@ if (description)
  script_xref(name : "URL" , value : "http://www.wordpress.org");
  script_xref(name : "URL" , value : "http://blog.sucuri.net/2012/02/new-wordpress-toolspack-plugin.html");
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5670 $");
+ script_version ("$Revision: 6032 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Backdoored WordPress ToolsPack Plugin");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-08 10:26:15 +0100 (Thu, 08 Mar 2012)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

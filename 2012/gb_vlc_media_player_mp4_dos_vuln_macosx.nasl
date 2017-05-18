@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_dos_vuln_macosx.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_vlc_media_player_mp4_dos_vuln_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # VLC Media Player 'MP4' Denial of Service Vulnerability (Mac OS X)
 #
@@ -43,12 +43,12 @@ denial of service vulnerability.";
 if(description)
 {
   script_id(802921);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-2396");
   script_bugtraq_id(53535, 53169);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-25 13:33:36 +0530 (Wed, 25 Jul 2012)");
   script_name("VLC Media Player 'MP4' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49159");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111991/VLC-2.0.1-Division-By-Zero.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");

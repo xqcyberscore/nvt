@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_http_srv_cookie_info_disc_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_apache_http_srv_cookie_info_disc_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability
 #
@@ -29,16 +29,15 @@ CPE = 'cpe:/a:apache:http_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902830");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(51706);
   script_cve_id("CVE-2012-0053");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-26 12:12:12 +0530 (Thu, 26 Apr 2012)");
   script_name("Apache HTTP Server 'httpOnly' Cookie Information Disclosure Vulnerability");
 
-  script_summary("Check Apache httpd web server is vulnerable to Cookie Disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web Servers");

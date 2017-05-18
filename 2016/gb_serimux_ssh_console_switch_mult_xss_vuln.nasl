@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serimux_ssh_console_switch_mult_xss_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_serimux_ssh_console_switch_mult_xss_vuln.nasl 5673 2017-03-22 09:06:34Z teissa $
 #
 # Serimux SSH Console Switch Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:serimux:serimux_console_switch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807895");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5673 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 10:06:34 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-05 16:48:59 +0530 (Wed, 05 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Serimux SSH Console Switch Multiple Cross-Site Scripting Vulnerabilities");
@@ -55,12 +55,11 @@ if(description)
   script_tag(name:"affected", value:"Serimux SSH Console Switch versions 2.4, 2.3
   2.2 and 2.1");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be updated once details
-  are available. For updates refer to
+  script_tag(name:"solution", value:"The cross site scripting vulnerabilties can be patched by an input restriction of the vulnerable parameters, 
+disallow the usage of special chars on input to prevent further injection attacks. Parse all parameters separatly to resolve the issue. For updates refer to
   https://www.networktechinc.com/overview/serimux-s-x.html");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2016/Oct/5");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Oct/14");

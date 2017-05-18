@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809425");
-  script_version("$Revision: 4191 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 12:59:18 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-29 06:01:26 +0200 (Thu, 29 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-24fa65c0ae");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VISITJP5YACHGG2QY6XV5GIGF4RWP4QS");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of vfrnav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

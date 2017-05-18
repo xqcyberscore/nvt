@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_web_admin_xss_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_domino_web_admin_xss_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Lotus Domino Web Administrator Cross Site Scripting Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5701 $");
   script_cve_id("CVE-2013-4055", "CVE-2013-4051", "CVE-2013-4050");
   script_bugtraq_id(63578,63577,63576);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-12-05 13:26:26 +0530 (Thu, 05 Dec 2013)");
   script_name("IBM Lotus Domino Web Administrator Cross Site Scripting Vulnerability");
 
@@ -93,21 +93,14 @@ include("global_settings.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(version_is_equal(version:domVer, test_version:"8.5.0") ||
    version_is_equal(version:domVer, test_version:"9.0.0"))
 {
-  security_message(0);
+  security_message(port:0);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_detect_win.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_avast_av_detect_win.nasl 6036 2017-04-27 06:04:46Z antu123 $
 #
 # avast! AntiVirus Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801110");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 6036 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 08:04:46 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("avast! AntiVirus Version Detection (Windows)");
@@ -59,6 +59,7 @@ version from 'DisplayVersion' string in registry.";
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
+include("version_func.inc");
 include("host_details.inc");
 
 ## Variable Initialization
@@ -69,9 +70,8 @@ os_arch = "";
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
-if(!os_arch)
-{
-  exit(-1);
+if(!os_arch){
+  exit(0);
 }
 
 ## Check for 32 bit platform
@@ -89,24 +89,16 @@ if(!registry_key_exists(key:key)){
     exit(0);
 }
 
-foreach path (make_list("Avast", "avast!", "avast5"))
+foreach path (make_list("Avast", "Avast Antivirus", "avast!", "avast5"))
 {
   avastName = registry_get_sz(key:key + path, item:"DisplayName");
-  if("avast! (Free )?Antivirus" >!< avastName || "Avast Free Antivirus" >!< avastName)
+  if("avast! (Free )?Antivirus" >< avastName || "Avast Free Antivirus" >< avastName)
   {
     avastVer = registry_get_sz(key:key + path, item:"DisplayVersion");
-
-    if(!(avastVer =~ "^([0-9]\.[0-9]+\.[0-9]+\.[0-9]+)"))
-    {
-      avastPath = registry_get_sz(key:key + path, item:"DisplayIcon");
-
-      ## avastPath will have complete path including file name
-      ## To use fetch_file_version() need to split it and take the last part
-      ## and again fetch_file_version() is going to execute below three lines
-      ## so not using fetch_file_version()
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:avastPath);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:avastPath);
-      avastVer = GetVer(file:file, share:share);
+    avastPath = registry_get_sz(key:key + path, item:"DisplayIcon");
+    avastPath = avastPath - "\AvastUI.exe";
+    if(!(avastVer =~ "^([0-9]\.[0-9]+\.[0-9]+\.[0-9]+)") && avastPath){
+      avastVer = fetch_file_version(sysPath:avastPath , file_name: "AvastUI.exe");  
     }
 
     if(!isnull(avastVer))
@@ -128,6 +120,7 @@ foreach path (make_list("Avast", "avast!", "avast5"))
         cpe = build_cpe(value:avastVer, exp:"^([0-9.]+)", base:"cpe:/a:avast:avast_antivirus:x64:");
         if(isnull(cpe)){
           cpe = "cpe:/a:avast:avast_antivirus:x64";
+        }
       }
       ##register cpe
       register_product(cpe:cpe, location:avastPath);
@@ -137,7 +130,7 @@ foreach path (make_list("Avast", "avast!", "avast5"))
                                                install: avastPath,
                                                cpe: cpe,
                                                concluded: avastVer));
-      }
+      exit(0);
     }
   }
 }

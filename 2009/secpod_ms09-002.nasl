@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-002.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-002.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Cumulative Security Update for Internet Explorer (961260)
 #
@@ -26,28 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation results in memory corruption by executing
-  arbitrary code when user visits a specially crafted web page.
-  Impact Level: System";
-tag_affected = "Internet Explorer 7/8 on MS Windows 2003 and XP
-  Internet Explorer 7 on MS Windows vista SP1 and prior
-  Internet Explorer 7 on MS Windows 2008 server SP1 and prior";
-tag_insight = "- An error occurs when IE browser tries to use a previously deleted object
-    related to CFunctionPointer.
-  - An error exists when XHTML strict mode is used in the zoom style directive
-    in conjunction with other directives within the Cascading Style Sheets (CSS)
-    stylesheet in a crafted HTML document.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS09-002";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-002.";
-
 if(description)
 {
   script_id(900078);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -62,11 +45,22 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl", "gb_ms_ie_detect.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation results in memory corruption by executing
+  arbitrary code when user visits a specially crafted web page.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Internet Explorer 7/8 on MS Windows 2003 and XP
+  Internet Explorer 7 on MS Windows vista SP1 and prior
+  Internet Explorer 7 on MS Windows 2008 server SP1 and prior");
+  script_tag(name : "insight" , value : "- An error occurs when IE browser tries to use a previously deleted object
+    related to CFunctionPointer.
+  - An error exists when XHTML strict mode is used in the zoom style directive
+    in conjunction with other directives within the Cascading Style Sheets (CSS)
+    stylesheet in a crafted HTML document.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/MS09-002");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS09-002.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -77,21 +71,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2003:3, win2008:2, winVista:2) <= 0){
   exit(0);
@@ -108,11 +87,10 @@ if(hotfix_missing(name:"961260") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  vers = get_file_version(sysPath, file_name:"mshtml.dll");
+  vers = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(vers)
   {
     if(hotfix_check_sp(xp:4, win2003:3) > 0)
@@ -131,11 +109,10 @@ if(sysPath)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\mshtml.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(dllVer)
   {
     # Windows Vista

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fitnesse_wiki_rce.nasl 5081 2017-01-24 11:05:06Z cfi $
+# $Id: gb_fitnesse_wiki_rce.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # Fitnesse Wiki Remote Command Execution Vulnerability
 #
@@ -30,10 +30,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.802069");
   script_bugtraq_id(65921);
   script_cve_id("CVE-2014-1216");
-  script_version("$Revision: 5081 $");
+  script_version("$Revision: 5827 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:05:06 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-03-17 10:20:42 +0530 (Mon, 17 Mar 2014)");
   script_name("Fitnesse Wiki Remote Command Execution Vulnerability");
 
@@ -57,7 +57,6 @@ if (description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/57121");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/1");
   script_xref(name : "URL" , value : "https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-1216");
-  script_summary("Determine if it is possible to execute a command");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -67,7 +66,6 @@ if (description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("misc_func.inc");
@@ -108,8 +106,6 @@ function cleanup(host, http_port, fpath)
   fwiki_res3 = http_keepalive_send_recv( port:http_port, data:fwiki_req3, bodyonly:FALSE );
 }
 
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
 host = http_host_name(port:http_port);
@@ -120,9 +116,7 @@ foreach dir (make_list_unique("/", "/wiki", "/fitnesse", cgi_dirs(port:http_port
 
   if(dir == "/") dir = "";
 
-  ## Request to confirm FitNesse Wiki
-  fwiki_req1 = http_get(item:string(dir, "/"), port:http_port);
-  fwiki_res1 = http_keepalive_send_recv(port:http_port, data:fwiki_req1);
+  fwiki_res1 = http_get_cache(item:string(dir, "/"), port:http_port);
 
   if(">FitNesse<" >!< fwiki_res1) {
     continue;

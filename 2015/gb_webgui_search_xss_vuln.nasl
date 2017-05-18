@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgui_search_xss_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_webgui_search_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # Plain Black WebGUI 'search' Cross-Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802090");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 5819 $");
   script_bugtraq_id(72253);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-01-23 11:27:32 +0530 (Fri, 23 Jan 2015)");
   script_name("Plain Black WebGUI 'search' Cross-Site Scripting Vulnerability");
 
@@ -62,12 +62,12 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130005");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/79");
   script_xref(name : "URL" , value : "http://secupent.com/exploit/WebGUI-7.10.29-XSS.txt");
-  script_summary("Check if Plain Black WebGUI is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -88,21 +88,12 @@ sndReq = "";
 rcvRes = "";
 
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check Port State
-if(!get_port_state(http_port)){
-  exit(0);
-}
 
 host = http_host_name( port:http_port );
 
 ##iterate over possible paths
-foreach dir (make_list_unique("/", "/WebGUI", "/webgui", cgi_dirs()))
+foreach dir (make_list_unique("/", "/WebGUI", "/webgui", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";

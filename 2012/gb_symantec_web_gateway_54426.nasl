@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_54426.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_symantec_web_gateway_54426.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Symantec Web Gateway  Remote Shell Command Execution Vulnerability
 #
@@ -45,16 +45,15 @@ if (description)
  script_cve_id("CVE-2012-2953");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5956 $");
 
  script_name("Symantec Web Gateway Remote Shell Command Execution Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54426");
  script_xref(name : "URL" , value : "http://www.symantec.com/business/web-gateway");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-26 10:16:05 +0200 (Thu, 26 Jul 2012)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

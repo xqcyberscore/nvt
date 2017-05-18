@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-059.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-059.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Microsoft Office Visio/Viewer Remote Code Execution Vulnerability (2733918)
 #
@@ -41,12 +41,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902921);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-1888");
   script_bugtraq_id(54934);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:48:21 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Office Visio/Viewer Remote Code Execution Vulnerability (2733918)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50228/");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2598287");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS12-059");
 
-  script_summary("Check for the version of 'visio.exe' and Vpreview.exe file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

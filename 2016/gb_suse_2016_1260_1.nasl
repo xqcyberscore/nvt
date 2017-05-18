@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851307");
-  script_version("$Revision: 3273 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-11 11:46:39 +0200 (Wed, 11 May 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-08 05:19:24 +0200 (Sun, 08 May 2016)");
   script_cve_id("CVE-2016-3714", "CVE-2016-3715", "CVE-2016-3716", "CVE-2016-3717", 
                 "CVE-2016-3718");
@@ -64,7 +64,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "SUSE-SU", value: "2016:1260_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-05/msg00024.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ImageMagick");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

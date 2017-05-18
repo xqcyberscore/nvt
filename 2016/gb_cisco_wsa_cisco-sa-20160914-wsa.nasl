@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_cisco_wsa_cisco-sa-20160914-wsa.nasl 6034 2017-04-27 05:46:15Z teissa $
 #
 # Cisco Web Security Appliance HTTP Load Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:cisco:web_security_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106255");
-  script_version("$Revision: 5101 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 6034 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-27 07:46:15 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-09-16 12:38:55 +0700 (Fri, 16 Sep 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -63,8 +63,8 @@ targeted device.");
 downloads for the same HTTP data. This could cause a DoS condition due to heavy traffic on the connection to the
 server.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 25th January, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of
+27th April, 2017. Information regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160914-wsa");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_zingiri_web_shop_mult_xss_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_wordpress_zingiri_web_shop_mult_xss_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # WordPress Zingiri Web Shop Plugin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -44,19 +44,18 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-6506");
   script_bugtraq_id(53278);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-27 14:14:14 +0530 (Fri, 27 Apr 2012)");
   script_name("WordPress Zingiri Web Shop Plugin Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18135");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18787");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112216/WordPress-Zingiri-Web-Shop-2.4.0-Cross-Site-Scripting.html");
 
-  script_summary("Check if WordPress Zingiri Web Shop Plugin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 SecPod");

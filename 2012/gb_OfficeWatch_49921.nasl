@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_OfficeWatch_49921.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_OfficeWatch_49921.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Metropolis Technologies OfficeWatch Directory Traversal Vulnerability
 #
@@ -37,7 +37,7 @@ if (description)
 {
  script_id(103502);
  script_bugtraq_id(49921);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5950 $");
 
  script_name("Metropolis Technologies OfficeWatch Directory Traversal Vulnerability");
 
@@ -47,9 +47,8 @@ if (description)
 
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-06-27 13:52:32 +0200 (Wed, 27 Jun 2012)");
- script_summary("Determine if it is possible to read the boot.ini");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

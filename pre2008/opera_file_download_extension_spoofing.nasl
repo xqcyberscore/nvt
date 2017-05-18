@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_file_download_extension_spoofing.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: opera_file_download_extension_spoofing.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Opera web browser file download extension spoofing
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_summary = "The remote host is using Opera - an alternative web browser.
 if(description)
 {
   script_id(14247);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2083");
   script_bugtraq_id(9640);
@@ -49,7 +49,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
   script_name("Opera web browser file download extension spoofing");
 
-  script_summary("Determines the version of Opera.exe");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

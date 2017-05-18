@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-125.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-125.nasl 5963 2017-04-18 09:02:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120485");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 5963 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:27:33 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-125");
 script_tag(name: "insight", value: "It was found that OpenJPEG failed to sanity-check an image header field before using it. A remote attacker could provide a specially-crafted image file that could cause an application linked against OpenJPEG to crash or, possibly, execute arbitrary code. (CVE-2012-3535 )"); 
 script_tag(name : "solution", value : "Run yum update openjpeg to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-125");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

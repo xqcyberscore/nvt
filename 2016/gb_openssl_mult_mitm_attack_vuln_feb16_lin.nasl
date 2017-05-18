@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_mitm_attack_vuln_feb16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_openssl_mult_mitm_attack_vuln_feb16_lin.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # OpenSSL Multiple MitM Attack Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806676");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-3197", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-01 16:38:12 +0530 (Mon, 01 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple MitM Attack Vulnerabilities (Linux)");
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20160128.txt");
-  script_summary("Check for the vulnerable version of OpenSSL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

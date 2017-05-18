@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ignition_45687.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: gb_ignition_45687.nasl 5719 2017-03-24 13:29:29Z cfi $
 #
 # Ignition 'comment.php' Local File Include Vulnerability
 #
@@ -35,25 +35,20 @@ also possible.
 
 Ignition 1.3 and prior versions are vulnerable.";
 
-
 if (description)
 {
  script_id(103016);
- script_version("$Revision: 5647 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
  script_bugtraq_id(45687);
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-
  script_name("Ignition 'comment.php' Local File Include Vulnerability");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45687");
  script_xref(name : "URL" , value : "https://launchpad.net/ignition");
  script_xref(name : "URL" , value : "https://launchpad.net/ignition/trunk/1.3");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine Ignition is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,30 +60,29 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+include("host_details.inc");
 
-dirs = make_list("/ignition",cgi_dirs());
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
+
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/ignition", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
   
-  foreach file (keys(files)) {
-   
-    url = string(dir, "/comment.php?blog=",crap(data:"../",length:3*9),files[file],"%00"); 
+  foreach file( keys( files ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+    url = string(dir, "/comment.php?blog=",crap(data:"../",length:3*9),files[file],"%00");
 
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );
+

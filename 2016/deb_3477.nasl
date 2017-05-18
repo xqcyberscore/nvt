@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3477.nasl 3319 2016-05-13 10:33:42Z benallard $
+# $Id: deb_3477.nasl 5712 2017-03-24 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3477-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703477);
-    script_version("$Revision: 3319 $");
+    script_version("$Revision: 5712 $");
     script_cve_id("CVE-2016-1523");
     script_name("Debian Security Advisory DSA 3477-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-02-14 00:00:00 +0100 (Sun, 14 Feb 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3477.html");
 
-    script_summary("Debian Security Advisory DSA 3477-1 (iceweasel - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3609.nasl 3692 2016-07-13 06:47:53Z antu123 $
+# $Id: deb_3609.nasl 5867 2017-04-05 09:01:13Z teissa $
 # Auto-generated from advisory DSA 3609-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703609);
-    script_version("$Revision: 3692 $");
+    script_version("$Revision: 5867 $");
     script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2015-5346", "CVE-2015-5351",
                   "CVE-2016-0706", "CVE-2016-0714", "CVE-2016-0763", "CVE-2016-3092");
     script_name("Debian Security Advisory DSA 3609-1 (tomcat8 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-07-07 16:51:37 +0530 (Thu, 07 Jul 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3609.html");
 
-    script_summary("Debian Security Advisory DSA 3609-1 (tomcat8 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

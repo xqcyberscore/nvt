@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol00032124.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol00032124.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # F5 BIG-IP - SOL00032124 - BIG-IP last hop kernel module vulnerability CVE-2015-5516
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5516");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 5689 $");
 
  script_name("F5 BIG-IP - SOL00032124 - BIG-IP last hop kernel module vulnerability CVE-2015-5516");
 
@@ -57,9 +57,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-01-19 11:57:11 +0100 (Tue, 19 Jan 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_apsb16-29_lin.nasl 4060 2016-09-14 13:40:09Z antu123 $
+# $Id: gb_adobe_flash_player_apsb16-29_lin.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Adobe Flash Player Security Updates( apsb16-29 )-Linux
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809222");
-  script_version("$Revision: 4060 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-4271", "CVE-2016-4272", "CVE-2016-4274", "CVE-2016-4275", 
 		"CVE-2016-4276", "CVE-2016-4277", "CVE-2016-4278", "CVE-2016-4279", 
 		"CVE-2016-4280", "CVE-2016-4281", "CVE-2016-4282", "CVE-2016-4283", 
@@ -40,7 +40,7 @@ if(description)
 		"CVE-2016-4238" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 15:40:09 +0200 (Wed, 14 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:14:53 +0530 (Wed, 14 Sep 2016)");
   script_name("Adobe Flash Player Security Updates( apsb16-29 )-Linux");
 
@@ -75,7 +75,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb16-29.html");
 
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

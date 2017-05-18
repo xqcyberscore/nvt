@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xampp_detect.nasl 2685 2016-02-17 17:15:28Z cfi $
+# $Id: secpod_xampp_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # XAMPP Version Detection
 #
@@ -30,17 +30,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900526");
-  script_version("$Revision: 2685 $");
+  script_version("$Revision: 5676 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 18:15:28 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_name("XAMPP Version Detection");
   script_summary("Set the Version of XAMPP in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -81,7 +81,7 @@ foreach dir( make_list_unique( "/", "/xampp", cgi_dirs( port:port ) ) ) {
     if( ver[1] != NULL ) version = ver[1];
 
     set_kb_item( name:"www/" + port + "/XAMPP", value:version );
-    set_kb_item( name:"xampp/installed", value:TRUE );
+    replace_kb_item( name:"xampp/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:apachefriends:xampp:");

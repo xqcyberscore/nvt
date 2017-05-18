@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54731.nasl 5235 2017-02-08 14:09:56Z cfi $
+# $Id: gb_scrutinizer_54731.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Scrutinizer Default Password Security Bypass Vulnerability
 #
@@ -46,16 +46,15 @@ if (description)
  script_cve_id("CVE-2012-3951");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5235 $");
+ script_version ("$Revision: 6018 $");
 
  script_name("Scrutinizer Default Password Security Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54731");
  script_xref(name : "URL" , value : "http://www.plixer.com");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:09:56 +0100 (Wed, 08 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-08 12:18:06 +0200 (Wed, 08 Aug 2012)");
- script_summary("Determine if it is possible to login into the remote mysql");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

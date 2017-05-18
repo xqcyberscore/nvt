@@ -75,13 +75,12 @@ if(description)
 {
  script_id(70592);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2011-3389", "CVE-2011-4681", "CVE-2011-4682", "CVE-2011-4683");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 5963 $");
  script_name("FreeBSD Ports: opera, linux-opera");
- script_summary("FreeBSD Ports: opera, linux-opera");
 
  script_category(ACT_GATHER_INFO);
 

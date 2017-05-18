@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_sql_inj_vuln.nasl 3742 2016-07-22 10:15:12Z ckuerste $
+# $Id: gb_sap_netweaver_sql_inj_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # SAP NetWeaver Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sap:netweaver';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106083");
-  script_version("$Revision: 3742 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-22 12:15:12 +0200 (Fri, 22 Jul 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-05-23 10:42:10 +0700 (Mon, 23 May 2016)");
   script_tag(name: "cvss_base", value: "7.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("sap_netweaver/installed");
 
   script_tag(name: "summary", value: "SAP NetWeaver is prone to multiple vulnerabilities.");
-  script_summary("Check the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

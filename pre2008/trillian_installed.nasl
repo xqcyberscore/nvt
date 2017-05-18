@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: trillian_installed.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: trillian_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Trillian is installed
 #
 # Authors:
@@ -30,8 +30,8 @@ tag_solution = "Uninstall this software";
 if(description)
 {
  script_id(11428);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2002-2162");
  script_bugtraq_id(5677, 5733, 5755, 5765, 5769, 5775, 5776, 5777, 5783);
@@ -50,7 +50,6 @@ if(description)
 
  summary = "Determines if Trillian is installed";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

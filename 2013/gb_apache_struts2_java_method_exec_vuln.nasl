@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities
 #
@@ -25,15 +25,16 @@
 ###############################################################################
 
 CPE = "cpe:/a:apache:struts";
+
 if(description)
 {
   script_id(803837);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 5842 $");
   script_cve_id("CVE-2013-1966", "CVE-2013-2115");
   script_bugtraq_id(60166, 60167);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-07-23 17:54:59 +0530 (Tue, 23 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities");
@@ -66,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://struts.apache.org/development/2.x/docs/s2-014.html");
   script_xref(name : "URL" , value : "http://metasploit.org/modules/exploit/multi/http/struts_include_params");
 
-  script_summary("Check if Apache Struts2 is vulnerable to java method execution vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -75,7 +75,6 @@ if(description)
   script_require_ports("Services/www", 8080);
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
@@ -90,7 +89,6 @@ asReq = "";
 dir = "";
 url = "";
 
-## Get HTTP Port
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -98,6 +96,8 @@ if(!asport = get_app_port(cpe:CPE)){
 if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
+
+host = http_host_name(port:asport);
 
 ## Send and Receive the response
 asreq = http_get(item:string(dir,"/example/HelloWorld.action"), port:asport);
@@ -117,8 +117,8 @@ if(asres && ">Struts" >< asres && ">English<" >< asres)
 
     ## Construct the POST request
       asReq = string("POST /struts2-blank/example/HelloWorld.action HTTP/1.1\r\n",
-                     "Host: ", get_host_name(), "\r\n",
-                     "User-Agent:  Java-Method-Execution\r\n",
+                     "Host: ", host, "\r\n",
+                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen(postdata), "\r\n",
                      "\r\n", postdata);

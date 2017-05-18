@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_server_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_ziproxy_server_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # Ziproxy Server Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(900522);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ziproxy Server Version Detection");
@@ -40,8 +40,9 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("General");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
@@ -72,6 +73,7 @@ if(get_port_state(zipPort))
 
     if(ziproxyVer[1] != NULL){
       set_kb_item(name:"www/" + zipPort + "/Ziproxy", value:ziproxyVer[1]);
+      replace_kb_item(name:"Ziproxy/installed", value:TRUE);
       log_message(data:"Ziproxy Server version " + ziproxyVer[1] +
                          " was detected on the host");
    

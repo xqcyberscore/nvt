@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_tools_detect_win.nasl 4026 2016-09-12 07:22:30Z antu123 $
+# $Id: gb_vmware_tools_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # VMware Tools Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809030");
-  script_version("$Revision: 4026 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 09:22:30 +0200 (Mon, 12 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-02 13:07:24 +0530 (Fri, 02 Sep 2016)");
   script_name("VMware Tools Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   and gets the version from 'DisplayVersion' string.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Set version of VMware Tools in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

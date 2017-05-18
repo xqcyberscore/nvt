@@ -50,14 +50,13 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
  script_cve_id("CVE-2012-3365");
- script_version("$Revision: 5663 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5977 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-19 11:49:14 -0400 (Wed, 19 Sep 2012)");
  script_name("FreeBSD Ports: php5-sqlite");
 
  script_xref(name:"URL" , value:"http://www.vuxml.org/freebsd/ec255bd8-02c6-11e2-92d1-000d601460a4.html");
 
- script_summary("FreeBSD Ports: php5-sqlite");
 
  script_category(ACT_GATHER_INFO);
 

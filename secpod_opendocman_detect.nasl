@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opendocman_detect.nasl 2443 2016-01-19 10:18:35Z cfi $
+# $Id: secpod_opendocman_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # OpenDocMan Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900884");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2443 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-19 11:18:35 +0100 (Tue, 19 Jan 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenDocMan Version Detection");
-  script_summary("Set KB for the version of OpenDocMan");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

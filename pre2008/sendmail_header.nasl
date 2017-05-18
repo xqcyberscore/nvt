@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_header.nasl 2601 2016-02-06 23:53:44Z cfi $
+# $Id: sendmail_header.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Sendmail remote header buffer overflow
 #
 # Authors:
@@ -27,8 +27,8 @@ CPE = 'cpe:/a:sendmail:sendmail';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11316");
- script_version("$Revision: 2601 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-07 00:53:44 +0100 (Sun, 07 Feb 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2794, 6991);
  script_cve_id("CVE-2001-1349", "CVE-2002-1337");
@@ -36,7 +36,6 @@ if(description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Sendmail remote header buffer overflow");
- script_summary("Checks the version number");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2003 SECNAP Network Security");
  script_family("SMTP problems");

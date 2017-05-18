@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2008_045_03.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2008_045_03.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -40,8 +40,8 @@ if(description)
 {
  script_id(60386);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
- script_version("$Revision: 5356 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+ script_version("$Revision: 5958 $");
  script_cve_id("CVE-2007-1285", "CVE-2007-2872", "CVE-2007-3378",
                "CVE-2007-4657", "CVE-2007-4658", "CVE-2008-0145");
  script_bugtraq_id(22764, 24261, 25498, 24661);
@@ -51,7 +51,6 @@ if(description)
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2008-045-03 php");
 
  script_category(ACT_GATHER_INFO);
 

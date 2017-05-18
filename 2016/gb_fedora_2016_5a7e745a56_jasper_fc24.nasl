@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809253");
-  script_version("$Revision: 4134 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 14:06:38 +0200 (Thu, 22 Sep 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-18 05:54:13 +0200 (Sun, 18 Sep 2016)");
   script_cve_id("CVE-2015-5203");
   script_tag(name:"cvss_base", value:"10.0");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-5a7e745a56");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/3VMUTGOK2TA6252YFROXAXJ2577CHGZ3");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of jasper");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

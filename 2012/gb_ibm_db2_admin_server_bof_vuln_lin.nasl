@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # IBM DB2 Administration Server Buffer Overflow Vulnerability (Linux)
 #
@@ -39,10 +39,10 @@ tag_summary = "This host is installed with IBM DB2 and is prone to buffer overfl
 if(description)
 {
   script_id(802728);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-0711");
   script_bugtraq_id(52326);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-02 18:37:15 +0530 (Mon, 02 Apr 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21588093");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg27007053");
 
-  script_summary("Check for the Version of IBM DB2 Servers on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");

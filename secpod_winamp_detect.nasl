@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winamp_detect.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_winamp_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Winamp Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900196");
-  script_version("$Revision: 2833 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-01-29 15:16:47 +0100 (Thu, 29 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Winamp Version Detection");
@@ -47,7 +47,6 @@ in registry and gets the version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Sets the KB for the version of Winamp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

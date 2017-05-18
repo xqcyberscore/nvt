@@ -51,13 +51,12 @@ if(description)
  script_cve_id("CVE-2012-1151");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 6022 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:59:58 -0400 (Mon, 30 Apr 2012)");
  script_name("Gentoo Security Advisory GLSA 201204-08 (DBD-Pg)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201204-08 (DBD-Pg)");
 
  script_category(ACT_GATHER_INFO);
 

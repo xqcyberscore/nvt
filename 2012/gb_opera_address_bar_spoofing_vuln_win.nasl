@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_address_bar_spoofing_vuln_win.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_address_bar_spoofing_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Opera Address Bar Spoofing Vulnerability (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with Opera and is prone to address bar
 if(description)
 {
   script_id(802450);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 6018 $");
   script_bugtraq_id(55345);
   script_cve_id("CVE-2012-4010");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-03 16:35:41 +0530 (Mon, 03 Sep 2012)");
   script_name("Opera Address Bar Spoofing Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN69880570/index.html");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1160/");
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000080.html");
 
-  script_summary("Check for the version of Opera for Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

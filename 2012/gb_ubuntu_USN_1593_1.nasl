@@ -64,8 +64,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001851.html");
   script_id(841169);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6022 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:24:12 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-0212", "CVE-2012-2240", "CVE-2012-2241", "CVE-2012-2242", "CVE-2012-3500");
   script_tag(name:"cvss_base", value:"9.3");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name: "USN", value: "1593-1");
   script_name("Ubuntu Update for devscripts USN-1593-1");
 
-  script_summary("Check for the Version of devscripts");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

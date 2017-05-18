@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su12-004.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_macosx_su12-004.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Mac OS X v10.6.8 Multiple Vulnerabilities (2012-004)
 #
@@ -54,7 +54,7 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802968);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053", "CVE-2012-0650",
                 "CVE-2012-1173", "CVE-2012-3719", "CVE-2012-0831", "CVE-2012-1172",
                 "CVE-2012-1823", "CVE-2012-2143", "CVE-2012-2311", "CVE-2012-2386",
@@ -67,7 +67,7 @@ if(description)
                     50802, 52049, 52830, 51006, 52830);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-25 19:33:16 +0530 (Tue, 25 Sep 2012)");
   script_name("Mac OS X v10.6.8 Multiple Vulnerabilities (2012-004)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5501");
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/Sep/msg00004.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Checks for existence of Mac OS X 10.6.8 Update/Mac OS X Security Update 2012-004");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808376");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:41:19 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-4450");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ memory usage.
   script_xref(name: "FEDORA", value: "2016-ea323bd6cf");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XKHKJFTNXLSD4QLHYAFIKDSRXMNFU7YM");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nginx");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-046.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-046.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Visual Basic for Applications Remote Code Execution Vulnerability (2707960)
 #
@@ -44,17 +44,16 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(903034);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-1854");
   script_bugtraq_id(54303);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-11 12:07:45 +0530 (Wed, 11 Jul 2012)");
   script_name("Visual Basic for Applications Remote Code Execution Vulnerability (2707960)");
 
 
-  script_summary("Check for the version of vulnerable files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: openwebmail_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
 # Description: Open WebMail Detection
 #
 # Authors:
@@ -29,25 +29,20 @@ Open WebMail is a webmail package written in Perl that provides access
 to mail accounts via POP3 or IMAP.  See <http://www.openwebmail.org/>
 for more information.";
 
-if (description)
+if(description)
 {
   script_id(14221);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5737 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
-  name = "Open WebMail Detection";
-  script_name(name);
-
-  summary = "Checks for the presence of Open WebMail";
-  script_summary(summary);
+  script_name("Open WebMail Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-  family = "General";
-  script_family(family);
-  script_dependencies("global_settings.nasl", "http_version.nasl", "no404.nasl");
+  script_family("General");
+  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "summary" , value : tag_summary);
@@ -58,12 +53,7 @@ include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-host = get_host_name();
 port = get_http_port(default:80);
-
-if (!get_port_state(port)) exit(0);
-if (get_kb_item("www/no404/" + port)) exit(0);
-if (debug_level) display("debug: looking for Open WebMail on ", host, ":", port, ".\n");
 
 # Search for Open WebMail in a couple of different locations.
 #
@@ -71,22 +61,10 @@ if (debug_level) display("debug: looking for Open WebMail on ", host, ":", port,
 #     'inurl:openwebmail.pl userid' - and represent the more popular
 #     installation paths currently. Still, cgi_dirs() should catch
 #     the directory if its referenced elsewhere on the target.
-dirs = make_list(cgi_dirs());
-xtra_dirs = make_array(
-  "/cgi-bin/openwebmail", 1,
-  "/openwebmail-cgi", 1
-);
-foreach dir (dirs) {
-  # Set value to zero if it's already in dirs.
-  if (!isnull(xtra_dirs[dir])) xtra_dirs[dir] = 0;
-}
-foreach dir (keys(xtra_dirs)) {
-  # Add it to dirs if the value is still set.
-  if (xtra_dirs[dir]) dirs = make_list(dirs, dir);
-}
 
 installs = 0;
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", cgi_dirs( port:port ) ) ) {
+
   url = string(dir, "/openwebmail.pl");
   if (debug_level) display("debug: retrieving ", url, "...\n");
   req = http_get(item:url, port:port);

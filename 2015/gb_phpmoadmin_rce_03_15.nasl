@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmoadmin_rce_03_15.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_phpmoadmin_rce_03_15.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # PHPMoAdmin Unauthorized Remote Code Execution
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-2208");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 5819 $");
 
  script_name("PHPMoAdmin Unauthorized Remote Code Execution");
 
@@ -50,9 +50,8 @@ vulnerability because the application fails to sufficiently sanitize user-suppli
  script_tag(name:"qod_type", value:"exploit");
  script_tag(name:"solution_type", value:"NoneAvailable");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-03-04 09:46:19 +0100 (Wed, 04 Mar 2015)");
- script_summary("Determine if it is possible to execute php code");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -67,12 +66,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = make_list( "/moadmin.php","/wu-moadmin.php" );
-dirs = make_list_unique("/phpmoadmin/", "/moadmin/", "/wu-moadmin/", cgi_dirs());
+dirs = make_list_unique("/phpmoadmin/", "/moadmin/", "/wu-moadmin/", cgi_dirs(port:port));
 
 foreach dir ( dirs )
 {

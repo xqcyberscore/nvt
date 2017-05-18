@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-123.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-123.nasl 5888 2017-04-07 09:01:53Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120479");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 5888 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:27:23 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-123");
 script_tag(name: "insight", value: "A heap-based buffer overflow flaw was found in the way libxslt applied templates to nodes selected by certain namespaces. An attacker could use this flaw to create a malicious XSL file that, when used by an application linked against libxslt to perform an XSL transformation, could cause the application to crash or, possibly, execute arbitrary code with the privileges of the user running the application. (CVE-2012-2871 )Several denial of service flaws were found in libxslt. An attacker could use these flaws to create a malicious XSL file that, when used by an application linked against libxslt to perform an XSL transformation, could cause the application to crash. (CVE-2012-2825 , CVE-2012-2870 , CVE-2011-3970 )An information leak could occur if an application using libxslt processed an untrusted XPath expression, or used a malicious XSL file to perform an XSL transformation. If combined with other flaws, this leak could possibly help an attacker bypass intended memory corruption protections. (CVE-2011-1202 )"); 
 script_tag(name : "solution", value : "Run yum update libxslt to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-123");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

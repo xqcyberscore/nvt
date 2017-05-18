@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ris_detect.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: ris_detect.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: RIS Installation Check
 #
 # Authors:
@@ -28,8 +28,8 @@ if(description)
 {
  script_id(12231);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "RIS Installation Check";
@@ -37,7 +37,6 @@ if(description)
 
 
  summary = "Checks if the remote host was installed via RIS.";
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
  script_copyright("This script is Copyright (C) 2004 Jorge Pinto And Nelson Gomes");

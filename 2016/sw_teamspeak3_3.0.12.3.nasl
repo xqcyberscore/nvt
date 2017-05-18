@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_teamspeak3_3.0.12.3.nasl 4024 2016-09-09 12:13:21Z cfi $
+# $Id: sw_teamspeak3_3.0.12.3.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # TeamSpeak 3 Server < 3.0.12.4 Crashes On Malicious Input
 #
@@ -29,13 +29,12 @@ CPE = "cpe:/a:teamspeak:teamspeak3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111111");
-  script_version("$Revision: 4024 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 14:13:21 +0200 (Fri, 09 Sep 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-23 15:00:00 +0200 (Sat, 23 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("TeamSpeak 3 Server < 3.0.12.4 Crashes On Malicious Input");
-  script_summary("Check for the vulnerable version of TeamSpeak 3 server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Denial of Service");

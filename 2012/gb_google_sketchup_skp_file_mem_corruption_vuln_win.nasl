@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_sketchup_skp_file_mem_corruption_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_google_sketchup_skp_file_mem_corruption_vuln_win.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Google SketchUp '.SKP' File Memory Corruption Vulnerability (Windows)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with Google SketchUp and is prone to
 if(description)
 {
   script_id(803038);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2012-4894");
   script_bugtraq_id(55598);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-09 17:33:06 +0530 (Tue, 09 Oct 2012)");
   script_name("Google SketchUp '.SKP' File Memory Corruption Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50663");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/msvr/msvr12-015");
 
-  script_summary("Check for the version of Google SketchUp 8.0.11752.0 on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_magentservice_bof_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_hp_diagnostics_server_magentservice_bof_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # HP Diagnostics Server 'magentservice.exe' Buffer Overflow Vulnerability
 #
@@ -45,12 +45,12 @@ buffer overflow vulnerability.";
 if(description)
 {
   script_id(802386);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2011-4789");
   script_bugtraq_id(51398);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 14:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("HP Diagnostics Server 'magentservice.exe' Buffer Overflow Vulnerability");
 
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-12-016/");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of HP Diagnostics Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

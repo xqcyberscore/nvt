@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802704");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-1466");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 13:50:32 +0530 (Fri, 09 Mar 2012)");
   script_name("Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name: "URL" , value : "http://secpod.org/exploits/SecPod_Netmechanica_NetDecision_Traffic_Grapher_Server_SourceCode_Disc_PoC.py");
   script_xref(name: "URL" , value : "http://secpod.org/advisories/SecPod_Netmechanica_NetDecision_Traffic_Grapher_Server_SourceCode_Disc_Vuln.txt");
 
-  script_summary("Check for the information disclosure vulnerability in NetDecision Traffic Grapher Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

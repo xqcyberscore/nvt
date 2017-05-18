@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_post_req_bof_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_httpdx_post_req_bof_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # httpdx 'POST' request Heap Based Buffer Overflow Vulnerability
 #
@@ -50,15 +50,14 @@ CPE = "cpe:/a:jasper:httpdx";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5958 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 12:12:12 +0530 (Mon, 30 Jul 2012)");
   script_name("httpdx 'POST' request Heap Based Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20120");
 
-  script_summary("Determine if httpdx is prone to a buffer overflow");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

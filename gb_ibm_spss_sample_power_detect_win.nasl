@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_sample_power_detect_win.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_ibm_spss_sample_power_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # IBM SPSS SamplePower Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802299");
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("IBM SPSS SamplePower Version Detection (Windows)");
@@ -44,7 +44,6 @@ gets the from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of IBM SPSS SamplePower");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -60,17 +59,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 osArch = "";
 key_list = "";

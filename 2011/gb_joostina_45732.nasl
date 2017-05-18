@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joostina_45732.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_joostina_45732.nasl 5749 2017-03-28 13:47:32Z cfi $
 #
 # Joostina 'index.php' Cross Site Scripting Vulnerability
 #
@@ -41,12 +41,11 @@ credentials and to launch other attacks.
 
 Joostina versions 1.3.0 and prior are vulnerable.";
 
-
-if (description)
+if(description)
 {
  script_id(103034);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5749 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-19 13:37:44 +0100 (Wed, 19 Jan 2011)");
  script_bugtraq_id(45732);
  script_tag(name:"cvss_base", value:"2.6");
@@ -58,7 +57,6 @@ if (description)
  script_xref(name : "URL" , value : "http://websecurity.com.ua/4818/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Joostina is prone to a cross-site	scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -72,23 +70,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/joostina","/cms",cgi_dirs());
+foreach dir( make_list_unique( "/joostina", "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/index.php?option=com_search&searchword=xss&ordering=%22%20onmouseover=alert(document.cookie)%20style=position:fixed;top:0;left:0;width:100%;height:100%;%22"); 
 
-  if(http_vuln_check(port:port,url:url,pattern:"onmouseover=alert\(document.cookie\)",check_header:TRUE, extra_check:"Joostina CMS")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if(http_vuln_check(port:port,url:url,pattern:"onmouseover=alert\(document\.cookie\)",check_header:TRUE, extra_check:"Joostina CMS")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

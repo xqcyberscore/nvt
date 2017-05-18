@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msn_n_xmpp_dos_vuln_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_pidgin_msn_n_xmpp_dos_vuln_win.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Pidgin MSN and XMPP Denial of Service Vulnerabilities (Windows)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host has installed with Pidgin and is prone to denial of
 if(description)
 {
   script_id(802906);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-2318", "CVE-2012-2214");
   script_bugtraq_id(53400, 53706);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:00:59 +0530 (Wed, 04 Jul 2012)");
   script_name("Pidgin MSN and XMPP Denial of Service Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49036/");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.pidgin.im/news/security/?id=62");
   script_xref(name : "URL" , value : "http://hg.pidgin.im/pidgin/main/rev/4d6bcb4f4ea4");
 
-  script_summary("Check for the Version of Pidgin on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

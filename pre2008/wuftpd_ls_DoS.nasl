@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: wuftpd_ls_DoS.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: wuftpd_ls_DoS.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: wu-ftpd ls -W memory exhaustion
 #
 # Authors:
@@ -37,8 +37,8 @@ See http://www.guninski.com/binls.html";
 if (description)
 {
  script_id(11912);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8875);
  script_cve_id("CVE-2003-0853", "CVE-2003-0854");
@@ -51,7 +51,6 @@ if (description)
  script_name( name);
 
 
- script_summary( "send ls -w 1000000 -C to the remote FTP server");
 
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freewebshop_55567.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_freewebshop_55567.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # FreeWebshop Multiple SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -46,16 +46,15 @@ if (description)
  script_bugtraq_id(55567);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5956 $");
 
  script_name("FreeWebshop Multiple SQL Injection and Cross Site Scripting Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55567");
  script_xref(name : "URL" , value : "http://www.freewebshop.org");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-18 13:18:37 +0200 (Tue, 18 Sep 2012)");
- script_summary("Determine if FreeWebshop is vulnerable.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

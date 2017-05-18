@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_detect_win.nasl 3003 2016-04-07 06:36:08Z antu123 $
+# $Id: gb_adobe_flash_player_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800029");
-  script_version("$Revision: 3003 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 08:36:08 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-10-16 18:25:33 +0200 (Thu, 16 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player/Flash CS/AIR/Flex Version Detection (Windows)");
@@ -48,7 +48,6 @@ and gets the version from 'DisplayVersion' string in registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set KB for the version of Adobe Flash Player/Flash CS/AIR/Flex on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -72,19 +71,6 @@ airFlag = 0;
 csFlag = 0;
 os_arch = "";
 checkduplicate = "";
-
-## Function to Build report
-function build_report(app, ver, cpe, insloc)
-{
-  if(!insloc)
-    insloc = "Could not find the install location from registry";
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");

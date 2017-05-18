@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_51598.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wago_51598.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # WAGO Multiple Remote Vulnerabilities
 #
@@ -45,15 +45,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.wago.com/");
  script_id(103396);
  script_bugtraq_id(51598);
- script_version ("$Revision: 3058 $");
+ script_version ("$Revision: 5950 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
  script_name("WAGO Multiple Remote Vulnerabilities");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-23 15:14:54 +0100 (Mon, 23 Jan 2012)");
- script_summary("Determine if it is possible to login with default Credentials");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

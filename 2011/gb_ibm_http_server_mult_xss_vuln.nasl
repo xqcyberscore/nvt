@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_http_server_mult_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_ibm_http_server_mult_xss_vuln.nasl 5785 2017-03-30 09:19:35Z cfi $
 #
 # IBM HTTP Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -46,17 +46,14 @@ tag_summary = "This host is running IBM HTTP Server and is prone to multiple cro
 if(description)
 {
   script_id(801996);
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5785 $");
   script_cve_id("CVE-2011-1360");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-11-08 19:48:57 +0530 (Tue, 08 Nov 2011)");
   script_name("IBM HTTP Server Multiple Cross Site Scripting Vulnerabilities");
-
-
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check the version of IBM HTTP Server is vulnerable to Cross-Site Scripting");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web Servers");
@@ -74,18 +71,13 @@ if(description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
-## Get the HTTP ports
 port = get_http_port(default:80);
 
-## check the port status
-if(get_port_state(port))
-{
-  ## Get the Server banner
-  ibmWebSer = get_http_banner(port);
+## Get the Server banner
+ibmWebSer = get_http_banner(port:port);
 
   # Confirm the IBM HTTP Server
   if("Server: IBM_HTTP_Server" >< ibmWebSer)
@@ -101,4 +93,3 @@ if(get_port_state(port))
       }
     }
   }
-}

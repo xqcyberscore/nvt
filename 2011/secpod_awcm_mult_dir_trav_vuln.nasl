@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_awcm_mult_dir_trav_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_awcm_mult_dir_trav_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # AR Web Content Manager Multiple Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902338");
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_cve_id("CVE-2011-0903");
   script_bugtraq_id(46017);
@@ -38,11 +38,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64980");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16049/");
 
-  script_summary("Check if AWCM is vulnerable for Directory Traversal Vulnerabilities");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -66,14 +65,11 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   exit(0);
 }
-		
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 awcmPort = get_http_port(default:80);
-
-## Check the php support
 if(!can_host_php(port:awcmPort)){
   exit(0);
 }
@@ -96,7 +92,7 @@ foreach dir (make_list_unique("/awcm", "/AWCM", cgi_dirs(port:awcmPort)))
     {  
       sndReq2 = string("GET ", string(dir + "/index.php"), " HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
-                     "User-Agent: Mozilla\r\n",
+                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                      "Cookie: awcm_lang=", exp, "\r\n\r\n");
       rcvRes2 = http_keepalive_send_recv(port:awcmPort, data:sndReq2);
     

@@ -41,8 +41,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001871.html");
   script_id(841191);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5912 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-16 09:47:48 +0530 (Tue, 16 Oct 2012)");
   script_cve_id("CVE-2011-2709");
   script_tag(name:"cvss_base", value:"6.2");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "USN", value: "1612-1");
   script_name("Ubuntu Update for libgssglue USN-1612-1");
 
-  script_summary("Check for the Version of libgssglue");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

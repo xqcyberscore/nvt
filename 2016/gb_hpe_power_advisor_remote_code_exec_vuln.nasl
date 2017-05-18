@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_power_advisor_remote_code_exec_vuln.nasl 4110 2016-09-19 11:33:29Z antu123 $
+# $Id: gb_hpe_power_advisor_remote_code_exec_vuln.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # HPE Power Advisor Remote Arbitrary Code Execution Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:power_advisor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809193");
-  script_version("$Revision: 4110 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2016-4377");
   script_bugtraq_id(92479);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-19 13:33:29 +0200 (Mon, 19 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-02 15:19:02 +0530 (Fri, 02 Sep 2016)");
   script_name("HPE Power Advisor Remote Arbitrary Code Execution Vulnerability");
 
@@ -61,7 +61,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name:"URL", value:"http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05237578");
-  script_summary("Check for the vulnerable version of HPE Power Advisor");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

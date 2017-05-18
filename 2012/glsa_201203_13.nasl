@@ -53,13 +53,12 @@ if(description)
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
  script_cve_id("CVE-2011-2147", "CVE-2011-4073");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5931 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:59:56 -0400 (Mon, 30 Apr 2012)");
  script_name("Gentoo Security Advisory GLSA 201203-13 (Openswan)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201203-13 (Openswan)");
 
  script_category(ACT_GATHER_INFO);
 

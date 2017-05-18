@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: db2_discovery_DoS.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: db2_discovery_DoS.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: DB2 discovery service DOS
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "upgrade your software - apply FixPack 10a";
 if(description)
 {
  script_id(11896);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -51,7 +51,6 @@ if(description)
  
 
  summary = "A too long UDP packet kills the remote service";
- script_summary(summary);
  
  script_category(ACT_DENIAL);
  

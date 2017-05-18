@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808561");
-  script_version("$Revision: 3704 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-14 09:10:44 +0200 (Thu, 14 Jul 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-10 07:20:20 +0200 (Sun, 10 Jul 2016)");
   script_cve_id("CVE-2016-4002", "CVE-2016-4952", "CVE-2016-5106", "CVE-2016-5105",
                 "CVE-2016-5107", "CVE-2016-4454", "CVE-2016-4453", "CVE-2016-5238",
@@ -60,7 +60,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-73853a7a16");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UXGARZJ7L3P6BMXHVWTZBIMFPV5ONPDB");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

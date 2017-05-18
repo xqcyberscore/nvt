@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-080.nasl 3525 2016-06-15 13:24:44Z antu123 $
+# $Id: gb_ms16-080.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Microsoft Windows PDF Library Multiple Vulnerabilities (3164302)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808226");
-  script_version("$Revision: 3525 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-3201", "CVE-2016-3203", "CVE-2016-3215");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:24:44 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:30:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows PDF Library Multiple Vulnerabilities (3164302)");
 
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3164302");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-080");
 
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

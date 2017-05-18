@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_code_exec_vuln_dec12_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_realplayer_code_exec_vuln_dec12_win.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # RealNetworks RealPlayer Code Execution Vulnerabilities - Dec12 (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 if(description)
 {
   script_id(803088);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2012-5690", "CVE-2012-5691");
   script_bugtraq_id(56956);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-25 10:46:45 +0530 (Tue, 25 Dec 2012)");
   script_name("RealNetworks RealPlayer Code Execution Vulnerabilities - Dec12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51589");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027893");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/12142012_player/en");
 
-  script_summary("Check for the version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

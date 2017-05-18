@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln_aug16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_cloudbees_jenkins_mult_vuln_aug16_lin.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # CloudBees Jenkins Multiple Vulnerabilities August16 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808269");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2015-5317", "CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5324",
                 "CVE-2015-5325", "CVE-2015-5326", "CVE-2015-8103", "CVE-2015-7536",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(77572, 77570, 77574, 77636, 77619);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 09:47:29 +0530 (Fri, 05 Aug 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities August16 (Linux)");
 
@@ -79,7 +79,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-11-11");
 
-  script_summary("Check for the vulnerable version of CloudBees Jenkins on Linux.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

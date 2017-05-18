@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tecomat_51602.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_tecomat_51602.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Tecomat Foxtrot Default Password Security Bypass Vulnerability
 #
@@ -38,15 +38,14 @@ if (description)
  script_xref(name : "URL" , value : "http://www.tecomat.com/index.php?a=cat.308");
  script_id(103397);
  script_bugtraq_id(51602);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 6018 $");
 
  script_name("Tecomat Foxtrot Default Password Security Bypass Vulnerability");
 
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-24 10:17:53 +0100 (Tue, 24 Jan 2012)");
- script_summary("Determine if it is possible to login with default Credentials");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

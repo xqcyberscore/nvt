@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2519_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2519_1.nasl 5977 2017-04-19 09:02:22Z teissa $
 # Description: Auto-generated from advisory DSA 2519-1 (isc-dhcp)
 #
 # Authors:
@@ -71,13 +71,12 @@ if(description)
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
  script_cve_id("CVE-2011-4539", "CVE-2012-3571", "CVE-2012-3954");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5977 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:15:18 -0400 (Fri, 10 Aug 2012)");
  script_name("Debian Security Advisory DSA 2519-1 (isc-dhcp)");
 
 
- script_summary("Debian Security Advisory DSA 2519-1 (isc-dhcp)");
 
  script_category(ACT_GATHER_INFO);
 

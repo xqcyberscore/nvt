@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpstorecart_file_upload_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_wpstorecart_file_upload_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # WordPress wpStoreCart Plugin 'upload.php' Arbitrary File Upload Vulnerability
 #
@@ -42,19 +42,18 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-3576");
   script_bugtraq_id(53896);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-17 15:31:41 +0530 (Tue, 17 Jul 2012)");
   script_name("WordPress wpStoreCart Plugin 'upload.php' Arbitrary File Upload Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49459");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/76166");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/19023/");
 
-  script_summary("Check if WordPress wpStoreCart Plugin is vulnerable to arbitrary file upload");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

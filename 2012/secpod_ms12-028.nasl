@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-028.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-028.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2639185)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903017);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-0177");
   script_bugtraq_id(52867);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-11 09:32:29 +0530 (Wed, 11 Apr 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2639185)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48723/");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026910");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS12-028");
 
-  script_summary("Check the version of Works632.cnv and Wkcvqr01.dll files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

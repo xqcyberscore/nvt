@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: jaws_file_inclusion.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: jaws_file_inclusion.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # File Inclusion Vulnerability in Jaws
 #
@@ -32,15 +32,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19395");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2179");
   script_bugtraq_id(14158);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("File Inclusion Vulnerability in Jaws");
-  script_summary("Detect Jaws File Inclusion Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
   script_family("Web application abuses");

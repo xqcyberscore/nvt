@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cis_manager_email_sql_inj_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_cis_manager_email_sql_inj_vuln.nasl 5818 2017-03-31 10:29:04Z cfi $
 #
 # CIS Manager 'email' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804455");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 5818 $");
   script_cve_id("CVE-2014-3749");
   script_bugtraq_id(67442);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-05-26 16:44:36 +0530 (Mon, 26 May 2014)");
   script_name("CIS Manager 'email' Parameter SQL Injection Vulnerability");
 
@@ -57,17 +57,15 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/93252");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/May/73");
-  script_summary("Check if CIS Manager is prone to SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -79,18 +77,15 @@ sndReq = "";
 rcvRes = "";
 dir = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
+if( ! can_host_asp( port:http_port ) ) exit( 0 );
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/autenticar", "/cismanager", "/site", "/construtiva", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/login.asp"), port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/login.asp"), port:http_port);
 
   ## confirm the application
   if(rcvRes && rcvRes  =~ ">Construtiva .*Internet Software" ||

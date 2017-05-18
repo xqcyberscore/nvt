@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: servletExec_Path_Disclosure.nasl 3303 2016-05-12 13:22:42Z benallard $
+# $Id: servletExec_Path_Disclosure.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: ServletExec 4.1 ISAPI Physical Path Disclosure
 #
 # Authors:
@@ -28,15 +28,14 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10960");
- script_version("$Revision: 3303 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:22:42 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4793);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2002-0892");
  script_name("ServletExec 4.1 ISAPI Physical Path Disclosure");
- script_summary("Tests for ServletExec 4.1 ISAPI Path Disclosure");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2002 Matt Moore");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-MS04-017.nasl 4702 2016-12-07 13:02:11Z cfi $
+# $Id: remote-MS04-017.nasl 5787 2017-03-30 10:26:10Z cfi $
 #
 # Microsoft Security Bulletin MS04-017
 # Vulnerability in Crystal Reports Web Viewer Could Allow Information Disclosure and Denial of Service 
@@ -37,8 +37,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101004");
-  script_version("$Revision: 4702 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 14:02:11 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 5787 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-15 20:59:49 +0100 (Sun, 15 Mar 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -81,13 +81,7 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the detection NVT
 
-pages = make_list_unique( '/CrystalReportWebFormViewer',
-                          '/CrystalReportWebFormViewer2',
-                          '/crystalreportViewers',
-                          cgi_dirs( port:port ) );
-
-# Build the malicious request
-foreach page( pages ) {
+foreach page( make_list_unique( '/CrystalReportWebFormViewer', '/CrystalReportWebFormViewer2', '/crystalreportViewers', cgi_dirs( port:port ) ) ) {
 
   if( page == "/" ) page = "";
 

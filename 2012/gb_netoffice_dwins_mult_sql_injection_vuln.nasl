@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netoffice_dwins_mult_sql_injection_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_netoffice_dwins_mult_sql_injection_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # netOffice Dwins Multiple SQL Injection Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802493");
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-15 16:26:54 +0530 (Thu, 15 Nov 2012)");
   script_name("netOffice Dwins Multiple SQL Injection Vulnerabilities");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22590/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118010/netOffice-Dwins-1.4p3-SQL-Injection.html");
 
-  script_summary("Check if netOffice Dwins is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

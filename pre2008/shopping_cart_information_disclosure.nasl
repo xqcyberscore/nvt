@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: shopping_cart_information_disclosure.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: shopping_cart_information_disclosure.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Shopping Cart Arbitrary Command Execution (Hassan)
 #
@@ -28,15 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10764");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3308);
   script_cve_id("CVE-2001-0985");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Shopping Cart Arbitrary Command Execution (Hassan)");
-  script_summary("Shopping Cart Arbitrary Command Excution (Hassan)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("Web application abuses");

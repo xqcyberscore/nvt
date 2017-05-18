@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_XSQLServlet_XSQLConfig.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: oracle9i_XSQLServlet_XSQLConfig.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Oracle XSQLServlet XSQLConfig.xml File
 #
 # Authors:
@@ -31,8 +31,8 @@ configuration file to reflect the change.";
 if(description)
 {
  script_id(10855);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4290);
  script_cve_id("CVE-2002-0568");
@@ -46,7 +46,6 @@ if(description)
 
  summary = "Tests for presence of XSQLConfig.xml";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");

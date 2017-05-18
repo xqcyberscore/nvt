@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: surgeldap_file_disclosure.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: surgeldap_file_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # File Disclosure in SurgeLDAP
 #
@@ -32,15 +32,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12211");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2253");
   script_bugtraq_id(10103);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("File Disclosure in SurgeLDAP");
-  script_summary("Detect SurgeLDAP File Disclosure");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20161005-n9kinfo.nasl 4221 2016-10-06 06:32:23Z ckuerste $
+# $Id: gb_cisco_nx_os_cisco-sa-20161005-n9kinfo.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco Nexus 9000 Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1455");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 4221 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Cisco Nexus 9000 Information Disclosure Vulnerability");
 
@@ -58,9 +58,8 @@ should be restricted and could be used to conduct further attacks.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-06 08:32:23 +0200 (Thu, 06 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 11:39:53 +0700 (Thu, 06 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

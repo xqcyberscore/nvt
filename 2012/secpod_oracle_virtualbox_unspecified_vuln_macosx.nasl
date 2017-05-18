@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_unspecified_vuln_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_oracle_virtualbox_unspecified_vuln_macosx.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability (MAC OS X)
 #
@@ -43,12 +43,12 @@ tag_summary = "This host is installed with Oracle VM VirtualBox and is prone to
 if(description)
 {
   script_id(902789);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-0111");
   script_bugtraq_id(51465);
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:43:28 +0530 (Tue, 24 Jan 2012)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability (MAC OS X)");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026531");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
 
-  script_summary("Check for the version of Oracle VM VirtualBox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");

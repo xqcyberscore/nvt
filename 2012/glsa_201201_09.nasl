@@ -55,13 +55,12 @@ if(description)
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2010-1797", "CVE-2010-2497", "CVE-2010-2498", "CVE-2010-2499", "CVE-2010-2500", "CVE-2010-2519", "CVE-2010-2520", "CVE-2010-2527", "CVE-2010-2541", "CVE-2010-2805", "CVE-2010-2806", "CVE-2010-2807", "CVE-2010-2808", "CVE-2010-3053", "CVE-2010-3054", "CVE-2010-3311", "CVE-2010-3814", "CVE-2010-3855", "CVE-2011-0226", "CVE-2011-3256", "CVE-2011-3439");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5988 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-12 10:04:42 -0500 (Sun, 12 Feb 2012)");
  script_name("Gentoo Security Advisory GLSA 201201-09 (FreeType)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201201-09 (FreeType)");
 
  script_category(ACT_GATHER_INFO);
 

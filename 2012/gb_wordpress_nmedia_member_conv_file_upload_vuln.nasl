@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_member_conv_file_upload_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_nmedia_member_conv_file_upload_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # WordPress Nmedia Member Conversation Plugin Arbitrary File Upload Vulnerability
 #
@@ -43,12 +43,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5963 $");
   script_bugtraq_id(53790);
   script_cve_id("CVE-2012-3577");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-20 12:12:12 +0530 (Wed, 20 Jun 2012)");
   script_name("WordPress Nmedia Member Conversation Plugin Arbitrary File Upload Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49375");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/wordpress-member-private-conversation/changelog/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113287/WordPress-Nmedia-WP-Member-Conversation-1.35.0-Shell-Upload.html");
   script_xref(name : "URL" , value : "http://www.opensyscom.fr/Actualites/wordpress-plugins-nmedia-wordpress-member-conversation-shell-upload-vulnerability.html");
-  script_summary("Check if Nmedia Member Conversation Plugin is vulnerable to arbitrary file upload");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

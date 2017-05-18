@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftpd_overflow.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: tftpd_overflow.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: TFTPD overflow
 #
 # Authors:
@@ -27,8 +27,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.18264");
- script_version("$Revision: 5309 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,7 +38,6 @@ if(description)
  script_cve_id("CVE-2002-0813", "CVE-2003-0380");
  script_name( "TFTPD overflow");
  
- script_summary( "Crashes TFTPD with a big UDP datagram");
 
  # Not ACT_DESTRUCTIVE_ATTACK (see CVE-2002-0813)
  script_category(ACT_KILL_HOST);

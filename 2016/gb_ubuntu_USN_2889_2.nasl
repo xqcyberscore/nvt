@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842627");
-  script_version("$Revision: 3319 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-05 13:14:16 +0530 (Fri, 05 Feb 2016)");
   script_cve_id("CVE-2013-7446", "CVE-2015-7513", "CVE-2015-7990", "CVE-2015-8374",
                 "CVE-2015-8787");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name: "USN", value: "2889-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-February/003289.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-vivid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

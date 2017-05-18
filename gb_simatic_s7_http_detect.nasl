@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_http_detect.nasl 3532 2016-06-16 09:35:52Z ckuerste $
+# $Id: gb_simatic_s7_http_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Siemens SIMATIC S7 Device Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106098");
- script_version ("$Revision: 3532 $");
- script_tag(name: "last_modification", value: "$Date: 2016-06-16 11:35:52 +0200 (Thu, 16 Jun 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-06-15 17:03:46 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,6 @@ devices.");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_summary("This script performs HTTP based detection of Siemens SIMATIC S7 devices.");
 
  exit(0);
 }

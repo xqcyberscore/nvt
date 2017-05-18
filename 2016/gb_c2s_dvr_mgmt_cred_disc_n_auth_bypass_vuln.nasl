@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_c2s_dvr_mgmt_cred_disc_n_auth_bypass_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_c2s_dvr_mgmt_cred_disc_n_auth_bypass_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # C2S DVR Management Credentials Disclosure and Authentication Bypass Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808663");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5827 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 18:12:02 +0530 (Tue, 23 Aug 2016)");
   script_name("C2S DVR Management Credentials Disclosure and Authentication Bypass Vulnerabilities");
 
@@ -66,13 +66,11 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
-
-###script code starts here
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -82,15 +80,9 @@ url = "";
 c2sPort = 0;
 report = "";
 
-## Get HTTP Port
 c2sPort = get_http_port(default:80);
-if(!c2sPort){
-  exit(0);
-}
 
-## Confirm Application
-sndReq = http_get(item:"/", port:c2sPort);
-rcvRes = http_send_recv( port:c2sPort, data:sndReq);
+rcvRes = http_get_cache(item:"/", port:c2sPort);
 
 ## Aplication confirmation for more specific is not possible,
 ## hence not going for detect NVT

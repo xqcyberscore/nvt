@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsss.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20160907-fsss.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Cisco Firepower Management Center Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6395");
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 4136 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("Cisco Firepower Management Center Cross-Site Scripting Vulnerability");
 
@@ -57,9 +57,8 @@ persuading a user of the interface to click a crafted link.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-08 10:11:15 +0700 (Thu, 08 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

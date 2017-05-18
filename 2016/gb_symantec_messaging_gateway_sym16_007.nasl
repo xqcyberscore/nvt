@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_007.nasl 3331 2016-05-17 15:30:33Z mime $
+# $Id: gb_symantec_messaging_gateway_sym16_007.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Symantec Messaging Gateway 10.6.x ACE Library Static Link to Vulnerable SSL Version (SYM16-007)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105722");
-  script_version("$Revision: 3331 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2014-0160");
   script_bugtraq_id(66690);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 17:30:33 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:54:13 +0200 (Tue, 17 May 2016)");
   script_name("Symantec Messaging Gateway 10.6.x ACE Library Static Link to Vulnerable SSL Version (SYM16-007)");
 
@@ -46,7 +46,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2016&suid=20160512_00");
 
-  script_summary("Check for the vulnerable version of Symantec Messaging Gateway");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

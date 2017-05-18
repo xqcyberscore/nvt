@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20151218-ios.nasl 3259 2016-05-10 13:30:24Z mime $
+# $Id: gb_cisco_ios_xe_cisco-sa-20151218-ios.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Cisco IOS and IOS XE Software IKEv1 State Machine Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6429");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3259 $");
+ script_version ("$Revision: 5689 $");
 
  script_name("Cisco IOS and IOS XE Software IKEv1 State Machine Denial of Service Vulnerability");
 
@@ -52,9 +52,8 @@ Cisco has released software updates that address this vulnerability. There are n
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-10 15:30:24 +0200 (Tue, 10 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-10 10:48:54 +0200 (Tue, 10 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

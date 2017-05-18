@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160525-ipv6.nasl 3415 2016-06-01 15:34:04Z mime $
+# $Id: gb_cisco_ios_cisco-sa-20160525-ipv6.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Cisco Products IPv6 Neighbor Discovery Crafted Packet Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1409");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3415 $");
+ script_version ("$Revision: 5689 $");
 
  script_name("Cisco Products IPv6 Neighbor Discovery Crafted Packet Denial of Service Vulnerability");
 
@@ -61,9 +61,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-01 17:34:04 +0200 (Wed, 01 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-01 12:30:57 +0200 (Wed, 01 Jun 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

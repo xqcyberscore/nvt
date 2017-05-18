@@ -56,14 +56,13 @@ if(description)
   script_id(841039);
   script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 5988 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-15 09:46:52 +0530 (Fri, 15 Jun 2012)");
   script_cve_id("CVE-2012-2122");
   script_xref(name: "USN", value: "1467-1");
   script_name("Ubuntu Update for mysql-5.5 USN-1467-1");
 
-  script_summary("Check for the Version of mysql-5.5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

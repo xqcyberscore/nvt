@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jaow_cms_xss_vunl.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_jaow_cms_xss_vunl.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Jaow CMS Cross Site Scripting Vulnerability
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803447");
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 5791 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-03-25 16:35:12 +0530 (Mon, 25 Mar 2013)");
   script_name("Jaow CMS Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013030202");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120922");
 
-  script_summary("Check if Jaow is vulnerable to XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -72,23 +71,18 @@ port = "";
 req = "";
 res = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/jaow", "/cms", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"), port:port);
-  res = http_keepalive_send_recv(port:port, data:req);
+  res = http_get_cache(item:string(dir,"/index.php"), port:port);
 
   ## Confirm the application
   if(">Jaow<" >< res)
@@ -97,7 +91,7 @@ foreach dir (make_list_unique("/", "/jaow", "/cms", cgi_dirs(port:port)))
     url = dir + "/add_ons.php?add_ons=%3Cscript%3Ealert(document.cookie)%3C/script%3E";
 
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
-           pattern:"<script>alert\(document.cookie\)</script>",
+           pattern:"<script>alert\(document\.cookie\)</script>",
            extra_check:"http://www.jaow.net"))
     {
       report = report_vuln_url( port:port, url:url );

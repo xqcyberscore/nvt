@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus23248.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCus23248.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Cisco Adaptive Security Appliance Software DHCPv6 Relay Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1367");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5000 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("Cisco Adaptive Security Appliance Software DHCPv6 Relay Denial of Service Vulnerability");
 
@@ -56,9 +56,8 @@ Cisco has released software updates that address this vulnerability. There are n
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-12 12:19:00 +0700 (Thu, 12 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_property_file_upload_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_wp_property_file_upload_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # WordPress WP-Property Plugin 'uploadify.php' Arbitrary File Upload Vulnerability
 #
@@ -50,18 +50,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(53787);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-12 12:12:12 +0530 (Tue, 12 Jun 2012)");
   script_name("WordPress WP-Property Plugin 'uploadify.php' Arbitrary File Upload Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49394");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53787");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18987");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113274/WordPress-WP-Property-1.35.0-Shell-Upload.html");
-  script_summary("Check if WP-Property Plugin is vulnerable to arbitrary file upload");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

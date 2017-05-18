@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808059");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5673 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 10:06:34 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-24 13:11:01 +0530 (Tue, 24 May 2016)");
   script_name("Joomla Easy Youtube Gallery SQL Injection Vulnerability");
 
@@ -54,12 +54,9 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla Easy Youtube Gallery 1.0.2");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be updated once the
-  solution details are available.
-  For updates refer to http://extensions.joomla.org.");
+  script_tag(name:"solution", value:"The extension was unpublished by the Vendor.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0189.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0189.nasl 5732 2017-03-27 09:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122882");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5732 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:23 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0189");
 script_tag(name: "insight", value: "ELSA-2016-0189 -  polkit security update - [0.112-6]- Fix CVE-2015-3256 Resolves: #1271790"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0189");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

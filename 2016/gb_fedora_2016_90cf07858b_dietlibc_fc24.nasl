@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808780");
-  script_version("$Revision: 3823 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 09:42:49 +0200 (Thu, 11 Aug 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 05:51:16 +0200 (Fri, 05 Aug 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-90cf07858b");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/GLWLFUZQTUE3RXQAY4QGU3KGXFAWTTLO");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of dietlibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

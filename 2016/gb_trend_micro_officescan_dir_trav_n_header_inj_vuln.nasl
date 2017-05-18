@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_dir_trav_n_header_inj_vuln.nasl 3914 2016-08-31 09:49:38Z antu123 $
+# $Id: gb_trend_micro_officescan_dir_trav_n_header_inj_vuln.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Trend Micro OfficeScan Path Traversal and HTTP Header Injection Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809141");
-  script_version("$Revision: 3914 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-1223");
   script_bugtraq_id(91288);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 11:49:38 +0200 (Wed, 31 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-22 15:40:21 +0530 (Mon, 22 Aug 2016)");
   script_name("Trend Micro OfficeScan Path Traversal and HTTP Header Injection Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name: "URL" , value : "http://esupport.trendmicro.com/solution/ja-JP/1114102.aspx");
-  script_summary("Check for the vulnerable version of Trend Micro OfficeScan.");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

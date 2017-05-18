@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: argosoft_server_xcmd.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: argosoft_server_xcmd.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: ArGoSoft FTP Server XCWD Overflow
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade to 1.4.1.2 or newer";
 if(description)
 {
  script_id(15439);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8704);
  script_xref(name:"OSVDB", value:2618);
@@ -52,7 +52,6 @@ if(description)
  
 
  summary = "Attempts a XCWD buffer overflows";
- script_summary(summary);
  
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

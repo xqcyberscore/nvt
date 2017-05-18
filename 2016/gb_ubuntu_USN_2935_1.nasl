@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842697");
-  script_version("$Revision: 2910 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-17 05:11:13 +0100 (Thu, 17 Mar 2016)");
   script_cve_id("CVE-2013-7041", "CVE-2014-2583", "CVE-2015-3238");
   script_tag(name:"cvss_base", value:"5.8");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name: "USN", value: "2935-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-March/003362.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pam");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

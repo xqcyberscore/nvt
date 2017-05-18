@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_genixcms_mult_sql_vuln_jun15.nasl 3626 2016-06-30 06:46:24Z antu123 $
+# $Id: gb_genixcms_mult_sql_vuln_jun15.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # Genixcms Multiple SQL Injection Vulnerabilities - June15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805665");
-  script_version("$Revision: 3626 $");
+  script_version("$Revision: 5789 $");
   script_cve_id("CVE-2015-3933", "CVE-2015-5066");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:46:24 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-25 15:38:34 +0530 (Thu, 25 Jun 2015)");
   script_name("Genixcms Multiple SQL Injection Vulnerabilities - June15");
 
@@ -70,12 +70,12 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37363/");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37360/");
 
-  script_summary("Check if Genixcms is prone to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -87,32 +87,20 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
-if(!http_port = get_http_port(default:80)){
-  http_port = 80;
-}
+http_port = get_http_port(default:80);
 
-## Check the port state
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
 host = http_host_name( port:http_port );
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/genixcms", "/cms", cgi_dirs()))
+foreach dir (make_list_unique("/", "/genixcms", "/cms", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ## Confirm Application
   if('content="GeniXCMS"' >< rcvRes && 'Free and Opensource CMS">GeniXCMS' >< rcvRes)
@@ -132,7 +120,6 @@ foreach dir (make_list_unique("/", "/genixcms", "/cms", cgi_dirs()))
                      'Content-Type: application/x-www-form-urlencoded\r\n',
                      'Content-Length: ', strlen(postData), '\r\n\r\n',
                      postData);
-
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
     ##Confirm Exploit

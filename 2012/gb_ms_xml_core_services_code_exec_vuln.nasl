@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: gb_ms_xml_core_services_code_exec_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_id(802864);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-1889");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-14 12:09:11 +0530 (Thu, 14 Jun 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft XML Core Services Remote Code Execution Vulnerability (2719615)");
@@ -79,7 +79,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2719615");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-043");
 
-  script_summary("Check for the vulnerable MSXML file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

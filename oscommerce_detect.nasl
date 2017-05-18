@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_detect.nasl 3501 2016-06-13 15:57:18Z mime $
+# $Id: oscommerce_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # osCommerce Detection
 #
@@ -31,16 +31,14 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100001");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3501 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 17:57:18 +0200 (Mon, 13 Jun 2016) $");
+ script_version("$Revision: 5815 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("osCommerce Detection");
-
- script_summary("Checks for the presence of OsCommerce");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
+ script_tag(name:"qod_type", value:"remote_banner");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
@@ -55,24 +53,21 @@ include("host_details.inc");
 
 port = get_http_port(default:80);
 
-dirs = make_list_unique("/","/osc","/oscommerce","/store","/catalog","/shop",cgi_dirs( port:port ));
 x=0;
 
-foreach dir (dirs)
-{
+foreach dir( make_list_unique("/", "/osc", "/oscommerce", "/store", "/catalog", "/shop", cgi_dirs( port:port ) ) ) {
+
+ install = dir;
  if( dir == "/" ) dir = "";
 
  url = dir + "/index.php";
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+ buf = http_get_cache(item:url, port:port);
  if( buf == NULL ) continue;
 
- if( buf =~ "HTTP/1\.. 200" && ( "osCsid" >< buf || buf =~ "Powered by.*osCommerce" ) )
-  { 
-    if( dir == "" ) dir = "/";
-    installations[x] = dir;
-  }
-  x++;
+ if( buf =~ "HTTP/1\.. 200" && ( "osCsid" >< buf || buf =~ "Powered by.*osCommerce" ) ) { 
+   installations[x] = install;
+ }
+ x++;
 }
 
 cpe = 'cpe:/a:oscommerce:oscommerce';

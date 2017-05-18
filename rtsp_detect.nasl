@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: rtsp_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: rtsp_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 # Description: RTSP Server type and version
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Change the server name";
 if(description)
 {
  script_id(10762);
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
@@ -44,7 +44,6 @@ if(description)
 
  
  summary = "RTSP Server detection";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

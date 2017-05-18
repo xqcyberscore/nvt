@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_cisco-sa-20160706-pi.nasl 3779 2016-08-01 11:42:12Z mime $
+# $Id: gb_cisco_pis_cisco-sa-20160706-pi.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Cisco Prime Infrastructure Administrative Web Interface HTML Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1442");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 3779 $");
+ script_version ("$Revision: 5877 $");
 
  script_name("Cisco Prime Infrastructure Administrative Web Interface HTML Injection Vulnerability");
 
@@ -49,9 +49,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-01 13:42:12 +0200 (Mon, 01 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-07-07 13:42:52 +0200 (Thu, 07 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

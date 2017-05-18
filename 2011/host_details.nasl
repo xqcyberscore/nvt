@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.nasl 5475 2017-03-03 08:56:55Z cfi $
+# $Id: host_details.nasl 5939 2017-04-11 16:02:44Z mime $
 #
 # Host Details
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103997");
-  script_version("$Revision: 5475 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-03 09:56:55 +0100 (Fri, 03 Mar 2017) $");
+  script_version("$Revision: 5939 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 18:02:44 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-03-16 12:21:12 +0100 (Wed, 16 Mar 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,6 +43,8 @@ if(description)
   NVTs and store it in a structured and unified way.");
 
   script_tag(name:"qod_type", value:"remote_probe");
+
+  script_timeout(3600); # we see some timeouts from this NVT. Reason is currently unknown. so use a higher timeout for the moment,
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opennms_detect.nasl 2945 2016-03-24 09:46:54Z cfi $
+# $Id: opennms_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # OpenNMS Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806530");
-  script_version("$Revision: 2945 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:46:54 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-11-04 17:27:57 +0530 (Wed, 04 Nov 2015)");
   script_name("OpenNMS Version Detection");
-  script_summary("Check the presence of OpenNMS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

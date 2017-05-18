@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webwasher_conf_xss.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: webwasher_conf_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: WebWasher < 4.4.1 Build 1613 Multiple Vulnerabilities
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade to WebWasher CSM 4.4.1 Build 1613 or later.";
 if(description)
 {
  script_id(19946);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(9039, 13037); 
  script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,6 @@ if(description)
  
  summary = "Checks for the presence of WebWasher Proxy";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

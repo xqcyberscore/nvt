@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_version.nasl 4938 2017-01-04 13:12:05Z cfi $
+# $Id: gb_xenserver_version.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Citrix XenServer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105144");
-  script_version("$Revision: 4938 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 14:12:05 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-18 17:03:13 +0100 (Thu, 18 Dec 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -115,7 +115,7 @@ set_kb_item( name:"xenserver/control_domain_uuid", value:control_domain_uuid );
 
 if( patch_uploaded_but_not_applied ) set_kb_item( name:"xenserver/patch_uploaded_but_not_applied", value:patch_uploaded_but_not_applied );
 
-register_and_report_os( os:"Citrix XenServer " + product_version + '-' + build_number, cpe:"cpe:/o:xen:xen:" + xen_version, banner_type:"SSH login", desc:"Citrix XenServer Detection" );
+register_and_report_os( os:"Citrix XenServer " + product_version + '-' + build_number, cpe:"cpe:/o:xen:xen:" + xen_version, banner_type:"SSH login", desc:"Citrix XenServer Detection", runs_key:"unixoide" );
 
 cpe = 'cpe:/a:citrix:xenserver:' + product_version + '_' + build_number;
 register_product( cpe:cpe, location:'ssh' ); # ex: 6.2.0_70446c

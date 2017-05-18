@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csma_cisco-sa-20160928-aos.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_cisco_csma_cisco-sa-20160928-aos.nasl 6034 2017-04-27 05:46:15Z teissa $
 #
 # Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6416");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5101 $");
+ script_version ("$Revision: 6034 $");
 
  script_name("Cisco Content Security Management Appliance File Transfer Protocol Denial of Service Vulnerability");
 
@@ -41,8 +41,7 @@ if (description)
  
  script_tag(name: "vuldetect" , value:"Check the version.");
 
- script_tag(name: "solution" , value:"No solution or patch is available as of 25th January, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution" , value:"Download the last release from Cisco Content Security Management Appliance. Refer to : https://software.cisco.com/download/navigator.html?mdfid=282509131.");
 
  script_tag(name: "summary" , value:"A vulnerability in the local File Transfer Protocol (FTP) service on the
 Cisco AsyncOS for Content Security Management Appliance (SMA) could allow an unauthenticated, remote attacker
@@ -55,9 +54,9 @@ targeted device.");
  script_tag(name: "impact", value: "An exploit could allow the attacker to cause a DoS condition.");
 
  script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"NoneAvailable");
+ script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 07:46:15 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 12:29:18 +0700 (Thu, 29 Sep 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

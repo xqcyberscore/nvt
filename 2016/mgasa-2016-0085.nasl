@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0085.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0085.nasl 5867 2017-04-05 09:01:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131251");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5867 $");
 script_tag(name:"creation_date", value:"2016-03-03 14:39:20 +0200 (Thu, 03 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0085");
 script_tag(name: "insight", value: "Updated postgresql packages fix security vulnerabilities: PostgreSQL 9.3.x before 9.3.11 and 9.4.x before 9.4.6 does not properly restrict access to unspecified custom configuration settings (GUCS) for PL/Java, which allows attackers to gain privileges via unspecified vectors (CVE-2016-0766). PostgreSQL 9.3.x before 9.3.11 and 9.4.x before 9.4.6 allows remote attackers to cause a denial of service (infinite loop or buffer overflow and crash) via a large Unicode character range in a regular expression (CVE-2016-0773)."); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0085");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0085");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

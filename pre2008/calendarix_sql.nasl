@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: calendarix_sql.nasl 3778 2016-07-30 15:56:56Z cfi $
+# $Id: calendarix_sql.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Calendarix SQL Injection Vulnerability
 #
@@ -32,15 +32,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18410");
-  script_version("$Revision: 3778 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-30 17:56:56 +0200 (Sat, 30 Jul 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2005-1865");
   script_bugtraq_id(13825, 13826);
   script_name("Calendarix SQL Injection Vulnerability");
-  script_summary("Checks for multiple vulnerabilities in Calendarix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
   script_family("Web application abuses");

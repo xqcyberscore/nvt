@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openbb_xss.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: openbb_xss.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: OpenBB XSS
 #
 # Authors:
@@ -39,22 +39,19 @@ tag_solution = "Upgrade to the latest version of this software.";
 if(description)
 {
  script_id(14822);
- script_version("$Revision: 3520 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9303);
  script_xref(name:"OSVDB", value:"3220");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- 
  script_name("OpenBB XSS");
-
- script_summary("Tests for XSS flaw in openBB board.php");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_active");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_active");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
- script_dependencies("cross_site_scripting.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -62,30 +59,24 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
-
 
 if ( get_kb_item("www/" + port + "/generic_xss") ) exit(0);
 
+foreach dir( make_list_unique( "/openbb", cgi_dirs( port:port ) ) ) {
 
-foreach d (make_list( "/openbb", cgi_dirs()))
-{
- req = http_get(item:string(d, "/board.php?FID=%3Cscript%3Efoo%3C/script%3E"), port:port);
+ if( dir == "/" ) dir = "";
+ req = http_get(item:string(dir, "/board.php?FID=%3Cscript%3Efoo%3C/script%3E"), port:port);
  res = http_keepalive_send_recv(port:port, data:req);
- if( res == NULL ) exit(0);
- if(res =~ "HTTP/1\.. 200" && egrep(pattern:"<script>foo</script>", string:res))
- {
- 	security_message(port);
-	exit(0);
+ if( res == NULL ) continue;
+ if(res =~ "HTTP/1\.. 200" && egrep(pattern:"<script>foo</script>", string:res)) {
+   security_message(port);
+   exit(0);
  }
 }
+
+exit( 99 );

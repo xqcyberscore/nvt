@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mt_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: mt_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
 #
 # Movable Type Detection
 #
@@ -31,17 +31,15 @@ extract the version number from the reply.";
 
 SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100429";
 
-if (description)
+if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 5737 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-01-06 18:07:55 +0100 (Wed, 06 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Movable Type Detection");
-
-
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Product detection");
@@ -53,20 +51,17 @@ if (description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-dirs = make_list("/mt","/cgi-bin/mt",cgi_dirs());
+foreach dir( make_list_unique( "/mt", "/cgi-bin/mt", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
+ install = dir;
+ if( dir == "/" ) dir = "";
  url = string(dir, "/mt.cgi");
  req = http_get(item:url, port:port);
  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -75,12 +70,6 @@ foreach dir (dirs) {
  if((egrep(pattern: "<title>Movable Type", string: buf, icase: TRUE) && "Six Apart" >< buf) ||
     "<title>Sign in | Movable Type" >< buf)
  {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern: "Version ([0-9.]+)",icase:TRUE);
@@ -106,4 +95,5 @@ foreach dir (dirs) {
 
  }
 }
+
 exit(0);

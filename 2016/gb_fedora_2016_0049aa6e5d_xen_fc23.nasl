@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808763");
-  script_version("$Revision: 3823 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 09:42:49 +0200 (Thu, 11 Aug 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 05:44:23 +0200 (Tue, 09 Aug 2016)");
   script_cve_id("CVE-2016-6258", "CVE-2016-6259", "CVE-2016-5403", "CVE-2016-6351");
   script_tag(name:"cvss_base", value:"7.2");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-0049aa6e5d");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4ONTL7WMM4WUFAMADI7KQREYSPCSKWDR");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

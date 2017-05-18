@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0048.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0048.nasl 5675 2017-03-22 10:00:52Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131212");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5675 $");
 script_tag(name:"creation_date", value:"2016-02-08 19:55:18 +0200 (Mon, 08 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0048");
 script_tag(name: "insight", value: "An out-of-bounds write flaw was found in the JPEG image format decoder in the AWT component in OpenJDK. A specially crafted JPEG image could cause a Java application to crash or, possibly execute arbitrary code. An untrusted Java application or applet could use this flaw to bypass Java sandbox restrictions (CVE-2016-0483). An integer signedness issue was found in the font parsing code in the 2D component in OpenJDK. A specially crafted font file could possibly cause the Java Virtual Machine to execute arbitrary code, allowing an untrusted Java application or applet to bypass Java sandbox restrictions (CVE-2016-0494). It was discovered that the password-based encryption (PBE) implementation in the Libraries component in OpenJDK used an incorrect key length. This could, in certain cases, lead to generation of keys that were weaker than expected (CVE-2016-0475). It was discovered that the JAXP component in OpenJDK did not properly enforce the totalEntitySizeLimit limit. An attacker able to make a Java application process a specially crafted XML file could use this flaw to make the application consume an excessive amount of memory (CVE-2016-0466). A flaw was found in the way TLS 1.2 could use the MD5 hash function for signing ServerKeyExchange and Client Authentication packets during a TLS handshake. A man-in-the-middle attacker able to force a TLS connection to use the MD5 hash function could use this flaw to conduct collision attacks to impersonate a TLS server or an authenticated TLS client (CVE-2015-7575). Multiple flaws were discovered in the Networking and JMX components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass certain Java sandbox restrictions (CVE-2016-0402, CVE-2016-0448). This update also required the addition of a new package, copy-jdk-configs, and a patch to the chkconfig package which adds the --family option to the alternatives command. Both of these are used by scriplets in the update java-1.8.0-openjdk packages."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0048");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0048");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

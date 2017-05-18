@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_ciphers_null_report.nasl 4736 2016-12-10 11:17:19Z cfi $
+# $Id: gb_ssl_ciphers_null_report.nasl 5987 2017-04-20 09:01:59Z cfi $
 #
 # SSL/TLS: Report 'Null' Cipher Suites
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108022");
-  script_version("$Revision: 4736 $");
+  script_version("$Revision: 5987 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-10 12:17:19 +0100 (Sat, 10 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:01:59 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 10:08:04 +0100 (Thu, 24 Nov 2016)");
   script_name("SSL/TLS: Report 'Null' Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -45,10 +45,16 @@ if(description)
 
   script_tag(name:"summary", value:"This routine reports all 'Null' SSL/TLS cipher suites accepted by a service.");
 
+  script_tag(name:"insight", value:"Services supporting 'Null' cipher suites could allow a client to negotiate a
+  SSL/TLS connection to the host without any encryption of the transferred data.");
+
+  script_tag(name:"impact", value:"This could allow remote attackers to obtain sensitive information
+  or have other, unspecified impacts.");
+
   script_tag(name:"solution", value:"The configuration of this services should be changed so
   that it does not accept the listed 'Null' cipher suites anymore.
 
-  Please see the references for more resources supporting you with in task.");
+  Please see the references for more resources supporting you in this task.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_app");

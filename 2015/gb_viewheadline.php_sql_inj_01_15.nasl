@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viewheadline.php_sql_inj_01_15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_viewheadline.php_sql_inj_01_15.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # viewheadline.php SQL Injection Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105186");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 5819 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -42,9 +42,8 @@ application, access or modify data, or exploit latent vulnerabilities in the und
  script_tag(name: "summary" , value:"viewheadline.php is prone to an SQL-injection vulnerability because it
 fails to sufficiently sanitize user-supplied data before using it in an SQL query.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-01-26 11:22:03 +0100 (Mon, 26 Jan 2015)");
- script_summary("Check for SQL injection");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -65,7 +64,7 @@ include("global_settings.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list_unique( cgi_dirs(), "/about", "/foundation" );
+dirs = make_list_unique( cgi_dirs( port:port ), "/about", "/foundation" );
 
 if( dir = get_app_location( cpe:"cpe:/a:phpgroupware:phpgroupware", port:port ) )  dirs = make_list_unique( dir, dirs );
 

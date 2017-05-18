@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_history_navigation_code_exec_vuln_win.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_history_navigation_code_exec_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Google Chrome 'History navigation' Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -37,12 +37,12 @@ tag_summary = "This host is installed with Google Chrome and is prone to arbitra
 if(description)
 {
   script_id(802717);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2011-3046");
   script_bugtraq_id(52369);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 11:56:00 +0530 (Tue, 20 Mar 2012)");
   script_name("Google Chrome 'History navigation' Arbitrary Code Execution Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48321/");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zdnet.com/blog/security/cansecwest-pwnium-google-chrome-hacked-with-sandbox-bypass/10563");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

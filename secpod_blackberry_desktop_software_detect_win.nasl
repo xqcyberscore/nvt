@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_blackberry_desktop_software_detect_win.nasl 5376 2017-02-20 16:41:48Z cfi $
+# $Id: secpod_blackberry_desktop_software_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # BlackBerry Desktop Software Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(902311);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5376 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:41:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-09-23 08:13:58 +0200 (Thu, 23 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("BlackBerry Desktop Software Version Detection");
-  script_summary("Set the Version of BlackBerry Desktop Software in KB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2010 SecPod");

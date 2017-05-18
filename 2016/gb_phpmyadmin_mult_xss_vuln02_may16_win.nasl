@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_xss_vuln02_may16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_phpmyadmin_mult_xss_vuln02_may16_win.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # phpMyAdmin Multiple XSS Vulnerabilities -02 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807597");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2016-2560");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 12:12:08 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("phpMyAdmin Multiple XSS Vulnerabilities -02 May16 (Windows)");
@@ -71,8 +71,7 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-11");
 
-  script_summary("Check for the vulnerable version of phpMyAdmin on Windows");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");

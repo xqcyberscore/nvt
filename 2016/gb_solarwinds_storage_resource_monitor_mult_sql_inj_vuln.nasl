@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 4229 2016-10-07 08:15:43Z antu123 $
+# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:solarwinds:storage_resource_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809427");
-  script_version("$Revision: 4229 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-4350");
   script_bugtraq_id(89557);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:36:59 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-16-259");
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-16-262");
 
-  script_summary("Check if SolarWinds Storage Resource Monitor prone to SQL injection vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

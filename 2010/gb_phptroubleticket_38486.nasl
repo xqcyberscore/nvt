@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phptroubleticket_38486.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_phptroubleticket_38486.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # Phptroubleticket 'vedi_faq.php' SQL Injection Vulnerability
 #
@@ -35,12 +35,11 @@ in the underlying database.
 Phptroubleticket 2.0 is vulnerable; other versions may also be
 affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100515);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-03-04 12:28:05 +0100 (Thu, 04 Mar 2010)");
  script_bugtraq_id(38486);
  script_tag(name:"cvss_base", value:"7.5");
@@ -64,33 +63,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/phptt","/phpticket","/ticket",cgi_dirs());
+foreach dir( make_list_unique( "/phptt", "/phpticket", "/ticket", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache(item:url, port:port);
   if( buf == NULL )continue;
 
   if(egrep(pattern: "Powered by phptroubleticket", string: buf, icase: TRUE)) {
 
     url = string(dir,"/vedi_faq.php?id=1%20union%20all%20select%201,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4%20from%20utenti");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req,bodyonly:FALSE);
-    if("OpenVAS-SQL-Injection-Test" >< buf) { 
-      security_message(port:port);
-      exit(0);
-    }  
+
+    if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

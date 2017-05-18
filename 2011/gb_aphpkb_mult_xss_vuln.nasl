@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aphpkb_mult_xss_vuln.nasl 3099 2016-04-18 14:36:59Z benallard $
+# $Id: gb_aphpkb_mult_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # Andy's PHP Knowledgebase Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -49,8 +49,8 @@ multiple cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(802225);
-  script_version("$Revision: 3099 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:36:59 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-08-02 09:08:31 +0200 (Tue, 02 Aug 2011)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -59,12 +59,13 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_APHPKB_XSS.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Andy's PHP Knowledgebase is prone to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_aphpkb_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("aphpkb/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -74,25 +75,18 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
+include("http_keepalive.inc");
 include("version_func.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!get_port_state(port)) {
-  exit(0);
-}
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)) {
-  exit(0);
-}
 
 ## Get Andy's PHP Knowledgebase Installed Location
 if(!dir = get_dir_from_kb(port:port, app:"aphpkb")){
   exit(0);
 }
+
+host = http_host_name( port:port );
 
 ## Construct the Attack Request
 postData = string('username="><script>alert("OpenVAS-XSS-Test")</script>',
@@ -100,13 +94,13 @@ postData = string('username="><script>alert("OpenVAS-XSS-Test")</script>',
 
 ## Construct XSS post attack request
 req = string("POST ", dir, "/login.php HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
-             "User-Agent: OpenVAS\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postData), "\r\n\r\n", postData);
 
 ## Try XSS Attack
-res = http_send_recv(port:port, data:req);
+res = http_keepalive_send_recv(port:port, data:req);
 
 ## Confirm exploit worked by checking the response
 if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) &&

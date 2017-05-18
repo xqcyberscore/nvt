@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finderview_detect.nasl 3631 2016-06-30 09:52:21Z antu123 $
+# $Id: gb_finderview_detect.nasl 5817 2017-03-31 10:19:30Z cfi $
 #
 # FinderView Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808096");
-  script_version("$Revision: 3631 $");
+  script_version("$Revision: 5817 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 11:52:21 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:19:30 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 13:22:53 +0530 (Mon, 27 Jun 2016)");
   script_name("FinderView Version Detection");
 
@@ -41,16 +41,14 @@ if(description)
   from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Detection of installed version of FinderView");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -63,16 +61,9 @@ url = "";
 sndReq = "";
 rcvRes = "";
 
-##Get HTTP Port
 find_port = get_http_port(default:80);
-if(!find_port){
-  exit(0);
-}
-
-# Check Host Supports PHP
 if(! can_host_php(port:find_port)) exit(0);
 
-##Iterate over possible paths
 foreach dir(make_list_unique("/", "/FinderView-master", "/FinderView", cgi_dirs(port:find_port)))
 {
 
@@ -80,17 +71,13 @@ foreach dir(make_list_unique("/", "/FinderView-master", "/FinderView", cgi_dirs(
   if( dir == "/" ) dir = "";
 
   url = dir + '/index.html';
- 
-  ##Send Request and Receive Response
-  sndReq = http_get(item:url, port:find_port);
-  rcvRes = http_send_recv(port:find_port, data:sndReq);
+  rcvRes = http_get_cache(item:url, port:find_port);
 
   ## Confirm the application
   if(">Finder View<" >< rcvRes && rcvRes =~ "HTTP/1.. 200 OK" && "<th>Folder<" >< rcvRes)
   {
     version = "unknown";
 
-    ## Set KB
     set_kb_item(name:"FinderView/Installed", value:TRUE);
 
     ## build cpe and store it as host_detail

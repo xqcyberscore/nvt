@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpWebThings_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: phpWebThings_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
 #
 # phpWebThings Detection
 #
@@ -27,19 +27,17 @@
 tag_summary = "This host is running phpWebThings a free, PHP and MySQL driven
   Content Management System.";
 
-if (description)
+if(description)
 {
  script_id(100219);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5739 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-06-14 17:19:03 +0200 (Sun, 14 Jun 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpWebThings Detection");
-
- script_summary("Checks for the presence of phpWebThings");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -54,36 +52,26 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 ## Constant values
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100219";
 SCRIPT_DESC = "phpWebThings Detection";
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms","/phpwebthings",cgi_dirs());
+foreach dir( make_list_unique( "/cms", "/phpwebthings", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
- url = string(dir, "/index.php"); 
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);  
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/index.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if(egrep(pattern: 'meta.*content="phpWebThings"', string: buf, icase: TRUE) ||
     egrep(pattern: 'This website was created with <a [^>]+>phpWebThings "', string: buf, icase: TRUE)
     )
  { 
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }  
-    
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern: "phpWebThings ([0-9.]+)",icase:TRUE);
@@ -105,11 +93,9 @@ foreach dir (dirs) {
     info += string("' was detected on the remote host in the following directory(s):\n\n");
     info += string(install, "\n"); 
 
-       if(report_verbosity > 0) {
-         log_message(port:port,data:info);
-       }
-       exit(0);
-  
- }
+    log_message(port:port,data:info);
+    exit(0);
+  }
 }
+
 exit(0);

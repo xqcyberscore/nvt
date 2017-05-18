@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_inode_mgmt_center_inodemngchecker_bof_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_hp_inode_mgmt_center_inodemngchecker_bof_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # HP iNode Management Center iNodeMngChecker.exe Multiple Vulnerabilities
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:hp:inode_management_center_pc";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-3254");
   script_bugtraq_id(55160);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-20 13:36:31 +0530 (Thu, 20 Sep 2012)");
   script_name("HP iNode Management Center iNodeMngChecker.exe Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50350/");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://h20565.www2.hp.com/portal/site/hpsc/public/kb/docDisplay/?docId=emr_na-c03473527");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the vulnerable version of HP iNode Management Center");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

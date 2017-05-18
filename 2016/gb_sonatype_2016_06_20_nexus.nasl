@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_2016_06_20_nexus.nasl 3746 2016-07-22 13:22:46Z mime $
+# $Id: gb_sonatype_2016_06_20_nexus.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Sonatype Nexus Repository Manager Remote Code Execution Vulnerabillity
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:sonatype:nexus";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105819");
- script_version ("$Revision: 3746 $");
+ script_version ("$Revision: 5689 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -47,9 +47,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-22 15:22:46 +0200 (Fri, 22 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-21 12:28:37 +0200 (Thu, 21 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_final_draft_file_parsing_mult_bof_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_final_draft_file_parsing_mult_bof_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Final Draft Script File Parsing Multiple Buffer Overflow Vulnerabilities
 #
@@ -40,11 +40,11 @@ tag_summary = "This host is installed with Final Draft and is prone to multiple
 if(description)
 {
   script_id(802393);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2011-5059");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-07 18:05:02 +0530 (Tue, 07 Feb 2012)");
   script_name("Final Draft Script File Parsing Multiple Buffer Overflow Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47044");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.security-assessment.com/files/documents/advisory/Final_Draft-Multiple_Stack_Buffer_Overflows.pdf");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Final Draft");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

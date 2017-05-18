@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0018.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2010-0018.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # VMSA-2010-0018 VMware hosted products and ESX patches resolve multiple security issues
 #
@@ -89,13 +89,12 @@ if (description)
  script_cve_id("CVE-2010-4295", "CVE-2010-4296", "CVE-2010-4297", "CVE-2010-4294");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5977 $");
  script_name("VMSA-2010-0018 VMware hosted products and ESX patches resolve multiple security issues");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-16 12:42:13 +0100 (Fri, 16 Mar 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-006.nasl 5637 2017-03-21 07:30:30Z antu123 $
+# $Id: gb_ms17-006.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (4013073) 
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810625");
-  script_version("$Revision: 5637 $");
+  script_version("$Revision: 5752 $");
   script_cve_id("CVE-2017-0008", "CVE-2017-0009", "CVE-2017-0012", "CVE-2017-0018",
                 "CVE-2017-0033", "CVE-2017-0037", "CVE-2017-0040", "CVE-2017-0049",
                 "CVE-2017-0059", "CVE-2017-0130", "CVE-2017-0149", "CVE-2017-0154");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 12:07:36 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (4013073)");

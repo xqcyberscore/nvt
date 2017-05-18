@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_detect_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_google_picasa_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Google Picasa Version Detection (Windows)
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801769");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google Picasa Version Detection (Windows)");
@@ -49,7 +49,6 @@ if(description)
   'moviethumb.exe' file.");
 
 
-  script_summary("Detection of installed version of Google Picasa on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Product detection");

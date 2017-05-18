@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: openca_mult_sign_flaws.nasl 4076 2016-09-15 13:20:08Z cfi $
+# $Id: openca_mult_sign_flaws.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # OpenCA multiple signature validation bypass
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:openca:openca";
 if(description) {
 
   script_oid("1.3.6.1.4.1.25623.1.0.14714");
-  script_version("$Revision: 4076 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 15:20:08 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9123);
   script_cve_id("CVE-2003-0960");
@@ -41,7 +41,6 @@ if(description) {
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenCA multiple signature validation bypass");
-  script_summary("Checks for the version of OpenCA");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

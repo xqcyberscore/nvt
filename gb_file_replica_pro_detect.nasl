@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_file_replica_pro_detect.nasl 2893 2016-03-18 13:37:54Z cfi $
+# $Id: gb_file_replica_pro_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # File Replication Pro Remote Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806688");
-  script_version("$Revision: 2893 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-18 14:37:54 +0100 (Fri, 18 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:33 +0530 (Tue, 01 Mar 2016)");
   script_name("File Replication Pro Remote Version Detection");
-  script_summary("Set version of File Replication Pro in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

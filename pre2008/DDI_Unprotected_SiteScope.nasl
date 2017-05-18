@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Unprotected_SiteScope.nasl 4079 2016-09-16 09:06:55Z cfi $
+# $Id: DDI_Unprotected_SiteScope.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Unprotected SiteScope Service
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10778");
-  script_version("$Revision: 4079 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:06:55 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-1999-0508");
   script_name("Unprotected SiteScope Service");
-  script_summary("Unprotected SiteScope Service");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 Digital Defense Inc.");
   script_family("Web application abuses");

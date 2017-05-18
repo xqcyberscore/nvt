@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_itunes_detection_win_900123.nasl 3048 2016-04-12 07:04:51Z antu123 $
+# $Id: secpod_apple_itunes_detection_win_900123.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Apple iTunes Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900123");
-  script_version("$Revision: 3048 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 09:04:51 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_name("Apple iTunes Version Detection (Windows)");
 
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of Apple iTunes on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Product detection");
@@ -57,17 +56,6 @@ include("cpe.inc");
 include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Variable Initialization
 ituneName = "";

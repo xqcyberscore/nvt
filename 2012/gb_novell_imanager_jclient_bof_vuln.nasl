@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_jclient_bof_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_novell_imanager_jclient_bof_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Novell iManager jclient 'EnteredAttrName' Buffer Overflow Vulnerability
 #
@@ -44,12 +44,12 @@ tag_summary = "The host is running Novell iManager and is prone to buffer overfl
 if (description)
 {
   script_id(802852);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_bugtraq_id(40485, 40480);
   script_cve_id("CVE-2011-4188");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-11 18:09:51 +0530 (Fri, 11 May 2012)");
   script_name("Novell iManager jclient 'EnteredAttrName' Buffer Overflow Vulnerability");
 
@@ -61,7 +61,6 @@ if (description)
   script_xref(name : "URL" , value : "http://www.coresecurity.com/content/novell-imanager-buffer-overflow-off-by-one-vulnerabilities");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Novell iManager");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");

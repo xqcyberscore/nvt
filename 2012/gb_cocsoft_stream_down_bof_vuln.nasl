@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cocsoft_stream_down_bof_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_cocsoft_stream_down_bof_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # CoCSoft Stream Down Buffer overflow Vulnerability
 #
@@ -45,18 +45,17 @@ tag_summary = "This host is installed with CoCSoft Stream Down and is prone to
 if(description)
 {
   script_id(802551);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2011-5052");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-02 16:06:04 +0530 (Mon, 02 Jan 2012)");
   script_name("CoCSoft Stream Down Buffer overflow Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18283/");
   script_xref(name : "URL" , value : "http://dev.metasploit.com/redmine/issues/6168");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of CoCSoft Stream Down");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

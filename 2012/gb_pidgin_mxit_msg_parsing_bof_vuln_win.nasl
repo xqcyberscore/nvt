@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mxit_msg_parsing_bof_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_pidgin_mxit_msg_parsing_bof_vuln_win.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Pidgin MXit Message Parsing Buffer Overflow Vulnerability (Windows)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host has installed with Pidgin and is prone to buffer
 if(description)
 {
   script_id(803102);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-3374");
   script_bugtraq_id(54322);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-19 13:10:50 +0530 (Fri, 19 Oct 2012)");
   script_name("Pidgin MXit Message Parsing Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49831/");
   script_xref(name : "URL" , value : "http://hg.pidgin.im/pidgin/main/rev/ded93865ef42");
   script_xref(name : "URL" , value : "http://www.pidgin.im/news/security/index.php?id=64");
 
-  script_summary("Check if pidgin version less than 2.10.5 on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

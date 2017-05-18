@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_detect.nasl 2622 2016-02-09 13:03:15Z antu123 $
+# $Id: gb_bonita_bpm_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
 #
 # Bonita BPM Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106009");
- script_version ("$Revision: 2622 $");
- script_tag(name: "last_modification", value: "$Date: 2016-02-09 14:03:15 +0100 (Tue, 09 Feb 2016) $");
+ script_version ("$Revision: 5723 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,14 +62,13 @@ include("host_details.inc");
 
 port = get_http_port(default: 8080);
 
-foreach dir (make_list("/bonita", cgi_dirs())) {
+foreach dir( make_list_unique( "/bonita", cgi_dirs( port:port ) ) ) {
+
   rep_dir = dir;
-  if (dir == "/")
-    dir = "";
+  if( dir == "/" ) dir = "";
 
   url = dir + '/login.jsp';
-  req = http_get(item: url, port: port);
-  buf = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
+  buf = http_get_cache(item: url, port: port);
 
   if (buf =~ "HTTP/1\.. 200" && buf =~ "Bonita BPM Portal") {
     vers = string("unknown");

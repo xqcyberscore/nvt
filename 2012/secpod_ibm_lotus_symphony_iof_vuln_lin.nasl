@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_symphony_iof_vuln_lin.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_ibm_lotus_symphony_iof_vuln_lin.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Linux)
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902809");
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-0192");
   script_bugtraq_id(51591);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 12:12:12 +0530 (Wed, 25 Jan 2012)");
   script_name("IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Linux)");
-  script_summary("Check for the version of IBM Lotus Symphony");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Buffer overflow");

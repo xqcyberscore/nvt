@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opmantek_nmis_detect.nasl 4058 2016-09-14 10:38:06Z ckuerste $
+# $Id: gb_opmantek_nmis_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # Opmantek NMIS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106243");
- script_version ("$Revision: 4058 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-14 12:38:06 +0200 (Wed, 14 Sep 2016) $");
+ script_version ("$Revision: 5820 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name: "creation_date", value: "2016-09-14 13:50:44 +0700 (Wed, 14 Sep 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,10 +62,10 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-foreach dir (make_list_unique("/cgi-nmis8", "/cgi-nmis4", cgi_dirs())) {
+foreach dir (make_list_unique("/cgi-nmis8", "/cgi-nmis4", cgi_dirs(port:port))) {
+
   install = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
 
   url = dir + "/nmiscgi.pl";
   req = http_get(port: port, item: url);

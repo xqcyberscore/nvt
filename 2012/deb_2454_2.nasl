@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2454_2.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2454_2.nasl 5999 2017-04-21 09:02:32Z teissa $
 # Description: Auto-generated from advisory DSA 2454-2 (openssl)
 #
 # Authors:
@@ -57,13 +57,12 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2012-2131", "CVE-2012-2110");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5999 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:57:59 -0400 (Mon, 30 Apr 2012)");
  script_name("Debian Security Advisory DSA 2454-2 (openssl)");
 
 
- script_summary("Debian Security Advisory DSA 2454-2 (openssl)");
 
  script_category(ACT_GATHER_INFO);
 

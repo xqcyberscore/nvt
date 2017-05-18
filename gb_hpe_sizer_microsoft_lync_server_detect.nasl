@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_lync_server_detect.nasl 4365 2016-10-27 09:22:06Z antu123 $
+# $Id: gb_hpe_sizer_microsoft_lync_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # HPE Sizing for Microsoft Lync Server Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809453");
-  script_version("$Revision: 4365 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 11:22:06 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-17 16:22:36 +0530 (Mon, 17 Oct 2016)");
   script_name("HPE Sizing for Microsoft Lync Server Version Detection (Windows)");
 
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HPE Sizing Tool for Microsoft Lync Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -65,15 +64,6 @@ hpName = "";
 hpVer = "";
 key = "";
 
-## Function to Build report
-function build_report(app, ver, cpe, insloc)
-{
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -116,9 +106,6 @@ foreach item (registry_enum_keys(key:key))
         if(isnull(cpe))
           cpe = "cpe:/a:hp:sizer_for_microsoft_lync_server_2010";
 
-        ## Register Product and Build Report
-        register_product(cpe:cpe, location:hpPath);
-
         build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);     
       }
       if("Lync Server 2013" >< hpName)
@@ -127,9 +114,6 @@ foreach item (registry_enum_keys(key:key))
         cpe = build_cpe(value:hpVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:sizer_for_microsoft_lync_server_2013:");
         if(isnull(cpe))
           cpe = "cpe:/a:hp:sizer_for_microsoft_lync_server_2013";
-
-        ## Register Product and Build Report
-        register_product(cpe:cpe, location:hpPath);
 
         build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
       }

@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851460");
-  script_version("$Revision: 4884 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 10:57:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 5752 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-23 05:47:19 +0100 (Fri, 23 Dec 2016)");
   script_cve_id("CVE-2016-8707", "CVE-2016-8862", "CVE-2016-8866", "CVE-2016-9556", 
                 "CVE-2016-9773");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ImageMagick openSUSE-SU-2016:3233-1 (ImageMagick)");
   script_tag(name: "summary", value: "Check the version of ImageMagick");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808885");
-  script_version("$Revision: 3807 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-08 10:01:14 +0200 (Mon, 08 Aug 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:57:06 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-6232");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,6 @@ from ini-style description files.
   script_xref(name: "FEDORA", value: "2016-4701636a74");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AUMNDWUFWIJGPWK3OU52UF6H5SD4RC5Q");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kf5-kdesignerplugin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

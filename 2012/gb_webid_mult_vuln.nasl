@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_mult_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_webid_mult_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # WeBid Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803053");
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 5814 $");
   script_bugtraq_id(56588);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-11-20 12:03:19 +0530 (Tue, 20 Nov 2012)");
   script_name("WeBid Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80140");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118197/webid-traversal.txt");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115640/WeBid-1.0.4-RFI-File-Disclosure-SQL-Injection.html");
 
-  script_summary("Check for directory traversal vulnerability in WeBid");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,31 +70,30 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 webPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:webPort)){
   exit(0);
 }
 
+## traversal_files() function Returns Dictionary (i.e key value pair)
+## Get Content to be checked and file to be check
+files = traversal_files();
+
 foreach dir (make_list_unique("/WeBid", "/webid", "/", cgi_dirs(port:webPort)))
 {
+
   if(dir == "/") dir = "";
   url = dir + "/index.php";
+  res = http_get_cache( item:url, port:webPort );
+  if( isnull( res ) ) continue;
 
-  if(http_vuln_check(port:webPort, url:url, pattern:">WeBid<",
-                     check_header:TRUE, extra_check:make_list('>Login<',
-                     '>Register now','>Sell an item')))
-  {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
-    ## Get Content to be checked and file to be check
-    files = traversal_files();
+  if( res =~ "HTTP/1.. 200" && ">WeBid<" >< res && '>Login<' >< res &&
+      '>Register now' >< res && '>Sell an item' >< res ) {
 
     foreach file (keys(files))
     {

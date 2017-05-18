@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lotus_bounce_DoS.nasl 3748 2016-07-23 11:59:44Z cfi $
+# $Id: lotus_bounce_DoS.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # Lotus Domino SMTP bounce DoS
 #
@@ -33,15 +33,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11717");
-  script_version("$Revision: 3748 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-23 13:59:44 +0200 (Sat, 23 Jul 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3212);
   script_cve_id("CVE-2000-1203");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Lotus Domino SMTP bounce DoS");
-  script_summary("Broken message bounced to himself exhausts MTA");
   script_category(ACT_MIXED_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Denial of Service");

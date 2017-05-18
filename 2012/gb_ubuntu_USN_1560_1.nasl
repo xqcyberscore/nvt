@@ -50,8 +50,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-September/001814.html");
   script_id(841136);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5940 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-11 09:38:22 +0530 (Tue, 11 Sep 2012)");
   script_cve_id("CVE-2012-3442", "CVE-2012-3443", "CVE-2012-3444");
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name: "USN", value: "1560-1");
   script_name("Ubuntu Update for python-django USN-1560-1");
 
-  script_summary("Check for the Version of python-django");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_detect.nasl 3746 2016-07-22 13:22:46Z mime $
+# $Id: gb_sonatype_nexus_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Sonatype Nexus OSS/Pro Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805324");
-  script_version("$Revision: 3746 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-22 15:22:46 +0200 (Fri, 22 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Version Detection");
 
@@ -40,7 +40,6 @@ if(description)
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
 
-  script_summary("Set Version of Sonatype Nexus in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

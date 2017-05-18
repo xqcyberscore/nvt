@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moosocial_mult_vuln.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_moosocial_mult_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # mooSocial Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803840");
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 5827 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-08-26 19:22:05 +0530 (Mon, 26 Aug 2013)");
   script_name("mooSocial Multiple Vulnerabilities");
 
@@ -59,17 +59,15 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27871");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013080192");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/moosocial-13-cross-site-scripting-local-file-inclusion");
-  script_summary("Check if mooSocial is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -80,7 +78,6 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", "/moosocial", "/social", cgi_dirs(port:port)))
@@ -88,9 +85,7 @@ foreach dir (make_list_unique("/", "/moosocial", "/social", cgi_dirs(port:port))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/"),  port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/"),  port:port);
 
   ## Confirm the application
   if('>mooSocial' >< res && 'www.moosocial.com' >< res)
@@ -99,7 +94,7 @@ foreach dir (make_list_unique("/", "/moosocial", "/social", cgi_dirs(port:port))
 
     ## Check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
-                       pattern:"alert\(document.cookie\)",
+                       pattern:"alert\(document\.cookie\)",
                        extra_check: ">mooSocial"))
     {
       security_message(port:port);

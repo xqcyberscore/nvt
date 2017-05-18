@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3515.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: deb_3515.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3515-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703515);
-    script_version("$Revision: 2910 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792",
                   "CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796",
                   "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800",
                   "CVE-2016-2801", "CVE-2016-2802");
     script_name("Debian Security Advisory DSA 3515-1 (graphite2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-13 00:00:00 +0100 (Sun, 13 Mar 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3515.html");
 
-    script_summary("Debian Security Advisory DSA 3515-1 (graphite2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

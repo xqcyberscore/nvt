@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_semantic_ent_wiki_target_param_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_semantic_ent_wiki_target_param_xss_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Semantic Enterprise Wiki Halo Extension 'target' XSS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802709");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-1212");
   script_bugtraq_id(51980);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-16 16:34:28 +0530 (Fri, 16 Mar 2012)");
   script_name("Semantic Enterprise Wiki Halo Extension 'target' XSS Vulnerability");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73167");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109637/SMW-1.5.6-Cross-Site-Scripting.html");
 
-  script_summary("Check if Semantic Enterprise Wiki is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

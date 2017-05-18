@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liferay_portal_mult_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_liferay_portal_mult_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Liferay Portal Multiple Vulnerabilities
 #
@@ -60,11 +60,11 @@ vulnerabilities.";
 if(description)
 {
   script_id(802630);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(53546);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-21 12:12:12 +0530 (Mon, 21 May 2012)");
   script_name("Liferay Portal Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49205");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522726");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112737/liferay6-xss.txt");
 
-  script_summary("Check if Liferay Portal is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

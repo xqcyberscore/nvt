@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 5884 2017-04-06 14:57:35Z teissa $
 #
 # Freeproxy Internet Suite Denial of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:freeproxy_internet_suite:freeproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806895");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5884 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 16:57:35 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:03:06 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Freeproxy Internet Suite Denial of Service Vulnerability");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected" , value:"Freeproxy Internet Suite 4.10.1751");
 
   script_tag(name:"solution" , value:"No solution or patch is available as
-  of 25th January, 2017. Information regarding this issue will be updated once
+  of 06th April, 2017. Information regarding this issue will be updated once
   the solution details are available.
   For updates refer to http://www.handcraftedsoftware.org/index.php?page=download");
 

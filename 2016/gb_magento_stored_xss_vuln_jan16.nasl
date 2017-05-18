@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_stored_xss_vuln_jan16.nasl 2534 2016-01-29 13:20:02Z antu123 $
+# $Id: gb_magento_stored_xss_vuln_jan16.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Magento Stored Cross-Site Scripting Vulnerability - Jan16
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806672");
-  script_version("$Revision: 2534 $");
+  script_version("$Revision: 5732 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-29 14:20:02 +0100 (Fri, 29 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-28 18:09:47 +0530 (Thu, 28 Jan 2016)");
   script_name("Magento Stored Cross-Site Scripting Vulnerability - Jan16");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://blog.sucuri.net/2016/01/security-advisory-stored-xss-in-magento.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of magento");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("sw_magento_detect.nasl");

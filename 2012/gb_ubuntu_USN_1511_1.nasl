@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001765.html");
   script_id(841088);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5958 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-23 10:47:24 +0530 (Mon, 23 Jul 2012)");
   script_cve_id("CVE-2012-3401");
   script_tag(name:"cvss_base", value:"6.8");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "USN", value: "1511-1");
   script_name("Ubuntu Update for tiff USN-1511-1");
 
-  script_summary("Check for the Version of tiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

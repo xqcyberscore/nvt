@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20161005-dhcp2.nasl 4221 2016-10-06 06:32:23Z ckuerste $
+# $Id: gb_cisco_nx_os_cisco-sa-20161005-dhcp2.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Cisco NX-OS Software Malformed DHCPv4 Packet Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6393");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4221 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Cisco NX-OS Software Malformed DHCPv4 Packet Denial of Service Vulnerability");
 
@@ -57,9 +57,8 @@ crash.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-06 08:32:23 +0200 (Thu, 06 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 10:44:47 +0700 (Thu, 06 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804056";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 5790 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-01-03 13:15:19 +0530 (Fri, 03 Jan 2014)");
   script_name("phpMyRecipes Multiple Vulnerabilities");
 
@@ -63,17 +63,15 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124536");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/phpmyrecipes-1xx-xss-csrf-sql-injection");
-  script_summary("Check if phpMyRecipes is vulnerable xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -84,10 +82,8 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 phpPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:phpPort)){
   exit(0);
 }
@@ -99,9 +95,7 @@ foreach dir (make_list_unique("/", "/phpmyrecipes", "/recipes", cgi_dirs(port:ph
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"),  port:phpPort);
-  res = http_keepalive_send_recv(port:phpPort, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/index.php"),  port:phpPort);
 
   ## Confirm the application
   if('>phpMyRecipes' >< res)

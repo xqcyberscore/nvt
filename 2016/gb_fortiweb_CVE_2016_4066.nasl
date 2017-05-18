@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_CVE_2016_4066.nasl 3708 2016-07-14 19:12:10Z cfi $
+# $Id: gb_fortiweb_CVE_2016_4066.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # FortiWeb CSRF Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-4066");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3708 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("FortiWeb CSRF Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-14 21:12:10 +0200 (Thu, 14 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-05 19:08:43 +0200 (Tue, 05 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

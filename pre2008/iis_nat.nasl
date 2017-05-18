@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_nat.nasl 4083 2016-09-16 11:03:43Z cfi $
+# $Id: iis_nat.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Private IP address leaked in HTTP headers
 #
@@ -28,15 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10759");
-  script_version("$Revision: 4083 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 13:03:43 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1499);
   script_cve_id("CVE-2000-0649");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
   script_name("Private IP address leaked in HTTP headers");
-  script_summary("Checks for private IP addresses in HTTP headers");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 Alert4Web.com, 2003 Westpoint Ltd");
   script_family("Web Servers");

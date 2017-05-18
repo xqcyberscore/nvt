@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln02_nov12_macosx.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_mozilla_prdts_mult_vuln02_nov12_macosx.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities-02 November12 (Mac OS X)
 #
@@ -43,7 +43,7 @@ tag_summary = "This host is installed with Mozilla Firefox and is prone to multi
 if(description)
 {
   script_id(803058);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
                 "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
                 "CVE-2012-5836", "CVE-2012-5838");
@@ -51,7 +51,7 @@ if(description)
                     56627, 56612, 56616, 56644);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 1:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-02 November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-99.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-105.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-106.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_detect.nasl 4883 2016-12-30 07:47:11Z antu123 $
+# $Id: gb_apache_tika_server_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
 #
 # Apache Tika Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810251");
-  script_version("$Revision: 4883 $");
+  script_version("$Revision: 5829 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 08:47:11 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-12-20 17:03:54 +0530 (Tue, 20 Dec 2016)");
   script_name("Apache Tika Server Version Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -43,12 +43,11 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9998);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -62,14 +61,9 @@ rcvRes = "";
 version = "";
 ver = "";
 
-##Get HTTP Port
-if(!tikaPort = get_http_port(default:9998)){
-  exit(0);
-}
+tikaPort = get_http_port(default:9998);
 
-## Send and receive response
-req = http_get(item: "/", port: tikaPort);
-rcvRes = http_keepalive_send_recv(port: tikaPort, data: req, bodyonly: TRUE);
+rcvRes = http_get_cache(item: "/", port: tikaPort);
 
 ## Confirm the application
 if(rcvRes && rcvRes =~ "<title>Welcome to the Apache Tika.*Server</title>") 
@@ -79,8 +73,7 @@ if(rcvRes && rcvRes =~ "<title>Welcome to the Apache Tika.*Server</title>")
   if( ver[1] ){
     version = ver[1];
     set_kb_item(name:"Apache/Tika/Server/ver", value:version);
-  }
-  else{
+  } else {
     version = "unknown";
   }
 

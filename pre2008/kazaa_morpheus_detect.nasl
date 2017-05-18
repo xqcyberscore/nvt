@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kazaa_morpheus_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: kazaa_morpheus_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Kazaa / Morpheus Client Detection
 #
@@ -39,13 +39,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10751");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Kazaa / Morpheus Client Detection");
-  script_summary("Kazaa / Morpheus Client Detect");
   script_category(ACT_GATHER_INFO);
   script_family("Peer-To-Peer File Sharing");
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");

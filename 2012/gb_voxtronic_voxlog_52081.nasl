@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_voxtronic_voxlog_52081.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_voxtronic_voxlog_52081.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # VOXTRONIC Voxlog Professional Multiple Security Vulnerabilities
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_id(103430);
  script_bugtraq_id(52081);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5956 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -53,9 +53,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52081");
  script_xref(name : "URL" , value : "http://www.voxtronic.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-20 14:56:07 +0100 (Mon, 20 Feb 2012)");
- script_summary("Determine if installed VOXTRONIC Voxlog is vulnerable");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

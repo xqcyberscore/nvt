@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_mult_vuln.nasl 3684 2016-07-11 10:04:21Z ckuerste $
+# $Id: gb_hp_service_manager_mult_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # HP Service Manager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:hp:service_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106126");
-  script_version("$Revision: 3684 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-11 12:04:21 +0200 (Mon, 11 Jul 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-07-11 15:18:31 +0700 (Mon, 11 Jul 2016)");
   script_tag(name: "cvss_base", value: "6.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -67,7 +67,6 @@ or conduct server-side request forgery attacks.");
 
   script_xref(name: "URL", value: "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05167176");
 
-  script_summary("HP Service Manager is prone to multiple vulnerabilities.");
 
   exit(0);
 }

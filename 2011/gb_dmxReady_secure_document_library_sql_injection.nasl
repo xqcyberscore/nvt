@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dmxReady_secure_document_library_sql_injection.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_dmxReady_secure_document_library_sql_injection.nasl 5993 2017-04-20 15:45:39Z cfi $
 #
 # DmxReady Secure Document Library SQL Injection Vulnerability
 #
@@ -27,76 +27,74 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801952");
-  script_version("$Revision: 3117 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5993 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("DmxReady Secure Document Library SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102842/dmxreadysdl12-sql.txt");
-
-  script_summary("Check if DmxReady Secure Document Library is vulnerable to SQL Injection attacks");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to cause SQL
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102842/dmxreadysdl12-sql.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause SQL
   Injection attack and gain sensitive information.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "DmxReady Secure Document Library version 1.2");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input
+
+  script_tag(name:"affected", value:"DmxReady Secure Document Library version 1.2");
+
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input
   via the 'ItemID' parameter in 'update.asp' that allows attacker to manipulate SQL
   queries by injecting arbitrary SQL code.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running DmxReady Secure Document Library and is prone
+
+  script_tag(name:"summary", value:"This host is running DmxReady Secure Document Library and is prone
   to SQL injection vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
-# Get the host name
-host = http_host_name(port:port);
+host = http_host_name( port:port );
 
-foreach dir (make_list_unique("/SecureDocumentLibrary", "/", cgi_dirs(port:port)))
-{
+foreach dir( make_list_unique("/SecureDocumentLibrary", "/", cgi_dirs(port:port))) {
 
   if(dir == "/") dir = "";
 
-  req = http_get(item:dir + "/inc_securedocumentlibrary.asp", port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:req);
+  req = http_get( item:dir + "/inc_securedocumentlibrary.asp", port:port );
+  rcvRes = http_keepalive_send_recv( port:port, data:req );
 
-  ## Confirm the application
-  if('<title>Secure Document Library</title>' >< rcvRes)
-  {
-    ## Construct the attack request
-    req2 = string("GET ", dir, "/admin/SecureDocumentLibrary/DocumentLibrary" +
-                  "Manager/update.asp?ItemID='1 HTTP/1.1\r\n",
-                  "Host: ", host, "\r\n\r\n");
-    rcvRes = http_keepalive_send_recv(port:port, data:req2);
+  if( '<title>Secure Document Library</title>' >< rcvRes ) {
 
-    ## Confirm exploit worked by checking the response
-    if("error '80040e14" >< rcvRes && ">Syntax error" >< rcvRes)
-    {
-      security_message(port:port);
-      exit(0);
+    url = dir + "/admin/SecureDocumentLibrary/DocumentLibraryManager/update.asp?ItemID='1";
+    req2 = string( "GET ", url, " HTTP/1.1\r\n",
+                   "Host: ", host, "\r\n\r\n" );
+    rcvRes = http_keepalive_send_recv( port:port, data:req2 );
+
+    if( "error '80040e14" >< rcvRes && ">Syntax error" >< rcvRes ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(99);
+exit( 99 );

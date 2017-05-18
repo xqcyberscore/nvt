@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ipics_cisco-sa-20161026-ipics.nasl 4379 2016-10-28 12:16:54Z teissa $
+# $Id: gb_cisco_ipics_cisco-sa-20161026-ipics.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Cisco IP Interoperability and Collaboration System Universal Media Services Unauthorized Access Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-6397");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4379 $");
+ script_version ("$Revision: 5850 $");
 
  script_name("Cisco IP Interoperability and Collaboration System Universal Media Services Unauthorized Access Vulnerability");
 
@@ -58,9 +58,8 @@ address this vulnerability.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-28 14:16:54 +0200 (Fri, 28 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-10-28 12:59:52 +0200 (Fri, 28 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

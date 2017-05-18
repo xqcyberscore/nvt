@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aztek_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: aztek_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # Aztek Forum XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15785");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id( 11654 );
   script_xref(name:"OSVDB", value:"11704");
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Aztek Forum XSS");
-  script_summary("Checks XSS in Aztek Forum");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

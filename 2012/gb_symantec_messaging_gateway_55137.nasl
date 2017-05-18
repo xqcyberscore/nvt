@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_55137.nasl 3331 2016-05-17 15:30:33Z mime $
+# $Id: gb_symantec_messaging_gateway_55137.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Symantec Messaging Gateway  Cross Site Request Forgery Vulnerability
 #
@@ -47,16 +47,15 @@ if (description)
  script_cve_id("CVE-2012-0308");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3331 $");
+ script_version ("$Revision: 5977 $");
 
  script_name("Symantec Messaging Gateway  Cross Site Request Forgery Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55137");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-17 17:30:33 +0200 (Tue, 17 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-12-03 10:22:01 +0100 (Mon, 03 Dec 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Symantec Messaging Gateway version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dangerous_activex_ctrl.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: secpod_dangerous_activex_ctrl.nasl 5672 2017-03-22 08:15:28Z teissa $
 #
 # Detection of Dangerous ActiveX Control
 #
@@ -29,13 +29,13 @@ tag_summary = "This script will list all the vulnerable activex controls install
 if(description)
 {
   script_id(900188);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5656 $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 5672 $");
   script_cve_id("CVE-2008-5002", "CVE-2008-4919", "CVE-2008-4342",
                 "CVE-2008-5232", "CVE-2008-5492");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 09:15:28 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
-  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base", value:"9.3");
   script_name("Detection of Dangerous ActiveX Control");
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -136,7 +136,7 @@ foreach id (clsid)
 if(flag == 1){
   solution = string("Workaround: Set the killbit for the above CLSID(s).\n",
                     "Refer http://support.microsoft.com/kb/240797");
-  log_message(data:string("The following clsid(s) ",
+  security_message(data:string("The following clsid(s) ",
                               "were found on the remote host, which are ",
                               "related to dangerous ActiveX controls.",
                               actvxInfo, "\n\n", solution));

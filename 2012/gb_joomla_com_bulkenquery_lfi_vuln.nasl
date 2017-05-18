@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_bulkenquery_lfi_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_joomla_com_bulkenquery_lfi_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Joomla Bulkenquery Component Local File Inclusion Vulnerability
 #
@@ -47,15 +47,14 @@ local file inclusion vulnerability.";
 if(description)
 {
   script_id(802573);
-  script_version("$Revision: 5633 $");
+  script_version("$Revision: 5958 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-23 17:45:34 +0530 (Mon, 23 Jan 2012)");
   script_name("Joomla Bulkenquery Component Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108913/joomlabulkenquery-lfi.txt");
 
-  script_summary("Check if Joomla Bulkenquery Component is vulnerable to LFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

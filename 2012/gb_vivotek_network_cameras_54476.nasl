@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vivotek_network_cameras_54476.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_vivotek_network_cameras_54476.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Vivotek Network Cameras Information Disclosure Vulnerability
 #
@@ -39,7 +39,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(54476);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5950 $");
  script_cve_id("CVE-2013-1594", "CVE-2013-1595", "CVE-2013-1596", "CVE-2013-1597",
                "CVE-2013-1598");
  script_tag(name:"cvss_base", value:"5.0");
@@ -48,9 +48,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54476");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-17 14:10:13 +0200 (Tue, 17 Jul 2012)");
- script_summary("Determine if getparam.cgi disclosure information");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

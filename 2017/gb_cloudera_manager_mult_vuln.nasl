@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudera_manager_mult_vuln.nasl 5526 2017-03-09 09:46:12Z ckuerste $
+# $Id: gb_cloudera_manager_mult_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Cloudera Manager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cloudera:cloudera_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106639");
-  script_version("$Revision: 5526 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-09 10:46:12 +0100 (Thu, 09 Mar 2017) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name: "creation_date", value: "2017-03-09 15:29:25 +0700 (Thu, 09 Mar 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("Cloudera Manager Multiple Vulnerabilities");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");

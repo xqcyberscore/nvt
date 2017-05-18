@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_55241.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_55241.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # WordPress Cloudsafe365 Plugin 'file' Parameter Remote File Disclosure Vulnerability
 #
@@ -40,7 +40,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(55241);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5977 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -48,9 +48,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55241");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-28 18:02:43 +0200 (Tue, 28 Aug 2012)");
- script_summary("Determine if it is possible to read the wp-config.php");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

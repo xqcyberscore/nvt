@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_mobile_detect.nasl 5400 2017-02-23 09:26:20Z cfi $
+# $Id: gb_apple_mobile_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Apple Mobile Device Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103628");
-  script_version("$Revision: 5400 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:26:20 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-12-27 11:43:24 +0100 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ foreach port( ports ) {
   if( port != "62078" ) exit( 0 );
 }
 
-register_and_report_os( os:"Apple iOS", cpe:"cpe:/o:apple:iphone_os", desc:"Apple Mobile Device Detection" );
+register_and_report_os( os:"Apple iOS", cpe:"cpe:/o:apple:iphone_os", desc:"Apple Mobile Device Detection", runs_key:"unixoide" );
 log_message( data:"The remote Host seems to be an Apple Device because port 62078 is the only open tcp port." );
 
 exit( 0 );

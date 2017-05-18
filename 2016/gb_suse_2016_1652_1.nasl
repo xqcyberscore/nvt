@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851353");
-  script_version("$Revision: 3619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-29 13:04:08 +0200 (Wed, 29 Jun 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-23 05:24:34 +0200 (Thu, 23 Jun 2016)");
   script_cve_id("CVE-2015-7981", "CVE-2015-8126", "CVE-2016-1514", "CVE-2016-1515", 
                 "CVE-2016-5108");
@@ -62,7 +62,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:1652_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00046.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of vlc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

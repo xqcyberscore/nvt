@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnet_43708.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_dnet_43708.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # DNET Live-Stats 'team.rc5-72.php' Local File Include Vulnerability
 #
@@ -35,15 +35,15 @@ DNET Live-Stats 0.8 RC8 is vulnerable; other versions may also
 be affected.";
 
 
-if (description)
+if(description)
 {
  script_id(100841);
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-05 12:35:02 +0200 (Tue, 05 Oct 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_cve_id("CVE-2010-4858");
+ script_cve_id("CVE-2010-4858");
  script_bugtraq_id(43708);
 
  script_name("DNET Live-Stats 'team.rc5-72.php' Local File Include Vulnerability");
@@ -65,27 +65,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/dnet",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/dnet", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
 
     url = string(dir,"/team.rc5-72.php?showlang=",crap(data:"../",length:3*9),files[file],"%00"); 
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_https_sessions_mult_vuln_lin.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_https_sessions_mult_vuln_lin.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Opera 'HTTPS-Session' Multiple Vulnerabilities (Linux)
 #
@@ -47,18 +47,17 @@ vulnerabilities.";
 if(description)
 {
   script_id(802737);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2008-7297");
   script_bugtraq_id(49134);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 16:56:54 +0530 (Mon, 09 Apr 2012)");
   script_name("Opera 'HTTPS-Session' Multiple Vulnerabilities (Linux)");
   script_xref(name : "URL" , value : "http://scarybeastsecurity.blogspot.com/2008/11/cookie-forcing.html");
   script_xref(name : "URL" , value : "http://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies");
 
-  script_summary("Check for the version of Opera on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

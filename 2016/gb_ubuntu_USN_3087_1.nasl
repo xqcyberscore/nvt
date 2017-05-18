@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842896");
-  script_version("$Revision: 4186 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 06:45:51 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 05:42:26 +0200 (Fri, 23 Sep 2016)");
   script_cve_id("CVE-2016-6304", "CVE-2016-2177", "CVE-2016-2178", "CVE-2016-2179",
   		"CVE-2016-2180", "CVE-2016-2181", "CVE-2016-2182", "CVE-2016-2183",
@@ -97,7 +97,6 @@ denial of service. (CVE-2016-6306)");
   script_xref(name: "USN", value: "3087-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3087-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

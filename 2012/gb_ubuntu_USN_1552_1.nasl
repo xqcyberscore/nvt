@@ -44,8 +44,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-September/001806.html");
   script_id(841130);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5931 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-04 11:39:22 +0530 (Tue, 04 Sep 2012)");
   script_cve_id("CVE-2012-3542", "CVE-2012-3426");
   script_tag(name:"cvss_base", value:"4.9");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "USN", value: "1552-1");
   script_name("Ubuntu Update for keystone USN-1552-1");
 
-  script_summary("Check for the Version of keystone");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

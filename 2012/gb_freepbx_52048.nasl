@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_52048.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_freepbx_52048.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # FreePBX 'gen_amp_conf.php' Credentials Information Disclosure Vulnerability
 #
@@ -38,7 +38,7 @@ if (description)
 {
  script_id(103428);
  script_bugtraq_id(52048);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5988 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("FreePBX 'gen_amp_conf.php' Credentials Information Disclosure Vulnerability");
@@ -47,9 +47,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.freepbx.org/");
  script_xref(name : "URL" , value : "http://www.freepbx.org/forum/freepbx/development/security-gen-amp-conf-php");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 16:59:07 +0100 (Thu, 16 Feb 2012)");
- script_summary("Determine if installed FreePBX is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_mult_xss_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_mediawiki_mult_xss_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # MediaWiki Multiple XSS Vulnerabilities
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is running MediaWiki and is prone to Multiple XSS
 if(description)
 {
   script_id(900469);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
@@ -64,7 +64,7 @@ if(description)
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
   script_dependencies("secpod_mediawiki_detect.nasl");
-  script_require_keys("MediaWiki/Version");
+  script_mandatory_keys("MediaWiki/Version");
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
@@ -73,13 +73,10 @@ if(description)
   exit(0);
 }
 
-
+include("http_func.inc");
 include("version_func.inc");
 
-wikiPort = get_kb_item("Services/www");
-if(!get_port_state(wikiPort)){
-  exit(0);
-}
+wikiPort = get_http_port( default:80 );
 
 mediawiki = get_kb_item("MediaWiki/Version");
 if(!mediawiki){

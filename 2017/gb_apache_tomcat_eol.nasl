@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_eol.nasl 5432 2017-02-27 11:38:07Z cfi $
+# $Id: gb_apache_tomcat_eol.nasl 5928 2017-04-11 07:28:59Z cfi $
 #
-# Apache Tomcat End Of Life Detection
+# Apache Tomcat End Of Life Detection (Linux)
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -30,18 +30,18 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108084");
-  script_version("$Revision: 5432 $");
+  script_version("$Revision: 5928 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 12:38:07 +0100 (Mon, 27 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 09:28:59 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
-  script_name("Apache Tomcat End Of Life Detection");
+  script_name("Apache Tomcat End Of Life Detection (Linux)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
-  script_dependencies("gb_apache_tomcat_detect.nasl");
+  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
-  script_mandatory_keys("ApacheTomcat/installed");
+  script_mandatory_keys("ApacheTomcat/installed", "Host/runs_unixoide");
 
   script_xref(name:"URL", value:"https://tomcat.apache.org/tomcat-60-eol.html");
   script_xref(name:"URL", value:"https://tomcat.apache.org/tomcat-55-eol.html");

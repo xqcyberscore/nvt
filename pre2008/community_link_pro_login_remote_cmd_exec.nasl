@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: community_link_pro_login_remote_cmd_exec.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: community_link_pro_login_remote_cmd_exec.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Community Link Pro webeditor login.cgi remote command execution
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Disable or remove this CGI";
 if(description)
 {
  script_id(19305);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(14097);
  script_cve_id("CVE-2005-2111");
@@ -48,7 +48,6 @@ if(description)
 
  summary = "Checks for Community Link Pro webeditor login.cgi remote execution flaw";
  
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");

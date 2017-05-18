@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_merak_mail_server_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_merak_mail_server_detect.nasl 5735 2017-03-27 12:27:20Z cfi $
 #
 # Merak Mail Server Web Mail Version Detection
 #
@@ -38,13 +38,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5735 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 14:27:20 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 09:27:25 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Merak Mail Server Web Mail Version Detection");
-  script_summary("Set KB for the version of Merak Mail Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -55,24 +54,14 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get the default port
 port = get_http_port(default:80);
-if(!port){
-  port = 32000;
-}
 
-## Check the port status
-if(!get_port_state(port)){
-  exit(0);
-}
-
-banner = get_http_banner(port);
+banner = get_http_banner(port:port);
 if("IceWarp" >!< banner){
   exit(0);
 }
@@ -111,21 +100,17 @@ else if(version[2] != NULL){
  ver = version[2];
 }
 
-if(ver)
-{
+if(ver) {
 
-  install = '/';  
-  dirs = make_list("/webmail",cgi_dirs());
-
-  foreach dir (dirs) {
+  foreach dir( make_list_unique( "/webmail", cgi_dirs( port:port ) ) ) {
+    install = dir;
+    if( dir == "/" ) dir = "";
     url = dir + '/';
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    buf = http_get_cache(item:url, port:port);
     if(buf =~ "<title>(Merak|IceWarp)") {
-      install = dir;
       break;
-    }  
-  }  
+    }
+  }
 
   set_kb_item(name:"MerakMailServer/Ver", value:ver);
   cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:icewarp:merak_mail_server:");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpmyfaq_action_parameter_flaw.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: phpmyfaq_action_parameter_flaw.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: phpMyFAQ action parameter arbitrary file disclosure vulnerability
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to phpMyFAQ 1.3.13 or newer.";
 if(description)
 {
  script_id(14258);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2255");
  script_bugtraq_id(10374);
@@ -58,7 +58,6 @@ if(description)
 
  summary = "Check the version of phpMyFAQ";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

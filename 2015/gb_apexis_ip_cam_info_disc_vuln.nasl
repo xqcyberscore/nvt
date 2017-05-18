@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apexis_ip_cam_info_disc_vuln.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_apexis_ip_cam_info_disc_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # Apexis IP CAM Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805070");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-17 11:22:32 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apexis IP CAM Information Disclosure Vulnerability");
@@ -64,16 +64,15 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37298");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132213");
 
-  script_summary("Check if Apexis IP camera is vulnerable to information disclosure");
   script_tag(name:"solution_type", value:"Workaround");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
@@ -82,18 +81,9 @@ include("http_keepalive.inc");
 ## Variable Initialization
 apexCamPort = "";
 
-## Get HTTP Port
 apexCamPort = get_http_port(default:80);
-if(!apexCamPort){
-  apexCamPort = 80;
-}
 
-## Check Port State
-if(!get_port_state(apexCamPort)){
-  exit(0);
-}
-
-foreach dir (make_list_unique("/", "/cgi-bin", cgi_dirs()))
+foreach dir (make_list_unique("/", "/cgi-bin", cgi_dirs(port:apexCamPort)))
 {
 
   if( dir == "/" ) dir = "";

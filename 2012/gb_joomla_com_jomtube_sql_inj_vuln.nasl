@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_jomtube_sql_inj_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_joomla_com_jomtube_sql_inj_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Joomla Jomtube Component 'id' Parameter SQL Injection Vulnerability
 #
@@ -46,16 +46,15 @@ injection vulnerability.";
 if(description)
 {
   script_id(802744);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5912 $");
   script_tag(name:"cvss_base", value:"7.5");
    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Joomla Jomtube Component 'id' Parameter SQL Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-12 15:32:57 +0530 (Thu, 12 Apr 2012)");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/18033");
   script_xref(name : "URL" , value : "http://www.allinfosec.com/2012/04/10/webapps-0day-joomla-component-com_jomtube-sql-injection-vulnerability/");
 
-  script_summary("Check if Joomla Jomtube Component is vulnerable to SQL injection attack");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

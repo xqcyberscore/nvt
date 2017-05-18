@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_riverbed_steelcentral_10_9_0.nasl 3633 2016-06-30 16:48:39Z mime $
+# $Id: gb_riverbed_steelcentral_10_9_0.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Riverbed SteelCentral NetProfiler & NetExpress Virtual Editions Multiple Vulnerabilities
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:riverbed:steelcentral";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105790");
- script_version ("$Revision: 3633 $");
+ script_version ("$Revision: 5759 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Riverbed SteelCentral NetProfiler & NetExpress Virtual Editions Multiple Vulnerabilities");
@@ -46,9 +46,8 @@ arbitrary code execution via command injection, privilege escalation, local file
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-30 18:48:39 +0200 (Thu, 30 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-30 17:13:33 +0200 (Thu, 30 Jun 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

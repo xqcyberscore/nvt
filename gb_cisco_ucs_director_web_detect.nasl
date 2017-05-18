@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_director_web_detect.nasl 2883 2016-03-17 18:22:23Z mime $
+# $Id: gb_cisco_ucs_director_web_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Cisco UCS Director Web Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105576");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2883 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-17 19:22:23 +0100 (Thu, 17 Mar 2016) $");
+ script_version ("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-03-17 16:05:49 +0100 (Thu, 17 Mar 2016)");
  script_name("Cisco UCS Director Web Interface Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Cisco UCS Director Web Interface");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

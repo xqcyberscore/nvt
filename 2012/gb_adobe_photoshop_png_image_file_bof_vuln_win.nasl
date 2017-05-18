@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_png_image_file_bof_vuln_win.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_photoshop_png_image_file_bof_vuln_win.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Adobe Photoshop PNG Image Processing Buffer Overflow Vulnerabilities (Windows)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with Adobe Photoshop and is prone to buffe
 if(description)
 {
   script_id(803025);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-4170", "CVE-2012-0275");
   script_bugtraq_id(55333, 55372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-03 16:36:21 +0530 (Mon, 03 Sep 2012)");
   script_name("Adobe Photoshop PNG Image Processing Buffer Overflow Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49141");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-20.html");
 
-  script_summary("Check for the version of Adobe Photoshop on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

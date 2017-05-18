@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omni_secure_56575.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_omni_secure_56575.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # Omni-Secure 'dir' Parameter Multiple File Disclosure Vulnerabilities
 #
@@ -32,14 +32,11 @@ context of the web server process. This may aid in further attacks.
 
 Versions Omni-Secure 5, 6 and 7 are vulnerable.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103619";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103619");
  script_bugtraq_id(56575);
- script_version ("$Revision: 3047 $");
+ script_version ("$Revision: 5714 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -47,11 +44,10 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56575");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-12-07 10:59:11 +0100 (Fri, 07 Dec 2012)");
- script_summary("Determine if Omni-Secure disclosure files");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -62,30 +58,27 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+files = make_list( "/browsefiles.php", "/browsefolders.php" );
 
-dirs = make_list("/oss7","/oss6","/oss5",cgi_dirs());
-files = make_list("/browsefiles.php","/browsefolders.php");
+foreach dir( make_list_unique( "/oss7", "/oss6", "/oss5", cgi_dirs( port:port )) ) {
 
-foreach dir (dirs) {
-  foreach file (files) {
-   
+  if( dir == "/" ) dir = "";
+
+  foreach file( files ) {
+
     url = dir + '/lib' + file + '?dir=/etc'; 
 
-    if(http_vuln_check(port:port, url:url,pattern:"/etc/passwd",extra_check:"/etc/shadow")) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if( http_vuln_check( port:port, url:url, pattern:"/etc/passwd", extra_check:"/etc/shadow" ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-  }  
+  }
 }
 
-exit(0);
+exit( 0 );

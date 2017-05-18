@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abtp_portal_45290.nasl 5652 2017-03-21 10:14:46Z cfi $
+# $Id: gb_abtp_portal_45290.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # Abtp Portal Project 'ABTPV_BLOQUE_CENT' Parameter Local and Remote File Include Vulnerabilities
 #
@@ -35,12 +35,11 @@ underlying computer; other attacks are also possible.
 Abtp Portal Project 0.1.0 is vulnerable; other versions may also
 be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100942);
- script_version("$Revision: 5652 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:14:46 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
  script_bugtraq_id(45290);
 
@@ -65,28 +64,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 files = traversal_files();
 
-dirs = make_list("/abtpportal","/portal",cgi_dirs());
+foreach dir( make_list_unique( "/abtpportal", "/portal", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   foreach file (keys(files)) {
+  if( dir == "/" ) dir = "";
+
+  foreach file (keys(files)) {
    
-     url = string(dir,"/includes/esqueletos/skel_null.php?ABTPV_BLOQUE_CENTRAL=/",files[file]); 
+    url = string(dir,"/includes/esqueletos/skel_null.php?ABTPV_BLOQUE_CENTRAL=/",files[file]);
 
-     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-       security_message(port:port);
-       exit(0);
-
-     }
+    if(http_vuln_check(port:port, url:url,pattern:file)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

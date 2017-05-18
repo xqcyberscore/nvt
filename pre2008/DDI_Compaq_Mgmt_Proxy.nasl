@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Compaq_Mgmt_Proxy.nasl 4079 2016-09-16 09:06:55Z cfi $
+# $Id: DDI_Compaq_Mgmt_Proxy.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Compaq Web Based Management Agent Proxy Vulnerability
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10963");
-  script_version("$Revision: 4079 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:06:55 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2001-0374");
   script_name("Compaq Web Based Management Agent Proxy Vulnerability");
-  script_summary("Compaq Web Based Management Agent Proxy Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Digital Defense Inc.");
   script_family("Web application abuses");

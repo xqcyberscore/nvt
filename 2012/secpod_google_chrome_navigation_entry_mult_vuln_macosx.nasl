@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_navigation_entry_mult_vuln_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_google_chrome_navigation_entry_mult_vuln_macosx.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - Jan12 (Mac OS X)
 #
@@ -43,13 +43,13 @@ tag_summary = "The host is installed with Google Chrome and is prone multiple
 if(description)
 {
   script_id(902905);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5888 $");
   script_bugtraq_id(51641);
   script_cve_id("CVE-2011-3924", "CVE-2011-3925", "CVE-2011-3926", "CVE-2011-3927",
                 "CVE-2011-3928");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 13:12:13 +0530 (Wed, 25 Jan 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Jan12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47694/");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2012/01/stable-channel-update_23.html");
 
   script_copyright("Copyright (c) 2012 SecPod");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

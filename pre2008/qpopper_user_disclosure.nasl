@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: qpopper_user_disclosure.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: qpopper_user_disclosure.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: QPopper Username Information Disclosure
 #
 # Authors:
@@ -35,8 +35,8 @@ responses during the authentication process.";
 if(description)
 {
  script_id(12279);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7110);
  script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ if(description)
  script_name(name);
 
  summary = "QPopper Username Information Disclosure";
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

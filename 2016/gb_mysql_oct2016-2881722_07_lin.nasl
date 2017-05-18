@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_07_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mysql_oct2016-2881722_07_lin.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 07 - Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809383");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-5625", "CVE-2016-5632", "CVE-2016-8286");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:52:05 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 07 - Linux");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
-  script_summary("Check for the vulnerable version of Oracle MySQL on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Databases");

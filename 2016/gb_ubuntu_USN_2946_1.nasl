@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842711");
-  script_version("$Revision: 3056 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-13 11:23:38 +0200 (Wed, 13 Apr 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-07 05:01:15 +0200 (Thu, 07 Apr 2016)");
   script_cve_id("CVE-2015-8812", "CVE-2016-2085", "CVE-2016-2550", "CVE-2016-2847");
   script_tag(name:"cvss_base", value:"10.0");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name: "USN", value: "2946-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-April/003373.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

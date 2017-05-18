@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0007.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2010-0007.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # VMSA-2010-0007 VMware hosted products, vCenter Server and ESX patches resolve multiple security issues
 #
@@ -177,13 +177,12 @@ if (description)
  script_cve_id("CVE-2010-1142", "CVE-2010-1140", "CVE-2009-2042", "CVE-2009-1564", "CVE-2009-1565", "CVE-2009-3732", "CVE-2009-3707", "CVE-2010-1138", "CVE-2010-1139", "CVE-2010-1141");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6022 $");
  script_name("VMSA-2010-0007: VMware hosted products, vCenter Server and ESX patches resolve multiple security issues");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-16 10:53:01 +0100 (Mon, 16 Apr 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

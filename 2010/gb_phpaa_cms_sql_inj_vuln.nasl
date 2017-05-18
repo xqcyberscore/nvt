@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpaa_cms_sql_inj_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_phpaa_cms_sql_inj_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # phpaaCMS 'id' Parameter SQL Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801408");
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-19 10:09:06 +0200 (Mon, 19 Jul 2010)");
   script_cve_id("CVE-2010-2719", "CVE-2010-2720");
   script_bugtraq_id(41341);
@@ -43,8 +43,8 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "insight" , value : "The flaws are due to input validation errors in the 'show.php'
@@ -68,11 +68,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 phpPort = get_http_port(default:80);
 
 if (!can_host_php(port:phpPort)) exit(0);
@@ -82,9 +80,7 @@ foreach dir (make_list_unique("/phpaaCMS", "/" , cgi_dirs(port:phpPort)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive request
-  sndReq = http_get(item:string(dir, "/index.php"), port:phpPort);
-  rcvRes = http_keepalive_send_recv(port:phpPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:phpPort);
 
   ## Confirm application is phpaaCMS
   if(">phpAA" >< rcvRes)

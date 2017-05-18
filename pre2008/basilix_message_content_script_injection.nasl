@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: basilix_message_content_script_injection.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: basilix_message_content_script_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: BasiliX Message Content Script Injection Vulnerability
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to BasiliX version 1.1.1 or later.";
 
 if (description) {
   script_id(14218);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,6 @@ if (description) {
  
  
   summary = "Checks for message content script injection vulnerability in BasiliX";
-  script_summary(summary);
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

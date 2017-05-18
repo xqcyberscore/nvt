@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: AWStats_cve_2006_3682.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: AWStats_cve_2006_3682.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # AWStats 'awstats.pl' Multiple Path Disclosure Vulnerability
 #
@@ -24,17 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100070");
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-22 17:08:49 +0100 (Sun, 22 Mar 2009)");
  script_bugtraq_id(34159);
  script_cve_id("CVE-2006-3682");		   
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("AWStats 'awstats.pl' Multiple Path Disclosure Vulnerability");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
@@ -53,7 +52,6 @@ if (description)
  script_tag(name : "solution" , value : "Please update to AWStats 6.6 or later.");
 
  script_tag(name:"solution_type", value:"VendorFix");
-
  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
@@ -61,28 +59,19 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port)) exit(0);
+foreach dir( make_list_unique( "/awstats", "/AWStats", "/stats", cgi_dirs( port:port ) ) ) { 
 
-dir = make_list("/awstats","/AWStats","/stats",cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/awstats.pl?config=OpenVAS-Test");
 
-foreach d (dir)
-{ 
- url = string(d, "/awstats.pl?config=OpenVAS-Test");
-
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if( buf == NULL )continue;
-
- if (egrep(pattern: 'Error:.*config file "awstats.OpenVAS-Test.conf".*after searching in path.*', string: buf))
- { 
-     security_message(port:port);
-     exit(0);
- }
+  if(http_vuln_check(port:port, url:url,pattern:'Error:.*config file "awstats.OpenVAS-Test.conf".*after searching in path.*')) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
- 
-exit(99);
+
+exit( 99 );

@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903204");
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 5791 $");
   script_bugtraq_id(58094);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-02-22 18:45:39 +0530 (Fri, 22 Feb 2013)");
   script_name("PHPMyRecipes SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82243");
@@ -41,11 +41,10 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_summary("Check if phpMyRecipes vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -75,10 +74,8 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -88,9 +85,7 @@ foreach dir (make_list_unique("/", "/phpMyRecipes", "/recipes", cgi_dirs(port:po
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"),  port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
   ## Confirm the application
   if('>phpMyRecipes' >< res)

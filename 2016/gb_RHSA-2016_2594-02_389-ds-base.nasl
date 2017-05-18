@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871686");
-  script_version("$Revision: 4453 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 10:10:55 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:43 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-4992", "CVE-2016-5405", "CVE-2016-5416");
   script_tag(name:"cvss_base", value:"10.0");
@@ -77,7 +77,6 @@ Enterprise Linux 7.3 Release Notes linked from the References section.
   script_xref(name: "RHSA", value: "2016:2594-02");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of 389-ds-base");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

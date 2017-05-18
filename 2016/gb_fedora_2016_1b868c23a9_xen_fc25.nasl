@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872169");
-  script_version("$Revision: 4845 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 06:29:54 +0100 (Fri, 23 Dec 2016) $");
+  script_version("$Revision: 5851 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:00:50 +0100 (Tue, 20 Dec 2016)");
   script_cve_id("CVE-2016-9932", "CVE-2016-9815", "CVE-2016-9816", "CVE-2016-9817",
                 "CVE-2016-9818", "CVE-2016-9921", "CVE-2016-9922", "CVE-2016-9913",
                 "CVE-2016-9914", "CVE-2016-9915", "CVE-2016-9916");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xen FEDORA-2016-1b868c23a9");
   script_tag(name: "summary", value: "Check the version of xen");

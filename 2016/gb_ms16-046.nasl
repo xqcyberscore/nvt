@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-046.nasl 3057 2016-04-13 14:03:14Z antu123 $
+# $Id: gb_ms16-046.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Windows Secondary Logon Privilege Elevation Vulnerability (3148538)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807313");
-  script_version("$Revision: 3057 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-0135");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-13 16:03:14 +0200 (Wed, 13 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 09:03:18 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Secondary Logon Privilege Elevation Vulnerability (3148538)");
@@ -63,7 +63,6 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3148538");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-046");
-  script_summary("Check for the vulnerable file 'Seclogon.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

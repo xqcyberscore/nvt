@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dissect_gsm_rlcmac_downlink_bof_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wireshark_dissect_gsm_rlcmac_downlink_bof_win.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -38,19 +38,18 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 if(description)
 {
   script_id(802943);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-4297");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:56:24 +0530 (Tue, 21 Aug 2012)");
   script_name("Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50276/");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2012-19.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=7561");
 
-  script_summary("Check for the version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

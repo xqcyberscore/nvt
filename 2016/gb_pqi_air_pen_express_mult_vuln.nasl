@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pqi_air_pen_express_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_pqi_air_pen_express_mult_vuln.nasl 5894 2017-04-07 14:08:34Z teissa $
 #
 # PQI Air Pen Express Wireless Router Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:pqi:air:pen:express";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807536");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5894 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:08:34 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-07 11:07:14 +0530 (Thu, 07 Apr 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("PQI Air Pen Express Wireless Router Multiple Vulnerabilities");
@@ -64,13 +64,11 @@ if(description)
   script_tag(name: "affected" , value:"
   PQI Air Pen Express - Wireless Router 6W51-0000R2 and 6W51-0000R2XXX");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 
-  24th January, 2017. Information regarding this issue will be updated once 
-  the solution details are available. For updates refer to http://www.pqigroup.com");
-
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. 
+");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39659");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastsearch_detect.nasl 4402 2016-11-01 18:02:17Z mime $
+# $Id: gb_elastsearch_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Elasticsearch Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105031");
- script_version ("$Revision: 4402 $");
+ script_version ("$Revision: 6032 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-11-01 19:02:17 +0100 (Tue, 01 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2014-05-22 15:00:02 +0200 (Thu, 22 May 2014)");
  script_name("Elasticsearch Detection");
 
@@ -41,7 +41,6 @@ if(description)
  the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Checks for the version of Elasticsearch");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

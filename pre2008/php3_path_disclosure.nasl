@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php3_path_disclosure.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: php3_path_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: PHP3 Physical Path Disclosure Vulnerability
 #
 # Authors:
@@ -42,8 +42,8 @@ Reference : http://online.securityfocus.com/archive/101/184240";
 if(description)
 {
  script_id(10670);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -53,7 +53,6 @@ if(description)
 
  summary = "Tests for PHP3 Physical Path Disclosure Vulnerability";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");

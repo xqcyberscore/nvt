@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_playlist_code_exec_vuln_win.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_apple_itunes_playlist_code_exec_vuln_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Apple iTunes '.m3u' Playlist Code Execution Vulnerabilities (Windows)
 #
@@ -37,11 +37,11 @@ tag_summary = "This host is installed with Apple iTunes and is prone to multiple
 if(description)
 {
   script_id(802862);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2012-0677");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:25:52 +0530 (Tue, 12 Jun 2012)");
   script_name("Apple iTunes '.m3u' Playlist Code Execution Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5318");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027142");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/Jun/msg00000.html");
 
-  script_summary("Check for the version of Apple iTunes on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

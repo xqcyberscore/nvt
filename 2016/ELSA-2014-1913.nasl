@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1913.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2014-1913.nasl 5759 2017-03-29 09:01:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122872");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5759 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:01:41 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1913");
 script_tag(name: "insight", value: "ELSA-2014-1913 -  ruby193-ruby security update - [1.9.3.484-50.0.1]- fix build issue: self test report 'dh key to small'[1.9.3.484-50]- Fix off-by-one stack-based buffer overflow in the encodes() function (CVE-2014-4975). Related: rhbz#1164004- Fix REXML billion laughs attack via parameter entity expansion (CVE-2014-8080). Related: rhbz#1164004- REXML incomplete fix for CVE-2014-8080 (CVE-2014-8090). Related: rhbz#1164004"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1913");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

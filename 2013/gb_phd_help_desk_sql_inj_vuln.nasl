@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phd_help_desk_sql_inj_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_phd_help_desk_sql_inj_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # PHD Help Desk SQL Injection vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803802");
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 5816 $");
   script_bugtraq_id(60273);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-04 15:34:49 +0530 (Tue, 04 Jun 2013)");
   script_name("PHD Help Desk SQL Injection vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploit/20843");
@@ -39,12 +39,10 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121869/phdhelpdesk-sql.txt");
   script_xref(name : "URL" , value : "http://forelsec.blogspot.in/2013/06/phd-help-desk-212-sqli-and-xss.html");
 
-
-  script_summary("Check if PHD Help Desk is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -68,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -80,10 +77,7 @@ port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
-
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -96,9 +90,7 @@ foreach dir (make_list_unique("/", "/phd", "/helpdesk", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Request for the search.cgi
-  sndReq = http_get(item:string(dir, "/login.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/login.php"), port:port);
 
   ## confirm the Application
   if(rcvRes && ">PHD Help Desk" >< rcvRes && "request access<" >< rcvRes)

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882502");
-  script_version("$Revision: 3586 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-22 14:18:19 +0200 (Wed, 22 Jun 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 05:22:29 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-0749", "CVE-2016-2150");
   script_tag(name:"cvss_base", value:"10.0");
@@ -65,7 +65,6 @@ CVE-2016-2150 issue was discovered by Frediano Ziglio (Red Hat).
 
   script_xref(name: "CESA", value: "2016:1205");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-June/021904.html");
-  script_summary("Check for the Version of spice-server");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

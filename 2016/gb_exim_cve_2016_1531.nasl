@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exim_cve_2016_1531.nasl 3094 2016-04-18 07:59:37Z antu123 $
+# $Id: gb_exim_cve_2016_1531.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Exim Local Root / Privilege Escalation Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1531");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3094 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Exim Local Root / Privilege Escalation Vulnerability");
 
@@ -46,9 +46,8 @@ if (description)
  script_tag(name: "summary" , value:"Exim < 4.86.2 Local Root Privilege Escalation");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 09:59:37 +0200 (Mon, 18 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-03-15 13:17:46 +0100 (Tue, 15 Mar 2016)");
- script_summary("Check the version from SMTP banner");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_family("SMTP problems");

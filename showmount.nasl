@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: showmount.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: showmount.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Showmount
 #
@@ -34,8 +34,8 @@ Tested on Ubuntu/Debian mountd";
 if(description)
 {
  script_id(102014);
- script_version("$Revision: 4803 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
  script_cve_id("CVE-1999-0554", "CVE-1999-0548");
  script_name("NFS export");
@@ -44,7 +44,6 @@ if(description)
 
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_summary("Checks for NFS shares");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
  script_copyright("Copyright (C) 2009 LSS");

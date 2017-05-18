@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_snmp_agents_open_redirect_n_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_hp_snmp_agents_open_redirect_n_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # HP SNMP Agents Open Redirect and Cross-site Scripting Vulnerabilities (Linux)
 #
@@ -38,12 +38,12 @@ tag_summary = "The host is installed with HP SNMP Agents and is prone to open
 if(description)
 {
   script_id(802775);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-2001", "CVE-2012-2002");
   script_bugtraq_id(53340);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-10 17:50:17 +0530 (Thu, 10 May 2012)");
   script_name("HP SNMP Agents Open Redirect and Cross-site Scripting Vulnerabilities (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48978/");
@@ -52,7 +52,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of HP SNMP Agents on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_hp_snmp_agents_detect_lin.nasl");

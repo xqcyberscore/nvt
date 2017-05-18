@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_oct10_macosx.nasl 4590 2016-11-22 08:45:15Z cfi $
+# $Id: gb_opera_mult_vuln_oct10_macosx.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Opera Browser Multiple Vulnerabilities October-10 (Mac OS X)
 #
@@ -51,12 +51,12 @@ tag_summary = "The host is installed with Opera browser and is prone to multiple
 if(description)
 {
   script_id(802752);
-  script_version("$Revision: 4590 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2010-4043", "CVE-2010-4044", "CVE-2010-4046", "CVE-2010-4045",
                 "CVE-2010-4047", "CVE-2010-4049", "CVE-2010-4048", "CVE-2010-4050");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:45:15 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-19 09:41:19 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities October-10 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41740");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/mac/1063/");
   script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2010/Oct/1024570.html");
 
-  script_summary("Check for the version of Opera on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

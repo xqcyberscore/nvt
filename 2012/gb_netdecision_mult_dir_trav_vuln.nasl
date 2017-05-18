@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # NetDecision Multiple Directory Traversal Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802618");
   script_bugtraq_id(52327);
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 5940 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 16:16:16 +0530 (Fri, 09 Mar 2012)");
   script_name("NetDecision Multiple Directory Traversal Vulnerabilities");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/73715");
   script_xref(name:"URL", value:"http://aluigi.altervista.org/adv/netdecision_1-adv.txt");
 
-  script_summary("Check if NetDecision is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

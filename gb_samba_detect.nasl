@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_detect.nasl 4394 2016-11-01 08:26:50Z cfi $
+# $Id: gb_samba_detect.nasl 5886 2017-04-07 07:52:03Z teissa $
 #
 # Samba Version Detection
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800403");
-  script_version("$Revision: 4394 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 09:26:50 +0100 (Tue, 01 Nov 2016) $");
+  script_version("$Revision: 5886 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 09:52:03 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

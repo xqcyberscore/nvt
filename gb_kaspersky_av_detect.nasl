@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_detect.nasl 5098 2017-01-25 09:14:20Z antu123 $
+# $Id: gb_kaspersky_av_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Kaspersky AntiVirus Version Detection
 #
@@ -38,10 +38,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800241");
-  script_version("$Revision: 5098 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 10:14:20 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-16 16:42:20 +0100 (Mon, 16 Feb 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Kaspersky AntiVirus Version Detection");
@@ -91,24 +91,6 @@ TOTSEC_LIST = make_list("^(15\..*)", "cpe:/a:kaspersky:total_security_2015:",
                         "^(16\..*)", "cpe:/a:kaspersky:kaspersky_total_security:",
                         "^(17\..*)", "cpe:/a:kaspersky:kaspersky_total_security_2017:");
 TOTSEC_MAX = max_index(TOTSEC_LIST);
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase, insloc, app)
-{
-  local_var cpe;
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(cpe)
-  {
-    register_product(cpe:cpe, location:insloc);
-    log_message(data: build_detection_report(app: app,
-                                           version: tmpVers,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: tmpVers));
-  }
-}
 
 ## Variable Initialization
 os_arch = "";
@@ -165,9 +147,8 @@ foreach item (registry_enum_keys(key:key))
         replace_kb_item(name:"Kaspersky/products/installed", value:TRUE);
         set_kb_item(name:"Kaspersky/AV-Workstation/Ver", value:kavwVer);
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:kavwVer, tmpExpr:"^(6\.0)",
-                     tmpBase:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0::workstations",
-                     insloc:insloc , app:"Kaspersky Anti-Virus");
+        register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavwVer, base:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0::workstations",
+                                expr:"^(6\.0)", insloc:insloc);
       }
     }
   }
@@ -186,9 +167,9 @@ foreach item (registry_enum_keys(key:key))
       set_kb_item(name:"Kaspersky/AV-FileServer/Ver", value:kavsVer);
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:kavsVer, tmpExpr:"^(6\.0)",
-                   tmpBase:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0.3.837::windows_file_servers:",
-                   insloc:insloc , app:"Kaspersky Anti-Virus");
+      register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavsVer,
+                              base:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0.3.837::windows_file_servers:",
+                              expr:"^(6\.0)", insloc:insloc);
     }
   }
 
@@ -207,8 +188,9 @@ foreach item (registry_enum_keys(key:key))
 
       ## build cpe and store it as host_detail
       for (i = 0; i < AV_MAX-1; i = i + 2){
-        register_cpe(tmpVers:kavVer, tmpExpr:AV_LIST[i], tmpBase:AV_LIST[i+1],
-                       insloc:insloc , app:"Kaspersky Anti-Virus");
+        register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavVer,
+                              base:AV_LIST[i+1],
+                              expr:AV_LIST[i], insloc:insloc);
       }
     }
   }
@@ -230,9 +212,10 @@ foreach item (registry_enum_keys(key:key))
       ## build cpe and store it as host_detail
       for (i = 0; i < INTNETSEC_MAX-1; i = i + 2)
       {
-        register_cpe(tmpVers:kisVer, tmpExpr:INTNETSEC_LIST[i],
-                     tmpBase:INTNETSEC_LIST[i+1], insloc:insloc ,
-                     app:"Kaspersky Internet Security");
+        register_and_report_cpe(app:"Kaspersky Internet Security", ver:kisVer,
+                              base:INTNETSEC_LIST[i+1],
+                              expr:INTNETSEC_LIST[i], insloc:insloc);
+
       }
     }
   }
@@ -252,9 +235,9 @@ foreach item (registry_enum_keys(key:key))
       ## build cpe and store it as host_detail
       for (i = 0; i < TOTSEC_MAX-1; i = i + 2)
       {
-        register_cpe(tmpVers:kisVer, tmpExpr:TOTSEC_LIST[i],
-                     tmpBase:TOTSEC_LIST[i+1], insloc:insloc ,
-                     app:"Kaspersky Total Security");
+        register_and_report_cpe(app:"Kaspersky Total Security", ver:kisVer,
+                              base:TOTSEC_LIST[i+1],
+                              expr:TOTSEC_LIST[i], insloc:insloc);
       }
     }
   }

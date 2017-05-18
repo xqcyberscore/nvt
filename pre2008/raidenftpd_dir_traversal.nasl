@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: raidenftpd_dir_traversal.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: raidenftpd_dir_traversal.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: RaidenFTPD Directory Traversal flaw
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Upgrade to 2.1 build 952 or newer";
 if(description)
 {
  script_id(18224);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2655);
  script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ if(description)
  
 
  summary = "Detects RaidenFTPD Directory Traversal";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

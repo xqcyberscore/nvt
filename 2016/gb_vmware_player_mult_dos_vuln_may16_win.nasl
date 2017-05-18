@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_player_mult_dos_vuln_may16_win.nasl 3390 2016-05-26 08:12:04Z antu123 $
+# $Id: gb_vmware_player_mult_dos_vuln_may16_win.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # VMware Player Multiple Vulnerabilities May16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:player:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806757");
-  script_version("$Revision: 3390 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044");
   script_bugtraq_id(72338, 72337, 72336);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-26 10:12:04 +0200 (Thu, 26 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Player Multiple Vulnerabilities May16 (Windows)");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VMware Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");

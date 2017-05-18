@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-073.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-073.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (981957)
 #
@@ -24,30 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to run arbitrary
-  code in the kernel mode.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2K3 Service Pack 2 and prior.
-  Microsoft Windows Vista Service Pack 2 and prior.
-  Microsoft Windows Server 2008 Service Pack 2 and prior.
-  Micorsoft Windows 7";
-tag_insight = "The flaw is due to an error in the kernel-mode device driver 'Win32k.sys'
-  - when handling the reference count for an object.
-  - which fails to properly index a table of function pointers when loading a
-    keyboard layout from disk.
-  - which fails to properly manage a window class.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/MS10-073.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-073.";
-
 if(description)
 {
   script_id(902323);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-10-13 17:10:12 +0200 (Wed, 13 Oct 2010)");
   script_cve_id("CVE-2010-2549", "CVE-2010-2743", "CVE-2010-2744");
   script_bugtraq_id(41280, 43774, 43773);
@@ -64,11 +45,24 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to run arbitrary
+  code in the kernel mode.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows 2K3 Service Pack 2 and prior.
+  Microsoft Windows Vista Service Pack 2 and prior.
+  Microsoft Windows Server 2008 Service Pack 2 and prior.
+  Micorsoft Windows 7");
+  script_tag(name : "insight" , value : "The flaw is due to an error in the kernel-mode device driver 'Win32k.sys'
+  - when handling the reference count for an object.
+  - which fails to properly index a table of function pointers when loading a
+    keyboard layout from disk.
+  - which fails to properly manage a window class.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/MS10-073.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-073.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,21 +74,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
-
 if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:1) <= 0){
   exit(0);
 }
@@ -105,11 +84,10 @@ if(hotfix_missing(name:"981957") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = get_file_version(sysPath, file_name:"Win32k.sys");
+  sysVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
   if(sysVer)
   {
     ## Windows XP
@@ -143,13 +121,12 @@ if(sysPath)
   }
 }
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                      item:"PathName");
+sysPath = smb_get_system32root();
 if(!sysPath){
   exit(0);
 }
 
-sysVer = get_file_version(sysPath, file_name:"system32\Win32k.sys");
+sysVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
 if(!sysVer){
   exit(0);
 }

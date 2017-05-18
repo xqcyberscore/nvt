@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_snmp_detect.nasl 5256 2017-02-10 09:38:32Z ckuerste $
+# $Id: gb_simatic_s7_snmp_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Siemens SIMATIC S7 Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106097");
- script_version ("$Revision: 5256 $");
- script_tag(name: "last_modification", value: "$Date: 2017-02-10 10:38:32 +0100 (Fri, 10 Feb 2017) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:54:49 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ devices.");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);
 
- script_summary("This script performs SNMP based detection of Siemens SIMATIC S7 devices.");
 
  exit(0);
 }

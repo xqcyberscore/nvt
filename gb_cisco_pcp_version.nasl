@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_version.nasl 2709 2016-02-22 15:55:06Z mime $
+# $Id: gb_cisco_pcp_version.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Cisco Prime Collaboration Provisioning Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105546");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2709 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-22 16:55:06 +0100 (Mon, 22 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-02-15 16:25:34 +0100 (Mon, 15 Feb 2016)");
  script_name("Cisco Prime Collaboration Provisioning Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_summary("Checks for the presence of Cisco Prime Collaboration Provisioning");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

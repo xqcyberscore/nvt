@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyrus_49534.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: gb_cyrus_49534.nasl 5916 2017-04-10 11:38:08Z cfi $
 #
 # Cyrus IMAP Server 'split_wildmats()' Remote Buffer Overflow Vulnerability
 #
@@ -24,72 +24,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Cyrus IMAP Server is prone to a remote buffer-overflow
-vulnerability because the application fails to properly bounds
-check user-supplied data before copying it into an
-insufficiently sized buffer.
+CPE = "cpe:/a:cmu:cyrus_imap_server";
 
-Attackers can execute arbitrary code in the context of the affected
-application. Failed exploit attempts will result in a denial-of-
-service condition.
-
-Cyrus IMAP Server versions prior to 2.3.17 and 2.4.11 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
+if(description)
 {
- script_id(103249);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
- script_tag(name:"creation_date", value:"2011-09-12 14:00:02 +0200 (Mon, 12 Sep 2011)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_oid("1.3.6.1.4.1.25623.1.0.103249");
+  script_version("$Revision: 5916 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 13:38:08 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2011-09-12 14:00:02 +0200 (Mon, 12 Sep 2011)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2011-3208");
- script_bugtraq_id(49534);
+  script_bugtraq_id(49534);
+  script_name("Cyrus IMAP Server 'split_wildmats()' Remote Buffer Overflow Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Buffer overflow");
+  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_dependencies("secpod_cyrus_imap_server_detect.nasl");
+  script_require_ports("Services/imap", 143, "Services/pop3", 110);
+  script_mandatory_keys("Cyrus/installed");
 
- script_name("Cyrus IMAP Server 'split_wildmats()' Remote Buffer Overflow Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49534");
+  script_xref(name:"URL", value:"http://asg.andrew.cmu.edu/archive/message.php?mailbox=archive.cyrus-announce&msg=199");
+  script_xref(name:"URL", value:"http://asg.andrew.cmu.edu/archive/message.php?mailbox=archive.cyrus-announce&msg=200");
+  script_xref(name:"URL", value:"http://cyrusimap.web.cmu.edu/");
 
+  tag_summary = "Cyrus IMAP Server is prone to a remote buffer-overflow vulnerability because the
+  application fails to properly bounds check user-supplied data before copying it into an
+  insufficiently sized buffer.";
 
- script_summary("Determine if installed Cyrus version is vulnerable");
- script_category(ACT_GATHER_INFO);
- script_family("Buffer overflow");
- script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("secpod_cyrus_imap_server_detect.nasl");
- script_require_ports("Services/imap", 143);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49534");
- script_xref(name : "URL" , value : "http://asg.andrew.cmu.edu/archive/message.php?mailbox=archive.cyrus-announce&msg=199");
- script_xref(name : "URL" , value : "http://asg.andrew.cmu.edu/archive/message.php?mailbox=archive.cyrus-announce&msg=200");
- script_xref(name : "URL" , value : "http://cyrusimap.web.cmu.edu/");
- exit(0);
+  tag_impact = "Attackers can execute arbitrary code in the context of the affected
+  application. Failed exploit attempts will result in a denial-of-service condition.";
+
+  tag_affected = "Cyrus IMAP Server versions prior to 2.3.17 and 2.4.11 are vulnerable.";
+
+  tag_solution = "Updates are available. Please see the references for more information.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:tag_solution);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  exit(0);
 }
 
 include("version_func.inc");
-include("global_settings.inc");
+include("host_details.inc");
 
-port = get_kb_item("Cyrus/IMAP4/Server/port");
-if(!port || ! get_port_state(port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-imapVer = get_kb_item("Cyrus/IMAP4/Server/Ver");
-if(!imapVer){
-    exit(0);
+if( version_in_range( version:vers, test_version:"2.4", test_version2:"2.4.10" ) ||
+    version_in_range( version:vers, test_version:"2.3", test_version2:"2.3.16" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.3.17/2.4.11" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-if(version_in_range(version:imapVer, test_version:"2.4", test_version2:"2.4.10") ||
-   version_in_range(version:imapVer, test_version:"2.3", test_version2:"2.3.16")) {
-
-    security_message(port:port);
-    exit(0);
-
-}  
-
-exit(0);
-
-
-
-
-
-
+exit( 99 );

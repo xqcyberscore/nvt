@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_cisco-sa-20170315-wlc-mesh.nasl 5597 2017-03-17 09:27:53Z ckuerste $
+# $Id: gb_cisco_wlc_cisco-sa-20170315-wlc-mesh.nasl 5851 2017-04-04 09:21:55Z teissa $
 #
 # Cisco Meshed Wireless LAN Controller Impersonation Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106665");
  script_cve_id("CVE-2017-3854");
- script_tag(name: "cvss_base", value: "7.3");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:C/I:P/A:P");
- script_version("$Revision: 5597 $");
+ script_tag(name:"cvss_base", value:"8.3");
+ script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 5851 $");
 
  script_name("Cisco Meshed Wireless LAN Controller Impersonation Vulnerability");
 
@@ -56,7 +56,7 @@ the impacted access point or take full control of the target system.");
  script_tag(name: "qod_type", value: "remote_banner");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-17 10:27:53 +0100 (Fri, 17 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
  script_tag(name: "creation_date", value: "2017-03-17 10:43:42 +0700 (Fri, 17 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

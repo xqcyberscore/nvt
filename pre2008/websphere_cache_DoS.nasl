@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: websphere_cache_DoS.nasl 3778 2016-07-30 15:56:56Z cfi $
+# $Id: websphere_cache_DoS.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # WebSphere Edge caching proxy denial of service
 #
@@ -33,15 +33,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11162");
-  script_version("$Revision: 3778 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-30 17:56:56 +0200 (Sat, 30 Jul 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6002);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2002-1169");
   script_name("WebSphere Edge caching proxy denial of service");
-  script_summary("crashes the remote proxy");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Denial of Service");

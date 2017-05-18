@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mintboard_xss_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_mintboard_xss_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # MintBoard Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803828");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5791 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-07-18 12:41:03 +0530 (Thu, 18 Jul 2013)");
   script_name("MintBoard Cross-Site Scripting Vulnerability");
 
@@ -57,17 +57,15 @@ if(description)
   script_xref(name : "URL" , value : "http://www.censimentoartisticoromano.it/category/exploit/webapps");
   script_xref(name : "URL" , value : "https://www.mavitunasecurity.com/xss-vulnerabilities-in-mintboard");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/mintboard-03-cross-site-scripting");
-  script_summary("Check if MintBoard is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -78,15 +76,12 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Get hostname
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/", "/mintboard", "/forum", cgi_dirs(port:port)))
@@ -94,9 +89,7 @@ foreach dir (make_list_unique("/", "/mintboard", "/forum", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"),  port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
   ## Confirm the application
   if('>Mintboard' >< res && '>Forums' >< res)

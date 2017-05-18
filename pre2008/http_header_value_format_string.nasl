@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_header_value_format_string.nasl 3089 2016-04-15 14:54:26Z mime $
+# $Id: http_header_value_format_string.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Format string on HTTP header value
 #
 # Authors:
@@ -33,13 +33,12 @@ tag_solution = "upgrade your software or contact your vendor and inform him
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.15642");
- script_version("$Revision: 3089 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-15 16:54:26 +0200 (Fri, 15 Apr 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
  script_name("Format string on HTTP header value");
- script_summary("Sends an HTTP request with %s inside a HTTP header");
  script_category(ACT_DESTRUCTIVE_ATTACK); 
  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
  script_family("Gain a shell remotely");

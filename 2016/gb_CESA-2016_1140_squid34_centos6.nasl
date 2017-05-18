@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882498");
-  script_version("$Revision: 3430 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-03 13:05:39 +0200 (Fri, 03 Jun 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:20 +0530 (Fri, 03 Jun 2016)");
   script_cve_id("CVE-2016-4051", "CVE-2016-4052", "CVE-2016-4053", "CVE-2016-4054", 
                 "CVE-2016-4553", "CVE-2016-4554", "CVE-2016-4555", "CVE-2016-4556", 
@@ -87,7 +87,6 @@ crash the squid worker, causing a Denial of Service attack. (CVE-2016-4556)
 
   script_xref(name: "CESA", value: "2016:1140");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-May/021897.html");
-  script_summary("Check for the Version of squid34");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

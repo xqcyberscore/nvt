@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_cms_95689.nasl 5065 2017-01-23 15:07:06Z cfi $
+# $Id: gb_symphony_cms_95689.nasl 5809 2017-03-31 08:06:49Z cfi $
 #
 # Symphony CMS < 2.6.10 Cross-Site Scripting and Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symphony-cms:symphony_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108048");
-  script_version("$Revision: 5065 $");
-  script_cve_id("CVE-2017-5541", "CVE-2017-5542");
-  script_bugtraq_id(95689, 95686);
+  script_version("$Revision: 5809 $");
+  script_cve_id("CVE-2017-5541", "CVE-2017-5542", "CVE-2017-6067");
+  script_bugtraq_id(95689, 95686, 97101);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 16:07:06 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 10:06:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-23 14:57:33 +0100 (Mon, 23 Jan 2017)");
   script_name("Symphony CMS < 2.6.10 Cross-Site Scripting and Directory Traversal Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -45,6 +45,7 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"http://www.getsymphony.com/download/releases/version/2.6.10/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/97101");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95689");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95686");
 

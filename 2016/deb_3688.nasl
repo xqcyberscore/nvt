@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3688.nasl 4294 2016-10-18 11:48:46Z antu123 $
+# $Id: deb_3688.nasl 5850 2017-04-04 09:01:03Z teissa $
 # Auto-generated from advisory DSA 3688-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703688);
-    script_version("$Revision: 4294 $");
+    script_version("$Revision: 5850 $");
     script_cve_id("CVE-2015-4000", "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7575",
                   "CVE-2016-1938", "CVE-2016-1950", "CVE-2016-1978", "CVE-2016-1979",
                   "CVE-2016-2834");
     script_name("Debian Security Advisory DSA 3688-1 (nss - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-18 13:48:46 +0200 (Tue, 18 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-10-05 00:00:00 +0200 (Wed, 05 Oct 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3688.html");
 
-    script_summary("Debian Security Advisory DSA 3688-1 (nss - security update)");
 
     script_category(ACT_GATHER_INFO);
 

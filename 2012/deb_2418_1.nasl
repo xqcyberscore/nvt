@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2418_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2418_1.nasl 5988 2017-04-20 09:02:29Z teissa $
 # Description: Auto-generated from advisory DSA 2418-1 (postgresql-8.4)
 #
 # Authors:
@@ -66,13 +66,12 @@ if(description)
  script_cve_id("CVE-2012-0866", "CVE-2012-0867", "CVE-2012-0868");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5988 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:32:17 -0400 (Mon, 12 Mar 2012)");
  script_name("Debian Security Advisory DSA 2418-1 (postgresql-8.4)");
 
 
- script_summary("Debian Security Advisory DSA 2418-1 (postgresql-8.4)");
 
  script_category(ACT_GATHER_INFO);
 

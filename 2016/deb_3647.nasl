@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3647.nasl 3904 2016-08-29 10:43:18Z antu123 $
+# $Id: deb_3647.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3647-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703647);
-    script_version("$Revision: 3904 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2016-2818");
     script_name("Debian Security Advisory DSA 3647-1 (icedove - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-29 12:43:18 +0200 (Mon, 29 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-08-11 00:00:00 +0200 (Thu, 11 Aug 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3647.html");
 
-    script_summary("Debian Security Advisory DSA 3647-1 (icedove - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: eMuleWebServer_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: eMuleWebServer_detect.nasl 5785 2017-03-30 09:19:35Z cfi $
 # Description: eMule Plus Web Server detection
 #
 # Authors:
@@ -47,25 +47,18 @@ tag_solution = "disable eMule Web Server or upgrade to a bug-fixed version
 if(description)
 {
   script_id(12233);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5785 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1892");
   script_bugtraq_id(10039);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- 
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("eMule Plus Web Server detection");
- 
- 
-  summary = "Detect eMule Web Server";
-  script_summary(summary);
- 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 A.Kaverin"); 
-  family = "Peer-To-Peer File Sharing";
-  script_family(family);
+  script_family("Peer-To-Peer File Sharing");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("eMule/banner");
   script_require_ports(4711);
@@ -75,19 +68,13 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc"); 
 
 port = 4711;
-
 if(! get_port_state(port)) exit(0);
-banner = get_http_banner(port);
-if ( banner && "eMule" >< banner )
-  {
-  security_message(port);
-  }
+banner = get_http_banner(port:port);
+if ( banner && "eMule" >< banner ) {
+  security_message(port:port);
+}
 
 exit(0);
-
-
-  

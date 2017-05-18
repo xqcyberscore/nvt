@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ldu_sql_injection.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: ldu_sql_injection.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Land Down Under <= 800 Multiple Vulnerabilities
 #
 # Authors:
@@ -48,8 +48,8 @@ tag_solution = "Upgrade to Land Down Under version 801 or later.";
 if(description)
 {
  script_id(19678);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2005-2674", "CVE-2005-2675", "CVE-2005-2780");
  script_bugtraq_id(14618, 14619, 14677);
@@ -62,7 +62,6 @@ if(description)
 
  summary = "Checks for SQL injection in LDU's index.php";
 
- script_summary(summary);
 
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");

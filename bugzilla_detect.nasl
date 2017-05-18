@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_detect.nasl 3785 2016-08-02 10:07:03Z ckuerste $
+# $Id: bugzilla_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # Bugzilla Detection
 #
@@ -32,20 +32,17 @@ tag_summary = "Detection of Bugzilla.
 The script sends a connection request to the server and attempts to
 extract the version number from the reply.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100093";
-
 if (description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3785 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 12:07:03 +0200 (Tue, 02 Aug 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.100093");
+  script_version("$Revision: 5820 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-31 18:59:35 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Bugzilla Detection");
 
-  script_summary("Checks for the presence of Bugzilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
@@ -56,21 +53,14 @@ if (description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
-## start script
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-
-dirs = make_list_unique("/bugzilla","/bugs",cgi_dirs());
-
-foreach dir (dirs) {
+foreach dir (make_list_unique( "/bugzilla", "/bugs", cgi_dirs(port:port))) {
 
  url = string(dir, "/index.cgi");
  req = http_get(item:url, port:port);
@@ -151,7 +141,7 @@ foreach dir (dirs) {
     if(isnull(cpe))
       cpe = 'cpe:/a:mozilla:bugzilla';
 
-    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    register_product(cpe:cpe, location:install, port:port);
     log_message(data: build_detection_report(app:"Bugzilla",
                                              version: vers,
                                              install:install,

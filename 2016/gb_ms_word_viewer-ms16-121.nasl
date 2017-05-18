@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer-ms16-121.nasl 4256 2016-10-12 14:25:55Z antu123 $
+# $Id: gb_ms_word_viewer-ms16-121.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerability (3194063)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809703");
-  script_version("$Revision: 4256 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-7193");
   script_bugtraq_id(93372);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-12 16:25:55 +0200 (Wed, 12 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-12 11:04:43 +0530 (Wed, 12 Oct 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerability (3194063)");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3127898");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-121");
 
-  script_summary("Check for the vulnerable file 'wordview.exe' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

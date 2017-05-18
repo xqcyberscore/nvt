@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sqlqhit_information_disclosure.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: sqlqhit_information_disclosure.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: SQLQHit Directory Structure Disclosure
 #
 # Authors:
@@ -35,67 +35,49 @@ http://www.securiteam.com/tools/5QP0N1F55Q.html (IIS Lookdown)
 http://www.securiteam.com/windowsntfocus/5HP05150AQ.html (Secure IIS 4.0)
 http://www.securiteam.com/windowsntfocus/5RP0D1F4AU.html (Secure IIS 5.0)";
 
-
 if(description)
 {
  script_id(10765);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5786 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3339);
-script_cve_id("CVE-2001-0986");
+ script_cve_id("CVE-2001-0986");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
-name = "SQLQHit Directory Structure Disclosure";
- script_name(name);
-
-
- summary = "SQLQHit Directory Stracture Disclosure";
- script_summary(summary);
-
+ script_name("SQLQHit Directory Structure Disclosure");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
-
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
- family = "Web application abuses";
- script_family(family);
-
+ script_family("Web application abuses");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
-
-program[0] = "sqlqhit.asp";
-program[1] = "SQLQHit.asp";
-
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_asp(port:port))exit(0);
 
+files = make_list( "/sqlqhit.asp", "/SQLQHit.asp" );
 
-foreach dir (cgi_dirs())
-{
- for (j = 0; program[j] ; j = j + 1)
- {
-  url = string(dir, "/", program[j], "?CiColumns=*&CiScope=webinfo");
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req);
-  if(buf == NULL)exit(0);
-  if (("VPATH" >< buf) && ("PATH" >< buf) && ("CHARACTERIZATION" >< buf))
-    {
-     security_message(port:port);
-     exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  foreach file( files ) {
+    url = string(dir, file, "?CiColumns=*&CiScope=webinfo");
+    req = http_get(item:url, port:port);
+    buf = http_keepalive_send_recv(port:port, data:req);
+    if(buf == NULL)continue;
+    if (("VPATH" >< buf) && ("PATH" >< buf) && ("CHARACTERIZATION" >< buf)) {
+      security_message(port:port);
+      exit(0);
     }
   }
 }

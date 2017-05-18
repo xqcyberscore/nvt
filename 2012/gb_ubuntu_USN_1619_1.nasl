@@ -70,8 +70,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001880.html");
   script_id(841202);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5931 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-29 11:03:54 +0530 (Mon, 29 Oct 2012)");
   script_cve_id("CVE-2012-3216", "CVE-2012-5069", "CVE-2012-5072", "CVE-2012-5075",
                 "CVE-2012-5077", "CVE-2012-5085", "CVE-2012-4416", "CVE-2012-5071",
@@ -85,7 +85,6 @@ if(description)
   script_xref(name: "USN", value: "1619-1");
   script_name("Ubuntu Update for openjdk-7 USN-1619-1");
 
-  script_summary("Check for the Version of openjdk-7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

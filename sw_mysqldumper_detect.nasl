@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mysqldumper_detect.nasl 2433 2016-01-17 10:15:23Z cfi $
+# $Id: sw_mysqldumper_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # MySQLDumper Version Detection
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111077");
-  script_version("$Revision: 2433 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-17 11:15:23 +0100 (Sun, 17 Jan 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-17 09:00:00 +0100 (Sun, 17 Jan 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
 
   script_name("MySQLDumper Version Detection");
 
-  script_summary("Sets the KB for the version of MySQLDumper");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Product detection");

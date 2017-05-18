@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_detect.nasl 2696 2016-02-18 11:45:12Z cfi $
+# $Id: gb_lussumo_vanilla_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Vanilla Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800622");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2696 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-18 12:45:12 +0100 (Thu, 18 Feb 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Vanilla Version Detection");
-  script_summary("Set the Version of Vanilla in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -75,6 +74,7 @@ foreach dir( make_list_unique( "/", "/Vanilla117", "/Vanilla118", "/Vanilla113rc
 
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/Lussumo/Vanilla", value:tmp_version );
+    replace_kb_item( name:"Lussumo/Vanilla/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:lussumo:vanilla:" );

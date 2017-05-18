@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: poprelayd_auth.nasl 2598 2016-02-05 16:02:56Z cfi $
+# $Id: poprelayd_auth.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: poprelayd & sendmail authentication problem
 #
 # Authors:
@@ -34,15 +34,14 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11080");
- script_version("$Revision: 2598 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 17:02:56 +0100 (Fri, 05 Feb 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2986);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
  script_cve_id("CVE-2001-1075");
  script_name("poprelayd & sendmail authentication problem");
- script_summary("Checks if the remote mail server can be used as a spam relay");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
  script_family("SMTP problems");

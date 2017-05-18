@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: icecast_http_basic_auth.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: icecast_http_basic_auth.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: ICECast HTTP basic authorization DoS
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to a newer version.";
 if(description)
 {
  script_id(15397);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2027");
  script_bugtraq_id(10311);
@@ -57,7 +57,6 @@ if(description)
 
 
  summary = "Check icecast version";
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2004 David Maciejak");

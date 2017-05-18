@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3602.nasl 3836 2016-08-16 04:36:22Z antu123 $
+# $Id: deb_3602.nasl 5850 2017-04-04 09:01:03Z teissa $
 # Auto-generated from advisory DSA 3602-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703602);
-    script_version("$Revision: 3836 $");
+    script_version("$Revision: 5850 $");
     script_cve_id("CVE-2013-7456", "CVE-2016-3074", "CVE-2016-4537", "CVE-2016-4538",
                   "CVE-2016-4539", "CVE-2016-4540", "CVE-2016-4541", "CVE-2016-4542",
                   "CVE-2016-4543", "CVE-2016-4544", "CVE-2016-5093", "CVE-2016-5094",
                   "CVE-2016-5095", "CVE-2016-5096");
     script_name("Debian Security Advisory DSA 3602-1 (php5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-16 06:36:22 +0200 (Tue, 16 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-06-14 00:00:00 +0200 (Tue, 14 Jun 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3602.html");
 
-    script_summary("Debian Security Advisory DSA 3602-1 (php5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

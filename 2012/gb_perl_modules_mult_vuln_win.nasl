@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_modules_mult_vuln_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_perl_modules_mult_vuln_win.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Strawberry Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -60,11 +60,11 @@ tag_summary = "The host is installed with Strawberry Perl and is prone to
 if(description)
 {
   script_id(802562);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-17 17:28:53 +0530 (Tue, 17 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=731246");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=753955");
   script_xref(name : "URL" , value : "https://rt.cpan.org/Public/Bug/Display.html?id=69560");
-  script_summary("Check for the vulnerable version of Strawberry Perl on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

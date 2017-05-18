@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpcms_xss.nasl 3477 2016-06-10 12:57:12Z mime $
+# $Id: phpcms_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: phpCMS XSS
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to version 1.2.1pl1 or newer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15850");
-  script_version("$Revision: 3477 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:57:12 +0200 (Fri, 10 Jun 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,6 @@ if(description)
   script_name("phpCMS XSS");
 
 
-  script_summary("Checks phpCMS XSS");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

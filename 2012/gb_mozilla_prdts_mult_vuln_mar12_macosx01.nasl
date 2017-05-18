@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_macosx01.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_macosx01.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Mac OS X 01)
 #
@@ -56,13 +56,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(802823);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-0451", "CVE-2012-0454", "CVE-2012-0459", "CVE-2012-0460",
                  "CVE-2012-0462");
   script_bugtraq_id(52463, 52455, 52457, 52456, 52467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 13:52:53 +0530 (Tue, 20 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Mac OS X 01)");
 
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-18.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-19.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

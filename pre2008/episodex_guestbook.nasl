@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: episodex_guestbook.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: episodex_guestbook.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: Episodex Guestbook Unauthorized Access and HTML Injection Vulnerability
 #
 # Authors:
@@ -33,30 +33,19 @@ tag_solution = "None at this time";
 if(description)
 {
  script_id(18362);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5786 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
  script_cve_id("CVE-2005-1684");
  script_bugtraq_id(13692, 13693);
-
- name = "Episodex Guestbook Unauthorized Access and HTML Injection Vulnerability";
- script_name(name);
-
-
- summary = "Checks for unathentication access to admin.asp";
-
- script_summary(summary);
-
+ script_name("Episodex Guestbook Unauthorized Access and HTML Injection Vulnerability");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_analysis");
-
+ script_tag(name:"qod_type", value:"remote_analysis");
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
-
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -68,22 +57,15 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_asp(port:port))exit(0);
 
-function check(url)
-{
- req = http_get(item:url +"/admin.asp", port:port);
- res = http_keepalive_send_recv(port:port, data:req);
- if ( res == NULL ) exit(0);
- if ( 'Save Configuration' >< res && 'powered by Sven Moderow\'s GuestBook' >< res )
- {
-        security_message(port);
-        exit(0);
- }
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  res = http_get_cache(item:dir + "/admin.asp", port:port);
+  if ( res == NULL ) continue;
+  if ( 'Save Configuration' >< res && 'powered by Sven Moderow\'s GuestBook' >< res ) {
+    security_message(port);
+    exit(0);
+  }
 }
-
-foreach dir ( cgi_dirs() )
-  check(url:dir);
-
-

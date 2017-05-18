@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882513");
-  script_version("$Revision: 3619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-29 13:04:08 +0200 (Wed, 29 Jun 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-24 05:26:46 +0200 (Fri, 24 Jun 2016)");
   script_cve_id("CVE-2016-1762", "CVE-2016-1833", "CVE-2016-1834", "CVE-2016-1835", 
                 "CVE-2016-1836", "CVE-2016-1837", "CVE-2016-1838", "CVE-2016-1839", 
@@ -64,7 +64,6 @@ CVE-2016-4448, CVE-2016-4449)
 
   script_xref(name: "CESA", value: "2016:1292");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-June/021917.html");
-  script_summary("Check for the Version of libxml2");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

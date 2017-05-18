@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_persistent_xss_vuln.nasl 4130 2016-09-22 09:37:47Z antu123 $
+# $Id: gb_fortianalyzer_persistent_xss_vuln.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # FortiAnalyzer Persistent Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:fortinet:fortianalyzer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809262");
-  script_version("$Revision: 4130 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-3196");
   script_bugtraq_id(92265);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 11:37:47 +0200 (Thu, 22 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-21 10:02:40 +0530 (Wed, 21 Sep 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiAnalyzer Persistent Cross Site Scripting Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://fortiguard.com/advisory/fortimanager-and-fortianalyzer-persistent-xss-vulnerability");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Fortinet FortiAnalyzer");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
   script_dependencies("gb_fortianalyzer_version.nasl");

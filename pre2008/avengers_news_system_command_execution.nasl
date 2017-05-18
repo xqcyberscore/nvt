@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: avengers_news_system_command_execution.nasl 3603 2016-06-26 20:35:42Z cfi $
+# $Id: avengers_news_system_command_execution.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # Avenger's News System Command Execution
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10875");
-  script_version("$Revision: 3603 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:35:42 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4147);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2002-0307");
   script_name("Avenger's News System Command Execution");
-  script_summary("Avenger's News System Command Execution");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 SecurITeam");
   script_family("Web application abuses");

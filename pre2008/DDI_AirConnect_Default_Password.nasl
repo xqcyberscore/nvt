@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_AirConnect_Default_Password.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: DDI_AirConnect_Default_Password.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: AirConnect Default Password
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Change the password to something difficult to
 if(description)
 {
     script_id(10961);
-    script_version("$Revision: 3359 $");
-    script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+    script_version("$Revision: 6053 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_tag(name:"cvss_base", value:"4.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,6 @@ if(description)
 
 
     summary = "3Com AirConnect AP Default Password";
-    script_summary(summary);
 
 
     script_category(ACT_ATTACK);

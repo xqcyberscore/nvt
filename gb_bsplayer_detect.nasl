@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bsplayer_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_bsplayer_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # BS Player Free Edition Version Detection
 #
@@ -24,15 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed version of BS Player Free Edition
-  and saves the version in KB.";
 
 if(description)
 {
-  script_id(800268);
+  script_oid("1.3.6.1.4.1.25623.1.0.800268");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-08 08:04:29 +0200 (Wed, 08 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("BS Player Free Edition Version Detection");
@@ -43,7 +41,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed version of BS Player Free Edition
+  and saves the version in KB.");
   exit(0);
 }
 
@@ -53,20 +52,7 @@ include("secpod_reg.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800268";
-SCRIPT_DESC = "BS Player Free Edition Version Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
+include("version_func.inc");
 
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -87,12 +73,10 @@ if(registry_key_exists(key:key)){
       if(bsVer != NULL)
       {
         set_kb_item(name:"BSPlayer/Ver", value:bsVer);
-        log_message(data:" BS Player version " + bsVer + " was detected" + 
-                           " on the host");
 
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:bsVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:bsplayer:bs.player:");
-
+        register_and_report_cpe(app:"BS Player", ver:bsVer, base:"cpe:/a:bsplayer:bs.player:",
+                                expr:"^([0-9.]+)");
         exit(0);
       }
     }
@@ -117,77 +101,15 @@ foreach item (registry_enum_keys(key:key2))
       exePath = ereg_replace(pattern:'\"(.*)\"', replace:"\1", string:path);
       exePath = exePath - "uninstall.exe" + "bsplayer.exe";
 
-      share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
-      file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
+      v = get_version(dllPath:exePath, string:path, offs:600000);
     }
-
-    soc = open_sock_tcp(port);
-    if(!soc){
-      exit(0);
-    }
-
-    r = smb_session_request(soc:soc, remote:name);
-    if(!r)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    prot = smb_neg_prot(soc:soc);
-    if(!prot)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    r = smb_session_setup(soc:soc, login:login, password:pass,
-                          domain:domain, prot:prot);
-    if(!r)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    uid = session_extract_uid(reply:r);
-    if(!uid)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-    if(!r)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    tid = tconx_extract_tid(reply:r);
-    if(!tid)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-    if(!fid)
-    {
-      close(soc);
-      exit(0);
-    }
-
-    v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod",
-                   offset:600000);
-    close(soc);
     if(v != NULL)
     {
       set_kb_item(name:"BSPlayer/Ver", value:v);
-      log_message(data:" BS Player version " + v + " was detected" +
-                           " on the host"); 
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:v, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:bsplayer:bs.player:");
-
+      register_and_report_cpe(app:"BS Player", ver:v, base:"cpe:/a:bsplayer:bs.player:",
+                               expr:"^([0-9.]+)");
     }
     exit(0);
   }

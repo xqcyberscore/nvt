@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dl_stats_39592.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_dl_stats_39592.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # dl_stats Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -34,12 +34,11 @@ latent vulnerabilities in the underlying database.
 
 dl_stats 2.0 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100591);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-04-21 13:10:07 +0200 (Wed, 21 Apr 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -66,23 +65,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/dl_stats",cgi_dirs());
+foreach dir( make_list_unique( "/dl_stats", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/download.php?id=2+AND+1=2+UNION+SELECT+1,2,3,4,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374--"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/download.php?id=2+AND+1=2+UNION+SELECT+1,2,3,4,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374--");
 
   if(http_vuln_check(port:port,url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

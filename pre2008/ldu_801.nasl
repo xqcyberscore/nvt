@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ldu_801.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: ldu_801.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Land Down Under <= 801 Multiple Vulnerabilities
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Unknown at this time.";
 if(description)
 {
  script_id(19603);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2005-2788", "CVE-2005-2884");
  script_bugtraq_id(14685, 14746, 14820);
@@ -52,7 +52,6 @@ if(description)
 
  summary = "Checks for SQL injection in LDU's list.php";
 
- script_summary(summary);
 
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");

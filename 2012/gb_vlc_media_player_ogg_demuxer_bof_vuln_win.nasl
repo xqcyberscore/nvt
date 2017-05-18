@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_ogg_demuxer_bof_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_vlc_media_player_ogg_demuxer_bof_vuln_win.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # VLC Media Player OGG Demuxer Buffer Overflow Vulnerability (Windows)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(802922);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-3377");
   script_bugtraq_id(54345);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-25 14:01:24 +0530 (Wed, 25 Jul 2012)");
   script_name("VLC Media Player OGG Demuxer Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49835");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://git.videolan.org/?p=vlc/vlc-2.0.git;a=commitdiff;h=16e9e126333fb7acb47d363366fee3deadc8331e");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");

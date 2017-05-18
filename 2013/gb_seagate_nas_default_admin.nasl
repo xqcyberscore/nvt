@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_nas_default_admin.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_seagate_nas_default_admin.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Seagate NAS Default Login
 #
@@ -25,17 +25,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-Impact Level: Application";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103754";
 CPE = "cpe:/h:seagate:blackarmor_nas";
 
 tag_summary = 'The remote Seagate NAS is prone to a default account
 authentication bypass vulnerability.';
 
 tag_impact = 'This issue may be exploited by a remote attacker to gain
-access to sensitive information or modify system configuration.';
+access to sensitive information or modify system configuration.
+
+Impact Level: Application';
 
 tag_insight = 'It was possible to login with username "admin" and password "admin".';
 tag_vuldetect = 'Try to login with admin/admin';
@@ -43,16 +41,14 @@ tag_solution = 'Change the password.';
 
 if (description)
 {
- script_oid(SCRIPT_OID); 
- script_version("$Revision: 3911 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103754"); 
+ script_version("$Revision: 5842 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Seagate NAS Default Login");
 
-
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-08-08 14:02:06 +0200 (Thu, 08 Aug 2013)");
- script_summary("Determine if it is possible to login as admin/admin");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");
@@ -73,8 +69,7 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-#port = 80;
+if(!port = get_app_port(cpe:CPE))exit(0);
 
 url = "/index.php";
 req = http_get(item:url, port:port);
@@ -87,14 +82,14 @@ if(isnull(co[1]))exit(0);
 
 cookie = co[1];
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 data = 'p_user=admin&p_pass=admin&lang=en&xx=1&loginnow=Login';
 len = strlen(data);
 
 req = 'POST / HTTP/1.1\r\n' + 
       'Host: ' + host + '\r\n' + 
-      'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 OpenVAS\r\n' + 
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
       'Referer: http://' + host + '/?lang=en\r\n' + 
       'DNT: 1\r\n' + 
       'Cookie: ' + cookie + '\r\n' + 
@@ -106,7 +101,7 @@ result = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
 req = 'GET /admin/system_status.php?lang=en&gi=sy002 HTTP/1.1\r\n' + 
       'Host: ' + host + '\r\n' +
-      'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 OpenVAS\r\n' +
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Referer: http://' + host + '/?lang=en\r\n' +
       'DNT: 1\r\n' +
       'Cookie: ' + cookie + '\r\n' + '\r\n';

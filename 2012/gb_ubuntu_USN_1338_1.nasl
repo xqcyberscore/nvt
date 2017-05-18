@@ -41,14 +41,13 @@ if(description)
   script_id(840877);
   script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 5940 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 11:16:27 +0530 (Wed, 25 Jan 2012)");
   script_cve_id("CVE-2011-4623");
   script_xref(name: "USN", value: "1338-1");
   script_name("Ubuntu Update for rsyslog USN-1338-1");
 
-  script_summary("Check for the Version of rsyslog");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

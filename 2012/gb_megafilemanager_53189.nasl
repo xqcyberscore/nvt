@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_megafilemanager_53189.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_megafilemanager_53189.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # Mega File Manager 'name' Parameter Directory Traversal Vulnerability
 #
@@ -38,23 +38,18 @@ information that could aid in further attacks.
 Mega File Manager 1.0 is vulnerable; other versions may also be
 affected.";
 
-
 if (description)
 {
  script_id(103477);
  script_bugtraq_id(53189);
- script_version ("$Revision: 5641 $");
-
+ script_version ("$Revision: 5715 $");
  script_name("Mega File Manager 'name' Parameter Directory Traversal Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53189");
  script_xref(name : "URL" , value : "http://www.awesomephp.com/?MegaFileManager");
-
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-04-25 10:11:55 +0200 (Wed, 25 Apr 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -67,37 +62,33 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
+files = traversal_files();
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/megafilemanager", "/MegaFileManager", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/megafilemanager","/MegaFileManager",cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
+  if( "Powered by Awesome PH" >< buf ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by Awesome PH")) {
+    foreach file( keys( files ) ) {
 
-    files = traversal_files();
-    foreach file (keys(files)) {
+      url = dir + '/cimages.php?name=' + crap( data:"../", length: 9 * 6 ) + files[file];
 
-      url = dir + '/cimages.php?name=' + crap(data:"../", length:9*6) + files[file];
-
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-        security_message(port:port);
-        exit(0);
-      }  
-
-    }  
-
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
+exit( 99 );

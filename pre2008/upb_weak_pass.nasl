@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upb_weak_pass.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: upb_weak_pass.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Ultimate PHP Board users.dat Information Disclosure
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19497");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2005", "CVE-2005-2030");
   script_bugtraq_id(13975);
@@ -40,7 +40,6 @@ if(description)
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Ultimate PHP Board users.dat Information Disclosure");
-  script_summary("Tries to get the users.dat file and checks UPB version");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");

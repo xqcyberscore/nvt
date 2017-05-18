@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_mult_dos_vuln_jun11_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_wireshark_mult_dos_vuln_jun11_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities June-11 (Mac OS X)
 #
@@ -46,20 +46,19 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(902684);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2011-1957", "CVE-2011-1958", "CVE-2011-1959", "CVE-2011-2174",
                 "CVE-2011-2175");
   script_bugtraq_id(48066);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-29 16:35:04 +0530 (Fri, 29 Jun 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities June-11 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44449/");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-07.html");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2011-08.html");
 
-  script_summary("Check for the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

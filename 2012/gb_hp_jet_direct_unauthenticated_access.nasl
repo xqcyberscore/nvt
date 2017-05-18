@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_jet_direct_unauthenticated_access.nasl 5658 2017-03-21 11:17:56Z cfi $
+# $Id: gb_hp_jet_direct_unauthenticated_access.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # HP LaserJet Printers Unauthenticated Access
 #
@@ -39,13 +39,12 @@ if (description)
  script_cve_id("CVE-1999-1061");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5658 $");
+ script_version ("$Revision: 5940 $");
 
  script_name("HP LaserJet Printers Unauthenticated Access");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:17:56 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-13 10:43:06 +0100 (Fri, 13 Jan 2012)");
- script_summary("Determine if HP LaserJet Printer allows unauthenticated Access");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("General");

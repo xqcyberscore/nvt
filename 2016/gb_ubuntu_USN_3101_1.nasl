@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842915");
-  script_version("$Revision: 4279 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 13:11:15 +0200 (Fri, 14 Oct 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 05:46:45 +0200 (Thu, 13 Oct 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,6 @@ if(description)
   script_xref(name: "USN", value: "3101-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3101-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tracker");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

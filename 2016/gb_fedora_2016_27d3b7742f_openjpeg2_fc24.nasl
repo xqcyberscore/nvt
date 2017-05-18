@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809231");
-  script_version("$Revision: 4147 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-26 13:48:50 +0200 (Mon, 26 Sep 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 06:02:33 +0200 (Wed, 14 Sep 2016)");
   script_cve_id("CVE-2016-7163");
   script_tag(name:"cvss_base", value:"6.8");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-27d3b7742f");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/YGKSEWWWED77Q5ZHK4OA2EKSJXLRU3MK");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openjpeg2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

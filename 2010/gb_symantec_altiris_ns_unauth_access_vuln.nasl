@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_altiris_ns_unauth_access_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_symantec_altiris_ns_unauth_access_vuln.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # Symantec Altiris NS Key Unauthorized Access Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is installed with Symantec Altiris Notification Server
 if(description)
 {
   script_id(800985);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
@@ -54,7 +54,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_symantec_altiris_ns_detect.nasl");
-  script_require_keys("Symantec/AltirisNS/Ver", "Symantec/AltirisNS/SP");
+  script_mandatory_keys("Symantec/AltirisNS/Ver", "Symantec/AltirisNS/SP");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);

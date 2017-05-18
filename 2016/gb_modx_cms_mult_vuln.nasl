@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_mult_vuln.nasl 4982 2017-01-11 08:57:53Z ckuerste $
+# $Id: gb_modx_cms_mult_vuln.nasl 5872 2017-04-05 14:13:06Z cfi $
 #
 # MODX CMS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106459");
-  script_version("$Revision: 4982 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-11 09:57:53 +0100 (Wed, 11 Jan 2017) $");
+  script_version("$Revision: 5872 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-05 16:13:06 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-12-09 11:42:44 +0700 (Fri, 09 Dec 2016)");
   script_tag(name:"cvss_base", value: "7.5");
   script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,6 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_modx_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
   script_mandatory_keys("modx_cms/installed");
 
   script_tag(name: "summary", value: "MODX Revolution CMS is prone to multiple vulnerabilities.");
@@ -95,4 +96,4 @@ if (version_is_less(version: version, test_version: "2.5.2")) {
   exit(0);
 }
 
-exit(0);
+exit(99);

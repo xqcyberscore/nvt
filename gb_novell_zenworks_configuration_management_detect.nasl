@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_configuration_management_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: gb_novell_zenworks_configuration_management_detect.nasl 5787 2017-03-30 10:26:10Z cfi $
 #
 # Novell ZENworks Control Center Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105252");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2672 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+ script_version ("$Revision: 5787 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-04-10 20:08:50 +0200 (Fri, 10 Apr 2015)");
  script_name("Novell ZENworks Control Center Detection");
 
@@ -39,7 +39,6 @@ if (description)
 request to the server and attempts to detect Novell ZENworks Control Center");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_summary("Checks for the presence of Novell ZENworks Control Center");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -49,7 +48,6 @@ request to the server and attempts to detect Novell ZENworks Control Center");
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -58,13 +56,12 @@ include("host_details.inc");
 
 port = get_http_port( default:443 );
 
-dirs = cgi_dirs();
+foreach dir( make_list_unique( "/zenworks", cgi_dirs( port:port ) ) ) {
 
-foreach dir ( dirs )
-{
+  install = dir;
   if( dir == "/" ) dir = "";
 
-  url = dir + '/zenworks/jsp/fw/internal/Login.jsp';
+  url = dir + '/jsp/fw/internal/Login.jsp';
   req = http_get( item:url, port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
@@ -75,13 +72,12 @@ foreach dir ( dirs )
    set_kb_item( name:"novell_zenworks_configuration_management/installed",value:TRUE );
    cpe = 'cpe:/a:novell:zenworks_configuration_management';
 
-   register_product( cpe:cpe, location:'/zenworks/', port:port );
+   register_product( cpe:cpe, location:install, port:port );
 
    log_message( data: build_detection_report( app:"Novell ZENworks Control Center",
                                               version:'unknown',
-                                              install:'/zenworks/',
-                                              cpe:cpe,
-                                              concluded: 'http request' ),
+                                              install:install,
+                                              cpe:cpe ),
                 port:port );
 
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printer_detect.nasl 4107 2016-09-19 10:15:52Z cfi $
+# $Id: gb_xerox_printer_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Xerox Printer Detection
 #
@@ -30,11 +30,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103648");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4107 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-19 12:15:52 +0200 (Mon, 19 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-30 14:31:24 +0100 (Wed, 30 Jan 2013)");
   script_name("Xerox Printer Detection");
-  script_summary("Checks for Xerox Printer");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Product detection");

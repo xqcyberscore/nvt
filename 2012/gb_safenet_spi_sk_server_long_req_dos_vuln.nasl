@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # SafeNet Sentinel Protection Installer Long Request DoS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802460");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6022 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-25 09:53:12 +0530 (Tue, 25 Sep 2012)");
   script_name("SafeNet Sentinel Protection Installer Long Request DoS Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/50685");
   script_xref(name:"URL", value:"http://bot24.blogspot.in/2012/09/safenet-sentinel-keys-server-dos.html");
 
-  script_summary("Check if Sentinel Keys Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

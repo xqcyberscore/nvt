@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842851");
-  script_version("$Revision: 3837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 08:15:23 +0200 (Tue, 16 Aug 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-11 05:37:22 +0200 (Thu, 11 Aug 2016)");
   script_cve_id("CVE-2016-6296");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "USN", value: "3059-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3059-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xmlrpc-epi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

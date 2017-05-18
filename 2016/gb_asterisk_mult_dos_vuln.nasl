@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_mult_dos_vuln.nasl 2971 2016-03-29 09:37:58Z antu123 $
+# $Id: gb_asterisk_mult_dos_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Asterisk Multiple Denial of Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:digium:asterisk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807712");
-  script_version("$Revision: 2971 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-2232", "CVE-2016-2316");
   script_bugtraq_id(83352, 82651);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-29 11:37:58 +0200 (Tue, 29 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-23 11:31:35 +0530 (Wed, 23 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Asterisk Multiple Denial of Service Vulnerabilities");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://downloads.asterisk.org/pub/security/AST-2016-003.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Asterisk");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_asterisk_detect.nasl");

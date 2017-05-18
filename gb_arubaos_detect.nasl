@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_detect.nasl 4938 2017-01-04 13:12:05Z cfi $
+# $Id: gb_arubaos_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # ArubaOS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105244");
-  script_version("$Revision: 4938 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 14:12:05 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 13:29:41 +0200 (Tue, 07 Apr 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -96,7 +96,7 @@ if( ! isnull( mod[1] ) )
 }
 
 register_product( cpe:cpe, location:'snmp' );
-register_and_report_os( os:"ArubaOS", cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:"ArubaOS Detection" );
+register_and_report_os( os:"ArubaOS", cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:"ArubaOS Detection", runs_key:"unixoide" );
 
 log_message( data:'The remote host is running ArubaOS ' + rep_vers + '\nCPE: '+ cpe + '\nModel: ' + model + '\nConcluded: ' + sysdesc + '\n', port:0 );
 exit( 0 );

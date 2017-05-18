@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_jan16_lin.nasl 2604 2016-02-08 07:23:57Z antu123 $
+# $Id: gb_google_chrome_mult_vuln02_jan16_lin.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-02 Jan16 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806668");
-  script_version("$Revision: 2604 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-1612", "CVE-2016-1613", "CVE-2016-1614", "CVE-2016-1615",
                 "CVE-2016-1616", "CVE-2016-1617", "CVE-2016-1618", "CVE-2016-1619",
                 "CVE-2016-1620", "CVE-2016-2051", "CVE-2016-2052");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-08 08:23:57 +0100 (Mon, 08 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 14:59:52 +0530 (Fri, 22 Jan 2016)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Jan16 (Linux)");
 
@@ -77,7 +77,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/01/stable-channel-update_20.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

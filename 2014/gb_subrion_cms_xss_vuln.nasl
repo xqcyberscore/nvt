@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_subrion_cms_xss_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_subrion_cms_xss_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Subrion CMS 'search' Functionality Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805400");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-9120");
   script_bugtraq_id(71655);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-17 16:59:56 +0530 (Wed, 17 Dec 2014)");
 
   script_name("Subrion CMS 'search' Functionality Cross Site Scripting Vulnerability");
@@ -64,44 +64,36 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129447/");
   script_xref(name : "URL" , value : "https://www.netsparker.com/xss-vulnerability-in-subrion-cms");
-  script_summary("Check if Subrion CMS is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 ## Variable Initialization
 url = "";
-req = "";
 res = "";
 cmsPort = "";
 
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
 
-#Check if host supports php
 if(!can_host_php(port:cmsPort)){
   exit(0);
 }
 
-#iterate over possible paths
 foreach dir (make_list_unique("/", "/cms", "/subrion", cgi_dirs(port:cmsPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir, "/index.php"), port:cmsPort);
-  res = http_keepalive_send_recv(port:cmsPort, data:req);
+  res = http_get_cache(item:string(dir, "/index.php"), port:cmsPort);
 
   ## confirm the application
   if(res && 'content="Subrion CMS' >< res && 'Powered by Subrion' >< res)
@@ -111,7 +103,7 @@ foreach dir (make_list_unique("/", "/cms", "/subrion", cgi_dirs(port:cmsPort)))
                 't.cookie)</scRipt>/';
 
     if(http_vuln_check(port:cmsPort, url:url, check_header:TRUE,
-       pattern:"<scRipt>alert\(document.cookie\)</scRipt>/",
+       pattern:"<scRipt>alert\(document\.cookie\)</scRipt>/",
        extra_check: "Powered by Subrion"))
     {
        security_message(port:cmsPort);

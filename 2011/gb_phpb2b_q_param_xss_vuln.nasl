@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpb2b_q_param_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_phpb2b_q_param_xss_vuln.nasl 5824 2017-03-31 14:27:55Z cfi $
 #
 # PHPB2B 'q' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802369");
-  script_version("$Revision: 3507 $");
+  script_version("$Revision: 5824 $");
   script_bugtraq_id(51221);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 16:27:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-12-05 15:17:25 +0530 (Mon, 05 Dec 2011)");
   script_name("PHPB2B 'q' Parameter Cross-Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108280/phpb2b-xss.txt");
   script_xref(name : "URL" , value : "http://vulnsecuritylist.com/vulnerability/phpb2b-cross-site-scripting/");
 
-  script_summary("Check if PHPB2B is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -67,24 +66,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 phpb2bPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:phpb2bPort)) {
   exit(0);
 }
 
-foreach dir (make_list_unique("/phpb2b", "/phpb2b/upload", cgi_dirs(port:php2bPort)))
+foreach dir (make_list_unique("/phpb2b", "/phpb2b/upload", cgi_dirs(port:phpb2bPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   rcvRes = http_get_cache(item: dir + "/index.php", port:phpb2bPort);
 
   ## Confirm application is Member Management System
@@ -96,7 +91,7 @@ foreach dir (make_list_unique("/phpb2b", "/phpb2b/upload", cgi_dirs(port:php2bPo
           '(document.cookie)</script>';
 
     ## Send XSS attack and check the response to confirm vulnerability.
-    if(http_vuln_check(port:phpb2bPort, url:url, pattern:"<script>alert\(document." +
+    if(http_vuln_check(port:phpb2bPort, url:url, pattern:"<script>alert\(document\." +
                                                "cookie\)</script>", check_header:TRUE))
     {
        security_message(port:phpb2bPort);

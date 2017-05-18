@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: vqServer_web_traversal.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: vqServer_web_traversal.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Anaconda Double NULL Encoded Remote File Retrieval
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10355");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1067);
  script_cve_id("CVE-2000-0240");
@@ -38,7 +38,6 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("vqServer web traversal vulnerability");
 
- script_summary("Detect vqServer's web traversal bug");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2000 SecuriTeam");
  script_family("Remote file access");

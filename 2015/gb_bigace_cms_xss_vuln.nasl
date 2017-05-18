@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigace_cms_xss_vuln.nasl 3473 2016-06-10 06:14:27Z antu123 $
+# $Id: gb_bigace_cms_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # BigAce CMS Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805564");
-  script_version("$Revision: 3473 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 08:14:27 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-05-20 15:59:54 +0530 (Wed, 20 May 2015)");
   script_name("BigAce CMS Cross-Site Scripting Vulnerability");
 
@@ -64,15 +64,14 @@ if(description)
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2015050043");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131806");
 
-  script_summary("Check if BigAce CMS is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -82,26 +81,13 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port) {
-  http_port = 80;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/bigace", "/cms", cgi_dirs()))
+foreach dir (make_list_unique("/", "/bigace", "/cms", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
-
-  # Construct GET Request
-  sndReq = http_get(item:string(dir, "/"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/"), port:http_port);
 
   ## Confirm Application
   if('content="BIGACE' >< rcvRes)
@@ -111,7 +97,7 @@ foreach dir (make_list_unique("/", "/bigace", "/cms", cgi_dirs()))
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
-       pattern:"<img src=d onclick=confirm\(document.cookie\)"))
+       pattern:"<img src=d onclick=confirm\(document\.cookie\)"))
     {
       report = report_vuln_url( port:http_port, url:url );
       security_message(port:http_port, data:report);

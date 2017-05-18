@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openafs_detect.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_openafs_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # OpenAFS Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808072");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 12:16:58 +0530 (Wed, 08 Jun 2016)");
   script_name("OpenAFS Version Detection (Windows)");
 
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of OpenAFS.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -50,17 +49,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
-}
-
-# Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
 }
 
 include("smb_nt.inc");

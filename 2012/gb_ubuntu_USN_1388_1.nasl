@@ -47,8 +47,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-March/001618.html");
   script_id(840914);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5912 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:19:24 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2011-4127", "CVE-2011-4622", "CVE-2012-0038");
   script_tag(name:"cvss_base", value:"4.9");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name: "USN", value: "1388-1");
   script_name("Ubuntu Update for linux-ec2 USN-1388-1");
 
-  script_summary("Check for the Version of linux-ec2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

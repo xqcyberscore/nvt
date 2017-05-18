@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882436");
-  script_version("$Revision: 2954 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 07:16:22 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-24 06:15:07 +0100 (Thu, 24 Mar 2016)");
   script_cve_id("CVE-2010-5325", "CVE-2015-8327", "CVE-2015-8560");
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,6 @@ backported patches to correct these issues.
 
   script_xref(name: "CESA", value: "2016:0491");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021768.html");
-  script_summary("Check for the Version of foomatic");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

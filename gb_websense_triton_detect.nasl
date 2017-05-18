@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_websense_triton_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_websense_triton_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Websense Triton Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106001");
- script_version ("$Revision: 2664 $");
- script_tag(name: "last_modification", value: "$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name: "creation_date", value: "2015-06-03 10:11:53 +0700 (Wed, 03 Jun 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ The script sends a connection request to the server and attempts to detect Webse
  script_require_ports("Services/www", 9443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_summary("Checks for the presence of Websense Triton.");
 
  exit(0);
 }
@@ -63,9 +62,7 @@ include("host_details.inc");
 
 port = get_http_port(default: 9443);
 
-dirs = cgi_dirs();
-
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   if (dir == "/")
     dir = "";
 

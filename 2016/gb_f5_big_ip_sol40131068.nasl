@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol40131068.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol40131068.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2013-4402");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("F5 BIG-IP - SOL40131068 - GnuPG vulnerability CVE-2013-4402");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-23 10:41:29 +0100 (Tue, 23 Feb 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

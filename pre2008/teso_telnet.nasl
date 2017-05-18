@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: teso_telnet.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: teso_telnet.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: TESO in.telnetd buffer overflow
 #
 # Authors:
@@ -41,8 +41,8 @@ tag_solution = "Comment out the 'telnet' line in /etc/inetd.conf.";
 
 if (description) {
    script_id(10709);
-   script_version("$Revision: 3395 $");
-   script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+   script_version("$Revision: 6056 $");
+   script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
    script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
    script_xref(name:"IAVA", value:"2001-t-0008");
    script_bugtraq_id(3064);
@@ -56,7 +56,6 @@ if (description) {
 
   summary = "Attempts to overflow the Telnet server buffer";
 
-  script_summary(summary);
  
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

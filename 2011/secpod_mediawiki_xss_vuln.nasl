@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_xss_vuln.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mediawiki_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # MediaWiki Cross-Site Scripting Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host is running MediaWiki and is prone to cross site scripti
 if(description)
 {
   script_id(902380);
-  script_version("$Revision: 3113 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_cve_id("CVE-2011-1765");
   script_bugtraq_id(47722);
@@ -52,12 +52,11 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.wikimedia.org/pipermail/mediawiki-announce/2011-May/000098.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if MediaWiki is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_mediawiki_detect.nasl");
-  script_require_keys("MediaWiki/Version");
+  script_mandatory_keys("MediaWiki/Version");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -70,13 +69,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Check the default port
 mwPort = get_http_port(default:80);
-if(!mwPort){
-  exit(0);
-}
 
-## Get the version from KB
 mwVer = get_kb_item("MediaWiki/Version");
 if(!mwVer){
   exit(0);
@@ -90,8 +84,7 @@ if(mwVer[2] != NULL)
   sndReq = string("GET ", mwVer[2], "/api%2Ephp?action=query&meta=siteinfo&" +
                   "format=json&siprop=%3Cbody%20onload=alert('document." +
                   "cookie')%3E.shtml\r\n",
-                  "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows" +
-                  " NT 5.1; SV1; .NET CLR 2.0.50727)\r\n");
+                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
   rcvRes = http_keepalive_send_recv(port:mwPort, data:sndReq);
 
   ## Confirm the exploit

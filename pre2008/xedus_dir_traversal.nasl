@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xedus_dir_traversal.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: xedus_dir_traversal.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Xedus directory traversal
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Upgrade to the latest version.";
 if(description)
 {
   script_id(14645);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1646");
   script_bugtraq_id(11071);
@@ -44,7 +44,6 @@ if(description)
 
  
 
-  script_summary("Checks for directory traversal in Xedus");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

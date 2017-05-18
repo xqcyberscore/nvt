@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_oct16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_drupal_mult_vuln_oct16_lin.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Drupal Multiple Vulnerabilities- Oct16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809433");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-7571", "CVE-2016-7572", "CVE-2016-7570");
   script_bugtraq_id(93101);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-07 10:50:13 +0530 (Fri, 07 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Drupal Multiple Vulnerabilities- Oct16 (Linux)");
@@ -67,7 +67,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2016-004");
 
-  script_summary("Check for the vulnerable version of Drupal on Linux.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

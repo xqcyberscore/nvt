@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_avg_detect_win.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_avg_detect_win.nasl 5941 2017-04-12 12:01:06Z antu123 $
 #
 # AVG AntiVirus Version Detection (Windows)
 #
@@ -24,30 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of installed version of AVG AntiVirus
-
-The script logs in via smb, searches for AVG AntiVirus in the registry
-and gets the version from registry";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900718";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5372 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900718");
+  script_version("$Revision: 5941 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 14:01:06 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-05-29 07:35:11 +0200 (Fri, 29 May 2009)");
   script_tag(name:"qod_type", value:"registry");
-  script_name("AVG AntiVirus Version Detection");
+  script_name("AVG AntiVirus Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "Detection of installed version of AVG AntiVirus
+
+  The script logs in via smb, searches for AVG AntiVirus in the registry
+  and gets the version from registry");
   exit(0);
 }
 
@@ -84,16 +81,34 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "2012"
   if(avgVer)
   {
     set_kb_item(name:"AVG/AV/Win/Ver", value:avgVer);
-    security_message(data:"AVG AntiVirus version " + avgVer + " was detected on the host");
+    register_cpe(tmpVers:avgVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:avg:avg_anti-virus:", insloc:avgPath, 
+                 app:"AVG Antivirus", concluded:avgVer);
+    exit(0);
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value: avgVer, exp:"^([0-9.]+)",base:"cpe:/a:avg:avg_anti-virus:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:avg:avg_anti-virus";
+  }
+}
 
-    log_message(data: build_detection_report(app:"AVG AntiVirus",
-                                           version:avgVer, install:avgPath,
-                                           cpe:cpe, concluded: avgVer));
+if(!avgVer)
+{
+  ## Key for AVG Antivirus Free 2017
+  key = "SOFTWARE\AVG\Antivirus";
+
+  if(!registry_key_exists(key:key)){
+    exit(0);
+  }
+
+  avgVer = registry_get_sz(key:key, item:"Version");
+
+  avgPath = registry_get_sz(key:key, item:"DataFolder");
+  if(!avgPath){
+    avgPath = "Could not find the install location from registry";
+  }
+
+  if(avgVer)
+  {
+    set_kb_item(name:"AVG/AV/Win/Ver", value:avgVer);
+    register_cpe(tmpVers:avgVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:avg:avg_anti-virus:", insloc:avgPath,
+                 app:"AVG Antivirus", concluded:avgVer);
     exit(0);
   }
 }

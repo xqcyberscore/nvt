@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_rce_vuln_apr16_win.nasl 3097 2016-04-18 13:33:30Z antu123 $
+# $Id: gb_apple_quicktime_mult_rce_vuln_apr16_win.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Apple QuickTime Multiple Remote Code Execution Vulnerabilities Apr16 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apple:quicktime";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807545");
-  script_version("$Revision: 3097 $");
+  script_version("$Revision: 5689 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 15:33:30 +0200 (Mon, 18 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 12:07:38 +0530 (Mon, 18 Apr 2016)");
   script_name("Apple QuickTime Multiple Remote Code Execution Vulnerabilities Apr16 (Windows)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://zerodayinitiative.com/advisories/ZDI-16-241");
   script_xref(name : "URL" , value : "http://zerodayinitiative.com/advisories/ZDI-16-242");
 
-  script_summary("Check for the vulnerable version of Apple QuickTime on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

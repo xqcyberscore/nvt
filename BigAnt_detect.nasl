@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: BigAnt_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: BigAnt_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # BigAnt IM Server Detection
 #
@@ -31,14 +31,13 @@ if (description)
 {
  script_id(100280);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("BigAnt IM Server Detection");
 
- script_summary("Checks for the presence of BigAnt IM Server");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

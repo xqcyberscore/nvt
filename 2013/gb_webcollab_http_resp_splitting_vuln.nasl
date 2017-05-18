@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # WebCollab 'item' Parameter HTTP Response Splitting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803773");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 5791 $");
   script_bugtraq_id(63247);
   script_cve_id("CVE-2013-2652");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("WebCollab 'item' Parameter HTTP Response Splitting Vulnerability");
 
@@ -57,11 +57,10 @@ if(description)
   script_xref(name : "URL" , value : "http://sourceforge.net/p/webcollab/mailman/message/31536457");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/webcollab-330-http-response-splitting");
 
-  script_summary("Check if WebCollab is vulnerable to HTTP response splitting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -79,21 +78,17 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/webcollab", "/WebCollab", cgi_dirs(port:http_port)))
 {
   if(dir == "/") dir = "";
 
-   req = http_get(item:string(dir, "/index.php"),  port: http_port);
-   res = http_keepalive_send_recv(port:http_port, data:req);
+   res = http_get_cache(item:string(dir, "/index.php"),  port: http_port);
 
    ## confirm the Application
    if(res && egrep(pattern:">WebCollab<", string:res))

@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_apache_ambari_detect.nasl 5803 2017-03-31 05:06:31Z ckuerste $
 #
 # Apache Ambari Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808648");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 5803 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 07:06:31 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:35:29 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Detection");
   script_tag(name : "summary" , value : "Detection of installed version of
@@ -60,7 +60,7 @@ sndReq = "";
 rcvRes = "";
 
 ##Get HTTP Port
-amb_Port = get_http_port(default:9090);
+amb_Port = get_http_port(default:8080);
 if(!amb_Port){
   exit(0);
 }
@@ -74,7 +74,7 @@ if(!host){
 ## Construct url
 url = '/javascripts/app.js';
 
-## Send Request and Receive Response
+# Send Request and Receive Response
 req = 'GET '+url+' HTTP/1.1\r\n' +
       'Host: '+host+'\r\n' +
       'Accept-Encoding: gzip, deflate\r\n' +
@@ -85,12 +85,12 @@ rcvRes = http_keepalive_send_recv(port:amb_Port, data:req);
 if(rcvRes =~ "HTTP/1.. 200 OK" && "Ambari" >< rcvRes &&
    rcvRes =~ "Licensed under the Apache License")
 {
+  version = "unknown";
+
   vers = eregmatch(pattern:"App.version = '([0-9.]+)';", string:rcvRes);
   if(vers[1]){
     version = vers[1];
-  }
-  else{
-    version ="Unknown";
+    set_kb_item(name: "Apache/Ambari/version", value: version);
   }
     
   ## Set the KB
@@ -108,7 +108,7 @@ if(rcvRes =~ "HTTP/1.. 200 OK" && "Ambari" >< rcvRes &&
                                           version:version,
                                           install:"/",
                                           cpe:cpe,
-                                          concluded:version),
+                                          concluded:vers[0]),
                                           port:amb_Port);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: secpod_limesurvey_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # LimeSurvey Version Detection
 #
@@ -27,13 +27,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900352");
-  script_version("$Revision: 2672 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 5815 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name: "creation_date", value: "2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name: "qod_type", value: "remote_banner");
 
   script_name("LimeSurvey Version Detection");
 
@@ -46,10 +46,10 @@ if (description)
 
 The script sends a connection request to the server and attempts to detect LimeSurvey.");
 
-  script_dependencies("find_service.nasl");
-
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 8080);
-  script_summary("Check for presence of LimeSurvey.");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -59,15 +59,14 @@ include("cpe.inc");
 include("host_details.inc");
 
 surveyPort = get_http_port(default:80);
-dirs = make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSurveyor", cgi_dirs());
+if( ! can_host_php( port:surveyPort ) ) exit( 0 );
 
-foreach dir (dirs) {
+foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSurveyor", cgi_dirs( port:surveyPort ) ) ) {
+
   rep_dir = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
 
-  sndReq = http_get(item: string(dir, "/index.php"), port: surveyPort);
-  rcvRes = http_keepalive_send_recv(port:surveyPort, data:sndReq);
+  rcvRes = http_get_cache(item: string(dir, "/index.php"), port: surveyPort);
 
   if ('meta name="generator" content="LimeSurvey http://www.limesurvey.org"' >< rcvRes) {
     version = string("unknown");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prado_php_framework_dir_trav_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_prado_php_framework_dir_trav_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # PRADO PHP Framework 'sr' Parameter Multiple Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803116");
-  script_version("$Revision: 5633 $");
+  script_version("$Revision: 5956 $");
   script_bugtraq_id(56677);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-27 15:16:12 +0530 (Tue, 27 Nov 2012)");
   script_name("PRADO PHP Framework 'sr' Parameter Multiple Directory Traversal Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22937/");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118348/ZSL-2012-5113.txt");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5113.php");
 
-  script_summary("Check for directory traversal vulnerability in PRADO PHP Framework");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809252");
-  script_version("$Revision: 5513 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 6044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-17 05:12:09 +0200 (Sat, 17 Sep 2016)");
   script_cve_id("CVE-2016-6299");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mock FEDORA-2016-145afea99e");
   script_tag(name: "summary", value: "Check the version of mock");

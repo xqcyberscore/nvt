@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_testlink_54990.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_testlink_54990.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # TestLink Multiple Security Vulnerabilities
 #
@@ -47,16 +47,15 @@ if (description)
  script_bugtraq_id(54990);
  script_tag(name:"cvss_base", value:"7.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5888 $");
 
  script_name("TestLink Multiple Security Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54990");
  script_xref(name : "URL" , value : "http://www.teamst.org/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-15 10:10:37 +0200 (Wed, 15 Aug 2012)");
- script_summary("Determine if TestLink is vulnerable to sql injection");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

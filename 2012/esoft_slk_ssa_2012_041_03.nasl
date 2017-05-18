@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2012_041_03.nasl 4794 2016-12-16 17:37:27Z cfi $
+# $Id: esoft_slk_ssa_2012_041_03.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from advisory SSA:2012-041-03
 #
 # Authors:
@@ -37,14 +37,13 @@ if(description)
 {
  script_id(71964);
  script_cve_id("CVE-2009-5029");
- script_version("$Revision: 4794 $");
+ script_version("$Revision: 5958 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-12-16 18:37:27 +0100 (Fri, 16 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-10 07:16:18 -0400 (Mon, 10 Sep 2012)");
  script_name("Slackware Advisory SSA:2012-041-03 glibc ");
 
- script_summary("Slackware Advisory SSA:2012-041-03 glibc ");
 
  script_category(ACT_GATHER_INFO);
 

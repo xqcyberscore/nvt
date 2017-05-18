@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntop_54792.nasl 2958 2016-03-25 09:37:17Z cfi $
+# $Id: gb_ntop_54792.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # ntop 'arbfile' Parameter Cross Site Scripting Vulnerability
 #
@@ -33,11 +33,10 @@ if(description)
   script_bugtraq_id(54792);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version ("$Revision: 2958 $");
+  script_version ("$Revision: 5912 $");
   script_name("ntop 'arbfile' Parameter Cross Site Scripting Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 10:37:17 +0100 (Fri, 25 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-07 11:41:07 +0200 (Tue, 07 Aug 2012)");
-  script_summary("Determine if ntop is prone to xss");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

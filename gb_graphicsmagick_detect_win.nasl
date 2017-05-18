@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphicsmagick_detect_win.nasl 3679 2016-07-08 11:55:07Z antu123 $
+# $Id: gb_graphicsmagick_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # GraphicsMagick Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800514");
-  script_version("$Revision: 3679 $");
+  script_version("$Revision: 6040 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-08 13:55:07 +0200 (Fri, 08 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-18 15:32:11 +0100 (Wed, 18 Feb 2009)");
   script_name("GraphicsMagick Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   and gets the version from 'Version' string from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Sets KB for Version of GraphicsMagick");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -56,17 +55,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-# Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## variable Initialization
 os_arch = "";

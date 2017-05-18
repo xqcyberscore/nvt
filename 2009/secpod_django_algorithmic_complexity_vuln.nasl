@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_django_algorithmic_complexity_vuln.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: secpod_django_algorithmic_complexity_vuln.nasl 5904 2017-04-10 06:18:08Z teissa $
 #
 # Django Forms Library Algorithmic Complexity Vulnerability
 #
@@ -36,11 +36,13 @@ tag_solution = "Upgrade to Django version 1.0.4 or 1.1.1 or later.
 tag_summary = "The host is running Django and is prone to Algorithmic Complexity
   vulnerability.";
 
+CPE = "cpe:/a:django_project:django";
+
 if(description)
 {
   script_id(900882);
-  script_version("$Revision: 5055 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+  script_version("$Revision: 5904 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 08:18:08 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-29 07:53:15 +0100 (Thu, 29 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -56,7 +58,7 @@ if(description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_django_detect_lin.nasl");
-  script_require_ports("Services/www", 8000);
+  script_require_ports("Services/ssh", 22);
   script_mandatory_keys("login/SSH/success","Django/Linux/Ver");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -68,8 +70,10 @@ if(description)
 
 
 include("version_func.inc");
+include("host_details.inc");
 
-djangoVer = get_kb_item("Django/Linux/Ver");
+djangoVer = get_app_version(cpe: CPE);
+
 if(djangoVer)
 {
   if(version_in_range(version:djangoVer, test_version:"1.0", test_version2:"1.0.3")||

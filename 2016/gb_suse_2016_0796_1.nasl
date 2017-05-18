@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851241");
-  script_version("$Revision: 2903 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-22 08:18:41 +0100 (Tue, 22 Mar 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-17 05:11:28 +0100 (Thu, 17 Mar 2016)");
   script_cve_id("CVE-2016-2315", "CVE-2016-2324");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,7 +47,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "SUSE-SU", value: "2016:0796_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00059.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of git");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

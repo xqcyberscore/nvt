@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_charts_59987.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_php_charts_59987.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # php-Charts 'index.php' Arbitrary PHP Code Execution Vulnerability
 #
@@ -32,24 +32,17 @@ within the context of the affected application.
 
 php-Charts 1.0 is vulnerable; other versions may also be affected.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103715";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103715");
  script_bugtraq_id(59987);
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version ("$Revision: 2939 $");
-
+ script_version("$Revision: 5699 $");
  script_name("php-Charts 'index.php' Arbitrary PHP Code Execution Vulnerability");
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59987");
- 
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-05-23 10:07:15 +0200 (Thu, 23 May 2013)");
- script_summary("Determine if it is possible to execute the phpinfo() command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -57,30 +50,28 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/charts", "/php-charts", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/charts","/php-charts",cgi_dirs());
-
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = dir + "/wizard/index.php?type=';phpinfo();//";
 
-   if(http_vuln_check(port:port, url:url,pattern:"<title>phpinfo\(\)")) {   
-
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<title>phpinfo\(\)" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

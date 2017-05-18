@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nqt_xss.nasl 3717 2016-07-15 19:04:33Z cfi $
+# $Id: nqt_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # Network Query Tool XSS
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12223");
-  script_version("$Revision: 3717 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-15 21:04:33 +0200 (Fri, 15 Jul 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1964");
   script_bugtraq_id(10205);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Network Query Tool XSS");
-  script_summary("Checks for the presence of an XSS bug in NQT");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");

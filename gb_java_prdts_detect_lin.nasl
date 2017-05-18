@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_java_prdts_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Sun Java Products Version Detection (Linux)
 #
@@ -27,20 +27,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of installed version of Java products
-on Linux systems. It covers Sun Java, IBM Java and GCJ.
-
-The script logs in via ssh, searches for executables 'javaaws' and
-'java' and queries the found executables via command line option '-fullversion'.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800385";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.800385");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -51,7 +43,11 @@ if(description)
   script_family("Product detection");
   script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "Detection of installed version of Java products
+  on Linux systems. It covers Sun Java, IBM Java and GCJ.
+
+  The script logs in via ssh, searches for executables 'javaaws' and
+  'java' and queries the found executables via command line option '-fullversion'.");
   exit(0);
 }
 
@@ -59,13 +55,6 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-function register_cpe(tmpVers, tmpExpr, tmpBase, binFile){
-  local_var cpe;
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(!isnull(cpe))
-    register_product(cpe:cpe, location:binFile, nvt:SCRIPT_OID);
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
@@ -84,12 +73,9 @@ if(jwspaths)
     if(jwsVer[1] != NULL)
     {
       set_kb_item(name:"Java/WebStart/Linux/Ver", value:jwsVer[1]);
-      log_message(data:'Detected Java WebStart version: ' + jwsVer[1] +
-        '\nLocation: ' + executableFile +
-        '\n\nConcluded from version identification result:\n' + jwsVer[max_index(jwsVer)-1]);
 
-      register_cpe(tmpVers:jwsVer[1], tmpExpr:"^([0-9]\.[0-9_.]+)",
-                   tmpBase:"cpe:/a:sun:java_web_start:", binFile:executableFile);
+      register_and_report_cpe(app:"Java WebStart", ver:jwsVer[1], base:"cpe:/a:sun:java_web_start:",
+                              expr:"^([0-9]\.[0-9_.]+)", insloc:executableFile);
     }
   }
 }
@@ -133,11 +119,8 @@ if(javapaths)
     else if(javaVer[1] =~ "([0-9]\.[0-9._]+)-([b0-9]+)")
     {
       set_kb_item(name:"Sun/Java/JRE/Linux/Ver", value:javaVer[1]);
-      log_message(data:'Detected Sun Java JRE version: ' + javaVer[1] +
-        '\nLocation: ' + executableFile +
-        '\n\nConcluded from version identification result:\n' +
-        javaVer[max_index(javaVer)-1]);
-      register_cpe(tmpVers:javaVer[1], tmpExpr:"^([0-9._]+)", tmpBase:"cpe:/a:sun:jre:", binFile:executableFile);
+      register_and_report_cpe(app:"Sun Java JRE", ver:javaVer[1], base:"cpe:/a:sun:jre:",
+                              expr:"^([0-9._]+)", insloc:executableFile);
     }
   }
 }

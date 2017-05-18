@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808867");
-  script_version("$Revision: 4052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:57:54 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-6263", "CVE-2015-8948", "CVE-2016-6262", "CVE-2016-6261");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,6 @@ names.
   script_xref(name: "FEDORA", value: "2016-42514bee97");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/EQDCSQNM5LICMOIEU5H63QDQ4Z436KC5");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libidn");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

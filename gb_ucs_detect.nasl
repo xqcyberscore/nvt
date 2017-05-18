@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103979");
-  script_version("$Revision: 5435 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 14:35:00 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-08-01 14:27:02 +0200 (Mon, 01 Aug 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,7 +57,7 @@ banner = get_http_banner( port:port );
 if( "Univention" >!< banner ) {
   exit( 0 );
 } else {
-  register_and_report_os( os:"Univention Corporate Server", cpe:"cpe:/o:univention:ucs", banner_type:"HTTP banner", port:port, desc:"Univention Corporate Server Detection" );
+  register_and_report_os( os:"Univention Corporate Server", cpe:"cpe:/o:univention:ucs", banner_type:"HTTP banner", port:port, desc:"Univention Corporate Server Detection", runs_key:"unixoide" );
   log_message( port:port, data:"The target seems to be running a Univention Corporate Server (UCS)." );
   exit( 0 );
 }

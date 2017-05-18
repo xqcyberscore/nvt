@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2570_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2570_1.nasl 5940 2017-04-12 09:02:05Z teissa $
 # Description: Auto-generated from advisory DSA 2570-1 (openoffice.org)
 #
 # Authors:
@@ -56,13 +56,12 @@ if(description)
  script_cve_id("CVE-2012-4233");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5940 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-16 03:14:53 -0500 (Fri, 16 Nov 2012)");
  script_name("Debian Security Advisory DSA 2570-1 (openoffice.org)");
 
 
- script_summary("Debian Security Advisory DSA 2570-1 (openoffice.org)");
 
  script_category(ACT_GATHER_INFO);
 

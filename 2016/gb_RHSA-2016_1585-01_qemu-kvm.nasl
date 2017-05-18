@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871648");
-  script_version("$Revision: 3837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 08:15:23 +0200 (Tue, 16 Aug 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-10 05:34:42 +0200 (Wed, 10 Aug 2016)");
   script_cve_id("CVE-2016-5403");
   script_tag(name:"cvss_base", value:"4.9");
@@ -61,7 +61,6 @@ Desktop (v. 6),
   script_xref(name: "RHSA", value: "2016:1585-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-August/msg00013.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qemu-kvm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

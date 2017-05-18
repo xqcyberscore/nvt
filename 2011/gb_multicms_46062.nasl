@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multicms_46062.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: gb_multicms_46062.nasl 5719 2017-03-24 13:29:29Z cfi $
 #
 # MultiCMS 'lng' Parameter Local File Include Vulnerability
 #
@@ -39,20 +39,16 @@ confirmed it. Please contact the vendor for more information.";
 if (description)
 {
  script_id(103052);
- script_version("$Revision: 5646 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-02-01 12:59:13 +0100 (Tue, 01 Feb 2011)");
  script_bugtraq_id(46062);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-
  script_name("MultiCMS 'lng' Parameter Local File Include Vulnerability");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46062");
  script_xref(name : "URL" , value : "http://www.multicms.net/");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine MultiCMS is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,31 +61,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+include("host_details.inc");
 
-dirs = make_list("/multicms","/mcms","/cms",cgi_dirs());
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = traversal_files();
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir,"/index.php?lng=",crap(data:"../",length:3*9),files[file],"%00"); 
+foreach dir( make_list_unique( "/multicms", "/mcms", "/cms", cgi_dirs( port:port ) ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+  if( dir == "/" ) dir = "";
 
+  foreach file( keys( files ) ) {
+
+    url = string(dir,"/index.php?lng=",crap(data:"../",length:3*9),files[file],"%00");
+
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
-
+exit( 99 );

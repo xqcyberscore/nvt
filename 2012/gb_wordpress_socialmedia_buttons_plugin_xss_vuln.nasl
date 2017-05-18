@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_socialmedia_buttons_plugin_xss_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_socialmedia_buttons_plugin_xss_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # WordPress 2Click Social Media Buttons Plugin 'xing-url' Parameter XSS Vulnerability
 #
@@ -45,11 +45,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5963 $");
   script_bugtraq_id(53481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-17 10:23:01 +0530 (Thu, 17 May 2012)");
   script_name("WordPress 2Click Social Media Buttons Plugin 'xing-url' Parameter XSS Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49181/");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/49181");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112615/wp2click-xss.txt");
 
-  script_summary("Check if WordPress 2Click Social Media Buttons Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

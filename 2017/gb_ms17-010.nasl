@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010.nasl 5637 2017-03-21 07:30:30Z antu123 $
+# $Id: gb_ms17-010.nasl 5683 2017-03-23 08:19:01Z teissa $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities (4013389) 
 #
@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810810");
-  script_version("$Revision: 5637 $");
+  script_version("$Revision: 5683 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 08:30:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:19:01 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 09:07:19 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities (4013389)");

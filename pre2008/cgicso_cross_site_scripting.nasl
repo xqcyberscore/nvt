@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgicso_cross_site_scripting.nasl 3983 2016-09-07 05:46:06Z teissa $
+# $Id: cgicso_cross_site_scripting.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # CGIEmail's Cross Site Scripting Vulnerability (cgicso)
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10780");
-  script_version("$Revision: 3983 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:46:06 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("CGIEmail's Cross Site Scripting Vulnerability (cgicso)");
-  script_summary("Determine if a remote host is vulnerable to the cgicso vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2001 SecurITeam");

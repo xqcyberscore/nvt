@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842647");
-  script_version("$Revision: 2845 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-14 08:13:16 +0100 (Mon, 14 Mar 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-18 06:23:03 +0100 (Thu, 18 Feb 2016)");
   script_cve_id("CVE-2016-1521", "CVE-2016-1522", "CVE-2016-1523", "CVE-2016-1526");
   script_tag(name:"cvss_base", value:"9.3");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "USN", value: "2902-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-February/003307.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of graphite2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

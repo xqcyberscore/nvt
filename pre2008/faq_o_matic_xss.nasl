@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: faq_o_matic_xss.nasl 3983 2016-09-07 05:46:06Z teissa $
+# $Id: faq_o_matic_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # Faq-O-Matic fom.cgi XSS
 #
@@ -29,15 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15540");
-  script_version("$Revision: 3983 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:46:06 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4565);
   script_cve_id("CVE-2002-0230", "CVE-2002-2011");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Faq-O-Matic fom.cgi XSS");
-  script_summary("Checks Faq-O-Matic XSS");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

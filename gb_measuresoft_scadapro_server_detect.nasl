@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_measuresoft_scadapro_server_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_measuresoft_scadapro_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Measuresoft ScadaPro Server Detection
 #
@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803948";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2835 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-10-01 17:59:16 +0530 (Tue, 01 Oct 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Measuresoft ScadaPro Server Detection");
@@ -45,7 +45,6 @@ registry and gets the version from 'VersionID' string in registry.";
 
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Set KB for the version of Measuresoft ScadaPro Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");

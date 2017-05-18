@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-095.nasl 2364 2016-01-08 11:44:07Z antu123 $
+# $Id: gb_ms15-095.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Edge Multiple Memory Corruption Vulnerabilities (3089665)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807025");
-  script_version("$Revision: 2364 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2015-2485", "CVE-2015-2486", "CVE-2015-2494", "CVE-2015-2542");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-08 12:44:07 +0100 (Fri, 08 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-08 13:07:16 +0530 (Fri, 08 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Multiple Memory Corruption Vulnerabilities (3089665)");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3081455");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-095");
 
-  script_summary("Check for the vulnerable 'Edgehtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

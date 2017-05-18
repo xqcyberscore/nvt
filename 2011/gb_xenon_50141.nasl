@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenon_50141.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_xenon_50141.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # Xenon 'id' Parameter Multiple SQL Injection Vulnerabilities
 #
@@ -32,12 +32,11 @@ A successful exploit may allow an attacker to compromise the
 application, access or modify data, or exploit vulnerabilities in the
 underlying database.";
 
-
-if (description)
+if(description)
 {
  script_id(103302);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5751 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-18 13:33:12 +0200 (Tue, 18 Oct 2011)");
  script_bugtraq_id(50141);
  script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://xe.co.za/index.shtml");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Xenon is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -64,24 +62,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/xenon",cgi_dirs());
+foreach dir( make_list_unique( "/xenon", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir,"/viewstory.php?id=-8+and+1=1+union+select+0,1,2,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,4"); 
 
   if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

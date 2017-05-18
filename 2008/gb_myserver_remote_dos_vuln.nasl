@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_myserver_remote_dos_vuln.nasl 5657 2017-03-21 11:08:08Z cfi $
+# $Id: gb_myserver_remote_dos_vuln.nasl 5785 2017-03-30 09:19:35Z cfi $
 #
 # MyServer Remote Denial of Service Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is running MyServer and is prone to denial of service
 if(description)
 {
   script_id(800306);
-  script_version("$Revision: 5657 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:08:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 5785 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,6 @@ if(description)
   script_name("MyServer Remote Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/5184");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/27981");
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
@@ -69,14 +68,9 @@ include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-banner = get_http_banner(port);
-if(!banner){
-  exit(0);
-}
+banner = get_http_banner(port:port);
+if(!banner) exit(0);
 
 mysvrVer = eregmatch(pattern:"MyServer ([0-9.]+)", string:banner);
 if(mysvrVer[1] != NULL)

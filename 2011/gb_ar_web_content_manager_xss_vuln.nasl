@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ar_web_content_manager_xss_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: gb_ar_web_content_manager_xss_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # AR Web Content Manager (AWCM) 'search.php' Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801911");
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_cve_id("CVE-2011-1668");
   script_bugtraq_id(47126);
@@ -40,12 +40,11 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/47126/");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SECPOD_AWCM_XSS.txt");
 
-  script_summary("Check for the Cross-Site Scripting vulnerability in AWCM CMS ");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : "Successful exploitation could allow an attacker to execute arbitrary HTML
@@ -67,19 +66,16 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 awcmPort = get_http_port(default:80);
 
-foreach dir (make_list_unique("/awcm", "/AWCM", "/", cgi_dirs(port:awcmPort)))
-{
+foreach dir (make_list_unique("/awcm", "/AWCM", "/", cgi_dirs(port:awcmPort))) {
 
   if( dir == "/" ) dir = "";
 
-  sndReq = http_get(item:dir + "/index.php", port:awcmPort);
-  rcvRes = http_send_recv(port:awcmPort, data:sndReq);
+  rcvRes = http_get_cache(item:dir + "/index.php", port:awcmPort);
 
   ## Confirm the application
   if(">AWCM" >< rcvRes)

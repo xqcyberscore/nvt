@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: zone_alarm_fw_p67.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: zone_alarm_fw_p67.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: ZoneAlarm Personal Firewall port 67 flaw
 #
 # Authors:
@@ -40,8 +40,8 @@ tag_solution = "Upgrade at least to version 2.1.25";
 if(description)
 {
  script_id(14660);
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1137);
  script_cve_id("CVE-2000-0339");  
@@ -57,7 +57,6 @@ if(description)
 
  summary = "Check ZoneAlarm version";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: EZsiteForum.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: EZsiteForum.nasl 5781 2017-03-30 08:15:57Z cfi $
 # Description: EZsite Forum Discloses Passwords to Remote Users
 #
 # Authors:
@@ -41,55 +41,42 @@ features, remove the product or replace the product by another one.";
 if(description)
 {
  script_id(11833);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 5781 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- name = "EZsite Forum Discloses Passwords to Remote Users";
- script_name(name);
-
-
- summary = "Checks for EZsiteForum.mdb password database";
-
- script_summary(summary);
-
+ script_name("EZsite Forum Discloses Passwords to Remote Users");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_active");
-
+ script_tag(name:"qod_type", value:"remote_active");
  script_copyright("This script is Copyright (C) 2003 deepquest");
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("secpod_ms_iis_detect.nasl");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("IIS/installed");
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
- script_require_keys("IIS/installed");
  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if( ! get_kb_item("IIS/" + port + "/Ver" ) ) exit( 0 );
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/forum", cgi_dirs( port:port ) ) ) {
 
-foreach d (dirs)
-{
- req = http_get(item:string(d, "/forum/Database/EZsiteForum.mdb"), port:port);
- res = http_keepalive_send_recv(port:port, data:req);
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/Database/EZsiteForum.mdb");
 
- if ( res == NULL ) exit(0);
-
- if("Standard Jet DB" >< res)
- {
-   security_message(port);
-   exit(0);
- }
+  if(http_vuln_check(port:port, url:url,pattern:"Standard Jet DB")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
+
+exit( 99 );

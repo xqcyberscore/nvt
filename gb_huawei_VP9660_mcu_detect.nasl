@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_VP9660_mcu_detect.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_huawei_VP9660_mcu_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Huawei VP9660 Multi-Point Control Unit Detection (SNMP)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806636");
-  script_version("$Revision: 2662 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 11:03:03 +0530 (Tue, 01 Dec 2015)");
   script_name("Huawei VP9660 Multi-Point Control Unit Detection (SNMP)");
 
@@ -39,7 +39,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_summary("Checks for the presence of Huawei VP9660 Multi-Point Control Unit");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

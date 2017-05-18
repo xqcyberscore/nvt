@@ -42,8 +42,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001754.html");
   script_id(841077);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-16 11:53:11 +0530 (Mon, 16 Jul 2012)");
   script_cve_id("CVE-2012-2118");
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name: "USN", value: "1502-1");
   script_name("Ubuntu Update for xorg-server USN-1502-1");
 
-  script_summary("Check for the Version of xorg-server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_karaf_default_ssh_login.nasl 2987 2016-04-01 14:41:52Z mime $
+# $Id: gb_apache_karaf_default_ssh_login.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Apache Karaf SSH Default Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105593");
- script_version("$Revision: 2987 $");
+ script_version("$Revision: 5689 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Apache Karaf SSH Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-04-01 16:41:52 +0200 (Fri, 01 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-04-01 15:59:09 +0200 (Fri, 01 Apr 2016)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

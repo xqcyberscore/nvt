@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_56579.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_novell_file_reporter_56579.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities
 #
@@ -32,16 +32,15 @@ if (description)
  script_cve_id("CVE-2012-4956","CVE-2012-4957","CVE-2012-4958","CVE-2012-4959");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5633 $");
+ script_version ("$Revision: 5841 $");
 
  script_name("Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56579");
  script_xref(name : "URL" , value : "http://www.novell.com/products/file-reporter/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-12-12 17:33:48 +0100 (Wed, 12 Dec 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -71,17 +70,10 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:3037);
-if(!port){
-  port = 3037;
-}
-if(!get_port_state(port))exit(0);
-
 soc = open_sock_tcp(port);
 if(!soc)exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 files = traversal_files();
 
@@ -103,8 +95,8 @@ foreach file (keys(files)) {
   len = strlen(ex);
 
   req = string("POST /FSF/CMD HTTP/1.1\r\n",
-               "Host: " + host + "\r\n",
-               "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\r\n",
+               "Host: ", host, "\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                "Content-Type: text/xml\r\n",
                "Content-Length: ",len,"\r\n",
                "\r\n",

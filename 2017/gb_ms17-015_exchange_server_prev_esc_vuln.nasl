@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-015_exchange_server_prev_esc_vuln.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-015_exchange_server_prev_esc_vuln.nasl 5683 2017-03-23 08:19:01Z teissa $
 #
 # Microsoft Exchange Server Remote Privilege Escalation Vulnerability (4013242)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810705");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5683 $");
   script_cve_id("CVE-2017-0110");
   script_bugtraq_id(96621);
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:19:01 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:17:25 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Remote Privilege Escalation Vulnerability (4013242)");

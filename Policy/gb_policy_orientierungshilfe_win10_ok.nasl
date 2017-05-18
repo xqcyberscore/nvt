@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10_ok.nasl 5523 2017-03-09 07:40:45Z cfi $
+# $Id: gb_policy_orientierungshilfe_win10_ok.nasl 5944 2017-04-12 14:55:50Z cfi $
 #
 # AKIF Orientierungshilfe Windows 10: Erfuellt
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108079");
-  script_version("$Revision: 5523 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 08:40:45 +0100 (Thu, 09 Mar 2017) $");
+  script_version("$Revision: 5944 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:55:50 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,7 @@ passed = get_kb_item( "policy/orientierungshilfe_win10/passed" );
 
 if( passed ) {
 
-  passed = split( passed, keep:FALSE );
+  passed = split( passed, sep:"#-#", keep:FALSE );
 
   report = max_index( passed ) + ' Bestanden:\n\n';
 

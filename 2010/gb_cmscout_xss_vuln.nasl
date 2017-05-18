@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmscout_xss_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_cmscout_xss_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # CMScout Cross-Site Scripting Vulnerability
 #
@@ -45,8 +45,8 @@ Scripting Vulnerability.";
 if(description)
 {
   script_id(800791);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 5843 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2154");
   script_bugtraq_id(40442);
@@ -64,6 +64,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_cmscout_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("CMScout/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -73,15 +75,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
-if(!cmsPort){
-  exit(0);
-}
 
 cmsVer = get_kb_item("www/" + cmsPort + "/CMScout");
 if(!cmsVer){
@@ -92,13 +89,13 @@ cmsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:cmsVer);
 if(cmsVer[2] != NULL)
 {
   filename = string(cmsVer[2] + "/index.php?page=search&menuid=5");
-  host = get_host_name();
+  host = http_host_name(port:port);
   authVariables = "search=OpenVAS+XSS+Testing&content=1&Submit=Search";
 
   ## Construct XSS Request
   sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/2008111217 Fedora/3.0.4-1.fc10 Firefox/3.0.4\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                    "Accept-Language: en-us,en;q=0.5\r\n",
                    "Accept-Encoding: gzip,deflate\r\n",

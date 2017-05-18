@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809905");
-  script_version("$Revision: 4495 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 13:57:05 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:00:36 +0530 (Mon, 14 Nov 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-0312cf1dcd");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/NXTUMY4FDDOZD3ICZUMXDQU6LNM3AUYS");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php-pecl-zip");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

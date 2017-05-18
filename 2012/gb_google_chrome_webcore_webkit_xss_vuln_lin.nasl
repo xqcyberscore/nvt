@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webcore_webkit_xss_vuln_lin.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_webcore_webkit_xss_vuln_lin.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Google Chrome Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Linux)
 #
@@ -45,19 +45,18 @@ site scripting vulnerability.";
 if(description)
 {
   script_id(802497);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-5851");
   script_bugtraq_id(56570);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-21 15:15:03 +0530 (Wed, 21 Nov 2012)");
   script_name("Google Chrome Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Linux)");
   script_xref(name : "URL" , value : "https://bugs.webkit.org/show_bug.cgi?id=92692");
   script_xref(name : "URL" , value : "http://blog.opensecurityresearch.com/2012/09/simple-cross-site-scripting-vector-that.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

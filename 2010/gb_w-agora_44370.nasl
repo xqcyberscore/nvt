@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_w-agora_44370.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_w-agora_44370.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # w-Agora 'search.php' Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -40,16 +40,15 @@ based authentication credentials and launch other attacks.
 
 w-Agora 4.2.1 and prior are vulnerable.";
 
-
-if (description)
+if(description)
 {
  script_id(100869);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-25 12:51:03 +0200 (Mon, 25 Oct 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2010-4867","CVE-2010-4868");
+ script_cve_id("CVE-2010-4867","CVE-2010-4868");
  script_bugtraq_id(44370);
 
  script_name("w-Agora 'search.php' Local File Include and Cross Site Scripting Vulnerabilities");
@@ -69,27 +68,26 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/w-agora","/cms",cgi_dirs());
 files = make_list("/search.php","/search.php3");
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/w-agora", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (files) {
-   
-    url = string(dir, file,"?bn=%3Cbody%20onload=alert(%27openvas-xss-test%27)%3E"); 
+
+    url = string(dir, file,"?bn=%3Cbody%20onload=alert(%27openvas-xss-test%27)%3E");
 
     if(http_vuln_check(port:port, url:url,pattern:"<body onload=alert\('openvas-xss-test'\)>",extra_check:make_list("Could not access configuration file"))) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

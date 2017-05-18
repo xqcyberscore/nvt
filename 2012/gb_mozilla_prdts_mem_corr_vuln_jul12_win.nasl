@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mem_corr_vuln_jul12_win.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_mem_corr_vuln_jul12_win.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Mozilla Products Memory Corruption Vulnerabilities - July12 (Windows)
 #
@@ -51,12 +51,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802895);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-1949", "CVE-2012-1960");
   script_bugtraq_id(54580, 54572);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-24 11:13:01 +0530 (Tue, 24 Jul 2012)");
   script_name("Mozilla Products Memory Corruption Vulnerabilities - July12 (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-42.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-50.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

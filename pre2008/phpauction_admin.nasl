@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpauction_admin.nasl 3005 2016-04-07 09:57:40Z mime $
+# $Id: phpauction_admin.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: phpauction Admin Authentication Bypass
 #
 # Authors:
@@ -38,8 +38,8 @@ rights to the administrative directory using .htaccess.";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.19239");
- script_version("$Revision: 3005 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-07 11:57:40 +0200 (Thu, 07 Apr 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(12069);
  script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,6 @@ if(description)
  script_name(name);
 
  summary = "Attempts to bypass phpauction administrative authentication";
- script_summary(summary);
  script_category(ACT_ATTACK);
 
  script_copyright("(C) 2005 Tobias Glemser (tglemser@tele-consulting.com)");

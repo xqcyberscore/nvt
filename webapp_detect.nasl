@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: webapp_detect.nasl 3778 2016-07-30 15:56:56Z cfi $
+# $Id: webapp_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # WebAPP Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102009");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 3778 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-30 17:56:56 +0200 (Sat, 30 Jul 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("WebAPP Detection");
-  script_summary("Detects WebAPP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 LSS");
   script_family("Product detection");

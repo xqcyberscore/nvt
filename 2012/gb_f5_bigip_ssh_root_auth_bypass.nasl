@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # F5 BIG-IP remote root authentication bypass Vulnerability
 #
@@ -43,7 +43,7 @@ tag_solution = "Updates are available. See the References for more information."
 if (description)
 {
  script_id(103494);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5963 $");
  script_bugtraq_id(53897);
 
  script_name("F5 BIG-IP remote root authentication bypass Vulnerability");
@@ -53,9 +53,8 @@ if (description)
  script_xref(name : "URL" , value : "https://www.trustmatta.com/advisories/MATTA-2012-002.txt");
  script_xref(name : "URL" , value : "http://support.f5.com/kb/en-us/solutions/public/13000/600/sol13600.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-06-14 13:35:33 +0200 (Thu, 14 Jun 2012)");
- script_summary("Determine if it is possible to login as root");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Gain a shell remotely");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wwh_55387.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_wwh_55387.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Wiki Web Help 'configpath' Parameter Remote File Include Vulnerability
 #
@@ -43,7 +43,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(55387);
- script_version ("$Revision: 5642 $");
+ script_version ("$Revision: 5999 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -53,9 +53,8 @@ if (description)
  script_xref(name : "URL" , value : "http://wikiwebhelp.org/");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/wwh/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-10 11:39:24 +0200 (Mon, 10 Sep 2012)");
- script_summary("Determine if it is possible to read local files");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

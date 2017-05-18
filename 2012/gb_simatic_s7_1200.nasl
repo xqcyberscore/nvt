@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_simatic_s7_1200.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Siemens SIMATIC S7-1200 SSL Private Key Reuse Spoofing Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2012-3037");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5988 $");
 
  script_name("Siemens SIMATIC S7-1200 SSL Private Key Reuse Spoofing Vulnerability");
 
@@ -42,9 +42,8 @@ if (description)
  script_xref(name : "URL" , value : "http://subscriber.communications.siemens.com/");
  script_xref(name : "URL" , value : "http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-240718.pdf");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-20 10:18:56 +0200 (Thu, 20 Sep 2012)");
- script_summary("Determine if SIMATIC S7-1200 FW version is 2.x");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

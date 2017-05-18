@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703639);
-    script_version("$Revision: 3807 $");
+    script_version("$Revision: 5850 $");
     script_cve_id("CVE-2015-8834", "CVE-2016-5832", "CVE-2016-5834", "CVE-2016-5835",
                   "CVE-2016-5837", "CVE-2016-5838", "CVE-2016-5839");
     script_name("Debian Security Advisory DSA 3639-1 (wordpress - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-08 10:01:14 +0200 (Mon, 08 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
     script_tag(name:"creation_date", value:"2016-08-04 16:27:41 +0530 (Thu, 04 Aug 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3639.html");
 
-    script_summary("Debian Security Advisory DSA 3639-1 (wordpress - security update)");
 
     script_category(ACT_GATHER_INFO);
 

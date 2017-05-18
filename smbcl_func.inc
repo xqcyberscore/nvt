@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_func.inc 3921 2016-08-31 14:32:15Z cfi $
+# $Id: smbcl_func.inc 5722 2017-03-24 15:26:22Z mime $
 # Description: functions for smb client tool
 #
 # Authors:
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 3921 $
+# $Revision: 5722 $
 #
 ###############################################################################
 
@@ -189,22 +189,6 @@ function GetPEFileVersion (tmp_filename, orig_filename) {
     return NULL;
   }
   replace_kb_item(name: "SMB/FILEVERSION/"+orig_filename, value: r );
-  return r;
-}
-
-function GetPEProductVersion (tmp_filename, orig_filename) {
-  local_var r;
-
-  r = NULL;
-  fp = file_open(mode: "r", name:tmp_filename);
-  if( ! isnull(fp) ) {
-    r = PEVersion (fp:fp, prodvers:1);
-    file_close(fp);
-  }
-  if( isnull(r) ) {
-    return NULL;
-  }
-  replace_kb_item(name: "SMB/PRODUCTVERSION/"+orig_filename, value: r );
   return r;
 }
 

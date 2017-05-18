@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: Black_JumboDog_FTP_overflow.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: Black_JumboDog_FTP_overflow.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: BlackJumboDog FTP server multiple command overflow
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to version 3.6.2 or newer";
 if(description)
 {
  script_id(14256);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1439");
  script_bugtraq_id(10834);
@@ -53,7 +53,6 @@ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
  summary = "Determines the version of BlackJumboDog";
 
- script_summary(summary);
  
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

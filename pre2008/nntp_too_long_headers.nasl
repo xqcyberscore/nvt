@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nntp_too_long_headers.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: nntp_too_long_headers.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: NNTP message headers overflow
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "apply the latest patches from your vendor or
 if(description)
 {
  script_id(17228);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,7 +48,6 @@ if(description)
  script_name(name);
  summary = "Sends a message with long headers to nntpd";
  
- script_summary(summary);
  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2005 Michel Arboi");

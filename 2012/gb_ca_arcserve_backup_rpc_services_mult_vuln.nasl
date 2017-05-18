@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)
 #
@@ -38,19 +38,18 @@ tag_summary = "This host is installed with CA ARCserve Backup and is prone
 if(description)
 {
   script_id(802677);
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-2971", "CVE-2012-2972");
   script_bugtraq_id(56116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-20 11:04:50 +0530 (Tue, 20 Nov 2012)");
   script_name("CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51012/");
   script_xref(name : "URL" , value : "http://www.offensive-security.com/vulndev/ca-arcserve-rwslist-remote-code-execution/");
   script_xref(name : "URL" , value : "https://support.ca.com/irj/portal/anonymous/phpsupcontent?contentID={F9EEA31E-8089-423E-B746-41B5C9DD2AC1}");
 
-  script_summary("Check for DoS vulnerability in CA ARCserve Backup for Windows");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

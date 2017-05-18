@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_28-2016-04_lin.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_google_chrome_stable-channel-update_28-2016-04_lin.nasl 6016 2017-04-24 06:45:58Z antu123 $
 #
 # Google Chrome Security Updates(stable-channel-update_28-2016-04)-Linux
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807572");
-  script_version("$Revision: 5598 $");
+  script_version("$Revision: 6016 $");
   script_cve_id("CVE-2016-1660", "CVE-2016-1661", "CVE-2016-1662", "CVE-2016-1663", 
-                "CVE-2016-1664", "CVE-2016-1665", "CVE-2016-1666");
+                "CVE-2016-1664", "CVE-2016-1665", "CVE-2016-1666", "CVE-2016-5168");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 08:45:58 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-02 14:07:18 +0530 (Mon, 02 May 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_28-2016-04)-Linux");
 

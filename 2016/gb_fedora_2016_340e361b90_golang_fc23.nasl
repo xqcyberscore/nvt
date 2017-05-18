@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808726");
-  script_version("$Revision: 4205 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 09:46:54 +0200 (Tue, 04 Oct 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 16:27:38 +0530 (Thu, 04 Aug 2016)");
   script_cve_id("CVE-2016-5386");
   script_tag(name:"cvss_base", value:"6.8");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-340e361b90");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/7WGHKKCFP4PLVSWQKCM3FJJPEWB5ZNTU");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of golang");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

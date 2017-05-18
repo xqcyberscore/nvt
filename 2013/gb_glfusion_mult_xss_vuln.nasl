@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glfusion_mult_xss_vuln.nasl 2936 2016-03-24 08:30:15Z benallard $
+# $Id: gb_glfusion_mult_xss_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # glFusion Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803316");
-  script_version("$Revision: 2936 $");
+  script_version("$Revision: 5791 $");
   script_cve_id("CVE-2013-1466");
   script_bugtraq_id(58058);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-03-01 11:22:26 +0530 (Fri, 01 Mar 2013)");
   script_name("glFusion Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23142");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120423/glFusion-1.2.2-Cross-Site-Scripting.html");
 
-  script_summary("Check if glFusion is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -79,10 +78,8 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -92,9 +89,7 @@ foreach dir (make_list_unique("/", "/glfusion", "/fusion", "/cms", cgi_dirs(port
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"),  port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
   ## Confirm the application
   if('>glFusion' >< res)
@@ -105,7 +100,7 @@ foreach dir (make_list_unique("/", "/glfusion", "/fusion", "/cms", cgi_dirs(port
 
     ## Check the response to confirm vulnerability
     if(http_vuln_check(port: port, url: url, check_header: TRUE,
-       pattern: "<script>alert\(document.cookie\)</script>",
+       pattern: "<script>alert\(document\.cookie\)</script>",
        extra_check: make_list("User Name","Password")))
     {
       report = report_vuln_url( port:port, url:url );

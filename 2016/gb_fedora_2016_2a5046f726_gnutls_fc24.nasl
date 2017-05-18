@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808970");
-  script_version("$Revision: 3784 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:56:04 +0530 (Tue, 02 Aug 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,6 @@ other required structures.
   script_xref(name: "FEDORA", value: "2016-2a5046f726");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5GTDFQCLWVD6QDMLTMAHNIZDNEZ6QJP4");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gnutls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

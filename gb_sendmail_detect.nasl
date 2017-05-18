@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_detect.nasl 3645 2016-07-04 17:23:59Z mime $
+# $Id: gb_sendmail_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Sendmail Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800608");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 3645 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-04 19:23:59 +0200 (Mon, 04 Jul 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-05-13 10:01:19 +0200 (Wed, 13 May 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sendmail Version Detection");
-  script_summary("Sets KB for the version of Sendmail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

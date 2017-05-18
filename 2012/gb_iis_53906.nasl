@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis_53906.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_iis_53906.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103507");
  script_bugtraq_id(53906);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5814 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -40,9 +40,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53906");
  script_xref(name : "URL" , value : "http://www.microsoft.com/windowsserver2003/iis/default.mspx");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-03 10:23:40 +0200 (Tue, 03 Jul 2012)");
- script_summary("Determine if it is possible to access protected files");
  script_category(ACT_ATTACK);
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -63,13 +62,11 @@ if (description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
-if(!get_port_state(port))exit(0);
 
 auth_req = get_kb_list("www/" + port + "/content/auth_required");
 if(!auth_req) exit(0);
@@ -101,8 +98,7 @@ foreach p (protected) {
 
        url = p + file; 
 
-       req = http_get(item:url, port:port);
-       buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+       buf = http_get_cache(item:url, port:port);
 
        if(buf !~ "HTTP/1.. 401")continue;
 

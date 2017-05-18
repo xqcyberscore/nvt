@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_46107.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_tandberg_46107.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Cisco TANDBERG C Series and E/EX Series Default Credentials Authentication Bypass Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
  script_cve_id("CVE-2011-0354");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 6018 $");
 
  script_name("Cisco TANDBERG C Series and E/EX Series Default Credentials Authentication Bypass Vulnerability");
 
@@ -54,9 +54,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/516126");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/436854");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-14 11:19:49 +0100 (Wed, 14 Nov 2012)");
- script_summary("Determine if it is possible to login as root with no password");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

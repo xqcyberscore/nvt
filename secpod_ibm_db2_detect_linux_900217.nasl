@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_db2_detect_linux_900217.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_ibm_db2_detect_linux_900217.nasl 6032 2017-04-26 09:02:50Z teissa $
 # Description: IBM DB2 Server Detection (Linux)
 #
 # Authors:
@@ -30,8 +30,8 @@ if(description)
 {
  script_id(900217);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,6 @@ if(description)
  script_tag(name:"qod_type", value:"executable_version");
  script_family("General");
  script_name("IBM DB2 Server Detection (Linux)");
- script_summary("Set KB for IBM DB2 Server");
  script_dependencies("gather-package-list.nasl");
  script_require_keys("ssh/login/uname");
  script_tag(name : "summary" , value : tag_summary);

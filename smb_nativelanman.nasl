@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 5581 2017-03-15 11:39:11Z cfi $
+# $Id: smb_nativelanman.nasl 5924 2017-04-11 06:17:24Z cfi $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 5581 $");
+  script_version("$Revision: 5924 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 12:39:11 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 08:17:24 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -207,6 +207,8 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             }
           } else if( "windows vista" >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          } else if( "windows vista" >< tolower( os_str ) && "service pack 2" >< tolower( os_str ) ) {
+            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista:-:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows vista " >< tolower( os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 7 " >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) ) {

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: symantec_ws_dos.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: symantec_ws_dos.nasl 5676 2017-03-22 16:29:37Z cfi $
 # Description: Symantec Web Security flaws
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Upgrade at least to version 3.0.1.85.";
 if(description)
 {
  script_id(80020);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 19:51:47 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,9 +51,6 @@ if(description)
 
  script_name(name);
  
- summary = "Checks for SWS flaws";
- 
- 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  
@@ -63,18 +60,16 @@ if(description)
  script_family(family);
  script_dependencies("symantec_ws_detection.nasl");
  script_require_ports("Services/www", 8002);
+ script_mandatory_keys("SymantecWS/installed");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
+include("http_func.inc");
 
-port = get_kb_item("Services/www");
-if ( ! port ) port = 8002;
-if(!get_port_state(port)) exit(0);
+port = get_http_port( default:8002 );
 
 version=get_kb_item(string("www/", port, "/SWS"));
 if (version) {

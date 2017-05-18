@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpver.nasl 4840 2016-12-22 13:02:22Z cfi $
+# $Id: httpver.nasl 5855 2017-04-04 12:10:49Z cfi $
 #
-# Detection of HTTP-Version 
+# Detection of HTTP-Version
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100034");
-  script_version("$Revision: 4840 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-22 14:02:22 +0100 (Thu, 22 Dec 2016) $");
+  script_version("$Revision: 5855 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 14:10:49 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("HTTP-Version Detection");  
+  script_name("HTTP-Version Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -60,14 +60,14 @@ host = http_host_name( port:port );
 
 req = string( "GET / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\n",
+              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
               "Accept: */*\r\n",
               "Connection: close\r\n",
-              "\r\n" ); 
+              "\r\n" );
 send( socket:soc, data:req );
 buf = http_recv_headers2( socket:soc );
 close( soc );
-if( buf == NULL ) exit( 0 );
+if( isnull( buf ) || buf == "" ) exit( 0 );
 
 if( buf =~ "HTTP/1.1 20[0-6]" || buf =~ "HTTP/1.1 30[0-7]" || buf =~ "HTTP/1.1 40[13]" ) {
   set_kb_item( name:"http/" + port, value:"11" );
@@ -93,10 +93,10 @@ else {
                 "\r\n" );
   send( socket:soc, data:req );
   buf = http_recv_headers2( socket:soc );
-  if( buf == NULL ) exit( 0 );
   close( soc );
+  if( isnull( buf ) || buf == "" ) exit( 0 );
 
-  if( buf =~ "HTTP/1.0 20[0-6]" || buf =~ "HTTP/1.0 30[0-7]" || buf =~ "HTTP/1.0 40[13]") {
+  if( buf =~ "HTTP/1.0 20[0-6]" || buf =~ "HTTP/1.0 30[0-7]" || buf =~ "HTTP/1.0 40[13]" ) {
     set_kb_item( name:"http/" + port, value:"10" );
     exit( 0 );
   } else if( buf =~ "HTTP/1\.[0-1] 50[0-9]" ) {
@@ -104,7 +104,7 @@ else {
     set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );
     exit( 0 );
   }
-} 
+}
 
 ## if all fail set to 1.0 anyway
 set_kb_item( name:"http/" + port, value:"10" );

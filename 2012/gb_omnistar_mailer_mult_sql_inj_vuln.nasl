@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omnistar_mailer_mult_sql_inj_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_omnistar_mailer_mult_sql_inj_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Omnistar Mailer Software Multiple SQL Injection Vulnerabilities
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802464");
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5912 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-04 10:42:09 +0530 (Thu, 04 Oct 2012)");
   script_name("Omnistar Mailer Software Multiple SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21716/");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Oct/27");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/524301/30/0/threaded");
 
-  script_summary("Check the SQL injection vulnerability in Omnistar Mailer Software");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

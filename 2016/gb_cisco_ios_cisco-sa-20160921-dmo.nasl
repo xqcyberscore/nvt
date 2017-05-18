@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160921-dmo.nasl 4129 2016-09-22 06:05:42Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20160921-dmo.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco IOS Software Data in Motion Component Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6409");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 4129 $");
+ script_version ("$Revision: 5745 $");
 
  script_name("Cisco IOS Software Data in Motion Component Denial of Service Vulnerability");
 
@@ -57,9 +57,8 @@ condition for the affected component on the targeted system.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-22 08:05:42 +0200 (Thu, 22 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

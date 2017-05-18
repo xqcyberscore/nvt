@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)
 #
@@ -46,19 +46,18 @@ overflow vulnerability.";
 if(description)
 {
   script_id(803043);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-4987");
   script_bugtraq_id(56324);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-06 12:38:20 +0530 (Tue, 06 Nov 2012)");
   script_name("RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Oct/189");
   script_xref(name : "URL" , value : "http://www.reactionpenetrationtesting.co.uk/realplayer-watchfolders.html");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117691/Realplayer-Watchfolders-Long-Filepath-Overflow.html");
 
-  script_summary("Check for the version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

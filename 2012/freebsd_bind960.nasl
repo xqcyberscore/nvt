@@ -51,17 +51,16 @@ if(description)
 {
  script_id(70599);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:58:31 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_cve_id("CVE-2011-4313");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5663 $");
+ script_version("$Revision: 5958 $");
  script_name("FreeBSD Ports: bind96");
 
  script_xref(name:"URL" , value:"https://www.isc.org/software/bind/advisories/cve-2011-4313");
  script_xref(name:"URL" , value:"http://www.vuxml.org/freebsd/90cc1494-10ac-11e1-b3ec-0024e830109b.html");
 
- script_summary("FreeBSD Ports: bind96");
 
  script_category(ACT_GATHER_INFO);
 

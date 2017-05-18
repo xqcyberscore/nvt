@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_detect_macosx.nasl 2829 2016-03-10 13:10:31Z antu123 $
+# $Id: gb_adobe_digital_edition_detect_macosx.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Adobe Digital Edition Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804302");
-  script_version("$Revision: 2829 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 14:10:31 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-02-03 13:00:16 +0530 (Mon, 03 Feb 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Edition Version Detection (Mac OS X)");
@@ -41,7 +41,6 @@ if(description)
   The script logs in via ssh, gets the version by using a command and set
   it in the KB item.");
 
-  script_summary("Check the presence Adobe Digital Edition in KB");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

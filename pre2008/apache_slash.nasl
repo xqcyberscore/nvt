@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_slash.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: apache_slash.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Check for Apache Multiple / vulnerability
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to the most recent version of Apache at www.apache.org";
 if(description)
 {
   script_id(10440);
-  script_version("$Revision: 3376 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1284);
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,6 @@ if(description)
   script_cve_id("CVE-2000-0505");
   script_name("Check for Apache Multiple / vulnerability");
 
-  script_summary("Send multiple /'s to Windows Apache Server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_family("Remote file access");

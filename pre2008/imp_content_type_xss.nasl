@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imp_content_type_xss.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: imp_content_type_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: IMP Content-Type XSS Vulnerability
 #
 # Authors:
@@ -41,8 +41,8 @@ tag_solution = "Upgrade to IMP version 3.2.4 or later.";
 
 if (description) {
   script_id(12263);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10501);
   script_tag(name:"cvss_base", value:"6.8");
@@ -55,7 +55,6 @@ if (description) {
   script_name(name);
  
   summary = "Checks for Content-Type XSS Vulnerability in IMP";
-  script_summary(summary);
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

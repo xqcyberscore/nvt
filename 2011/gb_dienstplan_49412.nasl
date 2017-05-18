@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dienstplan_49412.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_dienstplan_49412.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Dienstplan Predictable Random Password Generation Vulnerability
 #
@@ -34,11 +34,11 @@ Versions prior to Dienstplan 2.3 are vulnerable.";
 
 tag_solution = "Updates are available. Please see the references for more information.";
 
-if (description)
+if(description)
 {
  script_id(103237);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-02 13:13:57 +0200 (Fri, 02 Sep 2011)");
  script_bugtraq_id(49412);
  script_tag(name:"cvss_base", value:"6.5");
@@ -51,7 +51,6 @@ if (description)
  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/current/0370.html");
 
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if Dienstplan is prone to an insecure random password generation vulnerability");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -67,32 +66,27 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/dienstplan",cgi_dirs());
+foreach dir( make_list_unique( "/dienstplan", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/?page=login&action=about"); 
+  if( dir == "/" ) dir = "";
+
+  url = string(dir, "/?page=login&action=about");
   req = http_get(item:url, port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:req);
+  res = http_keepalive_send_recv(port:port, data:req);
 
-  if("Dienstplan" >!< rcvRes)exit(0);
-  version = eregmatch(pattern:"Dienstplan Version ([0-9.]+)", string: rcvRes);
-  if(isnull(version[1]))exit(0);
+  if("Dienstplan" >!< res) continue;
+  version = eregmatch(pattern:"Dienstplan Version ([0-9.]+)", string: res);
+  if(isnull(version[1])) continue;
 
   if(version_is_less(version:version[1], test_version:"2.3")) {
-  
-    security_message(port:port);
-    exit(0);
-
-  }  
-
+    report = report_fixed_ver( installed_version:version[1], fixed_version:"2.3" );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
-
+exit( 99 );

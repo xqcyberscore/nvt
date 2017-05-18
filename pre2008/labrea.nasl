@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: labrea.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: labrea.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: scan for LaBrea tarpitted hosts
 #
 # Authors:
@@ -31,8 +31,8 @@ if(description)
 {
  script_id(10796);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5309 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "scan for LaBrea tarpitted hosts";
@@ -40,7 +40,6 @@ if(description)
 
 
  summary = "LaBrea scan";
- script_summary(summary);
 
  script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_active");

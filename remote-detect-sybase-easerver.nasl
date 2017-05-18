@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-sybase-easerver.nasl 2644 2016-02-12 06:47:32Z antu123 $
+# $Id: remote-detect-sybase-easerver.nasl 6032 2017-04-26 09:02:50Z teissa $
 # Description: This script ensure that the Sybase EAServer is installed and running
 #
 # remote-detect-sybase-easerver.nasl
@@ -25,12 +25,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80006");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2644 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 07:47:32 +0100 (Fri, 12 Feb 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-09-09 16:54:39 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sybase Enterprise Application Server service detection");
-  script_summary("Ensure that the remote host is running a Sybase EAServer ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
   script_family("Service detection");

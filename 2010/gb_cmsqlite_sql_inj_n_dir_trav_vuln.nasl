@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmsqlite_sql_inj_n_dir_trav_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_cmsqlite_sql_inj_n_dir_trav_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # CMSQlite 'index.php' SQL Injection and Directory Traversal Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800789");
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-2095", "CVE-2010-2096");
   script_tag(name:"cvss_base", value:"7.5");
@@ -40,8 +40,8 @@ if(description)
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_dependencies("find_service1.nasl", "http_version.nasl");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -66,11 +66,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 cmsPort = get_http_port(default:80);
 
 if (!can_host_php(port:cmsPort)) exit(0);
@@ -80,9 +78,7 @@ foreach path (make_list_unique("/", "/cmsqlite", "/cmsqlite10", cgi_dirs(port:cm
 
   if(dir == "/") dir = "";
 
-  ## Send and receive response
-  sndReq = http_get(item:string(path, "/index.php"), port:cmsPort);
-  rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(path, "/index.php"), port:cmsPort);
 
   ## Confirm the application
   if(">CMSQlite<" >< rcvRes)

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3499.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: deb_3499.nasl 5782 2017-03-30 09:01:05Z teissa $
 # Auto-generated from advisory DSA 3499-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703499);
-    script_version("$Revision: 3164 $");
+    script_version("$Revision: 5782 $");
     script_cve_id("CVE-2016-0740", "CVE-2016-0775", "CVE-2016-2533");
     script_name("Debian Security Advisory DSA 3499-1 (pillow - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:38:01 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3499.html");
 
-    script_summary("Debian Security Advisory DSA 3499-1 (pillow - security update)");
 
     script_category(ACT_GATHER_INFO);
 

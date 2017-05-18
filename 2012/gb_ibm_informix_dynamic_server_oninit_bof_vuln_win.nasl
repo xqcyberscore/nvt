@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_ibm_informix_dynamic_server_oninit_bof_vuln_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Windows)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with IBM Informix Dynamic Server and is
 if(description)
 {
   script_id(802292);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5888 $");
   script_bugtraq_id(44192);
   script_cve_id("CVE-2010-4053");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-12 17:17:17 +0530 (Thu, 12 Jan 2012)");
   script_name("IBM Informix Dynamic Server 'oninit.exe' Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41913");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/62619");
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-10-216");
 
-  script_summary("Check for the version of IBM Informix Dynamic Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

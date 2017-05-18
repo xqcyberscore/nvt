@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 3514 2016-06-14 11:29:47Z mime $
+# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805140");
-  script_version("$Revision: 3514 $");
+  script_version("$Revision: 5789 $");
   script_cve_id("CVE-2014-100006");
   script_bugtraq_id(65517);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:29:47 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-02-18 15:28:52 +0530 (Wed, 18 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability");
@@ -62,15 +62,14 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91133");
   script_xref(name : "URL" , value : "http://www.rusty-ice.de/advisory/advisory_2014001.txt");
 
-  script_summary("Check if webtrees is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 2443);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -80,29 +79,19 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if (!http_port) {
-  http_port = 80;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/webtrees", cgi_dirs()))
+host = http_host_name(port:http_port);
+
+foreach dir (make_list_unique("/", "/webtrees", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
@@ -118,10 +107,9 @@ foreach dir (make_list_unique("/", "/webtrees", cgi_dirs()))
   ## Send the request with session id to confirm App
   url = dir + "/login.php?url=index.php%3F";
   sndReq = string('GET ', url,' HTTP/1.1\r\n',
-                  'Host: ', get_host_name(),'\r\n',
-                  'User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.19) Gecko/20110420 Firefox/3.5.19\r\n' +
+                  'Host: ', host,'\r\n',
+                  'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
                   'Cookie: WT_SESSION=', cookie[1], '\r\n\r\n');
-
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
   ##Confirm Application
@@ -133,7 +121,7 @@ foreach dir (make_list_unique("/", "/webtrees", cgi_dirs()))
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"<script>alert\(document.cookie\)</script>",
+       pattern:"<script>alert\(document\.cookie\)</script>",
        extra_check:"toggleStreetView"))
     {
       security_message(port:http_port);

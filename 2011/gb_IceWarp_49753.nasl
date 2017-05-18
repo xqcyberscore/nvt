@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_IceWarp_49753.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_IceWarp_49753.nasl 5769 2017-03-29 13:50:21Z cfi $
 #
 # IceWarp Web Mail Multiple Information Disclosure Vulnerabilities
 #
@@ -37,8 +37,8 @@ information.";
 if (description)
 {
  script_id(103279);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5769 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-28 12:51:43 +0200 (Wed, 28 Sep 2011)");
  script_bugtraq_id(49753);
  script_cve_id("CVE-2011-3579","CVE-2011-3580");
@@ -52,8 +52,7 @@ if (description)
  script_xref(name : "URL" , value : "https://www.trustwave.com/spiderlabs/advisories/TWSL2011-013.txt");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed IceWarp is vulnerable");
- script_category(ACT_ATTACK);
+ script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
@@ -68,29 +67,23 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 banner = get_http_banner(port:port);
 if(!banner || "IceWarp" >!< banner)exit(0);
 
-dirs = make_list("/webmail",cgi_dirs());
+foreach dir( make_list_unique( "/webmail", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/server/"); 
 
   if(http_vuln_check(port:port, url:url,pattern:"<title>phpinfo\(\)")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

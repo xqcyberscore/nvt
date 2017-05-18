@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_confluence_xss_vuln.nasl 3462 2016-06-09 12:55:52Z mime $
+# $Id: gb_confluence_xss_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Atlassian Confluence XSS and Insecure Direct Object Reference Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:atlassian:confluence";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806815");
-  script_version("$Revision: 3462 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-8398","CVE-2015-8399");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-09 14:55:52 +0200 (Thu, 09 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-08 16:21:20 +0530 (Fri, 08 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Atlassian Confluence XSS and Insecure Direct Object Reference Vulnerabilities");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39170/");
   script_xref(name:"URL" , value:"http://seclists.org/fulldisclosure/2016/Jan/5");
   script_xref(name:"URL" , value:"https://packetstormsecurity.com/files/135130/confluence-xssdisclose.txt");
-  script_summary("Check if Atlassian Confluence is prone to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

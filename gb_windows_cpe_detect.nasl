@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 5573 2017-03-14 15:27:46Z cfi $
+# $Id: gb_windows_cpe_detect.nasl 5964 2017-04-18 09:30:30Z cfi $
 #
 # Windows Application CPE Detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 5573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 16:27:46 +0100 (Tue, 14 Mar 2017) $");
+  script_version("$Revision: 5964 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:30:30 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,6 +92,7 @@ function split_ver(value)
 }
 
 SCRIPT_DESC = "Windows Application CPE Detection";
+BANNER_TYPE = "Registry access via SMB";
 app = "App";
 
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
@@ -985,357 +986,349 @@ if (OSNAME) lowOSNAME = tolower(OSNAME);
 if (!OSVER) OSVER = version;
 if (!OSSP && OSSP != "0") OSSP = spver;
 
-if ("Windows NT" >< OSNAME && OSVER < 3) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt", desc:SCRIPT_DESC);
-else if (OSVER == "3.0.1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt:3.0.1", desc:SCRIPT_DESC);
-else if (OSVER == "3.1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt:3.1", desc:SCRIPT_DESC);
-else if (OSVER == "3.5") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt:3.5", desc:SCRIPT_DESC);
-else if (OSVER == "3.5.1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt:3.5.1", desc:SCRIPT_DESC);
-else if (OSVER == "3.5.1" && OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt:3.5.1:sp" + OSSP, desc:SCRIPT_DESC);
-else if (OSVER == "3.51") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_nt:3.51", desc:SCRIPT_DESC);
+if ("Windows NT" >< OSNAME && OSVER < 3) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt", desc:SCRIPT_DESC);
+else if (OSVER == "3.0.1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt:3.0.1", desc:SCRIPT_DESC);
+else if (OSVER == "3.1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt:3.1", desc:SCRIPT_DESC);
+else if (OSVER == "3.5") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt:3.5", desc:SCRIPT_DESC);
+else if (OSVER == "3.5.1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt:3.5.1", desc:SCRIPT_DESC);
+else if (OSVER == "3.5.1" && OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt:3.5.1:sp" + OSSP, desc:SCRIPT_DESC);
+else if (OSVER == "3.51") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_nt:3.51", desc:SCRIPT_DESC);
 
 else if (OSVER == "4.0"){
   cpe = "cpe:/o:microsoft:windows_nt";
-  if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:gold", desc:SCRIPT_DESC);
-  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:sp" + OSSP, desc:SCRIPT_DESC);
-  else if (OSSP == "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:gold:workstation", desc:SCRIPT_DESC);
-  else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:gold:server", desc:SCRIPT_DESC);
-  else if (OSSP == "0" && "Enterprise" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:gold:enterprise", desc:SCRIPT_DESC);
-  else if (OSSP == "0" && "Terminal Server">< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:gold:terminal_server", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:sp" + OSSP + ":workstation", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:sp" + OSSP + ":server", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && "Enterprise" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && "Terminal Server" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0:sp" + OSSP + ":terminal_server", desc:SCRIPT_DESC);
-  else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":4.0", desc:SCRIPT_DESC);
+  if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:gold", desc:SCRIPT_DESC);
+  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:sp" + OSSP, desc:SCRIPT_DESC);
+  else if (OSSP == "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:gold:workstation", desc:SCRIPT_DESC);
+  else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:gold:server", desc:SCRIPT_DESC);
+  else if (OSSP == "0" && "Enterprise" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:gold:enterprise", desc:SCRIPT_DESC);
+  else if (OSSP == "0" && "Terminal Server">< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:gold:terminal_server", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:sp" + OSSP + ":workstation", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:sp" + OSSP + ":server", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && "Enterprise" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && "Terminal Server" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0:sp" + OSSP + ":terminal_server", desc:SCRIPT_DESC);
+  else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":4.0", desc:SCRIPT_DESC);
 }
 if (OSVER == "5.0"){
   cpe = "cpe:/o:microsoft:windows_2000";
   
-  if (OSSP == "0" ) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold", desc:SCRIPT_DESC);
-  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-  else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:server", desc:SCRIPT_DESC);
-  else if (OSSP == "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:professional", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":professional", desc:SCRIPT_DESC);
-  else if (OSSP != "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":server", desc:SCRIPT_DESC);
-  else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_2000", desc:SCRIPT_DESC);
+  if (OSSP == "0" ) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
+  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
+  else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:server", desc:SCRIPT_DESC);
+  else if (OSSP == "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:professional", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && "WinNT" >< type)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":professional", desc:SCRIPT_DESC);
+  else if (OSSP != "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":server", desc:SCRIPT_DESC);
+  else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_2000", desc:SCRIPT_DESC);
 }
 if (OSVER == "5.1"){
   cpe = "cpe:/o:microsoft:windows_xp";
   if (OSSP == "0"){
-    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:embedded", desc:SCRIPT_DESC);
-    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:professional", desc:SCRIPT_DESC);
-    else if ("home" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:home", desc:SCRIPT_DESC);
-    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:media_center", desc:SCRIPT_DESC);
-    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:tablet_pc", desc:SCRIPT_DESC);
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold", desc:SCRIPT_DESC);
+    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:embedded", desc:SCRIPT_DESC);
+    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:professional", desc:SCRIPT_DESC);
+    else if ("home" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:home", desc:SCRIPT_DESC);
+    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:media_center", desc:SCRIPT_DESC);
+    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:tablet_pc", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
   }
   else if (OSSP == "1" || OSSP == "2"){
-    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":embedded", desc:SCRIPT_DESC);
-    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":professional", desc:SCRIPT_DESC);
-    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":media_center", desc:SCRIPT_DESC);
-    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":tablet_pc", desc:SCRIPT_DESC);
+    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":embedded", desc:SCRIPT_DESC);
+    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":professional", desc:SCRIPT_DESC);
+    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":media_center", desc:SCRIPT_DESC);
+    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":tablet_pc", desc:SCRIPT_DESC);
   }
   else if (OSSP == "3"){
-    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp3:embedded", desc:SCRIPT_DESC);
-    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp3:professional", desc:SCRIPT_DESC);
-    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp3:media_center", desc:SCRIPT_DESC);
-    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp3:tablet_pc", desc:SCRIPT_DESC);
+    if (Embedded_NT)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp3:embedded", desc:SCRIPT_DESC);
+    else if ("professional" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp3:professional", desc:SCRIPT_DESC);
+    else if ("media" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp3:media_center", desc:SCRIPT_DESC);
+    else if ("tablet" >< lowOSNAME) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp3:tablet_pc", desc:SCRIPT_DESC);
   }
-  if (OSSP != "0" && ("home" >< lowOSNAME )) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp" + OSSP + ":home", desc:SCRIPT_DESC);
-  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-  else if (!OSSP) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_xp", desc:SCRIPT_DESC);
+  if (OSSP != "0" && ("home" >< lowOSNAME )) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":home", desc:SCRIPT_DESC);
+  else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
+  else if (!OSSP) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_xp", desc:SCRIPT_DESC);
 }
 if (OSVER == "5.2"){
   if ("WinNT" >< type){
   cpe = "cpe:/o:microsoft:windows_xp";
-    if (OSSP != "0" && x64 == "1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp" + OSSP + ":x64", desc:SCRIPT_DESC);
-    if (x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x86", desc:SCRIPT_DESC);
-    if (OSSP == "2" && x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x86", desc:SCRIPT_DESC);
-    if (OSSP == "0" && x64 == "1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:x64", desc:SCRIPT_DESC);
+    if (OSSP != "0" && x64 == "1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp" + OSSP + ":x64", desc:SCRIPT_DESC);
+    if (x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86", desc:SCRIPT_DESC);
+    if (OSSP == "2" && x64 != 1) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x86", desc:SCRIPT_DESC);
+    if (OSSP == "0" && x64 == "1") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:x64", desc:SCRIPT_DESC);
   }
   else if ("WinNT" >!< type){
     cpe = "cpe:/o:microsoft:windows_2003_server";
     cpe1 = "cpe:/o:microsoft:windows_server_2003";
     if (OSCPU && OSOTD != "R2"){
       if (x64 != "1"){
-        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:standard", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":standard", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:datacenter", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:enterprise", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
-        else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::sp2", desc:SCRIPT_DESC);
-        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold", desc:SCRIPT_DESC);
+        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:standard", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":standard", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:datacenter", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:enterprise", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
+        else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
+        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2", desc:SCRIPT_DESC);
+        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
       }
       else if (x64 == "1"){
-        if (OSSP == "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64-standard", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64-datacenter", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64-enterprise", desc:SCRIPT_DESC);
-        else if (OSSP != "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
+        if (OSSP == "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-standard", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-datacenter", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-enterprise", desc:SCRIPT_DESC);
+        else if (OSSP != "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
 
-        if (OSSP == "2" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
+        if (OSSP == "2" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
       }
       
-      if (OSSP == "0" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "1" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::sp2:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "0" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "1" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:itanium", desc:SCRIPT_DESC);
 
     }
     else if (OSCPU && OSOTD == "R2"){
       if (x64 != "1"){
-        if (16384 >= OSPRODS) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:compute_cluster", desc:SCRIPT_DESC);
-        else if (Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:storage", desc:SCRIPT_DESC);
-        else if (!DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:standard", desc:SCRIPT_DESC);
-        else if (Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:enterprise", desc:SCRIPT_DESC);
-        else if (DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:datacenter", desc:SCRIPT_DESC);
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2", desc:SCRIPT_DESC);
+        if (16384 >= OSPRODS) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:compute_cluster", desc:SCRIPT_DESC);
+        else if (Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:storage", desc:SCRIPT_DESC);
+        else if (!DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:standard", desc:SCRIPT_DESC);
+        else if (Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:enterprise", desc:SCRIPT_DESC);
+        else if (DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:datacenter", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2", desc:SCRIPT_DESC);
       }
       else if (x64 == "1"){
-        if (OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:x64-standard", desc:SCRIPT_DESC);
-        else if (Enterprise && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:x64-enterprise", desc:SCRIPT_DESC);
-        else if (DataCenter && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:x64-datacenter", desc:SCRIPT_DESC);
-        else if (OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::r2:x64", desc:SCRIPT_DESC);
+        if (OSCPU == "9" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R && !Stor_Serv_2003R2) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64-standard", desc:SCRIPT_DESC);
+        else if (Enterprise && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64-enterprise", desc:SCRIPT_DESC);
+        else if (DataCenter && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64-datacenter", desc:SCRIPT_DESC);
+        else if (OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::r2:x64", desc:SCRIPT_DESC);
       }
     }
     #SMB fallback. Is not so exactly as wmi.
     else if(!OSCPU){
       if (x64 != "1"){
-#        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:standard", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":standard", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:datacenter", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:enterprise", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
-        if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
-        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::sp2", desc:SCRIPT_DESC);
-        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold", desc:SCRIPT_DESC);
+#        if (OSSP == "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:standard", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":standard", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:datacenter", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:enterprise", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":datacenter", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":enterprise", desc:SCRIPT_DESC);
+        if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
+        else if (OSSP == "2") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2", desc:SCRIPT_DESC);
+        else if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
       }
       else if (x64 == "1"){
-#        if (OSSP == "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64-standard", desc:SCRIPT_DESC);
-#        else if (OSSP != "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && cputype == "AMD64" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64-datacenter", desc:SCRIPT_DESC);
-#        else if (OSSP == "0" && cputype == "AMD64" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64-enterprise", desc:SCRIPT_DESC);
-        if (OSSP != "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp" + OSSP + ":x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
-        if (OSSP == "2" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
-        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
+#        if (OSSP == "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-standard", desc:SCRIPT_DESC);
+#        else if (OSSP != "0" && cputype == "AMD64" && !DataCenter && !Enterprise && !Web_2003 && !SBS_R) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64-standard", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && cputype == "AMD64" && DataCenter) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-datacenter", desc:SCRIPT_DESC);
+#        else if (OSSP == "0" && cputype == "AMD64" && Enterprise) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64-enterprise", desc:SCRIPT_DESC);
+        if (OSSP != "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP + ":x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:x64", desc:SCRIPT_DESC);
+        if (OSSP == "2" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
+        else if (OSSP == "0" && cputype == "AMD64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
       }
-      if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "1" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
-      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::sp2:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "1" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
+      if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:itanium", desc:SCRIPT_DESC);
     }
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_2003_server", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_2003_server", desc:SCRIPT_DESC);
   }
 }
 if (OSVER == "6.0"){
   if(OSTYPE == "1"){#Vista
     cpe = "cpe:/o:microsoft:windows_vista";
-    cpe1 = "cpe:/o:microsoft:windows:vista";
-    cpe2 = "cpe:/o:microsoft:windows-nt:vista:sp1";
-    if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold", desc:SCRIPT_DESC);
+    if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
     if (x64 != "1"){
       if (OSSP == "0"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x32-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x32-ultimate", desc:SCRIPT_DESC);
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x86", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-ultimate", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x32-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x32-ultimate", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-ultimate", desc:SCRIPT_DESC);
         else{
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp1", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1", desc:SCRIPT_DESC);
         }
       }
       if (OSSP == "2"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2", desc:SCRIPT_DESC);
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
       }
     }
     else if (x64 == "1"){
       if (OSSP == "0"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x64-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x64-ultimate", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-ultimate", desc:SCRIPT_DESC);
         else {
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x64", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":unknown:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
         }
       }
       if (OSSP == "1"){
-        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x64-enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe2 + ":x64-ultimate", desc:SCRIPT_DESC);
-        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windowst:vista:sp1:x64-ultimate", desc:SCRIPT_DESC);
-        else if(OSSKU == "3")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe2 + ":x64-home_premium", desc:SCRIPT_DESC);
+        if(OSSKU == "4")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-ultimate", desc:SCRIPT_DESC);
+        else if(OSSKU == "3")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-home_premium", desc:SCRIPT_DESC);
         else {
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp1:x64", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
         }
       }
       if (OSSP == "2"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
       }
     }
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_vista", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2008
     cpe = "cpe:/o:microsoft:windows_server_2008";
     if (x64 != "1"){
       if (OSSP == "0"){
-        if(OSSKU == "8" || OSSKU == "12")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:datacenter", desc:SCRIPT_DESC);
-        else if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "18")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:hpc", desc:SCRIPT_DESC);
-        else if(OSSKU == "7" || OSSKU == "13")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:standard", desc:SCRIPT_DESC);
-        else if(OSSKU == "20" || OSSKU == "21" || OSSKU == "22" || OSSKU == "23")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:storage", desc:SCRIPT_DESC);
-        else if(OSSKU == "17")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:web", desc:SCRIPT_DESC);
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
+        if(OSSKU == "8" || OSSKU == "12")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:datacenter", desc:SCRIPT_DESC);
+        else if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "18")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:hpc", desc:SCRIPT_DESC);
+        else if(OSSKU == "7" || OSSKU == "13")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:standard", desc:SCRIPT_DESC);
+        else if(OSSKU == "20" || OSSKU == "21" || OSSKU == "22" || OSSKU == "23")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:storage", desc:SCRIPT_DESC);
+        else if(OSSKU == "17")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:web", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
       }
       else if (OSSP == "1"){
-        if(OSSKU == "4" || OSSKU == "14")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:enterprise", desc:SCRIPT_DESC);
+        if(OSSKU == "4" || OSSKU == "14")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:enterprise", desc:SCRIPT_DESC);
       }
       else if (OSSP == "2"){
-        if(OSSKU == "8" || OSSKU == "12")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:datacenter", desc:SCRIPT_DESC);
-        else if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:enterprise", desc:SCRIPT_DESC);
-        else if(OSSKU == "18")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:hpc", desc:SCRIPT_DESC);
-        else if(OSSKU == "7" || OSSKU == "13")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:standard", desc:SCRIPT_DESC);
-        else if(OSSKU == "20" || OSSKU == "21" || OSSKU == "22" || OSSKU == "23")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:storage", desc:SCRIPT_DESC);
-        else if(OSSKU == "17")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:web", desc:SCRIPT_DESC);
+        if(OSSKU == "8" || OSSKU == "12")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:datacenter", desc:SCRIPT_DESC);
+        else if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:enterprise", desc:SCRIPT_DESC);
+        else if(OSSKU == "18")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:hpc", desc:SCRIPT_DESC);
+        else if(OSSKU == "7" || OSSKU == "13")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:standard", desc:SCRIPT_DESC);
+        else if(OSSKU == "20" || OSSKU == "21" || OSSKU == "22" || OSSKU == "23")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:storage", desc:SCRIPT_DESC);
+        else if(OSSKU == "17")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:web", desc:SCRIPT_DESC);
         else {
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x32", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x32", desc:SCRIPT_DESC);
         }
       }
-      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x32", desc:SCRIPT_DESC);
+      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x32", desc:SCRIPT_DESC);
     }
     else if (x64 == "1" && OSCPU != "6"){
       if (OSSP == "0"){
       }
       else if (OSSP == "1"){
-        if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:enterprise_x64", desc:SCRIPT_DESC);
+        if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:enterprise_x64", desc:SCRIPT_DESC);
       }
       else if (OSSP == "2"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
-        if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:enterprise_x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+        if(OSSKU == "4" || OSSKU == "14"|| OSSKU == "10")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:enterprise_x64", desc:SCRIPT_DESC);
       }
       else{
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x64", desc:SCRIPT_DESC);
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-::x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::x64", desc:SCRIPT_DESC);
       }
     }
-    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::itanium", desc:SCRIPT_DESC);
-    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-::itanium", desc:SCRIPT_DESC);
-    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
-    else if (OSSP == "2" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
-    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-", desc:SCRIPT_DESC);
+    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::itanium", desc:SCRIPT_DESC);
+    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::itanium", desc:SCRIPT_DESC);
+    else if (OSSP == "0" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
+    else if (OSSP == "2" && OSSKU == "15") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
+    else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-", desc:SCRIPT_DESC);
   }
   #SMB fallback. Is not so exactly as wmi.
   else if(!OSTYPE){
     if("Vista" >< OSNAME){#Vista
       cpe = "cpe:/o:microsoft:windows_vista";
-      cpe1 = "cpe:/o:microsoft:windows:vista";
-      cpe2 = "cpe:/o:microsoft:windows-nt:vista:sp1";
-      if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::gold", desc:SCRIPT_DESC);
+      if (OSSP == "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
       if (x64 != "1"){
         if (OSSP == "0"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x32-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x32-ultimate", desc:SCRIPT_DESC);
-          else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x86", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86-ultimate", desc:SCRIPT_DESC);
+          else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x86", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x32-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x32-ultimate", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x86-ultimate", desc:SCRIPT_DESC);
           else{
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp1", desc:SCRIPT_DESC);
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1", desc:SCRIPT_DESC);
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1", desc:SCRIPT_DESC);
           }
         }
         if (OSSP == "2"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
         }
       }
       else if (x64 == "1"){
         if (OSSP == "0"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x64-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + "::x64-ultimate", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64-ultimate", desc:SCRIPT_DESC);
           else {
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x64", desc:SCRIPT_DESC);
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":unknown:x64", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
           }
         }
         if (OSSP == "1"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x64-enterprise", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe2 + ":x64-ultimate", desc:SCRIPT_DESC);
-          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windowst:vista:sp1:x64-ultimate", desc:SCRIPT_DESC);
-          else if("premium" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe2 + ":x64-home_premium", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-enterprise", desc:SCRIPT_DESC);
+          else if("ultimate" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-ultimate", desc:SCRIPT_DESC);
+          else if("premium" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64-home_premium", desc:SCRIPT_DESC);
           else {
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp1:x64", desc:SCRIPT_DESC);
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe1 + ":sp1:x64", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp1:x64", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
           }
         }
-          if (OSSP == "2"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+        if (OSSP == "2"){
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:x64", desc:SCRIPT_DESC);
         }
       }
-      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_vista", desc:SCRIPT_DESC);
+      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
     }
     if("Windows Server 2008" >< OSNAME){#Windows 2008
       cpe = "cpe:/o:microsoft:windows_server_2008";
       if (x64 != "1"){
         if (OSSP == "0"){
-          if("datacenter" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:datacenter", desc:SCRIPT_DESC);
-          else if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:enterprise", desc:SCRIPT_DESC);
-          else if("cluster" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:hpc", desc:SCRIPT_DESC);
-          else if("standard" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:standard", desc:SCRIPT_DESC);
-          else if("storage" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:storage", desc:SCRIPT_DESC);
-          else if("web" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:web", desc:SCRIPT_DESC);
-          else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
+          if("datacenter" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:datacenter", desc:SCRIPT_DESC);
+          else if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:enterprise", desc:SCRIPT_DESC);
+          else if("cluster" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:hpc", desc:SCRIPT_DESC);
+          else if("standard" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:standard", desc:SCRIPT_DESC);
+          else if("storage" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:storage", desc:SCRIPT_DESC);
+          else if("web" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:web", desc:SCRIPT_DESC);
+          else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold", desc:SCRIPT_DESC);
         }
         else if (OSSP == "1"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:enterprise", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:enterprise", desc:SCRIPT_DESC);
         }
         else if (OSSP == "2"){
-          if("datacenter" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:datacenter", desc:SCRIPT_DESC);
-          else if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:enterprise", desc:SCRIPT_DESC);
-          else if("cluster" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:hpc", desc:SCRIPT_DESC);
-          else if("standard" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:standard", desc:SCRIPT_DESC);
-          else if("storage" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:storage", desc:SCRIPT_DESC);
-          else if("web" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:web", desc:SCRIPT_DESC);
+          if("datacenter" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:datacenter", desc:SCRIPT_DESC);
+          else if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:enterprise", desc:SCRIPT_DESC);
+          else if("cluster" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:hpc", desc:SCRIPT_DESC);
+          else if("standard" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:standard", desc:SCRIPT_DESC);
+          else if("storage" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:storage", desc:SCRIPT_DESC);
+          else if("web" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:web", desc:SCRIPT_DESC);
           else {
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
-            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x32", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2", desc:SCRIPT_DESC);
+            register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x32", desc:SCRIPT_DESC);
           }
         }
-        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x32", desc:SCRIPT_DESC);
+        else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x32", desc:SCRIPT_DESC);
       }
       else if (x64 == "1" && OSCPU != "6"){
         if (OSSP == "0"){
         }
         else if (OSSP == "1"){
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:enterprise_x64", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:enterprise_x64", desc:SCRIPT_DESC);
         }
         else if (OSSP == "2"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
-          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:enterprise_x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:x64", desc:SCRIPT_DESC);
+          if("enterprise" >< lowOSNAME)register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:enterprise_x64", desc:SCRIPT_DESC);
         }
         else{
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::x64", desc:SCRIPT_DESC);
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-::x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::x64", desc:SCRIPT_DESC);
         }
       }
-      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":::itanium", desc:SCRIPT_DESC);
-      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-::itanium", desc:SCRIPT_DESC);
-      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
-      else if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
-      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-", desc:SCRIPT_DESC);
+      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":::itanium", desc:SCRIPT_DESC);
+      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-::itanium", desc:SCRIPT_DESC);
+      else if (OSSP == "0" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:gold:itanium", desc:SCRIPT_DESC);
+      else if (OSSP == "2" && cputype =="IA64") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp2:itanium", desc:SCRIPT_DESC);
+      else register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-", desc:SCRIPT_DESC);
     }
   }
 }
@@ -1346,31 +1339,31 @@ if (OSVER == "6.1"){
   if(OSTYPE == "1"){#Windows 7
     if (x64 != "1"){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x32", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x32", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x32", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x32", desc:SCRIPT_DESC);
       }
     }
     if (x64 == "1"){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
       }      
     }
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2008 R2
     cpe = "cpe:/o:microsoft:windows_server_2008:r2";
     if (OSSP == "0"){
-      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
-      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::x64", desc:SCRIPT_DESC);
-      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::itanium", desc:SCRIPT_DESC);      
+      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
+      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::x64", desc:SCRIPT_DESC);
+      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::itanium", desc:SCRIPT_DESC);      
     }
     if (OSSP == "1"){
-      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
-      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":sp1:itanium", desc:SCRIPT_DESC);
+      if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
+      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:itanium", desc:SCRIPT_DESC);
     }
   }
   #SMB fallback. Is not so exactly as wmi.
@@ -1378,31 +1371,31 @@ if (OSVER == "6.1"){
     if ("Windows Server 2008" >< OSNAME){
       cpe = "cpe:/o:microsoft:windows_server_2008:r2";
       if (OSSP == "0"){
-        if (cputype !="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
-        else if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::x64", desc:SCRIPT_DESC);
-        else if (cputype =="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + "::itanium", desc:SCRIPT_DESC);
+        if (cputype !="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
+        else if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::x64", desc:SCRIPT_DESC);
+        else if (cputype =="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::itanium", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
-        else if (cputype =="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":sp1:itanium", desc:SCRIPT_DESC);
+        if (cputype =="AMD64" && x64 == "1")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
+        else if (cputype =="IA64")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:itanium", desc:SCRIPT_DESC);
       }
     }
     else if ("Windows 7" >< OSNAME){
       cpe = "cpe:/o:microsoft:windows_7";
       if (x64 != "1"){
         if (OSSP == "0"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x32", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x32", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x32", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x32", desc:SCRIPT_DESC);
         }
       }
       if (x64 == "1"){
         if (OSSP == "0"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
         }      
       }
     }  
@@ -1414,24 +1407,24 @@ if (OSVER == "6.2"){
   if(OSTYPE == "1"){#Windows 8
     if (x64 != "1"){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
+        #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
       }
     }
     if (x64 == "1"){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
+        #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
       }      
     }
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2012
     if (OSSP == "0"){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
     }
@@ -1440,7 +1433,7 @@ if (OSVER == "6.2"){
   else if(!OSTYPE){  
     if ("Windows Server 2012" >< OSNAME){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
       }
@@ -1449,18 +1442,18 @@ if (OSVER == "6.2"){
       cpe = "cpe:/o:microsoft:windows_8";
       if (x64 != "1"){
         if (OSSP == "0"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
+          #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
         }
       }
       if (x64 == "1"){
         if (OSSP == "0"){
-          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
+          register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
+          #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
         }      
       }
     }  
@@ -1470,11 +1463,11 @@ if (OSVER == "6.2"){
 # TODO: Add Windows 10 and Server 2016 support via WMI
 if (OSVER == "6.3"){
   if(OSTYPE == "1"){#Windows 8.1
-    register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_8.1", desc:SCRIPT_DESC);
+    register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_8.1", desc:SCRIPT_DESC);
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2012 R2
     if (OSSP == "0"){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2012:r2", desc:SCRIPT_DESC);
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:r2", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
     }
@@ -1483,19 +1476,19 @@ if (OSVER == "6.3"){
   else if(!OSTYPE){
     if ("Windows Server 2012 R2" >< OSNAME){
       if (OSSP == "0"){
-        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2012:r2", desc:SCRIPT_DESC);
+        register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:r2", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
       }
     }
     else if ("Windows 8.1" >< OSNAME){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_8.1", desc:SCRIPT_DESC);
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_8.1", desc:SCRIPT_DESC);
     }
     else if ("Windows Server 2016" >< OSNAME){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_server_2016", desc:SCRIPT_DESC);
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2016", desc:SCRIPT_DESC);
     }
     else if ("Windows 10" >< OSNAME){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:"Registry access via SMB", cpe:"cpe:/o:microsoft:windows_10", desc:SCRIPT_DESC);
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_10", desc:SCRIPT_DESC);
     }
   }
 }

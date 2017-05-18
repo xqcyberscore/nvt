@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_oct12_win.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_oct12_win.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Mozilla Firefox Security Bypass Vulnerabilities - Oct 12 (Windows)
 #
@@ -38,18 +38,17 @@ tag_summary = "The host is installed with Mozilla Firefox and is prone to multip
 if(description)
 {
   script_id(802991);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:11:30 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox Security Bypass Vulnerabilities - Oct 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50935");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-89.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

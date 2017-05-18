@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-55.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-55.nasl 5958 2017-04-17 09:02:19Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120412");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 5958 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:25:46 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-55");
 script_tag(name: "insight", value: "A buffer overflow flaw was found in the way the Linux kernel's XFS file system implementation handled links with overly long path names. A local, unprivileged user could use this flaw to cause a denial of service or escalate their privileges by mounting a specially-crafted disk. (CVE-2011-4077 , Moderate)Flaws in ghash_update() and ghash_final() could allow a local, unprivileged user to cause a denial of service. (CVE-2011-4081 , Moderate)A flaw was found in the Linux kernel's Journaling Block Device (JBD). A local, unprivileged user could use this flaw to crash the system by mounting a specially-crafted ext3 or ext4 disk. (CVE-2011-4132 , Moderate)It was found that the kvm_vm_ioctl_assign_device() function in the KVM (Kernel-based Virtual Machine) subsystem of a Linux kernel did not check if the user requesting device assignment was privileged or not. A local, unprivileged user on the host could assign unused PCI devices, or even devices that were in use and whose resources were not properly claimed by the respective drivers, which could result in the host crashing. (CVE-2011-4347 , Moderate)Two flaws were found in the way the Linux kernel's __sys_sendmsg() function, when invoked via the sendmmsg() system call, accessed user-space memory. A local, unprivileged user could use these flaws to cause a denial of service. (CVE-2011-4594 , Moderate)A previous update introduced an integer overflow flaw in the Linux kernel. On PowerPC systems, a local, unprivileged user could use this flaw to cause a denial of service. (CVE-2011-4611 , Moderate)A flaw was found in the way the KVM subsystem of a Linux kernel handled PIT (Programmable Interval Timer) IRQs (interrupt requests) when there was no virtual interrupt controller set up. A local, unprivileged user on the host could force this situation to occur, resulting in the host crashing. (CVE-2011-4622 , Moderate)A flaw was found in the way the Linux kernel's XFS file system implementation handled on-disk Access Control Lists (ACLs). A local, unprivileged user could use this flaw to cause a denial of service or escalate their privileges by mounting a specially-crafted disk. (CVE-2012-0038 , Moderate)A flaw was found in the way the Linux kernel's KVM hypervisor implementation emulated the syscall instruction for 32-bit guests. An unprivileged guest user could trigger this flaw to crash the guest. (CVE-2012-0045 , Moderate)A divide-by-zero flaw was found in the Linux kernel's igmp_heard_query() function. An attacker able to send certain IGMP (Internet Group Management Protocol) packets to a target system could use this flaw to cause a denial of service. (CVE-2012-0207 , Moderate)"); 
 script_tag(name : "solution", value : "Run yum update kernel to update your system.  You will need to reboot your system in order for the new kernel to be running.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-55");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

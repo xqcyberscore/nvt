@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882522");
-  script_version("$Revision: 3760 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-26 07:01:47 +0200 (Tue, 26 Jul 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-19 05:26:54 +0200 (Tue, 19 Jul 2016)");
   script_cve_id("CVE-2016-5387");
   script_tag(name:"cvss_base", value:"5.1");
@@ -133,7 +133,6 @@ httpd-debug ...
 
   script_xref(name: "CESA", value: "2016:1421");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-July/021980.html");
-  script_summary("Check for the Version of httpd");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

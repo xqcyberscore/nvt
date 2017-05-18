@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_lin01_jul11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_opera_mult_vuln_lin01_jul11.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Opera Browser Multiple Vulnerabilities-01 July-11 (Linux)
 #
@@ -43,13 +43,13 @@ tag_summary = "The host is installed with Opera browser and is prone to multiple
 if(description)
 {
   script_id(802740);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2011-2628", "CVE-2011-2629", "CVE-2011-2630", "CVE-2011-2631",
                 "CVE-2011-2632", "CVE-2011-2633");
   script_bugtraq_id(48570);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-10 11:54:09 +0530 (Tue, 10 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-01 July-11 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/44611");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/unix/1111/");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of Opera on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

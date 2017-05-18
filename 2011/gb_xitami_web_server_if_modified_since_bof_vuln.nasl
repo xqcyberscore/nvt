@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xitami_web_server_if_modified_since_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_xitami_web_server_if_modified_since_bof_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # Xitami Web Server If-Modified-Since Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802025");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5839 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_bugtraq_id(25772);
   script_cve_id("CVE-2007-5067");
@@ -42,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17361");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17359");
 
-  script_summary("Check xitami web server is vulnerable by sending crafted packets");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -73,10 +72,6 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -95,7 +90,7 @@ if("Server: Xitami" >!< banner) {
 ## Construct POST Request with crafted "if-Modified-Since" header
 craftedReq = string("GET / HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
-                    "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                     "If-Modified-Since: ! ", crap(data:'A', length:500),
                     "\r\n\r\n");
 

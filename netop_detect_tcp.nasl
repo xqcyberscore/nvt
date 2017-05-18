@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: netop_detect_tcp.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: netop_detect_tcp.nasl 6032 2017-04-26 09:02:50Z teissa $
 # Description: NetOp products TCP detection
 #
 # Authors:
@@ -37,14 +37,13 @@ if(description)
 {
   script_id(15765);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4034 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   name="NetOp products TCP detection";
   script_name(name);
   summary= "Determines if the remote host has any Danware NetOp program active on TCP";
-  script_summary(summary);
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This NASL script is Copyright 2004 Corsaire Limited and Danware Data A/S.");

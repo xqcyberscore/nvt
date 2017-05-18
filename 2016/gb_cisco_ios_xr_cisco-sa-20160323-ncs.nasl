@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160323-ncs.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160323-ncs.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Cisco IOS XR Software SCP and SFTP Modules Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1366");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:C/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5850 $");
 
  script_name("Cisco IOS XR Software SCP and SFTP Modules Denial of Service Vulnerability");
 
@@ -44,9 +44,8 @@ if (description)
  script_tag(name: "solution" , value:"See advisory for a solution");
  script_tag(name: "summary" , value:"A vulnerability in the Secure Copy Protocol (SCP) and Secure FTP (SFTP) modules of Cisco IOS XR Software could allow an authenticated, remote attacker to overwrite system files and cause a denial of service (DoS) condition.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-05-04 17:40:08 +0200 (Wed, 04 May 2016)");
- script_summary("Check the IOS XR Version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

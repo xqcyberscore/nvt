@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cfengine_trans_packet_buff_overrun.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: cfengine_trans_packet_buff_overrun.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: cfengine CFServD transaction packet buffer overrun vulnerability
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade to at least 1.5.3-4, 2.0.8 or most recent 2.1 version.";
 if(description)
 {
  script_id(14317);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8699);
  script_cve_id("CVE-2003-0849");
@@ -51,7 +51,6 @@ if(description)
  
 
  summary = "check for cfengine flaw based on its version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

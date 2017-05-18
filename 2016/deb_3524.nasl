@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3524.nasl 2970 2016-03-29 04:43:41Z antu123 $
+# $Id: deb_3524.nasl 5813 2017-03-31 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3524-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703524);
-    script_version("$Revision: 2970 $");
+    script_version("$Revision: 5813 $");
     script_cve_id("CVE-2015-5254");
     script_name("Debian Security Advisory DSA 3524-1 (activemq - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-29 06:43:41 +0200 (Tue, 29 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-20 00:00:00 +0100 (Sun, 20 Mar 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3524.html");
 
-    script_summary("Debian Security Advisory DSA 3524-1 (activemq - security update)");
 
     script_category(ACT_GATHER_INFO);
 

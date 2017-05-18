@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotclear_mult_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_dotclear_mult_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Dotclear Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotclear:dotclear";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802076");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-3781", "CVE-2014-3782", "CVE-2014-3783");
   script_bugtraq_id(67560, 67559, 67557);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-06-09 14:54:32 +0530 (Mon, 09 Jun 2014)");
   script_name("Dotclear Multiple Vulnerabilities");
 
@@ -57,7 +57,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://karmainsecurity.com/KIS-2014-05");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/532184");
-  script_summary("Check if we are able to Bypass Authentication.");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -85,21 +84,16 @@ dotc_res1 = "";
 dotc_req2 = "";
 dotc_res2 = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Get hostname
 host = http_host_name(port:http_port);
 
-# Iterate over the possible directories
 foreach dir (make_list_unique("/", "/dotclear", "/cms", "/forum", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request to confirm DotClear
-  dotc_req1 = http_get(item:string(dir, "/index.php"), port:http_port);
-  dotc_res1 = http_keepalive_send_recv(port:http_port, data:dotc_req1);
+  dotc_res1 = http_get_cache(item:string(dir, "/index.php"), port:http_port);
 
   if(">Dotclear<" >< dotc_res1)
   {

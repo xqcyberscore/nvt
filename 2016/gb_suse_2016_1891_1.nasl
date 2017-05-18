@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851371");
-  script_version("$Revision: 3784 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:57:05 +0530 (Tue, 02 Aug 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,7 +73,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:1891_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-07/msg00024.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of dropbear");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_geoserver_detect.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_geoserver_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # GeoServer Version Detection
 #
@@ -33,19 +33,20 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900945");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5820 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-09-22 10:03:41 +0200 (Tue, 22 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("GeoServer Version Detection");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Set the KB for the version of GeoServer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
@@ -53,8 +54,6 @@ if(description)
 
 include("http_func.inc");
 include("host_details.inc");
-
-## start script
 
 function register_and_report( ver, dir, port, cpe, concluded )
 {
@@ -75,7 +74,7 @@ function register_and_report( ver, dir, port, cpe, concluded )
 geoPort = get_http_port(default:80);
 
 cpe = 'cpe:/a:geoserver:geoserver';
-dirs = make_list_unique("/", "/geoserver", cgi_dirs());
+dirs = make_list_unique("/", "/geoserver", cgi_dirs(port:geoPort));
 
 foreach dir ( dirs )
 {

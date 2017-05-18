@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3550.nasl 4527 2016-11-16 06:49:04Z cfi $
+# $Id: deb_3550.nasl 5712 2017-03-24 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3550-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703550);
-    script_version("$Revision: 4527 $");
+    script_version("$Revision: 5712 $");
     script_cve_id("CVE-2015-8325");
     script_name("Debian Security Advisory DSA 3550-1 (openssh - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-11-16 07:49:04 +0100 (Wed, 16 Nov 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-04-15 00:00:00 +0200 (Fri, 15 Apr 2016)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3550.html");
 
-    script_summary("Debian Security Advisory DSA 3550-1 (openssh - security update)");
 
     script_category(ACT_GATHER_INFO);
 

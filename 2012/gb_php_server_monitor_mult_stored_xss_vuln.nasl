@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_server_monitor_mult_stored_xss_vuln.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: gb_php_server_monitor_mult_stored_xss_vuln.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # PHP Server Monitor Multiple Stored Cross-Site Scripting Vulnerabilities
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:phpserver:monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803109");
-  script_version("$Revision: 3520 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:51:18 +0530 (Thu, 22 Nov 2012)");
   script_bugtraq_id(56622);
   script_name("PHP Server Monitor Multiple Stored Cross-Site Scripting Vulnerabilities");
-  script_summary("Check if PHP Server Monitor is vulnerable to Cross-Site Scripting");
   script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

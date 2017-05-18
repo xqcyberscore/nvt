@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_users_file_upload_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_nmedia_users_file_upload_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # WordPress Nmedia Users File Uploader Plugin Arbitrary File Upload Vulnerability
 #
@@ -43,18 +43,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5940 $");
   script_bugtraq_id(53786);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-20 16:16:16 +0530 (Wed, 20 Jun 2012)");
   script_name("WordPress Nmedia Users File Uploader Plugin Arbitrary File Upload Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53786");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113282/wpnmedia-shell.txt");
   script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/nmedia-user-file-uploader/changelog/");
 
-  script_summary("Check if Nmedia Users File Uploader Plugin is vulnerable to arbitrary file upload");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

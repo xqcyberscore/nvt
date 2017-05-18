@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2467_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2467_1.nasl 5977 2017-04-19 09:02:22Z teissa $
 # Description: Auto-generated from advisory DSA 2467-1 (mahara)
 #
 # Authors:
@@ -49,13 +49,12 @@ if(description)
  script_cve_id("CVE-2012-2351");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5977 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:44:15 -0400 (Thu, 31 May 2012)");
  script_name("Debian Security Advisory DSA 2467-1 (mahara)");
 
 
- script_summary("Debian Security Advisory DSA 2467-1 (mahara)");
 
  script_category(ACT_GATHER_INFO);
 

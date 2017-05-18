@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anima_gallery_multiple_vuln.nasl 3549 2016-06-17 12:10:37Z antu123 $
+# $Id: gb_anima_gallery_multiple_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # Anima Gallery Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805581");
-  script_version("$Revision: 3549 $");
+  script_version("$Revision: 5789 $");
   script_cve_id("CVE-2015-4415");
   script_bugtraq_id(75061);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 14:10:37 +0200 (Fri, 17 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-08 13:52:36 +0530 (Mon, 08 Jun 2015)");
   script_name("Anima Gallery Multiple Vulnerabilities");
 
@@ -73,52 +73,34 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132150");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535705/100/0/threaded");
 
-  script_summary("Check if AnimaGallery is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
-##
-### Code Starts Here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 ## Variable Initialization
 aniPort = "";
-sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 aniPort = get_http_port(default:80);
-if(!aniPort){
-  aniPort = 80;
-}
 
-## Check the port status
-if(!get_port_state(aniPort)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:aniPort)){
   exit(0);
 }
 
-# Iterate over possible paths
-foreach dir (make_list_unique("/", "/AnimaGallery", "/anima", cgi_dirs()))
+foreach dir (make_list_unique("/", "/AnimaGallery", "/anima", cgi_dirs(port:aniPort)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ##Send Request and Receive Response
-  sndReq = http_get(item:string(dir,"/index.php"), port:aniPort);
-  rcvRes = http_keepalive_send_recv(port:aniPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir,"/index.php"), port:aniPort);
 
   #Confirm application
   if(rcvRes =~ "Powered By.*>Anima Gallery<")
@@ -129,7 +111,7 @@ foreach dir (make_list_unique("/", "/AnimaGallery", "/anima", cgi_dirs()))
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:aniPort, url:url, check_header:TRUE,
-                       pattern:"title><script>prompt\(document.cookie\)</script>",
+                       pattern:"title><script>prompt\(document\.cookie\)</script>",
                        extra_check:">Anima Gallery<"))
     {
       report = report_vuln_url( port:aniPort, url:url );

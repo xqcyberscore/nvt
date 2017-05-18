@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_IMail_bo.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: ipswitch_IMail_bo.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # ipswitch IMail DoS
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14684");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2422", "CVE-2004-2423");
   script_bugtraq_id(11106);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("ipswitch IMail DoS");
-  script_summary("Checks for version of IMail web interface");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Denial of Service");

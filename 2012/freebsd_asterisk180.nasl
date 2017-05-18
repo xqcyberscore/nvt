@@ -58,15 +58,14 @@ if(description)
 {
  script_id(70595);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_cve_id("CVE-2011-4597", "CVE-2011-4598");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 5888 $");
  script_name("FreeBSD Ports: asterisk18");
 
 
- script_summary("FreeBSD Ports: asterisk18");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_macosx.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wireshark_ber_dissector_stack_consumption_vuln_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Wireshark BER Dissector Stack Consumption Vulnerability (Mac OS X)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with Wireshark and is prone to stack
 if(description)
 {
   script_id(802845);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2010-3445");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:26:03 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark BER Dissector Stack Consumption Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/10/12/1");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2010/10/01/10");
   script_xref(name : "URL" , value : "http://xorl.wordpress.com/2010/10/15/cve-2010-3445-wireshark-asn-1-ber-stack-overflow/");
 
-  script_summary("Check for the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

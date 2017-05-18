@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PGPCert_DoS.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: PGPCert_DoS.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # NAI PGP Cert Server DoS
 #
@@ -28,15 +28,14 @@
 if(description)
 {
   script_id(10442);
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1343);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2000-0543");
   script_name("NAI PGP Cert Server DoS");
-  script_summary("Check for DoS in PGP Cert Server");
   script_category(ACT_DENIAL);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2001 John Lampe....j_lampe@bellsouth.net");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808310");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:45:31 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-2803");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bugzilla FEDORA-2016-5bd283c48b");
   script_tag(name: "summary", value: "Check the version of bugzilla");
@@ -47,7 +47,6 @@ Without one of these database engines (local or remote), Bugzilla will not work
   script_xref(name: "FEDORA", value: "2016-5bd283c48b");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/HXDJZQQ54JYAJPPCHOMYR5NQOKGKR6I4");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of bugzilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_traffic_server_host_dos_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_apache_traffic_server_host_dos_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Apache Traffic Server HTTP Host Header Denial of Service Vulnerability
 #
@@ -39,12 +39,12 @@ tag_summary = "This host is running Apache Traffic Server and is prone to denial
 if(description)
 {
   script_id(902664);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-0256");
   script_bugtraq_id(52696);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-28 13:46:18 +0530 (Wed, 28 Mar 2012)");
   script_name("Apache Traffic Server HTTP Host Header Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026847");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://mail-archives.apache.org/mod_mbox/www-announce/201203.mbox/%3C4F6B6649.9000507@apache.org%3E");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of Apache Traffic Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Denial of Service");

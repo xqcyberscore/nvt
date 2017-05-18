@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-025.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms08-025.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Windows Kernel Usermode Callback Local Privilege Elevation Vulnerability (941693)
 #
@@ -24,26 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to execute arbitrary code
-  with elevated privileges and take complete control of an affected system.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2K3 Service Pack 2 and prior.
-  Microsoft Windows Vista Service Pack 1 and prior.
-  Microsoft Windows Server 2008 Service Pack 1 and prior.";
-tag_insight = "The flaw is due to input validation error in the Windows kernel when
-  processing user-supplied data.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-025.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-025.";
-
 if(description)
 {
   script_id(801487);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_cve_id("CVE-2008-1084");
   script_bugtraq_id(28554);
@@ -62,11 +47,20 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to execute arbitrary code
+  with elevated privileges and take complete control of an affected system.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows 2K3 Service Pack 2 and prior.
+  Microsoft Windows Vista Service Pack 1 and prior.
+  Microsoft Windows Server 2008 Service Pack 1 and prior.");
+  script_tag(name : "insight" , value : "The flaw is due to input validation error in the Windows kernel when
+  processing user-supplied data.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms08-025.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS08-025.");
   exit(0);
 }
 
@@ -76,20 +70,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
 
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:2, win2008:2) <= 0){
   exit(0);
@@ -101,11 +82,10 @@ if(hotfix_missing(name:"941693") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = get_file_version(sysPath, file_name:"Win32k.sys");
+  sysVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
   if(sysVer)
   {
     # Windows 2K
@@ -158,11 +138,10 @@ if(sysPath)
   }
 }    
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                      item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = get_file_version(sysPath, file_name:"System32\Win32k.sys");
+  sysVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
   if(sysVer)
   {
     # Windows Vista

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_f460_f660_65962.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_zte_f460_f660_65962.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # ZTE F460/F660 Backdoor Unauthorized Access Vulnerability
 #
@@ -25,8 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103924";
-
 tag_insight = "web_shell_cmd.gch on ZTE F460 and F660 cable modems allows remote
 attackers to obtain administrative access via sendcmd requests";
 
@@ -39,21 +37,16 @@ tag_vuldetect = "Try to execute the 'ifconfig' command with a HTTP GET request a
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103924");
  script_bugtraq_id(65962);
  script_cve_id("CVE-2014-2321");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5390 $");
-
+ script_version ("$Revision: 5843 $");
  script_name("ZTE F460/F660 Backdoor Unauthorized Access Vulnerability");
-
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65962");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2014-03-20 09:52:23 +0100 (Thu, 20 Mar 2014)");
- script_summary("Determine if it is possible to execute the ifconfig command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -76,18 +69,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
 
 banner = get_http_banner( port:port );
 if( "Server: Mini web server" >!< banner ) exit( 0 );
 
 if( http_vuln_check( port:port, url:'/web_shell_cmd.gch',pattern:"please input shell command" ) )
 {
-  host = get_host_name();
+  host = http_host_name(port:port);
 
   req = 'POST /web_shell_cmd.gch HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 OpenVAS/' + OPENVAS_VERSION + '\r\n' +
+        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Encoding: identify\r\n' +
         'Referer: http://' + host + '/web_shell_cmd.gch\r\n' +

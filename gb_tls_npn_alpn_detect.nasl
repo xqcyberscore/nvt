@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_npn_alpn_detect.nasl 5602 2017-03-17 14:11:29Z cfi $
+# $Id: gb_tls_npn_alpn_detect.nasl 5727 2017-03-24 17:35:04Z cfi $
 #
 # SSL/TLS: NPN / ALPN Extension and Protocol Support Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108099");
-  script_version("$Revision: 5602 $");
+  script_version("$Revision: 5727 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 15:11:29 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 18:35:04 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:00:00 +0100 (Wed, 15 Mar 2017)");
   script_name("SSL/TLS: NPN / ALPN and Protocol Support Extension Detection");
   script_category(ACT_GATHER_INFO);
@@ -108,13 +108,21 @@ foreach version( versions ) {
 
     record = search_ssl_record( data:data, search: make_array( "handshake_typ", SSLv3_SERVER_HELLO ) );
     if( record ) {
+
       npn_prots = record['extension_npn_supported_protocols'];
-      # The server will report all supported protocols via NPN
-      foreach npn_prot( npn_prots ) {
-        npn_supported = TRUE;
-        npn_report += version_string[version] + ":" + npn_alpn_name_mapping[npn_prot] + '\n';
-        set_kb_item( name:"tls_npn_supported/" + SSL_VER + "/" + port, value:TRUE );
-        set_kb_item( name:"tls_npn_prot_supported/" + SSL_VER + "/" + port, value:npn_prot );
+
+      # Just to make sure that we're getting what we're expecting
+      if( npn_prots ) {
+        # Sort to make sure that we're not reporting differences on delta reports if just the order is different
+        npn_prots = sort( npn_prots );
+
+        # The server will report all supported protocols via NPN
+        foreach npn_prot( npn_prots ) {
+          npn_supported = TRUE;
+          npn_report += version_string[version] + ":" + npn_alpn_name_mapping[npn_prot] + '\n';
+          set_kb_item( name:"tls_npn_supported/" + SSL_VER + "/" + port, value:TRUE );
+          set_kb_item( name:"tls_npn_prot_supported/" + SSL_VER + "/" + port, value:npn_prot );
+        }
       }
     }
 
@@ -165,12 +173,20 @@ foreach version( versions ) {
       record = search_ssl_record( data:data, search: make_array( "handshake_typ", SSLv3_SERVER_HELLO ) );
       if( record ) {
         alpn_prots = record['extension_alpn_supported_protocols'];
-        # The server will choose only one protocol via ALPN
-        foreach alpn_prot( alpn_prots ) {
-          alpn_supported = TRUE;
-          alpn_report += version_string[version] + ":" + npn_alpn_name_mapping[alpn_prot] + '\n';
-          set_kb_item( name:"tls_alpn_supported/" + SSL_VER + "/" + port, value:TRUE );
-          set_kb_item( name:"tls_alpn_prot_supported/" + SSL_VER + "/" + port, value:alpn_prot );
+
+        # Just to make sure that we're getting what we're expecting
+        if( alpn_prots ) {
+
+          # Sort to make sure that we're not reporting differences on delta reports if just the order is different
+          alpn_prots = sort( alpn_prots );
+
+          # The server will choose only one protocol via ALPN, still iterating over the list here...
+          foreach alpn_prot( alpn_prots ) {
+            alpn_supported = TRUE;
+            alpn_report += version_string[version] + ":" + npn_alpn_name_mapping[alpn_prot] + '\n';
+            set_kb_item( name:"tls_alpn_supported/" + SSL_VER + "/" + port, value:TRUE );
+            set_kb_item( name:"tls_alpn_prot_supported/" + SSL_VER + "/" + port, value:alpn_prot );
+          }
         }
       }
 

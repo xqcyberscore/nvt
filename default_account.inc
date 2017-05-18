@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_account.inc 4775 2016-12-15 13:02:25Z mime $
+# $Id: default_account.inc 5990 2017-04-20 13:39:40Z cfi $
 #
 # Support for various ways of determining if an account is valid
 #
@@ -23,7 +23,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4775 $
+# $Revision: 5990 $
+#
 ###############################################################################
 
 include("ssh_func.inc");
@@ -84,10 +85,9 @@ function _check_telnet( port, login, password ) {
 
 #-------------------------------------------------------------------#
 
-
 function check_account( login, password ) {
 
-  local_var port, ret, soc, res;
+  local_var login, password, port, ret, soc, res;
 
   if( ! login ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#check_account" );
 
@@ -96,12 +96,14 @@ function check_account( login, password ) {
   if( ! port ) port = 22;
 
   if( get_port_state( port ) ) {
-    soc = open_sock_tcp( port );
-    if( soc ) {
-      ret = ssh_login( socket:soc, login:login, password:password );
-      close( soc );
-      if( ret == 0 ) return port;
-      #else return 0;
+    # Check if any random user/pass pair is accepted by the SSH service first.
+    if( ! ssh_broken_random_login( port:port ) ) {
+      soc = open_sock_tcp( port );
+      if( soc ) {
+        ret = ssh_login( socket:soc, login:login, password:password, pub:NULL, priv:NULL, passphrase:NULL );
+        close( soc );
+        if( ret == 0 ) return port;
+      }
     }
   }
 
@@ -112,7 +114,7 @@ function check_account( login, password ) {
     if( get_kb_item( 'telnet/' + port + '/no_login_banner' ) ) return;
     if( isnull( password ) ) password = "";
     res = _check_telnet( port:port, login:login, password:password );
-    if( res ) return( port );
+    if( res ) return port;
   }
-  return( 0 );
+  return;
 }

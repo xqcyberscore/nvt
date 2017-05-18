@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871672");
-  script_version("$Revision: 4476 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-11 12:23:34 +0100 (Fri, 11 Nov 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-20 05:00:28 +0200 (Thu, 20 Oct 2016)");
   script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
   script_tag(name:"cvss_base", value:"9.3");
@@ -95,7 +95,6 @@ without user interaction if a user visited a malicious website.
   script_xref(name: "RHSA", value: "2016:2079-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-October/msg00041.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of java-1.8.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

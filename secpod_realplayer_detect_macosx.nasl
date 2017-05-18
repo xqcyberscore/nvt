@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_realplayer_detect_macosx.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: secpod_realplayer_detect_macosx.nasl 5876 2017-04-06 06:01:37Z antu123 $
 #
 # RealNetworks RealPlayer Version Detection (Mac OS X)
 #
@@ -33,10 +33,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902622";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5505 $");
+  script_version("$Revision: 5876 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 08:01:37 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-08-31 10:37:30 +0200 (Wed, 31 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("RealNetworks RealPlayer Version Detection (Mac OS X)");
@@ -69,26 +69,6 @@ sock = "";
 realVer = "";
 fullVer = "";
 
-## Function to Build report
-function build_report(ver)
-{
-  insloc = "Unable to find the install Location.";
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:");
-  if(isnull(cpe))
-    cpe = "cpe:/a:realnetworks:realplayer";
-
-  register_product(cpe:cpe, location:insloc, nvt:SCRIPT_OID);
-
-  log_message(data: build_detection_report(app: "RealPlayer",
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-  exit(0);
-}
-
 ## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
@@ -120,11 +100,23 @@ if(isnull(realVer) || "does not exist" >< realVer){
 
 ## Set the version in KB
 set_kb_item(name: "RealPlayer/MacOSX/Version", value:realVer);
+insloc = "Unable to find the install Location.";
 
 if(fullVer)
 {
+  ## build cpe and store it as host_detail
+  cpe = build_cpe(value:fullVer, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:");
+  if(isnull(cpe))
+    cpe = "cpe:/a:realnetworks:realplayer";
+
   set_kb_item(name: "RealPlayer/MacOSX/FullVer", value:fullVer);
-  build_report(ver: fullVer);
+  build_report(app:"RealPlayer", ver:fullVer, concluded:fullVer, cpe, insloc:insloc);
+  exit(0);
 }
 
-build_report(ver: realVer);
+## build cpe and store it as host_detail
+cpe = build_cpe(value:realVer, exp:"^([0-9.]+)", base:"cpe:/a:realnetworks:realplayer:");
+if(isnull(cpe))
+  cpe = "cpe:/a:realnetworks:realplayer";
+
+build_report(app:"RealPlayer", ver:realVer, concluded:fullVer, cpe, insloc:insloc);

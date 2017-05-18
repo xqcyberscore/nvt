@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_stored_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_xwiki_enterprise_mult_stored_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # XWiki Enterprise Multiple Stored Cross-Site Scripting Vulnerabilities
 #
@@ -48,17 +48,16 @@ features, remove the product or replace the product by another one.";
 tag_summary = "This host is running XWiki Enterprise and is prone to cross site
 scripting vulnerabilities.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802671";
 CPE = "cpe:/a:xwiki:xwiki";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3062 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802671");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(55235);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-30 19:24:16 +0530 (Thu, 30 Aug 2012)");
   script_name("XWiki Enterprise Multiple Stored Cross-Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/78026");
@@ -66,13 +65,12 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115939/XWiki-4.2-milestone-2-Cross-Site-Scripting.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for stored XSS vulnerabilities in XWiki Enterprise");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_dependencies("gb_xwiki_enterprise_detect.nasl");
   script_require_ports("Services/www", 8080);
-  script_require_keys("xwiki/installed");
+  script_mandatory_keys("xwiki/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -81,7 +79,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
@@ -101,39 +98,27 @@ postdata = "";
 xwikiPort = 0;
 tokenValue = "";
 
-## Get HTTP Port
-xwikiPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
-if(!xwikiPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  exit(0);
-}
-
-## Check port state
-if(!get_port_state(xwikiPort)){
-  exit(0);
-}
-
-## Get XWiki Installed Location
-if(!dir = get_dir_from_kb(port:xwikiPort, app:"XWiki")){
-  exit(0);
-}
-
-## Get Host name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
 ## Stored XSS (Not a safe check)
 if(safe_checks()){
   exit(0);
 }
+
+if(!xwikiPort = get_app_port(cpe:CPE)){
+  exit(0);
+}
+
+if(!dir = get_dir_from_kb(port:xwikiPort, app:"XWiki")){
+  exit(0);
+}
+
+host = http_host_name(port:port);
 
 ## Construct the Attack Request
 url = dir + "/bin/register/XWiki/Register";
 
 ## Send Register request and Receive the response
 sndReq = http_get(item:url, port:xwikiPort);
-rcvRes = http_send_recv(port:xwikiPort, data:sndReq);
+rcvRes = http_keepalive_send_recv(port:xwikiPort, data:sndReq);
 
 ##Get the  form_token value from Response
 tokenValue = eregmatch(pattern:'name="form_token" value="([a-zA-Z0-9]+)"',
@@ -158,7 +143,7 @@ postdata = "form_token="+ tokenValue[1] +
 ## Construct the POST request
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent:  XSS-TEST\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Referer: http://", host, url, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",

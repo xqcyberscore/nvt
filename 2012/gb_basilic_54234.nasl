@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_basilic_54234.nasl 5670 2017-03-21 15:13:03Z cfi $
+# $Id: gb_basilic_54234.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # Basilic 'diff.php' Remote Command Execution Vulnerability
 #
@@ -32,62 +32,53 @@ within the context of the vulnerable application.
 
 Basilic 1.5.14 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103504);
  script_bugtraq_id(54234);
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version ("$Revision: 5670 $");
-
+ script_version("$Revision: 5700 $");
  script_name("Basilic 'diff.php' Remote Command Execution Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54234");
  script_xref(name : "URL" , value : "http://artis.imag.fr/Software/Basilic/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-02 10:46:56 +0200 (Mon, 02 Jul 2012)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/basilic",cgi_dirs());
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 commands = exploit_commands();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/basilic", cgi_dirs( port:port ) ) ) {
 
-  foreach cmd (keys(commands)) {
+  if( dir == "/" ) dir = "";
+
+  foreach cmd( keys( commands ) ) {
    
-    url = string(dir, "/Config/diff.php?file=;",commands[cmd],"&new=1&old=2"); 
-
+    url = dir + "/Config/diff.php?file=;" + commands[cmd] + "&new=1&old=2";
     if(http_vuln_check(port:port, url:url,pattern:cmd)) {
-     
-      security_message(port:port);
-      exit(0); 
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-
-  }  
+  }
 }
 
-exit(0);
+exit( 99 );

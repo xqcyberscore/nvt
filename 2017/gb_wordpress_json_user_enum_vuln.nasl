@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_json_user_enum_vuln.nasl 5491 2017-03-06 07:06:49Z antu123 $
+# $Id: gb_wordpress_json_user_enum_vuln.nasl 5898 2017-04-07 16:25:26Z mime $
 #
 # WordPress 'json' User Enumeration Vulnerability
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809892");
-  script_version("$Revision: 5491 $");
+  script_version("$Revision: 5898 $");
   script_cve_id("CVE-2017-5487");
   script_bugtraq_id(95391);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 08:06:49 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 18:25:26 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-03-03 17:16:53 +0530 (Fri, 03 Mar 2017)");
   script_name("WordPress 'json' User Enumeration Vulnerability");
  
@@ -49,7 +49,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41497");
   script_xref(name:"URL", value:"https://wpvulndb.com/vulnerabilities/8715");
-  script_xref(name:"URL", value:"http://www.secpod.com/blog/wordpress-rest-api-zero-day-privilege-escalation-vulnerability");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to user enumeration vulnerability.");
@@ -76,8 +75,13 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
+  # This NVT produces to much false positive....
+  script_tag(name:"deprecated", value:TRUE); 
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("http_keepalive.inc");

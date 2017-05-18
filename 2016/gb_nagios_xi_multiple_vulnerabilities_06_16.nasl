@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_multiple_vulnerabilities_06_16.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_nagios_xi_multiple_vulnerabilities_06_16.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Nagios XI Multiple Vulnerabilities
 #
@@ -32,8 +32,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105749");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version ("$Revision: 5813 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-03 12:51:38 +0200 (Fri, 03 Jun 2016)");
  script_name("Nagios XI Multiple Vulnerabilities");
 
@@ -45,7 +45,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_summary("Try to execute SQL code");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

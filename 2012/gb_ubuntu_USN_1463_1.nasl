@@ -83,8 +83,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-June/001708.html");
   script_id(841025);
-  script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-08 10:13:19 +0530 (Fri, 08 Jun 2012)");
   script_cve_id("CVE-2012-1937", "CVE-2012-1938", "CVE-2011-3101", "CVE-2012-1944", "CVE-2012-1945", "CVE-2012-1946", "CVE-2012-0441", "CVE-2012-1940", "CVE-2012-1941", "CVE-2012-1947");
   script_tag(name:"cvss_base", value:"10.0");
@@ -92,7 +92,6 @@ if(description)
   script_xref(name: "USN", value: "1463-1");
   script_name("Ubuntu Update for firefox USN-1463-1");
 
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

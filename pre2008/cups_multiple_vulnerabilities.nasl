@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cups_multiple_vulnerabilities.nasl 4091 2016-09-16 13:19:07Z cfi $
+# $Id: cups_multiple_vulnerabilities.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # CUPS < 1.1.23 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16141");
-  script_version("$Revision: 4091 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 15:19:07 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name:"FLSA", value:"FEDORA-2004-560");
   script_xref(name:"GLSA", value:"GLSA-200412-25");
   script_name("CUPS < 1.1.23 Multiple Vulnerabilities");
-  script_summary("Checks version of CUPS");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 George A. Theall");
   script_family("Gain a shell remotely");

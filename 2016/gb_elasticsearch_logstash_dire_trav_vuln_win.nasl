@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elasticsearch_logstash_dire_trav_vuln_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_elasticsearch_logstash_dire_trav_vuln_win.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Elasticsearch Logstash Directory Traversal Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:elasticsearch:logstash";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808094");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-4152");
   script_bugtraq_id(75112);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-23 16:16:20 +0530 (Thu, 23 Jun 2016)");
   script_name("Elasticsearch Logstash Directory Traversal Vulnerability (Windows)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535725/100/0/threaded");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerbale version of Elasticsearch Logstash on Windows.");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_elasticsearch_logstash_detect.nasl", "os_detection.nasl");

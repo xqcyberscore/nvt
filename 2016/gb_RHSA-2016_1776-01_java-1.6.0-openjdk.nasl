@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871656");
-  script_version("$Revision: 4476 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-11 12:23:34 +0100 (Fri, 11 Nov 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-27 05:38:55 +0200 (Sat, 27 Aug 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3500", "CVE-2016-3508", "CVE-2016-3550", "CVE-2016-3606");
   script_tag(name:"cvss_base", value:"6.8");
@@ -67,7 +67,6 @@ Linux (v. 5 server),
   script_xref(name: "RHSA", value: "2016:1776-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-August/msg00063.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of java-1.6.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

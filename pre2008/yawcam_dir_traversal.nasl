@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yawcam_dir_traversal.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: yawcam_dir_traversal.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Yawcam Directory Traversal
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Upgrade to Yawcam 0.2.6 or later.";
 if (description)
 {
  script_id(18176);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2005-1230");
  script_bugtraq_id(13295);
@@ -48,7 +48,6 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
  script_name("Yawcam Directory Traversal");
- script_summary("Checks for directory traversal in Yawcam");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

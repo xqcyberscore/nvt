@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_backuppc_index_mult_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_backuppc_index_mult_xss_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # BackupPC 'index.cgi' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802622");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5958 $");
   script_bugtraq_id(47628, 50406);
   script_cve_id("CVE-2011-3361", "CVE-2011-5081", "CVE-2011-4923");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-04 14:49:38 +0530 (Wed, 04 Apr 2012)");
   script_name("BackupPC 'index.cgi' Multiple Cross Site Scripting Vulnerabilities");
 
@@ -44,7 +44,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71030");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/multiple_xss_vulnerabilities_in_backuppc.html");
 
-  script_summary("Check if BackupPC is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

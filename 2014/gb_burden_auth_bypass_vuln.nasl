@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burden_auth_bypass_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_burden_auth_bypass_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
 #
 # Burden 'burden_user_rememberme' Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803792");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 5798 $");
   script_cve_id("CVE-2013-7137");
   script_bugtraq_id(64662);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-01-13 15:17:42 +0530 (Mon, 13 Jan 2014)");
   script_name("Burden 'burden_user_rememberme' Authentication Bypass Vulnerability");
 
@@ -55,11 +55,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90186");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124719");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23192");
-  script_summary("Check if Burden is vulnerable to authentication bypass");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -67,7 +66,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -78,25 +76,23 @@ bdReq = "";
 bdRes = "";
 url = "";
 
-## Get HTTP Port
 bdPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:bdPort)){
   exit(0);
 }
 
-host = http_host_name(port:bdPort);
-
-foreach dir (make_list_unique("/", "/Burden", "/burden", cgi_dirs(port:bdPort)))
-{
+foreach dir (make_list_unique("/", "/Burden", "/burden", cgi_dirs(port:bdPort))) {
 
   if(dir == "/") dir = "";
+  url = dir + "/login.php";
+  res = http_get_cache( item:url, port:bdPort );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application
-  if(http_vuln_check(port:bdPort, url:dir + "/login.php", pattern:">Burden<",
-                 check_header:TRUE))
-  {
+  if( res =~ "HTTP/1.. 200" && ">Burden<" >< res ) {
+
+    host = http_host_name(port:bdPort);
+
     ## send a crafted request
     url = dir + "/login.php";
     bdReq = string("GET ", url," HTTP/1.1\r\n",

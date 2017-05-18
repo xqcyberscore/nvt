@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 2511 2016-01-27 08:25:16Z antu123 $
+# $Id: gb_advantech_webaccess_mult_bof_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Advantech WebAccess Multiple Buffer Overflow Vulnerabilities Jan16
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807041");
-  script_version("$Revision: 2511 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2014-9202", "CVE-2014-9208");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-27 09:25:16 +0100 (Wed, 27 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-25 12:23:44 +0530 (Mon, 25 Jan 2016)");
   script_name("Advantech WebAccess Multiple Buffer Overflow Vulnerabilities Jan16");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-258-04");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-251-01A");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Advantech WebAccess");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_advantech_webaccess_detect.nasl");

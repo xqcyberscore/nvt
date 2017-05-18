@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storage_mirroring_detect.nasl 5040 2017-01-19 14:01:58Z cfi $
+# $Id: gb_hp_storage_mirroring_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # HP StorageWorks Storage Mirroring Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801356");
-  script_version("$Revision: 5040 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-19 15:01:58 +0100 (Thu, 19 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_name("HP StorageWorks Storage Mirroring Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,18 +65,6 @@ include("host_details.inc");
 hpsmName = "";
 hpsmVer = "";
 insLoc = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -133,7 +121,7 @@ foreach key( key_list ) {
           if(isnull(cpe))
             cpe = "cpe:/a:hp:storageworks_storage_mirroring:x64";
 
-          build_report(app:hpsmName, ver:hpsmVer, cpe:cpe, loc:insLoc, con:hpsmVer);
+          build_report(app:hpsmName, ver:hpsmVer, cpe:cpe, insloc:insLoc, concluded:hpsmVer);
         }
       }
     }

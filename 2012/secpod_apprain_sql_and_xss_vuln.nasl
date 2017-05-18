@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apprain_sql_and_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_apprain_sql_and_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # appRain CMF SQL Injection And Cross Site Scripting Vulnerabilities
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902690");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2011-5228", "CVE-2011-5229");
   script_bugtraq_id(51105);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-29 16:47:00 +0530 (Mon, 29 Oct 2012)");
   script_name("appRain CMF SQL Injection And Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71880");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71881");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18249/");
 
-  script_summary("Check if appRain is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web application abuses");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882561");
-  script_version("$Revision: 4191 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 12:59:18 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 05:41:43 +0200 (Fri, 23 Sep 2016)");
   script_cve_id("CVE-2016-5250", "CVE-2016-5257", "CVE-2016-5261", "CVE-2016-5270", 
                 "CVE-2016-5272", "CVE-2016-5274", "CVE-2016-5276", "CVE-2016-5277", 
@@ -64,7 +64,6 @@ reporters.
 
   script_xref(name: "CESA", value: "2016:1912");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022089.html");
-  script_summary("Check for the Version of firefox");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

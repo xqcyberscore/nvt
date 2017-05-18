@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winradius_server_access_request_dos_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_winradius_server_access_request_dos_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # WinRadius Server Access Request Packet Parsing Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902918");
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2012-3816");
   script_bugtraq_id(53702);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-29 15:19:56 +0530 (Fri, 29 Jun 2012)");
   script_name("WinRadius Server Access Request Packet Parsing Denial of Service Vulnerability");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113078/winradius-dos.txt");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-05/0135.html");
 
-  script_summary("Determine if WinRadius Server is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

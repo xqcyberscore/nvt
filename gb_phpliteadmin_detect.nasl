@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpliteadmin_detect.nasl 3999 2016-09-07 15:08:59Z cfi $
+# $Id: gb_phpliteadmin_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # phpLiteAdmin Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106089");
- script_version ("$Revision: 3999 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-07 17:08:59 +0200 (Wed, 07 Sep 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-05-31 08:10:56 +0700 (Tue, 31 May 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,6 @@ The script sends a connection request to the server and attempts to detect phpLi
 
  script_xref(name: "URL", value: "https://www.phpliteadmin.org/");
 
- script_summary("Checks for the presence of phpLiteAdmin");
 
  exit(0);
 }

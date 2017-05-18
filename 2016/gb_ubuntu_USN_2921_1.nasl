@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842677");
-  script_version("$Revision: 2792 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 08:20:50 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-08 12:37:34 +0530 (Tue, 08 Mar 2016)");
   script_cve_id("CVE-2014-6270", "CVE-2016-2571");
   script_tag(name:"cvss_base", value:"6.8");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "USN", value: "2921-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-March/003336.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of squid3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neoaxis_web_player_zip_file_dir_trav_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_neoaxis_web_player_zip_file_dir_trav_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # NeoAxis Web Player Zip File Directory Traversal Vulnerability
 #
@@ -46,12 +46,12 @@ to directory traversal vulnerability.";
 if(description)
 {
   script_id(802601);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5999 $");
   script_bugtraq_id(51666);
   script_cve_id("CVE-2012-0907");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 14:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("NeoAxis Web Player Zip File Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51666");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/neoaxis_1-adv.txt");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of NeoAxis Web Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

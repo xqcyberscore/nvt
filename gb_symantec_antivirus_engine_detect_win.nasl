@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_antivirus_engine_detect_win.nasl 3679 2016-07-08 11:55:07Z antu123 $
+# $Id: gb_symantec_antivirus_engine_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Symantec Antivirus Engine Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808533");
-  script_version("$Revision: 3679 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-08 13:55:07 +0200 (Fri, 08 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:35:48 +0530 (Tue, 05 Jul 2016)");
   script_name("Symantec Antivirus Engine Version Detection (Windows)");
 
@@ -40,7 +40,6 @@ if(description)
   the registry and reads the version information from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of Symantec Antivirus Engine");
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

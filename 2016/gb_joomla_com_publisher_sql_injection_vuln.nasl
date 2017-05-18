@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808236");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5764 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 14:01:23 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 14:52:23 +0530 (Mon, 27 Jun 2016)");
   script_name("Joomla Publisher component SQL Injection Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Joomla Publisher component version 3.0.11");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be updated once the solution
+  29th March, 2017. Information regarding this issue will be updated once the solution
   details are available. 
   For updates refer to http://extensions.joomla.org/extension/publisher-pro");
 

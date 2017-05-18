@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclades_detect.nasl 4938 2017-01-04 13:12:05Z cfi $
+# $Id: gb_cyclades_detect.nasl 6010 2017-04-21 15:53:22Z cfi $
 #
 # Cyclades Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105068");
-  script_version("$Revision: 4938 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 14:12:05 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 6010 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 17:53:22 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-08-19 11:37:55 +0200 (Tue, 19 Aug 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,22 +51,29 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
 
-urls = make_list( "/home.asp", "/logon.php?redirect=index.php&nouser=1" );
+# Choose file to request based on what the remote host is supporting
+if( can_host_asp( port:port ) && can_host_php( port:port ) ) {
+  urls = make_list( "/home.asp", "/logon.php?redirect=index.php&nouser=1" );
+} else if( can_host_asp( port:port ) ) {
+  urls = make_list( "/home.asp" );
+} else if( can_host_php( port:port ) ) {
+  urls = make_list( "/logon.php?redirect=index.php&nouser=1" );
+} else {
+  exit( 0 );
+}
 
-foreach url ( urls )
-{
-  req = http_get( item:url, port:port );
-  buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+foreach url( urls ) {
+
+  buf = http_get_cache( item:url, port:port );
 
   if( "Welcome to the Cyclades" >!< buf ) continue;
 
-  set_kb_item( name:"cyclades/installed", value:TRUE );
+  replace_kb_item( name:"cyclades/installed", value:TRUE );
   CL = TRUE;
   install = url;
 
@@ -75,23 +82,19 @@ foreach url ( urls )
 
   x = 0;
   f = 0;
-  foreach line ( lines )
-  {
+  foreach line ( lines ) {
     x++;
-    if( 'class="is"' >< line )
-    {
+    if( 'class="is"' >< line ) {
       f++;
       match = eregmatch( pattern:'<center>([^<]+)', string:line );
       if( ! isnull( match[1] ) ) info[f] = match[1];
     }
 
-    else if( 'color="#003366"' >< line && ! ts )
-    {
+    else if( 'color="#003366"' >< line && ! ts ) {
       f++;
       match = eregmatch( pattern:'([^ <]+)', string:lines[x] );
       if( ! isnull( match[1] ) ) info[f] = match[1];
     }
-
   }  
 }
 
@@ -102,8 +105,7 @@ vers  = 'unknown';
 
 if( ! isnull( info[1] ) ) model = info[1];
 if( ! isnull( info[2] ) ) host = info[2];
-if( ! isnull( info[3] ) ) 
-{
+if( ! isnull( info[3] ) ) {
   version = eregmatch( pattern:'V_([^ ]+)', string: info[3] );
   if( ! isnull( version[1] ) ) vers = version[1];
 }  
@@ -113,11 +115,10 @@ set_kb_item( name:'cyclades/fw_version', value:vers );
 set_kb_item( name:'cyclades/hostname', value:host );
 
 cpe = 'cpe:/o:cyclades:' + tolower( model ) + ':' + tolower( vers );
-register_and_report_os( os:"Cyclades " + model, cpe:cpe, banner_type:"HTTP banner", desc:"Cyclades Detection" );
+register_and_report_os( os:"Cyclades " + model, cpe:cpe, banner_type:"HTTP banner", desc:"Cyclades Detection", runs_key:"unixoide" );
 
 data = 'The remote host is a Cyclades-' + model + '.\nFirmware Version: ' + vers + '\n';
 if( host ) data += 'Hostname: ' + host;
 
 log_message( data:data, port:port );
 exit( 0 );
-

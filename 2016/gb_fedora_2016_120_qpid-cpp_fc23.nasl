@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807490");
-  script_version("$Revision: 2869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-16 12:21:24 +0100 (Wed, 16 Mar 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:11:58 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2015-0223", "CVE-2015-0224", "CVE-2015-0203");
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-120");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/178606.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qpid-cpp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

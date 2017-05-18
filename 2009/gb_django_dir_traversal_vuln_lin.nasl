@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_dir_traversal_vuln_lin.nasl 4865 2016-12-28 16:16:43Z teissa $
+# $Id: gb_django_dir_traversal_vuln_lin.nasl 5904 2017-04-10 06:18:08Z teissa $
 #
 # Django Directory Traversal Vulnerability (Linux)
 #
@@ -37,11 +37,13 @@ tag_solution = "Upgrade to Django 0.96.4 or 1.0.3 later.
 tag_summary = "This host has Django installed and is prone to Directory Traversal
   Vulnerability.";
 
+CPE = "cpe:/a:django_project:django";
+
 if(description)
 {
   script_id(800924);
-  script_version("$Revision: 4865 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-28 17:16:43 +0100 (Wed, 28 Dec 2016) $");
+  script_version("$Revision: 5904 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 08:18:08 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-08-11 07:36:16 +0200 (Tue, 11 Aug 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,6 +59,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_django_detect_lin.nasl");
   script_require_keys("Django/Linux/Ver");
+  script_require_ports("Services/ssh", 22);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,8 +72,10 @@ if(description)
 
 
 include("version_func.inc");
+include("host_details.inc");
 
-djangoVer = get_kb_item("Django/Linux/Ver");
+djangoVer = get_app_version(cpe: CPE);
+
 if(!djangoVer){
   exit(0);
 }

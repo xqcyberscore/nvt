@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail2_detect.nasl 2770 2016-03-03 12:38:22Z cfi $
+# $Id: gb_hastymail2_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Hastymail2 Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801575");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2770 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 13:38:22 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Hastymail2 Version Detection");
-  script_summary("Set the version of Hastymail2 in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kerio_mailserver_admin_port.nasl 4683 2016-12-06 08:45:07Z cfi $
+# $Id: kerio_mailserver_admin_port.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Kerio Mailserver Admin Service
 #
 # Authors:
@@ -37,8 +37,8 @@ to this port.";
 if(description)
 {
  script_id(18184);
- script_version("$Revision: 4683 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-06 09:45:07 +0100 (Tue, 06 Dec 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(13458);
  script_cve_id("CVE-2005-1062", "CVE-2005-1063");
@@ -51,7 +51,6 @@ if(description)
 
  summary = "Determines if Kerio Mailserver is installed";
 
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");

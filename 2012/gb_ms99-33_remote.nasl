@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms99-33_remote.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_ms99-33_remote.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability
 #
@@ -43,17 +43,16 @@ CPE = "cpe:/a:microsoft:iis_ftp";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-1999-0349");
   script_bugtraq_id(192);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/246545.php");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms99-003");
-  script_summary("Check for Denial of Service vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

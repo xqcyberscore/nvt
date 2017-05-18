@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_symantec_prdts_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: secpod_symantec_prdts_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Symantec Product(s) Version Detection
 #
@@ -40,10 +40,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900332");
-  script_version("$Revision: 2672 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-03-30 15:53:34 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Product(s) Version Detection");
@@ -91,19 +91,6 @@ savcePath = "";
 imVer = "";
 imPath = "";
 
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
-
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
@@ -147,7 +134,7 @@ foreach symkey(key_list)
         if(isnull(cpe))
           cpe = 'cpe:/a:symantec:norton_antivirus';
 
-        build_report(app:symantecName, ver:navVer, cpe:cpe, loc:navPath, con:navVer);
+        build_report(app:symantecName, ver:navVer, cpe:cpe, insloc:navPath, concluded:navVer);
       }
     }
 
@@ -170,7 +157,7 @@ foreach symkey(key_list)
         if(isnull(cpe))
           cpe = 'cpe:/a:symantec:norton_internet_security';
 
-        build_report(app:symantecName, ver:nisVer, cpe:cpe, loc:nisPath, con:nisVer);
+        build_report(app:symantecName, ver:nisVer, cpe:cpe, insloc:nisPath, concluded:nisVer);
       }
     }
 
@@ -193,7 +180,7 @@ foreach symkey(key_list)
         if(isnull(cpe))
           cpe = 'cpe:/a:symantec:pcanywhere';
 
-        build_report(app:symantecName, ver:pcawVer, cpe:cpe, loc:pcawPath, con:pcawVer);
+        build_report(app:symantecName, ver:pcawVer, cpe:cpe, insloc:pcawPath, concluded:pcawVer);
       }
     }
 
@@ -219,7 +206,7 @@ foreach symkey(key_list)
         if(isnull(cpe))
           cpe = 'cpe:/a:symantec:enterprise_security_manager';
 
-        build_report(app:symantecName, ver:esmVer, cpe:cpe, loc:esmPath, con:esmVer);
+        build_report(app:symantecName, ver:esmVer, cpe:cpe, insloc:esmPath, concluded:esmVer);
       }
     }
 
@@ -242,7 +229,7 @@ foreach symkey(key_list)
         if(isnull(cpe))
           cpe = 'cpe:/a:symantec:antivirus';
 
-        build_report(app:symantecName, ver:savceVer, cpe:cpe, loc:savcePath, con:savceVer);
+        build_report(app:symantecName, ver:savceVer, cpe:cpe, insloc:savcePath, concluded:savceVer);
       }
     }
 
@@ -264,7 +251,7 @@ foreach symkey(key_list)
           if(isnull(cpe))
             cpe = 'cpe:/a:symantec:im_manager';
 
-          build_report(app:symantecName, ver:imVer, cpe:cpe, loc:imPath, con:imVer);
+          build_report(app:symantecName, ver:imVer, cpe:cpe, insloc:imPath, concluded:imVer);
         }
       }
     }
@@ -309,7 +296,7 @@ foreach symkey(key_list2)
       if(isnull(cpe))
         cpe = 'cpe:/a:symantec:endpoint_protection';
 
-      build_report(app:"Symantec Endpoint Protection", ver:nisVer, cpe:cpe, loc:nisPath, con:nisVer);
+      build_report(app:"Symantec Endpoint Protection", ver:nisVer, cpe:cpe, insloc:nisPath, concluded:nisVer);
 
     }
   }

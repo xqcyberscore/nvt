@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: risearch_arbitrary_file_access.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: risearch_arbitrary_file_access.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # RiSearch Arbitrary File Access
 #
@@ -30,15 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14222");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2061");
   script_bugtraq_id(10812);
   script_name("RiSearch Arbitrary File Access");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_summary("Determines the presence of RiSearch show.pl");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

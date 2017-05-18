@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802043");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(56535, 56539);
   script_cve_id("CVE-2012-5930", "CVE-2012-5931", "CVE-2012-5932");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-21 18:46:53 +0530 (Wed, 21 Nov 2012)");
   script_name("Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability");
 
@@ -44,12 +44,12 @@ if(description)
   script_xref(name : "URL" , value : "http://retrogod.altervista.org/9sg_novell_netiq_ii.htm");
   script_xref(name : "URL" , value : "http://retrogod.altervista.org/9sg_novell_netiq_ldapagnt_adv.htm");
 
-  script_summary("Check Novell NetIQ Privileged User Manager is vulnerable to RCE");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 443);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute perl code and
   change administrative credentials.
@@ -70,7 +70,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -81,14 +80,10 @@ req2 = "";
 res2 = "";
 post_data = "";
 
-
-## Default HTTPS port
 port = get_http_port(default:443);
 
-## Get Host Name or IP
 host = http_host_name(port:port);
 
-## Initial request
 res1 = http_get_cache(item:"/", port:port);
 
 ## Confirm the application before trying the exploit
@@ -117,7 +112,7 @@ if(">NetIQ Privileged User Manager<" >< res1)
 
   ## Construct the POST request
   req2 = string("POST ", "/", " HTTP/1.1\r\n",
-                "User-Agent: OpenVAS RCE Agent\r\n",
+                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                 "Host: ", host, "\r\n",
                 "Accept: */*\r\n",
                 "Cookie: _SID_=1;\r\n",

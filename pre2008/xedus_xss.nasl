@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xedus_xss.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: xedus_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Xedus XSS
 #
 # Authors:
@@ -36,8 +36,8 @@ remove .x files located in ./sampledocs folder";
 if(description)
 {
   script_id(14647);
-  script_version("$Revision: 3520 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1645");
   script_bugtraq_id(11071);
@@ -45,7 +45,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Xedus XSS");
 
-  script_summary("Checks XSS in Xedus");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

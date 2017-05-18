@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842905");
-  script_version("$Revision: 4250 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-12 09:24:11 +0200 (Wed, 12 Oct 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 06:56:04 +0200 (Thu, 06 Oct 2016)");
   script_cve_id("CVE-2015-7973", "CVE-2015-7974", "CVE-2015-7975", "CVE-2015-7976",
 		"CVE-2015-7977", "CVE-2015-7978", "CVE-2015-7979", "CVE-2015-8138",
 		"CVE-2015-8158", "CVE-2016-0727", "CVE-2016-1547", "CVE-2016-1548",
 		"CVE-2016-1550", "CVE-2016-2516", "CVE-2016-2518", "CVE-2016-4954",
 		"CVE-2016-4955", "CVE-2016-4956");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ntp USN-3096-1");
   script_tag(name: "summary", value: "Check the version of ntp");
@@ -105,7 +105,6 @@ this issue to cause NTP to crash, resulting in a denial of service.
   script_xref(name: "USN", value: "3096-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3096-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ntp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

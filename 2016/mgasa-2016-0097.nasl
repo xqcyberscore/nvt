@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0097.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0097.nasl 5689 2017-03-23 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131263");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5689 $");
 script_tag(name:"creation_date", value:"2016-03-10 07:17:47 +0200 (Thu, 10 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0097");
 script_tag(name: "insight", value: "Updated graphite2 packages fix security vulnerabilities: Multiple security flaws were found in the graphite2 font library. A web page or document containing malicious content could cause an application using graphite2 to crash or, potentially, execute arbitrary code with the privileges of the user running the application (CVE-2016-1977, CVE-2016-2790, CVE-2016-2791, CVE-2016-2792, CVE-2016-2793, CVE-2016-2794, CVE-2016-2795, CVE-2016-2796, CVE-2016-2797, CVE-2016-2798, CVE-2016-2799, CVE-2016-2800, CVE-2016-2801, CVE-2016-2802). The graphite2 package has been updated to version 1.3.6 which fixes these security issues."); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0097");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0097");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-632.nasl 4507 2016-11-14 15:50:04Z mime $
+# $Id: alas-2016-632.nasl 5732 2017-03-27 09:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120622");
-script_version("$Revision: 4507 $");
+script_version("$Revision: 5732 $");
 script_tag(name:"creation_date", value:"2016-01-20 07:22:41 +0200 (Wed, 20 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:50:04 +0100 (Mon, 14 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-632");
 script_tag(name: "insight", value: "DL::dlopen could open a library with tainted library name even if $SAFE > 0."); 
 script_tag(name : "solution", value : "Run yum update ruby19 to update your system. Run yum update ruby20 to update your system. Run yum update ruby21 to update your system. Run yum update ruby22 to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2016-632");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

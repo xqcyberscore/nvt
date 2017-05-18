@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nas4free_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_nas4free_detect.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # nas4free Detection
 #
@@ -31,20 +31,17 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2836 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version ("$Revision: 5816 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-07-02 14:53:50 +0200 (Wed, 02 Jul 2014)");
  script_name("nas4free Detection");
 
- tag_summary =
-"The script sends a connection request to the server and attempts
+ tag_summary = "The script sends a connection request to the server and attempts
 to detect nas4free from the reply.";
 
 
  script_tag(name : "summary" , value : tag_summary);
  
-
- script_summary("Checks for the presence of nas4free");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
@@ -54,7 +51,6 @@ to detect nas4free from the reply.";
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -62,13 +58,10 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
-if( ! get_port_state( port ) ) exit (0);
 if( ! can_host_php( port:port ) ) exit (0);
 
 url = "/login.php";
-req = http_get( item:url, port:port );
-buf = http_send_recv( port:port, data:req );
+buf = http_get_cache( item:url, port:port );
 if( buf == NULL ) exit( 0 );
 
 if( "The NAS4Free Project" >< buf && 'title="www.nas4free.org"' >< buf && "username" >< buf && "password" >< buf )

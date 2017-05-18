@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808592");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-3518", "CVE-2016-3588", "CVE-2016-5436", "CVE-2016-5437",
                 "CVE-2016-3424", "CVE-2016-5441", "CVE-2016-5442", "CVE-2016-5443");
   script_bugtraq_id(91967, 91983, 91906, 91917, 91976, 91915, 91974, 91963);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-21 12:30:40 +0530 (Thu, 21 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-03 July16 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle MySQL");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");

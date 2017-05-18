@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cis_manager_cms_sql_inj_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_cis_manager_cms_sql_inj_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
 #
 # CIS Manager 'TroncoID' Parameter SQL Injection Vulnerability
 #
@@ -27,83 +27,72 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804558");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5993 $");
   script_cve_id("CVE-2014-2847");
   script_bugtraq_id(66590);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-04-28 19:58:39 +0530 (Mon, 28 Apr 2014)");
   script_name("CIS Manager 'TroncoID' Parameter SQL Injection Vulnerability");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "The host is installed with CIS Manager and is prone to sql injection
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32660");
+  script_xref(name:"URL", value:"http://www.cnnvd.org.cn/vulnerability/show/cv_id/2014040155");
+
+  script_tag(name:"summary", value:"The host is installed with CIS Manager and is prone to sql injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able
+
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able
   execute sql query or not.");
-  script_tag(name : "insight" , value : "Input passed via the 'TroncoID' GET parameter to default.asp is not
+
+  script_tag(name:"insight", value:"Input passed via the 'TroncoID' GET parameter to default.asp is not
   properly sanitised before being used in a sql query.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML or
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   script code and manipulate SQL queries in the backend database allowing
   for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "CIS Manager CMS");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/32660");
-  script_xref(name : "URL" , value : "http://www.cnnvd.org.cn/vulnerability/show/cv_id/2014040155");
-  script_summary("Check if CIS Manager CMS is vulnerable to sql injection");
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
+http_port = get_http_port( default:80 );
+if( ! can_host_asp( port:http_port ) ) exit( 0 );
 
-## Get HTTP Port
-http_port = get_http_port(default:80);
+foreach dir( make_list_unique( "/", "/cis", "/cms", "/cismanager", "/cismanagercms", cgi_dirs( port:http_port ) ) ) {
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/cis", "/cms",
-                       "/cismanager", "/cismanagercms", cgi_dirs(port:http_port)))
-{
+  if( dir == "/" ) dir = "";
 
-  if(dir == "/") dir = "";
+  rcvRes = http_get_cache( item:dir + "/default.asp",  port:http_port );
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/default.asp"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  if( ">CIS Manager<" >< rcvRes && ">Construtiva" >< rcvRes ) {
 
-  if (">CIS Manager<" >< rcvRes && ">Construtiva" >< rcvRes)
-  {
-    ## Vulnerable Url
     url = dir + "/default.asp?TroncoID='SQLInjTest";
 
-    ## Extra check is not possible
-    if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"'SQLInjTest'", extra_check: ">error '80040e14'<"))
-    {
-      security_message(port:http_port);
-      exit(0);
+    if( http_vuln_check( port:http_port, url:url, check_header:TRUE, pattern:"'SQLInjTest'", extra_check:">error '80040e14'<" ) ) {
+      report = report_vuln_url( port:http_port, url:url );
+      security_message( port:http_port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(99);
+exit( 99 );

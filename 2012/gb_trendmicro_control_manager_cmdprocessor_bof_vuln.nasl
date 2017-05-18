@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802876");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2011-5001");
   script_bugtraq_id(50965);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-02 17:04:06 +0530 (Mon, 02 Jul 2012)");
   script_name("Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-345");
   script_xref(name : "URL" , value : "http://www.trendmicro.com/ftp/documentation/readme/readme_critical_patch_TMCM55_1613.txt");
 
-  script_summary("Check if Trend Micro Control Manager is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

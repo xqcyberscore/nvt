@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_mult_vuln_mar12_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_opera_mult_vuln_mar12_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Opera Multiple Vulnerabilities - March12 (MacOSX)
 #
@@ -48,12 +48,12 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 if(description)
 {
   script_id(902667);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-1924",  "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
                 "CVE-2012-1928", "CVE-2012-1929");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
   script_name("Opera Multiple Vulnerabilities - March12 (MacOSX)");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1009/");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1014/");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/mac/1162/");
 
-  script_summary("Check for the version of Opera");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("General");

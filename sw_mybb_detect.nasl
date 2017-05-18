@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mybb_detect.nasl 4127 2016-09-22 02:56:36Z ckuerste $
+# $Id: sw_mybb_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # MyBB Forum Version Detection
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111023");
-  script_version("$Revision: 4127 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 04:56:36 +0200 (Thu, 22 Sep 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-07-20 13:14:40 +0200 (Mon, 20 Jul 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_name("MyBB Forum Version Detection");
 
-  script_summary("Sets the KB for the version of MyBB Forum");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cmsimple_search_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: cmsimple_search_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # CMSimple index.php search XSS
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19692");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2392");
   script_bugtraq_id(14346);
@@ -36,7 +36,6 @@ if(description)
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("CMSimple index.php search XSS");
-  script_summary("Checks for XSS in search field in index.php");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("(C) 2005 Josh Zlatin-Amishav");

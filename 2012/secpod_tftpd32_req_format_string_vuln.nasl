@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tftpd32_req_format_string_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_tftpd32_req_format_string_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # TFTPD32 Request Error Message Format String Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902835");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2006-0328");
   script_bugtraq_id(16333);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-23 14:14:14 +0530 (Wed, 23 May 2012)");
   script_name("TFTPD32 Request Error Message Format String Vulnerability");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/1424");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/422405");
 
-  script_summary("Determine if Tftpd32 is prone to a denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871629");
-  script_version("$Revision: 3583 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-22 07:12:54 +0200 (Wed, 22 Jun 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-09 05:24:48 +0200 (Thu, 09 Jun 2016)");
   script_cve_id("CVE-2016-2818", "CVE-2016-2819", "CVE-2016-2821", "CVE-2016-2822",
                 "CVE-2016-2828", "CVE-2016-2831");
@@ -66,7 +66,6 @@ as the original reporters.
   script_xref(name: "RHSA", value: "2016:1217-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-June/msg00006.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: port_shell_execution.nasl 4073 2016-09-15 12:21:42Z teissa $
+# $Id: port_shell_execution.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Shell Command Execution Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10879");
-  script_version("$Revision: 4073 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 14:21:42 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Shell Command Execution Vulnerability");
-  script_summary("Checks for the filtering of dangerous meta characters from network binded scripts");
   script_category(ACT_DESTRUCTIVE_ATTACK); # Potentially destructive
   script_copyright("This script is Copyright (C) 2001 SecurITeam");
   script_family("Gain a shell remotely");

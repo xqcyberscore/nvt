@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_virtual_appliance_detect.nasl 3825 2016-08-11 10:23:05Z teissa $
+# $Id: gb_arkeia_virtual_appliance_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Arkeia Appliance Detection
 #
@@ -27,17 +27,16 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803759");
-  script_version("$Revision: 3825 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 12:23:05 +0200 (Thu, 11 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-09-18 13:34:54 +0530 (Wed, 18 Sep 2013)");
   script_name("Arkeia Appliance Detection");
 
   script_tag(name : "summary" , value : "The script sends a connection request to the Arkeia Appliance and attempts
   to extract the version number from the reply.");
 
-  script_summary("Checks for the presence of Arkeia Appliance");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

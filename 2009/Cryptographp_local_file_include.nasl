@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Cryptographp_local_file_include.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: Cryptographp_local_file_include.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # Cryptographp 'index.php' Local File Include Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100060");
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2009-03-17 15:36:47 +0100 (Tue, 17 Mar 2009)");
  script_bugtraq_id(34122);
  script_tag(name:"cvss_base", value:"6.8");
@@ -71,7 +71,7 @@ foreach d (dir)
 { 
  req = string("GET ", d, "/cryptographp.inc.php?cfg=verifier.php&sn=PHPSESSID& HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: Mozilla/5.0 (OpenVAS; U; Linux i686; en-US; rv:1.7) Gecko/20040712", 
+              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
               "Accept-Language: en-us,en,de;\r\n",
               "Cookie: cryptcookietest=1\r\n",
               "Connection: close\r\n\r\n");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_turbo_nas_reflected_xss_vuln.nasl 3883 2016-08-25 05:37:27Z antu123 $
+# $Id: gb_qnap_turbo_nas_reflected_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # QNAP TS_x09 Turbo NAS Devices Reflected Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805694");
-  script_version("$Revision: 3883 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-25 07:37:27 +0200 (Thu, 25 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-07-28 11:38:53 +0530 (Tue, 28 Jul 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("QNAP TS_x09 Turbo NAS Devices Reflected Cross-Site Scripting Vulnerability");
@@ -67,16 +67,15 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132840");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/115");
 
-  script_summary("Check if QNAP TS-x09 Turbo NAS device is vulnerable to reflected xss");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -86,20 +85,9 @@ nasPort = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 nasPort = get_http_port(default:8080);
-if(!nasPort){
-  nasPort = 8080;
-}
 
-## Check Port State
-if(!get_port_state(nasPort)){
-  exit(0);
-}
-
-## Detect NVT is not possible
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/cgi-bin", cgi_dirs()))
+foreach dir (make_list_unique("/", "/cgi-bin", cgi_dirs(port:nasPort)))
 {
   if( dir == "/" ) dir = "";
 

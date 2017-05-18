@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808948");
-  script_version("$Revision: 3784 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:55:34 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-6224", "CVE-2015-8946");
   script_tag(name:"cvss_base", value:"2.1");
@@ -49,7 +49,6 @@ Install ecryptfs-utils if you would like to mount eCryptfs.
   script_xref(name: "FEDORA", value: "2016-41301e2187");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/K5WWCVHDLRLZTYMXEIONYFHLYAXXLJW3");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ecryptfs-utils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

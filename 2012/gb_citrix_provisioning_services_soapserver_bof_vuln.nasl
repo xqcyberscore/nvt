@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Citrix Provisioning Services SoapServer Buffer Overflow Vulnerability
 #
@@ -39,10 +39,10 @@ tag_summary = "This host is installed with Citrix Provisioning Services and is
 if(description)
 {
   script_id(803000);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-4068");
   script_bugtraq_id(53330);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-02 18:48:06 +0530 (Thu, 02 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.verisigninc.com/en_US/products-and-services/network-intelligence-availability/idefense/public-vulnerability-reports/articles/index.xhtml?id=979");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Citrix Provisioning Services");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

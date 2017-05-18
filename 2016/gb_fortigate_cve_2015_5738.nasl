@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5738");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 3807 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("FortiGate: RSA-CRT key leak under certain conditions");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-08 10:01:14 +0200 (Mon, 08 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-18 13:18:29 +0200 (Wed, 18 May 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

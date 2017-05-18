@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imp_mime_viewer_html_xss.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: imp_mime_viewer_html_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: IMP_MIME_Viewer_html class XSS vulnerabilities
 #
 # Authors:
@@ -43,8 +43,8 @@ in the announcements to imp/lib/MIME/Viewer/html.php.";
 
 if (description) {
   script_id(11815);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -54,7 +54,6 @@ if (description) {
  
  
   summary = "IMP_MIME_Viewer_html class is vulnerable to XSS attacks";
-  script_summary(summary);
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

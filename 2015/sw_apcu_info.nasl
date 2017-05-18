@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apcu_info.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_apcu_info.nasl 5798 2017-03-30 15:23:49Z cfi $
 #
 # APC / APCu INFO page accessible
 #
@@ -27,20 +27,19 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111025");
- script_version("$Revision: 2568 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+ script_version("$Revision: 5798 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-07-27 16:00:00 +0200 (Mon, 27 Jul 2015)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("APC / APCu INFO page accessible");
-
- script_summary("Checks for the presence of a APC / APCu INFO page");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
  script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl", "phpinfo.nasl");
  script_require_ports("Services/www", 80);
- script_dependencies("http_version.nasl", "phpinfo.nasl");
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : "Delete them or restrict access to the listened files.");
  script_tag(name : "summary" , value : "The APC / APCu INFO page is providing internal information
  about the system.");
@@ -54,9 +53,6 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -74,22 +70,19 @@ port = get_http_port( default:80 );
 
 if( !can_host_php( port:port ) ) exit( 0 );
 
-rep = NULL;
-
 phpinfoVer = get_kb_item( 'php/phpinfo/phpversion/' + port );
 
 files = make_list( "/index.php", "/apc.php", "/apcu.php", "/apcinfo.php" );
-dirs = make_list_unique( "/", "/apc", "/cache", cgi_dirs(port:port) );
 
-foreach dir( dirs ) {
+foreach dir( make_list_unique( "/", "/apc", "/cache", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
   foreach file( files ) {
 
-    req = http_get( item:string( dir, file ), port:port );
-    res = http_keepalive_send_recv( port:port, data:req );
+    res = http_get_cache( item:string( dir, file ), port:port );
     if( res == NULL ) continue;
+
     if( "<title>APC INFO" >< res || "<title>APCu INFO" >< res ) {
       rep += dir + file + '\n';
       if( ! phpversion ) {
@@ -102,12 +95,8 @@ foreach dir( dirs ) {
 if( ! isnull( phpversion ) && isnull( phpinfoVer ) )
   set_kb_item( name:'php/phpinfo/phpversion/' + port, value:phpversion );
 
-if(rep != NULL) {
- report = string("
-The following files are providing a APC / APCu INFO page which
-disclose potentially sensitive information to the remote attacker : 
-", rep );
-
+if( rep ) {
+ report = string("The following files are providing a APC / APCu INFO page which disclose potentially sensitive information to the remote attacker : ", rep );
  security_message( port:port, data:report );
  exit( 0 );
 }

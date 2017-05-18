@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: secpod_vbulletin_search_mult_sql_inj_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # vBulletin Search UI Multiple SQL Injection Vulnerabilities
 #
@@ -39,40 +39,25 @@ tag_summary = "The host is running Vbulletin and is prone to multiple SQL
 if(description)
 {
   script_id(902540);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48815);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("vBulletin Search UI Multiple SQL Injection Vulnerabilities");
-  desc = "
-  Summary:
-  " + tag_summary + "
 
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Impact:
-  " + tag_impact + "
-
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45290");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103198/vbulletinmgi-sql.txt");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/103197/vbulletinsearchui-sql.txt");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Determine if Vbulletin is prone to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("vBulletin/installed");
+  script_mandatory_keys("vBulletin/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -81,26 +66,17 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("version_func.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get vBulletin Location
 if(! dir = get_dir_from_kb(port:port, app:"vBulletin")){
   exit(0);
 }
+
+host = http_host_name( port:port );
 
 ## Construct attack request
 attack = string("query=OpenVAS+SQL+Injection&titleonly=0&searchuser=&starter",
@@ -110,8 +86,8 @@ attack = string("query=OpenVAS+SQL+Injection&titleonly=0&searchuser=&starter",
                 "do=process&contenttypeid=5&messagegroupid[0]='");
 
 req = string("POST ", dir, "/search.php?search_type=1 HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
-             "User-Agent: Mozilla/4.75 [en] (X11, U OpenVAS)\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(attack), "\r\n\r\n", attack);
 

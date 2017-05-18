@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms16-041.nasl 3130 2016-04-22 09:26:01Z antu123 $
+# $Id: gb_dotnet_framework_ms16-041.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (3148789)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807662");
-  script_version("$Revision: 3130 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-0148");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 11:26:01 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 12:18:40 +0530 (Wed, 13 Apr 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (3148789)");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3143693");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-041");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

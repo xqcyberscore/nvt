@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vx_search_enterprise_server_bof_vuln.nasl 5544 2017-03-10 17:38:36Z teissa $
+# $Id: gb_vx_search_enterprise_server_bof_vuln.nasl 5917 2017-04-10 13:36:42Z teissa $
 #
 # VX Search Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:vx:search_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809061");
-  script_version("$Revision: 5544 $");
+  script_version("$Revision: 5917 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 18:38:36 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 15:36:42 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-10 10:19:35 +0530 (Mon, 10 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("VX Search Enterprise Server Buffer Overflow Vulnerability");
@@ -56,8 +56,8 @@ if(description)
   script_tag(name: "affected" , value:"VX Search Enterprise version 9.0.26");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  10th March, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to http://www.syncbreeze.com");
+10th April, 2017. Information regarding this issue will be updated once the
+  solution details are available. For updates refer to http://www.vxsearch.com/.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 

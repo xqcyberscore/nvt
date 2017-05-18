@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gzip_detect_lin.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_gzip_detect_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # GZip Version Detection (Linux)
 #
@@ -38,13 +38,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("GZip Version Detection (Linux)");
-  script_summary("Detection of installed version of GZip");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

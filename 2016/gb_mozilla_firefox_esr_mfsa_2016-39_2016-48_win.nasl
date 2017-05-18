@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807680");
-  script_version("$Revision: 3227 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2016-2808", "CVE-2016-2814", "CVE-2016-2805", "CVE-2016-2807");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-04 14:19:27 +0200 (Wed, 04 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-02 13:12:19 +0530 (Mon, 02 May 2016)");
   script_name("Mozilla Firefox Esr Security Updates( mfsa_2016-39_2016-48 )-Windows");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-44/");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-39/");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox Esr on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802839");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5931 $");
   script_bugtraq_id(53019);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-24 13:18:35 +0530 (Tue, 24 Apr 2012)");
   script_name("Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18057");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74873");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18745/");
 
-  script_summary("Check if Zoho ManageEngine Support Center Plus is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

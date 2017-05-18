@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-December/001920.html");
   script_id(841243);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5977 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-06 10:26:17 +0530 (Thu, 06 Dec 2012)");
   script_cve_id("CVE-2012-4565");
   script_tag(name:"cvss_base", value:"4.7");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "USN", value: "1653-1");
   script_name("Ubuntu Update for linux-ec2 USN-1653-1");
 
-  script_summary("Check for the Version of linux-ec2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

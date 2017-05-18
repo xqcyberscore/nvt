@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_admin_news_tools_detect.nasl 2697 2016-02-18 12:01:53Z cfi $
+# $Id: secpod_admin_news_tools_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Admin News Tools Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900904");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2697 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-18 13:01:53 +0100 (Thu, 18 Feb 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-31 07:37:13 +0200 (Fri, 31 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Admin News Tools Version Detection");
-  script_summary("Sets the KB for the version of Admin News Tool");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

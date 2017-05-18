@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842800");
-  script_version("$Revision: 3619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-29 13:04:08 +0200 (Wed, 29 Jun 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 05:47:53 +0200 (Tue, 21 Jun 2016)");
   script_cve_id("CVE-2012-6702", "CVE-2016-5300", "CVE-2016-0718", "CVE-2015-1283",
                 "CVE-2016-4472");
@@ -63,7 +63,6 @@ could cause a denial of service, or possibly execute arbitrary code.
   script_xref(name: "USN", value: "3013-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3013-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xmlrpc-c");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

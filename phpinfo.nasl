@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpinfo.nasl 3669 2016-07-06 16:47:19Z cfi $
+# $Id: phpinfo.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # phpinfo() output accessible
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11229");
-  script_version("$Revision: 3669 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-06 18:47:19 +0200 (Wed, 06 Jul 2016) $");
+  script_version("$Revision: 5815 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("phpinfo() output accessible");
-  script_summary("Checks for the presence of files providing a phpinfo() output");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Randy Matz");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_dependencies("http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"Delete them or restrict access to the listened files.");
@@ -72,7 +71,6 @@ report = 'The following files are calling the function phpinfo() which disclose 
 files = make_list( "/phpinfo.php", "/info.php", "/test.php", "/php_info.php", "/index.php" );
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
@@ -83,8 +81,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
     url = dir + file;
 
-    req = http_get( item:url, port:port );
-    res = http_keepalive_send_recv( port:port, data:req );
+    res = http_get_cache( item:url, port:port );
 
     if( "<title>phpinfo()</title>" >< res ) {
       vuln = TRUE;

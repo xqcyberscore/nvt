@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_coldfusion_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # ColdFusion Detection
 #
@@ -35,14 +35,13 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-09-02 16:10:00 +0200 (Thu, 02 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("ColdFusion Detection");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of ColdFusion");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");

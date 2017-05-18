@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cyberstrong_eshop_sql.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: cyberstrong_eshop_sql.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: Cyberstrong eShop SQL Injection Vulnerabilities
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "None at this time";
 if(description)
 {
  script_id(19391);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 5786 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2003-0509");
  script_bugtraq_id(14101, 14103, 14112);
@@ -47,22 +47,12 @@ if(description)
  script_xref(name:"OSVDB", value:"10100");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
- name = "Cyberstrong eShop SQL Injection Vulnerabilities";
- script_name(name);
-
-
- summary = "Checks for an SQL injection in Cyberstrong eShop v4.2";
-
- script_summary(summary);
-
+ script_name("Cyberstrong eShop SQL Injection Vulnerabilities");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_active");
-
+ script_tag(name:"qod_type", value:"remote_active");
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
-
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -75,22 +65,21 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_asp(port:port)) exit(0);
 
-function check(url)
-{
- req = http_get(item:url +"/20Review.asp?ProductCode='", port:port);
- res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if ( res == NULL ) exit(0);
- if ( 'Microsoft OLE DB Provider for ODBC Drivers' >< res && 'ORDER BY TypeID' >< res )
- {
-        security_message(port);
-        exit(0);
- }
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  url = dir + "/20Review.asp?ProductCode='";
+  req = http_get(item:url, port:port);
+  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if ( res == NULL ) continue;
+
+  if ( 'Microsoft OLE DB Provider for ODBC Drivers' >< res && 'ORDER BY TypeID' >< res ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-foreach dir ( cgi_dirs() )
-{
-  check(url:dir);
-}
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-024.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms08-024.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Internet Explorer Data Stream Handling Remote Code Execution Vulnerability (947864)
 #
@@ -24,24 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to execute arbitrary code with
-  the privileges of the application. Failed attacks may cause denial-of-service
-  conditions.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Internet Explorer version 5.x/6.x/7.x";
-tag_insight = "The flaw is due to a memory corruption error in Internet Explorer when
-  processing specially crafted data streams.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-024.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-024.";
-
 if(description)
 {
   script_id(801488);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-01-10 14:22:58 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,11 +47,18 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
   script_require_ports(139, 445);
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary code with
+  the privileges of the application. Failed attacks may cause denial-of-service
+  conditions.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Internet Explorer version 5.x/6.x/7.x");
+  script_tag(name : "insight" , value : "The flaw is due to a memory corruption error in Internet Explorer when
+  processing specially crafted data streams.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms08-024.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS08-024.");
   exit(0);
 }
 
@@ -73,21 +67,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:2, win2008:2) <= 0){
   exit(0);
@@ -104,11 +83,10 @@ if(hotfix_missing(name:"947864") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  vers = get_file_version(sysPath, file_name:"mshtml.dll");
+  vers = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(vers)
   {
     if(hotfix_check_sp(win2k:5) > 0)
@@ -161,13 +139,12 @@ if(sysPath)
 }
 
 ## Get System Path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(!sysPath){
   exit(0);
 }
 
-dllVer = get_file_version(sysPath, file_name:"System32\mshtml.dll");
+dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
 if(dllVer)
 {
   # Windows Vista

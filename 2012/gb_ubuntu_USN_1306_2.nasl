@@ -60,8 +60,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-January/001542.html");
   script_id(840859);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5963 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-09 13:30:14 +0530 (Mon, 09 Jan 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,7 +69,6 @@ if(description)
   script_cve_id("CVE-2011-3660", "CVE-2011-3661", "CVE-2011-3658", "CVE-2011-3663", "CVE-2011-3665");
   script_name("Ubuntu Update for mozvoikko USN-1306-2");
 
-  script_summary("Check for the Version of mozvoikko");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

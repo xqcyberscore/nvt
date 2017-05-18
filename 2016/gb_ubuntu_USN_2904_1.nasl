@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842682");
-  script_version("$Revision: 4383 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 15:25:24 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:17:04 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2015-7575", "CVE-2016-1523", "CVE-2016-1930", "CVE-2016-1935");
   script_tag(name:"cvss_base", value:"10.0");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name: "USN", value: "2904-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-March/003339.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

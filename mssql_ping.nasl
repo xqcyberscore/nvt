@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mssql_ping.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: mssql_ping.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Microsoft's SQL UDP Info Query
 #
 # Authors:
@@ -49,14 +49,13 @@ if(description)
 {
  script_id(10674);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Microsoft's SQL UDP Info Query");
  
  
- script_summary("Microsoft's SQL UDP Info Query");
  
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");

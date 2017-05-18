@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_detect_win.nasl 3048 2016-04-12 07:04:51Z antu123 $
+# $Id: gb_nodejs_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Node.js Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805941");
-  script_version("$Revision: 3048 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 09:04:51 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-08-04 17:21:51 +0530 (Tue, 04 Aug 2015)");
   script_name("Node.js Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   the version from 'DisplayVersion' string from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Set version of Node.js in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -56,17 +55,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## variable Initialization
 os_arch = "";

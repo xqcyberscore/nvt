@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_XI_detect.nasl 3677 2016-07-08 06:09:22Z ckuerste $
+# $Id: gb_nagios_XI_detect.nasl 5735 2017-03-27 12:27:20Z cfi $
 #
 # Nagios XI Detection
 #
@@ -34,29 +34,28 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100752";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3677 $");
+  script_version("$Revision: 5735 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-08 08:09:22 +0200 (Fri, 08 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 14:27:20 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:55:08 +0200 (Tue, 10 Aug 2010)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Nagios XI Detection");
- script_summary("Checks for the presence of Nagios XI");
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
 
 include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("host_details.inc");
 
 
@@ -72,33 +71,21 @@ cpe = "";
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port)){
-  exit(0);
-}
-
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-dirs = make_list("/nagiosxi","/nagios",cgi_dirs());
+foreach dir( make_list_unique( "/nagiosxi", "/nagios", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs)
-{
-  url = string(dir, "/login.php");
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-  if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/login.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
   if(egrep(pattern: "Set-Cookie: nagiosxi", string: buf, icase: TRUE) &&
     "Nagios Enterprises" >< buf && "Nagios XI - Login" >< buf)
   {
-
-    if(strlen(dir)>0) {
-       install=dir;
-    } else {
-       install=string("/");
-    }
-
     vers = string("unknown");
 
     ### try to get version
@@ -128,4 +115,5 @@ foreach dir (dirs)
 
  }
 }
+
 exit(0);

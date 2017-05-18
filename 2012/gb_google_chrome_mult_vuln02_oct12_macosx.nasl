@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct12_macosx.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_mult_vuln02_oct12_macosx.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct12 (Mac OS X)
 #
@@ -42,19 +42,18 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(802475);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-5112", "CVE-2012-5376");
   script_bugtraq_id(55867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:53:43 +0530 (Mon, 15 Oct 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://blog.chromium.org/2012/10/pwnium-2-results-and-wrap-up_10.html");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/10/stable-channel-update_6105.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

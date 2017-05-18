@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpmyfaq_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: phpmyfaq_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
 #
 # phpMyFAQ Detection
 #
@@ -30,17 +30,15 @@
 tag_summary = "This host is running phpMyFAQ, an open source FAQ system using PHP
   and available for many databases.";
 
-if (description)
+if(description)
 {
  script_id(100106);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5739 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-05 20:39:41 +0200 (Sun, 05 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpMyFAQ Detection");
-
- script_summary("Checks for the presence of phpMyFAQ");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
@@ -55,7 +53,6 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
@@ -64,27 +61,18 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100106";
 SCRIPT_DESC = "phpMyFAQ Detection";
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/faq","/phpmyfaq", cgi_dirs());
+foreach dir( make_list_unique( "/faq", "/phpmyfaq", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
- url = string(dir, "/index.php");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/index.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if(egrep(pattern: "powered by phpMyFAQ", string: buf, icase: TRUE))
  {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
     vers = string("unknown");
 
     ### try to get version
@@ -94,9 +82,9 @@ foreach dir (dirs) {
     {
        if(!isnull(version[2])){
          vers=version[1] + "." + version[2];
-       }
-       else
+       } else {
          vers=version[1];
+       }
     }
 
     tmp_version = string(vers," under ",install);
@@ -112,9 +100,8 @@ foreach dir (dirs) {
     info += string("' was detected on the remote host in the following directory(s):\n\n");
     info += string(install, "\n");
 
-    if(report_verbosity > 0) {
-      log_message(port:port,data:info);
-    }
+    log_message(port:port,data:info);
   }
 }
+
 exit(0);

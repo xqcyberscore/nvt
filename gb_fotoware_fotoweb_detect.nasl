@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fotoware_fotoweb_detect.nasl 4623 2016-11-25 06:56:52Z cfi $
+# $Id: gb_fotoware_fotoweb_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Fotoware Fotoweb Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808278");
-  script_version("$Revision: 4623 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:56:52 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 13:00:08 +0530 (Thu, 04 Aug 2016)");
   script_name("Fotoware Fotoweb Remote Version Detection");
 
@@ -41,7 +41,6 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Set the version of Fotoware Fotoweb in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

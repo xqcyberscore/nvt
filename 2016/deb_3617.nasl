@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3617.nasl 3760 2016-07-26 05:01:47Z antu123 $
+# $Id: deb_3617.nasl 5759 2017-03-29 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3617-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703617);
-    script_version("$Revision: 3760 $");
+    script_version("$Revision: 5759 $");
     script_cve_id("CVE-2015-3219", "CVE-2016-4428");
     script_name("Debian Security Advisory DSA 3617-1 (horizon - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-07-26 07:01:47 +0200 (Tue, 26 Jul 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-07-06 00:00:00 +0200 (Wed, 06 Jul 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3617.html");
 
-    script_summary("Debian Security Advisory DSA 3617-1 (horizon - security update)");
 
     script_category(ACT_GATHER_INFO);
 

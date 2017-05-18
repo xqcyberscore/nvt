@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_DDIVRT-2012-40.nasl 4158 2016-09-27 12:23:16Z cfi $
+# $Id: gb_twonky_DDIVRT-2012-40.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Twonky Server Directory Traversal Vulnerability
 #
@@ -29,13 +29,12 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108005");
-  script_version("$Revision: 4158 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 14:23:16 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:00:00 +0200 (Tue, 27 Sep 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_name("Twonky Server Directory Traversal Vulnerability");
-  script_summary("Check for the vulnerable version of Twonky server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

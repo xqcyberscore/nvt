@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_version_api.nasl 2636 2016-02-11 13:26:05Z antu123 $
+# $Id: gb_palo_alto_version_api.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Palo Alto PanOS Version Detection (XML-API)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105262");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2636 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 14:26:05 +0100 (Thu, 11 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-04-22 13:23:32 +0200 (Wed, 22 Apr 2015)");
  script_name("Palo Alto PanOS Version Detection (XML-API)");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_summary("This script performs XML-API based detection of the Palo Alto PanOS Version");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

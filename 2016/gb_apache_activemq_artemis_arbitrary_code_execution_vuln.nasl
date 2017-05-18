@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_artemis_arbitrary_code_execution_vuln.nasl 4229 2016-10-07 08:15:43Z antu123 $
+# $Id: gb_apache_activemq_artemis_arbitrary_code_execution_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Apache ActiveMQ Artemis Arbitrary Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq_artemis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809342");
-  script_version("$Revision: 4229 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-4978");
   script_bugtraq_id(93142);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 13:13:58 +0530 (Thu, 06 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache ActiveMQ Artemis Arbitrary Code Execution Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.blackhat.com/docs/us-16/materials/us-16-Kaiser-Pwning-Your-Java-Messaging-With-Deserialization-Vulnerabilities.pdf");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache ActiveMQ Artemis");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_activemq_artemis_detect.nasl");

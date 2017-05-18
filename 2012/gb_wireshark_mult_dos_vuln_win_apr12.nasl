@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_win_apr12.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wireshark_mult_dos_vuln_win_apr12.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities - April 12 (Windows)
 #
@@ -43,17 +43,16 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(802759);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-1596", "CVE-2012-1595", "CVE-2012-1593");
   script_bugtraq_id(52736, 52737, 52735);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-23 18:44:30 +0530 (Mon, 23 Apr 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities - April 12 (Windows)");
 
 
-  script_summary("Check for the version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

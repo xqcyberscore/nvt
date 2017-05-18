@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_meeting_server_cisco-sa-20161019-cms.nasl 4639 2016-11-28 11:33:54Z mime $
+# $Id: gb_cisco_meeting_server_cisco-sa-20161019-cms.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Cisco Meeting Server Cross-Site Request Forgery Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6444");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 4639 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("Cisco Meeting Server Cross-Site Request Forgery Vulnerability");
 
@@ -57,9 +57,8 @@ vulnerability are not available.");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-28 12:33:54 +0100 (Mon, 28 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-11-02 16:22:08 +0100 (Wed, 02 Nov 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

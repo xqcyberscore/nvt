@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 5800 2017-03-30 17:07:21Z mime $
 #
 # Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15
 #
@@ -24,17 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:novell:edirectory";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805269");
-  script_version("$Revision: 5190 $");
+  script_version("$Revision: 5800 $");
   script_cve_id("CVE-2014-5212", "CVE-2014-5213");
   script_bugtraq_id(71741, 71748);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 19:07:21 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-02-06 12:01:38 +0530 (Fri, 06 Feb 2015)");
   script_name("Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
@@ -80,43 +78,26 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-edirPort = "";
-edirVer = "";
+CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
 
-## get the port
-if(!edirPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Get the version
-if(!edirVer = get_app_version(cpe:CPE, port:edirPort))
+if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
+  sp = "0";
+
+invers = major;
+
+if( sp > 0 )
+  invers += ' SP' + sp;
+
+revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
+revision = str_replace( string:revision, find:".", replace:"" );
+
+if( major <= "8.8" && sp <= "8" && revision <= "2080404" )
 {
-  exit(0);
-}
-
-##Get major version, service pack and patch versions
-versions = eregmatch(string:edirVer, pattern:"^([0-9.]+)(.[A-Za-z0-9]+)?(.\(([0-9.]+)\))?");
-
-##Get Major version
-if(versions[1]){
-  major = versions[1];
-}
-
-##Get Service pack, if any
-if(versions[2]){
-  sp = int(versions[2] - "SP");
-}
-
-##Get Patch version, if available
-if(versions[4]){
-  revision = versions[4];
-}
-
-if(major <= "8.8" && sp <= "8" && revision <= "20804.04")
-{
-  report = 'Installed version: ' + edirVer + '\n' +
+  report = 'Installed version: ' + invers + '\n' +
            'Fixed version:     8.8 SP8 Patch4\n';
-  security_message(data:report, port:edirPort);
+  security_message(data:report, port:port);
   exit(0);
 }

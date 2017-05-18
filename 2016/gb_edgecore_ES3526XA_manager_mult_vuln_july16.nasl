@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_edgecore_ES3526XA_manager_mult_vuln_july16.nasl 3631 2016-06-30 09:52:21Z antu123 $
+# $Id: gb_edgecore_ES3526XA_manager_mult_vuln_july16.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # EdgeCore ES3526XA Manager Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808238");
-  script_version("$Revision: 3631 $");
+  script_version("$Revision: 5827 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 11:52:21 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 15:50:17 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("EdgeCore ES3526XA Manager Multiple Vulnerabilities");
@@ -66,7 +66,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Jun/62");
 
-  script_summary("Check if EdgeCore ES3526XA Manager is prone to default credentials vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -75,7 +74,6 @@ if(description)
   script_require_ports("Services/www", 80);
   exit(0);
 }
-
 
 include("http_func.inc");
 include("misc_func.inc");
@@ -87,7 +85,6 @@ req = "";
 buf = "";
 edgePort = 0;
 
-## Get port
 if(!edgePort = get_app_port(cpe:CPE)) exit(0);
 
 ## Create hard-coded account list
@@ -98,9 +95,7 @@ foreach credential (credentials)
 {
   userpass = base64(str:credential);
 
-  ## Send request and receive response
-  req = http_get(item:"/", port:edgePort);
-  buf = http_keepalive_send_recv( port:edgePort, data:req, bodyonly:FALSE );
+  buf = http_get_cache(item:"/", port:edgePort);
 
   if("401 Unauthorized" >!< buf) exit(0);
 

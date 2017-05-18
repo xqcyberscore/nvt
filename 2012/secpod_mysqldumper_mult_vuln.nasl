@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mysqldumper_mult_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: secpod_mysqldumper_mult_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # MySQLDumper Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mysqldumper:mysqldumper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902675");
-  script_version("$Revision: 5633 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-4251", "CVE-2012-4252", "CVE-2012-4253",
                 "CVE-2012-4254", "CVE-2012-4255");
   script_bugtraq_id(53306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-30 15:02:29 +0530 (Mon, 30 Apr 2012)");
   script_name("MySQLDumper Multiple Vulnerabilities");
 
@@ -47,7 +47,6 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/75287");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/112304/MySQLDumper-1.24.4-LFI-XSS-CSRF-Code-Execution-Traversal.html");
 
-  script_summary("Check for directory traversal vulnerability in MySQLDumper");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web application abuses");

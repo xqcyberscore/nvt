@@ -55,14 +55,13 @@ if(description)
   script_id(840905);
   script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 5931 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:44 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2012-0210", "CVE-2012-0211", "CVE-2012-0212");
   script_xref(name: "USN", value: "1366-1");
   script_name("Ubuntu Update for devscripts USN-1366-1");
 
-  script_summary("Check for the Version of devscripts");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

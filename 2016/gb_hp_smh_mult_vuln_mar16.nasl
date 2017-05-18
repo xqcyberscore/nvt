@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_mar16.nasl 2956 2016-03-25 07:24:08Z antu123 $
+# $Id: gb_hp_smh_mult_vuln_mar16.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # HP System Management Homepage Multiple Vulnerabilities(mar-2016)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807526");
-  script_version("$Revision: 2956 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-1993", "CVE-2016-1994", "CVE-2016-1995", "CVE-2016-1996");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 08:24:08 +0100 (Fri, 25 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-22 12:10:54 +0530 (Tue, 22 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("HP System Management Homepage Multiple Vulnerabilities(mar-2016)");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05045763");
 
-  script_summary("Check for the vulnerable version of HP System Management Homepage (SMH)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

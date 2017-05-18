@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_reflected_dos.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_snmp_reflected_dos.nasl 5740 2017-03-28 03:23:03Z ckuerste $
 #
-# SNMP GETBULK Reflected DrDoS
+# SNMP GETBULK Reflected DRDoS
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,17 +28,16 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105062");
- script_version ("$Revision: 2827 $");
+ script_version ("$Revision: 5740 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- script_name("SNMP GETBULK Reflected DrDoS");
+ script_name("SNMP GETBULK Reflected DRDoS");
 
  script_xref(name:"URL", value:"http://www.darkreading.com/attacks-breaches/snmp-ddos-attacks-spike/d/d-id/1269149");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 05:23:03 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-07-16 12:23:32 +0200 (Wed, 16 Jul 2014)");
- script_summary("Determine if the remote SNMP is vulnerable to a reflected DrDoS");
  script_category(ACT_ATTACK);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
@@ -52,7 +51,7 @@ if (description)
  script_tag(name : "solution" , value : "Disable the SNMP service on the remote host if you do not use it or
  restrict access to this service");
  script_tag(name : "summary" , value : "The remote SNMP daemon allows distributed reflection and
- amplification (DrDoS) attacks");
+ amplification (DRDoS) attacks");
 
  script_tag(name:"qod_type", value:"remote_vul");
 

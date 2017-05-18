@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: pgpmail.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: pgpmail.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: PGPMail.pl detection
 #
 # Authors:
@@ -52,8 +52,8 @@ Reference : http://online.securityfocus.com/archive/1/243408";
 if(description)
 {
  script_id(11070);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3605);
  script_tag(name:"cvss_base", value:"7.5");
@@ -68,7 +68,6 @@ if(description)
 
  summary = "Checks for the presence of PGPMail.pl";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

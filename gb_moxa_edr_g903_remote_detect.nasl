@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_edr_g903_remote_detect.nasl 4623 2016-11-25 06:56:52Z cfi $
+# $Id: gb_moxa_edr_g903_remote_detect.nasl 6005 2017-04-21 13:14:30Z cfi $
 #
 # Moxa EDR G903 Router Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808219");
-  script_version("$Revision: 4623 $");
+  script_version("$Revision: 6005 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:56:52 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-09 13:45:38 +0530 (Thu, 09 Jun 2016)");
   script_name("Moxa EDR G903 Router Remote Version Detection");
 
@@ -41,40 +41,26 @@ if(description)
   Router from the response and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Moxa EDR G903 Router");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-sndReq = "";
-rcvRes = "";
-edrVer = "";
-edrPort = 0;
+edrPort = get_http_port( default:80 );
+if( ! can_host_asp( port:edrPort ) ) exit( 0 );
 
-## Get HTTP Port
-if(!edrPort = get_http_port(default:80)){
-  exit(0);
-}
-
-## Construct url
 url = "/Login.asp";
 
-##Send Request and Receive Response
-sndReq = http_get(item:url, port:edrPort);
-rcvRes = http_send_recv(port:edrPort, data:sndReq);
+rcvRes = http_get_cache(item:url, port:edrPort);
 
 #Confirm application
 #Project model is different for different edr series

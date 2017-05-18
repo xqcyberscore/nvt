@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_mult_arbitrary_code_exec_vuln_may16.nasl 3553 2016-06-20 07:26:11Z antu123 $
+# $Id: gb_apache_struts_mult_arbitrary_code_exec_vuln_may16.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Apache Struts Multiple Arbitrary Code Execution Vulnerabilities May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807972");
-  script_version("$Revision: 3553 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-3081", "CVE-2016-3087");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:26:11 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:32:08 +0530 (Fri, 06 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Struts Multiple Arbitrary Code Execution Vulnerabilities May16");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://struts.apache.org/docs/s2-032.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache Struts");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_struts2_detection.nasl");

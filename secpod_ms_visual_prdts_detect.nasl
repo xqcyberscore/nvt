@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_prdts_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_ms_visual_prdts_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Microsoft Visual Product(s) Version Detection
 #
@@ -27,22 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900808");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-08-03 06:30:10 +0200 (Mon, 03 Aug 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Products Version Detection");
 
-  tag_summary =
-"Detection of installed version of Microsoft Visual Products.
+  script_tag(name : "summary" , value : "Detection of installed version of Microsoft Visual Products.
 
-This script finds the installed product version of Microsoft Visual
-Product(s) and sets the result in KB.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+  This script finds the installed product version of Microsoft Visual
+  Product(s) and sets the result in KB.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -76,25 +72,6 @@ STUDIO_LIST = make_list("^(7\..*)", "cpe:/a:microsoft:visual_studio:2003:",
                         "^(9\..*)", "cpe:/a:microsoft:visual_studio:2008:",
                         "^(10\..*)", "cpe:/a:microsoft:visual_studio:2010:");
 STUDIO_MAX = max_index(STUDIO_LIST);
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase, appName, appPath)
-{
-  local_var cpe;
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(!isnull(cpe))
-  {
-    register_product(cpe:cpe, location:loc);
-
-    log_message(data: build_detection_report(app: appName,
-                                             version: tmpVers,
-                                             install: appPath,
-                                             cpe: cpe,
-                                             concluded: tmpVers));
-  }
-}
 
 # Check for Product Existence
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\VisualStudio"))
@@ -143,8 +120,8 @@ foreach item (registry_enum_keys(key:visual_key))
       ## build cpe and store it as host_detail
       for (i = 0; i < STUDIO_MAX-1; i = i + 2)
       {
-        register_cpe(tmpVers:studioVer, tmpExpr:STUDIO_LIST[i], tmpBase:STUDIO_LIST[i+1],
-                           appName:visualName, appPath:insPath);
+        register_and_report_cpe(app:visualName, ver:studioVer, base:STUDIO_LIST[i+1],
+                                expr:STUDIO_LIST[i], insloc:insPath);
       }
     }
   }
@@ -165,8 +142,8 @@ foreach item (registry_enum_keys(key:visual_key))
       ## build cpe and store it as host_detail
       for (i = 0; i < NET_MAX-1; i = i + 2)
       {
-        cpe = register_cpe(tmpVers:netVer, tmpExpr:NET_LIST[i], tmpBase:NET_LIST[i+1],
-                           appName:visualName, appPath:insPath);
+        register_and_report_cpe(app:visualName, ver:netVer, base:NET_LIST[i+1],
+                                expr:NET_LIST[i], insloc:insPath);
       }
     }
   }

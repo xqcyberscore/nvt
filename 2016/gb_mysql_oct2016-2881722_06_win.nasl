@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_oct2016-2881722_06_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mysql_oct2016-2881722_06_win.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Oracle MySQL Security Updates (oct2016-2881722) 06 - Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809380");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2016-5609", "CVE-2016-5627", "CVE-2016-5630", "CVE-2016-8284");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-19 15:51:27 +0530 (Wed, 19 Oct 2016)");
   script_name("Oracle MySQL Security Updates (oct2016-2881722) 06 - Windows");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
-  script_summary("Check for the vulnerable version of Oracle MySQL on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Databases");

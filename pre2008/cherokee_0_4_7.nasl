@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cherokee_0_4_7.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: cherokee_0_4_7.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Cross-Site Scripting in Cherokee Error Pages
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to Cherokee 0.4.8 or newer.";
 if(description)
 {
  script_id(15618);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2171");
  script_bugtraq_id(9496);
@@ -51,7 +51,6 @@ if(description)
  
  summary = "Checks for the version of Cherokee";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51793.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_phpldapadmin_51793.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_id(103409);
  script_bugtraq_id(51793);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5841 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
@@ -52,16 +52,14 @@ if (description)
  script_xref(name : "URL" , value : "http://phpldapadmin.sourceforge.net/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521450");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-02 12:25:56 +0100 (Thu, 02 Feb 2012)");
- script_summary("Determine if installed phpLDAPadmin is vulnerable to xss");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("phpldapadmin_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("phpldapadmin/installed");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -74,17 +72,14 @@ include("http_keepalive.inc");
 include("version_func.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
 if(!dir = get_dir_from_kb(port:port,app:"phpldapadmin"))exit(0);
-host = get_host_name();
+
+host = http_host_name(port:port);
 
 req = string(
 "GET ",dir,"/cmd.php?cmd=query_engine&server_id=1&query=none&format=list&showresults=na&base=%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E&scope=sub&filter=objectClass%3D*%20display_attrs=cn%2C+sn%2C+uid%2C+postalAddress%2C+telephoneNumberorderby=&size_limit=50&search=Search HTTP/1.1\r\n",
 "Host: ",host,"\r\n",
-"User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:9.0.1) Gecko/20100101 OpenVAS/4.0.1\r\n",
+"User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
 "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
 "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
 "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n",

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_browsercrm_mult_sql_n_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_browsercrm_mult_sql_n_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # BrowserCRM Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902691");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5814 $");
   script_cve_id("CVE-2011-5213", "CVE-2011-5214");
   script_bugtraq_id(51060);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-10-30 12:15:54 +0530 (Tue, 30 Oct 2012)");
   script_name("BrowserCRM Multiple SQL Injection and XSS Vulnerabilities");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71828");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23059");
 
-  script_summary("Check if BrowserCRM is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -76,17 +75,11 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP port
 bcrmPort = get_http_port(default:80);
-if(!get_port_state(bcrmPort)){
-  exit(0);
-}
 
-## Check Host Supports PHP
 if(!can_host_php(port:bcrmPort)){
   exit(0);
 }
@@ -95,16 +88,17 @@ foreach dir (make_list_unique("/browserCRM", "/browsercrm", "/browser", "/", cgi
 {
   if(dir == "/") dir = "";
   url = dir + "/index.php";
+  res = http_get_cache( item:url, port:bcrmPort );
+  if( isnull( res ) ) continue;
 
-  if(http_vuln_check(port:bcrmPort, url:url, pattern:">BrowserCRM<",
-                 check_header:TRUE, extra_check:'please log in'))
-  {
+  if( res =~ "HTTP/1.. 200" && ">BrowserCRM<" >< res && 'please log in' >< res ) {
+
     ## Construct the Attack Request
     url = url + '/"><script>alert(document.cookie);</script>';
 
     ## Try attack and check the response to confirm vulnerability.
     if(http_vuln_check(port:bcrmPort, url:url,
-                       pattern:"><script>alert\(document.cookie\);</script>",
+                       pattern:"><script>alert\(document\.cookie\);</script>",
                        check_header:TRUE,
                        extra_check:">BrowserCRM<"))
     {

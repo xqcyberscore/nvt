@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_sep12_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_realplayer_mult_vuln_sep12_win.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities - Sep12 (Windows)
 #
@@ -42,20 +42,19 @@ tag_summary = "This host is installed with RealPlayer which is prone to multiple
 if(description)
 {
   script_id(803030);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-2407", "CVE-2012-2408", "CVE-2012-2409", "CVE-2012-2410",
                 "CVE-2012-3234");
   script_bugtraq_id(55473);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-21 16:04:53 +0530 (Fri, 21 Sep 2012)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities - Sep12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47896/");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027510");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/09072012_player/en/");
 
-  script_summary("Check for the version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

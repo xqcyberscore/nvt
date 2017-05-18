@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms16-097.nasl 3819 2016-08-10 13:45:03Z antu123 $
+# $Id: gb_lync_ms16-097.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Lync Multiple Remote Code Execution Vulnerabilities (3177393)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807875");
-  script_version("$Revision: 3819 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-3301", "CVE-2016-3303", "CVE-2016-3304");
   script_bugtraq_id(92288, 92301, 92302);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 15:45:03 +0200 (Wed, 10 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-10 15:50:25 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Lync Multiple Remote Code Execution Vulnerabilities (3177393)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3174301");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115431");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-097");
-  script_summary("Check for the vulnerable file 'Rtmpltfm.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

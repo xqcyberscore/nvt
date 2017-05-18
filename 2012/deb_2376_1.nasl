@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2376_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2376_1.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from advisory DSA 2376-1 (ipmitool)
 #
 # Authors:
@@ -49,12 +49,11 @@ if(description)
  script_tag(name:"cvss_base", value:"3.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
  script_cve_id("CVE-2011-4339");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6022 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-11 03:21:56 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2376-1 (ipmitool)");
 
- script_summary("Debian Security Advisory DSA 2376-1 (ipmitool)");
 
  script_category(ACT_GATHER_INFO);
 

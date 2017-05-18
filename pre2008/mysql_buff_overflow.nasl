@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mysql_buff_overflow.nasl 3302 2016-05-12 13:08:27Z benallard $
+# $Id: mysql_buff_overflow.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: MySQL buffer overflow
 #
 # Authors:
@@ -43,8 +43,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3302 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:08:27 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-0836");
  script_bugtraq_id(10981);
@@ -60,7 +60,6 @@ if(description)
 
 
  summary = "Checks for the remote MySQL version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

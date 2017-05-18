@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgiwrap.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: cgiwrap.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # Cobalt RaQ2 cgiwrap
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10041");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1238, 777);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-1999-1530", "CVE-2000-0431");
   script_name("Cobalt RaQ2 cgiwrap");
-  script_summary("Checks for the presence of /cgi-bin/cgiwrap");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 Mathieu Perrin");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfiler_mult_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_openfiler_mult_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Openfiler Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802967");
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5963 $");
   script_bugtraq_id(55500);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-25 17:31:13 +0530 (Tue, 25 Sep 2012)");
   script_name("Openfiler Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42507");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://itsecuritysolutions.org/2012-09-06-Openfiler-v2.x-multiple-vulnerabilities/");
   script_xref(name : "URL" , value : "https://dev.openfiler.com/attachments/152/Openfiler_v2.99.1_multiple_vulnerabilities.txt");
 
-  script_summary("Check if Openfiler is vulnerable to information disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

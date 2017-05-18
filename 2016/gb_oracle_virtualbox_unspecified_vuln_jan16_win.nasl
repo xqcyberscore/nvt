@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln_jan16_win.nasl 2534 2016-01-29 13:20:02Z antu123 $
+# $Id: gb_oracle_virtualbox_unspecified_vuln_jan16_win.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Oracle Virtualbox Unspecified Vulnerability Jan16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806987");
-  script_version("$Revision: 2534 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-0602");
   script_tag(name:"cvss_base", value:"6.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-29 14:20:02 +0100 (Fri, 29 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 16:01:00 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Virtualbox Unspecified Vulnerability Jan16 (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");

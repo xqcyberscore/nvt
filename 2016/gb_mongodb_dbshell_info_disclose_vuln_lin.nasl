@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_dbshell_info_disclose_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mongodb_dbshell_info_disclose_vuln_lin.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # MongoDB Client 'dbshell' Information Disclosure Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809350");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-6494");
   script_bugtraq_id(92204);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 15:38:52 +0530 (Thu, 13 Oct 2016)");
   script_name("MongoDB Client 'dbshell' Information Disclosure Vulnerability (Linux)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=832908");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of MongoDB on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");

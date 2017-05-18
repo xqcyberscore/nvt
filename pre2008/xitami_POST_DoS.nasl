@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xitami_POST_DoS.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: xitami_POST_DoS.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Xitami malformed header DoS
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade your software or use another";
 if(description)
 {
  script_id(11934);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9083);
  script_tag(name:"cvss_base", value:"7.8");
@@ -43,7 +43,6 @@ if(description)
  
 
  summary = "Xitami malformed header POST request denial of service";
- script_summary(summary);
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

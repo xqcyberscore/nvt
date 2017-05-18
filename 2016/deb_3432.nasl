@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3432.nasl 3234 2016-05-06 10:23:52Z antu123 $
+# $Id: deb_3432.nasl 5675 2017-03-22 10:00:52Z teissa $
 # Auto-generated from advisory DSA 3432-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703432);
-    script_version("$Revision: 3234 $");
+    script_version("$Revision: 5675 $");
     script_cve_id("CVE-2015-7201", "CVE-2015-7205", "CVE-2015-7212", "CVE-2015-7213",
                   "CVE-2015-7214");
     script_name("Debian Security Advisory DSA 3432-1 (icedove - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-06 12:23:52 +0200 (Fri, 06 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-05-06 15:29:37 +0530 (Fri, 06 May 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3432.html");
 
-    script_summary("Debian Security Advisory DSA 3432-1 (icedove - security update)");
 
     script_category(ACT_GATHER_INFO);
 

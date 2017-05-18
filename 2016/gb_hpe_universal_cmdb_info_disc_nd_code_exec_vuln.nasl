@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_info_disc_nd_code_exec_vuln.nasl 3724 2016-07-19 08:06:13Z antu123 $
+# $Id: gb_hpe_universal_cmdb_info_disc_nd_code_exec_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # HP Universal CMDB Remote Information Disclosure And Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:universal_cmbd_foundation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808251");
-  script_version("$Revision: 3724 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-4367", "CVE-2016-4368");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-19 10:06:13 +0200 (Tue, 19 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 16:30:56 +0530 (Thu, 14 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("HP Universal CMDB Remote Information Disclosure And Code Execution Vulnerabilities");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05164813");
   script_xref(name : "URL" , value : "https://h20566.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05164408");
 
-  script_summary("Check for the vulnerable version of HPE Universal CMDB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

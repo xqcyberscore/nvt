@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dup_scount_enterprise_detect.nasl 4332 2016-10-24 13:05:28Z antu123 $
+# $Id: gb_dup_scount_enterprise_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Dup Scout Enterprise Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809064");
-  script_version("$Revision: 4332 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 15:05:28 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 16:11:25 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dup Scout Enterprise Version Detection");
@@ -41,7 +41,6 @@ if(description)
   This script sends HTTP GET request and try to get the version from the
   response.");
 
-  script_summary("Get the Version of Dup Scout Enterprise");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

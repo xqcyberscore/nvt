@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgicso_command_execution.nasl 3766 2016-07-27 16:18:00Z cfi $
+# $Id: cgicso_command_execution.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # CGIEmail's CGICso (Send CSO via CGI) Command Execution Vulnerability
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10779");
-  script_version("$Revision: 3766 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-27 18:18:00 +0200 (Wed, 27 Jul 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1652");
   script_bugtraq_id(6141);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("CGIEmail's CGICso (Send CSO via CGI) Command Execution Vulnerability");
-  script_summary("Determine if a remote host is vulnerable to the cgicso vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2001 SecurITeam");

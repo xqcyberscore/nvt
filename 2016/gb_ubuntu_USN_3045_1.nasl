@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842844");
-  script_version("$Revision: 3809 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-08 12:51:18 +0200 (Mon, 08 Aug 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:11:52 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2015-4116", "CVE-2015-8873", "CVE-2015-8876", "CVE-2015-8935",
 		"CVE-2016-5093", "CVE-2016-5094", "CVE-2016-5095", "CVE-2016-5096",
@@ -101,7 +101,6 @@ in combination with scripts that honour the HT ...
   script_xref(name: "USN", value: "3045-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3045-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php7.0");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

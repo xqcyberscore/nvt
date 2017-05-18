@@ -39,8 +39,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001868.html");
   script_id(841193);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-16 09:47:52 +0530 (Tue, 16 Oct 2012)");
   script_cve_id("CVE-2012-2137");
   script_tag(name:"cvss_base", value:"6.9");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "USN", value: "1609-1");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1609-1");
 
-  script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

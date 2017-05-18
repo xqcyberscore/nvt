@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_getSiteScopeConfiguration.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_sitescope_getSiteScopeConfiguration.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # HP SiteScope SOAP Call getSiteScopeConfiguration Remote Code Execution Vulnerability
 #
@@ -37,13 +37,10 @@ attacker could abuse this vulnerability to login to SiteScope with
 administrative privileges then execute arbitrary code through the underlying
 functionality.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103603";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 3062 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103603");
+ script_version ("$Revision: 5841 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -52,15 +49,16 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-12-173/");
  script_xref(name : "URL" , value : "http://www.hp.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-05 18:35:36 +0100 (Mon, 05 Nov 2012)");
- script_summary("Determine if it is possible to read the SiteScope config");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8080);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -71,7 +69,6 @@ include("http_keepalive.inc");
 if(!find_in_path("gunzip"))exit(0);
 
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 url = '/SiteScope/';
 req = http_get(item:url, port:port);
@@ -79,11 +76,11 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("Server: SiteScope" >!< buf && "<TITLE>Login - SiteScope" >!< buf && "<small>SiteScope" >!< buf)exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = string("POST ",url,"/services/APISiteScopeImpl HTTP/1.1\r\n",
              "Host: ",host,"\r\n",
-             "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\r\n",
+             "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
              'SOAPAction: ""',"\r\n",
              "Content-Type: text/xml; charset=UTF-8\r\n",
              "Content-Length: 441\r\n",
@@ -102,8 +99,7 @@ req = string("POST ",url,"/services/APISiteScopeImpl HTTP/1.1\r\n",
              "></impl:getSiteScopeConfiguration>\r\n",
              "</wsns0:Body>\r\n",
              "</wsns0:Envelope>");
-
-result = http_send_recv(port:port, data:req, bodyonly:FALSE);
+result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if(result !~ "HTTP/1.. 200")exit(0);
 

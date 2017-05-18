@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcatel_lucent_omnipcx_25694.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_alcatel_lucent_omnipcx_25694.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Alcatel-Lucent OmniPCX Enterprise Remote Command Execution Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2007-3010");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3014 $");
+ script_version ("$Revision: 6018 $");
 
  script_name("Alcatel-Lucent OmniPCX Enterprise Remote Command Execution Vulnerability");
 
@@ -57,9 +57,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/479699");
  script_xref(name : "URL" , value : "http://www1.alcatel-lucent.com/psirt/statements/2007002/OXEUMT.htm");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-26 13:55:46 +0200 (Thu, 26 Apr 2012)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

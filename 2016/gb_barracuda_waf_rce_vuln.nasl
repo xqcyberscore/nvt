@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_waf_rce_vuln.nasl 3756 2016-07-25 08:59:05Z ckuerste $
+# $Id: gb_barracuda_waf_rce_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Barracuda Web Application Firewall Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:barracuda:web_application_firewall';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106150");
-  script_version("$Revision: 3756 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-25 10:59:05 +0200 (Mon, 25 Jul 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-07-25 12:59:46 +0700 (Mon, 25 Jul 2016)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -52,7 +52,6 @@ if (description)
   script_tag(name: "summary", value: "Barracuda Web Application Firewall is prone to a remote code exectuion
 vulnerability.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

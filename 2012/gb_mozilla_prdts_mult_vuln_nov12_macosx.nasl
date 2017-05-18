@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_nov12_macosx.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_mult_vuln_nov12_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Mac OS X)
 #
@@ -42,18 +42,17 @@ tag_summary = "This host is installed with Mozilla Firefox and is prone to multi
 if(description)
 {
   script_id(803041);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Firefox  Multiple Vulnerabilities - November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51144");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027703");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-90.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

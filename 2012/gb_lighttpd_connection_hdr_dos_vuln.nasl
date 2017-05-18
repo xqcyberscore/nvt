@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lighttpd_connection_hdr_dos_vuln.nasl 2517 2016-01-27 15:13:25Z cfi $
+# $Id: gb_lighttpd_connection_hdr_dos_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Lighttpd Connection header Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:lighttpd:lighttpd';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802044");
-  script_version("$Revision: 2517 $");
+  script_version("$Revision: 5977 $");
   script_bugtraq_id(56619);
   script_cve_id("CVE-2012-5533");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-27 16:13:25 +0100 (Wed, 27 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-23 10:59:35 +0530 (Fri, 23 Nov 2012)");
   script_name("Lighttpd Connection header Denial of Service Vulnerability");
 
@@ -44,7 +44,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Nov/156");
   script_xref(name:"URL", value:"http://download.lighttpd.net/lighttpd/security/lighttpd_sa_2012_01.txt");
 
-  script_summary("Check if Lighttpd HTTP Server is vulnerable Connection header DoS");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

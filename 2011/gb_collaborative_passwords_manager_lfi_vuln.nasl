@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collaborative_passwords_manager_lfi_vuln.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_collaborative_passwords_manager_lfi_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # Collaborative Passwords Manager (cPassMan) 'path' Local File Inclusion Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Collaborative Passwords Manager (cPassMan) a
 if(description)
 {
   script_id(801923);
-  script_version("$Revision: 5648 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 15:24:49 +0200 (Tue, 26 Apr 2011)");
   script_bugtraq_id(47379);
   script_tag(name:"cvss_base", value:"6.8");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zataz.com/mailing-securite/1302836181/%5BFull-disclosure%5D-cPassMan-v1.82-Arbitrary-File-Download---SOS-11-004.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Collaborative Passwords Manager is vulnerable to local file inclusion");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -67,17 +66,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 if (!can_host_php(port:port)){
   exit(0);
@@ -85,9 +79,8 @@ if (!can_host_php(port:port)){
 
 if(!dir = get_dir_from_kb(port:port,app:"passman"))exit(0);
 
- ## Send and Receive the response
- req = http_get(item:string(dir,"/index.php"), port:port);
- res = http_keepalive_send_recv(port:port,data:req);
+ if( dir == "/" ) dir = "";
+ res = http_get_cache(item:string(dir,"/index.php"), port:port);
  
  ## Confirm the application
  if('<title>Collaborative Passwords Manager</title>' >< res)

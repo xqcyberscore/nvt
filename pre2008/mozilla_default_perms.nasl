@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_default_perms.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: mozilla_default_perms.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Mozilla/Firefox default installation file permission flaw
 #
 # Authors:
@@ -41,8 +41,8 @@ tag_solution = "Update to the latest version of the software";
 if(description)
 {
   script_id(15432);
-  script_version("$Revision: 3395 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11166);
   script_cve_id("CVE-2004-0906");
@@ -50,7 +50,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Mozilla/Firefox default installation file permission flaw");
 
-  script_summary("Determines the version of Mozilla/Firefox");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

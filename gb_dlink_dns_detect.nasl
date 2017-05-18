@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dns_detect.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_dlink_dns_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # D-Link DNS Devices Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106015");
- script_version ("$Revision: 2662 $");
- script_tag(name: "last_modification", value: "$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name: "creation_date", value: "2015-07-10 14:32:27 +0700 (Fri, 10 Jul 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ The script sends a connection request to the server and attempts to detect D-Lin
  script_family("Product detection");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
- script_summary("Checks for the presence of Dlink DNS devices.");
  exit(0);
 }
 

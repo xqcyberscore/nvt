@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_clockstone_shell_12_2012.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_clockstone_shell_12_2012.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # WordPress Clockstone Theme Arbitrary File Upload Vulnerability
 #
@@ -34,29 +34,26 @@ facilitate unauthorized access or privilege escalation; other
 attacks are also possible.";
 
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103626";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if (description)
 {
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118930/WordPress-Clockstone-Theme-File-Upload.html");
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/download/118930/clockstone-shell.pdf");
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103626");
+ script_version ("$Revision: 5841 $");
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
  script_name("WordPress Clockstone Theme Arbitrary File Upload Vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-12-19 12:55:53 +0100 (Wed, 19 Dec 2012)");
- script_summary("Determine if it is possible to upload a file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("secpod_wordpress_detect_900182.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("wordpress/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -67,20 +64,18 @@ include("host_details.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
    
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 url = dir + '/wp-content/themes/clockstone/theme/functions/upload.php';
-host = get_host_name();
+host = http_host_name(port:port);
 
 filename = 'openvas_' + rand() + '.php';
 len = 363 + strlen(filename);
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1\r\n' + 
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n' + 
       'Accept-Encoding: gzip, deflate\r\n' +

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871601");
-  script_version("$Revision: 3202 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-29 15:53:41 +0200 (Fri, 29 Apr 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-22 05:16:42 +0200 (Fri, 22 Apr 2016)");
   script_cve_id("CVE-2016-0686", "CVE-2016-0687", "CVE-2016-0695", "CVE-2016-3425", "CVE-2016-3427");
   script_tag(name:"cvss_base", value:"10.0");
@@ -71,7 +71,6 @@ signatures that were weaker than expected. (CVE-2016-0695)
   script_xref(name: "RHSA", value: "2016:0676-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-April/msg00032.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of java-1.7.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

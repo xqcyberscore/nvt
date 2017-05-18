@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2362_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2362_1.nasl 5963 2017-04-18 09:02:14Z teissa $
 # Description: Auto-generated from advisory DSA 2362-1 (acpid)
 #
 # Authors:
@@ -68,12 +68,11 @@ if(description)
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2011-1159", "CVE-2011-2777", "CVE-2011-4578");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5963 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:34:11 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2362-1 (acpid)");
 
- script_summary("Debian Security Advisory DSA 2362-1 (acpid)");
 
  script_category(ACT_GATHER_INFO);
 

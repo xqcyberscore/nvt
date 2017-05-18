@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842862");
-  script_version("$Revision: 3862 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-22 08:36:56 +0200 (Mon, 22 Aug 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 05:43:08 +0200 (Tue, 16 Aug 2016)");
   script_cve_id("CVE-2016-6210", "CVE-2016-6515");
   script_tag(name:"cvss_base", value:"7.8");
@@ -54,7 +54,6 @@ OpenSSH to consume resources, leading to a denial of service.
   script_xref(name: "USN", value: "3061-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3061-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

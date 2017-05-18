@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pidgin_detect_lin.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_pidgin_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Pidgin Version Detection (Linux)
 #
@@ -41,13 +41,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Pidgin Version Detection (Linux)");
-  script_summary("Detection of installed version of Pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

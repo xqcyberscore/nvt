@@ -83,8 +83,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-September/001845.html");
   script_id(841165);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5912 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-03 09:22:19 +0530 (Wed, 03 Oct 2012)");
   script_cve_id("CVE-2012-1970", "CVE-2012-1971", "CVE-2012-1972", "CVE-2012-1973",
                 "CVE-2012-1974", "CVE-2012-1975", "CVE-2012-1976", "CVE-2012-3956",
@@ -98,7 +98,6 @@ if(description)
   script_xref(name: "USN", value: "1551-2");
   script_name("Ubuntu Update for thunderbird USN-1551-2");
 
-  script_summary("Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

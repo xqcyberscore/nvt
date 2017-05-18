@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
 #
 # phlyLabs phlyMail Lite Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803151");
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 5798 $");
   script_bugtraq_id(57303, 57304);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-01-15 12:12:35 +0530 (Tue, 15 Jan 2013)");
   script_name("phlyLabs phlyMail Lite Multiple Vulnerabilities");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013010113");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5122.php");
 
-  script_summary("Check if phlyMail Lite is vulnerable to open redirect");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -70,7 +69,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -79,25 +77,21 @@ req = "";
 res = "";
 dir = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check the php support
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## iterate over the possible paths
-foreach dir (make_list_unique("/", "/phlymail/phlymail", cgi_dirs(port:port)))
-{
+foreach dir (make_list_unique("/", "/phlymail/phlymail", cgi_dirs(port:port))) {
 
   if(dir == "/") dir = "";
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Application Confirmation
-  if(http_vuln_check(port:port, url:dir + "/index.php",
-     pattern:">phlyMail Lite<", check_header:TRUE,
-     extra_check:make_list('>Passwort vergessen?', '>Passwort:<')))
-  {
+  if( res =~ "HTTP/1.. 200" && ">phlyMail Lite<" >< res &&
+      '>Passwort vergessen?' >< res && '>Passwort:<' >< res ) {
 
     ## Construct attack request
     req = http_get(item:string(dir,"/frontend/derefer.php?go=",

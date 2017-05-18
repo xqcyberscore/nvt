@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842902");
-  script_version("$Revision: 4191 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 12:59:18 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-29 05:43:48 +0200 (Thu, 29 Sep 2016)");
   script_cve_id("CVE-2016-1371", "CVE-2016-1372", "CVE-2016-1405");
   script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,6 @@ AppArmor profile.");
   script_xref(name: "USN", value: "3093-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3093-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of clamav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

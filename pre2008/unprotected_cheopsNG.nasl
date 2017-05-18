@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: unprotected_cheopsNG.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: unprotected_cheopsNG.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Cheops NG without password
 #
 # Authors:
@@ -36,14 +36,13 @@ agent using the '-p' option.";
 if(description)
 {
  script_id(20161);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Cheops NG without password");
  
- script_summary( "Cheops NG agent is running without authentication");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2005 Michel Arboi");

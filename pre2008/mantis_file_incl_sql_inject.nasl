@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mantis_file_incl_sql_inject.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: mantis_file_incl_sql_inject.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Mantis File Inclusion and SQL Injection Flaws
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "Upgrade to Mantis 0.19.3 or newer.";
 if(description)
 {
   script_id(20093);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3335");
   script_bugtraq_id(15210, 15212);
@@ -54,7 +54,6 @@ if(description)
   script_name("Mantis File Inclusion and SQL Injection Flaws");
 
 
-  script_summary("Checks for flaws in Mantis < 0.19.3");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: worldclient_server_detection.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: worldclient_server_detection.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # WorldClient for MDaemon Server Detection
 #
@@ -33,15 +33,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10745");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2000-0660");
   script_bugtraq_id(1462, 2478, 4687, 4689, 823);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("WorldClient for MDaemon Server Detection");
-  script_summary("Check for WorldClient for MDaemon");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("Web application abuses");

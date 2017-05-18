@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_asset_manager_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mcafee_asset_manager_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # McAfee Asset Manager Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804421");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-04-17 11:22:05 +0530 (Thu, 17 Apr 2014)");
   script_name("McAfee Asset Manager Version Detection");
 
@@ -39,7 +39,6 @@ if(description)
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
-  script_summary("Check the presence of McAfee Asset Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170320-aniipv6.nasl 5635 2017-03-21 03:25:11Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170320-aniipv6.nasl 5806 2017-03-31 07:21:48Z teissa $
 #
 # Cisco IOS XE Software IPv6 Denial of Service Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106674");
  script_cve_id("CVE-2017-3850");
- script_tag(name: "cvss_base", value: "7.8");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5635 $");
+ script_tag(name:"cvss_base", value:"7.1");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+ script_version("$Revision: 5806 $");
 
  script_name("Cisco IOS XE Software IPv6 Denial of Service Vulnerability");
 
@@ -63,7 +63,7 @@ configured)
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-21 04:25:11 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name: "creation_date", value: "2017-03-21 10:01:15 +0700 (Tue, 21 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

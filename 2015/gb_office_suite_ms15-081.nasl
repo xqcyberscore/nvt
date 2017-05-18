@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms15-081.nasl 3637 2016-07-01 14:44:36Z mime $
+# $Id: gb_office_suite_ms15-081.nasl 5807 2017-03-31 07:31:50Z antu123 $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3080790)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805087");
-  script_version("$Revision: 3637 $");
+  script_version("$Revision: 5807 $");
   script_cve_id("CVE-2015-1642", "CVE-2015-2423", "CVE-2015-2466", "CVE-2015-2467", 
                 "CVE-2015-2468", "CVE-2015-2469", "CVE-2015-2470", "CVE-2015-2477");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-01 16:44:36 +0200 (Fri, 01 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:31:50 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 14:20:42 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3080790)");
@@ -173,7 +173,7 @@ if(get_kb_item("MS/Office/Ver") =~ "^14.*")
     if(dllVer || vbVer)
     {
       if(version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7155.4999")  ||
-         version_in_range(version:vbVer, test_version:"7.0", test_version2:"7.00.1636")) 
+         version_in_range(version:vbVer, test_version:"7.0", test_version2:"7.0.16.36")) 
       {
         security_message(0);
         exit(0);

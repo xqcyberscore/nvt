@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-031.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: gb_ms16-031.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Microsoft Windows Privilege Elevation Vulnerability (3140410)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807467") ;
-  script_version("$Revision: 2910 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-0087");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-09 08:12:48 +0530 (Wed, 09 Mar 2016)");
   script_name("Microsoft Windows Privilege Elevation Vulnerability (3140410)");
   
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3140410");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-031");
 
-  script_summary("Check for the vulnerable 'Ntoskrnl.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

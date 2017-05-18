@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_rootkit_nginx_iframe_injection.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_linux_rootkit_nginx_iframe_injection.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # 64-bit Debian Linux Rootkit with nginx Doing iFrame Injection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802045");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6022 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-03 13:43:19 +0530 (Mon, 03 Dec 2012)");
   script_name("64-bit Debian Linux Rootkit with nginx Doing iFrame Injection");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://blog.crowdstrike.com/2012/11/http-iframe-injecting-linux-rootkit.html");
   script_xref(name:"URL", value:"http://www.securelist.com/en/blog/208193935/New_64_bit_Linux_Rootkit_Doing_iFrame_Injections");
 
-  script_summary("Check if 64-bit Debian Squeeze Linux with nginx has Rootkit");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

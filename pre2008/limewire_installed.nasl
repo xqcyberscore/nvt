@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: limewire_installed.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: limewire_installed.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: LimeWire is installed
 #
 # Authors:
@@ -30,8 +30,8 @@ tag_solution = "Uninstall this software";
 if(description)
 {
  script_id(11427);
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,6 @@ if(description)
  
  summary = "Determines if LimeWire is installed";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-111.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: gb_ms16-111.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Windows Kernel Multiple Vulnerabilities (3186973)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809220") ;
-  script_version("$Revision: 4136 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-3305", "CVE-2016-3306", "CVE-2016-3371", "CVE-2016-3372",
                 "CVE-2016-3373");
   script_bugtraq_id(92812, 92813, 92814, 92815, 92845);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:08:04 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows Kernel Multiple Vulnerabilities (3186973)");
 
@@ -77,7 +77,6 @@ if(description)
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3186973");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS16-111");
 
-  script_summary("Check for the vulnerable 'Ntoskrnl.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networksgb_ms16-111.nasl GmbH");
   script_family("Windows : Microsoft Bulletins");

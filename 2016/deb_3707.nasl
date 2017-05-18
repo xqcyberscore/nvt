@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3707.nasl 4485 2016-11-14 05:15:37Z antu123 $
+# $Id: deb_3707.nasl 5732 2017-03-27 09:00:59Z teissa $
 # Auto-generated from advisory DSA 3707-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703707);
-    script_version("$Revision: 4485 $");
+    script_version("$Revision: 5732 $");
     script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5573", "CVE-2016-5582", "CVE-2016-5597");
     script_name("Debian Security Advisory DSA 3707-1 (openjdk-7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-11-14 06:15:37 +0100 (Mon, 14 Nov 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-11-07 00:00:00 +0100 (Mon, 07 Nov 2016)");
     script_tag(name:"cvss_base", value:"9.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3707.html");
 
-    script_summary("Debian Security Advisory DSA 3707-1 (openjdk-7 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

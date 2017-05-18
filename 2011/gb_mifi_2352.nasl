@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mifi_2352.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mifi_2352.nasl 5769 2017-03-29 13:50:21Z cfi $
 #
 # Novatel Wireless MiFi 2352 Password Information Disclosure Vulnerability
 #
@@ -33,12 +33,11 @@ passwords, which may aid in further attacks.
 MiFi 2352 access point firmware 11.47.17 is vulnerable; other versions
 may also be affected.";
 
-
 if (description)
 {
  script_id(103115);
- script_version("$Revision: 3100 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5769 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-10 13:28:46 +0100 (Thu, 10 Mar 2011)");
  script_bugtraq_id(37962);
  script_tag(name:"cvss_base", value:"2.1");
@@ -50,8 +49,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securitybydefault.com/2010/01/vulnerabilidad-en-modemrouter-3g.html");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if MiFi 2352 is prone to an information-disclosure vulnerability");
- script_category(ACT_ATTACK);
+ script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,23 +61,19 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/config.xml.sav"); 
 
   if(http_vuln_check(port:port, url:url,pattern:"</WiFi>",extra_check: make_list("<ssid>","<Secure>","<keyindex>"))) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_kb870669.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_kb870669.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: ADODB.Stream object from Internet Explorer (KB870669)
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "http://support.microsoft.com/?kbid=870669";
 if(description)
 {
  script_id(12298);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10514);
  script_tag(name:"cvss_base", value:"7.6");
@@ -50,7 +50,6 @@ if(description)
 
  summary = "Checks for KB870669";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

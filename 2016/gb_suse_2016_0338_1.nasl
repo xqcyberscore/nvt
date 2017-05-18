@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851198");
-  script_version("$Revision: 2682 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 14:49:05 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-05 06:11:58 +0100 (Fri, 05 Feb 2016)");
   script_cve_id("CVE-2016-1930", "CVE-2016-1935", "CVE-2016-1938");
   script_tag(name:"cvss_base", value:"10.0");
@@ -63,7 +63,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "SUSE-SU", value: "2016:0338_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00010.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of MozillaFirefox,");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

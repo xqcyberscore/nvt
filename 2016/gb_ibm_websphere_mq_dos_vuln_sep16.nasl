@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_dos_vuln_sep16.nasl 4193 2016-09-30 13:08:26Z antu123 $
+# $Id: gb_ibm_websphere_mq_dos_vuln_sep16.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # IBM WebSphere MQ Denial of Service Vulnerability - September16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809052");
-  script_version("$Revision: 4193 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-0379");
   script_bugtraq_id(93146);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 15:08:26 +0200 (Fri, 30 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-29 18:00:59 +0530 (Thu, 29 Sep 2016)");
   script_name("IBM WebSphere MQ Denial of Service Vulnerability - September16");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21984565");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM WebSphere MQ");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");

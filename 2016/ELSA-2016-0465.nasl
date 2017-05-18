@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0465.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0465.nasl 6012 2017-04-24 04:58:27Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122910");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 6012 $");
 script_tag(name:"creation_date", value:"2016-03-23 07:08:57 +0200 (Wed, 23 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0465");
 script_tag(name: "insight", value: "ELSA-2016-0465 -  openssh security update - [6.6.1p1-25 + 0.9.3-9]- CVE-2016-1908: possible fallback from untrusted to trusted X11 forwarding (#1298741)[6.6.1p1-24 + 0.9.3-9]- CVE-2016-3115: missing sanitisation of input for X11 forwarding (#1317818)"); 
 script_tag(name : "solution", value : "update software");
@@ -37,13 +37,12 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2016-0465");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2016-0465.html");
 script_cve_id("CVE-2016-1908","CVE-2016-3115");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"7.5");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0465");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

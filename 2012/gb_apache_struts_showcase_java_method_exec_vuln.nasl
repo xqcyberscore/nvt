@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 3422 2016-06-02 16:45:44Z teissa $
+# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(802425);
-  script_version("$Revision: 3422 $");
+  script_version("$Revision: 5841 $");
   script_cve_id("CVE-2012-0838");
   script_bugtraq_id(49728);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-02 18:45:44 +0200 (Thu, 02 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-13 14:59:53 +0530 (Tue, 13 Mar 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://issues.apache.org/jira/browse/WW-3668");
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000012.html");
 
-  script_summary("Check if Apache Struts Showcase is vulnerable to java method execution vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -74,13 +73,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-
-## Get HTTP Port
 
 asport = 0;
 asreq = "";
@@ -90,7 +85,6 @@ asReq = "";
 dir = "";
 url = "";
 
-## Get HTTP Port
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -98,6 +92,8 @@ if(!asport = get_app_port(cpe:CPE)){
 if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
+
+host = http_host_name(port:asport);
 
 ## Send and Receive the response
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
@@ -121,12 +117,12 @@ if(asreq)
 
       ## Construct the POST request
       asReq = string("POST ", url," HTTP/1.1\r\n",
-                     "Host: ", get_host_name(), "\r\n",
-                     "User-Agent:  Java-Method-Execution\r\n",
+                     "Host: ", host, "\r\n",
+                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen(postdata), "\r\n",
                      "\r\n", postdata);
-      asRes = http_send_recv(port:asport, data:asReq);
+      asRes = http_keepalive_send_recv(port:asport, data:asReq);
 
       if(asRes)
       {

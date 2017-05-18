@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-030.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: gb_ms08-030.nasl 5863 2017-04-05 07:38:11Z antu123 $
 #
 # Bluetooth Stack Could Allow Remote Code Execution Vulnerability (951376)
 #
@@ -43,8 +43,8 @@ tag_affected = "Microsoft Windows XP SP2/SP3.";
 if(description)
 {
   script_id(800008);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 5863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-09-30 14:16:17 +0200 (Tue, 30 Sep 2008)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
@@ -74,6 +74,7 @@ if(description)
 
 include("smb_nt.inc");
 include("secpod_reg.inc");
+include("version_func.inc");
 include("secpod_smb_func.inc");
 
 # Check OS applicability. Only Windows XP is verified, Vista is affected as
@@ -82,79 +83,12 @@ if(hotfix_check_sp(xp:4) <= 0){
   exit(0);
 }
 
-function Get_FileVersion()
-{
-  sysFile = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                            item:"Install Path");
-  if(!sysFile){
-    exit(0);
-  }
-  
-  sysFile += "\drivers\Bthport.sys";
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysFile);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:sysFile);
-  
-  soc = open_sock_tcp(port);
-  if(!soc){
-    exit(0);
-  }
-  
-  r = smb_session_request(soc:soc, remote:name);
-  if(!r)
-  { 
-    close(soc);
-    exit(0);
-  }
-  
-  prot = smb_neg_prot(soc:soc);
-  if(!prot)
-  { 
-    close(soc);
-    exit(0);
-  }
-  
-  r = smb_session_setup(soc:soc, login:login, password:pass,
-                        domain:domain, prot:prot);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  uid = session_extract_uid(reply:r);
-  if(!uid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  tid = tconx_extract_tid(reply:r);
-  if(!tid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-  if(!fid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod",
-                 offset:260000);
-  close(soc);
-  return v;
+sysFile = smb_get_system32root();
+if(!sysFile){
+  exit(0);
 }
-
+  
+sysFile += "\drivers\Bthport.sys";
 
 # Check for Hotfix 951376 (MS08-030). 
 if(hotfix_missing(name:"951376") == 0){
@@ -164,7 +98,7 @@ if(hotfix_missing(name:"951376") == 0){
 SP = get_kb_item("SMB/WinXP/ServicePack");
 if("Service Pack 2" >< SP)
 {
-  sysVer = Get_FileVersion();
+  sysVer = get_version(dllPath:sysFile, string:"prod", offs:260000);
   if(sysVer == NULL){
     exit(0);
   }
@@ -180,7 +114,7 @@ if("Service Pack 2" >< SP)
 
 else if("Service Pack 3" >< SP)
 {
-  sysVer = Get_FileVersion();
+  sysVer = get_version(dllPath:sysFile, string:"prod", offs:260000);
   if(sysVer == NULL){
       exit(0);
   }

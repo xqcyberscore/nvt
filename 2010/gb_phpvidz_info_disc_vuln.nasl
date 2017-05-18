@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpvidz_info_disc_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_phpvidz_info_disc_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # PHPvidz Administrative Credentials Disclosure Vulnerability
 #
@@ -46,8 +46,8 @@ credentials disclosure vulnerability.";
 if(description)
 {
   script_id(801549);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -60,8 +60,9 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -71,19 +72,16 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 pcmsPort = get_http_port(default:80);
-if(!pcmsPort){
-  exit(0);
-}
 
-foreach dir (make_list("/phpvidz_0.9.5","/phpvidz"))
-{
-  sndReq = http_get(item:string(dir, "/index.php"), port:pcmsPort);
-  rcvRes = http_send_recv(port:pcmsPort, data:sndReq);
+foreach dir( make_list_unique( "/phpvidz_0.9.5", "/phpvidz", cgi_dirs( port:pcmsPort ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:pcmsPort);
 
   ## Confirm the application
   if(">PHPvidz<" >< rcvRes)

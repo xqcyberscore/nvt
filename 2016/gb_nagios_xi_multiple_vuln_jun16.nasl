@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_multiple_vuln_jun16.nasl 3534 2016-06-16 10:34:01Z antu123 $
+# $Id: gb_nagios_xi_multiple_vuln_jun16.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Nagios XI Multiple Vulnerabilities - June16 
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807835");
-  script_version("$Revision: 3534 $");
+  script_version("$Revision: 5689 $");
   script_tag(name:"deprecated", value:TRUE);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-16 12:34:01 +0200 (Thu, 16 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 16:38:53 +0530 (Wed, 08 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Nagios XI Multiple Vulnerabilities - June16");
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.security-assessment.com/files/documents/advisory/NagiosXI-Advisory.pdf");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check if Nagios XI is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_nagios_XI_detect.nasl");

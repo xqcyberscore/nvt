@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mozilla_certif_handle_dos.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: mozilla_certif_handle_dos.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Mozilla/Firefox security manager certificate handling DoS
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade to the latest version of this software";
 if(description)
 {
   script_id(14668);
-  script_version("$Revision: 3376 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10703);
   script_cve_id("CVE-2004-0758");
@@ -47,7 +47,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Mozilla/Firefox security manager certificate handling DoS");
 
-  script_summary("Determines the version of Mozilla/Firefox");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

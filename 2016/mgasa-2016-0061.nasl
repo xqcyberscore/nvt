@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0061.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0061.nasl 5689 2017-03-23 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131218");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5689 $");
 script_tag(name:"creation_date", value:"2016-02-11 07:22:17 +0200 (Thu, 11 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0061");
 script_tag(name: "insight", value: "Updated nettle2.7 and nettle packages fix security vulnerabilities: Two carry propagation bugs in elliptic curve scalar multiplications that affect the NIST P-256 curve. The bugs are in the C code and affect multiple architectures (CVE-2015-8803, CVE-2015-8805). A carry propagation bug in elliptic curve scalar multiplications that affect the NIST P-384 curve. The bug is in the assembly code and only affects the x86_64 architecture (CVE-2015-8804)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0061");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0061");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

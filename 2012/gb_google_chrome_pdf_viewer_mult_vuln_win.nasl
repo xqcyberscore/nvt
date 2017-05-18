@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_pdf_viewer_mult_vuln_win.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_pdf_viewer_mult_vuln_win.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Google Chrome PDF Viewer Multiple Vulnerabilities (Windows)
 #
@@ -37,19 +37,18 @@ tag_summary = "This host is installed with Google Chrome and is prone to use aft
 if(description)
 {
   script_id(802932);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-2862", "CVE-2012-2863");
   script_bugtraq_id(54897);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-14 17:03:39 +0530 (Tue, 14 Aug 2012)");
   script_name("Google Chrome PDF Viewer Multiple Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50222/");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/08/stable-channel-update.html");
 
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

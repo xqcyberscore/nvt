@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: synchrologic_detect.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: synchrologic_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Synchrologic User account information disclosure
 #
 # Authors:
@@ -37,8 +37,8 @@ Example : http://IP_ADDRESS/en/admin/aggregate.asp";
 if (description)
 {
  script_id(11657);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -47,7 +47,6 @@ if (description)
 
 
 
- script_summary("Determines if Synchrologic is installed");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
  script_family("Web application abuses");

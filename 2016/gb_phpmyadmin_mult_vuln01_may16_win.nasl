@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_mult_vuln01_may16_win.nasl 5513 2017-03-08 10:00:24Z teissa $
+# $Id: gb_phpmyadmin_mult_vuln01_may16_win.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # phpMyAdmin Multiple Vulnerabilities -01 May16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807592");
-  script_version("$Revision: 5513 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2016-2559", "CVE-2016-2562");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 11:00:24 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 12:12:08 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("phpMyAdmin Multiple Vulnerabilities -01 May16 (Windows)");
@@ -68,7 +68,7 @@ if(description)
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-10");
   script_xref(name : "URL" , value : "https://www.phpmyadmin.net/security/PMASA-2016-13");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");

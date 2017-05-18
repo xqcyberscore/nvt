@@ -1,8 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-MSdotNET-version.nasl 2837 2016-03-11 09:19:51Z benallard $
-# Description: detects the version of Microsoft .Net Framework
+# $Id: remote-detect-MSdotNET-version.nasl 5992 2017-04-20 14:42:07Z cfi $
 #
-# remote-detect-MSdotNET-version.nasl
+# Microsoft dotNET version grabber
 #
 # Author:
 # Christian Eric Edjenguele <christian.edjenguele@owasp.org>
@@ -19,51 +19,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host seems to have Microsoft .NET installed.";
-
-tag_solution = "It's recommended to disable verbose error displaying to avoid version detection.
-this can be done througth the IIS management console.";
-
-
+###############################################################################
 
 if(description)
 {
-script_id(101007);
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
-script_tag(name:"creation_date", value:"2009-03-15 21:21:09 +0100 (Sun, 15 Mar 2009)");
-script_tag(name:"cvss_base", value:"0.0");
-name = "Microsoft dotNET version grabber";
-script_name(name);
- 
-summary = "The remote host seems to have Microsoft .NET installed";
+  script_oid("1.3.6.1.4.1.25623.1.0.101007");
+  script_version("$Revision: 5992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2009-03-15 21:21:09 +0100 (Sun, 15 Mar 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Microsoft dotNET version grabber");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-script_summary(summary);
+  tag_summary = "The remote host seems to have Microsoft .NET installed.";
 
-script_category(ACT_GATHER_INFO);
-script_tag(name:"qod_type", value:"remote_banner");
+  tag_solution = "It's recommended to disable verbose error displaying to avoid version detection.
+  this can be done througth the IIS management console.";
 
-script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
-family = "General";
-script_family(family);
-script_dependencies("find_service.nasl");
-script_require_ports("Services/www");
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
 
+  script_tag(name:"qod_type", value:"remote_banner");
 
-
-script_tag(name : "solution" , value : tag_solution);
-script_tag(name : "summary" , value : tag_summary);
-exit(0);
-
+  exit(0);
 }
-
-
-#
-# The script code starts here
-#
 
 include("misc_func.inc");
 include("http_func.inc");
@@ -72,58 +57,47 @@ include("cpe.inc");
 include("host_details.inc");
 
 ## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.101007";
 SCRIPT_DESC = "Microsoft dotNET version grabber";
 
+port = get_http_port(default:80);
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 # request a non existent random page
-page = string(rand() + ".aspx");
+page = string("/" + rand() + ".aspx");
 
-port = get_http_port(default:80);
-	
-request = string(
-    "GET /", page, " HTTP/1.0\r\n",
-    "Host: ", get_host_name(), "\r\n",
-    "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; OpenVAS)\r\n",
-    "Accept-Language: en-us,en;q=0.5\r\n",
-    "Keep-Alive: 300\r\n",
-    "Connection: keep-alive\r\n",
-    "Content-Type: application/x-www-form-urlencoded\r\n\r\n"
-    );
+request = http_get(item:page, port:port);
+response = http_keepalive_send_recv(port:port, data:request, bodyonly:FALSE);
 
+# Get the ASP.NET Microsoft .Net Framework version
+# a response example:
+# Version Information: Microsoft .NET Framework Version:2.0.50727.1433; ASP.NET Version:2.0.50727.1433
+dotNet_header = eregmatch(pattern:"Microsoft .NET Framework Version:([0-9.]+)",string:response, icase:TRUE);
+aspNet_header = eregmatch(pattern:"ASP.NET Version:([0-9.]+)",string:response, icase:TRUE);
 
-	
-	# Get back the response
-	response = http_keepalive_send_recv(port:port, data:request, bodyonly:1);
+if(('Version Information' >< response) && dotNet_header){
 
-	# Get the ASP.NET Microsoft .Net Framework version
-	# a response example:
-	# Version Information: Microsoft .NET Framework Version:2.0.50727.1433; ASP.NET Version:2.0.50727.1433
-	dotNet_header = eregmatch(pattern:"Microsoft .NET Framework Version:([0-9.]+)",string:response, icase:TRUE);
-	aspNet_header = eregmatch(pattern:"ASP.NET Version:([0-9.]+)",string:response, icase:TRUE);
+  report = "OpenVAS was able to Detected " + dotNet_header[0];
 
-	if(('Version Information' >< response) && dotNet_header){
-		report = "OpenVAS was able to Detected " + dotNet_header[0];
-
-		# save informations into the kb
-		set_kb_item(name:"dotNET/install", value:TRUE);
-		set_kb_item(name:"dotNET/port", value:port);
-		set_kb_item(name:"dotNET/version", value:dotNet_header[1]);
+  # save informations into the kb
+  set_kb_item(name:"dotNET/install", value:TRUE);
+  set_kb_item(name:"dotNET/port", value:port);
+  set_kb_item(name:"dotNET/version", value:dotNet_header[1]);
 	   
-                ## build cpe and store it as host_detail
-                cpe = build_cpe(value:dotNet_header[1], exp:"^([0-9.]+)", base:"cpe:/a:microsoft:.net_framework:");
-                if(!isnull(cpe))
-                   register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+  ## build cpe and store it as host_detail
+  cpe = build_cpe(value:dotNet_header[1], exp:"^([0-9.]+)", base:"cpe:/a:microsoft:.net_framework:");
+  if(!isnull(cpe))
+    register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 		
-		if(aspNET_header >< response){
-			report +=  " and " + aspNet_header[0];
-	
-			# save informations into the kb
-			set_kb_item(name:"aspNET/installed", value:TRUE);
-			set_kb_item(name:"aspNET/version", value:aspNet_header[1]);
-		}
-	
+  if(aspNET_header >< response){
+    report +=  " and " + aspNet_header[0];
 
-		# report all gathered informations
-		log_message(port:port, data:report);
-	}
+    # save informations into the kb
+    set_kb_item(name:"aspNET/installed", value:TRUE);
+    set_kb_item(name:"aspNET/version", value:aspNet_header[1]);
+  }
+
+  # report all gathered informations
+  log_message(port:port, data:report);
+}
+
+exit( 0 );

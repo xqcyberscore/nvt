@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: httpd_boa.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: httpd_boa.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Boa file retrieval
 #
 # Authors:
@@ -38,8 +38,8 @@ server found at http://www.boa.org";
 if(description)
 {
  script_id(10527);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1770);
  script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +51,6 @@ if(description)
  script_name(name);
  
  summary = "Boa file retrieval";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

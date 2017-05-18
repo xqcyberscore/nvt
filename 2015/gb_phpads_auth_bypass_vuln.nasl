@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpads_auth_bypass_vuln.nasl 3480 2016-06-10 18:01:44Z cfi $
+# $Id: gb_phpads_auth_bypass_vuln.nasl 5818 2017-03-31 10:29:04Z cfi $
 #
 # PHPads Authentication Bypass Vulnerabilities - Jan15
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805321");
-  script_version("$Revision: 3480 $");
+  script_version("$Revision: 5818 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 20:01:44 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-01-13 13:48:08 +0530 (Tue, 13 Jan 2015)");
   script_name("PHPads Authentication Bypass Vulnerabilities - Jan15");
 
@@ -62,19 +62,15 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35535");
   script_xref(name : "URL" , value : "http://secunia.com/community/advisories/33580");
-  script_summary("Check if PHPads is prone to Authentication Bypass");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
-
-##Code starts from here##
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -86,23 +82,17 @@ reqads = "";
 resads = "";
 phpPort = "";
 
-## Get HTTP Port
 phpPort = get_http_port(default:80);
-
-#Check if host supports php
 if(!can_host_php(port:phpPort)){
   exit(0);
 }
 
-#iterate over possible paths
 foreach dir (make_list_unique("/", "/phpads", "/ads", cgi_dirs(port:phpPort)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir, "/admin.php"), port:phpPort);
-  res = http_keepalive_send_recv(port:phpPort, data:req);
+  res = http_get_cache(item:string(dir, "/admin.php"), port:phpPort);
 
   ## confirm the application
   if("<title>PHPads" >< res && ">PHPads<" >< res)

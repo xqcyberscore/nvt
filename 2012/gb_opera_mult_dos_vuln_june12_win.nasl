@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_dos_vuln_june12_win.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_mult_dos_vuln_june12_win.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Opera Multiple Denial of Service Vulnerabilities - June12 (Windows)
 #
@@ -49,17 +49,16 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 if(description)
 {
   script_id(802649);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-3562", "CVE-2012-3563", "CVE-2012-3564", "CVE-2012-3565",
                 "CVE-2012-3566", "CVE-2012-3567", "CVE-2012-3568");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-21 16:16:16 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Denial of Service Vulnerabilities - June12 (Windows)");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1200b/");
 
-  script_summary("Check for the version of Opera for Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3593.nasl 3595 2016-06-24 09:12:52Z antu123 $
+# $Id: deb_3593.nasl 5712 2017-03-24 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3593-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703593);
-    script_version("$Revision: 3595 $");
+    script_version("$Revision: 5712 $");
     script_cve_id("CVE-2015-8806", "CVE-2016-1762", "CVE-2016-1833", "CVE-2016-1834",
                   "CVE-2016-1835", "CVE-2016-1836", "CVE-2016-1837", "CVE-2016-1838",
                   "CVE-2016-1839", "CVE-2016-1840", "CVE-2016-2073", "CVE-2016-3627",
                   "CVE-2016-3705", "CVE-2016-4447", "CVE-2016-4449", "CVE-2016-4483");
     script_name("Debian Security Advisory DSA 3593-1 (libxml2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-24 11:12:52 +0200 (Fri, 24 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-06-02 00:00:00 +0200 (Thu, 02 Jun 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3593.html");
 
-    script_summary("Debian Security Advisory DSA 3593-1 (libxml2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

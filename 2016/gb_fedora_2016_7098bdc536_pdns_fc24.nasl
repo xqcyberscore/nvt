@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808761");
-  script_version("$Revision: 4186 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 06:45:51 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 05:44:01 +0200 (Tue, 09 Aug 2016)");
   script_cve_id("CVE-2016-6172");
   script_tag(name:"cvss_base", value:"7.1");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-7098bdc536");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WTT7ILQWU5FKY4GLFZV4V7B4VEUXETKL");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pdns");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_xss_vuln.nasl 4520 2016-11-15 12:41:38Z antu123 $
+# $Id: gb_apache_ambari_xss_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Apache Ambari Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809086");
-  script_version("$Revision: 4520 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2015-3186");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-15 13:41:38 +0100 (Tue, 15 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 16:26:03 +0530 (Fri, 04 Nov 2016)");
   script_name("Apache Ambari Cross Site Scripting Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name:"URL", value :"https://cwiki.apache.org/confluence/display/AMBARI/Ambari+Vulnerabilities");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version Apache Ambari");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_ambari_detect.nasl");

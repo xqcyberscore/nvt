@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_hash_collision_dos_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_oracle_java_se_hash_collision_dos_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Oracle Java SE Hash Collision DoS Vulnerability (Windows)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to denial
 if(description)
 {
   script_id(802681);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-2739");
   script_bugtraq_id(51236);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-04 15:27:32 +0530 (Tue, 04 Dec 2012)");
   script_name("Oracle Java SE Hash Collision DoS Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/903934");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=750533");
   script_xref(name : "URL" , value : "http://armoredbarista.blogspot.de/2012/02/investigating-hashdos-issue.html");
 
-  script_summary("Check for the version of Oracle Java SE JRE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

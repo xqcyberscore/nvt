@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interchange_web_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_interchange_web_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
 #
 # Interchange Detection
 #
@@ -30,16 +30,15 @@ programming language.";
 
 if (description)
 {
-
  script_id(100552);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 5723 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-03-25 19:45:44 +0100 (Thu, 25 Mar 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Interchange Detection");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -49,7 +48,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.icdevgroup.org/i/dev/index");
  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -61,25 +59,16 @@ SCRIPT_DESC = "Interchange Detection";
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
+foreach dir( make_list_unique( "/shop", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/shop", cgi_dirs());
-
-foreach dir (dirs) {
-
- url = string(dir, "/admin/login.html");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/admin/login.html";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if(egrep(pattern: "<title>Interchange: Log in to Administration" , string: buf, icase: TRUE))
  {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern: "([0-9.]+[-0-9]*) &copy; [0-9]{4}-[0-9]{4} Interchange Development Group",icase:TRUE);
@@ -98,12 +87,9 @@ foreach dir (dirs) {
     info += string("' was detected on the remote host in the following directory(s):\n\n");
     info += string(install, "\n");
 
-       if(report_verbosity > 0) {
-         log_message(port:port,data:info);
-       }
-       exit(0);
-
- }
+    log_message(port:port,data:info);
+    exit(0);
+  }
 }
-exit(0);
 
+exit(0);

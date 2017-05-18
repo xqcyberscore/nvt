@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_cisco-sa-20160727-firesight.nasl 4263 2016-10-13 11:24:25Z antu123 $
+# $Id: gb_cisco_firesight_cisco-sa-20160727-firesight.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco FireSIGHT System Software Snort Rule Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1463");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 4263 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Cisco FireSIGHT System Software Snort Rule Bypass Vulnerability");
 
@@ -55,9 +55,8 @@ to bypass configured rules that use Snort detection.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-13 13:24:25 +0200 (Thu, 13 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-29 12:50:14 +0700 (Fri, 29 Jul 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

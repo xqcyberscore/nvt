@@ -1,7 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-#
-# $Id: gather-package-list-docker-container.inc 5509 2017-03-07 17:29:23Z mime $
+# $Id: gather-package-list-docker-container.inc 6011 2017-04-21 20:31:32Z cfi $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -26,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5509 $
+# $Revision: 6011 $
 #
 ###############################################################################
 
@@ -73,7 +72,8 @@ OS_CPE = make_array(
     "UCS2.0", "cpe:/o:univention:corporate_server:2.0",
 
     # Ubuntu
-    "UBUNTU16.10","cpe:/o:canonical:ubuntu_linux:16.10",
+    "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
+    "UBUNTU16.10",    "cpe:/o:canonical:ubuntu_linux:16.10",
     "UBUNTU16.04 LTS","cpe:/o:canonical:ubuntu_linux:16.04:-:lts",
     "UBUNTU15.10",    "cpe:/o:canonical:ubuntu_linux:15.10",
     "UBUNTU15.04",    "cpe:/o:canonical:ubuntu_linux:15.04",
@@ -737,89 +737,89 @@ function get_container_os( container_id, soc )
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/lsb-release");
 
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=4.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 4.10", oskey:"UBUNTU4.1");
     return ret;
   }
 
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 5.04", oskey:"UBUNTU5.04");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 5.10", oskey:"UBUNTU5.10");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.06"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 6.06", oskey:"UBUNTU6.06 LTS");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 6.10", oskey:"UBUNTU6.10");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 7.04", oskey:"UBUNTU7.04");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 7.10", oskey:"UBUNTU7.10");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 8.04 LTS", oskey:"UBUNTU8.04 LTS");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 8.10", oskey:"UBUNTU8.10");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 9.04", oskey:"UBUNTU9.04");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 9.10", oskey:"UBUNTU9.10");
     return ret;
   }
 
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 10.04 LTS", oskey:"UBUNTU10.04 LTS");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.10"><rls)
   {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 10.10", oskey:"UBUNTU10.10");
     return ret;
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.04"><rls)
   {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -829,7 +829,7 @@ function get_container_os( container_id, soc )
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.10"><rls)
   {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -838,7 +838,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -847,7 +847,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -856,7 +856,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -865,7 +865,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -874,7 +874,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -883,7 +883,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -892,7 +892,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -901,7 +901,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -910,7 +910,7 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.04"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
@@ -919,11 +919,20 @@ function get_container_os( container_id, soc )
     }
   }
   if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if(!isnull(buf))
     {
       if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
       ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 16.10", oskey:"UBUNTU16.10");
+      return ret;
+    }
+  }
+  if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.04"><rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
+    if(!isnull(buf))
+    {
+      if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+      ret = register_detected_docker_os(container_id:container_id, os:"Ubuntu 17.04", oskey:"UBUNTU17.04");
       return ret;
     }
   }
@@ -939,7 +948,7 @@ function get_container_os( container_id, soc )
 
     ucs_desciption = eregmatch(string:rls, pattern:'DISTRIB_DESCRIPTION="([^"]*)"');
 
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'");
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'");
 
     if(!isnull(buf) && !isnull(ucs_release[1]) && !isnull(ucs_desciption[1]))
     {
@@ -952,196 +961,196 @@ function get_container_os( container_id, soc )
   rls = ssh_cmd(socket:soc, cmd:base_cmd + "cat /etc/debian_version");
 
   if("1.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.1", oskey:"DEB1.1");
     return ret;
   }
   if("1.2"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.2", oskey:"DEB1.2");
     return ret;
   }
   if("1.3"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 1.3", oskey:"DEB1.3");
     return ret;
   }
   if("2.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.0", oskey:"DEB2.0");
     return ret;
   }
   if("2.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.1", oskey:"DEB2.1");
     return ret;
   }
   if("2.2"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 2.2 (Potato)", oskey:"DEB2.2");
     return ret;
   }
   if("3.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 3.0 (Woody)", oskey:"DEB3.0");
     return ret;
   }
   if("3.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 3.1 (Sarge)", oskey:"DEB3.1");
     return ret;
   }
   if("4.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 4.0 (Etch)", oskey:"DEB4.0");
     return ret;
   }
   if("5.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 5.0 (Lenny)", oskey:"DEB5.0");
     return ret;
   }
   if("6.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 6.0 (Squeeze)", oskey:"DEB6.0");
     return ret;
   }
 
   if("7.11"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.11 (Wheezy)", oskey:"DEB7.11");
     return ret;
   }
   if("7.10"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.10 (Wheezy)", oskey:"DEB7.10");
     return ret;
   }
   if("7.9"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.9 (Wheezy)", oskey:"DEB7.9");
     return ret;
   }
   if("7.8"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.8 (Wheezy)", oskey:"DEB7.8");
     return ret;
   }
   if("7.7"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.7 (Wheezy)", oskey:"DEB7.7");
     return ret;
   }
   if("7.6"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.6 (Wheezy)", oskey:"DEB7.6");
     return ret;
   }
   if("7.5"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.5 (Wheezy)", oskey:"DEB7.5");
     return ret;
   }
   if("7.4"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.4 (Wheezy)", oskey:"DEB7.4");
     return ret;
   }
   if("7.3"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.3 (Wheezy)", oskey:"DEB7.3");
     return ret;
   }
   if("7.2"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.2 (Wheezy)", oskey:"DEB7.2");
     return ret;
   }
   if("7.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.1 (Wheezy)", oskey:"DEB7.1");
     return ret;
   }
   if("7.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 7.0 (Wheezy)", oskey:"DEB7.0");
     return ret;
   }
 
  if("8.7"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.7 (Jessie)", oskey:"DEB8.7");
     return ret;
   } 
 
   if("8.6"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.6 (Jessie)", oskey:"DEB8.6");
     return ret;
   }
   if("8.5"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.5 (Jessie)", oskey:"DEB8.5");
     return ret;
   }
   if("8.4"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.4 (Jessie)", oskey:"DEB8.4");
     return ret;
   }
   if("8.3"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.3 (Jessie)", oskey:"DEB8.3");
     return ret;
   }
   if("8.2"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.2 (Jessie)", oskey:"DEB8.2");
     return ret;
   }
   if("8.1"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.1 (Jessie)", oskey:"DEB8.1");
     return ret;
   }
   if("8.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.0 (Jessie)", oskey:"DEB8.0");
     return ret;
   }
   if("9.0"><rls) {
-    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=300 dpkg -l'", nosh:TRUE);
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 9.0 (Stretch)", oskey:"DEB9.0");
     return ret;

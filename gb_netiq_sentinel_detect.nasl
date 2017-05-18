@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_sentinel_detect.nasl 3127 2016-04-21 16:05:13Z mime $
+# $Id: gb_netiq_sentinel_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # NetIQ Sentinel Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105618");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3127 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-21 18:05:13 +0200 (Thu, 21 Apr 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-04-21 16:30:22 +0200 (Thu, 21 Apr 2016)");
  script_name("NetIQ Sentinel Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of NetIQ Sentinel");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

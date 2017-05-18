@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ssh_multivulns_16122002.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: ssh_multivulns_16122002.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: SSH Multiple Vulns
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade your SSH server to an unaffected version";
 if(description)
 {
   script_id(11195);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,6 @@ if(description)
 
 
   summary = "SSH Multiple Vulnerabilities 16/12/2002";
-  script_summary(summary);
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner"); 

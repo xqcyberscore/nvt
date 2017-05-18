@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_conceptronic_55369.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_conceptronic_55369.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Multiple Conceptronic Products Directory Traversal Vulnerability
 #
@@ -46,15 +46,14 @@ if (description)
  script_bugtraq_id(55369);
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5999 $");
 
  script_name("Multiple Conceptronic Products Directory Traversal Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55369");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-12 12:56:11 +0200 (Wed, 12 Sep 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2414_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2414_1.nasl 5931 2017-04-11 09:02:04Z teissa $
 # Description: Auto-generated from advisory DSA 2414-1 (fex)
 #
 # Authors:
@@ -49,15 +49,14 @@ if(description)
 {
  script_id(71141);
  script_cve_id("CVE-2012-0869");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5931 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:31:28 -0400 (Mon, 12 Mar 2012)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("Debian Security Advisory DSA 2414-1 (fex)");
 
 
- script_summary("Debian Security Advisory DSA 2414-1 (fex)");
 
  script_category(ACT_GATHER_INFO);
 

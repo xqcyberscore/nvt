@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882558");
-  script_version("$Revision: 4134 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 14:06:38 +0200 (Thu, 22 Sep 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-20 05:41:20 +0200 (Tue, 20 Sep 2016)");
   script_cve_id("CVE-2016-3134", "CVE-2016-4997", "CVE-2016-4998");
   script_tag(name:"cvss_base", value:"7.2");
@@ -98,7 +98,6 @@ the '-F exe= path-to-executabl ...
 
   script_xref(name: "CESA", value: "2016:1847");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022085.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

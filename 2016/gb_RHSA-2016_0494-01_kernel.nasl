@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871582");
-  script_version("$Revision: 2961 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 12:20:58 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-23 06:17:00 +0100 (Wed, 23 Mar 2016)");
   script_cve_id("CVE-2016-0774", "CVE-2015-1805");
   script_tag(name:"cvss_base", value:"7.2");
@@ -97,7 +97,6 @@ conditio ...
   script_xref(name: "RHSA", value: "2016:0494-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-March/msg00059.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

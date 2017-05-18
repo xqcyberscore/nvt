@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dell_webcam_activex_mult_bof_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: secpod_dell_webcam_activex_mult_bof_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Dell Webcam 'crazytalk4.ocx' ActiveX Multiple BOF Vulnerabilities
 #
@@ -45,11 +45,11 @@ buffer overflow vulnerabilities.";
 if(description)
 {
   script_id(903013);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5988 $");
   script_bugtraq_id(52571, 52560);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-29 14:38:14 +0530 (Thu, 29 Mar 2012)");
   script_name("Dell Webcam 'crazytalk4.ocx' ActiveX Multiple BOF Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52571/");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18621/");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the CLSID of Dell Webcam ActiveX Control");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Buffer overflow");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: linksys_multiple_vulns.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: linksys_multiple_vulns.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Linksys multiple remote vulnerabilities
 #
 # Authors:
@@ -47,8 +47,8 @@ tag_solution = "Upgrade to firmware version 4.20.7 or later.";
 if(description)
 {
  script_id(20096);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(14822);
  script_cve_id("CVE-2005-2799", "CVE-2005-2914", "CVE-2005-2915", "CVE-2005-2916");
@@ -64,7 +64,6 @@ if(description)
  script_name(name);
  
  summary = "Checks for DOS in apply.cgi";
- script_summary(summary);
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

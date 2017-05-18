@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opac_kpwinsql_detect.nasl 3631 2016-06-30 09:52:21Z antu123 $
+# $Id: gb_opac_kpwinsql_detect.nasl 5900 2017-04-08 17:34:18Z cfi $
 #
 # OPAC KpwinSQL Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808098");
-  script_version("$Revision: 3631 $");
+  script_version("$Revision: 5900 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 11:52:21 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-08 19:34:18 +0200 (Sat, 08 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 13:02:55 +0530 (Tue, 28 Jun 2016)");
   script_name("OPAC KpwinSQL Version Detection");
 
@@ -41,16 +41,14 @@ if(description)
   from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Detection of installed version of OPAC KpwinSQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -64,30 +62,19 @@ dir = "";
 sndReq = "";
 rcvRes = "";
 
-##Get HTTP Port
 opac_port = get_http_port(default:80);
-if(!opac_port){
-  exit(0);
-}
-
-# Check Host Supports PHP
 if(! can_host_php(port:opac_port)) exit(0);
 
-##Iterate over possible paths
-foreach dir(make_list_unique("/", "/OPAC", "/kpwinSQL", "OPAC-kpwinSQL",  cgi_dirs(port:find_port)))
+foreach dir(make_list_unique("/", "/OPAC", "/kpwinSQL", "/OPAC-kpwinSQL",  cgi_dirs(port:opac_port)))
 {
   install = dir;
   if( dir == "/" ) dir = "";
-
   url = dir + '/index.php';
-
-  ##Send Request and Receive Response
-  sndReq = http_get(item:url, port:opac_port);
-  rcvRes = http_send_recv(port:opac_port, data:sndReq);
+  rcvRes = http_get_cache(item:url, port:opac_port);
 
   ## Confirm the application
   if(rcvRes && "KPWIN" >< rcvRes && rcvRes =~ "<title>WWW OPAC.*KpwinSQL </title" &&
-     "OPACSQL" >< rcvRes && rcvRes =~ "HTTP/1.. 200 OK")
+     "OPACSQL" >< rcvRes && rcvRes =~ "HTTP/1.. 200")
   {
     version = "unknown";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 5167 2017-02-02 12:02:54Z cfi $
+# $Id: sw_mail_os_detection.nasl 5711 2017-03-24 09:41:57Z cfi $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 5167 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 13:02:54 +0100 (Thu, 02 Feb 2017) $");
+  script_version("$Revision: 5711 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 10:41:57 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,13 +59,13 @@ if( ! ports ) ports = make_list( 25, 587 );
 
 banner_type = "SMTP banner";
 
-foreach port ( ports ) {
+foreach port( ports ) {
 
   if( get_port_state( port ) ) {
 
     banner = get_smtp_banner( port:port );
 
-    if( ! banner  || banner == "" || isnull( banner ) ) continue;
+    if( ! banner || banner == "" || isnull( banner ) ) continue;
 
     if( "ESMTP" >< banner ) {
       if( "(Gentoo Linux" >< banner || "(GENTOO/GNU)" >< banner || "(Gentoo/GNU)" >< banner ||
@@ -232,13 +232,13 @@ if( ! ports ) ports = make_list( 143 );
 
 banner_type = "IMAP banner";
 
-foreach port ( ports ) {
+foreach port( ports ) {
 
   if( get_port_state( port ) ) {
 
     banner = get_imap_banner( port:port );
 
-    if( ! banner  || banner == "" || isnull( banner ) ) continue;
+    if( ! banner || banner == "" || isnull( banner ) ) continue;
 
     if( "IMAP4rev1" >< banner || "IMAP server" >< banner ||
         "ImapServer" >< banner || "IMAP4 Service" >< banner ||
@@ -317,7 +317,7 @@ foreach port ( ports ) {
         send( socket:soc, data:request );
         idbanner = recv_line( socket:soc, length:4096 );
         close( soc );
-        if( ! idbanner || isnull( idbanner ) ) continue;
+        if( ! idbanner || idbanner == "" || isnull( idbanner ) ) continue;
 
         banner += idbanner;
 
@@ -327,8 +327,7 @@ foreach port ( ports ) {
         # ID ("name", "Bigfoot", "version", "1.0", "os", "Linux", "os-version", "2.6",
         # nb: A few systems / implementation are replying with a "NO Only one Id allowed in non-authenticated state"
         # until an authenticated request is done in between. So this is not absolutely reliable.
-        if( '"os" "Linux"' >< banner ||
-            '"os", "Linux"' >< banner ) {
+        if( '"os" "Linux"' >< banner || '"os", "Linux"' >< banner ) {
 
           version = eregmatch( pattern:'"os-version"(, | )"([0-9.]+)', string:banner );
 
@@ -362,10 +361,10 @@ foreach port ( ports ) {
             register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }  
           continue;
-        } else if( "Red Hat Enterprise Linux Server release" >< banner ) {
-          version = eregmatch( pattern:"Red Hat Enterprise Linux Server release ([0-9.]+)", string:banner );
-          if( ! isnull( version[1] ) ) {
-            register_and_report_os( os:"Red Hat Enterprise Linux", version:version[1], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+        } else if( "Red Hat Enterprise Linux" >< banner ) {
+          version = eregmatch( pattern:"Red Hat Enterprise Linux (Server|ES|AS|Client) release ([0-9.]+)", string:banner );
+          if( ! isnull( version[2] ) ) {
+            register_and_report_os( os:"Red Hat Enterprise Linux " + version[1], version:version[2], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
             register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }  
@@ -425,7 +424,7 @@ foreach port ( ports ) {
 
 port = get_pop3_port( default:110 );
 banner = get_pop3_banner( port:port );
-if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+if( ! banner || banner == "" || isnull( banner ) ) exit( 0 );
 
 banner_type = "POP3 banner";
 

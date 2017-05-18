@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alpha_networks_adsl_26555.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_alpha_networks_adsl_26555.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Alpha Networks ADSL2/2+ Wireless Router version ASL-26555 Password Information Disclosure Vulnerability
 #
@@ -38,16 +38,15 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103543";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3014 $");
+ script_version ("$Revision: 5912 $");
  script_tag(name:"cvss_base", value:"3.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Alpha Networks ADSL2/2+ Wireless Router version ASL-26555 Password Information Disclosure Vulnerability");
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115663/Alpha-Networks-ADSL2-2-Wireless-Router-ASL-26555-Password-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-19 12:46:01 +0200 (Sun, 19 Aug 2012)");
- script_summary("Determine if ASL-26555 wireless router is prone to an information-disclosure vulnerability.");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

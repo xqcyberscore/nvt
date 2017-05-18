@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_83105.nasl 2641 2016-02-11 16:51:04Z mime $
+# $Id: gb_cisco_apic_em_83105.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco Application Policy Infrastructure Controller Cross Site Scripting Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2016-1318");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 2641 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Cisco Application Policy Infrastructure Controller  Cross Site Scripting Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # advisory is very vague about effected versions
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 17:51:04 +0100 (Thu, 11 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-11 14:46:59 +0100 (Thu, 11 Feb 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

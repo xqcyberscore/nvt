@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871590");
-  script_version("$Revision: 3122 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-20 07:16:53 +0200 (Wed, 20 Apr 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-02 05:17:10 +0200 (Sat, 02 Apr 2016)");
   script_cve_id("CVE-2015-4792", "CVE-2015-4802", "CVE-2015-4815", "CVE-2015-4816",
                 "CVE-2015-4819", "CVE-2015-4826", "CVE-2015-4830", "CVE-2015-4836",
@@ -83,7 +83,6 @@ in this scenario. (BZ#1303946)
   script_xref(name: "RHSA", value: "2016:0534-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-April/msg00001.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mariadb");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

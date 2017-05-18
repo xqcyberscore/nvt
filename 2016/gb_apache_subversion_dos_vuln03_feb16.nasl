@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln03_feb16.nasl 2650 2016-02-12 10:16:08Z antu123 $
+# $Id: gb_apache_subversion_dos_vuln03_feb16.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Apache Subversion 'mod_dav_svn' Denial Of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806859");
-  script_version("$Revision: 2650 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2014-8108");
   script_bugtraq_id(71725);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:16:08 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-08 18:19:08 +0530 (Mon, 08 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion 'mod_dav_svn' Denial Of Service Vulnerability");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2014-8108-advisory.txt");
 
-  script_summary("Check for the vulnerable version of Apache Subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

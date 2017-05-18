@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_20170213.nasl 5484 2017-03-04 13:32:33Z cfi $
+# $Id: gb_qnap_qts_20170213.nasl 5722 2017-03-24 15:26:22Z mime $
 #
 # QNAP QTS Multiple Vulnerabilities
 #
@@ -30,14 +30,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140172");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 5484 $");
+ script_version ("$Revision: 5722 $");
 
  script_name("QNAP QTS Multiple Vulnerabilities");
 
  script_xref(name:"URL", value:"https://www.qnap.com/de-de/releasenotes/");
  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/141123/QNAP-QTS-4.2.x-XSS-Command-Injection-Transport-Issues.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-04 14:32:33 +0100 (Sat, 04 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:26:22 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2017-02-22 13:24:30 +0100 (Wed, 22 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -77,7 +77,7 @@ if ( ! build = get_kb_item( "qnap/build" ) ) exit(0);
 
 cv = version + '.' + build;
 
-if( version_is_less( version: version, test_version: "4.2.3.20170213" ) )
+if( version_is_less( version: cv, test_version: "4.2.3.20170213" ) )
 {
     report = report_fixed_ver( installed_version:version, installed_build:build, fixed_version:'4.2.3', fixed_build:'20170213' );
     security_message( port:port, data:report );

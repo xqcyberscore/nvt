@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_detect.nasl 3448 2016-06-07 11:13:21Z antu123 $
+# $Id: gb_adobe_connect_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Adobe Connect Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805661");
-  script_version("$Revision: 3448 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-07 13:13:21 +0200 (Tue, 07 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-06-19 10:58:10 +0530 (Fri, 19 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Version Detection");
@@ -41,7 +41,6 @@ if(description)
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
 
-  script_summary("Set Version of Adobe Connect in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

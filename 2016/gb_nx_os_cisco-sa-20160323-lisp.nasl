@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_cisco-sa-20160323-lisp.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_nx_os_cisco-sa-20160323-lisp.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco NX-OS Software Locator/ID Separation Protocol Packet Denial of Service Vulnerability
 #
@@ -33,18 +33,17 @@ if (description)
  script_cve_id("CVE-2016-1351");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 5745 $");
 
  script_name("Cisco NX-OS Software Locator/ID Separation Protocol Packet Denial of Service Vulnerability");
 
  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160323-lisp");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-04 14:06:24 +0200 (Wed, 04 May 2016)");
 
  script_tag(name: "qod_type", value: "remote_banner");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_summary("Check the NX OS version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

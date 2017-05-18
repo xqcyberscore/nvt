@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882543");
-  script_version("$Revision: 4052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-13 05:51:58 +0200 (Sat, 13 Aug 2016)");
   script_cve_id("CVE-2016-0640", "CVE-2016-0641", "CVE-2016-0643", "CVE-2016-0644", 
                 "CVE-2016-0646", "CVE-2016-0647", "CVE-2016-0648", "CVE-2016-0649", 
@@ -60,7 +60,6 @@ CVE-2016-3477, CVE-2016-3521, CVE-2016-3615, CVE-2016-5440, CVE-2016-5444)
 
   script_xref(name: "CESA", value: "2016:1602");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-August/022035.html");
-  script_summary("Check for the Version of mariadb");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

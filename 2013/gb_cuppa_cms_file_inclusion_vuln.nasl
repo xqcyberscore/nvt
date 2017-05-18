@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Cuppa CMS Remote/Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803805");
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 5791 $");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 10:36:14 +0530 (Thu, 06 Jun 2013)");
   script_name("Cuppa CMS Remote/Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploit/20855");
@@ -38,7 +38,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121881/cuppacms-rfi.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/cuppa-cms-remote-local-file-inclusion");
 
-  script_summary("Check if Cuppa CMS is vulnerable to file reading vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -67,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -78,30 +76,26 @@ port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over the possible directories
+## traversal_files() function Returns Dictionary (i.e key value pair)
+## Get Content to be checked and file to be check
+files = traversal_files();
+
 foreach dir (make_list_unique("/", "/cuppa", "/cms", cgi_dirs(port:port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Request for the search.cgi
-  sndReq = http_get(item: dir + "/index.php", port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item: dir + "/index.php", port:port);
 
   ## confirm the Application
   if(rcvRes && ">Cuppa CMS" >< rcvRes && "Username<" >< rcvRes)
   {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
-    ## Get Content to be checked and file to be check
-    files = traversal_files();
 
     foreach file (keys(files))
     {

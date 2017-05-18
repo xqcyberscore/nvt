@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol35358312.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol35358312.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # F5 BIG-IP - SOL35358312 - TCP vulnerability CVE-2015-8099
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-8099");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("F5 BIG-IP - SOL35358312 - TCP vulnerability CVE-2015-8099");
 
@@ -50,9 +50,8 @@ access vector is network based and authentication is not a requirement for attac
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-17 10:59:01 +0200 (Tue, 17 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

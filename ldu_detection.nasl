@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldu_detection.nasl 4153 2016-09-27 09:41:57Z cfi $
+# $Id: ldu_detection.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Detects LDU version
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19602");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4153 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 11:41:57 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detects LDU version");
-  script_summary("LDU detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
   script_family("Product detection");

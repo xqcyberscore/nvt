@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # LibreOffice Import Files Denial of Service Vulnerabilities (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with LibreOffice and is prone to denial of
 if(description)
 {
   script_id(803064);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-4233");
   script_bugtraq_id(56352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:04:53 +0530 (Mon, 26 Nov 2012)");
   script_name("LibreOffice Import Files Denial of Service Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027727");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23106");
   script_xref(name : "URL" , value : "http://www.libreoffice.org/advisories/cve-2012-4233/");
 
-  script_summary("Check for the version of LibreOffice on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

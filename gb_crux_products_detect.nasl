@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_crux_products_detect.nasl 5128 2017-01-28 11:43:14Z cfi $
+# $Id: gb_crux_products_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # CruxSoftware Products Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801381");
-  script_version("$Revision: 5128 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-28 12:43:14 +0100 (Sat, 28 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-07-19 10:09:06 +0200 (Mon, 19 Jul 2010)");
   script_name("CruxSoftware Products Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -52,22 +52,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-function register_cpe( tmpVers, tmpExpr, tmpBase, app, insloc, cmsport, concl ) {
-
-  local_var cpe, tmpVers, tmpExpr, tmpBase, app, insloc, cmsport, concl;
-
-  cpe = build_cpe( value:tmpVers, exp:tmpExpr, base:tmpBase );
-  if( cpe ) {
-    register_product( cpe:cpe, location:insloc, port:cmsport );
-    log_message( data:build_detection_report( app:app,
-                                              version:tmpVers,
-                                              install:insloc,
-                                              cpe:cpe,
-                                              concluded:concl ),
-                                              port:cmsport );
-  }
-}
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -99,9 +83,8 @@ foreach dir( make_list_unique( "/CruxCMS", "/CruxCMS300/manager", "/cms", "/", c
           tmp_version = cmsVer[1] + " under " + install;
           set_kb_item( name:"www/" + port + "/CruxCMS", value:tmp_version );
 
-          register_cpe( tmpVers:cmsVer[1], tmpExpr:"^([0-9.]+)",
-                        tmpBase:"cpe:/a:cruxsoftware:cruxcms:", app:"CruxCMS", insloc:install,
-                        cmsport:port, concl:cmsVer[0] );
+          register_and_report_cpe(app:"CruxCMS", ver:cmsVer[1], base:"cpe:/a:cruxsoftware:cruxcms:",
+                               expr:"^([0-9.]+)", insloc:install, regPort:port);
         }
       }
       break;
@@ -133,9 +116,9 @@ foreach dir( make_list_unique( "/CruxPA200", "/CruxPA200/Manager", "/", cgi_dirs
           tmp_version = cmspaVer[1] + " under " + install;
           set_kb_item( name:"www/" + port + "/CruxPA", value:tmp_version );
 
-          register_cpe( tmpVers:cmspaVer[1], tmpExpr:"^([0-9.]+)",
-                        tmpBase:"cpe:/a:cruxsoftware:cruxpa:", app:"CruxPA", insloc:install,
-                        cmsport:port, concl:cmspaVer[0] );
+          register_and_report_cpe(app:"CruxPA", ver:cmspaVer[1], base:"cpe:/a:cruxsoftware:cruxpa:",
+                               expr:"^([0-9.]+)", insloc:install, regPort:port);
+
         }
       }
       break;

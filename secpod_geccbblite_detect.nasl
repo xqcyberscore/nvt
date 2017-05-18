@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_geccbblite_detect.nasl 2623 2016-02-09 16:40:26Z cfi $
+# $Id: secpod_geccbblite_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # geccBBlite Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900746");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2623 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 17:40:26 +0100 (Tue, 09 Feb 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-26 10:13:54 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("geccBBlite Version Detection");
-  script_summary("Set the version of geccBBlite in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_default_login.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_dell_drac_default_login.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Dell Remote Access Controller Default Login
 #
@@ -33,7 +33,6 @@ or modify system configuration without requiring authentication.";
 
 tag_solution = "Change the password.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103681";  
 CPE = 'cpe:/h:dell:remote_access_card'; 
 
 if (description)
@@ -41,14 +40,13 @@ if (description)
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103681");
+ script_version ("$Revision: 5842 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Dell Remote Access Controller Default Login");
- script_summary("Checks for the presence of Dell Remote Access Controller");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");
@@ -97,7 +95,7 @@ function check_iDRAC_default_login(version) {
     return FALSE;
   }  
 
-  host = get_host_name();
+  host = http_host_name(port:port);
 
   foreach url (urls) {
 
@@ -114,7 +112,7 @@ function check_iDRAC_default_login(version) {
  
       req = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 OpenVAS/6.0\r\n",
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: en-us;q=0.5,en;q=0.3\r\n",
                  "DNT: 1\r\n",

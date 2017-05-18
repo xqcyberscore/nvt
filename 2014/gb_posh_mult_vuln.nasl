@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_posh_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_posh_mult_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # POSH Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804244");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5816 $");
   script_cve_id("CVE-2014-2211", "CVE-2014-2212", "CVE-2014-2213", "CVE-2014-2214");
   script_bugtraq_id(65817, 65818, 65840, 65843);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-03-10 15:56:43 +0530 (Mon, 10 Mar 2014)");
   script_name("POSH Multiple Vulnerabilities");
 
@@ -58,11 +58,10 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56988");
   script_xref(name : "URL" , value : "http://www.sysdream.com/CVE-2014-2211_2214");
   script_xref(name : "URL" , value : "http://www.sysdream.com/system/files/POSH-3.2.1-advisory_0.pdf");
-  script_summary("Check if POSH is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -70,11 +69,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   exit(0);
 }
-
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -85,23 +79,17 @@ poshReq = "";
 poshRes = "";
 poshPort = "";
 
-## Get HTTP Port
 poshPort = get_http_port(default:80);
-
-## Check Host Supports PHP
 if(!can_host_php(port:poshPort)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/posh", "/portal", "/", cgi_dirs(port:poshPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  poshReq = http_get(item:dir + "/login.php", port:poshPort);
-  poshRes = http_keepalive_send_recv(port:poshPort, data:poshReq, bodyonly:TRUE);
+  poshRes = http_get_cache(item:dir + "/login.php", port:poshPort);
 
   ## Confirm the application before trying exploit
   if(">Login<" >< poshRes && "Email :" >< poshRes && "Password :" >< poshRes &&
@@ -113,7 +101,7 @@ foreach dir (make_list_unique("/posh", "/portal", "/", cgi_dirs(port:poshPort)))
 
     ## Confirm exploit worked by checking the response
     if(http_vuln_check(port: poshPort, url: url, check_header:TRUE,
-       pattern: "<script>alert\(document.cookie\)</script>"))
+       pattern: "<script>alert\(document\.cookie\)</script>"))
     {
       security_message(port:poshPort);
       exit(0);

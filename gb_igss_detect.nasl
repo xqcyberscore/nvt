@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_igss_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # 7-Technologies Interactive Graphical SCADA System Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802240");
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-08-18 14:57:45 +0200 (Thu, 18 Aug 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("7-Technologies Interactive Graphical SCADA System Version Detection");
@@ -48,7 +48,6 @@ gets the version from registry";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set the Version of Interactive Graphical SCADA System");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Product detection");

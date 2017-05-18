@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: e107_sql_injection.nasl 3681 2016-07-08 16:04:27Z cfi $
+# $Id: e107_sql_injection.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # e107 resetcore.php SQL Injection
 #
@@ -31,15 +31,14 @@ CPE = "cpe:/a:e107:e107";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20069");
-  script_version("$Revision: 3681 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-08 18:04:27 +0200 (Fri, 08 Jul 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3521");
   script_bugtraq_id(15125);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("e107 resetcore.php SQL Injection");
-  script_summary("e107 SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");

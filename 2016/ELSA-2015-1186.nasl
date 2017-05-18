@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1186.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2015-1186.nasl 5836 2017-04-03 09:37:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122871");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5836 $");
 script_tag(name:"creation_date", value:"2016-02-05 14:01:40 +0200 (Fri, 05 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1186");
 script_tag(name: "insight", value: "ELSA-2015-1186 -  php55-php security update - [5.5.21-4]- fix more functions accept paths with NUL character #1213407[5.5.21-3]- core: fix multipart/form-data request can use excessive amount of CPU usage CVE-2015-4024- fix various functions accept paths with NUL character CVE-2015-4025, CVE-2015-4026, #1213407- fileinfo: fix denial of service when processing a crafted file #1213442- ftp: fix integer overflow leading to heap overflow when reading FTP file listing CVE-2015-4022- phar: fix buffer over-read in metadata parsing CVE-2015-2783- phar: invalid pointer free() in phar_tar_process_metadata() CVE-2015-3307- phar: fix buffer overflow in phar_set_inode() CVE-2015-3329- phar: fix memory corruption in phar_parse_tarfile caused by empty entry file name CVE-2015-4021- pgsql: fix NULL pointer dereference CVE-2015-1352- soap: fix type confusion through unserialize #1222538- apache2handler: fix pipelined request executed in deinitialized interpreter under httpd 2.4 CVE-2015-3330"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1186");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

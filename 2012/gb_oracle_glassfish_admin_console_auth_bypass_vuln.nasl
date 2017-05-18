@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_admin_console_auth_bypass_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_oracle_glassfish_admin_console_auth_bypass_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Oracle GlassFish Server Administration Console Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802411");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2011-1511");
   script_bugtraq_id(47818);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-06 14:03:19 +0530 (Fri, 06 Jan 2012)");
   script_name("Oracle GlassFish Server Administration Console Authentication Bypass Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/cas/techalerts/TA11-201A.html");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108381/NGS00106.txt");
 
-  script_summary("Check for security bypass vulnerability in Oracle Java GlassFish Server");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

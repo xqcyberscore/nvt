@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoneminder_detect.nasl 5202 2017-02-06 05:05:08Z ckuerste $
+# $Id: gb_zoneminder_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # ZoneMinder Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106520");
-  script_version("$Revision: 5202 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 06:05:08 +0100 (Mon, 06 Feb 2017) $");
+  script_version("$Revision: 5815 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-17 13:28:38 +0700 (Tue, 17 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +45,7 @@ The script sends a HTTP connection request to the server and attempts to detect 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -58,17 +58,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir (make_list_unique("/zm", "/zoneminder", cgi_dirs(port: port))) {
-  install = dir;
-  if (dir == "/")
-    dir = "";
 
-  req = http_get(port: port, item: dir + "/index.php");
-  res = http_keepalive_send_recv(port: port, data: req);
+  install = dir;
+  if (dir == "/") dir = "";
+
+  res = http_get_cache(port: port, item: dir + "/index.php");
 
   if (("<h1>ZoneMinder Login</h1>" >< res || "<title>ZoneMinder - Console</title>" >< res ) &&
       "var skinPath" >< res) {
+
     version = "unknown";
 
     req = http_get(port: port, item: dir + "/index.php?view=version");

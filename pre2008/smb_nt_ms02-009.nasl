@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-009.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_ms02-009.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: IE VBScript Handling patch (Q318089)
 #
 # Authors:
@@ -42,8 +42,8 @@ Q319847 MS02-009 May Cause Incompatibility Problems Between
 if(description)
 {
  script_id(10926);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4158);
  script_tag(name:"cvss_base", value:"5.0");
@@ -55,7 +55,6 @@ if(description)
  
 
  summary = "Determines whether the IE VBScript Handling patch (Q318089) is installed";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

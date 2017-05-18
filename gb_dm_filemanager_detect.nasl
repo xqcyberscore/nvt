@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dm_filemanager_detect.nasl 2659 2016-02-15 09:12:32Z benallard $
+# $Id: gb_dm_filemanager_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # DM FileManager Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800818");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2659 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-15 10:12:32 +0100 (Mon, 15 Feb 2016) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DM FileManager Version Detection");
@@ -54,16 +54,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 ## start script
 port = get_http_port( default:80 );
@@ -92,15 +82,8 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
     if( isnull( cpe1 ) )
       cpe1 = 'cpe:/a:dutchmonkey:dm_filemanager';
 
-    ## Register Product and Build Report
-    register_product( cpe:cpe1, location:install1, port:port );
-
-    log_message( data: build_detection_report( app:"DM FileManager",
-                                               version:version1,
-                                               install:install1,
-                                               cpe:cpe1,
-                                               concluded:ver1[0] ),
-                                               port:port );
+    register_and_report_cpe(app:"DM FileManager", ver:version1, concluded:ver1[0],
+                            cpename:cpe1, insloc:install1, regPort:port);
 
     foreach dir2( make_list( "/dm-albums", "/albums" ) ) {
 
@@ -122,15 +105,8 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
         if( isnull( cpe2 ) )
           cpe2 = 'cpe:/a:dutchmonkey:dm_album';
 
-        ## Register Product and Build Report
-        register_product( cpe:cpe2, location:install2, port:port );
-
-        log_message( data: build_detection_report( app:"DM Albums",
-                                                   version:version2,
-                                                   install:install2,
-                                                   cpe:cpe2,
-                                                   concluded:ver2[0] ),
-                                                   port:port );
+        register_and_report_cpe(app:"DM Albums", ver:version2, concluded:ver2[0], 
+                            cpename:cpe2, insloc:install2, regPort:port);
       }
     }
   }

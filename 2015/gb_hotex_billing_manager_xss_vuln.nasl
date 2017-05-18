@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805371");
-  script_version("$Revision: 3232 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2015-3319", "CVE-2015-2781");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-06 07:15:10 +0200 (Fri, 06 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:13:24 +0530 (Mon, 27 Apr 2015)");
   script_name("hotEx Billing Manager Multiple Vulnerabilities");
 
@@ -69,15 +69,15 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535186/100/0/threaded");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131297/HotExBilling-Manager-73-Cross-Site-Scripting.html");
 
-  script_summary("Check if hotEx Billing Manager is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -87,18 +87,9 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-foreach dir (make_list_unique("/", cgi_dirs()))
+foreach dir (make_list_unique("/", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
@@ -118,7 +109,7 @@ foreach dir (make_list_unique("/", cgi_dirs()))
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"_script_alert\(document.cookie\)_/script_",
+       pattern:"_script_alert\(document\.cookie\)_/script_",
        extra_check:"> Login<"))
     {
       report = report_vuln_url( port:http_port, url:url );

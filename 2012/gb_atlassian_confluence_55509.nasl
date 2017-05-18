@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_55509.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_atlassian_confluence_55509.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Atlassian Confluence Error Page Cross Site Scripting Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(55509);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5931 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
@@ -53,9 +53,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55509");
  script_xref(name : "URL" , value : "http://www.atlassian.com/software/confluence/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-18 11:53:40 +0200 (Tue, 18 Sep 2012)");
- script_summary("Determine if Atlassian Confluence is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

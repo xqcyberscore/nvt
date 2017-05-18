@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_cassandra_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_apache_cassandra_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Apache Cassandra Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2835 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+ script_version ("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2014-07-18 18:29:45 +0200 (Fri, 18 Jul 2014)");
  script_name("Apache Cassandra Detection");
 
@@ -43,7 +43,6 @@ to extract the version number from the reply.";
 
  script_tag(name : "summary" , value : tag_summary);
 
- script_summary("Checks for the presence of Apache Cassandra");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

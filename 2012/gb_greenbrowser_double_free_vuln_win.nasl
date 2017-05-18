@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenbrowser_double_free_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_greenbrowser_double_free_vuln_win.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # GreenBrowser iframe Handling Double Free Vulnerability (Windows)
 #
@@ -46,19 +46,18 @@ vulnerability.";
 if(description)
 {
   script_id(803067);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-6041");
   script_bugtraq_id(51393);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-07 10:50:37 +0530 (Fri, 07 Dec 2012)");
   script_name("GreenBrowser iframe Handling Double Free Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47571");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72351");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-01/0079.html");
 
-  script_summary("Check for the version of GreenBrowser on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartertools_smarterstats_mult_vuln.nasl 3114 2016-04-19 10:07:15Z benallard $
+# $Id: secpod_smartertools_smarterstats_mult_vuln.nasl 6005 2017-04-21 13:14:30Z cfi $
 #
 # SmarterTools SmarterStats Multiple Vulnerabilities
 #
@@ -24,89 +24,84 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attackers execute arbitrary
-HTML and script code in a user's browser session in context of an affected site.
-
-Impact Level: Application";
-
-tag_affected = "SmarterTools SmarterStats version 6.2.4100";
-
-tag_insight = "The flaws are due to an,
-- Input passed via multiple parameters to multiple scripts are not properly
-sanitised before being returned to the user.
-- Error in 'frmGettingStarted.aspx' generates response with GET request,
-which allows remote attackers obtain sensitive information by reading
-web-server access logs or and web-server referer logs.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is SmarterTools SmarterStats and is prone to multiple
-vulnerabilities.";
-
 if(description)
 {
-  script_id(902773);
-  script_version("$Revision: 3114 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902773");
+  script_version("$Revision: 6005 $");
   script_cve_id("CVE-2011-4752", "CVE-2011-4751", "CVE-2011-4750");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-21 16:43:05 +0530 (Wed, 21 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:07:15 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
   script_name("SmarterTools SmarterStats Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.smartertools.com/smarterstats/web-analytics-seo-software.aspx");
-  script_xref(name : "URL" , value : "http://xss.cx/examples/exploits/stored-reflected-xss-cwe79-smarterstats624100.html");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for SmarterTools SmarterStats version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9999);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://www.smartertools.com/smarterstats/web-analytics-seo-software.aspx");
+  script_xref(name:"URL", value:"http://xss.cx/examples/exploits/stored-reflected-xss-cwe79-smarterstats624100.html");
+
+  tag_impact = "Successful exploitation will let the attackers execute arbitrary
+  HTML and script code in a user's browser session in context of an affected site.
+
+  Impact Level: Application";
+
+  tag_affected = "SmarterTools SmarterStats version 6.2.4100";
+
+  tag_insight = "The flaws are due to an,
+
+  - Input passed via multiple parameters to multiple scripts are not properly
+  sanitised before being returned to the user.
+
+  - Error in 'frmGettingStarted.aspx' generates response with GET request,
+  which allows remote attackers obtain sensitive information by reading
+  web-server access logs or and web-server referer logs.";
+
+  tag_solution = "No solution or patch was made available for at least one year
+  since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.";
+
+  tag_summary = "This host is SmarterTools SmarterStats and is prone to multiple
+  vulnerabilities.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:9999);
-if(!port){
-  exit(0);
-}
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
-## Send and receive the response
-sndReq = http_get(item: "/login.aspx", port:port);
-rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+rcvRes = http_get_cache(item: "/login.aspx", port:port);
 
-## Confirm application
-if("Login to SmarterStats" >< rcvRes || ">SmarterStats" >< rcvRes)
-{
+if("Login to SmarterStats" >< rcvRes || ">SmarterStats" >< rcvRes) {
   ## Grep for version
   ver = eregmatch(pattern:">SmarterStats.?([a-zA-Z]+?.?([0-9.]+))", string:rcvRes);
   if(ver[2] =~ "^[0-9]"){
     ver = ver[2];
-  }
-  else{
+  } else{
     ver = ver[1];
   }
 }
 
-if(ver)
-{
+if(ver) {
   ## Check for the version
   if(version_in_range(version:ver, test_version:"6.2", test_version2:"6.2.4100")){
-   security_message(port);
+    security_message(port);
   }
 }

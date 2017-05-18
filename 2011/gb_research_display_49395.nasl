@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_research_display_49395.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_research_display_49395.nasl 5719 2017-03-24 13:29:29Z cfi $
 #
 # 'research_display.php' SQL Injection Vulnerability
 #
@@ -32,22 +32,18 @@ Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities
 in the underlying database.";
 
-
 if (description)
 {
  script_id(103235);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-01 14:04:12 +0200 (Thu, 01 Sep 2011)");
  script_bugtraq_id(49395);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("'research_display.php' SQL Injection Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49395");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if research_display.php is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -59,27 +55,21 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list(cgi_dirs());
-
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/research_display.php?ID=-null+UNiON+ALL+SELECT+null,null,null,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,null,null,null"); 
 
-  if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

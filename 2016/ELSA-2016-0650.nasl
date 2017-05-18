@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0650.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0650.nasl 5745 2017-03-28 09:01:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122937");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5745 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:53 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0650");
 script_tag(name: "insight", value: "ELSA-2016-0650 -  java-1.8.0-openjdk security update - [1:1.8.0.91-0.b14]- Add additional fix to Zero patch to properly handle result on 64-bit big-endian- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Revert settings to production defaults so we can at least get a build.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Switch to a slowdebug build to try and unearth remaining issue on s390x.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Add missing comma in 8132051 patch.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Add 8132051 port to Zero.- Turn on bootstrap build for all to ensure we are now good to go.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Add 8132051 port to AArch64.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Enable a full bootstrap on JIT archs. Full build held back by Zero archs anyway.- Resolves: rhbz#1325422[1:1.8.0.91-0.b14]- Update to u91b14.- Resolves: rhbz#1325422"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0650");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

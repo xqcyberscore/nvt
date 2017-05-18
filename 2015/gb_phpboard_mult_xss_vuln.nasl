@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpboard_mult_xss_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_phpboard_mult_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # PHP Board Multiple XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805352");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2015-2217");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-14 13:06:08 +0530 (Sat, 14 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PHP Board Multiple XSS Vulnerabilities");
@@ -59,15 +59,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130684/Ultimate-PHP-Board-UPB-2.2.7-Cross-Site-Scripting.html");
-  script_summary("Check if PHP Board is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -77,16 +76,7 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-# Get HTTP Port
 http_port = get_http_port(default:80);
-if (!http_port) {
-  http_port = 80;
-}
-
-# Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
 
 # Check Host Supports PHP
 if(!can_host_php(port:http_port)){
@@ -94,15 +84,12 @@ if(!can_host_php(port:http_port)){
 }
 
 # Iterate over possible paths
-foreach dir (make_list_unique("/", "/upb", "/chat/upb", cgi_dirs()))
+foreach dir (make_list_unique("/", "/upb", "/chat/upb", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
-
-  url = dir+"/";
-  # Construct GET Request
-  sndReq = http_get(item:url,  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  url = dir + "/";
+  rcvRes = http_get_cache(item:url, port:http_port);
 
   #Confirm Application
   if(rcvRes && rcvRes =~ "Powered by.*UPB")
@@ -112,7 +99,7 @@ foreach dir (make_list_unique("/", "/upb", "/chat/upb", cgi_dirs()))
 
     # Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url1, check_header:TRUE,
-       pattern:"<script>alert\(document.cookie\)</script>"))
+       pattern:"<script>alert\(document\.cookie\)</script>"))
      {
        report = report_vuln_url( port:http_port, url:url1 );
        security_message(port:http_port, data:report);

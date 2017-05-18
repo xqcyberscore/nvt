@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_home_folder_accessible.nasl 4123 2016-09-20 10:28:42Z cfi $
+# $Id: sw_home_folder_accessible.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Linux Home Folder Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111108");
-  script_version("$Revision: 4123 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-20 12:28:42 +0200 (Tue, 20 Sep 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"summary", value:"The script attempts to identify files of a linux home folder accessible
   at the webserver.");
-  script_summary("Check the response if files from a home folder are accessible");
   script_tag(name:"insight", value:"Currently the script is checking for the following files:
   - /.ssh/authorized_keys
   - /.ssh/known_hosts

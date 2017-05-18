@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_detect_win.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_adobe_robohelp_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Adobe RoboHelp Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803770");
-  script_version("$Revision: 2835 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-10-17 15:40:00 +0530 (Thu, 17 Oct 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe RoboHelp Version Detection (Windows)");
@@ -70,18 +70,6 @@ include("secpod_smb_func.inc");
 arhName = "";
 arhInsPath = "";
 arhVer = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Confirm the Adobe RoboHelp installation
 if(!registry_key_exists(key:"SOFTWARE\Adobe\RoboHelp"))
@@ -142,7 +130,7 @@ foreach item (registry_enum_keys(key:key))
         if(isnull(cpe))
           cpe = 'cpe:/a:adobe:robohelp_server';
 
-        build_report(app:arhName, ver:arhVer, cpe:cpe, loc:arhInsPath, con:arhVer);
+        build_report(app:arhName, ver:arhVer, cpe:cpe, insloc:arhInsPath, concluded:arhVer);
       }
       else
       {
@@ -155,7 +143,7 @@ foreach item (registry_enum_keys(key:key))
         if(isnull(cpe))
           cpe = 'cpe:/a:adobe:robohelp';
 
-        build_report(app:arhName, ver:arhVer, cpe:cpe, loc:arhInsPath, con:arhVer);
+        build_report(app:arhName, ver:arhVer, cpe:cpe, insloc:arhInsPath, concluded:arhVer);
       }
     }
   }

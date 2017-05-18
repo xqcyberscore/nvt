@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_syncrify_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Syncrify Detection
 #
@@ -32,13 +32,12 @@ if (description)
  
  script_id(100819);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-09-22 16:24:51 +0200 (Wed, 22 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("Syncrify Detection");
- script_summary("Checks for the presence of Syncrify");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

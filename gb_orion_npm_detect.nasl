@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_npm_detect.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_orion_npm_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # SolarWinds Orion Network Performance Monitor Detection
 #
@@ -30,8 +30,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100940");
-  script_version("$Revision: 3694 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -62,16 +62,12 @@ include("host_details.inc");
 
 port = get_http_port(default:8787);
 
-if (!get_port_state(port))
-  exit(0);
-
 if (!can_host_asp(port:port))
   exit(0);
 
 dir = "/Orion";
 url = string(dir, "/Login.aspx");
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+buf = http_get_cache(item:url, port:port);
 
 if (buf == NULL)
   exit(0);

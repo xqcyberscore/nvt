@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_distinct_tftp_server_dir_trav_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Distinct TFTP Server Directory Traversal Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802623");
   script_bugtraq_id(52938);
-  script_version("$Revision: 5641 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-09 15:15:15 +0530 (Mon, 09 Apr 2012)");
   script_name("Distinct TFTP Server Directory Traversal Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18718");
   script_xref(name : "URL" , value : "http://www.spentera.com/advisories/2012/SPN-01-2012.pdf");
 
-  script_summary("Check for the directory traversal attack on Distinct TFTP Server");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Remote file access");

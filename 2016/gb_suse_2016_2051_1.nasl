@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851379");
-  script_version("$Revision: 3862 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-22 08:36:56 +0200 (Mon, 22 Aug 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-12 05:48:20 +0200 (Fri, 12 Aug 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3485", "CVE-2016-3498", "CVE-2016-3500", 
                 "CVE-2016-3503", "CVE-2016-3508", "CVE-2016-3511", "CVE-2016-3550", 
@@ -106,7 +106,6 @@ NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:2051_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-08/msg00033.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of java-1_8_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

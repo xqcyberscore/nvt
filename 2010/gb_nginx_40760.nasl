@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_40760.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nginx_40760.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # nginx Remote Source Code Disclosure and Denial of Service Vulnerabilities
 #
@@ -38,8 +38,8 @@ be affected.";
 if (description)
 {
  script_id(100676);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5933 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-06-14 14:19:59 +0200 (Mon, 14 Jun 2010)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,7 @@ if (description)
  script_xref(name : "URL" , value : "http://nginx.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
+ script_category(ACT_MIXED_ATTACK);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl","os_detection.nasl","nginx_detect.nasl");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882404");
-  script_version("$Revision: 3226 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-04 13:35:23 +0200 (Wed, 04 May 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-02 06:17:19 +0100 (Wed, 02 Mar 2016)");
   script_cve_id("CVE-2015-3197", "CVE-2016-0702", "CVE-2016-0705", "CVE-2016-0797", 
                 "CVE-2016-0800");
@@ -95,7 +95,6 @@ restarted, or the system rebooted.
 
   script_xref(name: "CESA", value: "2016:0301");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-March/021713.html");
-  script_summary("Check for the Version of openssl");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

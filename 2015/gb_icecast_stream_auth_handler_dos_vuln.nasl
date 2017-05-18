@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icecast_stream_auth_handler_dos_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_icecast_stream_auth_handler_dos_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # Icecast 'stream_auth' handler Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805177");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5827 $");
   script_cve_id("CVE-2015-3026");
   script_bugtraq_id(73965);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-05-07 12:58:34 +0530 (Thu, 07 May 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Icecast 'stream_auth' handler Denial of Service Vulnerability");
@@ -63,15 +63,14 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/04/08/11");
   script_xref(name : "URL" , value : "http://lists.xiph.org/pipermail/icecast-dev/2015-April/002460.html");
 
-  script_summary("Check if Icecast is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8000);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -81,7 +80,6 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:8000);
 
 rcvRes = http_get_cache(item: "/",  port:http_port);

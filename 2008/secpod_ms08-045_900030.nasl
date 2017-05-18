@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-045_900030.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-045_900030.nasl 5863 2017-04-05 07:38:11Z antu123 $
 # Description: Cumulative Security Update for Internet Explorer (953838)
 #
 # Authors:
@@ -48,8 +48,8 @@ tag_summary = "This host is missing critical security update according to
 if(description)
 {
  script_id(900030);
- script_version("$Revision: 5344 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+ script_version("$Revision: 5863 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30610, 30611, 30612, 30613, 30614);
  script_cve_id("CVE-2008-2254", "CVE-2008-2255", "CVE-2008-2256",
@@ -90,81 +90,12 @@ if(description)
               exit(0);
  }
 
- function get_version()
- {
-	dllPath = registry_get_sz(item:"Install Path",
-                  key:"SOFTWARE\Microsoft\COM3\Setup");
+sysPath = smb_get_system32root();
+if(!sysPath ){
+  exit(0);
+}
 
-	dllPath += "\mshtml.dll";
-	share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-        file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
-
-        name    =  kb_smb_name();
-        login   =  kb_smb_login();
-        pass    =  kb_smb_password();
-        domain  =  kb_smb_domain();
-        port    =  kb_smb_transport();
-
-        soc = open_sock_tcp(port);
-        if(!soc){
-                exit(0);
-        }
-
-        r = smb_session_request(soc:soc, remote:name);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        prot = smb_neg_prot(soc:soc);
-        if(!prot)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_session_setup(soc:soc, login:login, password:pass,
-                              domain:domain, prot:prot);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        uid = session_extract_uid(reply:r);
-        if(!uid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        tid = tconx_extract_tid(reply:r);
-        if(!tid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-        if(!fid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod", offset:2000000);
-        return v;
-
-
- }
+dllPath = sysPath + "\mshtml.dll";
 
  ieVer = registry_get_sz(key:"SOFTWARE\Microsoft\Internet Explorer",
                          item:"Version");
@@ -183,7 +114,7 @@ if(description)
 
  if(hotfix_check_sp(win2k:5) > 0)
  {
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, string:"prod", offs:2000000);
         if(vers == NULL){
                 exit(0);
         }
@@ -216,7 +147,7 @@ if(description)
 
  if(hotfix_check_sp(xp:4) > 0)
  {
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, string:"prod", offs:2000000);
         if(vers == NULL){
                 exit(0);
         }
@@ -266,7 +197,7 @@ if(description)
 
  if(hotfix_check_sp(win2003:3) > 0)
  {
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, string:"prod", offs:2000000);
         if(vers == NULL){
                 exit(0);
         }
@@ -316,16 +247,12 @@ if(description)
  }
 
  ## Get the 'mshtml.dll' path for Windows Vista and 2008 Server
- dllPath = registry_get_sz(item:"PathName",
-          key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+ dllPath = smb_get_system32root();
  if(!dllPath){
    exit(0);
  }
 
- share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
- file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                     string:dllPath + "\system32\mshtml.dll");
- dllVer = GetVer(file:file, share:share);
+ dllVer =  fetch_file_version(sysPath:dllPath, file_name:"\mshtml.dll");
  if(dllVer)
  {
    # Windows Vista
@@ -356,4 +283,3 @@ if(description)
      }
    }
  }
- 

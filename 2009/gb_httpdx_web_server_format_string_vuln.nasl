@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_web_server_format_string_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_httpdx_web_server_format_string_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # httpdx 'h_readrequest()' Host Header Format String Vulnerability
 #
@@ -38,8 +38,8 @@ tag_summary = "The host is running httpdx Web Server and is prone to Format Stri
 if(description)
 {
   script_id(800961);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 5838 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,11 +50,13 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2654");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_category(ACT_ATTACK);
+  script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_httpdx_server_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("httpdx/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -63,14 +65,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 httpdxPort = get_http_port(default:80);
-if(!httpdxPort){
-  exit(0);
-}
 
 httpdxVer = get_kb_item("httpdx/" + httpdxPort + "/Ver");
 if(isnull(httpdxVer)){
@@ -84,7 +82,7 @@ if(!safe_checks())
                   'OpenVAS: deflate,gzip;q=0.3\r\n',
                   'Connection: OpenVAS, close\r\n',
                   'Host: ', crap(length: 32, data: "%s"), '\r\n',
-                  'User-Agent: OpenVAS\r\n\r\n');
+                  'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n\r\n');
   rcvRes = http_send_recv(port:httpdxPort, data:sndReq);
   rcvRes = http_send_recv(port:httpdxPort, data:sndReq);
   if(isnull(rcvRes))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 5592 2017-03-16 14:49:23Z cfi $
+# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 5825 2017-03-31 15:35:59Z cfi $
 #
 # SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106223");
-  script_version("$Revision: 5592 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-03-16 15:49:23 +0100 (Thu, 16 Mar 2017) $");
+  script_version("$Revision: 5825 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-03-31 17:35:59 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value: "2016-09-06 12:25:58 +0700 (Tue, 06 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
@@ -103,7 +103,7 @@ foreach tlsv( tls_versions ) {
     data = ssl_recv(socket: soc);
     if (!data) {
       close(soc);
-      hello_done = TRUE;
+      break;
     }
 
     exch = search_ssl_record(data: data, search: make_array("handshake_typ", SSLv3_SERVER_KEY_EXCHANGE));

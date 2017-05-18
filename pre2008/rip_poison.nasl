@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: rip_poison.nasl 3303 2016-05-12 13:22:42Z benallard $
+# $Id: rip_poison.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: RIP poisoning
 #
 # Authors:
@@ -33,13 +33,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11829");
-  script_version("$Revision: 3303 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:22:42 +0200 (Thu, 12 May 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("RIP poisoning");
-  script_summary("Poison routing tables through RIP");
 # This plugin is not supposed to be dabgerous but it was released as 
 # ACT_DESTRUCTIVE_ATTACK because we could not be 100% sure that there 
 # were no really broken RIP implementation somewhere in the cyberspace. 

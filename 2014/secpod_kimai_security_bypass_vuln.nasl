@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kimai_security_bypass_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: secpod_kimai_security_bypass_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Kimai 'db_restore.php'Security Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903512");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 5790 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-02-25 11:03:19 +0530 (Tue, 25 Feb 2014)");
   script_name("Kimai 'db_restore.php'Security Bypass Vulnerability");
 
@@ -50,11 +50,10 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53390");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/84389");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/30010");
-  script_summary("Check if Kimai is vulnerable to security restriction bypass");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
   script_copyright("Copyright (C) 2014 SecPod");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -72,25 +71,20 @@ sndReq = "";
 rcvRes = "";
 url = "";
 
-## Get HTTP Port
 kimPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:kimPort)){
   exit(0);
 }
 
 host = http_host_name(port:kimPort);
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/kimai", cgi_dirs(port:kimPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request for the index.php
-  sndReq = http_get(item:string(dir, "/index.php"), port:kimPort);
-  rcvRes = http_keepalive_send_recv(port:kimPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:kimPort);
 
   ## confirm the Kimai installation
   if('Kimai Login<' >< rcvRes && 'kimaiusername' >< rcvRes)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iguard_53355.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_iguard_53355.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # iGuard Security Access Control Cross Site Scripting Vulnerability
 #
@@ -34,25 +34,20 @@ in the browser of an unsuspecting user in the context of the affected
 site. This may allow the attacker to steal cookie-based authentication
 credentials and launch other attacks.";
 
-
 if (description)
 {
  script_id(103485);
  script_bugtraq_id(53355);
- script_version ("$Revision: 3516 $");
-
+ script_version ("$Revision: 5714 $");
  script_name("iGuard Security Access Control Cross Site Scripting Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53355");
  script_xref(name : "URL" , value : "http://iguard.me/iguard-access-control.html");
-
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-05-08 10:33:52 +0200 (Tue, 08 May 2012)");
- script_summary("Determine if iGuard Security Access Control is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,25 +58,26 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-url = '/index.html'; 
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.html";
+  buf = http_get_cache( item:url, port:port );
 
-if(http_vuln_check(port:port, url:url,pattern:"(Server: iGuard|<TITLE>iGuard Security)")) {
+  if( "Server: iGuard" >< buf || "<TITLE>iGuard Security" >< buf ) {
 
-  url = '/%3E%3C/font%3E%3CIFRAME%20SRC=%22JAVASCRIPT:alert(%27openvas-xss-test%27);%22%3E.asp';
+    url = '/%3E%3C/font%3E%3CIFRAME%20SRC=%22JAVASCRIPT:alert(%27openvas-xss-test%27);%22%3E.asp';
 
-  if(http_vuln_check(port:port, url:url,pattern:"<IFRAME SRC=.JAVASCRIPT:alert\('openvas-xss-test'\);.>", check_header:TRUE)) {
-    security_message(port:port);
-    exit(0);
-  }  
+    if( http_vuln_check( port:port, url:url, pattern:"<IFRAME SRC=.JAVASCRIPT:alert\('openvas-xss-test'\);.>", check_header:TRUE ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  }
 }
 
-exit(0);
+exit( 99 );

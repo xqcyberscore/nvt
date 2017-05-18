@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_pivot_detect.nasl 2628 2016-02-11 07:19:43Z cfi $
+# $Id: secpod_pivot_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Pivot Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900578");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2628 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-11 08:19:43 +0100 (Thu, 11 Feb 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Pivot Version Detection");
-  script_summary("Sets the KB for the version of Pivot");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

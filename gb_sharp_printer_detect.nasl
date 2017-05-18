@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharp_printer_detect.nasl 4135 2016-09-22 13:27:15Z cfi $
+# $Id: gb_sharp_printer_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 # OVAS-B-A10
 #
 # Sharp Printer Detection
@@ -31,11 +31,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103779");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4135 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 15:27:15 +0200 (Thu, 22 Sep 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-09-02 14:31:24 +0100 (Mon, 02 Sep 2013)");
   script_name("Sharp Printer Detection");
-  script_summary("Checks for Sharp Printer");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

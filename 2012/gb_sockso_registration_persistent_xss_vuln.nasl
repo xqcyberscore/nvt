@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Sockso Registration Persistent Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802853");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-4267");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Sockso Registration Persistent Cross Site Scripting Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://smwyg.com/blog/#sockso-persistant-xss-attack");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/112647/sockso-xss.txt");
 
-  script_summary("Check if Sockso is vulnerable to Cross Site Scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

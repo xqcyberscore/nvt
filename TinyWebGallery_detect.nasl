@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: TinyWebGallery_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: TinyWebGallery_detect.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # TinyWebGallery Detection
 #
@@ -27,17 +27,15 @@
 tag_summary = "The TinyWebGallery, a free php based photo album / gallery is running
     at this host.";
 
-if (description)
+if(description)
 {
  script_id(100192);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-05-10 17:01:14 +0200 (Sun, 10 May 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("TinyWebGallery Detection");
-
- script_summary("Checks for the presence of TinyWebGallery");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
@@ -61,29 +59,19 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100192";
 SCRIPT_DESC = "TinyWebGallery Detection";
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/tinywebgallery","/gallery","/twg",cgi_dirs());
+foreach dir( make_list_unique( "/tinywebgallery", "/gallery", "/twg", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+    install = dir;
+    if( dir == "/" ) dir = "";
+    url = dir + "/admin/index.php";
+    buf = http_get_cache( item:url, port:port );
+    if( buf == NULL ) continue;
 
-    url = string(dir, "/admin/index.php"); 
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-    if( buf == NULL )continue; 
     if(egrep(pattern:"TWG Administration", string: buf) &&
        egrep(pattern:"TWG Admin [0-9.]+", string: buf))
     {    
-
-         if(strlen(dir)>0) {
-            install=dir;
-         } else {
-            install=string("/");
-         }
-
          vers = string("unknown");
 
 	 version = eregmatch(pattern:"TWG Admin ([0-9.]+)", string:buf);

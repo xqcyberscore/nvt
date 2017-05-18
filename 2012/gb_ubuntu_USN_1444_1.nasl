@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-May/001685.html");
   script_id(841012);
-  script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5999 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-22 10:10:58 +0530 (Tue, 22 May 2012)");
   script_cve_id("CVE-2011-5081");
   script_tag(name:"cvss_base", value:"4.3");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name: "USN", value: "1444-1");
   script_name("Ubuntu Update for backuppc USN-1444-1");
 
-  script_summary("Check for the Version of backuppc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_sql_injection_cve_2015_8769.nasl 2467 2016-01-21 08:01:52Z antu123 $
+# $Id: gb_joomla_sql_injection_cve_2015_8769.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Joomla Core SQL Injection Vulnerability Jan16
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807032");
-  script_version("$Revision: 2467 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2015-8769");
   script_bugtraq_id(79679);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-21 09:01:52 +0100 (Thu, 21 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-19 15:04:54 +0530 (Tue, 19 Jan 2016)");
   script_name("Joomla Core SQL Injection Vulnerability Jan16");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://developer.joomla.org/security-centre/640-20151207-core-sql-injection.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version Joomla");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");

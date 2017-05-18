@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_cisco-sa-20160120-ucsm.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ucs_cisco-sa-20160120-ucsm.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco Unified Computing System Manager Remote Command Execution Vulnerability
 #
@@ -33,15 +33,14 @@ if (description)
  script_cve_id("CVE-2015-6435");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Cisco Unified Computing System Manager Remote Command Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160120-ucsm");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-01-25 15:34:07 +0100 (Mon, 25 Jan 2016)");
- script_summary("Check the installed version.");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

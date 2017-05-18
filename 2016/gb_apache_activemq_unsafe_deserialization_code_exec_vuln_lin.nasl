@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_unsafe_deserialization_code_exec_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_apache_activemq_unsafe_deserialization_code_exec_vuln_lin.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Apache ActiveMQ Unsafe deserialization Code Execution Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809062");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2015-5254");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-04 19:50:32 +0530 (Tue, 04 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache ActiveMQ Unsafe deserialization Code Execution Vulnerability (Linux)");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://activemq.apache.org/security-advisories.data/CVE-2015-5254-announcement.txt");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache ActiveMQ on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_activemq_detect.nasl", "os_detection.nasl");

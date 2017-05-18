@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170310-struts2.nasl 5564 2017-03-14 03:09:27Z ckuerste $
+# $Id: gb_cisco_cucm_cisco-sa-20170310-struts2.nasl 5678 2017-03-23 04:08:39Z ckuerste $
 #
 # Cisco Unified Communications Manager Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-5638");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5564 $");
+ script_version ("$Revision: 5678 $");
 
  script_name("Cisco Unified Communications Manager Apache Struts2 Jakarta Multipart Parser File Upload Code Execution Vulnerability");
 
@@ -41,8 +41,7 @@ if (description)
 
  script_tag(name: "vuldetect", value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 14th March, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
 
  script_tag(name: "summary", value: "Cisco Unified Communications Manager is prone to a vulnerability in Apache
 Struts2.");
@@ -52,9 +51,9 @@ parser used in Apache Struts2 that could allow an attacker to execute commands r
 using a crafted Content-Type header value.");
 
  script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "NoneAvailable");
+ script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-14 04:09:27 +0100 (Tue, 14 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-23 05:08:39 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name: "creation_date", value: "2017-03-14 09:51:18 +0700 (Tue, 14 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -74,7 +73,7 @@ if (!version = get_app_version(cpe: CPE))
 version = str_replace( string:vers, find:"-", replace:"." );
 
 if (version =~ "^11\.0" || version =~ "^11\.5") {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+  report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
   security_message(port: 0, data: report);
   exit(0);
 }

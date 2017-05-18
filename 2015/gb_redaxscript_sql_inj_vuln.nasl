@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redaxscript_sql_inj_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_redaxscript_sql_inj_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # Redaxscript SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:redaxscript:redaxscript';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105954");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5843 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name : "creation_date", value : "2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name : "cvss_base", value : "7.5");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -98,12 +98,15 @@ if (version != "unknown") {
 }
 # Try to inject some SQL command
 else {
+
   dir = infos['location'];
   if( ! dir ) exit(0);
 
+  host = http_host_name( port:port );
+
   req = 'GET / HTTP/1.1\r\n' +
-        'Host: ' + get_host_name() + '\r\n' +
-        'User-Agent: Mozilla/5.0 [en] (X11, U; OpenVAS)\r\n' +
+        'Host: ' + host + '\r\n' +
+        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n\r\n';
 
@@ -119,8 +122,8 @@ else {
   len = strlen(data);
 
   req = 'POST ' + dir + ' HTTP/1.1\r\n' +
-        'Host: ' + get_host_name() + '\r\n' +
-        'User-Agent: Mozilla/5.0 [en] (X11, U; OpenVAS)\r\n' +
+        'Host: ' + host + '\r\n' +
+        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Cookie: PHPSESSID=' + cookie[1] + '\r\n' +
@@ -137,8 +140,8 @@ else {
     len = strlen(data);
 
     req = 'POST ' + dir + ' HTTP/1.1\r\n' +
-          'Host: ' + get_host_name() + '\r\n' +
-          'User-Agent: Mozilla/5.0 [en] (X11, U; OpenVAS)\r\n' +
+          'Host: ' + host + '\r\n' +
+          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
           'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
           'Accept-Language: en-US,en;q=0.5\r\n' +
           'Cookie: PHPSESSID=' + cookie[1] + '\r\n' +

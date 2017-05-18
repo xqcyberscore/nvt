@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851199");
-  script_version("$Revision: 3130 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 11:26:01 +0200 (Fri, 22 Apr 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-08 06:17:33 +0100 (Mon, 08 Feb 2016)");
   script_cve_id("CVE-2015-5969", "CVE-2015-7744", "CVE-2016-0502", "CVE-2016-0503", 
                 "CVE-2016-0504", "CVE-2016-0505", "CVE-2016-0546", "CVE-2016-0594", 
@@ -93,7 +93,6 @@ detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0367_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

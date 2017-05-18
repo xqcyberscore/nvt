@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sparkleblog_sql_injection.nasl 3717 2016-07-15 19:04:33Z cfi $
+# $Id: sparkleblog_sql_injection.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # SparkleBlog SQL Injection
 #
@@ -31,14 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16177");
-  script_version("$Revision: 3717 $");
+  script_version("$Revision: 6040 $");
   script_bugtraq_id(12272);
-  script_tag(name:"last_modification", value:"$Date: 2016-07-15 21:04:33 +0200 (Fri, 15 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("SparkleBlog SQL Injection");
-  script_summary("Checks for the presence of an SQL injection in id parameter");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");

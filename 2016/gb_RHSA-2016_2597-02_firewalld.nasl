@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871681");
-  script_version("$Revision: 4453 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 10:10:55 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 6044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:15 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-5410");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for firewalld RHSA-2016:2597-02");
   script_tag(name: "summary", value: "Check the version of firewalld");
@@ -61,7 +61,6 @@ Enterprise Linux 7.3 Release Notes linked from the References section.
   script_xref(name: "RHSA", value: "2016:2597-02");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00033.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firewalld");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

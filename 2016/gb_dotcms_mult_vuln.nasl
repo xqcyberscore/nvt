@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_mult_vuln.nasl 4855 2016-12-27 10:54:25Z antu123 $
+# $Id: gb_dotcms_mult_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # dotCMS Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:dotcms:dotcms";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106116");
-  script_version("$Revision: 4855 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-12-27 11:54:25 +0100 (Tue, 27 Dec 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -88,7 +88,6 @@ email headers via CRLF sequences in the subject. (CVE-2016-4803)");
   script_xref(name: "URL", value: "http://dotcms.com/security/SI-35");
   script_xref(name: "URL", value: "http://dotcms.com/security/SI-36");
 
-  script_summary("dotCMS is prone to multiple vulnerabilities.");
 
   exit(0);
 }

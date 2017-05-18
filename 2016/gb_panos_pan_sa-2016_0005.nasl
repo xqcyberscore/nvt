@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2016_0005.nasl 2727 2016-02-25 16:22:45Z mime $
+# $Id: gb_panos_pan_sa-2016_0005.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Palo Alto PAN-OS PAN-SA-2016-0005
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105562");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2727 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Palo Alto PAN-OS PAN-SA-2016-0005");
 
@@ -50,9 +50,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-25 17:22:45 +0100 (Thu, 25 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-25 11:50:51 +0100 (Thu, 25 Feb 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

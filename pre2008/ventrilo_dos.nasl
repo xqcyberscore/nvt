@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ventrilo_dos.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: ventrilo_dos.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Ventrilo Server Malformed Status Query Remote DoS
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
  script_id(19757);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -36,7 +36,6 @@ if(description)
 
  script_name("Ventrilo Server Malformed Status Query Remote DoS");
 
- script_summary("Sends malformed status query requests");
 
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

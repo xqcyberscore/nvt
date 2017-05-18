@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphere_ftp_server_bof_vuln.nasl 5249 2017-02-09 10:46:07Z teissa $
+# $Id: gb_sphere_ftp_server_bof_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # SphereFTP Server Buffer Overflow vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:menasoft:sphereftpserver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807534");
-  script_version("$Revision: 5249 $");
+  script_version("$Revision: 5867 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:46:07 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-04 16:23:30 +0530 (Mon, 04 Apr 2016)");
   script_name("SphereFTP Server Buffer Overflow vulnerability");
 
@@ -54,12 +54,9 @@ if (description)
   script_tag(name:"affected", value:"SphereFTP Server v2.0, Other versions may
   also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  09th February, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to
-  http://www.menasoft.com/sphereftp");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_app");
 

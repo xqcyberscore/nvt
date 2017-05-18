@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807283");
-  script_version("$Revision: 3164 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-22 06:28:11 +0100 (Mon, 22 Feb 2016)");
   script_cve_id("CVE-2015-8807", "CVE-2016-2228");
   script_tag(name:"cvss_base", value:"4.3");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-5");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177584.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php-horde-horde");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_func.inc 5294 2017-02-14 15:05:25Z mime $
+# $Id: ssh_func.inc 5990 2017-04-20 13:39:40Z cfi $
 # Description: Methods for handling SSH
 #
 # Authors:
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5294 $
+# $Revision: 5990 $
 #
 ###############################################################################
 
@@ -2271,5 +2271,43 @@ function ssh_is_pjl_port( port ) {
     if( port == pjl_port ) return TRUE;
   }
 
+  return;
+}
+
+# Checks and returns TRUE if any random user/pass pair is accepted by the SSH service
+function ssh_broken_random_login( port ) {
+
+  local_var port, soc, banner, user, pass, login;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#ssh_broken_random_login" );
+    return;
+  }
+
+  if( ! soc = open_sock_tcp( port ) ) return;
+
+  if( get_kb_item( "SSH/" + port + "/broken/random_login" ) ) return TRUE;
+
+  banner = ssh_hack_get_server_version( socket:soc );
+  close( soc );
+
+  if( "cisco" >< tolower( banner ) ) {
+    user = "Anonymous";
+    pass = "";
+  } else {
+    if( ! defined_func( "rand_str" ) ) include( "misc_func.inc" );
+    user = rand_str( length:8 );
+    pass = rand_str( length:8 );
+  }
+
+  if( ! soc = open_sock_tcp( port ) ) return;
+
+  login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
+
+  if( login == 0 ) {
+    close( soc );
+    replace_kb_item( name:"SSH/" + port + "/broken/random_login", value:TRUE );
+    return TRUE;
+  }
   return;
 }

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2016-636.nasl 4507 2016-11-14 15:50:04Z mime $
+# $Id: alas-2016-636.nasl 5782 2017-03-30 09:01:05Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120626");
-script_version("$Revision: 4507 $");
+script_version("$Revision: 5782 $");
 script_tag(name:"creation_date", value:"2016-01-20 07:22:44 +0200 (Wed, 20 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-14 16:50:04 +0100 (Mon, 14 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
 script_name("Amazon Linux Local Check: alas-2016-636");
 script_tag(name: "insight", value: "A flaw was found in the way realmd parsed certain input when writing configuration into the sssd.conf or smb.conf file. A remote attacker could use this flaw to inject arbitrary configurations into these files via a newline character in an LDAP response."); 
 script_tag(name : "solution", value : "Run yum update realmd to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2016-636");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

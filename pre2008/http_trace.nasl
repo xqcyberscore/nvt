@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_trace.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: http_trace.nasl 5838 2017-04-03 10:26:36Z cfi $
 # Description: HTTP TRACE
 #
 # Authors:
@@ -32,43 +32,24 @@ if(description)
 {
  script_id(11040);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 5838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
- 
- name = "HTTP TRACE";
- script_name(name);
- 
-
-
-
-
- 
- summary = "Look for an HTTP proxy on the way";
- 
- script_summary(summary);
-
+ script_name("HTTP TRACE");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_analysis");
- 
- 
+ script_tag(name:"qod_type", value:"remote_analysis");
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
- family = "General";
- script_family(family);
+ script_family("General");
  script_dependencies("find_service.nasl", "httpver.nasl");
  script_require_ports("Services/www", 80);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-if (!get_port_state(port)) exit(0);
-
 soc = open_sock_tcp(port);
 if (!soc) exit(0);
 
@@ -126,9 +107,11 @@ for (i=0; i<99;i=i+1)
   soc = open_sock_tcp(port);
   if (soc)
   {
-    req=string("TRACE / HTTP/1.1\r\nHost: ", get_host_name(), 
-	"\r\nUser-Agent: OpenVAS\r\nMax-Forwards: ", i,
-	"\r\n\r\n");
+    req=string("TRACE / HTTP/1.1\r\n",
+               "Host: ", get_host_name(), "\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+               "Max-Forwards: ", i,
+               "\r\n\r\n");
 
     send(socket: soc, data: req);
     buf = http_recv_headers2(socket:soc);

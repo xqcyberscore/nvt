@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win01_feb12.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_mult_vuln_win01_feb12.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows 01)
 #
@@ -52,12 +52,12 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(802581);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-0443", "CVE-2012-0445", "CVE-2012-0446", "CVE-2012-0447");
   script_bugtraq_id(51756, 51765, 51752, 51757);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-03 19:44:43 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows 01)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-06.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

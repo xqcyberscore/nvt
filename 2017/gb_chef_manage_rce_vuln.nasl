@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chef_manage_rce_vuln.nasl 5649 2017-03-21 09:54:52Z ckuerste $
+# $Id: gb_chef_manage_rce_vuln.nasl 5706 2017-03-24 08:04:22Z teissa $
 #
 # Chef Manage RCE Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:chef:chef_manage";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106678");
-  script_version("$Revision: 5649 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:54:52 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 5706 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-03-21 14:09:13 +0700 (Tue, 21 Mar 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-7174");
 

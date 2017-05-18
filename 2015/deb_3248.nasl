@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3248.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3248.nasl 5910 2017-04-10 08:31:29Z teissa $
 # Auto-generated from advisory DSA 3248-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703248);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 5910 $");
     script_cve_id("CVE-2014-5008");
     script_name("Debian Security Advisory DSA 3248-1 (libphp-snoopy - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-10 10:31:29 +0200 (Mon, 10 Apr 2017) $");
     script_tag(name: "creation_date", value: "2015-05-02 00:00:00 +0200 (Sat, 02 May 2015)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

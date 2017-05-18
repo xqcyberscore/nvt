@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 3003 2016-04-07 06:36:08Z antu123 $
+# $Id: gb_java_prdts_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Sun Java Products Version Detection (Windows)
 #
@@ -29,10 +29,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800383";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3003 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 08:36:08 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun Java Products Version Detection (Windows)");
@@ -45,7 +45,6 @@ gets the version from 'Version' string in registry";
 
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Detection of installed version of Java Products");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -77,16 +76,6 @@ JreTmpkey = "";
 JdkTmpkey = "";
 osArch = "";
 osArch = "";
-
-## Function to Build report
-function build_report(app, ver, cpe, insloc)
-{
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch){
@@ -190,7 +179,6 @@ foreach jreKey (adkeylist)
                }
             }
           ## Register Product and Build Report
-          register_product(cpe:cpe, location:path, nvt:SCRIPT_OID);
           build_report(app:java_name, ver: jreVer[1], cpe: cpe, insloc: path);   
         }
       }
@@ -296,7 +284,6 @@ foreach jdkKey (adkeylist)
             } 
           }
          ## Register Product and Build Report
-         register_product(cpe:cpe, location:path, nvt:SCRIPT_OID);
          build_report(app:jdk_name, ver: jdkVer[1], cpe: cpe, insloc: path);
         }
       }

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0188.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0188.nasl 5836 2017-04-03 09:37:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122883");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5836 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:23 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0188");
 script_tag(name: "insight", value: "ELSA-2016-0188 -  sos security and bug fix update - [3.2-35.0.1.3]- Recreated patch for [orabug 18913115]- Make the selinux plugin fixfiles option useful (John Haxby) [orabug 18913115]- Added remove_gpgstring.patch [Bug 18313898]- Added sos-oracle-enterprise.patch- Added sos-oraclelinux-vendor-vendorurl.patch[= 3.2-37]- [sosreport] prepare report in a private subdirectory (updated) Resolves: bz1290954[= 3.2-35.2]- [sosreport] prepare report in a private subdirectory (updated) Resolves: bz1290954[= 3.2-35.1]- [ceph] collect /var/lib/ceph and /var/run/ceph Resolves: bz1291347- [sosreport] prepare report in a private subdirectory Resolves: bz1290954"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0188");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

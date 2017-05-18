@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: axigen_web_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: axigen_web_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Axigen Web Detection
 #
@@ -30,10 +30,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100176");
-  script_version("$Revision: 2837 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Axigen Web Detection");
@@ -47,7 +47,6 @@ response, and sets the result in KB.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Checks for the presence of Axigen Webmail and Webadmin");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

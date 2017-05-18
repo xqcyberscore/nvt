@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808477");
-  script_version("$Revision: 3619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-29 13:04:08 +0200 (Wed, 29 Jun 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-24 06:38:03 +0200 (Fri, 24 Jun 2016)");
   script_cve_id("CVE-2016-4446");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for setroubleshoot-plugins FEDORA-2016-75ca94dee3");
   script_tag(name: "summary", value: "Check the version of setroubleshoot-plugins");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-75ca94dee3");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/DGVFTJ5U7RLGWQ3VZYZ3H2FXQGWLFDMG");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of setroubleshoot-plugins");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

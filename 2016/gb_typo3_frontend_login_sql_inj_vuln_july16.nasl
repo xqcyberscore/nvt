@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_frontend_login_sql_inj_vuln_july16.nasl 3774 2016-07-29 14:35:03Z veerendragg $
+# $Id: gb_typo3_frontend_login_sql_inj_vuln_july16.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # TYPO3 Frontend Login SQL Injection Vulnerability July16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808271");
-  script_version("$Revision: 3774 $");
+  script_version("$Revision: 5850 $");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 16:35:03 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 Frontend Login SQL Injection Vulnerability July16");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-016");
 
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

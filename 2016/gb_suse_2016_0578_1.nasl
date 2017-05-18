@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851218");
-  script_version("$Revision: 2878 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 11:32:13 +0100 (Thu, 17 Mar 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:53 +0530 (Tue, 01 Mar 2016)");
   script_cve_id("CVE-2007-4772", "CVE-2016-0766", "CVE-2016-0773");
   script_tag(name:"cvss_base", value:"9.0");
@@ -80,7 +80,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0578_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00056.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of postgresql94");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

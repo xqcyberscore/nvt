@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_popup_bitem_php_sql_injection.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_zabbix_popup_bitem_php_sql_injection.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # ZABBIX popup_bitem.php 'itemid' Parameter SQL Injection Vulnerability
 #
@@ -45,15 +45,14 @@ if (description)
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 6022 $");
 
  script_name("ZABBIX popup_bitem.php 'itemid' Parameter SQL Injection Vulnerabilit");
 
  script_xref(name : "URL" , value : "https://support.zabbix.com/browse/ZBX-5348");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-25 11:34:16 +0100 (Wed, 25 Jul 2012)");
- script_summary("Determine if it is possible to inject sql code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

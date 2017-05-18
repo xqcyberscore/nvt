@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tinyweb.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: tinyweb.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: TinyWeb 1.9
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "contact vendor http://www.ritlabs.com";
 if(description)
 {
  script_id(11894);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -47,7 +47,6 @@ if(description)
 
  summary = "Checks for version of TinyWeb";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

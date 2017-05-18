@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_mingle_forum_plugin_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: secpod_wordpress_mingle_forum_plugin_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # WordPress Mingle Forum Plugin 'search' Parameter XSS Vulnerability
 #
@@ -41,27 +41,24 @@ For updates refer to http://wordpress.org/extend/plugins/mingle-forum/";
 tag_summary = "This host is installed with WordPress Mingle Forum plugin and is
 prone to cross-site scripting vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902665";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3508 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902665");
+  script_version("$Revision: 5841 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-29 16:02:43 +0530 (Thu, 29 Mar 2012)");
   script_name("WordPress Mingle Forum Plugin 'search' Parameter XSS Vulnerability");
-
-  script_summary("Check if WordPress Mingle Forum plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
+  script_mandatory_keys("wordpress/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -72,12 +69,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
 
 ## Variable Initialization
 dir = "";
@@ -87,22 +81,10 @@ mfReq = "";
 mfRes = "";
 postdata = "";
 
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Check Host Name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
-## Get WordPress Installed Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+host = http_host_name(port:port);
 
 ## Path of Vulnerable Page
 url = '/?mingleforumaction=search';
@@ -116,13 +98,13 @@ foreach forum (make_list("/forum", "/forums", "/le-forum"))
   ## Construct the POST request
   mfReq = string("POST ", dir, forum, url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent:  XSS-TEST\r\n",
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n",
                  "\r\n", postdata);
 
   ## Send post request and Receive the response
-  mfRes = http_send_recv(port:port, data:mfReq);
+  mfRes = http_keepalive_send_recv(port:port, data:mfReq);
 
   ## Confirm exploit worked by checking the response
   if(mfRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< mfRes)

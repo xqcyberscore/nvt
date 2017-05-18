@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9iAS_too_long_url.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: oracle9iAS_too_long_url.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Oracle9iAS too long URL
 #
@@ -37,15 +37,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11081");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3443);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2001-0836");
   script_name("Oracle9iAS too long URL");
-  script_summary("Oracle9iAS buffer overflow");
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Gain a shell remotely");

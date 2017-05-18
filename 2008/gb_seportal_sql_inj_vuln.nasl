@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seportal_sql_inj_vuln.nasl 4619 2016-11-25 06:34:23Z cfi $
+# $Id: gb_seportal_sql_inj_vuln.nasl 5795 2017-03-30 14:04:00Z cfi $
 #
 # SePortal poll.php SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800143");
-  script_version("$Revision: 4619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:34:23 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 5795 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:04:00 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-27 14:04:10 +0100 (Thu, 27 Nov 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,9 +43,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name : "impact" , value : "Successful attack could lead to execution of arbitrary SQL queries.
   Impact Level: Application");
@@ -63,24 +63,17 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-
-foreach dir (make_list_unique("/seportal", cgi_dirs(port:port)))
-{
+foreach dir( make_list_unique( "/seportal", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-
-  sndReq = http_get(item:string(dir + "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port,data:sndReq,bodyonly:1);
-  if(rcvRes == NULL){
-    exit(0);
-  }
+  rcvRes = http_get_cache(item:string(dir + "/index.php"), port:port);
+  if(rcvRes == NULL) continue;
 
   if("SePortal" >< rcvRes)
   {

@@ -87,8 +87,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-March/001626.html");
   script_id(840929);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5931 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-12 12:42:00 +0530 (Mon, 12 Mar 2012)");
   script_cve_id("CVE-2009-5029", "CVE-2010-0015", "CVE-2011-1071", "CVE-2011-1659",
                 "CVE-2011-1089", "CVE-2011-1095", "CVE-2011-1658", "CVE-2011-2702",
@@ -98,7 +98,6 @@ if(description)
   script_xref(name: "USN", value: "1396-1");
   script_name("Ubuntu Update for eglibc USN-1396-1");
 
-  script_summary("Check for the Version of eglibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

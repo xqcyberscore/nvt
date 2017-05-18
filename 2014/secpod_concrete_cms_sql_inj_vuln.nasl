@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_concrete_cms_sql_inj_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: secpod_concrete_cms_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Concrete CMS SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903511");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 5790 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-02-19 16:18:17 +0530 (Wed, 19 Feb 2014)");
   script_name("Concrete CMS SQL Injection Vulnerability");
 
@@ -52,11 +52,10 @@ if(description)
   script_xref(name : "URL" , value : "http://1337day.com/exploit/21919");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31735/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125280/concrete5-sql.txt");
-  script_summary("Check if Concrete CMS is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
   script_copyright("Copyright (C) 2014 SecPod");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -70,27 +69,21 @@ include("http_keepalive.inc");
 
 ## Variable Initialization
 conPort = "";
-sndReq = "";
 rcvRes = "";
 url = "";
 
-## Get HTTP Port
 conPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:conPort)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/concrete", "/cms",  cgi_dirs(port:conPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request for the index.php
-  sndReq = http_get(item:string(dir, "/index.php"), port:conPort);
-  rcvRes = http_keepalive_send_recv(port:conPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:conPort);
 
   ## confirm the Concrete CMS installation
   if('>concrete5' >< rcvRes && 'Welcome to concrete5!' >< rcvRes)

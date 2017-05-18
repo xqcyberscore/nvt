@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871558");
-  script_version("$Revision: 2687 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-18 06:21:49 +0100 (Thu, 18 Feb 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-17 06:26:00 +0100 (Wed, 17 Feb 2016)");
   script_cve_id("CVE-2015-5157", "CVE-2015-7872");
   script_tag(name:"cvss_base", value:"7.2");
@@ -94,7 +94,6 @@ prevents the co-processor from providing corrupted data. (BZ#1289451)
   script_xref(name: "RHSA", value: "2016:0185-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-February/msg00026.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

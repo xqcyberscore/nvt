@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssh_os_detection.nasl 5094 2017-01-25 06:43:45Z cfi $
+# $Id: gb_ssh_os_detection.nasl 6011 2017-04-21 20:31:32Z cfi $
 #
 # SSH OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105586");
-  script_version("$Revision: 5094 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 07:43:45 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 6011 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 22:31:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-23 14:28:40 +0100 (Wed, 23 Mar 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -62,8 +62,10 @@ if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
 
 #TODO: Also check "SSH/textbanner/" + port ?
 
+#For banners see e.g. https://github.com/BetterCrypto/Applied-Crypto-Hardening/blob/master/unsorted/ssh/ssh_version_strings.txt
+
 # Order matters, as some banners can include several keywords.
-if( "ubuntu" >< banner )
+if( "ubuntu" >< tolower( banner ) )
 {
   if( "SSH-2.0-OpenSSH_4.1p1 Debian-7ubuntu4" >< banner )
   {
@@ -199,6 +201,12 @@ if( "ubuntu" >< banner )
     exit( 0 );
   }
 
+  if( "SSH-2.0-OpenSSH_7.4p1 Ubuntu-10" >< banner )
+  {
+    register_and_report_os( os:"Ubuntu", version:"17.04", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
   # We don't know the OS version
   register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
   exit( 0 );
@@ -264,6 +272,18 @@ else if( "FreeBSD" >< banner )
   if( "SSH-2.0-OpenSSH_5.8p2_hpn13v11 FreeBSD-20110503" >< banner )
   {
     register_and_report_os( os:"FreeBSD", version:"9.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_6.4_hpn13v11 FreeBSD-20131111" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"10.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    exit( 0 );
+  }
+
+  if( "SSH-2.0-OpenSSH_7.2 FreeBSD-20160310" >< banner )
+  {
+    register_and_report_os( os:"FreeBSD", version:"11.0", cpe:"cpe:/o:freebsd:freebsd", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
     exit( 0 );
   }
 

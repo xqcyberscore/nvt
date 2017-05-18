@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_lync_server_detect_win.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_ms_lync_server_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Microsoft Lync Server Version Detection
 #
@@ -35,13 +35,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2833 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 16:15:45 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Lync Server Version Detection");
-  script_summary("Detection of installed version of Microsoft Lync Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Product detection");

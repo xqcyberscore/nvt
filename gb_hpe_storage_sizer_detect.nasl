@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_storage_sizer_detect.nasl 4110 2016-09-19 11:33:29Z antu123 $
+# $Id: gb_hpe_storage_sizer_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # HPE Storage Sizer Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809186");
-  script_version("$Revision: 4110 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-19 13:33:29 +0200 (Mon, 19 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-01 15:45:25 +0530 (Thu, 01 Sep 2016)");
   script_name("HPE Storage Sizer Version Detection (Windows)");
 
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HPE Storage Sizer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809208");
-  script_version("$Revision: 3982 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:01:29 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-07 10:08:55 +0530 (Wed, 07 Sep 2016)");
   script_cve_id("CVE-2016-4622", "CVE-2016-4624", "CVE-2016-4591", "CVE-2016-4590");
   script_tag(name:"cvss_base", value:"7.8");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-d957ffbac1");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/52FAWU4LC36EYVTVLITMFJEBN4VNN4TK");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of webkitgtk4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pppblog_multiple_vuln.nasl 3549 2016-06-17 12:10:37Z antu123 $
+# $Id: gb_pppblog_multiple_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # pppBLOG Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805647");
-  script_version("$Revision: 3549 $");
+  script_version("$Revision: 5789 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 14:10:37 +0200 (Fri, 17 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:40:36 +0530 (Tue, 09 Jun 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("pppBLOG Multiple Vulnerabilities");
@@ -65,51 +65,34 @@ if(description)
 
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132156");
 
-  script_summary("Check if pppBLOG is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
-##
-### Code Starts Here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 ## Variable Initialization
 pbPort = "";
-sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 pbPort = get_http_port(default:80);
-if(!pbPort){
-  pbPort = 80;
-}
 
-if(!get_port_state(pbPort)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:pbPort)){
   exit(0);
 }
 
-# Iterate over possible paths
-foreach dir (make_list_unique("/", "/pppblog", "/ppp",  "/blog", cgi_dirs()))
+foreach dir (make_list_unique("/", "/pppblog", "/ppp",  "/blog", cgi_dirs(port:pbPort)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ##Send Request and Receive Response
-  sndReq = http_get(item:string(dir,"/index.php"), port:pbPort);
-  rcvRes = http_keepalive_send_recv(port:pbPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir,"/index.php"), port:pbPort);
 
   #Confirm application
   if("Powered by pppBlog" >< rcvRes && 'content="pppBLOG' >< rcvRes)
@@ -119,7 +102,7 @@ foreach dir (make_list_unique("/", "/pppblog", "/ppp",  "/blog", cgi_dirs()))
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:pbPort, url:url,
-                       pattern:"<ScRiPt >prompt\(document.cookie\)</ScRiPt>",
+                       pattern:"<ScRiPt >prompt\(document\.cookie\)</ScRiPt>",
                        extra_check:">pppBLOG"))
     {
       report = report_vuln_url( port:pbPort, url:url );

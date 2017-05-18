@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-022.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_ms12-022.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Microsoft Expression Design Remote Code Execution Vulnerability (2651018)
 #
@@ -45,19 +45,18 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903000);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-0016");
   script_bugtraq_id(52375);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-14 10:53:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Expression Design Remote Code Execution Vulnerability (2651018)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48353/");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026791");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-022");
 
-  script_summary("Check for the vulnerable 'GraphicsCore.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

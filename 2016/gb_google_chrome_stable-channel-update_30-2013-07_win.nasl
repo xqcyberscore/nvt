@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update_30-2013-07_win.nasl 4327 2016-10-24 07:46:28Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update_30-2013-07_win.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Google Chrome Security Updates(stable-channel-update_30-2013-07)-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809068");
-  script_version("$Revision: 4327 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2013-2881", "CVE-2013-2882", "CVE-2013-2883", "CVE-2013-2884", 
                 "CVE-2013-2885", "CVE-2013-2886" );
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 09:46:28 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-19 11:28:07 +0530 (Wed, 19 Oct 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update_30-2013-07)-Windows");
 
@@ -71,7 +71,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://googlechromereleases.blogspot.in/2013/07/stable-channel-update_30.html");
 
-  script_summary("Check for the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2004_108_01.nasl 5665 2017-03-21 12:51:19Z cfi $
+# $Id: esoft_slk_ssa_2004_108_01.nasl 5931 2017-04-11 09:02:04Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -41,16 +41,15 @@ if(description)
 {
  script_id(53941);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_cve_id("CVE-2004-0183", "CVE-2004-0184");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5665 $");
+ script_version("$Revision: 5931 $");
  name = "Slackware Advisory SSA:2004-108-01 tcpdump denial of service ";
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2004-108-01 tcpdump denial of service");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-aaados.nasl 4179 2016-09-29 09:16:39Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160928-aaados.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco IOS XE Software AAA Login Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6393");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4179 $");
+ script_version ("$Revision: 5745 $");
 
  script_name("Cisco IOS XE Software AAA Login Denial of Service Vulnerability");
 
@@ -57,9 +57,8 @@ condition.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-29 11:16:39 +0200 (Thu, 29 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 16:00:26 +0700 (Thu, 29 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

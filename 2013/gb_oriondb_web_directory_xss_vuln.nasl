@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oriondb_web_directory_xss_vuln.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_oriondb_web_directory_xss_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # OrionDB Web Directory Cross Site Scripting Vulnerability
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803458");
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 5791 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-04-01 10:55:57 +0530 (Mon, 01 Apr 2013)");
   script_name("OrionDB Web Directory Cross Site Scripting Vulnerability");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120962");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/oriondb-business-directory-script-cross-site-scripting");
-  script_summary("Check if OrionDB Web Directory is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -74,23 +73,18 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/oriondb", "/mwd", "/db", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"), port:port);
-  res = http_keepalive_send_recv(port:port, data:req);
+  res = http_get_cache(item:string(dir,"/index.php"), port:port);
 
   ## Confirm the application
   if("OrionDB Web Directory<" >< res)
@@ -99,7 +93,7 @@ foreach dir (make_list_unique("/", "/oriondb", "/mwd", "/db", cgi_dirs(port:port
     url = dir + "/index.php?c=<script>alert(document.cookie)</script>";
 
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
-           pattern:"<script>alert\(document.cookie\)</script>"))
+           pattern:"<script>alert\(document\.cookie\)</script>"))
     {
       security_message(port:port);
       exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_472_mult_vuln_win.nasl 5245 2017-02-09 08:57:08Z teissa $
+# $Id: gb_wordpress_prior_472_mult_vuln_win.nasl 5864 2017-04-05 07:47:30Z cfi $
 #
 # WordPress < 4.7.2 Multiple Security Vulnerabilities (Windows)
 #
@@ -31,11 +31,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108069");
-  script_version("$Revision: 5245 $");
-  script_cve_id("CVE-2017-5610", "CVE-2017-5611", "CVE-2017-5612");
+  script_version("$Revision: 5864 $");
+  script_cve_id("CVE-2017-5610", "CVE-2017-5611", "CVE-2017-5612", "CVE-2017-1001000");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 09:57:08 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:47:30 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-02 14:20:15 +0100 (Thu, 02 Feb 2017)");
   script_name("WordPress < 4.7.2 Multiple Security Vulnerabilities (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -48,6 +48,7 @@ if(description)
   script_xref(name:"URL", value:"https://make.wordpress.org/core/2017/02/01/disclosure-of-additional-security-fix-in-wordpress-4-7-2/");
   script_xref(name:"URL", value:"https://wordpress.org/news/2017/01/wordpress-4-7-2-security-release/");
   script_xref(name:"URL", value:"https://blog.sucuri.net/2017/02/content-injection-vulnerability-wordpress-rest-api.html");
+  script_xref(name:"URL", value:"http://www.secpod.com/blog/wordpress-rest-api-zero-day-privilege-escalation-vulnerability");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone to multiple security vulnerabilities
   because it fails to sanitize user-supplied input.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_ms16-029.nasl 2814 2016-03-09 14:12:44Z antu123 $
+# $Id: gb_ms_outlook_ms16-029.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Microsoft Office Outlook Remote Code Execution Vulnerability (3141806)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807517");
-  script_version("$Revision: 2814 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-0134");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 15:12:44 +0100 (Wed, 09 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-09 09:58:26 +0530 (Wed, 09 Mar 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name(" Microsoft Office Outlook Remote Code Execution Vulnerability (3141806)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/(3114883");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-029");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

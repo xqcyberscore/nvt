@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-068.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms07-068.nasl 5863 2017-04-05 07:38:11Z antu123 $
 #
 # Vulnerability in Windows Media File Format Could Allow Remote Code Execution
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(801708);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-01-14 07:39:17 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -79,24 +79,14 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3) <= 0){
   exit(0);
 }
 
-function get_version(dllFile)
-{
-  dllPath = registry_get_sz(item:"Install Path",
-                          key:"SOFTWARE\Microsoft\COM3\Setup");
-  if(!dllPath){
-    exit(0);
-  }
-
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:dllPath + dllFile);
-
-  dllVer = GetVer(file:file, share:share);
-  return dllVer;
+## Get System Path
+sysPath = smb_get_system32root();
+if(!sysPath ){
+  exit(0);
 }
 
 # Windows Media Format Runtime 7.1, 9.0, 9.5 and 11 on 2K/XP/2003
-dllVer = get_version(dllFile:"\wmasf.dll");
+dllVer = fetch_file_version(sysPath, file_name:"wmasf.dll");
 if(dllVer)
 {
   # Check for Hotfix 941569
@@ -145,17 +135,12 @@ if(dllVer)
 }
     
 ## Get system path for windows vista
-dllPath = registry_get_sz(item:"PathName",
-                          key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+dllPath = smb_get_system32root();
 if(!dllPath){
    exit(0);
 }
 
-share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                    string:dllPath + "\system32\wmasf.dll");
-
-dllVer = GetVer(file:file, share:share);
+dllVer = fetch_file_version(sysPath:dllPath, file_name:"wmasf.dll");
 if(dllVer)
 {
   # Check for Hotfix 941569
@@ -183,7 +168,8 @@ if(hotfix_missing(name:"944275") == 1)
 {
   if(hotfix_check_sp(win2003:3) > 0)
   {
-    dllVer = get_version(dllFile:"\windows media\server\Wmsserver.dll");
+    dllVer = fetch_file_version(sysPath, file_name:"windows media\server\Wmsserver.dll");
+
     if(dllVer != NULL)
     {
       SP = get_kb_item("SMB/Win2003/ServicePack");

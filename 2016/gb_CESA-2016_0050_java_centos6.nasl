@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882370");
-  script_version("$Revision: 3319 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 06:06:21 +0100 (Fri, 22 Jan 2016)");
   script_cve_id("CVE-2015-7575", "CVE-2016-0402", "CVE-2016-0448", "CVE-2016-0466",
                 "CVE-2016-0475", "CVE-2016-0483", "CVE-2016-0494");
@@ -88,7 +88,6 @@ must be restarted for the update to take effect.
 
   script_xref(name: "CESA", value: "2016:0050");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-January/021622.html");
-  script_summary("Check for the Version of java");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

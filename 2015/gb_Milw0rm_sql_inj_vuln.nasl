@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805397");
-  script_version("$Revision: 3473 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2015-4137");
   script_bugtraq_id(74745);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 08:14:27 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-02 17:26:49 +0530 (Tue, 02 Jun 2015)");
   script_name("Milw0rm Clone Script SQL Injection Vulnerability");
 
@@ -66,15 +66,14 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/May/76");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131981/Milw0rm-Clone-Script-1.0-SQL-Injection.html");
 
-  script_summary("Check if Milw0rm Clone Script is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -85,25 +84,16 @@ sndReq = "";
 rcvRes = "";
 url = "";
 
-#Low priority task so did't wrote detect script
-# Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-# Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
-# Iterate over possible paths
-foreach dir (make_list_unique( "/", "/milw0rm", "/milworm_script", cgi_dirs()))
+
+foreach dir (make_list_unique( "/", "/milw0rm", "/milworm_script", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
-
-  sndReq = http_get(item:string(dir, "/"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/"),  port:http_port);
 
   # Confirm the Application
   if(rcvRes && '>iAm[i]nE<' >< rcvRes)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_ima_file_dos_vul_june16_macosx.nasl 3546 2016-06-17 11:01:19Z antu123 $
+# $Id: gb_vlc_media_player_ima_file_dos_vul_june16_macosx.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # VLC Media Player QuickTime IMA File Denial of Service Vulnerability June16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808222");
-  script_version("$Revision: 3546 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-5108");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 13:01:19 +0200 (Fri, 17 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-13 14:25:45 +0530 (Mon, 13 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player QuickTime IMA File Denial of Service Vulnerability June16 (Mac OS X)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1036009");
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1601.html");
 
-  script_summary("Check for the vulnerable version of VLC Media Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

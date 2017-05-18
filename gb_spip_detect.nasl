@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_detect.nasl 5048 2017-01-20 07:04:36Z ckuerste $
+# $Id: gb_spip_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # SPIP Detection
 #
@@ -31,9 +31,9 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103776");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5048 $");
+ script_version ("$Revision: 5820 $");
  script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name:"last_modification", value:"$Date: 2017-01-20 08:04:36 +0100 (Fri, 20 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-08-29 11:47:51 +0200 (Thu, 29 Aug 2013)");
  script_name("SPIP Detection");
 
@@ -52,20 +52,22 @@ extract the version number from the reply.");
 include("host_details.inc");
 include("cpe.inc");
 include("http_func.inc");
+include("http_keepalive.inc");
 
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list_unique("/spip",cgi_dirs());
+foreach dir( make_list_unique( "/spip", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
   install = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
 
   url = dir + '/spip.php';
   req = http_get(item:url, port:port);
-  buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+
   if("Composed-By: SPIP" >< buf) {
+
     vers = 'unknown';
 
     version = eregmatch(pattern:"Composed-By: SPIP ([0-9a-z.]+)", string:buf);
@@ -91,25 +93,3 @@ foreach dir (dirs) {
 }  
 
 exit(0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

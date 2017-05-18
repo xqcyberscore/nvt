@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: lotus_slashdot_DoS.nasl 2409 2016-01-14 16:24:23Z cfi $
+# $Id: lotus_slashdot_DoS.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Lotus /./ database lock
 #
 # Authors:
@@ -32,15 +32,14 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11718");
-  script_version("$Revision: 2409 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-14 17:24:23 +0100 (Thu, 14 Jan 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3656);
   script_cve_id("CVE-2001-0954");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Lotus /./ database lock");
-  script_summary("Locks out Lotus database with /./ request");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Denial of Service");
@@ -63,17 +62,15 @@ if (description)
 
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"5.0.8" ) ) {
 
   report = report_fixed_ver( installed_version:vers, fixed_version:"5.0.9" );
-  security_message( port:port, data:report );
+  security_message( data:report, port:0 );
   exit( 0 );
 }  
 

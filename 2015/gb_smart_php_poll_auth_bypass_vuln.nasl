@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smart_php_poll_auth_bypass_vuln.nasl 3021 2016-04-11 06:20:06Z antu123 $
+# $Id: gb_smart_php_poll_auth_bypass_vuln.nasl 5818 2017-03-31 10:29:04Z cfi $
 #
 # Smart PHP Poll Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805506");
-  script_version("$Revision: 3021 $");
+  script_version("$Revision: 5818 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 08:20:06 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-17 15:24:03 +0530 (Tue, 17 Mar 2015)");
   script_name("Smart PHP Poll Authentication Bypass Vulnerability");
 
@@ -60,15 +60,15 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
   script_xref(name: "URL" , value : "http://www.exploit-db.com/exploits/36386");
-  script_summary("Check if Smart PHP Poll is vulnerable to authentication bypass.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -79,32 +79,19 @@ dir = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/smart_php_poll", "/poll", cgi_dirs()))
-{
+host = http_host_name( port:http_port );
+
+foreach dir (make_list_unique("/", "/smart_php_poll", "/poll", cgi_dirs( port:http_port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct GET Request
-  url =  dir + "/admin.php";
-  sndReq = http_get(item:url,  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  url = dir + "/admin.php";
+  rcvRes = http_get_cache(item:url, port:http_port);
 
   ##Confirm Application
   if (rcvRes && rcvRes =~ ">Smart PHP Poll.*Administration Panel<")
@@ -113,7 +100,7 @@ foreach dir (make_list_unique("/", "/smart_php_poll", "/poll", cgi_dirs()))
 
     #Send Attack Request
     sndReq = string("POST ", url, " HTTP/1.1\r\n",
-                    "Host: ", get_host_name(), "\r\n",
+                    "Host: ", host, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded","\r\n",
                     "Content-Length: ", strlen(postData), "\r\n\r\n",
                     postData);

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_detect.nasl 5029 2017-01-18 13:42:10Z cfi $
+# $Id: gb_nextcloud_detect.nasl 5896 2017-04-07 14:47:18Z cfi $
 #
-# NextCloud Remote Version Detection
+# Nextcloud Detection
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809413");
-  script_version("$Revision: 5029 $");
+  script_version("$Revision: 5896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 14:42:10 +0100 (Wed, 18 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:47:18 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:37:02 +0530 (Tue, 27 Sep 2016)");
-  script_name("NextCloud Remote Version Detection");
+  script_name("Nextcloud Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -40,11 +40,10 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
-  NextCloud.
+  script_tag(name:"summary", value:"Detection of installed version of Nextcloud.
 
-  This script sends HTTP GET request and try to get the version from the
-  response.");
+  The script sends a connection request to the server and attempts to
+  extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -58,7 +57,6 @@ include("host_details.inc");
 include("version_func.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud", cgi_dirs( port:port ) ) ) {
@@ -69,11 +67,15 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud",
   url = dir + "/status.php";
   buf = http_get_cache( item:url, port:port );
 
-  if( buf =~ "HTTP/1.. 200" && "egroupware" >!< tolower( buf ) && # EGroupware is using the very same status.php
-      egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":(true|false),)?("needsDbUpgrade":(true|false),)?"version":"([0-9.]+)","versionstring":"([0-9.]+)","edition":"(.*)"' ) ) {
+  # nb: Don't check for 200 as a 400 will be returned when accessing to an untrusted domain
+  if( "egroupware" >!< tolower( buf ) && # EGroupware is using the very same status.php
+    ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":(true|false),)?("needsDbUpgrade":(true|false),)?"version":"([0-9.]+)","versionstring":"([0-9.]+)","edition":"(.*)"' ) ||
+      ( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" >< buf ))) {
 
-    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
     version = "unknown";
+    extra = NULL;
+    isNC = FALSE;
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
     #Basic auth check for default_http_auth_credentials.nasl
     foreach authurl( make_list( dir + "/remote.php/dav", dir + "/remote.php/webdav" ) ) {
@@ -99,9 +101,15 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud",
     # Valid for NC11+
     if( '"productname":"Nextcloud"' >< buf ) isNC = TRUE;
 
+    if( "You are accessing the server from an untrusted domain" >< buf && ">Nextcloud<" ) {
+      extra = "Nextcloud is blocking full access to this server because the scanner is accessing the server from an untrusted domain.";
+      extra += " To fix this configure the scanner to access the server on the expected domain.";
+      isNC = TRUE;
+    }
+
     if( ! isNC ) continue;
 
-    set_kb_item( name:"nextcloud/install/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of NC and oC
+    set_kb_item( name:"nextcloud/install/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of Nc and oC
     replace_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
     replace_kb_item( name:"nextcloud/installed", value:TRUE );
 
@@ -111,10 +119,11 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/NextCloud", "/cloud",
 
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data:build_detection_report( app:"NextCloud",
+    log_message( data:build_detection_report( app:"Nextcloud",
                                               version:version,
                                               install:install,
                                               cpe:cpe,
+                                              extra:extra,
                                               concludedUrl:conclUrl,
                                               concluded:ver[0] ),
                                               port:port );

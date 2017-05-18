@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_fusion_privilege_escalation_vuln_may16_macosx.nasl 3390 2016-05-26 08:12:04Z antu123 $
+# $Id: gb_vmware_fusion_privilege_escalation_vuln_may16_macosx.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # VMware Fusion Privilege Escalation Vulnerability May16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806755");
-  script_version("$Revision: 3390 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2014-8370");
   script_bugtraq_id(72338);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-26 10:12:04 +0200 (Thu, 26 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 09:35:33 +0530 (Fri, 20 May 2016)");
   script_name("VMware Fusion Privilege Escalation Vulnerability May16 (Mac OS X)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VMware Fusion on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_vmware_fusion_detect_macosx.nasl");

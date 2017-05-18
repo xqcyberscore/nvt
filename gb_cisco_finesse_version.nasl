@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_finesse_version.nasl 3170 2016-04-26 13:43:37Z mime $
+# $Id: gb_cisco_finesse_version.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Cisco Finesse Detect
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105623");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3170 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-26 15:43:37 +0200 (Tue, 26 Apr 2016) $");
+ script_version ("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2016-04-26 13:10:26 +0200 (Tue, 26 Apr 2016)");
  script_name("Cisco Finesse Detect");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_summary("Checks for the presence of Cisco Finesse");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

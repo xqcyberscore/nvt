@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_projectsend_remote_detect.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: gb_projectsend_remote_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # ProjectSend Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807549");
-  script_version("$Revision: 5505 $");
+  script_version("$Revision: 5815 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-19 11:50:28 +0530 (Tue, 19 Apr 2016)");
   script_name("ProjectSend Remote Version Detection");
   
@@ -43,12 +43,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -60,29 +60,19 @@ pjtPort = 0;
 sndReq = "";
 rcvRes = "";
 
-##Get HTTP Port
-if(!pjtPort = get_http_port(default:80)){
-  exit(0);
-}
-
-##Check host support php
+pjtPort = get_http_port(default:80);
 if(!can_host_php(port:pjtPort)){
   exit(0);
 }
 
-##Iterate over possible paths
-foreach dir(make_list_unique( "/", "/ProjectSend",  "/project" , cgi_dirs(port:pjtPort)))
-{
-   install = dir;
-   if( dir == "/"){
-     dir = "";
-   }
+foreach dir(make_list_unique( "/", "/ProjectSend",  "/project" , cgi_dirs(port:pjtPort))) {
+
+  install = dir;
+  if( dir == "/") dir = "";
 
   url = dir + "/index.php";
 
-  ##Send Request and Receive Response
-  sndReq = http_get(item:url, port:pjtPort);
-  rcvRes = http_keepalive_send_recv(port:pjtPort, data:sndReq);
+  rcvRes = http_get_cache(item:url, port:pjtPort);
 
   ## Confirm the application
   if(rcvRes =~ "Provided by.*>ProjectSend.*Free software" && 

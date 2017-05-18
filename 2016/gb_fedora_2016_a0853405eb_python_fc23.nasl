@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808489");
-  script_version("$Revision: 3975 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-06 11:35:42 +0200 (Tue, 06 Sep 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 05:45:12 +0200 (Mon, 27 Jun 2016)");
   script_cve_id("CVE-2016-0772");
   script_tag(name:"cvss_base", value:"5.8");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-a0853405eb");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/XAD3BXECNOALJ4IEV3T3HEJH47YSJC44");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

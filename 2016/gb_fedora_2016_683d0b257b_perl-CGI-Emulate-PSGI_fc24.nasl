@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808758");
-  script_version("$Revision: 3823 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 09:42:49 +0200 (Thu, 11 Aug 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 05:44:07 +0200 (Tue, 09 Aug 2016)");
   script_cve_id("CVE-2016-5387");
   script_tag(name:"cvss_base", value:"5.1");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-683d0b257b");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/QPQAPWQA774JPDRV4UIB2SZAX6D3UZCV");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of perl-CGI-Emulate-PSGI");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

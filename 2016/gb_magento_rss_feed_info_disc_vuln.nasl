@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_rss_feed_info_disc_vuln.nasl 3226 2016-05-04 11:35:23Z antu123 $
+# $Id: gb_magento_rss_feed_info_disc_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Magento RSS Feed Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807532");
-  script_version("$Revision: 3226 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-2212");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-04 13:35:23 +0200 (Wed, 04 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:55 +0530 (Wed, 06 Apr 2016)");
   script_name("Magento RSS Feed Information Disclosure Vulnerability");
 
@@ -67,7 +67,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/135941/KIS-2016-02.txt");
 
-  script_summary("Check for the vulnerable version of Magento Web E-Commerce Platform");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

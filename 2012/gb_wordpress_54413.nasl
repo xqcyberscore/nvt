@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_54413.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_54413.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # WordPress Global Content Blocks PHP Code Execution and Information Disclosure Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
  script_bugtraq_id(54413);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5912 $");
 
  script_name("WordPress Global Content Blocks PHP Code Execution and Information Disclosure Vulnerabilities");
 
@@ -55,10 +55,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.wordpress.org/");
  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/49854");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-13 11:23:37 +0200 (Fri, 13 Jul 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if creation of a code block is possible");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

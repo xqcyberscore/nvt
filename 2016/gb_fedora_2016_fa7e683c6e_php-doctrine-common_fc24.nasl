@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808741");
-  script_version("$Revision: 3798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-04 13:01:10 +0200 (Thu, 04 Aug 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 16:27:54 +0530 (Thu, 04 Aug 2016)");
   script_cve_id("CVE-2015-5723");
   script_tag(name:"cvss_base", value:"7.2");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-fa7e683c6e");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2IUUC7HPN4XE5NNTG4MR76OC662XRZUO");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php-doctrine-common");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

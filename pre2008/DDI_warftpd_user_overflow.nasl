@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: DDI_warftpd_user_overflow.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: DDI_warftpd_user_overflow.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: War FTP Daemon USER/PASS Overflow
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Upgrade to the latest release of the War FTP Daemon
 if(description)
 {
 	script_id(11207);
-	script_version("$Revision: 3395 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+	script_version("$Revision: 6046 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 	script_bugtraq_id(10078);
 	script_cve_id("CVE-1999-0256");
@@ -45,7 +45,6 @@ if(description)
 	name = "War FTP Daemon USER/PASS Overflow";
 	script_name(name);
 	summary = "War FTP Daemon USER/PASS Overflow";
-	script_summary(summary);
 	script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
 	script_copyright("This script is Copyright (C) 2003 Digital Defense, Inc.");

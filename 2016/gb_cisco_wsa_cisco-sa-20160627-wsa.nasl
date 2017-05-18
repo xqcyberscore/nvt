@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20160627-wsa.nasl 3708 2016-07-14 19:12:10Z cfi $
+# $Id: gb_cisco_wsa_cisco-sa-20160627-wsa.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco Web Security Appliance Native FTP Denial of Service Vulnerability
 #
@@ -31,10 +31,10 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105779");
   script_cve_id("CVE-2016-1440");
-  script_version ("$Revision: 3708 $");
+  script_version ("$Revision: 5745 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-14 21:12:10 +0200 (Thu, 14 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 14:05:06 +0200 (Tue, 28 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Web Security Appliance Native FTP Denial of Service Vulnerability");
@@ -51,7 +51,6 @@ if (description)
 
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160627-wsa");
 
-  script_summary("Check for the vulnerable version of Cisco WSA Software");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

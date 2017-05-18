@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: argosoft_multiple_flaws2.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: argosoft_multiple_flaws2.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: ArGoSoft Mail Server multiple flaws(2)
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to ArGoSoft 1.8.7.0 or newer";
 if(description)
 {
  script_id(16012);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(12044);
  script_tag(name:"cvss_base", value:"4.3");
@@ -49,7 +49,6 @@ if(description)
 
  summary = "Gets the version of the remote ArGoSoft server";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

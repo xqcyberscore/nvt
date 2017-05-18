@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 5856 2017-04-04 12:59:37Z cfi $
 #
 # Novell ZENWorks Asset Management Information Disclosure Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902928");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5856 $");
   script_cve_id("CVE-2012-4933");
   script_bugtraq_id(55933);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 14:59:37 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-26 12:25:31 +0530 (Fri, 26 Oct 2012)");
   script_name("Novell ZENWorks Asset Management Information Disclosure Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50967/");
@@ -40,12 +40,13 @@ if(description)
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/332412");
   script_xref(name : "URL" , value : "https://community.rapid7.com/community/metasploit/blog/2012/10/15/cve-2012-4933-novell-zenworks");
 
-  script_summary("Check if it is possible to read Asset Management configuration file");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain
   sensitive information via a crafted rtrlet/rtr request for the
   HandleMaintenanceCalls function.
@@ -72,10 +73,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
 
 ## Variable Initiliazation
 port = "";
@@ -83,24 +82,9 @@ host = "";
 req = "";
 res = "";
 
-## Get HTTP Port
-port = get_http_port(default:8080);
-if(!port){
-  port = 8080;
-}
+port = get_http_port( default:8080 );
 
-## Check the port status
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Exit if host IP is not found
-host = get_host_ip();
-if(!host){
-  exit(0);
-}
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name( port:port );
 
 ## Construct the POST data
 data = "kb=&file=&absolute=&maintenance=GetConfigInfo_password&username" +

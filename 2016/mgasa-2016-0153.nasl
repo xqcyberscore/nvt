@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0153.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0153.nasl 5745 2017-03-28 09:01:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131296");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5745 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:18:00 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0153");
 script_tag(name: "insight", value: "Updated wireshark packages fix security vulnerabilities: The NCP dissector could crash (CVE-2016-4076). TShark could crash due to a packet reassembly bug (CVE-2016-4077). The IEEE 802.11 dissector could crash (CVE-2016-4078). The PKTC dissector could crash (CVE-2016-4079). The PKTC dissector could crash (CVE-2016-4080). The IAX2 dissector could go into an infinite loop (CVE-2016-4081). Wireshark and TShark could exhaust the stack (CVE-2016-4006). The GSM CBCH dissector could crash (CVE-2016-4082). MS-WSP dissector crash (CVE-2016-4083, CVE-2016-4084)."); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0153");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0153");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808488");
-  script_version("$Revision: 4294 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-18 13:48:46 +0200 (Tue, 18 Oct 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 05:45:16 +0200 (Mon, 27 Jun 2016)");
   script_cve_id("CVE-2016-1000003");
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-b2ad500fea");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4DRFUMNZGBX5K6JF3IYI37QOXRFKOBQA");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mirrormanager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

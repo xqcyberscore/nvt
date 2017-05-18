@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_53595.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_atlassian_crowd_53595.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Atlassian Crowd XML Parsing Denial of Service Vulnerability 
 #
@@ -39,7 +39,7 @@ if (description)
  script_cve_id("CVE-2012-2926");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 5633 $");
+ script_version ("$Revision: 5841 $");
 
  script_name("Atlassian Crowd XML Parsing Denial of Service Vulnerability");
 
@@ -48,9 +48,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.atlassian.com/software/jira/");
  script_xref(name : "URL" , value : "http://confluence.atlassian.com/display/JIRA/JIRA+Security+Advisory+2012-05-17");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-11 15:40:23 +0200 (Wed, 11 Jul 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -70,7 +69,6 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 
 port = get_http_port(default:8095);
-if(!get_port_state(port))exit(0);
 
 url = '/crowd/services';
 req = http_get(item:url, port:port);
@@ -79,7 +77,7 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if("Invalid SOAP request" >!< buf)exit(0);
 
 files = traversal_files(); 
-host = get_host_name();
+host = http_host_name(port:port);
 
 entity =  rand_str(length:8,charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
@@ -130,7 +128,7 @@ foreach file (keys(files)) {
 
   req = string("POST ",url," HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; OpenVAS 5)\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
                "SOAPAction: ",'""',"\r\n",
                "Content-Type: text/xml; charset=UTF-8\r\n",
                "Content-Length: ", len,"\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_fortigate_FG-IR-16-023_remote.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105886");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5732 $");
 
  script_name("FortiOS: Cookie Parser Buffer Overflow Vulnerability (remote check)");
 
@@ -53,9 +53,8 @@ Upgrade to release 4.3.9 or above for models not compatible with FortiOS 5.x.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-06 11:28:49 +0200 (Tue, 06 Sep 2016)");
- script_summary("Check the Etag");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

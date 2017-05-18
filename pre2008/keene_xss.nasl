@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: keene_xss.nasl 3477 2016-06-10 12:57:12Z mime $
+# $Id: keene_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Keene digital media server XSS
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to the latest version of this software";
 if(description)
 {
   script_id(14681);
-  script_version("$Revision: 3477 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:57:12 +0200 (Fri, 10 Jun 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11111);
   script_xref(name:"OSVDB", value:9514);
@@ -49,7 +49,6 @@ if(description)
 
  
 
-  script_summary("Checks XSS in Keene server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

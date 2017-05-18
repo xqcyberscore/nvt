@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_detect.nasl 3651 2016-07-05 08:29:39Z ckuerste $
+# $Id: gb_dotcms_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # dotCMS Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106114");
- script_version ("$Revision: 3651 $");
- script_tag(name: "last_modification", value: "$Date: 2016-07-05 10:29:39 +0200 (Tue, 05 Jul 2016) $");
+ script_version ("$Revision: 5888 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-07-05 08:55:18 +0700 (Tue, 05 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ extract its version");
 
  script_xref(name: "URL", value: "http://dotcms.com");
 
- script_summary("Checks for the presence of dotCMS.");
 
  exit(0);
 }

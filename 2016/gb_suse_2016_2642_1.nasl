@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851423");
-  script_version("$Revision: 4367 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 14:59:58 +0200 (Thu, 27 Oct 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-27 05:40:10 +0200 (Thu, 27 Oct 2016)");
   script_cve_id("CVE-2016-2391", "CVE-2016-2392", "CVE-2016-4453", "CVE-2016-4454", 
                 "CVE-2016-5105", "CVE-2016-5106", "CVE-2016-5107", "CVE-2016-5126", 
@@ -93,7 +93,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:2642_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-10/msg00060.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

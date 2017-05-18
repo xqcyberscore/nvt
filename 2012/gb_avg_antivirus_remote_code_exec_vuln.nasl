@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avg_antivirus_remote_code_exec_vuln.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_avg_antivirus_remote_code_exec_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # AVG Anti-Virus 'hcp://' Protocol Handler Remote Code Execution Vulnerability
 #
@@ -45,12 +45,12 @@ code execution vulnerability.";
 if(description)
 {
   script_id(802976);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2010-3498");
   script_bugtraq_id(44189);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-01 18:51:18 +0530 (Mon, 01 Oct 2012)");
   script_name("AVG Anti-Virus 'hcp://' Protocol Handler Remote Code Execution Vulnerability");
 
@@ -60,7 +60,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of AVG Anti-Virus");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_avg_detect_win.nasl");

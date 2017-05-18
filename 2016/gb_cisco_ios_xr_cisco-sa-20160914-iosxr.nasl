@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160914-iosxr.nasl 4106 2016-09-19 10:13:24Z ckuerste $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160914-iosxr.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco IOS XR Software for NCS 6000 Series Devices OSPF Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1433");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 4106 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Cisco IOS XR Software for NCS 6000 Series Devices OSPF Packet Processing Denial of Service Vulnerability");
 
@@ -58,9 +58,8 @@ and cause a limited DoS condition on the affected device.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-19 12:13:24 +0200 (Mon, 19 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-16 11:53:36 +0700 (Fri, 16 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

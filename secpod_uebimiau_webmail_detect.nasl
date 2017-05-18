@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_uebimiau_webmail_detect.nasl 2642 2016-02-11 19:00:31Z cfi $
+# $Id: secpod_uebimiau_webmail_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Uebimiau Webmail Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901023");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2642 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-11 20:00:31 +0100 (Thu, 11 Feb 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-09-22 10:03:41 +0200 (Tue, 22 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Uebimiau Webmail Version Detection");
-  script_summary("Set the version of Uebimiau Webmail in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

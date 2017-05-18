@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_1024_cms_50275.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_1024_cms_50275.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # 1024 CMS 1.1.0 Beta 'force_download.php' Local File Include Vulnerability
 #
@@ -36,12 +36,11 @@ also possible.
 1024 CMS 1.1.0 Beta is vulnerable; other versions may also be
 affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103307);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50275);
  script_tag(name:"cvss_base", value:"6.8");
@@ -66,28 +65,27 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
 
   foreach file (keys(files)) {
    
-    url = string(dir,"/complete-modules/modules/forcedownload/force_download.php?filename=/",files[file]); 
+    url = string(dir,"/complete-modules/modules/forcedownload/force_download.php?filename=/",files[file]);
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );
+

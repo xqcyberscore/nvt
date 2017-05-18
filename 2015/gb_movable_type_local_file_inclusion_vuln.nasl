@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_local_file_inclusion_vuln.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_movable_type_local_file_inclusion_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Movable Type Local File Inclusion Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805357");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2015-1592");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-04-10 15:04:37 +0530 (Fri, 10 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Local File Inclusion Vulnerability");
@@ -64,8 +64,7 @@ if(description)
   script_xref(name : "URL" , value : "https://exchange.xforce.ibmcloud.com/#/vulnerabilities/100912");
   script_xref(name : "URL" , value : "https://movabletype.org/news/2015/02/movable_type_607_and_5212_released_to_close_security_vulnera.html");
 
-  script_summary("Determine if it is possible to upload a file");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mt_detect.nasl");

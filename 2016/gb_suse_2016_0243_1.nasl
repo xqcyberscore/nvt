@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851193");
-  script_version("$Revision: 2682 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 14:49:05 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:17:40 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2016-1897", "CVE-2016-1898");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0243_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-01/msg00034.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ffmpeg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

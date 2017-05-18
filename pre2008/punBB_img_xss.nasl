@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punBB_img_xss.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: punBB_img_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: PunBB IMG Tag Client Side Scripting XSS
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Update to PunBB version 1.0.1 or later.";
 if(description)
 {
  script_id(15937);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(11850);
  script_xref(name:"OSVDB", value:"7977");
@@ -51,7 +51,6 @@ if(description)
 
  summary = "Checks for PunBB version";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

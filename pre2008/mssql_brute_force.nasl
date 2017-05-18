@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_brute_force.nasl 4028 2016-09-12 08:04:11Z cfi $
+# $Id: mssql_brute_force.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Microsoft's SQL Server Brute Force
 #
@@ -41,13 +41,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10862");
-  script_version("$Revision: 4028 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 10:04:11 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft's SQL Server Brute Force");
-  script_summary("Microsoft's SQL Server Brute Force");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 H D Moore");
   script_family("Default Accounts");

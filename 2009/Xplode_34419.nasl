@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Xplode_34419.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: Xplode_34419.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # Xplode 'module_wrapper.asp' SQL Injection and Cross Site Scripting
 # Vulnerabilities
@@ -34,21 +34,18 @@ tag_summary = "Xplode is prone to an SQL-injection vulnerability and a cross-sit
   access or modify data, or exploit latent vulnerabilities in the
   underlying database.";
 
-
-if (description)
+if(description)
 {
  script_id(100113);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-08 20:52:50 +0200 (Wed, 08 Apr 2009)");
  script_bugtraq_id(34419);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Xplode 'module_wrapper.asp' SQL Injection and Cross Site Scripting Vulnerabilities");
-
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,25 +60,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_asp(port:port)) exit(0);
 
-dir = make_list("/cms", cgi_dirs());
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach d (dir)
-{ 
- url = string(d, '/module_wrapper.asp?wrap_script=modules/Search+results/search.asp&SearchType=all&SearchString=">><script>alert(document.cookie)</script>');
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- 
- if( buf == NULL )continue;
+  if( dir == "/" ) dir = "";
+  url = string(dir, '/module_wrapper.asp?wrap_script=modules/Search+results/search.asp&SearchType=all&SearchString=">><script>alert(document.cookie)</script>');
 
- if (egrep(pattern:"<script>alert\(document\.cookie\)</script>", string: buf && "HTTP/1.1 200" >< buf) )
- 	{    
-       	  security_message(port:port);
-          exit(0);
-        }
+  if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(document\.cookie\)</script>", check_header:TRUE)) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cvs_detect.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: cvs_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: A CVS pserver is running
 #
 # Authors:
@@ -25,13 +25,12 @@
 if(description)
 {
  script_id(10051);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"3.3");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
  script_name("A CVS pserver is running");
- script_summary("A CVS pserver is running");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 1999 SecuriTeam");

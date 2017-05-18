@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871594");
-  script_version("$Revision: 3692 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-13 05:16:54 +0200 (Wed, 13 Apr 2016)");
   script_cve_id("CVE-2016-2110", "CVE-2016-2111", "CVE-2016-2112", "CVE-2016-2115",
                 "CVE-2016-2118");
@@ -88,7 +88,6 @@ of CVE-2016-2118, CVE-2016-2110, CVE-2016-2112, and CVE-2016-2115.
   script_xref(name: "RHSA", value: "2016:0621-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-April/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

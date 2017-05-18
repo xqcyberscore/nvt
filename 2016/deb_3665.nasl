@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3665.nasl 4176 2016-09-29 07:41:00Z antu123 $
+# $Id: deb_3665.nasl 5813 2017-03-31 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3665-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703665);
-    script_version("$Revision: 4176 $");
+    script_version("$Revision: 5813 $");
     script_cve_id("CVE-2015-6581", "CVE-2015-8871", "CVE-2016-1924", "CVE-2016-7163");
     script_name("Debian Security Advisory DSA 3665-1 (openjpeg2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-09-29 09:41:00 +0200 (Thu, 29 Sep 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-09-11 00:00:00 +0200 (Sun, 11 Sep 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3665.html");
 
-    script_summary("Debian Security Advisory DSA 3665-1 (openjpeg2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: rich_media_ecommerce_stores_sensitive_information_insecurely.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: rich_media_ecommerce_stores_sensitive_information_insecurely.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Rich Media E-Commerce Stores Sensitive Information Insecurely
 #
 # Authors:
@@ -28,14 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10874");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4172);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Rich Media E-Commerce Stores Sensitive Information Insecurely");
-  script_summary("Rich Media E-Commerce Stores Sensitive Information Insecurely");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 SecurITeam");
   script_family("Web application abuses");

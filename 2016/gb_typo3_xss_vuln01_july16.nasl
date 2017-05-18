@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_xss_vuln01_july16.nasl 4441 2016-11-08 09:42:40Z antu123 $
+# $Id: gb_typo3_xss_vuln01_july16.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808273");
-  script_version("$Revision: 4441 $");
+  script_version("$Revision: 5850 $");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-08 10:42:40 +0100 (Tue, 08 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-27 10:28:48 +0530 (Wed, 27 Jul 2016)");
   script_name("TYPO3 'mso/idna-convert' Library Cross Site Scripting Vulnerability July16");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-020");
 
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-061.nasl 3323 2016-05-16 07:13:47Z antu123 $
+# $Id: gb_ms16-061.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # MS Windows Remote Privilege Escalation Vulnerability (3155520)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807587");
-  script_version("$Revision: 3323 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-0178");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-16 09:13:47 +0200 (Mon, 16 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:26:35 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Remote Privilege Escalation Vulnerability (3155520)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3153171");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-061");
 
-  script_summary("Check for the vulnerable 'Ntoskrnl.exe' and 'Rpcrt4.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

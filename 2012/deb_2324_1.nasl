@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2324_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2324_1.nasl 5999 2017-04-21 09:02:32Z teissa $
 # Description: Auto-generated from advisory DSA 2324-1 (wireshark)
 #
 # Authors:
@@ -50,12 +50,11 @@ if(description)
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2011-3360");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5999 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-11 02:25:37 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2324-1 (wireshark)");
 
- script_summary("Debian Security Advisory DSA 2324-1 (wireshark)");
 
  script_category(ACT_GATHER_INFO);
 

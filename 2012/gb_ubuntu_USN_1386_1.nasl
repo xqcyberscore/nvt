@@ -66,8 +66,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-March/001616.html");
   script_id(840920);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6022 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-07 11:19:56 +0530 (Wed, 07 Mar 2012)");
   script_cve_id("CVE-2011-2498", "CVE-2011-2518", "CVE-2011-3353", "CVE-2011-4097",
                 "CVE-2011-4622", "CVE-2012-0038", "CVE-2012-0044", "CVE-2012-0207");
@@ -76,7 +76,6 @@ if(description)
   script_xref(name: "USN", value: "1386-1");
   script_name("Ubuntu Update for linux-lts-backport-natty USN-1386-1");
 
-  script_summary("Check for the Version of linux-lts-backport-natty");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

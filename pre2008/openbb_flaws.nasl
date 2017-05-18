@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openbb_flaws.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: openbb_flaws.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # OpenBB XSS and SQL injection flaws
 #
@@ -29,15 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18259");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-1612", "CVE-2005-1613");
   script_bugtraq_id(13624, 13625);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenBB XSS and SQL injection flaws");
-  script_summary("Detects openBB version");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");

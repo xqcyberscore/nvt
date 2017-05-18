@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-MDNS.nasl 4938 2017-01-04 13:12:05Z cfi $
+# $Id: remote-detect-MDNS.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # MDNS Service Detection
 #
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101013");
-  script_version("$Revision: 4938 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 14:12:05 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-03-16 00:46:49 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -198,7 +198,14 @@ if( strlen( cpuinfos[1] ) >1 ) {
   operating_system = cpuinfos[1];
   report += '\nOperating System: ' + operating_system;
   set_kb_item( name:"MDNS/Host/OS", value:operating_system );
-  register_and_report_os( os:operating_system, banner_type:"MDNS banner", port:port, proto:"udp", desc:"MDNS Service Detection" );
+
+  if( "linux" >< tolower( operating_system ) ) {
+    register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner:operating_system, banner_type:"MDNS banner", port:port, proto:"udp", desc:"MDNS Service Detection", runs_key:"unixoide" );
+  } else if( "windows" >< tolower( operating_system ) ) {
+    register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner:operating_system, banner_type:"MDNS banner", port:port, proto:"udp", desc:"MDNS Service Detection", runs_key:"windows" );
+  } else {
+    register_unknown_os_banner( banner:operating_system, banner_type_name:"MDNS banner", banner_type_short:"mdns_banner", port:port, proto:"udp" );
+  }
 }
 
 # report MDNS service running

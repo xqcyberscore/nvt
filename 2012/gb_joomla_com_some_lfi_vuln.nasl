@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_some_lfi_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_joomla_com_some_lfi_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Joomla Some Component Local File Inclusion Vulnerability
 #
@@ -47,15 +47,14 @@ file inclusion vulnerability.";
 if(description)
 {
   script_id(802570);
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 5977 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-23 16:56:59 +0530 (Mon, 23 Jan 2012)");
   script_name("Joomla Some Component Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108906/joomlasome-lfi.txt");
 
-  script_summary("Check if Joomla Some Component is vulnerable to LFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

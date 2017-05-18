@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eDonkey_detect.nasl 4077 2016-09-15 14:32:39Z cfi $
+# $Id: eDonkey_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # eDonkey/eMule detection
 #
@@ -34,13 +34,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11022");
-  script_version("$Revision: 4077 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 16:32:39 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("eDonkey/eMule detection");
-  script_summary("Detect eDonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Peer-To-Peer File Sharing");

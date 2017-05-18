@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_amsi_file_param_dir_traversal_vuln.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: gb_amsi_file_param_dir_traversal_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # AMSI 'file' Parameter Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805237");
-  script_version("$Revision: 5629 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-01-12 16:30:44 +0530 (Mon, 12 Jan 2015)");
   script_name("AMSI 'file' Parameter Directory Traversal Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129714");
-  script_summary("Check if AMSI is prone to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -74,7 +73,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -86,33 +84,21 @@ req = "";
 res = "";
 dir = "";
 
-
-## Get http port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check the port state
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-#Check if host supports php
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-#iterate over possible paths
-foreach dir (make_list_unique("/", "/amsi", "/AMSI", cgi_dirs()))
+## traversal_files() function Returns Dictionary (i.e key value pair)
+## Get Content to be checked and file to be check
+files = traversal_files();
+
+foreach dir (make_list_unique("/", "/amsi", "/AMSI", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
 
   ##Application Confirmation and exploit Confirmation is done together
-  ## traversal_files() function Returns Dictionary (i.e key value pair)
-  ## Get Content to be checked and file to be check
-  files = traversal_files();
   foreach file (keys(files))
   {
     ## Construct directory traversal attack

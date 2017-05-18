@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_crlf_injection_vuln.nasl 2534 2016-01-29 13:20:02Z antu123 $
+# $Id: gb_h2o_http_server_crlf_injection_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # H2O HTTP Server CRLF Injection Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:h2o_project:h2o";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806994");
-  script_version("$Revision: 2534 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-1133");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-29 14:20:02 +0100 (Fri, 29 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-25 15:37:05 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server CRLF Injection Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000003.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of H2O HTTP Server.");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_h2o_http_server_detect.nasl");

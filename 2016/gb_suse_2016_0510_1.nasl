@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851207");
-  script_version("$Revision: 3200 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-29 15:26:41 +0200 (Fri, 29 Apr 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 11:08:57 +0530 (Tue, 01 Mar 2016)");
   script_cve_id("CVE-2014-9761", "CVE-2015-7547", "CVE-2015-8776", "CVE-2015-8778", 
                 "CVE-2015-8779");
@@ -61,7 +61,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0510_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-02/msg00042.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

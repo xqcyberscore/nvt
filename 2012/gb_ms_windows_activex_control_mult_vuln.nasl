@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)
 #
@@ -59,10 +59,10 @@ tag_summary = "This script will list all the vulnerable activex controls install
 if(description)
 {
   script_id(802426);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5988 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-14 13:25:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)");
 
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2647518");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the CLSID and Hotfix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Windows");

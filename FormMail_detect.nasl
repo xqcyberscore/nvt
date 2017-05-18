@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FormMail_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: FormMail_detect.nasl 5864 2017-04-05 07:47:30Z cfi $
 #
 # FormMail Detection
 #
 # Authors:
-# Michael Meyer
+# Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -24,98 +24,84 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The FormMail Script was found at this port. FormMail is a generic
-  HTML form to e-mail gateway that parses the results of any form and
-  sends them to the specified users.";
-
-if (description)
+if(description)
 {
- script_id(100201);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
- script_tag(name:"creation_date", value:"2009-05-14 20:19:12 +0200 (Thu, 14 May 2009)");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.100201");
+  script_version("$Revision: 5864 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:47:30 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2009-05-14 20:19:12 +0200 (Thu, 14 May 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("FormMail Detection");  
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_name("FormMail Detection");  
+  script_xref(name:"URL", value:"http://www.scriptarchive.com/formmail.html");
 
- script_summary("Checks for the presence of FormMail");
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:"The FormMail Script was found at this port. FormMail is a generic
+  HTML form to e-mail gateway that parses the results of any form and
+  sends them to the specified users.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.scriptarchive.com/formmail.html");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100201";
-SCRIPT_DESC = "FormMail Detection";
+port = get_http_port( default:80 );
 
-port = get_http_port(default:80);
+files = make_list( "formmail.pl", "formmail.pl.cgi", "FormMail.cgi", "FormMail.pl" );
 
-if(!get_port_state(port))exit(0);
+foreach dir( make_list_unique( "/formmail", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/formmail", cgi_dirs());
-files = make_list("formmail.pl","FormMail.pl");
+  install = dir;
+  if( dir == "/" ) dir = "";
 
-foreach dir (dirs) {
- foreach file (files) {
+  foreach file( files ) {
 
-   url = string(dir, "/", file); 
-   req = http_get(item:url, port:port);
-   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);  
+    url = dir + "/" + file;
+    req = http_get( item:url, port:port );
+    buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+    if( isnull( buf ) ) continue;
 
-   if( buf == NULL )continue;
+    if( egrep( pattern:'FormMail', string:buf, icase:TRUE ) &&
+        ( egrep( pattern:'A Free Product of', string:buf, icase:TRUE ) ||
+          egrep( pattern:'Bad Referrer', string:buf, icase:TRUE ) ) ) { 
 
-   if( egrep(pattern: 'FormMail', string: buf, icase: TRUE) &&
-      (egrep(pattern: 'A Free Product of', string: buf, icase: TRUE) ||
-       egrep(pattern: 'Bad Referrer', string: buf, icase: TRUE) ) )
-   { 
-   
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
+      vers = "unknown";
 
-      vers = string("unknown");
+      version = eregmatch( string:buf, pattern:'FormMail.*v([0-9.]+)', icase:TRUE );
 
-      ### try to get version.
-      version = eregmatch(string: buf, pattern: 'FormMail.*v([0-9.]+)',icase:TRUE);
-    
-      if ( !isnull(version[1]) ) {
-         vers=version[1];
-      } 
-      tmp_version = string(vers, " under ", install);
-      set_kb_item(name: string("www/", port, "/FormMail"), value: tmp_version);	
-      set_kb_item(name: string("www/", port, "/FormMail/file"), value: file);
-   
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:matt_wright:formmail:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+      if( ! isnull( version[1] ) ) vers = version[1];
 
-      info = string("\n\nFormMail Version '");
-      info += string(vers);
-      info += string("' was detected on the remote host\n");
+      tmp_version = vers + " under " + install;
+      set_kb_item( name:"www/" + port + "/FormMail", value:tmp_version );
+      set_kb_item( name:"www/" + port + "/FormMail/file", value:file );
+      replace_kb_item( name:"FormMail/installed", value:TRUE );
 
-         if(report_verbosity > 0) {
-           log_message(port:port,data:string(info));
-           exit(0);
-         }	 
-   }
- }  
+      cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:matt_wright:formmail:" );
+      if( isnull( cpe ) )
+        cpe = "cpe:/a:matt_wright:formmail";
+
+      register_product( cpe:cpe, location:install, port:port );
+
+      log_message( data:build_detection_report( app:"FormMail",
+                                                version:vers,
+                                                install:install,
+                                                cpe:cpe,
+                                                concluded:version[0] ),
+                                                port:port );
+      exit( 0 );
+    }
+  }
 }
 
-exit(0);
+exit( 0 );

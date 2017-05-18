@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: photopost_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: photopost_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
 #
 # Photopost Detection
 #
@@ -27,19 +27,17 @@
 
 tag_summary = "This host is running Photopost, a photo sharing gallery software.";
 
-if (description)
+if(description)
 {
  script_id(100285);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5739 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Photopost Detection");
-
- script_summary("Checks for the presence of Photopost");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2009 LSS / Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -52,7 +50,6 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
@@ -61,33 +58,30 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100285";
 SCRIPT_DESC = "Photopost Detection";
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/photopost","/photos","/gallery","/photo",cgi_dirs());
+foreach dir( make_list_unique( "/photopost", "/photos", "/gallery", "/photo", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs)
-{
-  # Grab index.php
-  url = string(dir, "/index.php");
-  req = http_send_recv(data:http_get(item:url, port:port), port:port);
-  if(isnull(req)) exit(0);
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
+  if( buf == NULL ) continue;
 
   # Check if it is PhotoPost
-  match=egrep(pattern:'Powered by[^>]*>(<font[^>]*>)?PhotoPost',string:req, icase:1);
+  match=egrep(pattern:'Powered by[^>]*>(<font[^>]*>)?PhotoPost',string:buf, icase:TRUE);
   if(match) {
     # If PhotoPost detected, try different grep to extract version
-    match=egrep(pattern:'Powered by[^>]*>(<font[^>]*>)?PhotoPost.*PHP ([0-9.a-z]+)',string:req, icase:1);
+    match=egrep(pattern:'Powered by[^>]*>(<font[^>]*>)?PhotoPost.*PHP ([0-9.a-z]+)',string:buf, icase:TRUE);
     if(match)
-      item=eregmatch(pattern:'Powered by[^>]*>(<font[^>]*>)?PhotoPost.*PHP ([0-9.a-z]+)',string:match, icase:1);
+      item=eregmatch(pattern:'Powered by[^>]*>(<font[^>]*>)?PhotoPost.*PHP ([0-9.a-z]+)',string:match, icase:TRUE);
     ver=item[2];
 
     # If version couldn't be extracted, mark as unknown
     if(!ver) ver="unknown";
 
     # PhotoPost installation found
-    tmp_version = string(ver, " under ", dir);
+    tmp_version = string(ver, " under ", install);
     set_kb_item(name:string("www/", port, "/photopost"),value:tmp_version);
    
     ## build cpe and store it as host_detail
@@ -95,21 +89,13 @@ foreach dir (dirs)
     if(!isnull(cpe))
        register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
 
-    if(report_verbosity) {
-      if(dir=="") dir="/";
-      info+=ver + " under " + dir + '\n';
-    }
+    info+=ver + " under " + install + '\n';
     n++;
   }
 }
 
 if(!n) exit(0);
 
-if(report_verbosity) {
-  info="The following version(s) of PhotoPost were detected: " + '\n\n'+info;
-  log_message(port:port, data:info);
-  exit(0);
-}
-
+info="The following version(s) of PhotoPost were detected: " + '\n\n'+info;
+log_message(port:port, data:info);
 exit(0);
-

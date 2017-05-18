@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_symantec_web_gateway_mult_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Symantec Web Gateway Multiple Vulnerabilities
 #
@@ -52,17 +52,16 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(54426, 54429, 54424, 54425, 54427, 54430);
   script_cve_id("CVE-2012-2953", "CVE-2012-2957", "CVE-2012-2574", "CVE-2012-2961",
                 "CVE-2012-2976", "CVE-2012-2977");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-24 15:15:15 +0530 (Tue, 24 Jul 2012)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities");
 
-  script_summary("Check if Symantec Web Gateway is vulnerable to command execution");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

@@ -77,8 +77,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-October/001859.html");
   script_id(841181);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5977 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-11 10:04:22 +0530 (Thu, 11 Oct 2012)");
   script_cve_id("CVE-2012-3982", "CVE-2012-3983", "CVE-2012-3988", "CVE-2012-3989",
                 "CVE-2012-3984", "CVE-2012-3985", "CVE-2012-3986", "CVE-2012-3991",
@@ -91,7 +91,6 @@ if(description)
   script_xref(name: "USN", value: "1600-1");
   script_name("Ubuntu Update for firefox USN-1600-1");
 
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

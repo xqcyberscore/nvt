@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: spip_sql_injection.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: spip_sql_injection.nasl 5783 2017-03-30 09:03:43Z cfi $
 # Description: SPIP < 1.8.2-g SQL Injection and XSS Flaws
 #
 # Authors:
@@ -41,29 +41,19 @@ tag_solution = "Upgrade to SPIP version 1.8.2-g or later.";
 if(description)
 {
  script_id(20978);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5783 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:03:43 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_cve_id("CVE-2006-0517", "CVE-2006-0518", "CVE-2006-0519");
  script_bugtraq_id(16458, 16461);
-  
- name = "SPIP < 1.8.2-g SQL Injection and XSS Flaws";
- script_name(name);
- 
- summary = "Checks for SPIP SQL injection flaw";
- 
- script_summary(summary);
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
-  
+ script_name("SPIP < 1.8.2-g SQL Injection and XSS Flaws");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2006 David Maciejak");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("http_version.nasl");
+ script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_require_ports("Services/www", 80);
  script_tag(name : "solution" , value : tag_solution);
@@ -75,33 +65,32 @@ if(description)
  exit(0);
 }
 
-#
-# the code
-#
+include("http_func.inc");
+include("http_keepalive.inc");
 
- include("http_func.inc");
- include("http_keepalive.inc");
+port = get_http_port(default:80);
+if (!can_host_php(port:port) ) exit(0);
 
- port = get_http_port(default:80);
- if(!get_port_state(port))exit(0);
- if (!can_host_php(port:port) ) exit(0);
+files = make_list( "/forum.php3", "/forum.php" );
 
- # Check a few directories.
- dirs = make_list("/spip", cgi_dirs());
+foreach dir( make_list_unique( "/spip", cgi_dirs( port:port ) ) ) {
 
- foreach dir (dirs)
- { 
-  files=make_list("forum.php3", "forum.php");
-  foreach file (files)
-  {
-        magic = rand();
-	req = http_get(item:string(dir,"/",file,'?id_article=1&id_forum=-1/**/UNION/**/SELECT%20', magic, '/*'), port:port);
-        res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-        if (res == NULL) exit(0);
+  if( dir == "/" ) dir = "";
 
-        if (string('value="&gt; ', magic, '" class="forml"') >< res) {
-          security_message(port:port);
-	  exit(0);
-	}
+  foreach file( files ) {
+
+    magic = rand();
+    url = string(dir,file,'?id_article=1&id_forum=-1/**/UNION/**/SELECT%20', magic, '/*');
+    req = http_get(item:url, port:port);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+    if (res == NULL) continue;
+
+    if (string('value="&gt; ', magic, '" class="forml"') >< res) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
+
+exit( 99 );

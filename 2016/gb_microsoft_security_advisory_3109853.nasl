@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3109853.nasl 3146 2016-04-22 11:06:11Z antu123 $
+# $Id: gb_microsoft_security_advisory_3109853.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Microsoft TLS Session Resumption Interoperability Improvement Advisory (3109853)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806662");
-  script_version("$Revision: 3146 $");
+  script_version("$Revision: 5782 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:06:11 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-14 11:12:27 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft TLS Session Resumption Interoperability Improvement Advisory (3109853)");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3109853");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/3109853");
 
-  script_summary("Check for the vulnerable 'Schannel.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows");

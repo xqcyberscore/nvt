@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3465.nasl 3319 2016-05-13 10:33:42Z benallard $
+# $Id: deb_3465.nasl 5877 2017-04-06 09:01:48Z teissa $
 # Auto-generated from advisory DSA 3465-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703465);
-    script_version("$Revision: 3319 $");
+    script_version("$Revision: 5877 $");
     script_cve_id("CVE-2015-7575", "CVE-2016-0402", "CVE-2016-0448", "CVE-2016-0466",
                   "CVE-2016-0483", "CVE-2016-0494");
     script_name("Debian Security Advisory DSA 3465-1 (openjdk-6 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
     script_tag(name:"creation_date", value:"2016-02-05 13:14:30 +0530 (Fri, 05 Feb 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3465.html");
 
-    script_summary("Debian Security Advisory DSA 3465-1 (openjdk-6 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

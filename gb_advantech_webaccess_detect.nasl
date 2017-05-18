@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_advantech_webaccess_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # Advantech WebAccess Version Detection
 #
@@ -27,56 +27,43 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804429");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-04-16 14:24:35 +0530 (Wed, 16 Apr 2014)");
   script_name("Advantech WebAccess Version Detection");
-
-  tag_summary =
-"Detection of Advantech WebAccess.
-
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-  script_tag(name : "summary" , value : tag_summary);
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_summary("Check the presence of Advantech WebAccess");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  tag_summary = "Detection of Advantech WebAccess.
+
+  The script sends a connection request to the server and attempts to
+  extract the version number from the reply.";
+
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-awPort = "";
-awVer = "";
-awReq = "";
-awRes = "";
+awPort = get_http_port( default:80 );
+if( ! can_host_asp( port:awPort ) ) exit( 0 );
 
-## Check the port state
-awPort = get_http_port(default:80);
+awRes = http_get_cache( item:"/broadWeb/bwRoot.asp", port:awPort );
 
-awReq = http_get(item:"/broadWeb/bwRoot.asp", port:awPort);
-awRes = http_send_recv(port:awPort, data:awReq);
+if( "Advantech WebAccess" >!< awRes ) exit( 0 );
 
-##  Confirm the application
-if("Advantech WebAccess" >!< awRes){
-  exit(0);
-}
-
-## Grep for the version
 vers = 'unknown';
 cpe = 'cpe:/a:advantech:advantech_webaccess';
 
@@ -84,12 +71,11 @@ awVer = eregmatch(pattern:"Software Build : ([0-9.-]+)", string:awRes);
 if(!awVer[1]){
   awVer = eregmatch(pattern:"class=e5>.*: ([0-9.-]+)", string:awRes);
 }
-if( ! isnull( awVer[1] ) )
-{
+
+if( ! isnull( awVer[1] ) ) {
   vers = str_replace( string:awVer[1], find:"-", replace:".");
   cpe += ':' + vers;
-}
-else {
+} else {
   awVer = eregmatch(pattern: 'class="version">.*: ([0-9.-]+)', string: awRes);
   if (!isnull(awVer[1])) {
     vers = str_replace( string:awVer[1], find:"-", replace:".");

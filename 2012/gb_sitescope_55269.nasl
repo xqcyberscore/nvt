@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_55269.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_sitescope_55269.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # HP SiteScope Multiple Security Bypass Vulnerabilities
 #
@@ -33,21 +33,22 @@ if (description)
  script_bugtraq_id(55269,55273);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5841 $");
 
  script_name("HP SiteScope Multiple Security Bypass Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55269");
  script_xref(name : "URL" , value : "http://www.hp.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-07 17:11:57 +0200 (Fri, 07 Sep 2012)");
- script_summary("Determine if it is possible to retrieve a local file.");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8080);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : "HP SiteScope is prone to multiple security-bypass vulnerabilities.");
  script_tag(name : "impact" , value : "Successful exploits may allow attackers to bypass the bypass security
  restrictions and to perform unauthorized actions such as execution of
@@ -62,7 +63,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
 
 url = '/SiteScope/';
 req = http_get(item:url, port:port);
@@ -70,9 +70,7 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("Server: SiteScope" >!< buf && "<TITLE>Login - SiteScope" >!< buf && "<small>SiteScope" >!< buf)exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
 files =  make_array("root:.*:0:[01]:","/etc/passwd","\[boot loader\]","c:\\boot.ini");
 
@@ -102,7 +100,7 @@ foreach file(keys(files)) {
 
   req = string("POST /SiteScope/services/APIMonitorImpl HTTP/1.1\r\n",
                "Host: ",host,"\r\n",
-               "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)\r\n",
+               "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
                'SOAPAction: ""',"\r\n",
                "Content-Type: text/xml; charset=UTF-8\r\n",
                "Content-Length: ",len,"\r\n",

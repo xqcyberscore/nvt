@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_comment_rating_plugin_mult_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_comment_rating_plugin_mult_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # WordPress Comment Rating Plugin Multiple Vulnerabilities
 #
@@ -54,18 +54,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5888 $");
   script_bugtraq_id(51241);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-04 17:17:17 +0530 (Wed, 04 Jan 2012)");
   script_name("WordPress Comment Rating Plugin Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51241");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18303");
   script_xref(name : "URL" , value : "http://securityreason.com/exploitalert/11106");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108314/wpcommentrating-sqlxss.txt");
-  script_summary("Check if WordPress plugin is vulnerable to XSS and SQL Injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

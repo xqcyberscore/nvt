@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln_sep16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_owncloud_mult_vuln_sep16_lin.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # ownCloud Multiple Vulnerabilities Sep16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809293");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2015-4718", "CVE-2015-4717");
   script_bugtraq_id(76162, 76161);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 15:29:08 +0530 (Fri, 23 Sep 2016)");
   script_name("ownCloud Multiple Vulnerabilities Sep16 (Linux)");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2015-008");
   script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2015-007");
 
-  script_summary("Check for the vulnerable version of ownCloud on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

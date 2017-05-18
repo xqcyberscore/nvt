@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_multiple_devices_platform_cgi_lfi_01_16.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Multiple Devices '/scgi-bin/platform.cgi' Unauthenticated File Disclosure
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105500");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5867 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -44,9 +44,8 @@ if (description)
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-01-07 15:24:11 +0100 (Thu, 07 Jan 2016)");
- script_summary("Try to read /etc/passwd");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

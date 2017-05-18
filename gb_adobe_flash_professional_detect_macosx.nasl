@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_professional_detect_macosx.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_adobe_flash_professional_detect_macosx.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Adobe Flash Professional Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802784");
-  script_version("$Revision: 2835 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-16 11:25:30 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Professional Version Detection (Mac OS X)");
@@ -45,7 +45,6 @@ via command line option 'defaults read'.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Adobe Flash Professional for Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");

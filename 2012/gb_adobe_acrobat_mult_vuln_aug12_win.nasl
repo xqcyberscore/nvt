@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_aug12_win.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_acrobat_mult_vuln_aug12_win.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Adobe Acrobat Multiple Vulnerabilities - Windows
 #
@@ -38,7 +38,7 @@ tag_summary = "This host is installed with Adobe Acrobats and is prone to
 if(description)
 {
   script_id(803479);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -48,12 +48,11 @@ if(description)
                     55018, 55017, 55016, 55015, 55012, 55027, 55013, 55010, 55011);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - Windows");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50281");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-16.html");
-  script_summary("Check for the version of Adobe Acrobat on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

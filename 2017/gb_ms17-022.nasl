@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-022.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-022.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # MS Windows XML Core Services Information Disclosure Vulnerability (4010321)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810623");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5752 $");
   script_cve_id("CVE-2017-0022");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 10:03:11 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows XML Core Services Information Disclosure Vulnerability (4010321)");

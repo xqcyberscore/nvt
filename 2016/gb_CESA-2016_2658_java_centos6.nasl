@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882591");
-  script_version("$Revision: 4532 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 08:46:22 +0100 (Wed, 16 Nov 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-13 05:45:23 +0100 (Sun, 13 Nov 2016)");
   script_cve_id("CVE-2016-5542", "CVE-2016-5554", "CVE-2016-5573", "CVE-2016-5582", 
                 "CVE-2016-5597");
@@ -89,7 +89,6 @@ and HTTPS connections respectively.
 
   script_xref(name: "CESA", value: "2016:2658");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-November/022140.html");
-  script_summary("Check for the Version of java");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

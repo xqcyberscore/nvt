@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlguard_50650.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_dlguard_50650.nasl 5749 2017-03-28 13:47:32Z cfi $
 #
 # DLGuard 'index.php' Cross Site Scripting Vulnerability
 #
@@ -32,12 +32,11 @@ in the browser of an unsuspecting user in the context of the affected
 site. This may allow the attacker to steal cookie-based authentication
 credentials and launch other attacks.";
 
-
-if (description)
+if(description)
 {
  script_id(103340);
  script_bugtraq_id(50650);
- script_version ("$Revision: 3117 $");
+ script_version ("$Revision: 5749 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
@@ -46,10 +45,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50650");
  script_xref(name : "URL" , value : "http://www.dlguard.com/dlginfo/index.php");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-16 11:40:52 +0100 (Wed, 16 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if DLGuard is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -63,25 +61,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/dlguard/cart/","/dlg/cart","/store/dlg/cart","/cbdm/cart",cgi_dirs());
+foreach dir( make_list_unique( "/dlguard/cart/", "/dlg/cart", "/store/dlg/cart", "/cbdm/cart", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir,'/index.php?page=1&c=&searchCart="><script>alert(/openvas-xss-test/)</script>'); 
 
   if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE,extra_check:"Powered by .*DLGuard")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

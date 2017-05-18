@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 5490 2017-03-05 19:30:17Z cfi $
+# $Id: sw_http_os_detection.nasl 5703 2017-03-23 18:49:52Z cfi $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 5490 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-05 20:30:17 +0100 (Sun, 05 Mar 2017) $");
+  script_version("$Revision: 5703 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 19:49:52 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -110,6 +110,11 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
 
     if( "(Ubuntu)" >< banner ) {
       register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      exit( 0 );
+    }
+
+    if( "(Red Hat Enterprise Linux)" >< banner ) {
+      register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       exit( 0 );
     }
 

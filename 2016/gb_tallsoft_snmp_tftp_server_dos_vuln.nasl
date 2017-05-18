@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_tallsoft_snmp_tftp_server_dos_vuln.nasl 5831 2017-04-03 07:39:50Z teissa $
 #
 # TallSoft SNMP TFTP Server Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806694");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5831 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:39:50 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:27 +0530 (Fri, 01 Apr 2016)");
   script_name("TallSoft SNMP TFTP Server Denial Of Service Vulnerability");
 
@@ -50,12 +50,9 @@ if(description)
 
   script_tag(name:"affected", value:"TallSoft SNMP TFTP Server 1.0.0");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  09th February, 2017. Information regarding this issue will be updated once
-  solution details are available. For updates refer to,
-  http://www.tallsoft.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 

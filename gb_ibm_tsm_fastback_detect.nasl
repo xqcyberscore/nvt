@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_fastback_detect.nasl 3724 2016-07-19 08:06:13Z antu123 $
+# $Id: gb_ibm_tsm_fastback_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # IBM Tivoli Storage Manager FastBack Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805598");
-  script_version("$Revision: 3724 $");
+  script_version("$Revision: 6040 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-19 10:06:13 +0200 (Tue, 19 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-07-02 15:00:07 +0530 (Thu, 02 Jul 2015)");
   script_name("IBM Tivoli Storage Manager FastBack Version Detection (Windows)");
 
@@ -43,7 +43,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_summary("Detection of installed version of IBM Tivoli Storage Manager FastBack");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

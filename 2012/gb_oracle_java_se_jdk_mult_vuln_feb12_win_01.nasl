@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jdk_mult_vuln_feb12_win_01.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_oracle_java_se_jdk_mult_vuln_feb12_win_01.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Oracle Java SE JDK Multiple Vulnerabilities - February 2012 (Windows - 01)
 #
@@ -46,13 +46,13 @@ tag_summary = "This host is installed with Oracle Java SE JDK and is prone to
 if(description)
 {
   script_id(803334);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2011-3563", "CVE-2012-0499", "CVE-2012-0502",
                 "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506");
   script_bugtraq_id(52011, 52012, 52014, 52016, 52017, 52018);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 16:16:16 +0530 (Tue, 21 Feb 2012)");
   script_name("Oracle Java SE JDK Multiple Vulnerabilities - February 2012 (Windows - 01)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48009");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/java/javase/documentation/overview-137139.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the vulnerable version of Oracle Java SE JDK");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

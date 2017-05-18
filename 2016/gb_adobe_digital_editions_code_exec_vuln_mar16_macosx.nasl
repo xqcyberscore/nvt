@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_editions_code_exec_vuln_mar16_macosx.nasl 2829 2016-03-10 13:10:31Z antu123 $
+# $Id: gb_adobe_digital_editions_code_exec_vuln_mar16_macosx.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Adobe Digital Editions Code Execution Vulnerability March16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:digital_editions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807474");
-  script_version("$Revision: 2829 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-0954");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 14:10:31 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 12:56:38 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Digital Editions Code Execution Vulnerability March16 (Mac OS X)");
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/Digital-Editions/apsb16-06.html");
 
-  script_summary("Check for the vulnerable version of Adobe Digital Edition on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

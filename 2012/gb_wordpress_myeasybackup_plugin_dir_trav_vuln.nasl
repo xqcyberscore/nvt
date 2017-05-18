@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability
 #
@@ -47,19 +47,18 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5641 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-0898");
   script_bugtraq_id(51433);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:16:44 +0530 (Tue, 17 Jan 2012)");
   script_name("WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47594");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/47594");
   script_xref(name : "URL" , value : "http://forums.cnet.com/7726-6132_102-5261356.html");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108711/wpmyeasybackup-traversal.txt");
-  script_summary("Check for directory traversal vulnerability in WordPress myEASYbackup Plugin");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

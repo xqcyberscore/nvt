@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3611.nasl 3692 2016-07-13 06:47:53Z antu123 $
+# $Id: deb_3611.nasl 5782 2017-03-30 09:01:05Z teissa $
 # Auto-generated from advisory DSA 3611-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703611);
-    script_version("$Revision: 3692 $");
+    script_version("$Revision: 5782 $");
     script_cve_id("CVE-2016-3092");
     script_name("Debian Security Advisory DSA 3611-1 (libcommons-fileupload-java - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-07-07 16:52:12 +0530 (Thu, 07 Jul 2016)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3611.html");
 
-    script_summary("Debian Security Advisory DSA 3611-1 (libcommons-fileupload-java - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_macosx.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (MAC OS X)
 #
@@ -39,20 +39,19 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 if(description)
 {
   script_id(802486);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-4172", "CVE-2012-4173", "CVE-2012-4174", "CVE-2012-4175",
                 "CVE-2012-4176", "CVE-2012-5273");
   script_bugtraq_id(56194, 56195, 56190, 56193, 56188, 56187);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-02 15:48:07 +0530 (Fri, 02 Nov 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (MAC OS X)");
   script_xref(name : "URL" , value : "http://seclists.org/cert/2012/108");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027692");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-23.html");
 
-  script_summary("Check for the version of Adobe Shockwave Player on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

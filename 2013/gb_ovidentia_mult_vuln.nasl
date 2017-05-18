@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ovidentia_mult_vuln.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_ovidentia_mult_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Ovidentia Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803876");
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 5791 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-08-22 11:58:24 +0530 (Thu, 22 Aug 2013)");
   script_name("Ovidentia Multiple Vulnerabilities");
 
@@ -57,17 +57,15 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/codes/ovidentia_multiple.txt");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5154.php");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/ovidentia-794-cross-site-scripting-sql-injection");
-  script_summary("Check if Ovidentia is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -79,7 +77,6 @@ res = "";
 url = "";
 dir = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
 if(!can_host_php(port:port)){
@@ -91,9 +88,7 @@ foreach dir (make_list_unique("/", "/ovidentia", "/cms", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"),  port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
   ## Confirm the application
   if('>Ovidentia' >< res && '>Groupware Portal' >< res)
@@ -104,7 +99,7 @@ foreach dir (make_list_unique("/", "/ovidentia", "/cms", cgi_dirs(port:port)))
 
     ## Check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
-                       pattern:"<script>alert\(document.cookie\)</script>",
+                       pattern:"<script>alert\(document\.cookie\)</script>",
                        extra_check: make_list(">Gantt view", ">My tasks")))
     {
       security_message(port:port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mini_stream_prdts_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: secpod_mini_stream_prdts_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Mini-Stream Products Version Detection
 #
@@ -27,15 +27,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-tag_summary = "The script will detect the Mini-Stream products installed on
-  this host and set the result in KB.";
-
 if(description)
 {
-  script_id(900624);
+  script_oid("1.3.6.1.4.1.25623.1.0.900624");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mini-Stream Products Version Detection");
@@ -46,7 +43,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "The script will detect the Mini-Stream products installed on
+  this host and set the result in KB.");
   exit(0);
 }
 
@@ -54,20 +52,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900624";
-SCRIPT_DESC = "Mini-Stream Products Version Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -84,10 +68,9 @@ if(ssRVer[1]!=NULL)
 {
   # set the version of Mini-stream Shadow Stream Recorder
   set_kb_item(name:"MiniStream/SSRecorder/Ver", value:ssRVer[1]);
-  log_message(data:"Mini-stream Shadow Stream Recorder version " + ssRVer[1]
-                                                + " was detected on the host");
   ##build cpe and store it as host_detail
-  register_cpe(tmpVers:ssRVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:shadow_stream_recorder:");
+  register_and_report_cpe(app:ssRecName, ver:ssRVer[1], base:"cpe:/a:mini-stream:shadow_stream_recorder:",
+                          expr:"^([0-9.]+)");
 }
 
 item2 = "Mini-stream RM-MP3 Converter_is1\";
@@ -98,11 +81,9 @@ if(rmTmpVer[1]!=NULL)
 {
   #set the version of Mini-stream RM-MP3 Converter
   set_kb_item(name:"MiniStream/RmToMp3/Conv/Ver", value:rmTmpVer[1]);
-  log_message(data:"Mini-stream RM-MP3 Converter version " + rmTmpVer[1] 
-                                               + " was detected on the host");
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:rmTmpVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:easy_rm-mp3_converter:");
-
+  register_and_report_cpe(app:rmTmp, ver:rmTmpVer[1], base:"cpe:/a:mini-stream:easy_rm-mp3_converter:",
+                          expr:"^([0-9.]+)");
 }
 
 item3 = "WM Downloader_is1\";
@@ -113,11 +94,9 @@ if(wmDownVer[1]!=NULL)
 {
   #set the version of Mini-stream WM Downloader
   set_kb_item(name:"MiniStream/WMDown/Ver", value:wmDownVer[1]);
-  log_message(data:"Mini-stream WM Downloader version " + wmDownVer[1]
-                                               + " was detected on the host");
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:wmDownVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:wm_downloader:");
-
+  register_and_report_cpe(app:wmDown, ver:wmDownVer[1], base:"cpe:/a:mini-stream:wm_downloader:",
+                          expr:"^([0-9.]+)");
 }
 
 item4 = "RM Downloader_is1\";
@@ -128,11 +107,9 @@ if(rmDownVer[1]!=NULL)
   #set the version of Mini-stream RM Downloader
   rmDownVer = ereg_replace(pattern:" ", string:rmDownVer[1], replace:"");
   set_kb_item(name:"MiniStream/RMDown/Ver", value:rmDownVer);
-  log_message(data:"Mini-stream RM Downloader version " + rmDownVer
-                                               + " was detected on the host");
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:rmDownVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:mini-stream_rm_downloader:");
-
+  register_and_report_cpe(app:rmDown, ver:rmDownVer[1], base:"cpe:/a:mini-stream:mini-stream_rm_downloader:",
+                               expr:"^([0-9.]+)");
 }
 
 item5 = "ASX to MP3 Converter_is1\";
@@ -143,11 +120,9 @@ if(asx2mpVer[1]!=NULL)
 {
   #set the version of Mini-stream ASX to MP3 Converter
   set_kb_item(name:"MiniStream/AsxToMp3/Conv/Ver", value:asx2mpVer[1]);
-  log_message(data:"Mini-stream ASX to MP3 Converter version " + asx2mpVer[1]
-                                                + " was detected on the host");
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:asx2mpVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:mini-stream_to_mp3_converter:");
-
+  register_and_report_cpe(app:asx2mpName, ver:asx2mpVer[1], base:"cpe:/a:mini-stream:mini-stream_to_mp3_converter:",
+                          expr:"^([0-9.]+)");
 }
 
 item6 = "Mini-stream Ripper_is1\";
@@ -158,11 +133,9 @@ if(msRipperVer[1]!=NULL)
 {
   #set the version of Mini-stream Ripper
   set_kb_item(name:"MiniStream/Ripper/Ver", value:msRipperVer[1]);
-  log_message(data:"Mini-stream Ripper version " + msRipperVer[1]
-                                               + " was detected on the host");
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:msRipperVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:ripper:");
-
+  register_and_report_cpe(app:msRipper, ver:msRipperVer[1], base:"cpe:/a:mini-stream:ripper:",
+                          expr:"^([0-9.]+)");
 }
 
 
@@ -175,10 +148,9 @@ if("Mini-stream" >< nameRipper)
 
   if(castripperVer[1] != NULL){
     set_kb_item(name:"MiniStream/CastRipper/Ver", value:castripperVer[1]);
-    log_message(data:"Mini-stream CastRipper version " + castripperVer[1]
-                                               + " was detected on the host");
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:castripperVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:mini-stream:castripper:");
-
+    register_and_report_cpe(app:nameRipper, ver:castripperVer[1], base:"cpe:/a:mini-stream:castripper:",
+                            expr:"^([0-9.]+)");
   }
 }
+exit(0);

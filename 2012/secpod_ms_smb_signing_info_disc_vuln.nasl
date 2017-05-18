@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_smb_signing_info_disc_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: secpod_ms_smb_signing_info_disc_vuln.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Microsoft SMB Signing Information Disclosure Vulnerability
 #
@@ -42,15 +42,14 @@ tag_summary = "This host is disabled SMB signing and is prone to information
 if(description)
 {
   script_id(902797);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-02 16:53:51 +0530 (Mon, 02 Apr 2012)");
   script_name("Microsoft SMB Signing Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/916846");
 
-  script_summary("Check if SMB signing is disabled");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows");

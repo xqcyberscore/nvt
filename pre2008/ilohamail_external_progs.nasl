@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_external_progs.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: ilohamail_external_progs.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: IlohaMail External Programs Vulnerabilities
 #
 # Authors:
@@ -37,8 +37,8 @@ spell check and GPG features (see conf/conf.inc).";
 
 if (description) {
   script_id(14635);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -51,7 +51,6 @@ if (description) {
  
  
   summary = "Checks for External Programs vulnerabilities in IlohaMail";
-  script_summary(summary);
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

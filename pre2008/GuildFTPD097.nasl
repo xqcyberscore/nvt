@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: GuildFTPD097.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: GuildFTPD097.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: GuildFTPd Directory Traversal
 #
 # Authors:
@@ -33,8 +33,8 @@ More Information : http://www.securiteam.com/windowsntfocus/5CP0S2A4AU.html";
 if(description)
 {
  script_id(10694);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2789);
  script_cve_id("CVE-2001-0767");
@@ -42,7 +42,6 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("GuildFTPd Directory Traversal");
  
- script_summary("Detects the presence of GuildFTPd version 0.97");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("FTP");

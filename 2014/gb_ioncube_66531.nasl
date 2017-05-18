@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ioncube_66531.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_ioncube_66531.nasl 5698 2017-03-23 14:04:51Z cfi $
 #
 # ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities
 #
@@ -25,8 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103932";
-
 tag_insight = "An attacker can exploit these issues to obtain potentially sensitive
 information, to view arbitrary files from the local filesystem and to
 execute arbitrary script code in the browser of an unsuspecting user
@@ -45,22 +43,17 @@ tag_vuldetect = "Send a crafted HTTP GET request and check the response.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103932");
  script_bugtraq_id(66531);
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 5698 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-
  script_name("ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities");
-
-
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66531");
- 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-04-01 13:11:55 +0200 (Tue, 01 Apr 2014)");
- script_summary("Send a crafted HTTP GET request and check the response");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -81,21 +74,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list( "/ioncube", cgi_dirs() );
+foreach dir( make_list_unique( "/ioncube", cgi_dirs( port:port ) ) ) {
 
-foreach dir ( dirs )
-{
+  if( dir == "/" ) dir = "";
   url = dir + '/loader-wizard.php?page=phpinfo';
 
-  if( http_vuln_check(port:port, url:url,pattern:"<title>phpinfo()" ) )
-  {
+  if( http_vuln_check(port:port, url:url,pattern:"<title>phpinfo()" ) ) {
     report = report_vuln_url( port:port, url:url );
-    security_message(port:port, data:report);
-    exit(0);
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

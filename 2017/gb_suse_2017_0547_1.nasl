@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851516");
-  script_version("$Revision: 5407 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 14:53:44 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5806 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-23 05:05:51 +0100 (Thu, 23 Feb 2017)");
   script_cve_id("CVE-2017-5897", "CVE-2017-5970", "CVE-2017-5986", "CVE-2017-6074");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Linux Kernel openSUSE-SU-2017:0547-1 (Linux Kernel)");
   script_tag(name: "summary", value: "Check the version of Linux Kernel");

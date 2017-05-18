@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asbru_web_content_mgnt_sys_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_asbru_web_content_mgnt_sys_mult_vuln.nasl 5961 2017-04-18 08:00:54Z teissa $
 #
 # Asbru Web Content Management System Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:asbru_web_content_management_system:asbru";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807656");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5961 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:00:54 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-12 17:30:16 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Asbru Web Content Management System Multiple Vulnerabilities");
@@ -58,11 +58,10 @@ if(description)
 
   script_tag(name:"affected" , value:"Asbru Web Content Management System 9.2.7");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  25th January, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to http://www.asbrusoft.com ");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39667");
 

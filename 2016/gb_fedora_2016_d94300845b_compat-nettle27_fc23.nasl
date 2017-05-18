@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808370");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:51:55 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2015-8803", "CVE-2015-8804", "CVE-2015-8805");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-d94300845b");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/P66SB2773GXSLOGBLQMC7DB62M2EMIBV");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of compat-nettle27");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

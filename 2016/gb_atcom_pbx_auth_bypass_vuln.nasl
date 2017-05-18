@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atcom_pbx_auth_bypass_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_atcom_pbx_auth_bypass_vuln.nasl 5764 2017-03-29 12:01:23Z teissa $
 #
 # ATCOM PBX Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106102");
-  script_version("$Revision: 5101 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 5764 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-29 14:01:23 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-06-20 16:19:47 +0700 (Mon, 20 Jun 2016)");
   script_tag(name: "cvss_base", value: "9.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -59,8 +59,7 @@ a cookie with the value username to bypass authentication checks.");
 
   script_tag(name: "affected", value: "ATCOM all versions on ATCOM IP01 , IP08 , IP4G and ip2G4A.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 24th January, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 29th March, 2017. Information regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/39962/");
 

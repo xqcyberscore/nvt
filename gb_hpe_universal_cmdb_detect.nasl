@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_detect.nasl 3724 2016-07-19 08:06:13Z antu123 $
+# $Id: gb_hpe_universal_cmdb_detect.nasl 5919 2017-04-10 15:17:44Z ckuerste $
 #
 # HPE Universal CMDB Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808250");
-  script_version("$Revision: 3724 $");
+  script_version("$Revision: 5919 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-19 10:06:13 +0200 (Tue, 19 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 17:17:44 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 16:30:56 +0530 (Thu, 14 Jul 2016)");
   script_name("HPE Universal CMDB Version Detection");
 
@@ -41,7 +41,6 @@ if(description)
   response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Set the version of HPE Universal CMDB in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -90,7 +89,7 @@ if(rcvRes =~ 'HTTP/1.. 200' && '<title>HP Universal CMDB</title>' >< rcvRes &&
                                           version:version,
                                           install:"/",
                                           cpe:cpe,
-                                          concluded:version),
+                                          concluded:ver[0]),
                                           port:ucmdbPort);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 4190 2016-09-30 09:47:48Z ckuerste $
+# $Id: gb_manageengine_servicedesk_plus_mult_vuln.nasl 6029 2017-04-26 07:02:41Z teissa $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:manageengine:servicedesk_plus';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106319");
-  script_version("$Revision: 4190 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-30 11:47:48 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 6029 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2016-4888", "CVE-2016-4890");
 

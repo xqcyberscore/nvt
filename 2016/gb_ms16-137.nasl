@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-137.nasl 4458 2016-11-09 15:06:14Z antu123 $
+# $Id: gb_ms16-137.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Microsoft Windows Authentication Methods Multiple Vulnerabilities (3199173)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809093");
-  script_version("$Revision: 4458 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-7238", "CVE-2016-7237", "CVE-2016-7220");
   script_bugtraq_id(92835);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 16:06:14 +0100 (Wed, 09 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 10:09:34 +0530 (Wed, 09 Nov 2016)");
   script_name("Microsoft Windows Authentication Methods Multiple Vulnerabilities (3199173)");
 
@@ -79,7 +79,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3199173");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-137");
 
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

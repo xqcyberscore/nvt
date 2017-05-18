@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cart32_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: cart32_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Cart32 GetLatestBuilds XSS
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12290");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-0675");
   script_bugtraq_id(10617);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Cart32 GetLatestBuilds XSS");
-  script_summary("Checks for the presence of an XSS bug in Cart32");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");

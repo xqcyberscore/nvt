@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20160817-asa-cli.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_cisco-sa-20160817-asa-cli.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Cisco Adaptive Security Appliance CLI Remote Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6367");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5000 $");
+ script_version ("$Revision: 5836 $");
 
  script_name("Cisco Adaptive Security Appliance CLI Remote Code Execution Vulnerability");
 
@@ -58,9 +58,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-08-18 12:25:55 +0700 (Thu, 18 Aug 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

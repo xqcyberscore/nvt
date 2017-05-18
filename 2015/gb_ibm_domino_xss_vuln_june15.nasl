@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_xss_vuln_june15.nasl 3473 2016-06-10 06:14:27Z antu123 $
+# $Id: gb_ibm_domino_xss_vuln_june15.nasl 5724 2017-03-24 15:54:58Z cfi $
 #
 # IBM Domino Cross-Site Scripting Vulnerability - June15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805579");
-  script_version("$Revision: 3473 $");
+  script_version("$Revision: 5724 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 08:14:27 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-02 11:37:07 +0530 (Tue, 02 Jun 2015)");
   script_name("IBM Domino Cross-Site Scripting Vulnerability - June15");
 
@@ -84,15 +84,8 @@ include("global_settings.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -105,7 +98,7 @@ if(domVer1)
      version_in_range(version:domVer1, test_version:"9.0", test_version2:"9.0.1"))
   {
     report = 'Installed Version: ' + domVer + '\nFixed Version: WillNotFix' + '\n';
-    security_message(data:report, port:domPort);
+    security_message(data:report, port:0);
     exit(0);
   }
 }

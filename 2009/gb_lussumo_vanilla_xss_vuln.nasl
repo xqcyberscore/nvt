@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_xss_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_lussumo_vanilla_xss_vuln.nasl 5804 2017-03-31 06:06:40Z ckuerste $
 #
 # Vanilla 'RequestName' Cross-Site Scripting Vulnerability
 #
@@ -46,8 +46,8 @@ Scripting Vulnerability.";
 if(description)
 {
   script_id(800623);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 5804 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 08:06:40 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -63,6 +63,8 @@ if(description)
   script_dependencies("gb_lussumo_vanilla_detect.nasl");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("Lussumo/Vanilla/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -72,8 +74,8 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
+include("http_keepalive.inc");
 include("version_func.inc");
 
 vanillaPort = get_http_port(default:80);
@@ -90,8 +92,8 @@ vanillaVer = eregmatch(pattern:"^(.+) under (/.*)$", string:vanillaVer);
 
 if(!safe_checks() && vanillaVer[2] != NULL)
 {
-  sndReq = http_get(item:string(vanillaVer[2], "/index.php"), port:vanillaPort);
-  rcvRes = http_send_recv(port:vanillaPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(vanillaVer[2], "/index.php"), port:vanillaPort);
+
   if("Vanilla" >< rcvRes)
   {
     request = http_get(item:vanillaVer[2] + "/ajax/updatecheck.php?PostBack" +

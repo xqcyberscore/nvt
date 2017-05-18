@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_version.nasl 5439 2017-02-28 07:33:29Z cfi $
+# $Id: gb_cisco_asa_version.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Cisco ASA Detection (SSH)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105222");
-  script_version("$Revision: 5439 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 08:33:29 +0100 (Tue, 28 Feb 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-02-18 12:37:03 +0100 (Wed, 18 Feb 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,7 +75,7 @@ if( ! isnull( hardware[1] ) ) {
 }
 
 register_product( cpe:cpe, location:'ssh' );
-register_and_report_os( os:"Cisco ASA", cpe:cpe2, banner_type:"SSH login", banner:system, desc:"Cisco ASA Detection (SSH)" );
+register_and_report_os( os:"Cisco ASA", cpe:cpe2, banner_type:"SSH login", banner:system, desc:"Cisco ASA Detection (SSH)", runs_key:"unixoide" );
 
 report = 'Detected Cisco ASA (ssh)\n\n' +
          'Version: ' + vers + '\n';

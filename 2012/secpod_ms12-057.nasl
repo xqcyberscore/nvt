@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-057.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-057.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2731879)
 #
@@ -41,12 +41,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902920);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-2524");
   script_bugtraq_id(54876);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:05:20 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2731879)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50251/");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2687510");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-057");
 
-  script_summary("Check for the version of Mso.dll and msconv97.dll file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

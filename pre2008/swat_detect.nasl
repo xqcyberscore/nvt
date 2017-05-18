@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: swat_detect.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: swat_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Detect SWAT server port
 #
 # Authors:
@@ -45,8 +45,8 @@ line.";
 if(description)
 {
  script_id(10273);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1872);
 script_cve_id("CVE-2000-0935");
@@ -60,7 +60,6 @@ script_cve_id("CVE-2000-0935");
 
 
  summary = "Detect SWAT server port";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

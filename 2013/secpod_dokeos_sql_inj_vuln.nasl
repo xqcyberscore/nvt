@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dokeos_sql_inj_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_dokeos_sql_inj_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Dokeos 'language' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903415");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 5791 $");
   script_cve_id("CVE-2013-6341");
   script_bugtraq_id(63461);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-11-28 14:52:35 +0530 (Thu, 28 Nov 2013)");
   script_name("Dokeos 'language' Parameter SQL Injection Vulnerability");
 
@@ -56,17 +56,15 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23181");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/dokeos-22-rc2-sql-injection");
-  script_summary("Check if Dokeos is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
   script_copyright("Copyright (C) 2013 SecPod");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -77,10 +75,8 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 dokPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:dokPort)){
   exit(0);
 }
@@ -91,9 +87,7 @@ foreach dir (make_list_unique("/", "/dokeos", "/portal", cgi_dirs(port:dokPort))
 
   if(dir == "/") dir = "";
 
-  ## Request for the index.php
-  dokReq = http_get(item:string(dir, "/index.php"), port:dokPort);
-  dokRes = http_keepalive_send_recv(port:dokPort, data:dokReq);
+  dokRes = http_get_cache(item:string(dir, "/index.php"), port:dokPort);
 
   ## confirm the Dokeos installation
   if('content="Dokeos"'>< dokRes && "http://www.dokeos.com" >< dokRes)

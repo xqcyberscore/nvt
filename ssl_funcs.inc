@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_funcs.inc 5603 2017-03-17 14:27:56Z cfi $
+# $Id: ssl_funcs.inc 5924 2017-04-11 06:17:24Z cfi $
 #
 # Implementation of common ssl functions
 #
@@ -25,7 +25,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5603 $
+# $Revision: 5924 $
 #
 ###############################################################################
 
@@ -123,27 +123,29 @@ version_string[TLS_10] = 'TLSv1.0';
 version_string[TLS_11] = 'TLSv1.1';
 version_string[TLS_12] = 'TLSv1.2';
 
-SSLv3_SERVER_HELLO        = 2;
-SSLv3_SERVER_HELLO_DONE   = 14;
 SSLv3_CLIENT_HELLO        = 1;
-SSLv3_SERVER_KEY_EXCHANGE = 12;
+SSLv3_SERVER_HELLO        = 2;
 SSLv3_CERTIFICATE         = 11;
-SSLv3_CERTIFICATE_STATUS  = 22;
+SSLv3_SERVER_KEY_EXCHANGE = 12;
 SSLv3_CERTIFICATE_REQUEST = 13;
+SSLv3_SERVER_HELLO_DONE   = 14;
+SSLv3_CLIENT_KEY_EXCHANGE = 16;
+SSLv3_CERTIFICATE_STATUS  = 22;
 
 SSLv3_CHANGECIPHERSPEC    = 20;
 SSLv3_ALERT               = 21;
 SSLv3_HANDSHAKE           = 22;
 SSLv3_APPLICATION_DATA    = 23;
 
-SSLv3_ALERT_FATAL = 2;
-SSLv3_ALERT_UNEXPECTED_MESSAGE = 10;
-SSLv3_ALERT_BAD_RECORD_MAC = 20;
-SSLv3_ALERT_DECRYPTION_FAILED = 21;
-SSLv3_ALERT_HANDSHAKE_FAILURE = 40;
-SSLv3_ALERT_DECODE_ERROR = 50;
+SSLv3_ALERT_FATAL                  = 2;
+SSLv3_ALERT_UNEXPECTED_MESSAGE     = 10;
+SSLv3_ALERT_BAD_RECORD_MAC         = 20;
+SSLv3_ALERT_DECRYPTION_FAILED      = 21;
+SSLv3_ALERT_RECORD_OVERFLOW        = 22;
+SSLv3_ALERT_HANDSHAKE_FAILURE      = 40;
+SSLv3_ALERT_DECODE_ERROR           = 50;
 SSLv3_ALERT_INAPPROPRIATE_FALLBACK = 86;
-SSLv3_ALERT_UNRECOGNIZED_NAME = 112;
+SSLv3_ALERT_UNRECOGNIZED_NAME      = 112;
 
 SSLv2_SERVER_HELLO = 4;
 
@@ -555,7 +557,7 @@ global_var SSLv3_SERVER_HELLO, SSLv3_SERVER_HELLO_DONE, SSLv3_CLIENT_HELLO, SSLv
 global_var SSLv3_CHANGECIPHERSPEC, SSLv3_ALERT, SSLv3_HANDSHAKE, SSLv3_APPLICATION_DATA;
 global_var SSLv2_SERVER_HELLO;
 global_var SSLv3_ALERT_FATAL, SSLv3_ALERT_UNEXPECTED_MESSAGE, SSLv3_ALERT_BAD_RECORD_MAC, SSLv3_ALERT_DECRYPTION_FAILED, SSLv3_ALERT_HANDSHAKE_FAILURE, SSLv3_ALERT_UNRECOGNIZED_NAME;
-global_var SSLv3_ALERT_INAPPROPRIATE_FALLBACK;
+global_var SSLv3_ALERT_INAPPROPRIATE_FALLBACK, SSLv3_ALERT_RECORD_OVERFLOW, SSLv3_CLIENT_KEY_EXCHANGE;
 
 global_var version_string, version_kb_string_mapping, SSL_v2, SSL_v3, TLS_10, TLS_11, TLS_12;
 global_var elliptic_curves, ec_point_formats, sslv3_tls_raw_ciphers, compression_methods;
@@ -752,412 +754,412 @@ function check_cert_validity(fprlist, port, vhost, check_for, now, timeframe) {
 }
 
 # Don't use this directly, please use ssl_hello instead
-function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol )
+function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version )
 {
-  local_var hello, data, hello_len, hde_len, hde, hello_data, time, clen, _ciphers, version;
-  local_var extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol;
+  local_var hello, data, hello_len, hde_len, hde, hello_data, time, clen, _ciphers, version, handshake_version;
+  local_var extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, _random;
 
   if( ! version ) version = TLS_10;
 
   if(ciphers){
     _ciphers = ciphers;
   } else {
-    _ciphers = sslv3_tls_raw_ciphers['TLS_NULL_WITH_NULL_NULL'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_RC4_40_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC4_128_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_DES40_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_EXPORT_WITH_RC4_40_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_RC4_128_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_RC4_128_SHA or TLS_KRB5_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_IDEA_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_DES_CBC_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_IDEA_CBC_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC2_CBC_40_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_DES_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_40_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_56_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_NULL_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_RC4_128_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_DES_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_EXPORT_WITH_RC4_40_SHA (Draft) or TLS_SRP_SHA_WITH_AES_128_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_EXPORT_WITH_RC4_56_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_NULL_WITH_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA (Draft) or TLS_SRP_SHA_WITH_AES_256_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_DES_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC2_CBC_56_MD5'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_DES_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_RC4_56_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_DES_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_DES_CBC_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_AES_128_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_AES_256_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_NULL_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_NULL_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_GOSTR341094_WITH_28147_CNT_IMIT (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_GOSTR341001_WITH_28147_CNT_IMIT (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_GOSTR341094_WITH_NULL_GOSTR3411 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_GOSTR341001_WITH_NULL_GOSTR3411 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_SEED_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_SEED_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_SEED_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_SEED_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_SEED_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_SEED_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_RC4_128_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_DHE_WITH_AES_128_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_DHE_WITH_AES_256_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_PSK_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_SALSA20_SHA1 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_DES_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_3DES_EDE_CBC_SHA (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_3DES_EDE_CBC_SHA_2 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_DES_CBC_SHA_2 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC2_CBC_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_MD5 (Draft)'] + 
-               sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_MD5  (Draft)'] + 
+    _ciphers = sslv3_tls_raw_ciphers['TLS_NULL_WITH_NULL_NULL'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_RC4_40_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC4_128_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_RC2_CBC_40_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT_WITH_DES40_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_EXPORT_WITH_DES40_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_EXPORT_WITH_DES40_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_EXPORT_WITH_RC4_40_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_RC4_128_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_EXPORT_WITH_DES40_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_FORTEZZA_KEA_WITH_RC4_128_SHA or TLS_KRB5_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_IDEA_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_DES_CBC_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_IDEA_CBC_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC2_CBC_40_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC2_CBC_40_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_EXPORT_WITH_RC4_40_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_NULL_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_DES_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_40_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA (Draft) or TLS_ECDH_ECDSA_EXPORT_WITH_RC4_56_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_NULL_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_RC4_128_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_DES_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_EXPORT_WITH_RC4_40_SHA (Draft) or TLS_SRP_SHA_WITH_AES_128_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_EXPORT_WITH_RC4_56_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_NULL_WITH_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA (Draft) or TLS_SRP_SHA_WITH_AES_256_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_DES_CBC_SHA (Draft) or TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA (Draft) or TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_DES40_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_EXPORT_WITH_RC4_40_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC2_CBC_56_MD5'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_DES_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_EXPORT1024_WITH_RC4_56_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_EXPORT1024_WITH_RC4_56_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_3DES_EDE_CBC_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_RC4_128_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_DES_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_DES_CBC_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_AES_128_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_AES_256_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_NULL_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_KRB5_WITH_NULL_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_GOSTR341094_WITH_28147_CNT_IMIT (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_GOSTR341001_WITH_28147_CNT_IMIT (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_GOSTR341094_WITH_NULL_GOSTR3411 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_GOSTR341001_WITH_NULL_GOSTR3411 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_SEED_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_SEED_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_SEED_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_SEED_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_SEED_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_SEED_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_NULL_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_NULL_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_NULL_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_anon_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_RSA_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_SRP_SHA_DSS_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_RC4_128_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_3DES_EDE_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_NULL_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ARIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ARIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ARIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_RSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_DSS_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_DSS_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DH_anon_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_128_GCM_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_256_GCM_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_128_CBC_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CAMELLIA_256_CBC_SHA384'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_128_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_AES_256_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_128_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_AES_256_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_128_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_AES_256_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_128_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_AES_256_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_DHE_WITH_AES_128_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_DHE_WITH_AES_256_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_128_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_AES_256_CCM_8'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_RSA_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_ECDSA_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_PSK_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_ECDHE_PSK_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_PSK_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_PSK_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_ESTREAM_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_DHE_RSA_WITH_SALSA20_SHA1 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_DES_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_3DES_EDE_CBC_SHA (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_3DES_EDE_CBC_SHA_2 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_FIPS_WITH_DES_CBC_SHA_2 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_RC2_CBC_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_IDEA_CBC_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_DES_CBC_MD5 (Draft)'] +
+               sslv3_tls_raw_ciphers['TLS_RSA_WITH_3DES_EDE_CBC_MD5  (Draft)'] +
                sslv3_tls_raw_ciphers['TLS_EMPTY_RENEGOTIATION_INFO_SCSV']; #Keep at the bottom
   }
 
@@ -1167,10 +1169,18 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
   clen = data_len( data:_ciphers  );
   time = dec2hex( num:unixtime() );
 
+  if( random ) {
+    _random = random;
+  } else {
+    _random = raw_string( time ) + raw_string( rand_str( length:28 ) ) ;
+  }
+
+  if( ! handshake_version )
+    handshake_version = version;
+
   hello_data =
-              version +
-              raw_string( time ) +
-              raw_string( rand_str( length:28 ) );
+               handshake_version +
+              _random;
 
   if( session_id ) {
     hello_data +=
@@ -1182,7 +1192,7 @@ function _ssl3_tls_hello( ciphers, version, extensions, session_id, add_tls_fall
   }
 
   hello_data +=
-               clen +
+                clen +
                _ciphers;
 
   # Compression Method
@@ -1686,9 +1696,9 @@ function ssl_recv( socket )
 # Example to use the session_id:
 # record = search_ssl_record( data:data, search:make_array( "handshake_typ", SSLv3_SERVER_HELLO ) );
 # if( record ) session_id = record["session_id"];
-function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol )
+function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version )
 {
-  local_var ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol;
+  local_var ciphers, version, extensions, session_id, add_tls_fallback_scsv, compression_method, alpn_protocol, random, handshake_version;
 
   if( ! version ) version = TLS_10;
 
@@ -1697,7 +1707,7 @@ function ssl_hello( ciphers, version, extensions, session_id, add_tls_fallback_s
   else
     return _ssl3_tls_hello( ciphers:ciphers, version:version, extensions:extensions, session_id:session_id,
                             add_tls_fallback_scsv:add_tls_fallback_scsv, compression_method:compression_method,
-                            alpn_protocol:alpn_protocol );
+                            alpn_protocol:alpn_protocol, random: random, handshake_version:handshake_version );
 }
 
 function search_ssl_record( data, search ) {
@@ -2090,7 +2100,7 @@ function get_supported_tls_versions( port, min ) {
   local_var port, min, version_list, tmp_version_list, vl;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_supported_tls_version_list" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_supported_tls_versions" );
     return;
   }
 

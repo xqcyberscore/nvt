@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868549");
-  script_version("$Revision: 2798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 13:57:39 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 5910 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:31:29 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-12-05 05:19:56 +0100 (Fri, 05 Dec 2014)");
   script_cve_id("CVE-2014-9114");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Fedora Update for util-linux FEDORA-2014-16016");
   script_tag(name: "summary", value: "Check the version of util-linux");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");

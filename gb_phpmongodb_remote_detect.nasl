@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmongodb_remote_detect.nasl 3175 2016-04-27 05:25:38Z antu123 $
+# $Id: gb_phpmongodb_remote_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # PHPmongoDB Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807553");
-  script_version("$Revision: 3175 $");
+  script_version("$Revision: 5815 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-27 07:25:38 +0200 (Wed, 27 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 12:39:59 +0530 (Mon, 25 Apr 2016)");
   script_name("PHPmongoDB Remote Version Detection");
 
@@ -41,48 +41,38 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of PHPmongoDB.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## 
 sndReq = "";
 rcvRes = "";
 phpmongoVer = "";
 mongoPort = "";
 
-##Get HTTP Port
-if(!mongoPort = get_http_port(default:80)){
-  exit(0);
-}
-
-## Checking host support php
+mongoPort = get_http_port(default:80);
 if(!can_host_php(port:mongoPort)){
   exit(0);
 }
 
-foreach dir (make_list_unique("/", "/phpmongodb", "/PHPmongoDB", cgi_dirs(port:mongoPort)))
-{
+foreach dir (make_list_unique("/", "/phpmongodb", "/PHPmongoDB", cgi_dirs(port:mongoPort))) {
+
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ##Construct url
-  url =  dir + "/index.php";
-  
-  ##Send Request and Receive Response
-  sndReq = http_get(item:url, port:mongoPort);
-  rcvRes = http_keepalive_send_recv(port:mongoPort, data:sndReq, bodyonly:TRUE);
+  url = dir + "/index.php";
+  rcvRes = http_get_cache(item:url, port:mongoPort);
 
   #Confirm application
   if('<title>PHPmongoDB </title>' ><  rcvRes && 'content="mongoDB' >< rcvRes &&

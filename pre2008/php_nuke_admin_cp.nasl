@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_nuke_admin_cp.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: php_nuke_admin_cp.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: PHP-Nuke copying files security vulnerability (admin.php)
 #
 # Authors:
@@ -29,8 +29,8 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10772");
-  script_version("$Revision: 3694 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
   script_mandatory_keys("php-nuke/installed");
 
   script_tag(name:"summary", value:"Determine if a remote host is vulnerable to the admin.php vulnerability.");
-  script_summary("Determine if a remote host is vulnerable to the admin.php vulnerability");
   script_tag(name:"vuldetect", value:"Try to upload a file and checks if it is accessible afterwards.");
   script_tag(name:"insight", value:"The remote host seems to be vulnerable to a security problem in
   PHP-Nuke (admin.php).

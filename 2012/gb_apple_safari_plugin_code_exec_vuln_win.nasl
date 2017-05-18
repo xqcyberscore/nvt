@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_plugin_code_exec_vuln_win.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_apple_safari_plugin_code_exec_vuln_win.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Apple Safari Plugin Unloading Remote Code Execution Vulnerability (Windows)
 #
@@ -46,19 +46,18 @@ to remote code execution vulnerability.";
 if(description)
 {
   script_id(802819);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2011-3845");
   script_bugtraq_id(52325);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-19 12:27:04 +0530 (Mon, 19 Mar 2012)");
   script_name("Apple Safari Plugin Unloading Remote Code Execution Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45758");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52325");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73713");
 
-  script_summary("Check for the version of Apple Safari");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

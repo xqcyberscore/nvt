@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_booked_scheduler_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_booked_scheduler_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
 #
 # Booked Scheduler Detection
 #
@@ -30,14 +30,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105259");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version ("$Revision: 5723 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-04-20 14:04:38 +0200 (Mon, 20 Apr 2015)");
  script_name("Booked Scheduler Detection");
 
  script_tag(name: "summary" , value: "The script sends a connection
-request to the server and attempts to extract the version number
-from the reply.");
+ request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
@@ -50,7 +49,6 @@ from the reply.");
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -60,20 +58,17 @@ include("host_details.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list( "/booked", cgi_dirs() );
+foreach dir( make_list_unique( "/booked", cgi_dirs( port:port ) ) ) {
 
-foreach dir ( dirs )
-{
+  install = dir;
+  if( dir == "/" ) dir = "";
   url = dir + "/Web/?";
   req = http_get( item:url, port:port );
-  buf = http_send_recv( port:port, data:req );
+  buf = http_keepalive_send_recv( port:port, data:req );
   if( buf == NULL ) continue;
 
   if( egrep( pattern: "Booked - Log In", string: buf, icase: TRUE ) && "Booked Scheduler" >< buf )
   {
-    if( strlen( dir ) > 0 ) install = dir;
-    else install = "/";
-
     vers = "unknown";
     version = eregmatch( string: buf, pattern: "Booked Scheduler v([0-9.]+)",icase:TRUE );
 
@@ -92,10 +87,7 @@ foreach dir ( dirs )
                                                cpe:cpe,
                                                concluded: version[0] ),
                  port:port );
-
-
   }
 }
 
 exit(0);
-

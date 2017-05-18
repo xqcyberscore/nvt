@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3467.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: deb_3467.nasl 5867 2017-04-05 09:01:13Z teissa $
 # Auto-generated from advisory DSA 3467-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703467);
-    script_version("$Revision: 3164 $");
+    script_version("$Revision: 5867 $");
     script_cve_id("CVE-2015-8665", "CVE-2015-8683", "CVE-2015-8781", "CVE-2015-8782",
                   "CVE-2015-8783", "CVE-2015-8784");
     script_name("Debian Security Advisory DSA 3467-1 (tiff - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-02-06 00:00:00 +0100 (Sat, 06 Feb 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3467.html");
 
-    script_summary("Debian Security Advisory DSA 3467-1 (tiff - security update)");
 
     script_category(ACT_GATHER_INFO);
 

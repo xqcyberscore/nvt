@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2016-49_2016-61_win.nasl 4026 2016-09-12 07:22:30Z antu123 $
+# $Id: gb_mozilla_thunderbird_mfsa_2016-49_2016-61_win.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Mozilla Thunderbird Security Updates( mfsa_2016-49_2016-61 )-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808680");
-  script_version("$Revision: 4026 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-2818", "CVE-2016-2815");
   script_bugtraq_id(91075);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 09:22:30 +0200 (Mon, 12 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-07 11:22:05 +0530 (Wed, 07 Sep 2016)");
   script_name("Mozilla Thunderbird Security Updates( mfsa_2016-49_2016-61 )-Windows");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2016-49/");
 
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

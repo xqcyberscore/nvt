@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: sympa_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: sympa_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
 #
 # Sympa Detection
 #
@@ -28,16 +28,15 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.102013");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2672 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+ script_version("$Revision: 5829 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2009-10-05 19:43:01 +0200 (Mon, 05 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Sympa Detection");
- script_summary("Detects Sympa");
  script_category(ACT_GATHER_INFO);
  script_copyright("Copyright (C) 2009 LSS");
  script_dependencies("find_service.nasl", "http_version.nasl");
- script_family("Service detection");
+ script_family("Product detection");
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_require_ports("Services/www", 80);
  
@@ -64,8 +63,7 @@ foreach dir( dirs ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  req = http_get( item:dir + "/", port:port );
-  buf = http_keepalive_send_recv( port:port, data:req );
+  buf = http_get_cache( item:dir + "/", port:port );
 
   # Check if it is Sympa
   pat = 'Powered by ([^>]*>)?Sympa ?v?([0-9.]+)';

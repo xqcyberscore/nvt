@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_devices_default_http_login.nasl 3814 2016-08-08 18:03:38Z mime $
+# $Id: gb_nuuo_devices_default_http_login.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # NUUO Network Video Recorder Default Credentials
 #
@@ -30,13 +30,12 @@ CPE = 'cpe:/a:nuuo:nuuo';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105856");
- script_version("$Revision: 3814 $");
+ script_version("$Revision: 5759 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("NUUO Network Video Recorder Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-08-08 20:03:38 +0200 (Mon, 08 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-08 19:16:36 +0200 (Mon, 08 Aug 2016)");
- script_summary("Determine if it is possible to login with default credentials.");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

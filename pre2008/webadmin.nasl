@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webadmin.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: webadmin.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: webadmin.dll detection
 #
 # Authors:
@@ -47,8 +47,8 @@ tag_solution = "Upgrade to the latest version if necessary";
 if(description)
 {
  script_id(11771);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7438, 7439, 8024);
  script_cve_id("CVE-2003-0471");
@@ -61,7 +61,6 @@ if(description)
 
  summary = "Checks for the presence of webadmin.dll";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

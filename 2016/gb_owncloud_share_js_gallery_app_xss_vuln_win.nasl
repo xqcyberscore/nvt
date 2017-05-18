@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_share_js_gallery_app_xss_vuln_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_owncloud_share_js_gallery_app_xss_vuln_win.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # ownCloud 'share.js' Gallery Application XSS Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809297");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-7419");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-26 17:08:33 +0530 (Mon, 26 Sep 2016)");
   script_name("ownCloud 'share.js' Gallery Application XSS Vulnerability (Windows)");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2016-011");
 
-  script_summary("Check for the vulnerable version of ownCloud on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

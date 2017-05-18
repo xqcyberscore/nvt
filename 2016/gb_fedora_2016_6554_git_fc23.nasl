@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807723");
-  script_version("$Revision: 2954 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 07:16:22 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-21 07:26:13 +0100 (Mon, 21 Mar 2016)");
   script_cve_id("CVE-2016-2315", "CVE-2016-2324");
   script_tag(name:"cvss_base", value:"10.0");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-6554");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/179121.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of git");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elemata_cms_sql_inj_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: secpod_elemata_cms_sql_inj_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
 #
 # Elemata CMS SQL Injection Vulnerability
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903311");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 5798 $");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-27 10:38:15 +0530 (Thu, 27 Jun 2013)");
   script_name("Elemata CMS SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://1337day.com/exploit/20927");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26416");
   script_xref(name : "URL" , value : "http://toexploit.com/exploit/na/elemata-cms-rc30-sql-injection");
-  script_summary("Check if Elemata CMS is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
   arbitrary SQL statements on the vulnerable system, which may leads to access
@@ -60,12 +59,10 @@ if(description)
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -75,24 +72,21 @@ port = 0;
 dir = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/elemata", "/cms", cgi_dirs(port:port)))
-{
+foreach dir (make_list_unique("/", "/elemata", "/cms", cgi_dirs(port:port))) {
 
-  if( dir == "/" ) dir = "";
+  if(dir == "/") dir = "";
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application
-  if(http_vuln_check(port:port, url: dir + "/index.php", check_header:TRUE,
-                    pattern:"Elemata CMS<", extra_check:"Management System<"))
-  {
+  if( res =~ "HTTP/1.. 200" && "Elemata CMS<" >< res && "Management System<" >< res ) {
+
     ## Construct attack request
     url = dir + "/index.php?id='SQL-Injection-Test";
 

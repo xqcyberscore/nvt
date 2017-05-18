@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)
 #
@@ -47,12 +47,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802874);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2011-3671");
   script_bugtraq_id(54080);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-20 13:13:30 +0530 (Wed, 20 Jun 2012)");
   script_name("Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)");
 
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027183");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-41.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

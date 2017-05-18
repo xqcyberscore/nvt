@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vbulletin_forumrunner_sqli.nasl 3763 2016-07-26 19:15:46Z cfi $
+# $Id: sw_vbulletin_forumrunner_sqli.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # vBulletin 3.6.x to 4.2.2/4.2.3 Forumrunner 'request.php' SQL Injection
 #
@@ -29,14 +29,13 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111112");
-  script_version("$Revision: 3763 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-26 21:15:46 +0200 (Tue, 26 Jul 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-24 14:00:00 +0200 (Sun, 24 Jul 2016)");
   script_cve_id("CVE-2016-6195");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("vBulletin 3.6.x to 4.2.2/4.2.3 Forumrunner 'request.php' SQL Injection");
-  script_summary("Checks for a SQL injection vulnerability in the forumrunner addon of vBulletin");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Web application abuses");

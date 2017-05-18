@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln_win_oct11.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_apple_safari_mult_vuln_win_oct11.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Apple Safari Multiple Vulnerabilities - Oct 2011 (Windows)
 #
@@ -48,7 +48,7 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(903029);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2011-3229", "CVE-2011-1440", "CVE-2011-2338", "CVE-2011-2339",
                 "CVE-2011-2341", "CVE-2011-2351", "CVE-2011-2352", "CVE-2011-2354",
                 "CVE-2011-2356", "CVE-2011-2359", "CVE-2011-2788", "CVE-2011-2790",
@@ -63,14 +63,13 @@ if(description)
                     50088);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-24 18:22:12 +0530 (Thu, 24 May 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - Oct 2011 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5000");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/Security-announce//2011/Oct/msg00004.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Apple Safari on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");

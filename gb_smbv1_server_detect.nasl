@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_server_detect.nasl 5512 2017-03-08 08:20:46Z cfi $
+# $Id: gb_smbv1_server_detect.nasl 5959 2017-04-17 14:34:41Z veerendragg $
 #
 # SMBv1 Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810549");
-  script_version("$Revision: 5512 $");
+  script_version("$Revision: 5959 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 09:20:46 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 16:34:41 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 15:12:01 +0530 (Tue, 14 Feb 2017)");
   script_name("SMBv1 Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -64,7 +64,7 @@ smb1_value2 = 0;
 key1 = "SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters";
 key2 = "SYSTEM\ControlSet001\Services\LanmanServer\Parameters";
 
-## Exit if the below keys are not present
+## Check the below keys are present or not
 if(!registry_key_exists(key:key1) && 
    !registry_key_exists(key:key2)){
   exit(0);
@@ -72,13 +72,12 @@ if(!registry_key_exists(key:key1) &&
 
 ## Confirm the application installation and get the install path
 smb1_value1 = registry_get_dword(item:"SMB1", key:key1);
+smb1_value2 = registry_get_dword(item:"SMB1", key:key2);
 
-if(!smb1_value1){
-  smb1_value2 = registry_get_dword(item:"SMB1", key:key2);
-}
-
-## Check the value equal to 1   
-if( smb1_value1 == 1 || smb1_value2 == 1 ) {
+## Check the value equal to 1 or no items SMB1 exists for the above keys
+if((smb1_value1 == 1 || smb1_value2 == 1) ||
+    (smb1_value1 == "" && smb1_value2 == ""))
+{
   replace_kb_item( name:"smb_v1_server/enabled", value:TRUE );
   replace_kb_item( name:"smb_v1/enabled", value:TRUE );
   report = "SMBv1 is enabled for the SMB Server";

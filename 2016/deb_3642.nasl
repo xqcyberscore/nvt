@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3642.nasl 3862 2016-08-22 06:36:56Z antu123 $
+# $Id: deb_3642.nasl 5745 2017-03-28 09:01:00Z teissa $
 # Auto-generated from advisory DSA 3642-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703642);
-    script_version("$Revision: 3862 $");
+    script_version("$Revision: 5745 $");
     script_cve_id("CVE-2016-1000212");
     script_name("Debian Security Advisory DSA 3642-1 (lighttpd - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-22 08:36:56 +0200 (Mon, 22 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-08-05 00:00:00 +0200 (Fri, 05 Aug 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3642.html");
 
-    script_summary("Debian Security Advisory DSA 3642-1 (lighttpd - security update)");
 
     script_category(ACT_GATHER_INFO);
 

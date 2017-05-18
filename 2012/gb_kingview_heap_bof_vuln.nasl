@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kingview_heap_bof_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_kingview_heap_bof_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # WellinTech KingView 'HistoryServer.exe' Heap Based Buffer Overflow Vulnerability
 #
@@ -47,12 +47,12 @@ tag_summary = "This host is installed with KingView and is prone to heap based
 if(description)
 {
   script_id(802550);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2011-4536");
   script_bugtraq_id(51159);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-02 14:11:32 +0530 (Mon, 02 Jan 2012)");
   script_name("WellinTech KingView 'HistoryServer.exe' Heap Based Buffer Overflow Vulnerability");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-355-02.pdf");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of KingView");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

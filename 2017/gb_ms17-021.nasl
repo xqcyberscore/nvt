@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-021.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-021.nasl 5955 2017-04-13 18:33:58Z veerendragg $
 #
 # Microsoft Windows DirectShow Information Disclosure Vulnerability (4010318)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810596");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5955 $");
   script_cve_id("CVE-2017-0042");
   script_bugtraq_id(96098);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 20:33:58 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 12:30:19 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows DirectShow Information Disclosure Vulnerability (4010318)");
@@ -99,14 +99,14 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVis
 }
 
 ## Get System Path
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
 ##Fetch the version of 'Quartz.dll, Usp10.dll'
-qzVer = fetch_file_version(sysPath, file_name:"System32\Quartz.dll");
-gdiVer = fetch_file_version(sysPath, file_name:"System32\Gdi32.dll");
+qzVer = fetch_file_version(sysPath, file_name:"Quartz.dll");
+gdiVer = fetch_file_version(sysPath, file_name:"Gdi32.dll");
 
 if(!qzVer && !gdiVer){
   exit(0);
@@ -130,14 +130,14 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 
   ## Check for Quartz.dll version 
   if(version_is_less(version:qzVer, test_version:"6.6.6002.19725"))
   {
-    Vulnerable_range = "Less than 6.6.6002.19725";
-    VULN = TRUE ;
+    Vulnerable_range1 = "Less than 6.6.6002.19725";
+    VULN1 = TRUE ;
   }
 
   else if(version_in_range(version:qzVer, test_version:"6.6.6002.24000", test_version2:"6.6.6002.24047"))
   {
-    Vulnerable_range = "6.6.6002.24000 - 6.6.6002.24047";
-    VULN = TRUE ;
+    Vulnerable_range1 = "6.6.6002.24000 - 6.6.6002.24047";
+    VULN1 = TRUE ;
   }
 }
 
@@ -145,10 +145,11 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0 
 else if(hotfix_check_sp(win2012:1) > 0 && gdiVer)
 {
   ## Check for Gdi32.dll version
-  if(version_is_less(version:gdiVer, test_version:"6.2.9200.22084"))
+  ## Updated KB 4015551.
+  if(version_is_less(version:gdiVer, test_version:"6.2.9200.22120"))
   {
-     Vulnerable_range1 = "Less than 6.2.9200.22084";
-     VULN1 = TRUE ;
+     Vulnerable_range = "Less than 6.2.9200.22120";
+     VULN = TRUE ;
   }
 }
 
@@ -158,8 +159,8 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && qzVer)
   ## Check for Quartz.dll version
   if(version_is_less(version:qzVer, test_version:"6.6.9600.18569"))
   {
-    Vulnerable_range = "Less than 6.6.9600.18569";
-    VULN = TRUE ;
+    Vulnerable_range1 = "Less than 6.6.9600.18569";
+    VULN1 = TRUE ;
   }
 }
 
@@ -169,20 +170,20 @@ else if(hotfix_check_sp(win10:1, win10x64:1) > 0 && gdiVer)
   ## Check for Gdi32.dll version
   if(version_is_less(version:gdiVer, test_version:"10.0.10240.17319"))
   {
-    Vulnerable_range1 = "Less than 10.0.10240.17319";
-    VULN1 = TRUE;
+    Vulnerable_range = "Less than 10.0.10240.17319";
+    VULN = TRUE;
   }
   
   else if(version_in_range(version:gdiVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.838"))
   {
-    Vulnerable_range1 = "10.0.10586.0 - 10.0.10586.838";
-    VULN1 = TRUE ;
+    Vulnerable_range = "10.0.10586.0 - 10.0.10586.838";
+    VULN = TRUE ;
   }
 
   else if(version_in_range(version:gdiVer, test_version:"10.0.14393.0", test_version2:"10.0.14393.205"))
   {
-    Vulnerable_range1 = "10.0.14393.0 - 10.0.14393.205";
-    VULN1 = TRUE ;
+    Vulnerable_range = "10.0.14393.0 - 10.0.14393.205";
+    VULN = TRUE ;
   }
 }
 
@@ -192,25 +193,25 @@ else if(hotfix_check_sp(win2016:1) > 0 && gdiVer)
   ## Check for Gdi32.dll version
   if(version_in_range(version:gdiVer, test_version:"10.0.14393.0", test_version2:"10.0.14393.205"))
   {
-    Vulnerable_range1 = "10.0.14393.0 - 10.0.14393.205";
-    VULN1 = TRUE ;
+    Vulnerable_range = "10.0.14393.0 - 10.0.14393.205";
+    VULN = TRUE ;
   }
 }
 
-if(VULN1)
+if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Gdi32.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\Gdi32.dll" + '\n' +
            'File version:     ' + gdiVer  + '\n' +
-           'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
+           'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
   exit(0);
 }
 
-else if(VULN)
+else if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Quartz.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\Quartz.dll" + '\n' +
            'File version:     ' + qzVer  + '\n' +
-           'Vulnerable range: ' + Vulnerable_range + '\n' ;
+           'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);
   exit(0);
 }

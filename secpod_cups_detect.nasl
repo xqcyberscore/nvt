@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cups_detect.nasl 4586 2016-11-21 18:32:09Z cfi $
+# $Id: secpod_cups_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # CUPS Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900348");
-  script_version("$Revision: 4586 $");
+  script_version("$Revision: 6040 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-21 19:32:09 +0100 (Mon, 21 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_name("CUPS Version Detection");
-  script_summary("Set KB for the version of CUPS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

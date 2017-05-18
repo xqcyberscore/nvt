@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_sslv2_bof_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ibm_domino_sslv2_bof_vuln.nasl 5724 2017-03-24 15:54:58Z cfi $
 #
 # IBM Domino SSLv2 'nldap.exe' Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805548");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5724 $");
   script_cve_id("CVE-2015-0134");
   script_bugtraq_id(73912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-05-08 15:03:56 +0530 (Fri, 08 May 2015)");
   script_name("IBM Domino SSLv2 'nldap.exe' Buffer Overflow Vulnerability");
 
@@ -83,15 +83,7 @@ include("global_settings.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
-
-# get the port
-if(!domPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -130,6 +122,6 @@ if(version_in_range(version:domVer1, test_version:"9.0.1", test_version2:"9.0.1.
 if(VULN)
 {
   report = 'Installed Version: ' + domVer + '\nFixed Version: ' + fix + '\n';
-  security_message(data:report, port:domPort);
+  security_message(data:report, port:0);
   exit(0);
 }

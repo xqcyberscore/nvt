@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)
 #
@@ -39,18 +39,17 @@ tag_summary = "The host is running IBM Director CIM Server and is prone to
 if(description)
 {
   script_id(802684);
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2009-0880");
   script_bugtraq_id(34065);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-11 20:37:46 +0530 (Tue, 11 Dec 2012)");
   script_name("IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)");
 
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for the affected IBM Director software on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

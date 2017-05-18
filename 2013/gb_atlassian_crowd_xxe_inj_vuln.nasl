@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability
 #
@@ -24,44 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "
-  Impact Level: Application";
+tag_impact = "";
 
 if(description)
 {
   script_id(803830);
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 5842 $");
   script_cve_id("CVE-2013-3925");
   script_bugtraq_id(60899);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-07-09 15:27:15 +0530 (Tue, 09 Jul 2013)");
   script_name("Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability");
 
-  tag_summary =
-"This host is running Atlassian Crowd and is prone to xml external
+  tag_summary = "This host is running Atlassian Crowd and is prone to xml external
 entity injection vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted data via HTTP POST request and check whether it is able to
+  tag_vuldetect = "Send a crafted data via HTTP POST request and check whether it is able to
 read the system file or not.";
 
-  tag_insight =
-"Flaw is due to an incorrectly configured XML parser accepting XML external
+  tag_insight = "Flaw is due to an incorrectly configured XML parser accepting XML external
 entities from an untrusted source.";
 
-  tag_impact =
-"Successful exploitation allow remote attackers to gain access to arbitrary
-files by sending specially crafted XML data.";
+  tag_impact = "Successful exploitation allow remote attackers to gain access to arbitrary
+files by sending specially crafted XML data.
 
-  tag_affected =
-"Atlassian Crowd 2.5.x before 2.5.4, 2.6.x before 2.6.3, 2.3.8, and 2.4.9";
+  Impact Level: Application";
 
-  tag_solution =
-"Upgrade to version 2.5.4, 2.6.3, 2.7 or higher,
+  tag_affected = "Atlassian Crowd 2.5.x before 2.5.4, 2.6.x before 2.6.3, 2.3.8, and 2.4.9";
+
+  tag_solution = "Upgrade to version 2.5.4, 2.6.3, 2.7 or higher,
 For updates refer to http://www.atlassian.com/software/crowd/download";
-
 
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "vuldetect" , value : tag_vuldetect);
@@ -72,16 +66,16 @@ For updates refer to http://www.atlassian.com/software/crowd/download";
 
   script_xref(name : "URL" , value : "https://jira.atlassian.com/browse/CWD-3366");
   script_xref(name : "URL" , value : "http://www.commandfive.com/papers/C5_TA_2013_3925_AtlassianCrowd.pdf");
-  script_summary("Check if Atlassian Crowd is vulnerable to XXE injection vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8095);
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("misc_func.inc");
 include("http_func.inc");
@@ -94,16 +88,11 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:8095);
-if(!port){
-  port = 8095;
-}
 
-## Check the port status
-if(!get_port_state(port)){
-  exit(0);
-}
+files = traversal_files();
+
+host = http_host_name( port:port );
 
 ## Send and Receive the response
 req = http_get(item:"/crowd/console/login.action",  port:port);
@@ -118,12 +107,6 @@ if("Atlassian<" >< res && "Crowd Console<" >< res)
 
   if("Invalid SOAP request" >< res)
   {
-    files = traversal_files();
-    host = get_host_name();
-    if(!host){
-      exit(0);
-    }
-
     entity =  rand_str(length:8,charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
     foreach file (keys(files))
@@ -150,7 +133,7 @@ if("Atlassian<" >< res && "Crowd Console<" >< res)
 
       req = string("POST ",url," HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; OpenVAS 5)\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
                "SOAPAction: ",'""',"\r\n",
                "Content-Type: text/xml; charset=UTF-8\r\n",
                "Content-Length: ", len,"\r\n",

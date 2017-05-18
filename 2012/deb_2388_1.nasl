@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2388_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2388_1.nasl 5988 2017-04-20 09:02:29Z teissa $
 # Description: Auto-generated from advisory DSA 2388-1 (t1lib)
 #
 # Authors:
@@ -78,12 +78,11 @@ if(description)
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2010-2642", "CVE-2011-0433", "CVE-2011-0764", "CVE-2011-1552", "CVE-2011-1553", "CVE-2011-1554");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5988 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-11 03:27:53 -0500 (Sat, 11 Feb 2012)");
  script_name("Debian Security Advisory DSA 2388-1 (t1lib)");
 
- script_summary("Debian Security Advisory DSA 2388-1 (t1lib)");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2525_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2525_1.nasl 5988 2017-04-20 09:02:29Z teissa $
 # Description: Auto-generated from advisory DSA 2525-1 (expat)
 #
 # Authors:
@@ -51,13 +51,12 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-0876", "CVE-2012-1148");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5988 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:21:27 -0400 (Fri, 10 Aug 2012)");
  script_name("Debian Security Advisory DSA 2525-1 (expat)");
 
 
- script_summary("Debian Security Advisory DSA 2525-1 (expat)");
 
  script_category(ACT_GATHER_INFO);
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882523");
-  script_version("$Revision: 3790 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-03 12:30:40 +0200 (Wed, 03 Aug 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-21 05:36:12 +0200 (Thu, 21 Jul 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3500", "CVE-2016-3508", "CVE-2016-3550", 
                 "CVE-2016-3587", "CVE-2016-3598", "CVE-2016-3606", "CVE-2016-3610");
@@ -66,7 +66,6 @@ without user interaction if a user visited a malicious website.
 
   script_xref(name: "CESA", value: "2016:1458");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-July/021991.html");
-  script_summary("Check for the Version of java");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

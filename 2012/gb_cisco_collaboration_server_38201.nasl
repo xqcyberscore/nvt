@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_collaboration_server_38201.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_collaboration_server_38201.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Cisco Collaboration Server 'LoginPage.jhtml' Cross Site Scripting Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_id(103404);
  script_bugtraq_id(38201);
- script_version ("$Revision: 3859 $");
+ script_version ("$Revision: 5988 $");
  script_cve_id("CVE-2010-0641");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,9 +54,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38201");
  script_xref(name : "URL" , value : "http://www.cisco.com/en/US/products/sw/custcosw/ps747/prod_eol_notice09186a008032d4d0.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-27 13:46:02 +0100 (Fri, 27 Jan 2012)");
- script_summary("Determine if Cisco Collaboration Server is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

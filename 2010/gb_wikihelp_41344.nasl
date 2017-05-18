@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikihelp_41344.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wikihelp_41344.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # Wiki Web Help 'getpage.php' SQL Injection Vulnerability
 #
@@ -37,11 +37,11 @@ affected.";
 
 tag_solution = "Updates are available; please see the references for more information.";
 
-if (description)
+if(description)
 {
  script_id(100701);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-07-06 13:44:35 +0200 (Tue, 06 Jul 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -68,27 +68,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/wwh","/wikihelp",cgi_dirs());
+foreach dir( make_list_unique( "/wwh", "/wikihelp", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir,"/handlers/getpage.php?id=9999999+UNION+SELECT+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4,5,6,7+FROM+user+LIMIT+1"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir,"/handlers/getpage.php?id=9999999+UNION+SELECT+1,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,3,4,5,6,7+FROM+user+LIMIT+1");
 
   if(http_vuln_check(port:port, url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

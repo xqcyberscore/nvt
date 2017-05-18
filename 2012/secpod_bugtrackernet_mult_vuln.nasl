@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bugtrackernet_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_bugtrackernet_mult_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # BugTracker.NET Multiple Security Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ifdefined:bugtracker.net";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901303");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5912 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-29 15:57:44 +0530 (Thu, 29 Nov 2012)");
   script_name("BugTracker.NET Multiple Security Vulnerabilities");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.defensecode.com/public/BugTrackerNet_Security_Audit_Final_Report.pdf");
   script_xref(name:"URL", value:"http://www.defensecode.com/article/bugtracker.net_multiple_security_vulnerabilities-31");
 
-  script_summary("Check for cross-site scripting vulnerability in BugTracker.NET");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");

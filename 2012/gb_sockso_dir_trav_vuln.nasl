@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_dir_trav_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_sockso_dir_trav_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Sockso Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802817");
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 5912 $");
   script_bugtraq_id(52509);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-16 13:28:19 +0530 (Fri, 16 Mar 2012)");
   script_name("Sockso Directory Traversal Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52509/info");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/110828/sockso_1-adv.txt");
 
-  script_summary("Check if Sockso is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

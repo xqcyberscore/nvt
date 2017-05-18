@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability
 #
@@ -43,12 +43,12 @@ tag_summary = "This host is installed with OpenVAS Scanner and is prone to
 if(description)
 {
   script_id(801979);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2011-3351");
   script_bugtraq_id(49460);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-10 17:29:46 +0530 (Tue, 10 Jan 2012)");
   script_name("OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2011/q3/432");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=641327");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Check for the version of OpenVAS Scanner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

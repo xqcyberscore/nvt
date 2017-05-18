@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_QuiXplorer_50673.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_QuiXplorer_50673.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # QuiXplorer 'index.php' Arbitrary File Upload Vulnerability
 #
@@ -41,23 +41,22 @@ if (description)
  script_cve_id("CVE-2011-5005");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5841 $");
 
  script_name("QuiXplorer 'index.php' Arbitrary File Upload Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50673");
  script_xref(name : "URL" , value : "http://quixplorer.sourceforge.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-05 11:51:25 +0100 (Thu, 05 Jan 2012)");
- script_summary("Determine if QuiXplorer is prone to an arbitrary-file-upload vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("gb_quixplorer_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("QuiXplorer/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -67,21 +66,19 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port, app:"QuiXplorer")){
   exit(0);
 }
 
 url = string(dir,"/index.php?action=upload&order=type&srt=yes"); 
-host = get_host_name();
+host = http_host_name(port:port);
 filename = "openvas-" + rand() + ".php";
 len = 1982 + strlen(filename);
 
 req = string("POST ",url," HTTP/1.1\r\n",
              "Host: ",host,"\r\n",
-             "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:9.0) Gecko/20100101 OpenVAS/4.0\r\n",
+             "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
              "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
              "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
              "Accept-Encoding: gzip, deflate\r\n",
@@ -200,7 +197,7 @@ if(result =~ "HTTP/1.. 302" && "Location:" >< result) {
     del = "do_action=delete&first=y&selitems%5B%5D=" + filename;
     req = string("POST ",dir,"/index.php?action=post&order=type&srt=yes HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",
-                 "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:9.0) Gecko/20100101 OpenVAS/4.0\r\n",
+                 "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                  "Accept-Encoding: gzip, deflate\r\n",

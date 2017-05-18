@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bacnet_detect.nasl 3688 2016-07-12 08:52:44Z ckuerste $
+# $Id: gb_bacnet_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # BACnet Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106127");
- script_version ("$Revision: 3688 $");
- script_tag(name: "last_modification", value: "$Date: 2016-07-12 10:52:44 +0200 (Tue, 12 Jul 2016) $");
+ script_version ("$Revision: 5888 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-07-12 10:36:40 +0700 (Tue, 12 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,6 @@ BACnet is a communications protocol for building automation and control networks
 
  script_xref(name: "URL", value: "http://www.bacnet.org/");
 
- script_summary("Check for BACnet");
 
  exit(0);
 }

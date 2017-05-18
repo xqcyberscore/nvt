@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_version.nasl 5134 2017-01-30 08:20:15Z cfi $
+# $Id: http_version.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # HTTP Server type and version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10107");
-  script_version("$Revision: 5134 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 09:20:15 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -58,16 +58,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
-function register_cpe( tmpVers, tmpExpr, tmpBase ) {
-
-  local_var cpe;
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe( value:tmpVers, exp:tmpExpr, base:tmpBase );
-  if( ! isnull( cpe ) )
-    register_host_detail( name:"App", value:cpe );
-}
 
 # TODO: Move to secpod_apache_detect.nasl
 function get_apache_version() {
@@ -254,7 +244,9 @@ if( soc ) {
 
       set_kb_item( name:"www/OracleApache", value:TRUE );
       ## build cpe and store it as host_detail
-      register_cpe( tmpVers:TRUE, tmpExpr:"^([0-9.]+([a-z0-9]+)?)", tmpBase:"cpe:/a:oracle:http_server:" );
+      ## Cross Check Version
+      register_and_report_cpe(app:"Oracle Http Server", ver:TRUE, base:"cpe:/a:oracle:http_server:",
+                              expr:"^([0-9.]+([a-z0-9]+)?)");
     }
 
     if( egrep( pattern:"^Server:.*Oracle HTTP Server.*", string:svrline ) )
@@ -387,7 +379,9 @@ if( soc ) {
       set_kb_item( name:"www/KFWebServer", value:TRUE );
 
       ## build cpe and store it as host_detail
-      register_cpe( tmpVers:TRUE, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:key_focus:kf_web_server:" );
+      ##Cross Check version
+      register_and_report_cpe(app:"kf web server", ver:TRUE, base:"cpe:/a:key_focus:kf_web_server:",
+                              expr:"^([0-9.]+)");
     }
 
     if( egrep( pattern:"^Server:.*Jetty.*", string:svrline ) )

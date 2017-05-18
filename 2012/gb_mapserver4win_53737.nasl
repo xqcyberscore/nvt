@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mapserver4win_53737.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mapserver4win_53737.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # Mapserver for Windows Local File Include Vulnerability
 #
@@ -36,33 +36,28 @@ Mapserver for Windows versions 2.0 through 3.0.4 are vulnerable.";
 
 tag_solution = "Updates are available. Please contact the vendor for more information.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103602";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103602");
  script_bugtraq_id(53737);
  script_cve_id("CVE-2012-2950");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-
- script_version ("$Revision: 3046 $");
-
+ script_version ("$Revision: 5714 $");
  script_name("Mapserver for Windows Local File Include Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53737");
  script_xref(name : "URL" , value : "http://maptools.org/ms4w/index.phtml?page=home.html");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522908");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-11-02 10:11:35 +0100 (Fri, 02 Nov 2012)");
- script_summary("Determine if it is possible to execute php code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
+ script_mandatory_keys("Host/runs_windows");
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
@@ -70,21 +65,18 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list(cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.phtml";
+  buf = http_get_cache( item:url, port:port );
 
-foreach dir (dirs) {
-   
-  url = dir  + '/index.phtml';
-
-  if(http_vuln_check(port:port, url:url,pattern:"<title>MS4W")) {
+  if( "<title>MS4W" >< buf ) {
 
     url = dir + '/phpinfo.php';
     req = http_get(item:url, port:port);

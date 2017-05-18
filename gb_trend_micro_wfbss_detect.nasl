@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_wfbss_detect.nasl 3914 2016-08-31 09:49:38Z antu123 $
+# $Id: gb_trend_micro_wfbss_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Trend Micro Worry-Free Business Security Services Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809152");
-  script_version("$Revision: 3914 $");
+  script_version("$Revision: 6040 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 11:49:38 +0200 (Wed, 31 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-24 10:11:12 +0530 (Wed, 24 Aug 2016)");
   script_name("Trend Micro Worry-Free Business Security Services Version Detection (Windows)");
   script_tag(name: "summary" , value: "Detection of installed version of Trend
@@ -41,7 +41,6 @@ if(description)
    from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of Trend Micro Worry-Free Business Security Services");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

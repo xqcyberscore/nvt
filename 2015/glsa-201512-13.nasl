@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test
 # Description: Gentoo Linux security check
-# $Id: glsa-201512-13.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: glsa-201512-13.nasl 6029 2017-04-26 07:02:41Z teissa $
 
 # Authors:
 # Eero Volotinen <eero.volotinen@solinor.com>
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.121435");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6029 $");
 script_tag(name:"creation_date", value:"2015-12-31 11:46:05 +0200 (Thu, 31 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
 script_name("Gentoo Linux Local Check: https://security.gentoo.org/glsa/201512-13");
 script_tag(name: "insight", value: "Multiple vulnerabilities have been discovered in InspIRCd. Please review the CVE identifiers referenced below for details."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://security.gentoo.org/glsa/201512-13");
 script_cve_id("CVE-2012-6697","CVE-2015-6674","CVE-2015-8702");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"7.8");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/gentoo");

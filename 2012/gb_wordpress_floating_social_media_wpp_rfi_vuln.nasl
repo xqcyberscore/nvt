@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # WordPress Floating Social Media Links Plugin 'wpp' RFI Vulnerabilities
 #
@@ -42,9 +42,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(56913);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-18 12:54:08 +0530 (Tue, 18 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51346");
   script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/floating-social-media-links/changelog/");
 
-  script_summary("Check if WP Floating Social Media Links Plugin is vulnerable to RFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

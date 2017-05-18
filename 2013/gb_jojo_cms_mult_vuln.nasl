@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jojo_cms_mult_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_jojo_cms_mult_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # Jojo CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803703");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5827 $");
   script_cve_id("CVE-2013-3081", "CVE-2013-3082");
   script_bugtraq_id(59934, 59933);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-05-23 15:54:25 +0530 (Thu, 23 May 2013)");
   script_name("Jojo CMS Multiple Vulnerabilities");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23153");
   script_xref(name : "URL" , value : "https://xforce.iss.net/xforce/xfdb/84285");
 
-  script_summary("Check if Jojo CMS is vulnerable to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -68,7 +67,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -81,10 +79,8 @@ port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -97,9 +93,7 @@ foreach dir (make_list_unique("/", "/jojo", "/cms", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Request for the search.cgi
-  sndReq = http_get(item:string(dir, "/"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/"), port:port);
 
   ## confirm the Application
   if(rcvRes && '"Jojo CMS' >< rcvRes &&

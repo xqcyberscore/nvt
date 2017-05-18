@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_eds_detect.nasl 3999 2016-09-07 15:08:59Z cfi $
+# $Id: gb_moxa_eds_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # Moxa EDS-40x/50x Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106106");
- script_version ("$Revision: 3999 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-07 17:08:59 +0200 (Wed, 07 Sep 2016) $");
+ script_version ("$Revision: 6000 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-06-23 12:12:32 +0700 (Thu, 23 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,13 +47,12 @@ Switches");
 
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_family("Product detection");
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 81);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_xref(name: "URL", value: "http://www.moxa.com/");
 
- script_summary("Checks for the presence of Moxa EDS-40x and 50x Series Ethernet Switches");
 
  exit(0);
 }
@@ -63,7 +62,8 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-port =  get_http_port(default: 81);
+port = get_http_port(default: 81);
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 req = http_get(port: port, item: "/auth/led_auth.asp");
 res = http_keepalive_send_recv(port: port, data: req);

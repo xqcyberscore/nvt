@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_atrac_sample_code_exec_vuln_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_realplayer_atrac_sample_code_exec_vuln_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with RealPlayer which is prone to remote
 if(description)
 {
   script_id(802801);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2012-0928");
   script_bugtraq_id(51890);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:19:43 +0530 (Tue, 21 Feb 2012)");
   script_name(" RealNetworks RealPlayer Atrac Sample Decoding Remote Code Execution Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026643");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51890");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/02062012_player/en/");
 
-  script_summary("Check for the version of RealPlayer");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

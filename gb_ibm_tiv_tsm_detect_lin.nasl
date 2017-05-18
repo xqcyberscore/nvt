@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_tsm_detect_lin.nasl 4229 2016-10-07 08:15:43Z antu123 $
+# $Id: gb_ibm_tiv_tsm_detect_lin.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # IBM Tivoli Storage Manager Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808636");
-  script_version("$Revision: 4229 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 12:39:14 +0530 (Thu, 06 Oct 2016)");
   script_name("IBM Tivoli Storage Manager Version Detection (Linux)");
 
@@ -40,7 +40,6 @@ if(description)
   The script logs in via ssh, searches for tivoli and queries the
   version from 'README_enu.htm' file.");
   
-  script_summary("Get the version of IBM Tivoli Storage Manager");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

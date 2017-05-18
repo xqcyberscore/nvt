@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telaen_mult_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_telaen_mult_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Telaen Multiple Vulnerabilities
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803646");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 5791 $");
   script_cve_id("CVE-2013-2621", "CVE-2013-2623", "CVE-2013-2624");
   script_bugtraq_id(60290,60288,60340);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-10 16:45:05 +0530 (Mon, 10 Jun 2013)");
   script_name("Telaen Multiple Vulnerabilities");
 
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Jun/12");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/telaen-130-xss-open-redirection-disclosure");
-  script_summary("Check for Open Redirection vulnerability in Telaen");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -75,26 +74,22 @@ req = "";
 res = "";
 dir = "";
 matched = "";
-port = 0;
+Port = 0;
 url = "";
 
-## Get HTTP Port
 Port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:Port)){
   exit(0);
 }
 
-## Get hostname
 host = http_host_name(port:Port);
 
 foreach dir (make_list_unique("/", "/telaen", "/webmail", cgi_dirs(port:Port)))
 {
   if(dir == "/") dir = "";
 
-  req = http_get(item:string(dir, "/index.php"),  port:Port);
-  res = http_keepalive_send_recv(port:Port, data:req);
+  res = http_get_cache(item:string(dir, "/index.php"),  port:Port);
 
   ## Confirm the application
   if('>Powered by Telaen' >< res && 'login' >< res)

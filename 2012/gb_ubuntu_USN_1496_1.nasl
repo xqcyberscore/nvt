@@ -54,8 +54,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001749.html");
   script_id(841068);
-  script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5999 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-03 10:26:04 +0530 (Tue, 03 Jul 2012)");
   script_cve_id("CVE-2011-2685", "CVE-2011-2713", "CVE-2012-1149", "CVE-2012-2334");
   script_tag(name:"cvss_base", value:"9.3");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name: "USN", value: "1496-1");
   script_name("Ubuntu Update for openoffice.org USN-1496-1");
 
-  script_summary("Check for the Version of openoffice.org");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prowiki_id_param_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_prowiki_id_param_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # ProWiki 'id' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802609");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5912 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:16:16 +0530 (Mon, 13 Feb 2012)");
   script_name("ProWiki 'id' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109626/prowiki-xss.txt");
   script_xref(name : "URL" , value : "http://st2tea.blogspot.in/2012/02/prowiki-cross-site-scripting.html");
 
-  script_summary("Check if ProWiki is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

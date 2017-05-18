@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-2698");
   script_bugtraq_id(53998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-09 13:41:49 +0530 (Mon, 09 Jul 2012)");
   script_name("MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49484");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.wikimedia.org/show_bug.cgi?id=36938");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/06/14/2");
 
-  script_summary("Check if MediaWiki is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

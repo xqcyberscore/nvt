@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10760.nasl 4258 2016-10-13 07:08:16Z ckuerste $
+# $Id: gb_junos_space_JSA10760.nasl 5741 2017-03-28 05:13:03Z teissa $
 #
 # Junos Space Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:juniper:junos_space";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106348");
-  script_version("$Revision: 4258 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-13 09:08:16 +0200 (Thu, 13 Oct 2016) $");
+  script_version("$Revision: 5741 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-28 07:13:03 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-10-13 09:18:34 +0700 (Thu, 13 Oct 2016)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-4926", "CVE-2016-4927", "CVE-2016-4928", "CVE-2016-4929", "CVE-2016-4930",
 "CVE-2016-4931");

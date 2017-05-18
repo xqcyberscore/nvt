@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipb_56288.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_ipb_56288.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Invision Power Board 'unserialize()' PHP Code Execution
 #
@@ -43,15 +43,14 @@ if (description)
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6018 $");
 
  script_name("Invision Power Board 'unserialize()' PHP Code Execution");
 
  script_xref(name : "URL" , value : "http://community.invisionpower.com/topic/371625-ipboard-31x-32x-and-33x-security-update/");
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22398/");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-01 16:02:27 +0200 (Thu, 01 Nov 2012)");
- script_summary("Determine if it is possible to execute php code");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

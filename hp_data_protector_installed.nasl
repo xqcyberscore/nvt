@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_data_protector_installed.nasl 4016 2016-09-09 07:23:34Z cfi $
+# $Id: hp_data_protector_installed.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # HP (OpenView Storage) Data Protector Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19601");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4016 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 09:23:34 +0200 (Fri, 09 Sep 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("HP (OpenView Storage) Data Protector Detection");
-  script_summary("Checks for HP (OpenView Storage) Data Protector");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2005 Josh Zlatin-Amishav");

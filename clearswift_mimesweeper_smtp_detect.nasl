@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: clearswift_mimesweeper_smtp_detect.nasl 4840 2016-12-22 13:02:22Z cfi $
+# $Id: clearswift_mimesweeper_smtp_detect.nasl 5992 2017-04-20 14:42:07Z cfi $
 #
 # Clearswift MIMEsweeper manager console detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18219");
-  script_version("$Revision: 4840 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-22 14:02:22 +0100 (Thu, 22 Dec 2016) $");
+  script_version("$Revision: 5992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,15 +61,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 url = "/MSWSMTP/Common/Authentication/Logon.aspx";
 
 req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
-if( rep == NULL ) exit( 0 );
+if( isnull( rep ) ) exit( 0 );
 
 if( "<title>MIMEsweeper Manager</title>" >< rep ) {
   log_message( port:port );
   set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
 }
+
 exit( 0 );

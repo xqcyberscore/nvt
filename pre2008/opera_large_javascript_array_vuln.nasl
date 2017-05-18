@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_large_javascript_array_vuln.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: opera_large_javascript_array_vuln.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Opera web browser large javaScript array handling vulnerability
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "Install Opera 7.50 or newer.";
 if(description)
 {
   script_id(14248);
-  script_version("$Revision: 3395 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1810");
   script_bugtraq_id(9869);
@@ -52,7 +52,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Opera web browser large javaScript array handling vulnerability");
 
-  script_summary("Determines the version of Opera.exe");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

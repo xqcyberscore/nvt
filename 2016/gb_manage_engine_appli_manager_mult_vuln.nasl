@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_appli_manager_mult_vuln.nasl 3390 2016-05-26 08:12:04Z antu123 $
+# $Id: gb_manage_engine_appli_manager_mult_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # ManageEngine Applications Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:applications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808053");
-  script_version("$Revision: 3390 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-26 10:12:04 +0200 (Thu, 26 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-23 11:29:35 +0530 (Mon, 23 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine Applications Manager Multiple Vulnerabilities");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/May/20");
 
-  script_summary("Check if ManageEngine Applications Manager prone to multiple vulnerabilities.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_slysoft_prdts_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_slysoft_prdts_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # SlySoft Product(s) Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of SlySoft Product(s)
-  and sets the result in KB.";
-
 if(description)
 {
-  script_id(800391);
+  script_oid("1.3.6.1.4.1.25623.1.0.800391");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-16 16:39:16 +0200 (Thu, 16 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SlySoft Product(s) Version Detection");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script detects the installed version of SlySoft Product(s)
+  and sets the result in KB.");
   exit(0);
 }
 
@@ -52,89 +50,11 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800391";
-SCRIPT_DESC = "SlySoft Product(s) Version Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
+include("version_func.inc");
 
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
-}
-
-function slysoftGetVer(path)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path);
-  file = ereg_replace(pattern:"[A-Za-z]:(.*)", replace:"\1", string:path);
-
-  soc = open_sock_tcp(port);
-  if(!soc){
-    exit(0);
-  }
-
-  r = smb_session_request(soc:soc, remote:name);
-  if(!r){
-    close(soc);
-    exit(0);
-  }
-
-  prot = smb_neg_prot(soc:soc);
-  if(!prot){
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain,
-                        prot:prot);
-  if(!r){
-    close(soc);
-    exit(0);
-  }
-
-  uid = session_extract_uid(reply:r);
-  if(!uid){
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-  if(!r){
-    close(soc);
-    exit(0);
-  }
-
-  tid = tconx_extract_tid(reply:r);
-  if(!tid){
-    close(soc);
-    exit(0);
-  }
-
-  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-  if(!fid){
-    close(soc);
-    exit(0);
-  }
-
-  slysoftVer = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod");
-  if(!slysoftVer){
-    slysoftVer = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, offset:332560);
-    close(soc);
-    if(!slysoftVer){
-      return NULL;
-    }
-  }
-  close(soc);
-  return slysoftVer;
 }
 
 if(!registry_key_exists(key:"SOFTWARE\SlySoft"))
@@ -149,17 +69,14 @@ anydvdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                  "\App Paths\AnyDVD.exe", item:"Path");
 if(anydvdPath)
 {
-  anydvdVer = slysoftGetVer(path:anydvdPath + "\AnyDVD.exe");
+  anydvdVer = get_version(dllPath:anydvdPath + "\AnyDVD.exe", string:"prod", offs:332560);
   if(anydvdVer != NULL)
   {
     set_kb_item(name:"AnyDVD/Ver", value:anydvdVer);
-    log_message(data:"AnyDVD version " + anydvdVer +
-                       " running at location " + anydvdPath +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:anydvdVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:slysoft:anydvd:");
-
+    register_and_report_cpe(app:"AnyDVD", ver:anydvdVer, base:"cpe:/a:slysoft:anydvd:",
+                            expr:"^([0-9.]+)", insloc:anydvdPath);
   }
 }
 
@@ -168,34 +85,28 @@ clonedvdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                    "\App Paths\CloneDVD2.exe", item:"Path");
 if(clonedvdPath)
 {
-  dvdVer = slysoftGetVer(path:clonedvdPath + "\CloneDVD2.exe");
+  dvdVer = get_version(dllPath:clonedvdPath + "\CloneDVD2.exe", string:"prod", offs:332560);
   if(dvdVer != NULL)
   {
     set_kb_item(name:"CloneDVD/Ver", value:dvdVer);
-    log_message(data:"CloneDVD version " + dvdVer +
-                       " running at location " + clonedvdPath +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:dvdVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:slysoft:clonedvd:");
-
+    register_and_report_cpe(app:"CloneDVD", ver:dvdVer, base:"cpe:/a:slysoft:clonedvd:",
+                            expr:"^([0-9.]+)", insloc:clonedvdPath);
   }
 }
 else
 {
   clonedvdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                      "\App Paths\CloneDVD.exe", item:"Path");
-  dvdVer = slysoftGetVer(path:clonedvdPath + "\CloneDVD.exe");
+  dvdVer = get_version(dllPath:clonedvdPath + "\CloneDVD.exe", string:"prod", offs:332560);
   if(dvdVer != NULL)
   {
     set_kb_item(name:"CloneDVD/Ver", value:dvdVer);
-    log_message(data:"CloneDVD version " + dvdVer +
-                       " running at location " + clonedvdPath +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:dvdVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:slysoft:clonedvd:");
-
+    register_and_report_cpe(app:"CloneDVD", ver:dvdVer, base:"cpe:/a:slysoft:clonedvd:",
+                            expr:"^([0-9.]+)", insloc:clonedvdPath);
   }
 }
 
@@ -204,17 +115,14 @@ clonecdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                   "\App Paths\CloneCD.exe", item:"Path");
 if(clonecdPath)
 {
-  cdVer = slysoftGetVer(path:clonecdPath + "\CloneCD.exe");
+  cdVer = get_version( dllPath:clonecdPath + "\CloneCD.exe", string:"prod", offs:332560);
   if(cdVer != NULL)
   {
     set_kb_item(name:"CloneCD/Ver", value:cdVer);
-    log_message(data:"CloneCD version " + cdVer + 
-                       " running at location " + clonecdPath +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:cdVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:slysoft:clonecd:");
-
+    register_and_report_cpe(app:"CloneCD", ver:cdVer, base:"cpe:/a:slysoft:clonecd:",
+                            expr:"^([0-9.]+)", insloc:clonecdPath);
   }
 }
 
@@ -223,16 +131,14 @@ drivePath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                 "\App Paths\VCDPrefs.exe", item:"Path");
 if(drivePath)
 {
-  driveVer = slysoftGetVer(path:drivePath + "\VCDPrefs.exe");
+  driveVer = get_version( dllPath:drivePath + "\VCDPrefs.exe", string:"prod", offs:332560);
   if(driveVer != NULL)
   {
     set_kb_item(name:"VirtualCloneDrive/Ver", value:driveVer);
-    log_message(data:"Virtual CloneDrive version " + driveVer +
-                       " running at location " + drivePath +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:driveVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:slysoft:virtualclonedrive:");
-
+    register_and_report_cpe(app:"Virtual CloneDrive", ver:driveVer, base:"cpe:/a:slysoft:virtualclonedrive:",
+                            expr:"^([0-9.]+)", insloc:drivePath);
   }
 }
+exit(0);

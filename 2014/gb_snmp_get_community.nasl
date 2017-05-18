@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_get_community.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_snmp_get_community.nasl 5740 2017-03-28 03:23:03Z ckuerste $
 #
 # Report default community names of the SNMP Agent
 #
@@ -31,12 +31,11 @@ if (description)
  script_cve_id("CVE-1999-0516");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5740 $");
  script_name("Report default community names of the SNMP Agent");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 05:23:03 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-03-12 10:10:24 +0100 (Wed, 12 Mar 2014)");
- script_summary("Report default community names of the SNMP Agent");
  script_category(ACT_GATHER_INFO);
  script_family("SNMP");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
@@ -83,7 +82,7 @@ if( ! port ) exit( 0 );
 cos = make_list( get_kb_list("SNMP/detected_community") );
 if( ! cos ) exit( 99 );
 
-report = 'SNMP Agent responded as expected with community name:\n\n';
+report = 'SNMP Agent responded as expected when using the following community name:\n\n';
 
 foreach co ( cos )
 {
@@ -93,7 +92,7 @@ foreach co ( cos )
 
 if( a > 0 )
 {
-  security_message( port:port, data:report );
+  security_message( port:port, data:report, proto:'udp' );
   exit( 0 );
 }
 

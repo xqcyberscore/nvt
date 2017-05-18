@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_aclassif_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_joomla_com_aclassif_xss_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Joomla! 'Aclassif' Component Cross Site Scripting Vulnerability
 #
@@ -47,15 +47,14 @@ prone to cross site scripting vulnerability.";
 if(description)
 {
   script_id(803089);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 6018 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-31 13:14:48 +0530 (Mon, 31 Dec 2012)");
   script_name("Joomla! 'Aclassif' Component Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80856");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/119108/Joomla-Aclassif-Cross-Site-Scripting.html");
-  script_summary("Check if Joomla! Aclassif component is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

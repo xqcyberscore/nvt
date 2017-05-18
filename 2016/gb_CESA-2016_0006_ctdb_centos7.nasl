@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882365");
-  script_version("$Revision: 3319 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-08 06:31:09 +0100 (Fri, 08 Jan 2016)");
   script_cve_id("CVE-2015-5252", "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330",
                 "CVE-2015-7540");
@@ -83,7 +83,6 @@ update, the smb service will be restarted automatically.
 
   script_xref(name: "CESA", value: "2016:0006");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-January/021605.html");
-  script_summary("Check for the Version of ctdb");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

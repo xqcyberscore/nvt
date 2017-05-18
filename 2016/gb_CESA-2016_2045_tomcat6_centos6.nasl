@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882576");
-  script_version("$Revision: 4360 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 07:51:56 +0200 (Thu, 27 Oct 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-12 05:45:01 +0200 (Wed, 12 Oct 2016)");
   script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2016-0706", "CVE-2016-0714", 
                 "CVE-2016-5388", "CVE-2016-6325");
@@ -98,7 +98,6 @@ catalina.out file now passes the verification check. (BZ#1357123)
 
   script_xref(name: "CESA", value: "2016:2045");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-October/022119.html");
-  script_summary("Check for the Version of tomcat6");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_core_ftp_server_type_cmd_dos_vuln.nasl 3448 2016-06-07 11:13:21Z antu123 $
+# $Id: gb_core_ftp_server_type_cmd_dos_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Core FTP Server 'Type' Command Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_id(802613);
-  script_version("$Revision: 3448 $");
+  script_version("$Revision: 5977 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-07 13:13:21 +0200 (Tue, 07 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-05 10:57:53 +0530 (Mon, 05 Mar 2012)");
   script_name("Core FTP Server 'Type' Command Remote Denial of Service Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17556");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39797");
 
-  script_summary("Determine if Core FTP is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("FTP");

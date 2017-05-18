@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807439");
-  script_version("$Revision: 2773 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 14:45:48 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-29 06:25:02 +0100 (Mon, 29 Feb 2016)");
   script_cve_id("CVE-2015-8704");
   script_tag(name:"cvss_base", value:"6.8");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-1323");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/178045.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of bind99");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

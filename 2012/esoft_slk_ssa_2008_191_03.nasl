@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2008_191_03.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2008_191_03.nasl 5988 2017-04-20 09:02:29Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -41,8 +41,8 @@ if(description)
 {
  script_id(61463);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
- script_version("$Revision: 5356 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
+ script_version("$Revision: 5988 $");
  script_cve_id("CVE-2008-1380", "CVE-2008-2798", "CVE-2008-2799", "CVE-2008-2800",
                "CVE-2008-2801", "CVE-2008-2802", "CVE-2008-2803", "CVE-2008-2805",
                "CVE-2008-2806", "CVE-2008-2807", "CVE-2008-2808", "CVE-2008-2809",
@@ -54,7 +54,6 @@ if(description)
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2008-191-03 seamonkey");
 
  script_category(ACT_GATHER_INFO);
 

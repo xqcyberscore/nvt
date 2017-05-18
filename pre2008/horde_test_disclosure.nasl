@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: horde_test_disclosure.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: horde_test_disclosure.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Horde and IMP test disclosure
 #
 # Authors:
@@ -32,8 +32,8 @@ or they should be made unreadable by the web server.";
 if(description)
 {
   script_id(11617);
-  script_version("$Revision: 3359 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -43,7 +43,6 @@ if(description)
 
   summary = "Checks if test.php is available in Horde or IMP";
 
-  script_summary(summary);
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

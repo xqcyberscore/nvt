@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_prdts_detect_lin.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_fsecure_prdts_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # F-Secure Multiple Products Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800357);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-03-13 14:39:10 +0100 (Fri, 13 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("F-Secure Multiple Products Version Detection (Linux)");
-  script_summary("Set the Version of F-Secure Products");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
@@ -56,16 +55,6 @@ include("host_details.inc");
 ## Constant values
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800357";
 SCRIPT_DESC = "F-Secure Multiple Products Version Detection (Linux)";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 ## start script
 sock = ssh_login_or_reuse_connection();
@@ -98,31 +87,28 @@ if(fsavPaths != NULL)
       if(fsavName[0] =~ "Linux Security")
       {
         set_kb_item(name:"F-Sec/AV/LnxSec/Ver", value:fsavVer);
-        log_message(data:"F-Secure Anti Virus version " + fsavVer + 
-                           " was detected on the host");
 
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:fsavVer, tmpExpr:"^([0-9]+\.[0-9]+)", tmpBase:"cpe:/a:f-secure:f-secure_linux_security:");
-
+        register_and_report_cpe(app:"F-Secure Anti Virus", ver:fsavVer, base:"cpe:/a:f-secure:f-secure_linux_security:",
+                                expr:"^([0-9]+\.[0-9]+)");
       }
       if(fsavName[0] =~ "Linux Client Security")
       {
         set_kb_item(name:"F-Sec/AV/LnxClntSec/Ver", value:fsavVer);
-        log_message(data:"F-Secure Anti Virus Client Security version " + fsavVer +
-                           " was detected on the host");
 
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:fsavVer, tmpExpr:"^([0-9]+\.[0-9]+)", tmpBase:"cpe:/a:f-secure:f-secure_anti-virus_linux_client_security:");
-
+        register_and_report_cpe(app:"F-Secure Anti Virus Client Security", ver:fsavVer,
+                                base:"cpe:/a:f-secure:f-secure_anti-virus_linux_client_security:",
+                                expr:"^([0-9]+\.[0-9]+)");
       }
       if(fsavName[0] =~ "Linux Server Security")
       {
         set_kb_item(name:"F-Sec/AV/LnxSerSec/Ver", value:fsavVer);
-        log_message(data:"F-Secure Server Security version " + fsavVer +
-                           " was detected on the host"); 
 
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:fsavVer, tmpExpr:"^([0-9]+\.[0-9]+)", tmpBase:"cpe:/a:f-secure:f-secure_anti-virus_linux_server_security:");
+        register_and_report_cpe(app:"F-Secure Server Security", ver:fsavVer,
+                                base:"cpe:/a:f-secure:f-secure_anti-virus_linux_server_security:",
+                                expr:"^([0-9]+\.[0-9]+)");
 
       }
       break;
@@ -159,12 +145,11 @@ if(fsigkPaths != NULL)
           fsigkVer = fsigkVer[1];
         }
         set_kb_item(name:"F-Sec/IntGatekeeper/Lnx/Ver", value:fsigkVer);
-        log_message(data:"F-Secure Internet Gate Keeper version " + fsigkVer + 
-                           " was detected on the host");
 
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:fsigkVer, tmpExpr:"^([0-9]+\.[0-9]+)", tmpBase:"cpe:/a:f-secure:f-secure_internet_gatekeeper_for_linux:");
-
+        register_and_report_cpe(app:"F-Secure Internet Gate Keeper", ver:fsigkVer,
+                                base:"cpe:/a:f-secure:f-secure_internet_gatekeeper_for_linux:",
+                                expr:"^([0-9]+\.[0-9]+)");
        }
       ssh_close_connection();
       exit(0);
@@ -172,3 +157,4 @@ if(fsigkPaths != NULL)
   }
 }
 ssh_close_connection();
+exit(0);

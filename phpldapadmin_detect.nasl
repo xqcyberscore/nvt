@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpldapadmin_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: phpldapadmin_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # phpLDAPadmin Detection
 #
@@ -28,15 +28,14 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100395");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5815 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpLDAPadmin Detection");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of phpLDAPadmin");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -51,7 +50,6 @@ tool for managing LDAP server.");
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -61,17 +59,15 @@ include("host_details.inc");
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list_unique("/", "/phpldapadmin","/ldapadmin","/ldap","/phpldapadmin/htdocs","/ldapadmin/htdocs",cgi_dirs());
-
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/", "/phpldapadmin", "/ldapadmin", "/ldap", "/phpldapadmin/htdocs", "/ldapadmin/htdocs", cgi_dirs( port:port ) ) ) {
 
  rep_dir = dir;
  if (dir == "/") dir = "";
 
  url = string(dir, "/index.php");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+ buf = http_get_cache(item:url, port:port);
  if( buf == NULL )continue;
+
  if( "<title>phpLDAPadmin" >< buf && "phpLDAPadmin logo" >< buf )
  {
     vers = string("unknown");
@@ -100,5 +96,5 @@ foreach dir (dirs) {
                 port: port);
  }
 }
-exit(0);
 
+exit(0);

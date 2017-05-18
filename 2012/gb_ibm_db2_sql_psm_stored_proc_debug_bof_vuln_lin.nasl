@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_sql_psm_stored_proc_debug_bof_vuln_lin.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_ibm_db2_sql_psm_stored_proc_debug_bof_vuln_lin.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # IBM DB2 SQL/PSM Stored Procedure Debugging Buffer Overflow Vulnerability (Linux)
 #
@@ -51,12 +51,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-4826");
   script_bugtraq_id(56133);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-25 11:58:30 +0530 (Thu, 25 Oct 2012)");
   script_name("IBM DB2 SQL/PSM Stored Procedure Debugging Buffer Overflow Vulnerability (Linux)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg24033685");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg27007053");
 
-  script_summary("Check for the version of IBM DB2 on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");

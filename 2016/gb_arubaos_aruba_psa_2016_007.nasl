@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_aruba_psa_2016_007.nasl 3462 2016-06-09 12:55:52Z mime $
+# $Id: gb_arubaos_aruba_psa_2016_007.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # ArubaOS Multiple Vulnerabilities (ARUBA-PSA-2016-007)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-0801","CVE-2016-0802","CVE-2015-8605");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C"); 
- script_version ("$Revision: 3462 $");
+ script_version ("$Revision: 5867 $");
 
  script_name("ArubaOS Multiple Vulnerabilities (ARUBA-PSA-2016-007)");
 
@@ -72,9 +72,8 @@ ArubaOS would automatically restart the process.  However, DHCP services would b
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-09 14:55:52 +0200 (Thu, 09 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-05-26 15:30:28 +0200 (Thu, 26 May 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

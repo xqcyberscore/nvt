@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_TextPattern_43055.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_TextPattern_43055.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # TextPattern 'txplib_db.php' Cross Site Scripting Vulnerability
 #
@@ -34,12 +34,11 @@ credentials and to launch other attacks.
 
 TextPattern 4.2.0 is vulnerable; others versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100793);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-09-09 16:30:22 +0200 (Thu, 09 Sep 2010)");
  script_bugtraq_id(43055);
 
@@ -64,28 +63,22 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms",cgi_dirs());
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir,"/cms/index.php?q=%3Cscript%3Ealert(0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374)%3C/script%3E"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir,"/index.php?q=%3Cscript%3Ealert(0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374)%3C/script%3E");
 
-  if(http_vuln_check(port:port,
-		     url:url,
-		     check_header: TRUE,
+  if(http_vuln_check(port:port, url:url, check_header: TRUE,
 		     pattern:"<script>alert\(0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374\)</script>",
 		     extra_check:"Textpattern Warning")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

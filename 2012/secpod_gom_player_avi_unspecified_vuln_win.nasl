@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gom_player_avi_unspecified_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_gom_player_avi_unspecified_vuln_win.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # GOM Media Player 'AVI' File Unspecified Vulnerability (Windows)
 #
@@ -38,11 +38,11 @@ tag_summary = "This host is installed with GOM Media Player and is prone to
 if(description)
 {
   script_id(903002);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2012-1264");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-21 16:45:16 +0530 (Wed, 21 Mar 2012)");
   script_name("GOM Media Player 'AVI' File Unspecified Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://gom.gomtv.com/gomIntro.html?type=4");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://heapoverflow.com/f0rums/advisories/29716-cve-2012-1264-gom_media_player.html");
 
   script_copyright("Copyright (c) 2012 SecPod");
-  script_summary("Check the version of GOM Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_gom_player_detect_win.nasl");

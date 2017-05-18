@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_38638.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_httpdx_38638.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # httpdx PNG File Handling Remote Denial of Service Vulnerability
 #
 # Authors:
-# Michael Meyer
+# Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH
@@ -27,8 +27,8 @@
 if (description)
 {
  script_id(100525);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5933 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
  script_bugtraq_id(38638);
  script_tag(name:"cvss_base", value:"5.0");
@@ -39,7 +39,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38638");
  script_xref(name : "URL" , value : "http://sourceforge.net/projects/httpdx/");
 
- script_category(ACT_ATTACK);
+ script_category(ACT_MIXED_ATTACK);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");

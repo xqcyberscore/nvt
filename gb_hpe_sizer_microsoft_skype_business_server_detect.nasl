@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_skype_business_server_detect.nasl 4365 2016-10-27 09:22:06Z antu123 $
+# $Id: gb_hpe_sizer_microsoft_skype_business_server_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # HPE Sizer for Microsoft Skype for Business Server Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809457");
-  script_version("$Revision: 4365 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 11:22:06 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2016-10-17 16:22:36 +0530 (Mon, 17 Oct 2016)");
   script_name("HPE Sizer for Microsoft Skype for Business Server Version Detection (Windows)");
 
@@ -43,7 +43,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HPE Sizer for Microsoft Skype for Business Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

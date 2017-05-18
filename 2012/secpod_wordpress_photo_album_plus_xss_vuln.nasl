@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # WordPress WP Photo Album Plus Plugin 'Search Photos' XSS Vulnerability
 #
@@ -42,28 +42,26 @@ or later. For updates refer http://wordpress.org/plugins/wp-photo-album-plus/";
 tag_summary = "This host is installed with WordPress WP Photo Album Plus Plugin
 and is prone to cross site scripting vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902698";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3060 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902698");
+  script_version("$Revision: 5841 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-31 14:00:10 +0530 (Mon, 31 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("WordPress WP Photo Album Plus Plugin 'Search Photos' XSS Vulnerability");
   script_xref(name : "URL" , value : "http://k3170makan.blogspot.in/2012/12/wp-photoplus-xss-csrf-vuln.html");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/119152/wpphotoplussearch-xssxsrf.txt");
-  script_summary("Check if WP Photo Album Plus Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
+  script_mandatory_keys("wordpress/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -71,10 +69,6 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("host_details.inc");
@@ -89,21 +83,10 @@ wppaReq = "";
 wppaRes = "";
 wppaData = "";
 
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)) exit(0);
-
-## Get Host Name or IP
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
-## Get WordPress Installed Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+host = http_host_name(port:port);
 
 ## page_id for WP Photo Album Plus Plugin is 8
 wppaurl = dir + "/?page_id=8";
@@ -114,7 +97,7 @@ wppaData = 'wppa-searchstring=<script>alert(document.cookie)</script>';
 ## Construct the POST request
 wppaReq = string("POST ", wppaurl, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent:  XSS-TEST\r\n",
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(wppaData), "\r\n",
                  "\r\n", wppaData);

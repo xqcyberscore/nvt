@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_xshop_sql_inj_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_joomla_com_xshop_sql_inj_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Joomla com_x-shop 'idd' Parameter SQL Injection Vulnerability
 #
@@ -46,11 +46,11 @@ injection vulnerability.";
 if(description)
 {
   script_id(802706);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5888 $");
   script_bugtraq_id(52077);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-12 19:12:57 +0530 (Mon, 12 Mar 2012)");
   script_name("Joomla com_x-shop 'idd' Parameter SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://www.1337day.com/exploits/17540");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52077/info");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109938/Joomla-X-Shop-SQL-Injection.html");
 
-  script_summary("Check if Joomla x-shop component is vulnerable to SQL injection attack");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_72p2.nasl 2970 2016-03-29 04:43:41Z antu123 $
+# $Id: gb_openssh_72p2.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # OpenSSH <= 7.2p1 - Xauth Injection
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105581");
-  script_version("$Revision: 2970 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-3115");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-29 06:43:41 +0200 (Tue, 29 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-21 11:45:13 +0100 (Mon, 21 Mar 2016)");
   script_name("OpenSSH <= 7.2p1 - Xauth Injection");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openssh.com/txt/release-7.2p2");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of openssh");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("ssh_detect.nasl");

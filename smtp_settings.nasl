@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_settings.nasl 3966 2016-09-06 05:03:55Z cfi $
+# $Id: smtp_settings.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # SMTP settings
 #
@@ -34,12 +34,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80086");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 3966 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-06 07:03:55 +0200 (Tue, 06 Sep 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SMTP settings");
-  script_summary("SMTP settings");
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi and Renaud Deraison");
   script_family("Settings");

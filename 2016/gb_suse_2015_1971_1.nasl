@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851182");
-  script_version("$Revision: 2682 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 14:49:05 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-02 17:15:47 +0100 (Tue, 02 Feb 2016)");
   script_cve_id("CVE-2015-4734", "CVE-2015-4803", "CVE-2015-4805", "CVE-2015-4806", 
                 "CVE-2015-4835", "CVE-2015-4840", "CVE-2015-4842", "CVE-2015-4843", 
@@ -92,7 +92,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2015:1971_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-11/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of java-1_7_0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

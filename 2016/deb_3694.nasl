@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3694.nasl 4345 2016-10-25 12:47:48Z antu123 $
+# $Id: deb_3694.nasl 5813 2017-03-31 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3694-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703694);
-    script_version("$Revision: 4345 $");
+    script_version("$Revision: 5813 $");
     
     script_name("Debian Security Advisory DSA 3694-1 (tor - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-25 14:47:48 +0200 (Tue, 25 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-10-18 00:00:00 +0200 (Tue, 18 Oct 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3694.html");
 
-    script_summary("Debian Security Advisory DSA 3694-1 (tor - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms02-018_remote.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_ms02-018_remote.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Microsoft IIS FTP Connection Status Request Denial of Service Vulnerability
 #
@@ -44,16 +44,15 @@ CPE = "cpe:/a:microsoft:iis_ftp";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2002-0073");
   script_bugtraq_id(4482);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-04 18:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Connection Status Request Denial of Service Vulnerability");
 
-  script_summary("Check for Denial of Service vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

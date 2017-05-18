@@ -45,8 +45,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-November/001900.html");
   script_id(841222);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5999 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-23 11:53:31 +0530 (Fri, 23 Nov 2012)");
   script_cve_id("CVE-2012-2733", "CVE-2012-5885", "CVE-2012-5886", "CVE-2012-5887", "CVE-2012-3439");
   script_tag(name:"cvss_base", value:"5.0");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name: "USN", value: "1637-1");
   script_name("Ubuntu Update for tomcat6 USN-1637-1");
 
-  script_summary("Check for the Version of tomcat6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

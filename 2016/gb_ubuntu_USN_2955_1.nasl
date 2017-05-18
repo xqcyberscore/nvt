@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842724");
-  script_version("$Revision: 3234 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-06 12:23:52 +0200 (Fri, 06 May 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:21 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-1578", "CVE-2016-1646", "CVE-2016-1647", "CVE-2016-1649",
                 "CVE-2016-1653", "CVE-2016-1654", "CVE-2016-1655", "CVE-2016-1659",
@@ -97,7 +97,6 @@ if(description)
   script_xref(name: "USN", value: "2955-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-April/003391.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of oxide-qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

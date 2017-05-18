@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kajona_cms_mult_xss_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_kajona_cms_mult_xss_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Kajona CMS Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804824");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-4742", "CVE-2014-4743");
   script_bugtraq_id(68496, 68498);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-08-27 12:09:04 +0530 (Wed, 27 Aug 2014)");
   script_name("Kajona CMS Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -57,11 +57,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/94938");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/94434");
   script_xref(name : "URL" , value : "https://www.netsparker.com/critical-xss-vulnerability-in-kajonacms");
-  script_summary("Check if Kajona CMS is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -69,7 +68,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -79,23 +77,18 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/kajona", "/cmf", "/framework", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ##Confirm Application
   if (rcvRes && "Kajona<" >< rcvRes)
@@ -106,7 +99,7 @@ foreach dir (make_list_unique("/", "/kajona", "/cmf", "/framework", cgi_dirs(por
 
     ## Confirm the Exploit
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"><script>alert\(document.cookie\)</script>",
+       pattern:"><script>alert\(document\.cookie\)</script>",
        extra_check:">Kajona<"))
     {
       security_message(port:http_port);

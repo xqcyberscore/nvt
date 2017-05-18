@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb17-01_win.nasl 5116 2017-01-27 06:54:03Z antu123 $
+# $Id: gb_adobe_reader_apsb17-01_win.nasl 5910 2017-04-10 08:31:29Z teissa $
 #
 # Adobe Reader Security Updates(apsb17-01)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810334");
-  script_version("$Revision: 5116 $");
+  script_version("$Revision: 5910 $");
   script_cve_id("CVE-2017-2939", "CVE-2017-2940", "CVE-2017-2941", "CVE-2017-2942", 
                 "CVE-2017-2943", "CVE-2017-2944", "CVE-2017-2945", "CVE-2017-2946", 
                 "CVE-2017-2947", "CVE-2017-2948", "CVE-2017-2949", "CVE-2017-2950", 
@@ -37,10 +37,11 @@ if(description)
                 "CVE-2017-2955", "CVE-2017-2956", "CVE-2017-2957", "CVE-2017-2958", 
                 "CVE-2017-2959", "CVE-2017-2960", "CVE-2017-2961", "CVE-2017-2962", 
                 "CVE-2017-2963", "CVE-2017-2964", "CVE-2017-2965", "CVE-2017-2966", 
-                "CVE-2017-2967", "CVE-2017-2970", "CVE-2017-2971", "CVE-2017-2972");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 07:54:03 +0100 (Fri, 27 Jan 2017) $");
+                "CVE-2017-2967", "CVE-2017-2970", "CVE-2017-2971", "CVE-2017-2972",
+                "CVE-2017-3009", "CVE-2017-3010");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:31:29 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-01-11 08:28:14 +0530 (Wed, 11 Jan 2017)");
   script_name("Adobe Reader Security Updates(apsb17-01)-Windows");
 
@@ -57,9 +58,9 @@ if(description)
   - The buffer overflow vulnerabilities.
   - The memory corruption vulnerabilities.");
 
-  script_tag(name:"impact" , value:"Successful exploitation of this
-  vulnerability will allow remote attackers lead to code execution and
-  security bypass vulnerability.
+  script_tag(name:"impact" , value:"Successful exploitation of these
+  vulnerabilities will allow remote attackers to do code execution,
+  security bypass and information disclosure.
 
   Impact Level: System/Application.");
 

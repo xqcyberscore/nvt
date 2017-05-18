@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2009_218_01.nasl 5665 2017-03-21 12:51:19Z cfi $
+# $Id: esoft_slk_ssa_2009_218_01.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -37,15 +37,14 @@ if(description)
 {
  script_id(64568);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_cve_id("CVE-2009-2666");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 5665 $");
+ script_version("$Revision: 5958 $");
  script_name("Slackware Advisory SSA:2009-218-01 fetchmail ");
 
 
- script_summary("Slackware Advisory SSA:2009-218-01 fetchmail ");
 
  script_category(ACT_GATHER_INFO);
 

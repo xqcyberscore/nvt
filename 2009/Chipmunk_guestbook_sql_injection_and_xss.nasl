@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Chipmunk_guestbook_sql_injection_and_xss.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: Chipmunk_guestbook_sql_injection_and_xss.nasl 5770 2017-03-29 14:34:03Z cfi $
 #
 # Chipmunk Guestbook Index.PHP SQL Injection Vulnerability
 #
@@ -32,23 +32,19 @@ tag_summary = "Chipmunk Guestbook is prone to an SQL-injection vulnerability
   application, access or modify data, or exploit vulnerabilities in
   the underlying database.";
 
-
-if (description)
+if(description)
 {
  script_id(100039);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5770 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_bugtraq_id(18195);
  script_cve_id("CVE-2008-6368");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("Chipmunk Guestbook Index.PHP SQL Injection Vulnerability");
-
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_active");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_active");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,27 +59,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/guestbook",cgi_dirs());
+foreach dir( make_list_unique( "/guestbook", cgi_dirs( port:port ) ) ) { 
 
-foreach d (dir)
-{ 
- url = string(d, "/index.php?start=<script>alert(document.cookie)</script>");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
- if ( buf =~ "HTTP/1\.. 200" &&
-     egrep(pattern:".*You have an error in your SQL syntax.*", string: buf) &&
-     egrep(pattern:".*<script>alert\(document.cookie\)</script>.*", string: buf)
-    )
-     
- 	{    
-       	  security_message(port:port);
-          exit(0);
-        }
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/index.php?start=<script>alert(document.cookie)</script>");
+  req = http_get(item:url, port:port);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+  if( buf == NULL )continue;
+
+  if( buf =~ "HTTP/1\.. 200" &&
+      egrep(pattern:".*You have an error in your SQL syntax.*", string: buf) &&
+      egrep(pattern:".*<script>alert\(document\.cookie\)</script>.*", string: buf) ) {    
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

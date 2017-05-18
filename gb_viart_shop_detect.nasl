@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_viart_shop_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
 #
 # ViArt Shop Detection
 #
@@ -32,15 +32,14 @@ extract the version number from the reply.";
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103579";   
 
-if (description)
+if(description)
 {
- 
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version ("$Revision: 5736 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-09-26 11:03:44 +0200 (Wed, 26 Sep 2012)");
  script_name("ViArt Shop Detection");
  script_category(ACT_GATHER_INFO);
@@ -55,19 +54,16 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/shop","/viart",cgi_dirs());
+foreach dir( make_list_unique( "/shop", "/viart", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
+ install = dir;
+ if( dir == "/" ) dir = "";
  url = dir + '/viart_shop.xml';
  req = http_get(item:url, port:port);
  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -75,12 +71,6 @@ foreach dir (dirs) {
 
  if(egrep(pattern: "<Program_Name>ViArt Shop", string: buf, icase: TRUE))
  {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern:"<Program_Version>([^<]+)</Program_Version>",icase:TRUE);
@@ -104,4 +94,5 @@ foreach dir (dirs) {
 
  }
 }
+
 exit(0);

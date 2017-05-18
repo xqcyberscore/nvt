@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3608.nasl 4299 2016-10-19 05:54:59Z cfi $
+# $Id: deb_3608.nasl 5712 2017-03-24 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3608-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703608);
-    script_version("$Revision: 4299 $");
+    script_version("$Revision: 5712 $");
     script_cve_id("CVE-2016-4324");
     script_name("Debian Security Advisory DSA 3608-1 (libreoffice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-19 07:54:59 +0200 (Wed, 19 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-06-29 00:00:00 +0200 (Wed, 29 Jun 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3608.html");
 
-    script_summary("Debian Security Advisory DSA 3608-1 (libreoffice - security update)");
 
     script_category(ACT_GATHER_INFO);
 

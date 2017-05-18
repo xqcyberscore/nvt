@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sympa_invalid_ldap_pass.nasl 3304 2016-05-12 14:37:27Z benallard $
+# $Id: sympa_invalid_ldap_pass.nasl 5820 2017-03-31 11:20:49Z cfi $
 # Description: Sympa invalid LDAP password DoS
 #
 # Authors:
@@ -26,15 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14299");
-  script_version("$Revision: 3304 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 16:37:27 +0200 (Thu, 12 May 2016) $");
+  script_version("$Revision: 5820 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_xref(name:"OSVDB", value:"8689");
 
   script_name("Sympa invalid LDAP password DoS");
-  script_summary("Checks for sympa version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");
@@ -59,18 +58,15 @@ if(description)
   exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-function check(url) {
+foreach dir (make_list_unique("/", "/wws", "/wwsympa", cgi_dirs(port:port))) {
+  if(dir == "/") dir = "";
   r = http_get_cache(item:string(url, "/home"), port:port);
-  if ( r == NULL ) exit(0);
+  if ( r == NULL ) continue;
 
   #We need to match this
     
@@ -83,11 +79,6 @@ function check(url) {
       exit(0);
     }
   }
-}
-
-foreach dir (make_list_unique("/", "/wws", "/wwsympa", cgi_dirs())) {
-  if(dir == "/") dir = "";
-  check(url:dir);
 }
 
 exit(99);

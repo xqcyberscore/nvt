@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_cve_2016_3196.nasl 3821 2016-08-11 06:21:54Z antu123 $
+# $Id: gb_fortianalyzer_cve_2016_3196.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # FortiAnalyzer Persistent XSS Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-3196");
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 3821 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("FortiAnalyzer Persistent XSS Vulnerability");
 
@@ -49,9 +49,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-11 08:21:54 +0200 (Thu, 11 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-19 10:34:06 +0200 (Tue, 19 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

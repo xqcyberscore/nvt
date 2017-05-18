@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openwga_cms_detect.nasl 4623 2016-11-25 06:56:52Z cfi $
+# $Id: gb_openwga_cms_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # OpenWGA Content Management Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807686");
-  script_version("$Revision: 4623 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:56:52 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:32:47 +0530 (Tue, 03 May 2016)");
   script_name("OpenWGA Content Management Server Version Detection");
 
@@ -41,7 +41,6 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Set version of OpenWGA Content Management Server in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

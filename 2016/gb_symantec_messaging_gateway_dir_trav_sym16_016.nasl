@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_dir_trav_sym16_016.nasl 4193 2016-09-30 13:08:26Z antu123 $
+# $Id: gb_symantec_messaging_gateway_dir_trav_sym16_016.nasl 6029 2017-04-26 07:02:41Z teissa $
 #
 # Symantec Messaging Gateway Directory Traversal Vulnerability (SYM16-016)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807891");
-  script_version("$Revision: 4193 $");
+  script_version("$Revision: 6029 $");
   script_cve_id("CVE-2016-5312");
   script_bugtraq_id(93148);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 15:08:26 +0200 (Fri, 30 Sep 2016) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:41 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-30 10:38:42 +0530 (Fri, 30 Sep 2016)");
   script_name("Symantec Messaging Gateway Directory Traversal Vulnerability (SYM16-016)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;year=&amp;suid=20160927_00");
 
-  script_summary("Check if Symantec Messaging Gateway is prone to directory traversal vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

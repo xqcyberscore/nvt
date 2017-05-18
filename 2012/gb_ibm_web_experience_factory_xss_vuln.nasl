@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_web_experience_factory_xss_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_ibm_web_experience_factory_xss_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # IBM Web Experience Factory Multiple Cross Site Scripting Vulnerabilities
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with IBM Web Experience Factory and is pro
 if(description)
 {
   script_id(802563);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5940 $");
   script_bugtraq_id(51246);
   script_cve_id("CVE-2011-5048");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-19 18:01:09 +0530 (Thu, 19 Jan 2012)");
   script_name("IBM Web Experience Factory Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51246/info");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21575083");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of IBM Web Experience Factory");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

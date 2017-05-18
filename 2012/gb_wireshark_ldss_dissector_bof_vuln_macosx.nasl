@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ldss_dissector_bof_vuln_macosx.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wireshark_ldss_dissector_bof_vuln_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Wireshark LDSS Dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with Wireshark and is prone to buffer
 if(description)
 {
   script_id(802847);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2010-4300");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:49:10 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark LDSS Dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/42290");
   script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/3038");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2010-14.html");
 
-  script_summary("Check for the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

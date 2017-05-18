@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opensis_sql_injection_vuln_jul14.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_opensis_sql_injection_vuln_jul14.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # openSIS 'index.php' SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804653");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-8366");
   script_bugtraq_id(68285);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:45:35 +0530 (Fri, 04 Jul 2014)");
   script_name("openSIS 'index.php' SQL Injection Vulnerability");
 
@@ -56,17 +56,15 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jun/151");
-  script_summary("Check if openSIS is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -77,15 +75,12 @@ req = "";
 res = "";
 sisPort = "";
 
-## Get HTTP Port
 sisPort = get_http_port(default:80);
 
-## Check the support for php
 if(!can_host_php(port:sisPort)){
   exit(0);
 }
 
-## Get Host name
 host = http_host_name(port:sisPort);
 
 foreach dir (make_list_unique("/", "/opensis", "/openSIS", cgi_dirs(port:sisPort)))
@@ -93,8 +88,7 @@ foreach dir (make_list_unique("/", "/opensis", "/openSIS", cgi_dirs(port:sisPort
 
   if(dir == "/") dir = "";
 
-  req = http_get(item:string(dir, "/index.php"), port:sisPort);
-  res = http_keepalive_send_recv(port:sisPort, data:req);
+  res = http_get_cache(item:string(dir, "/index.php"), port:sisPort);
 
   ##Confirm Application
   if(res && ">openSIS Student Information System<" >< res && ">User Name" >< res)

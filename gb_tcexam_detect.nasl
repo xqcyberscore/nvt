@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcexam_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_tcexam_detect.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # TCExam Version Detection
 #
@@ -28,15 +28,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800792");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 5843 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("TCExam Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -47,7 +47,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -79,6 +78,7 @@ foreach dir( make_list_unique( "/", "/tcexam", "/TCExam", cgi_dirs( port:port ) 
     ## Set the KB value
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/TCExam", value:tmp_version );
+    replace_kb_item( name:"TCExam/installed", value:TRUE );
 
     ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:tecnick:tcexam:" );

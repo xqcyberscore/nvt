@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: icq_installed.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: icq_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: ICQ is installed
 #
 # Authors:
@@ -30,8 +30,8 @@ tag_solution = "Uninstall this software";
 if(description)
 {
  script_id(11425);
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(1307, 132, 246, 2664, 3226, 3813, 929);
 
@@ -50,7 +50,6 @@ if(description)
 
  summary = "Determines if ICQ is installed";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

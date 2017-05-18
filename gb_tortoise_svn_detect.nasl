@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tortoise_svn_detect.nasl 3048 2016-04-12 07:04:51Z antu123 $
+# $Id: gb_tortoise_svn_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # TortoiseSVN Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801289");
-  script_version("$Revision: 3048 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 09:04:51 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("TortoiseSVN Version Detection");
@@ -67,18 +67,6 @@ include("host_details.inc");
 AppName = "";
 AppVer = "";
 insLoc = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Confirm TortoiseSVN
 if(!registry_key_exists(key:"SOFTWARE\TortoiseSVN\")){
@@ -130,7 +118,7 @@ foreach item (registry_enum_keys(key:key))
       }
     
       ## Register product and build report
-      build_report(app:AppName, ver:AppVer, cpe:cpe, loc:insLoc, con:AppName);
+      build_report(app:AppName, ver:AppVer, cpe:cpe, insloc:insLoc, concluded:AppName);
     }
   }
 }

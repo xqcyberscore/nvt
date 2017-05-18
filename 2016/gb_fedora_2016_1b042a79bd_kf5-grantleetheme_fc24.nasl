@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810110");
-  script_version("$Revision: 4899 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 08:35:17 +0100 (Mon, 02 Jan 2017) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 17:59:16 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-7967", "CVE-2016-7966", "CVE-2016-7968");
   script_tag(name:"cvss_base", value:"7.5");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-1b042a79bd");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/RHK4KSZ2NW5RHZSPO7YKQII2SPNDKQRX");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kf5-grantleetheme");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

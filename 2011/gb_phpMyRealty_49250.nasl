@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpMyRealty_49250.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phpMyRealty_49250.nasl 5750 2017-03-28 14:10:17Z cfi $
 #
 # phpMyRealty 'seed' Parameter SQL Injection Vulnerability
 #
@@ -34,12 +34,11 @@ in the underlying database.
 
 phpMyRealty 1.0.7 and prior are vulnerable.";
 
-
-if (description)
+if(description)
 {
  script_id(103217);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5750 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-08-22 16:04:33 +0200 (Mon, 22 Aug 2011)");
  script_bugtraq_id(49250);
  script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.phpmyrealty.com");
 
  script_tag(name:"qod_type", value:"remote_active");
- script_summary("Determine if phpMyRealty is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,24 +63,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/search.php?seed=1%27"); 
 
   if(http_vuln_check(port:port, url:url,pattern:"You have an error in your SQL syntax", extra_check:"Critical Error")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3631.nasl 3784 2016-08-02 08:07:52Z antu123 $
+# $Id: deb_3631.nasl 5675 2017-03-22 10:00:52Z teissa $
 # Auto-generated from advisory DSA 3631-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703631);
-    script_version("$Revision: 3784 $");
+    script_version("$Revision: 5675 $");
     script_cve_id("CVE-2016-5385", "CVE-2016-5399", "CVE-2016-6289", "CVE-2016-6290",
                   "CVE-2016-6291", "CVE-2016-6292", "CVE-2016-6294", "CVE-2016-6295",
                   "CVE-2016-6296", "CVE-2016-6297");
     script_name("Debian Security Advisory DSA 3631-1 (php5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:57:45 +0530 (Tue, 02 Aug 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3631.html");
 
-    script_summary("Debian Security Advisory DSA 3631-1 (php5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

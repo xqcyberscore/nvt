@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_mult_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_count_per_day_plugin_mult_xss_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # WordPress Count per Day Plugin 'userperspan.php' Multiple XSS Vulnerabilities
 #
@@ -44,12 +44,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-3434");
   script_bugtraq_id(54258);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-28 2:46:18 +0530 (Tue, 28 Aug 2012)");
   script_name("WordPress Count per Day Plugin 'userperspan.php' Multiple XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49692");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.darksecurity.de/advisories/2012/SSCHADV2012-015.txt");
   script_xref(name : "URL" , value : "http://plugins.trac.wordpress.org/changeset/571926/count-per-day#file22");
 
-  script_summary("Check if WordPress Count per Day Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

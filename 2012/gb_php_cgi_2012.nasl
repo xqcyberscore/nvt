@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_cgi_2012.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_php_cgi_2012.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # PHP-CGI-based setups vulnerability when parsing query string parameters from php files.
 #
@@ -27,12 +27,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103482");
- script_version("$Revision: 3062 $");
+ script_version("$Revision: 5958 $");
  script_bugtraq_id(53388);
  script_cve_id("CVE-2012-1823", "CVE-2012-2311", "CVE-2012-2336", "CVE-2012-2335");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-04 10:40:34 +0100 (Fri, 04 May 2012)");
 
  script_name("PHP-CGI-based setups vulnerability when parsing query string parameters from php files.");
@@ -44,7 +44,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.php.net/manual/en/security.cgi-bin.php");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53388");
 
- script_summary("Determine if it is possible to read the php source code.");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

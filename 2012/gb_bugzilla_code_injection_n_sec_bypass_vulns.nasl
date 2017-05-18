@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugzilla_code_injection_n_sec_bypass_vulns.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_bugzilla_code_injection_n_sec_bypass_vulns.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Bugzilla LDAP Code Injection And Security Bypass Vulnerabilities
 #
@@ -46,12 +46,12 @@ CPE = "cpe:/a:mozilla:bugzilla:";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-4747, CVE-2012-3981");
   script_bugtraq_id(55349);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-11 11:13:14 +0530 (Tue, 11 Sep 2012)");
   script_name("Bugzilla LDAP Code Injection And Security Bypass Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.bugzilla.org/security/3.6.10/");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=785522");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for security bypass vulnerability in Bugzilla");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

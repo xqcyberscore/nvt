@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809922");
-  script_version("$Revision: 5430 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 11:10:01 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:01:15 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-4861", "CVE-2016-6233");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-7f193a0c59");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/2JUKFTI6ABK7ZN7IEAGPCLAHCFANMID2");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php-ZendFramework");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

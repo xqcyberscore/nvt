@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_up_time_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_up_time_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # up.time Detection
 #
@@ -30,13 +30,12 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103147");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5815 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("up.time Detection");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Checks for the presence of up.time");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -48,7 +47,6 @@ if (description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -57,8 +55,7 @@ port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 url = "/index.php";
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+buf = http_get_cache(item:url, port:port);
 if( buf == NULL )exit(0);
 
 if("<title>up.time" >< buf && ( "Please Enter Your Username and Password to Log In:" >< buf || "/styles/uptime.css" >< buf ) ){

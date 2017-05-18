@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871653");
-  script_version("$Revision: 3909 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-30 08:36:10 +0200 (Tue, 30 Aug 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 05:36:49 +0200 (Fri, 19 Aug 2016)");
   script_cve_id("CVE-2016-0772", "CVE-2016-1000110", "CVE-2016-5699");
   script_tag(name:"cvss_base", value:"10.0");
@@ -75,7 +75,6 @@ CVE-2016-1000110.
   script_xref(name: "RHSA", value: "2016:1626-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-August/msg00038.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

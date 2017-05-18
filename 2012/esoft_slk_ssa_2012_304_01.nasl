@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2012_304_01.nasl 4794 2016-12-16 17:37:27Z cfi $
+# $Id: esoft_slk_ssa_2012_304_01.nasl 5988 2017-04-20 09:02:29Z teissa $
 # Description: Auto-generated from advisory SSA:2012-304-01
 #
 # Authors:
@@ -36,14 +36,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
 if(description)
 {
  script_id(72571);
- script_version("$Revision: 4794 $");
+ script_version("$Revision: 5988 $");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-12-16 18:37:27 +0100 (Fri, 16 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-16 03:15:58 -0500 (Fri, 16 Nov 2012)");
  script_name("Slackware Advisory SSA:2012-304-01 mozilla-thunderbird ");
 
- script_summary("Slackware Advisory SSA:2012-304-01 mozilla-thunderbird ");
 
  script_category(ACT_GATHER_INFO);
 

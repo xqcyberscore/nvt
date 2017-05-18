@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_dos_vuln.nasl 4452 2016-11-09 08:51:57Z cfi $
+# $Id: gb_dnsmasq_dos_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Dnsmasq DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106095");
-  script_version("$Revision: 4452 $");
-  script_tag(name:"last_modification", value: "$Date: 2016-11-09 09:51:57 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value: "2016-06-15 12:45:27 +0700 (Wed, 15 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name:"URL", value:"http://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2016q2/010479.html");
 
   script_tag(name:"summary", value:"Dnsmasq is prone to a denial of service vulnerability.");
-  script_summary("Check the version");
 
   script_tag(name:"vuldetect", value:"Checks the version.");
 

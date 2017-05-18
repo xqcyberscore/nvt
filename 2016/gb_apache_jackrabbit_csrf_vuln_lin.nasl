@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jackrabbit_csrf_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_apache_jackrabbit_csrf_vuln_lin.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Apache Jackrabbit Cross-Site Request Forgery (CSRF) Vulnerability (Linux)
 #
@@ -31,10 +31,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.807898");
   script_cve_id("CVE-2016-6801");
   script_bugtraq_id(92966);
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5867 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 16:01:40 +0530 (Thu, 06 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Jackrabbit Cross-Site Request Forgery (CSRF) Vulnerability (Linux)");
@@ -67,7 +67,6 @@ if (description)
 
   script_xref(name : "URL" , value : "https://issues.apache.org/jira/browse/JCR-4009");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/09/14/6");
-  script_summary("Check for the vulnerable version of Apache Jackrabbit on linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

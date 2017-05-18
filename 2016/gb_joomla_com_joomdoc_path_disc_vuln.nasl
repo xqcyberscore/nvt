@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_joomdoc_path_disc_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_joomla_com_joomdoc_path_disc_vuln.nasl 5748 2017-03-28 13:15:16Z teissa $
 #
 # Joomla Joomdoc Extension Path Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808230");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5748 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:15:16 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-20 16:50:11 +0530 (Mon, 20 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Joomla Joomdoc Extension Path Disclosure Vulnerability");
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Joomla Joomdoc component version 4.0.3");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of 
-  24th January, 2017. Information regarding this issue will be updated once the solution 
+  28th March, 2017. Information regarding this issue will be updated once the solution 
   details are available.
   For updates refer to http://extensions.joomla.org/extension/joomdoc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: qwerty_cms_sql_injection.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: qwerty_cms_sql_injection.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # Qwerty CMS 'index.php' SQL Injection Vulnerability
 #
@@ -31,21 +31,18 @@ tag_summary = "Qwerty CMS is prone to an SQL-injection vulnerability because it 
   access or modify data, or exploit latent vulnerabilities in the underlying
   database.";
 
-
 if (description)
 {
  script_id(100013);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_bugtraq_id(33885);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("Qwerty CMS 'index.php' SQL Injection Vulnerability");
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -59,23 +56,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dir = make_list("/cms","/qwerty", cgi_dirs()); 
+foreach dir( make_list_unique( "/cms", "/qwerty", cgi_dirs( port:port ) ) ) { 
+
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/index.php?act=publ&id=-3+UNION+SELECT+1,2,3,4,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374");
  
-foreach d (dir)
-{ 
- url = string(d, "/index.php?act=publ&id=-3+UNION+SELECT+1,2,3,4,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )continue;
- 
- if( buf =~ ".*OpenVAS-SQL-Injection-Test.*" )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  if(http_vuln_check(port:port, url:url,pattern:".*OpenVAS-SQL-Injection-Test.*")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
-exit(0);
+
+exit( 99 );

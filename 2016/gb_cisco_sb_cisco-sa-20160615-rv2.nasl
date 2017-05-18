@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160615-rv2.nasl 3572 2016-06-21 07:52:57Z mime $
+# $Id: gb_cisco_sb_cisco-sa-20160615-rv2.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1397");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 3572 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Cisco RV110W, RV130W, and RV215W Routers HTTP Request Buffer Overflow Vulnerability");
 
@@ -57,9 +57,8 @@ unexpectedly and result in a DoS condition.");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:52:57 +0200 (Tue, 21 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-17 13:57:06 +0200 (Fri, 17 Jun 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

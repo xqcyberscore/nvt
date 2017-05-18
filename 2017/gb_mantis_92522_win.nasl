@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantis_92522_win.nasl 5353 2017-02-20 09:56:12Z ckuerste $
+# $Id: gb_mantis_92522_win.nasl 5868 2017-04-05 09:21:33Z cfi $
 #
 # MantisBT 'view_type' Cross Site Scripting Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108050");
-  script_version("$Revision: 5353 $");
+  script_version("$Revision: 5868 $");
   script_cve_id("CVE-2016-6837");
   script_bugtraq_id(92522);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 10:56:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:21:33 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-01-23 14:57:33 +0100 (Mon, 23 Jan 2017)");
   script_name("MantisBT 'view_type' Cross Site Scripting Vulnerability (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"MantisBT versions versions before 1.2.19, and versions 2.0.0-beta1, 1.3.0-beta1");
+  script_tag(name:"affected", value:"MantisBT versions before 1.2.19, and versions 2.0.0-beta1, 1.3.0-beta1");
 
   script_tag(name:"solution", value:"Update to MantisBT 1.2.19, 1.3.1 or 2.0.0-beta2. For updates refer to
   https://mantisbt.org");

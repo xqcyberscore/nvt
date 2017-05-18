@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: js.scob.trojan.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: js.scob.trojan.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: JS.Scob.Trojan or Download.Ject Trojan
 #
 # Authors:
@@ -40,8 +40,8 @@ and removal tools are being released as of 06/25/04";
 if(description)
 {
  script_id(12286);
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,6 @@ if(description)
 
  summary = "JS.Scob.Trojan/JS/Exploit-DialogArg.b Trojan";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

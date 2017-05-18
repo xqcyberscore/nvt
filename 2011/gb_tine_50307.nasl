@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tine_50307.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_tine_50307.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # Tine Multiple Cross Site Scripting Vulnerabilities
 #
@@ -40,22 +40,18 @@ information.";
 if (description)
 {
  script_id(103313);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-25 14:02:26 +0200 (Tue, 25 Oct 2011)");
  script_bugtraq_id(50307);
-
  script_name("Tine Multiple Cross Site Scripting Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50307");
  script_xref(name : "URL" , value : "http://www.tine20.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520167");
  script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_tine_2_0.html");
-
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Tine is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -68,27 +64,21 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/tine",cgi_dirs());
+foreach dir( make_list_unique( "/tine", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir,"/library/PHPExcel/PHPExcel/Shared/JAMA/docs/download.php/%27%3E%3Cscript%3Ealert(/openvas-xss-test/);%3C/script%3E"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/library/PHPExcel/PHPExcel/Shared/JAMA/docs/download.php/%27%3E%3Cscript%3Ealert(/openvas-xss-test/);%3C/script%3E";
 
-  if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\);</script>",check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\);</script>", check_header:TRUE ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

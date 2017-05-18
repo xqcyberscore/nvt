@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_watch_mult_xss_vuln.nasl 4620 2016-11-25 06:39:51Z cfi $
+# $Id: gb_xwiki_watch_mult_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # XWiki Watch Multiple Cross Site Scripting Vulnerabilities
 #
@@ -52,8 +52,8 @@ site scripting vulnerabilities.";
 if(description)
 {
   script_id(801564);
-  script_version("$Revision: 4620 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:39:51 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-01-08 10:30:18 +0100 (Sat, 08 Jan 2011)");
   script_cve_id("CVE-2010-4640");
   script_bugtraq_id(44606);
@@ -65,12 +65,13 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/62940");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for cross site scripting vulnerability in XWiki Watch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8080);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -80,14 +81,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 xwport = get_http_port(default:8080);
-if(!get_port_state(xwport)){
-  exit(0);
-}
 
 sndReq = http_get(item:"/xwiki/bin/view/Main/WebHome", port:xwport);
 rcvRes = http_send_recv(port:xwport, data:sndReq);
@@ -100,7 +97,7 @@ if("XWiki - Main - WebHome" >!< rcvRes &&
 
 ## Try an exploit
 filename = "/xwiki/bin/register/XWiki/Register";
-host = get_host_name();
+host = http_host_name( port:port );
 
 authVariables ="template=XWiki.XWikiUserTemplate&register=1&register_first_name" +
                "=dingdong&register_last_name=%3Cscript%3Ealert%281111%29%3C%2Fscr" +
@@ -110,7 +107,7 @@ authVariables ="template=XWiki.XWikiUserTemplate&register=1&register_first_name"
 ## Construct post request
 sndReq = string("POST ", filename, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/2008111217 Fedora/3.0.4-1.fc10 Firefox/3.0.4\r\n",
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: en-us,en;q=0.5\r\n",
                  "Keep-Alive: 300\r\n",

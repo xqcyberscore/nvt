@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: version_func.inc 5021 2017-01-17 17:21:26Z cfi $
+# $Id: version_func.inc 5872 2017-04-05 14:13:06Z cfi $
 #
 # Helper functions for SSH-based target host access
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5021 $
+# $Revision: 5872 $
 #
 ###############################################################################
 
@@ -452,6 +452,86 @@ function fetch_file_version( sysPath, file_name ) {
   }
 
   return( sysVer );
+}
+
+########################################################################
+#
+# Get the product version from file
+#
+########################################################################
+function get_version( dllPath, string, offs ) {
+
+  local_var name, login,  pass, domain,  port,  share, file, soc, r, prot, uid, tid, fid, prVersion;
+
+  if( ! dllPath ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#dllPath#-#get_version" );
+    return FALSE;
+  }
+
+  name    =  kb_smb_name();
+  login   =  kb_smb_login();
+  pass    =  kb_smb_password();
+  domain  =  kb_smb_domain();
+  port    =  kb_smb_transport();
+
+  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
+  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
+
+  soc = open_sock_tcp(port);
+  if(!soc){
+    exit(0);
+  }
+
+  r = smb_session_request(soc:soc, remote:name);
+  if(!r){
+    close(soc);
+    exit(0);
+  }
+
+  prot = smb_neg_prot(soc:soc);
+  if(!prot){
+    close(soc);
+    exit(0);
+  }
+
+  r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
+  if(!r){
+    close(soc);
+    exit(0);
+  }
+
+  uid = session_extract_uid(reply:r);
+  if(!uid){
+    close(soc);
+    exit(0);
+  }
+
+  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
+  if(!r){
+    close(soc);
+    exit(0);
+  }
+
+  tid = tconx_extract_tid(reply:r);
+  if(!tid){
+    close(soc);
+    exit(0);
+  }
+
+  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
+  if(!fid){
+    close(soc);
+    exit(0);
+  }
+      
+  prVersion = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:string, offset:offs);
+  if( ! prVersion || isnull( prVersion ) || prVersion == "" || prVersion == 0 || prVersion == '0' ) {
+    close(soc);
+    return FALSE;
+  }
+
+  close(soc);
+  return prVersion;
 }
 
 function report_fixed_ver( installed_version, installed_build, installed_patch,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenserver_vswitch_controller_52641.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_citrix_xenserver_vswitch_controller_52641.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # Citrix XenServer vSwitch Controller Component Multiple Vulnerabilities
 #
@@ -39,20 +39,16 @@ if (description)
 {
  script_id(103474);
  script_bugtraq_id(52641);
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5700 $");
  script_name("Citrix XenServer vSwitch Controller Component Multiple Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52641");
  script_xref(name : "URL" , value : "http://www.citrix.com/English/ps2/products/feature.asp?contentID=1686939");
  script_xref(name : "URL" , value : "http://support.citrix.com/article/CTX132476");
-
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-04-23 11:36:51 +0200 (Mon, 23 Apr 2012)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if CSRF tokens used");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -65,22 +61,19 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
 port = get_http_port(default:443);
-if(!get_port_state(port))exit(0);
 
 transport = get_port_transport(port);
 
-dirs = make_list(cgi_dirs());
-
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   soc = open_sock_tcp(port, transport:transport);
   if(!soc)exit(0);
 
+  if( dir == "/" ) dir = "";
   url = dir + '/login';
   req = http_get(item:url, port:port);
 

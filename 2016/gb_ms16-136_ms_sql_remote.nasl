@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-136_ms_sql_remote.nasl 4565 2016-11-18 09:32:23Z antu123 $
+# $Id: gb_ms16-136_ms_sql_remote.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft SQL Server Multiple Vulnerabilities (3199641)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809096");
-  script_version("$Revision: 4565 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-7249", "CVE-2016-7250", "CVE-2016-7251", "CVE-2016-7252",
 		"CVE-2016-7253", "CVE-2016-7254");
   script_bugtraq_id(94037, 94060, 94043, 94050, 94061, 94056);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 10:32:23 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 15:30:37 +0530 (Mon, 14 Nov 2016)");
   script_name("Microsoft SQL Server Multiple Vulnerabilities (3199641)");
 
@@ -75,7 +75,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-136");
 
-  script_summary("Check for the vulnerable version of Microsoft SQL Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

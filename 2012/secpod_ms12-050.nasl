@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-050.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-050.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)
 #
@@ -72,20 +72,19 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902847";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(53842, 54312, 54313, 54314, 54315, 54316);
   script_cve_id("CVE-2012-1858", "CVE-2012-1859", "CVE-2012-1860", "CVE-2012-1861",
                 "CVE-2012-1862", "CVE-2012-1863");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-11 11:11:11 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49875");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027232");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-050");
 
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

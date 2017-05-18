@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2448_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2448_1.nasl 5940 2017-04-12 09:02:05Z teissa $
 # Description: Auto-generated from advisory DSA 2448-1 (inspircd)
 #
 # Authors:
@@ -50,13 +50,12 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2012-1836");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5940 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:56:02 -0400 (Mon, 30 Apr 2012)");
  script_name("Debian Security Advisory DSA 2448-1 (inspircd)");
 
 
- script_summary("Debian Security Advisory DSA 2448-1 (inspircd)");
 
  script_category(ACT_GATHER_INFO);
 

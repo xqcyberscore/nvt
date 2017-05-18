@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sniff_css.nasl 3717 2016-07-15 19:04:33Z cfi $
+# $Id: sniff_css.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Snif Cross Site Scripting
 #
@@ -34,14 +34,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11949");
-  script_version("$Revision: 3717 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-15 21:04:33 +0200 (Fri, 15 Jul 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9179);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Snif Cross Site Scripting");
-  script_summary("Checks for the Snif Cross Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Web application abuses");

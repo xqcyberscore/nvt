@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netart_media_iboutique_sql_injection_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_netart_media_iboutique_sql_injection_vuln.nasl 5792 2017-03-30 13:18:14Z cfi $
 #
 # NetArt Media iBoutique 'key' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802442");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5792 $");
   script_cve_id("CVE-2012-4039");
   script_bugtraq_id(54616);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:18:14 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-07-23 12:13:54 +0530 (Mon, 23 Jul 2012)");
   script_name("NetArt Media iBoutique 'key' Parameter SQL Injection Vulnerability");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_NetArt_Media_iBoutique_SQLi_Vuln.txt");
   script_xref(name : "URL" , value : "http://antusanadi.wordpress.com/2012/07/19/netart-media-iboutique-sql-injection-vulnerability/");
 
-  script_summary("Check NetArt Media iBoutique SQL injection attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -67,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -77,23 +75,18 @@ dir = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP port
 ibPort = get_http_port(default:80);
 
-## Check for PHP support
 if(!can_host_php(port:ibPort)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/iboutique", "/", cgi_dirs(port:ibPort)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request to confirm application
-  sndReq = http_get(item:string(dir, "/index.php"), port:ibPort);
-  rcvRes = http_keepalive_send_recv(port:ibPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:ibPort);
 
   ## Confirm application is NetArt Media iBoutique
   if(">Why iBoutique?</" >< rcvRes)

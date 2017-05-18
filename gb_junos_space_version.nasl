@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_version.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_junos_space_version.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # JunOS Space Detection
 #
@@ -30,15 +30,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105407");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2662 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-10-16 19:26:14 +0200 (Fri, 16 Oct 2015)");
  script_name("JunOS Space Detection");
 
  script_tag(name: "summary" , value: "The script performs ssh based detection of JunOS Space");
  script_tag(name:"qod_type", value:"package");
 
- script_summary("Checks for the presence of JunOS Space");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

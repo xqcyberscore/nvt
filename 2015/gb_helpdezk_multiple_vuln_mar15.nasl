@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_helpdezk_multiple_vuln_mar15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_helpdezk_multiple_vuln_mar15.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # HelpDezk Multiple Vulnerabilities - Mar15
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805296");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-03 15:53:33 +0530 (Tue, 03 Mar 2015)");
   script_name("HelpDezk Multiple Vulnerabilities - Mar15");
 
@@ -68,12 +68,12 @@ if(description)
   script_xref(name: "URL" , value : "http://seclists.org/bugtraq/2015/Feb/170");
   script_xref(name: "URL" , value : "http://packetstormsecurity.com/files/130573");
 
-  script_summary("Check if HelpDezk is vulnerable to file upload vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -91,18 +91,7 @@ postData = "";
 http_port = "";
 createdFile = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
@@ -110,7 +99,7 @@ if(!can_host_php(port:http_port)){
 host = http_host_name( port:http_port );
 
 ## Iterate over possible paths
-foreach dir (make_list_unique("/", "/helpdezk", "/helpdezk-community",  cgi_dirs()))
+foreach dir (make_list_unique("/", "/helpdezk", "/helpdezk-community",  cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";

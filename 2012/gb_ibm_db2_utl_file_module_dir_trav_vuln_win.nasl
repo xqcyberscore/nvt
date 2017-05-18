@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_utl_file_module_dir_trav_vuln_win.nasl 5079 2017-01-24 11:00:33Z cfi $
+# $Id: gb_ibm_db2_utl_file_module_dir_trav_vuln_win.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # IBM DB2 UTL_FILE Module Directory Traversal Vulnerability (Windows)
 #
@@ -42,18 +42,17 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5079 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-3324");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:00:33 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-27 15:12:59 +0530 (Thu, 27 Sep 2012)");
   script_name("IBM DB2 UTL_FILE Module Directory Traversal Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/77924");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC85513");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21611040");
 
-  script_summary("Check for the version of IBM DB2 on Windiows ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");

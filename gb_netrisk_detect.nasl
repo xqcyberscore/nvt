@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netrisk_detect.nasl 2654 2016-02-12 13:11:04Z cfi $
+# $Id: gb_netrisk_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # NetRisk Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800939");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2654 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 14:11:04 +0100 (Fri, 12 Feb 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NetRisk Version Detection");
-  script_summary("Sets the KB for the version of NetRisk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

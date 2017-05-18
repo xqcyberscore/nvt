@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa1.nasl 4373 2016-10-27 14:49:55Z mime $
+# $Id: gb_cisco_esa_cisco-sa-20161026-esawsa1.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Cisco Email Security Appliance Malformed MIME Header Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1480");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 4373 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("Cisco Email Security Appliance Malformed MIME Header Vulnerability");
 
@@ -61,9 +61,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-27 16:49:55 +0200 (Thu, 27 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-27 14:06:03 +0200 (Thu, 27 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

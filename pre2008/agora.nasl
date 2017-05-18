@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: agora.nasl 3487 2016-06-13 07:59:27Z teissa $
+# $Id: agora.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Agora CGI Cross Site Scripting
 #
 # Authors:
@@ -35,8 +35,8 @@ tag_solution = "Upgrade to Agora 4.0e or newer.";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10836");
- script_version("$Revision: 3487 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 09:59:27 +0200 (Mon, 13 Jun 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3702);
  script_tag(name:"cvss_base", value:"7.5");
@@ -48,7 +48,6 @@ if(description)
  
  summary = "Tests for Agora CGI Cross Site Scripting";
  
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashcard_xss_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_flashcard_xss_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # FlashCard 'cPlayer.php' Cross-Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801211");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_cve_id("CVE-2010-1872");
   script_bugtraq_id(39648);
@@ -41,7 +41,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -66,11 +66,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
 if (!can_host_php(port:port)) exit(0);
@@ -80,9 +78,7 @@ foreach dir (make_list_unique("/", "/flashcard", "/FlashCard", cgi_dirs(port:por
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"),  port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
   ## Confirm the application
   if("<TITLE>FlashCard " >< res)

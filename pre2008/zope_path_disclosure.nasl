@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: zope_path_disclosure.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: zope_path_disclosure.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Zope Installation Path Disclosure
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "Upgrade to Zope 2.5.1b1 / 2.6.0b1 or later.";
 if(description)
 {
  script_id(11234);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5806);
  script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ if(description)
  
 
  summary = "Checks for Zope installation directory";
- script_summary(summary);
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  

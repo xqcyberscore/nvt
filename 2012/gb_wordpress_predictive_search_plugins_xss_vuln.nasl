@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # WordPress WP e-Commerce And WooCommerce Predictive Search Plugin 'rs' XSS Vulnerability
 #
@@ -48,9 +48,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5956 $");
   script_bugtraq_id(56702, 56703);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-10 13:35:37 +0530 (Mon, 10 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/51384");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/51385");
 
-  script_summary("Check if WP e-Commerce/WooCommerce Predictive Search Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

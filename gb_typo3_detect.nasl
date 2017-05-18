@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_detect.nasl 3527 2016-06-15 19:01:31Z cfi $
+# $Id: gb_typo3_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # TYPO3 Detection
 #
@@ -30,13 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803979");
-  script_version("$Revision: 3527 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 21:01:31 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-16 18:17:29 +0530 (Mon, 16 Dec 2013)");
   script_name("TYPO3 Detection");
-  script_summary("Set installation directory and version (also with authentication) of TYPO3 in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -63,20 +62,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("gvr_apps_auth_func.inc");
-
-## Function to Register Product and Build report
-function build_report( app, ver, cpe, insloc, port, concl, conclUrl ) {
-
-  register_product( cpe:cpe, location:insloc, port:port );
-
-  log_message( data:build_detection_report( app:app,
-                                            version:ver,
-                                            install:insloc,
-                                            cpe:cpe,
-                                            concluded:concl,
-                                            concludedUrl:conclUrl ),
-                                            port:port );
-}
 
 port = get_http_port( default:80 );
 
@@ -160,7 +145,7 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
       cpe = 'cpe:/a:typo3:typo3';
 
     ## Register Product and Build Report
-    build_report( app:"TYPO3", ver:typoVer, cpe:cpe, insloc:install, port:port, concl:concl, conclUrl:conclUrl );
+    build_report( app:"TYPO3", ver:typoVer, cpe:cpe, insloc:install, port:port, concluded:concl, conclUrl:conclUrl );
   }
 
   ##Try to get version after logging in if no detailed version could be identified

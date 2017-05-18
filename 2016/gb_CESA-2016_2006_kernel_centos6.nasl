@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882574");
-  script_version("$Revision: 4250 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-12 09:24:11 +0200 (Wed, 12 Oct 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 06:55:55 +0200 (Thu, 06 Oct 2016)");
   script_cve_id("CVE-2016-4470", "CVE-2016-5829");
   script_tag(name:"cvss_base", value:"7.2");
@@ -102,7 +102,6 @@ most frequently on nearly full file systems where files and ...
 
   script_xref(name: "CESA", value: "2016:2006");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-October/022117.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

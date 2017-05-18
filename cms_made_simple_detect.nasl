@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cms_made_simple_detect.nasl 5068 2017-01-24 04:26:44Z ckuerste $
+# $Id: cms_made_simple_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
 #
 # CMS Made Simple Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100497");
-  script_version("$Revision: 5068 $");
+  script_version("$Revision: 5720 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 05:26:44 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("CMS Made Simple Detection");
@@ -65,14 +65,12 @@ if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-foreach dir (make_list("/cms", "/cmsmadesimple", cgi_dirs(port: http_port)))
-{
-  install = dir;
-  if (dir == "/")
-    dir = "";
+foreach dir (make_list_unique("/cms", "/cmsmadesimple", cgi_dirs(port: http_port))){
 
-  req = http_get(item: dir + "/index.php", port: http_port);
-  buf = http_keepalive_send_recv(port:http_port, data:req, bodyonly:FALSE);
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:http_port );
 
   if(egrep(pattern: 'meta name="Generator" content="CMS Made Simple', string: buf, icase: TRUE))
   {

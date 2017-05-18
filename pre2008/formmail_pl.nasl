@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: formmail_pl.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: formmail_pl.nasl 5864 2017-04-05 07:47:30Z cfi $
 # Description: formmail.pl
 #
 # Authors:
@@ -31,59 +31,43 @@ tag_solution = "remove it from /cgi-bin.";
 if(description)
 {
  script_id(10076);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5864 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:47:30 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2079);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-1999-0172");
- 
- name = "formmail.pl";
- script_name(name);
-
-
-
-
-
- summary = "Checks for the presence of /cgi-bin/formmail.pl";
-   
- script_summary(summary);
-
+ script_name("formmail.pl");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
-
-
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 1999 Mathieu Perrin");
-
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("FormMail/installed");
  
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
+
+ script_tag(name:"deprecated", value:TRUE); 
+
  exit(0);
 }	  
 
 # deprecated
-exit (0);
-
+exit(66);
   
-#
-# The script code starts here
-#
 include("http_func.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if( get_kb_item("Services/www/" + port + "/embedded") ) exit(0);
 
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (cgi_dirs())
-{
+  if( dir == "/" ) dir = "";
+
   a = string("POST ", dir, "/formmail.pl HTTP/1.0\r\n", "Host: ", get_host_name(), "\r\n");
   aa = string("POST ", dir, "/formmail HTTP/1.0\r\n", "Host: ", get_host_name(), "\r\n");
 

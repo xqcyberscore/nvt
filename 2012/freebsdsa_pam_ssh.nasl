@@ -63,17 +63,16 @@ as announced in the referenced advisory FreeBSD-SA-11:09.pam_ssh.asc";
 if(description)
 {
  script_id(70763);
- script_version("$Revision: 2950 $");
+ script_version("$Revision: 5888 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("FreeBSD Security Advisory (FreeBSD-SA-11:09.pam_ssh.asc)");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-12 07:37:01 -0500 (Sun, 12 Feb 2012)");
 
 
  script_tag(name:"qod_type", value:"package");
 
- script_summary("FreeBSD Security Advisory (FreeBSD-SA-11:09.pam_ssh.asc)");
 
  script_category(ACT_GATHER_INFO);
 

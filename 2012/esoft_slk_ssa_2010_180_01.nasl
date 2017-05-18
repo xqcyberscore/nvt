@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2010_180_01.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2010_180_01.nasl 5963 2017-04-18 09:02:14Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -37,15 +37,14 @@ if(description)
 {
  script_id(68165);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_cve_id("CVE-2010-1205", "CVE-2010-2249");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5963 $");
  script_name("Slackware Advisory SSA:2010-180-01 libpng ");
 
 
- script_summary("Slackware Advisory SSA:2010-180-01 libpng ");
 
  script_category(ACT_GATHER_INFO);
 

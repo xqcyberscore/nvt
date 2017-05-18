@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-035.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-035.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (982381)
 #
@@ -27,29 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let remote attackers to bypass security
-  restrictions, gain knowledge of sensitive information or compromise a
-  vulnerable system.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Internet Explorer version 5.x/6.x/7.x/8.x";
-tag_insight = "Multiple flaws are due to:
-  - An error in the way the browser handles content using specific strings when
-    sanitizing HTML via the 'toStaticHTML' API.
-  - An uninitialized memory error when processing certain HTML data, which could
-    be exploited by attackers to execute arbitrary code via a malicious web page.
-  - Caching data and incorrectly allowing the cached content to be rendered as 
-    HTML, which could allow attackers to bypass domain restrictions.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS10-035.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-035.";
-
 if(description)
 {
   script_id(902191);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-09 17:19:57 +0200 (Wed, 09 Jun 2010)");
   script_cve_id("CVE-2010-0255", "CVE-2010-1257", "CVE-2010-1259", "CVE-2010-1260",
                 "CVE-2010-1261", "CVE-2010-1262");
@@ -68,11 +50,23 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
   script_require_ports(139, 445);
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let remote attackers to bypass security
+  restrictions, gain knowledge of sensitive information or compromise a
+  vulnerable system.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Internet Explorer version 5.x/6.x/7.x/8.x");
+  script_tag(name : "insight" , value : "Multiple flaws are due to:
+  - An error in the way the browser handles content using specific strings when
+    sanitizing HTML via the 'toStaticHTML' API.
+  - An uninitialized memory error when processing certain HTML data, which could
+    be exploited by attackers to execute arbitrary code via a malicious web page.
+  - Caching data and incorrectly allowing the cached content to be rendered as 
+    HTML, which could allow attackers to bypass domain restrictions.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/Bulletin/MS10-035.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-035.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -93,20 +87,7 @@ if(!ieVer){
   exit(0);
 }
 
-# This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
 
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 ## MS10-035 Hotfix (982381)
 if(hotfix_missing(name:"982381") == 0){
@@ -114,11 +95,10 @@ if(hotfix_missing(name:"982381") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"Iepeers.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"Iepeers.dll");
   if(dllVer)
   {
     if(hotfix_check_sp(win2k:5) > 0)
@@ -184,56 +164,10 @@ if(sysPath)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\Iepeers.dll");
-  if(dllVer)
-  {
-    # Windows Vista and Windows Server 2008
-    if(hotfix_check_sp(winVista:3, win2008:3) > 0)
-    {
-      SP = get_kb_item("SMB/WinVista/ServicePack");
-
-      if(!SP) {
-        SP = get_kb_item("SMB/Win2008/ServicePack");
-      }
-
-      if("Service Pack 1" >< SP)
-      {
-        # Grep for Iepeers.dll version
-        if(version_in_range(version: dllVer, test_version:"7.0.6001.16000", test_version2:"7.0.6001.18469")||
-           version_in_range(version: dllVer, test_version:"7.0.6001.22000", test_version2:"7.0.6001.22684")||
-           version_in_range(version: dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18927")||
-           version_in_range(version: dllVer, test_version:"8.0.6001.23000", test_version2:"8.0.6001.23397")){
-           security_message(0);
-        }
-        exit(0);
-      }
-
-      if("Service Pack 2" >< SP)
-      {
-        # Grep for Iepeers.dll version
-        if(version_in_range(version: dllVer, test_version:"7.0.6002.18000", test_version2:"7.0.6002.18254")||
-           version_in_range(version: dllVer, test_version:"7.0.6002.22000", test_version2:"7.0.6002.22397")||
-           version_in_range(version: dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.18927")||
-           version_in_range(version: dllVer, test_version:"8.0.6001.23000", test_version2:"8.0.6001.23397")){
-           security_message(0);
-        }
-        exit(0);
-      }
-      security_message(0);
-    }
-  }
-}
-
-## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
-if(sysPath)
-{
-  dllVer = get_file_version(sysPath, file_name:"System32\Ieframe.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"Ieframe.dll");
   if(!dllVer){
     exit(0);
   }

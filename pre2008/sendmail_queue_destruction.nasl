@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_queue_destruction.nasl 2601 2016-02-06 23:53:44Z cfi $
+# $Id: sendmail_queue_destruction.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Sendmail queue manipulation & destruction
 #
 # Authors:
@@ -33,15 +33,14 @@ CPE = 'cpe:/a:sendmail:sendmail';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11087");
- script_version("$Revision: 2601 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-07 00:53:44 +0100 (Sun, 07 Feb 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3378);
  script_cve_id("CVE-2001-0714");
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
  script_name("Sendmail queue manipulation & destruction");
- script_summary("Checks the version number for 'queue destruction'");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
  script_family("SMTP problems");

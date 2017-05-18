@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_w_cms_51359.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_w_cms_51359.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # w-CMS HTML Injection and Local File Include Vulnerabilities
 #
@@ -36,23 +36,18 @@ also possible.
 
 w-CMS 2.0.1 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103384);
  script_bugtraq_id(51359);
- script_version ("$Revision: 3058 $");
+ script_version ("$Revision: 5700 $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-
  script_name("w-CMS HTML Injection and Local File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51359");
  script_xref(name : "URL" , value : "http://w-cms.info/");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-11 11:29:25 +0100 (Wed, 11 Jan 2012)");
- script_summary("Determine if installed w-CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -60,31 +55,28 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/cms","/w-cms","/w_cms",cgi_dirs());
+foreach dir( make_list_unique( "/cms", "/w-cms", "/w_cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/?p=<script>alert(/openvas-xss-test/)</script>"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/?p=<script>alert(/openvas-xss-test/)</script>";
 
-  if(http_vuln_check(port:port,url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE,extra_check:"Powered by.*w-CMS")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"Powered by.*w-CMS" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

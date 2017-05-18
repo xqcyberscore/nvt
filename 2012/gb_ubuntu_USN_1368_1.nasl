@@ -63,8 +63,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-February/001593.html");
   script_id(840900);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 19:00:08 +0530 (Tue, 21 Feb 2012)");
   script_cve_id("CVE-2011-3607", "CVE-2011-4317", "CVE-2012-0021", "CVE-2012-0031", "CVE-2012-0053");
   script_tag(name:"cvss_base", value:"4.6");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name: "USN", value: "1368-1");
   script_name("Ubuntu Update for apache2 USN-1368-1");
 
-  script_summary("Check for the Version of apache2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

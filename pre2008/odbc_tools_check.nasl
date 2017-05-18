@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: odbc_tools_check.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: odbc_tools_check.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: ODBC tools check
 #
 # Authors:
@@ -25,13 +25,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11872");
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("ODBC tools check");
-  script_summary("Checks for the presence of ODBC tools");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 David Kyger");
   script_family("Web application abuses");

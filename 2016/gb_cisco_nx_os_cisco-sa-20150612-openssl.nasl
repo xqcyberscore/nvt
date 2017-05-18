@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20150612-openssl.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_cisco-sa-20150612-openssl.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Multiple Vulnerabilities in OpenSSL (June 2015) Affecting Cisco Products
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-1791","CVE-2015-1788","CVE-2015-1789","CVE-2015-1790","CVE-2015-1792","CVE-2014-8176");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("Cisco NX-OS: Multiple Vulnerabilities in OpenSSL (June 2015) Affecting Cisco Products");
 
@@ -60,9 +60,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-12 15:26:53 +0200 (Thu, 12 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

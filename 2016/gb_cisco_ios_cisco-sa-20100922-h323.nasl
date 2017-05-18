@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20100922-h323.nasl 3222 2016-05-03 17:49:32Z mime $
+# $Id: gb_cisco_ios_cisco-sa-20100922-h323.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco IOS Software H.323 Denial of Service Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2010-2828");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3222 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Cisco IOS Software H.323 Denial of Service Vulnerabilities");
 
@@ -72,9 +72,8 @@ http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_sep10.html
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-03 19:49:32 +0200 (Tue, 03 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-03 17:32:21 +0200 (Tue, 03 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

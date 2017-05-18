@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esxi_init.nasl 3920 2016-08-31 14:28:46Z mime $
+# $Id: gb_vmware_esxi_init.nasl 5823 2017-03-31 13:57:56Z mime $
 #
 # VMware ESXi scan initialization.
 #
@@ -33,8 +33,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103447");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3920 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-31 16:28:46 +0200 (Wed, 31 Aug 2016) $");
+ script_version("$Revision: 5823 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:57:56 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-03-14 14:54:53 +0100 (Wed, 14 Mar 2012)");
  script_name("VMware ESXi scan initialization");
  script_summary("Authenticate against ESXi and store information in kb");
@@ -70,9 +70,9 @@ pass = get_kb_item("esxi/password_filled/0");
 if( ! pass ) 
   pass = script_get_preference("ESXi login password:");
 
-if(isnull(user) || isnull(pass)) {
+if( ! user || ! pass ) {
   exit(0);
-}  
+}
 
 esxi_version = get_kb_item("VMware/ESX/version");
 
@@ -82,7 +82,7 @@ if(!esxi_version) {
 }
 
 if(esxi_version !~ "^4\." && esxi_version !~ "^5\." && esxi_version !~ "^6\.") {
-  log_message(data:string("Unsupported ESXi version. Currently ESXi 4.0, 4.1 and 5.0, 5.1, 5.5 and 6.0 are supported. We found ESXi version ", esxi_version, "\n"));
+  log_message(data:string("Unsupported ESXi version. Currently ESXi 4.0, 4.1 and 5.0, 5.1, 5.5, 6.0 and 6.5 are supported. We found ESXi version ", esxi_version, "\n"));
   register_host_detail( name:"Auth-ESXi-Failure", value:"Protocol ESXi, Port " + port + ", User " + user + " : Unsupported ESXi version." );
   exit(0);
 }

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871569");
-  script_version("$Revision: 2841 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 13:35:57 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:14:29 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2015-0293", "CVE-2015-3197", "CVE-2016-0703", "CVE-2016-0704", "CVE-2016-0800");
   script_tag(name:"cvss_base", value:"5.0");
@@ -94,7 +94,6 @@ if(description)
   script_xref(name: "RHSA", value: "2016:0372-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-March/msg00028.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssl098e");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

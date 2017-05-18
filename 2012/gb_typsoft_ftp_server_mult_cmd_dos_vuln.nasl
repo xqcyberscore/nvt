@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typsoft_ftp_server_mult_cmd_dos_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_typsoft_ftp_server_mult_cmd_dos_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # TYPSoft FTP Server Multiple Commands Remote Denial of Service Vulnerabilities
 #
@@ -46,18 +46,17 @@ denial of service vulnerabilities.";
 if(description)
 {
   script_id(802605);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_bugtraq_id(51891);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:12:12 +0530 (Wed, 08 Feb 2012)");
   script_name("TYPSoft FTP Server Multiple Commands Remote Denial of Service Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51891");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73016");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18469");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109508/typsoftcwnslt-dos.txt");
-  script_summary("Determine if TYPSoft FTP is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

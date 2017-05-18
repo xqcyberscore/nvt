@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pragyan_cms_sql_inj_vuln.nasl 3573 2016-06-21 09:29:39Z benallard $
+# $Id: gb_pragyan_cms_sql_inj_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # Pragyan CMS SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805159");
-  script_version("$Revision: 3573 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2015-1471");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 11:29:39 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-04-03 11:17:18 +0530 (Fri, 03 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Pragyan CMS SQL Injection Vulnerability");
@@ -66,15 +66,14 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Feb/18");
 # 2016-06-21: 404
 #  script_xref(name : "URL" , value : "http://sroesemann.blogspot.de/2015/01/sroeadv-2015-11.html");
-  script_summary("Check if Pragyan CMS is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -84,29 +83,17 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port) {
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/pragyan", "/cms", "/pragyancms", cgi_dirs()))
+foreach dir (make_list_unique("/", "/pragyan", "/cms", "/pragyancms", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct GET Request
+  ## Construct GET Request (the + is expected in this URL)
   sndReq = http_get(item:string(dir, "/home/+login"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 

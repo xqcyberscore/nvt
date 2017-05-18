@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ez_publish_detect.nasl 2644 2016-02-12 06:47:32Z antu123 $
+# $Id: sw_ez_publish_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # eZ Publish Detection
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111024");
-  script_version("$Revision: 2644 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 07:47:32 +0100 (Fri, 12 Feb 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-07-25 12:00:00 +0200 (Sat, 25 Jul 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_name("eZ Publish Detection");
 
-  script_summary("Checks for the presence of eZ Publish Enterprise CMS");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Product detection");

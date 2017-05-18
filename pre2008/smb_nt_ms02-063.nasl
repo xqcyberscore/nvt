@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-063.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_ms02-063.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Unchecked Buffer in PPTP Implementation Could Enable DOS Attacks (Q329834)
 #
 # Authors:
@@ -50,8 +50,8 @@ http://www.microsoft.com/technet/security/bulletin/ms02-063.mspx";
 if(description)
 {
  script_id(11178);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5807, 6067);
  script_tag(name:"cvss_base", value:"7.5");
@@ -65,7 +65,6 @@ if(description)
 
  summary = "Checks for MS Hotfix Q329834, Unchecked Buffer in PPTP DOS";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

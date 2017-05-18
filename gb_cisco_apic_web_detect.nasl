@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_web_detect.nasl 2626 2016-02-10 16:02:51Z mime $
+# $Id: gb_cisco_apic_web_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Cisco Application Policy Infrastructure Controller Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105534");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2626 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-10 17:02:51 +0100 (Wed, 10 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-02-10 12:03:48 +0100 (Wed, 10 Feb 2016)");
  script_name("Cisco Application Policy Infrastructure Controller Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Cisco Application Policy Infrastructure Controller");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

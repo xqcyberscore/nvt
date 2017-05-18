@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-094.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-094.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Media Decompression Remote Code Execution Vulnerability (2447961)
 #
@@ -23,30 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/MS10-094.mspx";
-
-tag_impact = "Successful exploitation will allow remote attackers to load crafted DLL
-  file and execute any code it contained.
-  Impact Level: System";
-tag_affected = "Windows Media Encoder 9 with
-  Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2003 Service Pack 2 and prior.
-  Microsoft Windows Vista Service Pack 1/2 and prior.
-  Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
-tag_insight = "The flaw is present when the Windows Media Encoder incorrectly restricts
-  the path used for loading external libraries. An attacker could convince
-  a user to open a legitimate '.prx' file that is located in the same network
-  directory as a specially crafted dynamic link library (DLL) file.";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-094.";
-
 if(description)
 {
   script_id(900267);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-15 14:53:45 +0100 (Wed, 15 Dec 2010)");
   script_bugtraq_id(42855);
   script_cve_id("CVE-2010-3965");
@@ -63,11 +44,23 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to load crafted DLL
+  file and execute any code it contained.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Windows Media Encoder 9 with
+  Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows 2003 Service Pack 2 and prior.
+  Microsoft Windows Vista Service Pack 1/2 and prior.
+  Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
+  script_tag(name : "insight" , value : "The flaw is present when the Windows Media Encoder incorrectly restricts
+  the path used for loading external libraries. An attacker could convince
+  a user to open a legitimate '.prx' file that is located in the same network
+  directory as a specially crafted dynamic link library (DLL) file.");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-094.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/MS10-094.mspx");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -79,21 +72,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-
-## This function will return the version of the given file
-function get_file_version(dllPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:dllPath + "\" + file_name);
-
-  dllVer = GetVer(file:file, share:share);
-  if(!dllVer){
-    return(FALSE);
-  }
-
-  return(dllVer);
-}
 
 ## OS with Hotfix Check
 if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3) <= 0){
@@ -114,7 +92,7 @@ if(wme9Installed)
   wmeitem = "Path";
   wmePath = registry_get_sz(key:wmekey, item:wmeitem);
 
-  dllVer = get_file_version(dllPath:wmePath, file_name:"wmenc.exe");
+  dllVer = fetch_file_version(sysPath:wmePath, file_name:"wmenc.exe");
 
   if(dllVer)
   {

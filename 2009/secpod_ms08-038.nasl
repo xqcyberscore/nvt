@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-038.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms08-038.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Autorun Arbitrary Code Execution Vulnerability (08-038)
 #
@@ -27,29 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary codes in the
-  context of the affected Windows system and can gain sensitive information or
-  can make the system resources completely unavailable.
-  Impact Level: System/Network";
-tag_affected = "Microsoft Windows 2K SP4 / XP SP2 / 2003 SP2 and prior.
-  Microsoft Windows Vista Service Pack 1 and prior
-  Microsoft Windows Server 2008 Service Pack 1 and prior";
-tag_insight = "MS Windows OSes are not able to enforce the 'Autorun' and 'NoDriveTypeAutoRun'
-  registry values. Allows physically proximate attackers to execute malicious
-  code by inserting CD-ROM media, inserting DVD media, connecting a USB device,
-  connecting a Firewire device, by mapping a network drive, by clicking on an
-  icon under My Computer\Devices with Removable Storage and AutoPlay dialog
-  related to the Autorun.inf file.";
-tag_solution = "Apply the security patch (KB950582).
-  http://www.microsoft.com/downloads/results.aspx?pocId=7&freetext=KB950582&DisplayLang=en";
-tag_summary = "This host is running Windows Operating System and is prone to
-  Autorun Arbitrary Code Execution Vulnerability.";
-
 if(description)
 {
   script_id(900445);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-02 05:02:24 +0100 (Mon, 02 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -65,11 +47,23 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary codes in the
+  context of the affected Windows system and can gain sensitive information or
+  can make the system resources completely unavailable.
+  Impact Level: System/Network");
+  script_tag(name : "affected" , value : "Microsoft Windows 2K SP4 / XP SP2 / 2003 SP2 and prior.
+  Microsoft Windows Vista Service Pack 1 and prior
+  Microsoft Windows Server 2008 Service Pack 1 and prior");
+  script_tag(name : "insight" , value : "MS Windows OSes are not able to enforce the 'Autorun' and 'NoDriveTypeAutoRun'
+  registry values. Allows physically proximate attackers to execute malicious
+  code by inserting CD-ROM media, inserting DVD media, connecting a USB device,
+  connecting a Firewire device, by mapping a network drive, by clicking on an
+  icon under My Computer\Devices with Removable Storage and AutoPlay dialog
+  related to the Autorun.inf file.");
+  script_tag(name : "solution" , value : "Apply the security patch (KB950582).
+  http://www.microsoft.com/downloads/results.aspx?pocId=7&freetext=KB950582&DisplayLang=en");
+  script_tag(name : "summary" , value : "This host is running Windows Operating System and is prone to
+  Autorun Arbitrary Code Execution Vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/29458");
@@ -85,21 +79,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
-
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3, win2008:2, winVista:2) <= 0){
   exit(0);
 }
@@ -109,11 +88,10 @@ if(hotfix_missing(name:"950582") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  shellVer = get_file_version(sysPath, file_name:"shell32.dll");
+  shellVer = fetch_file_version(sysPath, file_name:"shell32.dll");
   if(shellVer)
   {
     # Windows 2000
@@ -175,11 +153,10 @@ if(sysPath)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\shell32.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"shell32.dll");
   if(dllVer)
   {
     # Windows Vista

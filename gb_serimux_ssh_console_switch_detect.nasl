@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serimux_ssh_console_switch_detect.nasl 4229 2016-10-07 08:15:43Z antu123 $
+# $Id: gb_serimux_ssh_console_switch_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # Serimux SSH Console Switch Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807894");
-  script_version("$Revision: 4229 $");
+  script_version("$Revision: 6000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-05 16:18:47 +0530 (Wed, 05 Oct 2016)");
   script_name("Serimux SSH Console Switch Detection");
 
@@ -41,11 +41,10 @@ if(description)
   Serimux SSH Console Switch.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Serimux SSH Console Switch.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -56,19 +55,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-serPort = 0;
-rcvRes = "";
+serPort = get_http_port( default:80 );
+if( ! can_host_asp( port:serPort ) ) exit( 0 );
 
-##Get HTTP Port
-if(!serPort = get_http_port(default:80)){
-  exit(0);
-}
+foreach dir(make_list_unique("/", "/cgi_dir", cgi_dirs(port:serPort))) {
 
-##Iterate over possible paths
-foreach dir(make_list_unique("/", "/cgi_dir", cgi_dirs(port:serPort)))
-{
   install = dir;
   if(dir == "/") dir = "";
 

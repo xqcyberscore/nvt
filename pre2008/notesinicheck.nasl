@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: notesinicheck.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: notesinicheck.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: notes.ini checker
 #
 # Authors:
@@ -30,8 +30,8 @@ bug on the remote Lotus Domino Web server";
 if(description)
 {
         script_id(12248);
-        script_version("$Revision: 5390 $");
-        script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+        script_version("$Revision: 6040 $");
+        script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
         script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
         script_tag(name:"cvss_base", value:"5.0");
         script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,7 +40,6 @@ if(description)
 
 
         summary = "notes.ini checker";
-        script_summary(summary);
         script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
         script_copyright("This script is Copyright (C) 2004 Net-Square Solutions Pvt Ltd.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxplorer_zoho_plugin_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_ajaxplorer_zoho_plugin_dir_trav_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # AjaXplorer zoho plugin Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803970");
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 5791 $");
   script_cve_id("CVE-2013-6226", "CVE-2013-6227");
   script_bugtraq_id(63647, 63662);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-11-26 12:27:43 +0530 (Tue, 26 Nov 2013)");
   script_name("AjaXplorer zoho plugin Directory Traversal Vulnerability");
 
@@ -64,18 +64,15 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/88667");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/88668");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-11/0043.html");
-  script_summary("Check if AjaXplorer is vulnerable to file reading vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
-##Code starts from here##
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -87,13 +84,15 @@ ajax_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 ajax_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:ajax_port)){
   exit(0);
 }
+
+## traversal_files() function Returns Dictionary (i.e key value pair)
+## Get Content to be checked and file to be check
+files = traversal_files();
 
 ## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/ajaxplorer", "/xplorer", cgi_dirs(port:ajax_port)))
@@ -101,17 +100,11 @@ foreach dir (make_list_unique("/", "/ajaxplorer", "/xplorer", cgi_dirs(port:ajax
 
   if(dir == "/") dir = "";
 
-  ## Request for the search.cgi
-  sndReq = http_get(item:string(dir, "/index.php"), port:ajax_port);
-  rcvRes = http_keepalive_send_recv(port:ajax_port, data:sndReq, bodyonly:FALSE);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:ajax_port);
 
   ## confirm the Application
   if(rcvRes && 'Set-Cookie: AjaXplorer' >< rcvRes)
   {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
-    ## Get Content to be checked and file to be check
-    files = traversal_files();
-
     foreach file (keys(files))
     {
       ## Construct directory traversal attack

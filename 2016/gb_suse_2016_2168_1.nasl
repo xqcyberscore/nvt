@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851387");
-  script_version("$Revision: 3912 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 09:41:46 +0200 (Wed, 31 Aug 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-30 05:44:06 +0200 (Tue, 30 Aug 2016)");
   script_cve_id("CVE-2016-6606", "CVE-2016-6607", "CVE-2016-6608", "CVE-2016-6609", 
                 "CVE-2016-6610", "CVE-2016-6611", "CVE-2016-6612", "CVE-2016-6613", 
@@ -101,7 +101,6 @@ detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:2168_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-08/msg00047.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of phpMyAdmin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

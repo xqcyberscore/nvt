@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-054.nasl 3558 2016-06-20 10:20:34Z antu123 $
+# $Id: gb_ms_office_ms16-054.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities (3155544)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807820");
-  script_version("$Revision: 3558 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-0126", "CVE-2016-0140", "CVE-2016-0183", "CVE-2016-0198");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 12:20:34 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 11:36:04 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities (3155544)");
 
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115121");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3155544");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-054");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

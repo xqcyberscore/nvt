@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cyrus_imap_server_detect.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_cyrus_imap_server_detect.nasl 5918 2017-04-10 14:18:09Z cfi $
 #
 # Cyrus IMAP Server Version Detection
 #
@@ -24,62 +24,97 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the running version of Cyrus IMAP Server
-  and saves the result in KB.";
-
 if(description)
 {
-  script_id(902220);
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902220");
+  script_version("$Revision: 5918 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 16:18:09 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Cyrus IMAP Server Version Detection");
-
-  script_summary("Set the version of Cyrus IMAP Server in KB");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2010 SecPod");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/imap", 143);
-  script_tag(name : "summary" , value : tag_summary);
+  script_family("Product detection");
+  script_dependencies("find_service2.nasl");
+  script_require_ports("Services/imap", 143, "Services/pop3", 110);
+
+  tag_summary = "This script finds the running version of Cyrus IMAP Server
+  and saves the result in KB.";
+
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-port = get_kb_item("Services/imap");
-if(!port){
-  port = 143;
-}
+include("pop3_func.inc");
+include("imap_func.inc");
+include("host_details.inc");
+include("cpe.inc");
 
-banner = get_kb_item(string("imap/banner/", port));
-if(!banner)
-{
-  if(get_port_state(port))
-  {
-    soc = open_sock_tcp(port);
-    if(soc)
-    {
-      banner = recv_line(socket:soc, length:255);
-      close(soc);
-    }
+ports = get_kb_list( "Services/imap" );
+if( ! ports ) ports = make_list( 143 );
+
+foreach port( ports ) {
+
+  if( ! get_port_state( port ) ) continue;
+
+  banner = get_imap_banner( port:port );
+  if( ! banner ) continue;
+
+  if( "Cyrus IMAP" >< banner && "server ready" >< banner ) {
+
+    version = "unknown";
+
+    # e.g. * OK [CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE STARTTLS AUTH=PLAIN AUTH=LOGIN AUTH=CRAM-MD5 AUTH=DIGEST-MD5 SASL-IR] example.com Cyrus IMAP v2.4.17 server ready
+    vers = eregmatch(pattern:"IMAP4? v([0-9.]+)", string:banner);
+    if( ! isnull( vers[1] ) ) version = vers[1];
+
+    replace_kb_item( name:"Cyrus/installed", value:TRUE );
+
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cmu:cyrus_imap_server:");
+    if( isnull( cpe ) )
+      cpe = "cpe:/a:cmu:cyrus_imap_server";
+
+    register_product( cpe:cpe, location:port + "/tcp", port:port, service:"imap" );
+
+    log_message( data:build_detection_report( app:"Cyrus IMAP Server",
+                                              version:version,
+                                              install:port + "/tcp",
+                                              cpe:cpe,
+                                              concluded:banner ),
+                                              port:port );
   }
 }
 
-if(!banner){
-  exit(0);
+port = get_pop3_port( default:110 );
+banner = get_pop3_banner( port:port );
+if( ! banner ) exit( 0 );
+
+if( "Cyrus POP3" >< banner && "server ready" >< banner ) {
+
+  version = "unknown";
+
+  # e.g. +OK example.com Cyrus POP3 v2.4.17 server ready <123@example.com>
+  vers = eregmatch(pattern:"POP3 v([0-9.]+)", string:banner);
+  if( ! isnull( vers[1] ) ) version = vers[1];
+
+  replace_kb_item( name:"Cyrus/installed", value:TRUE );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cmu:cyrus_imap_server:");
+  if( isnull( cpe ) )
+    cpe = "cpe:/a:cmu:cyrus_imap_server";
+
+  register_product( cpe:cpe, location:port + "/tcp", port:port, service:"pop3" );
+
+  log_message( data:build_detection_report( app:"Cyrus IMAP Server",
+                                            version:version,
+                                            install:port + "/tcp",
+                                            cpe:cpe,
+                                            concluded:banner ),
+                                            port:port );
 }
 
-if(("Cyrus IMAP" >< banner && "server ready" >< banner))
-{
-
-  imapVer = eregmatch(pattern:"IMAP v([0-9.]+)", string:banner);
-  if(!isnull(imapVer[1]))
-  {
-    set_kb_item(name:"Cyrus/IMAP4/Server/Ver", value:imapVer[1]);
-    set_kb_item(name:"Cyrus/IMAP4/Server/port", value:port);
-    log_message(data:"Cyrus IMAP4 server " + imapVer[1] +
-                  " was detected on the host", port:port);
-  }
-}
+exit( 0 );

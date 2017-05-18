@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_encryption_server_sym16_002.nasl 2822 2016-03-10 05:48:42Z antu123 $
+# $Id: gb_symantec_encryption_server_sym16_002.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Symantec Encryption Management Server Multiple Security Issues
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-8151","CVE-2015-8150","CVE-2015-8149","CVE-2015-8148");
  script_tag(name:"cvss_base", value:"6.3");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
- script_version ("$Revision: 2822 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Symantec Encryption Management Server Server Multiple Security Issues");
 
@@ -58,9 +58,8 @@ By successfully manipulating an LDAP request, it was possible for a user able to
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-10 06:48:42 +0100 (Thu, 10 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-22 13:40:03 +0100 (Mon, 22 Feb 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

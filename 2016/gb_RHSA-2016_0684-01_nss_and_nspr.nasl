@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871602");
-  script_version("$Revision: 3640 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-04 07:07:03 +0200 (Mon, 04 Jul 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-26 05:18:31 +0200 (Tue, 26 Apr 2016)");
   script_cve_id("CVE-2016-1978", "CVE-2016-1979");
   script_tag(name:"cvss_base", value:"7.5");
@@ -73,7 +73,6 @@ CVE-2016-1978  and Tim Taubert as the original reporter of CVE-2016-1979.
   script_xref(name: "RHSA", value: "2016:0684-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-April/msg00036.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nss and nspr");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

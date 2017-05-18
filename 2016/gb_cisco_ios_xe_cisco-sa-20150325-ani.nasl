@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150325-ani.nasl 3259 2016-05-10 13:30:24Z mime $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150325-ani.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Multiple Vulnerabilities in Cisco IOS Software and IOS XE Software Autonomic Networking Infrastructure
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-0635","CVE-2015-0636","CVE-2015-0637");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 3259 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Multiple Vulnerabilities in Cisco IOS Software and IOS XE Software Autonomic Networking Infrastructure");
 
@@ -68,9 +68,8 @@ http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar15.html");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-10 15:30:24 +0200 (Tue, 10 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-10 10:44:03 +0200 (Tue, 10 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

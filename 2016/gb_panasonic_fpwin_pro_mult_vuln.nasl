@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panasonic_fpwin_pro_mult_vuln.nasl 3984 2016-09-07 06:27:42Z antu123 $
+# $Id: gb_panasonic_fpwin_pro_mult_vuln.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Panasonic FPWIN Pro Multiple Vulnerabilities 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:panasonic:fpwin_pro";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809029");
-  script_version("$Revision: 3984 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-4496", "CVE-2016-4497", "CVE-2016-4498", "CVE-2016-4499");
   script_bugtraq_id(90520, 90523, 90521, 90522);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 08:27:42 +0200 (Wed, 07 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-01 13:08:12 +0530 (Thu, 01 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Panasonic FPWIN Pro Multiple Vulnerabilities");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://zerodayinitiative.com/advisories/ZDI-16-330");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-16-131-01");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Panasonic FPWIN Pro");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_panasonic_fpwin_pro_detect_win.nasl");

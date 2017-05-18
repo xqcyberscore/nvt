@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2007_085_02.nasl 5665 2017-03-21 12:51:19Z cfi $
+# $Id: esoft_slk_ssa_2007_085_02.nasl 6032 2017-04-26 09:02:50Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -32,21 +32,20 @@ tag_summary = "The remote host is missing an update as announced
 via advisory SSA:2007-085-02.";
 
 tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:2007-085-02";
-                                                                                
+
 if(description)
 {
  script_id(58164);
- script_cve_id("CVE-2007-002");
+ script_cve_id("CVE-2007-0002");
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
- script_tag(name:"cvss_base", value:"5.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 5665 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_tag(name:"cvss_base", value:"9.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 6032 $");
  name = "Slackware Advisory SSA:2007-085-02 libwpd ";
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2007-085-02 libwpd");
 
  script_category(ACT_GATHER_INFO);
 

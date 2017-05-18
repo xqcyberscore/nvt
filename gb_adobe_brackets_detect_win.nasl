@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_brackets_detect_win.nasl 3698 2016-07-13 09:46:57Z antu123 $
+# $Id: gb_adobe_brackets_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Adobe Brackets Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808166");
-  script_version("$Revision: 3698 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 11:46:57 +0200 (Wed, 13 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-08 11:10:27 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Brackets Version Detection (Windows)");
@@ -41,7 +41,6 @@ if(description)
   The script logs in via smb, searches for Adobe Brackets in the registry
   and gets the version from registry.");
 
-  script_summary("Detection of installed version of Adobe Brackets on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

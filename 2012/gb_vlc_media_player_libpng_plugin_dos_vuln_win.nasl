@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_win.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Windows)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(802488);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-5470");
   script_bugtraq_id(55850);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-02 14:31:32 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21889/");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2012/10/24/3");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");

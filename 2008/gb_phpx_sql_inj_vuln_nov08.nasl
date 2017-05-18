@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpx_sql_inj_vuln_nov08.nasl 4619 2016-11-25 06:34:23Z cfi $
+# $Id: gb_phpx_sql_inj_vuln_nov08.nasl 5795 2017-03-30 14:04:00Z cfi $
 #
 # PHPX news_id SQL Injection Vulnerability - Nov08
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800134");
-  script_version("$Revision: 4619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:34:23 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 5795 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:04:00 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-14 10:43:16 +0100 (Fri, 14 Nov 2008)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -41,9 +41,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name : "affected" , value : "PHPX Version 3.5.16 and prior on all running platform.");
   script_tag(name : "insight" , value : "The flaw is due to sql commands with uppercase characters passed
@@ -67,24 +67,18 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 
-dirs = make_list_unique("/phpx", cgi_dirs(port:port));
-foreach dir (dirs)
-{
+foreach dir( make_list_unique( "/phpx", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  sndReq = http_get(item:string(dir + "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port,data:sndReq,bodyonly:1);
-  if(rcvRes == NULL){
-    exit(0);
-  }
+  rcvRes = http_get_cache(item:string(dir + "/index.php"), port:port);
+  if(rcvRes == NULL) continue;
 
   if(rcvRes =~ "Powered by.+PHPX")
   {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winlog_lite_bof_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_winlog_lite_bof_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Sielco Sistemi Winlog PRO Buffer overflow Vulnerability
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is installed with Sielco Sistemi Winlog PRO and is pron
 if(description)
 {
   script_id(802552);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2011-4037");
   script_bugtraq_id(50932);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-03 18:03:49 +0530 (Tue, 03 Jan 2012)");
   script_name("Sielco Sistemi Winlog PRO Buffer overflow Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47078");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-298-01.pdf");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of Sielco Sistemi Winlog PRO");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

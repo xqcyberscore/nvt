@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809212");
-  script_version("$Revision: 3982 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:01:29 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-07 10:08:56 +0530 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-4751a94476");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KUORSGVTYHQQKX2AYN7ASGUMPKFCV3HJ");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libksba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

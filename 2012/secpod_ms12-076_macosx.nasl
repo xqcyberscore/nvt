@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-076_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_ms12-076_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities - 2720184 (Mac OS X)
 #
@@ -46,19 +46,18 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902931);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-1885", "CVE-2012-1886", "CVE-2012-1887", "CVE-2012-2543");
   script_bugtraq_id(56425, 56426, 56430, 56431);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-14 08:55:19 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities - 2720184 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51242/");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-076");
 
   script_copyright("Copyright (C) 2012 SecPod");
-  script_summary("Check the version of Microsoft Office for Mac");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");

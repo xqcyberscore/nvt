@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-040.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: gb_ms08-040.nasl 5863 2017-04-05 07:38:11Z antu123 $
 #
 # MS SQL Server Elevation of Privilege Vulnerabilities (941203)
 #
@@ -48,8 +48,8 @@ tag_summary = "This host has Microsoft SQL Server, which is prone to Privilege
 if(description)
 {
   script_id(800105);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 5863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:26:50 +0200 (Tue, 14 Oct 2008)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -109,67 +109,8 @@ function Get_FileVersion(ver, path)
   }
 
   sqlFile += file;
-  share = ereg_replace(pattern:"([A-Za-z]):.*", replace:"\1$", string:sqlFile);
-  file =  ereg_replace(pattern:"[A-Za-z]:(.*)", replace:"\1", string:sqlFile);
+  v = get_version(dllPath:sqlFile, string:"prod", offs:offset);
 
-  soc = open_sock_tcp(port);
-  if(!soc){
-    exit(0);
-  }
-
-  r = smb_session_request(soc:soc, remote:name);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  prot = smb_neg_prot(soc:soc);
-  if(!prot)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_session_setup(soc:soc, login:login, password:pass,
-                        domain:domain, prot:prot);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  uid = session_extract_uid(reply:r);
-  if(!uid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  tid = tconx_extract_tid(reply:r);
-  if(!tid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-  if(!fid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod",
-                 offset:offset);
-  close(soc);
   return v;
 }
 

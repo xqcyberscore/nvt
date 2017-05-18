@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_mult_bof_vuln_dec12_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_openoffice_mult_bof_vuln_dec12_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # OpenOffice Multiple Buffer Overflow Vulnerabilities - Dec12 (Windows)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is installed with OpenOffice and is prone to
 if(description)
 {
   script_id(803083);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-1149", "CVE-2012-2665");
   script_bugtraq_id(53570, 54769);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-24 15:26:59 +0530 (Mon, 24 Dec 2012)");
   script_name("OpenOffice Multiple Buffer Overflow Vulnerabilities - Dec12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46992/");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2012-2665.html");
   script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2012-1149.html");
 
-  script_summary("Check for the version of OpenOffice on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

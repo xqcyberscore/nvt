@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_10_2012.nasl 5670 2017-03-21 15:13:03Z cfi $
+# $Id: gb_zabbix_rce_10_2012.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution
 #
@@ -41,7 +41,7 @@ CPE = "cpe:/a:zabbix:zabbix";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5670 $");
+ script_version ("$Revision: 5912 $");
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
 
@@ -50,9 +50,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.zabbix.com/");
  script_xref(name : "URL" , value : "http://www.ush.it/team/ush/hack-zabbix_162/adv.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-02 10:27:14 +0200 (Tue, 02 Oct 2012)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

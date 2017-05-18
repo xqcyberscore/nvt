@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_resource_access_bypass_vuln.nasl 3363 2016-05-20 12:32:04Z antu123 $
+# $Id: gb_mcafee_agent_resource_access_bypass_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # McAfee Agent (MA) Resource Access Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807973");
-  script_version("$Revision: 3363 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-3984");
   script_tag(name:"cvss_base", value:"3.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 14:32:04 +0200 (Fri, 20 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 13:07:15 +0530 (Tue, 10 May 2016)");
   script_name("McAfee Agent (MA) Resource Access Bypass Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10151");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of McAfee Agent on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_mcafee_agent_detect.nasl");

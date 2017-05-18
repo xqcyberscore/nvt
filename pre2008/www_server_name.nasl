@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: www_server_name.nasl 3467 2016-06-09 20:02:36Z jan $
+# $Id: www_server_name.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Hidden WWW server name
 #
 # Authors:
@@ -33,8 +33,8 @@ if(description)
 {
  script_id(11239);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3467 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-09 22:02:36 +0200 (Thu, 09 Jun 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "Hidden WWW server name";
@@ -42,7 +42,6 @@ if(description)
  
 
  summary = "Tries to discover the web server name";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis"); 

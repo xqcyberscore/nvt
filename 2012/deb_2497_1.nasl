@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2497_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2497_1.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from advisory DSA 2497-1 (quagga)
 #
 # Authors:
@@ -49,13 +49,12 @@ if(description)
  script_tag(name:"cvss_base", value:"2.9");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
  script_cve_id("CVE-2012-1820");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6022 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:06:44 -0400 (Fri, 10 Aug 2012)");
  script_name("Debian Security Advisory DSA 2497-1 (quagga)");
 
 
- script_summary("Debian Security Advisory DSA 2497-1 (quagga)");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_fckeditor_file_upload.nasl 4797 2016-12-17 14:04:59Z cfi $
+# $Id: sw_fckeditor_file_upload.nasl 6007 2017-04-21 14:22:35Z cfi $
 #
 # 'fckeditor' Connectors Arbitrary File Upload Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111022");
-  script_version("$Revision: 4797 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-17 15:04:59 +0100 (Sat, 17 Dec 2016) $");
+  script_version("$Revision: 6007 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 16:22:35 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-07-17 13:24:40 +0200 (Fri, 17 Jul 2015)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
@@ -62,19 +62,30 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
+asp_files = make_list( "/editor/filemanager/connectors/asp/connector.asp?Command=GetFolders&Type=File&CurrentFolder=%2F",
+                       "/editor/filemanager/connectors/aspx/connector.aspx?Command=GetFolders&Type=File&CurrentFolder=%2F" );
+
+php_files = make_list( "/editor/filemanager/connectors/php/connector.php?Command=GetFolders&Type=File&CurrentFolder=%2F" );
+
+files = make_list( "/editor/filemanager/connectors/cfm/connector.cfm?Command=GetFolders&Type=File&CurrentFolder=%2F",
+                   "/editor/filemanager/connectors/lasso/connector.lasso?Command=GetFolders&Type=File&CurrentFolder=%2F",
+                   "/editor/filemanager/connectors/perl/connector.cgi?Command=GetFolders&Type=File&CurrentFolder=%2F",
+                   "/editor/filemanager/connectors/py/connector.py?Command=GetFolders&Type=File&CurrentFolder=%2F" );
+
 port = get_http_port( default:80 );
+
+# Choose file to request based on what the remote host is supporting
+if( can_host_asp( port:port ) && can_host_php( port:port ) ) {
+  files = make_list( files, asp_files, php_files );
+} else if( can_host_asp( port:port ) ) {
+  files = make_list( files, asp_files );
+} else if( can_host_php( port:port ) ) {
+  files = make_list( files, php_files );
+}
 
 dirs = make_list_unique( "/", "/fckeditor", "/FCKeditor", "/inc/fckeditor", "/includes/fckeditor", "/include/fckeditor",
                          "/modules/fckeditor", "/plugins/fckeditor", "/admin/fckeditor", "/HTMLEditor", "/admin/htmleditor",
                          "/sites/all/modules/fckeditor/fckeditor", cgi_dirs( port:port ) );
-
-files = make_list( "/editor/filemanager/connectors/asp/connector.asp?Command=GetFolders&Type=File&CurrentFolder=%2F",
-                   "/editor/filemanager/connectors/aspx/connector.aspx?Command=GetFolders&Type=File&CurrentFolder=%2F",
-                   "/editor/filemanager/connectors/cfm/connector.cfm?Command=GetFolders&Type=File&CurrentFolder=%2F",
-                   "/editor/filemanager/connectors/lasso/connector.lasso?Command=GetFolders&Type=File&CurrentFolder=%2F",
-                   "/editor/filemanager/connectors/perl/connector.cgi?Command=GetFolders&Type=File&CurrentFolder=%2F",
-                   "/editor/filemanager/connectors/php/connector.php?Command=GetFolders&Type=File&CurrentFolder=%2F",
-                   "/editor/filemanager/connectors/py/connector.py?Command=GetFolders&Type=File&CurrentFolder=%2F" );
 
 foreach dir( dirs ) {
 

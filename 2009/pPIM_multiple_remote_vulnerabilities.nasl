@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pPIM_multiple_remote_vulnerabilities.nasl 5016 2017-01-17 09:06:21Z teissa $
+# $Id: pPIM_multiple_remote_vulnerabilities.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # pPIM Multiple Remote Vulnerabilities
 #
@@ -48,17 +48,16 @@ tag_solution = "Uninstall pPIM.";
 if (description)
 {
  script_id(100005);
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-02 16:07:07 +0100 (Mon, 02 Mar 2009)");
  script_tag(name:"cvss_base", value:"8.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:C");
  script_cve_id("CVE-2008-4425");
  script_bugtraq_id(30627);
-
  script_name("pPIM Multiple Remote Vulnerabilities");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -73,59 +72,51 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/ppim", cgi_dirs());
+foreach dir( make_list_unique( "/ppim", cgi_dirs( port:port ) ) ) {
 
-foreach d (dir)
-{
-
- url = string(d, "/Readme.txt");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )exit(0);
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/Readme.txt");
+  buf = http_get_cache(item:url, port:port);
  
- if( "pPIM" >< buf ) {
-  ver = eregmatch(string: buf, pattern: "Version ([0-9\.0-9]+)");
-  if ( !isnull(ver[1]) ) {
-   version = int( str_replace(find: '.', string: ver[1], replace: "") );
-   if( version > 0 && version <= 10 ) {
-        security_message(port:port);
-	exit(0);
-   }
-  } 
- } 
- else {
-       # perhaps user has removed Readme.txt
-   	url = string(d, "/upload.php");
-	req = http_get(item:url, port:port);
-	buf = http_keepalive_send_recv(port:port, data:req, bodyonly:0);
-	if( buf == NULL )exit(0);
+  if( "pPIM" >< buf ) {
+    ver = eregmatch(string: buf, pattern: "Version ([0-9\.0-9]+)");
+    if ( !isnull(ver[1]) ) {
+      version = int( str_replace(find: '.', string: ver[1], replace: "") );
+      if( version > 0 && version <= 10 ) {
+        security_message( port:port );
+	exit( 0 );
+      }
+    }
+  } else {
+    # perhaps user has removed Readme.txt
+    url = string(dir, "/upload.php");
+    buf = http_get_cache(item:url, port:port);
+    if( buf == NULL )continue;
 
-        if( egrep(pattern: "Location:.login\.php\?login=1", string: buf) ) {
+    if( egrep(pattern: "Location:.login\.php\?login=1", string: buf) ) {
 
-	 url = string(d, "/upload.php?login=1");
-	 req = http_get(item:url, port:port);
-	 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:0);
-	 if( buf == NULL )exit(0);
+      url = string(d, "/upload.php?login=1");
+      req = http_get(item:url, port:port);
+      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:0);
+      if( buf == NULL )continue;
 
-	 if ( egrep(pattern: 'NAME="userfile"', string: buf ) &&
-	      egrep(pattern: 'name="submitupload"', string: buf) )
-	  {
-	  	        security_message(port:port);
-			exit(0);
-	  }  
-        } 
-	#user installed ppim without password protection#
-	else if ( egrep(pattern: 'NAME="userfile"', string: buf ) &&
-                  egrep(pattern: 'name="submitupload"', string: buf) )
- 	{
-		security_message(port:port);
-		exit(0);
-	}  
-      }  
+      if( egrep(pattern: 'NAME="userfile"', string: buf ) &&
+          egrep(pattern: 'name="submitupload"', string: buf) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
+    #user installed ppim without password protection#
+    else if( egrep(pattern: 'NAME="userfile"', string: buf ) &&
+             egrep(pattern: 'name="submitupload"', string: buf) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }  
+  }  
 }
 
-exit(0);
+exit( 99 );

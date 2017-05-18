@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3501.nasl 3200 2016-04-29 13:26:41Z antu123 $
+# $Id: deb_3501.nasl 5850 2017-04-04 09:01:03Z teissa $
 # Auto-generated from advisory DSA 3501-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703501);
-    script_version("$Revision: 3200 $");
+    script_version("$Revision: 5850 $");
     script_cve_id("CVE-2016-2381");
     script_name("Debian Security Advisory DSA 3501-1 (perl - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-29 15:26:41 +0200 (Fri, 29 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:36 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3501.html");
 
-    script_summary("Debian Security Advisory DSA 3501-1 (perl - security update)");
 
     script_category(ACT_GATHER_INFO);
 

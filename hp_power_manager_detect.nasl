@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_power_manager_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: hp_power_manager_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # HP Power Manager Detection
 #
@@ -31,13 +31,12 @@ if (description)
 {
  script_id(100456);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-01-20 19:30:24 +0100 (Wed, 20 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("HP Power Manager Detection");
- script_summary("Checks for the presence of HP Power Manager");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

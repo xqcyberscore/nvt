@@ -51,8 +51,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-September/001831.html");
   script_id(841150);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 6018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-22 11:59:18 +0530 (Sat, 22 Sep 2012)");
   script_cve_id("CVE-2012-2745", "CVE-2012-3412", "CVE-2012-3430", "CVE-2012-3511");
   script_tag(name:"cvss_base", value:"7.8");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name: "USN", value: "1574-1");
   script_name("Ubuntu Update for linux-lts-backport-natty USN-1574-1");
 
-  script_summary("Check for the Version of linux-lts-backport-natty");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

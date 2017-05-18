@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160902-ios.nasl 3952 2016-09-05 03:42:00Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20160902-ios.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Cisco IOS Software Point-to-Point Tunneling Protocol Server Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6398");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3952 $");
+ script_version ("$Revision: 5732 $");
 
  script_name("Cisco IOS Software Point-to-Point Tunneling Protocol Server Information Disclosure Vulnerability");
 
@@ -61,9 +61,8 @@ addresses this vulnerability.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-05 05:42:00 +0200 (Mon, 05 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-05 09:36:53 +0700 (Mon, 05 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

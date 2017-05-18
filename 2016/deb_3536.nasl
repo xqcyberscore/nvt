@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3536.nasl 3683 2016-07-11 05:25:10Z antu123 $
+# $Id: deb_3536.nasl 5759 2017-03-29 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3536-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703536);
-    script_version("$Revision: 3683 $");
+    script_version("$Revision: 5759 $");
     script_cve_id("CVE-2015-0899");
     script_name("Debian Security Advisory DSA 3536-1 (libstruts1.2-java - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-07-11 07:25:10 +0200 (Mon, 11 Jul 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-31 00:00:00 +0200 (Thu, 31 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3536.html");
 
-    script_summary("Debian Security Advisory DSA 3536-1 (libstruts1.2-java - security update)");
 
     script_category(ACT_GATHER_INFO);
 

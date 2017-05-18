@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_68k_39845.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_68k_39845.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # 68designs 68kb Multiple Remote File Include Vulnerabilities
 #
@@ -31,12 +31,11 @@ supplied data.
 Exploiting these issues may allow an attacker to compromise the
 application and the computer; other attacks are also possible.";
 
-
-if (description)
+if(description)
 {
  script_id(100741);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-08-04 13:50:35 +0200 (Wed, 04 Aug 2010)");
  script_bugtraq_id(39845);
 
@@ -51,7 +50,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -60,27 +59,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+include("host_details.inc");
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/68k","/cms",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/68k", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
 
-    url = string(dir, "/themes/admin/default/modules/show.php?file=/",files[file]); 
+    url = string(dir, "/themes/admin/default/modules/show.php?file=/",files[file]);
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

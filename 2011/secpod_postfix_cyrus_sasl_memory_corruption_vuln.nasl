@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: secpod_postfix_cyrus_sasl_memory_corruption_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Postfix SMTP Server Cyrus SASL Support Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:postfix:postfix';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902517");
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-05-26 10:47:46 +0200 (Thu, 26 May 2011)");
   script_cve_id("CVE-2011-1720");
   script_bugtraq_id(47778);
@@ -43,8 +43,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/67359");
   script_xref(name:"URL", value:"http://www.postfix.org/CVE-2011-1720.html");
 
-  script_summary("Check if Postfix is vulnerable to Memory Corruption");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("SMTP problems");
   script_dependencies("sw_postfix_detect.nasl");

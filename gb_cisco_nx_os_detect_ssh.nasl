@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_detect_ssh.nasl 4891 2016-12-30 14:26:07Z cfi $
+# $Id: gb_cisco_nx_os_detect_ssh.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Cisco NX-OS Detection (SSH)
 #
@@ -30,14 +30,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103817");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4891 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-30 15:26:07 +0100 (Fri, 30 Dec 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-10-21 11:24:09 +0200 (Mon, 21 Oct 2013)");
  script_name("Cisco NX-OS Detection (SSH)");
 
  tag_summary = "This script performs SSH based detection of Cisco NX-OS.";
 
- script_summary("Checks for the presence of Cisco NX-OS");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

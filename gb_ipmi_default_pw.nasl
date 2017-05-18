@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_default_pw.nasl 3010 2016-04-08 07:35:39Z benallard $
+# $Id: gb_ipmi_default_pw.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # IPMI Default Password Vulnerability 
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105923");
-  script_version("$Revision: 3010 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:C/A:N");
-  script_tag(name : "last_modification", value : "$Date: 2016-04-08 09:35:39 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name : "last_modification", value : "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name : "creation_date", value : "2014-10-29 11:12:02 +0700 (Wed, 29 Oct 2014)"); 
   script_name("IPMI Default Password Vulnerability");
 
@@ -54,7 +54,6 @@ if possible. Filter traffic to UDP port 623.");
 
   script_xref(name : "URL", value : "http://packetstormsecurity.com/files/105730/Supermicro-IPMI-Default-Accounts.html");
 
-  script_summary("Check for default passwords in IPMI.");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

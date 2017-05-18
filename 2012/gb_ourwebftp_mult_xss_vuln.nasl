@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ourwebftp_mult_xss_vuln.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: gb_ourwebftp_mult_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # OurWebFTP Multiple Cross Site Scripting Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803117");
   script_bugtraq_id(56763);
-  script_version("$Revision: 3520 $");
+  script_version("$Revision: 5814 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-12-03 14:58:31 +0530 (Mon, 03 Dec 2012)");
   script_name("OurWebFTP Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51449/");
@@ -41,11 +41,10 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Dec/24");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118531/ourwebftp-xss.txt");
 
-  script_summary("Check if OurWebFTP is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -72,7 +71,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -82,28 +80,23 @@ res = "";
 dir = "";
 host = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-##Get Host name
 host = http_host_name(port:port);
 
 foreach dir (make_list_unique("/ourwebftp", "/", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application
-  if(http_vuln_check(port:port, url: dir + "/index.php",
-     pattern:">OurWebFTP", check_header:TRUE,
-     extra_check:'>Online FTP Login<'))
-  {
-    url = dir + "/index.php";
+  if( res =~ "HTTP/1.. 200" && ">OurWebFTP" >< res && ">Online FTP Login<" >< res ) {
 
     ## Construct the POST data
     postdata = "ftp_host=%3Cscript%3Ealert%28document.cookie%29%3C%2F" +

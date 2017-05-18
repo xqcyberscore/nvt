@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)
 #
@@ -48,12 +48,12 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(802579);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)");
 
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026613");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-02.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

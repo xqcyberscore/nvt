@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_load_balancer_detect.nasl 3756 2016-07-25 08:59:05Z ckuerste $
+# $Id: gb_barracuda_load_balancer_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Barracuda Load Balancer Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106151");
- script_version ("$Revision: 3756 $");
- script_tag(name: "last_modification", value: "$Date: 2016-07-25 10:59:05 +0200 (Mon, 25 Jul 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,7 +53,6 @@ Balancer and to extract its version");
 
  script_xref(name: "URL", value: "https://www.barracuda.com/products/loadbalancer");
 
- script_summary("Checks for the presence of Barracuda Load Balancer");
 
  exit(0);
 }

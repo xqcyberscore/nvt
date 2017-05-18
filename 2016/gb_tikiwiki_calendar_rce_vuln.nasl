@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_calendar_rce_vuln.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tikiwiki_calendar_rce_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Tiki Wiki CMS Groupware Calendar Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106105");
-  script_version("$Revision: 5144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-23 12:12:32 +0700 (Thu, 23 Jun 2016)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39965/");
 
   script_tag(name:"summary", value:"Tiki Wiki CMS Groupware is prone to a remote code execution vulnerability");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 

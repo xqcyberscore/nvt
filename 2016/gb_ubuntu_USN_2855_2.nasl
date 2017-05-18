@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842644");
-  script_version("$Revision: 2682 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 14:49:05 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-17 06:27:45 +0100 (Wed, 17 Feb 2016)");
   script_cve_id("CVE-2015-5252", "CVE-2015-3223", "CVE-2015-5296", "CVE-2015-5299",
                 "CVE-2015-5330", "CVE-2015-7540", "CVE-2015-8467");
@@ -79,7 +79,6 @@ if(description)
   script_xref(name: "USN", value: "2855-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-February/003303.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

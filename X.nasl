@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: X.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: X.nasl 5943 2017-04-12 14:44:26Z antu123 $
 # Description: X Server
 #
 # Authors:
@@ -51,8 +51,8 @@ connections)";
 if(description)
 {
   script_id(10407);
-  script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -62,7 +62,6 @@ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name(name);
 
  summary = "An X Window System Server is present";
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -87,16 +86,6 @@ include("misc_func.inc");
 ## Constant values
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.10407";
 SCRIPT_DESC = "X Server";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 function riptext(data, begin, length)
 {
@@ -169,21 +158,12 @@ for(port=6000; port<6010; port++)
             set_kb_item(name: "X11/"+port+"/version", value: ver);
 
             ## build cpe and store it as host_detail
-            register_cpe(tmpVers: ver, tmpExpr:"^([0-9.]+([a-z0-9]+)?)",tmpBase:"cpe:/a:x.org:x11:");
+            register_and_report_cpe(app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)");
 
             textresult=riptext(data:tcpresult, begin:8, length:ord(tcpresult[1]));
             set_kb_item(name: "X11/"+port+"/answer", value: textresult);
             set_kb_item(name: "X11/"+port+"/open", value: FALSE);
 
-	    report = string("This X server does *not* allow any client to connect to it\n",
-	    	"however it is recommended that you filter incoming connections\n",
-		"to this port as attacker may send garbage data and slow down\n",
-		"your X session or even kill the server.\n\n",
-		"Here is the server version : ", ver, "\n",
-		"Here is the message we received : ", textresult, "\n\n",
-		"Solution: filter incoming connections to ports 6000-6009");
-            security_message(port:port, data:report);
-	    register_service(port: port, proto: "X11");
           }
 
       if (result == 1) # Success
@@ -194,7 +174,7 @@ for(port=6000; port<6010; port++)
             set_kb_item(name: "X11/"+port+"/version", value: ver);
 
             ## build cpe and store it as host_detail
-            register_cpe(tmpVers: ver, tmpExpr:"^([0-9.]+([a-z0-9]+)?)",tmpBase:"cpe:/a:x.org:x11:");
+            register_and_report_cpe(app:"X Windows Server", ver:ver, base:"cpe:/a:x.org:x11:", expr:"^([0-9.]+([a-z0-9]+)?)");
 
             textresult=riptext(data:tcpresult, begin:40, length:ord(tcpresult[24]));
             set_kb_item(name: "X11/"+port+"/answer", value: textresult);
@@ -210,13 +190,6 @@ for(port=6000; port<6010; port++)
             set_kb_item(name: "X11/"+port+"/answer", value: textresult);
             set_kb_item(name: "X11/"+port+"/open", value: FALSE);
 
-	    report = string("This X server does *not* allow any client to connect to it\n",
-	    	"however it is recommended that you filter incoming connections\n",
-		"to this port as attacker may send garbage data and slow down\n",
-		"your X session or even kill the server.\n\n",
-		"Here is the message we received : ", textresult, "\n\n",
-		"Solution: filter incoming connections to ports 6000-6009");
-            security_message(port:port, data:report);
 	    register_service(port: port, proto: "X11");
           }
 

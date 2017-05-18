@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_ts_security_bypass_vuln.nasl 2706 2016-02-22 11:41:06Z antu123 $
+# $Id: gb_kaspersky_ts_security_bypass_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Kaspersky Total Security Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:kaspersky:total_security_2015";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806854");
-  script_version("$Revision: 2706 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2015-8579");
   script_bugtraq_id(78815);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-22 12:41:06 +0100 (Mon, 22 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-04 10:20:32 +0530 (Thu, 04 Feb 2016)");
   script_name("Kaspersky Total Security Security Bypass Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://blog.ensilo.com/the-av-vulnerability-that-bypasses-mitigations");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Kaspersky Total Security.");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_kaspersky_total_security_detect.nasl");

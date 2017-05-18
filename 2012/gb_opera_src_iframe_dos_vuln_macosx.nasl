@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_src_iframe_dos_vuln_macosx.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_opera_src_iframe_dos_vuln_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Opera Browser 'SRC' Denial of Service Vulnerability (Mac OS X)
 #
@@ -46,16 +46,15 @@ service Vulnerability.";
 if(description)
 {
   script_id(802757);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2011-2641");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-19 11:40:12 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser 'SRC' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17396/");
 
-  script_summary("Check for the version of Opera on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

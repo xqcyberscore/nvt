@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_navicopa_server_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_navicopa_server_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # NaviCOPA Server Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(801100);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-01-09 13:17:56 +0100 (Sat, 09 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NaviCOPA Server Version Detection");
@@ -48,7 +48,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
@@ -57,10 +56,7 @@ include("host_details.inc");
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801100";
 SCRIPT_DESC = "NaviCOPA Server Version Detection";
 
-httpPort = get_kb_item("Services/www");
-if(!httpPort){
-  httpPort = 80;
-}
+httpPort = get_http_port( default:80 );
 
 if(!get_port_state(httpPort)){
   exit(0);

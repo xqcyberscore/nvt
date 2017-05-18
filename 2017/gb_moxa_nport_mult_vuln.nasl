@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_nport_mult_vuln.nasl 5303 2017-02-16 02:34:36Z ckuerste $
+# $Id: gb_moxa_nport_mult_vuln.nasl 5674 2017-03-22 09:41:01Z ckuerste $
 #
 # Moxa NPort Devices Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106589");
-  script_version("$Revision: 5303 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-16 03:34:36 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5674 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-22 10:41:01 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -101,38 +101,14 @@ if (!version)
   exit(0);
 
 if (model == "5110") {
-  if (version_is_less(version: version, test_version: "2.6")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.6");
+  if (version_is_less(version: version, test_version: "2.7")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "2.7");
     security_message(port: 0, data: report);
   }
   exit(0);
 }
 
 if (model == "5130" || model == "5150") {
-  if (version_is_less(version: version, test_version: "3.6")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "3.6");
-    security_message(port: 0, data: report);
-  }
-  exit(0);
-}
-
-if (model =~ "^52[0-9]{2}$") {
-  if (version_is_less(version: version, test_version: "2.8")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.8");
-    security_message(port: 0, data: report);
-  }
-  exit(0);
-}
-
-if (model =~ "^54[0-9]{2}$") {
-  if (version_is_less(version: version, test_version: "3.11")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "3.11");
-    security_message(port: 0, data: report);
-  }
-  exit(0);
-}
-
-if (model =~ "^56[0-9]{2}") {
   if (version_is_less(version: version, test_version: "3.7")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "3.7");
     security_message(port: 0, data: report);
@@ -140,7 +116,39 @@ if (model =~ "^56[0-9]{2}") {
   exit(0);
 }
 
+if (model =~ "^52[0-9]{2}$") {
+  if (version_is_less(version: version, test_version: "2.9")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "2.9");
+    security_message(port: 0, data: report);
+  }
+  exit(0);
+}
+
+if (model =~ "^54[0-9]{2}$") {
+  if (version_is_less(version: version, test_version: "3.12")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "3.12");
+    security_message(port: 0, data: report);
+  }
+  exit(0);
+}
+
+if (model =~ "^56[0-9]{2}") {
+  if (version_is_less(version: version, test_version: "3.8")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "3.8");
+    security_message(port: 0, data: report);
+  }
+  exit(0);
+}
+
 if (model =~ "^51[0-9]{2}A$" || model =~ "^52[0-9]{2}A$" || model == "5600-8-DTL") {
+  if (version_is_less(version: version, test_version: "1.4")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "1.4");
+    security_message(port: 0, data: report);
+  }
+  exit(0);
+}
+
+if (model =~ "^5(1|2|4)50AI-M12") {
   if (version_is_less(version: version, test_version: "1.3")) {
     report = report_fixed_ver(installed_version: version, fixed_version: "1.3");
     security_message(port: 0, data: report);
@@ -148,25 +156,25 @@ if (model =~ "^51[0-9]{2}A$" || model =~ "^52[0-9]{2}A$" || model == "5600-8-DTL
   exit(0);
 }
 
-if (model =~ "^5(1|2|4)50AI-M12") {
-  if (version_is_less(version: version, test_version: "1.2")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "1.2");
+if (model == "5600-8-DT") {
+  if (version_is_less(version: version, test_version: "2.5")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "2.5");
     security_message(port: 0, data: report);
   }
   exit(0);
 }
 
-if (model == "5600-8-DT") {
-  if (version_is_less(version: version, test_version: "2.4")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "2.4");
+if (model == "5600-8-DTL") {
+  if (version_is_less(version: version, test_version: "1.4")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "1.4");
     security_message(port: 0, data: report);
   }
   exit(0);
 }
 
 if (model =~ "^6.50") {
-  if (version_is_less(version: version, test_version: "1.14")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "1.14");
+  if (version_is_less(version: version, test_version: "1.16")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "1.16");
     security_message(port: 0, data: report);
   }
   exit(0);

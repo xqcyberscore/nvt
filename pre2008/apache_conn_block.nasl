@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_conn_block.nasl 5076 2017-01-24 10:49:12Z cfi $
+# $Id: apache_conn_block.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Apache Connection Blocking Denial of Service
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to Apache 2.0.49 or 1.3.31.";
 if(description)
 {
  script_id(12280);
- script_version("$Revision: 5076 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:49:12 +0100 (Tue, 24 Jan 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9921);
  script_cve_id("CVE-2004-0174");
@@ -51,7 +51,6 @@ if(description)
 
  summary = "Checks for version of Apache";
 
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

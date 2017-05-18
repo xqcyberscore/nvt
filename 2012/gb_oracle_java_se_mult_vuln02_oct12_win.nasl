@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln02_oct12_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_oracle_java_se_mult_vuln02_oct12_win.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 oct12 (Windows)
 #
@@ -39,20 +39,19 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 if(description)
 {
   script_id(802479);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-5085", "CVE-2012-5084", "CVE-2012-5073", "CVE-2012-5077",
                 "CVE-2012-5079", "CVE-2012-5081", "CVE-2012-5083");
   script_bugtraq_id(56067, 56063, 56080, 56058, 56082, 56071,56025);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-19 12:43:54 +0530 (Fri, 19 Oct 2012)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 oct12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50949/");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50949");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpuoct2012-1515924.html");
 
-  script_summary("Check for the version of Sun Java SE JRE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

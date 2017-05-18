@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_detect.nasl 3743 2016-07-22 11:03:03Z cfi $
+# $Id: sw_vaadin_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Vaadin Framework Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105181");
-  script_version("$Revision: 3743 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-22 13:03:03 +0200 (Fri, 22 Jul 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Vaadin Framework Detection");
-  script_summary("Checks for the presence of Vaadin Framework");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Product detection");

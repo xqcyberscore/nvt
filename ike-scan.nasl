@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ike-scan.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: ike-scan.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: ike-scan (NASL wrapper)
 #
 # Authors:
@@ -50,15 +50,14 @@ if (description)
 {
 	script_id(80000);
 	script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6063 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
 	script_tag(name:"creation_date", value:"2008-08-31 23:34:05 +0200 (Sun, 31 Aug 2008)");
 	name = "ike-scan (NASL wrapper)";
 	script_name(name);
     script_tag(name:"cvss_base", value:"0.0");
  
 	summary = "Identifies IPSEC VPN endpoints";
-	script_summary(summary);
 	script_category(ACT_SCANNER);
   script_tag(name:"qod_type", value:"remote_banner");
 	family = "Port scanners";

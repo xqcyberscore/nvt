@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3480.nasl 3200 2016-04-29 13:26:41Z antu123 $
+# $Id: deb_3480.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3480-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703480);
-    script_version("$Revision: 3200 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2014-8121", "CVE-2015-1781", "CVE-2015-7547", "CVE-2015-8776",
                   "CVE-2015-8777", "CVE-2015-8778", "CVE-2015-8779");
     script_name("Debian Security Advisory DSA 3480-1 (eglibc - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-29 15:26:41 +0200 (Fri, 29 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-02-16 00:00:00 +0100 (Tue, 16 Feb 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3480.html");
 
-    script_summary("Debian Security Advisory DSA 3480-1 (eglibc - security update)");
 
     script_category(ACT_GATHER_INFO);
 

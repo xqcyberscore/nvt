@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:archiva";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808280");
-  script_version("$Revision: 3803 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-4469", "CVE-2016-5005");
   script_bugtraq_id(91707, 91703);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-05 13:06:55 +0200 (Fri, 05 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 19:48:44 +0530 (Tue, 02 Aug 2016)");
   script_name("Apache Archiva Cross Site Scripting And CSRF Vulnerabilities");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value :"https://packetstormsecurity.com/files/137869");
   script_xref(name : "URL" , value :"http://www.securityfocus.com/archive/1/archive/1/538877/100/0/threaded");
 
-  script_summary("Check for the vulnerable version of Apache Archiva.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

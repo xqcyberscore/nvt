@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3462.nasl 2761 2016-03-03 06:47:29Z antu123 $
+# $Id: deb_3462.nasl 5836 2017-04-03 09:37:08Z teissa $
 # Auto-generated from advisory DSA 3462-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703462);
-    script_version("$Revision: 2761 $");
+    script_version("$Revision: 5836 $");
     script_cve_id("CVE-2015-8747", "CVE-2015-8748");
     script_name("Debian Security Advisory DSA 3462-1 (radicale - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-03 07:47:29 +0100 (Thu, 03 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-01-30 00:00:00 +0100 (Sat, 30 Jan 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3462.html");
 
-    script_summary("Debian Security Advisory DSA 3462-1 (radicale - security update)");
 
     script_category(ACT_GATHER_INFO);
 

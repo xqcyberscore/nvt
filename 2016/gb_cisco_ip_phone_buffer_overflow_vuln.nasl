@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_buffer_overflow_vuln.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_ip_phone_buffer_overflow_vuln.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco IP Phone 8800 Series Web Application Buffer Overflow Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106111");
-  script_version("$Revision: 3859 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-06-27 14:59:12 +0700 (Mon, 27 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,7 +50,6 @@ if (description)
   script_mandatory_keys("cisco/ip_phone/model");
 
   script_tag(name: "summary", value: "Cisco IP Phone 8800 Series are prone to a buffer overflow vulnerability");
-  script_summary("Check the version");
   script_tag(name: "vuldetect", value: "Checks the version.");
 
   script_tag(name: "insight", value: "The vulnerability exists because the affected software fails to check

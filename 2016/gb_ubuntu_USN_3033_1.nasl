@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842832");
-  script_version("$Revision: 4176 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-29 09:41:00 +0200 (Thu, 29 Sep 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-15 05:27:24 +0200 (Fri, 15 Jul 2016)");
   script_cve_id("CVE-2015-8916", "CVE-2015-8917", "CVE-2015-8919", "CVE-2015-8920",
   		"CVE-2015-8921", "CVE-2015-8922", "CVE-2015-8923", "CVE-2015-8924",
@@ -69,7 +69,6 @@ possibly cause libarchive to crash, resulting in a denial of service.
   script_xref(name: "USN", value: "3033-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3033-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libarchive");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

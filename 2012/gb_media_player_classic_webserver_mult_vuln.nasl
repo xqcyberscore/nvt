@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Media Player Classic (MPC) Webserver Multiple Vulnerabilities
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802494");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5988 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-16 16:43:52 +0530 (Fri, 16 Nov 2012)");
   script_name("Media Player Classic (MPC) Webserver Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2012110111");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118155/mpc-dosxss.txt");
 
-  script_summary("Check if Media Player Classic (MPC) Webserver is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

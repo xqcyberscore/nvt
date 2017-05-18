@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yapig_pass_dir_access.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: yapig_pass_dir_access.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: YaPiG Password Protected Directory Access Flaw
 #
 # Authors:
@@ -40,27 +40,19 @@ tag_solution = "Unknown at this time.";
 if(description)
 {
  script_id(18628);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(14099);
  script_xref(name:"OSVDB", value:"11025");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- name = "YaPiG Password Protected Directory Access Flaw";
-
- script_name(name);
- 
- summary = "Checks for YaPiG version";
- 
- script_summary(summary);
- script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_name("YaPiG Password Protected Directory Access Flaw");
+ script_category(ACT_GATHER_INFO);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("http_version.nasl");
+ script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -70,31 +62,23 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
+foreach dir( make_list_unique( "/yapig", "/gallery", "/photos", "/photo", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/yapig", "/gallery", "/photos", "/photo", cgi_dirs());
+  if( dir == "/" ) dir = "";
+  res = http_get_cache(item:string(dir, "/"), port:port);
+  if (res == NULL) continue;
 
-foreach dir (dirs)
-{
-	res = http_get_cache(item:string(dir, "/"), port:port);
-	if (res == NULL) exit(0);
-
-	#Powered by <a href="http://yapig.sourceforge.net" title="Yet Another PHP Image Gallery">YaPig</a> V0.92b
- 	if(egrep(pattern:"Powered by .*YaPig.* V0\.([0-8][0-9]($|[^0-9])|9([0-3]|4[a-u]))", string:res))
- 	{
- 		security_message(port);
-		exit(0);
-	}
- 
+  #Powered by <a href="http://yapig.sourceforge.net" title="Yet Another PHP Image Gallery">YaPig</a> V0.92b
+  if(egrep(pattern:"Powered by .*YaPig.* V0\.([0-8][0-9]($|[^0-9])|9([0-3]|4[a-u]))", string:res)) {
+    security_message( port:port );
+    exit(0);
+  }
 }
+
+exit( 99 );

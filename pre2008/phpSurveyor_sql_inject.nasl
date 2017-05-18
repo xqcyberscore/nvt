@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpSurveyor_sql_inject.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: phpSurveyor_sql_inject.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: PHPSurveyor sid SQL Injection Flaw
 #
 # Authors:
@@ -42,30 +42,20 @@ tag_solution = "Upgrade to PHPSurveyor version 0.991 or later.";
 if(description)
 {
  script_id(20376);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_cve_id("CVE-2005-4586");
  script_bugtraq_id(16077);
  script_xref(name:"OSVDB", value:"22039");
-  
- name = "PHPSurveyor sid SQL Injection Flaw";
- script_name(name);
- 
- summary = "Checks for PHPSurveyor sid SQL injection flaw";
- 
- script_summary(summary);
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_active");
-  
+ script_name("PHPSurveyor sid SQL Injection Flaw");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_active");
  script_copyright("This script is Copyright (C) 2006 David Maciejak");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("http_version.nasl");
+ script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_require_ports("Services/www", 80);
  script_tag(name : "solution" , value : tag_solution);
@@ -75,29 +65,22 @@ if(description)
  exit(0);
 }
 
-#
-# the code
-#
+include("http_func.inc");
+include("http_keepalive.inc");
 
- include("global_settings.inc");
- include("http_func.inc");
- include("http_keepalive.inc");
+port = get_http_port(default:80);
+if (!can_host_php(port:port) ) exit(0);
 
- port = get_http_port(default:80);
- if(!get_port_state(port))exit(0);
- if (!can_host_php(port:port) ) exit(0);
+foreach dir( make_list_unique( "/phpsurveyor", "/survey", cgi_dirs( port:port ) ) ) {
 
- # Check a few directories.
- dirs = make_list("/phpsurveyor", "/survey", cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = string(dir,"/admin/admin.php?sid=0'");
 
- foreach dir (dirs)
- { 
-  req = http_get(item:string(dir,"/admin/admin.php?sid=0'"),port:port);
-  r = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-
-  if(egrep(pattern:"mysql_num_rows(): supplied argument is not a valid MySQL .+/admin/html.php", string:r))
-  {
-    security_message(port);
-    exit(0);
+  if(http_vuln_check(port:port, url:url,pattern:"mysql_num_rows(): supplied argument is not a valid MySQL .+/admin/html.php")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
- }
+}
+
+exit( 99 );

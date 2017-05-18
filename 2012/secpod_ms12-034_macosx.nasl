@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_ms12-034_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902678);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2011-3402", "CVE-2012-0159");
   script_bugtraq_id(50462, 53335);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49121");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-034");
 
   script_copyright("Copyright (C) 2012 SecPod");
-  script_summary("Check the version of Microsoft Silverlight for Mac");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_ms_silverlight_detect_macosx.nasl");

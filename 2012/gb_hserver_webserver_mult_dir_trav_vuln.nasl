@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hserver_webserver_mult_dir_trav_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_hserver_webserver_mult_dir_trav_vuln.nasl 5833 2017-04-03 08:45:01Z cfi $
 #
 # HServer Multiple Webserver Directory Traversal Vulnerabilities
 #
@@ -46,22 +46,24 @@ directory traversal vulnerabilities.";
 if(description)
 {
   script_id(802410);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5833 $");
   script_cve_id("CVE-2012-5100");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 10:45:01 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-06 13:10:29 +0530 (Fri, 06 Jan 2012)");
   script_name("HServer Webserver Multiple Directory Traversal Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521119");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108376/hserverwebserver-traversal.txt");
-  script_summary("Determine if HServer webserver is vulnerable to Directory Traversal Attack");
+  script_xref(name : "URL" , value : "https://github.com/lpicanco/hserver");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8081);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -71,24 +73,11 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
+# hServer is not sending any "Server:" banner
 port = get_http_port(default:8081);
-
-## Check Port State
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Send and Receive the response
-req = http_get(item: "/", port:port);
-res = http_send_recv(port:port, data:req);
 
 ## Construct attack request
 exploits  = make_list("/..%5c..%5c..%5cboot.ini",
@@ -104,3 +93,5 @@ foreach url (exploits)
      exit(0);
    }
 }
+
+exit(99);

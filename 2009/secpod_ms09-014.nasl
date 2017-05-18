@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-014.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-014.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (963027)
 #
@@ -27,31 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker execute arbitrary codes into
-  the context of the affected system and can cause denial of service in the
-  affected system.
-  Impact Level: System";
-tag_affected = "Microsoft Internet Explorer version 5.x/6.x/7.x";
-tag_insight = "Flaws are due to
-  - Blended threat issue which allows executables to be downloaded in user's
-    computer without prompting.
-  - Vulnerability in NT LAN Manager which allows the attacker to replay NTLM
-    credentials.
-  - Arbitrary code execution in Internet Explorer at run time of Internet
-    Explorer Browser.
-  - Internet Explorer Uninitialized Memory Variant which lets the attacker
-    cause remote code execution.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS09-014";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-014.";
-
 if(description)
 {
   script_id(900328);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-15 18:21:29 +0200 (Wed, 15 Apr 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -67,11 +47,25 @@ if(description)
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "MS/IE/Version");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the attacker execute arbitrary codes into
+  the context of the affected system and can cause denial of service in the
+  affected system.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Microsoft Internet Explorer version 5.x/6.x/7.x");
+  script_tag(name : "insight" , value : "Flaws are due to
+  - Blended threat issue which allows executables to be downloaded in user's
+    computer without prompting.
+  - Vulnerability in NT LAN Manager which allows the attacker to replay NTLM
+    credentials.
+  - Arbitrary code execution in Internet Explorer at run time of Internet
+    Explorer Browser.
+  - Internet Explorer Uninitialized Memory Variant which lets the attacker
+    cause remote code execution.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/MS09-014");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS09-014.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/963027");
@@ -84,21 +78,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:2, win2008:2) <= 0){
   exit(0);
@@ -115,11 +94,10 @@ if(hotfix_missing(name:"963027") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  vers = get_file_version(sysPath, file_name:"mshtml.dll");
+  vers = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(vers)
   {
     if(hotfix_check_sp(win2k:5) > 0)
@@ -188,11 +166,10 @@ if(sysPath)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\mshtml.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(dllVer)
   {
     # Windows Vista

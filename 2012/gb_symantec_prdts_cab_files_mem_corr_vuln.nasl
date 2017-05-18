@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Symantec Products CAB Files Memory Corruption Vulnerability
 #
@@ -47,10 +47,10 @@ tag_summary = "This host is installed with Symantec Product and is prone to
 if(description)
 {
   script_id(803054);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2012-4953");
   script_bugtraq_id(56399);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:16:15 +0530 (Thu, 22 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -58,7 +58,6 @@ if(description)
 
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of vulnerable Symantec Products");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

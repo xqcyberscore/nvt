@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_cookbook_n_exmp_mul_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_apache_struts_cookbook_n_exmp_mul_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Apache Struts CookBook/Examples Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(802423);
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(51900);
   script_cve_id("CVE-2012-1007");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-08 17:33:28 +0530 (Wed, 08 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts CookBook/Examples Multiple Cross-Site Scripting Vulnerabilities");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/blog/?p=450");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_Apache_Struts_Multiple_Parsistant_XSS_Vulns.txt");
 
-  script_summary("Check if Apache Struts is vulnerable to cross-site scripting vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -78,27 +77,24 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
 
 asport = 0;
 asreq = NULL;
 asres = NULL;
 asRes = NULL;
-## Get HTTP Port
 
-## Get HTTP Port
 if(!asport = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-if(!dir = get_app_location(cpe:CPE, port:asport))
-{
+if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
+
+host = http_host_name(port:asport);
 
 ## Make list index pages
 foreach indexpage (make_list("/", "/welcome.do"))
@@ -120,12 +116,12 @@ foreach indexpage (make_list("/", "/welcome.do"))
 
         ## Construct the POST request Struts Cookbook
         asReq = string("POST ", dir, "/processSimple.do HTTP/1.1\r\n",
-                     "Host: ", get_host_name(), "\r\n",
-                     "User-Agent:  XSS-TEST\r\n",
+                     "Host: ", host, "\r\n",
+                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen(postdata), "\r\n",
                      "\r\n", postdata);
-        asRes = http_send_recv(port:asport, data:asReq);
+        asRes = http_keepalive_send_recv(port:asport, data:asReq);
 
         ##  Confirm the exploit
         if(asRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< asRes &&
@@ -152,14 +148,14 @@ foreach indexpage (make_list("/", "/welcome.do"))
 
         ## Construct the POST request
         asReq = string("POST ", dir, "/upload/upload-submit.do?queryParam=Successful HTTP/1.1\r\n",
-                       "Host: ", get_host_name(), "\r\n",
-                       "User-Agent:  XSS-TEST\r\n",
+                       "Host: ", host, "\r\n",
+                       "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                        "Content-Type: multipart/form-data; boundary=---" +
                        "------------------------7559840272055538773136052934\r\n",
                        "Content-Type: application/x-www-form-urlencoded\r\n",
                        "Content-Length: ", strlen(postdata), "\r\n",
                        "\r\n", postdata);
-        asRes = http_send_recv(port:asport, data:asReq);
+        asRes = http_keepalive_send_recv(port:asport, data:asReq);
 
         ## Confirm the exploit
         if(asRes =~ "HTTP/1\.. 200"  &&

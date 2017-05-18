@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_xss_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_spider_calendar_plugin_xss_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # WordPress Spider Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -46,18 +46,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5940 $");
   script_bugtraq_id(55779);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-18 11:07:20 +0530 (Thu, 18 Oct 2012)");
   script_name("WordPress Spider Calendar Plugin Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50812");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79042");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21715/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117078/WordPress-Spider-1.0.1-SQL-Injection-XSS.html");
-  script_summary("Check if WordPress Spider Calendar Plugin is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

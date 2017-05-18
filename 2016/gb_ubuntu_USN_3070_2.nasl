@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842876");
-  script_version("$Revision: 3982 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:01:29 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-07 10:08:44 +0530 (Wed, 07 Sep 2016)");
   script_cve_id("CVE-2016-1237", "CVE-2016-5244", "CVE-2016-5400", "CVE-2016-5696",
 		"CVE-2016-5728", "CVE-2016-5828", "CVE-2016-5829", "CVE-2016-6197");
@@ -82,7 +82,6 @@ operations. A local attacker could use this to cause a denial of service
   script_xref(name: "USN", value: "3070-2");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3070-2/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-raspi2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

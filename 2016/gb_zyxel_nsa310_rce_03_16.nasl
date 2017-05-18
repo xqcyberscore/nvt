@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_nsa310_rce_03_16.nasl 2861 2016-03-15 18:18:35Z mime $
+# $Id: gb_zyxel_nsa310_rce_03_16.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Zyxel NSA310 Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105566");
-  script_version("$Revision: 2861 $");
+  script_version("$Revision: 5782 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-15 19:18:35 +0100 (Tue, 15 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-15 10:52:54 +0100 (Tue, 15 Mar 2016)");
   script_name("Zyxel NSA310 Remote Code Execution Vulnerability");
 
@@ -46,7 +46,6 @@ if(description)
 
   script_xref(name:"URL" , value:"https://blogs.securiteam.com/index.php/archives/2694");
 
-  script_summary("Try to execute the `id' command.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

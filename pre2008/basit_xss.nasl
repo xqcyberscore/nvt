@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: basit_xss.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: basit_xss.nasl 5781 2017-03-30 08:15:57Z cfi $
 # Description: Basit cms Cross Site Scripting Bugs
 #
 # Authors:
@@ -44,17 +44,15 @@ tag_solution = "Upgrade to a newer version.";
 if (description)
 {
  script_id(11445);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5781 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 10:15:57 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7139);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-
  script_name("Basit cms Cross Site Scripting Bugs");
- script_summary("Determine if Basit cms is vulnerable to xss attack");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2003 k-otik.com");
  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
@@ -69,28 +67,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
 if(get_kb_item(string("www/", port, "/generic_xss"))) exit(0);
 
-dir = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/modules/Submit/index.php?op=pre&title=<script>window.alert(document.cookie);</script>");
 
-
-foreach d (dir)
-{
- url = string(d, "/modules/Submit/index.php?op=pre&title=<script>window.alert(document.cookie);</script>");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL ) exit(0);
-
- if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 ", string:buf) &&
-    "<script>window.alert(document.cookie);</script>" >< buf)
-   {
-    security_message(port);
-    exit(0);
-   }
+  if(http_vuln_check(port:port, url:url,pattern:"<script>window\.alert\(document\.cookie\);</script>",check_header:TRUE)) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_utility_belt_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_php_utility_belt_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Php Utility Belt Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807613");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2016-03-18 17:24:39 +0530 (Fri, 18 Mar 2016)");
   script_name("Php Utility Belt Detection");
-  script_summary("Chek for the presence of Php Utility Belt application");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

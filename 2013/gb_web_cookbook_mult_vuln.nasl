@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_web_cookbook_mult_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_web_cookbook_mult_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Web Cookbook Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803437");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 5791 $");
   script_bugtraq_id(58441);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-03-14 13:10:16 +0530 (Thu, 14 Mar 2013)");
   script_name("Web Cookbook Multiple Vulnerabilities");
 
@@ -39,12 +39,10 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120760/");
   script_xref(name : "URL" , value : "http://security-geeks.blogspot.in/2013/03/web-cookbook-sql-injection-xss.html");
 
-
-  script_summary("Check if Web Cookbook is vulnerable to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -80,23 +78,18 @@ port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/cookbook", "/webcookbook", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request for the index.php
-  sndReq = http_get(item:string(dir, "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
   ## confirm the Application
   if(rcvRes && "/projects/webcookbook/" >< rcvRes)

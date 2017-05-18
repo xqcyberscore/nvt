@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: chora_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: chora_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
 # Description: Chora Detection
 #
 # Authors:
@@ -34,32 +34,22 @@ Project. See http://www.horde.org/chora/ for more information.";
   Summary:
   " + tag_summary;
 
-
-if (description) {
+if(description)
+{
   script_id(13849);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5720 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
- 
-  name = "Chora Detection";
-  script_name(name);
- 
- 
-  summary = "Checks for the presence of Chora";
-  script_summary(summary);
- 
+  script_name("Chora Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-
-  family = "General";
-  script_family(family);
-
+  script_family("General");
   script_dependencies("global_settings.nasl", "http_version.nasl", "no404.nasl");
   script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -75,11 +65,10 @@ include("http_keepalive.inc");
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.13849";
 SCRIPT_DESC = "Chora Detection";
 
-host = get_host_name();
 port = get_http_port(default:80);
+host = http_host_name(port:port);
 if (debug_level) display("debug: looking for Chora on ", host, ":", port, ".\n");
 
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 if (get_kb_item("www/no404/" + port)) exit(0);
 
@@ -89,9 +78,8 @@ if (get_kb_item("www/no404/" + port)) exit(0);
 #     'inurl:cvs.php horde' - and represent the more popular
 #     installation paths currently. Still, cgi_dirs() should catch
 #     the directory if its referenced elsewhere on the target.
-dirs = make_list("/horde/chora", "/chora", "/", cgi_dirs());
 installs = 0;
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/horde/chora", "/chora", "/", cgi_dirs( port:port ) ) ) {
   # Search for version number in a couple of different pages.
   files = make_list(
     "/horde/services/help/?module=chora&show=about",

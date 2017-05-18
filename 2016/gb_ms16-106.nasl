@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-106.nasl 4167 2016-09-28 09:36:48Z mime $
+# $Id: gb_ms16-106.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (3185848)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809307");
-  script_version("$Revision: 4167 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2016-3348", "CVE-2016-3349", "CVE-2016-3354", "CVE-2016-3355",
                 "CVE-2016-3356");
   script_bugtraq_id(92782, 92783, 92784, 92787);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-28 11:36:48 +0200 (Wed, 28 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 07:48:12 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (3185848)");
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3185911");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-106");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_livecycle_designer_untrusted_search_path_vuln_win.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_livecycle_designer_untrusted_search_path_vuln_win.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Adobe LiveCycle Designer Untrusted Search Path Vulnerability (Windows)
 #
@@ -49,15 +49,14 @@ prone to untrusted search path vulnerability.";
 if(description)
 {
   script_id(802960);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2010-5212");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-11 19:03:45 +0530 (Tue, 11 Sep 2012)");
   script_name("Adobe LiveCycle Designer Untrusted Search Path Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41417");
-  script_summary("Check for the version of Adobe LiveCycle Designer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

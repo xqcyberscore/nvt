@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jetspeed_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_apache_jetspeed_detect.nasl 5860 2017-04-04 15:38:42Z cfi $
 #
 # Apache Jetspeed Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807647");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5860 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 17:38:42 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:25 +0530 (Fri, 01 Apr 2016)");
   script_name("Apache Jetspeed Detection");
 
@@ -39,11 +39,10 @@ if(description)
   response, and sets the result in KB.");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_summary("Chek for the presence of Apache Jetspeed open portal");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -54,41 +53,45 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-##Get HTTP Port
-if(!jetPort = get_http_port(default:8080)){
-  exit(0);
-}
+port = get_http_port( default:8080 );
 
-##Iterate over possible paths
-foreach dir (make_list_unique("/", "/jetspeed", "/jetspeed/portal", cgi_dirs(port:jetPort)))
-{
+foreach dir( make_list_unique( "/", "/jetspeed", "/jetspeed/portal", cgi_dirs( port:port ) ) ) {
+
   install = dir;
   if(dir == "/") dir = "";
 
-  ## Send and receive response
-  sndReq = http_get(item: dir, port:jetPort);
-  rcvRes = http_send_recv(port:jetPort, data:sndReq);
+  rcvRes = http_get_cache( item:dir + "/", port:port );
 
-  ##Confirm application
-  if('Welcome to Jetspeed' >< rcvRes && 'Login Portlet' >< rcvRes)
-  {
+  if( 'Welcome to Jetspeed' >< rcvRes && 'Login Portlet' >< rcvRes ) {
+
     version = "unknown";
 
-    ## Set the KB value
-    set_kb_item( name:"www/" + jetPort + "/jetspeed", value:version );
-    set_kb_item( name:"Jetspeed/Installed", value:TRUE );
+    url = dir + "/about.psml";
+    req = http_get( item:url, port:port );
+    buf = http_keepalive_send_recv( port:port, data:req );
 
-    ## build cpe and store it as host_detail
-    cpe = "cpe:/a:apache_jetspeed:jetspeed";
+    ver = eregmatch( pattern:"<h2>About the Jetspeed ([0-9.]+) Release</h2>", string:buf );
+    if( ! isnull( ver[1] ) ) {
+      version = ver[1];
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+    }
 
-    register_product( cpe:cpe, location:install, port:jetPort );
+    set_kb_item( name:"www/" + port + "/jetspeed", value:version );
+    replace_kb_item( name:"Jetspeed/Installed", value:TRUE );
+
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:jetspeed:" );
+    if( isnull( cpe ) )
+      cpe = "cpe:/a:apache:jetspeed";
+
+    register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Apache Jetspeed",
                                               version:version,
                                               install:install,
                                               cpe:cpe,
-                                              concluded:version),
-                                              port:jetPort);
+                                              concludedUrl:conclUrl,
+                                              concluded:ver[0] ),
+                                              port:port );
     exit(0);
   }
 }

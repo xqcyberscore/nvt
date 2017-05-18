@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-140.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-140.nasl 5940 2017-04-12 09:02:05Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120177");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 5940 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:19:17 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-140");
 script_tag(name: "insight", value: "A buffer overflow flaw was found in the way libproxy handled the downloading of proxy auto-configuration (PAC) files. A malicious server hosting a PAC file or a man-in-the-middle attacker could use this flaw to cause an application using libproxy to crash or, possibly, execute arbitrary code, if the proxy settings obtained by libproxy (from the environment or the desktop environment settings) instructed the use of a PAC proxy configuration. (CVE-2012-4505 )"); 
 script_tag(name : "solution", value : "Run yum update libproxy to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-140");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

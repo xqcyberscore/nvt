@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809163");
-  script_version("$Revision: 4052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-30 05:58:39 +0200 (Tue, 30 Aug 2016)");
   script_cve_id("CVE-2016-6317");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,6 @@ manual SQL.
   script_xref(name: "FEDORA", value: "2016-b4919ffe56");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IIKYQUVSGMREVPYLGJJT4HP353LWQ6AO");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of rubygem-activerecord");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

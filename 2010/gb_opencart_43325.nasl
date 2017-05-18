@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_43325.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_opencart_43325.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # OpenCart 'fckeditor' Arbitrary File Upload Vulnerability
 #
@@ -27,8 +27,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100816");
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-09-21 16:24:40 +0200 (Tue, 21 Sep 2010)");
  script_bugtraq_id(43325);
  script_tag(name:"cvss_base", value:"4.6");
@@ -43,7 +43,7 @@ if (description)
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("opencart_detect.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+ script_mandatory_keys("OpenCart/installed");
 
  script_tag(name : "summary" , value : "OpenCart is prone to an arbitrary-file-upload vulnerability because it
  fails to properly sanitize user-supplied input.");
@@ -55,7 +55,6 @@ if (description)
  /admin/view/javascript/fckeditor/ is deleted during the update.");
 
  script_tag(name:"solution_type", value:"VendorFix");
-
  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
@@ -66,17 +65,17 @@ include("http_keepalive.inc");
 include("version_func.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
 
 if(!dir = get_dir_from_kb(port:port, app:"opencart"))exit(0);
 
 file = string("openvas-upload-test-delete-me-",rand(),".php");
 url = string(dir,"/admin/view/javascript/fckeditor/editor/filemanager/connectors/php/connector.php?Command=FileUpload&Type=File&CurrentFolder=%2F"); 
 
+host = http_host_name( port:port );
+
 req = string("POST ", url, " HTTP/1.1\r\n",
-	     "Host: ", get_host_name(),"\r\n",
-	     "User-Agent: Mozilla/5.0 (X11; U; Linux i686; de; rv:1.9.2.10) Gecko/20100914 OpenVAS\r\n",
+	     "Host: ", host,"\r\n",
+	     "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
 	     "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
 	     "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
 	     "Accept-Encoding: gzip,deflate\r\n",

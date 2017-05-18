@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Wikidforum Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802710");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-6520", "CVE-2012-2099");
   script_bugtraq_id(52425);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-16 13:30:44 +0530 (Fri, 16 Mar 2012)");
   script_name("Wikidforum Multiple XSS and SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2012/q2/75");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name : "URL" , value : "http://sec.jetlib.com/Bugtraq/2012/03/12/Wikidforum_2.10_Multiple_security_vulnerabilities");
   script_xref(name : "URL" , value : "http://www.wikidforum.com/forum/forum-software_29/wikidforum-support_31/sschadv2012-005-unfixed-xss-and-sql-injection-security-vulnerabilities_188.html");
 
-  script_summary("Check if Wikidforum is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

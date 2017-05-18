@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: discuz_arbitrary_file_upload_flaw.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: discuz_arbitrary_file_upload_flaw.nasl 5783 2017-03-30 09:03:43Z cfi $
 # Description: Discuz! <= 4.0.0 rc4 Arbitrary File Upload Flaw
 #
 # Authors:
@@ -38,30 +38,19 @@ tag_solution = "Upgrade to the latest version of this software.";
 if(description)
 {
  script_id(19751);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5783 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:03:43 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_cve_id("CVE-2005-2614");
  script_bugtraq_id(14564);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- 
- name = "Discuz! <= 4.0.0 rc4 Arbitrary File Upload Flaw";
-
- script_name(name);
- 
-
- summary = "Checks Discuz! version";
- 
- script_summary(summary);
- 
+ script_name("Discuz! <= 4.0.0 rc4 Arbitrary File Upload Flaw");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- 
+ script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");
- family = "Gain a shell remotely";
- script_family(family);
- script_dependencies("http_version.nasl");
+ script_family("Gain a shell remotely");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -70,34 +59,23 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-
-if ( !get_port_state(port))exit(0);
 if ( ! can_host_php(port:port) ) exit(0);
 
-function check(loc)
-{
- req = http_get(item:string(loc, "/index.php"), port:port);
- r = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( r == NULL )exit(0);
- if (("powered by Discuz!</title>" >< r) && egrep(pattern:'<meta name="description" content=.+Powered by Discuz! Board ([1-3]|4\\.0\\.0RC[0-4])', string:r))
- {
-   security_message(port);
-   exit(0);
- }
+foreach dir( make_list_unique( "/discuz", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/index.php");
+  r = http_get_cache(item:url, port:port);
+  if( r == NULL ) continue;
+  if (("powered by Discuz!</title>" >< r) && egrep(pattern:'<meta name="description" content=.+Powered by Discuz! Board ([1-3]|4\\.0\\.0RC[0-4])', string:r)) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-dirs = make_list("/discuz", cgi_dirs());
-
-foreach dir (dirs)
-{
- check(loc:dir);
-}
+exit( 99 );

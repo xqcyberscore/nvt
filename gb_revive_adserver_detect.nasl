@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_detect.nasl 4206 2016-10-04 10:21:42Z ckuerste $
+# $Id: gb_revive_adserver_detect.nasl 5787 2017-03-30 10:26:10Z cfi $
 #
 # Revive Adserver Version Detection
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806507");
-  script_version("$Revision: 4206 $");
+  script_version("$Revision: 5787 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 12:21:42 +0200 (Tue, 04 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-10-20 15:07:44 +0530 (Tue, 20 Oct 2015)");
   script_name("Revive Adserver Version Detection");
-  script_summary("Set the version of Revive Adserver in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -52,21 +51,15 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Get HTTP Port
 port = get_http_port( default:80 );
-
-## Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-##Iterate over possible paths
-foreach dir( make_list_unique( "/", "/adserver", "/radserver", "/revive-adserver", "/ads",
-                               cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/adserver", "/radserver", "/revive-adserver", "/ads", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";

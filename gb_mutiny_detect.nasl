@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mutiny_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_mutiny_detect.nasl 5735 2017-03-27 12:27:20Z cfi $
 #
 # Mutiny Detection
 #
@@ -32,18 +32,16 @@ extract the version number from the reply.";
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103588";   
 
-if (description)
+if(description)
 {
-
  script_oid(SCRIPT_OID); 
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2835 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5735 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 14:27:20 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-10-23 10:15:44 +0200 (Tue, 23 Oct 2012)");
  script_name("Mutiny Detection");
- script_summary("Checks for the presence of Mutiny");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -60,12 +58,11 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
+ install = dir;
+ if( dir == "/" ) dir = "";
  url = dir + '/interface/logon.do';
  req = http_get(item:url, port:port);
  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -73,12 +70,6 @@ foreach dir (dirs) {
 
  if(egrep(pattern: "<title>.*Mutiny.*Login.*</title>", string: buf, icase: TRUE))
  {
-     if(strlen(dir) > 0) {
-        install = dir;
-     } else {
-        install = string("/");
-     }
-
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern: 'var currentMutinyVersion = "Version ([0-9.-]+)',icase:TRUE);
@@ -100,7 +91,7 @@ foreach dir (dirs) {
                 port:port);
 
     exit(0);
-    
- }
+  }
 }
+
 exit(0);

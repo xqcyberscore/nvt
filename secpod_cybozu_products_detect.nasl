@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_products_detect.nasl 2772 2016-03-03 13:13:49Z antu123 $
+# $Id: secpod_cybozu_products_detect.nasl 5982 2017-04-19 13:10:09Z teissa $
 #
 # Cybozu Products Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902533");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2772 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 14:13:49 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 5982 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 15:10:09 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Cybozu Products Version Detection");
-  script_summary("Set the version of Cybozu Products in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Product detection");
@@ -57,7 +56,6 @@ include("host_details.inc");
 
 ## Get http port
 port = get_http_port( default:80 );
-
 foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";

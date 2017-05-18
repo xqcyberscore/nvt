@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_detect.nasl 2834 2016-03-11 08:39:36Z benallard $
+# $Id: gb_symantec_backup_exec_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Symantec Backup Exec Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802105");
-  script_version("$Revision: 2834 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:39:36 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Backup Exec Version Detection");
@@ -67,18 +67,6 @@ include("host_details.inc");
 appName = "";
 ilsPath = "";
 symVer = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -115,7 +103,7 @@ foreach item (registry_enum_keys(key:key))
       if(isnull(cpe))
         cpe = "cpe:/a:symantec:veritas_backup_exec_for_windows_servers";
 
-      build_report(app:appName, ver:symVer, cpe:cpe, loc:ilsPath, con:symVer);
+      build_report(app:appName, ver:symVer, cpe:cpe, insloc:ilsPath, concluded:symVer);
 
       if("x64" >< os_arch)
       {
@@ -128,7 +116,7 @@ foreach item (registry_enum_keys(key:key))
         if(isnull(cpe))
           cpe = "cpe:/a:symantec:veritas_backup_exec_for_windows_servers:x64";
 
-        build_report(app:appName, ver:symVer, cpe:cpe, loc:ilsPath, con:symVer);
+        build_report(app:appName, ver:symVer, cpe:cpe, insloc:ilsPath, concluded:symVer);
       }
     }
   }
@@ -151,7 +139,7 @@ foreach item (registry_enum_keys(key:key))
       if(isnull(cpe))
         cpe = "cpe:/a:symantec:backup_exec";
 
-      build_report(app:appName, ver:symVer, cpe:cpe, loc:ilsPath, con:symVer);
+      build_report(app:appName, ver:symVer, cpe:cpe, insloc:ilsPath, concluded:symVer);
 
       if("x64" >< os_arch)
       {
@@ -167,7 +155,7 @@ foreach item (registry_enum_keys(key:key))
         if(isnull(cpe))
           cpe = "cpe:/a:symantec:backup_exec:x64:";
 
-        build_report(app:appName, ver:symVer, cpe:cpe, loc:ilsPath, con:symVer);
+        build_report(app:appName, ver:symVer, cpe:cpe, insloc:ilsPath, concluded:symVer);
       }
     }
   }

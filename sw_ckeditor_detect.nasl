@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ckeditor_detect.nasl 3173 2016-04-26 15:44:41Z cfi $
+# $Id: sw_ckeditor_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
 #
 # CKEditor Detection
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111094");
-  script_version("$Revision: 3173 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 17:44:41 +0200 (Tue, 26 Apr 2016) $");
+  script_version("$Revision: 5744 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-17 18:00:00 +0200 (Sun, 17 Apr 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("CKEditor Detection");
-  script_summary("Checks for the presence of CKEditor");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -56,7 +55,7 @@ include("cpe.inc");
 
 port = get_http_port( default:80 );
 
-cgidirs = make_list( "/", cgi_dirs( port:port ) );
+cgidirs = make_list_unique( "/", cgi_dirs( port:port ) );
 subdirs = make_list( "/", "/ckeditor", "/editor",
                      "/admin/ckeditor",
                      "/sites/all/modules/ckeditor",

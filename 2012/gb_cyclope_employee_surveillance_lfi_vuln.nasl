@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclope_employee_surveillance_lfi_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_cyclope_employee_surveillance_lfi_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Cyclope Employee Surveillance Solution Local File Inclusion Vulnerability
 #
@@ -44,16 +44,15 @@ is prone to local file inclusion vulnerability.";
 if(description)
 {
   script_id(802934);
-  script_version("$Revision: 5641 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-16 12:28:45 +0530 (Thu, 16 Aug 2012)");
   script_name("Cyclope Employee Surveillance Solution Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20545/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115590/cyclopees-sqllfi.txt");
 
-  script_summary("Check if Cyclope Employee Surveillance Solution is vulnerable to LFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postfixadmin_security_bypass_vuln.nasl 5649 2017-03-21 09:54:52Z ckuerste $
+# $Id: gb_postfixadmin_security_bypass_vuln.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # Postfix Admin Security Bypass Vulnerability
 #
@@ -30,16 +30,16 @@ CPE = "cpe:/a:postfix_admin_project:postfix_admin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106680");
-  script_version("$Revision: 5649 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:54:52 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 5752 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-03-21 14:09:13 +0700 (Tue, 21 Mar 2017)");
-  script_tag(name: "cvss_base", value: "4.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-5930");
   script_bugtraq_id(96142);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "VendorFix");
 

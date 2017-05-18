@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 5583 2017-03-15 18:36:45Z mime $
+# $Id: webmirror.nasl 5907 2017-04-10 07:09:24Z cfi $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 5583 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 19:36:45 +0100 (Wed, 15 Mar 2017) $");
+  script_version("$Revision: 5907 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 09:09:24 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -97,7 +97,7 @@ function add_cgi_dir( dir, append_pattern ) {
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
     # Only add as cgi dir if the directory is throwing a 404 on non-existent files
-    if( res =~ "HTTP/1\.. 404" ) {
+    if( res =~ "^HTTP/1\.[01] 404" ) {
 
       Dirs[dir] = 1;
       set_kb_item( name:"www/" + port + "/content/directories", value:dir );
@@ -108,7 +108,7 @@ function add_cgi_dir( dir, append_pattern ) {
         # Appending this pattern everywhere seems to cause undetected directory indexes
         if( append_pattern ) {
           if( Apache ) {
-            URLs  = make_list( URLs, dir + "/?D=A" );
+            URLs = make_list( URLs, dir + "/?D=A" );
           } else if( iPlanet ) {
             URLs = make_list( URLs, dir + "/?PageServices" );
           }
@@ -208,6 +208,9 @@ function hash2cgi( hash ) {
 function add_cgi( cgi, args ) {
 
   local_var mydir, tmp, a, new_args, common, c;
+
+  # Don't add cgis for pattern we have added ourselves
+  if( "/?D=A" >< cgi || "/?PageServices" >< cgi ) return;
 
   if( cgi == "." ) cgi = "/";
 
@@ -473,16 +476,16 @@ function retr( port, page ) {
     return NULL;
   }
 
-  if( ! match( pattern:"HTTP* 200 *", string:res ) ) {
-    if( match( pattern:"HTTP* 401 *", string:res ) ||
-        match( pattern:"HTTP* 403 *", string:res ) ) {
+  if( res !~ "^HTTP/1\.[01] 200" ) {
+    if( res =~ "^HTTP/1\.[01] 401" ||
+        res =~ "^HTTP/1\.[01] 403" ) {
       if( egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
         add_auth( url:page );
       }
       return NULL;
     }
-    if( match( pattern:"HTTP* 301 *", string:res ) ||
-        match( pattern:"HTTP* 302 *", string:res ) ) {
+    if( res =~ "^HTTP/1\.[01] 301" ||
+        res =~ "^HTTP/1\.[01] 302" ) {
       q = egrep( pattern:"^Location:.*", string:res, icase:TRUE );
       add_30x( url:page );
 

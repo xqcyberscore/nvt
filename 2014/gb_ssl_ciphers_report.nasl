@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_ciphers_report.nasl 4739 2016-12-12 09:00:27Z cfi $
+# $Id: gb_ssl_ciphers_report.nasl 5987 2017-04-20 09:01:59Z cfi $
 #
 # SSL/TLS: Report Supported Cipher Suites
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802067");
-  script_version("$Revision: 4739 $");
+  script_version("$Revision: 5987 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 10:00:27 +0100 (Mon, 12 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:01:59 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-03-06 17:20:28 +0530 (Thu, 06 Mar 2014)");
   script_name("SSL/TLS: Report Supported Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -58,6 +58,7 @@ strongCipherText = "'Strong' cipher suites";
 mediumCipherText = "'Medium' cipher suites";
 weakCipherText = "'Weak' cipher suites";
 nullCipherText = "'Null' cipher suites";
+anonCipherText = "'Anonymous' cipher suites";
 
 port = get_ssl_port();
 if( ! port ) exit( 0 );
@@ -83,6 +84,7 @@ if( "SSLv3" >< sup_ssl ) {
   sslv3MediumCipherList = get_kb_list( "secpod_ssl_ciphers/sslv3/" + port + "/medium_ciphers" );
   sslv3WeakCipherList = get_kb_list( "secpod_ssl_ciphers/sslv3/" + port + "/weak_ciphers" );
   sslv3NullCipherList = get_kb_list( "secpod_ssl_ciphers/sslv3/" + port + "/null_ciphers" );
+  sslv3AnonCipherList = get_kb_list( "secpod_ssl_ciphers/sslv3/" + port + "/anon_ciphers" );
 
   if( ! isnull( sslv3StrongCipherList ) ) {
 
@@ -143,6 +145,21 @@ if( "SSLv3" >< sup_ssl ) {
   } else {
     report += 'No ' + nullCipherText + ' accepted by this service via the SSLv3 protocol.\n\n';
   }
+
+  if( ! isnull( sslv3AnonCipherList ) ) {
+
+    report += anonCipherText + ' accepted by this service via the SSLv3 protocol:\n\n';
+
+    # Sort to not report changes on delta reports if just the order is different
+    sslv3AnonCipherList = sort( sslv3AnonCipherList );
+
+    foreach sslv3AnonCipher( sslv3AnonCipherList ) {
+      report += sslv3AnonCipher + '\n';
+    }
+    report += '\n';
+  } else {
+    report += 'No ' + anonCipherText + ' accepted by this service via the SSLv3 protocol.\n\n';
+  }
 }
 
 if( "TLSv1.0" >< sup_ssl ) {
@@ -151,6 +168,7 @@ if( "TLSv1.0" >< sup_ssl ) {
   tlsv1_0MediumCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1/" + port + "/medium_ciphers" );
   tlsv1_0WeakCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1/" + port + "/weak_ciphers" );
   tlsv1_0NullCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1/" + port + "/null_ciphers" );
+  tlsv1_0AnonCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1/" + port + "/anon_ciphers" );
 
   if( ! isnull( tlsv1_0StrongCipherList ) ) {
 
@@ -211,6 +229,21 @@ if( "TLSv1.0" >< sup_ssl ) {
   } else {
     report += 'No ' + nullCipherText + ' accepted by this service via the TLSv1.0 protocol.\n\n';
   }
+
+  if( ! isnull( tlsv1_0AnonCipherList ) ) {
+
+    report += anonCipherText + ' accepted by this service via the TLSv1.0 protocol:\n\n';
+
+    # Sort to not report changes on delta reports if just the order is different
+    tlsv1_0AnonCipherList = sort( tlsv1_0AnonCipherList );
+
+    foreach tlsv1_0AnonCipher( tlsv1_0AnonCipherList ) {
+      report += tlsv1_0AnonCipher + '\n';
+    }
+    report += '\n';
+  } else {
+    report += 'No ' + anonCipherText + ' accepted by this service via the TLSv1.0 protocol.\n\n';
+  }
 }
 
 if( "TLSv1.1" >< sup_ssl ) {
@@ -219,6 +252,7 @@ if( "TLSv1.1" >< sup_ssl ) {
   tlsv1_1MediumCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_1/" + port + "/medium_ciphers" );
   tlsv1_1WeakCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_1/" + port + "/weak_ciphers" );
   tlsv1_1NullCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_1/" + port + "/null_ciphers" );
+  tlsv1_1AnonCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_1/" + port + "/anon_ciphers" );
 
   if( ! isnull( tlsv1_1StrongCipherList ) ) {
 
@@ -279,6 +313,21 @@ if( "TLSv1.1" >< sup_ssl ) {
   } else {
     report += 'No ' + nullCipherText + ' accepted by this service via the TLSv1.1 protocol.\n\n';
   }
+
+  if( ! isnull( tlsv1_1AnonCipherList ) ) {
+
+    report += anonCipherText + ' accepted by this service via the TLSv1.1 protocol:\n\n';
+
+    # Sort to not report changes on delta reports if just the order is different
+    tlsv1_1AnonCipherList = sort( tlsv1_1AnonCipherList );
+
+    foreach tlsv1_1AnonCipher( tlsv1_1AnonCipherList ) {
+      report += tlsv1_1AnonCipher + '\n';
+    }
+    report += '\n';
+  } else {
+    report += 'No ' + anonCipherText + ' accepted by this service via the TLSv1.1 protocol.\n\n';
+  }
 }
 
 if( "TLSv1.2" >< sup_ssl ) {
@@ -287,6 +336,7 @@ if( "TLSv1.2" >< sup_ssl ) {
   tlsv1_2MediumCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_2/" + port + "/medium_ciphers" );
   tlsv1_2WeakCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_2/" + port + "/weak_ciphers" );
   tlsv1_2NullCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_2/" + port + "/null_ciphers" );
+  tlsv1_2AnonCipherList = get_kb_list( "secpod_ssl_ciphers/tlsv1_2/" + port + "/anon_ciphers" );
 
   if( ! isnull( tlsv1_2StrongCipherList ) ) {
 
@@ -346,6 +396,21 @@ if( "TLSv1.2" >< sup_ssl ) {
     report += '\n';
   } else {
     report += 'No ' + nullCipherText + ' accepted by this service via the TLSv1.2 protocol.\n\n';
+  }
+
+  if( ! isnull( tlsv1_2AnonCipherList ) ) {
+
+    report += anonCipherText + ' accepted by this service via the TLSv1.2 protocol:\n\n';
+
+    # Sort to not report changes on delta reports if just the order is different
+    tlsv1_2AnonCipherList = sort( tlsv1_2AnonCipherList );
+
+    foreach tlsv1_2AnonCipher( tlsv1_2AnonCipherList ) {
+      report += tlsv1_2AnonCipher + '\n';
+    }
+    report += '\n';
+  } else {
+    report += 'No ' + anonCipherText + ' accepted by this service via the TLSv1.2 protocol.\n\n';
   }
 }
 

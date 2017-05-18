@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ezcourses_49907.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_ezcourses_49907.nasl 5769 2017-03-29 13:50:21Z cfi $
 #
 # ezCourses 'admin.asp' Security Bypass Vulnerability
 #
@@ -30,12 +30,11 @@ to properly validate user-supplied input.
 Attackers could exploit the issue to bypass certain security
 restrictions and add or change the 'admin' account password.";
 
-
-if (description)
+if(description)
 {
  script_id(103284);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5769 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-05 13:15:09 +0200 (Wed, 05 Oct 2011)");
  script_bugtraq_id(49907);
  script_tag(name:"cvss_base", value:"5.0");
@@ -46,8 +45,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.ezhrs.com/ezCourses.asp");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed ezCourses is vulnerable");
- script_category(ACT_ATTACK);
+ script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -60,24 +58,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_asp(port:port))exit(0);
 
-dirs = make_list("/eafb","/ezCourses","/ezcourses","/courses",cgi_dirs());
+foreach dir( make_list_unique( "/eafb", "/ezCourses", "/ezcourses", "/courses", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir,"/admin/admin.asp?cmd=edit_admin&AdminID=1&Master=Master"); 
 
   if(http_vuln_check(port:port, url:url,pattern:" <b>Edit Admin Profile</b>")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

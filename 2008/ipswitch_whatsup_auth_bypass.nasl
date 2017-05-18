@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ipswitch_whatsup_auth_bypass.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: ipswitch_whatsup_auth_bypass.nasl 5838 2017-04-03 10:26:36Z cfi $
 # Description: Ipswitch WhatsUp Professional Authentication bypass detection
 #
 # Authors:
@@ -37,29 +37,19 @@ tag_solution = "Upgrade to WhatsUp Professional 2006.01 or later.";
 
 if(description)
 {
- script_id(80067);;
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_id(80067);
+ script_version("$Revision: 5838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_cve_id("CVE-2006-2531");
  script_bugtraq_id(18019);
-
- name = "Ipswitch WhatsUp Professional Authentication bypass detection";
- script_name(name);
-
- 
- summary = "Checks for Ipswitch WhatsUp Professional Authentication Bypass";
-
+ script_name("Ipswitch WhatsUp Professional Authentication bypass detection");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
-
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2006 David Maciejak");
-
- family = "Web application abuses";
- script_family(family);
+ script_family("Web application abuses");
  script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 8022);
  script_tag(name : "solution" , value : tag_solution);
@@ -71,26 +61,20 @@ if(description)
  exit(0);
 }
 
-
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:8022);
-if (!get_port_state(port)) exit(0);
-
-
 banner = get_http_banner(port:port);
 if ("Server: Ipswitch" >!< banner) exit(0);
 
 
 # Send a request and make sure we're required to login.
-host = get_host_name();
+host = http_host_name( port:port );
 req = string(
   'GET /NmConsole/Default.asp?bIsJavaScriptDisabled=false HTTP/1.1\r\n',
   'Host: ', host, '\r\n',
-  'User-Agent: ', get_kb_item("global_settings/http_user_agent"), '\r\n',
+  'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
   'Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*.*;q=0.5\r\n',
   'Accept-Language: en-us,en;q=0.5\r\n',
   'Accept-Encoding: gzip,deflate\r\n',

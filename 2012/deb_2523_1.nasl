@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2523_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2523_1.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from advisory DSA 2523-1 (globus-gridftp-server)
 #
 # Authors:
@@ -51,13 +51,12 @@ if(description)
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-3292");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5958 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-10 03:21:12 -0400 (Fri, 10 Aug 2012)");
  script_name("Debian Security Advisory DSA 2523-1 (globus-gridftp-server)");
 
 
- script_summary("Debian Security Advisory DSA 2523-1 (globus-gridftp-server)");
 
  script_category(ACT_GATHER_INFO);
 

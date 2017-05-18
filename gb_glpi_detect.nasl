@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glpi_detect.nasl 3285 2016-05-11 13:57:48Z teissa $
+# $Id: gb_glpi_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
 #
 # GLPI Detection
 #
@@ -39,11 +39,10 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 3285 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-11 15:57:48 +0200 (Wed, 11 May 2016) $");
+ script_version ("$Revision: 5723 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-06-20 11:43:29 +0200 (Thu, 20 Jun 2013)");
  script_name("GLPI Detection");
- script_summary("Checks for the presence of GLPI");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -60,28 +59,20 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/glpi",cgi_dirs());
+foreach dir( make_list_unique( "/glpi", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
- url = string(dir, "/index.php");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/index.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if("<title>GLPI - Authentication" >< buf && ("Powered By Indepnet" >< buf ||
         "Powered By Teclib" >< buf))
 
  {
-     if(strlen( dir ) > 0) {
-        install = dir;
-     } else {
-        install = "/";
-     }
 
     vers = string("unknown");
     ### try to get version

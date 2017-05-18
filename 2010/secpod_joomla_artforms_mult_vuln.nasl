@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_artforms_mult_vuln.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_joomla_artforms_mult_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # Joomla! ArtForms Component Multiple Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902219");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_bugtraq_id(41457);
   script_cve_id("CVE-2010-2846", "CVE-2010-2848", "CVE-2010-2847");
@@ -44,8 +44,8 @@ if(description)
   script_category(ACT_MIXED_ATTACK);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "impact" , value : "Successful exploitation will allow attackers to insert arbitrary
@@ -77,7 +77,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
@@ -89,9 +88,7 @@ foreach path (make_list_unique("/", "/Joomla150", "/joomla", cgi_dirs(port:jafPo
 
   if( path == "/" ) path = "";
 
-  ## Send and receive the response
-  sndReq = http_get(item:string(path, "/index.php"), port:jafPort);
-  rcvRes = http_keepalive_send_recv(port:jafPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(path, "/index.php"), port:jafPort);
 
   ## Confirm application is Ad peeps
   if(">Welcome to the Frontpage</" >< rcvRes)

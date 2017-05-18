@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842746");
-  script_version("$Revision: 3640 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-04 07:07:03 +0200 (Mon, 04 Jul 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 13:39:45 +0200 (Tue, 17 May 2016)");
   script_cve_id("CVE-2016-3713", "CVE-2016-0758");
   script_tag(name:"cvss_base", value:"7.2");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name: "USN", value: "2978-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003428.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-wily");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

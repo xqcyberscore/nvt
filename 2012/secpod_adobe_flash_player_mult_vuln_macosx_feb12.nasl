@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_macosx_feb12.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_adobe_flash_player_mult_vuln_macosx_feb12.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Mac OS X) - Feb12
 #
@@ -47,18 +47,17 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(802805);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0757",
                 "CVE-2012-0756", "CVE-2012-0767");
   script_bugtraq_id(52032, 52033, 52034, 51999, 52036, 52040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-22 14:54:18 +0530 (Wed, 22 Feb 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Mac OS X) - Feb12");
 
 
-  script_summary("Check for the version of Adobe Flash Player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");

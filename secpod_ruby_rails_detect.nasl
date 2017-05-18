@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_rails_detect.nasl 4001 2016-09-07 15:42:16Z cfi $
+# $Id: secpod_ruby_rails_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Ruby on Rails Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902089");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4001 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 17:42:16 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-08-02 12:38:17 +0200 (Mon, 02 Aug 2010)");
   script_name("Ruby on Rails Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
-  script_summary("Set the version of Ruby on Rails in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_internal_ip_addr_disc_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_ms_iis_internal_ip_addr_disc_vuln.nasl 5698 2017-03-23 14:04:51Z cfi $
 #
 # Microsoft IIS IP Address/Internal Network Name Disclosure Vulnerability
 #
@@ -46,9 +46,9 @@ tag_summary = "The host is running Microsoft IIS Webserver and is prone to
 if(description)
 {
   script_id(902796);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5698 $");
   script_bugtraq_id(3159);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-02-23 15:45:49 +0530 (Thu, 23 Feb 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -58,12 +58,13 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/default.aspx?scid=KB;EN-US;Q218180");
   script_xref(name : "URL" , value : "http://www.juniper.net/security/auto/vulnerabilities/vuln3159.html");
 
-  script_summary("Check if IIS server reveals the IP address of the host");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web Servers");
   script_dependencies("secpod_ms_iis_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("IIS/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
@@ -74,12 +75,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 ## Variable Initialization
-ver = "";
 port = 0;
 sndReq = "";
 rcvRes = "";
@@ -89,23 +88,9 @@ pattern = "";
 
 ## Get HTTP port
 port = get_http_port(default:80);
-if(! port){
-  port = 80;
-}
-
-## Check Port State
-if(!get_port_state(port)) {
-  exit(0);
-}
-
-##Get IIS Banner
-ver = get_kb_item("IIS/" + port + "/Ver");
-if(!ver){
-  exit(0);
-}
 
 ## Iterate over poosible dirs
-foreach dir (make_list("/", "/scripts", "/admin", "/webdav", cgi_dirs()))
+foreach dir( make_list_unique("/", "/scripts", "/admin", "/webdav", cgi_dirs(port:port)))
 {
   ip = string("http://", get_host_name(), dir);
 

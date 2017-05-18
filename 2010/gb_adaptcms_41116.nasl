@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adaptcms_41116.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_adaptcms_41116.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # AdaptCMS 'init.php' Remote File Include Vulnerability
 #
@@ -35,16 +35,15 @@ also possible.
 
 AdaptCMS 2.0.0 Beta is vulnerable; other versions may be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100852);
- script_version("$Revision: 5653 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-13 13:28:00 +0200 (Wed, 13 Oct 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2010-2618");
+ script_cve_id("CVE-2010-2618");
  script_bugtraq_id(41116);
 
  script_name("AdaptCMS 'init.php' Remote File Include Vulnerability");
@@ -66,27 +65,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms","/adaptcms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cms", "/adaptcms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
    
-    url = string(dir, "/inc/smarty/libs/init.php?sitepath=",crap(data:"../",length:3*9),files[file],"%00"); 
+    url = string(dir, "/inc/smarty/libs/init.php?sitepath=",crap(data:"../",length:3*9),files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file,extra_check:"Class 'Smarty' not found")) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

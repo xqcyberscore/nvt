@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3523.nasl 2961 2016-03-25 11:20:58Z antu123 $
+# $Id: deb_3523.nasl 5745 2017-03-28 09:01:00Z teissa $
 # Auto-generated from advisory DSA 3523-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,9 +30,9 @@
 if(description)
 {
     script_id(703523);
-    script_version("$Revision: 2961 $");
+    script_version("$Revision: 5745 $");
     script_name("Debian Security Advisory DSA 3523-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-25 12:20:58 +0100 (Fri, 25 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-20 00:00:00 +0100 (Sun, 20 Mar 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3523.html");
 
-    script_summary("Debian Security Advisory DSA 3523-1 (iceweasel - security update)");
 
     script_category(ACT_GATHER_INFO);
 

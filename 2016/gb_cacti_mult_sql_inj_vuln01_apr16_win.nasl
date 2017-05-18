@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_sql_inj_vuln01_apr16_win.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_cacti_mult_sql_inj_vuln01_apr16_win.nasl 5708 2017-03-24 08:55:10Z teissa $
 #
 # Cacti Multiple SQL Injection Vulnerabilities -01 April16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807557");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5708 $");
   script_cve_id("CVE-2016-3172", "CVE-2016-3659");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:55:10 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 18:08:07 +0530 (Mon, 25 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple SQL Injection Vulnerabilities -01 April16 (Windows)");
@@ -57,12 +57,9 @@ if(description)
 
   script_tag(name:"affected", value:"Cacti versions 0.8.8g and earlier on Windows.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  25th January, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to,
-  http://www.cacti.net");
+  script_tag(name:"solution", value:"Update to 0.8.8h or a higher version. For updates refer to, http://www.cacti.net");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://bugs.cacti.net/view.php?id=2673");
   script_xref(name : "URL" , value : "http://bugs.cacti.net/view.php?id=2667");
@@ -102,7 +99,7 @@ if(!cactiVer = get_app_version(cpe:CPE, port:cacPort)){
 # Checking for Vulnerable version
 if(version_is_less_equal(version:cactiVer, test_version:"0.8.8g"))
 {
-  report = report_fixed_ver(installed_version:cactiVer, fixed_version:"None available");
+  report = report_fixed_ver(installed_version:cactiVer, fixed_version:"0.8.8h");
   security_message(data:report, port:cacPort);
   exit(0);
 }

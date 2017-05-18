@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_file_station_xss_vuln.nasl 3679 2016-07-08 11:55:07Z antu123 $
+# $Id: gb_qnap_qts_file_station_xss_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # QNAP QTS File Station Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808247");
-  script_version("$Revision: 3679 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2015-5664");
   script_bugtraq_id(91474);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-08 13:55:07 +0200 (Fri, 08 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-05 16:44:34 +0530 (Tue, 05 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("QNAP QTS File Station Cross Site Scripting Vulnerability");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN42930233/index.html");
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000119.html");
 
-  script_summary("Check if QNAP QTS system is installed with vulnerable version or not.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

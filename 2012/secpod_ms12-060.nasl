@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-060.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: secpod_ms12-060.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)
 #
@@ -54,18 +54,17 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(901211);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5912 $");
   script_bugtraq_id(54948);
   script_cve_id("CVE-2012-1856");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:05:46 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50247");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-060");
 
-  script_summary("Check for the version of 'Mscomctl.Ocx','msmdctr80.dll' and 'sqlservr.exe' files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

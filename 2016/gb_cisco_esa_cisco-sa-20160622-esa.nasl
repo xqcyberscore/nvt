@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cisco-sa-20160622-esa.nasl 3625 2016-06-30 06:25:12Z antu123 $
+# $Id: gb_cisco_esa_cisco-sa-20160622-esa.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Cisco Email Security Appliance .zip File Scanning Security Bypass Vulnerability 
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1438");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3625 $");
+ script_version ("$Revision: 5867 $");
 
  script_name("Cisco Email Security Appliance .zip File Scanning Security Bypass Vulnerability");
 
@@ -49,9 +49,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:25:12 +0200 (Thu, 30 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-06-27 10:53:18 +0200 (Mon, 27 Jun 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

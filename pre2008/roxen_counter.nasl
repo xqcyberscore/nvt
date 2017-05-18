@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: roxen_counter.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: roxen_counter.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Roxen counter module
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Disable the counter-module. There might be a patch available in 
 if(description)
 {
  script_id(10207);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -46,7 +46,6 @@ if(description)
 
  summary = "Roxen counter module installed ?";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

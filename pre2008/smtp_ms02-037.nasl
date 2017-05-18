@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smtp_ms02-037.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: smtp_ms02-037.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: IMC SMTP EHLO Buffer Overrun
 #
 # Authors:
@@ -40,8 +40,8 @@ http://www.microsoft.com/technet/security/bulletin/MS02-037.mspx";
 if(description)
 {
  script_id(11053);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(5306);
  script_tag(name:"cvss_base", value:"7.5");
@@ -52,7 +52,6 @@ if(description)
  
 		    
   summary = "Checks to see if remote IMC SMTP version is vulnerable to buffer overflow";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

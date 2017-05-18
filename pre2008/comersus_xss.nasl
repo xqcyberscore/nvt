@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: comersus_xss.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: comersus_xss.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: Comersus Cart Cross-Site Scripting Vulnerability
 #
 # Authors:
@@ -37,65 +37,43 @@ tag_solution = "Upgrade to version 5.098 or newer";
 if(description)
 {
  script_id(12640);
- script_version("$Revision: 3520 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+ script_version("$Revision: 5786 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-0681", "CVE-2004-0682");
  script_bugtraq_id(10674);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- 
- name = "Comersus Cart Cross-Site Scripting Vulnerability";
-
- script_name(name);
- 
-
- summary = "Checks for the presence of an XSS bug in Comersus";
- 
- script_summary(summary);
- 
+ script_name("Comersus Cart Cross-Site Scripting Vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("cross_site_scripting.nasl", "http_version.nasl");
+ script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_asp(port:port))exit(0);
-if (  get_kb_item(string("www/", port, "/generic_xss")) ) exit(0);
+if( get_kb_item(string("www/", port, "/generic_xss")) ) exit(0);
 
-function check(loc)
-{
- req = http_get(item:string(loc, "/comersus_message.asp?message=openvas<script>foo</script>"), port:port);
+foreach dir( make_list_unique( "/comersus/store", cgi_dirs( port:port ) ) ) {
 
- r = http_keepalive_send_recv(port:port, data:req);
- if( r == NULL )exit(0);
- if(r =~ "HTTP/1\.. 200" && '<font size="2">openvas<script>foo</script>' >< r ) 
- {
- 	security_message(port);
-	exit(0);
- }
-}
+  if( dir == "/" ) dir = "";
+  req = http_get(item:string(dir, "/comersus_message.asp?message=openvas<script>foo</script>"), port:port);
+  r = http_keepalive_send_recv(port:port, data:req);
+  if( r == NULL )continue;
 
-check(loc:"/comersus/store");
-foreach dir (cgi_dirs())
-{
- check(loc:dir);
+  if(r =~ "HTTP/1\.. 200" && '<font size="2">openvas<script>foo</script>' >< r ) {
+    security_message(port);
+    exit(0);
+  }
 }

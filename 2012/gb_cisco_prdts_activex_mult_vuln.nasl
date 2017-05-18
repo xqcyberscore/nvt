@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Cisco Products ActiveX Control Multiple Vulnerabilities
 #
@@ -58,12 +58,12 @@ tag_summary = "This host is installed with Cisco ASMC/Hostscan/Secure Desktop or
 if(description)
 {
   script_id(802459);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-2493", "CVE-2012-2494", "CVE-2012-2495");
   script_bugtraq_id(54107, 54108);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 13:30:28 +0530 (Wed, 12 Sep 2012)");
   script_name("Cisco Products ActiveX Control Multiple Vulnerabilities");
 
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20120620-ac");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the CLSID");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

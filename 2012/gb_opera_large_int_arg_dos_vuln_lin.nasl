@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_large_int_arg_dos_vuln_lin.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_large_int_arg_dos_vuln_lin.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Opera Large Integer Argument Denial of Service Vulnerability (Linux)
 #
@@ -47,18 +47,17 @@ vulnerability.";
 if(description)
 {
   script_id(802829);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-1003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-06 11:53:30 +0530 (Fri, 06 Apr 2012)");
   script_name("Opera Large Integer Argument Denial of Service Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/419678.php");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73027");
   script_xref(name : "URL" , value : "http://blog.vulnhunt.com/index.php/2012/02/02/cal-2012-0004-opera-array-integer-overflow/");
 
-  script_summary("Check for the version of Opera on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

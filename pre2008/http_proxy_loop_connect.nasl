@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_proxy_loop_connect.nasl 3301 2016-05-12 12:56:09Z benallard $
+# $Id: http_proxy_loop_connect.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Proxy accepts CONNECT requests to itself
 #
 # Authors:
@@ -25,14 +25,13 @@
 if(description)
 { 
  script_oid("1.3.6.1.4.1.25623.1.0.17154");
- script_version("$Revision: 3301 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 14:56:09 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  
  script_name("Proxy accepts CONNECT requests to itself");
- script_summary("Connects back to the web proxy through itself");
  script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
  script_family("Denial of Service");

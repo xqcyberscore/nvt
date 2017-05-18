@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808130");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2014-0427", "CVE-2014-0430", "CVE-2014-0433",
                 "CVE-2013-5882", "CVE-2013-5894");
   script_bugtraq_id(64868, 64893, 64895, 64854, 64873);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:32 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities - 18 Jun16 (Linux)");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56491");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2014-1972949.html");
-  script_summary("Check for the vulnerable version of Oracle MySQL on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Databases");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 3555 2016-06-20 07:54:01Z benallard $
+# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # vTiger CRM PHP Code Injection Vulnerability
 #
@@ -33,8 +33,8 @@ if(description)
   script_cve_id("CVE-2013-3214");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_version("$Revision: 3555 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:54:01 +0200 (Mon, 20 Jun 2016) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-01-30 12:15:25 +0700 (Thu, 30 Jan 2014)");
 
   script_name("vTiger CRM PHP Code Injection Vulnerability");
@@ -42,8 +42,7 @@ if(description)
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-07");
 
-  script_summary("vTiger CRM PHP Code Injection Vulnerability");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_vtiger_crm_detect.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_baconmap_43908.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_baconmap_43908.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # BaconMap Local File Include and SQL Injection Vulnerabilities
 #
@@ -39,12 +39,11 @@ in the underlying database, or bypass the authentication control.
 
 BaconMap 1.0 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100853);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-10-13 13:28:00 +0200 (Wed, 13 Oct 2010)");
  script_cve_id("CVE-2010-4800", "CVE-2010-4801");
  script_bugtraq_id(43908);
@@ -69,26 +68,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/baconmap","/map",cgi_dirs());
+foreach dir( make_list_unique( "/baconmap", "/map", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir,"/admin/updatelist.php?filepath=../includes/settings.php"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir,"/admin/updatelist.php?filepath=../includes/settings.php");
 
   if(http_vuln_check(port:port, url:url,pattern:"This file is the settings file for BaconMap",extra_check:make_list("\$database","\$password","\$dbhost"))) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

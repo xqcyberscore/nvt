@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_scheduleparam_xss_vuln.nasl 4536 2016-11-16 10:12:11Z cfi $
+# $Id: gb_ibm_tiv_endpoint_manager_scheduleparam_xss_vuln.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # IBM Tivoli Endpoint Manager 'ScheduleParam' Cross Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809398");
-  script_version("$Revision: 4536 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2012-0719");
   script_bugtraq_id(52514);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 11:12:11 +0100 (Wed, 16 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-15 13:41:38 +0100 (Tue, 15 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Tivoli Endpoint Manager 'ScheduleParam' Cross Site Scripting Vulnerability");
@@ -65,7 +65,6 @@ if (description)
 
   script_xref(name : "URL" , value : "https://infosec.cert-pa.it/cve-2012-1837.html");
 
-  script_summary("Check for vulnerable version of IBM Tivoli Endpoint Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

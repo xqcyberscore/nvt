@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_whmcs_sql_inj_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_whmcs_sql_inj_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # WHMCS SQL Injection Vulnerability
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803197");
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 5791 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-05-14 11:27:14 +0530 (Tue, 14 May 2013)");
   script_name("WHMCS SQL Injection Vulnerability");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121613");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/whmcs-452-sql-injection");
-  script_summary("Check if WHMCS is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -60,7 +59,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -70,20 +68,18 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/whmcs", "/bill", "/support", "/management", cgi_dirs(port:port)))
 {
-  ## Request for the index.php
-  sndReq = http_get(item:string(dir, "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+
+  if( dir == "/" ) dir = "";
+
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
   ## confirm the WHMCS installation
   if(">WHMCompleteSolution<" >< rcvRes && "http://www.whmcs.com/" >< rcvRes)

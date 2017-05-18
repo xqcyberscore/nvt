@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-044_900029.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-044_900029.nasl 5863 2017-04-05 07:38:11Z antu123 $
 # Description: Microsoft Office Filters Could Allow Remote Code Execution Vulnerabilities (924090)
 #
 # Authors:
@@ -49,8 +49,8 @@ tag_summary = "This host is missing critical security update according to
 if(description)
 {
  script_id(900029);
- script_version("$Revision: 5344 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+ script_version("$Revision: 5863 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30598, 30595, 30597, 30599, 30600);
  script_cve_id("CVE-2008-3018", "CVE-2008-3019", "CVE-2008-3020",
@@ -79,94 +79,25 @@ if(description)
 
  include("smb_nt.inc");
  include("secpod_reg.inc");
+ include("version_func.inc");
  include("secpod_smb_func.inc");
 
  if(hotfix_check_sp(win2k:5, xp:4, win2003:3) <= 0){
         exit(0);
  }
 
- function Get_FileVersion()
- {
-	gifPath = registry_get_sz(item:"Path",
-           	  key:"SOFTWARE\Microsoft\Shared Tools\Graphics Filters\Export\GIF");
+ gifPath = registry_get_sz(item:"Path",
+           	           key:"SOFTWARE\Microsoft\Shared Tools\Graphics Filters\Export\GIF");
 
-        if(!gifPath){
-                exit(0);
-        }
-
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:gifPath);
-        file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:gifPath);
-
-        name    =  kb_smb_name();
-        login   =  kb_smb_login();
-        pass    =  kb_smb_password();
-        domain  =  kb_smb_domain();
-        port    =  kb_smb_transport();
-
-        soc = open_sock_tcp(port);
-        if(!soc){
-                exit(0);
-        }
-
-        r = smb_session_request(soc:soc, remote:name);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        prot = smb_neg_prot(soc:soc);
-        if(!prot)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_session_setup(soc:soc, login:login, password:pass,
-                              domain:domain, prot:prot);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        uid = session_extract_uid(reply:r);
-        if(!uid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        tid = tconx_extract_tid(reply:r);
-        if(!tid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-        if(!fid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-	v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod", offset:16500);
-	return v;
+ if(!gifPath){
+   exit(0);
  }
 
  if(!get_kb_item("MS/Office/Ver")){
 	exit(0);
  }
 
- gifVer = Get_FileVersion();
+ gifVer = get_version(dllPath:gifPath, string:"prod", offs:16500);
  if(!gifVer){
 	exit(0);
  }

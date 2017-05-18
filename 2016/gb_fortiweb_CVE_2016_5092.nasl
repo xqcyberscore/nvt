@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_CVE_2016_5092.nasl 3760 2016-07-26 05:01:47Z antu123 $
+# $Id: gb_fortiweb_CVE_2016_5092.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # FortiWeb path traversal vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-5092", "CVE-2016-4066");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3760 $");
+ script_version ("$Revision: 5877 $");
 
  script_name("FortiWeb path traversal vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-26 07:01:47 +0200 (Tue, 26 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-07-05 19:08:43 +0200 (Tue, 05 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -42,14 +42,13 @@ if(description)
 {
  script_id(70619);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_bugtraq_id(48963);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 6022 $");
  script_name("FreeBSD Ports: pivotx");
 
- script_summary("FreeBSD Ports: pivotx");
 
  script_category(ACT_GATHER_INFO);
 

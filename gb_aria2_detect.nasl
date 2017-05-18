@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aria2_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_aria2_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Aria2 Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(801340);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2835 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Aria2 Version Detection");
-  script_summary("Set the Version of Aria2 in KB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");

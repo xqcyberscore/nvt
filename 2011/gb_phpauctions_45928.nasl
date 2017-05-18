@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpauctions_45928.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phpauctions_45928.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # PHPAuctions 'viewfaqs.php' SQL Injection Vulnerability
 #
@@ -36,19 +36,16 @@ underlying database.";
 if (description)
 {
  script_id(103035);
- script_version("$Revision: 3102 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-20 13:02:23 +0100 (Thu, 20 Jan 2011)");
  script_bugtraq_id(45928);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("PHPAuctions 'viewfaqs.php' SQL Injection Vulnerability");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45928");
  script_xref(name : "URL" , value : "http://www.phpauctions.info/");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if PHPAuctions is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -62,22 +59,19 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/phpauctions","/phpauction","/auction",cgi_dirs());
+foreach dir( make_list_unique( "/phpauctions", "/phpauction", "/auction", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/viewfaqs.php?cat=-1+union+select+1"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/viewfaqs.php?cat=-1+union+select+1";
 
-  if(http_vuln_check(port:port, url:url,pattern:"The used SELECT statements have a different number of columns")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"The used SELECT statements have a different number of columns" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

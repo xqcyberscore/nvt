@@ -52,13 +52,12 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2010-3303", "CVE-2010-3763", "CVE-2010-4348", "CVE-2010-4349", "CVE-2010-4350", "CVE-2011-2938", "CVE-2011-3356", "CVE-2011-3357", "CVE-2011-3358", "CVE-2011-3578", "CVE-2011-3755", "CVE-2012-1118", "CVE-2012-1119", "CVE-2012-1120", "CVE-2012-1121", "CVE-2012-1122", "CVE-2012-1123", "CVE-2012-2691", "CVE-2012-2692");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5988 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-16 03:21:29 -0500 (Fri, 16 Nov 2012)");
  script_name("Gentoo Security Advisory GLSA 201211-01 (MantisBT)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201211-01 (MantisBT)");
 
  script_category(ACT_GATHER_INFO);
 

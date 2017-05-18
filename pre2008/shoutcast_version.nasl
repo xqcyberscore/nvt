@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: shoutcast_version.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: shoutcast_version.nasl 5676 2017-03-22 16:29:37Z cfi $
 # Description: SHOUTcast Server DoS detector vulnerability
 #
 # Authors:
@@ -35,42 +35,34 @@ tag_summary = "This detects SHOUTcast Server's version. If the version equals
 if(description)
 {
  script_id(10717); 
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 script_cve_id("CVE-2001-1304");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  
  script_name("SHOUTcast Server DoS detector vulnerability");
- 
- script_summary("SHOUTcast Server DoS detector vulnerability");
- 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");
  
  script_copyright("This script is Copyright (C) 2001 SecuriTeam");
  script_family("General");
 
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8000);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
  script_tag(name : "solution" , value : tag_solution);
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
- port = get_kb_item("Services/www");
- if (!port) port = 8000;
+port = get_http_port( default:8000 );
 
- if (get_port_state(port))
- {
    req = 'GET /content/nonexistant' + rand() + rand() + rand() + '.mp3 HTTP/1.0\r\n\r\n' +
          'Host: ' + get_host_name() + '\r\n\r\n';
     banner = http_keepalive_send_recv(port:port, data:req);
@@ -95,4 +87,3 @@ include("http_keepalive.inc");
      log_message(port:port, data:report);
     }
    } 
- }

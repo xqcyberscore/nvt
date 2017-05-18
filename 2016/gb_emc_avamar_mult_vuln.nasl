@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_avamar_mult_vuln.nasl 5151 2017-01-31 15:55:21Z mime $
+# $Id: gb_emc_avamar_mult_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # EMC Avamar Data Store and Avamar Virtual Edition Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:emc:avamar";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106289");
-  script_version("$Revision: 5151 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-31 16:55:21 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
   script_tag(name: "cvss_base", value: "7.2");
   script_tag(name: "cvss_base_vector", value: "AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("EMC Avamar Data Store and Avamar Virtual Edition Multiple Vulnerabilities");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

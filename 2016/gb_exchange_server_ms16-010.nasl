@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms16-010.nasl 2528 2016-01-29 07:07:56Z antu123 $
+# $Id: gb_exchange_server_ms16-010.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Microsoft Exchange Server Address Spoofing Vulnerabilities (3124557)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806187");
-  script_version("$Revision: 2528 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2016-0029", "CVE-2016-0030", "CVE-2016-0031", "CVE-2016-0032");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-29 08:07:56 +0100 (Fri, 29 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-13 09:19:57 +0530 (Wed, 13 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server Address Spoofing Vulnerabilities (3124557)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-010");
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3124557#bookmark-fileinfo");
 
-  script_summary("Check for the vulnerable file 'ExSetup.exe' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

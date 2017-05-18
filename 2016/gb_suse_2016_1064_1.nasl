@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851279");
-  script_version("$Revision: 3122 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-20 07:16:53 +0200 (Wed, 20 Apr 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 05:21:37 +0200 (Mon, 18 Apr 2016)");
   script_cve_id("CVE-2014-8143", "CVE-2015-0240", "CVE-2015-3223", "CVE-2015-5252", 
                 "CVE-2015-5296", "CVE-2015-5299", "CVE-2015-5330", "CVE-2015-5370", 
@@ -99,7 +99,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:1064_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-04/msg00042.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

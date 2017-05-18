@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 2829 2016-03-10 13:10:31Z antu123 $
+# $Id: gb_adobe_acrobat_mult_vuln_mar16_win.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Adobe Acrobat Multiple Vulnerabilities March16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807469");
-  script_version("$Revision: 2829 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-1007", "CVE-2016-1008", "CVE-2016-1009");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 14:10:31 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-10 11:12:19 +0530 (Thu, 10 Mar 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Acrobat Multiple Vulnerabilities March16 (Windows)");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/acrobat/apsb16-09.html");
 
-  script_summary("Check for the vulnerable version of Adobe Acrobat on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

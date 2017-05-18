@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: openssh_uselogin_environment.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: openssh_uselogin_environment.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: OpenSSH UseLogin Environment Variables
 #
 # Authors:
@@ -40,8 +40,8 @@ versions. (Available at: ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH)";
 if(description)
 {
  	script_id(10823);
- 	script_version("$Revision: 3445 $");
- 	script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+ 	script_version("$Revision: 6056 $");
+ 	script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  	script_bugtraq_id(3614);
 	script_xref(name:"IAVA", value:"2001-t-0017");
@@ -54,7 +54,6 @@ if(description)
 
  
  	summary = "Checks for the remote SSH version";
- 	script_summary(summary);
  
  	script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

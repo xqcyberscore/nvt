@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_on_rails_action_view_xss_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_ruby_on_rails_action_view_xss_vuln_lin.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Ruby on Rails Action View Cross Site Scripting Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rubyonrails:ruby_on_rails';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807380");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-6316");
   script_bugtraq_id(92430);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 14:29:55 +0530 (Thu, 13 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Ruby on Rails Action View Cross Site Scripting Vulnerability (Linux)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2016/q3/260");
   script_xref(name : "URL" , value : "https://groups.google.com/forum/#!msg/rubyonrails-security/I-VWr034ouk/gGu2FrCwDAAJ");
   script_xref(name : "URL" , value : "http://weblog.rubyonrails.org/2016/8/11/Rails-5-0-0-1-4-2-7-2-and-3-2-22-3-have-been-released");
-  script_summary("Check for the vulnerable version of Ruby on Rails on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

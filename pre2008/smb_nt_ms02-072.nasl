@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-072.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_ms02-072.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Unchecked Buffer in XP Shell Could Enable System Compromise (329390)
 #
 # Authors:
@@ -43,8 +43,8 @@ http://www.microsoft.com/technet/security/bulletin/ms02-072.mspx";
 if(description)
 {
  script_id(11194);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(6427);
  script_cve_id("CVE-2002-1327");
@@ -58,7 +58,6 @@ if(description)
 
  summary = "Checks for MS Hotfix 329390, Flaw in Microsoft XP Shell";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

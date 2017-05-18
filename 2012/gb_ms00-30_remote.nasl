@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms00-30_remote.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_ms00-30_remote.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Microsoft IIS Malformed File Extension Denial of Service Vulnerability
 #
@@ -42,19 +42,18 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5977 $");
   script_bugtraq_id(1190);
   script_cve_id("CVE-2000-0408");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"creation_date", value:"2012-07-03 16:55:41 +0530 (Tue, 03 Jul 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_name("Microsoft IIS Malformed File Extension Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.ussrback.com/labs40.html");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms00-030");
   script_xref(name : "URL" , value : "http://www.iss.net/security_center/reference/vuln/iis-url-extension-data-dos.htm");
 
-  script_summary("Check for Denial of Service vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

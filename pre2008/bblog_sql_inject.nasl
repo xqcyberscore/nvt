@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bblog_sql_inject.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: bblog_sql_inject.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: bBlog SQL injection flaw
 #
 # Authors:
@@ -40,29 +40,19 @@ tag_solution = "Upgrade to version 0.7.4 or newer.";
 if(description)
 {
  script_id(15466);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1570");
  script_bugtraq_id(11303);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- 
- name = "bBlog SQL injection flaw";
- script_name(name);
- 
-
- summary = "Check bBlog version";
- script_summary(summary);
- 
+ script_name("bBlog SQL injection flaw");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  
+ script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2004 David Maciejak");
-		
- family = "Web application abuses";
- script_family(family);
- script_dependencies("http_version.nasl");
+ script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "solution" , value : tag_solution);
@@ -70,23 +60,19 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(!port) exit(0);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
+foreach dir( make_list_unique( "/bblog", cgi_dirs( port:port ) ) ) {
 
-foreach dir (make_list(cgi_dirs(),  "/bblog"))
-{
- buf = http_get(item:string(dir,"/index.php"), port:port);
- r = http_keepalive_send_recv(port:port, data:buf, bodyonly:1);
- if( r == NULL )exit(0);
- if(egrep(pattern:"www\.bBlog\.com target=.*bBlog 0\.([0-6]\.|7\.[0-3][^0-9]).*&copy; 2003 ", string:r)) security_message(port);
+  if( dir == "/" ) dir = "";
+  url = string(dir,"/index.php");
+  r = http_get_cache(item:url, port:port);
+  if( r == NULL ) continue;
+  if(egrep(pattern:"www\.bBlog\.com target=.*bBlog 0\.([0-6]\.|7\.[0-3][^0-9]).*&copy; 2003 ", string:r)) security_message( port:por );
 }
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities
 #
@@ -55,16 +55,15 @@ is prone SQL injection and cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(902902);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:53:50 +0530 (Tue, 24 Jan 2012)");
   script_name("SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521328");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Jan/384");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109007/DDIVRT-2011-39.txt");
-  script_summary("Determine SQL injection vulnerability in SolarWinds Orion Data Storage Manager");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 SecPod");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_d_link_dcs_auth_bypass.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_d_link_dcs_auth_bypass.nasl 5785 2017-03-30 09:19:35Z cfi $
 #
 # D-Link DCS Authentication Bypass Vulnerability
 #
@@ -41,18 +41,14 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103647";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5785 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
  script_name("D-Link DCS Authentication Bypass Vulnerability");
-
  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/119902/D-Link-DCS-Cameras-Authentication-Bypass-Command-Execution.html");
  script_xref(name : "URL" , value : "http://www.d-link.com");
-
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-01-30 11:53:42 +0100 (Wed, 30 Jan 2013)");
- script_summary("Determine if the config is disclosed");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -69,9 +65,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-banner = get_http_banner(port);
+banner = get_http_banner(port:port);
 if('realm="DCS-9' >!< banner)exit(0);
 
 url = '/frame/GetConfig'; 

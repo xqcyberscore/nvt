@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_member_uid_sql_inj_vuln.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mybb_member_uid_sql_inj_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # MyBB 'member.php' SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802636");
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5912 $");
   script_bugtraq_id(53814);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-08 12:12:12 +0530 (Fri, 08 Jun 2012)");
   script_name("MyBB 'member.php' SQL Injection Vulnerability");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/76097");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113300/mybb168-sql.txt");
 
-  script_summary("Check if MyBB is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

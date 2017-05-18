@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_rce_2012_09.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_viart_shop_rce_2012_09.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # ViArt Shop Remote Code Execution Vulnerability
 #
@@ -42,7 +42,7 @@ CPE = "cpe:/a:viart:viart_shop";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5988 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("ViArt Shop Remote Code Execution Vulnerability");
@@ -50,9 +50,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.viart.com/downloads/sips_response.zip");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5109.php");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-26 10:51:47 +0200 (Wed, 26 Sep 2012)");
- script_summary("Determine if it is possible to execute phpinfo()");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

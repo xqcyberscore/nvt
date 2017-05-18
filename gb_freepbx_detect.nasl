@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_freepbx_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
 #
 # FreePBX Detection
 #
@@ -30,17 +30,16 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5723 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-03 12:47:25 +0100 (Wed, 03 Nov 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
  script_name("FreePBX Detection");
 
-tag_summary =
-"The script sends a connection request to the server and attempts to
+ tag_summary = "The script sends a connection request to the server and attempts to
  extract the version number from the reply.";
- script_summary("Checks for the presence of FreePBX");
+
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
@@ -61,27 +60,18 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
-if( ! get_port_state( port ) ) exit( 0 );
 if( ! can_host_php( port:port ) ) exit (0 );
 
-dirs = make_list( "/freepbx",cgi_dirs() );
+foreach dir( make_list_unique( "/freepbx", cgi_dirs( port:port ) ) ) {
 
-foreach dir ( dirs )
-{
+ install = dir;
+ if( dir == "/" ) dir = "";
  url = dir + "/admin/config.php";
- req = http_get( item:url, port:port );
- buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
+ buf = http_get_cache( item:url, port:port );
  if( buf == NULL ) continue;
 
  if( "<title>FreePBX" >< buf && '<div id="version"><a href="http://www.freepbx.org" target="_blank">FreePBX' )
  {
-     if( strlen( dir ) > 0 )
-        install = dir;
-     else 
-        install = '/';
-     
     vers = string("unknown");
     ### try to get version 
     version = eregmatch( string: buf, pattern: "FreePBX</a> ([0-9.]+) on <a",icase:TRUE );
@@ -114,9 +104,7 @@ foreach dir ( dirs )
                                                cpe:cpe,
                                                concluded: version[0]),
                  port:port );
-
-
- }
+  }
 }
-exit(0);
 
+exit(0);

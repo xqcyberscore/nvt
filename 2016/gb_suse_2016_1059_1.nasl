@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851277");
-  script_version("$Revision: 3122 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-20 07:16:53 +0200 (Wed, 20 Apr 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-17 05:18:46 +0200 (Sun, 17 Apr 2016)");
   script_cve_id("CVE-2016-1646", "CVE-2016-1647", "CVE-2016-1648", "CVE-2016-1649", 
                 "CVE-2016-1650", "CVE-2016-3679");
@@ -55,7 +55,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:1059_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-04/msg00039.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of Chromium");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

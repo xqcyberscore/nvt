@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2408_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2408_1.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from advisory DSA 2408-1 (php5)
 #
 # Authors:
@@ -79,13 +79,12 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2011-1072", "CVE-2011-4153", "CVE-2012-0781", "CVE-2012-0788", "CVE-2012-0831", "CVE-2010-4697", "CVE-2011-1092", "CVE-2011-1148", "CVE-2011-1464", "CVE-2011-1467", "CVE-2011-1468", "CVE-2011-1469", "CVE-2011-1470", "CVE-2011-1657", "CVE-2011-3182", "CVE-2011-3267");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5958 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:30:50 -0400 (Mon, 12 Mar 2012)");
  script_name("Debian Security Advisory DSA 2408-1 (php5)");
 
 
- script_summary("Debian Security Advisory DSA 2408-1 (php5)");
 
  script_category(ACT_GATHER_INFO);
 

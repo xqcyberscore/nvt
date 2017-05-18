@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_director_cisco-sa-20170315-ucs.nasl 5585 2017-03-16 06:43:05Z ckuerste $
+# $Id: gb_cisco_ucs_director_cisco-sa-20170315-ucs.nasl 5706 2017-03-24 08:04:22Z teissa $
 #
 # Cisco UCS Director Cross-Site Scripting Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106662");
  script_cve_id("CVE-2017-3868");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5585 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+ script_version("$Revision: 5706 $");
 
  script_name("Cisco UCS Director Cross-Site Scripting Vulnerability");
 
@@ -57,7 +57,7 @@ code in the context of the interface or allow the attacker to access sensitive b
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-16 07:43:05 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name: "creation_date", value: "2017-03-16 12:15:21 +0700 (Thu, 16 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_groupware_export_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_simple_groupware_export_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802589");
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-1028");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-09 17:20:45 +0530 (Thu, 09 Feb 2012)");
   script_name("SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability");
 
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-02/0028.html");
 
-  script_summary("Check if SimpleGroupware is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

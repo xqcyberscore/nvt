@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871684");
-  script_version("$Revision: 4453 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 10:10:55 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:23 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-5011");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for util-linux RHSA-2016:2605-02");
   script_tag(name: "summary", value: "Check the version of util-linux");
@@ -65,7 +65,6 @@ Enterprise Linux 7.3 Release Notes linked from the References section.
   script_xref(name: "RHSA", value: "2016:2605-02");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-November/msg00041.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of util-linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

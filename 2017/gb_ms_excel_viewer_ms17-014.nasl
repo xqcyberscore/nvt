@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_viewer_ms17-014.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms_excel_viewer_ms17-014.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # Microsoft Windows Excel Viewer Memory Corruption Vulnerabilities (4013241)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810707");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5752 $");
   script_cve_id("CVE-2017-0006", "CVE-2017-0052");
   script_bugtraq_id(96740, 96741);
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 13:04:02 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Excel Viewer Memory Corruption Vulnerabilities (4013241)");

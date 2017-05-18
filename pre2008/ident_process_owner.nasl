@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_process_owner.nasl 4044 2016-09-13 07:18:25Z cfi $
+# $Id: ident_process_owner.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Identd scan
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("$Revision: 4044 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-13 09:18:25 +0200 (Tue, 13 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Identd scan");
-  script_summary("Get UIDs with identd");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 Michel Arboi");
   script_family("Service detection");

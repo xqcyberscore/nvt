@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cacti_detect.nasl 2622 2016-02-09 13:03:15Z antu123 $
+# $Id: cacti_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
 #
 # Cacti Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100204");
- script_version("$Revision: 2622 $");
+ script_version("$Revision: 5720 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 14:03:15 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-05-16 14:32:16 +0200 (Sat, 16 May 2009)");
  script_name("Cacti Detection");
 
@@ -41,7 +41,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Cacti");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -58,33 +57,20 @@ include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
 cacti_port = get_http_port(default:80);
-
-## Checking port state
-if(!get_port_state(cacti_port))exit(0);
-
-## Checking host support php
 if(!can_host_php(port:cacti_port)) exit(0);
 
-foreach dir (make_list("/cacti","/monitoring", cgi_dirs()))
-{
-  url = string(dir, "/index.php");
-  req = http_get(item:url, port:cacti_port);
-  buf = http_send_recv(port:cacti_port, data:req, bodyonly:FALSE);
+foreach dir( make_list_unique( "/cacti", "/monitoring", cgi_dirs( port:cacti_port ) ) ) {
 
-  if( buf == NULL )continue;
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:cacti_port );
+  if( buf == NULL ) continue;
 
   if( egrep(pattern: 'Login to Cacti', string: buf, icase: TRUE) &&
        egrep(pattern: "Set-Cookie: Cacti", string:buf) )
   {
-
-    if(strlen(dir)>0) {
-       install=dir;
-    }
-    else{
-      install=string("/");
-    }
 
     vers = string("unknown");
 

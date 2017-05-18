@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_tiles_detect.nasl 2685 2016-02-17 17:15:28Z cfi $
+# $Id: secpod_apache_tiles_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Apache Tiles Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900493");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2685 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 18:15:28 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Tiles Version Detection");
-  script_summary("Sets the KB for the version of Apache Tiles");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

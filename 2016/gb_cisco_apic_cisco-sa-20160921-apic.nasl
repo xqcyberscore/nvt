@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_cisco-sa-20160921-apic.nasl 4129 2016-09-22 06:05:42Z ckuerste $
+# $Id: gb_cisco_apic_cisco-sa-20160921-apic.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Cisco Application Policy Infrastructure Controller Binary Privilege Escalation Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6413");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 4129 $");
+ script_version ("$Revision: 5712 $");
 
  script_name("Cisco Application Policy Infrastructure Controller Binary Privilege Escalation Vulnerability");
 
@@ -57,9 +57,8 @@ and take full control of the device.");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-22 08:05:42 +0200 (Thu, 22 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-22 10:06:54 +0700 (Thu, 22 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

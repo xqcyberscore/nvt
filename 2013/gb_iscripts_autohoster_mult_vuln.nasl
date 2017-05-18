@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iscripts_autohoster_mult_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_iscripts_autohoster_mult_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # iScripts AutoHoster Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804165");
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 5816 $");
   script_cve_id("CVE-2013-7189", "CVE-2013-7190");
   script_bugtraq_id(64377, 64377);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-12-31 11:25:53 +0530 (Tue, 31 Dec 2013)");
   script_name("iScripts AutoHoster Multiple Vulnerabilities");
 
@@ -69,11 +69,10 @@ if(description)
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013120103");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Dec/att-121/iscripts.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/iscripts-autohoster-php-code-injection");
-  script_summary("Check if iScripts AutoHoster is vulnerable to multiple vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -89,23 +88,17 @@ isReq = "";
 isRes = "";
 url = "";
 
-## Get HTTP Port
 isPort = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:isPort)){
   exit(0);
 }
-
-## make list of possible path names
 
 foreach dir (make_list_unique("/", "/iscripts", "/autohoster", "/iscriptsautohoster", cgi_dirs(port:isPort)))
 {
 
   if(dir == "/") dir = "";
-
-  isReq = http_get(item:string(dir, '/index.php'),  port: isPort);
-  isRes = http_keepalive_send_recv(port:isPort, data:isReq);
+  isRes = http_get_cache(item:string(dir, '/index.php'),  port: isPort);
 
   ## Confirm the application
   if(isRes && egrep(pattern:"Powered By.*iScripts.*Autohoster", string:isRes,

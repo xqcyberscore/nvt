@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_gms_mul_sql_vul.nasl 5007 2017-01-14 13:21:48Z cfi $
+# $Id: gb_dell_sonicwall_gms_mul_sql_vul.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # Dell SonicWALL GMS/Analayzer - Multiple SQL Injection Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107121");
-  script_version("$Revision: 5007 $");
+  script_version("$Revision: 5889 $");
   script_bugtraq_id(95155);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-14 14:21:48 +0100 (Sat, 14 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-01-11 10:12:05 +0700 (Wed, 11 Jan 2017)");
   script_name("Dell SonicWALL GMS/Analayzer - Multiple SQL Injection Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -73,18 +73,13 @@ include("version_func.inc");
 cpe_list = make_list( "cpe:/o:dell:sonicwall_global_management_system",
                       "cpe:/o:dell:sonicwall_analyzer" );
 
-if( ! port = get_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! version = get_app_version( cpe:cpe_list ) ) exit( 0 );
 
-foreach CPE( cpe_list ) {
-
-  if( ! version = get_app_version( cpe:CPE, port:port ) ) continue;
-
-  if( version =~ "^8\." ) {
-    if( version_is_less( version:version, test_version:"8.2" ) ) {
-      report = report_fixed_ver( installed_version:version, fixed_version:"8.2" );
-      security_message( port:port, data:report );
-      exit( 0 );
-    }
+if( version =~ "^8\." ) {
+  if( version_is_less( version:version, test_version:"8.2" ) ) {
+    report = report_fixed_ver( installed_version:version, fixed_version:"8.2" );
+    security_message( port:0, data:report );
+    exit( 0 );
   }
 }
 

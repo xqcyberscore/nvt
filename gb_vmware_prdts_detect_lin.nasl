@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_lin.nasl 4999 2017-01-12 17:45:19Z mime $
+# $Id: gb_vmware_prdts_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # VMware products version detection (Linux)
 #
@@ -32,10 +32,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800001");
-  script_version("$Revision: 4999 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-12 18:45:19 +0100 (Thu, 12 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware products version detection (Linux)");
@@ -43,7 +43,6 @@ if(description)
   script_tag(name : "summary" , value:"This script retrieves all VMware Products 
   version and saves those in KB.");
 
-  script_summary("Get/Set the versions of VMware Products");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -56,22 +55,6 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase, app){
-
-   local_var cpe, app;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-   {
-     register_product(cpe:cpe, location:"/usr/bin");
-     log_message(data: build_detection_report(app: app, version:tmpVers,
-                                         install: "/usr/bin",
-                                         cpe: cpe,
-                                         concluded: tmpVers));
-  }
-}
 
 ## start script
 sock = ssh_login_or_reuse_connection();
@@ -89,8 +72,8 @@ if("VMware GSX Server" >< version)
      set_kb_item(name:"VMware/GSX-Server/Linux/Ver", value:gsxVer);
 
      ## build cpe and store it as host_detail
-     register_cpe(tmpVers:gsxVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:vmware:gsx_server:",app:"VMware GSX Server");
-
+     register_and_report_cpe(app:"VMware GSX Server", ver:gsxVer, base:"cpe:/a:vmware:gsx_server:",
+                             expr:"^([0-9.]+)");
   }
 
   gsxBuild = ereg_replace(string:version, replace:"\1",
@@ -113,8 +96,8 @@ else if("VMware Workstation" >< version)
     set_kb_item(name:"VMware/Workstation/Linux/Ver", value:wrkstnVer);
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:wrkstnVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:vmware:workstation:", app:"VMware Workstation");
-
+    register_and_report_cpe(app:"VMware Workstation", ver:wrkstnVer, base:"cpe:/a:vmware:workstation:",
+                             expr:"^([0-9.]+)");
   }
 
   wrkstnBuild = ereg_replace(string:version, replace:"\1",
@@ -137,8 +120,8 @@ else if("VMware Server" >< version)
     set_kb_item(name:"VMware/Server/Linux/Ver", value:svrVer);
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:svrVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:vmware:server:", app:"VMware Server");
-
+    register_and_report_cpe(app:"VMware Server", ver:svrVer, base:"cpe:/a:vmware:server:",
+                            expr:"^([0-9.]+)");
   }
 
   svrBuild = ereg_replace(string:version, replace:"\1",
@@ -181,8 +164,10 @@ if(!isnull(path))
       set_kb_item(name:"VMware/Linux/Installed", value:TRUE);
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:vmpVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:vmware:player:", app:"Vmware player");
+      register_and_report_cpe(app:"Vmware player", ver:vmpVer[1], base:"cpe:/a:vmware:player:",
+                            expr:"^([0-9.]+)", insloc:path);
     }
   }
 }
 ssh_close_connection();
+exit(0);

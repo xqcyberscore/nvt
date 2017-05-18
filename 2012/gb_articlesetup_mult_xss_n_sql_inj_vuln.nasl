@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_articlesetup_mult_xss_n_sql_inj_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_articlesetup_mult_xss_n_sql_inj_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # ArticleSetup Multiple Cross-Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802427");
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5958 $");
   script_bugtraq_id(52834);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-04 11:17:27 +0530 (Wed, 04 Apr 2012)");
   script_name("ArticleSetup Multiple Cross-Site Scripting and SQL Injection Vulnerabilities");
   script_xref(name : "URL" , value : "http://secpod.org/blog/?p=497");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18682/");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_ArticleSetup_Multiple_Vuln.txt");
 
-  script_summary("Check if ArticleSetup is vulnerable to XSS and SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

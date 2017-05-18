@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3711.nasl 4532 2016-11-16 07:46:22Z antu123 $
+# $Id: deb_3711.nasl 5712 2017-03-24 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3711-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703711);
-    script_version("$Revision: 4532 $");
+    script_version("$Revision: 5712 $");
     script_cve_id("CVE-2016-3492", "CVE-2016-5584", "CVE-2016-5616", "CVE-2016-5624", "CVE-2016-5626", "CVE-2016-5629", "CVE-2016-6663", "CVE-2016-7440", "CVE-2016-8283");
     script_name("Debian Security Advisory DSA 3711-1 (mariadb-10.0 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-11-16 08:46:22 +0100 (Wed, 16 Nov 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-11-11 00:00:00 +0100 (Fri, 11 Nov 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3711.html");
 
-    script_summary("Debian Security Advisory DSA 3711-1 (mariadb-10.0 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_EditWrxLite_51995.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_EditWrxLite_51995.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # EditWrxLite CMS 'wrx.cgi' Remote Command Execution Vulnerability
 #
@@ -30,24 +30,20 @@ tag_summary = "EditWrxLite CMS is prone to a remote command-execution vulnerabil
 Attackers can exploit this issue to execute arbitrary commands with
 the privileges of the affected application.";
 
-
 if (description)
 {
  script_id(103419);
  script_bugtraq_id(51995);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5714 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("EditWrxLite CMS 'wrx.cgi' Remote Command Execution Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51995");
  script_xref(name : "URL" , value : "http://editwrx.com/index.htm");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-15 10:28:37 +0100 (Wed, 15 Feb 2012)");
- script_summary("Determine if EditWrxLite CMS is prone to a remote command-execution vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -58,30 +54,25 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/editwrx", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/editwrx/",cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/wrx.cgi";
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/wrx.cgi"); 
+  if( http_vuln_check( port:port, url:url, pattern:"<title>.*EditWrx" ) ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>.*EditWrx")) {
+    url = dir + "/wrx.cgi?download=;id|";
 
-    url = string(dir, "/wrx.cgi?download=;id|");
-
-    if(http_vuln_check(port:port, url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*")) {
-      security_message(port:port);
-      exit(0);
-    }  
+    if( http_vuln_check( port:port, url:url, pattern:"uid=[0-9]+.*gid=[0-9]+.*" ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

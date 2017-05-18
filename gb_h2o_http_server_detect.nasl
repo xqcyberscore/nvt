@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_h2o_http_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # H2O HTTP Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806993");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-25 13:12:26 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server Version Detection");
 
@@ -41,7 +41,6 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Set the version of H2O HTTP Server in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

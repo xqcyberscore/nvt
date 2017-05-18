@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln02_may16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_cloudbees_jenkins_mult_vuln02_may16_lin.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807332");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-0788", "CVE-2016-0789", "CVE-2016-0790", "CVE-2016-0791",
                 "CVE-2016-0792");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:08:55 +0530 (Fri, 20 May 2016)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities-02-May16 (Linux)");
 
@@ -81,7 +81,6 @@ if(description)
   script_xref(name : "URL" , value : "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-02-24");
   script_xref(name : "URL" , value : "https://www.contrastsecurity.com/security-influencers/serialization-must-die-act-2-xstream");
 
-  script_summary("Check for the vulnerable version of CloudBees Jenkins on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

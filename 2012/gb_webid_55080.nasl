@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_55080.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_webid_55080.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # WeBid 'getthumb.php' Remote File Disclosure Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(55080);
- script_version ("$Revision: 5633 $");
+ script_version ("$Revision: 5977 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -51,9 +51,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55080");
  script_xref(name : "URL" , value : "http://www.webidsupport.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-18 14:06:33 +0200 (Sat, 18 Aug 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

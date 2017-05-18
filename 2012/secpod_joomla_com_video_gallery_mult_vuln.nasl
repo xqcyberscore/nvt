@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_video_gallery_mult_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_joomla_com_video_gallery_mult_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Joomla! 'Video Gallery' Component Multiple Vulnerabilities
 #
@@ -50,16 +50,15 @@ prone to multiple vulnerabilities.";
 if(description)
 {
   script_id(902673);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-25 18:38:13 +0530 (Wed, 25 Apr 2012)");
   script_name("Joomla! 'Video Gallery' Component Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18125");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112161/joomlavideogallery-lfisql.txt");
 
-  script_summary("Check if Joomla! Video Gallery is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (C) 2012 SecPod");

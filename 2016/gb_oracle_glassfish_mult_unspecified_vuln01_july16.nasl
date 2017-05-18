@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_mult_unspecified_vuln01_july16.nasl 5059 2017-01-23 07:25:57Z antu123 $
+# $Id: gb_oracle_glassfish_mult_unspecified_vuln01_july16.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Oracle GlassFish Server Multiple Unspecified Vulnerabilities -01 July16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808704");
-  script_version("$Revision: 5059 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-3607", "CVE-2015-3237", "CVE-2017-3239");
   script_bugtraq_id(75387, 95493);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 08:25:57 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-22 11:55:11 +0530 (Fri, 22 Jul 2016)");
   script_name("Oracle GlassFish Server Multiple Unspecified Vulnerabilities -01 July16");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version Oracle GlassFish Server");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("GlassFish_detect.nasl");

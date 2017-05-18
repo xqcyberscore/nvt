@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_56094.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_symphony_56094.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Symphony Multiple Remote Security Vulnerabilities
 #
@@ -33,11 +33,10 @@ if(description)
  script_bugtraq_id(56094);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_version ("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-06 13:03:17 +0100 (Tue, 06 Nov 2012)");
  script_name("Symphony Multiple Remote Security Vulnerabilities");
- script_summary("Determine if Symphony is prone to XSS");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

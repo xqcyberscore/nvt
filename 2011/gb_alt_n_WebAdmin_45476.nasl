@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alt_n_WebAdmin_45476.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_alt_n_WebAdmin_45476.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # Alt-N WebAdmin Remote Source Code Information Disclosure Vulnerability
 #
@@ -37,23 +37,19 @@ The following versions are affected:
 Alt-N WebAdmin 3.3.3 U-Mail 9.8 for Windows U-Mail GateWay 9.8
 for Windows";
 
-
 if (description)
 {
  script_id(103007);
- script_version("$Revision: 5424 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-03 14:40:34 +0100 (Mon, 03 Jan 2011)");
  script_bugtraq_id(45476);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("Alt-N WebAdmin Remote Source Code Information Disclosure Vulnerability");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45476");
  script_xref(name : "URL" , value : "http://www.comingchina.com/");
  script_xref(name : "URL" , value : "http://www.altn.com/products/default.asp?product%5Fid=WebAdmin");
-
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -67,23 +63,19 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:1000);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:1000 );
 
-dirs = make_list("/webadmin",cgi_dirs());
+foreach dir( make_list_unique( "/webadmin", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/login.wdm."); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/login.wdm.";
 
-  if(http_vuln_check(port:port, url:url, pattern:"<xsl:if", extra_check:make_list("\{/root/RequestedPage\}"))) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<xsl:if", extra_check:make_list( "\{/root/RequestedPage\}" ) ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

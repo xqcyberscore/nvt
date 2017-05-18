@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cogent_cascade_n_opc_datahub_mult_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_cogent_cascade_n_opc_datahub_mult_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Cogent OPC DataHub and Cascade DataHub XSS and CRLF Vulnerabilities
 #
@@ -43,10 +43,10 @@ tag_summary = "This host is installed with OPC DataHub or Cascade DataHub and is
 if(description)
 {
   script_id(802565);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-0310", "CVE-2012-0309");
   script_bugtraq_id(51375);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-20 18:01:09 +0530 (Fri, 20 Jan 2012)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000002.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of OPC DataHub or Cascade DataHub");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

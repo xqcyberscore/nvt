@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_derby_detect.nasl 4301 2016-10-19 09:04:30Z cfi $
+# $Id: gb_apache_derby_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Apache Derby Detection
 #
@@ -33,12 +33,11 @@ if (description)
  
  script_id(100795);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4301 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-19 11:04:30 +0200 (Wed, 19 Oct 2016) $");
+ script_version("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-09-09 19:37:11 +0200 (Thu, 09 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Apache Derby Detection");
- script_summary("Checks for the presence of Apache Derby");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");

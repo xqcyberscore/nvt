@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tagged_albums_plugin_sql_inj_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_tagged_albums_plugin_sql_inj_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # WordPress Tagged Albums Plugin 'id' Parameter SQL Injection Vulnerability
 #
@@ -49,9 +49,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 6018 $");
   script_bugtraq_id(56569);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-19 11:18:38 +0530 (Mon, 19 Nov 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80101");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118146/WordPress-Tagged-Albums-SQL-Injection.html");
 
-  script_summary("Check if WordPress Tagged Albums Pugin is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

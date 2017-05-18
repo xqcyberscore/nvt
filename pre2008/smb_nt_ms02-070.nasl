@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms02-070.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_ms02-070.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Flaw in SMB Signing Could Enable Group Policy to be Modified (329170)
 #
 # Authors:
@@ -45,8 +45,8 @@ http://www.microsoft.com/technet/security/bulletin/ms02-070.mspx";
 if(description)
 {
  script_id(11215);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(6367);
  script_cve_id("CVE-2002-1256");
@@ -60,7 +60,6 @@ if(description)
 
  summary = "Checks for MS Hotfix 329170";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

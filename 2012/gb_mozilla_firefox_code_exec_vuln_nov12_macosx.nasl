@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_code_exec_vuln_nov12_macosx.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_mozilla_firefox_code_exec_vuln_nov12_macosx.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Mozilla Firefox Code Execution Vulnerabilities - November12 (Mac OS X)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Mozilla Firefox and is prone to multi
 if(description)
 {
   script_id(803062);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-4210");
   script_bugtraq_id(56646);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 15:52:10 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Code Execution Vulnerabilities - November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027792");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-104.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

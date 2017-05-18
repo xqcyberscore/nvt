@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpython_mima_nd_code_exec_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_cpython_mima_nd_code_exec_vuln_lin.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Cpython Man in Middle Attack and Code Execution Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809217");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-5636", "CVE-2016-0772");
   script_bugtraq_id(91247, 91225);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-12 14:47:20 +0530 (Mon, 12 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cpython Man in Middle Attack and Code Execution Vulnerabilities (Linux)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.python.org/issue26171");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Cpython on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_Python_detection.nasl", "os_detection.nasl");

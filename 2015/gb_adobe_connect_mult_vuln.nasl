@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_connect_mult_vuln.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_connect_mult_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Adobe Connect Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:connect";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805662");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2015-0344", "CVE-2015-0343");
   script_bugtraq_id(75188, 75153);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-06-19 12:17:48 +0530 (Fri, 19 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe Connect Multiple Vulnerabilities");
@@ -64,8 +64,7 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2015/Jun/61");
   script_xref(name : "URL" , value : "https://helpx.adobe.com/adobe-connect/release-note/connect-94-release-notes.html");
 
-  script_summary("Check for the vulnerable version of Adobe Connect");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_adobe_connect_detect.nasl");

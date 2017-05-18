@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808428");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:47:46 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2015-8872", "CVE-2016-4804");
   script_tag(name:"cvss_base", value:"2.1");
@@ -46,7 +46,6 @@ drives or on floppies.
   script_xref(name: "FEDORA", value: "2016-f695b1a747");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KKPXZSFLUZFWQVDFS53ZOWPWLX2RVDDY");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of dosfstools");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

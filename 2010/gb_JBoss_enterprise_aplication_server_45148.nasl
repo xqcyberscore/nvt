@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_JBoss_enterprise_aplication_server_45148.nasl 4217 2016-10-05 12:26:26Z cfi $
+# $Id: gb_JBoss_enterprise_aplication_server_45148.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # JBoss Enterprise Application Platform Multiple Remote Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100931");
-  script_version("$Revision: 4217 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 14:26:26 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 5889 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-02 19:42:22 +0100 (Thu, 02 Dec 2010)");
   script_bugtraq_id(45148);
   script_cve_id("CVE-2010-3708","CVE-2010-3862","CVE-2010-3878");
@@ -60,36 +60,27 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-#CPE = make_list( "cpe:/a:redhat:jboss_application_server", "cpe:/a:jboss:jboss_application_server", "cpe:/a:redhat:jboss_enterprise_application_platform" );
-#if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-#TODO: Implement get_app_version_from_list in host_details.inc
+cpe_list = make_list( "cpe:/a:redhat:jboss_application_server", "cpe:/a:jboss:jboss_application_server", "cpe:/a:redhat:jboss_enterprise_application_platform" );
 
-identifiers = make_list( "jboss_application_server", "jboss_enterprise_application_platform" );
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe = infos['cpe'];
+port = infos['port'];
 
-## Get JBoss port set by JBoss_enterprise_aplication_server_detect.nasl
-if( ! port = get_kb_item( "jboss/port" ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:cpe, port:port ) ) exit( 0 );
 
-foreach identifier( identifiers ) {
+if( "cp" >< vers ) {
+  vers = str_replace( string:vers, find:"cp", replace:"." );
+}
 
-  if( ! vers = get_kb_item( "www/" + port + "/" + identifier ) ) continue;
-  if( vers == "unknown" ) continue;
+if( "GA" >< vers ) vers = vers - ".GA";
 
-  if("cp" >< vers) {
-    vers = str_replace( string:vers, find:"cp", replace:"." );
-  }
-
-  if( "GA" >< vers ) vers = vers - ".GA";
-
-  if( version_is_less( version:vers, test_version:"4.3.0.9" ) ) {
-    report = report_fixed_ver( installed_version:vers, fixed_version:"4.3.0" );
-    security_message( port:port, data:report);
-    exit(0);
-  }
+if( version_is_less( version:vers, test_version:"4.3.0.9" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"4.3.0" );
+  security_message( port:port, data:report);
+  exit(0);
 }
 
 exit( 99 );

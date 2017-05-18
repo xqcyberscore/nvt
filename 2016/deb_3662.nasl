@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3662.nasl 4205 2016-10-04 07:46:54Z antu123 $
+# $Id: deb_3662.nasl 5867 2017-04-05 09:01:13Z teissa $
 # Auto-generated from advisory DSA 3662-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703662);
-    script_version("$Revision: 4205 $");
+    script_version("$Revision: 5867 $");
     script_cve_id("CVE-2016-7142");
     script_name("Debian Security Advisory DSA 3662-1 (inspircd - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-04 09:46:54 +0200 (Tue, 04 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-09-08 00:00:00 +0200 (Thu, 08 Sep 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3662.html");
 
-    script_summary("Debian Security Advisory DSA 3662-1 (inspircd - security update)");
 
     script_category(ACT_GATHER_INFO);
 

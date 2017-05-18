@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_mod_proxy_buff_overflow.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: apache_mod_proxy_buff_overflow.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Apache mod_proxy content-length buffer overflow
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Don't use mod_proxy or upgrade to a newer version.";
 if(description)
 {
  script_id(15555);
- script_version("$Revision: 5621 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10508);
  script_cve_id("CVE-2004-0492");
@@ -52,7 +52,6 @@ if(description)
 
  summary = "Checks for version of Apache";
 
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

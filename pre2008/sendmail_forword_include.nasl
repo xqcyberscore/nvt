@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: sendmail_forword_include.nasl 2601 2016-02-06 23:53:44Z cfi $
+# $Id: sendmail_forword_include.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Sendmail Group Permissions Vulnerability
 #
 # Authors:
@@ -27,15 +27,14 @@ CPE = 'cpe:/a:sendmail:sendmail';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11349");
- script_version("$Revision: 2601 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-07 00:53:44 +0100 (Sun, 07 Feb 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(715);
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-1999-0129");
  script_name("Sendmail Group Permissions Vulnerability");
- script_summary("Checks the version number");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2001 Xue Yong Zhi");
  script_family("SMTP problems");

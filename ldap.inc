@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ldap.inc 5228 2017-02-08 09:44:42Z cfi $
+# $Id: ldap.inc 5773 2017-03-29 16:57:00Z mime $
 #
 # Functions for LDAP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5228 $
+# $Revision: 5773 $
 #
 ###############################################################################
 
@@ -202,4 +202,55 @@ function ldap_is_pjl_port( port ) {
   }
 
   return;
+}
+
+function ldap_int( number )
+{
+  local_var number, x, len;
+
+  len = FALSE;
+  while( x < strlen( number ) )
+  {
+    len = len * 256 + ord( number[ x ] );
+    x++;
+  }
+
+  return len;
+
+}
+
+function ldap_send_recv( req, sock )
+{
+  local_var req, sock, res, len;
+
+  if( ! req || ! sock )
+    return;
+
+  send( socket:sock, data:req );
+
+  res = recv( socket:sock, length:2 );
+
+  if( strlen( res ) < 2 )
+    return;
+
+  if( res[0] != '\x30' )
+    return;
+
+  len = ord( res[1] );
+
+  if( len >= 128 )
+  {
+    len -= 128;
+    next_len = recv( socket:sock, length:len );
+
+    if( strlen( next_len ) < len )
+      return;
+
+    len = ldap_int( number:next_len );
+
+    if( ! len || len < 1 )
+      return;
+  }
+
+  return( recv( socket:sock, length:len ) );
 }

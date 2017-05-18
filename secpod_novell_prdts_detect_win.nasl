@@ -1,6 +1,6 @@
 ####################################G###########################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_prdts_detect_win.nasl 3118 2016-04-19 11:25:06Z antu123 $
+# $Id: secpod_novell_prdts_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Novell Multiple Products Version Detection
 #
@@ -44,10 +44,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900340");
-  script_version("$Revision: 3118 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 13:25:06 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Novell Multiple Products Version Detection");
@@ -95,18 +95,6 @@ gcPath = "";
 gcVer = "";
 iprintName = "";
 iprintVer = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ##Confirm Applications
 if(!registry_key_exists(key:"SOFTWARE\Novell"))
@@ -177,7 +165,7 @@ foreach key(key_novell)
 
         }
         build_report(app:"Novell eDirectory", ver:eDirVer, cpe:cpe,
-                     loc:eDirPath, con:eDirVer);
+                     insloc:eDirPath, concluded:eDirVer);
       }
     }
   }
@@ -234,7 +222,7 @@ foreach key(key_novell)
           cpe = "cpe:/a:novell:client:x64:";
 
       }
-      build_report(app:"Novell Client", ver:clientVersion, cpe:cpe, loc:clientPath, con:clientVersion);
+      build_report(app:"Novell Client", ver:clientVersion, cpe:cpe, insloc:clientPath, concluded:clientVersion);
     }
   }
 
@@ -267,7 +255,7 @@ foreach key(key_novell)
             cpe="cpe:/a:novell:netidentity_client";
 
           build_report(app:"Novell NetIdentity", ver:netidVer[1],
-                       cpe:cpe, loc:netidPath, con:netidVer[1]);
+                       cpe:cpe, insloc:netidPath, concluded:netidVer[1]);
 
           buildVer = registry_get_sz(key:unins_key + item, item:"DisplayVersion");
           if(!buildVer){
@@ -299,7 +287,7 @@ foreach key(key_novell)
           cpe = 'cpe:/a:novell:groupwise';
 
         build_report(app:"Novell Groupwise Client", ver:gcVer,
-                     cpe:cpe, loc:gcPath, con:gcVer);
+                     cpe:cpe, insloc:gcPath, concluded:gcVer);
       }
     }
   }
@@ -338,7 +326,7 @@ foreach key(key_novell)
             if(isnull(cpe))
               cpe = "cpe:/a:novell:file_reporter:x64:";
           }
-          build_report(app:"Novell File Reporter", ver:nfrVer, cpe:cpe, loc:nfrPath, con:nfrVer);
+          build_report(app:"Novell File Reporter", ver:nfrVer, cpe:cpe, insloc:nfrPath, concluded:nfrVer);
         }
       }
     }
@@ -395,6 +383,6 @@ if(registry_key_exists(key:key_iprint))
         cpe = "cpe:/a:novell:iprint:x64:";
 
     }
-    build_report(app:"Novell iPrint Client", ver:iprintVer, cpe:cpe, loc:install, con:iprintVer);
+    build_report(app:"Novell iPrint Client", ver:iprintVer, cpe:cpe, insloc:install, concluded:iprintVer);
   }
 }

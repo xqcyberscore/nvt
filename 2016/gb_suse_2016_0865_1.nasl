@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851257");
-  script_version("$Revision: 2973 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-30 08:23:53 +0200 (Wed, 30 Mar 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-24 06:15:25 +0100 (Thu, 24 Mar 2016)");
   script_cve_id("CVE-2015-5174", "CVE-2015-5345", "CVE-2015-5346", "CVE-2015-5351", 
                 "CVE-2016-0706", "CVE-2016-0714", "CVE-2016-0763");
@@ -92,7 +92,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:0865_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00085.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tomcat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

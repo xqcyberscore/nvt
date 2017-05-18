@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_backdoor_51989.nasl 5616 2017-03-20 13:32:41Z cfi $
+# $Id: gb_horde_backdoor_51989.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Horde Groupware Source Packages Backdoor Vulnerability
 #
@@ -41,16 +41,15 @@ if (description)
  script_id(103423);
  script_bugtraq_id(51989);
  script_cve_id("CVE-2012-0209");
- script_version ("$Revision: 5616 $");
+ script_version ("$Revision: 6022 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
  script_name("Horde Groupware Source Packages Backdoor Vulnerability");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 09:13:01 +0100 (Thu, 16 Feb 2012)");
- script_summary("Determine if Horde is installed with a backdoor");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

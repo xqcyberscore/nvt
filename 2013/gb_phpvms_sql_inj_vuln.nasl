@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpvms_sql_inj_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_phpvms_sql_inj_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # phpVMS Virtual Airline Administration SQL injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803476");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5791 $");
   script_bugtraq_id(59057);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-04-17 10:51:22 +0530 (Wed, 17 Apr 2013)");
   script_name("phpVMS Virtual Airline Administration SQL injection Vulnerability");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/53033");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121306/phpvms-sql.txt");
   script_xref(name : "URL" , value : "http://evilc0de.blogspot.in/2013/04/phpvms-sql-injection-vulnerability.html");
-  script_summary("Check if phpVMS is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -76,23 +75,18 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/php-vms", "/phpvms", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request for the news.php
-  sndReq = http_get(item:string(dir, "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
   ## confirm the PHP-Fusion installation
   if(egrep(pattern:"^HTTP/.* 200 OK", string:rcvRes) &&

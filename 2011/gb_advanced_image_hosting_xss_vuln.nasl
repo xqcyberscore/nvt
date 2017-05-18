@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advanced_image_hosting_xss_vuln.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_advanced_image_hosting_xss_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # Advanced Image Hosting Cross Site Scripting Vulnerability
 #
@@ -46,8 +46,8 @@ cross site scripting vulnerability.";
 if(description)
 {
   script_id(802155);
-  script_version("$Revision: 5424 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49457);
   script_tag(name:"cvss_base", value:"4.3");
@@ -60,8 +60,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -71,27 +73,21 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)) {
   exit(0);
 }
 
-## Check for each possible path
-foreach dir (make_list("/aihspro", "/aih", "/"))
+foreach dir( make_list_unique( "/aihspro", "/aih", "/", cgi_dirs( port:port ) ) )
 {
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"), port:port);
-  res = http_keepalive_send_recv(port:port,data:req);
+
+  if( dir == "/" ) dir = "";
+
+  res = http_get_cache(item:string(dir,"/index.php"), port:port);
 
   ## Confirm the application
   if("Powered by:" >< res && '>AIH' >< res)

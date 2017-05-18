@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashlight_detect.nasl 2815 2016-03-09 14:49:24Z cfi $
+# $Id: gb_flashlight_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Flashlight Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801074");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2815 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 15:49:24 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-12-09 07:52:52 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Flashlight Version Detection");
-  script_summary("Set the version of Flashlight in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

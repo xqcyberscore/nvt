@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20160804-wedge.nasl 3800 2016-08-05 05:43:27Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20160804-wedge.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Cisco IOS Software Crafted Network Time Protocol Packets Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1478");
  script_tag(name: "cvss_base", value: "7.8");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3800 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("Cisco IOS Software Crafted Network Time Protocol Packets Denial of Service Vulnerability");
 
@@ -58,9 +58,8 @@ address this vulnerability; however, there is a mitigation for this vulnerabilit
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-05 07:43:27 +0200 (Fri, 05 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-05 11:15:33 +0700 (Fri, 05 Aug 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

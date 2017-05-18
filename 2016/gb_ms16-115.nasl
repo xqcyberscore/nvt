@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-115.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: gb_ms16-115.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Microsoft Windows PDF Library Multiple Information Disclosure Vulnerabilities (3188733)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809310");
-  script_version("$Revision: 4136 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-3370", "CVE-2016-3374");
   script_bugtraq_id(92839, 92838);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 08:36:03 +0530 (Wed, 14 Sep 2016)");
   script_name("Microsoft Windows PDF Library Multiple Information Disclosure Vulnerabilities (3188733)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3188733");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms16-115");
 
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

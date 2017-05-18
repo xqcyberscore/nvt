@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_htpasswd_overflow.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: apache_htpasswd_overflow.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Apache <= 1.3.33 htpasswd local overflow
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_solution = "Make sure htpasswd does not run setuid and is not accessible
 if(description)
 {
  script_id(14771);
- script_version("$Revision: 3445 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"2.1");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
@@ -57,7 +57,6 @@ if(description)
  
  summary = "Checks for Apache <= 1.3.33";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

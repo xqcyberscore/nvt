@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_52986.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_52986.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # WordPress All-in-One Event Calendar Plugin Multiple Cross Site Scripting Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(52986);
  script_cve_id("CVE-2012-1835");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5940 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("WordPress All-in-One Event Calendar Plugin Multiple Cross Site Scripting Vulnerabilities");
@@ -57,9 +57,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.wordpress.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522292");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-12 10:32:26 +0200 (Thu, 12 Apr 2012)");
- script_summary("Determine if All-in-One Event Calendar plugin for WordPress is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

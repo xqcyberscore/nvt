@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_detect.nasl 3701 2016-07-13 16:07:56Z cfi $
+# $Id: gb_livezilla_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # LiveZilla Version Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800417");
-  script_version("$Revision: 3701 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 18:07:56 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-01-13 15:42:20 +0100 (Wed, 13 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("LiveZilla Version Detection");
-  script_summary("Set the version of LiveZilla in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

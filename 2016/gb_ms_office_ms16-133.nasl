@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms16-133.nasl 4475 2016-11-11 10:48:44Z antu123 $
+# $Id: gb_ms_office_ms16-133.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Microsoft Office Suite Multiple Vulnerabilities (3199168)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809718");
-  script_version("$Revision: 4475 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-7232", "CVE-2016-7244", "CVE-2016-7245", "CVE-2016-7233",
                 "CVE-2016-7234", "CVE-2016-7235");
   script_bugtraq_id(94005, 94022, 94026, 94020, 94031, 94029);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-11 11:48:44 +0100 (Fri, 11 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-09 11:41:38 +0530 (Wed, 09 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Multiple Vulnerabilities (3199168)");
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115135");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-133");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

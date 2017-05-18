@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oneCMS_42949.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_oneCMS_42949.nasl 5762 2017-03-29 11:20:04Z cfi $
 #
 # OneCMS 'index.php' Cross Site Scripting Vulnerability
 #
@@ -34,12 +34,11 @@ credentials and to launch other attacks.
 
 OneCMS version 2.6.1 is vulnerable; others may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100782);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5762 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:20:04 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-09-06 14:44:23 +0200 (Mon, 06 Sep 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -64,24 +63,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms",cgi_dirs());
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/index.php?load=elite&view=1%3C/title%3E%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E"); 
 
   if(http_vuln_check(port:port,url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",extra_check:"OneCMS",bodyonly:TRUE,check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

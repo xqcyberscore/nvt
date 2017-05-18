@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_detect_win.nasl 3118 2016-04-19 11:25:06Z antu123 $
+# $Id: secpod_ruby_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Ruby Interpreter Version Detection (Windows)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900799");
-  script_version("$Revision: 3118 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 13:25:06 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-12-23 08:41:41 +0100 (Wed, 23 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Ruby Interpreter Version Detection (Windows)");
@@ -50,7 +50,6 @@ if(description)
   The script logs in via smb, searches for Ruby Interpreter in the registry
   and gets the version from registry.");
 
-  script_summary("Set version of Ruby Interpreter in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -71,20 +70,6 @@ key = "";
 key1 = "";
 rubyVer = "";
 rubyLoc = "";
-
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
-
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -145,7 +130,7 @@ foreach key1 (key1_list)
               cpe = "cpe:/a:ruby-lang:ruby:x64";
 
           }
-          build_report(app:"Ruby", ver:rubyVer, cpe:cpe, loc:rubyLoc, con:rubyVer);
+          build_report(app:"Ruby", ver:rubyVer, cpe:cpe, insloc:rubyLoc, concluded:rubyVer);
           exit(0);
         }
       }
@@ -186,7 +171,7 @@ foreach key (key_list)
               cpe = "cpe:/a:ruby-lang:ruby:x64";
 
           }
-          build_report(app:"Ruby", ver:rubyVer, cpe:cpe, loc:rubyLoc, con:rubyVer);
+          build_report(app:"Ruby", ver:rubyVer, cpe:cpe, insloc:rubyLoc, concluded:rubyVer);
           exit(0);
         }
       }

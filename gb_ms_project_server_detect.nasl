@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_server_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: gb_ms_project_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Microsoft Project Server Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805168");
-  script_version("$Revision: 2672 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-04-15 16:57:38 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Project Server Detection");
 
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_summary("Detection of installed version of Microsoft Project Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

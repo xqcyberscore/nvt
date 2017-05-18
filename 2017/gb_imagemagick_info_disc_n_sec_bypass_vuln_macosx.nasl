@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_info_disc_n_sec_bypass_vuln_macosx.nasl 5046 2017-01-20 06:47:45Z antu123 $
+# $Id: gb_imagemagick_info_disc_n_sec_bypass_vuln_macosx.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # ImageMagick Information Disclosure And Security Bypass Vulnerabilities (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810500");
-  script_version("$Revision: 5046 $");
+  script_version("$Revision: 5752 $");
   script_cve_id("CVE-2016-10047", "CVE-2016-10048");
   script_bugtraq_id(95182, 95186);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 07:47:45 +0100 (Fri, 20 Jan 2017) $");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-17 15:32:50 +0530 (Tue, 17 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick Information Disclosure And Security Bypass Vulnerabilities (Mac OS X)");

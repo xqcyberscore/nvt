@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842881");
-  script_version("$Revision: 4205 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 09:46:54 +0200 (Tue, 04 Oct 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-13 05:46:37 +0200 (Tue, 13 Sep 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3500", "CVE-2016-3508", "CVE-2016-3550",
  		"CVE-2016-3606");
@@ -60,7 +60,6 @@ or possibly execute arbitrary code. (CVE-2016-3606)");
   script_xref(name: "USN", value: "3077-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3077-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

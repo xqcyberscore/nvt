@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0012.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2011-0012.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # VMSA-2011-0012.3 VMware ESXi and ESX updates to third party libraries and ESX Service Console
 #
@@ -74,12 +74,11 @@ if (description)
  script_cve_id("CVE-2010-1083","CVE-2010-2492","CVE-2010-2798","CVE-2010-2938","CVE-2010-2942","CVE-2010-2943","CVE-2010-3015","CVE-2010-3066","CVE-2010-3067","CVE-2010-3078","CVE-2010-3086","CVE-2010-3296","CVE-2010-3432","CVE-2010-3442","CVE-2010-3477","CVE-2010-3699","CVE-2010-3858","CVE-2010-3859","CVE-2010-3865","CVE-2010-3876","CVE-2010-3877","CVE-2010-3880","CVE-2010-3904","CVE-2010-4072","CVE-2010-4073","CVE-2010-4075","CVE-2010-4080","CVE-2010-4081","CVE-2010-4083","CVE-2010-4157","CVE-2010-4158","CVE-2010-4161","CVE-2010-4238","CVE-2010-4242","CVE-2010-4243","CVE-2010-4247","CVE-2010-4248","CVE-2010-4249","CVE-2010-4251","CVE-2010-4255","CVE-2010-4263","CVE-2010-4343","CVE-2010-4346","CVE-2010-4526","CVE-2010-4655","CVE-2011-0521","CVE-2011-0710","CVE-2011-1010","CVE-2011-1090","CVE-2011-1478","CVE-2010-1323","CVE-2011-0281","CVE-2011-0282 CVE-2010-0296","CVE-2011-0536","CVE-2011-1071","CVE-2011-1095","CVE-2011-1658","CVE-2011-1659 CVE-2011-1494","CVE-2011-1495");
  script_tag(name:"cvss_base", value:"7.9");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5958 $");
  script_name("VMSA-2011-0012.3 VMware ESXi and ESX updates to third party libraries and ESX Service Console");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-16 12:42:13 +0100 (Fri, 16 Mar 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

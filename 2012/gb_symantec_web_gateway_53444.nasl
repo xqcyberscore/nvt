@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_53444.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_symantec_web_gateway_53444.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Symantec Web Gateway 'relfile' Parameter Directory Traversal Vulnerability
 #
@@ -48,14 +48,13 @@ if (description)
  script_cve_id("CVE-2012-0298");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5950 $");
 
  script_name("Symantec Web Gateway 'relfile' Parameter Directory Traversal Vulnerability");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-18 10:03:57 +0200 (Fri, 18 May 2012)");
- script_summary("Determine if it is possible to read the /etc/passwd");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

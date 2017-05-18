@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lxcenter_kloxo_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_lxcenter_kloxo_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # LxCenter Kloxo Detection
 #
@@ -35,16 +35,15 @@ if(description)
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2836 $");
+  script_version("$Revision: 6063 $");
 
   script_name(SCRIPT_DESC);
 
 
   script_xref(name:"URL", value:"http://lxcenter.org/software/kloxo");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2014-02-22 22:54:04 +0700 (Sat, 22 Feb 2014)");
 
-  script_summary("Checks for the presence of LxCenter Kloxo");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Product detection");

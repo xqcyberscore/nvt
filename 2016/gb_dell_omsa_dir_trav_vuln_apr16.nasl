@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_omsa_dir_trav_vuln_apr16.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_dell_omsa_dir_trav_vuln_apr16.nasl 6045 2017-04-28 08:15:14Z teissa $
 #
 # Dell OpenManage Server Administrator Directory Traversal Vulnerability - April16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:dell:openmanage_server_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807564");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 6045 $");
   script_cve_id("CVE-2016-4004");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:15:14 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-27 10:47:16 +0530 (Wed, 27 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell OpenManage Server Administrator Directory Traversal Vulnerability - April16");
@@ -56,12 +56,10 @@ if(description)
   script_tag(name:"affected", value:"Dell OpenManage Server Administrator 
   version 8.2.0");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  25th January, 2017. Information regarding this issue will be updated once the
-  solution details are available,
-  For updates refer to http://www.dell.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "https://vuldb.com/?id.82281");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39486");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_jan17_lin.nasl 5600 2017-03-17 11:27:10Z cfi $
+# $Id: gb_drupal_mult_vuln_jan17_lin.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # Drupal Multiple Vulnerabilities Jan17 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108101");
-  script_version("$Revision: 5600 $");
+  script_version("$Revision: 5752 $");
   script_cve_id("CVE-2017-6377", "CVE-2017-6379", "CVE-2017-6381");
   script_bugtraq_id(96919);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-17 12:27:10 +0100 (Fri, 17 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-17 11:54:37 +0100 (Fri, 17 Mar 2017)");
   script_name("Drupal Multiple Vulnerabilities Jan17 (Linux)");
   script_category(ACT_GATHER_INFO);

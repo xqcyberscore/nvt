@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_detection_win.nasl 5047 2017-01-20 06:58:49Z teissa $
+# $Id: gb_manageengine_admanager_plus_detection_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # ManageEngine ADManager Plus Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107129");
-  script_version("$Revision: 5047 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 07:58:49 +0100 (Fri, 20 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-01-18 16:11:25 +0700 (Wed, 18 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ManageEngine ADManager Plus Version Detection (Windows)");
@@ -40,7 +40,6 @@ if(description)
 
   The script logs in via smb, searches for ManageEngine ADManager Plus in the registry and gets the version from 'DisplayVersion' string from registry.");
 
-  script_summary("Set version of ManageEngine ADManager Plus in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");

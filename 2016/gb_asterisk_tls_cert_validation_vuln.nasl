@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_tls_cert_validation_vuln.nasl 4608 2016-11-23 18:27:33Z cfi $
+# $Id: gb_asterisk_tls_cert_validation_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Asterisk TLS Certificate Common Name NULL Byte Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106173");
-  script_version("$Revision: 4608 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-11-23 19:27:33 +0100 (Wed, 23 Nov 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-08-08 16:53:09 +0700 (Mon, 08 Aug 2016)");
   script_tag(name: "cvss_base", value: "4.3");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name: "summary", value: "Asterisk is prone to a certificate bypass vulnerability.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

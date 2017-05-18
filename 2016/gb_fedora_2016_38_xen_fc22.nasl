@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807717");
-  script_version("$Revision: 2954 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-25 07:16:22 +0100 (Fri, 25 Mar 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-03-20 06:17:30 +0100 (Sun, 20 Mar 2016)");
   script_cve_id("CVE-2016-1714", "CVE-2016-1922", "CVE-2015-8613", "CVE-2016-1981",
                 "CVE-2016-2198", "CVE-2016-2841", "CVE-2016-2538", "CVE-2016-2392",
                 "CVE-2016-2391", "CVE-2016-2857", "CVE-2015-8817", "CVE-2015-8818",
                 "CVE-2016-2858");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xen FEDORA-2016-38");
   script_tag(name: "summary", value: "Check the version of xen");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-38");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-March/179057.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

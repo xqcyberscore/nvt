@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mysql_hotcopy_tempfile.nasl 3302 2016-05-12 13:08:27Z benallard $
+# $Id: mysql_hotcopy_tempfile.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: MySQL mysqlhotcopy script insecure temporary file
 #
 # Authors:
@@ -46,8 +46,8 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3302 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:08:27 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10969);
  script_cve_id("CVE-2004-0457");
@@ -66,7 +66,6 @@ if(description)
 
 
  summary = "Checks for the remote MySQL version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

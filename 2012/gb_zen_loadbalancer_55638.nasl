@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zen_loadbalancer_55638.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_zen_loadbalancer_55638.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # ZEN Load Balancer Multiple Security Vulnerabilities
 #
@@ -46,15 +46,14 @@ if (description)
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
  script_bugtraq_id(55638);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5963 $");
 
  script_name("ZEN Load Balancer Multiple Security Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55638");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-24 10:00:04 +0200 (Mon, 24 Sep 2012)");
- script_summary("Determine if irt is possible to access global.conf");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

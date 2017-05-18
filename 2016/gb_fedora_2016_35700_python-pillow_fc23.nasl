@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807786");
-  script_version("$Revision: 3056 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-13 11:23:38 +0200 (Wed, 13 Apr 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-11 05:16:35 +0200 (Mon, 11 Apr 2016)");
   script_cve_id("CVE-2016-3076");
   script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-35700");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-April/181943.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python-pillow");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

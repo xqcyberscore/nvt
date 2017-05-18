@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0483.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0483.nasl 5975 2017-04-19 07:43:02Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,17 +24,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131163");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 5975 $");
 script_tag(name:"creation_date", value:"2015-12-28 10:39:27 +0200 (Mon, 28 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0483");
 script_tag(name: "insight", value: "Updated keepassx package fixes security vulnerability: Cancelling an export operation creates clear text copy of all of the user's KeePassX password database entries. (CVE-2015-8378)"); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2015-0483.html");
 script_cve_id("CVE-2015-8378");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"5.0");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_detect.nasl 2611 2016-02-09 06:43:49Z antu123 $
+# $Id: sw_magento_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Magento Shop Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105227");
-  script_version("$Revision: 2611 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 07:43:49 +0100 (Tue, 09 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-02-09 12:00:00 +0100 (Mon, 09 Feb 2015)");
   
   script_name("Magento Shop Detection");
@@ -44,7 +44,6 @@ if(description)
   The script sends HTTP GET requests and try to comfirm the Magento Shop installation
   path and version from the responses.");
 
-  script_summary("Set installation path and version of a Magento Shop in the KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su12-003.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_macosx_su12-003.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Mac OS X 'Internet plug-ins' Unspecified Vulnerability (2012-003)
 #
@@ -39,10 +39,10 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903027);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 6018 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:38:50 +0530 (Mon, 21 May 2012)");
   script_name("Mac OS X 'Internet plug-ins' Unspecified Vulnerability (2012-003)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/DL1533");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112742/APPLE-SA-2012-05-14-2.txt");
   script_xref(name : "URL" , value : "http://prod.lists.apple.com/archives/security-announce/2012/May/msg00004.html");
 
-  script_summary("Checks for existence of Mac OS X 10.5.x Update/Mac OS X Security Update 2012-003");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_copyright("Copyright (C) 2012 SecPod");

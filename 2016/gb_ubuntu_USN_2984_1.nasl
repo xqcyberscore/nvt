@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842772");
-  script_version("$Revision: 3409 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-31 13:56:04 +0200 (Tue, 31 May 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-25 05:20:47 +0200 (Wed, 25 May 2016)");
   script_cve_id("CVE-2015-8865", "CVE-2016-3078", "CVE-2016-3132", "CVE-2016-4070",
 		"CVE-2016-4071", "CVE-2016-4072", "CVE-2016-4073", "CVE-2016-4342",
@@ -101,7 +101,6 @@ if(description)
   script_xref(name: "USN", value: "2984-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003439.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php7.0");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_weblogic_server_mult_sec_bypass_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_oracle_weblogic_server_mult_sec_bypass_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Oracle WebLogic Server Multiple Security Bypass Vulnerabilities
 #
@@ -51,11 +51,11 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5956 $");
   script_bugtraq_id(54870, 54839);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-28 1:34:53 +0530 (Tue, 28 Aug 2012)");
   script_name("Oracle WebLogic Server Multiple Security Bypass Vulnerabilities");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Aug/50");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://retrogod.altervista.org/9sg_ora2.htm");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check the version of Oracle WebLogic Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

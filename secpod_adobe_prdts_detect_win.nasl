@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_win.nasl 3004 2016-04-07 07:27:20Z antu123 $
+# $Id: secpod_adobe_prdts_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Adobe Products Version Detection (Windows)
 #
@@ -40,10 +40,10 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.900319";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3004 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 09:27:20 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Products Version Detection (Windows)");
@@ -57,7 +57,6 @@ and gets the version from 'DisplayVersion' string in registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set KB for the version of Adobe Products");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -87,18 +86,6 @@ syskey = "";
 item = "";
 key =  "";
 cpe = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc, nvt:SCRIPT_OID);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Confirm target is Windows
 if(!get_kb_item("SMB/WindowsVersion")){

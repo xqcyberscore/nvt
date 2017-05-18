@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xhp_cms_file_upload.nasl 4557 2016-11-17 15:51:20Z teissa $
+# $Id: xhp_cms_file_upload.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: XHP CMS Version <= 0.5 File Upload Vulnerability
 #
 # Authors:
@@ -45,10 +45,11 @@ tag_solution = "Upgrade to version 0.51 or a newer release.";
 # Original advisory by : rgod
 # http://retrogod.altervista.org/XHP_CMS_05_xpl.html
 
-if (description) {
+if (description)
+{
  script_id(200100);
- script_version("$Revision: 4557 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-17 16:51:20 +0100 (Thu, 17 Nov 2016) $");
+ script_version("$Revision: 5780 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -56,21 +57,16 @@ if (description) {
  script_bugtraq_id(17209);
  script_xref(name:"OSVDB", value:"24058");
  script_xref(name:"OSVDB", value:"24059"); 
-
- name = "XHP CMS Version <= 0.5 File Upload Vulnerability";
- script_name(name);
- summary = "Checks for a arbitrary file upload and execution flaws";
-
- script_category(ACT_DESTRUCTIVE_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_name("XHP CMS Version <= 0.5 File Upload Vulnerability");
+ script_category(ACT_MIXED_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
-
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
-script_tag(name : "solution" , value : tag_solution);
-script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "solution" , value : tag_solution);
+ script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/17209");
  script_xref(name : "URL" , value : "http://xhp.targetit.ro/index.php?page=3&box_id=34&action=show_single_entry&post_id=10");
  exit(0);
@@ -78,17 +74,16 @@ script_tag(name : "summary" , value : tag_summary);
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/test/xhp","/xhp", "/xhpcms", cgi_dirs()); 
+foreach dir( make_list_unique( "/test/xhp", "/xhp", "/xhpcms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
- res = http_get_cache(item:string(dir, "/inc/htmlarea/plugins/FileManager/standalonemanager.php"), port:port);
- if ("XHP File Manager" >!< res) exit(0);
+ if( dir == "/" ) dir = "";
+ req = http_get(item:string(dir, "/inc/htmlarea/plugins/FileManager/standalonemanager.php"), port:port);
+ res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+ if ("XHP File Manager" >!< res) continue;
 
  if (!safe_checks()) { 
   rand = rand();
@@ -131,13 +126,14 @@ foreach dir (dirs) {
    security_message(port:port, data:report);
    exit(0);
   }
- }
- else {
+ } else {
   req = http_get_cache(item:string(dir, "/index.php"), port:port);
   
- if (egrep(pattern:"<a href[^>]+>Powered by XHP CMS v0\.(4\.1|5)", string:req)) {
-   security_message(port:port);
-   exit(0);
+  if (egrep(pattern:"<a href[^>]+>Powered by XHP CMS v0\.(4\.1|5)", string:req)) {
+    security_message(port:port);
+    exit(0);
   }
  }
 } 
+
+exit( 99 );

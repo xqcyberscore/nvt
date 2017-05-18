@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpalbum_50437.nasl 3102 2016-04-18 14:46:07Z benallard $
+# $Id: gb_phpalbum_50437.nasl 5750 2017-03-28 14:10:17Z cfi $
 #
 # phpAlbum Multiple Security Vulnerabilities
 #
@@ -36,13 +36,12 @@ arbitrary files within the context of the webserver process.
 
 PhpAlbum 0.4.1.16 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103322);
  script_bugtraq_id(50437);
  script_cve_id("CVE-2011-4807", "CVE-2011-4806");
- script_version ("$Revision: 3102 $");
+ script_version ("$Revision: 5750 $");
 
  script_name("phpAlbum Multiple Security Vulnerabilities");
 
@@ -53,10 +52,9 @@ if (description)
 
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:46:07 +0200 (Mon, 18 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-01 08:00:00 +0100 (Tue, 01 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed phpAlbum is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -70,29 +68,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/phpalbum","/phpAlbum", "/phpAlbumnet",cgi_dirs());
+foreach dir( make_list_unique( "/phpalbum", "/phpAlbum", "/phpAlbumnet", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/main.php"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/main.php";
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url, pattern:"<title>phpAlbum.net")) {
+  if( "<title>phpAlbum.net" >< buf ) {
 
     url = string(dir, "/main.php?cmd=phpinfo");
 
     if(http_vuln_check(port:port, url:url, pattern:"<title>phpinfo")) {
-
-      security_message(port:port);
-      exit(0);
-   
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

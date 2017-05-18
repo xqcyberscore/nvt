@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20160928-frag.nasl 4179 2016-09-29 09:16:39Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20160928-frag.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco IOS XE Software IP Fragment Reassembly Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6386");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4179 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Cisco IOS XE Software IP Fragment Reassembly Denial of Service Vulnerability");
 
@@ -56,9 +56,8 @@ resulting in a denial of service (DoS) condition.");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-09-29 11:16:39 +0200 (Thu, 29 Sep 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-09-29 14:49:44 +0700 (Thu, 29 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

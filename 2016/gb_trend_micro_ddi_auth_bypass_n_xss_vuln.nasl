@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_ddi_auth_bypass_n_xss_vuln.nasl 3892 2016-08-26 08:43:22Z teissa $
+# $Id: gb_trend_micro_ddi_auth_bypass_n_xss_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Trend Micro Deep Discovery Inspector Authentication Bypass and XSS Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:trend_micro:deep_discovery_inspector";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807355");
-  script_version("$Revision: 3892 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2015-2873", "CVE-2015-2872");
   script_bugtraq_id(76396, 76397);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-26 10:43:22 +0200 (Fri, 26 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-19 17:14:20 +0530 (Fri, 19 Aug 2016)");
   script_name("Trend Micro Deep Discovery Inspector Authentication Bypass and XSS Vulnerabilities");
 
@@ -70,7 +70,6 @@ if (description)
 
   script_xref(name:"URL" , value:"http://esupport.trendmicro.com/solution/en-US/1112206.aspx");
 
-  script_summary("Check for the presence of vulnerable version of Trend Micro Deep Discovery Inspector");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

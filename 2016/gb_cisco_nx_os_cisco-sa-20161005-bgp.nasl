@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20161005-bgp.nasl 4657 2016-12-01 20:03:45Z teissa $
+# $Id: gb_cisco_nx_os_cisco-sa-20161005-bgp.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Cisco NX-OS Border Gateway Protocol Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1454");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4657 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("Cisco NX-OS Border Gateway Protocol Denial of Service Vulnerability");
 
@@ -60,9 +60,8 @@ unexpectedly.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-01 21:03:45 +0100 (Thu, 01 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 09:39:36 +0700 (Thu, 06 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

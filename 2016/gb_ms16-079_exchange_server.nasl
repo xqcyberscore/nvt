@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-079_exchange_server.nasl 3889 2016-08-26 06:44:22Z antu123 $
+# $Id: gb_ms16-079_exchange_server.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3160339)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807839");
-  script_version("$Revision: 3889 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2015-6015", "CVE-2015-6014", "CVE-2015-6013");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-26 08:44:22 +0200 (Fri, 26 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-15 10:23:05 +0530 (Wed, 15 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3160339)");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3160339");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-079");
 
-  script_summary("Check for the version of 'ExSetup.exe' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

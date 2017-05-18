@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smb_nt_ms03-045.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: smb_nt_ms03-045.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Buffer Overrun in the ListBox and in the ComboBox (824141)
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "see http://www.microsoft.com/technet/security/bulletin/ms03-045.
 if(description)
 {
  script_id(11885);
- script_version("$Revision: 5371 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8827);
  script_tag(name:"cvss_base", value:"7.2");
@@ -51,7 +51,6 @@ if(description)
 
  summary = "Checks for hotfix Q824141";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

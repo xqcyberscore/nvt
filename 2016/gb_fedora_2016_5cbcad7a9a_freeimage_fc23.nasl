@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809903");
-  script_version("$Revision: 5070 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 18:01:09 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-5684");
   script_tag(name:"cvss_base", value:"6.8");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-5cbcad7a9a");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/36TGBLRMIQ2KQZFMIPOI57MEEQTELEKA");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of freeimage");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

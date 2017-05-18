@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: PagesPro_dir_trav.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: PagesPro_dir_trav.nasl 5900 2017-04-08 17:34:18Z cfi $
 #
 # Pages Pro CD directory traversal
 #
@@ -33,13 +33,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11221");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 5900 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-08 19:34:18 +0200 (Sat, 08 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Pages Pro CD directory traversal");
-  script_summary("Pages Pro CD directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Web application abuses");
@@ -47,14 +46,14 @@ if(description)
   script_require_ports("Services/www", 8100);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"http://www.cert.ssi.gouv.fr/site/CERTA-2002-ALE-007/");
+
   tag_summary = "A security vulnerability in the 'Pages Pro' allows anybody
   to read or modify files that would otherwise be inaccessible using a
   directory traversal attack.";
 
   tag_impact = "A cracker may use this to read or write sensitive files or even
-  make a phone call.
-
-  http://www.certa.ssi.gouv.fr/site/CERTA-2002-ALE-007/index.html.2.html";
+  make a phone call.";
 
   tag_solution = "Upgrade it (version 2003) or uninstall this product";
 
@@ -73,7 +72,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:8100 );
 
-files = traversal_files("windows");
+files = traversal_files();
+
 foreach file( keys( files ) ) {
 
   url = "/note.txt?F_notini=&T_note=&nomentreprise=blah&filenote=../../" + files[file];

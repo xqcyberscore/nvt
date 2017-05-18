@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_video_actvx_bof_vuln_jul09.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: gb_ms_video_actvx_bof_vuln_jul09.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Video ActiveX Control 'msvidctl.dll' BOF Vulnerability
 #
@@ -30,30 +30,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS09-032.mspx
-
-  Workaround:
-  Set the killbit for the CLSID {0955AC62-BF2E-4CBA-A2B9-A63F772D46CF}
-  http://www.microsoft.com/technet/security/advisory/972890.mspx";
-
-tag_impact = "Successful exploitation could allow execution of arbitrary code that affects
-  the TV Tuner library, and can cause memory corruption.
-  Impact Level: Application";
-tag_affected = "Microsoft Video ActiveX Control on Windows 2000/XP/2003";
-tag_insight = "- Stack-based buffer overflow error in MPEG2TuneRequest in msvidctl.dll in
-    Microsoft DirectShow can be exploited via a crafted web page.
-  - Unspecified error in msvidctl.dll is caused via unknown vectors that trigger
-    memory corruption.";
-tag_summary = "This host is installed with Microsoft Video ActiveX Control and is prone to
-  Buffer Overflow vulnerability.";
-
 if(description)
 {
   script_id(800829);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -73,11 +54,23 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation could allow execution of arbitrary code that affects
+  the TV Tuner library, and can cause memory corruption.
+  Impact Level: Application");
+  script_tag(name : "affected" , value : "Microsoft Video ActiveX Control on Windows 2000/XP/2003");
+  script_tag(name : "insight" , value : "- Stack-based buffer overflow error in MPEG2TuneRequest in msvidctl.dll in
+    Microsoft DirectShow can be exploited via a crafted web page.
+  - Unspecified error in msvidctl.dll is caused via unknown vectors that trigger
+    memory corruption.");
+  script_tag(name : "summary" , value : "This host is installed with Microsoft Video ActiveX Control and is prone to
+  Buffer Overflow vulnerability.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/Bulletin/MS09-032.mspx
+
+  Workaround:
+  Set the killbit for the CLSID {0955AC62-BF2E-4CBA-A2B9-A63F772D46CF}
+  http://www.microsoft.com/technet/security/advisory/972890.mspx");
   exit(0);
 }
 
@@ -86,21 +79,7 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("secpod_activex.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
+include("version_func.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
@@ -116,11 +95,10 @@ if(hotfix_missing(name:"973346") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  vers = get_file_version(sysPath, file_name:"msvidctl.dll");
+  vers = fetch_file_version(sysPath, file_name:"msvidctl.dll");
   if(!vers){
     exit(0);
   }
@@ -135,12 +113,11 @@ if(egrep(pattern:"^6\..*", string:vers))
 }
 
 ## Get System Path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(!sysPath){
   exit(0);
 }
-dllVer = get_file_version(sysPath, file_name:"System32\msvidctl.dll");
+dllVer = fetch_file_version(sysPath, file_name:"msvidctl.dll");
 if(!dllVer){
   exit(0);
 }

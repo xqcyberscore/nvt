@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_unspecified_rce_vuln.nasl 5512 2017-03-08 08:20:46Z cfi $
+# $Id: gb_smbv1_unspecified_rce_vuln.nasl 5772 2017-03-29 16:44:30Z mime $
 #
-# Microsoft SMBv1 Unspecified Remote Code Execution Vulnerability
+# SMBv1 enabled
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810554");
-  script_version("$Revision: 5512 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 09:20:46 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 5772 $");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-15 13:56:01 +0530 (Wed, 15 Feb 2017)");
-  script_name("Microsoft SMBv1 Unspecified Remote Code Execution Vulnerability");
+  script_name("SMBv1 enabled.");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
@@ -42,6 +42,7 @@ if(description)
   script_xref(name:"URL", value:"https://www.us-cert.gov/ncas/current-activity/2017/01/16/SMB-Security-Best-Practices");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2696547");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/204279");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS17-010");
 
   script_tag(name:"summary", value:"The host has enabled SMBv1 for the SMB Client or Server and is prone to
   an unspecified remote code execution vulnerability.");
@@ -79,7 +80,7 @@ if( get_kb_item( "smb_v1/enabled" ) ) {
   if( get_kb_item( "smb_v1_server/enabled" ) ) report += '\n- SMBv1 is enabled for the SMB Server';
   if( get_kb_item( "smb_v1_client/enabled" ) ) report += '\n- SMBv1 is enabled for the SMB Client';
 
-  security_message( port:0, data:report );
+  log_message( port:0, data:report );
   exit( 0 );
 }
 

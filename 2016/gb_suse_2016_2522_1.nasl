@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851409");
-  script_version("$Revision: 4345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 14:47:48 +0200 (Tue, 25 Oct 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-14 05:54:36 +0200 (Fri, 14 Oct 2016)");
   script_cve_id("CVE-2016-7796");
   script_tag(name:"cvss_base", value:"4.9");
@@ -63,7 +63,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:2522_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-10/msg00026.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of systemd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

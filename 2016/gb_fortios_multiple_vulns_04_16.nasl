@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortios_multiple_vulns_04_16.nasl 3020 2016-04-11 06:07:29Z antu123 $
+# $Id: gb_fortios_multiple_vulns_04_16.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # FortiOS: Multiple Vulnerabillities
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-3626");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
- script_version ("$Revision: 3020 $");
+ script_version ("$Revision: 5745 $");
 
  script_name("FortiOS: Multiple Vulnerabillities");
 
@@ -58,9 +58,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-11 08:07:29 +0200 (Mon, 11 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-04-04 11:42:25 +0200 (Mon, 04 Apr 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

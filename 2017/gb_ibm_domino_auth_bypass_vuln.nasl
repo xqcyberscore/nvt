@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_auth_bypass_vuln.nasl 5352 2017-02-20 09:34:30Z antu123 $
+# $Id: gb_ibm_domino_auth_bypass_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Domino Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809885");
-  script_version("$Revision: 5352 $");
+  script_version("$Revision: 5701 $");
   script_bugtraq_id(96062);
   script_cve_id("CVE-2016-0270");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 10:34:30 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-15 14:45:56 +0530 (Wed, 15 Feb 2017)");
   script_name("IBM Domino Authentication Bypass Vulnerability");
 
@@ -80,15 +80,8 @@ include("version_func.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -99,7 +92,7 @@ if(domVer1 =~ "^(9\.0\.1)")
   if(version_in_range(version:domVer1, test_version:"9.0.1.3", test_version2:"9.0.1.5"))
   {
     report = report_fixed_ver(installed_version:domVer, fixed_version:"9.0.1 FP5 IF2");
-    security_message(data:report, port:domPort);
+    security_message(data:report, port:0);
     exit(0);
   }
 }

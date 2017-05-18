@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zope_python_scripts_dos_vuln_lin.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_zope_python_scripts_dos_vuln_lin.nasl 5785 2017-03-30 09:19:35Z cfi $
 #
 # Zope Python Scripts Local Denial of Service Vulnerability
 #
@@ -46,24 +46,21 @@ tag_summary = "This host is running Zope, and is prone to Denial of Service
 if(description)
 {
   script_id(800064);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5785 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_cve_id("CVE-2008-5102");
   script_bugtraq_id(32267);
   script_name("Zope Python Scripts Local Denial of Service Vulnerability");
-
   script_xref(name : "URL" , value : "http://www.zope.org/advisories/advisory-2008-08-12");
   script_xref(name : "URL" , value : "http://www.zope.org/Products/Zope/Hotfix-2008-08-12/README.txt");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_require_ports("Services/www", 8080);
   script_dependencies("gb_get_http_banner.nasl");
-
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -75,19 +72,13 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 
 port = get_http_port(default:8080);
-if(!port){
-  port = 8080;
-}
 
-banner = get_http_banner(port);
-if(!banner){
-  exit(0);
-}
+banner = get_http_banner(port:port);
+if(!banner) exit(0);
 
 zopeVer = eregmatch(pattern:"Zope ([0-9.]+)", string:banner);
 if(zopeVer != NULL)

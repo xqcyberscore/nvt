@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nntp_too_long_password.nasl 3437 2016-06-06 12:33:01Z jan $
+# $Id: nntp_too_long_password.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: NNTP password overflow
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "apply the latest patches from your vendor or
 if(description)
 {
  script_id(17229);
- script_version("$Revision: 3437 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-06 14:33:01 +0200 (Mon, 06 Jun 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,6 @@ if(description)
  script_name(name);
  summary = "Sends long password to nntpd";
  
- script_summary(summary);
  script_category(ACT_DESTRUCTIVE_ATTACK);
  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
 

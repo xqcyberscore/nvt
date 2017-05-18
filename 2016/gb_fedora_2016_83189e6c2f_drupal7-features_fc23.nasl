@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809136");
-  script_version("$Revision: 3862 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-22 08:36:56 +0200 (Mon, 22 Aug 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-12 05:58:49 +0200 (Fri, 12 Aug 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-83189e6c2f");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/UQBGPMZGJP6G4KH6LEV3C2ZT2ZY7RHJH");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of drupal7-features");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

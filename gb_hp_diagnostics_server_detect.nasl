@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: gb_hp_diagnostics_server_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # HP Diagnostics Server Version Detection
 #
@@ -28,13 +28,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802389");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2672 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-02 10:43:19 +0530 (Thu, 02 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("HP Diagnostics Server Version Detection");
 
-  script_summary("Check for HP Diagnostics Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Product detection");

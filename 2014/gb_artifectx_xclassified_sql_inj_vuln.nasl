@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifectx_xclassified_sql_inj_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_artifectx_xclassified_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Artifectx xClassified 'catid' SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804684");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-4741");
   script_bugtraq_id(68438);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-07-21 11:57:35 +0530 (Mon, 21 Jul 2014)");
   script_name("Artifectx xClassified 'catid' SQL Injection Vulnerability");
 
@@ -55,11 +55,10 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127370");
-  script_summary("Check if Artifectx XClassified is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -71,26 +70,20 @@ include("http_keepalive.inc");
 
 ## Variable Initialization
 http_port = "";
-sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/ads", "/classifieds", "/artifectx", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ##Confirm Application
   if (">xClassified Web" >< rcvRes && "artifectx" >< rcvRes)

@@ -46,15 +46,14 @@ if(description)
 {
  script_id(70584);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_cve_id("CVE-2011-4362");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 5956 $");
  script_name("FreeBSD Ports: lighttpd");
 
 
- script_summary("FreeBSD Ports: lighttpd");
 
  script_category(ACT_GATHER_INFO);
 

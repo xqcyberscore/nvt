@@ -1,6 +1,6 @@
 ############i###################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rips_lfi_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_rips_lfi_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Rips Scanner Multiple Directory Listing Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:rips_scanner:rips";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.806808");
- script_version("$Revision: 5101 $");
+ script_version("$Revision: 5836 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-01-06 12:48:22 +0530 (Wed, 06 Jan 2016)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_name("Rips Scanner Multiple Directory Listing Vulnerabilities");
@@ -65,7 +65,6 @@ if (description)
 
  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39094/");
  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/135066/ripsscanner05-disclose.txt");
- script_summary("Check if rips scanner is prone to directory listing vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

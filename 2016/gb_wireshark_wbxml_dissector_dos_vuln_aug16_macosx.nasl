@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_wbxml_dissector_dos_vuln_aug16_macosx.nasl 3838 2016-08-16 07:02:06Z antu123 $
+# $Id: gb_wireshark_wbxml_dissector_dos_vuln_aug16_macosx.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Wireshark WBXML Dissector Denial of Service Vulnerability August16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808298");
-  script_version("$Revision: 3838 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-5359");
   script_bugtraq_id(91140);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-16 09:02:06 +0200 (Tue, 16 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-12 10:52:03 +0530 (Fri, 12 Aug 2016)");
   script_name("Wireshark WBXML Dissector Denial of Service Vulnerability August16 (Mac OS X)");
   
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2016/06/09/3");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2016-38.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

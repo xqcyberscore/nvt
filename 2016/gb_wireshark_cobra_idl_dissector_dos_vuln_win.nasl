@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_cobra_idl_dissector_dos_vuln_win.nasl 3819 2016-08-10 13:45:03Z antu123 $
+# $Id: gb_wireshark_cobra_idl_dissector_dos_vuln_win.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Wireshark CORBA IDL Dissector Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808284");
-  script_version("$Revision: 3819 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-6503");
   script_bugtraq_id(92162);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 15:45:03 +0200 (Wed, 10 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-09 10:31:32 +0530 (Tue, 09 Aug 2016)");
   script_name("Wireshark CORBA IDL Dissector Denial of Service Vulnerability (Windows)");
   
@@ -66,7 +66,6 @@ if(description)
   script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2016/07/28/3");
   script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2016-39.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on 64-bit Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

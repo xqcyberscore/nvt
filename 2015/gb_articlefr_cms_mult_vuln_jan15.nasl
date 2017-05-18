@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_articlefr_cms_mult_vuln_jan15.nasl 3514 2016-06-14 11:29:47Z mime $
+# $Id: gb_articlefr_cms_mult_vuln_jan15.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # ArticleFR CMS Multiple Vulnerabilities - Jan15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805262");
-  script_version("$Revision: 3514 $");
+  script_version("$Revision: 5789 $");
   script_cve_id("CVE-2015-1364", "CVE-2015-1363");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:29:47 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-01-29 16:47:29 +0530 (Thu, 29 Jan 2015)");
   script_name("ArticleFR CMS Multiple Vulnerabilities - Jan15");
 
@@ -66,49 +66,34 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/81");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/101");
 
-  script_summary("Check if ArticleFR CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 ## Variable Initialization
 http_port = "";
-sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/articleFR", "/cms", cgi_dirs()))
+foreach dir (make_list_unique("/", "/articleFR", "/cms", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ##Confirm Application
   if (rcvRes && rcvRes =~ "Powered by.*>ArticleFR")
@@ -118,7 +103,7 @@ foreach dir (make_list_unique("/", "/articleFR", "/cms", cgi_dirs()))
 
    ##Confirm Vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-                   pattern:"<script>alert\(document.cookie\)</script>",
+                   pattern:"<script>alert\(document\.cookie\)</script>",
                    extra_check:"Powered by.*>ArticleFR"))
     {
       report = report_vuln_url( port:http_port, url:url );

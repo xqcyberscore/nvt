@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ilohamail_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: ilohamail_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
 # Description: IlohaMail Detection
 #
 # Authors:
@@ -36,31 +36,22 @@ library.  See <http://www.ilohamail.org/> for more information.";
   " + tag_summary;
 
 
-if (description) {
+if(description)
+{
   script_id(14629);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5736 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-
-  name = "IlohaMail Detection";
-  script_name(name);
+  script_name("IlohaMail Detection");
   script_tag(name:"cvss_base", value:"0.0");
- 
- 
-  summary = "Checks for the presence of IlohaMail";
-  script_summary(summary);
- 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004-2005 George A. Theall");
-
-  family = "General";
-  script_family(family);
-
-  script_dependencies("global_settings.nasl", "http_version.nasl", "no404.nasl");
+  script_family("General");
+  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
   script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -71,7 +62,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
 debug_print("looking for IlohaMail on port ", port, ".");
@@ -82,11 +72,11 @@ debug_print("looking for IlohaMail on port ", port, ".");
 #     'intitle:ilohamail "powered by ilohamail"' - and represent the more
 #     popular installation paths currently. Still, cgi_dirs() should 
 #     catch the directory if its referenced elsewhere on the target.
-dirs = make_list("/webmail", "/ilohamail", "/IlohaMail", "/mail", cgi_dirs());
 installs = 0;
-foreach dir (dirs) {
-  req = http_get(port:port, item:dir + "/");
-  res = http_keepalive_send_recv(port:port, data:req);
+
+foreach dir( make_list_unique( "/webmail", "/ilohamail", "/IlohaMail", "/mail", cgi_dirs( port:port ) ) ) {
+
+  res = http_get_cache(port:port, item:dir + "/");
   if ( res == NULL || "IlohaMail" >!< res ) continue;
 
   # For proper as well as quick & dirty installs.
@@ -95,9 +85,8 @@ foreach dir (dirs) {
     debug_print("checking ", url, "...");
 
     # Get the page.
-    req = http_get(item:url, port:port);
-    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if (res == NULL) exit(0);           # can't connect
+    res = http_get_cache(item:url, port:port);
+    if (res == NULL) continue; # can't connect
 
     if (!http_40x(port:port, code:res)) {
       # Make sure the page is for IlohaMail.

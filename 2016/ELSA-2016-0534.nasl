@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0534.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0534.nasl 5867 2017-04-05 09:01:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122922");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5867 $");
 script_tag(name:"creation_date", value:"2016-04-06 14:33:01 +0300 (Wed, 06 Apr 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0534");
 script_tag(name: "insight", value: "ELSA-2016-0534 -  mariadb security and bug fix update - [1:5.5.47-1]- Rebase to 5.5.47 Also fixes: CVE-2015-4792 CVE-2015-4802 CVE-2015-4815 CVE-2015-4816 CVE-2015-4819 CVE-2015-4826 CVE-2015-4830 CVE-2015-4836 CVE-2015-4858 CVE-2015-4861 CVE-2015-4870 CVE-2015-4879 CVE-2015-4913 CVE-2015-7744 CVE-2016-0505 CVE-2016-0546 CVE-2016-0596 CVE-2016-0597 CVE-2016-0598 CVE-2016-0600 CVE-2016-0606 CVE-2016-0608 CVE-2016-0609 CVE-2016-0616 CVE-2016-2047 Resolves: #1304515[1:5.5.44-3]- MDEV-8827 Duplicate key with auto increment fix innodb auto-increment handling three bugs: 1. innobase_next_autoinc treated the case of current"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0534");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

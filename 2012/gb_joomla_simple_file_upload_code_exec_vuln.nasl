@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Joomla Simple File Upload Module Remote Code Execution Vulnerability
 #
@@ -44,24 +44,23 @@ prone to remote code execution vulnerability.";
 if(description)
 {
   script_id(802560);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(51214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-06 20:03:12 +0530 (Fri, 06 Jan 2012)");
   script_name("Joomla Simple File Upload Module Remote Code Execution Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47370/");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18287/");
 
-  script_summary("Check if the file is uploaded in Joomla");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -75,13 +74,8 @@ include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get joomla port
 joomlaPort = get_http_port(default:80);
-if(!joomlaPort){
-  exit(0);
-}
 
-## Get joomla directory
 if(!joomlaDir = get_dir_from_kb(port:joomlaPort, app:"joomla")){
   exit(0);
 }
@@ -112,7 +106,7 @@ content = string("-----------------------------1933563624\r\n",
 ## Construct the request to upload the file
 header = string("POST " + joomlaDir + "/index.php HTTP/1.1\r\n",
                 "Host: " + host + "\r\n",
-                "User-Agent: SAINT Joomlaee Simple File Upload Agent\r\n",
+                "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
                 "Connection: Close\r\n",
                 "Content-Type: multipart/form-data; boundary=---------------------------1933563624\r\n",
                 "Content-Length: " +  strlen(content) + "\r\n\r\n");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_442SR_wind_turbine_xss_vuln.nasl 3515 2016-06-14 11:35:42Z mime $
+# $Id: gb_442SR_wind_turbine_xss_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # XZERES 442SR Wind Turbine Web Interface Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/h:xzeres:442sr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807021");
-  script_version("$Revision: 3515 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2015-0985");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:35:42 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-04 13:19:12 +0530 (Mon, 04 Jan 2016)");
   script_name("XZERES 442SR Wind Turbine Web Interface Cross Site Scripting Vulnerability");
 
@@ -68,7 +68,6 @@ For updates refer to http://www.xzeres.com/wind-turbine-products");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Dec/116");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-342-01");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/135067/xzeres-xss.txt");
-  script_summary("Check if 442SR Wind Turbin is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

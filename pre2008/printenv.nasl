@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: printenv.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: printenv.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # printenv
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10188");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("printenv");
-  script_summary("Checks for the presence of /cgi-bin/printenv");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2000 Hendrik Scholz");
   script_family("Web application abuses");

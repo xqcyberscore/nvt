@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2576_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2576_1.nasl 5950 2017-04-13 09:02:06Z teissa $
 # Description: Auto-generated from advisory DSA 2576-1 (trousers)
 #
 # Authors:
@@ -49,15 +49,14 @@ if(description)
 {
  script_id(72591);
  script_cve_id("CVE-2012-0698");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5950 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-11-26 12:46:42 -0500 (Mon, 26 Nov 2012)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("Debian Security Advisory DSA 2576-1 (trousers)");
 
 
- script_summary("Debian Security Advisory DSA 2576-1 (trousers)");
 
  script_category(ACT_GATHER_INFO);
 

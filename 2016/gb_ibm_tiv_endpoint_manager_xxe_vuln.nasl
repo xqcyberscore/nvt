@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_xxe_vuln.nasl 4365 2016-10-27 09:22:06Z antu123 $
+# $Id: gb_ibm_tiv_endpoint_manager_xxe_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # IBM Tivoli Endpoint Manager XML External Entity Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809367");
-  script_version("$Revision: 4365 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2014-3066");
   script_bugtraq_id(78017);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 11:22:06 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 13:23:56 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Tivoli Endpoint Manager XML External Entity Injection Vulnerability");
@@ -66,7 +66,6 @@ if (description)
 
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21673951");
 
-  script_summary("Check for vulnerable version of IBM Tivoli Endpoint Manager");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_obm_mult_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_obm_mult_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Open Business Management Multiple Vulnerabilities
 #
@@ -27,20 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803027");
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2011-5141", "CVE-2011-5142", "CVE-2011-5143", "CVE-2011-5144",
                 "CVE-2011-5145");
   script_bugtraq_id(51153);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-18 11:33:54 +0530 (Tue, 18 Sep 2012)");
   script_name("Open Business Management Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47139");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71924");
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23060");
 
-  script_summary("Check if OBM is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

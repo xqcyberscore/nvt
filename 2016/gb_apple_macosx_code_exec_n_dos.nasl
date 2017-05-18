@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_code_exec_n_dos.nasl 4839 2016-12-22 11:01:44Z antu123 $
+# $Id: gb_apple_macosx_code_exec_n_dos.nasl 6012 2017-04-24 04:58:27Z teissa $
 #
 # Apple Mac OS X Code Execution And Denial of Service Vulnerabilities
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810210");
-  script_version("$Revision: 4839 $");
+  script_version("$Revision: 6012 $");
   script_cve_id("CVE-2016-5093", "CVE-2016-5094", "CVE-2016-5096", "CVE-2013-7456",
                 "CVE-2016-4637", "CVE-2016-4629", "CVE-2016-4630", "CVE-2016-1836",
                 "CVE-2016-4447", "CVE-2016-4448", "CVE-2016-4483", "CVE-2016-4614",
@@ -35,9 +35,9 @@ if(description)
                 "CVE-2016-1684", "CVE-2016-4607", "CVE-2016-4608", "CVE-2016-4609",
                 "CVE-2016-4610", "CVE-2016-4612", "CVE-2016-1798", "CVE-2015-8126");
   script_bugtraq_id(90696, 77568);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-22 12:01:44 +0100 (Thu, 22 Dec 2016) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-22 11:05:47 +0530 (Tue, 22 Nov 2016)");
   script_name("Apple Mac OS X Code Execution And Denial of Service Vulnerabilities");
 

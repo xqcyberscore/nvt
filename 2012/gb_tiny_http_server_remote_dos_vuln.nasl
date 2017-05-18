@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiny_http_server_remote_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_tiny_http_server_remote_dos_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Tiny HTTP Server Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802614");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-1783");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-05 11:01:07 +0530 (Mon, 05 Mar 2012)");
   script_name("Tiny HTTP Server Remote Denial of Service Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18524");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/110220/Tiny-HTTP-Server-1.1.9-Crash.html");
 
-  script_summary("Check if Tiny HTTP Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

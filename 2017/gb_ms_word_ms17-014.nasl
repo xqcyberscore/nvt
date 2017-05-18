@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_ms17-014.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms_word_ms17-014.nasl 5752 2017-03-29 04:01:01Z teissa $
 #
 # Microsoft Office Word Multiple Vulnerabilities (4013241)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810706");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5752 $");
   script_cve_id("CVE-2017-0029", "CVE-2017-0019", "CVE-2017-0030", "CVE-2017-0031",
                 "CVE-2017-0053", "CVE-2017-0105");
   script_bugtraq_id(96045, 96042, 96051, 96052, 96745, 96746);
-  script_tag(name:"cvss_base", value:"5.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 12:39:37 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Vulnerabilities (4013241)");

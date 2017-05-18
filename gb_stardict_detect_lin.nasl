@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stardict_detect_lin.nasl 2834 2016-03-11 08:39:36Z benallard $
+# $Id: gb_stardict_detect_lin.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # StarDict Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800643);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2834 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:39:36 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("StarDict Version Detection (Linux)");
-  script_summary("Sets KB for the version of StarDict");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

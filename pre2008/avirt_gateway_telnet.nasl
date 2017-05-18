@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: avirt_gateway_telnet.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: avirt_gateway_telnet.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Avirt gateway insecure telnet proxy
 #
 # Authors:
@@ -32,8 +32,8 @@ tag_solution = "Contact your vendor for a patch or disable this service";
 if(description)
 {
  script_id(11096);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3901);
  script_tag(name:"cvss_base", value:"7.5");
@@ -45,7 +45,6 @@ if(description)
 
 	 
  summary = "Remote system compromise through insecure telnet proxy";
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

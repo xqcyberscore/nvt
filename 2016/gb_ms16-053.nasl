@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-053.nasl 3292 2016-05-11 14:50:22Z antu123 $
+# $Id: gb_ms16-053.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Microsoft Windows JScript and VBScript Remote Code Execution Vulnerabilities (3156764)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807322");
-  script_version("$Revision: 3292 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2016-0187", "CVE-2016-0189");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-11 16:50:22 +0200 (Wed, 11 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 08:03:24 +0530 (Wed, 11 May 2016)");
   script_name("Microsoft Windows JScript and VBScript Remote Code Execution Vulnerabilities (3156764)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3158991");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-053");
 
-  script_summary("Check for the vulnerable 'Vbscript.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

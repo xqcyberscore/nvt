@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_crlf_injection_vuln.nasl 4270 2016-10-14 06:18:19Z antu123 $
+# $Id: gb_ibm_was_crlf_injection_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # IBM Websphere Application Server CRLF Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807853");
-  script_version("$Revision: 4270 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-0359");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 08:18:19 +0200 (Fri, 14 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-05 11:50:52 +0530 (Tue, 05 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server CRLF Injection Vulnerability");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21982526");
 
-  script_summary("Check for the vulnerable version of IBM Websphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

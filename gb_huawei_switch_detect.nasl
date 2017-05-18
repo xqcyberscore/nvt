@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_switch_detect.nasl 3997 2016-09-07 13:51:55Z cfi $
+# $Id: gb_huawei_switch_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Huawei Switch Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106156");
- script_version ("$Revision: 3997 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-07 15:51:55 +0200 (Wed, 07 Sep 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-07-29 09:30:37 +0700 (Fri, 29 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,6 @@ This script performs SNMP based detection of Huawei Switches.");
 
  script_xref(name: "URL", value: "http://e.huawei.com/en/products/enterprise-networking/switches");
 
- script_summary("This script performs SNMP based detection of Huawei Switches.");
 
  exit(0);
 }

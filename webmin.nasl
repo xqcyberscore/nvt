@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webmin.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: webmin.nasl 6032 2017-04-26 09:02:50Z teissa $
 # Description: Check for Webmin / Usermin
 #
 # Authors:
@@ -25,13 +25,12 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10757");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_name("Check for Webmin / Usermin");
- script_summary("Check for Webmin / Usermin");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2001 Alert4Web.com");
  script_family("Product detection");

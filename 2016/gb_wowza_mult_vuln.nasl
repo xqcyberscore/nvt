@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_wowza_mult_vuln.nasl 5748 2017-03-28 13:15:16Z teissa $
 #
 # Wowza Streaming Engine Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:wowza:streaming_engine';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106225");
-  script_version("$Revision: 5101 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 5748 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-28 15:15:16 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("Wowza Streaming Engine Multiple Vulnerabilities");
 
@@ -69,8 +69,7 @@ users context.");
 
   script_tag(name: "affected", value: "All Wowza Streaming Engines until at least 4.5.0 build18676.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 24th January, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 4.6.0 build 19395.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40133/");
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40134/");
@@ -93,7 +92,7 @@ if (!build = get_kb_item("wowza_streaming_engine/build"))
 full_version = version + '.' + build;
 
 if (version_is_less_equal(version: full_version, test_version: "4.5.0.18676")) {
-  report = report_fixed_ver(installed_version: version + " build" + build, fixed_version: "None available.");
+  report = report_fixed_ver(installed_version: version + " build" + build, fixed_version: "4.6.0 build 19395");
   security_message(port: 0, data: report);
   exit(0);
 }

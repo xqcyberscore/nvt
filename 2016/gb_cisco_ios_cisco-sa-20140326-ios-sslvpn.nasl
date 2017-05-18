@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20140326-ios-sslvpn.nasl 3229 2016-05-04 17:01:41Z mime $
+# $Id: gb_cisco_ios_cisco-sa-20140326-ios-sslvpn.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco IOS Software SSL VPN Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-2112");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3229 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Cisco IOS Software SSL VPN Denial of Service Vulnerability");
 
@@ -61,9 +61,8 @@ http://www.cisco.com/web/about/security/intelligence/Cisco_ERP_mar14.html");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-04 19:01:41 +0200 (Wed, 04 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-04 18:46:26 +0200 (Wed, 04 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamwiki_num_param_xss_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_jamwiki_num_param_xss_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # JamWiki 'num' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802621");
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(52829);
   script_cve_id("CVE-2012-1983");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-02 11:11:11 +0530 (Mon, 02 Apr 2012)");
   script_name("JamWiki 'num' Parameter Cross Site Scripting Vulnerability");
 
@@ -43,7 +43,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_JamWiki_XSS_Vuln.txt");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111410/jamwiki-xss.txt");
 
-  script_summary("Check if JAMWiki is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

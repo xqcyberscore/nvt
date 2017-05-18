@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_detect.nasl 5516 2017-03-08 13:28:03Z mime $
+# $Id: gb_apache_struts_detect.nasl 5796 2017-03-30 14:15:11Z cfi $
 #
 # Apache Struts Version Detection
 #
@@ -31,15 +31,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800276");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5516 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 14:28:03 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 5796 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Struts Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -63,15 +63,13 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
   install = dir;
   if( dir == "/" ) dir = "";
 
-
   ## For some versions path has "/docs/docs/" 
   ## While for some versions path has only "/docs"
   foreach url (make_list(dir + "/docs/docs", dir +"/docs"))
   {
 
     # Main doc page
-    sndReq = http_get( item:url + "/index.html", port:asPort);
-    rcvRes = http_keepalive_send_recv( port:asPort, data:sndReq );
+    rcvRes = http_get_cache( item:url + "/index.html", port:asPort);
 
     ##Home Doc page
     sndReq2 = http_get(item:url + "/WW/cwiki.apache.org/WW/home.html", port:asPort);
@@ -80,8 +78,7 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
     ##For some versions path is different
     if(rcvRes2 !~ "HTTP/1.. 200 OK")
     {
-      sndReq = http_get( item:url + "/home.html", port:asPort );
-      rcvRes2 = http_keepalive_send_recv( port:asPort, data:sndReq);
+      rcvRes2 = http_get_cache( item:url + "/home.html", port:asPort );
     }
 
     # guides doc page

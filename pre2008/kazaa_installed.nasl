@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: kazaa_installed.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: kazaa_installed.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Kazaa is installed
 #
 # Authors:
@@ -30,8 +30,8 @@ tag_solution = "Uninstall this software";
 if(description)
 {
  script_id(11426);
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
  script_bugtraq_id(3135, 4121, 4122, 5317, 6435, 6747);
  script_cve_id("CVE-2002-0314", "CVE-2002-0315");  
@@ -48,7 +48,6 @@ if(description)
 
  summary = "Determines if Kazaa is installed";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

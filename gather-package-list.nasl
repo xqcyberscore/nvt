@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gather-package-list.nasl 6011 2017-04-21 20:31:32Z cfi $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5595 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+  script_version("$Revision: 6011 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 22:31:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Determine OS and list of installed packages via SSH login");
   script_category(ACT_GATHER_INFO);
@@ -73,6 +73,7 @@ cmdline = 0;
 SCRIPT_DESC = "Determine OS and list of installed packages via SSH login";
 
 # See os_eol.inc for outdated / eol os versions. Please cross-check this file when updating here.
+# Also update gather-package-list-docker-container.inc if adding a new OS.
 
 OS_CPE = make_array(
 
@@ -124,7 +125,8 @@ OS_CPE = make_array(
     "SLED11.0SP0", "cpe:/o:suse:linux_enterprise_desktop:11:SP0",
 
     # Ubuntu
-    "UBUNTU16.10","cpe:/o:canonical:ubuntu_linux:16.10",
+    "UBUNTU17.04",    "cpe:/o:canonical:ubuntu_linux:17.04",
+    "UBUNTU16.10",    "cpe:/o:canonical:ubuntu_linux:16.10",
     "UBUNTU16.04 LTS","cpe:/o:canonical:ubuntu_linux:16.04:-:lts",
     "UBUNTU15.10",    "cpe:/o:canonical:ubuntu_linux:15.10",
     "UBUNTU15.04",    "cpe:/o:canonical:ubuntu_linux:15.04",
@@ -1046,6 +1048,13 @@ if( "linux" >< tolower( uname ) )
   }
 }
 
+rls = ssh_cmd(socket:sock, cmd:"cat /etc/github/enterprise-release", return_errors:TRUE);
+if( "RELEASE_VERSION" >< rls && "RELEASE_BUILD_ID" >< rls )
+{
+  set_kb_item( name:"github/enterprise/rls", value:rls );
+  exit( 0 );
+}
+
 rls = ssh_cmd(socket:sock, cmd:"cat /etc/cisco-release", return_errors:TRUE);
 if( "Cisco IPICS Enterprise Linux Server" >< rls ) # Cisco IPICS Enterprise Linux Server release 4.5(1) Build 10p12
 {
@@ -1763,77 +1772,77 @@ if("CentOS release 2" >< rls) {
 # Hmmm...is it Ubuntu?
 rls = ssh_cmd(socket:sock, cmd:"cat /etc/lsb-release");
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=4.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 4.10"));
     register_detected_os(os:"Ubuntu 4.10", oskey:"UBUNTU4.1");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.04"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 5.04"));
     register_detected_os(os:"Ubuntu 5.04", oskey:"UBUNTU5.04");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=5.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 5.10"));
     register_detected_os(os:"Ubuntu 5.10", oskey:"UBUNTU5.10");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.06"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 6.06"));
     register_detected_os(os:"Ubuntu 6.06", oskey:"UBUNTU6.06 LTS");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=6.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 6.10"));
     register_detected_os(os:"Ubuntu 6.10", oskey:"UBUNTU6.10");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.04"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 7.04"));
     register_detected_os(os:"Ubuntu 7.04", oskey:"UBUNTU7.04");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=7.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 7.10"));
     register_detected_os(os:"Ubuntu 7.10", oskey:"UBUNTU7.10");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.04"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 8.04 LTS"));
     register_detected_os(os:"Ubuntu 8.04 LTS", oskey:"UBUNTU8.04 LTS");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=8.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 8.10"));
     register_detected_os(os:"Ubuntu 8.10", oskey:"UBUNTU8.10");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.04"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 9.04"));
     register_detected_os(os:"Ubuntu 9.04", oskey:"UBUNTU9.04");
     exit(0);
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 9.10"));
     register_detected_os(os:"Ubuntu 9.10", oskey:"UBUNTU9.10");
@@ -1841,7 +1850,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=9.10"><rls) {
 }
 
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.04"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 10.04 LTS"));
     register_detected_os(os:"Ubuntu 10.04 LTS", oskey:"UBUNTU10.04 LTS");
@@ -1849,7 +1858,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.04"><rls) {
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.10"><rls)
 {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1860,7 +1869,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=10.10"><rls)
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.04"><rls)
 {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1871,7 +1880,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.04"><rls)
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.10"><rls)
 {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1881,7 +1890,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=11.10"><rls)
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.04"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1891,7 +1900,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.04"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.10"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1901,7 +1910,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=12.10"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.04"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1911,7 +1920,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.04"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.10"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1921,7 +1930,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=13.10"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.04"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1931,7 +1940,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.04"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.10"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1941,7 +1950,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=14.10"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.04"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1951,7 +1960,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.04"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.10"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1961,7 +1970,7 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=15.10"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.04"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
@@ -1971,12 +1980,22 @@ if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.04"><rls) {
   }
 }
 if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=16.10"><rls) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if(!isnull(buf))
   {
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 16.10"));
     register_detected_os(os:"Ubuntu 16.10", oskey:"UBUNTU16.10");
+    exit(0);
+  }
+}
+if("DISTRIB_ID=Ubuntu"><rls && "DISTRIB_RELEASE=17.04"><rls) {
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
+  if(!isnull(buf))
+  {
+    set_kb_item(name: "ssh/login/packages", value:buf);
+    log_message(port:port, data:string("We are able to login and detect that you are running Ubuntu 17.04"));
+    register_detected_os(os:"Ubuntu 17.04", oskey:"UBUNTU17.04");
     exit(0);
   }
 }
@@ -1990,7 +2009,7 @@ if ( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?') {
         if( ! isnull( ucs_release[3] ) ) set_kb_item(name:"ucs/errata", value:ucs_release[3]);
 
         ucs_desciption = eregmatch(string:rls, pattern:'DISTRIB_DESCRIPTION="([^"]*)"');
-        buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+        buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
         if(!isnull(buf) && !isnull(ucs_release) && !isnull(ucs_desciption))
         {
                 set_kb_item(name: "ssh/login/packages", value:buf);
@@ -2003,7 +2022,7 @@ if ( rls =~ 'DISTRIB_ID=("|\')?Univention("|\')?') {
 rls = ssh_cmd(socket:sock, cmd:"cat /etc/issue");
 match = eregmatch(pattern:"^Univention (Managed Client|Mobile Client|DC Master|DC Backup|DC Slave|Memberserver|Corporate Server) ([2][.][0-4])-[0-9]+-[0-9]+", string:rls);
 if (!isnull(match)) {
-  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+  buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
   if (!isnull(buf)) {
     set_kb_item(name: "ssh/login/packages", value:buf);
 
@@ -2098,77 +2117,77 @@ if("Turbolinux">< rls) {
 # Hmmm...is it Debian?
 rls = ssh_cmd(socket:sock, cmd:"cat /etc/debian_version");
 if("1.1"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 1.1"));
     register_detected_os(os:"Debian 1.1", oskey:"DEB1.1");
     exit(0);
 }
 if("1.2"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 1.2"));
     register_detected_os(os:"Debian 1.2", oskey:"DEB1.2");
     exit(0);
 }
 if("1.3"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 1.3"));
     register_detected_os(os:"Debian 1.3", oskey:"DEB1.3");
     exit(0);
 }
 if("2.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 2.0"));
     register_detected_os(os:"Debian 2.0", oskey:"DEB2.0");
     exit(0);
 }
 if("2.1"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 2.1"));
     register_detected_os(os:"Debian 2.1", oskey:"DEB2.1");
     exit(0);
 }
 if("2.2"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 2.2 (Potato)"));
     register_detected_os(os:"Debian 2.2 (Potato)", oskey:"DEB2.2");
     exit(0);
 }
 if("3.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 3.0 (Woody)"));
     register_detected_os(os:"Debian 3.0 (Woody)", oskey:"DEB3.0");
     exit(0);
 }
 if("3.1"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 3.1 (Sarge)"));
     register_detected_os(os:"Debian 3.1 (Sarge)", oskey:"DEB3.1");
     exit(0);
 }
 if("4.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 4.0 (Etch)"));
     register_detected_os(os:"Debian 4.0 (Etch)", oskey:"DEB4.0");
     exit(0);
 }
 if("5.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 5.0 (Lenny)"));
     register_detected_os(os:"Debian 5.0 (Lenny)", oskey:"DEB5.0");
     exit(0);
 }
 if("6.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 6.0 (Squeeze)"));
     register_detected_os(os:"Debian 6.0 (Squeeze)", oskey:"DEB6.0");
@@ -2176,84 +2195,84 @@ if("6.0"><rls) {
 }
 
 if("7.11"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name:"ssh/login/packages", value:buf);
     log_message(port:port, data:"We are able to login and detect that you are running Debian 7.11 (Wheezy)");
     register_detected_os(os:"Debian 7.11 (Wheezy)", oskey:"DEB7.11");
     exit(0);
 }
 if("7.10"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name:"ssh/login/packages", value:buf);
     log_message(port:port,data:"We are able to login and detect that you are running Debian 7.10 (Wheezy)");
     register_detected_os(os:"Debian 7.10 (Wheezy)", oskey:"DEB7.10");
     exit(0);
 }
 if("7.9"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.9 (Wheezy)"));
     register_detected_os(os:"Debian 7.9 (Wheezy)", oskey:"DEB7.9");
     exit(0);
 }
 if("7.8"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.8 (Wheezy)"));
     register_detected_os(os:"Debian 7.8 (Wheezy)", oskey:"DEB7.8");
     exit(0);
 }
 if("7.7"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.7 (Wheezy)"));
     register_detected_os(os:"Debian 7.7 (Wheezy)", oskey:"DEB7.7");
     exit(0);
 }
 if("7.6"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.6 (Wheezy)"));
     register_detected_os(os:"Debian 7.6 (Wheezy)", oskey:"DEB7.6");
     exit(0);
 }
 if("7.5"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.5 (Wheezy)"));
     register_detected_os(os:"Debian 7.5 (Wheezy)", oskey:"DEB7.5");
     exit(0);
 }
 if("7.4"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.4 (Wheezy)"));
     register_detected_os(os:"Debian 7.4 (Wheezy)", oskey:"DEB7.4");
     exit(0);
 }
 if("7.3"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.3 (Wheezy)"));
     register_detected_os(os:"Debian 7.3 (Wheezy)", oskey:"DEB7.3");
     exit(0);
 }
 if("7.2"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.2 (Wheezy)"));
     register_detected_os(os:"Debian 7.2 (Wheezy)", oskey:"DEB7.2");
     exit(0);
 }
 if("7.1"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.1 (Wheezy)"));
     register_detected_os(os:"Debian 7.1 (Wheezy)", oskey:"DEB7.1");
     exit(0);
 }
 if("7.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 7.0 (Wheezy)"));
     register_detected_os(os:"Debian 7.0 (Wheezy)", oskey:"DEB7.0");
@@ -2261,63 +2280,63 @@ if("7.0"><rls) {
 }
 
 if("8.7"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name:"ssh/login/packages", value:buf);
     log_message(port:port, data:"We are able to login and detect that you are running Debian 8.7 (Jessie)");
     register_detected_os(os:"Debian 8.7 (Jessie)", oskey:"DEB8.7");
     exit(0);
 }
 if("8.6"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name:"ssh/login/packages", value:buf);
     log_message(port:port, data:"We are able to login and detect that you are running Debian 8.6 (Jessie)");
     register_detected_os(os:"Debian 8.6 (Jessie)", oskey:"DEB8.6");
     exit(0);
 }
 if("8.5"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 8.5 (Jessie)"));
     register_detected_os(os:"Debian 8.5 (Jessie)", oskey:"DEB8.5");
     exit(0);
 }
 if("8.4"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 8.4 (Jessie)"));
     register_detected_os(os:"Debian 8.4 (Jessie)", oskey:"DEB8.4");
     exit(0);
 }
 if("8.3"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 8.3 (Jessie)"));
     register_detected_os(os:"Debian 8.3 (Jessie)", oskey:"DEB8.3");
     exit(0);
 }
 if("8.2"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 8.2 (Jessie)"));
     register_detected_os(os:"Debian 8.2 (Jessie)", oskey:"DEB8.2");
     exit(0);
 }
 if("8.1"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 8.1 (Jessie)"));
     register_detected_os(os:"Debian 8.1 (Jessie)", oskey:"DEB8.1");
     exit(0);
 }
 if("8.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 8.0 (Jessie)"));
     register_detected_os(os:"Debian 8.0 (Jessie)", oskey:"DEB8.0");
     exit(0);
 }
 if("9.0"><rls) {
-    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=300 dpkg -l");
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name: "ssh/login/packages", value:buf);
     log_message(port:port, data:string("We are able to login and detect that you are running Debian 9.0 (Stretch)"));
     register_detected_os(os:"Debian 9.0 (Stretch)", oskey:"DEB9.0");
@@ -3144,7 +3163,7 @@ if ("SunOS " >< uname) {
         log_message(port:port, data:string("We are able to login and detect that you are running Solaris ", osversion, " Arch: x86"));
     }
 
-    solaris_cpe = build_cpe(value:osversion, pattern:"^([0-9.]+)", base:"cpe:/o:sun:solaris:");
+    solaris_cpe = build_cpe(value:osversion, exp:"^([0-9.]+)", base:"cpe:/o:sun:solaris:");
     if (!isnull(solaris_cpe))
       register_host_detail(name:"OS", value:solaris_cpe, desc:SCRIPT_DESC);
     exit(0);
@@ -3165,7 +3184,7 @@ if( "Darwin" >< uname ) {
   buf = ssh_cmd( socket:sock, cmd:"list=$(pkgutil --pkgs);for l in $list;do echo $l;v=$(pkgutil --pkg-info $l | grep version);echo ${v#version: };done;" );
   set_kb_item( name:"ssh/login/osx_pkgs", value:buf );
 
-  osx_cpe = build_cpe( value:buf, pattern:"Mac OS X (10\.[0-9]+\.[0-9]+)", base:"cpe:/o:apple:mac_os_x:" );
+  osx_cpe = build_cpe( value:buf, exp:"Mac OS X (10\.[0-9]+\.[0-9]+)", base:"cpe:/o:apple:mac_os_x:" );
   if( ! isnull( osx_cpe ) )
     register_host_detail( name:"OS", value:osx_cpe, desc:SCRIPT_DESC );
 

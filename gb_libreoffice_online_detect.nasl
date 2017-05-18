@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_online_detect.nasl 5029 2017-01-18 13:42:10Z cfi $
+# $Id: gb_libreoffice_online_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # LibreOffice Online Detection
 #
@@ -30,11 +30,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 14:42:10 +0100 (Wed, 18 Jan 2017) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-15 09:00:00 +0200 (Thu, 15 Sep 2016)");
   script_name("LibreOffice Online Detection");
-  script_summary("Checks for the presence of LibreOffice Online");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

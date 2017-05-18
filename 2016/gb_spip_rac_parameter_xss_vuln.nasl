@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_rac_parameter_xss_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_spip_rac_parameter_xss_vuln.nasl 5748 2017-03-28 13:15:16Z teissa $
 #
 # SPIP 'rac' Parameter Cross-Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:spip:spip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809745");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5748 $");
   script_cve_id("CVE-2016-9152");
   script_bugtraq_id(94658);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:15:16 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-08 18:16:57 +0530 (Thu, 08 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("SPIP 'rac' Parameter Cross-Site Scripting Vulnerability");
@@ -58,12 +58,9 @@ if (description)
 
   script_tag(name: "affected" , value:"SPIP version 3.1.3");
 
-  script_tag(name: "solution" , value:"No solution or patch exists as of
-  25th January, 2017. Information regarding this issue will be updated once the
-  solution details are available. 
-  For updates refer to http://www.spip.net");
+  script_tag(name: "solution" , value:"A solution was patched in Revision 23290. For updates refer to http://www.spip.net");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://core.spip.net/projects/spip/repository/revisions/23290");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -95,7 +92,7 @@ if(!sp_Ver = get_app_version(cpe:CPE, port:sp_port)){
 ##Check for Vulnerable Version
 if(version_is_equal(version:sp_Ver, test_version:"3.1.3"))
 {
-  report = report_fixed_ver(installed_version:sp_Ver, fixed_version:"None Available");
+  report = report_fixed_ver(installed_version:sp_Ver, fixed_version:"See Vendor");
   security_message(port:sp_port, data:report);
   exit(0);
 }

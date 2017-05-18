@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonza_digital_cart_scrip_49262.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_bonza_digital_cart_scrip_49262.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Bonza Digital Cart Script Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -33,12 +33,11 @@ based authentication credentials, compromise the application,
 access or modify data, or exploit latent vulnerabilities in the
 underlying database.";
 
-
-if (description)
+if(description)
 {
  script_id(103273);
- script_version("$Revision: 3507 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 5747 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-23 10:55:34 +0200 (Fri, 23 Sep 2011)");
  script_bugtraq_id(49262);
  script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +48,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.turnkeycentral.com/scripts/bonza-digital-cart-script/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Bonza Digital Cart Script is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,22 +63,18 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/shop",cgi_dirs());
+foreach dir( make_list_unique( "/shop", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, '/searchresults.php?SearchTerm="><script>alert(/openvas-xss-test/)</script>&where=ItemName&ord1=ItemName&ord2=asc&search1.x=50&search1.y=14');
 
   if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script></b>", check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

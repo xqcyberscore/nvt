@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 4540 2016-11-16 14:05:17Z cfi $
+# $Id: cisco_default_pw.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Cisco default password
 #
 # Authors:
@@ -48,8 +48,8 @@ tag_solution = "Access this device and set a password using 'enable secret'";
 if(description) 
 {
  script_id(23938);
- script_version("$Revision: 4540 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-16 15:05:17 +0100 (Wed, 16 Nov 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
  script_cve_id("CVE-1999-0508");
  script_tag(name:"cvss_base", value:"4.6");
@@ -63,7 +63,6 @@ if(description)
 
 
  summary = "Checks for a default password";
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");

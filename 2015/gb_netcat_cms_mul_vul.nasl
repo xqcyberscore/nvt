@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcat_cms_mul_vul.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_netcat_cms_mul_vul.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # NetCat CMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805346");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 5819 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-03 17:44:58 +0530 (Tue, 03 Mar 2015)");
   script_name("NetCat CMS Multiple Vulnerabilities");
 
@@ -66,15 +66,14 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/9");
   script_xref(name : "URL" , value : "http://securityrelated.blogspot.in/2015/02/netcat-cms-multiple-url-redirection.html");
 
-  script_summary("Check if NetCat has Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -84,26 +83,13 @@ cmsPort = "";
 sndReq = "";
 rcvRes = "";
 
-
-# start script
 cmsPort = get_http_port(default:80);
-if(!cmsPort){
-  cmsPort = 80;
-}
 
-# Check port state
-if(!get_port_state(cmsPort)){
-  exit(0);
-}
-
-# Iterate over possible paths
-foreach dir (make_list_unique("/", "/netcat", "/netcatcms", "/cms", cgi_dirs()))
+foreach dir (make_list_unique("/", "/netcat", "/netcatcms", "/cms", cgi_dirs(port:cmsPort)))
 {
 
   if( dir == "/" ) dir = "";
-
-  sndReq = http_get(item:string(dir,"/"), port:cmsPort);
-  rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir,"/"), port:cmsPort);
 
   #Confirm application
   if(">NetCat" >< rcvRes)

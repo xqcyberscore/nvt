@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 2500 2016-01-25 10:42:26Z cfi $
+# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Microsoft IIS GET Request Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:microsoft:iis';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902914");
-  script_version("$Revision: 2500 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-1999-0229");
   script_bugtraq_id(2218);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-25 11:42:26 +0100 (Mon, 25 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-22 12:45:33 +0530 (Tue, 22 May 2012)");
   script_name("Microsoft IIS GET Request Denial of Service Vulnerability");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/246425.php");
   script_xref(name:"URL", value:"http://www.iss.net/security_center/reference/vuln/HTTP_DotDot.htm");
 
-  script_summary("Performs a denial of service against IIS");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web Servers");

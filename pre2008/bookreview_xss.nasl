@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bookreview_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: bookreview_xss.nasl 5992 2017-04-20 14:42:07Z cfi $
 #
 # BookReview Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18375");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 5992 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,7 +46,6 @@ if(description)
   script_xref(name:"OSVDB", value:"16880");
   script_xref(name:"OSVDB", value:"16881");
   script_name("BookReview Multiple Cross-Site Scripting Vulnerabilities");
-  script_summary("Checks for unathentication access to admin.asp");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");
@@ -81,6 +80,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
 

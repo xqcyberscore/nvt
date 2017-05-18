@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: w_agora_dir_traversal2.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: w_agora_dir_traversal2.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: w-Agora Site parameter remote directory traversal flaw
 #
 # Authors:
@@ -30,15 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19474");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2648");
   script_bugtraq_id(14597);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("w-Agora Site parameter remote directory traversal flaw");
-  script_summary("Checks for directory traversal in w-Agora");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");

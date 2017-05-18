@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minibb_blind_sql_inj_vuln_jan15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_minibb_blind_sql_inj_vuln_jan15.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # miniBB bb_func_unsub.php 'code' Parameter Blind SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805119");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2014-9254");
   script_bugtraq_id(71805);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-01-07 13:19:25 +0530 (Wed, 07 Jan 2015)");
   script_name("miniBB bb_func_unsub.php 'code' Parameter Blind SQL Injection Vulnerability");
 
@@ -62,12 +62,12 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61794");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129672");
 
-  script_summary("Check if MiniBB is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -82,24 +82,12 @@ rcvRes = "";
 time_taken = 0;
 wait_extra_sec = 5;
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/minibb", "/forum", cgi_dirs()))
+foreach dir (make_list_unique("/", "/minibb", "/forum", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";

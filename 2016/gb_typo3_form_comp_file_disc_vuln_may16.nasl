@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_form_comp_file_disc_vuln_may16.nasl 3674 2016-07-07 17:35:10Z cfi $
+# $Id: gb_typo3_form_comp_file_disc_vuln_may16.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # TYPO3 Form Component Arbitrary File Disclosure Vulnerability May16 (SA-2016-010)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807829");
-  script_version("$Revision: 3674 $");
+  script_version("$Revision: 5836 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-07 19:35:10 +0200 (Thu, 07 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 18:19:17 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Form Component Arbitrary File Disclosure Vulnerability May16 (SA-2016-010)");
 
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-010");
 
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

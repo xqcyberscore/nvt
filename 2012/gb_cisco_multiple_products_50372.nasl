@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_multiple_products_50372.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_multiple_products_50372.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2011-3315");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 3859 $");
+ script_version ("$Revision: 5940 $");
 
  script_name("Multiple Cisco Products 'file' Parameter () Directory Traversal Vulnerability");
 
@@ -58,9 +58,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520414");
  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20111026-uccx");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-26 15:59:27 +0100 (Thu, 26 Jan 2012)");
- script_summary("Determine if it is possible to read /etc/passwd");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

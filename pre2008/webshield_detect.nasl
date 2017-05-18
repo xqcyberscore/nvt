@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webshield_detect.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: webshield_detect.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: WebShield Appliance detection
 #
 # Authors:
@@ -33,12 +33,11 @@ if(description)
 {
  script_oid(SCRIPT_OID);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("WebShield Appliance detection");
- script_summary("Checks for WebShield Appliance console management");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_copyright("This script is Copyright (C) 2005 David Maciejak");

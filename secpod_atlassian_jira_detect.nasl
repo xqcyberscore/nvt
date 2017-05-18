@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_atlassian_jira_detect.nasl 3762 2016-07-26 10:18:57Z ckuerste $
+# $Id: secpod_atlassian_jira_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # Atlassian JIRA Version Detection
 #
@@ -30,8 +30,8 @@ tag_summary = "This script finds the installed Atlassian JIRA version and saves
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902046");
-  script_version("$Revision: 3762 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-26 12:18:57 +0200 (Tue, 26 Jul 2016) $");
+  script_version("$Revision: 5820 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,10 +67,10 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8080);
 
-foreach dir (make_list_unique("/jira", cgi_dirs())) {
+foreach dir (make_list_unique("/jira", cgi_dirs(port: port))) {
+
   install = dir;
-  if (dir == "/")
-    dir = "";
+  if (dir == "/") dir = "";
 
   rcvRes = http_get_cache(port: port, item: dir + "/login.jsp");
 

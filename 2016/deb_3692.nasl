@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3692.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: deb_3692.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3692-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703692);
-    script_version("$Revision: 5070 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2015-3885", "CVE-2016-5684");
     script_name("Debian Security Advisory DSA 3692-1 (freeimage - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-10-13 00:00:00 +0200 (Thu, 13 Oct 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3692.html");
 
-    script_summary("Debian Security Advisory DSA 3692-1 (freeimage - security update)");
 
     script_category(ACT_GATHER_INFO);
 

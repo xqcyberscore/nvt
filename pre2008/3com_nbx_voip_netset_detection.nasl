@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: 3com_nbx_voip_netset_detection.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: 3com_nbx_voip_netset_detection.nasl 5676 2017-03-22 16:29:37Z cfi $
 # Description: 3Com NBX VoIP NetSet Detection
 #
 # Authors:
@@ -44,8 +44,8 @@ See Also :  http://www.secnap.com/security/20040420.html";
 if(description)
 {
  script_id(12221);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1977");
  script_bugtraq_id(10240);
@@ -53,20 +53,15 @@ if(description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  name = "3Com NBX VoIP NetSet Detection";
  script_name(name);
- 
-
- summary = "Tests for 3Com NBX VoIP NetSet Detection";
- 
- script_summary(summary);
- 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- 
  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
  family = "Web application abuses";
  script_family(family);
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
@@ -74,10 +69,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_kb_item("Services/www");
-if(!port)port = 80;
-if(get_port_state(port))
-{ 
+port = get_http_port( default:80 );
+
  r   = http_get_cache(item:"/", port:port);
  if ( ! r ) exit(0);
  if("sysObjectID" >< r && "1.3.6.1.4.1.43.1.17" >< r)
@@ -86,5 +79,4 @@ if(get_port_state(port))
 	set_kb_item(name:"Services/www/" + port + "/embedded", value:TRUE);
  	if(safe_checks()) set_kb_item(name:"Host/dead", value:TRUE);
  }
-}
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: globalscapeftp_user_input.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: globalscapeftp_user_input.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: GlobalSCAPE Secure FTP Server User Input Overflow
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to newest release of this software";
 if(description)
 {
  script_id(18627);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2005-1415");
  script_bugtraq_id (13454);
@@ -51,7 +51,6 @@ if(description)
 
  summary = "GlobalSCAPE Secure FTP Server User Input Overflow";
 
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

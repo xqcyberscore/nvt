@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sitescope_management_server.nasl 4079 2016-09-16 09:06:55Z cfi $
+# $Id: sitescope_management_server.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # SiteScope Web Managegment Server Detect
 #
@@ -28,13 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10740");
-  script_version("$Revision: 4079 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:06:55 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("SiteScope Web Managegment Server Detect");
-  script_summary("SiteScope Web Management Server Detect");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("Web application abuses");

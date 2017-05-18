@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_awcm_44868.nasl 5653 2017-03-21 10:19:58Z cfi $
+# $Id: gb_awcm_44868.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # AWCM CMS Multiple Remote File Include Vulnerabilities
 #
@@ -35,12 +35,11 @@ attacks are also possible.
 
 AWCM 2.1 and 2.2 are vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100905);
- script_version("$Revision: 5653 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:19:58 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-16 13:35:09 +0100 (Tue, 16 Nov 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -66,27 +65,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/awcm","/cms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/awcm", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
    
-    url = string(dir,"/includes/window_top.php?theme_file=",crap(data:"../",length:3*9),files[file],"%00"); 
+    url = string(dir,"/includes/window_top.php?theme_file=",crap(data:"../",length:3*9),files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

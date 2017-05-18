@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability
 #
@@ -44,10 +44,10 @@ if(description)
 {
   script_id(902822);
   script_bugtraq_id(52704);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-26 15:15:15 +0530 (Mon, 26 Mar 2012)");
   script_name("PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "https://bugs.php.net/bug.php?id=61461");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74317");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18665");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111163/PHP-5.4.0-Denial-Of-Service.html");
-  script_summary("Check if PHP Built-in WebServer is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");

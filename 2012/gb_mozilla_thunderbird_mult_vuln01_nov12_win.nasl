@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_nov12_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_nov12_win.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 November12 (Windows)
 #
@@ -45,7 +45,7 @@ tag_summary = "This host is installed with Mozilla Thunderbird and is prone to m
 if(description)
 {
   script_id(803351);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
                 "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
                 "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5840", "CVE-2012-5833",
@@ -54,7 +54,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:10:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 November12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-103.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-105.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-106.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_ssh_credentials.nasl 5467 2017-03-02 10:34:11Z cfi $
+# $Id: default_ssh_credentials.nasl 5990 2017-04-20 13:39:40Z cfi $
 #
 # SSH Brute Force Logins With Default Credentials
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108013");
-  script_version("$Revision: 5467 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 11:34:11 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 5990 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 15:39:40 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,39 +59,22 @@ port = get_kb_item("Services/ssh");
 if( ! port ) port = 22;
 if( ! get_port_state( port ) ) exit( 0 );
 
-c = 0;
-replace_kb_item( name:"default_ssh_credentials/started", value:TRUE );
-
-d = script_get_preference( "Seconds to wait between probes" );
-if( int( d ) > 0 ) delay = int( d );
+# Exit if any random user/pass pair is accepted by the SSH service.
+if( ssh_broken_random_login( port:port ) ) exit( 0 );
 
 if( ! soc = open_sock_tcp( port ) ) exit( 0 );
-
-banner = ssh_hack_get_server_version( socket:soc );
-
-if( "cisco" >< tolower( banner ) ) {
-  user = "Anonymous";
-  pass = "";
-} else {
-  user = rand_str( length:8 );
-  pass = rand_str( length:8 );
-}
-
-close( soc );
-if( ! soc = open_sock_tcp( port ) ) exit( 0 );
-
-login = ssh_login( socket:soc, login:user, password:pass, pub:NULL, priv:NULL, passphrase:NULL );
-
-if( login == 0 ) {
-  close( soc );
-  exit( 0 );
-}
-
 sess_id = ssh_session_id_from_sock( soc );
 ssh_supported_authentication = get_ssh_supported_authentication( sess_id:sess_id );
 close( soc );
 
 if( ssh_supported_authentication =~ "^publickey$" ) exit( 0 );
+
+c = 0;
+
+d = script_get_preference( "Seconds to wait between probes" );
+if( int( d ) > 0 ) delay = int( d );
+
+replace_kb_item( name:"default_ssh_credentials/started", value:TRUE );
 
 foreach credential( credentials ) {
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_dir_listing.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: apache_dir_listing.nasl 5829 2017-04-03 07:00:29Z cfi $
 # Description: Apache Directory Listing
 #
 # Authors:
@@ -50,27 +50,19 @@ httpd.conf file.";
 if(description)
 {
  script_id(10704);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5829 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3009);
  script_xref(name: "OWASP", value: "OWASP-CM-004");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2001-0731");
- name = "Apache Directory Listing";
- script_name(name);
- 
- summary = "Checks to see if Apache will provide a directory listing";
- 
- script_summary(summary);
- 
+ script_name("Apache Directory Listing");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2001 Matt Moore");
- family = "Web Servers";
- script_family(family);
+ script_family("Web Servers");
  script_dependencies("gb_get_http_banner.nasl", "no404.nasl");
  script_mandatory_keys("apache/banner");
  script_require_ports("Services/www", 80);
@@ -89,34 +81,24 @@ if(description)
 #
 
 include("http_func.inc");
+include("http_keepalive.inc");
 
-port = get_http_port(default:80);
-if ( get_kb_item("Services/www/" + port + "/embedded") ) exit(0);
+port = get_http_port( default:80 );
+banner = get_http_banner( port:port );
+if( ! banner || "Apache" >!< banner ) exit( 0 );
 
-if(get_port_state(port))
-{ 
- banner = get_http_banner(port:port);
-if ( banner && "Apache" >!< banner  ) exit(0);
- # First, we make sure that the remote server is not already
- # spitting the content of the directory.
- req = http_get(item:"/", port:port);
- soc = http_open_socket(port);
- if(!soc)exit(0);
- send(socket:soc, data:req);
- r = http_recv(socket:soc);
- http_close_socket(soc);
- if("Index of " >< r)exit(0);
+# First, we make sure that the remote server is not already
+# spitting the content of the directory.
+res = http_get_cache( item:"/", port:port );
+if( "Index of " >< res ) exit( 0 );
 
- # Now we perform the check
- req = http_get(item:"/?M=A", port:port);
- soc = http_open_socket(port);
- if(soc)
- {
- send(socket:soc, data:req);
- r = http_recv(socket:soc);
- http_close_socket(soc);
- if (("Index of " >< r) && ("Last modified" >< r))	
- 	security_message(port);
+# Now we perform the check
+req = http_get( item:"/?M=A", port:port );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
- }
+if( ( "Index of " >< res ) && ( "Last modified" >< res ) ) {
+  security_message( port:port );
+  exit( 0 );
 }
+
+exit( 99 );

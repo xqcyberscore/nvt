@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-008.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-008.nasl 5741 2017-03-28 05:13:03Z teissa $
 #
 # Microsoft Windows Hyper-V Multiple Vulnerabilities (4013082) 
 #
@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810624");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 5741 $");
   script_cve_id("CVE-2017-0021", "CVE-2017-0051", "CVE-2017-0074", "CVE-2017-0075",
                 "CVE-2017-0076", "CVE-2017-0097", "CVE-2017-0099", "CVE-2017-0095",
                 "CVE-2017-0096", "CVE-2017-0098", "CVE-2017-0109");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"7.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 07:13:03 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 10:50:15 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Hyper-V Multiple Vulnerabilities (4013082)");

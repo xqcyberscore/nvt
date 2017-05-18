@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808773");
-  script_version("$Revision: 3823 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 09:42:49 +0200 (Thu, 11 Aug 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-06 05:48:11 +0200 (Sat, 06 Aug 2016)");
   script_cve_id("CVE-2015-7511");
   script_tag(name:"cvss_base", value:"1.9");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-ec4c27d766");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Y2KL5TIX3WRJ3FNV4AY74BMLJTYVXCK5");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libgcrypt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

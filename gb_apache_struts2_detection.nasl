@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_detection.nasl 3779 2016-08-01 11:42:12Z mime $
+# $Id: gb_apache_struts2_detection.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Apache Struts2 Server Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107006");
-  script_version("$Revision: 3779 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-01 13:42:12 +0200 (Mon, 01 Aug 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-01 06:40:16 +0200 (Wed, 01 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Default Apache Struts2 Web Applications Detection");
-  script_summary("Set Version of Apache Struts and one Webapp location in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

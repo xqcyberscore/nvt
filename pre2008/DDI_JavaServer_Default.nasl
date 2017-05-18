@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_JavaServer_Default.nasl 4079 2016-09-16 09:06:55Z cfi $
+# $Id: DDI_JavaServer_Default.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Sun JavaServer Default Admin Password
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10995");
-  script_version("$Revision: 4079 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:06:55 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-1999-0508");
   script_name("Sun JavaServer Default Admin Password");
-  script_summary("Sun JavaServer Default Admin Password");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Digital Defense Inc.");
   script_family("Default Accounts");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_crm_command_injection_vuln.nasl 5145 2017-01-31 11:07:58Z cfi $
+# $Id: gb_dolibarr_crm_command_injection_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Dolibarr CRM Command Injection Vulnerability
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:dolibarr:dolibarr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807851");
-  script_version("$Revision: 5145 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 12:07:58 +0100 (Tue, 31 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-30 11:22:02 +0530 (Thu, 30 Jun 2016)");
   script_name("Dolibarr CRM Command Injection Vulnerability");
 
@@ -61,7 +61,6 @@ if(description)
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137607");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Dolibarr CRM.");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_dolibarr_detect.nasl");

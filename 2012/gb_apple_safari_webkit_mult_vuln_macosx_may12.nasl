@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_macosx_may12.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_apple_safari_webkit_mult_vuln_macosx_may12.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May 12 (Mac OS X)
 #
@@ -40,19 +40,18 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(802797);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2011-3046", "CVE-2011-3056", "CVE-2012-0672", "CVE-2012-0676");
   script_bugtraq_id(52369, 53407, 53404, 53446);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-18 19:42:59 +0530 (Fri, 18 May 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May 12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5282");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47292/");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/May/msg00002.html");
 
-  script_summary("Check for the version of Apple Safari on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

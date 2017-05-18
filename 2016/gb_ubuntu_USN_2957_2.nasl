@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842760");
-  script_version("$Revision: 3354 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 15:39:51 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 16:25:18 +0200 (Tue, 17 May 2016)");
   script_cve_id("CVE-2016-4008");
   script_tag(name:"cvss_base", value:"4.3");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "USN", value: "2957-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003396.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libtasn1-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

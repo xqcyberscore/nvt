@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)
 #
@@ -48,12 +48,12 @@ tag_summary = "This host is installed with RealPlayer which is prone to denial o
 if(description)
 {
   script_id(802826);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 6018 $");
   script_bugtraq_id(53555);
   script_cve_id("CVE-2012-1904", "CVE-2012-2406", "CVE-2012-2411");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-02 16:18:38 +0530 (Mon, 02 Apr 2012)");
   script_name("RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49193");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/05152012_player/en/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111162/RealPlayer-1.1.4-Memory-Corruption.html");
 
-  script_summary("Check for the version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

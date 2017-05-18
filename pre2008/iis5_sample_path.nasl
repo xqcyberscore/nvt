@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis5_sample_path.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: iis5_sample_path.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: IIS 5.0 Sample App reveals physical path of web root
 #
 # Authors:
@@ -32,8 +32,8 @@ In this case, remove the entire /iissamples folder.";
 if(description)
 {
  script_id(10573);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,7 +45,6 @@ if(description)
 
  summary = "IIS 5.0 Sample App reveals physical path of web root";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

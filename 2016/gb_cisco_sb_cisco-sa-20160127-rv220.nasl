@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sb_cisco-sa-20160127-rv220.nasl 3668 2016-07-06 16:35:04Z mime $
+# $Id: gb_cisco_sb_cisco-sa-20160127-rv220.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Cisco RV220W Management Authentication Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6319");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3668 $");
+ script_version ("$Revision: 5836 $");
 
  script_name("Cisco RV220W Management Authentication Bypass Vulnerability");
 
@@ -62,9 +62,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-06 18:35:04 +0200 (Wed, 06 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-07-05 13:49:18 +0200 (Tue, 05 Jul 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

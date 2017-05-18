@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipass_open_mobile_remote_code_exec_vuln_win.nasl 3803 2016-08-05 11:06:55Z antu123 $
+# $Id: gb_ipass_open_mobile_remote_code_exec_vuln_win.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # iPass Open Mobile Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ipass:ipass_open_mobile";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808732");
-  script_version("$Revision: 3803 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2015-0925");
   script_bugtraq_id(72265);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-05 13:06:55 +0200 (Fri, 05 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-03 16:39:37 +0530 (Wed, 03 Aug 2016)");
   script_name("iPass Open Mobile Remote Code Execution Vulnerability (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/110652");
 
-  script_summary("Check for the vulnerable version of iPass Open Mobile on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

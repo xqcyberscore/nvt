@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webatall_45976.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_webatall_45976.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # web@all 'url' Parameter Cross Site Scripting Vulnerability
 #
@@ -34,12 +34,11 @@ credentials and to launch other attacks.
 
 web@all 1.1 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103044);
- script_version("$Revision: 3108 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5751 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-25 13:20:03 +0100 (Tue, 25 Jan 2011)");
  script_bugtraq_id(45976);
  script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "http://webatall.com/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if web@all is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -64,24 +62,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/webatall","/weball",cgi_dirs());
+foreach dir( make_list_unique( "/webatall", "/weball", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/404.php?url=1%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E"); 
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/404.php?url=1%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E");
 
   if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

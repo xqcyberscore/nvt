@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_cisco-sa-20161026-ise.nasl 4377 2016-10-28 08:30:42Z teissa $
+# $Id: gb_cisco_ise_cisco-sa-20161026-ise.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Cisco Identity Services Engine Active Directory Integration Component Remote Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6453");
  script_tag(name:"cvss_base", value:"4.9");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 4377 $");
+ script_version ("$Revision: 5850 $");
 
  script_name("Cisco Identity Services Engine SQL Injection Vulnerability");
 
@@ -48,9 +48,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-28 10:30:42 +0200 (Fri, 28 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-10-27 11:19:11 +0530 (Thu, 27 Oct 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osticket_view_attachments.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: osticket_view_attachments.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: osTicket Attachment Viewing Vulnerability
 #
 # Authors:
@@ -30,8 +30,8 @@ tag_solution = "Upgrade to osTicket STS 1.2.7 or later.";
 
 if (description) {
   script_id(13648);
-  script_version("$Revision: 3359 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if (description) {
   script_name(name);
  
   summary = "Checks for Attachment Viewing Vulnerability in osTicket";
-  script_summary(summary);
  
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

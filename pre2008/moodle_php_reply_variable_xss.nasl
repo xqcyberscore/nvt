@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: moodle_php_reply_variable_xss.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: moodle_php_reply_variable_xss.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Moodle post.php XSS
 #
 # Authors:
@@ -39,8 +39,8 @@ tag_solution = "Upgrade to Moodle 1.4 or newer.";
 if (description)
 {
  script_id(14257);
- script_version("$Revision: 3520 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1711");
  script_bugtraq_id(10884);
@@ -51,7 +51,6 @@ if (description)
 
  script_name("Moodle post.php XSS");
 
- script_summary("Determines if Moodle is vulnerable to post.php XSS");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

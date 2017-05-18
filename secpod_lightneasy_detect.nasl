@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lightneasy_detect.nasl 2818 2016-03-09 21:31:22Z cfi $
+# $Id: secpod_lightneasy_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # LightNEasy Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900371");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2818 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-09 22:31:22 +0100 (Wed, 09 Mar 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("LightNEasy Version Detection");
-  script_summary("Set KB for the Version of LightNEasy");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

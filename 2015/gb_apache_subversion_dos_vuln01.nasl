@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_dos_vuln01.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_apache_subversion_dos_vuln01.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Apache Subversion Denial of Service Vulnerability -01 May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805606");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2015-0248");
   script_bugtraq_id(74260);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-05-06 12:54:14 +0530 (Wed, 06 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Subversion Denial of Service Vulnerability -01 May15");
@@ -68,8 +68,7 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.opensuse.org/opensuse-updates/2015-04/msg00008.html");
   script_xref(name : "URL" , value : "https://subversion.apache.org/security/CVE-2015-0248-advisory.txt");
 
-  script_summary("Check for the vulnerable version of Apache Subversion");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_subversion_remote_detect.nasl");

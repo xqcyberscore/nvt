@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opencart_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: opencart_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
 #
 # OpenCart Detection
 #
@@ -32,27 +32,26 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100178";
 
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2837 $");
+  script_version("$Revision: 5737 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenCart Detection");
 
-  tag_summary =
-"Detection of installed version of OpenCart,free online store system.
+  tag_summary = "Detection of installed version of OpenCart,free online store system.
 
-The script sends a request to access the 'admin/index.php' and attempts to
-extract the version number from the reply.";
+  The script sends a request to access the 'admin/index.php' and attempts to
+  extract the version number from the reply.";
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Set version of OpenCart in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -64,10 +63,8 @@ extract the version number from the reply.";
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
-
 
 ## Variable Initialization
 ocPort = "";
@@ -85,31 +82,21 @@ tmp_version = "";
 cpe = "";
 
 ocPort = get_http_port(default:80);
-
-if(!get_port_state(ocPort))exit(0);
-
 if(!can_host_php(port:ocPort))exit(0);
 
-dirs = make_list("/shop","/store","/opencart","/upload",cgi_dirs());
-foreach dir (dirs)
-{
+foreach dir( make_list_unique( "/shop", "/store", "/opencart", "/upload", cgi_dirs( port:ocPort ) ) ) {
 
-  url = string(dir, "/index.php");
-  req = http_get(item:url, port:ocPort);
-  buf = http_keepalive_send_recv(port:ocPort, data:req, bodyonly:FALSE);
-  if( buf == NULL )continue;
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:ocPort );
+  if( buf == NULL ) continue;
 
   if(
     (egrep(pattern: "Powered By <a [^>]+>OpenCart", string: buf, icase: TRUE) ||
      egrep(pattern: "<title>.* \(Powered By OpenCart\)</title>", string: buf, icase: TRUE)) &&
      egrep(pattern: 'Set-Cookie: language=', string: buf, icase: TRUE) )
   {
-    if(strlen(dir)>0) {
-      install=dir;
-    } else {
-       install=string("/");
-    }
-
     vers = string("unknown");
 
     ## Send and Receive the response
@@ -141,3 +128,5 @@ foreach dir (dirs)
                                            concluded: vers), port: ocPort);
  }
 }
+
+exit( 0 );

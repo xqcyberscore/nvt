@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_security_bypass_vuln_feb16_macosx.nasl 2822 2016-03-10 05:48:42Z antu123 $
+# $Id: gb_google_chrome_security_bypass_vuln_feb16_macosx.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Google Chrome Security Bypass Vulnerability Feb16 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807084");
-  script_version("$Revision: 2822 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-1629");
   script_bugtraq_id(83302);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 06:48:42 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-15 12:12:26 +0530 (Mon, 15 Feb 2016)");
   script_name("Google Chrome Security Bypass Vulnerability Feb16 (Mac OS X)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/02/stable-channel-update_18.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

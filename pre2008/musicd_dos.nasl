@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: musicd_dos.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: musicd_dos.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Music Daemon Denial of Service
 #
 # Authors:
@@ -38,8 +38,8 @@ tag_solution = "None at this time";
 if(description)
 {
  script_id(14353);  
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1741");
  script_bugtraq_id(11006);
@@ -51,7 +51,6 @@ if(description)
  
 
  summary = "Music Daemon DoS";
- script_summary(summary);
  
  script_category(ACT_KILL_HOST);
   script_tag(name:"qod_type", value:"remote_vul");

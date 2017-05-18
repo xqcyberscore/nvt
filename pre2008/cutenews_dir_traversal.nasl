@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cutenews_dir_traversal.nasl 3299 2016-05-12 10:48:17Z benallard $
+# $Id: cutenews_dir_traversal.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: CuteNews directory traversal flaw
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20137");
-  script_version("$Revision: 3299 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 12:48:17 +0200 (Thu, 12 May 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3507");
   script_bugtraq_id(15295);
@@ -41,7 +41,6 @@ if(description)
 
   script_name("CuteNews directory traversal flaw");
 
-  script_summary("Checks for CuteNews dir traversal");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_iprint_client_plugin_parameter_rce_vuln_win.nasl 5662 2017-03-21 11:54:36Z antu123 $
+# $Id: gb_novell_iprint_client_plugin_parameter_rce_vuln_win.nasl 5672 2017-03-22 08:15:28Z teissa $
 #
 # Novell iPrint Client 'Plugin' Parameter Code Execution Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810592");
-  script_version("$Revision: 5662 $");
+  script_version("$Revision: 5672 $");
   script_cve_id("CVE-2010-4314");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:54:36 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 09:15:28 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-14 13:19:08 +0530 (Tue, 14 Mar 2017)");
   script_name("Novell iPrint Client 'Plugin' Parameter Code Execution Vulnerability (Windows)");
 

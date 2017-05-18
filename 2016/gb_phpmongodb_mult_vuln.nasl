@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmongodb_mult_vuln.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: gb_phpmongodb_mult_vuln.nasl 6028 2017-04-26 07:02:28Z teissa $
 #
 # PHPmongoDB CSRF And XSS Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:php:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807554");
-  script_version("$Revision: 5231 $");
+  script_version("$Revision: 6028 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 09:02:28 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 11:53:15 +0530 (Mon, 25 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PHPmongoDB CSRF And XSS Vulnerabilities");
@@ -59,12 +59,10 @@ if(description)
 
   script_tag(name:"affected", value:"PHPmongoDB version 1.0.0");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  08th February, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to
-  http://www.phpmongodb.org");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/136686");
 
   script_category(ACT_ATTACK);

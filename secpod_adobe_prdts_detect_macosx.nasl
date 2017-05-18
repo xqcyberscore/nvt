@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_macosx.nasl 3706 2016-07-14 13:40:18Z antu123 $
+# $Id: secpod_adobe_prdts_detect_macosx.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Adobe Products Version Detection (Mac OS X)
 #
@@ -39,11 +39,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902711");
-  script_version("$Revision: 3706 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2016-07-14 15:40:18 +0200 (Thu, 14 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Products Version Detection (Mac OS X)");
@@ -55,7 +55,6 @@ if(description)
   and queries the related 'info.plist' file for string 'CFBundleVersion'
   via command line option 'defaults read'.");
 
-  script_summary("Set version of Adobe Products in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Product detection");
@@ -78,18 +77,6 @@ buffer = "";
 version = "";
 readerVer = "";
 acrobatVer = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Checking OS
 sock = ssh_login_or_reuse_connection();

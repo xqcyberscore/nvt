@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_log_injection.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: apache_log_injection.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Apache Error Log Escape Sequence Injection
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Upgrade to Apache version 1.3.31 or 2.0.49 or newer.";
  
 if (description) {
   script_id(12239);
-  script_version("$Revision: 3445 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9930);
   script_tag(name:"cvss_base", value:"5.0");
@@ -59,7 +59,6 @@ if (description) {
   script_name(name);
  
   summary = "Checks for Apache Error Log Escape Sequence Injection Vulnerability";
-  script_summary(summary);
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");

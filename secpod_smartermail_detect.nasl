@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_smartermail_detect.nasl 2525 2016-01-28 16:36:02Z cfi $
+# $Id: secpod_smartermail_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
 # SmarterMail Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902258");
-  script_version("$Revision: 2525 $");
+  script_version("$Revision: 6000 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-28 17:36:02 +0100 (Thu, 28 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-10-01 08:36:34 +0200 (Fri, 01 Oct 2010)");
   script_name("SmarterMail Version Detection");
 
@@ -42,11 +42,10 @@ if(description)
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
-  script_summary("Checks for the presence of SmarterMail");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");
-  script_dependencies("http_version.nasl", "find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 9998);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -55,19 +54,16 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
-## default SmarterMail mail port
 smPort = get_http_port(default:9998);
+if( ! can_host_asp( port:smPort ) ) exit( 0 );
 
 SmRes = http_get_cache(item:"/Login.aspx", port:smPort);
 
-## Confirm the application
 if(">SmarterMail" >!< SmRes && ">SmarterMail Enterprise" >!< SmRes && ">SmarterMail Standard" >!< SmRes){
   exit(0);
 }

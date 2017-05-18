@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_security_bypass_vuln_jan16_win.nasl 2486 2016-01-22 14:07:52Z antu123 $
+# $Id: gb_mcafee_vse_security_bypass_vuln_jan16_win.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # McAfee VirusScan Enterprise Security Bypass Vulnerability Jan16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:virusscan_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806964");
-  script_version("$Revision: 2486 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2015-8577");
   script_bugtraq_id(78810);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 15:07:52 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-18 14:28:24 +0530 (Mon, 18 Jan 2016)");
   script_name("McAfee VirusScan Enterprise Security Bypass Vulnerability Jan16 (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&amp;id=SB10142");
   script_xref(name : "URL" , value : "http://blog.ensilo.com/the-av-vulnerability-that-bypasses-mitigations");
 
-  script_summary("Check for the vulnerable version of McAfee VirusScan Enterprise on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

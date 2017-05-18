@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 5372 2017-02-20 16:26:11Z cfi $#
+# $Id: secpod_office_products_version_900032.nasl 5943 2017-04-12 14:44:26Z antu123 $#
 #
 # MS Office Products Version Detection
 #
@@ -58,8 +58,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -172,16 +172,6 @@ PUBLISHER_LIST = make_list( "^(9\..*)", "cpe:/a:microsoft:office_publisher:2000"
                            "^(16\..*)", "cpe:/a:microsoft:office_publisher:2016");
 PUBLISHER_MAX = max_index(PUBLISHER_LIST);
 
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
-
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
@@ -207,7 +197,8 @@ if(wordviewFile)
     ## build cpe and store it as host_detail  
     for (i = 0; i < WORDVIEW_MAX-1; i = i + 2) {
 
-       register_cpe(tmpVers:wordviewVer, tmpExpr:WORDVIEW_LIST[i], tmpBase:WORDVIEW_LIST[i+1]);
+       register_and_report_cpe(app:"Microsoft Office WordView", ver:wordviewVer, base:WORDVIEW_LIST[i+1],
+                               expr:WORDVIEW_LIST[i]);
     }
   }
 }
@@ -247,8 +238,8 @@ foreach item (registry_enum_keys(key:key))
 
           ## build cpe and store it as host_detail  
           for (i = 0; i < XLVIEW_MAX-1; i = i + 2) {
-
-            register_cpe(tmpVers:xlviewVer, tmpExpr:XLVIEW_LIST[i], tmpBase:XLVIEW_LIST[i+1]);
+            register_and_report_cpe(app:"Microsoft Office Excel Viewer", ver:xlviewVer, base:XLVIEW_LIST[i+1],
+                                   expr:XLVIEW_LIST[i]);
           }
         }
       }
@@ -284,8 +275,8 @@ foreach item (registry_enum_keys(key:key))
 
           ## build cpe and store it as host_detail  
           for (i = 0; i < PPVIEW_MAX-1; i = i + 2) {
-
-             register_cpe(tmpVers:pptviewVer, tmpExpr:PPVIEW_LIST[i], tmpBase:PPVIEW_LIST[i+1]);
+             register_and_report_cpe(app:"Microsoft PowerPoint Viewer", ver:pptviewVer, base:PPVIEW_LIST[i+1],
+                                   expr:PPVIEW_LIST[i]);
           }
         }
       }
@@ -299,7 +290,9 @@ foreach item (registry_enum_keys(key:key))
       set_kb_item(name:"SMB/Office/ComptPack/Version", value:cPackVer);
 
       ## build cpe and store it as host detail
-      register_cpe(tmpVers:cPackVer,tmpExpr:"^(12\..)*",tmpBase:"cpe:/a:microsoft:compatibility_pack_word_excel_powerpoint:2007:");
+      register_and_report_cpe(app:"Microsoft Office Compatibility Pack", ver:cPackVer,
+                              base:"cpe:/a:microsoft:compatibility_pack_word_excel_powerpoint:2007:",
+                              expr:"^(12\..)*");
     }
   }
 }
@@ -318,7 +311,9 @@ if(groovePath != NULL)
     set_kb_item(name:"SMB/Office/Groove/Version", value:grooveVer);
 
     ## build cpe and store it as host detail
-    register_cpe(tmpVers:grooveVer,tmpExpr:"^(12\..*)",tmpBase:"cpe:/a:microsoft:office_groove:2007:");
+    register_and_report_cpe(app:"Microsoft Office Groove", ver:grooveVer,
+                              base:"cpe:/a:microsoft:office_groove:2007:",
+                              expr:"^(12\..)*");
   }
 }
 
@@ -337,7 +332,10 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
       set_kb_item(name:"SMB/Office/PowerPntCnv/Version", value:ppcnvVer);
 
       ## build cpe and store it as host detail
-      register_cpe(tmpVers:ppcnvVer,tmpExpr:"^(12\..)",tmpBase:"");
+      ##Need to update base value
+      register_and_report_cpe(app:"Microsoft Offic Power Point", ver:ppcnvVer,
+                              base:"",
+                              expr:"^(12\..)*");
     }
   }
 }
@@ -365,7 +363,8 @@ if(visioPath)
 
        ## build cpe and store it as host_detail  
        for (i = 0; i < VISIO_MAX-1; i = i + 2) {
-         register_cpe(tmpVers:visiovVer, tmpExpr:VISIO_LIST[i], tmpBase:VISIO_LIST[i+1]);
+         register_and_report_cpe(app:"Microsoft Office VisioViewer", ver:visiovVer,
+                                 base:VISIO_LIST[i+1], expr:VISIO_LIST[i]);
       }
     }
   }
@@ -393,8 +392,8 @@ if(wordFile)
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < WORD_MAX-1; i = i + 2) {
-
-       register_cpe(tmpVers:wordVer, tmpExpr:WORD_LIST[i], tmpBase:WORD_LIST[i+1]);
+       register_and_report_cpe(app:"Microsoft Office Word", ver:wordVer,
+                                 base:WORD_LIST[i+1], expr:WORD_LIST[i]);
     }
   }
 }
@@ -415,8 +414,8 @@ if(excelFile)
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < EXCEL_MAX-1; i = i + 2) {
-
-       register_cpe(tmpVers:excelVer, tmpExpr:EXCEL_LIST[i], tmpBase:EXCEL_LIST[i+1]);
+       register_and_report_cpe(app:"Microsoft Office Excel", ver:excelVer,
+                                 base:EXCEL_LIST[i+1], expr:EXCEL_LIST[i]);
     }
   }
 }
@@ -435,8 +434,8 @@ if(accessFile)
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < ACCESS_MAX-1; i = i + 2) {
-
-       register_cpe(tmpVers:accessVer, tmpExpr:ACCESS_LIST[i], tmpBase:ACCESS_LIST[i+1]);
+       register_and_report_cpe(app:"Microsoft Office Access", ver:accessVer,
+                                 base:ACCESS_LIST[i+1], expr:ACCESS_LIST[i]);
     }
   }
 }
@@ -455,8 +454,8 @@ if(powerpointFile)
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < POWERPNT_MAX-1; i = i + 2) {
-
-       register_cpe(tmpVers:powerPptVer, tmpExpr:POWERPNT_LIST[i], tmpBase:POWERPNT_LIST[i+1]);
+       register_and_report_cpe(app:"Microsoft Office PowerPoint", ver:powerPptVer,
+                                 base:POWERPNT_LIST[i+1], expr:POWERPNT_LIST[i]);
     }
   }
 }
@@ -474,7 +473,9 @@ if(wordcnvFile)
     set_kb_item(name:"SMB/Office/WordCnv/Version", value:wordcnvVer);
 
     ## build cpe and store it as host detail
-    register_cpe(tmpVers:wordcnvVer,tmpExpr:"^(12\..*)",tmpBase:"");
+    ## Add BASE Value
+    register_and_report_cpe(app:"Microsoft Office Word Converter", ver:wordcnvVer,
+                                 base:"", expr:"^(12\..*)");
   }
 }
 
@@ -490,8 +491,10 @@ if(xlcnvFile)
   if(xlcnvVer){
     set_kb_item(name:"SMB/Office/XLCnv/Version", value:xlcnvVer);
 
+    ## Add BASE Value
     ## build cpe and store it as host detail
-    register_cpe(tmpVers:xlcnvVer,tmpExpr:"^(12\..*)",tmpBase:"");
+    register_and_report_cpe(app:"Microsoft Office Excel Converter", ver:xlcnvVer,
+                                 base:"", expr:"^(12\..*)");
   }
 }
 
@@ -510,8 +513,8 @@ if(pubFile)
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < PUBLISHER_MAX-1; i = i + 2) {
-
-       register_cpe(tmpVers:pubVer, tmpExpr:PUBLISHER_LIST[i], tmpBase:PUBLISHER_LIST[i+1]);
+      register_and_report_cpe(app:"Microsoft Office Publisher", ver:pubVer,
+                                 base:PUBLISHER_LIST[i+1], expr:PUBLISHER_LIST[i]);
     }
   }
 }
@@ -530,8 +533,8 @@ if(outlookFile)
 
     ## build cpe and store it as host_detail  
     for (i = 0; i < OUTLOOK_MAX-1; i = i + 2) {
-
-       register_cpe(tmpVers:outlookVer, tmpExpr:OUTLOOK_LIST[i], tmpBase:OUTLOOK_LIST[i+1]);
+      register_and_report_cpe(app:"Microsoft Office Outlook", ver:outlookVer,
+                                 base:OUTLOOK_LIST[i+1], expr:OUTLOOK_LIST[i]);
     }
   }
 }

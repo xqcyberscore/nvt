@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Include File
 #
-# $Id: docker_policy.inc 5119 2017-01-27 10:12:40Z mime $
+# $Id: docker_policy.inc 5895 2017-04-07 14:44:59Z mime $
 #
 # Functions for Docker Policy Tests
 #
@@ -26,7 +26,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5119 $
+# $Revision: 5895 $
 #
 ###############################################################################
 
@@ -323,15 +323,5 @@ function docker_read_cmd_line( pid )
 
   return data;
 
-}
-
-function docker_truncate_id( )
-{
-  v = _FCT_ANON_ARGS[0];
-
-  if( ! v )
-    return;
-
-  return substr( v, 0, 11 );
 }
 

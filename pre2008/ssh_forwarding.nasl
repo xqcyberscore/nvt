@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ssh_forwarding.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: ssh_forwarding.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: OpenSSH Client Unauthorized Remote Forwarding
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Patch and New version are available from OpenSSH.";
 if(description)
 {
  script_id(11343);
- script_version("$Revision: 3445 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1949);
  script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,6 @@ if(description)
 
  summary = "Checks for the remote SSH version";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

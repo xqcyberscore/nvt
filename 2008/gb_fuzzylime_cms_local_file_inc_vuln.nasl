@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fuzzylime_cms_local_file_inc_vuln.nasl 4218 2016-10-05 14:20:48Z teissa $
+# $Id: gb_fuzzylime_cms_local_file_inc_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # fuzzylime cms code/track.php Local File Inclusion Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800314");
-  script_version("$Revision: 4218 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 16:20:48 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-12-15 15:44:51 +0100 (Mon, 15 Dec 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,7 +37,7 @@ if(description)
   script_name("fuzzylime cms code/track.php Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/32865");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/7231");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl");

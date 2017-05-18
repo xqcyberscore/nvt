@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_support_center_plus_mult_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_manageengine_support_center_plus_mult_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Zoho ManageEngine Support Center Plus Multiple Vulnerabilities
 #
@@ -52,15 +52,14 @@ prone to multiple vulnerabilities.";
 if(description)
 {
   script_id(802477);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5988 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-18 10:24:32 +0530 (Thu, 18 Oct 2012)");
   script_name("Zoho ManageEngine Support Center Plus Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22040/");
   script_xref(name : "URL" , value : "http://www.bugsearch.net/en/13746/manageengine-support-center-plus-7908-multiple-vulnerabilities.html");
-  script_summary("Check if Zoho ManageEngine Support Center Plus is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

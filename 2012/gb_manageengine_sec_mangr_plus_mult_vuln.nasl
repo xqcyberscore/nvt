@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -55,10 +55,10 @@ and is prone to multiple vulnerabilities.";
 if(description)
 {
   script_id(802483);
-  script_version("$Revision: 5642 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22092/");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117522/manageengine-sql.rb.txt");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117519/manageenginemp-traversal.txt");
 
-  script_summary("Check if ManageEngine Security Manager Plus allows to read system files");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

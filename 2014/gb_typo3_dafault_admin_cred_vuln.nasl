@@ -24,39 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.804223";
 CPE = "cpe:/a:typo3:typo3";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804223");
+  script_version("$Revision: 5843 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-01-10 13:11:49 +0530 (Fri, 10 Jan 2014)");
   script_name("TYPO3 Default Admin Credentials");
 
-tag_summary =
-"This host is installed with TYPO3 and it has default admin credentials.";
+tag_summary = "This host is installed with TYPO3 and it has default admin credentials.";
 
-tag_vuldetect =
-"Login to backend login with default credentials.";
+tag_vuldetect = "Login to backend login with default credentials.";
 
-tag_insight =
-'TYPO3 installs with default admin credentials (admin/password) .';
+tag_insight = 'TYPO3 installs with default admin credentials (admin/password) .';
 
-tag_impact =
-"Successful exploitation will allow remote attackers to access the program
+tag_impact = "Successful exploitation will allow remote attackers to access the program
 or system and gain privileged access.
 
 Impact Level: Application";
 
-tag_affected =
-"All TYPO3 version's which gets installed with default credentials ";
+tag_affected = "All TYPO3 version's which gets installed with default credentials ";
 
-tag_solution =
-"After installation change all default installed accounts to use a unique
+tag_solution = "After installation change all default installed accounts to use a unique
 and secure password. For more information refer below link.
 http://wiki.typo3.org/TYPO3_Installation_Basics";
 
@@ -68,7 +61,6 @@ http://wiki.typo3.org/TYPO3_Installation_Basics";
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
 
-  script_summary("Fetch typo3 version with default credentials");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
@@ -78,7 +70,6 @@ http://wiki.typo3.org/TYPO3_Installation_Basics";
   script_require_ports("Services/www", 80);
   exit(0);
 }
-
 
 include("url_func.inc");
 include("http_func.inc");
@@ -116,14 +107,13 @@ function get_typo3_login(cinstall, tport, chost)
 
       req = string("POST ",url," HTTP/1.0\r\n",
                    "Host: " + chost + "\r\n",
-                   "User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0) Gecko/20100101 Firefox/14.0.1\r\n",
+                   "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
                    "Referer: http://" + chost + "/typo3/alt_menu.php \r\n",
                    "Connection: keep-alive\r\n",
                    "Cookie: ",cCookie,"\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ",strlen(payload), "\r\n\r\n",
                    payload);
-
       buf = http_keepalive_send_recv(port:tport, data:req);
 
       if(buf)
@@ -145,13 +135,12 @@ function get_typo3_login(cinstall, tport, chost)
 typoPort = "";
 typoLoca = "";
 
-## Get Application HTTP Port
-if(!typoPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(typoLoca = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:typoPort))
+if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
 {
-  host = get_host_name();
+  host = http_host_name(port:typoPort);
   get_typo3_login(cinstall: typoLoca, tport:typoPort, chost:host);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0013.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2012-0013.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # VMSA-2012-0013 VMware vSphere and vCOps updates to third party libraries
 #
@@ -116,13 +116,12 @@ if (description)
 
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5940 $");
  script_name("VMSA-2012-0013 VMware vSphere and vCOps updates to third party libraries.");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-31 11:02:01 +0100 (Fri, 31 Aug 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

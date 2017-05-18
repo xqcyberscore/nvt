@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_robo_ftp_client_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_robo_ftp_client_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Robo-FTP Client Version Detection
 #
@@ -27,15 +27,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed Robo-FTP Client version and saves the
-  result in KB item.";
-
 if(description)
 {
-  script_id(801053);
+  script_oid("1.3.6.1.4.1.25623.1.0.801053");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-12-02 13:54:57 +0100 (Wed, 02 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Robo-FTP Client Version Detection");
@@ -46,7 +43,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed Robo-FTP Client version and saves the
+  result in KB item.");
   exit(0);
 }
 
@@ -55,20 +53,7 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801053";
-SCRIPT_DESC = "Robo-FTP Client Version Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
+include("version_func.inc");
 
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -90,13 +75,10 @@ foreach item (registry_enum_keys(key:key))
     if(!isnull(ftpVer))
     {
       set_kb_item(name:"Robo/FTP/Ver", value:ftpVer);
-      log_message(data:"Robo-FTP Client version " + ftpVer +
-                         " running at location " + path +
-                         " was detected on the host");
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:ftpVer, tmpExpr:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", tmpBase:"cpe:/a:robo-ftp:robo-ftp:");
-
+      register_and_report_cpe(app:"Robo-FTP Client", ver:ftpVer, base:"cpe:/a:robo-ftp:robo-ftp:",
+                              expr:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", insloc:path);
       exit(0);
     }
   }
@@ -105,19 +87,14 @@ foreach item (registry_enum_keys(key:key))
 path = registry_get_sz(key:"SOFTWARE\Robo-FTP", item:"InstallDir");
 if(path != NULL)
 {
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:path);
-  file  = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:path +
-                                                     "\Robo-FTP.exe");
-  ftpVer = GetVer(share:share, file:file);
+  ftpVer = fetch_file_version(sysPath:path, file_name:"Robo-FTP.exe");
   if(!isnull(ftpVer))
   {
     set_kb_item(name:"Robo/FTP/Ver", value:ftpVer);
-    log_message(data:"Robo-FTP Client version " + ftpVer +
-                       " running at location " + path +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:ftpVer, tmpExpr:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", tmpBase:"cpe:/a:robo-ftp:robo-ftp:");
-
+    register_and_report_cpe(app:"Robo-FTP Client", ver:ftpVer, base:"cpe:/a:robo-ftp:robo-ftp:",
+                            expr:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", insloc:path);
+    exit(0);
   }
 }

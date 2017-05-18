@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Foxit Reader PDF File Handling Memory Corruption Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "The host is installed with Foxit Reader and is prone to memory
 if(description)
 {
   script_id(802957);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-4337");
   script_bugtraq_id(55150);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:03:23 +0530 (Fri, 07 Sep 2012)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50359");
@@ -51,7 +51,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Foxit Reader");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_reader_detect.nasl");

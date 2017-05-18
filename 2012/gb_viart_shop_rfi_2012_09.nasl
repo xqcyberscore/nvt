@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_viart_shop_rfi_2012_09.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_viart_shop_rfi_2012_09.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # ViArt Shop File Inclusion Vulnerability
 #
@@ -37,16 +37,15 @@ CPE = "cpe:/a:viart:viart_shop";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5640 $");
+ script_version ("$Revision: 5956 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("ViArt Shop File Inclusion Vulnerability");
 
  script_xref(name : "URL" , value : "http://se3c.blogspot.de/2012/09/viart-shop-evaluation-v41-multiple.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-26 10:51:47 +0200 (Wed, 26 Sep 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

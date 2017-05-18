@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_macosx.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Google Chrome Full Sandbox Escape and Code Execution Vulnerability (MAC OS X)
 #
@@ -45,8 +45,8 @@ escape and code execution vulnerability.";
 if(description)
 {
   script_id(903009);
-  script_version("$Revision: 3060 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_version("$Revision: 6018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-26 17:24:46 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2012-1846", "CVE-2012-1845");
   script_tag(name:"cvss_base", value:"10.0");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://pwn2own.zerodayinitiative.com/status.html");
   script_xref(name : "URL" , value : "http://www.zdnet.com/blog/security/pwn2own-2012-google-chrome-browser-sandbox-first-to-fall/10588");
 
-  script_summary("Check for the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");

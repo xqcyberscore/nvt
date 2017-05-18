@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_detect_lin.nasl 3435 2016-06-06 07:58:52Z ckuerste $
+# $Id: gb_ntp_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # NTP Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800407);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3435 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-06 09:58:52 +0200 (Mon, 06 Jun 2016) $");
+ script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NTP Version Detection (Linux)");
-  script_summary("Set KB for the version of NTP");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

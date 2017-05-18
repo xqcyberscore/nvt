@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842897");
-  script_version("$Revision: 4156 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 13:31:11 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-23 05:42:42 +0200 (Fri, 23 Sep 2016)");
   script_cve_id("CVE-2016-2836");
   script_tag(name:"cvss_base", value:"6.8");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "USN", value: "3073-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3073-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

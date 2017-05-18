@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3625.nasl 3790 2016-08-03 10:30:40Z antu123 $
+# $Id: deb_3625.nasl 5782 2017-03-30 09:01:05Z teissa $
 # Auto-generated from advisory DSA 3625-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703625);
-    script_version("$Revision: 3790 $");
+    script_version("$Revision: 5782 $");
     script_cve_id("CVE-2016-4051", "CVE-2016-4052", "CVE-2016-4053", "CVE-2016-4054",
                   "CVE-2016-4554", "CVE-2016-4555", "CVE-2016-4556");
     script_name("Debian Security Advisory DSA 3625-1 (squid3 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-03 12:30:40 +0200 (Wed, 03 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:57:49 +0530 (Tue, 02 Aug 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3625.html");
 
-    script_summary("Debian Security Advisory DSA 3625-1 (squid3 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

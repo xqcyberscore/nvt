@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851342");
-  script_version("$Revision: 3640 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-04 07:07:03 +0200 (Mon, 04 Jul 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-17 05:20:40 +0200 (Fri, 17 Jun 2016)");
   script_cve_id("CVE-2016-1583");
   script_tag(name:"cvss_base", value:"7.2");
@@ -52,7 +52,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "SUSE-SU", value: "2016:1596_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00027.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of the kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

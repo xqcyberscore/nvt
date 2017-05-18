@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808623");
-  script_version("$Revision: 3774 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-3552", "CVE-2016-3587", "CVE-2016-3598", "CVE-2016-3610");
   script_bugtraq_id(91904, 91918, 92000, 91930);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 16:35:03 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-25 11:28:15 +0530 (Mon, 25 Jul 2016)");
   script_name("Oracle Java SE Multiple Unspecified Vulnerabilities-03 July 2016 (Windows)");
 
@@ -70,7 +70,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
-  script_summary("Check the vulnerable version of Oracle Java SE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

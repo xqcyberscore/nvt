@@ -40,8 +40,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-December/001941.html");
   script_id(841260);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-26 12:07:44 +0530 (Wed, 26 Dec 2012)");
   script_cve_id("CVE-2012-2772", "CVE-2012-2775", "CVE-2012-2777", "CVE-2012-2779",
                 "CVE-2012-2784", "CVE-2012-2786", "CVE-2012-2788", "CVE-2012-2789",
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "USN", value: "1674-1");
   script_name("Ubuntu Update for libav USN-1674-1");
 
-  script_summary("Check for the Version of libav");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: account_super_debug.nasl 4077 2016-09-15 14:32:39Z cfi $
+# $Id: account_super_debug.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # Default password 'debug' for account 'super'
 #
@@ -30,15 +30,14 @@ password = "debug";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17291");
-  script_version("$Revision: 4077 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-15 16:32:39 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-1999-1420", "CVE-1999-1421");
   script_bugtraq_id(212);
   script_name("Default password 'debug' for account 'super'");
-  script_summary("Logs into the remote host");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");

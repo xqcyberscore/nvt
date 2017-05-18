@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glpi_lfi_06_13.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_glpi_lfi_06_13.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # GLPI Local File Include Vulnerability
 #
@@ -35,14 +35,12 @@ other attacks are also possible.
 
 GLPI 0.83.7 is vulnerable. Other versions may also be vulnerable.";
 
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103743";
 CPE = "cpe:/a:glpi-project:glpi";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 5627 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103743");
+ script_version ("$Revision: 5842 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -50,16 +48,14 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5145.php");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-06-20 11:59:55 +0200 (Thu, 20 Jun 2013)");
- script_summary("Determine if is is possible to read a local file");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_glpi_detect.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
  script_mandatory_keys("glpi/installed");
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -69,13 +65,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!get_port_state(port))exit(0);
-
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 url = dir + '/ajax/common.tabs.php';
-host = get_host_name();
+host = http_host_name(port:port);
 
 files = traversal_files();
 
@@ -87,7 +81,7 @@ foreach file (keys(files)) {
   req = string("POST ", url," HTTP/1.1\r\n",
              "Host: ", host,"\r\n",
              "Content-Length: ", len,"\r\n",
-             "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:21.0) Gecko/20100101 Firefox/21.0 OpenVAS\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
              "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
              "Accept-Language: en-US,en;q=0.5\r\n",
              "Accept-Encoding: Identity\r\n",
@@ -95,8 +89,6 @@ foreach file (keys(files)) {
              "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n",
              "Referer: http://",host,"/glpi/front/user.form.php?id=2\r\n",
              "\r\n", ex);
-
-
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
   if(eregmatch(pattern:file, string:result)) {

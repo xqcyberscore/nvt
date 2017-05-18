@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_version.nasl 4938 2017-01-04 13:12:05Z cfi $
+# $Id: gb_cisco_ios_xe_version.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Report Cisco IOS XE Software Version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105659");
-  script_version("$Revision: 4938 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 14:12:05 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-09 15:46:47 +0200 (Mon, 09 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,7 +76,7 @@ if( image = get_kb_item( "cisco_ios_xe/" + source + "/image")  )
 }
 
 register_product( cpe:cpe, location:source );
-register_and_report_os( os:"Cisco IOS XE", cpe:cpe, banner_type:toupper( source ), desc:"Report Cisco IOS XE Software Version" );
+register_and_report_os( os:"Cisco IOS XE", cpe:cpe, banner_type:toupper( source ), desc:"Report Cisco IOS XE Software Version", runs_key:"unixoide" );
 
 report = 'Detected Cisco IOS XE\n' + 
          'Version: ' + version + '\n' + 

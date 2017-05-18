@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: merak_multiple_vulns.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: merak_multiple_vulns.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Multiple Vulnerabilities in Merak Webmail / IceWarp Web Mail
 #
 # Authors:
@@ -33,8 +33,8 @@ Merak Mail Server 7.5.2 or later.";
 
 if (description) {
   script_id(14379);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,6 @@ if (description) {
  
  
   summary = "Checks for Multiple Vulnerabilities in Merak Webmail / IceWarp Web Mail";
-  script_summary(summary);
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

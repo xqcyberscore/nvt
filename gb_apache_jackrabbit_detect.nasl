@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jackrabbit_detect.nasl 4229 2016-10-07 08:15:43Z antu123 $
+# $Id: gb_apache_jackrabbit_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Apache Jackrabbit Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807896");
-  script_version("$Revision: 4229 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:29:25 +0530 (Thu, 06 Oct 2016)");
   script_name("Apache Jackrabbit Detection");
 
@@ -41,7 +41,6 @@ if(description)
   response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Apache Jackrabbit.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

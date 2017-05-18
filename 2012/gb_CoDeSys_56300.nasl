@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CoDeSys_56300.nasl 4589 2016-11-22 08:40:50Z cfi $
+# $Id: gb_CoDeSys_56300.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # CoDeSys Directory Traversal Vulnerability
 #
@@ -43,7 +43,7 @@ if (description)
  script_bugtraq_id(56300);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4589 $");
+ script_version ("$Revision: 5963 $");
 
  script_name("CoDeSys Directory Traversal Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.digitalbond.com/2012/10/25/new-project-basecamp-tools-for-codesys-200-vendors-affected/");
  script_xref(name : "URL" , value : "http://www.3s-software.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:40:50 +0100 (Tue, 22 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-29 18:46:26 +0100 (Mon, 29 Oct 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("General");

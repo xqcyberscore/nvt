@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: domino_default_db.nasl 3741 2016-07-21 18:48:09Z cfi $
+# $Id: domino_default_db.nasl 6053 2017-05-01 09:02:51Z teissa $
 # 
 # Lotus Domino administration databases
 #
@@ -31,15 +31,14 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10629");
-  script_version("$Revision: 3741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-21 20:48:09 +0200 (Thu, 21 Jul 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5101, 881);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2000-0021", "CVE-2002-0664");
   script_name("Lotus Domino administration databases");
-  script_summary("Checks if Lotus Domino administration databases can be anonymously accessed");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 Javier Fernández-Sanguino Peña");
   script_family("Web Servers");

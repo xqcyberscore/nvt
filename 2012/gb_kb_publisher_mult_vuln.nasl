@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kb_publisher_mult_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_kb_publisher_mult_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # KBPublisher Multiple Vulnerabilities
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802434");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5814 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-06-11 14:44:53 +0530 (Mon, 11 Jun 2012)");
   script_name("KBPublisher Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/18467");
   script_xref(name : "URL" , value : "http://mondoristoranti.com/kbpublisher-v4-0-multiple-vulnerabilties/");
   script_xref(name : "URL" , value : "http://www.allinfosec.com/2012/06/07/webapps-0day-kbpublisher-v4-0-multiple-vulnerabilties/");
 
-  script_summary("Check if KBPublisher vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -69,7 +68,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -78,30 +76,28 @@ port =0;
 dir = "";
 url = "";
 
-## Get HTTP port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/kb", "/kbp",  cgi_dirs(port:port)))
 {
+
   if(dir == "/") dir = "";
   url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application before trying exploit
-  if(http_vuln_check(port: port, url: url, check_header: TRUE,
-     pattern: ">KBPublisher<",  extra_check: "Knowledge base software"))
-  {
+  if( res =~ "HTTP/1.. 200" && ">KBPublisher<" >< res && "Knowledge base software" >< res ) {
+
     ## Construct attack request
     url = dir + '/?&sid="><script>alert(document.cookie)</script>';
 
     ## Try XSS and check the response to confirm vulnerability
     if(http_vuln_check( port: port, url: url, check_header: TRUE,
-       pattern:"><script>alert\(document.cookie\)</script>" ,
+       pattern:"><script>alert\(document\.cookie\)</script>" ,
        extra_check: ">KBPublisher<"))
     {
       security_message(port:port);

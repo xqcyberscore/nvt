@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3449.nasl 3319 2016-05-13 10:33:42Z benallard $
+# $Id: deb_3449.nasl 5732 2017-03-27 09:00:59Z teissa $
 # Auto-generated from advisory DSA 3449-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703449);
-    script_version("$Revision: 3319 $");
+    script_version("$Revision: 5732 $");
     script_cve_id("CVE-2015-8704");
     script_name("Debian Security Advisory DSA 3449-1 (bind9 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-01-19 00:00:00 +0100 (Tue, 19 Jan 2016)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3449.html");
 
-    script_summary("Debian Security Advisory DSA 3449-1 (bind9 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

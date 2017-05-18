@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fishey_53603.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_fishey_53603.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Atlassian JIRA FishEye and Crucible Plugins XML Parsing Unspecified Security Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
 {
  script_id(103490);
  script_bugtraq_id(53603);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5950 $");
 
  script_name("Atlassian JIRA FishEye and Crucible Plugins XML Parsing Unspecified Security Vulnerability");
 
@@ -53,10 +53,9 @@ if (description)
 
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-18 12:55:55 +0200 (Fri, 18 May 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed FishEye version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

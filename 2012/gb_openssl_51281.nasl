@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_51281.nasl 5621 2017-03-20 13:56:15Z cfi $
+# $Id: gb_openssl_51281.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # OpenSSL Multiple Vulnerabilities
 #
@@ -43,7 +43,7 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
  script_tag(name:"solution_type", value: "VendorFix");
- script_version ("$Revision: 5621 $");
+ script_version ("$Revision: 5988 $");
 
  script_name("OpenSSL Multiple Vulnerabilities");
 
@@ -51,9 +51,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.openssl.org");
  script_xref(name : "URL" , value : "http://www.openssl.org/news/secadv_20120104.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:56:15 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-20 11:28:16 +0100 (Fri, 20 Jan 2012)");
- script_summary("Determine if installed OpenSSl version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

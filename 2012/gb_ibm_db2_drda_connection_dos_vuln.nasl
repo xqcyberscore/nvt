@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_drda_connection_dos_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_ibm_db2_drda_connection_dos_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # IBM DB2 Chaining Functionality DRDA Module DoS Vulnerability
 #
@@ -43,12 +43,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-2180");
   script_bugtraq_id(53873);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-06 16:20:17 +0530 (Thu, 06 Sep 2012)");
   script_name("IBM DB2 Chaining Functionality DRDA Module DoS Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49437/");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-304.ibm.com/support/docview.wss?uid=swg21597090");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM DB2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");

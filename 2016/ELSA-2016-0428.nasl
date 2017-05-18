@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0428.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0428.nasl 5836 2017-04-03 09:37:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122893");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5836 $");
 script_tag(name:"creation_date", value:"2016-03-11 07:06:38 +0200 (Fri, 11 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0428");
 script_tag(name: "insight", value: "ELSA-2016-0428 -  libssh2 security update - [1.4.2-2.el6_7.1]- use secrects of the appropriate length in Diffie-Hellman (CVE-2016-0787)[1.4.2-2]- fix basic functionality of libssh2 in FIPS mode (#968575)"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0428");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

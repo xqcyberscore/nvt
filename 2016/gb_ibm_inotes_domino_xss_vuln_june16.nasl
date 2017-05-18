@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_inotes_domino_xss_vuln_june16.nasl 3431 2016-06-03 12:08:43Z antu123 $
+# $Id: gb_ibm_inotes_domino_xss_vuln_june16.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM INotes and Domino Cross-site Scripting Vulnerability - June16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808111");
-  script_version("$Revision: 3431 $");
+  script_version("$Revision: 5701 $");
   script_cve_id("CVE-2014-0913");
   script_bugtraq_id(67297);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-03 14:08:43 +0200 (Fri, 03 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:31 +0530 (Fri, 03 Jun 2016)");
   script_name("IBM INotes and Domino Cross-site Scripting Vulnerability - June16");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21671981");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Domino");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_lotus_domino_detect.nasl");
@@ -81,15 +80,8 @@ include("version_func.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -110,6 +102,6 @@ else if(version_is_equal(version:domVer1, test_version:"9.0.1"))
 if(VULN)
 {
   report = report_fixed_ver(installed_version:domVer, fixed_version:fix);
-  security_message(data:report, port:domPort);
+  security_message(data:report, port:0);
   exit(0);
 }

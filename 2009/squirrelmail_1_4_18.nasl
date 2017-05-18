@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squirrelmail_1_4_18.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: squirrelmail_1_4_18.nasl 6009 2017-04-21 15:30:58Z ckuerste $
 #
 # SquirrelMail Prior to 1.4.18 Multiple Vulnerabilities
 #
@@ -24,6 +24,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = 'cpe:/a:squirrelmail:squirrelmail';
+
 tag_summary = "SquirrelMail is prone to multiple vulnerabilities, including
   multiple session-fixation issues, a code-injection issue, and
   multiple cross-site scripting issues.
@@ -40,9 +42,9 @@ tag_summary = "SquirrelMail is prone to multiple vulnerabilities, including
 
 if (description)
 {
- script_id(100203);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.100203");
+ script_version("$Revision: 6009 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-21 17:30:58 +0200 (Fri, 21 Apr 2017) $");
  script_tag(name:"creation_date", value:"2009-05-14 20:19:12 +0200 (Thu, 14 May 2009)");
  script_bugtraq_id(34916);
  script_cve_id("CVE-2009-1578","CVE-2009-1579","CVE-2009-1580","CVE-2009-1581");
@@ -57,33 +59,26 @@ if (description)
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("squirrelmail_detect.nasl");
- script_require_ports("Services/www", 80);
+ script_mandatory_keys("squirrelmail/installed");
+ script_require_ports("Services/www", 443);
  script_tag(name : "summary" , value : tag_summary);
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/34916");
  exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if (!can_host_php(port:port)) exit(0);
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-if(!version = get_kb_item(string("www/", port, "/squirrelmail")))exit(0);
-if(!matches = eregmatch(string:version, pattern:"^(.+) under (/.*)$"))exit(0);
+if (version_is_less(version: vers, test_version: "1.4.18")) {
+  report = report_fixed_ver(installed_version: vers, fixed_version: "1.4.18");
+  security_message(port: port, data: report);
+  exit(0);
+}
 
-vers = matches[1];
-
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_is_less_equal(version: vers, test_version: "1.4.18")) {
-      security_message(port:port);
-      exit(0);
-  }  
-
-} 
-
-exit(0);
+exit(99);

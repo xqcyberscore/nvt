@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_whizzy_cms_41703.nasl 5388 2017-02-21 15:13:30Z teissa $
+# $Id: gb_whizzy_cms_41703.nasl 5763 2017-03-29 11:54:30Z cfi $
 #
 # Whizzy CMS 'whizzycms1001.php' Local File Include Vulnerability
 #
@@ -36,12 +36,11 @@ also possible.
 Whizzy CMS 10.01 and 10.02 are vulnerable; other versions may also
 be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100739);
- script_version("$Revision: 5388 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 16:13:30 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5763 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:54:30 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-08-03 13:36:27 +0200 (Tue, 03 Aug 2010)");
  script_bugtraq_id(41703);
  script_tag(name:"cvss_base", value:"5.1");
@@ -55,7 +54,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -64,29 +63,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms","/whizzy",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cms", "/whizzy", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
-   
-    url = string(dir, "/index.php?../../../../../../../",files[file]); 
+
+    url = string(dir, "/index.php?../../../../../../../",files[file]);
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-  }  
+  }
 }
 
-exit(0);
+exit( 99 );

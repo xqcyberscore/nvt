@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: photopost_sql_injection.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: photopost_sql_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: PhotoPost showgallery.php SQL Injection
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade to the newest version of this software.";
 if(description)
 {
  script_id(16101);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,6 @@ if(description)
 
  summary = "Checks for the presence of an SQL injection in showgallery.php";
  
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

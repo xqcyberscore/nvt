@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_apache_dms.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: oracle9i_apache_dms.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Oracle 9iAS Dynamic Monitoring Services
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Edit httpd.conf to restrict access to /dms0.";
 if(description)
 {
  script_id(10848);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4293);
  script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ if(description)
  
  summary = "Tests for presence of Oracle9iAS Dynamic Monitoring Services";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iwork_detect_macosx.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_iwork_detect_macosx.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # iWork Version Detection (Mac OS X)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(802145);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("iWork Version Detection (Mac OS X)");
-  script_summary("Set the version of of iWork in KB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");

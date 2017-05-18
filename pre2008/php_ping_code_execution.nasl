@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: php_ping_code_execution.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: php_ping_code_execution.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Remote Code Execution in PHP Ping
 #
@@ -31,14 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11966");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9309);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Remote Code Execution in PHP Ping");
-  script_summary("Detect PHP Ping Code Execution");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2003 Noam Rathaus");
   script_family("Web application abuses");

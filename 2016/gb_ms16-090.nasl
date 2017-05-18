@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-090.nasl 3735 2016-07-20 08:03:07Z antu123 $
+# $Id: gb_ms16-090.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Microsoft Kernel-Mode Drivers Multiple Privilege Elevation Vulnerabilities (3171481)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808577");
-  script_version("$Revision: 3735 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-3249","CVE-2016-3250","CVE-2016-3251","CVE-2016-3252",
                 "CVE-2016-3254","CVE-2016-3286");
   script_bugtraq_id(91597, 91613, 91600, 91614, 91615, 91616);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 10:03:07 +0200 (Wed, 20 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-13 08:12:28 +0530 (Wed, 13 Jul 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Kernel-Mode Drivers Multiple Privilege Elevation Vulnerabilities (3171481)");
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3171481");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS16-090");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

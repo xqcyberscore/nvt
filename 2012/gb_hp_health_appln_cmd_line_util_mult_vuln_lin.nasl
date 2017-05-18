@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_health_appln_cmd_line_util_mult_vuln_lin.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_hp_health_appln_cmd_line_util_mult_vuln_lin.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # HP System Health Application and Command Line Utilities Multiple Vulnerabilities
 #
@@ -40,12 +40,12 @@ tag_summary = "The host is installed with HP System Health Application and Comma
 if(description)
 {
   script_id(802776);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-2000");
   script_bugtraq_id(53336);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-11 10:46:35 +0530 (Fri, 11 May 2012)");
   script_name("HP System Health Application and Command Line Utilities Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49051/");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522549");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of HP System Health Appln and Cmd line on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_hp_health_appln_cmd_line_utilities_detect_lin.nasl");

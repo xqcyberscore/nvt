@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_devana_sql_inj_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_devana_sql_inj_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # Devana 'id' SQL Injection Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801229");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-07-16 19:44:55 +0200 (Fri, 16 Jul 2010)");
   script_cve_id("CVE-2010-2673");
   script_tag(name:"cvss_base", value:"7.5");
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -65,11 +65,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
 if (!can_host_php(port:port)) exit(0);
@@ -79,9 +77,7 @@ foreach dir(make_list_unique("/devana", "/", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item: string (dir,"/index.php"), port:port);
-  res = http_keepalive_send_recv(port:port,data:req);
+  res = http_get_cache(item: string (dir,"/index.php"), port:port);
 
   ## Confirm the application
   if('<title>Devana - mmo browser strategy game - home</title>' >< res)

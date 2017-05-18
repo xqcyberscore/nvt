@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808456");
-  script_version("$Revision: 4205 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 09:46:54 +0200 (Tue, 04 Oct 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-19 05:26:32 +0200 (Sun, 19 Jun 2016)");
   script_cve_id("CVE-2016-4303");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-d67864115d");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/RHZW76IFUQ2YASV2UYXH7YT7ATNE3LC5");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of iperf3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

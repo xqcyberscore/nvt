@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_cisco-sa-20160302-FireSIGHT.nasl 3773 2016-07-29 10:23:46Z ckuerste $
+# $Id: gb_cisco_firesight_cisco-sa-20160302-FireSIGHT.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Cisco FireSIGHT System Software Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1356","CVE-2016-1355");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3773 $");
+ script_version ("$Revision: 5732 $");
 
  script_name("Cisco FireSIGHT System Software Multiple Vulnerabilities");
 
@@ -53,9 +53,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 12:23:46 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-03-21 13:46:30 +0100 (Mon, 21 Mar 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

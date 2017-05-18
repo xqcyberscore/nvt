@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_remote_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_docker_remote_detect.nasl 5895 2017-04-07 14:44:59Z mime $
 #
 # Docker Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105809");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version ("$Revision: 5895 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:44:59 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-07-13 16:11:18 +0200 (Wed, 13 Jul 2016)");
  script_name("Docker Detection");
 
@@ -149,7 +149,7 @@ if( "Id" >< buf && "ImageID" >< buf && "Names" >< buf )
     set_kb_item( name:'docker/remote/container/' + id + '/id', value:id );
     set_kb_item( name:'docker/remote/container/' + id + '/name', value:name );
     set_kb_item( name:'docker/remote/container/' + id + '/image', value:image );
-    set_kb_item( name:'docker/remote/container/' + id + '/status', value:status );
+    set_kb_item( name:'docker/remote/container/' + id + '/state', value:status );
 
     if( status !~ "^Up " ) continue;
 

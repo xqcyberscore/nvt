@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: zen_cart_37283.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: zen_cart_37283.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # Zen Cart 'extras/curltest.php' Information Disclosure Vulnerability
 #
@@ -31,12 +31,11 @@ An attacker can exploit this issue to view local files in the context
 of the webserver process. This may allow the attacker to obtain
 sensitive information; other attacks are also possible.";
 
-
-if (description)
+if(description)
 {
  script_id(100402);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 5815 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-12-16 12:39:06 +0100 (Wed, 16 Dec 2009)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +53,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -63,27 +62,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+include("host_details.inc");
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/zen-cart","/zencart","/cart",cgi_dirs());
+files = traversal_files();
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/extras/curltest.php?url=file:///etc/passwd"); 
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
-  if( buf == NULL )continue;
+foreach dir( make_list_unique( "/zen-cart", "/zencart", "/cart", cgi_dirs( port:port ) ) ) {
 
-  if(egrep(pattern: "root:.*:0:[01]:", string: buf, icase: TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
+  if( dir == "/" ) dir = "";
 
+  foreach file (keys(files)) {
+
+    url = string(dir, "/extras/curltest.php?url=file:///", files[file]);
+
+    if(http_vuln_check(port:port, url:url,pattern:file)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

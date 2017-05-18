@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_tsm_info_disclosure_vuln.nasl 4229 2016-10-07 08:15:43Z antu123 $ 
+# $Id: gb_ibm_tiv_tsm_info_disclosure_vuln.nasl 5877 2017-04-06 09:01:48Z teissa $ 
 #
 # IBM Tivoli Storage Manager Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808637");
-  script_version("$Revision: 4229 $");
+  script_version("$Revision: 5877 $");
   script_cve_id("CVE-2016-2894");
   script_bugtraq_id(91534);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-04 13:52:16 +0530 (Tue, 04 Oct 2016)");
   script_name("IBM Tivoli Storage Manager Information Disclosure Vulnerability");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21985579");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Tivoli Storage Manager on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ibm_tiv_tsm_detect_lin.nasl");

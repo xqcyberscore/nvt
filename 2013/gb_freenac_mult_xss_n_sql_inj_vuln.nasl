@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freenac_mult_xss_n_sql_inj_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_freenac_mult_xss_n_sql_inj_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # FreeNAC Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803707");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5816 $");
   script_bugtraq_id(53617);
   script_cve_id("CVE-2012-6559", "CVE-2012-6560");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-05-24 13:19:39 +0530 (Fri, 24 May 2013)");
   script_name("FreeNAC Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -40,11 +40,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/75761");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18900");
 
-  script_summary("Check if FreeNAC is vulnerable to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -80,23 +79,16 @@ port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
-
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/freenac", "/nac", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
-
-  ## Request for the search.cgi
-  sndReq = http_get(item:string(dir, "/login.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/login.php"), port:port);
 
   ## confirm the Application
   if(rcvRes && ">FreeNAC website<" >< rcvRes && ">FreeNAC ::" >< rcvRes)
@@ -106,7 +98,7 @@ foreach dir (make_list_unique("/", "/freenac", "/nac", cgi_dirs(port:port)))
 
     ## Check the response to confirm vulnerability
     if(http_vuln_check(port: port, url: url, check_header: TRUE,
-       pattern: "<script>alert\(document.cookie\)</script>",
+       pattern: "<script>alert\(document\.cookie\)</script>",
        extra_check: make_list(">Server status<", ">Device Class")))
     {
       report = report_vuln_url( port:port, url:url );

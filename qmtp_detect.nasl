@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: qmtp_detect.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: qmtp_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 # Description: QMTP
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11134");
-  script_version("$Revision: 3694 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,7 +43,6 @@ if(description)
   script_dependencies("find_service.nasl", "find_service2.nasl");
   script_require_ports(209, 628);
   script_tag(name: "summary", value: "Checks for the presence of QMTP/QMQP server.");
-  script_summary("Checks for the presence of QMTP/QMQP server");
   exit(0);
 }
 

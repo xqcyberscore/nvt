@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807293");
-  script_version("$Revision: 2731 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 08:59:20 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-21 06:21:43 +0100 (Sun, 21 Feb 2016)");
   script_cve_id("CVE-2015-7974", "CVE-2015-8138", "CVE-2015-7977", "CVE-2015-7978",
                 "CVE-2015-7979", "CVE-2015-8158", "CVE-2015-7704", "CVE-2015-5300",
@@ -57,7 +57,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-34");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177507.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ntp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

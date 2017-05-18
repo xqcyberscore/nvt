@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: hp_jadm_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: hp_jadm_vuln.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: HP Jet Admin 7.x Directory Traversal
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12120");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1857");
   script_bugtraq_id(9973);
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_xref(name:"IAVA", value:"2004-B-0007"); 
   script_name("HP Jet Admin 7.x Directory Traversal");
-  script_summary("HP JetAdmin directory traversal attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2004 wirepair");
   script_family("General");

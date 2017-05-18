@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_ibm_spss_activex_code_exec_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)
 #
@@ -52,12 +52,12 @@ to buffer overflow vulnerability.";
 if(description)
 {
   script_id(802600);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5963 $");
   script_bugtraq_id(51448);
   script_cve_id("CVE-2012-0189");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 11:11:11 +0530 (Wed, 01 Feb 2012)");
   script_name("IBM SPSS SamplePower 'VsVIEW6' ActiveX Control Multiple Code Execution Vulnerabilities (Windows)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21577951");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of IBM SPSS SamplePower");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

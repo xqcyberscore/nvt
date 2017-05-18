@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_alftp_insecure_exec_file_load_vuln.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: secpod_alftp_insecure_exec_file_load_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # ALFTP Insecure Executable File Loading Vulnerability
 #
@@ -39,13 +39,13 @@ tag_summary = "This host is installed with ALFTP and is prone to insecure
 if(description)
 {
   script_id(903012);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-0315");
   script_bugtraq_id(51984);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("ALFTP Insecure Executable File Loading Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-28 10:36:31 +0530 (Wed, 28 Mar 2012)");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48027/");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000011.html");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check for the version of ALFTP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");

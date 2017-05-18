@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_mult_vuln.nasl 4869 2016-12-29 11:01:45Z teissa $
+# $Id: gb_openfire_mult_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # Ignite Realtime OpenFire Multiple Vulnerabilities
 #
@@ -46,30 +46,15 @@ tag_summary = "This host is running OpenFire and is prone to multiple
 if(description)
 {
   script_id(800354);
-  script_version("$Revision: 4869 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 12:01:45 +0100 (Thu, 29 Dec 2016) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-0496", "CVE-2009-0497");
   script_bugtraq_id(32935, 32937, 32938, 32939, 32940, 32943, 32944, 32945);
   script_name("Ignite Realtime OpenFire Multiple Vulnerabilities");
-  desc = "
 
-  Summary:
-  " + tag_summary + "
-
-  Vulnerability Insight:
-  " + tag_insight + "
-
-  Impact:
-  " + tag_impact + "
-
-  Affected Software/OS:
-  " + tag_affected + "
-
-  Solution:
-  " + tag_solution;
   script_xref(name : "URL" , value : "http://secunia.com/advisories/33452");
   script_xref(name : "URL" , value : "http://svn.igniterealtime.org/svn/repos/openfire/trunk/src/web/log.jsp");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/499880/100/0/threaded");
@@ -80,6 +65,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_openfire_detect.nasl");
   script_require_ports("Services/www", 9090);
+  script_mandatory_keys("OpenFire/Installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -88,13 +75,10 @@ if(description)
   exit(0);
 }
 
-
+include("http_func.inc");
 include("version_func.inc");
 
-firePort = get_kb_item("Services/www");
-if(!firePort){
-  exit(0);
-}
+firePort = get_http_port( default:9090 );
 
 fireVer = get_kb_item("www/" + firePort + "/Openfire");
 if(fireVer != NULL)

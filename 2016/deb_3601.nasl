@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3601.nasl 3595 2016-06-24 09:12:52Z antu123 $
+# $Id: deb_3601.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3601-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703601);
-    script_version("$Revision: 3595 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2016-2806");
     script_name("Debian Security Advisory DSA 3601-1 (icedove - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-24 11:12:52 +0200 (Fri, 24 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-06-13 00:00:00 +0200 (Mon, 13 Jun 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3601.html");
 
-    script_summary("Debian Security Advisory DSA 3601-1 (icedove - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_access_wo_netmask.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: apache_access_wo_netmask.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Apache mod_access rule bypass
 #
 # Authors:
@@ -42,8 +42,8 @@ tag_solution = "Upgrade to Apache version 1.3.31 or newer.";
 
 if (description) {
   script_id(14177);
-  script_version("$Revision: 3445 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9829);
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,6 @@ if (description) {
   script_name(name);
  
   summary = "Checks for Apache mod_access Rule Bypass Vulnerability";
-  script_summary(summary);
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");

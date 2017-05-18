@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: fusion_sbx_bypass.nasl 3717 2016-07-15 19:04:33Z cfi $
+# $Id: fusion_sbx_bypass.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # Fusion SBX Password Bypass and Command Execution
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18210");
-  script_version("$Revision: 3717 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-15 21:04:33 +0200 (Fri, 15 Jul 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(13575);
   script_cve_id("CVE-2005-1596");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Fusion SBX Password Bypass and Command Execution");
-  script_summary("Checks for the presence of a Fusion SBX Password Bypass");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");

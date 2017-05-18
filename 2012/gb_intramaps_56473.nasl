@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intramaps_56473.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_intramaps_56473.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # Intramaps Multiple Security Vulnerabilities
 #
@@ -46,26 +46,20 @@ be affected.";
 tag_solution = "Reportedly these issues are fixed. Please contact the vendor for more
 information.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103605";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103605");
  script_bugtraq_id(56473);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5714 $");
  script_name("Intramaps Multiple Security Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56473");
  script_xref(name : "URL" , value : "http://www.stratsec.net/Research/Advisories/Intramaps-Multiple-Vulnerabilities-%28SS-2012-007%29");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-11-12 10:40:31 +0100 (Mon, 12 Nov 2012)");
- script_summary("Determine if Intramaps is prone to xss");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -77,32 +71,31 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
 
-dirs = make_list("/IntraMaps","/intramaps75","/IntraMaps70",cgi_dirs());
 subdirs = make_list("/applicationengine","/ApplicationEngine/");
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/IntraMaps", "/intramaps75", "/IntraMaps70", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach subdir (subdirs) {
    
     url = dir + subdir + '/'; 
 
-    if(http_vuln_check(port:port, url:url,pattern:"<title>IntraMaps")) {
+    if( http_vuln_check( port:port, url:url, pattern:"<title>IntraMaps" ) ) {
     
       url = dir + subdir + "/Application.aspx?project=NAME</script><script>alert('openvas-xss-test')</script>";
 
-      if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",check_header:TRUE)) {
-        security_message(port:port);
-        exit(0);
-      }  
+      if(http_vuln_check(port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", check_header:TRUE ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
     }
   }
 }
 
-exit(0);
-
+exit( 99 );

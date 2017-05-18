@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: SHN_MySQL_Privilege_Escalation.nasl 3303 2016-05-12 13:22:42Z benallard $
+# $Id: SHN_MySQL_Privilege_Escalation.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: MySQL mysqld Privilege Escalation Vulnerability
 #
 # Authors:
@@ -41,8 +41,8 @@ if(description)
 {
  
  script_oid(SCRIPT_OID);
- script_version("$Revision: 3303 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:22:42 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7052);
  script_cve_id("CVE-2003-0150");
@@ -54,7 +54,6 @@ if(description)
  
 
  summary = "Checks for the remote MySQL version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

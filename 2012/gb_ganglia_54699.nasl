@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_54699.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_ganglia_54699.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Ganglia PHP Code Execution Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
  script_cve_id("CVE-2012-3448");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3045 $");
+ script_version ("$Revision: 5931 $");
 
  script_name("Ganglia PHP Code Execution Vulnerability");
 
@@ -52,9 +52,8 @@ if (description)
  script_xref(name : "URL" , value : "http://ganglia.sourceforge.net/");
  script_xref(name : "URL" , value : "http://console-cowboys.blogspot.de/2012/07/extending-your-ganglia-install-with.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-13 12:40:50 +0200 (Mon, 13 Aug 2012)");
- script_summary("Determine if it possible to execute php code");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect.nasl 3048 2016-04-12 07:04:51Z antu123 $
+# $Id: gb_adobe_photoshop_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Adobe Photoshop Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801224");
-  script_version("$Revision: 3048 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 09:04:51 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_name("Adobe Photoshop Version Detection");
 
@@ -70,18 +70,6 @@ appName = "";
 item = "";
 ver = "";
 cpe = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Confirm app is installed
 appkey = "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Photoshop.exe";
@@ -168,13 +156,7 @@ foreach item (registry_enum_keys(key:key))
           cpe = "cpe:/a:adobe:photoshop_cs:x64";
       }
 
-      register_product(cpe:cpe, location:appPath);
-
-      log_message(data: build_detection_report(app: appName,
-                                           version: tmp_version,
-                                           install: appPath,
-                                           cpe: cpe,
-                                           concluded: tmp_version));
+      build_report(app:appName, ver:tmp_version, concluded:tmp_version, cpe:cpe, insloc:appPath);
     }
   }
   else if("Adobe Photoshop CC" >< appName)
@@ -213,13 +195,7 @@ foreach item (registry_enum_keys(key:key))
         if(isnull(cpe))
           cpe = "cpe:/a:adobe:photoshop_cc:x64";
       }
-      register_product(cpe:cpe, location:appPath);
-
-      log_message(data: build_detection_report(app: appName,
-                                               version: tmp_version,
-                                               install: appPath,
-                                               cpe: cpe,
-                                               concluded: tmp_version));
+      build_report(app:appName, ver:tmp_version, concluded:tmp_version, cpe:cpe, insloc:appPath);
     }
   }
   else if("Adobe Photoshop" >< appName)
@@ -251,12 +227,6 @@ foreach item (registry_enum_keys(key:key))
       if(isnull(cpe))
         cpe = "cpe:/a:adobe:photoshop:x64";
     }
-    register_product(cpe:cpe, location:appPath);
-
-    log_message(data: build_detection_report(app: appName,
-                                             version: photoVer,
-                                             install: appPath,
-                                             cpe: cpe,
-                                             concluded: photoVer));
+    build_report(app:appName, ver:photoVer, concluded:photoVer, cpe:cpe, insloc:appPath);
   }
 }

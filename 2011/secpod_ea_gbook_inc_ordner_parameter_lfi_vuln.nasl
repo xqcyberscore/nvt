@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ea_gbook_inc_ordner_parameter_lfi_vuln.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: secpod_ea_gbook_inc_ordner_parameter_lfi_vuln.nasl 5787 2017-03-30 10:26:10Z cfi $
 #
 # ea-gBook 'inc_ordner' Parameter Local File Inclusion Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901207");
-  script_version("$Revision: 5646 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 5787 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_cve_id("CVE-2009-5095");
   script_bugtraq_id(33774);
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/48759");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/8052/");
 
-  script_summary("Check for local file inclusion vulnerability in ea-gBook");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
@@ -71,21 +70,15 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
+if(!can_host_php(port:port)) exit(0);
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
+files = traversal_files();
 
-# Get the host name
 host = http_host_name(port:port);
 
 ## Check for each possible path
-foreach dir (make_list_unique("/ea-gBook", "/gbuch", "/gb", "/guestbook",
-                       "/Gaestebuch", cgi_dirs(port:port)))
-{
+foreach dir (make_list_unique("/ea-gBook", "/gbuch", "/gb", "/guestbook", "/Gaestebuch", cgi_dirs(port:port))) {
 
   if(dir == "/") dir = "";
 
@@ -100,7 +93,6 @@ foreach dir (make_list_unique("/ea-gBook", "/gbuch", "/gb", "/guestbook",
   ## Confirm the application
   if("<title>ea-gBook" >< res && "ea-style.de" >< res)
   {
-    files = traversal_files();
 
     foreach file (keys(files))
     {

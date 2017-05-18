@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_apsb16-33_macosx.nasl 4332 2016-10-24 13:05:28Z antu123 $
+# $Id: gb_adobe_acrobat_apsb16-33_macosx.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Adobe Acrobat Security Updates(apsb16-33)-MAC OS X
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809449");
-  script_version("$Revision: 4332 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-1089", "CVE-2016-1091", "CVE-2016-6939", "CVE-2016-6940", 
                 "CVE-2016-6941", "CVE-2016-6942", "CVE-2016-6943", "CVE-2016-6944", 
                 "CVE-2016-6945", "CVE-2016-6946", "CVE-2016-6947", "CVE-2016-6948", 
@@ -51,7 +51,7 @@ if(description)
                 "CVE-2016-7853", "CVE-2016-7852");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 15:05:28 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-13 12:55:40 +0530 (Thu, 13 Oct 2016)");
   script_name("Adobe Acrobat Security Updates(apsb16-33)-MAC OS X");
 
@@ -85,7 +85,6 @@ if(description)
 
   script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb16-33.html");
 
-  script_summary("Check for the vulnerable version of Adobe Acrobat on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

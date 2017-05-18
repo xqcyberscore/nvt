@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibmhttpserver_mod_proxy_dos_900222.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_ibmhttpserver_mod_proxy_dos_900222.nasl 5785 2017-03-30 09:19:35Z cfi $
 # Description: IBM HTTP Server mod_proxy Interim Responses DoS Vulnerability
 #
 # Authors:
@@ -44,12 +44,11 @@ tag_insight = "Issue is due to an error in the ap_proxy_http_process_response()
 tag_summary = "This host is running IBM HTTP Server, which is prone to Denial of
  Service Vulnerability.";
 
-
 if(description)
 {
  script_id(900222);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5785 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2008-09-25 09:10:39 +0200 (Thu, 25 Sep 2008)");
  script_bugtraq_id(29653);
  script_cve_id("CVE-2008-2364");
@@ -57,11 +56,11 @@ if(description)
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Denial of Service");
  script_name("IBM HTTP Server mod_proxy Interim Responses DoS Vulnerability");
 
- script_dependencies("http_version.nasl","gb_get_http_banner.nasl");
+ script_dependencies("gb_get_http_banner.nasl");
  script_require_ports("Services/www", 80, 8880, 8008);
  script_xref(name : "URL" , value : "http://secunia.com/Advisories/31904/");
  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/42987");
@@ -75,23 +74,16 @@ if(description)
  exit(0);
 }
 
+include("http_func.inc");
 
- include("http_func.inc");
+port = get_http_port(default:80);
 
- ports = make_list("80","8008","8880");
-
- foreach port (ports)
- {
-        ibmWebSer = get_http_banner(port);
+ibmWebSer = get_http_banner(port:port);
  
-        # Check for IBM HTTP Server Version
-        if(egrep(pattern:"Server: IBM_HTTP_Server.*", string:ibmWebSer))
-        {
-                if(egrep(pattern:"IBM_HTTP_Server/([0-5]\..*|6\.[01])[^.0-9]",
-                         string:ibmWebSer))
-		{
-                        security_message(port);
-			exit(0);
-		}
-        }
- }
+# Check for IBM HTTP Server Version
+if(egrep(pattern:"Server: IBM_HTTP_Server.*", string:ibmWebSer)) {
+  if(egrep(pattern:"IBM_HTTP_Server/([0-5]\..*|6\.[01])[^.0-9]", string:ibmWebSer)) {
+    security_message(port);
+    exit(0);
+  }
+}

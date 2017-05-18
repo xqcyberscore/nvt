@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_viewcode.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: iis_viewcode.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Check for dangerous IIS default files
 #
 # Authors:
@@ -37,8 +37,8 @@ world-readable.";
 if(description)
 {
   script_id(10576);
-  script_version("$Revision: 3386 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-1999-0737");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ if(description)
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_name("Check for dangerous IIS default files");
-  script_summary("Check for existence of viewcode.asp");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_copyright("Copyright (C) 2000 John Lampe....j_lampe@bellsouth.net");

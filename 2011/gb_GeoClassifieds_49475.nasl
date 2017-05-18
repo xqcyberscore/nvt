@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_GeoClassifieds_49475.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_GeoClassifieds_49475.nasl 5749 2017-03-28 13:47:32Z cfi $
 #
 # GeoClassifieds Lite Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -35,12 +35,11 @@ underlying database.
 GeoClassifieds Lite 2.0.1, 2.0.3.1, 2.0.3.2 and 2.0.4 are vulnerable;
 other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103270);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5749 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-22 13:43:24 +0200 (Thu, 22 Sep 2011)");
  script_bugtraq_id(49475);
  script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.geodesicsolutions.com/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed GeoClassifieds is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -65,24 +63,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir, "/index.php?a=19&c=</div><script>alert(/openvas-xss-test/);</script>"); 
 
   if(http_vuln_check(port:port,url:url,pattern:"<script>alert\(/openvas-xss-test/\);</script>",check_header:TRUE,extra_check:"powered by GeoClassifieds")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

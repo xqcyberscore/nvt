@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_achievo_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_achievo_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # Achievo Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807645");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5815 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:25:00 +0530 (Wed, 06 Apr 2016)");
   script_name("Achievo Detection");
 
@@ -40,11 +40,10 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Achievo application");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -60,22 +59,16 @@ dir = "";
 achPort = 0;
 rcvRes = "";
 
-##Get HTTP Port
-if(!achPort = get_http_port(default:80)){
-  exit(0);
-}
+achPort = get_http_port(default:80);
 
 if(!can_host_php(port:achPort)) exit(0);
 
-##Iterate over possible paths
 foreach dir(make_list_unique("/", "/achievo", "/cms",  cgi_dirs(port:achPort))) 
 {
   install = dir;
   if(dir == "/") dir = "";
 
-  ## Send and receive response
-  sndReq = http_get(item: dir + "/index.php", port:achPort);
-  rcvRes = http_send_recv(port:achPort, data:sndReq);
+  rcvRes = http_get_cache(item: dir + "/index.php", port:achPort);
 
   ##Confirm application
   if('<title>Achievo</title>' >< rcvRes && 'login' >< rcvRes) 

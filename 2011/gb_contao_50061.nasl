@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contao_50061.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_contao_50061.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Contao CMS Cross-Site Scripting Vulnerability
 #
@@ -37,14 +37,14 @@ Contao 2.10.1 is vulnerable; other versions may also be affected.";
 
 tag_solution = "Vendor updates are available. Please see the references for details.";
 
-if (description)
+if(description)
 {
  script_id(103352);
  script_bugtraq_id(50061);
  script_cve_id("CVE-2011-4335");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 3507 $");
+ script_version("$Revision: 5747 $");
 
  script_name("Contao CMS Cross-Site Scripting Vulnerability");
 
@@ -54,10 +54,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520046");
  script_xref(name : "URL" , value : "http://www.rul3z.de/advisories/SSCHADV2011-025.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-12-02 11:09:47 +0100 (Fri, 02 Dec 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Contao is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -72,26 +71,21 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/contao","/cms",cgi_dirs());
+foreach dir( make_list_unique( "/contao", "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
    
-  url = string(dir,'/index.php/teachers.html?"/><script>alert(/openvas-xss-test/)</script>'); 
+  url = string(dir,'/index.php/teachers.html?"/><script>alert(/openvas-xss-test/)</script>');
 
-  if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",extra_check:"This website is powered by Contao", check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if(http_vuln_check(port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", extra_check:"This website is powered by Contao", check_header:TRUE ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_helpdesk_mult_xss_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: secpod_helpdesk_mult_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # HelpDesk Multiple Persistent Cross Site Scripting Vulnerabilities
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903025");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-30 12:42:29 +0530 (Mon, 30 Apr 2012)");
   script_name("HelpDesk Multiple Persistent Cross Site Scripting Vulnerabilities");
-  script_summary("Check if HelpDesk is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");

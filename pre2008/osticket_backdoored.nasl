@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osticket_backdoored.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: osticket_backdoored.nasl 5786 2017-03-30 10:08:58Z cfi $
 # Description: osTicket Backdoored
 #
 # Authors:
@@ -43,27 +43,20 @@ directory.
 if(description)
 {
   script_id(12649);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 5786 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 12:08:58 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  name = "osTicket Backdoored";
-  script_name(name);
- 
- 
-  summary = "Detect osTicker Backdoored";
-  script_summary(summary);
- 
+  script_name("osTicket Backdoored");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
- 
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
-
-  family = "General";
-  script_family(family);
-  script_dependencies("http_version.nasl");
+  script_family("Web application abuses");
+  script_dependencies("osticket_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("osticket/installed");
+
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -73,32 +66,26 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if ( ! port ) exit(0);
 if ( ! can_host_php(port:port) ) exit(0);
-
 if ( ! get_kb_item("www/" + port + "/osticket" )  ) exit(0);
 
-function check_dir(path)
-{
- req = http_get(item:path +  "/attachments/", port:port);
- res = http_keepalive_send_recv(port:port, data:req);
- if ( res == NULL ) return(0);
- if ("[DIR]" >< res)
- {
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  req = http_get(item:dir +  "/attachments/", port:port);
+  res = http_keepalive_send_recv(port:port, data:req);
+  if ( res == NULL ) continue;
+
+  if ("[DIR]" >< res) {
   # There is a directory there, so directory listing worked
   v = eregmatch(pattern: '<A HREF="([^"]+.php)">', string:res);
   if (isnull(v)) return;
-  req = http_get(item:string(path, "/attachments/", v[1]), port:port);
+  req = http_get(item:string(dir, "/attachments/", v[1]), port:port);
   res = http_keepalive_send_recv(port:port, data:req);
-  if ( res == NULL ) return(0);
-  if ("PHP Shell" >< res ||
-    "<input type = 'text' name = 'cmd' value = '' size = '75'>" >< res )
-	{
-	 security_message(port: port);
-  	 exit(0);
-	}
+  if ( res == NULL ) continue;
+  if ("PHP Shell" >< res || "<input type = 'text' name = 'cmd' value = '' size = '75'>" >< res ) {
+    security_message(port: port);
+    exit(0);
+  }
  }
 }
-
-foreach dir ( cgi_dirs() ) check_dir(path:dir);
-

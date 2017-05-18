@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_related_posts_exit_popup_sql_inj_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_related_posts_exit_popup_sql_inj_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # WordPress Related Posts Exit Popup Plugin SQL Injection Vulnerability
 #
@@ -49,8 +49,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_version("$Revision: 5999 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-16 15:16:37 +0530 (Fri, 16 Nov 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2012110073");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118026/wprpep-sql.txt");
 
-  script_summary("Check if WordPress Related Posts Exit Popup Plugin is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

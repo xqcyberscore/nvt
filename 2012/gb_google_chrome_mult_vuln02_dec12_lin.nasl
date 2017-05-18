@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_dec12_lin.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_mult_vuln02_dec12_lin.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-02 Dec2012 (Linux)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(803122);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-5138", "CVE-2012-5137");
   script_bugtraq_id(56741);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-04 12:46:47 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Dec2012 (Linux)");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56741");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/11/stable-channel-update_29.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

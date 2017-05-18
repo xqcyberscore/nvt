@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sawmill_auth_bypass_vuln.nasl 5403 2017-02-23 10:50:31Z ckuerste $
+# $Id: gb_sawmill_auth_bypass_vuln.nasl 5706 2017-03-24 08:04:22Z teissa $
 #
 # Sawmill Authentication Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:sawmill:sawmill";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106618");
-  script_version("$Revision: 5403 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-23 11:50:31 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5706 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name: "creation_date", value: "2017-02-23 09:39:34 +0700 (Thu, 23 Feb 2017)");
-  script_tag(name: "cvss_base", value: "5.1");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-5496");
 

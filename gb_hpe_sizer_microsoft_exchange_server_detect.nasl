@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_sizer_microsoft_exchange_server_detect.nasl 4365 2016-10-27 09:22:06Z antu123 $
+# $Id: gb_hpe_sizer_microsoft_exchange_server_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # HPE Sizer for Microsoft Exchange Server Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809451");
-  script_version("$Revision: 4365 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-27 11:22:06 +0200 (Thu, 27 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:53:20 +0530 (Tue, 18 Oct 2016)");
   script_name("HPE Sizer for Microsoft Exchange Server Version Detection (Windows)");
 
@@ -43,7 +43,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HPE Sizer for Microsoft Exchange Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
@@ -65,16 +64,6 @@ hpPath = "";
 hpName = "";
 hpVer = "";
 key = "";
-
-## Function to Build report
-function build_report(app, ver, cpe, insloc)
-{
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -117,7 +106,6 @@ foreach item (registry_enum_keys(key:key))
           cpe = "cpe:/a:hp:sizer_for_microsoft_exchange_server_2010";
 
         ## Register Product and Build Report
-        register_product(cpe:cpe, location:hpPath);
         build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
       }
 
@@ -129,7 +117,6 @@ foreach item (registry_enum_keys(key:key))
           cpe = "cpe:/a:hp:sizer_for_microsoft_exchange_server_2013";
 
         ## Register Product and Build Report
-        register_product(cpe:cpe, location:hpPath);
         build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
       }
 
@@ -141,7 +128,6 @@ foreach item (registry_enum_keys(key:key))
           cpe = "cpe:/a:hp:sizer_for_microsoft_exchange_server_2016";
 
         ## Register Product and Build Report
-        register_product(cpe:cpe, location:hpPath);
         build_report(app:hpName, ver: hpVer, cpe: cpe, insloc: hpPath);
       }
     }

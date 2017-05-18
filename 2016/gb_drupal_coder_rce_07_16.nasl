@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_coder_rce_07_16.nasl 3766 2016-07-27 16:18:00Z cfi $
+# $Id: gb_drupal_coder_rce_07_16.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Drupal Coder Remote Code Execution
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:drupal:drupal";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105818");
- script_version ("$Revision: 3766 $");
+ script_version ("$Revision: 5759 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -46,9 +46,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-27 18:18:00 +0200 (Wed, 27 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-07-20 12:15:23 +0200 (Wed, 20 Jul 2016)");
- script_summary("Check for known error message from affected modules");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

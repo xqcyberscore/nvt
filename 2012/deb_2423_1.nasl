@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2423_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2423_1.nasl 5958 2017-04-17 09:02:19Z teissa $
 # Description: Auto-generated from advisory DSA 2423-1 (movabletype-opensource)
 #
 # Authors:
@@ -61,15 +61,14 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=DSA%20
 if(description)
 {
  script_id(71151);
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5958 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:33:09 -0400 (Mon, 12 Mar 2012)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Debian Security Advisory DSA 2423-1 (movabletype-opensource)");
 
 
- script_summary("Debian Security Advisory DSA 2423-1 (movabletype-opensource)");
 
  script_category(ACT_GATHER_INFO);
 

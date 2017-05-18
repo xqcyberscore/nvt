@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: upb_info_leak.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: upb_info_leak.nasl 5780 2017-03-30 07:37:12Z cfi $
 # Description: Ultimate PHP Board Information Leak
 #
 # Authors:
@@ -32,49 +32,46 @@ tag_solution = "Upgrade to the latest version (http://www.myupb.com)";
 if(description)
 {
   script_id(12198);
-  script_version("$Revision: 3376 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 5780 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 09:37:12 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_cve_id("CVE-2002-2276");
- script_bugtraq_id(6333);
+  script_cve_id("CVE-2002-2276");
+  script_bugtraq_id(6333);
   script_xref(name:"OSVDB", value:"4928");
-  name = "Ultimate PHP Board Information Leak";
-  script_name(name);
-  summary = "Checks for UPB";
-  script_summary(summary);
+  script_name("Ultimate PHP Board Information Leak");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("This script is Copyright (C) 2004 Edgeos, Inc.");
-  family = "Web application abuses";
-  script_family(family);
+  script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
 
-# The script code starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
+if(!can_host_php(port:port)) exit(0);
 
-if (!get_port_state(port) || !can_host_php(port:port))
-  exit(0);
+foreach dir( make_list_unique( "/upb", "/board", cgi_dirs( port:port ) ) ) {
 
-foreach d (make_list("/upb", "/board", cgi_dirs()))
-{
-  req = http_get(item:string(d, "/db/users.dat"), port:port);
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/db/users.dat");
+  req = http_get(item:url, port:port);
   res = http_keepalive_send_recv(port:port, data:req);
-  if (res == NULL) exit(0);
-  if (egrep(pattern:"^Admin<~>", string:res))
-  {
-    security_message(port);
-    exit(0);
+  if (res == NULL) continue;
+
+  if(egrep(pattern:"^Admin<~>", string:res)) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
+
+exit( 99 );

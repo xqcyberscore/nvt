@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_manager_detect.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: gb_openvas_manager_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # OpenVAS Manager Detection
 #
@@ -30,15 +30,14 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_oid("1.3.6.1.4.1.25623.1.0.103825");
- script_version ("$Revision: 4034 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
+ script_version ("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-11-08 12:24:10 +0100 (Fri, 08 Nov 2013)");
  script_name("OpenVAS Manager Detection");
 
  script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
  determine if it is a OpenVAS Manager");
 
- script_summary("Checks for the presence of OpenVAS Manager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

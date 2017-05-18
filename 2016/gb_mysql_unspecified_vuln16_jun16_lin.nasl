@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln16_jun16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mysql_unspecified_vuln16_jun16_lin.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Oracle MySQL Server Component 'Replication' Unspecified Vulnerability Jun-16 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808128");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2013-5807");
   script_bugtraq_id(63105);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:37 +0530 (Fri, 03 Jun 2016)");
   script_name("Oracle MySQL Server Component 'Replication' Unspecified Vulnerability Jun-16 (Linux)");
  
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55327");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
-  script_summary("Check for the vulnerable version of Oracle MySQL on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Databases");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_tftp_server_read_request_bof_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_open_tftp_server_read_request_bof_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # OpenTFTP Server Read Request Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802555");
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5956 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-12 19:12:13 +0530 (Thu, 12 Jan 2012)");
   script_name("OpenTFTP Server Read Request Buffer Overflow Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securityreason.com/securityalert/8552");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108546/tftprrq-overflow.txt");
 
-  script_summary("Check for the denial of service vulnerability in OpenTFTP Server");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

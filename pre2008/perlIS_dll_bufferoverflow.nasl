@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: perlIS_dll_bufferoverflow.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: perlIS_dll_bufferoverflow.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: ActivePerl perlIS.dll Buffer Overflow
 #
 # Authors:
@@ -41,8 +41,8 @@ More Information: http://www.securityfocus.com/bid/3526";
 if(description)
 {
  script_id(10811);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(3526);
  script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +54,6 @@ if(description)
 
  summary = "Determines if arbitrary commands can be executed thanks to ActivePerl's perlIS.dll";
  
- script_summary(summary);
  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
  script_copyright("This script is Copyright (C) 2001 H D Moore & Drew Hintz ( http://guh.nu )");

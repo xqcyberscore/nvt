@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: tftpd_small_overflow.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: tftpd_small_overflow.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: TFTPD small overflow
 #
 # Authors:
@@ -27,15 +27,14 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.18493");
- script_version("$Revision: 5309 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
  script_bugtraq_id(13908);
  script_name("TFTPD small overflow");
  
- script_summary("Crashes TFTPD with a small UDP datagram");
 
  script_category(ACT_KILL_HOST);
  

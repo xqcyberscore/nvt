@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_owncloud_unprotected_datadir.nasl 4962 2017-01-06 11:28:10Z cfi $
+# $Id: sw_owncloud_unprotected_datadir.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # ownCloud/NextCloud Unprotected Data Directory
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111107");
-  script_version("$Revision: 4962 $");
+  script_version("$Revision: 5889 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-06 12:28:10 +0100 (Fri, 06 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-02 13:00:00 +0200 (Sat, 02 Jul 2016)");
   script_name("ownCloud/NextCloud Unprotected Data Directory");
   script_category(ACT_GATHER_INFO);
@@ -79,24 +79,22 @@ files = make_array( "/data/htaccesstest.txt", "This is used for testing whether 
                     "/data/nextcloud.log", '("app":"|"reqId":")',
                     "/data/owncloud.db", "SQLite format" );
 
-if( ! port = get_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe = infos['cpe'];
+port = infos['port'];
+
+if( ! dir = get_app_location( cpe:cpe, port:port ) ) exit( 0 );
 
 vuln = FALSE;
 report = 'The following files could be accessed:\n';
 
-foreach CPE( cpe_list ) {
+if( dir == "/" ) dir = "";
 
-  dirs = get_app_location( cpe:CPE, port:port, nofork:TRUE );
-
-  foreach dir( dirs ) {
-    if( dir == "/" ) dir = "";
-    foreach file( keys( files ) ) {
-      url = dir + file;
-      if( http_vuln_check( port:port, url:url, pattern:files[file], check_header:TRUE ) ) {
-        report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
-        vuln = TRUE;
-      }
-    }
+foreach file( keys( files ) ) {
+  url = dir + file;
+  if( http_vuln_check( port:port, url:url, pattern:files[file], check_header:TRUE ) ) {
+    report += '\n' + report_vuln_url( port:port, url:url, url_only:TRUE );
+    vuln = TRUE;
   }
 }
 

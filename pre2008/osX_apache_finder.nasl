@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osX_apache_finder.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: osX_apache_finder.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: MacOS X Finder reveals contents of Apache Web directories
 #
 # Authors:
@@ -38,8 +38,8 @@ and restart Apache.";
 if(description)
 {
  script_id(10756);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2001-1446");
  script_bugtraq_id(3316, 3325);
@@ -53,7 +53,6 @@ if(description)
 
  summary = "Checks for .DS_Store";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

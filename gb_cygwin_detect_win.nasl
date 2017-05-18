@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cygwin_detect_win.nasl 3118 2016-04-19 11:25:06Z antu123 $
+# $Id: gb_cygwin_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Cygwin Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806089");
-  script_version("$Revision: 3118 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 13:25:06 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 17:30:01 +0530 (Tue, 13 Oct 2015)");
   script_name("Cygwin Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   version.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Check the presence of Cygwin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

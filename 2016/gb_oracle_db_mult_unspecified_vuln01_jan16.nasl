@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_mult_unspecified_vuln01_jan16.nasl 3744 2016-07-22 13:01:14Z antu123 $
+# $Id: gb_oracle_db_mult_unspecified_vuln01_jan16.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Oracle Database Server Multiple Unspecified Vulnerabilities -01 Jan16
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807034");
-  script_version("$Revision: 3744 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-0472", "CVE-2016-0467", "CVE-2016-0461", "CVE-2016-0499",
                 "CVE-2015-4923", "CVE-2015-4921", "CVE-2015-4900", "CVE-2015-4888",
                 "CVE-2015-4873", "CVE-2015-4863", "CVE-2015-4796", "CVE-2015-4794",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(77177, 77197, 77183, 77175, 77193, 77189, 91890, 91867, 91874, 91842);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-22 15:01:14 +0200 (Fri, 22 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 13:02:26 +0530 (Fri, 22 Jan 2016)");
   script_name("Oracle Database Server Multiple Unspecified Vulnerabilities -01 Jan16");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version Oracle Database Server");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl");

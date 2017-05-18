@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_database_open_access_vuln.nasl 4043 2016-09-13 06:31:57Z cfi $
+# $Id: secpod_database_open_access_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Database Open Access Vulnerability
 #
@@ -28,13 +28,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902799");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4043 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-13 08:31:57 +0200 (Tue, 13 Sep 2016) $");
+  script_version("$Revision: 5988 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-01 17:10:53 +0530 (Thu, 01 Mar 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Database Open Access Vulnerability");
   script_copyright("Copyright (C) 2012 SecPod");
-  script_summary("Check if given database can be accessible from remote systems");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl", "gb_ibm_db2_remote_detect.nasl",

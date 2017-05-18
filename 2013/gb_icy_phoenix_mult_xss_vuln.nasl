@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icy_phoenix_mult_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_icy_phoenix_mult_xss_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
 #
 # Icy Phoenix Multiple Cross-Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803952");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5791 $");
   script_bugtraq_id(62722);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-10-08 15:21:12 +0530 (Tue, 08 Oct 2013)");
   script_name("Icy Phoenix Multiple Cross-Site Scripting Vulnerability");
 
@@ -56,11 +56,10 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79115");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123446");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/117197");
-  script_summary("Check if Icy Phoenix is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"qod_type", value:"remote_app");
@@ -77,23 +76,18 @@ req = "";
 res = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/icyphoenix", "/ip", cgi_dirs(port:port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
-  req = http_get(item: dir + "/index.php", port:port);
-  res = http_keepalive_send_recv(port:port, data:req);
+  res = http_get_cache(item: dir + "/index.php", port:port);
 
   ## Confirm the application
   if(res && (egrep(pattern:"Powered by.*Icy Phoenix.*phpBB", string:res)))
@@ -101,7 +95,7 @@ foreach dir (make_list_unique("/", "/icyphoenix", "/ip", cgi_dirs(port:port)))
     ## Construct the attack request
     url = dir + "/index.php?>'" + '"><script>alert(01234567891);</script>=';
 
-    match = "<script>alert\(01234567891);<\/script>";
+    match = "<script>alert\(01234567891\);</script>";
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
            pattern:match))
     {

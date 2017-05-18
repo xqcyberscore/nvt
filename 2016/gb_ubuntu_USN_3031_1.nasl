@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842828");
-  script_version("$Revision: 5070 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-13 05:34:08 +0200 (Wed, 13 Jul 2016)");
   script_cve_id("CVE-2016-2365", "CVE-2016-2366", "CVE-2016-2367", "CVE-2016-2368",
  		"CVE-2016-2369", "CVE-2016-2370", "CVE-2016-2371", "CVE-2016-2372",
@@ -52,7 +52,6 @@ if(description)
   script_xref(name: "USN", value: "3031-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3031-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 3795 2016-08-04 06:18:05Z antu123 $
+# $Id: gb_manage_engine_desktop_central_reflected_xss_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807741");
-  script_version("$Revision: 3795 $");
+  script_version("$Revision: 5712 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-04 08:18:05 +0200 (Thu, 04 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-19 12:07:40 +0530 (Tue, 19 Apr 2016)");
   script_name("Manage Engine Desktop Central Reflected Cross Site Scripting Vulnerability");
 
@@ -64,7 +64,6 @@ if (description)
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/136463");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of ManageEngine Desktop Central");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_manage_engine_desktop_central_detect.nasl");

@@ -48,13 +48,12 @@ if(description)
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2012-2320", "CVE-2012-2321", "CVE-2012-2322");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5912 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-31 11:54:20 -0400 (Thu, 31 May 2012)");
  script_name("Gentoo Security Advisory GLSA 201205-02 (ConnMan)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201205-02 (ConnMan)");
 
  script_category(ACT_GATHER_INFO);
 

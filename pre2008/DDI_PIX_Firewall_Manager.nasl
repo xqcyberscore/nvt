@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_PIX_Firewall_Manager.nasl 4079 2016-09-16 09:06:55Z cfi $
+# $Id: DDI_PIX_Firewall_Manager.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # PIX Firewall Manager Directory Traversal
 #
@@ -30,15 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10819");
-  script_version("$Revision: 4079 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:06:55 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(691);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-1999-0158");
   script_name("PIX Firewall Manager Directory Traversal");
-  script_summary("\..\..\file.txt");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 Digital Defense Inc.");
   script_family("Web application abuses");

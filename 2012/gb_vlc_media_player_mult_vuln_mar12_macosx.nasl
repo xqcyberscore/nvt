@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_mar12_macosx.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_vlc_media_player_mult_vuln_mar12_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # VLC Media Player Multiple Vulnerabilities - Mar 12 (MAC OS X)
 #
@@ -39,18 +39,17 @@ tag_summary = "This host is installed with VLC Media Player and is prone to
 if(description)
 {
   script_id(802725);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-1775", "CVE-2012-1776");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-21 11:52:20 +0530 (Wed, 21 Mar 2012)");
   script_name("VLC Media Player Multiple Vulnerabilities - Mar 12 (MAC OS X)");
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1201.html");
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1202.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check for the version of VLC Media Player");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");

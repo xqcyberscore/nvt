@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: global_settings.nasl 5896 2017-04-07 14:47:18Z cfi $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5896 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 16:47:18 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +38,7 @@ if(description)
   script_family("Settings");
 
   script_add_preference(name:"Enable CGI scanning", type:"checkbox", value:"yes");
-  script_add_preference(name:"Regex pattern to exclude directories from CGI scanning : ", type:"entry", value:"/(images|image|img|css|js/|javascript|style|styles|theme|themes|icons|jquery)");
+  script_add_preference(name:"Regex pattern to exclude directories from CGI scanning : ", type:"entry", value:"/(index\.php|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder)");
   script_add_preference(name:"Use regex pattern to exclude directories from CGI scanning : ", type:"checkbox", value:"yes");
 
   script_add_preference(name:"Network type", type:"radio", value:"Mixed (use RFC 1918);Private LAN; Public WAN (Internet)");
@@ -66,7 +66,7 @@ if ( opt == "no" ) set_kb_item(name:"Settings/disable_cgi_scanning", value:TRUE)
 
 opt = script_get_preference( "Regex pattern to exclude directories from CGI scanning : " );
 if( ! opt ) {
-  set_kb_item( name:"Settings/cgi_dirs_exclude_pattern", value:"/(images|image|img|css|js/|javascript|style|styles|theme|themes|icons|jquery)" );
+  set_kb_item( name:"Settings/cgi_dirs_exclude_pattern", value:"/(index\.php|image|img|css|js$|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder)" );
 } else {
   set_kb_item( name:"Settings/cgi_dirs_exclude_pattern", value:opt );
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_AV_42zip_DoS.nasl 3481 2016-06-11 10:05:05Z cfi $
+# $Id: smtp_AV_42zip_DoS.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: SMTP antivirus scanner DoS
 #
 # Authors:
@@ -151,14 +151,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11036");
-  script_version("$Revision: 3481 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-11 12:05:05 +0200 (Sat, 11 Jun 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3027);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_name("SMTP antivirus scanner DoS");
-  script_summary("42.zip antivirus MTA DoS");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Denial of Service");

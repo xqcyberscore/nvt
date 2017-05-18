@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudgate_insecure_direct_object_ref_nd_xss_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_cloudgate_insecure_direct_object_ref_nd_xss_vuln.nasl 5884 2017-04-06 14:57:35Z teissa $
 #
 # Option CloudGate Insecure Direct Object References And XSS Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:option:cloudgate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808246");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5884 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 16:57:35 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 18:38:14 +0530 (Mon, 04 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Option CloudGate Insecure Direct Object References And XSS Vulnerabilities");
@@ -58,7 +58,7 @@ if(description)
   script_tag(name: "affected" , value:"Option CloudGate CG0192-11897");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of 
-  25th January, 2017. Information regarding this issue will be updated once the 
+  06th April, 2017. Information regarding this issue will be updated once the 
   solution details are available. For updates refer to http://www.option.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");

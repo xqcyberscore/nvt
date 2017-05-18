@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_zkteco_zkbiosecurity_mult_vuln.nasl 5884 2017-04-06 14:57:35Z teissa $
 #
 # ZKTeco ZKBioSecurity Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zkteco:zkbiosecurity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809335");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5884 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 16:57:35 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:18:22 +0530 (Thu, 06 Oct 2016)");
   script_name("ZKTeco ZKBioSecurity Multiple Vulnerabilities");
 
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"ZKTeco ZKBioSecurity version 3.0.1.0_R_230");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be updated once solution
+  06th April, 2017. Information regarding this issue will be updated once solution
   details are available. For updates refer to
   http://www.zkaccess.com/product/zkbiosecurity-software/");
 

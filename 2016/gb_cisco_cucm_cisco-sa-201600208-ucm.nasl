@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-201600208-ucm.nasl 2701 2016-02-19 05:11:04Z antu123 $
+# $Id: gb_cisco_cucm_cisco-sa-201600208-ucm.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Cisco Unified Communications Manager Information Disclosure Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1317");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 2701 $");
+ script_version ("$Revision: 5813 $");
 
  script_name("Cisco Unified Communications Manager Information Disclosure Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-19 06:11:04 +0100 (Fri, 19 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-12 14:48:29 +0100 (Fri, 12 Feb 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

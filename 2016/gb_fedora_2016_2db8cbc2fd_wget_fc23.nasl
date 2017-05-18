@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808439");
-  script_version("$Revision: 3662 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-06 06:39:07 +0200 (Wed, 06 Jul 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-18 05:26:44 +0200 (Sat, 18 Jun 2016)");
   script_cve_id("CVE-2016-4971");
   script_tag(name:"cvss_base", value:"4.3");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-2db8cbc2fd");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/5WRPRG5UOJBMTV4JL7KOKI4WU437DXG4");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of wget");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

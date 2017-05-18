@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_43662.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: gb_novell_edirectory_43662.nasl 5772 2017-03-29 16:44:30Z mime $
 #
 # Novell eDirectory Server Malformed Index Denial Of Service Vulnerability
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:novell:edirectory";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100834");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 5772 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-10-04 14:08:22 +0200 (Mon, 04 Oct 2010)");
   script_bugtraq_id(43662);
   script_tag(name:"cvss_base", value:"5.0");
@@ -68,75 +66,52 @@ if(description)
 }
 
 include("host_details.inc");
+include("version_func.inc");
+
+CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!version = get_kb_item(string("ldap/", port, "/eDirectory")))exit(0);
-if(!isnull(version)) {
- 
-  versions = split(version,sep: " ", keep:FALSE);
+if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
+  sp = "0";
 
-  if(!isnull(versions[0])) {
-     major = versions[0];
-  } else {
-     exit(0);
-  }  
+invers = major;
 
-  if(!isnull(versions[1])) {
-     if("SP" >< versions[1]) {
-       sp = versions[1];
-       sp -= "SP";
-       sp = int(sp);
-     } else {
-       revision = versions[1];
-     }   
-  }
+if( sp > 0 )
+  invers += ' SP' + sp;
 
-  if(sp && !isnull(versions[2])) {
-     revision = versions[2];
-  }  
+revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
+revision = str_replace( string:revision, find:".", replace:"" );
 
-  if(revision) {
-   revision -= "(";
-   revision -= ")";
-   revision -= ".";
-   revision = int(revision);
-  }
+if( major == "8.8" )
+{
+  if( sp && sp > 0 )
+  {
+    if( sp > 5 ) exit( 0 );
 
-  if(major == "8.8") {
-
-    if(sp && sp > 0) { 
-
-      if(sp > 5)exit(0);
-
-      if(sp == 5) {
-
-       if(revision && revision < 2050413) {
-                                 
-         VULN = TRUE;
-       
-       }
-
-
-      } else {
-
+    if( sp == 5 )
+    {
+      if( revision && revision < 2050413 )
+      {
         VULN = TRUE;
-
       }
-
-    } else {
-
-      VULN = TRUE;
-
     }
- 
+    else
+    {
+      VULN = TRUE;
+    }
   }
-
+  else
+  {
+    VULN = TRUE;
+  }
 }
 
+
 if(VULN) {
-  security_message(port:port);
+  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  security_message( port:port, data:report );
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_37009.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: novell_edirectory_37009.nasl 5772 2017-03-29 16:44:30Z mime $
 #
 # Novell eDirectory '/dhost/modules?I:' Buffer Overflow Vulnerability
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:novell:edirectory";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100343");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 5772 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-11-13 12:21:24 +0100 (Fri, 13 Nov 2009)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -68,69 +66,59 @@ if(description)
 }
 
 include("host_details.inc");
+include("version_func.inc");
+
+CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!version = get_kb_item(string("ldap/", port, "/eDirectory")))exit(0);
-if(!isnull(version)) {
+if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
+  sp = "0";
 
-  versions = split(version,sep: " ", keep:FALSE);
+revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
 
-  if(!isnull(versions[0])) {
-     major = versions[0];
+invers = major;
+
+if( sp > 0 )
+  invers += ' SP' + sp;
+
+if( major == "8.8" )
+{
+  if( sp && sp > 0 )
+  {
+    if( sp == 5 )
+    {
+      if( ! revision )
+      {
+        VULN = TRUE;
+      }
+    }
+    if( sp < 5 )
+    {
+      VULN = TRUE;
+    }
   } else {
-     exit(0);
-  }  
-
-  if(!isnull(versions[1])) {
-     if("SP" >< versions[1]) {
-       sp = versions[1];
-       sp -= "SP";
-       sp = int(sp);
-     } else {
-       revision = versions[1];
-     }   
-  }
-
-  if(sp && !isnull(versions[2])) {
-     revision = versions[2];
-  }  
-
-  if(revision) {
-   revision -= "(";
-   revision -= ")";
-   revision -= ".";
-   revision = int(revision);
-  }
-
-   if(major == "8.8") { 
-     if(sp && sp > 0) {
-       if(sp == 5) { 
-         if(!revision) {
-           VULN = TRUE;
-         }  
-       }
-       if(sp < 5 ) { 
-         VULN = TRUE;
-       }
-     } else {
-       VULN = TRUE;
-     }
-   }  
-   else if(major == "8.8.1") {
-       VULN = TRUE;
+     VULN = TRUE;
    }
-   else if(major == "8.8.2") {
-    if(!revision && !sp) {
-       VULN = TRUE;
-    }  
-  }   
+}
+else if( major == "8.8.1" )
+{
+  VULN = TRUE;
+}
+else if( major == "8.8.2" )
+{
+  if( ! revision && ! sp )
+  {
+    VULN = TRUE;
+  }
 }
 
 if(VULN) {
-   security_message(port:port);
-   exit(0);
+  report = report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  security_message( port:port, data:report );
+  exit(0);
 }
 
 exit(99);
+

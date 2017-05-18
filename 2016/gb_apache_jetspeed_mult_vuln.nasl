@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jetspeed_mult_vuln.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: gb_apache_jetspeed_mult_vuln.nasl 5860 2017-04-04 15:38:42Z cfi $
 #
 # Apache Jetspeed Multiple Vulnerabilities-Mar16
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:apache_jetspeed:jetspeed";
+CPE = "cpe:/a:apache:jetspeed";
 
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807648");
   script_cve_id("CVE-2016-0709", "CVE-2016-0710", "CVE-2016-0711", "CVE-2016-0712",
                 "CVE-2016-2171");
-  script_version("$Revision: 3164 $");
+  script_version("$Revision: 5860 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 17:38:42 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:30 +0530 (Fri, 01 Apr 2016)");
   script_name("Apache Jetspeed Multiple Vulnerabilities-Mar16");
 
@@ -76,7 +76,6 @@ if (description)
 
   script_xref(name:"URL", value:"https://portals.apache.org/jetspeed-2/security-reports.html");
 
-  script_summary("Check if Apache jetspeed is prone to multiple vulnerabilities.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -110,7 +109,7 @@ url = dir + '/foo%22onmouseover%3d%22alert%28document.cookie%29?URL=foo/bar';
 
 ##Send Request and check vulnerability
 if(http_vuln_check(port:jetPort, url:url, check_header:TRUE,
-   pattern:"alert\(document.cookie\)",
+   pattern:"alert\(document\.cookie\)",
    extra_check:make_list("Jetspeed","Username", "Password")))
 {
   report = report_vuln_url( port:jetPort, url:url );

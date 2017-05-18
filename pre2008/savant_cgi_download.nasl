@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: savant_cgi_download.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: savant_cgi_download.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Savant original form CGI access
 #
 # Authors:
@@ -25,8 +25,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10623");
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1313);
  script_tag(name:"cvss_base", value:"5.0");
@@ -34,7 +34,6 @@ if (description)
  script_cve_id("CVE-2000-0521");
  script_name("Savant original form CGI access");
 
- script_summary("Determine if a remote host is Savant web server, and whether it is vulnerable to attack");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2001 SecuriTeam");

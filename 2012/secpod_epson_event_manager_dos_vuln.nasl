@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_epson_event_manager_dos_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_epson_event_manager_dos_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Epson EventManager 'x-protocol-version' Denial of Service Vulnerability
 #
@@ -46,11 +46,11 @@ service vulnerability.";
 if(description)
 {
   script_id(902824);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5950 $");
   script_bugtraq_id(52511);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-28 15:15:15 +0530 (Wed, 28 Mar 2012)");
   script_name("Epson EventManager 'x-protocol-version' Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48382");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18602");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/48382");
   script_xref(name : "URL" , value : "http://aluigi.org/adv/eeventmanager_1-adv.txt");
-  script_summary("Check if Epson EventManager is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");

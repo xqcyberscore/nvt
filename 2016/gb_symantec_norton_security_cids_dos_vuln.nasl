@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 4280 2016-10-14 13:07:52Z antu123 $
+# $Id: gb_symantec_norton_security_cids_dos_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:norton_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808624");
-  script_version("$Revision: 4280 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-5308");
   script_bugtraq_id(91608);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 15:07:52 +0200 (Fri, 14 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-07 13:20:51 +0530 (Fri, 07 Oct 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Norton Security 'CIDS' Driver Denial of Service Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20160707_01");
-  script_summary("Check for the vulnerable version of Symantec Norton Security Client IDS Driver.");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

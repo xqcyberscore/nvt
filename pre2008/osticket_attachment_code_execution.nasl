@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osticket_attachment_code_execution.nasl 3303 2016-05-12 13:22:42Z benallard $
+# $Id: osticket_attachment_code_execution.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: osTicket Attachment Code Execution Vulnerability
 #
 # Authors:
@@ -24,8 +24,8 @@
 
 if (description) {
   script_oid("1.3.6.1.4.1.25623.1.0.13645");
-  script_version("$Revision: 3303 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:22:42 +0200 (Thu, 12 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10586);
   script_tag(name:"cvss_base", value:"7.5");
@@ -34,7 +34,6 @@ if (description) {
   script_cve_id("CVE-2004-0613");
 
   script_name("osTicket Attachment Code Execution Vulnerability");
-  script_summary("Checks for Attachment Code Execution Vulnerability in osTicket");
  
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");

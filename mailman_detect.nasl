@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailman_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: mailman_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
 # Description: Mailman Detection
 #
 # Authors:
@@ -28,31 +28,22 @@ extracts version numbers and locations of any instances found.
 Mailman is a Python-based mailing list management package from the GNU
 Project.  See http://www.list.org/ for more information.";
  
-if (description) {
+if(description)
+{
   script_id(16338);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5737 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
-
-  name = "Mailman Detection";
-  script_name(name);
- 
- 
-  summary = "Checks for the presence of Mailman";
-  script_summary(summary);
- 
+  script_name("Mailman Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2005 George A. Theall");
-
-  family = "Web application abuses";
-  script_family(family);
-
-  script_dependencies("global_settings.nasl", "http_version.nasl", "no404.nasl");
+  script_family("General");
+  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
   script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
@@ -63,14 +54,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
-if (get_kb_item("www/no404/" + port)) exit(0);
-debug_print("looking for Mailman on port ", port, ".");
 
 # Search for Mailman's listinfo page.
-dirs = make_list("/mailman", cgi_dirs());
 installs = 0;
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/mailman", cgi_dirs( port:port ) ) ) {
   listinfo = string(dir, "/listinfo");
   debug_print("testing '", listinfo, "'.");
   if (dir == "") dir = "/";

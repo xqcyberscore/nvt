@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-067.nasl 4912 2017-01-02 14:13:24Z cfi $
+# $Id: secpod_ms12-067.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Microsoft FAST Search Server 2010 for SharePoint RCE Vulnerabilities (2742321)
 #
@@ -39,7 +39,7 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903042);
-  script_version("$Revision: 4912 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-1766", "CVE-2012-1767", "CVE-2012-1768", "CVE-2012-1769",
                 "CVE-2012-1770", "CVE-2012-1771", "CVE-2012-1772", "CVE-2012-1773",
                 "CVE-2012-3106", "CVE-2012-3107", "CVE-2012-3108", "CVE-2012-3109",
@@ -48,13 +48,12 @@ if(description)
                     54546, 54504, 54550, 54554, 54506);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-02 15:13:24 +0100 (Mon, 02 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-10 11:39:34 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft FAST Search Server 2010 for SharePoint RCE Vulnerabilities (2742321)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2553402");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-067");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");

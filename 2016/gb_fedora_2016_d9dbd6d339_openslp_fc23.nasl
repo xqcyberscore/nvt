@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808371");
-  script_version("$Revision: 3544 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 10:02:33 +0200 (Fri, 17 Jun 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-08 15:38:16 +0200 (Wed, 08 Jun 2016)");
   script_cve_id("CVE-2016-4912");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for openslp FEDORA-2016-d9dbd6d339");
   script_tag(name: "summary", value: "Check the version of openslp");
@@ -50,7 +50,6 @@ by RFC 2608 and RFC 2614.
   script_xref(name: "FEDORA", value: "2016-d9dbd6d339");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/IVGHUVJWZWNDLKEFSO42CLS6QUTMANY5");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openslp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_dos_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_openssl_dos_vuln_lin.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # OpenSSL Deniel Of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806816");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-3196");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-01-11 17:41:42 +0530 (Mon, 11 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Denial Of Service Vulnerability (Linux)");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://openssl.org/news/secadv/20151203.txt");
   script_xref(name : "URL" , value : "https://support.f5.com/kb/en-us/solutions/public/k/55/sol55540723.html");
 
-  script_summary("Check for the vulnerable version of OpenSSL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

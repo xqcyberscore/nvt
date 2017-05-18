@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809254");
-  script_version("$Revision: 4134 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-22 14:06:38 +0200 (Thu, 22 Sep 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-18 05:54:09 +0200 (Sun, 18 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-b3f93ead5b");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KYCUPYEZTTBYZX435YY5NTW5UCQGZC2Z");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of moin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

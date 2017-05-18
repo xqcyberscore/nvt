@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-108_exchange_server_mult_vuln.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: gb_ms16-108_exchange_server_mult_vuln.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3185883)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809313");
-  script_version("$Revision: 4136 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-0138", "CVE-2016-3378", "CVE-2016-3379");
   script_bugtraq_id(92833, 92806, 92836);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-14 10:21:52 +0530 (Wed, 14 Sep 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3185883)");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3184736");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-108");
 
-  script_summary("Check for the version of 'ExSetup.exe' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

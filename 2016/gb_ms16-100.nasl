@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-100.nasl 3849 2016-08-17 08:27:51Z antu123 $
+# $Id: gb_ms16-100.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Microsoft Windows Secure Boot Security Feature Bypass Vulnerability (3179577)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808646");
-  script_version("$Revision: 3849 $");
+  script_version("$Revision: 5877 $");
   script_cve_id("CVE-2016-3320");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-17 10:27:51 +0200 (Wed, 17 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-10 08:58:21 +0530 (Wed, 10 Aug 2016)");
   script_name("Microsoft Windows Secure Boot Security Feature Bypass Vulnerability (3179577)");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3179577");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-100");
 
-  script_summary("Check for the vulnerable 'Tpmtasks.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

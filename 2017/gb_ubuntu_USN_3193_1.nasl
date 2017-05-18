@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843042");
-  script_version("$Revision: 5279 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-13 08:15:35 +0100 (Mon, 13 Feb 2017) $");
+  script_version("$Revision: 6044 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-07 05:45:16 +0100 (Tue, 07 Feb 2017)");
   script_cve_id("CVE-2016-6489");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for nettle USN-3193-1");
   script_tag(name: "summary", value: "Check the version of nettle");

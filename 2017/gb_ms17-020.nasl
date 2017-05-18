@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-020.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-020.nasl 5908 2017-04-10 07:13:23Z teissa $
 #
 # Microsoft Windows DVD Maker Cross-Site Request Forgery Vulnerability (3208223)
 #
@@ -26,12 +26,12 @@
 
 if(description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.810595");
-  script_version("$Revision: 5582 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.107144");
+  script_version("$Revision: 5908 $");
   script_cve_id("CVE-2017-0045");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 09:13:23 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 08:10:02 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows DVD Maker Cross-Site Request Forgery Vulnerability (3208223)");
@@ -87,20 +87,22 @@ if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, winVistax64:3) <= 0){
 
 ## Fetch the version of 'DVDMaker.exe'
 ## https://www.sevenforums.com/tutorials/54090-windows-dvd-maker-how-use.html
-if(!dvdVer = fetch_file_version(sysPath:"C:\Program Files\DVD Maker", file_name:"DVDMaker.exe"))
-{
-  ## vista
-  if(!dvdVer = fetch_file_version(sysPath:"C:\Program Files\Movie Maker", file_name:"DVDMaker.exe")){
-    exit(0);
-  }
+if(!path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
+                              item:"ProgramFilesDir")){
+  exit(0);
 }
 
-## Windows 7
-if(hotfix_check_sp(win7:2, win7x64:2) > 0 && dvdVer)
+filepath = path + "\DVD Maker";
+file1path = path + "\Movie Maker";
+
+## windows 7
+if(hotfix_check_sp(win7:2, win7x64:2) > 0)
 {
+  dvdVer = fetch_file_version(sysPath:filepath, file_name:"DVDMaker.exe");
+
   ## Check for DVDMaker.exe version
   ## Presently GDR information is not available.
-  if(version_is_less(version:dvdVer, test_version:"6.1.7601.23656"))
+  if(dvdVer && version_is_less(version:dvdVer, test_version:"6.1.7601.23656"))
   {
     Vulnerable_range = "Less than 6.1.7601.23656";
     VULN1 = TRUE ;
@@ -108,16 +110,18 @@ if(hotfix_check_sp(win7:2, win7x64:2) > 0 && dvdVer)
 }
 
 ## Windows Vista
-else if(hotfix_check_sp(winVista:3, winVistax64:3) > 0 && dvdVer)
+else if(hotfix_check_sp(winVista:3, winVistax64:3) > 0)
 {
+  dvdVer1 = fetch_file_version(sysPath:file1path, file_name:"DVDMaker.exe");
+
   ## Check for DVDMaker.exe version 
-  if(version_is_less(version:dvdVer, test_version:"6.0.6002.19725"))
+  if(dvdVer1 && version_is_less(version:dvdVer1, test_version:"6.0.6002.19725"))
   {
     Vulnerable_range = "Less than 6.0.6002.19725";
     VULN2 = TRUE ;
   }
 
-  else if(version_in_range(version:dvdVer, test_version:"6.0.6002.24000", test_version2:"6.0.6002.24047"))
+  else if(dvdVer1 && version_in_range(version:dvdVer1, test_version:"6.0.6002.24000", test_version2:"6.0.6002.24047"))
   {
     Vulnerable_range = "6.0.6002.24000 - 6.0.6002.24047";
     VULN2 = TRUE ;
@@ -126,7 +130,7 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3) > 0 && dvdVer)
 
 if(VULN1)
 {
-  report = 'File checked:     ' + "C:\Program Files\DVD Maker\DVDMaker.exe" + '\n' +
+  report = 'File checked:     ' + filepath + "\DVDMaker.exe" + '\n' +
            'File version:     ' + dvdVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -135,8 +139,8 @@ if(VULN1)
 
 else if(VULN2)
 {
-  report = 'File checked:     ' + "C:\Program Files\Movie Maker\DVDMaker.exe" + '\n' +
-           'File version:     ' + dvdVer  + '\n' +
+  report = 'File checked:     ' + file1path + "\DVDMaker.exe" + '\n' +
+           'File version:     ' + dvdVer1  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
   exit(0);

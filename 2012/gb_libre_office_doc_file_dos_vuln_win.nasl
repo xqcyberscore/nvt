@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)
 #
@@ -41,19 +41,18 @@ tag_summary = "This host is installed with LibreOffice and is prone to denial of
 if(description)
 {
   script_id(802557);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2011-2713");
   script_bugtraq_id(49969);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-10 16:22:59 +0530 (Tue, 10 Jan 2012)");
   script_name("LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2011/Oct/21");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?102615");
   script_xref(name : "URL" , value : "http://www.libreoffice.org/advisories/CVE-2011-2713/");
 
-  script_summary("Check for the version of LibreOffice");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

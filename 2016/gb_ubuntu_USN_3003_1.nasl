@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842791");
-  script_version("$Revision: 3683 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-11 07:25:10 +0200 (Mon, 11 Jul 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-11 05:26:24 +0200 (Sat, 11 Jun 2016)");
   script_cve_id("CVE-2016-2117", "CVE-2016-1583", "CVE-2015-4004", "CVE-2016-2187", "CVE-2016-3672", "CVE-2016-3951", "CVE-2016-3955", "CVE-2016-3961", "CVE-2016-4485", "CVE-2016-4486", "CVE-2016-4565", "CVE-2016-4581");
   script_tag(name:"cvss_base", value:"10.0");
@@ -93,7 +93,6 @@ could use this t ...
   script_xref(name: "USN", value: "3003-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-June/003460.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

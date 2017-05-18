@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_open.nasl 5073 2017-01-24 10:27:20Z cfi $
+# $Id: ntp_open.nasl 5738 2017-03-27 14:25:56Z mime $
 #
 # NTP read variables
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("$Revision: 5073 $");
+  script_version("$Revision: 5738 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:27:20 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:25:56 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP read variables");
   script_category(ACT_GATHER_INFO);
@@ -41,11 +41,7 @@ if(description)
   script_family("Product detection");
   script_require_udp_ports(123);
 
-  script_tag(name:"summary", value:"Detection of installed version from the
-  NTP (Network Time Protocol) server.
-
-  This script sends request, try to get the version from the
-  response and sets the result in KB.");
+  script_tag(name:"summary", value:"This script performs detection of NTP servers.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -174,8 +170,8 @@ if( r ) {
       report = 'It is possible to determine a lot of information about the remote host by querying ' +
                'the NTP (Network Time Protocol) variables - these include OS descriptor, and time settings.\n\n' +
                'It was possible to gather the following information from the remote NTP host : \n\n' + list + '\n' +
-               'Quickfix: Set NTP to restrict default access to ignore all info packets:\n\n' +
-               'restrict default ignore';
+               'Quickfix: Restrict default access to ignore all info packets.';
+
       log_message( port:port, protocol:proto, data:report );
       exit( 0 );
     }

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xst_http_trace.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: xst_http_trace.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: http TRACE XSS attack
 #
 # Authors:
@@ -31,8 +31,8 @@
 if(description)
 {
  script_id(11213);
- script_version("$Revision: 3362 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -40,7 +40,6 @@ if(description)
  script_cve_id("CVE-2004-2320","CVE-2003-1567");
  script_bugtraq_id(9506, 9561, 11604);
  
- script_summary("http TRACE XSS attack");
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xoops_mult_unspecified_vuln_nov09.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: secpod_xoops_mult_unspecified_vuln_nov09.nasl 5952 2017-04-13 12:34:17Z cfi $
 #
 # XOOPS Multiple Unspecified Vulnerabilities - Nov09
 #
@@ -24,64 +24,68 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Unknow impact
-  Impact Level: Application";
-tag_affected = "XOOPS version prior to 2.4.0 Final on all running platform.";
-tag_insight = "The flaws are caused by unspecified errors with unknown impacts and unknown
-  attack vectors.";
-tag_solution = "Upgrade to XOOPS version 2.4.0 Final or later.
-  http://www.xoops.org/modules/core/";
-tag_summary = "This host is running XOOPS and is prone to multiple unspecified
-  vulnerabilities.";
+CPE = "cpe:/a:xoops:xoops";
 
 if(description)
 {
-  script_id(900893);
-  script_version("$Revision: 5148 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900893");
+  script_version("$Revision: 5952 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-3963");
   script_bugtraq_id(36955);
   script_name("XOOPS Multiple Unspecified Vulnerabilities - Nov09");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/54181");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/3174");
-  script_xref(name : "URL" , value : "http://www.xoops.org/modules/news/article.php?storyid=5064");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_xoops_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("XOOPS/installed");
+
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/54181");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/3174");
+  script_xref(name:"URL", value:"http://www.xoops.org/modules/news/article.php?storyid=5064");
+
+  tag_impact = "Unknow impact
+
+  Impact Level: Application";
+
+  tag_affected = "XOOPS version prior to 2.4.0 Final on all running platform.";
+
+  tag_insight = "The flaws are caused by unspecified errors with unknown impacts and unknown
+  attack vectors.";
+
+  tag_solution = "Upgrade to XOOPS version 2.4.0 Final or later.
+  http://www.xoops.org/modules/core/";
+
+  tag_summary = "This host is running XOOPS and is prone to multiple unspecified
+  vulnerabilities.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-
-include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-xoopsPort = get_http_port(default:80);
-if(!xoopsPort){
-  exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+
+# Check for XOOPS version prior to 2.4.0 (2.4.0 Final)
+if( version_is_less( version:vers, test_version:"2.4.0" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.4.0" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-xoopsVer = get_kb_item("www/"+ xoopsPort + "/XOOPS");
-if(!xoopsVer){
-  exit(0);
-}
-
-xoopsVer = eregmatch(pattern:"^(.+) under (/.*)$", string:xoopsVer);
-if(xoopsVer[1])
-{
-  # Check for XOOPS version prior to 2.4.0 (2.4.0 Final)
-  if(version_is_less(version:xoopsVer[1], test_version:"2.4.0")){
-    security_message(xoopsPort);
-  }
-}
+exit( 99 );

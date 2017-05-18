@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_58938.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_dlink_multiple_devices_58938.nasl 5842 2017-04-03 13:15:19Z cfi $
 #
 # Multiple D-Link Products Command Injection and Multiple Information Disclosue Vulnerabilities
 #
@@ -32,14 +32,13 @@ Exploiting these issues could allow an attacker to gain access to
 potentially sensitive information and execute arbitrary commands in
 the context of the affected device.";
 
-
 tag_solution = "Reportedly the issue is fixed. Please contact the vendor for more information.";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103691");
  script_bugtraq_id(58938);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5842 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -49,13 +48,12 @@ if (description)
  script_xref(name:"URL", value:"http://www.dlink.com/");
  script_xref(name:"URL", value:"http://www.s3cur1ty.de/m1adv2013-017");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-04-09 12:07:13 +0200 (Tue, 09 Apr 2013)");
 
  script_tag(name:"qod_type", value:"remote_analysis");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_summary("Determine if the remote dlink is prone to command-injection");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -74,7 +72,7 @@ port = get_kb_item("dlink_dir_port");
 if(!port)exit(0);
 if(!get_port_state(port))exit(0);
 
-host = get_host_name();
+host = http_host_name(port:port);
 
 sleep = make_list(3, 5, 10);
 
@@ -85,7 +83,7 @@ foreach i (sleep) {
 
   req = string("POST /diagnostic.php HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:16.0) Gecko/20100101 OpenVAS/16.0\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                "Accept-Encoding: identity\r\n",

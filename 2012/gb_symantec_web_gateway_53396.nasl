@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_53396.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_symantec_web_gateway_53396.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Symantec Web Gateway 'l' Parameter Cross Site Scripting Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_oid(SCRIPT_OID); 
  script_bugtraq_id(53396);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5940 $");
  script_cve_id("CVE-2012-0296");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -51,9 +51,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53396");
  script_xref(name : "URL" , value : "http://www.symantec.com/business/web-gateway");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-05-07 14:02:06 +0200 (Mon, 07 May 2012)");
- script_summary("Determine if Symantec Web Gateway is prone to a cross-site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_modplsql_css.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: oracle9i_modplsql_css.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Oracle 9iAS mod_plsql cross site scripting
 #
 # Authors:
@@ -31,8 +31,8 @@ downloaded from the oracle Metalink site.";
 if(description)
 {
  script_id(10853);
- script_version("$Revision: 3516 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4298);
  script_tag(name:"cvss_base", value:"7.5");
@@ -46,7 +46,6 @@ if(description)
 
  summary = "Tests for Oracle 9iAS mod_plsql cross site scripting";
  
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

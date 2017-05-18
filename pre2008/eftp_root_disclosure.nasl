@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: eftp_root_disclosure.nasl 3962 2016-09-05 15:56:14Z mime $
+# $Id: eftp_root_disclosure.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: EFTP installation directory disclosure
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "update your FTP server";
 if(description)
 {
   script_id(11093);
-  script_version("$Revision: 3962 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-05 17:56:14 +0200 (Mon, 05 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3331, 3333);
  script_tag(name:"cvss_base", value:"7.5");
@@ -60,7 +60,6 @@ if(description)
 
 
  summary = "EFTP installation directory disclosure";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

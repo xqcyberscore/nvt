@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: myserver_dir_list_and_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: myserver_dir_list_and_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # myServer Directory Listing and XSS flaws
 #
@@ -29,15 +29,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18218");
-  script_version("$Revision: 4149 $");
+  script_version("$Revision: 6063 $");
   script_cve_id("CVE-2005-1658", "CVE-2005-1659");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(13579, 13578);
   script_name("myServer Directory Listing and XSS flaws");
-  script_summary("Determine if myServer is vulnerable to a XSS flaw");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");

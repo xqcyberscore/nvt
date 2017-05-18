@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807979");
-  script_version("$Revision: 3553 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:26:11 +0200 (Mon, 20 Jun 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-07 05:18:22 +0200 (Sat, 07 May 2016)");
   script_cve_id("CVE-2016-4414");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-42");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/183571.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of quassel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

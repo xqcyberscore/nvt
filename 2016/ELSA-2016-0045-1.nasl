@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0045-1.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0045-1.nasl 5813 2017-03-31 09:01:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122852");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5813 $");
 script_tag(name:"creation_date", value:"2016-01-21 07:29:49 +0200 (Thu, 21 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0045-1");
 script_tag(name: "insight", value: "ELSA-2016-0045-1 -  kernel security update - kernel[2.6.18-408.0.0.0.1]- [netfront] fix ring buffer index go back led vif stop [orabug 18272251]- [net] fix tcp_trim_head() (James Li) [orabug 14512145, 19219078]- ocfs2: dlm: fix recovery hung (Junxiao Bi) [orabug 13956772]- i386: fix MTRR code (Zhenzhong Duan) [orabug 15862649]- [oprofile] x86, mm: Add __get_user_pages_fast() [orabug 14277030]- [oprofile] export __get_user_pages_fast() function [orabug 14277030]- [oprofile] oprofile, x86: Fix nmi-unsafe callgraph support [orabug 14277030]- [oprofile] oprofile: use KM_NMI slot for kmap_atomic [orabug 14277030]- [oprofile] oprofile: i386 add get_user_pages_fast support [orabug 14277030]- [kernel] Initialize the local uninitialized variable stats. [orabug 14051367]- [fs] JBD:make jbd support 512B blocks correctly for ocfs2. [orabug 13477763]- [mm] fix hugetlb page leak (Dave McCracken) [orabug 12375075]- fix ia64 build error due to add-support-above-32-vcpus.patch(Zhenzhong Duan)- [x86] use dynamic vcpu_info remap to support more than 32 vcpus (Zhenzhong Duan)- [x86] Fix lvt0 reset when hvm boot up with noapic param- [scsi] remove printk's when doing I/O to a dead device (John Sobecki, Chris Mason) [orabug 12342275]- [char] ipmi: Fix IPMI errors due to timing problems (Joe Jin) [orabug 12561346]- [scsi] Fix race when removing SCSI devices (Joe Jin) [orabug 12404566]- [net] net: Redo the broken redhat netconsole over bonding (Tina Yang) [orabug 12740042]- [fs] nfs: Fix __put_nfs_open_context() NULL pointer panic (Joe Jin) [orabug 12687646]- fix filp_close() race (Joe Jin) [orabug 10335998]- make xenkbd.abs_pointer=1 by default [orabug 67188919]- [xen] check to see if hypervisor supports memory reservation change (Chuck Anderson) [orabug 7556514]- [net] Enable entropy for bnx2,bnx2x,e1000e,igb,ixgb,ixgbe,ixgbevf (John Sobecki) [orabug 10315433]- [NET] Add xen pv netconsole support (Tina Yang) [orabug 6993043] [bz 7258]- [mm] Patch shrink_zone to yield during severe mempressure events, avoiding hangs and evictions (John Sobecki,Chris Mason) [orabug 6086839]- [mm] Enhance shrink_zone patch allow full swap utilization, and also be NUMA-aware (John Sobecki,Chris Mason,Herbert van den Bergh) [orabug 9245919]- fix aacraid not to reset during kexec (Joe Jin) [orabug 8516042]- [xen] PVHVM guest with PoD crashes under memory pressure (Chuck Anderson) [orabug 9107465]- [xen] PV guest with FC HBA hangs during shutdown (Chuck Anderson) [orabug 9764220]- Support 256GB+ memory for pv guest (Mukesh Rathor) [orabug 9450615]- fix overcommit memory to use percpu_counter for (KOSAKI Motohiro, Guru Anbalagane) [orabug 6124033]- [ipmi] make configurable timeouts for kcs of ipmi [orabug 9752208]- [ib] fix memory corruption (Andy Grover) [orabug 9972346]- [usb] USB: fix __must_check warnings in drivers/usb/core/ (Junxiao Bi) [orabug 14795203]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0045-1");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_desktop_board_bios_info_detect_lin.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_desktop_board_bios_info_detect_lin.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Desktop Boards BIOS Information Detection for Linux
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800163");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_name("Desktop Boards BIOS Information Detection for Linux");
 
@@ -44,7 +44,6 @@ The script logs in via ssh and queries for the version using the command
 line tool 'dmidecode'. Usually this command requires root privileges to
 execute.");
 
-  script_summary("Set Desktop Boards BIOS Information in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

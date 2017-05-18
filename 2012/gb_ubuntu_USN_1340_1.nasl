@@ -59,15 +59,14 @@ if(description)
   script_id(840875);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 5999 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-25 11:16:19 +0530 (Wed, 25 Jan 2012)");
   script_cve_id("CVE-2011-2203", "CVE-2011-4077", "CVE-2011-4110", "CVE-2011-4132",
                 "CVE-2011-4330", "CVE-2012-0044");
   script_xref(name: "USN", value: "1340-1");
   script_name("Ubuntu Update for linux-lts-backport-oneiric USN-1340-1");
 
-  script_summary("Check for the Version of linux-lts-backport-oneiric");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

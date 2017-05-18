@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_win.nasl 5453 2017-03-01 09:55:35Z cfi $
+# $Id: secpod_imagemagick_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # ImageMagick Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900562");
-  script_version("$Revision: 5453 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-01 10:55:35 +0100 (Wed, 01 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_name("ImageMagick Version Detection (Windows)");
 
@@ -55,20 +55,6 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  if(!insloc)
-    insloc = "Could not find the install location from registry";
-
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 ## variable Initialization
 os_arch = "";

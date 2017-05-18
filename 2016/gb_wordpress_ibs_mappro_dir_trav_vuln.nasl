@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 5626 2017-03-20 15:16:30Z cfi $
+# $Id: gb_wordpress_ibs_mappro_dir_trav_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Wordpress IBS Mappro Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808201");
-  script_version("$Revision: 5626 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2015-5472");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:16:30 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 16:09:30 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress IBS Mappro Directory Traversal Vulnerability");
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://wpvulndb.com/vulnerabilities/8091");
 
-  script_summary("Check if Wordpress IBS Mappro Plugin is prone to directory traversal.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

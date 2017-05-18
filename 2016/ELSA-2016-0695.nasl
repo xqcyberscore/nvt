@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0695.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0695.nasl 5759 2017-03-29 09:01:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122931");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5759 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:48 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0695");
 script_tag(name: "insight", value: "ELSA-2016-0695 -  firefox security update - [45.1.0-1.0.1.el7_2]- Add firefox-oracle-default-prefs.js and firefox-oracle-default-bookmarks.html and remove the corresponding Red Hat files[45.1.0-1]- Update to 45.1.0 ESR[45.0.2-1]- Update to 45.0.2 ESR[45.0.1-1]- Update to 45.0.1 ESR[45.0-5]- Fixed crashed after start (rhbz#1323744, rhbz#1323738)[45.0-4]- Added system-level location for configuring Firefox (rhbz#1206239)[45.0-3]- Update to 45.0 ESR"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0695");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

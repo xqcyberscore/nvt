@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: webserver4d.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: webserver4d.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Webserver 4D Cleartext Passwords
 #
 # Authors:
@@ -38,8 +38,8 @@ on this host.";
 if(description)
 {
         script_id(11151);
-        script_version("$Revision: 5390 $");
-        script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+        script_version("$Revision: 6040 $");
+        script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
         script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
         script_bugtraq_id(5803);
 	script_cve_id("CVE-2002-1521");
@@ -49,7 +49,6 @@ if(description)
 
 
 
-        script_summary("Checks for Webserver 4D");
 
 
         script_category(ACT_GATHER_INFO);

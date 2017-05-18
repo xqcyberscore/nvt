@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: simple_form_mail_relaying_via_subject_tags.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: simple_form_mail_relaying_via_subject_tags.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # Simple Form Mail Relaying via Subject Tags Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14713");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Simple Form Mail Relaying via Subject Tags Vulnerability");
-  script_summary("Checks for Mail Relaying via Subject Tags Vulnerability in Simple Form");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Web application abuses");

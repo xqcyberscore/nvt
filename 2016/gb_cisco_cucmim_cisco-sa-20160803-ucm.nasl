@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucmim_cisco-sa-20160803-ucm.nasl 3801 2016-08-05 08:09:42Z ckuerste $
+# $Id: gb_cisco_cucmim_cisco-sa-20160803-ucm.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Cisco Unified Communications Manager IM and Presence Service SIP Packet Processing Denial of Service Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:unified_communications_manager_im_and_presence_service";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106169");
- script_tag(name:"last_modification", value:"$Date: 2016-08-05 10:09:42 +0200 (Fri, 05 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-05 10:51:26 +0700 (Fri, 05 Aug 2016)");
  script_tag(name: "cvss_base", value: "7.8");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3801 $");
+ script_version ("$Revision: 5745 $");
 
  script_cve_id("CVE-2016-1466");
 
@@ -75,7 +75,6 @@ resulting in a denial of service (DoS) condition on a targeted system.");
 
  script_xref(name:"URL", value: "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160803-ucm");
 
- script_summary("Check the version");
 
  exit(0);
 }

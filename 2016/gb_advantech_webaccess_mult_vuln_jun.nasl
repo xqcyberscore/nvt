@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln_jun.nasl 3727 2016-07-19 09:35:33Z ckuerste $
+# $Id: gb_advantech_webaccess_mult_vuln_jun.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106108");
-  script_version("$Revision: 3727 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-19 11:35:33 +0200 (Tue, 19 Jul 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-06-24 11:38:08 +0700 (Fri, 24 Jun 2016)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("Advantech/WebAccess/installed");
 
   script_tag(name: "summary", value: "Advantech WebAccess is prone to multiple vulnerabilities.");
-  script_summary("Check the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

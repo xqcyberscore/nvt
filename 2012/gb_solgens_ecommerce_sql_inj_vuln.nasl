@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solgens_ecommerce_sql_inj_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_solgens_ecommerce_sql_inj_vuln.nasl 5792 2017-03-30 13:18:14Z cfi $
 #
 # SolGens E-Commerce 'cid' And 'pid' Parameters SQL Injection Vulnerability
 #
@@ -27,20 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802387");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5792 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:18:14 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 13:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("SolGens E-Commerce 'cid' And 'pid' Parameters SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108947/solgensecommerce-sql.txt");
 
-
-  script_summary("Check if SolGens E-Commerce is vulnerable to SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -65,27 +63,21 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Check for each possible path
 foreach dir (make_list_unique("/solgens", "/SolGens", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  sndReq = http_get(item:string(dir, "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
   ## Confirm the application
   if(egrep(pattern:">.?SolGens", string:rcvRes))

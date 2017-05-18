@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tiny_server_http_head_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: secpod_tiny_server_http_head_dos_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Tiny Server HTTP HEAD Request Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902820");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6018 $");
   script_bugtraq_id(52635);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-22 12:12:12 +0530 (Thu, 22 Mar 2012)");
   script_name("Tiny Server HTTP HEAD Request Remote Denial of Service Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18629");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/111024/tinyserver119-dos.txt");
 
-  script_summary("Check if Tiny HTTP Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

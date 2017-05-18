@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_auth_bypass_vuln_win.nasl 3153 2016-04-22 12:52:52Z antu123 $
+# $Id: gb_hp_support_assistant_auth_bypass_vuln_win.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # HP Support Assistant Authentication Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:hp:support_assistant";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807805");
-  script_version("$Revision: 3153 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-2245");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:52:52 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-20 17:05:22 +0530 (Wed, 20 Apr 2016)");
   script_name("HP Support Assistant Authentication Bypass Vulnerability (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://h20565.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c05031674");
 
-  script_summary("Check for the vulnerable version of HP Support Assistant on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

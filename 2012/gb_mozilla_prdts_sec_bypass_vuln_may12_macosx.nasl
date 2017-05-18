@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)
 #
@@ -48,12 +48,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802843);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-0475");
   script_bugtraq_id(53230);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:29:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026971");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-28.html");
 
-  script_summary("Check for the version of Mozilla Firefox/Thunderbird/SeaMonkey on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

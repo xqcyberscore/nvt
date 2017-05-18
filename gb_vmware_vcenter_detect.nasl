@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vcenter_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_vmware_vcenter_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # VMware ESX detection (Web)
 #
@@ -30,12 +30,11 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103659");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-02-06 17:30:38 +0100 (Wed, 06 Feb 2013)");
  script_name("VMware vCenter detection (Web)");
 
- script_summary("Checks for the presence of VMware vCenter (Web)");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -137,6 +136,9 @@ set_kb_item(name:"VMware_vCenter/installed", value:TRUE);
 set_kb_item(name:"VMware_vCenter/version", value: vers);
 set_kb_item(name:"VMware_vCenter/build", value: build);
 set_kb_item(name:"VMware_vCenter/port", value: port);
+
+# mandatory key for gb_apache_struts_CVE_2017_5638.nasl
+replace_kb_item(name:"www/action_jsp_do", value: TRUE);
 
 log_message(data: build_detection_report(app:"VMware vCenter Server", version:vers, install:port + '/tcp', cpe:cpe, concluded: rs),
             port:port);

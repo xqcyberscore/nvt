@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_dec12_macosx.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wireshark_mult_vuln_dec12_macosx.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - Dec12 (Mac OS X)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(803071);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-6052", "CVE-2012-6054", "CVE-2012-6055", "CVE-2012-6056",
                 "CVE-2012-6057");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:30:54 +0530 (Mon, 10 Dec 2012)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - Dec12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51422");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2012-34.html");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2012-39.html");
 
-  script_summary("Check for the version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

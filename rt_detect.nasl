@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rt_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: rt_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
 #
 # RT: Request Tracker Detection
 #
@@ -30,31 +30,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100385");
-  script_version("$Revision: 2837 $");
+  script_version("$Revision: 5744 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-12-09 13:16:50 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("RT: Request Tracker Detection");
 
-  tag_summary =
-"Detection of installed version of Request Tracker.
+  tag_summary = "Detection of installed version of Request Tracker.
 
-This script sends HTTP GET request and try to get the version from the
-response.";
-
+  This script sends HTTP GET request and try to get the version from the response.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Checks for the presence of RT: Request Tracker");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -62,37 +58,21 @@ response.";
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-
-## Get http port
 http_port = get_http_port(default:80);
-if(!http_port){
-  exit(0);
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
+foreach dir( make_list_unique( "/rt", "/tracker", cgi_dirs( port:http_port ) ) ) {
 
-foreach dir (make_list("/rt", "/tracker", cgi_dirs()))
-{
-  url = string(dir, "/index.html");
-  req = http_get(item:url, port:http_port);
-  buf = http_keepalive_send_recv(port:http_port, data:req, bodyonly:FALSE);
-  if( buf == NULL )continue;
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.html";
+  buf = http_get_cache( item:url, port:http_port );
+  if( buf == NULL ) continue;
 
   if(egrep(pattern: "&#187;&#124;&#171; RT.*Best Practical Solutions, LLC", string: buf, icase: TRUE))
   {
-    if(strlen(dir)>0) {
-      install=dir;
-    } else {
-      install=string("/");
-    }
-
     vers = string("unknown");
     ### try to get version
     version = eregmatch(string: buf, pattern: "&#187;&#124;&#171; RT ([0-9.]+)(rc[0-9]+)?",icase:TRUE);

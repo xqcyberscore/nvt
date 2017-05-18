@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_win.nasl 5336 2017-02-18 15:08:15Z cfi $
+# $Id: gb_vmware_prdts_detect_win.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # VMware products version detection (Windows)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800000");
-  script_version("$Revision: 5336 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 16:08:15 +0100 (Sat, 18 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"registry"); 
   script_name("VMWare products version detection (Windows)");
@@ -61,23 +61,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase, insloc, app)
-{
-  local_var cpe;
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(cpe)
-  {
-    register_product(cpe:cpe, location:insloc);
-    log_message(data: build_detection_report(app: app,
-                                           version: tmpVers,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: tmpVers));
-  }
-}
 
 ## Variable Initialization
 os_arch = "";
@@ -302,10 +285,8 @@ if(vmVer != NULL)
     app = "VMware ACE";
     tmpBase = "cpe:/a:vmware:ace:";
   }
-
-  register_cpe(tmpVers:vmwareVer, tmpExpr:"^([0-9.]+([a-z0-9]+)?)", tmpBase:tmpBase,
-                  insloc:vmPath, app: app );
-
+  register_and_report_cpe(app:app, ver:vmwareVer, base:tmpBase, expr:"^([0-9.]+([a-z0-9]+)?)",
+                          insloc:vmPath);
   if(vmwareBuild){
     set_kb_item(name:"VMware/" + product + "/Win/Build", value:vmwareBuild);
   }

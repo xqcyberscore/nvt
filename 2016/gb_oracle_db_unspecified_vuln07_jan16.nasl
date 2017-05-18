@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_unspecified_vuln07_jan16.nasl 5049 2017-01-20 07:12:49Z antu123 $
+# $Id: gb_oracle_db_unspecified_vuln07_jan16.nasl 5978 2017-04-19 12:01:36Z antu123 $
 #
 # Oracle Database Server Unspecified Vulnerability -07 Jan16
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807047");
-  script_version("$Revision: 5049 $");
+  script_version("$Revision: 5978 $");
   script_cve_id("CVE-2015-4755", "CVE-2016-3488", "CVE-2016-5572", "CVE-2016-5497",
-                "CVE-2016-5516", "CVE-2017-3240");
-  script_bugtraq_id(75882, 91905, 93634, 93631, 93626, 95477);
+                "CVE-2016-5516", "CVE-2017-3240", "CVE-2017-3567");
+  script_bugtraq_id(75882, 91905, 93634, 93631, 93626, 95477, 97873);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 08:12:49 +0100 (Fri, 20 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 14:01:36 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-01-25 14:59:25 +0530 (Mon, 25 Jan 2016)");
   script_name("Oracle Database Server Unspecified Vulnerability -07 Jan16");
 
@@ -60,7 +60,8 @@ if(description)
   http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html
   http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html
   http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html
-  http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
+  http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html
+  http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -70,6 +71,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
+  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2017-3236618.html#AppendixDB");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");

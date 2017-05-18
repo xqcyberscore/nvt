@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: myserver_post_dos.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: myserver_post_dos.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: myServer POST Denial of Service
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to the latest version of this software or use another we
 if(description)
 {
  script_id(14838);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"OSVDB", value:"10333");
  script_cve_id("CVE-2004-2517");
@@ -48,7 +48,6 @@ if(description)
  
 
  summary = "Test POST DoS on myServer";
- script_summary(summary);
  
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");

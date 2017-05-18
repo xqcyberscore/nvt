@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_DPC2420_12_12.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_DPC2420_12_12.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Cisco DPC2420 Cross Site Scripting / File Disclosure
 #
@@ -34,7 +34,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103620";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3859 $");
+ script_version ("$Revision: 5963 $");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
@@ -42,9 +42,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118711/Cisco-DPC2420-Cross-Site-Scripting-File-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-12-10 11:09:30 +0100 (Mon, 10 Dec 2012)");
- script_summary("Determine if it is possible to read the filename.gwc");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

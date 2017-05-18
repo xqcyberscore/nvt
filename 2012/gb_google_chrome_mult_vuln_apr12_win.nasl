@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_apr12_win.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_mult_vuln_apr12_win.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities - April 12 (Windows)
 #
@@ -50,13 +50,13 @@ tag_summary = "The host is installed with Google Chrome and is prone to multiple
 if(description)
 {
   script_id(802732);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2011-3058", "CVE-2011-3065", "CVE-2011-3064", "CVE-2011-3063",
                 "CVE-2011-3062", "CVE-2011-3061", "CVE-2011-3060", "CVE-2011-3059");
   script_bugtraq_id(52762);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-05 15:48:59 +0530 (Thu, 05 Apr 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - April 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48618/");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/03/stable-channel-release-and-beta-channel.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

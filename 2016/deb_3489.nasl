@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3489.nasl 2822 2016-03-10 05:48:42Z antu123 $
+# $Id: deb_3489.nasl 5732 2017-03-27 09:00:59Z teissa $
 # Auto-generated from advisory DSA 3489-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703489);
-    script_version("$Revision: 2822 $");
+    script_version("$Revision: 5732 $");
     script_cve_id("CVE-2014-3566");
     script_name("Debian Security Advisory DSA 3489-1 (lighttpd - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-10 06:48:42 +0100 (Thu, 10 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:55 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3489.html");
 
-    script_summary("Debian Security Advisory DSA 3489-1 (lighttpd - security update)");
 
     script_category(ACT_GATHER_INFO);
 

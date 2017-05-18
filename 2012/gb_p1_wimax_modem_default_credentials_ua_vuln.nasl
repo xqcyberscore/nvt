@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_p1_wimax_modem_default_credentials_ua_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_p1_wimax_modem_default_credentials_ua_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # P1 WiMAX Modem Default Credentials Unauthorized Access Vulnerability
 #
@@ -46,22 +46,23 @@ unauthorized access vulnerability.";
 if(description)
 {
   script_id(802476);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5816 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 15:53:36 +0530 (Mon, 15 Oct 2012)");
   script_name("P1 WiMAX Modem Default Credentials Unauthorized Access Vulnerability");
   script_xref(name : "URL" , value : "http://pastebin.com/pkuNfSJF");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Oct/99");
 
-  script_summary("Checks if login with default credentials is possible");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
@@ -70,7 +71,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -81,30 +81,14 @@ res = "";
 host = "";
 port = "";
 
-## Check the default port
 port = get_http_port(default:80);
-if(!port){
-  port = 80;
-}
-
-## Check port state
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Get Host Name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
+host = http_host_name( port:port );
 
-req = http_get(item:"/login.php", port:port);
-res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+res = http_get_cache(item:"/login.php", port:port);
 
 ## Confirm the application
 if(res =~ "HTTP/[0-9]\.[0-9] 200 .*" && "Server: lighttpd" >< res

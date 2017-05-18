@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_win_mar12.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_google_chrome_mult_vuln_win_mar12.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities (Windows) - Mar 12
 #
@@ -48,8 +48,8 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(903004);
-  script_version("$Revision: 3060 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_version("$Revision: 5999 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-26 16:40:40 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2011-3049", "CVE-2011-3052", "CVE-2011-3053", "CVE-2011-3054",
                 "CVE-2011-3055", "CVE-2011-3056", "CVE-2011-3057", "CVE-2011-3051",
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026841");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/03/stable-channel-update_21.html");
 
-  script_summary("Check for the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2012 SecPod");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-068_900057.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-068_900057.nasl 5934 2017-04-11 12:28:28Z antu123 $
 # Description: SMB Could Allow Remote Code Execution Vulnerability (957097)
 #
 # Authors:
@@ -23,31 +23,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ##############################################################################
 
-tag_impact = "Successful exploitation could allow attacker to replay the user's
-  credentials back to them and execute code in the context of the logged-on
-  user. They can get complete control of an affected system to view, change,
-  or delete data or creating new accounts with full user rights.
-  complete control of an affected system.
-  Impact Level: System";
-tag_affected = "Microsoft Windows 2K Service Pack 4 and prior.
-  Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2003 Service Pack 2 and prior.
-  Microsoft Windows Vista Service Pack 1 and prior.
-  Microsoft Windows 2008 Server Service Pack 1 and prior.";
-tag_insight = "Issue exists due to the way that Server Message Block (SMB) Protocol handles
-  NTLM credentials when a user connects to an attacker's SMB server.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download
-  and update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-068.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-068.";
-
-
 if(description)
 {
   script_id(900057);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-11-12 16:32:06 +0100 (Wed, 12 Nov 2008)");
   script_bugtraq_id(7385);
   script_cve_id("CVE-2008-4037");
@@ -63,36 +43,39 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow attacker to replay the user's
+  credentials back to them and execute code in the context of the logged-on
+  user. They can get complete control of an affected system to view, change,
+  or delete data or creating new accounts with full user rights.
+  complete control of an affected system.
+
+  Impact Level: System");
+
+  script_tag(name : "affected" , value : "Microsoft Windows 2K Service Pack 4 and prior.
+  Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows 2003 Service Pack 2 and prior.
+  Microsoft Windows Vista Service Pack 1 and prior.
+  Microsoft Windows 2008 Server Service Pack 1 and prior.");
+
+  script_tag(name : "insight" , value : "Issue exists due to the way that Server Message Block (SMB) Protocol handles
+  NTLM credentials when a user connects to an attacker's SMB server.");
+
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download
+  and update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms08-068.mspx");
+
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS08-068.");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3, win2008:2, winVista:2) <= 0){
   exit(0);
@@ -104,11 +87,10 @@ if(hotfix_missing(name:"957097") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = get_file_version(sysPath, file_name:"drivers\Mrxsmb.sys");
+  sysVer = fetch_file_version(sysPath, file_name:"drivers\Mrxsmb.sys");
   if(sysVer)
   {
     # Windows 2K
@@ -176,11 +158,10 @@ if(sysPath)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = get_file_version(sysPath, file_name:"System32\drivers\Mrxsmb10.sys");
+  sysVer = fetch_file_version(sysPath, file_name:"drivers\Mrxsmb10.sys");
   if(sysVer)
   {
     # Windows Vista

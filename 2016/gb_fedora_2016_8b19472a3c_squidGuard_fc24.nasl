@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808517");
-  script_version("$Revision: 5360 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:43:30 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-02 06:38:22 +0200 (Sat, 02 Jul 2016)");
   script_cve_id("CVE-2015-8936");
   script_tag(name:"cvss_base", value:"4.3");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-8b19472a3c");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4QF4BJYKWMIZPSBONJJGLRXTCW2ESUDS");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of squidGuard");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

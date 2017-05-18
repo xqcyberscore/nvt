@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: awstats_input_vuln.nasl 5630 2017-03-20 15:42:16Z cfi $
+# $Id: awstats_input_vuln.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # AWStats rawlog plugin logfile parameter input validation vulnerability
 #
@@ -30,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14347");
-  script_version("$Revision: 5630 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:42:16 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(10950);
   script_name("AWStats rawlog plugin logfile parameter input validation vulnerability");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_summary("Determines the presence of AWStats awstats.pl");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

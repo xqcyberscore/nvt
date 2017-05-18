@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tversity_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_tversity_dir_trav_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # TVersity Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802619");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5977 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:12:12 +0530 (Thu, 15 Mar 2012)");
   script_name("TVersity Directory Traversal Vulnerability");
 
@@ -38,7 +38,6 @@ if(description)
   script_xref(name:"URL", value:"http://aluigi.org/adv/tversity_1-adv.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/110802/tversity_1-adv.txt");
 
-  script_summary("Check if TVersity is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

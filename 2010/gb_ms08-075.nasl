@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-075.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ms08-075.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Windows Search Remote Code Execution Vulnerability (959349)
 #
@@ -24,27 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the remote attackers attackers to execute
-  arbitrary code.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Windows Vista Service Pack 1 and prior.
-  Microsoft Windows Server 2008 Service Pack 1 and prior.";
-tag_insight = "The flaws are due to
-  - an error in Windows Explorer that does not correctly free memory when
-    saving Windows Search files.
-  - an error in Windows Explorer that does not correctly interpret
-    parameters when parsing the search-ms protocol.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms08-075.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-075.";
-
 if(description)
 {
   script_id(801483);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-14 06:32:32 +0100 (Tue, 14 Dec 2010)");
   script_cve_id("CVE-2008-4268", "CVE-2008-4269");
   script_bugtraq_id(32651, 32652);
@@ -63,11 +47,21 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will let the remote attackers attackers to execute
+  arbitrary code.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Microsoft Windows Vista Service Pack 1 and prior.
+  Microsoft Windows Server 2008 Service Pack 1 and prior.");
+  script_tag(name : "insight" , value : "The flaws are due to
+  - an error in Windows Explorer that does not correctly free memory when
+    saving Windows Search files.
+  - an error in Windows Explorer that does not correctly interpret
+    parameters when parsing the search-ms protocol.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms08-075.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS08-075.");
   exit(0);
 }
 
@@ -77,20 +71,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
 
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(winVista:2, win2008:2) <= 0){
   exit(0);
@@ -100,53 +81,10 @@ if(hotfix_check_sp(winVista:2, win2008:2) <= 0){
 if(hotfix_missing(name:"958624") == 1)
 {
   ## Get System32 path
-  sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+  sysPath = smb_get_system32root();
   if(sysPath)
   {
-    exeVer = get_file_version(sysPath, file_name:"Explorer.exe");
-    if(exeVer)
-    {
-      # Windows Vista
-      if(hotfix_check_sp(winVista:2) > 0)
-      {
-        SP = get_kb_item("SMB/WinVista/ServicePack");
-        if("Service Pack 1" >< SP)
-        {
-          # Grep for Explorer.exe version < 6.0.6001.18164
-          if(version_is_less(version:exeVer, test_version:"6.0.6001.18164")){
-            security_message(0);
-          }
-           exit(0);
-        }
-      }
-
-      # Windows Server 2008
-      else if(hotfix_check_sp(win2008:2) > 0)
-      {
-        SP = get_kb_item("SMB/Win2008/ServicePack");
-        if("Service Pack 1" >< SP)
-        {
-          # Grep for Explorer.exe version < 6.0.6001.18164
-          if(version_is_less(version:exeVer, test_version:"6.0.6001.18164")){
-            security_message(0);
-          }
-          exit(0);
-        }
-      }
-    }
-  }
-}
-
-## Check Hotfix MS08-075
-if(hotfix_missing(name:"958623") == 1)
-{
-  ## Get System32 path
-  sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
-  if(sysPath)
-  {
-    dllVer = get_file_version(sysPath, file_name:"System32\shell32.dll");
+    dllVer = fetch_file_version(sysPath, file_name:"shell32.dll");
     if(dllVer)
     {
       # Windows Vista

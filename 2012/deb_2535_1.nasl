@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2535_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2535_1.nasl 5888 2017-04-07 09:01:53Z teissa $
 # Description: Auto-generated from advisory DSA 2535-1 (rtfm)
 #
 # Authors:
@@ -49,13 +49,12 @@ if(description)
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_cve_id("CVE-2012-2768");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5888 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:33:27 -0400 (Thu, 30 Aug 2012)");
  script_name("Debian Security Advisory DSA 2535-1 (rtfm)");
 
 
- script_summary("Debian Security Advisory DSA 2535-1 (rtfm)");
 
  script_category(ACT_GATHER_INFO);
 

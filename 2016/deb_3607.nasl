@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3607.nasl 3632 2016-06-30 10:16:55Z antu123 $
+# $Id: deb_3607.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3607-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703607);
-    script_version("$Revision: 3632 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2015-7515", "CVE-2016-0821", "CVE-2016-1237", "CVE-2016-1583",
                   "CVE-2016-2117", "CVE-2016-2143", "CVE-2016-2184", "CVE-2016-2185",
                   "CVE-2016-2186", "CVE-2016-2187", "CVE-2016-3070", "CVE-2016-3134",
@@ -42,7 +42,7 @@ if(description)
                   "CVE-2016-4913", "CVE-2016-4997", "CVE-2016-4998", "CVE-2016-5243",
                   "CVE-2016-5244");
     script_name("Debian Security Advisory DSA 3607-1 (linux - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-30 12:16:55 +0200 (Thu, 30 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-06-28 00:00:00 +0200 (Tue, 28 Jun 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3607.html");
 
-    script_summary("Debian Security Advisory DSA 3607-1 (linux - security update)");
 
     script_category(ACT_GATHER_INFO);
 

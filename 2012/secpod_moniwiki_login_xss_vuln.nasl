@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moniwiki_login_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: secpod_moniwiki_login_xss_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # MoniWiki 'login_id' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902794");
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5950 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:36:32 +0530 (Tue, 21 Feb 2012)");
   script_name("MoniWiki 'login_id' Cross-Site Scripting Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/48109");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109902/moniwiki-xss.txt");
 
-  script_summary("Check if MoniWiki is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");

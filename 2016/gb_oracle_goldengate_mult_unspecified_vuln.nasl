@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_goldengate_mult_unspecified_vuln.nasl 2738 2016-02-26 11:02:13Z antu123 $
+# $Id: gb_oracle_goldengate_mult_unspecified_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # Oracle GoldenGate Multiple Unspecified Vulnerabilities Feb16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:goldengate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807249");
-  script_version("$Revision: 2738 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-0452", "CVE-2016-0451", "CVE-2016-0450");
   script_bugtraq_id(81122, 81125, 81117);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 12:02:13 +0100 (Fri, 26 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-02-12 13:49:29 +0530 (Fri, 12 Feb 2016)");
   script_name("Oracle GoldenGate Multiple Unspecified Vulnerabilities Feb16 (Windows)");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
-  script_summary("Check for the vulnerable version of Oracle GoldenGate on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

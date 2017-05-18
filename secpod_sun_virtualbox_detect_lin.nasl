@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_virtualbox_detect_lin.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_sun_virtualbox_detect_lin.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Oracle VirtualBox Version Detection (Linux)
 #
@@ -32,29 +32,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.901051";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 5499 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.901051");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Oracle VirtualBox Version Detection (Linux)");
 
-  tag_summary =
-
-  "Detection of installed versions of Sun/Oracle VirtualBox,
+  script_tag(name : "summary" , value : "Detection of installed versions of Sun/Oracle VirtualBox,
 a hypervisor tool, on Linux systems.
 
 The script logs in via ssh, searches for executables of VirtualBox and
-queries the found executables via command line option '--version'.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+queries the found executables via command line option '--version'.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
@@ -68,22 +62,6 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-function register_cpe(tmpVers, tmpExpr, tmpBase, binFile){
-  local_var cpe;
-  cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-  if(cpe)
-    register_product(cpe:cpe, location:binFile, nvt:SCRIPT_OID);
-  ## Build Report
-    log_message(data: build_detection_report(app: "Oracle/Sun Virtual Box",
-                                             version: tmpVers,
-                                             install: binFile,
-                                             cpe: cpe,
-                                             concluded: tmpVers));
-    exit(0);
-
-
-}
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
@@ -103,15 +81,15 @@ foreach executableFile (getPath)
       set_kb_item(name:"Sun/VirtualBox/Lin/Ver", value:Ver);
       if(version_is_less(version:Ver, test_version:"3.2.0"))
       {
-        register_cpe(tmpVers:Ver, tmpExpr:"^(3\..*)",
-                   tmpBase:"cpe:/a:sun:virtualbox:", binFile:executableFile);
-        register_cpe(tmpVers:Ver, tmpExpr:"^([0-2]\..*)",
-                   tmpBase:"cpe:/a:sun:xvm_virtualbox:", binFile:executableFile);
+        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver,
+                                base:"cpe:/a:sun:virtualbox:", expr:"^(3\..*)", insloc:executableFile);
+        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver, 
+                                base:"cpe:/a:sun:xvm_virtualbox:", expr:"^([0-2]\..*)", insloc:executableFile);
       }
       else
       {
-        register_cpe(tmpVers:Ver, tmpExpr:"^([3-9]\..*)",
-                   tmpBase:"cpe:/a:oracle:vm_virtualbox:", binFile:executableFile);
+        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver, 
+                                base:"cpe:/a:oracle:vm_virtualbox:", expr:"^([3-9]\..*)", insloc:executableFile);
       }
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_access_bypass_vuln.nasl 4193 2016-09-30 13:08:26Z antu123 $
+# $Id: gb_cisco_apic_access_bypass_vuln.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability
 #
@@ -32,10 +32,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.809051");
   script_cve_id("CVE-2015-6424");
   script_bugtraq_id(79410);
-  script_version ("$Revision: 4193 $");
+  script_version ("$Revision: 5675 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 15:08:26 +0200 (Fri, 30 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-21 19:23:26 +0530 (Wed, 21 Sep 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cisco Application Policy Infrastructure Controller Access Bypass Vulnerability");
@@ -67,7 +67,6 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151216-apic");
-  script_summary("Check for the vulnerable version of Cisco Application Policy Infrastructure Controller Software");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("CISCO");

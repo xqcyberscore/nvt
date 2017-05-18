@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_mult_vuln_jan12.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_was_mult_vuln_jan12.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)
 #
@@ -44,12 +44,12 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 if(description)
 {
   script_id(802412);
-  script_version("$Revision: 3775 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2011-5066", "CVE-2011-5065", "CVE-2011-1377");
   script_bugtraq_id(51560, 51559, 50310);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-18 17:27:41 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/46469");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1PM43792");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM WebSphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

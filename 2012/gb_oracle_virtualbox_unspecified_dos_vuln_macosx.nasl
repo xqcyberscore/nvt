@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_dos_vuln_macosx.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_oracle_virtualbox_unspecified_dos_vuln_macosx.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Oracle VM VirtualBox Unspecified Denial of Service Vulnerability (Mac OS X)
 #
@@ -44,19 +44,18 @@ tag_summary = "This host is installed with Oracle VM VirtualBox and is prone to
 if(description)
 {
   script_id(803104);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-3221");
   script_bugtraq_id(56045);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-19 15:10:56 +0530 (Fri, 19 Oct 2012)");
   script_name("Oracle VM VirtualBox Unspecified Denial of Service Vulnerability (Mac OS X)");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51007/");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
 
-  script_summary("Check for the version of Oracle VM VirtualBox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

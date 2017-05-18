@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonexis_51994.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_sonexis_51994.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities
 #
@@ -40,19 +40,15 @@ if (description)
 {
  script_id(103420);
  script_bugtraq_id(51994);
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5700 $");
  script_name("Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51994");
  script_xref(name : "URL" , value : "http://pentest.snosoft.com/2012/02/13/netragard-uncovers-0-days-in-sonexis-conferencemanager/");
  script_xref(name : "URL" , value : "http://www.sonexis.com/products/index.asp");
-
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-15 10:59:59 +0100 (Wed, 15 Feb 2012)");
- script_summary("Determine if installed Sonexis ConferenceManager is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -60,38 +56,32 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list(cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/Login/HostLogIn.asp?ie=0";
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/Login/HostLogIn.asp?ie=0"); 
-
-  if(http_vuln_check(port:port, url:url,pattern:"Sonexis ConferenceManager</title>")) {
-
-    url = string(dir, "/admin/backup/settings.asp");
-
-    if(http_vuln_check(port:port, url:url,pattern:"External Location for Download",extra_check:make_list("User ID:","Password:","<Title>Upload"))) {
-      security_message(port:port);
-      exit(0);
+  if( http_vuln_check( port:port, url:url, pattern:"Sonexis ConferenceManager</title>" ) ) {
+    url = dir + "/admin/backup/settings.asp";
+    if( http_vuln_check( port:port, url:url, pattern:"External Location for Download", extra_check:make_list( "User ID:", "Password:", "<Title>Upload" ) ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }  
-     
-
   }
 }
 
-exit(0);
-
+exit( 0 );

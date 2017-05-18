@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809185");
-  script_version("$Revision: 3982 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-07 07:01:29 +0200 (Wed, 07 Sep 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-07 10:08:45 +0530 (Wed, 07 Sep 2016)");
   script_cve_id("CVE-2016-3120");
   script_tag(name:"cvss_base", value:"4.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-f405b25923");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/AQVTYXZFF3YXOB23GUUNCJ5EATOZKGSL");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

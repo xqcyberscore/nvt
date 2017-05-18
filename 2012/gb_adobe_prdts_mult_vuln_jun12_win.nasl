@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_jun12_win.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_adobe_prdts_mult_vuln_jun12_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities June-2012 (Windows)
 #
@@ -44,19 +44,18 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(802871);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-20 10:16:16 +0530 (Wed, 20 Jun 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities June-2012 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49388");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027139");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-14.html");
-  script_summary("Check for the version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

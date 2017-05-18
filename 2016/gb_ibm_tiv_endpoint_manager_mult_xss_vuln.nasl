@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tiv_endpoint_manager_mult_xss_vuln.nasl 4598 2016-11-22 12:11:19Z cfi $
+# $Id: gb_ibm_tiv_endpoint_manager_mult_xss_vuln.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # IBM Tivoli Endpoint Manager Multiple Cross Site Scripting Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:tivoli_endpoint_manager";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809365");
-  script_version("$Revision: 4598 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2014-6137", "CVE-2014-6113");
   script_bugtraq_id(72559, 80071);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 13:11:19 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-18 13:23:56 +0530 (Tue, 18 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("IBM Tivoli Endpoint Manager Multiple Cross Site Scripting Vulnerabilities");
@@ -68,7 +68,6 @@ if (description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/130341");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21692516");
 
-  script_summary("Check for XSS in IBM Tivoli Endpoint Manager");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

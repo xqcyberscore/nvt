@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_illustrator_mult_unspecified_vuln_win.nasl 5374 2017-02-20 16:36:11Z cfi $
+# $Id: gb_adobe_illustrator_mult_unspecified_vuln_win.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Adobe Illustrator Multiple Unspecified Vulnerabilities (Windows)
 #
@@ -42,13 +42,13 @@ tag_summary = "This host is installed with Adobe Illustrator and is prone
 if(description)
 {
   script_id(802790);
-  script_version("$Revision: 5374 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-2026", "CVE-2012-2025", "CVE-2012-2024", "CVE-2012-2023",
                 "CVE-2012-0780", "CVE-2012-2042");
   script_bugtraq_id(53422);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:36:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-16 17:55:09 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Illustrator Multiple Unspecified Vulnerabilities (Windows)");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027047");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-10.html");
 
-  script_summary("Check for the version of Adobe Illustrator on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

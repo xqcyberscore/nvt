@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln03_july16_win.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_php_mult_vuln03_july16_win.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # PHP Multiple Vulnerabilities - 03 - Jul16 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808602");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5867 $");
   script_cve_id("CVE-2016-4537", "CVE-2016-4538", "CVE-2016-4539", "CVE-2016-4540",
                 "CVE-2016-4541", "CVE-2016-4542", "CVE-2016-4543", "CVE-2016-4544");
   script_bugtraq_id(89844, 90172, 90173, 90174);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 12:14:00 +0530 (Thu, 14 Jul 2016)");
   script_name("PHP Multiple Vulnerabilities - 03 - Jul16 (Windows)");
 
@@ -81,7 +81,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.php.net/ChangeLog-7.php");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of PHP on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cupsd_ipp_use_after_free_dos_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_cupsd_ipp_use_after_free_dos_vuln.nasl 5861 2017-04-05 05:45:17Z teissa $
 #
 # CUPS IPP Use-After-Free Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apple:cups";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800182");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5861 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 07:45:17 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-11-18 06:30:08 +0100 (Thu, 18 Nov 2010)");
   script_bugtraq_id(44530);
   script_cve_id("CVE-2010-2941");
@@ -76,14 +76,14 @@ if(description)
 }
 
 include("host_details.inc");
+include("http_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-## Get Host IP
-if( ! host = get_host_ip() ) exit( 0 );
-
 ## Open TCP Socket
 if( ! soc = open_sock_tcp( port ) ) exit( 0 );
+
+host = http_host_name( port:port );
 
 ## Construct POST Data Packet
 post_data = string( 'POST /ipp/ HTTP/1.1\r\n',

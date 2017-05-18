@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_aug12_macosx.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_prdts_mult_vuln_aug12_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Adobe Reader Multiple Vulnerabilities - Mac OS X
 #
@@ -30,7 +30,7 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802937";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-4149", "CVE-2012-4148", "CVE-2012-4147", "CVE-2012-2051",
                 "CVE-2012-2050", "CVE-2012-4160", "CVE-2012-2049", "CVE-2012-4159",
                 "CVE-2012-4158", "CVE-2012-4157", "CVE-2012-4156", "CVE-2012-4155",
@@ -41,7 +41,7 @@ if(description)
                     55022, 55023);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-20 11:01:35 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities - Mac OS X");
 
@@ -82,7 +82,6 @@ For updates refer to http://www.adobe.com";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50281");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-16.html");
-  script_summary("Check for the version of Adobe Reader on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

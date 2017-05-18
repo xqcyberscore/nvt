@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_http_manager_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_asterisk_http_manager_bof_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Asterisk HTTP Manager Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802838");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-1184");
   script_bugtraq_id(52815);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-23 16:56:33 +0530 (Mon, 23 Apr 2012)");
   script_name("Asterisk HTTP Manager Buffer Overflow Vulnerability");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name:"URL", value:"https://issues.asterisk.org/jira/browse/ASTERISK-19542");
   script_xref(name:"URL", value:"http://downloads.asterisk.org/pub/security/AST-2012-003.html");
 
-  script_summary("Check if Asterisk HTTP Manager is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

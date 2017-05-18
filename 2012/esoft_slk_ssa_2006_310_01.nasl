@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2006_310_01.nasl 5665 2017-03-21 12:51:19Z cfi $
+# $Id: esoft_slk_ssa_2006_310_01.nasl 5963 2017-04-18 09:02:14Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -49,16 +49,15 @@ if(description)
 {
  script_id(57698);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 13:51:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_cve_id("CVE-2006-4339");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 5665 $");
+ script_version("$Revision: 5963 $");
  name = "Slackware Advisory SSA:2006-310-01 bind";
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2006-310-01 bind");
 
  script_category(ACT_GATHER_INFO);
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809251");
-  script_version("$Revision: 4186 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 06:45:51 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-17 05:12:01 +0200 (Sat, 17 Sep 2016)");
   script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5173", "CVE-2016-5174", "CVE-2016-5175");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-b15185b72a");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6LOPNOLUNTHMVCHW6LK3Y7PXMGNGE42B");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of chromium");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

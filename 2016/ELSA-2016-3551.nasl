@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3551.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-3551.nasl 5745 2017-03-28 09:01:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122928");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5745 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:45 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3551");
 script_tag(name: "insight", value: "ELSA-2016-3551 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-118.6.1]- skbuff: skb_segment: orphan frags before copying (Dongli Zhang) [Orabug: 23018911] - RDS/IB: VRPC DELAY / OSS RECONNECT CAUSES 5 MINUTE STALL ON PORT FAILURE (Venkat Venkatsubra) [Orabug: 22888920] - mlx4_core: Introduce restrictions for PD update (Ajaykumar Hotchandani) - filename should be destroyed via final_putname() instead of __putname() (John Sobecki) [Orabug: 22346320] - RDS: Fix the atomicity for congestion map update (Wengang Wang) [Orabug: 23141554] - sctp: Prevent soft lockup when sctp_accept() is called during a timeout event (Karl Heiss) [Orabug: 23222753] {CVE-2015-8767}[3.8.13-118.5.1]- x86_64: expand kernel stack to 16K (Minchan Kim) [Orabug: 21140371] - iommu/vt-d: add quirk for broken interrupt remapping on 55XX chipsets (Neil Horman) [Orabug: 22534160] - xen: remove unneeded variables and one constant (Daniel Kiper) [Orabug: 22288700] - Revert 'x86/xen: delay construction of mfn_list_list' (Daniel Kiper) [Orabug: 22288700] - ocfs2/dlm: fix misuse of list_move_tail() in dlm_run_purge_list() (Tariq Saeed) [Orabug: 22898384] - ocfs2/dlm: do not purge lockres that is queued for assert master (Xue jiufei) [Orabug: 22898384]"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-3551");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

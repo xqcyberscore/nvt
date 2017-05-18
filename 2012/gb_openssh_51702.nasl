@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_51702.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_51702.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # openssh-server Forced Command Handling Information Disclosure Vulnerability
 #
@@ -36,13 +36,12 @@ if (description)
  script_cve_id("CVE-2012-0814");
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 4336 $");
+ script_version ("$Revision: 5950 $");
 
  script_name("openssh-server Forced Command Handling Information Disclosure Vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-06-28 11:05:31 +0200 (Thu, 28 Jun 2012)");
- script_summary("Determine if installed OpenSSH version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

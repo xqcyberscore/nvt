@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_mult_xss_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_manageengine_admanager_plus_mult_xss_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Zoho ManageEngine ADManager Plus Multiple Cross Site Scripting Vulnerabilities
 #
@@ -47,12 +47,12 @@ prone to multiple cross site scripting vulnerabilities.";
 if(description)
 {
   script_id(802587);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5950 $");
   script_cve_id("CVE-2012-1049");
   script_bugtraq_id(51893);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:14:53 +0530 (Wed, 08 Feb 2012)");
   script_name("Zoho ManageEngine ADManager Plus Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47887/");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109528/ZSL-2012-5070.txt");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5070.php");
 
-  script_summary("Check if Zoho ManageEngine ADManager Plus is prone to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

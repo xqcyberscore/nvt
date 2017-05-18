@@ -33,8 +33,8 @@ if(description)
 {
  script_id(110001);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4685 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-06 10:14:19 +0100 (Tue, 06 Dec 2016) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-02-02 13:26:27 +0100 (Wed, 02 Feb 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("arachni (NASL wrapper)");
@@ -62,10 +62,14 @@ if(description)
  script_add_preference(name: 'Report broken arachni installation', value: 'no', type: 'checkbox');
  script_dependencies("find_service.nasl","httpver.nasl","http_login.nasl","no404.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_timeout(0); 
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
+
+include("http_func.inc");
 
 # Install Notes
 # Before running this wrapper with Openvas make sure that:
@@ -106,9 +110,7 @@ available in the PATH variable defined for your environment.';
 #user = get_kb_item("http/login");
 #pass = get_kb_item("http/login");
 
-port = get_kb_item("Services/www");
-if (! port) port = 80;
-if (! get_port_state(port)) exit(0);
+port = get_http_port( default:80 );
 
 repfilename =  get_tmp_dir() + "openvas-arachni-" + rand() + "-" + get_host_ip() + "-" + port + "-report.txt";
 

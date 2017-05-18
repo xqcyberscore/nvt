@@ -37,12 +37,11 @@ a password to log in.";
 if(description) {
   script_id(90003);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 3303 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:22:42 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2007-07-31 16:52:22 +0200 (Tue, 31 Jul 2007)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SLAD Fetch Results");
-  script_summary("Connects to SLAD to fetch installed plugins");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2005 Greenbone Networks GmbH");
   script_family("General");

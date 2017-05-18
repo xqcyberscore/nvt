@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: localweb2k.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: localweb2k.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: LocalWeb2000 remote read
 #
 # Authors:
@@ -40,8 +40,8 @@ if(description)
 
 {
 	script_id(11005);
-	script_version("$Revision: 5390 $");
-	script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+	script_version("$Revision: 6063 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 	script_bugtraq_id(2268, 4820, 7947);
  	script_cve_id("CVE-2001-0189");
@@ -50,7 +50,6 @@ if(description)
 	script_name("LocalWeb2000 remote read");
 
 
-	script_summary("Checks for LocalWeb2000");
 
 	script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

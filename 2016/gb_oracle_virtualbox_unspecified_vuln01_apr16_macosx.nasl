@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_vuln01_apr16_macosx.nasl 3226 2016-05-04 11:35:23Z antu123 $
+# $Id: gb_oracle_virtualbox_unspecified_vuln01_apr16_macosx.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Oracle Virtualbox Unspecified Vulnerability-01 Apr16 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807810");
-  script_version("$Revision: 3226 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-0678");
   script_tag(name:"cvss_base", value:"4.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-04 13:35:23 +0200 (Wed, 04 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-25 18:10:27 +0530 (Mon, 25 Apr 2016)");
   script_name("Oracle Virtualbox Unspecified Vulnerability-01 Apr16 (Mac OS X)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuapr2016v3-2985753.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_oracle_virtualbox_detect_macosx.nasl");

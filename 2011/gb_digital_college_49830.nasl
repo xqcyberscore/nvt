@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_digital_college_49830.nasl 5646 2017-03-21 09:37:44Z cfi $
+# $Id: gb_digital_college_49830.nasl 5719 2017-03-24 13:29:29Z cfi $
 #
 # Digital College 'basepath' Parameter Multiple Remote File Include Vulnerabilities
 #
@@ -41,21 +41,17 @@ affected.";
 if (description)
 {
  script_id(103280);
- script_version("$Revision: 5646 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:37:44 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5719 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:29:29 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-09-29 13:17:07 +0200 (Thu, 29 Sep 2011)");
  script_bugtraq_id(49830);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("Digital College 'basepath' Parameter Multiple Remote File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49830");
  script_xref(name : "URL" , value : "http://digitalcollege.magtrb.com/");
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/105353/digitalcollege-rfi.txt");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed Digital College is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -67,30 +63,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/dc","/college",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
+foreach dir( make_list_unique( "/dc", "/college", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  foreach file( keys( files ) ) {
+
     url = string(dir, "/includes/tiny_mce/plugins/imagemanager/config.php?basepath=/",files[file],"%00"); 
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

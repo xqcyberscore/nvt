@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tcp_sequence_approx_dos_vuln.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: secpod_tcp_sequence_approx_dos_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # TCP Sequence Number Approximation Reset Denial of Service Vulnerability
 #
@@ -28,14 +28,13 @@ if(description)
 {
   script_id(902815);
   script_bugtraq_id(10183);
-  script_version("$Revision: 5309 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2004-0230");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-01 15:15:15 +0530 (Thu, 01 Mar 2012)");
   script_name("TCP Sequence Number Approximation Reset Denial of Service Vulnerability");
-  script_summary("Determine TCP Sequence Number Approximation Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shoreware_director_detect.nasl 2834 2016-03-11 08:39:36Z benallard $
+# $Id: gb_shoreware_director_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
 #
 # ShoreTel ShoreWare Director Detection
 #
@@ -27,25 +27,22 @@
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103813";   
 
-if (description)
+if(description)
 {
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2834 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:39:36 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5736 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-10-15 16:03:11 +0200 (Tue, 15 Oct 2013)");
  script_name("ShoreTel ShoreWare Director Detection");
 
-   tag_summary =
-"The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
+ tag_summary = "The script sends a connection request to the server and attempts to
+ extract the version number from the reply.";
 
+ script_tag(name : "summary" , value : tag_summary);
 
-  script_tag(name : "summary" , value : tag_summary);
-
- script_summary("Checks for the presence of ShoreTel ShoreWare Director");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -55,28 +52,20 @@ extract the version number from the reply.";
  exit(0);
 }
 
-
 include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-if(!port){
-    port = 80;
-}
 
-if(!get_port_state(port)){
-    exit(0);
-}
+foreach dir( make_list_unique( "/ShoreWareDirector/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/ShoreWareDirector/",cgi_dirs());
-
-foreach dir (dirs) {
-
-  url = dir + '/';
-  req = http_get(item:url, port:port);
-  buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache( item:url, port:port );
+  if( buf == NULL ) continue;
 
   if("ShoreWare Director Login</TITLE>" >< buf && "ShoreTel, Inc" >< buf && "password" >< buf) {
 
@@ -89,8 +78,8 @@ foreach dir (dirs) {
     if(!isnull(_build[1])) build = _build[1];
 
     set_kb_item(name:"ShoreWare_Director/installed", value:TRUE);
-    set_kb_item(name: string("www/", port, "/ShoreWare_Director/version"), value: string(vers," under ",dir));
-    set_kb_item(name: string("www/", port, "/ShoreWare_Director/build"), value: build);;
+    set_kb_item(name: string("www/", port, "/ShoreWare_Director/version"), value: string(vers," under ",install));
+    set_kb_item(name: string("www/", port, "/ShoreWare_Director/build"), value: build);
 
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:shoretel:shoreware_director:");
     if(isnull(cpe))
@@ -99,8 +88,8 @@ foreach dir (dirs) {
     report_vers = vers; 
     if(build) report_vers += ', Build: ' + build;
 
-    register_product(cpe:cpe, location:dir, nvt:SCRIPT_OID, port:port);
-    log_message(data: build_detection_report(app:"ShoreWare_Director",version:report_vers,install:dir,cpe:cpe,concluded: version[0]),
+    register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+    log_message(data: build_detection_report(app:"ShoreWare_Director",version:report_vers,install:install,cpe:cpe,concluded: version[0]),
                 port);
 
 

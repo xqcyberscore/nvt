@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_sec_bypass_n_dos_vuln_lin.nasl 4423 2016-11-07 04:52:44Z antu123 $
+# $Id: gb_oracle_virtualbox_mult_sec_bypass_n_dos_vuln_lin.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Oracle Virtualbox Multiple Security Bypass And DoS Vulnerabilities (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809076");
-  script_version("$Revision: 4423 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2016-5501", "CVE-2016-6304", "CVE-2016-5610", "CVE-2016-5538",
                 "CVE-2016-5613", "CVE-2016-5611", "CVE-2016-5608");
   script_bugtraq_id(93687, 93150, 93711, 93697, 93728, 93744, 93718);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C"); 
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 05:52:44 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-21 14:40:28 +0530 (Fri, 21 Oct 2016)");
   script_name("Oracle Virtualbox Multiple Security Bypass And DoS Vulnerabilities (Linux)");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpuoct2016-2881722.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: inn_buff_overflow.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: inn_buff_overflow.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: INN buffer overflow
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Upgrade to version 2.2.2 of this service or newer";
 if(description)
 {
  script_id(14683);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,7 +48,6 @@ if(description)
  
 
  summary = "Checks INN version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

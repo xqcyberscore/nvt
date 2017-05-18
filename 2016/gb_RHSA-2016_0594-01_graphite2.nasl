@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871593");
-  script_version("$Revision: 3122 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-20 07:16:53 +0200 (Wed, 20 Apr 2016) $");
+  script_version("$Revision: 5782 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-06 05:00:33 +0200 (Wed, 06 Apr 2016)");
   script_cve_id("CVE-2016-1521", "CVE-2016-1522", "CVE-2016-1523", "CVE-2016-1526");
   script_tag(name:"cvss_base", value:"9.3");
@@ -62,7 +62,6 @@ CVE-2016-1523, CVE-2016-1526)
   script_xref(name: "RHSA", value: "2016:0594-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-April/msg00010.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of graphite2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

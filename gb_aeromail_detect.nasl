@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aeromail_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_aeromail_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
 #
 # AeroMail Detection
 #
@@ -27,18 +27,15 @@
 tag_summary = "This host is running AeroMail, a web-based e-mail client written in
 PHP.";
 
-if (description)
+if(description)
 {
- 
  script_id(103204);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2835 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5721 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-08-17 15:40:19 +0200 (Wed, 17 Aug 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("AeroMail Detection");
-
- script_summary("Checks for the presence of AeroMail");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
@@ -51,7 +48,6 @@ if (description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -61,26 +57,18 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.103204";
 SCRIPT_DESC = "AeroMail Detection";
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/aeromail","/mail",cgi_dirs());
+foreach dir( make_list_unique( "/aeromail", "/mail", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
- url = string(dir, "/index.php");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/index.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if(egrep(pattern: 'realm="AeroMail"', string: buf, icase: FALSE))
  {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
 
     vers = string("unknown");
     ### try to get version 
@@ -103,12 +91,9 @@ foreach dir (dirs) {
     info += string("' was detected on the remote host in the following directory(s):\n\n");
     info += string(install, "\n");
 
-       if(report_verbosity > 0) {
-         log_message(port:port,data:info);
-       }
-       exit(0);
-
- }
+    log_message(port:port,data:info);
+    exit(0);
+  }
 }
-exit(0);
 
+exit(0);

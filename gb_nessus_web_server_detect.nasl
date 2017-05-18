@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nessus_web_server_detect.nasl 2560 2016-02-02 14:24:27Z cfi $
+# $Id: gb_nessus_web_server_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Nessus Web Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801392");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2560 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-02 15:24:27 +0100 (Tue, 02 Feb 2016) $");
+  script_version("$Revision: 5871 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-08-04 08:26:41 +0200 (Wed, 04 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Nessus Web Server Version Detection");
@@ -54,19 +54,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("cpe.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc, concl, port, extra) {
-  register_product(cpe:cpe, location:insloc, port:port);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           extra: extra,
-                                           concluded: concl),
-                                           port:port);
-}
 
 port = get_http_port( default:8834 );
 
@@ -127,7 +114,7 @@ if( "<web_server_version>" >< rcvRes || "<server_version>" >< rcvRes || "<nessus
                ver: version,
                cpe: cpe,
                insloc: port + '/tcp',
-               concl: nessusVersion[0] +
+               concluded: nessusVersion[0] +
                       '\n' + nessusWsVersion[0] +
                       '\n' + nessusFeed[0] +
                       '\n' + nessusType[0],
@@ -148,7 +135,7 @@ if( "<web_server_version>" >< rcvRes || "<server_version>" >< rcvRes || "<nessus
                ver: versionUi,
                cpe: cpe,
                insloc: port + '/tcp',
-               concl: nessusUiVersion[0],
+               concluded: nessusUiVersion[0],
                port: port,
                extra: '');
 
@@ -197,7 +184,7 @@ if( '"nessus_type":"' >< rcvRes || '"nessus_ui_version":"' >< rcvRes || '"nessus
                  ver: version,
                  cpe: cpe,
                  insloc: port + '/tcp',
-                 concl: nessusVersion[0] +
+                 concluded: nessusVersion[0] +
                         '\n' +  nessusType[0],
                  port: port,
                  extra: 'Nessus type is: "' + type + '"');
@@ -214,7 +201,7 @@ if( '"nessus_type":"' >< rcvRes || '"nessus_ui_version":"' >< rcvRes || '"nessus
                  ver: versionUi,
                  cpe: cpe,
                  insloc: port + '/tcp',
-                 concl: nessusUiVersion[0],
+                 concluded: nessusUiVersion[0],
                  port: port,
                  extra: '');
 
@@ -237,7 +224,7 @@ if( concl = eregmatch( pattern:"Server: NessusWWW", string:banner, icase: TRUE) 
                cpe: cpe,
                insloc: port + '/tcp',
                port: port,
-               concl: concl[0],
+               concluded: concl[0],
                extra: 'Unknown Nessus installation detected');
 
   ## Register Product and Build Report
@@ -245,7 +232,7 @@ if( concl = eregmatch( pattern:"Server: NessusWWW", string:banner, icase: TRUE) 
                cpe: cpe2,
                insloc: port + '/tcp',
                port: port,
-               concl: concl[0],
+               concluded: concl[0],
                extra: 'Unknown Nessus Web UI installation detected');
 
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zencart_ecommerce_mult_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: secpod_zencart_ecommerce_mult_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Zen-cart E-commerce Multiple Vulnerabilities Feb-2014
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903513");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 5790 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-02-25 13:05:23 +0530 (Tue, 25 Feb 2014)");
   script_name("Zen-cart E-commerce Multiple Vulnerabilities Feb-2014");
 
@@ -55,7 +55,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125383/zencart151-shellxss.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/zen-cart-e-commerce-151-xss-open-redirect-shell-upload");
-  script_summary("Check if we can redirect URL from Zencart environment");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Web application abuses");
@@ -76,10 +75,8 @@ zenReq = "";
 zenRes = "";
 url = "";
 
-## Get HTTP Port
 zcPort = get_http_port(default:80);
 
-# Check Host Supports PHP
 if(!can_host_php(port:zcPort)){
   exit(0);
 }
@@ -90,9 +87,7 @@ foreach dir (make_list_unique("/", "/zencart", "/cart", cgi_dirs(port:zcPort)))
 
   if(dir == "/") dir = "";
 
-  ## Request for the index.php
-  zenReq = http_get(item:string(dir, "/index.php"), port:zcPort);
-  zenRes = http_keepalive_send_recv(port:zcPort, data:zenReq);
+  zenRes = http_get_cache(item:string(dir, "/index.php"), port:zcPort);
 
   ## confirm the application
   if(zenRes && (egrep(pattern:"Powered by.*Zen Cart<", string:zenRes)))

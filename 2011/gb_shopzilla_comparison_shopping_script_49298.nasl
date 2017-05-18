@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shopzilla_comparison_shopping_script_49298.nasl 3104 2016-04-18 14:53:56Z benallard $
+# $Id: gb_shopzilla_comparison_shopping_script_49298.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # Shopzilla Comparison Shopping Script 'search.php' Cross Site Scripting Vulnerability
 #
@@ -33,23 +33,19 @@ in the browser of an unsuspecting user in the context of the affected
 site. This may allow the attacker to steal cookie-based authentication
 credentials and to launch other attacks.";
 
-
 if (description)
 {
  script_id(103227);
- script_version("$Revision: 3104 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:53:56 +0200 (Mon, 18 Apr 2016) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-08-25 15:23:29 +0200 (Thu, 25 Aug 2011)");
  script_bugtraq_id(49298);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
  script_name("Shopzilla Comparison Shopping Script 'search.php' Cross Site Scripting Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49298");
  script_xref(name : "URL" , value : "http://www.v-eva.com/");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Shopzilla Affiliate Comparison Shopping Script is prone to a cross site scripting vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -61,27 +57,21 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list(cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/search.php?s=%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E";
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/search.php?s=%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E"); 
-
-  if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'\)</script>",check_header:TRUE,extra_check:"Comparison Shopping Script")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", check_header:TRUE, extra_check:"Comparison Shopping Script" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808487");
-  script_version("$Revision: 3619 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-29 13:04:08 +0200 (Wed, 29 Jun 2016) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 05:45:14 +0200 (Mon, 27 Jun 2016)");
   script_cve_id("CVE-2016-2191");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-b8f91621c7");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/A652G4LSOH2FKIJMIXGGCQGQZBIABNBB");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of optipng");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

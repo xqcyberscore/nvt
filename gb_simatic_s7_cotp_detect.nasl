@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 3551 2016-06-17 13:29:06Z teissa $
+# $Id: gb_simatic_s7_cotp_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 3551 $");
- script_tag(name: "last_modification", value: "$Date: 2016-06-17 15:29:06 +0200 (Fri, 17 Jun 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ based detection of Siemens SIMATIC S7 devices.");
  script_dependencies("find_service.nasl");
  script_require_ports(102);
 
- script_summary("This script performs SNMP based detection of Siemens SIMATIC S7 devices.");
 
  exit(0);
 }

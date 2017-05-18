@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cartweaver_helpfilename_param_lfi_vuln.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_cartweaver_helpfilename_param_lfi_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Cartweaver 'helpFileName' Parameter Local File Include Vulnerability
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802997");
-  script_version("$Revision: 5642 $");
+  script_version("$Revision: 5988 $");
   script_bugtraq_id(55917);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-16 17:35:45 +0530 (Tue, 16 Oct 2012)");
   script_name("Cartweaver 'helpFileName' Parameter Local File Include Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79227");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21989/");
 
-  script_summary("Check for LFI vulnerability in Cartweaver");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

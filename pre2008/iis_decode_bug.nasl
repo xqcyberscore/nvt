@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_decode_bug.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: iis_decode_bug.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: IIS Remote Command Execution
 #
 # Authors:
@@ -40,8 +40,8 @@ See http://www.microsoft.com/technet/security/bulletin/ms01-044.mspx";
 if(description)
 {
  script_id(10671);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"IAVA", value:"2001-a-0006");
  script_bugtraq_id(2708, 3193);
@@ -54,7 +54,6 @@ if(description)
  
  summary = "Determines if arbitrary commands can be executed";
  
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2001 Matt Moore / H D Moore");

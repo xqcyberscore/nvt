@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ceragon_fibeair_auth_bypass_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_ceragon_fibeair_auth_bypass_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Ceragon IP-10 Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106103");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5850 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-06-21 11:09:47 +0700 (Tue, 21 Jun 2016)");
   script_tag(name: "cvss_base", value: "9.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
@@ -48,7 +48,6 @@ if (description)
   script_require_ports("Services/www", 80);
 
   script_tag(name: "summary", value: "Ceragon IP-10 is prone to an authentication bypass vulnerability");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
 

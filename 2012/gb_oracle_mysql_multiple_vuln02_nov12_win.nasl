@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln02_nov12_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_oracle_mysql_multiple_vuln02_nov12_win.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-02 Nov12 (Windows)
 #
@@ -43,19 +43,18 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-3180", "CVE-2012-3177", "CVE-2012-3160");
   script_bugtraq_id(56003, 56005, 56027);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 17:27:23 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-02 Nov12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51008/");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/51008");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
 
-  script_summary("Check for the version of MySQL on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");

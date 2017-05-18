@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_multiple_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_netcharts_server_multiple_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # NetCharts Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:visual_mining:netcharts_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805643");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2015-4031", "CVE-2015-4032");
   script_bugtraq_id(74788);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Multiple Vulnerabilities");
@@ -70,8 +70,7 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-15-238/");
   script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-15-237/");
 
-  script_summary("Check if NetChart Server is vulnerable to directory traversal");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_netcharts_server_detect.nasl");

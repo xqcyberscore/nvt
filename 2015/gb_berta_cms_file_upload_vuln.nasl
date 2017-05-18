@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_berta_cms_file_upload_vuln.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_berta_cms_file_upload_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
 #
 # Berta CMS Arbitrary File Upload Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805356");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 5816 $");
   script_cve_id("CVE-2015-2780");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 12:32:43 +0530 (Tue, 07 Apr 2015)");
   script_name("Berta CMS Arbitrary File Upload Vulnerability");
 
@@ -63,15 +63,14 @@ if(description)
   script_xref(name: "URL" , value : "http://www.openwall.com/lists/oss-security/2015/03/30/7");
   script_xref(name: "URL" , value : "http://packetstormsecurity.com/files/131041/Berta-CMS-File-Upload-Bypass.html");
 
-  script_summary("Check if Berta CMS is vulnerable to file upload vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -83,33 +82,17 @@ sndReq = "";
 rcvRes = "";
 http_port = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/engine", "/berta/engine", "/berta", cgi_dirs()))
+
+foreach dir (make_list_unique("/", "/engine", "/berta/engine", "/berta", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
-
-  ## Construct the url to confirm app
   url = dir + '/login.php';
-
-  ##Send Request and Receive Response
-  sndReq = http_get(item: url, port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item: url, port:http_port);
 
   ##Confirm Application from Response
   if(rcvRes && "berta v" >< rcvRes && "Log in" >< rcvRes)

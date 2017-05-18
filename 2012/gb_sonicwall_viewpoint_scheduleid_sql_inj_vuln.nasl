@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability
 #
@@ -39,16 +39,15 @@ tag_summary = "This host is running SonicWall Viewpoint and is prone to sql
 if(description)
 {
   script_id(803033);
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5988 $");
   script_cve_id("CVE-2011-5169");
   script_bugtraq_id(49906);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-25 15:47:29 +0530 (Tue, 25 Sep 2012)");
   script_name("SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability");
 
-  script_summary("Check if SonicWall Viewpoint is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

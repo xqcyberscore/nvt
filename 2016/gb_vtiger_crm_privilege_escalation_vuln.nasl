@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_privilege_escalation_vuln.nasl 3819 2016-08-10 13:45:03Z antu123 $
+# $Id: gb_vtiger_crm_privilege_escalation_vuln.nasl 6044 2017-04-28 08:14:10Z teissa $
 #
-# VTiger CRM Privilege Escalation Vulnerability
+# VTiger CRM Privilege Escalation and Unrestricted File Upload Vulnerability
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
@@ -29,29 +29,34 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808752");
-  script_version("$Revision: 3819 $");
-  script_cve_id("CVE-2016-4834");
+  script_version("$Revision: 6044 $");
+  script_cve_id("CVE-2016-4834", "CVE-2016-1713");
   script_bugtraq_id(92076);
-  script_tag(name:"cvss_base", value:"5.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 15:45:03 +0200 (Wed, 10 Aug 2016) $");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 19:05:51 +0530 (Fri, 05 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_name("VTiger CRM Privilege Escalation Vulnerability");
+  script_name("VTiger CRM Privilege Escalation and Unrestricted File Upload Vulnerability");
 
   script_tag(name: "summary" , value:"The host is installed with VTiger CRM and is
-  prone to privilege escalation vulnerability.");
+  prone to a privilege escalation and unrestricted file upload vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to 'modules/Users/actions/Save.php'
-  script does not properly restrict user-save actions.");
+  script_tag(name: "insight" , value:"The flaw is due to:
+
+  - 'modules/Users/actions/Save.php' script does not properly restrict user-save actions
+
+  - Settings_Vtiger_CompanyDetailsSave_Action class in 'modules/Settings/Vtiger/actions/CompanyDetailsSave.php'
+  allosw uploading a crafted image file with an executable extension.");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote
-  authenticated users to create or modify user accounts via unspecified vectors.
+  authenticated users to execute arbitrary code or to create or modify user
+  accounts via unspecified vectors.
 
-  Impact Level: Application");
+  Impact Level: Application/System");
 
   script_tag(name:"affected", value:"VTiger CRM before version 6.5.0.");
 
@@ -62,7 +67,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2016/JVNDB-2016-000126.html");
 
-  script_summary("Check if VTiger CRM is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -95,3 +99,5 @@ if(version_is_less_equal(version:vtigerVer, test_version:"6.4.0"))
   security_message(data:report, port:vtigerPort);
   exit(0);
 }
+
+exit(99);

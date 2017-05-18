@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mutiny_56165.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_mutiny_56165.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Mutiny  Command Injection Vulnerability
 #
@@ -44,16 +44,15 @@ if (description)
  script_cve_id("CVE-2012-3001");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5977 $");
 
  script_name("Mutiny  Command Injection Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56165");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-23 10:29:30 +0200 (Tue, 23 Oct 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if Mutiny version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

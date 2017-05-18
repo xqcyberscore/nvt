@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol39508724.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol39508724.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # F5 BIG-IP - SOL39508724 - TMM SSL/TLS virtual server vulnerability CVE-2016-6907
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6907");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+ script_version ("$Revision: 5836 $");
 
  script_name("F5 BIG-IP - SOL39508724 - TMM SSL/TLS virtual server vulnerability CVE-2016-6907");
 
@@ -47,9 +47,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-09-30 18:57:51 +0200 (Fri, 30 Sep 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: imap_arbitrary_file_retrieval.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: imap_arbitrary_file_retrieval.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: IMAP arbitrary file retrieval
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Contact your vendor for a fix.";
 
 if (description) {
   script_id(12254);
-  script_version("$Revision: 3359 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -44,7 +44,6 @@ if (description) {
   script_name(name);
 
   summary = "Checks for IMAP arbitrary file retrieval vulnerability";
-  script_summary(summary);
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

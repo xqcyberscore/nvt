@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_jetty_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Jetty Version Detection
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800953");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6063 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Jetty Version Detection");
@@ -39,7 +39,6 @@ if(description)
   extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Sets the KB for the version of Jetty");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

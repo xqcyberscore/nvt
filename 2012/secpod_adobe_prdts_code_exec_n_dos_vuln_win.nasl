@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_win.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_win.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities (Windows)
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if(description)
 {
   script_id(903014);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-30 11:21:49 +0530 (Fri, 30 Mar 2012)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities (Windows)");
 
@@ -77,7 +77,6 @@ For updates refer to http://get.adobe.com/flashplayer";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48623");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026859");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-07.html");
-  script_summary("Check for the version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");

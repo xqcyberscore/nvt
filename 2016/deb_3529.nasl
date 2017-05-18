@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3529.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: deb_3529.nasl 5745 2017-03-28 09:01:00Z teissa $
 # Auto-generated from advisory DSA 3529-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703529);
-    script_version("$Revision: 3164 $");
+    script_version("$Revision: 5745 $");
     script_cve_id("CVE-2015-8346", "CVE-2015-8473", "CVE-2015-8474", "CVE-2015-8537");
     script_name("Debian Security Advisory DSA 3529-1 (redmine - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-23 00:00:00 +0100 (Wed, 23 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3529.html");
 
-    script_summary("Debian Security Advisory DSA 3529-1 (redmine - security update)");
 
     script_category(ACT_GATHER_INFO);
 

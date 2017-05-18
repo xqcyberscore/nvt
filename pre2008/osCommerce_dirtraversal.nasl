@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osCommerce_dirtraversal.nasl 3501 2016-06-13 15:57:18Z mime $
+# $Id: osCommerce_dirtraversal.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: osCommerce directory traversal
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "Upgrade to a newer version of this software";
 if (description)
 {
  script_id(17595);
- script_version("$Revision: 3501 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 17:57:18 +0200 (Mon, 13 Jun 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2021");
  script_bugtraq_id(10364);
@@ -46,7 +46,6 @@ if (description)
 
  script_name("osCommerce directory traversal");
 
- script_summary("Determine if osCommerce is vulnerable to dir traversal");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

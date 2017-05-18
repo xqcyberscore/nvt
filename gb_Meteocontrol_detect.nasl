@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Meteocontrol_detect.nasl 3377 2016-05-24 09:06:05Z shaardiek $
+# $Id: gb_Meteocontrol_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Meteocontrol WWB'log Detection
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107004");
-  script_version("$Revision: 3377 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 11:06:05 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-05-20 10:42:39 +0100 (Fri, 20 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Meteocontrol WEB'log Detection");
-  script_summary("Checks for the presence of Meteocontrol WEB'log");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

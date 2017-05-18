@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 5236 2017-02-08 14:38:12Z cfi $
+# $Id: gb_blackstratus_LOGStorm_mysql_htr_login.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # Blackstratus LOGStorm default MySQL password for user `htr`
 #
@@ -29,8 +29,8 @@ if (description)
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
  script_oid("1.3.6.1.4.1.25623.1.0.140093");
- script_version("$Revision: 5236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:38:12 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 5889 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-12-05 17:47:01 +0100 (Mon, 05 Dec 2016)");
  script_name("Blackstratus LOGStorm default MySQL password for user `htr`");
  script_category(ACT_ATTACK);
@@ -50,11 +50,11 @@ if (description)
 include("byte_func.inc");
 include("host_details.inc");
 
-CPEs = make_list( "cpe:/a:mysql:mysql","cpe:/a:oracle:mysql","cpe:/a:mariadb:mariadb" );
+cpe_list = make_list( "cpe:/a:mysql:mysql", "cpe:/a:oracle:mysql", "cpe:/a:mariadb:mariadb" );
 
 set_byte_order(BYTE_ORDER_LITTLE_ENDIAN);
 
-port = get_app_port( cpe:CPEs );
+port = get_app_port( cpe:cpe_list );
 if( ! port ) port = 3306;
 
 if( ! get_port_state( port ) ) exit( 0 );
@@ -83,7 +83,7 @@ for( i = 0; i < strlen( res ); i++ )
 {
   if( ord( res[i] ) != 0 )
     ver += res[i];
-  else 
+  else
     break;
 }
 

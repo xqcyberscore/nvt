@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_helix_52929.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_helix_52929.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # RealNetworks Helix Server Multiple Remote Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
  script_cve_id("CVE-2012-0942","CVE-2012-1923","CVE-2012-1984","CVE-2012-1985","CVE-2012-2267","CVE-2012-2268");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5950 $");
 
  script_name("RealNetworks Helix Server Multiple Remote Vulnerabilities");
 
@@ -56,10 +56,9 @@ if (description)
  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2012-9/");
  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2012-8/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-23 14:15:20 +0200 (Mon, 23 Apr 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed Helix version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

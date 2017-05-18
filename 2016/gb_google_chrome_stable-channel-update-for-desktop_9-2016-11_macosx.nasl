@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop_9-2016-11_macosx.nasl 4548 2016-11-17 07:03:38Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop_9-2016-11_macosx.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop_9-2016-11)-MAC OS X
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809098");
-  script_version("$Revision: 4548 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-5199", "CVE-2016-5200", "CVE-2016-5201", "CVE-2016-5202" );
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 08:03:38 +0100 (Thu, 17 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-16 17:47:43 +0530 (Wed, 16 Nov 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop_9-2016-11)-MAC OS X");
 
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://googlechromereleases.blogspot.in/2016/11/stable-channel-update-for-desktop_9.html");
 
-  script_summary("Check for the vulnerable version of Google Chrome on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

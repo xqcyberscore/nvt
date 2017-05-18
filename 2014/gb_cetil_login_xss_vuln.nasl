@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cetil_login_xss_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_cetil_login_xss_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
 #
 # Cetil 'logon_senha.asp' Cross Site Scripting Vulnerability
 #
@@ -27,41 +27,44 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804463");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 5993 $");
   script_bugtraq_id(67778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-06-18 12:20:43 +0530 (Wed, 18 Jun 2014)");
   script_name("Cetil 'logon_senha.asp' Cross Site Scripting Vulnerability");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This host is installed with Cetil and is prone to cross-site scripting
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/93578");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126881");
+
+  script_tag(name:"summary", value:"This host is installed with Cetil and is prone to cross-site scripting
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP POST request and check whether it is able to read
+
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request and check whether it is able to read
   cookie or not.");
-  script_tag(name : "insight" , value : "This flaw is due to the logon_senha.asp script does not validate input to
+
+  script_tag(name:"insight", value:"This flaw is due to the logon_senha.asp script does not validate input to
   the 'UID' parameter before returning it to users.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Cetil");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/93578");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126881");
-  script_summary("Check if Cetil is prone to XSS");
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
@@ -70,26 +73,15 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
+if( ! can_host_asp( port:http_port ) ) exit( 0 );
 
-#Get Host name
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/cetil", "/payment", "/gpweb", cgi_dirs(port:http_port)))
-{
+foreach dir (make_list_unique("/", "/cetil", "/payment", "/gpweb", cgi_dirs(port:http_port))) {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/logon_senha.asp"), port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 

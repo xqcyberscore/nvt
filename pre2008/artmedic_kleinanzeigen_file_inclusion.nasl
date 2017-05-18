@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: artmedic_kleinanzeigen_file_inclusion.nasl 3298 2016-05-12 10:40:52Z benallard $
+# $Id: artmedic_kleinanzeigen_file_inclusion.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Artmedic Kleinanzeigen File Inclusion Vulnerability
 #
 # Authors:
@@ -29,15 +29,14 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.13654");
- script_version("$Revision: 3298 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 12:40:52 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-0624");
  script_bugtraq_id(10746);
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Artmedic Kleinanzeigen File Inclusion Vulnerability");
- script_summary("Checks for Artmedic Kleinanzeigen's PHP inclusion vulnerability");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
  script_family("Web application abuses");

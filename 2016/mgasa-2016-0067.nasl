@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0067.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0067.nasl 5836 2017-04-03 09:37:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131236");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5836 $");
 script_tag(name:"creation_date", value:"2016-02-18 07:27:41 +0200 (Thu, 18 Feb 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0067");
 script_tag(name: "insight", value: "Updated claws-mail fix security vulnerabilities A stack-based buffer overflow has been found in conv_euctojis() after applying incomplete patch for CVE-2015-8614. In conv_euctojis() the comparison is with outlen - 3, but each pass through the loop uses up to 5 bytes and the rest of the function may add another 4 bytes. The comparison should presumably be '"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0067");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0067");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_ibm_domino_mult_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Domino KeyView PDF Filter Buffer Overflow Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106112");
-  script_version("$Revision: 5568 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_version("$Revision: 5701 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-07-04 08:56:27 +0700 (Mon, 04 Jul 2016)");
   script_tag(name: "cvss_base", value: "6.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -73,14 +73,10 @@ in the KeyView PDF filter.");
 include("host_details.inc");
 include("version_func.inc");
 
-if (!port = get_app_port(cpe: CPE))
-  exit(0);
-
-if (!version = get_app_version(cpe: CPE, port: port))
-  exit(0);
+if( ! version = get_highest_app_version( cpe:CPE ) ) exit( 0 );
 
 vers = ereg_replace(pattern: "FP", string: version, replace: ".");
-vers = ereg_replace(pattern: "IF", string: version, replace: ".");
+vers = ereg_replace(pattern: "IF", string: vers, replace: ".");
 
 if (version_in_range(version: vers, test_version: "8.5.0", test_version2: "8.5.3.6.12")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "8.5.3 FP6 IF13");
@@ -90,7 +86,7 @@ if (version_in_range(version: vers, test_version: "8.5.0", test_version2: "8.5.3
 
 if (version_in_range(version: vers, test_version: "9.0", test_version2: "9.0.1.5")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "9.0.1 FP6");
-  security_message(port: port, data: report);
+  security_message(port: 0, data: report);
   exit(0);
 }
 

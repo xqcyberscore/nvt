@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 5632 2017-03-20 15:55:10Z mime $
+# $Id: gb_github_enterprise_management_console_rce_03_17.nasl 5800 2017-03-30 17:07:21Z mime $
 #
 # Remote code execution in GitHub Enterprise Management Console
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:github:github_enterprise';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140196");
-  script_version("$Revision: 5632 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:55:10 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 5800 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 19:07:21 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-03-17 17:11:03 +0100 (Fri, 17 Mar 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -99,7 +99,7 @@ function build_cookie( dump )
 
 }
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 
 url = '/setup/unlock';
 req = http_get( item:url, port:port );

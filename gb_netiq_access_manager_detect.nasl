@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_access_manager_detect.nasl 2672 2016-02-17 07:38:35Z antu123 $
+# $Id: gb_netiq_access_manager_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # NetIQ Access Manager Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105148");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2672 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 08:38:35 +0100 (Wed, 17 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2014-12-19 14:59:27 +0100 (Fri, 19 Dec 2014)");
  script_name("NetIQ Access Manager Detection");
 
@@ -41,7 +41,6 @@ NetIQ Access Manager from the response.");
 
  script_tag(name: "qod_type", value: "remote_banner");
 
- script_summary("Checks for the presence of NetIQ Access Manager");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

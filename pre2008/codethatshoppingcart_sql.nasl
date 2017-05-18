@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: codethatshoppingcart_sql.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: codethatshoppingcart_sql.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # CodeThatShoppingCart Input Validation Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18255");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-1593", "CVE-2005-1594", "CVE-2005-1595");
   script_bugtraq_id(13560);
@@ -38,7 +38,6 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("CodeThatShoppingCart Input Validation Vulnerabilities");
-  script_summary("Checks for an SQL injection in CodeThatShoppingCart");
   script_family("Web application abuses");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2005 Josh Zlatin-Amishav");

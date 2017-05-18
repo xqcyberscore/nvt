@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: readdesigncheck.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: readdesigncheck.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: ReadDesign checker
 #
 # Authors:
@@ -33,8 +33,8 @@ https://www.appsecinc.com/Policy/PolicyCheck1520.html";
 if(description)
 {
 	script_id(12249);
-	script_version("$Revision: 3362 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+	script_version("$Revision: 6046 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  	name = "ReadDesign checker";
  	script_name(name);
@@ -42,7 +42,6 @@ if(description)
    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
  	summary = "ReadDesign checker";
-	script_summary(summary);
 	script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
 	script_copyright("This script is Copyright (C) 2004 Net-Square Solutions Pvt Ltd.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_audistat_detect.nasl 2742 2016-02-26 14:52:42Z cfi $
+# $Id: secpod_audistat_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # AudiStat Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902028");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2742 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 15:52:42 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_name("AudiStat Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
-  script_summary("Set the version of AudiStat in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Product detection");

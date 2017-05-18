@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_brute_force_n_path_disc_vuln.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_modx_brute_force_n_path_disc_vuln.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
-# MODx Brute Force and Path Disclosure Vulnerabilities
+# MODX Brute Force and Path Disclosure Vulnerabilities
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
@@ -27,83 +27,73 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802495");
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5889 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-21 10:48:20 +0530 (Wed, 21 Nov 2012)");
-  script_name("MODx Brute Force and Path Disclosure Vulnerabilities");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Nov/142");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118240/modx-brutedisclose.txt");
-
-  script_summary("Check for path disclosure vulnerability in MODx CMS");
+  script_name("MODX Brute Force and Path Disclosure Vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("gb_modx_cms_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("modx_cms/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow the attacker to obtain
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Nov/142");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118240/modx-brutedisclose.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow the attacker to obtain
   sensitive information that could aid in further attacks.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "MODx CMF version 2.x (Revolution)
-  MODx CMS version 1.x (Evolution)");
-  script_tag(name : "insight" , value : "- In login form (manager/index.php) there is no reliable
+
+  script_tag(name:"affected", value:"MODX CMF version 2.x (Revolution)
+  MODX CMS version 1.x (Evolution)");
+
+  script_tag(name:"insight", value:"- In login form (manager/index.php) there is no reliable
   protection from brute force attacks.
   - Insufficient error checking, allows remote attackers to obtain sensitive
   information via a direct request to a .php file, which reveals the
   installation path in an error message.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
+
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
   since disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with MODx and is prone to brute force and
+
+  script_tag(name:"summary", value:"This host is installed with MODX and is prone to brute force and
   path disclosure vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-port = "";
+cpe_list = make_list( "cpe:/a:modx:unknown",
+                      "cpe:/a:modx:revolution",
+                      "cpe:/a:modx:evolution" );
 
-## Get HTTP port
-port = get_http_port(default:80);
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe = infos['cpe'];
+port = infos['port'];
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
+if( ! dir = get_app_location( cpe:cpe, port:port ) ) exit( 0 );
+
+if( dir == "/" ) dir = "";
+url = dir + '/manager/includes/browsercheck.inc.php';
+
+# Don't use check_headers. A 500 error is thrown here on this request
+if( http_vuln_check( port:port, url:url, pattern:"Failed opening required 'MODX_BASE_PAT.*browsercheck.inc.php",
+                     extra_check:make_list( 'phpSniff.class.php','MODX_BASE_PATH' ) ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/modx", "/cmf", "/",  cgi_dirs(port:port)))
-{
-
-  if(dir == "/") dir = "";
-  url = dir + "/manager/index.php";
-
-  ## Confirm the application
-  if(http_vuln_check(port:port, url:url, pattern:">MODx CMF Manager Login<",
-     check_header:TRUE, extra_check:make_list('>MODx<', 'ManagerLogin')))
-  {
-    ## Construct the attack request
-    url = dir + '/manager/includes/browsercheck.inc.php';
-
-    ## Confirm the vulnerability
-    if(http_vuln_check(port:port, url:url, pattern:"Failed opening" +
-       " required 'MODX_BASE_PAT.*browsercheck.inc.php", check_header:TRUE,
-       extra_check:make_list('phpSniff.class.php','MODX_BASE_PATH')))
-    {
-      security_message(port:port);
-      exit(0);
-    }
-  }
-}
-
-exit(99);
+exit( 99 );

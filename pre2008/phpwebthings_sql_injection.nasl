@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: phpwebthings_sql_injection.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: phpwebthings_sql_injection.nasl 5783 2017-03-30 09:03:43Z cfi $
 # Description: phpWebThings forum Parameter SQL Injection Vulnerabilities
 #
 # Authors:
@@ -39,64 +39,57 @@ administrative access to the affected application.";
 tag_solution = "Apply the phpWebthings 1.4 forum patch referenced in the third URL
 above.";
 
-if (description) {
-script_id(20170);
-script_version("$Revision: 3359 $");
-script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
-script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
-script_tag(name:"cvss_base", value:"7.5");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-script_cve_id("CVE-2005-3585", "CVE-2005-4218");
-script_bugtraq_id(15276, 15465);
-script_xref(name:"OSVDB", value:"20441");
-
-
-name = "phpWebThings forum Parameter SQL Injection Vulnerabilities";
-script_name(name);
-
-summary = "Check if phpWebThings is vulnerable to SQL Injection attacks";
-script_summary(summary);
-
-script_category(ACT_ATTACK);
+if(description)
+{
+  script_id(20170);
+  script_version("$Revision: 5783 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:03:43 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2005-3585", "CVE-2005-4218");
+  script_bugtraq_id(15276, 15465);
+  script_xref(name:"OSVDB", value:"20441");
+  script_name("phpWebThings forum Parameter SQL Injection Vulnerabilities");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
-script_family("Web application abuses");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2005 Ferdy Riphagen");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-script_copyright("This script is Copyright (C) 2005 Ferdy Riphagen");
-
-script_dependencies("http_version.nasl");
-script_require_ports("Services/www", 80);
-script_exclude_keys("Settings/disable_cgi_scanning");
-
-script_tag(name : "solution" , value : tag_solution);
-script_tag(name : "summary" , value : tag_summary);
-script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2005-11/0057.html");
-script_xref(name : "URL" , value : "http://retrogod.altervista.org/phpwebth14_xpl.html");
-script_xref(name : "URL" , value : "http://www.ojvweb.nl/download.php?file=64&cat=17&subref=10");
-exit(0);
+  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2005-11/0057.html");
+  script_xref(name : "URL" , value : "http://retrogod.altervista.org/phpwebth14_xpl.html");
+  script_xref(name : "URL" , value : "http://www.ojvweb.nl/download.php?file=64&cat=17&subref=10");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("url_func.inc");
 
 port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
 if (!can_host_php(port:port)) exit(0);
 
-dirs = make_list("/phpwebthings", "/webthings", "/phpwt", cgi_dirs());
+foreach dir( make_list_unique( "/phpwebthings", "/webthings", "/phpwt", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
   exploit = "-1 UNION SELECT null,123456,null,null,null,null/*";
-  req = http_get(item:string(dir, "/forum.php?forum=", urlencode(str:exploit)), port:port);
-  recv = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
-  if(recv == NULL)exit(0);
 
-  if (
-    string('<input type="hidden" value="', exploit, '" name="sforum"') >< recv &&
-    egrep(pattern:"created with <a href=[^>]+.*>phpWebThings", string:recv)
-  ) {
-   security_message(port);
-   exit(0);
+  url = string(dir, "/forum.php?forum=", urlencode(str:exploit));
+  req = http_get(item:url, port:port);
+  recv = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+  if(recv == NULL) continue;
+
+  if ( string('<input type="hidden" value="', exploit, '" name="sforum"') >< recv &&
+       egrep(pattern:"created with <a href=[^>]+.*>phpWebThings", string:recv) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
+
+exit( 99 );

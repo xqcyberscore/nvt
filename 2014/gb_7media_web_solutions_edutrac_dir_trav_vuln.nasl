@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl 3521 2016-06-15 10:46:01Z benallard $
+# $Id: gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # 7Media Web Solutions EduTrac Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804198");
-  script_version("$Revision: 3521 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2013-7097");
   script_bugtraq_id(64255);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 12:46:01 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-01-22 16:29:04 +0530 (Wed, 22 Jan 2014)");
   script_name("7Media Web Solutions EduTrac Directory Traversal Vulnerability");
 
@@ -52,7 +52,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23190");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124653/eduTrac-1.1.1-Stable-Path-Traversal.html");
-  script_summary("Check if eduTrac is vulnerable to file reading vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -75,23 +74,18 @@ edu_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 edu_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:edu_port)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/eduTrac", "/trac", cgi_dirs(port:edu_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
-  sndReq = http_get(item:string(dir, "/index.php"), port:edu_port);
-  rcvRes = http_keepalive_send_recv(port:edu_port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:edu_port);
 
   ## confirm the Application
    if(rcvRes && rcvRes =~ "Powered by.*eduTrac")

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842870");
-  script_version("$Revision: 4052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-26 05:38:40 +0200 (Fri, 26 Aug 2016)");
   script_cve_id("CVE-2016-6855");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "USN", value: "3069-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3069-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of eog");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-046.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: gb_ms08-046.nasl 5863 2017-04-05 07:38:11Z antu123 $
 #
 # Microsoft Windows Image Color Management System Code Execution Vulnerability (952954)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(800023);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 5863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -78,83 +78,19 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3) <= 0){
   exit(0);
 }
 
-function get_version()
-{
-  dllPath = registry_get_sz(item:"Install Path",
-                           key:"SOFTWARE\Microsoft\COM3\Setup");
-  if(!dllPath){
-    exit(0);
-  }
-  dllPath += "\Mscms.dll";
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
-
-  soc = open_sock_tcp(port);
-  if(!soc){
-    exit(0);
-  }
-
-  r = smb_session_request(soc:soc, remote:name);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-  prot = smb_neg_prot(soc:soc);
-  if(!prot)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_session_setup(soc:soc, login:login, password:pass,
-                        domain:domain, prot:prot);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  uid = session_extract_uid(reply:r);
-  if(!uid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-  if(!r)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  tid = tconx_extract_tid(reply:r);
-  if(!tid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-  if(!fid)
-  {
-    close(soc);
-    exit(0);
-  }
-
-  v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, offset:60000,
-                 verstr:"prod");
-  close(soc);
-  return v;
+sysPath = smb_get_system32root();
+if(!sysPath ){
+  exit(0);
 }
+
+dllPath = sysPath + "\Mscms.dll";
 
 # Check for MS08-046 Hotfix (952954)
 if(hotfix_missing(name:"952954") == 0){
   exit(0);
 }
 
-fileVer = get_version();
+fileVer = get_version(dllPath:dllPath, string:"prod", offs:60000);
 if(!fileVer){
   exit(0);
 }

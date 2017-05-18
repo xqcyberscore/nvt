@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(802422);
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(51902);
   script_cve_id("CVE-2012-1006");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:14:38 +0530 (Wed, 08 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities");
@@ -69,7 +69,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secpod.org/blog/?p=450");
   script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_Apache_Struts_Multiple_Parsistant_XSS_Vulns.txt");
-  script_summary("Check if Apache Struts Showcase is vulnerable to XSS vulnerabilities");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -79,19 +78,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Get HTTP Port
 
 asport = 0;
 asreq = NULL;
 asres = NULL;
 asresp = NULL;
 
-## Get HTTP Port
+## Stored XSS (Not a safe check)
+if(safe_checks()){
+  exit(0);
+}
+
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -100,10 +100,7 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
 
-## Stored XSS (Not a safe check)
-if(safe_checks()){
-  exit(0);
-}
+host = http_host_name(port:asport);
 
 ## Send and Receive the response
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
@@ -123,12 +120,12 @@ if(!isnull(asreq))
 
         ## Construct the POST request
         asReq = string("POST ", dir, "/person/newPerson.action HTTP/1.1\r\n",
-                       "Host: ", get_host_name(), "\r\n",
-                       "User-Agent:  XSS-TEST\r\n",
+                       "Host: ", host, "\r\n",
+                       "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                        "Content-Type: application/x-www-form-urlencoded\r\n",
                        "Content-Length: ", strlen(postdata), "\r\n",
                        "\r\n", postdata);
-        asRes = http_send_recv(port:asport, data:asReq);
+        asRes = http_keepalive_send_recv(port:asport, data:asReq);
 
         if(!isnull(asRes))
         {

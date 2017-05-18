@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3514.nasl 2970 2016-03-29 04:43:41Z antu123 $
+# $Id: deb_3514.nasl 5836 2017-04-03 09:37:08Z teissa $
 # Auto-generated from advisory DSA 3514-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703514);
-    script_version("$Revision: 2970 $");
+    script_version("$Revision: 5836 $");
     script_cve_id("CVE-2015-5252", "CVE-2015-7560", "CVE-2016-0771");
     script_name("Debian Security Advisory DSA 3514-1 (samba - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-29 06:43:41 +0200 (Tue, 29 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-03-12 00:00:00 +0100 (Sat, 12 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3514.html");
 
-    script_summary("Debian Security Advisory DSA 3514-1 (samba - security update)");
 
     script_category(ACT_GATHER_INFO);
 

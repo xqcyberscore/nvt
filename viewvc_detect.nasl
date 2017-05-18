@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: viewvc_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: viewvc_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
 #
 # ViewVC Detection
 #
@@ -27,16 +27,15 @@
 tag_summary = "This host is running ViewVC, a browser interface for CVS and
 Subversion version control repositories.";
 
-if (description)
+if(description)
 {
  script_id(100261);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5499 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+ script_version("$Revision: 5744 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-08-26 20:38:31 +0200 (Wed, 26 Aug 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("ViewVC Detection");
-
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
@@ -49,10 +48,8 @@ if (description)
  exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
@@ -62,13 +59,14 @@ SCRIPT_DESC = "ViewVC Detection";
 
 port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
-
-dirs = make_list("/svn","/scm",cgi_dirs());
 vcs = make_list("/viewvc","/viewvc.cgi");
 
-foreach dir (dirs) {
- foreach vc (vcs) {
+foreach dir( make_list_unique( "/svn", "/scm", cgi_dirs( port:port ) ) ) {
+
+ install = dir;
+ if( dir == "/" ) dir = "";
+
+ foreach vc( vcs ) {
 
   url = string(dir,vc,"/");
   req = http_get(item:url, port:port);
@@ -78,13 +76,6 @@ foreach dir (dirs) {
   if(egrep(pattern: "Powered by <a[^>]+>ViewVC", string: buf, icase: TRUE) ||
      egrep(pattern: "<meta.*generator.*ViewVC", string: buf, icase: TRUE) )
   {
-
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
      vers = string("unknown");
      ### try to get version 
      version = eregmatch(string: buf, pattern: "ViewVC ([0-9.]+[-dev]*)",icase:TRUE);
@@ -106,13 +97,10 @@ foreach dir (dirs) {
      info += string("' was detected on the remote host in the following directory(s):\n\n");
      info += string(install, "\n");
      
-        if(report_verbosity > 0) {
-          log_message(port:port,data:info);
-        }
-        exit(0);
-
-  }
+     log_message(port:port,data:info);
+     exit(0);
+   }
  }
 }
- exit(0);
 
+exit(0);

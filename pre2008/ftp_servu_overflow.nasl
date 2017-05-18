@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ftp_servu_overflow.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: ftp_servu_overflow.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Serv-U FTP Server SITE CHMOD Command Stack Overflow Vulnerability
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "Upgrade to Serv-U FTP Server version 4.2 or later.";
 if(description)
 {
  script_id(12037);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2111", "CVE-2004-2533");
  script_bugtraq_id(9483, 9675);
@@ -49,7 +49,6 @@ if(description)
 
 		 
  
- script_summary("Serv-U Stack Overflow");
  script_category(ACT_MIXED_ATTACK);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("FTP");

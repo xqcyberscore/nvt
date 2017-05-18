@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgrind_52068.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_webgrind_52068.nasl 5714 2017-03-24 10:52:48Z cfi $
 #
 # webgrind 'dataFile' Parameter Cross Site Scripting Vulnerability
 #
@@ -41,18 +41,15 @@ if (description)
 {
  script_id(103432);
  script_bugtraq_id(52068);
- script_version ("$Revision: 3058 $");
+ script_version ("$Revision: 5714 $");
  script_tag(name:"cvss_base", value:"2.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_name("webgrind 'dataFile' Parameter Cross Site Scripting Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52068");
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5073.php");
  script_xref(name : "URL" , value : "http://code.google.com/p/webgrind/");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-22 14:32:37 +0100 (Wed, 22 Feb 2012)");
- script_summary("Determine if webgrind is prone to a cross-site scripting vulnerability ");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -66,33 +63,27 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/webgrind", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/webgrind",cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
+  if( "<title>webgrind</title>" >< buf ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>webgrind</title>")) {
+    url = dir + "/index.php?dataFile=<script>alert(/openvas-xss-test/)</script>&op=function_list";
 
-    url = string(dir, "/index.php?dataFile=<script>alert(/openvas-xss-test/)</script>&op=function_list");
-
-    if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
-     
-      security_message(port:port);
-      exit(0);
-
-    }  
+    if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
-
+exit( 99 );

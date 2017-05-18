@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_apsb16-26_win.nasl 4193 2016-09-30 13:08:26Z antu123 $
+# $Id: gb_adobe_reader_apsb16-26_win.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Adobe Reader Security Updates(apsb16-26)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808581");
-  script_version("$Revision: 4193 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-4191", "CVE-2016-4192", "CVE-2016-4193", "CVE-2016-4194", 
                 "CVE-2016-4195", "CVE-2016-4196", "CVE-2016-4197", "CVE-2016-4198", 
                 "CVE-2016-4199", "CVE-2016-4200", "CVE-2016-4201", "CVE-2016-4202", 
@@ -43,7 +43,7 @@ if(description)
   script_bugtraq_id(91716, 91712, 91714, 93016, 93014);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-30 15:08:26 +0200 (Fri, 30 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 13:02:40 +0530 (Thu, 14 Jul 2016)");
   script_name("Adobe Reader Security Updates(apsb16-26)-Windows");
 
@@ -77,7 +77,6 @@ if(description)
 
   script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/acrobat/apsb16-26.html");
 
-  script_summary("Check for the vulnerable version of Adobe Reader on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

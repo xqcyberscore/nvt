@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3675.nasl 4156 2016-09-27 11:31:11Z antu123 $
+# $Id: deb_3675.nasl 5782 2017-03-30 09:01:05Z teissa $
 # Auto-generated from advisory DSA 3675-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703675);
-    script_version("$Revision: 4156 $");
+    script_version("$Revision: 5782 $");
     
     script_name("Debian Security Advisory DSA 3675-1 (imagemagick - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-09-27 13:31:11 +0200 (Tue, 27 Sep 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-09-23 00:00:00 +0200 (Fri, 23 Sep 2016)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3675.html");
 
-    script_summary("Debian Security Advisory DSA 3675-1 (imagemagick - security update)");
 
     script_category(ACT_GATHER_INFO);
 

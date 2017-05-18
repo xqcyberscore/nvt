@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_server_dos_vuln_jul16.nasl 3698 2016-07-13 09:46:57Z antu123 $
+# $Id: gb_apache_server_dos_vuln_jul16.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Apache HTTP Server Denial of Service Vulnerability - Jul16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807854");
-  script_version("$Revision: 3698 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-1546");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 11:46:57 +0200 (Wed, 13 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-08 18:36:25 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Denial of Service Vulnerability - Jul16");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.apache.org/dist/httpd/CHANGES_2.4");
   script_xref(name : "URL" , value : "http://httpd.apache.org/security/vulnerabilities_24.html");
 
-  script_summary("Check for the vulnerable version of Apache HTTP Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web Servers");

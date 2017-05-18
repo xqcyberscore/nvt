@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_parsp_shopping_cms_mult_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_parsp_shopping_cms_mult_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Parsp Shopping CMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802575");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5963 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:28:20 +0530 (Wed, 01 Feb 2012)");
   script_name("Parsp Shopping CMS Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://1337day.com/exploits/17418");
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploitsdownload.com/search/Arab");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108953/parspshoppingcms-xssdisclose.txt");
 
-  script_summary("Check if Parsp Shopping CMS is prone to multiple vulnerabilites");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

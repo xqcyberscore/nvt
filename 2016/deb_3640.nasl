@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3640.nasl 3836 2016-08-16 04:36:22Z antu123 $
+# $Id: deb_3640.nasl 5712 2017-03-24 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3640-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,12 +30,12 @@
 if(description)
 {
     script_id(703640);
-    script_version("$Revision: 3836 $");
+    script_version("$Revision: 5712 $");
     script_cve_id("CVE-2016-2830", "CVE-2016-2836", "CVE-2016-2837", "CVE-2016-2838",
                   "CVE-2016-5252", "CVE-2016-5254", "CVE-2016-5258", "CVE-2016-5259",
                   "CVE-2016-5262", "CVE-2016-5263", "CVE-2016-5264", "CVE-2016-5265");
     script_name("Debian Security Advisory DSA 3640-1 (firefox-esr - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-08-16 06:36:22 +0200 (Tue, 16 Aug 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-08-03 00:00:00 +0200 (Wed, 03 Aug 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3640.html");
 
-    script_summary("Debian Security Advisory DSA 3640-1 (firefox-esr - security update)");
 
     script_category(ACT_GATHER_INFO);
 

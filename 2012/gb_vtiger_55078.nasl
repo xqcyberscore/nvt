@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_55078.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_vtiger_55078.nasl 5950 2017-04-13 09:02:06Z teissa $
 #
 # Vtiger 'graph.php' Local File Include Vulnerability
 #
@@ -42,15 +42,14 @@ if (description)
  script_bugtraq_id(55078);
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5641 $");
+ script_version ("$Revision: 5950 $");
 
  script_name("Vtiger 'graph.php' Local File Include Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55078");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-18 12:55:37 +0200 (Sat, 18 Aug 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

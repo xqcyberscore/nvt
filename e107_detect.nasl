@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: e107_detect.nasl 5255 2017-02-10 08:56:42Z cfi $
+# $Id: e107_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # e107 Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100133");
-  script_version("$Revision: 5255 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 09:56:42 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
   script_name("e107 Detection");
-  script_summary("Checks for the presence of e107");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

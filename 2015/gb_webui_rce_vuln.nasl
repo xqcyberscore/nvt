@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webui_rce_vuln.nasl 5616 2017-03-20 13:32:41Z cfi $
+# $Id: gb_webui_rce_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
 #
 # WebUI Remote Command Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805175");
-  script_version("$Revision: 5616 $");
+  script_version("$Revision: 5789 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 14:32:41 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-04-27 17:26:29 +0530 (Mon, 27 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("WebUI Remote Command Execution Vulnerability");
@@ -62,17 +62,15 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/36821");
 
-  script_summary("Check if WebUI is vulnerable to remote command injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "os_detection.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
@@ -87,14 +85,6 @@ wait_extra_sec = 5;
 
 ## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
-
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
 
 ## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
@@ -102,13 +92,12 @@ if(!can_host_php(port:http_port)){
 }
 
 ## Iterate over possible paths
-foreach dir (make_list_unique("/", "/webui", cgi_dirs()))
+foreach dir (make_list_unique("/", "/webui", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
 
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ## confirm the Application
   if(">WebUI" >< rcvRes)

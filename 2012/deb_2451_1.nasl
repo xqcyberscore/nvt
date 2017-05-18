@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2451_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2451_1.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from advisory DSA 2451-1 (puppet)
 #
 # Authors:
@@ -79,13 +79,12 @@ if(description)
  script_cve_id("CVE-2012-1906", "CVE-2012-1986", "CVE-2012-1987", "CVE-2012-1988");
  script_tag(name:"cvss_base", value:"6.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6022 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:56:51 -0400 (Mon, 30 Apr 2012)");
  script_name("Debian Security Advisory DSA 2451-1 (puppet)");
 
 
- script_summary("Debian Security Advisory DSA 2451-1 (puppet)");
 
  script_category(ACT_GATHER_INFO);
 

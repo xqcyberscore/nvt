@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842843");
-  script_version("$Revision: 3784 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-02 10:07:52 +0200 (Tue, 02 Aug 2016) $");
+  script_version("$Revision: 5712 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:56:43 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-3587", "CVE-2016-3598", "CVE-2016-3606", "CVE-2016-3610",
 		"CVE-2016-3458", "CVE-2016-3500", "CVE-2016-3508", "CVE-2016-3550");
@@ -61,7 +61,6 @@ sensitive data over the network. (CVE-2016-3550)");
   script_xref(name: "USN", value: "3043-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3043-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openjdk-8");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

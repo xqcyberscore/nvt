@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-072.nasl 3583 2016-06-22 05:12:54Z antu123 $
+# $Id: gb_ms16-072.nasl 5745 2017-03-28 09:01:00Z teissa $
 #
 # Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808162");
-  script_version("$Revision: 3583 $");
+  script_version("$Revision: 5745 $");
   script_cve_id("CVE-2016-3223");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-22 07:12:54 +0200 (Wed, 22 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-15 08:50:23 +0530 (Wed, 15 Jun 2016)");
   script_name("Microsoft Windows Group Policy Elevation of Privilege Vulnerability (3163622)");
 
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3159398");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-072");
 
-  script_summary("Check for the vulnerable 'Gpapi.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

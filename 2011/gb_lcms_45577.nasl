@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lcms_45577.nasl 5645 2017-03-21 09:32:09Z cfi $
+# $Id: gb_lcms_45577.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # LoveCMS 'modules.php' Multiple Local File Include Vulnerabilities
 #
@@ -34,24 +34,20 @@ application and the computer; other attacks are also possible.
 
 LoveCMS 1.6.2 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103017);
- script_version("$Revision: 5645 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:32:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-01-07 13:52:38 +0100 (Fri, 07 Jan 2011)");
  script_bugtraq_id(45577);
  script_tag(name:"cvss_base", value:"5.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
  script_name("LoveCMS 'modules.php' Multiple Local File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/45577");
  script_xref(name : "URL" , value : "http://www.sourceforge.net/project/showfiles.php?group_id=168535");
  script_xref(name : "URL" , value : "http://www.lovecms.org/");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed LoveCMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -63,29 +59,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = traversal_files();
-dirs = make_list("/cms","/lovecms",cgi_dirs());
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cms", "/lovecms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
 
   foreach file (keys(files)) {
    
-    url = string(dir,"/system/admin/modules.php?install=",crap(data:"../",length:3*9),files[file],"%00"); 
+    url = dir + "/system/admin/modules.php?install=" + crap( data:"../" , length:3 * 9 ) + files[file] + "%00";
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pecio_cms_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_pecio_cms_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
 #
 # Pecio CMS Version Detection
 #
@@ -28,14 +28,14 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801443");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 5815 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Pecio CMS Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
-  script_family("Service detection");
+  script_family("Product detection");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
@@ -52,20 +52,15 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## GET HTTP port
 cmsPort = get_http_port(default:80);
-
 if (!can_host_php(port:cmsPort)) exit(0);
 
-foreach dir (make_list_unique("/pecio", "/pecio_cms", cgi_dirs(port:cmsPort)))
-{
+foreach dir (make_list_unique("/pecio", "/pecio_cms", cgi_dirs(port:cmsPort))) {
 
   install = dir;
   if(dir == "/") dir = "";
 
-  ## Send and receive response
-  sndReq = http_get(item:string(dir, "/index.php"), port:cmsPort);
-  rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:cmsPort);
 
   ## Check application is Pecio CMS
   if('content="pecio cms'>< rcvRes)

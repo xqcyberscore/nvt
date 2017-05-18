@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_cms_detect.nasl 2900 2016-03-21 09:59:24Z cfi $
+# $Id: gb_moodle_cms_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Moodle CMS Version Detection
 #
@@ -30,12 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800239");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2900 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-21 10:59:24 +0100 (Mon, 21 Mar 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Moodle CMS Version Detection");
-  script_summary("Set Version of Moodle CMS in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

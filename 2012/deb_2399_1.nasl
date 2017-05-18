@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2399_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2399_1.nasl 5956 2017-04-14 09:02:12Z teissa $
 # Description: Auto-generated from advisory DSA 2399-1 (php5)
 #
 # Authors:
@@ -85,12 +85,11 @@ if(description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2011-1938", "CVE-2011-2483", "CVE-2011-4566", "CVE-2011-4885", "CVE-2012-0057");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5956 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-12 06:36:57 -0500 (Sun, 12 Feb 2012)");
  script_name("Debian Security Advisory DSA 2399-1 (php5)");
 
- script_summary("Debian Security Advisory DSA 2399-1 (php5)");
 
  script_category(ACT_GATHER_INFO);
 

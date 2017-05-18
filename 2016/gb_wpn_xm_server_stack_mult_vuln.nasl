@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpn_xm_server_stack_mult_vuln.nasl 5265 2017-02-10 15:05:48Z teissa $
+# $Id: gb_wpn_xm_server_stack_mult_vuln.nasl 6013 2017-04-24 05:01:46Z teissa $
 #
 # WPN-XM Server Stack Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wpnxm_server_stack:wpnxm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807912");
-  script_version("$Revision: 5265 $");
+  script_version("$Revision: 6013 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 16:05:48 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 07:01:46 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-19 15:22:01 +0530 (Tue, 19 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WPN-XM Server Stack Multiple Vulnerabilities");
@@ -56,11 +56,10 @@ if(description)
 
   script_tag(name:"affected", value:"WPN-XM Serverstack for Windows Version 0.8.6");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  10th February, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to http://www.wpn-xm.org/");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39678/");
   script_xref(name:"URL" , value:"http://seclists.org/bugtraq/2016/Apr/58");

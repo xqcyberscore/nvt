@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_brackets_xss_n_unspecified_vuln_win.nasl 3735 2016-07-20 08:03:07Z antu123 $
+# $Id: gb_adobe_brackets_xss_n_unspecified_vuln_win.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Adobe Brackets Cross-site Scripting and Unspecified Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:brackets";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808177");
-  script_version("$Revision: 3735 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-4164", "CVE-2016-4165");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 10:03:07 +0200 (Wed, 20 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-08 11:10:27 +0530 (Fri, 08 Jul 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Brackets Cross-site Scripting and Unspecified Vulnerabilities (Windows)");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/brackets/apsb16-20.html");
 
-  script_summary("Check for the vulnerable version of Adobe Brackets on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

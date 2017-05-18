@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20140926-bash.nasl 3259 2016-05-10 13:30:24Z mime $
+# $Id: gb_cisco_ios_xe_cisco-sa-20140926-bash.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # GNU Bash Environment Variable Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-6271");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3259 $");
+ script_version ("$Revision: 5759 $");
 
  script_name("GNU Bash Environment Variable Command Injection Vulnerability");
 
@@ -68,9 +68,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-10 15:30:24 +0200 (Tue, 10 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-10 11:04:49 +0200 (Tue, 10 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

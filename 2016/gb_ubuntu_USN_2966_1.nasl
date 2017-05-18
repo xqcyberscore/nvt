@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842740");
-  script_version("$Revision: 3320 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 15:55:23 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 05:21:23 +0200 (Tue, 10 May 2016)");
   script_cve_id("CVE-2015-8325", "CVE-2016-1907", "CVE-2016-1908", "CVE-2016-3115");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openssh USN-2966-1");
   script_tag(name: "summary", value: "Check the version of openssh");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name: "USN", value: "2966-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-May/003408.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

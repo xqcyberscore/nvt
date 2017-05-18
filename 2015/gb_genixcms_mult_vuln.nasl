@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_genixcms_mult_vuln.nasl 3514 2016-06-14 11:29:47Z mime $
+# $Id: gb_genixcms_mult_vuln.nasl 5799 2017-03-30 15:26:21Z cfi $
 #
 # GeniXCMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805495");
-  script_version("$Revision: 3514 $");
+  script_version("$Revision: 5799 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:29:47 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:26:21 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-03-17 14:25:35 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("GeniXCMS Multiple Vulnerabilities");
@@ -59,15 +59,15 @@ if(description)
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36321/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130771/");
-  script_summary("Check if GeniXCMS is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -77,37 +77,21 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-# Get HTTP Port
 http_port = get_http_port(default:80);
-if (!http_port) {
-  http_port = 80;
-}
+if( !can_host_php( port:http_port ) ) exit( 0 );
 
-# Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-host = http_host_name( port:http_port );
-
-# Iterate over possible paths
-foreach dir (make_list_unique("/", "/genixcms", "/cms", cgi_dirs()))
-{
+foreach dir( make_list_unique( "/", "/genixcms", "/cms", cgi_dirs( port:http_port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  # Construct GET Request
   url = dir + "/index.php";
-  sndReq = string("GET ", url, " HTTP/1.1\r\n",
-                  "Host: ", host, "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
-                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n\r\n");
-
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache( item:url, port:http_port );
 
   ##Confirm Application
-  if(rcvRes && rcvRes =~ "content.*GeniXCMS")
-  {
+  if(rcvRes && rcvRes =~ "content.*GeniXCMS") {
+
+    host = http_host_name( port:http_port );
+
     ##Construct Attack Request
     url = dir + "/index.php/?page=1%27%3E%3Cscript%3Ealert(document.cookie)%3C/script%3E";
     sndReq = string("GET ", url, " HTTP/1.1\r\n",

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: osCommerce_xss.nasl 3501 2016-06-13 15:57:18Z mime $
+# $Id: osCommerce_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: osCommerce Cross Site Scripting Bugs
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to a newer version.";
 if (description)
 {
  script_id(11437);
- script_version("$Revision: 3501 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 17:57:18 +0200 (Mon, 13 Jun 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7151, 7153, 7155, 7156, 7158);
  script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if (description)
  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/11590");
  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1006342");
 
- script_summary("Determine if osCommerce is vulnerable to xss attack");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_analysis");
  script_family("Web application abuses");

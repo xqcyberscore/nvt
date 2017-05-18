@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_library_code_exec_vuln.nasl 5364 2017-02-20 13:26:07Z cfi $
+# $Id: gb_ms_windows_library_code_exec_vuln.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # MS Windows Insecure Library Loading Remote Code Execution Vulnerabilities (2269637)
 #
@@ -24,33 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary code or to
-  elevate privileges.
-  Impact Level: Application.";
-tag_affected = "Micorsoft Windows 7
-  Microsoft Windows XP Service Pack 3 and prior
-  Microsoft Windows 2003 Service Pack 2 and prior
-  Microsoft Windows Vista Service Pack 2 and prior.
-  Microsoft Windows Server 2008 Service Pack 2 and prior.";
-
-tag_insight = "The flaws are due to:
-  - An error in the loading of dynamic link libraries (DLLs). If an application
-    does not securely load DLL files, an attacker may be able to cause the
-    application to load an arbitrary library.
-  - A specific insecure programming practices that allow so-called
-   'binary planting' or 'DLL preloading attacks', which allows the attacker to
-    execute arbitrary code in the context of the user running the vulnerable
-    application when the user opens a file from an untrusted location.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  htttp://www.microsoft.com/technet/security/advisory/2269637.mspx";
-tag_summary = "This host is prone to Remote Code Execution vulnerabilities.";
-
 if(description)
 {
   script_id(801399);
-  script_version("$Revision: 5364 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:26:07 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -67,11 +45,26 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name : "insight" , value : "The flaws are due to:
+  - An error in the loading of dynamic link libraries (DLLs). If an application
+    does not securely load DLL files, an attacker may be able to cause the
+    application to load an arbitrary library.
+  - A specific insecure programming practices that allow so-called
+   'binary planting' or 'DLL preloading attacks', which allows the attacker to
+    execute arbitrary code in the context of the user running the vulnerable
+    application when the user opens a file from an untrusted location.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  htttp://www.microsoft.com/technet/security/advisory/2269637.mspx");
+  script_tag(name : "summary" , value : "This host is prone to Remote Code Execution vulnerabilities.");
+  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code or to
+  elevate privileges.
+  Impact Level: Application.");
+  script_tag(name : "affected" , value : "Micorsoft Windows 7
+  Microsoft Windows XP Service Pack 3 and prior
+  Microsoft Windows 2003 Service Pack 2 and prior
+  Microsoft Windows Vista Service Pack 2 and prior.
+  Microsoft Windows Server 2008 Service Pack 2 and prior.");
   exit(0);
 }
 
@@ -80,21 +73,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(dllPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:dllPath + "\" + file_name);
-
-  dllVer = GetVer(file:file, share:share);
-  if(!dllVer){
-    return(FALSE);
-  }
-
-  return(dllVer);
-}
 
 if(hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3, win7:1) <= 0){
   exit(0);
@@ -106,11 +84,10 @@ if(hotfix_missing(name:"2264107") == 0){
 }
 
 ## Get System32 path
-dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
-if(dllPath)
+sysPath = smb_get_system32root();
+if(sysPath)
 {
-  sysVer = get_file_version(dllPath, file_name:"Ntdll.dll");
+  sysVer = fetch_file_version(sysPath, file_name:"Ntdll.dll");
   if(sysVer)
   {
     ## Windows XP
@@ -145,13 +122,12 @@ if(dllPath)
   }
 }
 
-dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                      item:"PathName");
-if(!dllPath){
+sysPath = smb_get_system32root();
+if(!sysPath){
   exit(0);
 }
 
-sysVer = get_file_version(dllPath, file_name:"system32\Ntdll.dll");
+sysVer = fetch_file_version(sysPath, file_name:"Ntdll.dll");
 if(!sysVer){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_51402.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_wordpress_51402.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities
 #
@@ -46,7 +46,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(51402);
- script_version ("$Revision: 5633 $");
+ script_version ("$Revision: 5958 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("WordPress Count per Day Plugin Arbitrary File Download and Cross Site Scripting Vulnerabilities");
@@ -54,9 +54,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51402");
  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/count-per-day/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-01-13 10:18:15 +0100 (Fri, 13 Jan 2012)");
- script_summary("Determine if installed WordPress is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: AfterLogic_WebMail_Pro_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: AfterLogic_WebMail_Pro_detect.nasl 6006 2017-04-21 13:31:07Z cfi $
 #
 # AfterLogic WebMail Pro Detection
 #
 # Authors:
-# Michael Meyer
+# Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -24,94 +24,90 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running AfterLogic WebMail Pro, a Webmail front-end for
-your existing POP3/IMAP mail server.";
-
-if (description)
+if(description)
 {
- script_id(100313);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
- script_tag(name:"creation_date", value:"2009-10-20 18:54:22 +0200 (Tue, 20 Oct 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("AfterLogic WebMail Pro Detection");
- script_summary("Checks for the presence of AfterLogic WebMail Pro");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.afterlogic.com/");
- exit(0);
-}
+  script_oid("1.3.6.1.4.1.25623.1.0.100313");
+  script_version("$Revision: 6006 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 15:31:07 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2009-10-20 18:54:22 +0200 (Tue, 20 Oct 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("AfterLogic WebMail Pro Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
+  tag_summary = "This host is running AfterLogic WebMail Pro, a Webmail front-end for
+  your existing POP3/IMAP mail server.";
+
+  script_tag(name:"summary", value:tag_summary);
+
+  script_xref(name:"URL", value:"http://www.afterlogic.com/");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
+}
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100313";
-SCRIPT_DESC = "AfterLogic WebMail Pro Detection";
+port = get_http_port( default:80 );
 
-port = get_http_port(default:80);
+# Choose file to request based on what the remote host is supporting
+if( can_host_asp( port:port ) && can_host_php( port:port ) ) {
+  files = make_list( "/index.php", "/default.aspx" );
+} else if( can_host_asp( port:port ) ) {
+  files = make_list( "/default.aspx" );
+} else if( can_host_php( port:port ) ) {
+  files = make_list( "/index.php" );
+} else {
+  exit( 0 );
+}
 
-if(!get_port_state(port))exit(0);
-if(!can_host_asp(port:port) && !can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/webmail", "/mail", "/email", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/webmail","/mail","/email",cgi_dirs());
-files = make_list("/index.php","/default.aspx");
+  install = dir;
+  if( dir == "/" ) dir = "";
 
-foreach dir (dirs) {
- foreach file (files) { 
+  foreach file( files ) {
 
-   url = string(dir, file);
-   req = http_get(item:url, port:port);
-   buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-   if( buf == NULL )continue;
+    url = dir + file;
+    buf = http_get_cache( item:url, port:port );
+    if( isnull( buf ) ) continue;
  
-   if(egrep(pattern: "Powered by.*AfterLogic WebMail Pro", string: buf, icase: TRUE))
-   { 
-       if(strlen(dir)>0) {
-          install=dir;
-       } else {
-          install=string("/");
-       }
+    if( egrep( pattern:"Powered by.*AfterLogic WebMail Pro", string:buf, icase:TRUE ) ) {
 
-      vers = string("unknown");
-      ### try to get version 
-      version = eregmatch(string: buf, pattern: "<!--[^0-9]*([0-9.]+)[^-]*-->",icase:TRUE);
-
-      if ( !isnull(version[1]) ) {
-         vers=chomp(version[1]);
+      vers = "unknown";
+      version = eregmatch( string:buf, pattern:"<!--[^0-9]*([0-9.]+)[^-]*-->", icase:TRUE );
+      if( ! isnull( version[1] ) ) {
+        vers = chomp( version[1] );
       }
 
-      tmp_version = string(vers," under ",install);
-      set_kb_item(name: string("www/", port, "/AfterLogicWebMailPro"), value: tmp_version);
+      tmp_version = vers + " under " + install;
+      set_kb_item( name:"www/" + port + "/AfterLogicWebMailPro", value:tmp_version );
+      replace_kb_item( name:"AfterLogicWebMailPro/installed", value:TRUE );
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:afterlogic:mailbee_webmail_pro:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+      cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:afterlogic:mailbee_webmail_pro:" );
+      if( isnull( cpe ) )
+        cpe = "cpe:/a:afterlogic:mailbee_webmail_pro";
 
-      info = string("\n\nAfterLogic WebMail Pro Version '");
-      info += string(vers);
-      info += string("' was detected on the remote host in the following directory(s):\n\n");
-      info += string(install, "\n");
+      register_product( cpe:cpe, location:install, port:port );
 
-         if(report_verbosity > 0) {
-           log_message(port:port,data:info);
-         }
-         exit(0);
-
+      log_message( data:build_detection_report( app:"AfterLogic WebMail Pro",
+                                                version:vers,
+                                                install:install,
+                                                cpe:cpe,
+                                                concluded:version[0] ),
+                                                port:port );
+      exit( 0 );
+    }
   }
- }
 }
-exit(0);
 
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_freesshd_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # freeSSHd Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900959");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("freeSSHd Version Detection");
@@ -47,7 +47,6 @@ and extract version from the name.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set KB for the version of freeSSHd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808089");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5684 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:51:50 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-22 14:45:59 +0530 (Wed, 22 Jun 2016)");
   script_name("Joomla BT Media Component SQL Injection Vulnerability");
 
@@ -55,7 +55,7 @@ if(description)
   script_tag(name:"affected", value:"Joomla BT Media 1.0");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  24th January, 2017. Information regarding this issue will be updated once the
+  23th March, 2017. Information regarding this issue will be updated once the
   solution details are available. 
   For updates refer to http://extensions.joomla.org/extension/bt-media-gallery");
 

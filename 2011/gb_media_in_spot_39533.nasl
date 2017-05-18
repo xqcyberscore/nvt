@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_media_in_spot_39533.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: gb_media_in_spot_39533.nasl 5750 2017-03-28 14:10:17Z cfi $
 #
 # Media in Spot CMS 'page' Parameter Local File Include Vulnerability
 #
@@ -33,12 +33,11 @@ the context of the webserver process. This may allow the attacker
 to compromise the application and the computer; other attacks are
 also possible.";
 
-
-if (description)
+if(description)
 {
  script_id(103166);
- script_version("$Revision: 5647 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5750 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:10:17 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-05-31 13:49:33 +0200 (Tue, 31 May 2011)");
  script_bugtraq_id(39533);
  script_tag(name:"cvss_base", value:"5.1");
@@ -50,7 +49,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17292/");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if Media in Spot CMS is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -64,29 +62,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
 files = traversal_files();
 
-dirs = make_list("/cms",cgi_dirs());
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
-   
+
     url = string(dir, "/index.php?page=",crap(data:"../", length:3*9),files[file]); 
 
     if(http_vuln_check(port:port, url:url, pattern:file,  extra_check:"Media In Spot")) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-  } 
+  }
 }
 
-exit(0);
+exit( 99 );

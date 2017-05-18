@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-048_900031.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-048_900031.nasl 5863 2017-04-05 07:38:11Z antu123 $
 # Description: Security Update for Outlook Express (951066)
 #
 # Authors:
@@ -46,8 +46,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
  script_id(900031);
- script_version("$Revision: 5344 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+ script_version("$Revision: 5863 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30585);
  script_cve_id("CVE-2008-1448");
@@ -86,87 +86,20 @@ if(description)
                 exit(0);
  }
 
- function get_version()
- {
-        dllPath = registry_get_sz(item:"Install Path",
-                  key:"SOFTWARE\Microsoft\COM3\Setup");
+sysPath = smb_get_system32root();
+if(!sysPath ){
+  exit(0);
+}
 
-        dllPath += "\inetcomm.dll";
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-        file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
+dllPath = sysPath + "\inetcomm.dll";
 
-        name    =  kb_smb_name();
-        login   =  kb_smb_login();
-        pass    =  kb_smb_password();
-        domain  =  kb_smb_domain();
-        port    =  kb_smb_transport();
-
-        soc = open_sock_tcp(port);
-        if(!soc){
-                exit(0);
-        }
-
-        r = smb_session_request(soc:soc, remote:name);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        } 
-
-        prot = smb_neg_prot(soc:soc);
-        if(!prot)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_session_setup(soc:soc, login:login, password:pass,
-                              domain:domain, prot:prot);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        uid = session_extract_uid(reply:r);
-        if(!uid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        tid = tconx_extract_tid(reply:r);
-        if(!tid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-        if(!fid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, verstr:"prod", offset:600000);
-        return v;
- }
-
- if(!registry_key_exists(key:"SOFTWARE\Microsoft\Outlook Express")){
+if(!registry_key_exists(key:"SOFTWARE\Microsoft\Outlook Express")){
 	exit(0);
- }
+}
 
  if(hotfix_check_sp(win2k:5) > 0)
  {
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, string:"prod", offs:600000);
         if(vers == NULL){
                 exit(0);
         }
@@ -190,7 +123,7 @@ if(description)
 
  if(hotfix_check_sp(xp:4) > 0)
  {
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, string:"prod", offs:600000);
         if(vers == NULL){
                 exit(0);
         }
@@ -220,7 +153,7 @@ if(description)
 
  if(hotfix_check_sp(win2003:3) > 0)
  {
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, string:"prod", offs:600000);
         if(vers == NULL){
                 exit(0);
         }
@@ -249,16 +182,12 @@ if(description)
  }
 
 ## Get the 'inetcomm.dll' path for Windows Vista and 2008 Server
-dllPath = registry_get_sz(item:"PathName",
-          key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+dllPath = smb_get_system32root();
 if(!dllPath){
   exit(0);
 }
 
-share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                     string:dllPath + "\system32\inetcomm.dll");
-dllVer = GetVer(file:file, share:share);
+dllVer = fetch_file_version(sysPath:dllPath, file_name:"\inetcomm.dll");
 if(dllVer)
 {
   # Windows Vista

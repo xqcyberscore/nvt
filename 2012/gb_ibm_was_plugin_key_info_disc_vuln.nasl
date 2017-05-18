@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_plugin_key_info_disc_vuln.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_was_plugin_key_info_disc_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # IBM WebSphere Application Server 'plugin-key.kdb' Information Disclosure Vulnerability
 #
@@ -46,11 +46,11 @@ tag_summary = "The host is running IBM WebSphere Application Server and is prone
 if(description)
 {
   script_id(802851);
-  script_version("$Revision: 3775 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-2162");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-11 17:31:58 +0530 (Fri, 11 May 2012)");
   script_name("IBM WebSphere Application Server 'plugin-key.kdb' Information Disclosure Vulnerability");
 
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21588312");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_summary("Check for the version of IBM WebSphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

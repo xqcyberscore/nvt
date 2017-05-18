@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_cert_handling_dos_vuln_jan15.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_mongodb_cert_handling_dos_vuln_jan15.nasl 5848 2017-04-04 07:21:55Z antu123 $
 #
 # MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805118");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 5848 $");
   script_cve_id("CVE-2014-3971");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 09:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 16:11:38 +0530 (Fri, 02 Jan 2015)");
   script_name("MongoDB mongod Malformed X.509 Certificate Handling Remote DoS Vulnerability");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "https://github.com/mongodb/mongo/commit/c151e0660b9736fe66b224f1129a16871165251b");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Determine if installed MongoDB version is vulnerable on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Databases");
@@ -75,18 +74,6 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-include("global_settings.inc");
-
-function check_mongodb_ver(mongodbversion, mongodbPort)
-{
-  ## check the version
-  if(version_in_range(version:mongodbversion, test_version:"2.6", test_version2:"2.6.1"))
-  {
-    report = report_fixed_ver(installed_version:mongodbversion, fixed_version:"2.6.2");
-    security_message(data:report, port:mongodbPort);
-    exit(0);
-  }
-}
 
 ## Variable initialisation
 mbPort = "";
@@ -103,4 +90,13 @@ if(!mbPort = get_app_port(cpe:CPE)) exit(0);
 ## Get the app version
 if(!ver = get_app_version(cpe:CPE, port:mbPort)) exit(0);
 
-check_mongodb_ver(mongodbversion:ver, mongodbPort:mbPort);
+## check the version
+if(ver =~ "(^2\.6)")
+{
+  if(version_is_less(version:ver, test_version:"2.6.2"))
+  {
+    report = report_fixed_ver(installed_version:ver, fixed_version:"2.6.2");
+    security_message(data:report, port:mbPort);
+    exit(0);
+  }
+}

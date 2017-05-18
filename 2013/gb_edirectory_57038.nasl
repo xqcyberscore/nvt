@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_edirectory_57038.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: gb_edirectory_57038.nasl 5772 2017-03-29 16:44:30Z mime $
 #
 # Novell eDirectory Multiple Security Vulnerabilities
 #
@@ -25,16 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:novell:edirectory";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103630");
   script_bugtraq_id(57038);
   script_cve_id("CVE-2012-0428","CVE-2012-0429","CVE-2012-0430","CVE-2012-0432");
-  script_version("$Revision: 5190 $");
+  script_version("$Revision: 5772 $");
   script_name("Novell eDirectory Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-01-02 11:38:11 +0100 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -81,29 +79,36 @@ if(description)
 }
 
 include("host_details.inc");
+include("version_func.inc");
+
+CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-version = get_kb_item("ldap/" + port + "/eDirectory");
-if(isnull(version))exit(0);
+if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
+  sp = "0";
 
-if(version =~ "8\.8") {
+revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
+revision = str_replace( string:revision, find:".", replace:"" );
 
-  service_pack = eregmatch(pattern:"SP([0-9])+",string:version);
-  if(!isnull(service_pack[1])) sp = int(service_pack[1]);
+invers = major;
 
-  major = eregmatch(pattern:"\(([0-9]+)\.([0-9]+)\)", string: version);
-  if(!isnull(major[1])) mj = int(major[1]);
+if( sp > 0 )
+  invers += ' SP' + sp;
 
-  if(!sp || sp < 6) hole = TRUE;
-  if(sp == 6 && (!mj || mj < 20608)) hole = TRUE; 
-  if(sp == 7 && (!mj || mj < 20703)) hole = TRUE;
+if( version =~ "8\.8" )
+{
+  if( ! sp || sp < 6 ) hole = TRUE;
+  if( sp == 6 && ( ! revision || revision < 20608 ) ) hole = TRUE;
+  if( sp == 7 && ( ! revision || revision < 20703 ) ) hole = TRUE;
 
-}  
+}
 
-if(hole) {
-  security_message(port:port);
+if( hole )
+{
+  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  security_message( port:port, data:report );
   exit(0);
 }
 

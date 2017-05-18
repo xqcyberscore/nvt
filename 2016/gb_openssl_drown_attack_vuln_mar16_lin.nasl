@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_drown_attack_vuln_mar16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_openssl_drown_attack_vuln_mar16_lin.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # OpenSSL SSLv2 DROWN Attack Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807096");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-0800");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-03 12:23:09 +0530 (Thu, 03 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL SSLv2 DROWN Attack Vulnerability (Linux)");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://drownattack.com/drown-attack-paper.pdf");
   script_xref(name : "URL" , value : "https://answers.uchicago.edu/page.php?id=61323");
   script_xref(name : "URL" , value : "http://arstechnica.com/security/2016/03/more-than-13-million-https-websites-imperiled-by-new-decryption-attack");
-  script_summary("Check for the vulnerable version of OpenSSL on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

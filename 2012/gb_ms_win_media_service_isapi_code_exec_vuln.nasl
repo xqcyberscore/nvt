@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities
 #
@@ -46,12 +46,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2003-0227", "CVE-2003-0349");
   script_bugtraq_id(7727, 8035);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-25 16:04:16 +0530 (Wed, 25 Jul 2012)");
   script_name("Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/9115");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms03-019");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms03-022");
   script_xref(name : "URL" , value : "http://support.microsoft.com/default.aspx?scid=kb;en-us;822343");
-  script_summary("Check if Windows Media Services is vulnerable to code execution");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

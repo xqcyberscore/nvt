@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_code_exec_n_dos_vuln_macosx.nasl 3014 2016-04-08 10:04:54Z benallard $
+# $Id: gb_adobe_shockwave_player_mult_code_exec_n_dos_vuln_macosx.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # Adobe Shockwave Player Multiple Code Execution and DoS Vulnerabilities (Mac OS X)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Adobe Shockwave Player and is prone
 if(description)
 {
   script_id(802780);
-  script_version("$Revision: 3014 $");
+  script_version("$Revision: 5999 $");
   script_bugtraq_id(53420);
   script_cve_id("CVE-2012-2029", "CVE-2012-2030", "CVE-2012-2031", "CVE-2012-2032",
                 "CVE-2012-2033");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 12:04:54 +0200 (Fri, 08 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-15 12:12:47 +0530 (Tue, 15 May 2012)");
   script_name("Adobe Shockwave Player Multiple Code Execution and DoS Vulnerabilities (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49086/");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-13.html");
 
-  script_summary("Check for the version of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

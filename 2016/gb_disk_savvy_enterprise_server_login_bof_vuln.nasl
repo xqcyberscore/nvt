@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_savvy_enterprise_server_login_bof_vuln.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: gb_disk_savvy_enterprise_server_login_bof_vuln.nasl 5706 2017-03-24 08:04:22Z teissa $
 #
-# Disk Savvy Enterprise Server 'Login' Buffer Overflow Vulnerability
+# Disk Savvy Enterprise Server Buffer Overflow Vulnerability
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
@@ -24,78 +24,69 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:disksavvy:disksavvy_enterprise_web_server";
+CPE = "cpe:/a:disksavvy:disksavvy_enterprise";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809486");
-  script_version("$Revision: 5220 $");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+  script_version("$Revision: 5706 $");
+  script_cve_id("CVE-2017-6187");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:04:22 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-02 17:06:55 +0530 (Fri, 02 Dec 2016)");
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_name("Disk Savvy Enterprise Server 'Login' Buffer Overflow Vulnerability");
+  script_name("Disk Savvy Enterprise Server Buffer Overflow Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Denial of Service");
+  script_dependencies("gb_disk_savvy_enterprise_server_detect.nasl");
+  script_mandatory_keys("DiskSavvy/Enterprise/Server/installed");
+  script_require_ports("Services/www", 80);
 
-  script_tag(name: "summary" , value:"The host is running Disk Savvy Enterprise
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41436/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/41146/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40854/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40834/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40459/");
+
+  script_tag(name:"summary", value:"The host is running Disk Savvy Enterprise
   Server and is prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
+  script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect nvt and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error when processing
+  script_tag(name:"insight", value:"The flaw is due to an error when processing
   web requests and can be exploited to cause a buffer overflow via an overly long
   string passed to 'Login' request.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Disk Savvy Enterprise version 9.1.14 and prior.");
+  script_tag(name:"affected", value:"Disk Savvy Enterprise version 9.4.18 and prior.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
+  script_tag(name:"solution", value:"No solution or patch is available as of
   07th February, 2017. Information regarding this issue will be updated once the
   solution details are available. For updates refer to http://www.disksavvy.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40834");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Denial of Service");
-  script_dependencies("gb_disk_savvy_enterprise_server_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("DiskSavvy/Enterprise/Server/installed", "Host/runs_windows");
-  script_require_ports("Services/www", 80);
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
-##
-#Code Starts Here
-##
 
 include("host_details.inc");
 include("version_func.inc");
 
-##Variable initialization
-savvyVer = "";
-savvyPort = "";
-report = "";
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-##Get Port
-if(!savvyPort = get_app_port(cpe:CPE)){
-  exit(0);
+if( version_is_less_equal( version:vers, test_version:"9.4.18" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"None Available");
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-##Get version
-if(!savvyVer = get_app_version(cpe:CPE, port:savvyPort)){
-  exit(0);
-}
-
-##Check for versions less than and equal to 9.1.14
-if(version_is_less_equal(version:savvyVer, test_version:"9.1.14"))
-{
-  report = report_fixed_ver(installed_version:savvyVer, fixed_version:"None Available");
-  security_message(data:report, port:savvyPort);
-  exit(0);
-}
+exit( 99 );

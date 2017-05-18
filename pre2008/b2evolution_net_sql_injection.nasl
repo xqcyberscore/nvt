@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: b2evolution_net_sql_injection.nasl 3717 2016-07-15 19:04:33Z cfi $
+# $Id: b2evolution_net_sql_injection.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # b2Evolution title SQL Injection
 #
@@ -31,14 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16121");
-  script_version("$Revision: 3717 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-15 21:04:33 +0200 (Fri, 15 Jul 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(12179);
   script_name("b2Evolution title SQL Injection");
-  script_summary("Checks for the presence of an SQL injection in title parameter");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");

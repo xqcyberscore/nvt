@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_ibm_lotus_symphony_mult_untrusted_search_path_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)
 #
@@ -54,11 +54,11 @@ CPE = "cpe:/a:ibm:lotus_symphony";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2010-5204");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-17 15:01:39 +0530 (Mon, 17 Sep 2012)");
   script_name("IBM Lotus Symphony Multiple Untrusted Search Path Vulnerabilities (Windows)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2269637#EGF");
   script_xref(name : "URL" , value : "http://core.yehg.net/lab/pr0js/advisories/dll_hijacking/%5Bibm_lotus_symphony%5D_3-beta-4_insecure_dll_hijacking");
 
-  script_summary("Check for the version of IBM Lotus Symphony on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

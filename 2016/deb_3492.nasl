@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3492.nasl 2822 2016-03-10 05:48:42Z antu123 $
+# $Id: deb_3492.nasl 5759 2017-03-29 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3492-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703492);
-    script_version("$Revision: 2822 $");
+    script_version("$Revision: 5759 $");
     script_cve_id("CVE-2015-8688");
     script_name("Debian Security Advisory DSA 3492-1 (gajim - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-10 06:48:42 +0100 (Thu, 10 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-03-08 12:37:58 +0530 (Tue, 08 Mar 2016)");
     script_tag(name:"cvss_base", value:"5.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3492.html");
 
-    script_summary("Debian Security Advisory DSA 3492-1 (gajim - security update)");
 
     script_category(ACT_GATHER_INFO);
 

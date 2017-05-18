@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # WordPress Spider Calendar Plugin Multiple SQL Injection Vulnerabilities
 #
@@ -43,9 +43,9 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(55779);
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-18 19:07:20 +0530 (Thu, 18 Oct 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21715/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117078/WordPress-Spider-1.0.1-SQL-Injection-XSS.html");
 
-  script_summary("Check if WordPress Spider Calendar Plugin is prone to SQL injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

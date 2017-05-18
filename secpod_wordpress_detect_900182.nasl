@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_detect_900182.nasl 5551 2017-03-13 07:32:10Z antu123 $
+# $Id: secpod_wordpress_detect_900182.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # WordPress Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900182");
-  script_version("$Revision: 5551 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 08:32:10 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_name("WordPress Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -68,28 +68,6 @@ port = "";
 wpName = "";
 wpmuName = "";
 checkduplicate = "";
-
-## Function to Register Product and Build report
-function build_report( app, ver, cpe, insloc, concl, port ) {
-
-  ## Check if version is already set
-  if (ver + ", " >< checkduplicate){
-     continue;
-  }
-
-  ##Assign detected version value to checkduplicate so as to check in next loop iteration
-  checkduplicate  += ver + ", ";
-
-  register_product( cpe:cpe, location:insloc, port:port );
-
-  log_message( data:build_detection_report( app:app,
-                                            version:ver,
-                                            install:insloc,
-                                            cpe:cpe,
-                                            concluded:concl ),
-                                            port:port );
-  
-}
 
 port = get_http_port( default:80 );
 
@@ -125,8 +103,16 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
         if( ! mu_cpe )
           mu_cpe = 'cpe:/a:wordpress:wordpress_mu';
 
+        ## Check if version is already set
+        if (version + ", " >< checkduplicate){
+          continue;
+        }
+
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate  += version + ", ";
+
         ## Register Product and Build Report
-        build_report( app:"WordPress-Mu", ver:version, cpe:mu_cpe, insloc:install, concl:wpmuVer[0], port:port );
+        build_report( app:"WordPress-Mu", ver:version, concluded:wpmuVer[0], cpe:mu_cpe, insloc:install, port:port );
       }
 
       if( "WordPress Mu" >!< res ) {
@@ -146,8 +132,16 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
           if( ! cpe )
             cpe = 'cpe:/a:wordpress:wordpress';
 
+          ## Check if version is already set
+          if (wpVer[1] + ", " >< checkduplicate){
+            continue;
+          }
+
+          ##Assign detected version value to checkduplicate so as to check in next loop iteration
+          checkduplicate  += wpVer[1] + ", ";
+
           ## Register Product and Build Report
-          build_report( app:"WordPress", ver:wpVer[1], cpe:cpe, insloc:install, concl:wpVer[0], port:port );
+          build_report( app:"WordPress", ver:wpVer[1], concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
         }
       }
     }
@@ -182,8 +176,16 @@ if( ! flag ) {
         if( ! cpe )
           cpe = 'cpe:/a:wordpress:wordpress';
 
+        ## Check if version is already set
+        if (wpVer[1] + ", " >< checkduplicate){
+          continue;
+        }
+
+        ##Assign detected version value to checkduplicate so as to check in next loop iteration
+        checkduplicate  += wpVer[1] + ", ";
+
         ## Register Product and Build Report
-        build_report( app:"WordPress", ver:wpVer[1], cpe:cpe, insloc:install, concl:wpVer[0], port:port );
+        build_report( app:"WordPress", ver:wpVer[1], concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
       }
     }
   }
@@ -225,8 +227,16 @@ if( ! flag ) {
       if( ! cpe )
         cpe = 'cpe:/a:wordpress:wordpress';
 
+      ## Check if version is already set
+      if (version + ", " >< checkduplicate){
+        continue;
+      }
+
+      ##Assign detected version value to checkduplicate so as to check in next loop iteration
+      checkduplicate  += version + ", ";
+
       ## Register Product and Build Report
-      build_report( app:"WordPress", ver:version, cpe:cpe, insloc:install, concl:wpVer[0], port:port );
+      build_report( app:"WordPress", ver:version, concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
     }
   }
 }
@@ -266,9 +276,17 @@ if( ! flag ) {
       cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:wordpress:wordpress:" );
       if( ! cpe )
         cpe = 'cpe:/a:wordpress:wordpress';
+ 
+      ## Check if version is already set
+      if (version + ", " >< checkduplicate){
+        continue;
+      }
+
+      ##Assign detected version value to checkduplicate so as to check in next loop iteration
+      checkduplicate  += version + ", ";
 
       ## Register Product and Build Report
-      build_report( app:"WordPress", ver:version, cpe:cpe, insloc:install, concl:wpVer[0], port:port );
+      build_report( app:"WordPress", ver:version, concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
     }
   }
 }
@@ -307,8 +325,16 @@ if( ! flag ) {
       if( ! cpe )
         cpe = 'cpe:/a:wordpress:wordpress';
 
+      ## Check if version is already set
+      if (version + ", " >< checkduplicate){
+        continue;
+      }
+
+      ##Assign detected version value to checkduplicate so as to check in next loop iteration
+      checkduplicate  += version + ", ";
+
       ## Register Product and Build Report
-      build_report( app:"WordPress", ver:version, cpe:cpe, insloc:install, concl:wpVer[0], port:port );
+      build_report( app:"WordPress", ver:version, concluded:wpVer[0], cpe:cpe, insloc:install, port:port );
     }
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 3949 2016-09-02 13:45:51Z cfi $
+# $Id: gb_ibm_was_sip_services_dos_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability 
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808651");
-  script_version("$Revision: 3949 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-2960");
   script_bugtraq_id(92354);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-02 15:45:51 +0200 (Fri, 02 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 10:35:15 +0530 (Tue, 16 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server 'SIP Services' Denial of Service Vulnerability");
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21984796");
   
-  script_summary("Check for the vulnerable version of IBM Websphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

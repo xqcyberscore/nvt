@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netscape_detect_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_netscape_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Netscape Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900392");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Netscape Version Detection (Windows)");
@@ -44,7 +44,6 @@ gets the version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Netscape");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

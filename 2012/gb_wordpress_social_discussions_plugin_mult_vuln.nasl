@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_social_discussions_plugin_mult_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_social_discussions_plugin_mult_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # WordPress Social Discussions Plugin Multiple Vulnerabilities
 #
@@ -52,8 +52,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_version("$Revision: 5956 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-18 13:12:20 +0530 (Thu, 18 Oct 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.waraxe.us/advisory-93.html");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Oct/98");
 
-  script_summary("Check if WordPress Social Discussions Plugin is prone to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cobalt_web_admin_server.nasl 4079 2016-09-16 09:06:55Z cfi $
+# $Id: cobalt_web_admin_server.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Cobalt Web Administration Server Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10793");
-  script_version("$Revision: 4079 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:06:55 +0200 (Fri, 16 Sep 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Cobalt Web Administration Server Detection");
-  script_summary("Cobalt Web Administration Server Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("Web application abuses");

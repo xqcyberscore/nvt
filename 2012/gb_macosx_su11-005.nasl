@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su11-005.nasl 3046 2016-04-11 13:53:51Z benallard $
+# $Id: gb_macosx_su11-005.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)
 #
@@ -37,10 +37,10 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(802798);
-  script_version("$Revision: 3046 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:53:51 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-26 18:25:17 +0530 (Tue, 26 Jun 2012)");
   script_name("Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4920");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2011/Sep/msg00000.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Checks for existence of Mac OS X 10.6.8 Update/Mac OS X Security Update 2011-005");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl");

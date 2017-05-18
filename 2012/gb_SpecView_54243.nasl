@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SpecView_54243.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_SpecView_54243.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # SpecView Web Server Directory Traversal Vulnerability
 #
@@ -43,15 +43,14 @@ if (description)
  script_cve_id("CVE-2012-5972");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5912 $");
 
  script_name("SpecView Web Server Directory Traversal Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54243");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-02 12:15:35 +0200 (Mon, 02 Jul 2012)");
- script_summary("Determine if it is possible to read the boot.ini");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

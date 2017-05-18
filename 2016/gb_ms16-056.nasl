@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-056.nasl 3300 2016-05-12 11:57:52Z antu123 $
+# $Id: gb_ms16-056.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Microsoft Windows Journal Memory Corruption Vulnerability (3156761)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808019");
-  script_version("$Revision: 3300 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-0182");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-12 13:57:52 +0200 (Thu, 12 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-11 10:37:53 +0530 (Wed, 11 May 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Journal Memory Corruption Vulnerability (3156761)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3156761");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-056");
 
-  script_summary("Check for the vulnerable 'Inkseg.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

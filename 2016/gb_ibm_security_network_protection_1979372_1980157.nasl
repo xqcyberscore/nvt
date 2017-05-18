@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_security_network_protection_1979372_1980157.nasl 3415 2016-06-01 15:34:04Z mime $
+# $Id: gb_ibm_security_network_protection_1979372_1980157.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # IBM Security Network Protection Multiple Vulnerabilities
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:ibm:security_network_protection";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105747");
- script_version ("$Revision: 3415 $");
+ script_version ("$Revision: 5732 $");
  script_name("IBM Security Network Protection Multiple Vulnerabilities");
  script_cve_id("CVE-2016-0787","CVE-2015-8629","CVE-2015-8631");
  script_tag(name:"cvss_base", value:"6.8");
@@ -53,9 +53,8 @@ IBM Security Network Protection 5.3.2");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-01 17:34:04 +0200 (Wed, 01 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-06-01 15:30:38 +0200 (Wed, 01 Jun 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

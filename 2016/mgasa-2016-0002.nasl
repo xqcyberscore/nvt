@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0002.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0002.nasl 5689 2017-03-23 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131171");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5689 $");
 script_tag(name:"creation_date", value:"2016-01-11 11:15:36 +0200 (Mon, 11 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0002");
 script_tag(name: "insight", value: "By calling some scripts that are part of phpMyAdmin in an unexpected way, it is possible to trigger phpMyAdmin to display a PHP error message which contains the full path of the directory where phpMyAdmin is installed (CVE-2015-8669)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0002");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0002");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

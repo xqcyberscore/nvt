@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smc_www_dos.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: smc_www_dos.nasl 5838 2017-04-03 10:26:36Z cfi $
 # Description: Crash SMC AP
 #
 # Authors:
@@ -33,31 +33,24 @@ tag_solution = "Contact vendor for a fix";
 if(description)
 {
     script_id(11141);
-    script_version("$Revision: 3359 $");
-    script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+    script_version("$Revision: 5838 $");
+    script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
     script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-    name = "Crash SMC AP";
-    script_name(name);
-
-    summary = "Crash SMC Access Point";
-    script_summary(summary);
+    script_name("Crash SMC AP");
     script_category(ACT_DENIAL);
-  script_tag(name:"qod_type", value:"remote_vul");
+    script_tag(name:"qod_type", value:"remote_vul");
     script_copyright("This script is Copyright (C) 2002 John Lampe...j_lampe@bellsouth.net");
-    family = "Denial of Service";
-    script_family(family);
-    script_dependencies("find_service.nasl");
+    script_family("Denial of Service");
+    script_dependencies("find_service.nasl", "http_version.nasl");
     script_require_ports("Services/www", 80);
+    script_exclude_keys("Settings/disable_cgi_scanning");
     script_tag(name : "solution" , value : tag_solution);
     script_tag(name : "summary" , value : tag_summary);
     exit(0);
 }
 
-#
-# The script code starts here
-#
 # found with SPIKE 2.7 http://www.immunitysec.com/spike.html
 # req string directly horked from SPIKE API
 
@@ -74,7 +67,7 @@ req = string(req, "Referer: http://localhost/bob\r\n");
 req = string(req, "Content-Type: application/x-www-form-urlencoded\r\n");
 req = string(req, "Connection: Keep-Alive\r\n");
 req = string(req, "Cookie: VARIABLE=FOOBAR; path=/\r\n");
-req = string(req, "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)\r\n");
+req = string(req, "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n");
 req = string(req, "Variable: result\r\n");
 req = string(req, "Host: ", get_host_name(), "\r\nContent-length: 13\r\n");
 req = string(req, "Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png\r\n");

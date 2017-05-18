@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805644");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5701 $");
   script_cve_id("CVE-2015-1903", "CVE-2015-1902");
   script_bugtraq_id(74598, 74597);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-06-04 12:22:20 +0530 (Thu, 04 Jun 2015)");
   script_name("IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15");
 
@@ -85,15 +85,8 @@ include("global_settings.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -114,6 +107,6 @@ if(version_in_range(version:domVer1, test_version:"9.0", test_version2:"9.0.1.3"
 if(VULN)
 {
   report = 'Installed Version: ' + domVer + '\nFixed Version: ' + fix + '\n';
-  security_message(data:report, port:domPort);
+  security_message(data:report, port:0);
   exit(0);
 }

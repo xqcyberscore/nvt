@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eshop_information_disclosure.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: eshop_information_disclosure.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # E-Shopping Cart Arbitrary Command Execution (WebDiscount)
 #
@@ -28,15 +28,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10775");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3340);
   script_cve_id("CVE-2001-1014");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("E-Shopping Cart Arbitrary Command Execution (WebDiscount)");
-  script_summary("E-Shopping Cart Arbitrary Command Execution (WebDiscount)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("Web application abuses");

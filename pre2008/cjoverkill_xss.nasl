@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cjoverkill_xss.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: cjoverkill_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: CjOverkill trade.php XSS
 #
 # Authors:
@@ -44,8 +44,8 @@ tag_solution = "Upgrade to version 4.0.4 or newer.";
 if(description)
 {
  script_id(15462);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2193");
  script_bugtraq_id(11359);
@@ -57,7 +57,6 @@ if(description)
  
 
  summary = "Check CjOverkill version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

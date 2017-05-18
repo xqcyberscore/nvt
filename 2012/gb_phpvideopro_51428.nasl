@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpvideopro_51428.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_phpvideopro_51428.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # phpVideoPro Multiple Cross Site Scripting Vulnerabilities
 #
@@ -41,19 +41,16 @@ if (description)
 {
  script_id(103392);
  script_bugtraq_id(51428);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5700 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("phpVideoPro Multiple Cross Site Scripting Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51428");
  script_xref(name : "URL" , value : "http://code.google.com/p/simplesamlphp/issues/detail?id=468");
  script_xref(name : "URL" , value : "http://simplesamlphp.org/");
  script_xref(name : "URL" , value : "http://code.google.com/p/simplesamlphp/source/detail?r=3009");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-19 12:05:58 +0100 (Thu, 19 Jan 2012)");
- script_summary("Determine if installed phpVideoPro is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -61,41 +58,32 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
+foreach dir( make_list_unique( "/phpvideopro", "/video", cgi_dirs( port:port ) ) ) {
 
-if(!can_host_php(port:port))exit(0);
+  if( dir == "/" ) dir = "";
+  url = dir + "/medialist.php";
 
-dirs = make_list("/phpvideopro","/video",cgi_dirs());
-
-foreach dir (dirs) {
-   
-  url = string(dir, "/medialist.php"); 
-
-  if(http_vuln_check(port:port, url:url,pattern:"<Title>phpVideoPro")) {
-
-    url = string(dir,'/medialist.php/"><script>alert(/openvas-xss-test/)</script>/');
-
-    if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE)) {
-     
-      security_message(port:port);
-      exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<Title>phpVideoPro" ) ) {
+    url = dir + '/medialist.php/"><script>alert(/openvas-xss-test/)</script>/';
+    if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }   
-
   }
 }
 
-exit(0);
-
+exit( 99 );

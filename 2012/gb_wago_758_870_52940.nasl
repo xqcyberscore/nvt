@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_758_870_52940.nasl 5656 2017-03-21 11:03:12Z cfi $
+# $Id: gb_wago_758_870_52940.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities
 #
@@ -36,20 +36,18 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103465");
  script_bugtraq_id(52940,52942);
  script_cve_id("CVE-2012-4879","CVE-2012-3013");
- script_version ("$Revision: 5656 $");
+ script_version ("$Revision: 5676 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C"); 
  script_name("WAGO I/O SYSTEM 758 Series Insecure Credential Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:03:12 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-04-12 11:29:33 +0200 (Thu, 12 Apr 2012)"); 
 
-
- script_summary("Determine if it is possible to login into the remote wago");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "telnet.nasl");
  script_require_ports("Services/www", 80, "Services/telnet", 23);
  script_tag(name : "summary" , value :"The WAGO IPC 758 series are prone to a security-bypass vulnerability
 caused by a set of hard-coded passwords.
@@ -71,7 +69,9 @@ telnet_port = get_kb_item("Services/telnet");
 
 if(!http_port && !telnet_port)exit(0);
 
-if( http_port )
+cgi_disabled = get_kb_item("Settings/disable_cgi_scanning");
+
+if( http_port && ! cgi_disabled )
 {
   url = '/cgi-bin/ssi.cgi/title.ssi';
   req = http_get(item:url, port:http_port);

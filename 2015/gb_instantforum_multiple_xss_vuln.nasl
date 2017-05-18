@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_instantforum_multiple_xss_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_instantforum_multiple_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
 #
 # InstantASP InstantForum.NET Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805291");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5819 $");
   script_cve_id("CVE-2014-9468");
   script_bugtraq_id(72660);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-02-26 11:32:25 +0530 (Thu, 26 Feb 2015)");
   script_name("InstantASP InstantForum.NET Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -65,45 +65,30 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
-  script_summary("Check if InstantASP InstantForum.NET is prone to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
-
 include("http_keepalive.inc");
 include("http_func.inc");
-
 
 ## Variable Initialization
 http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
-}
 
-## Check the port status
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/instantforum", "/InstantForum", cgi_dirs()))
+foreach dir (make_list_unique("/", "/instantforum", "/InstantForum", cgi_dirs(port:http_port)))
 {
 
   if( dir == "/" ) dir = "";
-
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/"), port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/"), port:http_port);
 
   ## confirm the application
   if(rcvRes && rcvRes =~ "Powered by.*>InstantForum")
@@ -113,7 +98,7 @@ foreach dir (make_list_unique("/", "/instantforum", "/InstantForum", cgi_dirs())
 
     ##Confirm Exploit
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"<script>alert\(document.cookie\)</script>",
+       pattern:"<script>alert\(document\.cookie\)</script>",
        extra_check:make_list(">InstantForum", ">Login<")))
     {
       report = report_vuln_url( port:http_port, url:url );

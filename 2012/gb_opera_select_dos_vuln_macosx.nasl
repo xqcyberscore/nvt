@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_select_dos_vuln_macosx.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_opera_select_dos_vuln_macosx.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Opera Web Browser Select Object Denial Of Service Vulnerability (Mac OS X)
 #
@@ -39,12 +39,12 @@ tag_summary = "The host is installed with Opera Web Browser and is prone to sele
 if(description)
 {
   script_id(802754);
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5958 $");
   script_cve_id("CVE-2009-2540", "CVE-2009-1692");
   script_bugtraq_id(35446);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-19 10:28:43 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Web Browser Select Object Denial Of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.milw0rm.com/exploits/9160");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.g-sec.lu/one-bug-to-rule-them-all.html");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/504969/100/0/threaded");
 
-  script_summary("Check for the version of Opera on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_AskMe_29732.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_AskMe_29732.nasl 5769 2017-03-29 13:50:21Z cfi $
 #
 # AlstraSoft AskMe Pro 'forum_answer.php' and 'profile.php' Multiple SQL Injection Vulnerabilities
 #
@@ -35,12 +35,11 @@ in the underlying database.
 All versions up to and including AlstraSoft AskMe Pro 2.1 are
 vulnerable.";
 
-
-if (description)
+if(description)
 {
  script_id(100800);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 5769 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:50:21 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-09-14 15:16:41 +0200 (Tue, 14 Sep 2010)");
  script_bugtraq_id(29732);
  script_cve_id("CVE-2008-2902");
@@ -53,7 +52,7 @@ if (description)
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,25 +64,20 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
 
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/ask",cgi_dirs());
+foreach dir( make_list_unique( "/ask", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir,"/forum_answer.php?que_id=-1/**/UNION/**/ALL/**/SELECT/**/1,2,3,4,0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374,6,7,8,9,10/**/FROM/**/expert/*"); 
 
   if(http_vuln_check(port:port,url:url,pattern:"OpenVAS-SQL-Injection-Test")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

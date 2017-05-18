@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wibu_systems_codemeter_tcp_packets_dos_vuln.nasl 4055 2016-09-14 06:34:24Z cfi $
+# $Id: gb_wibu_systems_codemeter_tcp_packets_dos_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Wibu-Systems CodeMeter RunTime TCP Packets Denial of Service Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:wibu:codemeter_webadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802382");
-  script_version("$Revision: 4055 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2011-4057");
   script_bugtraq_id(51382);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 08:34:24 +0200 (Wed, 14 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-19 15:06:52 +0530 (Thu, 19 Jan 2012)");
   script_name("Wibu-Systems CodeMeter Runtime TCP Packets Denial of Service Vulnerability");
-  script_summary("Check for the version of Wibu-Systems CodeMeter Runtime");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

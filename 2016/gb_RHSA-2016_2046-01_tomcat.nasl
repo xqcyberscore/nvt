@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871670");
-  script_version("$Revision: 4327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 09:46:28 +0200 (Mon, 24 Oct 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-10-11 06:32:10 +0200 (Tue, 11 Oct 2016)");
   script_cve_id("CVE-2014-7810", "CVE-2015-5346", "CVE-2016-5388", "CVE-2016-5425",
                 "CVE-2016-6325");
@@ -83,7 +83,6 @@ Security.
   script_xref(name: "RHSA", value: "2016:2046-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-October/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tomcat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

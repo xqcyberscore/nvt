@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807400");
-  script_version("$Revision: 2878 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 11:32:13 +0100 (Thu, 17 Mar 2016) $");
+  script_version("$Revision: 5745 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-18 06:22:41 +0100 (Thu, 18 Feb 2016)");
   script_cve_id("CVE-2016-2316");
   script_tag(name:"cvss_base", value:"7.1");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-3");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-February/177409.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of asterisk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

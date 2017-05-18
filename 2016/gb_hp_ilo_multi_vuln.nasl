@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_multi_vuln.nasl 4052 2016-09-14 04:10:56Z antu123 $
+# $Id: gb_hp_ilo_multi_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # HP Integrated Lights-Out Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/o:hp:integrated_lights-out";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106182");
-  script_version("$Revision: 4052 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-08-18 10:47:20 +0700 (Thu, 18 Aug 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -66,7 +66,6 @@ version v1.88 or subsequent, iLO 4 version v2.44 or subsequent");
 
   script_xref(name: "URL", value: "https://h20564.www2.hpe.com/hpsc/doc/public/display?docId=emr_na-c05236950");
 
-  script_summary("Check the version");
 
   exit(0);
 }

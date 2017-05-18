@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_log_report_dos_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_apache_subversion_log_report_dos_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # Apache Subversion 'mod_dav_svn' log REPORT Request DoS Vulnerability
 #
@@ -27,20 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802054");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5839 $");
   script_bugtraq_id(58898);
   script_cve_id("CVE-2013-1884");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 15:08:09 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' log REPORT Request DoS Vulnerability");
-
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/83259");
   script_xref(name:"URL", value:"http://subversion.apache.org/security/CVE-2013-1884-advisory.txt");
-
-  script_summary("Check if Apache Subversion is vulnerable to DoS");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -129,7 +126,7 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
   ## Send normal request and check for normal response to confirm
   ## Subversion is working as expected
   common_req = string("REPORT ", path, '!svn/bc/1/', " HTTP/1.1","\r\n",
-                      "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+                      "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                       "Host: ", host, "\r\n",
                       "Accept: */*\r\n");
 

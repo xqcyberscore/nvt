@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_win_apr12.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wireshark_mult_vuln_win_apr12.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Wireshark Multiple Vulnerabilities - April 12 (Windows)
 #
@@ -44,19 +44,18 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(802761);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-0068", "CVE-2012-0067", "CVE-2012-0066", "CVE-2012-0043",
                 "CVE-2012-0042", "CVE-2012-0041");
   script_bugtraq_id(51710, 51368);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-23 18:33:55 +0530 (Mon, 23 Apr 2012)");
   script_name("Wireshark Multiple Vulnerabilities - April 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47494/");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2012-01.html");
 
-  script_summary("Check for the version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

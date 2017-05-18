@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 5432 2017-02-27 11:38:07Z cfi $
+# $Id: products_eol.inc 6011 2017-04-21 20:31:32Z cfi $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,14 +22,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5432 $
+# $Revision: 6011 $
 #
 ###############################################################################
 
 eol_cpes = make_array();
 
 eol_cpes[ 'cpe:/a:owncloud:owncloud' ]       = make_array(
-                                                           'versions',      '8.0:2016-10-01;7.0:2016-05-01;6.0:2015-09-01;5.0:2015-03-01;4.5:2013-07-01;4.0:2013-07-01;3.0:2012-04-01;2.0:2012-01-01;1.0:2011-10-01',
+                                                           'versions',      '8.1:2017-02-28;8.0:2016-10-01;7.0:2016-05-01;6.0:2015-09-01;5.0:2015-03-01;4.5:2013-07-01;4.0:2013-07-01;3.0:2012-04-01;2.0:2012-01-01;1.0:2011-10-01',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)'
                                                          );
 
@@ -48,6 +48,11 @@ eol_cpes[ 'cpe:/a:apache:tomcat' ]           = make_array(
 
 eol_cpes[ 'cpe:/a:apache:http_server' ]      = make_array(
                                                            'versions',      '1.3:2010-02-03;2.0:2013-07-10',
+                                                           'version_regex', '^([0-9]+\\.[0-9]+)');
+
+# IIS EOL dates are mostly coupled to the EOL of the OS, see os_eol.inc
+eol_cpes[ 'cpe:/a:microsoft:iis' ]      = make_array(
+                                                           'versions',      '1.0:2000-09-30;2.0:2002-12-31;3.0:2002-12-31;4.0:2002-12-31;5.0:2010-07-13;5.1:2014-04-08;6.0:2015-07-14',
                                                            'version_regex', '^([0-9]+\\.[0-9]+)');
 
 function product_reached_eol( cpe, version ) {

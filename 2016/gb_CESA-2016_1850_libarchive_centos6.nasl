@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882557");
-  script_version("$Revision: 4176 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-29 09:41:00 +0200 (Thu, 29 Sep 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-16 05:42:09 +0200 (Fri, 16 Sep 2016)");
   script_cve_id("CVE-2015-8920", "CVE-2015-8921", "CVE-2015-8932", "CVE-2016-4809", 
                 "CVE-2016-5418", "CVE-2016-5844", "CVE-2016-7166");
@@ -79,7 +79,6 @@ Red Hat would like to thank Insomnia Security for reporting CVE-2016-5418.
 
   script_xref(name: "CESA", value: "2016:1850");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-September/022067.html");
-  script_summary("Check for the Version of libarchive");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

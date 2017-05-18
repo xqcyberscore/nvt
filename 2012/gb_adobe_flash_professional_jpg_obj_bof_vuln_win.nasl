@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_win.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_win.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Adobe Flash Professional JPG Object Processing BOF Vulnerability (Windows)
 #
@@ -37,19 +37,18 @@ tag_summary = "This host is installed with Adobe Flash Professional and is prone
 if(description)
 {
   script_id(802781);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 6032 $");
   script_cve_id("CVE-2012-0778");
   script_bugtraq_id(53419);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-15 13:58:42 +0530 (Tue, 15 May 2012)");
   script_name("Adobe Flash Professional JPG Object Processing BOF Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47116/");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027045");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-12.html");
 
-  script_summary("Check for the version of Adobe Flash Professional on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

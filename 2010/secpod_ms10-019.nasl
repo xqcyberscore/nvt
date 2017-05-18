@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-019.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-019.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Windows Authentication Verification Remote Code Execution Vulnerability (981210)
 #
@@ -27,7 +27,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_affected = "Authenticode Signature Verification 5.1 on,
+
+if(description)
+{
+  script_id(900237);
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
+  script_bugtraq_id(39328, 39332);
+  script_cve_id("CVE-2010-0486", "CVE-2010-0487");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_name("Microsoft Windows Authentication Verification Remote Code Execution Vulnerability (981210)");
+  script_xref(name : "URL" , value : "http://secunia.com/advisories/39371");
+  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS10-019.mspx");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2010 SecPod");
+  script_family("Windows : Microsoft Bulletins");
+  script_dependencies("secpod_reg_enum.nasl");
+  script_require_ports(139, 445);
+  script_mandatory_keys("SMB/WindowsVersion");
+
+  script_tag(name : "impact" , value : "Successful exploitation could lead to complete system being compromised.
+  Impact Level: System");
+  script_tag(name : "insight" , value : "An error exists in the Windows Authenticode Signature Verification function
+  used for portable executable (PE) and cabinet(.cab) file formats.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/Bulletin/MS10-019.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-019.");
+  script_tag(name : "affected" , value : "Authenticode Signature Verification 5.1 on,
   Microsoft Windows 2K  Service Pack 4 and prior.
   Microsoft Windows XP  Service Pack 3 and prior.
   Microsoft Windows 2K3 Service Pack 2 and prior.
@@ -47,71 +78,16 @@ tag_affected = "Authenticode Signature Verification 5.1 on,
   Microsoft Windows 2K3 Service Pack 2 and prior.
   Microsoft Windows vista Service Pack 1/2 and prior.
   Microsoft Windows Server 2008 Service Pack 1/2 and prior.
-
-  Cabinet File Viewer Shell Extension 6.1 on,
-  Windows 7";
-
-tag_impact = "Successful exploitation could lead to complete system being compromised.
-  Impact Level: System";
-tag_insight = "An error exists in the Windows Authenticode Signature Verification function
-  used for portable executable (PE) and cabinet(.cab) file formats.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS10-019.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-019.";
-
-if(description)
-{
-  script_id(900237);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
-  script_tag(name:"creation_date", value:"2010-04-14 17:51:53 +0200 (Wed, 14 Apr 2010)");
-  script_bugtraq_id(39328, 39332);
-  script_cve_id("CVE-2010-0486", "CVE-2010-0487");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_name("Microsoft Windows Authentication Verification Remote Code Execution Vulnerability (981210)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39371");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS10-019.mspx");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2010 SecPod");
-  script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
-  script_require_ports(139, 445);
-  script_mandatory_keys("SMB/WindowsVersion");
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
+  Cabinet File Viewer Shell Extension 6.1 on,  Windows 7");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, winVista:3, win7:1, win2008:3) <= 0){
   exit(0);
@@ -123,11 +99,10 @@ if(hotfix_missing(name:"978601") == 0 && hotfix_missing(name:"979309") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  authSigVer = get_file_version(sysPath, file_name:"Wintrust.dll");
+  authSigVer = fetch_file_version(sysPath, file_name:"Wintrust.dll");
   if(!authSigVer){
     exit(0);
   }
@@ -192,7 +167,7 @@ sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
                           item:"Install Path");
 if(sysPath)
 {
-  cabBViewVer = get_file_version(sysPath, file_name:"Cabview.dll");
+  cabBViewVer = fetch_file_version(sysPath, file_name:"Cabview.dll");
   if(!cabBViewVer){
     exit(0);
   }
@@ -252,80 +227,10 @@ if(cabBViewVer)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  winVer = get_file_version(sysPath, file_name:"System32\Wintrust.dll");
-  if(!winVer){
-    exit(0);
-  }
-}
-
-# Windows Vista
-if(hotfix_check_sp(winVista:3) > 0)
-{
-  SP = get_kb_item("SMB/WinVista/ServicePack");
-  if("Service Pack 1" >< SP)
-  {
-    # Grep for Wintrust.dll version < 6.0.6001.18387
-    if(version_is_less(version:winVer, test_version:"6.0.6001.18387")){
-      security_message(0);
-    }
-     exit(0);
-  }
-
-  if("Service Pack 2" >< SP)
-  {
-    # Grep for Wintrust.dll version < 6.0.6002.18169
-      if(version_is_less(version:winVer, test_version:"6.0.6002.18169")){
-        security_message(0);
-    }
-       exit(0);
-  }
-  security_message(0);
-}
-
-# Windows Server 2008
-else if(hotfix_check_sp(win2008:3) > 0)
-{
-  SP = get_kb_item("SMB/Win2008/ServicePack");
-  if("Service Pack 1" >< SP)
-  {
-    # Grep for Wintrust.dll version < 6.0.6001.18387
-    if(version_is_less(version:winVer, test_version:"6.0.6001.18387")){
-      security_message(0);
-    }
-     exit(0);
-  }
-
-  if("Service Pack 2" >< SP)
-  {
-    # Grep for Wintrust.dll version < 6.0.6002.18169
-    if(version_is_less(version:winVer, test_version:"6.0.6002.18169")){
-      security_message(0);
-    }
-     exit(0);
-  }
- security_message(0);
-}
-
-# Windows 7
-else if(hotfix_check_sp(win7:1) > 0)
-{
-  # Grep for Wintrust.dll version < 6.1.7600.16493
-  if(version_is_less(version:winVer, test_version:"6.1.7600.16493")){
-     security_message(0);
-     exit(0);
-  }
-}
-
-## Get System32 path for Cabview.dll
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
-if(sysPath)
-{
-  cabVer = get_file_version(sysPath, file_name:"System32\Cabview.dll");
+  cabVer = fetch_file_version(sysPath, file_name:"Cabview.dll");
   if(!cabVer){
     exit(0);
   }

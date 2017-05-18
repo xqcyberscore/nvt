@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2429_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2429_1.nasl 5931 2017-04-11 09:02:04Z teissa $
 # Description: Auto-generated from advisory DSA 2429-1 (mysql-5.1)
 #
 # Authors:
@@ -51,13 +51,12 @@ if(description)
  script_tag(name:"cvss_base", value:"5.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:P");
  script_cve_id("CVE-2011-2262", "CVE-2012-0075", "CVE-2012-0087", "CVE-2012-0101", "CVE-2012-0102", "CVE-2012-0112", "CVE-2012-0113", "CVE-2012-0114", "CVE-2012-0115", "CVE-2012-0116", "CVE-2012-0118", "CVE-2012-0119", "CVE-2012-0120", "CVE-2012-0484", "CVE-2012-0485", "CVE-2012-0490", "CVE-2012-0492");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5931 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-30 07:54:07 -0400 (Mon, 30 Apr 2012)");
  script_name("Debian Security Advisory DSA 2429-1 (mysql-5.1)");
 
 
- script_summary("Debian Security Advisory DSA 2429-1 (mysql-5.1)");
 
  script_category(ACT_GATHER_INFO);
 

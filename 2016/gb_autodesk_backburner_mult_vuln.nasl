@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_autodesk_backburner_mult_vuln.nasl 3914 2016-08-31 09:49:38Z antu123 $
+# $Id: gb_autodesk_backburner_mult_vuln.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Autodesk Backburner Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:autodesk:autodesk_backburner";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808172");
-  script_version("$Revision: 3914 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-2344");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 11:49:38 +0200 (Wed, 31 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 18:29:15 +0530 (Tue, 21 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Autodesk Backburner Multiple Vulnerabilities");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/732760");
 
-  script_summary("Check for the vulnerable version of Autodesk Backburner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

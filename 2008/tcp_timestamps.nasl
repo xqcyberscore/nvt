@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tcp_timestamps.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: tcp_timestamps.nasl 5740 2017-03-28 03:23:03Z ckuerste $
 #
 # TCP timestamps
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80091");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5740 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-28 05:23:03 +0200 (Tue, 28 Mar 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
@@ -55,7 +55,7 @@ if(description)
 
   Starting with Windows Server 2008 and Vista, the timestamp can not be completely disabled.
 
-  The default behavior of the TCP/IP stack on this Systems is, to not use the
+  The default behavior of the TCP/IP stack on this Systems is to not use the
   Timestamp options when initiating TCP connections, but use them if the TCP peer
   that is initiating communication includes them in their synchronize (SYN) segment.
 
@@ -188,8 +188,8 @@ result = 'It was detected that the host implements RFC1323.';
 if( v2[1] > 0 ) {
   result += '\n\nThe following timestamps were retrieved with a delay of ' +
             delay + ' seconds in-between:\n' +
-            'Paket 1: ' + v1[1] + '\n' +
-            'Paket 2: ' + v2[1];
+            'Packet 1: ' + v1[1] + '\n' +
+            'Packet 2: ' + v2[1];
 }
 
 security_message( data:result );

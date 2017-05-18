@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3472.nasl 3397 2016-05-30 05:19:53Z antu123 $
+# $Id: deb_3472.nasl 5782 2017-03-30 09:01:05Z teissa $
 # Auto-generated from advisory DSA 3472-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703472);
-    script_version("$Revision: 3397 $");
+    script_version("$Revision: 5782 $");
     script_cve_id("CVE-2016-2221", "CVE-2016-2222");
     script_name("Debian Security Advisory DSA 3472-1 (wordpress - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-30 07:19:53 +0200 (Mon, 30 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-02-08 00:00:00 +0100 (Mon, 08 Feb 2016)");
     script_tag(name:"cvss_base", value:"5.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3472.html");
 
-    script_summary("Debian Security Advisory DSA 3472-1 (wordpress - security update)");
 
     script_category(ACT_GATHER_INFO);
 

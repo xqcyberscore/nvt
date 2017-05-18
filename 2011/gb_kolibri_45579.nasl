@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kolibri_45579.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_kolibri_45579.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # Kolibri Remote Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103009");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5839 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-01-04 15:14:45 +0100 (Tue, 04 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -65,7 +65,6 @@ if(description)
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -128,7 +127,7 @@ if( safe_checks() ) {
 
     req = string("HEAD /",buf,ret,nops,jmp_back2,nseh,seh," HTTP/1.1\r\n",
                  "Host: ",host,"\r\n",
-                 "User-Agent: ",OPENVAS_USER_AGENT,"\r\n",
+                 "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
                  "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                  "Accept-Language: he,en-us;q=0.7,en;q=0.3\r\n",
                  "Accept-Encoding: gzip,deflate\r\n",

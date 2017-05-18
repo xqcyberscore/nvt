@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2012_200_01.nasl 4794 2016-12-16 17:37:27Z cfi $
+# $Id: esoft_slk_ssa_2012_200_01.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from advisory SSA:2012-200-01
 #
 # Authors:
@@ -39,12 +39,11 @@ if(description)
  script_cve_id("CVE-2012-2812", "CVE-2012-2813", "CVE-2012-2814", "CVE-2012-2836", "CVE-2012-2837", "CVE-2012-2840", "CVE-2012-2841", "CVE-2012-2845");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 4794 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-16 18:37:27 +0100 (Fri, 16 Dec 2016) $");
+ script_version("$Revision: 6022 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-10 07:16:19 -0400 (Mon, 10 Sep 2012)");
  script_name("Slackware Advisory SSA:2012-200-01 libexif ");
 
- script_summary("Slackware Advisory SSA:2012-200-01 libexif ");
 
  script_category(ACT_GATHER_INFO);
 

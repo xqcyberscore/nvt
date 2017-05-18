@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_app_serv_detect.nasl 3467 2016-06-09 20:02:36Z jan $
+# $Id: secpod_sun_java_app_serv_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Sun Java System Application Server Version Detection
 #
@@ -33,8 +33,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900200");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 3467 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-09 22:02:36 +0200 (Thu, 09 Jun 2016) $");
+  script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-06 06:53:35 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -56,16 +56,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe);
-}
 
 ## start script
 port = get_http_port(default:8080);
@@ -97,12 +87,11 @@ if(appservVer[1] != NULL){
   appservVer = appservVer[1] - " Platform Edition ";
   appservVer = chomp(appservVer);
   set_kb_item(name:"Sun/Java/AppServer/Ver", value:appservVer);
-  log_message(data:"Sun Java Application Server version " + appservVer +
-                     " was detected on the host");
 
   ## build cpe and store it as host_detail
-  register_cpe(tmpVers:appservVer, tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:sun:java_system_application_server:");
-
+  register_and_report_cpe(app:"Sun Java Application Server", ver:appservVer,
+                          base:"cpe:/a:sun:java_system_application_server:",
+                          expr:"^([0-9.]+)", insloc:"/");
   exit(0);
 }
 
@@ -112,10 +101,10 @@ if(egrep(pattern:"Sun Java System Application Server .*", string:rcvRes))
   appservVer = eregmatch(pattern:"Platform Edition ([0-9.]+)", string:rcvRes);
   if(appservVer[1] != NULL){
     set_kb_item(name:"Sun/Java/AppServer/Ver", value:appservVer[1]);
-    log_message(data:"Sun Java Application Server version " + appservVer[1] +
-                       " was detected on the host");
 
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:appservVer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:sun:java_system_application_server:");
+    register_and_report_cpe(app:"Sun Java Application Server", ver:appservVer[1], 
+                          base:"cpe:/a:sun:java_system_application_server:", 
+                          expr:"^([0-9.]+)", insloc:"/");
   }
 }

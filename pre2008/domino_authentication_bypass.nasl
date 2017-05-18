@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: domino_authentication_bypass.nasl 3301 2016-05-12 12:56:09Z benallard $
+# $Id: domino_authentication_bypass.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Authentication bypassing in Lotus Domino
 #
 # Authors:
@@ -34,15 +34,14 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10953");
- script_version("$Revision: 3301 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 14:56:09 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2001-1567");
  script_bugtraq_id(4022);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Authentication bypassing in Lotus Domino");
- script_summary("Checks if Lotus Domino databases can be accessed by by-passing the required authentication");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2002 Davy Van De Moere");
  script_family("Web Servers");

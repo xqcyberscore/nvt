@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3671.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: deb_3671.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3671-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703671);
-    script_version("$Revision: 4136 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2016-7176", "CVE-2016-7177", "CVE-2016-7178", "CVE-2016-7179",
                   "CVE-2016-7180");
     script_name("Debian Security Advisory DSA 3671-1 (wireshark - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-09-20 00:00:00 +0200 (Tue, 20 Sep 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3671.html");
 
-    script_summary("Debian Security Advisory DSA 3671-1 (wireshark - security update)");
 
     script_category(ACT_GATHER_INFO);
 

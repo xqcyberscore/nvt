@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webexarf_detect_win.nasl 4471 2016-11-11 08:07:15Z mwiegand $
+# $Id: gb_cisco_webexarf_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Cisco WebEx ARF (Advanced Recording Formate) Player Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107078");
-  script_version("$Revision: 4471 $");
+  script_version("$Revision: 5888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-11 09:07:15 +0100 (Fri, 11 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-10 11:19:11 +0100 (Thu, 10 Nov 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Cisco WebEx ARF (Advanced Recording Formate) Player Version Detection (Windows)");
@@ -40,7 +40,6 @@ if(description)
 
   The script logs in via smb, searches for Cisco WebEx Advanced Recording Format (ARF) Player in the registry and gets the version from 'DisplayVersion' string from registry.");
 
-  script_summary("Set version of Cisco WebEx Advanced Recording Format (ARF) Player in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

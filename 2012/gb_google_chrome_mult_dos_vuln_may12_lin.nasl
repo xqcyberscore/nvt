@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_may12_lin.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_mult_dos_vuln_may12_lin.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Linux)
 #
@@ -41,13 +41,13 @@ tag_summary = "The host is installed with Google Chrome and is prone to multiple
 if(description)
 {
   script_id(802849);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2011-3078", "CVE-2011-3079", "CVE-2011-3080", "CVE-2011-3081",
                 "CVE-2012-1521");
   script_bugtraq_id(53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-07 15:15:45 +0530 (Mon, 07 May 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48992/");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/04/stable-channel-update_30.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

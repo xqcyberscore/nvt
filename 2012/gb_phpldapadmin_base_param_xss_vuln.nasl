@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_base_param_xss_vuln.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: gb_phpldapadmin_base_param_xss_vuln.nasl 5792 2017-03-30 13:18:14Z cfi $
 #
 # phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability
 #
@@ -46,24 +46,23 @@ scripting vulnerability.";
 if(description)
 {
   script_id(802602);
-  script_version("$Revision: 3520 $");
+  script_version("$Revision: 5792 $");
   script_cve_id("CVE-2012-0834");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:18:14 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-02-02 16:16:16 +0530 (Thu, 02 Feb 2012)");
   script_name("phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47852/");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Feb/5");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109329/phpldapadmin-xss.txt");
 
-  script_summary("Check if phpLDAPadmin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("phpldapadmin_detect.nasl");
-  script_require_keys("phpldapadmin/installed");
+  script_mandatory_keys("phpldapadmin/installed");
   script_require_ports("Services/www", 80);
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
@@ -72,7 +71,6 @@ if(description)
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }
-
 
 include("http_func.inc");
 include("version_func.inc");
@@ -86,15 +84,8 @@ res = "";
 port = 0;
 cookie = NULL;
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Port State
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Get phpLDAPadmin Directory
 if(! dir = get_dir_from_kb(port:port,app:"phpldapadmin")){
   exit(0);
 }

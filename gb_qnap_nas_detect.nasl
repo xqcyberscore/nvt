@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_qnap_nas_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # QNAP NAS Detection
 #
@@ -30,15 +30,14 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_oid("1.3.6.1.4.1.25623.1.0.103875");
- script_version ("$Revision: 2664 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2014-01-09 18:50:23 +0100 (Thu, 09 Jan 2014)");
  script_name("QNAP NAS Detection");
 
  script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
  extract the version number from the reply.");
 
- script_summary("Checks for the presence of a QNAP NAS");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

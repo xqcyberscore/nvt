@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # TomatoCart 'json.php' Directory Traversal Vulnerability
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901302");
-  script_version("$Revision: 5633 $");
+  script_version("$Revision: 5814 $");
   script_cve_id("CVE-2012-5907");
   script_bugtraq_id(52766);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-11-28 10:32:05 +0530 (Wed, 28 Nov 2012)");
   script_name("TomatoCart 'json.php' Directory Traversal Vulnerability");
 
-  script_summary("Check for directory traversal vulnerability in TomatoCart");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
@@ -69,7 +68,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
@@ -78,24 +76,23 @@ include("http_keepalive.inc");
 cartUrl = "";
 cartPort = 0;
 
-## Get HTTP port
 cartPort = get_http_port(default:80);
-
-## Check Host Supports PHP
 if(!can_host_php(port:cartPort))exit(0);
+
+## traversal_files() function Returns Dictionary (i.e key value pair)
+## Get Content to be checked and file to be check
+files = traversal_files();
 
 foreach dir (make_list_unique("/TomatoCart", "/tomatocart", "/", cgi_dirs(port:cartPort)))
 {
 
   if(dir == "/") dir = "";
   cartUrl = dir + "/index.php";
+  res = http_get_cache( item:cartUrl, port:cartPort );
+  if( isnull( res ) ) continue;
 
-  if(http_vuln_check(port:cartPort, url:cartUrl, pattern:">TomatoCart<",
-     check_header:TRUE, extra_check:make_list('>Login<','>Create Account<','>My Wishlist<')))
-  {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
-    ## Get Content to be checked and file to be check
-    files = traversal_files();
+  if( res =~ "HTTP/1.. 200" && ">TomatoCart<" >< res && '>Login<' >< res &&
+      '>Create Account<' >< res && '>My Wishlist<' >< res ) {
 
     foreach file (keys(files))
     {

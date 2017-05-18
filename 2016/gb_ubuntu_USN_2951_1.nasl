@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842717");
-  script_version("$Revision: 3226 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-04 13:35:23 +0200 (Wed, 04 May 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-19 05:18:12 +0200 (Tue, 19 Apr 2016)");
   script_cve_id("CVE-2015-7801", "CVE-2015-7802", "CVE-2016-2191", "CVE-2016-3981",
  		"CVE-2016-3982");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name: "USN", value: "2951-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2016-April/003383.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of optipng");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

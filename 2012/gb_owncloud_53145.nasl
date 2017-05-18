@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_53145.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_owncloud_53145.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # ownCloud Multiple Input Validation Vulnerabilities
 #
@@ -53,12 +53,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5977 $");
  script_bugtraq_id(53145);
  script_cve_id("CVE-2012-2269", "CVE-2012-2270", "CVE-2012-2397", "CVE-2012-2398");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5977 $");
  script_name("ownCloud Multiple Input Validation Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53145");
@@ -66,9 +66,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.tele-consulting.com/advisories/TC-SA-2012-01.txt");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522397");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-19 12:17:59 +0200 (Thu, 19 Apr 2012)");
- script_summary("Determine if ownCloud is prone to XSS");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

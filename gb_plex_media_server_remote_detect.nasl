@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plex_media_server_remote_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_plex_media_server_remote_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Plex Media Server Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805225");
-  script_version("$Revision: 2664 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-12-22 16:04:12 +0530 (Mon, 22 Dec 2014)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Plex Media Server Remote Version Detection");
@@ -41,7 +41,6 @@ if(description)
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
 
-  script_summary("Checks for the presence of Plex Media Server");
   script_xref(name : "URL" , value : "https://plex.tv");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");

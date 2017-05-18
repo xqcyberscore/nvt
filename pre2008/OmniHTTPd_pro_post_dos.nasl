@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: OmniHTTPd_pro_post_dos.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: OmniHTTPd_pro_post_dos.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: OmniHTTPd pro long POST DoS
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "None at this time";
 if(description)
 {
  script_id(15553);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(2730);
  script_cve_id("CVE-2001-0613");
@@ -53,7 +53,6 @@ if(description)
 
 
  summary = "Test OmniHTTPd pro long POST DoS";
- script_summary(summary);
  
  script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");

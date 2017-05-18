@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_56230.nasl 5640 2017-03-21 08:12:48Z cfi $
+# $Id: gb_bitweaver_56230.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -46,16 +46,15 @@ if (description)
  script_cve_id("CVE-2012-5192","CVE-2012-5193");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5640 $");
+ script_version ("$Revision: 5956 $");
 
  script_name("Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56230");
  script_xref(name : "URL" , value : "http://bitweaver.org");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:12:48 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-26 10:50:00 +0200 (Fri, 26 Oct 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

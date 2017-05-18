@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-31.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-31.nasl 5999 2017-04-21 09:02:32Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120215");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 5999 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:20:35 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-31");
 script_tag(name: "insight", value: "A denial of service flaw was found in the way the dhcpd daemon handled DHCP request packets when regular expression matching was used in /etc/dhcp/dhcpd.conf. A remote attacker could use this flaw to crash dhcpd. (CVE-2011-4539 )"); 
 script_tag(name : "solution", value : "Run yum update dhcp to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-31");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

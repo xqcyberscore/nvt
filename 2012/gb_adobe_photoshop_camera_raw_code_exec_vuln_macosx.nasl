@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_camera_raw_code_exec_vuln_macosx.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_photoshop_camera_raw_code_exec_vuln_macosx.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Adobe Photoshop Camera Raw Plug-in Code Execution Vulnerabilities (Mac OS X)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with Adobe Photoshop Camera Raw Plug-in an
 if(description)
 {
   script_id(803082);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2012-5679", "CVE-2012-5680");
   script_bugtraq_id(56922, 56924);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-21 13:45:50 +0530 (Fri, 21 Dec 2012)");
   script_name("Adobe Photoshop Camera Raw Plug-in Code Execution Vulnerabilities (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49929");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027872");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-28.html");
 
-  script_summary("Check for the version of Adobe Photoshop Camera Raw Plug-in on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

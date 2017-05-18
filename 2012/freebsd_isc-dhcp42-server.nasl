@@ -47,15 +47,14 @@ if(description)
 {
  script_id(70596);
  script_tag(name:"creation_date", value:"2012-02-13 01:48:16 +0100 (Mon, 13 Feb 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:46:46 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_cve_id("CVE-2011-4539");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5355 $");
+ script_version("$Revision: 6022 $");
  script_name("FreeBSD Ports: isc-dhcp42-server");
 
 
- script_summary("FreeBSD Ports: isc-dhcp42-server");
 
  script_category(ACT_GATHER_INFO);
 

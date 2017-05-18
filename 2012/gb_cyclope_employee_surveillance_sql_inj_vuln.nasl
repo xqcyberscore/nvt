@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclope_employee_surveillance_sql_inj_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_cyclope_employee_surveillance_sql_inj_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # Cyclope Employee Surveillance Solution SQL Injection Vulnerability
 #
@@ -27,22 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803006");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5814 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:50:03 +0530 (Tue, 14 Aug 2012)");
   script_name("Cyclope Employee Surveillance Solution SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50200");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20393");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115406/cyclope-sql.txt");
 
-  script_summary("Check if Cyclope Employee Surveillance Solution is vulnerable to SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 7879);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 7879);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : "Successful exploitation will let attackers to manipulate SQL
   queries by injecting arbitrary SQL code.
 
@@ -62,10 +63,6 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -82,30 +79,17 @@ nor_stop2 = "";
 nor_start1 = "";
 nor_start2 = "";
 
-## Get HTTP Port
 port = get_http_port(default:7879);
-if(!port){
-  exit(0);
-}
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Get Host name
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name(port:port);
 
-url ="/index.php";
+url = "/index.php";
 
-## Get request
-sndReq = http_get(item:url, port:port);
-rcvRes = http_send_recv(port:port, data:sndReq);
+rcvRes = http_get_cache(item:url, port:port);
 
 ## Confirm the application
 if(rcvRes && rcvRes =~ "HTTP/1.. 200" && '<title>Cyclope' >< rcvRes &&

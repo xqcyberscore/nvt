@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_owautil.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: oracle9i_owautil.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: Oracle 9iAS OWA UTIL access
 #
 # Authors:
@@ -49,8 +49,8 @@ available at http://www.nextgenss.com/papers/hpoas.pdf";
 if(description)
 {
  script_id(11225);
- script_version("$Revision: 3376 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4294);
  script_tag(name:"cvss_base", value:"5.0");
@@ -62,7 +62,6 @@ if(description)
 
  summary = "Attempts to access the OWA_UTIL program directly";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_ghost_solutions_suite_dos_vuln_win.nasl 3774 2016-07-29 14:35:03Z veerendragg $
+# $Id: gb_symantec_ghost_solutions_suite_dos_vuln_win.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Symantec Ghost Solutions Suite Denial of Service Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:symantec:ghost_solutions_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808573");
-  script_version("$Revision: 3774 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2015-5689");
   script_bugtraq_id(76498);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 16:35:03 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-11 15:36:44 +0530 (Mon, 11 Jul 2016)");
   script_name("Symantec Ghost Solutions Suite Denial of Service Vulnerability (Windows)");
 
@@ -67,7 +67,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&amp;pvid=security_advisory&amp;year=&amp;suid=20150902_00");
 
-  script_summary("Check for the vulnerable version of Symantec Ghost Solutions Suite");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

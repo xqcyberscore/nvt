@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simplehrm_username_sql_inj_vuln.nasl 3554 2016-06-20 07:41:15Z benallard $
+# $Id: gb_simplehrm_username_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # SimpleHRM 'username' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804531");
-  script_version("$Revision: 3554 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2013-2498");
   script_bugtraq_id(59254);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:41:15 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-04-03 10:35:41 +0530 (Thu, 03 Apr 2014)");
   script_name("SimpleHRM 'username' Parameter SQL Injection Vulnerability");
 
@@ -54,11 +54,10 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24954");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/04/17/1");
-  script_summary("Check if SimpleHRM is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -75,10 +74,8 @@ http_port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
@@ -91,9 +88,7 @@ foreach dir (make_list_unique("/", "/simplehrm", "/hrm", cgi_dirs(port:http_port
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ## confirm the Application
   if("SimpleHRM<" >< rcvRes)

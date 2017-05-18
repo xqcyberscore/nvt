@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: generic_WEB-INF.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: generic_WEB-INF.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: WEB-INF folder accessible
 #
 # Authors:
@@ -43,8 +43,8 @@ tag_solution = "Contact your vendor for the appropriate patch.";
 if(description)
 {
  script_id(11037);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id(
    "CVE-2002-1855", 
@@ -63,7 +63,6 @@ if(description)
  
  summary = "Tests for WEB-INF folder access";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");

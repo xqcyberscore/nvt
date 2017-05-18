@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_petite_annonce_xss_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_petite_annonce_xss_vuln.nasl 5796 2017-03-30 14:15:11Z cfi $
 #
 # Petite Annonce 'categoriemoteur' Cross Site Scripting Vulnerability
 #
@@ -45,10 +45,10 @@ tag_affected = "Petite Annonce version 1.0";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803184");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 5796 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 16:15:11 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-03-18 13:55:51 +0530 (Mon, 18 Mar 2013)");
 
   script_name("Petite Annonce 'categoriemoteur' Cross Site Scripting Vulnerability");
@@ -58,11 +58,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_summary("Check if Petite Annonce is vulnerable to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -71,7 +70,6 @@ if(description)
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
-
 
   exit(0);
 }
@@ -85,22 +83,18 @@ port = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/annonce", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Request for the index.html
-  sndReq = http_get(item:string(dir, "/index.html"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
+  rcvRes = http_get_cache(item:string(dir, "/index.html"), port:port);
 
   ## confirm the Application
   if("petite annonce" >< rcvRes && ">DEPOSER UNE ANNONCE<" >< rcvRes)
@@ -111,7 +105,7 @@ foreach dir (make_list_unique("/", "/annonce", cgi_dirs(port:port)))
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
-            pattern:"><script>alert\(document.cookie\);</script>",
+            pattern:"><script>alert\(document\.cookie\);</script>",
             extra_check:make_list("regionmoteur.value","categoriemoteur.value")))
     {
       security_message(port:port);

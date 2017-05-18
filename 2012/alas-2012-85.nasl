@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2012-85.nasl 4516 2016-11-15 10:25:21Z cfi $
+# $Id: alas-2012-85.nasl 6018 2017-04-24 09:02:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120130");
-script_version("$Revision: 4516 $");
+script_version("$Revision: 6018 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:18:13 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:25:21 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2012-85");
 script_tag(name: "insight", value: "An integer underflow flaw, leading to a buffer over-read, was found in the way OpenSSL handled DTLS (Datagram Transport Layer Security) application data record lengths when using a block cipher in CBC (cipher-block chaining) mode. A malicious DTLS client or server could use this flaw to crash its DTLS connection peer. (CVE-2012-2333 )"); 
 script_tag(name : "solution", value : "Run yum update openssl to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2012-85");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln01_jun16_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mysql_unspecified_vuln01_jun16_lin.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Oracle MySQL Multiple Unspecified Vulnerabilities-01 Jun16 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808113");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2015-2566", "CVE-2015-0439", "CVE-2015-0438", "CVE-2015-0423",
                 "CVE-2015-0405");
   script_bugtraq_id(74126, 74085, 74098, 74091, 74110);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 13:42:27 +0530 (Fri, 03 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-01 Jun16 (Linux)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle MySQL on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");

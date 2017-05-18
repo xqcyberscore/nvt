@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_html5_av_mgr_file_upload_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_wordpress_html5_av_mgr_file_upload_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # WordPress HTML5 AV Manager Plugin 'custom.php' Arbitrary File Upload Vulnerability
 #
@@ -50,11 +50,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5977 $");
   script_bugtraq_id(53804);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-06-11 15:15:15 +0530 (Mon, 11 Jun 2012)");
   script_name("WordPress HTML5 AV Manager Plugin 'custom.php' Arbitrary File Upload Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49390");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18990");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113277/WordPress-HTML5-AV-Manager-0.2.7-Shell-Upload.html");
 
-  script_summary("Check if HTML5 AV Manager is vulnerable to arbitrary file upload");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

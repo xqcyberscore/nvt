@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_multiple_vuln.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_spip_multiple_vuln.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # SPIP Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:spip:spip";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809305");
-  script_version("$Revision: 5070 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-7998", "CVE-2016-7999", "CVE-2016-7982", "CVE-2016-7980",
  		"CVE-2016-7981");
   script_bugtraq_id(93451);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-08 15:15:46 +0530 (Tue, 08 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("SPIP Multiple Vulnerabilities");
@@ -73,7 +73,6 @@ if (description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Oct/78");
   script_xref(name : "URL" , value : "http://osdir.com/ml/opensource-software-security/2016-10/msg00108.html");
 
-  script_summary("Check for vulnerable version of SPIP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

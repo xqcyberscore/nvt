@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: maincfgret.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: maincfgret.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Whatsup Gold vulnerable CGI
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "upgrade to Whatsup Gold 8.03 HF 1 if needed";
 if(description)
 {
  script_id(15564);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id ( 11043 );
  script_cve_id("CVE-2004-0798");
@@ -52,7 +52,6 @@ if(description)
 
  summary = "Checks for the presence of /_maincfgret.cgi";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
  

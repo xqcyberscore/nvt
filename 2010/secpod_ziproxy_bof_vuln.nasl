@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ziproxy_bof_vuln.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: secpod_ziproxy_bof_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # Ziproxy PNG Image Processing Buffer Overflow Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "The host is running Ziproxy server and is prone to buffer overflo
 if(description)
 {
   script_id(901128);
-  script_version("$Revision: 5401 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_cve_id("CVE-2010-2350");
   script_tag(name:"cvss_base", value:"6.8");
@@ -56,6 +56,8 @@ if(description)
   script_family("Buffer overflow");
   script_dependencies("secpod_ziproxy_server_detect.nasl");
   script_require_ports("Services/www", 8080);
+  script_mandatory_keys("Ziproxy/installed");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -64,14 +66,11 @@ if(description)
   exit(0);
 }
 
-
+include("http_func.inc");
 include("version_func.inc");
 
 ## Get Ziproxy Port
-zipPort = get_kb_item("Services/www");
-if(!zipPort){
-  exit(0);
-}
+zipPort = get_http_port( default:8080 );
 
 ## Get Ziproxy Version from KB
 ziproxyVer = get_kb_item("www/" + zipPort + "/Ziproxy");

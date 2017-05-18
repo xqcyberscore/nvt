@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_engine_v8_dos_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mongodb_engine_v8_dos_vuln_lin.nasl 5848 2017-04-04 07:21:55Z antu123 $
 #
 # MongoDB engine_v8 Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808149");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5848 $");
   script_cve_id("CVE-2013-3969");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 09:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:55:52 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB engine_v8 Denial of Service Vulnerability (Linux)");
 
@@ -60,8 +60,6 @@ if (description)
   script_xref(name : "URL" , value : "http://www.mongodb.org/about/alerts");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54170");
   script_xref(name : "URL" , value : "https://jira.mongodb.org/browse/SERVER-9878");
-
-  script_summary("Determine if installed MongoDB version is vulnerable on Linux");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_family("Databases");
@@ -74,19 +72,9 @@ if (description)
 
 
 include("version_func.inc");
-include("host_details.inc");
 include("misc_func.inc");
+include("host_details.inc");
 
-function check_mongodb_ver(mongodbversion, mongodbPort)
-{
-  ## check the version
-  if(version_in_range(version:mongodbversion, test_version:"2.4.0", test_version2:"2.4.4"))
-  {
-    report = report_fixed_ver(installed_version:mongodbversion, fixed_version:"2.4.5 or 2.5.1");
-    security_message(mongodbPort);
-    exit(0);
-  }
-}
 
 ## Variable initialisation
 port = "";
@@ -96,13 +84,17 @@ if(host_runs("Linux") != "yes"){
   exit(0);
 }
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
 
-if(!get_tcp_port_state(port))exit(0);
-
-if(!ver = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!ver = get_app_version(cpe:CPE, port:port))exit(0);
 
 if(ver =~ "^2\.4")
 {
-    check_mongodb_ver(mongodbversion:ver, mongodbPort:port);
+  ## check the version
+  if(version_in_range(version:ver, test_version:"2.4.0", test_version2:"2.4.4"))
+  {
+    report = report_fixed_ver(installed_version:ver, fixed_version:"2.4.5");
+    security_message(data:report, port:port);
+    exit(0);
+  }
 }

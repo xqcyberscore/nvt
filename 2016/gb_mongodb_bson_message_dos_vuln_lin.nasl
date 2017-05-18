@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_bson_message_dos_vuln_lin.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_mongodb_bson_message_dos_vuln_lin.nasl 5848 2017-04-04 07:21:55Z antu123 $
 #
 # MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808147");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5848 $");
   script_cve_id("CVE-2015-1609");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 09:21:55 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:43:02 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB BSON Message Handling Remote Denial-of-Service Vulnerability (Linux)");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://jira.mongodb.org/browse/SERVER-17264");
   script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-VD-15-012");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Determine if installed MongoDB version is vulnerable on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("gb_mongodb_detect.nasl", "os_detection.nasl");
@@ -76,7 +75,26 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-function check_mongodb_ver(mongodbversion, mongodbPort)
+## Variable initialisation
+mongodbPort = "";
+ver = "";
+
+if(host_runs("Linux") != "yes"){
+  exit(0);
+}
+
+## Get the app port
+if(!mongodbPort = get_app_port(cpe:CPE)) exit(0);
+
+## Get the app version
+if(!ver = get_app_version(cpe:CPE, port:mongodbPort)) exit(0);
+
+##Replace '-' by '.' in version
+if("-rc" >< ver){
+ mongodbversion = ereg_replace(pattern:"-", replace:".", string:ver);
+}
+
+if(mongodbversion)
 {
   ## check the version
   if(version_in_range(version:mongodbversion, test_version:"2.6", test_version2:"2.6.7"))
@@ -106,24 +124,3 @@ function check_mongodb_ver(mongodbversion, mongodbPort)
     }
   }
 }
-
-## Variable initialisation
-mbPort = "";
-ver = "";
-
-if(host_runs("Linux") != "yes"){
-  exit(0);
-}
-
-## Get the app port
-if(!mbPort = get_app_port(cpe:CPE)) exit(0);
-
-## Get the app version
-if(!ver = get_app_version(cpe:CPE, port:mbPort)) exit(0);
-
-##Replace '-' by '.' in version
-if("-rc" >< ver){
-  ver = ereg_replace(pattern:"-", replace:".", string:ver);
-}
-
-check_mongodb_ver(mongodbversion:ver, mongodbPort:mbPort);

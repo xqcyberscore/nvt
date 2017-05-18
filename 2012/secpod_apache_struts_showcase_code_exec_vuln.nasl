@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_struts_showcase_code_exec_vuln.nasl 3422 2016-06-02 16:45:44Z teissa $
+# $Id: secpod_apache_struts_showcase_code_exec_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Apache Struts2 Showcase Skill Name Remote Code Execution Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(902924);
-  script_version("$Revision: 3422 $");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(55165);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-02 18:45:44 +0200 (Thu, 02 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-31 11:47:31 +0530 (Fri, 31 Aug 2012)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Struts2 Showcase Skill Name Remote Code Execution Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115770/struts2-exec.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/apache-struts2-remote-code-execution");
 
-  script_summary("Check if Apache Struts Showcase is vulnerable to remote code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -75,13 +74,9 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-
-## Get HTTP Port
 
 asport = 0;
 asRes = "";
@@ -89,7 +84,6 @@ asReq = "";
 dir = "";
 url = "";
 
-## Get HTTP Port
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -97,6 +91,8 @@ if(!asport = get_app_port(cpe:CPE)){
 if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
+
+host = http_host_name(port:asport);
 
 url = dir + "/showcase.action";
 if(http_vuln_check(port:asport, url:url,pattern:">Showcase</",
@@ -114,12 +110,12 @@ if(http_vuln_check(port:asport, url:url,pattern:">Showcase</",
 
     ## Construct the POST request
     asReq = string("POST ", url," HTTP/1.1\r\n",
-                    "Host: ", get_host_name(), "\r\n",
-                    "User-Agent: Remote-Code-Execution\r\n",
+                    "Host: ", host, "\r\n",
+                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postdata), "\r\n",
                     "\r\n", postdata);
-    asRes = http_send_recv(port:asport, data:asReq);
+    asRes = http_keepalive_send_recv(port:asport, data:asReq);
 
     ## Confirm the exploit
     if(asRes && asRes =~ "HTTP/1\.[0-9]+ 200" && "RCEWorked" >< asRes)

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-050_900034.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-050_900034.nasl 5863 2017-04-05 07:38:11Z antu123 $
 # Description: Windows Messenger Could Allow Information Disclosure Vulnerability (955702
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
  script_id(900034);
- script_version("$Revision: 5344 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+ script_version("$Revision: 5863 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
  script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
  script_bugtraq_id(30551);
  script_cve_id("CVE-2008-0082");
@@ -75,86 +75,18 @@ if(description)
  include("smb_nt.inc");
  include("secpod_reg.inc");
  include("secpod_smb_func.inc");
+ include("version_func.inc");
 
  if(hotfix_check_sp(xp:3, win2k:5, win2003:3) <= 0){
 	 exit(0);
  }
 
- function get_version()
- {
-	dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Active Setup\Installed Components" +
-                                      "\{5945c046-1e7d-11d1-bc44-00c04fd912be}",
-                                  item:"KeyFileName");
+ dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Active Setup\Installed Components" +
+                               "\{5945c046-1e7d-11d1-bc44-00c04fd912be}",
+                           item:"KeyFileName");
 
-        dllPath = dllPath - "msmsgs.exe" + "msgsc.dll";
+ dllPath = dllPath - "msmsgs.exe" + "msgsc.dll";
 
-        share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-        file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);
-
-        name    =  kb_smb_name();
-        login   =  kb_smb_login();
-        pass    =  kb_smb_password();
-        domain  =  kb_smb_domain();
-        port    =  kb_smb_transport();
-
-        soc = open_sock_tcp(port);
-        if(!soc){
-                exit(0);
-        }
-
-        r = smb_session_request(soc:soc, remote:name);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        } 
-
-        prot = smb_neg_prot(soc:soc);
-        if(!prot)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_session_setup(soc:soc, login:login, password:pass,
-                              domain:domain, prot:prot);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        uid = session_extract_uid(reply:r);
-        if(!uid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        r = smb_tconx(soc:soc, name:name, uid:uid, share:share);
-        if(!r)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        tid = tconx_extract_tid(reply:r);
-        if(!tid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        fid = OpenAndX(socket:soc, uid:uid, tid:tid, file:file);
-        if(!fid)
-        {
-                close(soc);
-                exit(0);
-        }
-
-        v = GetVersion(socket:soc, uid:uid, tid:tid, fid:fid, offset:60000);
-        return v;
- }
 
  if(!registry_key_exists(key:"SOFTWARE\Clients\IM\Windows Messenger")){
 	exit(0);
@@ -173,7 +105,7 @@ if(description)
                 exit(0);
         }
 
-	vers = get_version();
+	vers = get_version(dllPath:dllPath, offs:60000);
         if(vers == NULL){
                 exit(0);
         }
@@ -201,7 +133,7 @@ if(description)
                 }
 	}
 
-        vers = get_version();
+        vers = get_version(dllPath:dllPath, offs:60000);
         if(vers == NULL){
                	exit(0);
         }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-073.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-073.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Cumulative Security Update for Internet Explorer (958215)
 #
@@ -26,32 +26,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could result in stack based buffer overflow by
-  sending overly long specially crafted file via web page to corrupt heap
-  memory.
-  Impact Level: System/Application";
-tag_affected = "Internet Explorer 7 on MS Windows Vista
-  Internet Explorer 6 on MS Windows 2003 and XP
-  Internet Explorer 7 on MS Windows 2003 and XP
-  Internet Explorer 7 on MS Windows 2008 Server
-  Internet Explorer 5.01 and 6 on MS Windows 2000";
-tag_insight = "The flaws are due to
-  - error when handling parameters passed to unspecified navigation methods.
-  - error when fetching a file with an overly long path from a WebDAV share.
-  - unspecified use-after-free error.
-  - a boundary error when processing an overly long filename extension
-    specified inside an EMBED tag.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://technet.microsoft.com/en-us/security/bulletin/MS08-073";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS08-073.";
-
 if(description)
 {
   script_id(900062);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -67,11 +46,26 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could result in stack based buffer overflow by
+  sending overly long specially crafted file via web page to corrupt heap
+  memory.
+  Impact Level: System/Application");
+  script_tag(name : "affected" , value : "Internet Explorer 7 on MS Windows Vista
+  Internet Explorer 6 on MS Windows 2003 and XP
+  Internet Explorer 7 on MS Windows 2003 and XP
+  Internet Explorer 7 on MS Windows 2008 Server
+  Internet Explorer 5.01 and 6 on MS Windows 2000");
+  script_tag(name : "insight" , value : "The flaws are due to
+  - error when handling parameters passed to unspecified navigation methods.
+  - error when fetching a file with an overly long path from a WebDAV share.
+  - unspecified use-after-free error.
+  - a boundary error when processing an overly long filename extension
+    specified inside an EMBED tag.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link.
+  http://technet.microsoft.com/en-us/security/bulletin/MS08-073");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS08-073.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -82,21 +76,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
 
 if(hotfix_check_sp(xp:4, win2k:5, win2003:3, win2008:2, winVista:2) <= 0){
   exit(0);
@@ -119,11 +98,10 @@ if(hotfix_missing(name:"958215") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  vers = get_file_version(sysPath, file_name:"mshtml.dll");
+  vers = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(vers)
   {
     if(hotfix_check_sp(win2k:5) > 0)
@@ -188,11 +166,10 @@ if(sysPath)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\mshtml.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"mshtml.dll");
   if(dllVer)
   {
     # Windows Vista

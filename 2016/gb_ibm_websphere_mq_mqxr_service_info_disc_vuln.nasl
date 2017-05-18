@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_mqxr_service_info_disc_vuln.nasl 3868 2016-08-23 06:13:26Z antu123 $
+# $Id: gb_ibm_websphere_mq_mqxr_service_info_disc_vuln.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # IBM WebSphere MQ 'MQXR Service' Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808652");
-  script_version("$Revision: 3868 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2015-2012");
   script_bugtraq_id(82992);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-23 08:13:26 +0200 (Tue, 23 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-16 12:32:21 +0530 (Tue, 16 Aug 2016)");
   script_name("IBM WebSphere MQ 'MQXR Service' Information Disclosure Vulnerability");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21968399");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM WebSphere MQ");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");

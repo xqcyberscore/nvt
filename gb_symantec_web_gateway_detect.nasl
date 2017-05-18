@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_symantec_web_gateway_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
 #
 # Symantec Web Gateway Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103483");
-  script_version("$Revision: 2664 $");
+  script_version("$Revision: 5736 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-05-04 17:35:57 +0200 (Fri, 04 May 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Symantec Web Gateway Detection");
@@ -42,7 +42,6 @@ if(description)
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
-  script_summary("Checks for the presence of Symantec Web Gateway");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -51,7 +50,6 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
 
 include("cpe.inc");
 include("http_func.inc");
@@ -64,33 +62,20 @@ url = "";
 req = "";
 buf = "";
 
-##Get http port
 symPort = get_http_port(default:80);
-if(!symPort){
-  symPort = 80;
-}
+if(!can_host_php(port:symPort))exit(0);
 
-##Check Port State
-if(!get_port_state(symPort)){
-  exit(0);
-}
+foreach dir( make_list_unique( "/", cgi_dirs( port:symPort ) ) ) {
 
-dirs = make_list(cgi_dirs());
-foreach dir (dirs)
-{
+  install = dir;
+  if( dir == "/" ) dir = "";
   url = string(dir, "/spywall/login.php");
   req = http_get(item:url, port:symPort);
   buf = http_keepalive_send_recv(port:symPort, data:req, bodyonly:FALSE);
-
   if(buf == NULL) continue;
+
   if(egrep(pattern: "<title>Symantec Web Gateway - Login", string: buf, icase: TRUE))
   {
-    if(strlen(dir)>0) {
-      install = dir;
-    } else {
-      install = '/';
-    }
-
     vers = string("unknown");
 
     ### try to get version
@@ -118,3 +103,5 @@ foreach dir (dirs)
 
   }
 }
+
+exit( 0 );

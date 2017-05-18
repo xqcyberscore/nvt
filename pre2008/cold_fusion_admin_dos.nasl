@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cold_fusion_admin_dos.nasl 3359 2016-05-19 13:40:42Z antu123 $
+# $Id: cold_fusion_admin_dos.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Cold Fusion Administration Page Overflow
 #
 # Authors:
@@ -37,8 +37,8 @@ A patch should be available from allaire - www.allaire.com..";
 if(description)
 {
  script_id(10581);
- script_version("$Revision: 3359 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-19 15:40:42 +0200 (Thu, 19 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1314);
  script_tag(name:"cvss_base", value:"5.0");
@@ -52,7 +52,6 @@ if(description)
 
  summary = "Checks for the presence of /cfide/administrator/index.cfm";
  
- script_summary(summary);
  
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

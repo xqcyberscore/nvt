@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809133");
-  script_version("$Revision: 3876 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-24 08:41:04 +0200 (Wed, 24 Aug 2016) $");
+  script_version("$Revision: 5675 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-18 05:56:50 +0200 (Thu, 18 Aug 2016)");
   script_cve_id("CVE-2016-5420", "CVE-2016-5419", "CVE-2016-5421");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-8354baae0f");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/K3GQH4V3XAQ5Z53AMQRDEC3C3UHTW7QR");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of curl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

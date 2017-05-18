@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_pro_buffer_overflow_vuln.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_avast_pro_buffer_overflow_vuln.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Avast Pro Heap-Based Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:avast_pro_antivirus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808057");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2015-8620");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:35:08 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Pro Heap-Based Buffer Overflow Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Feb/94");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Avast Pro on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_avast_pro_detect.nasl");

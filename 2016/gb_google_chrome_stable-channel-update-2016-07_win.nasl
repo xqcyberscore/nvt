@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-2016-07_win.nasl 3790 2016-08-03 10:30:40Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update-2016-07_win.nasl 5712 2017-03-24 10:00:49Z teissa $
 #
 # Google Chrome Security Updates(stable-channel-update-2016-07)-Windows
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808263");
-  script_version("$Revision: 3790 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-1706", "CVE-2016-1707", "CVE-2016-1708", "CVE-2016-1709", 
                 "CVE-2016-1710", "CVE-2016-1711", "CVE-2016-5127", "CVE-2016-5128", 
                 "CVE-2016-5129", "CVE-2016-5130", "CVE-2016-5131", "CVE-2016-5132", 
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2016-5137", "CVE-2016-1705");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-03 12:30:40 +0200 (Wed, 03 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-22 13:12:56 +0530 (Fri, 22 Jul 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-2016-07)-Windows");
 
@@ -84,7 +84,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2016/07/stable-channel-update.html");
 
-  script_summary("Check for the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

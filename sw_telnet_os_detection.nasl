@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_telnet_os_detection.nasl 5094 2017-01-25 06:43:45Z cfi $
+# $Id: sw_telnet_os_detection.nasl 5711 2017-03-24 09:41:57Z cfi $
 #
 # Telnet OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111069");
-  script_version("$Revision: 5094 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 07:43:45 +0100 (Wed, 25 Jan 2017) $");
+  script_version("$Revision: 5711 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 10:41:57 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-12-13 13:00:00 +0100 (Sun, 13 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,7 +57,7 @@ port = get_telnet_port( default:23 );
 
 banner = get_telnet_banner( port:port );
 
-if( ! banner  || banner == "" || isnull( banner ) ) exit( 0 );
+if( ! banner || banner == "" || isnull( banner ) ) exit( 0 );
 
 if( "Welcome to Microsoft Telnet Service" >< banner ) {
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
@@ -79,7 +79,7 @@ if( "SunOS" >< banner && "login:" >< banner ) {
   exit( 0 );
 }
 
-if( "login:" >< banner ) {
+if( "login:" >< banner || "Kernel" >< banner ) {
 
   if( "Debian GNU/Linux" >< banner ) {
     version = eregmatch( pattern:"Debian GNU/Linux ([0-9.]+)", string:banner );
@@ -122,7 +122,12 @@ if( "login:" >< banner ) {
   }
 
   if( "Red Hat Enterprise Linux" >< banner ) {
-    register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    version = eregmatch( pattern:"Red Hat Enterprise Linux (Server|ES|AS|Client) release ([0-9.]+)", string:banner );
+    if( ! isnull( version[2] ) ) {
+      register_and_report_os( os:"Red Hat Enterprise Linux " + version[1], version:version[2], cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    } else {
+      register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:BANNER_TYPE, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
     exit( 0 );
   }
 

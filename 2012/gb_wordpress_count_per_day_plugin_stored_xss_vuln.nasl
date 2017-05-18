@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability
 #
@@ -43,23 +43,21 @@ For updates refer to http://wordpress.org/extend/plugins/count-per-day";
 tag_summary = "This host is running WordPress with Count per Day plugin and is
 prone to cross site scripting vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803009";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3058 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803009");
+  script_version("$Revision: 5841 $");
   script_bugtraq_id(55231);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-28 12:46:18 +0530 (Tue, 28 Aug 2012)");
   script_name("WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20862/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115904/WordPress-Count-Per-Day-3.2.3-Cross-Site-Scripting.html");
 
-  script_summary("Check if WordPress Count per Day Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -75,7 +73,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
@@ -90,26 +87,15 @@ cdReq = "";
 cdRes = "";
 postdata = "";
 
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get Host Name or IP
-host = get_host_name();
-if(!host){
-  exit(0);
-}
-
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port)){
   exit(0);
 }
+
+host = http_host_name(port:port);
 
 ## Construct the request to Access notes.php
 url = dir + '/wp-content/plugins/count-per-day/notes.php';
@@ -125,7 +111,7 @@ if(http_vuln_check(port:port, url:url, check_header:TRUE,
   ## Construct the POST request
   cdReq = string("POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent:  XSS-TEST\r\n",
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n",
                  "\r\n", postdata);

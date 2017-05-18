@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842968");
-  script_version("$Revision: 4693 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 07:10:20 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 5752 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 06:01:01 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-01 05:39:13 +0100 (Thu, 01 Dec 2016)");
   script_cve_id("CVE-2016-7799", "CVE-2016-7906", "CVE-2016-8677", "CVE-2016-8862", "CVE-2016-9556");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for imagemagick USN-3142-1");
   script_tag(name: "summary", value: "Check the version of imagemagick");

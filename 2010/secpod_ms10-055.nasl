@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-055.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-055.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Remote Code Execution Vulnerability in Cinepak Codec (982665)
 #
@@ -27,25 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code with the privileges of the user running the application.
-  Impact Level: System";
-tag_affected = "Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows Vista service Pack 2 and prior.
-  Microsoft Windows 7";
-tag_insight = "The Cinepak Codec applications fails to perform adequate boundary checks
-  while handling supported format files.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/Bulletin/MS10-055.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS10-055.";
-
 if(description)
 {
   script_id(900249);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-08-11 15:08:29 +0200 (Wed, 11 Aug 2010)");
   script_bugtraq_id(42256);
   script_cve_id("CVE-2010-2553");
@@ -63,11 +49,19 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  code with the privileges of the user running the application.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Microsoft Windows XP Service Pack 3 and prior.
+  Microsoft Windows Vista service Pack 2 and prior.
+  Microsoft Windows 7");
+  script_tag(name : "insight" , value : "The Cinepak Codec applications fails to perform adequate boundary checks
+  while handling supported format files.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/Bulletin/MS10-055.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS10-055.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -79,21 +73,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
-
 ## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, winVista:3, win7:1) <= 0){
   exit(0);
@@ -104,11 +83,10 @@ if(hotfix_missing(name:"982665") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"Iccvid.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"Iccvid.dll");
   if(!dllVer){
     exit(0);
   }
@@ -124,13 +102,12 @@ if(sysPath)
   }
 }
 
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                      item:"PathName");
+sysPath = smb_get_system32root();
 if(!sysPath){
   exit(0);
 }
 
-dllVer = get_file_version(sysPath, file_name:"System32\iccvid.dll");
+dllVer = fetch_file_version(sysPath, file_name:"iccvid.dll");
 if(!dllVer){
   exit(0);
 }

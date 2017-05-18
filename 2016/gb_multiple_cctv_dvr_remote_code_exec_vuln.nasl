@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_cctv_dvr_remote_code_exec_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_multiple_cctv_dvr_remote_code_exec_vuln.nasl 6013 2017-04-24 05:01:46Z teissa $
 #
 # Multiple CCTV-DVR Vendors - Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807674");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6013 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 07:01:46 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-20 15:15:28 +0530 (Wed, 20 Apr 2016)");
   script_name("Multiple CCTV-DVR Vendors - Remote Code Execution Vulnerability");
 
@@ -53,13 +53,11 @@ if (description)
   script_tag(name:"affected" , value:"For Affecfted vendors,
   please refer to https://www.exploit-db.com/exploits/39596");
 
-  script_tag(name:"solution" , value:"No solution or patch is available as of
-  10th February, 2017. Information regarding this issue will be addressed once the
-  solution details are available.  
-  For updates refer to https://www.exploit-db.com/exploits/39596.
-  As a workaround, deny any connection from an unknown IP address to the DVR services");
+  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+  As a workaround, deny any connection from an unknown IP address to the DVR services
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

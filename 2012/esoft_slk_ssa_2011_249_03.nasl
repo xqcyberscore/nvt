@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2011_249_03.nasl 4794 2016-12-16 17:37:27Z cfi $
+# $Id: esoft_slk_ssa_2011_249_03.nasl 6022 2017-04-25 12:51:04Z teissa $
 # Description: Auto-generated from advisory SSA:2011-249-03
 #
 # Authors:
@@ -36,14 +36,13 @@ tag_solution = "https://secure1.securityspace.com/smysecure/catid.html?in=SSA:20
 if(description)
 {
  script_id(71961);
- script_version("$Revision: 4794 $");
+ script_version("$Revision: 6022 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_tag(name:"last_modification", value:"$Date: 2016-12-16 18:37:27 +0100 (Fri, 16 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-10 07:16:18 -0400 (Mon, 10 Sep 2012)");
  script_name("Slackware Advisory SSA:2011-249-03 seamonkey ");
 
- script_summary("Slackware Advisory SSA:2011-249-03 seamonkey ");
 
  script_category(ACT_GATHER_INFO);
 

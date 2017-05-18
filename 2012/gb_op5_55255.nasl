@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_55255.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_op5_55255.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # op5 Monitor Unspecified SQL Injection Vulnerability
 #
@@ -45,7 +45,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(55255);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6032 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:P/A:N");
 
@@ -53,10 +53,9 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55255");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-30 11:27:11 +0200 (Thu, 30 Aug 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed op5 version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

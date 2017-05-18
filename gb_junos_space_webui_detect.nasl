@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_webui_detect.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_junos_space_webui_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Junos Space Web-UI Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105411");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2662 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-10-19 11:11:38 +0200 (Mon, 19 Oct 2015)");
  script_name("Junos Space Web-UI Detection");
 
@@ -39,7 +39,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Junos Space Web-UI");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

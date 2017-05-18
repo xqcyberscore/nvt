@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_23972_version.nasl 4401 2016-11-01 15:46:19Z cfi $
+# $Id: gb_samba_23972_version.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # Samba MS-RPC Remote Shell Command Execution Vulnerability (Version Check)
 #
@@ -31,16 +31,16 @@ CPE = "cpe:/a:samba:samba";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108012");
-  script_version("$Revision: 4401 $");
+  script_version("$Revision: 5933 $");
   script_cve_id("CVE-2007-2447");
   script_bugtraq_id(23972);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-01 16:46:19 +0100 (Tue, 01 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-10-31 12:47:00 +0200 (Mon, 31 Oct 2016)");
   script_name("Samba MS-RPC Remote Shell Command Execution Vulnerability (Version Check)");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
   script_family("Gain a shell remotely");
   script_dependencies("smb_nativelanman.nasl", "gb_samba_detect.nasl");
   script_require_ports(139, 445);

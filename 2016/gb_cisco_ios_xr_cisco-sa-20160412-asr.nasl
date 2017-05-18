@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160412-asr.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160412-asr.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Cisco IOS XR for Cisco ASR 9000 Series Aggregation Services Routers Interface Flap Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1376");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5732 $");
 
  script_name("Cisco IOS XR for Cisco ASR 9000 Series Aggregation Services Routers Interface Flap Vulnerability");
 
@@ -48,9 +48,8 @@ if (description)
 
  script_tag(name: "summary" , value:"A vulnerability in packet processing functions of Cisco IOS XR Software running on Cisco ASR 9000 Series Aggregation Services Routers could allow an unauthenticated, remote attacker to cause cyclic redundancy check (CRC) and symbol errors on the receiving interface of an affected device, which may lead to an interface flap.");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-05-04 17:40:34 +0200 (Wed, 04 May 2016)");
- script_summary("Check the IOS XR Version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

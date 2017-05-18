@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpsound_mult_xss_vuln.nasl 2827 2016-03-10 08:33:09Z benallard $
+# $Id: gb_phpsound_mult_xss_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # phpSound Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805105");
-  script_version("$Revision: 2827 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-8954");
   script_bugtraq_id(71172);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 09:33:09 +0100 (Thu, 10 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-11-27 12:05:21 +0530 (Thu, 27 Nov 2014)");
   script_name("phpSound Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
@@ -65,17 +65,15 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35198");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129104");
 
-  script_summary("Check if phpSound is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -87,10 +85,8 @@ rcvRes = "";
 dir = "";
 url = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
@@ -101,8 +97,7 @@ foreach dir (make_list_unique("/", "/phpSound", "/sound", cgi_dirs(port:http_por
 
   if(dir == "/") dir = "";
 
-  sndReq = http_get(item: string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item: string(dir, "/index.php"),  port:http_port);
 
   ## confirm the Application
   if("phpSound<" >< rcvRes && "Explore new music" >< rcvRes)
@@ -113,7 +108,7 @@ foreach dir (make_list_unique("/", "/phpSound", "/sound", cgi_dirs(port:http_por
 
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-      pattern:"<script>alert\(document.cookie\);</script>",
+      pattern:"<script>alert\(document\.cookie\);</script>",
       extra_check:">Search Results<"))
     {
       security_message(port:http_port);

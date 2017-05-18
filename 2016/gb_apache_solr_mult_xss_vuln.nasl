@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_solr_mult_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_apache_solr_mult_xss_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Apache Solr Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:solr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806880");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2015-8797", "CVE-2015-8796");
   script_bugtraq_id(83243);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-03-01 14:45:34 +0530 (Tue, 01 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Solr Multiple Cross-Site Scripting Vulnerabilities");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name:"URL" , value:"https://issues.apache.org/jira/browse/SOLR-7920");
   script_xref(name:"URL" , value:"https://issues.apache.org/jira/browse/SOLR-7949");
 
-  script_summary("Check if Apache Solr is prone to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

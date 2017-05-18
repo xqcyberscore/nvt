@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3660.nasl 4136 2016-09-23 05:14:41Z antu123 $
+# $Id: deb_3660.nasl 5813 2017-03-31 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3660-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703660);
-    script_version("$Revision: 4136 $");
+    script_version("$Revision: 5813 $");
     script_cve_id("CVE-2016-5147", "CVE-2016-5148", "CVE-2016-5149", "CVE-2016-5150",
 		  "CVE-2016-5151", "CVE-2016-5152", "CVE-2016-5153", "CVE-2016-5154",
 		  "CVE-2016-5155", "CVE-2016-5156", "CVE-2016-5157", "CVE-2016-5158",
@@ -38,7 +38,7 @@ if(description)
 		  "CVE-2016-5163", "CVE-2016-5164", "CVE-2016-5165", "CVE-2016-5166",
   		  "CVE-2016-5167");
     script_name("Debian Security Advisory DSA 3660-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-09-23 07:14:41 +0200 (Fri, 23 Sep 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-09-05 00:00:00 +0200 (Mon, 05 Sep 2016)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,7 +47,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3660.html");
 
-    script_summary("Debian Security Advisory DSA 3660-1 (chromium-browser - security update)");
 
     script_category(ACT_GATHER_INFO);
 

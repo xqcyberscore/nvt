@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_broadlight_residential_gateway_mult_vuln.nasl 3736 2016-07-20 10:32:19Z antu123 $
+# $Id: gb_broadlight_residential_gateway_mult_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # Broadlight Residential Gateway DI3124 Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805596");
-  script_version("$Revision: 3736 $");
+  script_version("$Revision: 5827 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 12:32:19 +0200 (Wed, 20 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-06-26 10:03:52 +0530 (Fri, 26 Jun 2015)");
   script_name("Broadlight Residential Gateway DI3124 Multiple Vulnerabilities");
 
@@ -62,12 +62,12 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37214");
 
-  script_summary("Check if Broadlight Residential Gateway is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
@@ -79,20 +79,9 @@ gatePort = "";
 sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 gatePort = get_http_port(default:80);
-if(!gatePort){
-  gatePort = 80;
-}
 
-#### Check Port State
-if(!get_port_state(gatePort)){
-  exit(0);
-}
-
-## Construct GET Request and Send Request
-sndReq = http_get(item: "/", port:gatePort);
-rcvRes = http_keepalive_send_recv(port:gatePort, data:sndReq);
+rcvRes = http_get_cache(item: "/", port:gatePort);
 
 ## Confirm Application
 if(rcvRes && "title>Broadlight Residential Gateway<" >< rcvRes)

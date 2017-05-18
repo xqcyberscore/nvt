@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Microsoft IIS Tilde Character Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802887");
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5988 $");
   script_bugtraq_id(54251);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-18 10:29:25 +0530 (Wed, 18 Jul 2012)");
   script_name("Microsoft IIS Tilde Character Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/19525");
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://soroush.secproject.com/downloadable/iis_tilde_shortname_disclosure.txt");
   script_xref(name : "URL" , value : "http://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf");
 
-  script_summary("Determine if it is possible to get file/folder names");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web Servers");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_management_console_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_sap_management_console_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # SAP Management Console Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103829");
- script_version ("$Revision: 2664 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 5877 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
  script_tag(name:"creation_date", value:"2013-11-13 12:08:59 +0100 (Wed, 13 Nov 2013)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
@@ -38,7 +38,6 @@ if (description)
  script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
  extract the version number from the reply.");
 
- script_summary("Checks for the presence of SAP Management Console");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

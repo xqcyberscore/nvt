@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807993");
-  script_version("$Revision: 3273 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-11 11:46:39 +0200 (Wed, 11 May 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-08 05:18:36 +0200 (Sun, 08 May 2016)");
   script_cve_id("CVE-2016-2774");
   script_tag(name:"cvss_base", value:"7.1");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-821");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2016-May/183640.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of dhcp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

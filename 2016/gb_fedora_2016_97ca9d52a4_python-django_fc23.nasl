@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808746");
-  script_version("$Revision: 3821 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 08:21:54 +0200 (Thu, 11 Aug 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-04 16:27:29 +0530 (Thu, 04 Aug 2016)");
   script_cve_id("CVE-2016-6186");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-97ca9d52a4");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/KHHPN6MISX5I6UTXQHYLPTLEEUE6WDXW");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python-django");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

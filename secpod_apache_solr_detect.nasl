@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_solr_detect.nasl 2750 2016-03-01 09:31:55Z antu123 $
+# $Id: secpod_apache_solr_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
 #
 # Apache Solr Version Detection
 #
@@ -30,17 +30,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903506");
-  script_version("$Revision: 2750 $");
+  script_version("$Revision: 5829 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-01 10:31:55 +0100 (Tue, 01 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-01-29 13:13:35 +0530 (Wed, 29 Jan 2014)");
   script_name("Apache Solr Version Detection");
-  script_summary("Set version of Apache Solr in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 SecPod");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8983);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -54,21 +53,18 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get http port
 solrPort = get_http_port( default:8983 );
 
 foreach dir( make_list_unique( "/", "/solr", "/apachesolr", cgi_dirs( port:solrPort ) ) )
 {
   if( dir == "/" ) dir = "";
 
-  req = http_get( item: dir + "/" , port:solrPort );
-  rcvRes = http_keepalive_send_recv( port:solrPort, data:req );
+  rcvRes = http_get_cache( item: dir + "/" , port:solrPort );
 
   #Confirm Application
   if( rcvRes =~ "HTTP/1.. 200" && (">Solr Admin<" >< rcvRes || "Solr admin page" >< rcvRes ))
@@ -94,8 +90,7 @@ foreach dir( make_list_unique( "/", "/solr", "/apachesolr", cgi_dirs( port:solrP
         if( ver[1] != NULL ){
           version = ver[1];
         }        
-      }
-      else {
+      } else {
         version = "Unknown";
       } 
 

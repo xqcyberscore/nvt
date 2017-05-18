@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871631");
-  script_version("$Revision: 5588 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-16 11:00:36 +0100 (Thu, 16 Mar 2017) $");
+  script_version("$Revision: 6012 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-22 05:28:29 +0200 (Wed, 22 Jun 2016)");
   script_cve_id("CVE-2016-4444", "CVE-2016-4445", "CVE-2016-4446", "CVE-2016-4989");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for setroubleshoot and setroubleshoot-plugins RHSA-2016:1267-01");
   script_tag(name: "summary", value: "Check the version of setroubleshoot and setroubleshoot-plugins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_cloudbees_jenkins_csrf_nd_rce_vuln.nasl 5684 2017-03-23 08:51:50Z teissa $
 #
 # Jenkins CSRF And Code Execution Vulnerabilities Aug16
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809025");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5684 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:51:50 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-31 12:50:25 +0530 (Wed, 31 Aug 2016)");
   script_name("Jenkins CSRF And Code Execution Vulnerabilities Aug16");
 
@@ -54,12 +54,9 @@ if(description)
 
   script_tag(name:"affected", value:"CloudBees Jenkins version 1.626");
 
-  script_tag(name:"solution", value:"No solution or patch is available as
-  of 24th January, 2017. Information regarding this issue will be updated
-  once the solution details are available.
-  For more updates refer to https://www.cloudbees.com");
+  script_tag(name:"solution", value:"Updates are available to fix this issue. For more updates refer to https://www.cloudbees.com/cloudbees-security-advisory-2017-02-01. ");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -95,7 +92,7 @@ if(!jenkinVer = get_app_version(cpe:CPE, port:jenkinPort)){
 
 if(version_is_equal(version:jenkinVer, test_version:"1.626"))
 {
-  report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:jenkinVer, fixed_version:"See Vendor");
   security_message(data:report, port:jenkinPort);
   exit(0);
 }

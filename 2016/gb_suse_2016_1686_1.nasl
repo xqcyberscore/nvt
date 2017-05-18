@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851357");
-  script_version("$Revision: 3632 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 12:16:55 +0200 (Thu, 30 Jun 2016) $");
+  script_version("$Revision: 5867 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-28 05:26:40 +0200 (Tue, 28 Jun 2016)");
   script_cve_id("CVE-2016-0505", "CVE-2016-0546", "CVE-2016-0596", "CVE-2016-0597", 
                 "CVE-2016-0598", "CVE-2016-0600", "CVE-2016-0606", "CVE-2016-0608", 
@@ -97,7 +97,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "openSUSE-SU", value: "2016:1686_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00053.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mariadb");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

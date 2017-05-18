@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3626.nasl 5579 2017-03-15 08:23:40Z teissa $
+# $Id: deb_3626.nasl 5813 2017-03-31 09:01:08Z teissa $
 # Auto-generated from advisory DSA 3626-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703626);
-    script_version("$Revision: 5579 $");
+    script_version("$Revision: 5813 $");
     script_cve_id("CVE-2016-6210");
     script_name("Debian Security Advisory DSA 3626-1 (openssh - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-15 09:23:40 +0100 (Wed, 15 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
     script_tag(name:"creation_date", value:"2016-08-02 10:55:52 +0530 (Tue, 02 Aug 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3626.html");
 
-    script_summary("Debian Security Advisory DSA 3626-1 (openssh - security update)");
 
     script_category(ACT_GATHER_INFO);
 

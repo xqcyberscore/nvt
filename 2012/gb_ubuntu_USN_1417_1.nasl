@@ -46,14 +46,13 @@ if(description)
   script_id(840979);
   script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 3051 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:08:04 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 6018 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-11 11:00:35 +0530 (Wed, 11 Apr 2012)");
   script_cve_id("CVE-2011-3048");
   script_xref(name: "USN", value: "1417-1");
   script_name("Ubuntu Update for libpng USN-1417-1");
 
-  script_summary("Check for the Version of libpng");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

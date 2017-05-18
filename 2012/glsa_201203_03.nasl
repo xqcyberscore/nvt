@@ -53,13 +53,12 @@ if(description)
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2009-3564", "CVE-2010-0156", "CVE-2011-3848", "CVE-2011-3869", "CVE-2011-3870", "CVE-2011-3871", "CVE-2011-3872", "CVE-2012-1053", "CVE-2012-1054");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5958 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-12 11:35:35 -0400 (Mon, 12 Mar 2012)");
  script_name("Gentoo Security Advisory GLSA 201203-03 (puppet)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201203-03 (puppet)");
 
  script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_palo_alto_webgui_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_palo_alto_webgui_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Palo Alto Device Web Management Interface Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105261");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version ("$Revision: 6032 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
  script_tag(name:"creation_date", value:"2015-04-22 13:08:50 +0200 (Wed, 22 Apr 2015)");
  script_name("Palo Alto Device Web Management Interface Detection");
 
@@ -39,7 +39,6 @@ if (description)
 request to the server and attempts to detect the WebUI for Palo Alto devices");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_summary("Checks for the presence of Palo Alto Device Web Management Interface");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809147");
-  script_version("$Revision: 5383 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 10:27:02 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5689 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-20 05:49:35 +0200 (Sat, 20 Aug 2016)");
   script_cve_id("CVE-2016-6171");
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,7 +48,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-66c0c2105b");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/Z2RIWQVT5KVXAJYVN76T753CBPR7WYFR");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of knot");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

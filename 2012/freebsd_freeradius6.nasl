@@ -45,12 +45,11 @@ if(description)
  script_cve_id("CVE-2012-3547");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 2950 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 14:50:55 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6018 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-15 04:25:48 -0400 (Sat, 15 Sep 2012)");
  script_name("FreeBSD Ports: freeradius");
 
- script_summary("FreeBSD Ports: freeradius");
 
  script_category(ACT_GATHER_INFO);
 

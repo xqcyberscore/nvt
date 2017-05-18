@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2387_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2387_1.nasl 6018 2017-04-24 09:02:24Z teissa $
 # Description: Auto-generated from advisory DSA 2387-1 (simplesamlphp)
 #
 # Authors:
@@ -49,14 +49,13 @@ if(description)
 {
  script_id(70705);
  script_cve_id("CVE-2012-0040");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 6018 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-11 03:27:28 -0500 (Sat, 11 Feb 2012)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("Debian Security Advisory DSA 2387-1 (simplesamlphp)");
 
- script_summary("Debian Security Advisory DSA 2387-1 (simplesamlphp)");
 
  script_category(ACT_GATHER_INFO);
 

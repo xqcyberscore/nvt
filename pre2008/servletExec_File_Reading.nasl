@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: servletExec_File_Reading.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: servletExec_File_Reading.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: ServletExec 4.1 ISAPI File Reading
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Download Patch #9 from ftp://ftp.newatlanta.com/public/4_1/patch
 if(description)
 {
  script_id(10959);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(4795);
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ if(description)
  
  summary = "Tests for ServletExec File Reading";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");

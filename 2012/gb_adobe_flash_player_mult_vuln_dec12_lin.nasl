@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_dec12_lin.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln_dec12_lin.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities - December12 (Linux)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(803076);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-5676", "CVE-2012-5677", "CVE-2012-5678");
   script_bugtraq_id(56892, 56896, 56898);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-14 15:33:01 +0530 (Fri, 14 Dec 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - December12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51560/");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2755801");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-27.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

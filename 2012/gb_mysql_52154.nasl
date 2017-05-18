@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_52154.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_mysql_52154.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # MySQL 5.5.20 Unspecified Remote Code Execution Vulnerability
 #
@@ -44,7 +44,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(52154);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6018 $");
 
  script_name("MySQL 5.5.20 Unspecified Remote Code Execution Vulnerability");
 
@@ -56,9 +56,8 @@ if (description)
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-19 11:48:24 +0200 (Thu, 19 Apr 2012)");
- script_summary("Determine if installed MySQL version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Databases");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");

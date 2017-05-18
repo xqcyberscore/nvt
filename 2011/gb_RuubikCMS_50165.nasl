@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RuubikCMS_50165.nasl 5648 2017-03-21 09:52:17Z cfi $
+# $Id: gb_RuubikCMS_50165.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # RuubikCMS 'f' Parameter Information Disclosure Vulnerability
 #
@@ -33,12 +33,11 @@ obtain sensitive information; other attacks are also possible.
 
 RuubikCMS 1.1.0 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103312);
- script_version("$Revision: 5648 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:52:17 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5751 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-25 14:02:26 +0200 (Tue, 25 Oct 2011)");
  script_bugtraq_id(50165);
  script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +48,6 @@ if (description)
  script_xref(name : "URL" , value : "http://www.ruubikcms.com");
 
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed RuubikCMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -63,27 +61,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/ruubikcms","/cms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/ruubikcms", "/cms", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
 
   foreach file (keys(files)) {
    
     url = string(dir,"/extra/image.php?f=",crap(data:"../",length:9*3),files[file]); 
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

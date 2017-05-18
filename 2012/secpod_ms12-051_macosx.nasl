@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-051_macosx.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: secpod_ms12-051_macosx.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Microsoft Office Privilege Elevation Vulnerability - 2721015 (Mac OS X)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(901210);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2012-1894");
   script_bugtraq_id(54361);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-11 08:54:28 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Office Privilege Elevation Vulnerability - 2721015 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49876/");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-051");
 
   script_copyright("Copyright (C) 2012 SecPod");
-  script_summary("Check the version of Microsoft Office for Mac");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");

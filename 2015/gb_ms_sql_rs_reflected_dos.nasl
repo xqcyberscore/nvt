@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sql_rs_reflected_dos.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: gb_ms_sql_rs_reflected_dos.nasl 5740 2017-03-28 03:23:03Z ckuerste $
 #
-# MS SQL Server Resolution Service Amplification Reflected DrDoS
+# MS SQL Server Resolution Service Amplification Reflected DRDoS
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -28,18 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105187");
- script_version ("$Revision: 5309 $");
+ script_version ("$Revision: 5740 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- script_name("MS SQL Server Resolution Service Amplification Reflected DrDoS");
+ script_name("MS SQL Server Resolution Service Amplification Reflected DRDoS");
 
  script_xref(name:"URL", value:"http://kurtaubuchon.blogspot.de/2015/01/mc-sqlr-amplification-ms-sql-server.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 05:23:03 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2015-01-26 13:45:36 +0100 (Mon, 26 Jan 2015)");
 
- script_summary("Determine if the remote MSSQL is vulnerable to a reflected DrDoS");
  script_category(ACT_ATTACK);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -53,7 +52,7 @@ cause denial-of-service conditions against remote hosts");
 
  script_tag(name:"vuldetect" , value: "Send a request with a single byte and check the length of the response");
  script_tag(name:"solution" , value: "Restrict access to this port.");
- script_tag(name:"summary" , value: "The remote MS SQL Server allows distributed reflection and amplification (DrDoS) attacks");
+ script_tag(name:"summary" , value: "The remote MS SQL Server allows distributed reflection and amplification (DRDoS) attacks");
  script_tag(name:"qod_type", value:"registry");
  script_tag(name:"solution_type", value:"VendorFix");
 

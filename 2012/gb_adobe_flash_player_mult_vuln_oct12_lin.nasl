@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_oct12_lin.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln_oct12_lin.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities - Oct12 (Linux)
 #
@@ -39,7 +39,7 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(802988);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5940 $");
   script_cve_id("CVE-2012-5248", "CVE-2012-5249", "CVE-2012-5250", "CVE-2012-5251",
                 "CVE-2012-5252", "CVE-2012-5253", "CVE-2012-5254", "CVE-2012-5255",
                 "CVE-2012-5256", "CVE-2012-5257", "CVE-2012-5258", "CVE-2012-5259",
@@ -51,13 +51,12 @@ if(description)
   script_bugtraq_id(55827, 56374, 56375, 56376, 56377);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:53:03 +0530 (Mon, 15 Oct 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - Oct12 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50876/");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-22.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

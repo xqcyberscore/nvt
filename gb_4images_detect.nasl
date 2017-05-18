@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_4images_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_4images_detect.nasl 5721 2017-03-24 14:42:01Z cfi $
 #
 # 4images Detection
 #
@@ -39,11 +39,10 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2836 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version ("$Revision: 5721 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:42:01 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-06-17 17:38:29 +0200 (Mon, 17 Jun 2013)");
  script_name("4images Detection");
- script_summary("Checks for the presence of 4images");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -60,27 +59,18 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list(cgi_dirs());
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
+ install = dir;
+ if( dir == "/" ) dir = "";
  url = dir + "/index.php";
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if(egrep(pattern: "Powered by <b>4images</b>", string: buf, icase: TRUE))
  {
-     if(strlen( dir ) > 0) {
-        install = dir;
-     } else {
-        install =string("/");
-     }
-
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern: "Powered by <b>4images</b> ([0-9.]+)",icase:TRUE);
@@ -102,7 +92,7 @@ foreach dir (dirs) {
                 port:port);
 
     exit(0);
-
  }
 }
+
 exit(0);

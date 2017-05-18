@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_organization_xss_vuln.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_twiki_organization_xss_vuln.nasl 5839 2017-04-03 10:43:34Z cfi $
 #
 # TWiki 'organization' Cross-Site Scripting Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802391");
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5839 $");
   script_bugtraq_id(51731);
   script_cve_id("CVE-2012-0979");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:43:34 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 12:04:55 +0530 (Tue, 20 Mar 2012)");
   script_name("TWiki 'organization' Cross-Site Scripting Vulnerability");
-  script_summary("Check for XSS vulnerability in TWiki");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_twiki_detect.nasl");
-  script_require_keys("twiki/installed");
+  script_mandatory_keys("twiki/installed");
   script_require_ports("Services/www", 80);
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
@@ -105,7 +104,7 @@ postdata = "crypttoken=ad240d2a0504042701980e88c85bbc33&Twk1FirstName=ccc&Twk1" 
 ## Construct the POST request
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_USER_AGENT, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postdata), "\r\n",
              "\r\n", postdata);

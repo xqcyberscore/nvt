@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_50286.nasl 3117 2016-04-19 10:19:37Z benallard $
+# $Id: gb_dolphin_50286.nasl 5749 2017-03-28 13:47:32Z cfi $
 #
 # Boonex Dolphin 'xml/get_list.php' SQL Injection Vulnerability
 #
@@ -34,12 +34,11 @@ underlying database.
 
 Boonex Dolphin 6.1 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(103306);
- script_version("$Revision: 3117 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 12:19:37 +0200 (Tue, 19 Apr 2016) $");
+ script_version("$Revision: 5749 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:47:32 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-10-20 15:15:44 +0200 (Thu, 20 Oct 2011)");
  script_bugtraq_id(50286);
  script_tag(name:"cvss_base", value:"7.5");
@@ -53,7 +52,6 @@ if (description)
  script_xref(name : "URL" , value : "http://en.securitylab.ru/lab/PT-2011-14");
 
  script_tag(name:"qod_type", value:"remote_active");
- script_summary("Determine if Boonex Dolphin is prone to an SQL-injection vulnerability");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -67,24 +65,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/dolphin",cgi_dirs());
+foreach dir( make_list_unique( "/dolphin", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url =  string(dir,"/xml/get_list.php?dataType=ApplyChanges&iNumb=1&iIDcat=%27"); 
+  if( dir == "/" ) dir = "";
+  url =  string(dir,"/xml/get_list.php?dataType=ApplyChanges&iNumb=1&iIDcat=%27");
 
   if(http_vuln_check(port:port, url:url,pattern:"You have an error in your SQL syntax")) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_54429.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_symantec_web_gateway_54429.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # Symantec Web Gateway  Local File Manipulation Authentication Bypass Vulnerability
 #
@@ -47,16 +47,15 @@ if (description)
  script_cve_id("CVE-2012-2957");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5940 $");
 
  script_name("Symantec Web Gateway Local File Manipulation Authentication Bypass Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54429");
  script_xref(name : "URL" , value : "http://www.symantec.com/business/web-gateway");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-24 10:16:58 +0200 (Tue, 24 Jul 2012)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

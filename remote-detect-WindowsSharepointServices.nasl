@@ -1,9 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-WindowsSharepointServices.nasl 5053 2017-01-20 13:10:56Z cfi $
+# $Id: remote-detect-WindowsSharepointServices.nasl 6000 2017-04-21 11:07:29Z cfi $
 #
-# Description: This script ensure that Windows SharePointServices is
-# installed and running
-#
+# This script ensure that Windows SharePointServices is installed and running
 #
 # Author:
 # Christian Eric Edjenguele <christian.edjenguele@owasp.org>
@@ -23,58 +22,43 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.101018");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-20 14:10:56 +0100 (Fri, 20 Jan 2017) $");
- script_tag(name:"creation_date", value:"2009-04-01 22:29:14 +0200 (Wed, 01 Apr 2009)");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.101018");
+  script_version("$Revision: 6000 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2009-04-01 22:29:14 +0200 (Wed, 01 Apr 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Windows SharePoint Services detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_name("Windows SharePoint Services detection");
- script_summary("Windows SharePoint Services Information Gathering");
- script_category(ACT_GATHER_INFO);
- script_copyright("Christian Eric Edjenguele <christian.edjenguele@owasp.org>");
+  script_tag(name:"solution", value:"It's recommended to allow connection to this host only from trusted hosts or networks.");
 
- script_family("Service detection");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/www", 80);
+  script_tag(name:"summary", value:"The remote host is running Windows SharePoint Services.
+  Microsoft SharePoint products and technologies include browser-based collaboration and a document-management platform.
+  These can be used to host web sites that access shared workspaces and documents from a browser.");
 
- script_tag(name : "solution" , value : "It's recommended to allow connection to this host only from trusted hosts or networks.");
- script_tag(name : "summary" , value : "The remote host is running Windows SharePoint Services.
- Microsoft SharePoint products and technologies include browser-based collaboration and a document-management platform.
- These can be used to host web sites that access shared workspaces and documents from a browser.");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"qod_type", value:"remote_banner");
-
- exit(0);
-
+  exit(0);
 }
 
-#
-# The script code starts here
-#
 include("cpe.inc");
 include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe);
-}
-
-## start script
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 # request a non existent random page
 page = rand() + "openvas.aspx";
@@ -112,16 +96,16 @@ if(port){
           set_kb_item(name:"WindowsSharePointServices/version", value:wssVersion);
 
           ## build cpe and store it as host_detail
-          register_cpe(tmpVers:wssVersion, tmpExpr:"^([0-9]\.[0-9])", tmpBase:"cpe:/a:microsoft:sharepoint_services:");
-
+          register_and_report_cpe(app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:",
+                                  expr:"^([0-9]\.[0-9])");
         }
         if( eregmatch(pattern:"(12.[0-9.]+)", string:mstsVersion[1], icase:TRUE) ){
           wssVersion = "3.0";
           set_kb_item(name:"WindowsSharePointServices/version", value:wssVersion);
 
           ## build cpe and store it as host_detail
-          register_cpe(tmpVers:wssVersion, tmpExpr:"^([0-9]\.[0-9])", tmpBase:"cpe:/a:microsoft:sharepoint_services:");
-
+          register_and_report_cpe(app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:",
+                                  expr:"^([0-9]\.[0-9])");
         }
 
         report = "Detected: " + mstsVersion[0];
@@ -157,8 +141,8 @@ if(port){
       set_kb_item(name:"IIS/" + port + "/Ver", value:dotNetServer[1]);
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers: dotNetServer[1], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:microsoft:iis:");
-
+      register_and_report_cpe(app:"Server: Microsoft-IIS", ver:dotNetServer[1], base:"cpe:/a:microsoft:iis:",
+                                  expr:"^([0-9.]+)");
       report += "\n" + dotNetServer[0];
       if( osVersion ){
         report += "\n" + "Operating System Type: " + osVersion;

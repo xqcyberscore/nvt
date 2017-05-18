@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_sysaid_unauth_file_upload_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
 #
 # SysAid Unauthenticated File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106006");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5933 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,7 @@ if (description)
 
   script_name("SysAid Unauthenticated File Upload Vulnerability");
 
-  script_category(ACT_ATTACK);
+  script_category(ACT_GATHER_INFO);
 
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

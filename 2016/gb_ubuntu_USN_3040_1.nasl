@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842841");
-  script_version("$Revision: 4052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-14 06:10:56 +0200 (Wed, 14 Sep 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-02 10:55:44 +0530 (Tue, 02 Aug 2016)");
   script_cve_id("CVE-2016-3424", "CVE-2016-3459", "CVE-2016-3477", "CVE-2016-3486",
 		"CVE-2016-3501", "CVE-2016-3518", "CVE-2016-3521", "CVE-2016-3588",
@@ -65,7 +65,6 @@ http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
   script_xref(name: "USN", value: "3040-1");
   script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3040-1/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mysql-5.7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

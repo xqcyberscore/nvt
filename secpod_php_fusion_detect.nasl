@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_fusion_detect.nasl 3961 2016-09-05 14:44:24Z cfi $
+# $Id: secpod_php_fusion_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Detection of PHP-Fusion Version
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900612");
-  script_version("$Revision: 3961 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-05 16:44:24 +0200 (Mon, 05 Sep 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Detection of PHP-Fusion Version");
-  script_summary("Detects the version of PHP-Fusion and sets the kb value");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

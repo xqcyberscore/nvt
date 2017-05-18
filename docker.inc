@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Include File
 #
-# $Id: docker.inc 5107 2017-01-25 17:31:44Z mime $
+# $Id: docker.inc 5895 2017-04-07 14:44:59Z mime $
 #
 # Functions for Docker
 #
@@ -26,15 +26,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5107 $
+# $Revision: 5895 $
 #
 ###############################################################################
 
-function docker_build_all_containers_array()
+function docker_build_all_containers_array( type )
 {
   local_var name, ports, id, image, containers, co;
 
-  type = 'lsc';
+  if( ! type )
+    type = 'lsc';
+
   containers =  get_kb_list( "docker/" + type + "/container/*/id" );
 
   if( ! containers ) return;
@@ -46,6 +48,9 @@ function docker_build_all_containers_array()
     ports = get_kb_item( "docker/" + type + "/container/" + id  + "/ports" );
     image = get_kb_item( "docker/" + type + "/container/" + id  + "/image" );
 
+    if( ! ports )
+      ports = '';
+
     co[ id ] = make_array( "name",  name,
                            "id",    id,
                            "image", image,
@@ -56,11 +61,13 @@ function docker_build_all_containers_array()
   return co;
 }
 
-function docker_build_running_containers_array()
+function docker_build_running_containers_array( type )
 {
   local_var name, ports, id, image, containers, co, type;
 
-  type = 'lsc';
+  if( ! type )
+    type = 'lsc';
+
   containers =  get_kb_list( "docker/" + type + "/container/*/id" );
 
   if( ! containers ) return;
@@ -75,6 +82,9 @@ function docker_build_running_containers_array()
     ports = get_kb_item( "docker/" + type + "/container/" + id  + "/ports" );
     image = get_kb_item( "docker/" + type + "/container/" + id  + "/image" );
 
+    if( ! ports )
+      ports = '';
+
     co[ id ] = make_array( "name",  name,
                            "id",    id,
                            "image", image,
@@ -85,3 +95,28 @@ function docker_build_running_containers_array()
   return co;
 }
 
+function docker_get_running_containers( type )
+{
+  local_var type, ret_array;
+
+  if( type )
+    return docker_build_running_containers_array( type:type );
+
+  ret_array = docker_get_running_containers( type:"lsc" );
+
+  if( ! ret_array )
+    ret_array = docker_get_running_containers( type:"remote" );
+
+  return ret_array;
+
+}
+
+function docker_truncate_id( )
+{
+  v = _FCT_ANON_ARGS[0];
+
+  if( ! v )
+    return;
+
+   return substr( v, 0, 11 );
+}

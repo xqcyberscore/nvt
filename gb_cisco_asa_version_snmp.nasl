@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_version_snmp.nasl 5466 2017-03-02 10:28:27Z ckuerste $
+# $Id: gb_cisco_asa_version_snmp.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Cisco ASA Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106513");
-  script_version("$Revision: 5466 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 11:28:27 +0100 (Thu, 02 Mar 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-01-12 15:23:14 +0700 (Thu, 12 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -95,7 +95,7 @@ if ("Cisco Adaptive Security Appliance" >< sysdesc) {
 
   register_product(cpe: cpe);
   register_and_report_os(os: "Cisco ASA", cpe: cpe2, banner_type: "SNMP sysdesc", banner: sysdesc, port: port,
-                         proto: "udp", desc: "Cisco ASA Detection (SNMP)");
+                         proto: "udp", desc: "Cisco ASA Detection (SNMP)", runs_key: "unixoide");
 
   log_message(data: build_detection_report(app: "Cisco ASA", version: version, install: "161/udp", cpe: cpe,
                                            concluded: sysdesc, extra: "Model: " + model),

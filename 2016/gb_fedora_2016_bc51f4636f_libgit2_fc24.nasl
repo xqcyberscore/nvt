@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809912");
-  script_version("$Revision: 5266 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 16:10:59 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-11-14 17:59:32 +0530 (Mon, 14 Nov 2016)");
   script_cve_id("CVE-2016-8568", "CVE-2016-8569");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2016-bc51f4636f");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4E77DG5KGQ7L34U75QY7O6NIPKZNQHQJ");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libgit2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

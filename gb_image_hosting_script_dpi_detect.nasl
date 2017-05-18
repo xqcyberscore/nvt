@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_image_hosting_script_dpi_detect.nasl 2793 2016-03-08 10:38:36Z cfi $
+# $Id: gb_image_hosting_script_dpi_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Clixint Image Hosting Script DPI Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801081");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2793 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 11:38:36 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-12-14 09:18:47 +0100 (Mon, 14 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Clixint Image Hosting Script DPI Version Detection");
-  script_summary("Set the version of Clixint Image Hosting Script DPI in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

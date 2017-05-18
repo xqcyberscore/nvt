@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808021");
-  script_version("$Revision: 3553 $");
+  script_version("$Revision: 5712 $");
   script_cve_id("CVE-2016-4003", "CVE-2016-2162", "CVE-2016-3093");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 09:26:11 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-06 11:03:24 +0530 (Mon, 06 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Struts Multiple Vulnerabilities June16");
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "https://struts.apache.org/docs/s2-034.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache Struts");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_apache_struts_detect.nasl");

@@ -1,5 +1,6 @@
 ###############################################################################
-# $Id: os_eol.inc 5553 2017-03-13 08:03:35Z cfi $
+# OpenVAS Include File
+# $Id: os_eol.inc 6055 2017-05-02 08:50:13Z cfi $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -30,6 +31,7 @@ eol_cpes = make_array();
 
 # OpenSUSE (http://en.opensuse.org/Lifetime)
 eol_urls['cpe:/o:novell:opensuse'] = 'http://en.opensuse.org/Lifetime';
+eol_cpes['cpe:/o:novell:opensuse:13.2'] = '17 Jan 2017';
 eol_cpes['cpe:/o:novell:opensuse:13.1'] = '03 Feb 2016';
 eol_cpes['cpe:/o:novell:opensuse:12.3'] = '29 Jan 2015';
 eol_cpes['cpe:/o:novell:opensuse:12.2'] = '15 Jan 2014';
@@ -68,6 +70,7 @@ eol_cpes['cpe:/o:canonical:ubuntu_linux:14.10'] = '23 Jul 2014';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:13.10'] = '17 Jul 2014';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:13.04'] = '27 Jan 2014';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:12.10'] = '16 May 2014';
+eol_cpes['cpe:/o:canonical:ubuntu_linux:12.04'] = '28 Apr 2017';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:11.10'] = '09 May 2013';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:11.04'] = '28 Oct 2012';
 eol_cpes['cpe:/o:canonical:ubuntu_linux:10.10'] = '10 Apr 2012';
@@ -98,12 +101,14 @@ eol_cpes['cpe:/o:redhat:linux:7.3'] = 'unknown';
 
 # CentOS (http://wiki.centos.org/Download)
 eol_urls['cpe:/o:centos:centos'] = 'http://wiki.centos.org/Download';
+eol_cpes['cpe:/o:centos:centos:5'] = '31 Mar 2017';
 eol_cpes['cpe:/o:centos:centos:4'] = '29 Feb 2012';
 eol_cpes['cpe:/o:centos:centos:3'] = '31 Oct 2010';
 eol_cpes['cpe:/o:centos:centos:2'] = '31 May 2009';
 
 # Fedora (https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL)
 eol_urls['cpe:/o:fedoraproject:fedora'] = 'https://fedoraproject.org/wiki/End_of_life?rd=LifeCycle/EOL';
+eol_cpes['cpe:/o:fedoraproject:fedora:23'] = '20 Dec 2016';
 eol_cpes['cpe:/o:fedoraproject:fedora:22'] = '19 Jul 2016';
 eol_cpes['cpe:/o:fedoraproject:fedora:21'] = '01 Dec 2015';
 eol_cpes['cpe:/o:fedoraproject:fedora:20'] = '23 Jun 2015';
@@ -256,13 +261,13 @@ eol_cpes['cpe:/o:fortinet:fortios:3.5'] = '03 Jul 2010';
 eol_cpes['cpe:/o:fortinet:fortios:3.4'] = '29 Dec 2009';
 eol_cpes['cpe:/o:fortinet:fortios:3.3'] = '02 Oct 2009';
 
-# Xenserver https://www.citrix.de/support/product-lifecycle/product-matrix.html
+# Xenserver (https://www.citrix.de/support/product-lifecycle/product-matrix.html)
 eol_urls['cpe:/a:citrix:xenserver'] = 'https://www.citrix.de/support/product-lifecycle/product-matrix.html';
 eol_cpes['cpe:/a:citrix:xenserver:5.6'] = '31 Mar 2014';
 eol_cpes['cpe:/a:citrix:xenserver:5.5'] = '15 Sep 2013';
 eol_cpes['cpe:/a:citrix:xenserver:5.0'] = '15 Sep 2013';
 
-# Cisco IOS XR # http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html
+# Cisco IOS XR (http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html)
 eol_urls['cpe:/o:cisco:ios_xr'] = 'http://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-xr-software/eos-eol-notice-listing.html';
 eol_cpes['cpe:/o:cisco:ios_xr:4.2'] = '15 Feb 2016';
 eol_cpes['cpe:/o:cisco:ios_xr:4.1'] = '19 Mar 2016 ';
@@ -273,6 +278,107 @@ eol_cpes['cpe:/o:cisco:ios_xr:3.6'] = '30 Jun 2012 ';
 eol_cpes['cpe:/o:cisco:ios_xr:3.5'] = '11 May 2012 ';
 eol_cpes['cpe:/o:cisco:ios_xr:3.4'] = '31 Dec 2011 ';
 eol_cpes['cpe:/o:cisco:ios_xr:3.3'] = '31 Dec 2011';
+
+# FreeBSD (https://www.freebsd.org/security/unsupported.html)
+eol_urls['cpe:/o:freebsd:freebsd'] = 'https://www.freebsd.org/security/unsupported.html';
+eol_cpes['cpe:/o:freebsd:freebsd:4'] = '31 Jan 2007';
+eol_cpes['cpe:/o:freebsd:freebsd:4.11'] = '31 Jan 2007';
+eol_cpes['cpe:/o:freebsd:freebsd:5'] = '31 May 2008';
+eol_cpes['cpe:/o:freebsd:freebsd:5.3'] = '31 Oct 2006';
+eol_cpes['cpe:/o:freebsd:freebsd:5.4'] = '31 Oct 2006';
+eol_cpes['cpe:/o:freebsd:freebsd:5.5'] = '31 May 2008';
+eol_cpes['cpe:/o:freebsd:freebsd:6'] = '30 Nov 2010';
+eol_cpes['cpe:/o:freebsd:freebsd:6.0'] = '31 Jan 2007';
+eol_cpes['cpe:/o:freebsd:freebsd:6.1'] = '31 May 2008';
+eol_cpes['cpe:/o:freebsd:freebsd:6.2'] = '31 May 2008';
+eol_cpes['cpe:/o:freebsd:freebsd:6.3'] = '31 Jan 2010';
+eol_cpes['cpe:/o:freebsd:freebsd:6.4'] = '30 Nov 2010';
+eol_cpes['cpe:/o:freebsd:freebsd:7'] = '28 Feb 2013';
+eol_cpes['cpe:/o:freebsd:freebsd:7.0'] = '30 Apr 2009';
+eol_cpes['cpe:/o:freebsd:freebsd:7.1'] = '28 Feb 2011';
+eol_cpes['cpe:/o:freebsd:freebsd:7.2'] = '30 Jun 2010';
+eol_cpes['cpe:/o:freebsd:freebsd:7.3'] = '31 Mar 2012';
+eol_cpes['cpe:/o:freebsd:freebsd:7.4'] = '28 Feb 2013';
+eol_cpes['cpe:/o:freebsd:freebsd:8'] = '01 Aug 2015';
+eol_cpes['cpe:/o:freebsd:freebsd:8.0'] = '30 Nov 2010';
+eol_cpes['cpe:/o:freebsd:freebsd:8.1'] = '31 Jul 2012';
+eol_cpes['cpe:/o:freebsd:freebsd:8.2'] = '31 Jul 2012';
+eol_cpes['cpe:/o:freebsd:freebsd:8.3'] = '30 Apr 2014';
+eol_cpes['cpe:/o:freebsd:freebsd:8.4'] = '01 Aug 2015';
+eol_cpes['cpe:/o:freebsd:freebsd:9'] = '31 Dec 2016';
+eol_cpes['cpe:/o:freebsd:freebsd:9.0'] = '31 Mar 2013';
+eol_cpes['cpe:/o:freebsd:freebsd:9.1'] = '31 Dec 2014';
+eol_cpes['cpe:/o:freebsd:freebsd:9.2'] = '31 Dec 2014';
+eol_cpes['cpe:/o:freebsd:freebsd:9.3'] = '31 Dec 2016';
+# eol_cpes['cpe:/o:freebsd:freebsd:10.0'] = '28 Feb 2015'; # nb: Don't add 10.0 for now as gb_ssh_os_detection.nasl can't detect the differences between 10.x and would throw false positives
+eol_cpes['cpe:/o:freebsd:freebsd:10.1'] = '31 Dec 2016';
+eol_cpes['cpe:/o:freebsd:freebsd:10.2'] = '31 Dec 2016';
+
+# NetBSD (https://en.wikipedia.org/wiki/NetBSD#Releases)
+eol_urls['cpe:/o:netbsd:netbsd'] = 'https://en.wikipedia.org/wiki/NetBSD#Releases';
+eol_cpes['cpe:/o:netbsd:netbsd:0.8'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:0.9'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.0'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.1'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.2'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.3'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.4'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.5'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:1.6'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:2.0'] = 'unknown';
+eol_cpes['cpe:/o:netbsd:netbsd:3.0'] = '30 May 2009';
+eol_cpes['cpe:/o:netbsd:netbsd:4.0'] = '17 Nov 2012';
+eol_cpes['cpe:/o:netbsd:netbsd:5.0'] = '09 Nov 2015';
+
+# OpenBSD (https://en.wikipedia.org/wiki/OpenBSD_version_history)
+eol_urls['cpe:/o:openbsd:openbsd'] = 'https://en.wikipedia.org/wiki/OpenBSD_version_history';
+eol_cpes['cpe:/o:openbsd:openbsd:1'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:1.1'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:1.2'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.0'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.1'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.2'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.3'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.4'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.5'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.6'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.7'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.8'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:2.9'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.0'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.1'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.2'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.3'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.4'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.5'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.6'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.7'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.8'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:3.9'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.0'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.1'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.2'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.3'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.4'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.5'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.6'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.7'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.8'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:4.9'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:5'] = '11 Apr 2017';
+eol_cpes['cpe:/o:openbsd:openbsd:5.0'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:5.1'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:5.2'] = 'unknown';
+eol_cpes['cpe:/o:openbsd:openbsd:5.3'] = '01 May 2014';
+eol_cpes['cpe:/o:openbsd:openbsd:5.4'] = '01 Nov 2014';
+eol_cpes['cpe:/o:openbsd:openbsd:5.5'] = '01 May 2015';
+eol_cpes['cpe:/o:openbsd:openbsd:5.6'] = '18 Oct 2015';
+eol_cpes['cpe:/o:openbsd:openbsd:5.7'] = '29 Mar 2016';
+eol_cpes['cpe:/o:openbsd:openbsd:5.8'] = '01 Sep 2016';
+eol_cpes['cpe:/o:openbsd:openbsd:5.9'] = '11 Apr 2017';
 
 # Greenbone OS (http://greenbone.net/technology/gos_old_releases.html)
 eol_urls['cpe:/o:greenbone:greenbone_os'] = 'http://greenbone.net/technology/gos_old_releases.html';
@@ -511,6 +617,36 @@ eol_cpes['cpe:/o:microsoft:windows_8:-:-:x86'] = '12 Jan 2016';
 eol_cpes['cpe:/o:microsoft:windows_8:-:sp1:x86'] = '12 Jan 2016';
 eol_cpes['cpe:/o:microsoft:windows_8:-:-:x64'] = '12 Jan 2016';
 eol_cpes['cpe:/o:microsoft:windows_8:-:sp1:x64'] = '12 Jan 2016';
+
+#Windows Vista (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%20Vista&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_vista'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%20Vista&Filter=FilterNO';
+eol_cpes['cpe:/o:microsoft:windows_vista'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x86'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:-:x64'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x86'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x86'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp1:x64'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:-:sp2:x64'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::gold'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:::x86'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:::x64'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:::x86-enterprise'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:::x86-ultimate'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:::x64-enterprise'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista:::x64-ultimate'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x86'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x86-enterprise'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x86-ultimate'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-enterprise'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-ultimate'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-home_premium'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp2'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x86'] = '11 Apr 2017';
+eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '11 Apr 2017';
 
 function get_eol_url(cpe) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_artemis_detect.nasl 4229 2016-10-07 08:15:43Z antu123 $
+# $Id: gb_apache_activemq_artemis_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # Apache ActiveMQ Artemis Detection
 #
@@ -28,10 +28,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.809341");
- script_version ("$Revision: 4229 $");
+ script_version ("$Revision: 6063 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-10-07 10:15:43 +0200 (Fri, 07 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 14:54:29 +0530 (Thu, 06 Oct 2016)");
  script_name("Apache ActiveMQ Artemis Detection");
 
@@ -40,7 +40,6 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Apache ActiveMQ Artemis");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

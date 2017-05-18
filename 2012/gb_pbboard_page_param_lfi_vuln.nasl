@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pbboard_page_param_lfi_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_pbboard_page_param_lfi_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
 #
 # PBBoard 'page' Parameter Local File Inclusion Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802631");
-  script_version("$Revision: 5641 $");
+  script_version("$Revision: 5814 $");
   script_bugtraq_id(53710);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2012-06-01 10:53:55 +0530 (Fri, 01 Jun 2012)");
   script_name("PBBoard 'page' Parameter Local File Inclusion Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53710");
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113084/pbboard-lfi.txt");
   script_xref(name : "URL" , value : "http://bot24.blogspot.in/2012/05/pbboard-version-214-suffers-from-local.html");
 
-  script_summary("Check if PBBoard is vulnerable to local file inclusion");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -68,7 +67,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
@@ -80,29 +78,23 @@ port = 0;
 file = "";
 files = NULL;
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
+files = traversal_files();
+
 foreach dir (make_list_unique("/", "/PBBoard", "/pbb", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
   url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application before trying exploit
-  if(http_vuln_check(port: port, url: url, check_header: TRUE,
-                     pattern: "Powered By PBBoard"))
-  {
-    files = traversal_files();
-    if(! files) {
-      exit(0);
-    }
+  if( res =~ "HTTP/1.. 200" && "Powered By PBBoard" >< res ) {
 
     foreach file (keys(files))
     {

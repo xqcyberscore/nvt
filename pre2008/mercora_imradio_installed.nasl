@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mercora_imradio_installed.nasl 5371 2017-02-20 15:52:15Z cfi $
+# $Id: mercora_imradio_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Mercora IMRadio Detection
 #
 # Authors:
@@ -29,8 +29,8 @@ business environment.";
 
 if (description) {
   script_id(19585);
-  script_version("$Revision: 5371 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 16:52:15 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,6 @@ if (description) {
  
  
   summary = "Checks for Mercora IMRadio";
-  script_summary(summary);
  
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

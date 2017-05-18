@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability
 #
@@ -43,18 +43,17 @@ overflow vulnerability.";
 if(description)
 {
   script_id(803105);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6032 $");
   script_bugtraq_id(55764);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-22 18:55:24 +0530 (Mon, 22 Oct 2012)");
   script_name("TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50595/");
   script_xref(name : "URL" , value : "http://www.naked-security.com/nsa/236580.htm");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50595");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117571/turboftp_port.rb.txt");
-  script_summary("Determine if TurboFTP server is prone to BOF");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

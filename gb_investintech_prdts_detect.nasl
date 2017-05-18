@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_investintech_prdts_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_investintech_prdts_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Investintech Products Version Detection
 #
@@ -24,16 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed version of Investintech
-  products and sets the result in KB.";
-
 if(description)
 {
-  script_id(802501);
+  script_oid("1.3.6.1.4.1.25623.1.0.802501");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
+  script_version("$Revision: 5943 $");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-11-09 17:25:24 +0530 (Wed, 09 Nov 2011)");
   script_name("Investintech Products Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "This script finds the installed version of Investintech
+  products and sets the result in KB.");
   exit(0);
 }
 
@@ -54,18 +52,6 @@ include("host_details.inc");
 include("secpod_smb_func.inc");
 
 ## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802501";
-SCRIPT_DESC = "Investintech Products Version Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
 
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
@@ -92,11 +78,9 @@ foreach item (registry_enum_keys(key:key))
       if(pdfVer != NULL)
       {
         set_kb_item(name:"SlimPDF/Reader/Ver", value:pdfVer);
-        log_message(data:"SlimPDF Reader version " + pdfVer +
-                                         " was detected on the host");
         ## build cpe and store it as host_detail
-        register_cpe(tmpVers:pdfVer, tmpExpr:"^([0-9.]+)",
-                             tmpBase:"cpe:/a:investintech:slimpdf_reader:");
+        register_and_report_cpe(app:"SlimPDF Reader", ver:pdfVer, base:"cpe:/a:investintech:slimpdf_reader:",
+                                expr:"^([0-9.]+)", insloc:pdfPath);
       }
     }
   }
@@ -109,12 +93,10 @@ foreach item (registry_enum_keys(key:key))
     if(docVer != NULL)
     {
       set_kb_item(name:"Able2Doc/Ver", value:docVer);
-      log_message(data:"Able2Doc version " + docVer +
-                                  " was detected on the host");
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:docVer, tmpExpr:"^([0-9.]+)",
-                             tmpBase:"cpe:/a:investintech:able2doc:");
+      register_and_report_cpe(app:"Able2Doc", ver:docVer, base:"cpe:/a:investintech:able2doc:",
+                                expr:"^([0-9.]+)");
     }
   }
 
@@ -125,12 +107,10 @@ foreach item (registry_enum_keys(key:key))
     if(docVer != NULL)
     {
       set_kb_item(name:"Able2Doc/Pro/Ver", value:docVer);
-        log_message(data:"Able2Doc Professional version " + docVer +
-                                         " was detected on the host");
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:docVer, tmpExpr:"^([0-9.]+)",
-                             tmpBase:"cpe:/a:investintech:able2doc:::professional:");
+      register_and_report_cpe(app:"Able2Doc Professional", ver:docVer, base:"cpe:/a:investintech:able2doc:::professional:",
+                              expr:"^([0-9.]+)");
     }
   }
 
@@ -141,12 +121,10 @@ foreach item (registry_enum_keys(key:key))
     if(docVer != NULL)
     {
       set_kb_item(name:"Able2Extract/Ver", value:docVer);
-      log_message(data:"Able2Extract version " + docVer +
-                                         " was detected on the host");
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:docVer, tmpExpr:"^([0-9.]+)",
-                             tmpBase:"cpe:/a:investintech:able2extract:");
+      register_and_report_cpe(app:"Able2Extract", ver:docVer, base:"cpe:/a:investintech:able2extract:",
+                              expr:"^([0-9.]+)");
     }
   }
 
@@ -156,12 +134,11 @@ foreach item (registry_enum_keys(key:key))
     if(serVer != NULL)
     {
       set_kb_item(name:"Able2Extract/PDF/Server/Ver", value:serVer);
-      log_message(data:"Able2Extract PDF Server version " + serVer +
-                                         " was detected on the host");
 
       ## build cpe and store it as host_detail
-      register_cpe(tmpVers:serVer, tmpExpr:"^([0-9.]+)",
-                             tmpBase:"cpe:/a:investintech:able2extract_server:");
+      register_and_report_cpe(app:"Able2Extract PDF Server", ver:serVer, base:"cpe:/a:investintech:able2extract_server:",
+                              expr:"^([0-9.]+)");
     }
   }
 }
+exit(0);

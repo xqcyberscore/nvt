@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: support_incident_tracker_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: support_incident_tracker_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # SiT! Support Incident Tracker Detection
 #
@@ -30,76 +30,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running SiT! Support Incident Tracker, a web based
-application which uses PHP and MySQL for tracking technical support
-calls/emails.";
-
-if (description)
+if(description)
 {
- script_id(100466);
+ script_oid("1.3.6.1.4.1.25623.1.0.100466");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5943 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
  script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("SiT! Support Incident Tracker Detection");
-
- script_summary("Checks for the presence of SiT! Support Incident Tracker");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name : "summary" , value : "This host is running SiT! Support Incident Tracker, a web based
+ application which uses PHP and MySQL for tracking technical support
+ calls/emails.");
  script_xref(name : "URL" , value : "http://sitracker.org/wiki/Main_Page");
  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 include("cpe.inc");
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100466";
-SCRIPT_DESC = "SiT! Support Incident Tracker Detection";
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
-
-
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/tracker","/support","/sit", cgi_dirs());
+foreach dir( make_list_unique( "/tracker", "/support", "/sit", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
- url = string(dir, "/index.php");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/index.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
 
  if(egrep(pattern: '<meta name="GENERATOR" content="SiT! Support Incident Tracker', string: buf, icase: TRUE) &&
     "SiT! - Login" >< buf )
  {
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }
-
     vers = string("unknown");
     ### try to get version 
     version = eregmatch(string: buf, pattern: "Support Incident Tracker v(([0-9.]+).?([a-zA-Z0-9]+))",icase:TRUE);
@@ -120,20 +92,11 @@ foreach dir (dirs) {
     set_kb_item(name:"www/" + port + "/support_incident_tracker", value:tmp_version);
     set_kb_item(name:"sit/installed",value:TRUE);
 
-
-    info = string("SiT! Support Incident Tracker Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
-
     ## build cpe and store it as host detail
-    register_cpe(tmpVers:tmp_version,tmpExpr:"^([0-9.]+)",tmpBase:"cpe:/a:sitracker:support_incident_tracker:");
-
-    if(report_verbosity > 0) {
-      log_message(port:port,data:info);
-    }
+    register_and_report_cpe(app:"SiT! Support Incident Tracker", ver:tmp_version, base:"cpe:/a:sitracker:support_incident_tracker:",
+                            expr:"^([0-9.]+)", insloc:install);
     exit(0);
  }
 }
-exit(0);
 
+exit(0);

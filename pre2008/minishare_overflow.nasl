@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: minishare_overflow.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: minishare_overflow.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: MiniShare webserver buffer overflow
 #
 # Authors:
@@ -37,8 +37,8 @@ tag_solution = "Upgrade to MiniShare 1.4.2 or higher.";
 if(description)
 {
  script_id(18424);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-2271");
  script_bugtraq_id (11620);
@@ -53,7 +53,6 @@ if(description)
 
  summary = "MiniShare webserver buffer overflows";
 
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

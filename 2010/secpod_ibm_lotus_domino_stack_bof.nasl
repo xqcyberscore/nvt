@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_stack_bof.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_ibm_lotus_domino_stack_bof.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Lotus Domino iCalendar Remote Stack Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901157");
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 5701 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-09-29 09:26:02 +0200 (Wed, 29 Sep 2010)");
   script_bugtraq_id(43219);
   script_cve_id("CVE-2010-3407");
@@ -73,8 +73,7 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );
 
 vers = ereg_replace(pattern:"FP", string:vers, replace: ".FP");
 
@@ -82,7 +81,7 @@ vers = ereg_replace(pattern:"FP", string:vers, replace: ".FP");
 if( version_in_range( version:vers, test_version:"8", test_version2:"8.0.2.FP4" ) ||
     version_in_range( version:vers, test_version:"8.5", test_version2:"8.5.1.FP1" ) ) {
   report = report_fixed_ver( installed_version: vers, fixed_version:"8.0.2 FP5/8.5.1 FP2/8.5.2" );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

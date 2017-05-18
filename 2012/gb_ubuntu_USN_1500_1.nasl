@@ -85,8 +85,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001753.html");
   script_id(841076);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5931 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-10 10:08:13 +0530 (Tue, 10 Jul 2012)");
   script_cve_id("CVE-2011-4601", "CVE-2011-4602", "CVE-2011-4603", "CVE-2011-4922",
                 "CVE-2011-4939", "CVE-2012-1178", "CVE-2012-2214", "CVE-2012-2318",
@@ -96,7 +96,6 @@ if(description)
   script_xref(name: "USN", value: "1500-1");
   script_name("Ubuntu Update for pidgin USN-1500-1");
 
-  script_summary("Check for the Version of pidgin");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

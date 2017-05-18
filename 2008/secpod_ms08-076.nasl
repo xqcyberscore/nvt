@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms08-076.nasl 5344 2017-02-18 17:43:17Z cfi $
+# $Id: secpod_ms08-076.nasl 5863 2017-04-05 07:38:11Z antu123 $
 #
 # Vulnerabilities in Windows Media Components Could Allow Remote Code Execution (959807)
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900060);
-  script_version("$Revision: 5344 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:43:17 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 5863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2008-12-10 17:58:14 +0100 (Wed, 10 Dec 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -81,23 +81,12 @@ if(hotfix_check_sp(xp:4, win2k:5, win2003:3, win2008:2, winVista:2) <= 0){
   exit(0);
 }
 
-function get_version(dllFile)
-{
-  dllPath = registry_get_sz(item:"Install Path",
-                          key:"SOFTWARE\Microsoft\COM3\Setup");
-  if(!dllPath){
-    exit(0);
-  }
-
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:dllPath + dllFile);
-
-  dllVer = GetVer(file:file, share:share);
-  return dllVer;
+## Get System Path
+sysPath = smb_get_system32root();
+if(!sysPath ){
+  exit(0);
 }
-
-
+ 
 # Windows Media Player 6.4 on 2K/XP/2003
 activeKey = "SOFTWARE\Microsoft\Active setup\Installed Components\";
 playerVer = registry_get_sz(item:"Version",
@@ -108,7 +97,8 @@ if(playerVer)
   # Check for Hotfix 954600 (MS08-076).
   if(hotfix_missing(name:"954600") == 1)
   {
-    dllVer = get_version(dllFile:"\Strmdll.dll");
+    
+    dllVer = fetch_file_version(sysPath, file_name:"Strmdll.dll");
     if(dllVer != NULL)
     {
       if(version_is_less(version:dllVer, test_version:"4.1.0.3937"))
@@ -121,7 +111,7 @@ if(playerVer)
 }
 
 # Windows Media Format Runtime 7.1, 9.0, 9.5 and 11 on 2K/XP/2003
-dllVer = get_version(dllFile:"\Wmvcore.dll");
+dllVer = fetch_file_version(sysPath, file_name:"Wmvcore.dll");
 if(dllVer)
 {
   # Check for Hotfix 952069 (MS08-076).
@@ -194,17 +184,12 @@ if(dllVer)
 }
     
 ## Get system path for windows vista and 2008 server 
-dllPath = registry_get_sz(item:"PathName",
-                          key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+dllPath = smb_get_system32root();
 if(!dllPath){
    exit(0);
 }
 
-share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                    string:dllPath + "\system32\Wmvcore.dll");
-
-dllVer = GetVer(file:file, share:share);
+dllVer = fetch_file_version(sysPath:dllPath, file_name:"Wmvcore.dll");
 if(dllVer)
 {
   # Check for Hotfix 952069 (MS08-076).
@@ -246,7 +231,7 @@ if(hotfix_missing(name:"952068") == 1)
 {
   if(hotfix_check_sp(win2k:5) > 0)
   {
-    dllVer = get_version(dllFile:"\windows media\server\Nsum.exe");
+    dllVer = fetch_file_version(sysPath, file_name:"\windows media\server\Nsum.exe");
     if(dllVer != NULL)
     {
       if(version_is_less(version:dllVer, test_version:"4.1.0.3936")){
@@ -256,7 +241,7 @@ if(hotfix_missing(name:"952068") == 1)
   }
   else if(hotfix_check_sp(win2003:3) > 0)
   {
-    dllVer = get_version(dllFile:"\windows media\server\Wmsserver.dll");
+    dllVer = fetch_file_version(sysPath, file_name:"\windows media\server\Wmsserver.dll");
     if(dllVer != NULL)
     {
       SP = get_kb_item("SMB/Win2003/ServicePack");
@@ -277,18 +262,13 @@ if(hotfix_missing(name:"952068") == 1)
   }
 
   ## Get system path for windows 2008 server 
-  dllPath = registry_get_sz(item:"PathName",
-                          key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+  dllPath = smb_get_system32root();
   if(!dllPath){
     exit(0);
   }
 
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
-  file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                    string:dllPath + "\system32\windows media\server\Wmsserver.dll");
-
-  dllVer = GetVer(file:file, share:share);
-  if(dllVer)
+ dllVer = fetch_file_version(sysPath:dllPath, file_name:"\windows media\server\Wmsserver.dll");
+ if(dllVer)
   {
     # Windows Server 2008
     if(hotfix_check_sp(win2008:2) > 0)
@@ -305,4 +285,3 @@ if(hotfix_missing(name:"952068") == 1)
     }
   }
 }
-

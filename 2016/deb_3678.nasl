@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3678.nasl 4251 2016-10-12 07:37:56Z antu123 $
+# $Id: deb_3678.nasl 5689 2017-03-23 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3678-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703678);
-    script_version("$Revision: 4251 $");
+    script_version("$Revision: 5689 $");
     script_cve_id("CVE-2016-7401");
     script_name("Debian Security Advisory DSA 3678-1 (python-django - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-12 09:37:56 +0200 (Wed, 12 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-09-26 00:00:00 +0200 (Mon, 26 Sep 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3678.html");
 
-    script_summary("Debian Security Advisory DSA 3678-1 (python-django - security update)");
 
     script_category(ACT_GATHER_INFO);
 

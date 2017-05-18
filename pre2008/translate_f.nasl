@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: translate_f.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: translate_f.nasl 5785 2017-03-30 09:19:35Z cfi $
 # Description: ASP/ASA source using Microsoft Translate f: bug
 #
 # Authors:
@@ -34,49 +34,39 @@ vulnerability is eliminated by installing Windows 2000 Service Pack 1)";
 if(description)
 {
  script_id(10491); 
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 5785 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1578);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_cve_id("CVE-2000-0778");
- name = "ASP/ASA source using Microsoft Translate f: bug";
- script_name(name);
- 
- summary = "downloads the source of IIS scripts such as ASA,ASP";
- script_summary(summary);
+ script_name("ASP/ASA source using Microsoft Translate f: bug");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
- copyright="This script is Copyright (C) 2000 Alexander Strouk";
- script_copyright(copyright);
+ script_tag(name:"qod_type", value:"remote_vul");
+ script_copyright("This script is Copyright (C) 2000 Alexander Strouk");
  script_family("Web application abuses");
  script_dependencies("gb_get_http_banner.nasl", "no404.nasl");
- script_mandatory_keys("apache/banner");
+ script_mandatory_keys("IIS/banner");
  script_require_ports("Services/www", 80);
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-#
-# The script code starts here
-#
-
 include("http_func.inc");
 
 port = get_http_port(default:80);
-if  (! port || get_kb_item("Services/www/" + port + "/embedded") ) exit(0);
+sig = get_http_banner( port:port );
+if ( sig && "IIS" >< sig ) {
 
-sig = get_http_banner();
-if ( sig && "IIS" >!< sig ) exit(0);
-if(get_port_state(port))
-{
+ host = http_host_name( port:port );
+
  soc = open_sock_tcp(port);
  if(soc)
  {
   req = string("GET /global.asa\\ HTTP/1.0\r\n",
-               "Host: ", get_host_name(),"\r\n",
+               "Host: ", host,"\r\n",
                "Translate: f\r\n\r\n");
   send(socket:soc, data:req);
   r = http_recv_headers2(socket:soc);
@@ -85,4 +75,3 @@ if(get_port_state(port))
   close(soc);
  }
 }
-

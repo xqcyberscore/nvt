@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871622");
-  script_version("$Revision: 5441 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 16:25:11 +0530 (Fri, 03 Jun 2016)");
   script_cve_id("CVE-2015-7979", "CVE-2016-1547", "CVE-2016-1548", "CVE-2016-1550",
                 "CVE-2016-2518");
@@ -84,7 +84,6 @@ The CVE-2016-1548 issue was discovered by Miroslav Lichvar (Red Hat).
   script_xref(name: "RHSA", value: "2016:1141-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-May/msg00055.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ntp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

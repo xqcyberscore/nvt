@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_remote_code_exec_vuln.nasl 4222 2016-10-06 08:17:50Z cfi $
+# $Id: gb_jboss_remote_code_exec_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
 #
 # JBoss Application Server Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805373");
-  script_version("$Revision: 4222 $");
+  script_version("$Revision: 5843 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-06 10:17:50 +0200 (Thu, 06 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-04-30 14:34:53 +0530 (Thu, 30 Apr 2015)");
   script_name("JBoss Application Server Remote Code Execution Vulnerability");
 
@@ -64,12 +64,12 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36575/");
 
-  script_summary("Check if JBoss AS is vulnerable to remote code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"deprecated", value:TRUE); 
 
@@ -122,7 +122,7 @@ foreach dir (make_list_unique("/", "/jboss", "/jbossas", cgi_dirs()))
     url = "/jbossass/jbossass.jsp?ppp=id";
     req = string("GET ",url," HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: jexboss\r\n\r\n");
+                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
     res = http_send_recv(port:http_port, data:req, bodyonly:FALSE);
 
     #Extra Check is Not Possible

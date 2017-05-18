@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eclime_mult_sql_inj_n_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_eclime_mult_sql_inj_n_xss_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # Eclime Multiple SQL Injection and Cross-site Scripting Vulnerabilities
 #
@@ -50,8 +50,8 @@ scripting and SQL injection vulnerabilities.";
 if(description)
 {
   script_id(801990);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-10-20 08:43:23 +0200 (Thu, 20 Oct 2011)");
   script_cve_id("CVE-2010-4851", "CVE-2010-4852");
   script_bugtraq_id(45124);
@@ -65,12 +65,12 @@ if(description)
   script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/sql_injection_in_eclime_2.html");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_summary("Check if Eclime is vulnerable to XSS/SQL Injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -80,27 +80,19 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)) {
   exit(0);
 }
 
 ## Check for each possible path
-foreach dir (make_list("/eclime", "/eclime/catalog", "/"))
-{
-  ## Send and Receive the response
-  req = http_get(item:string(dir,"/index.php"), port:port);
-  res = http_keepalive_send_recv(port:port,data:req);
+foreach dir (make_list_unique( "/eclime", "/eclime/catalog", "/", cgi_dirs( port:port ) ) ) {
+
+  res = http_get_cache(item:string(dir,"/index.php"), port:port);
 
   ## Confirm the application
   if(">eclime</" >< res && '> e-commerce software.<' >< res)
@@ -108,7 +100,7 @@ foreach dir (make_list("/eclime", "/eclime/catalog", "/"))
     ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url: string(dir, '/login.php?login=fail&rea' +
        'son=<script>alert(document.cookie);</script>'), pattern:"<script>aler" +
-       "t\(document.cookie\);</script>", check_header:TRUE))
+       "t\(document\.cookie\);</script>", check_header:TRUE))
     {
       security_message(port);
       exit(0);

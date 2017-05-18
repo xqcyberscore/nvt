@@ -78,8 +78,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-July/001759.html");
   script_id(841080);
-  script_version("$Revision: 3052 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:30:30 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5950 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-16 11:53:18 +0530 (Mon, 16 Jul 2012)");
   script_cve_id("CVE-2012-1711", "CVE-2012-1719", "CVE-2012-1713", "CVE-2012-1716",
                 "CVE-2012-1717", "CVE-2012-1718", "CVE-2012-1723", "CVE-2012-1725",
@@ -89,7 +89,6 @@ if(description)
   script_xref(name: "USN", value: "1505-1");
   script_name("Ubuntu Update for openjdk-6 USN-1505-1");
 
-  script_summary("Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

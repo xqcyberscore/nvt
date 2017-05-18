@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_scan_printers.nasl 4030 2016-09-12 09:55:13Z cfi $
+# $Id: dont_scan_printers.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Do not scan printers
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11933");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4030 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 11:55:13 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not scan printers");
-  script_summary("Exclude AppSocket & socketAPI printers from scan");
   script_category(ACT_SETTINGS);
   script_copyright("This script is Copyright (C) 2003 by Michel Arboi");
   script_family("Settings");

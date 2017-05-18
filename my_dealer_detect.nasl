@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: my_dealer_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: my_dealer_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
 #
 # My Dealer CMS Detection
 #
@@ -27,17 +27,15 @@
 tag_summary = "This host is running My Dealer CMS, a advanced dealer manager
   software.";
 
-if (description)
+if(description)
 {
  script_id(100138);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2837 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5737 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("My Dealer CMS Detection");  
-
- script_summary("Checks for the presence of My Dealer CMS");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");
@@ -52,31 +50,22 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms",cgi_dirs());
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
- url = string(dir, "/index.php"); 
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
- if( buf == NULL )continue;
+ install = dir;
+ if( dir == "/" ) dir = "";
+ url = dir + "/index.php";
+ buf = http_get_cache( item:url, port:port );
+ if( buf == NULL ) continue;
  
  if(
     egrep(pattern: '<META content="MyDealer Cms" name=GENERATOR>', string: buf, icase: TRUE) ||
     egrep(pattern: 'Powered by: <a href="http://www.mydealercms.biz">My Dealer Cms', string: buf, icase: TRUE))
  { 
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }  
-    
     vers = string("unknown");
 
     ### try to get version.
@@ -93,11 +82,9 @@ foreach dir (dirs) {
     info += string("' was detected on the remote host in the following directory(s):\n\n");
     info += string(install, "\n"); 
 
-       if(report_verbosity > 0) {
-         log_message(port:port,data:info);
-       }
-       exit(0);
-  
- }
+    log_message(port:port,data:info);
+    exit(0);
+  }
 }
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dovecot_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: sw_dovecot_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Dovecot POP3/IMAP Detection
 #
@@ -28,14 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111031");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5877 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-08-26 12:00:00 +0200 (Wed, 26 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Dovecot POP3/IMAP Detection");
  
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
-  script_summary("Checks for the presence of Dovecot");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection"); 
   script_dependencies("find_service2.nasl");

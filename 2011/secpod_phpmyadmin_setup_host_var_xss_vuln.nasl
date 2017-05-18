@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_setup_host_var_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: secpod_phpmyadmin_setup_host_var_xss_vuln.nasl 5840 2017-04-03 12:02:24Z cfi $
 #
 # phpMyAdmin Setup '$host' Variable Cross Site Scripting Vulnerability
 #
@@ -38,18 +38,17 @@ tag_solution = "Upgrade to phpMyAdmin version 3.4.9 or later,
 tag_summary = "The host is running phpMyAdmin and is prone to cross site scripting
   vulnerability.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902802";
 CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 3507 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.902802");
+  script_version("$Revision: 5840 $");
   script_cve_id("CVE-2011-4780", "CVE-2011-4782");
   script_bugtraq_id(51166);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:02:24 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-12-23 12:12:12 +0530 (Fri, 23 Dec 2011)");
   script_name("phpMyAdmin Setup '$host' Variable Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47338");
@@ -59,13 +58,12 @@ if(description)
   script_xref(name : "URL" , value : "https://www.trustwave.com/spiderlabs/advisories/TWSL2011-019.txt");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if phpMyAdmin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("phpMyAdmin/installed");
+  script_mandatory_keys("phpMyAdmin/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -74,27 +72,19 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
-## Check Port State
-if(!get_port_state(port)) {
-  exit(0);
-}
-
-## Get phpMyAdmin Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+host = http_host_name(port:port);
 
 ## Send and Receive the response
 url = "/setup/index.php?tab_hash=&check_page_refresh=1&page=servers&mode=" +
       "add&submit=New+server";
-req = http_get(item:dir+url,  port:port);
+req = http_get(item:dir + url, port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
 ## Get Session ID
@@ -141,8 +131,8 @@ url = string(dir, '/setup/index.php?tab_hash=&check_page_refresh=1',
              '&token=', token, '&page=servers&mode=add&submit=New+server');
 
 req = string("POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
-             "User-Agent: OpenVAS\r\n",
+             "Host: ", host, "\r\n",
+             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
              "Cookie: ", cookie, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(data), "\r\n\r\n", data);

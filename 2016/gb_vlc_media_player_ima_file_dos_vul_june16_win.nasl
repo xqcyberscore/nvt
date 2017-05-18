@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_ima_file_dos_vul_june16_win.nasl 3546 2016-06-17 11:01:19Z antu123 $
+# $Id: gb_vlc_media_player_ima_file_dos_vul_june16_win.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # VLC Media Player QuickTime IMA File Denial of Service Vulnerability June16 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808221");
-  script_version("$Revision: 3546 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-5108");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 13:01:19 +0200 (Fri, 17 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-13 13:25:43 +0530 (Mon, 13 Jun 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("VLC Media Player QuickTime IMA File Denial of Service Vulnerability June16 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1036009");
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1601.html");
 
-  script_summary("Check for the vulnerable version of VLC Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");

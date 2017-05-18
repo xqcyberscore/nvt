@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0029.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0029.nasl 5732 2017-03-27 09:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131190");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5732 $");
 script_tag(name:"creation_date", value:"2016-01-21 07:32:02 +0200 (Thu, 21 Jan 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0029");
 script_tag(name: "insight", value: "In Moodle before 2.8.10, web services core_enrol_get_course_enrolment_methods and enrol_self_get_instance_info did not check user permission to access hidden courses (CVE-2016-0724). In Moodle before 2.8.10, search string in course management interface was not escaped when being output creating potential for XSS attack (CVE-2016-0725)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0029");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0029");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

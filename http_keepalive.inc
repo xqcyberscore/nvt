@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_keepalive.inc 5670 2017-03-21 15:13:03Z cfi $
+# $Id: http_keepalive.inc 5997 2017-04-21 07:33:08Z cfi $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5670 $
+# $Revision: 5997 $
 #
 ###############################################################################
 
@@ -239,13 +239,23 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   local_var id, n, ret, headers;
   local_var soc, r, body, lendata;
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_send_recv" );
-  if( ! data ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_keepalive_send_recv" );
+  if( ! port ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_send_recv" );
+    return NULL;
+  }
+
+  if( ! data ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_keepalive_send_recv" );
+    return NULL;
+  }
+
+  # http_get() won't add a Host: header if only HTTP/1.0 support was detected
+  if( "Host:" >!< data && "HTTP/1.0" >!< data ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#No 'Host:' header passed in data variable of http_keepalive_send_recv(). This might lead to issues if SNI is enabled on the remote host." );
+  }
 
   if( debug_level > 1 )
     display( "http_keepalive_send_recv( port: ", port, ", data: ", data, ", bodyonly: ", bodyonly, " )\n" );
-
-  if( ! data ) return NULL;
 
   if( __ka_enabled == -1 ) __ka_enabled = http_keepalive_enabled( port:port );
   if( __ka_enabled == -2 ) return NULL;
@@ -502,17 +512,27 @@ function http_check_remote_code( default_port, extra_dirs, unique_dir, check_req
   }
 }
 
-function http_vuln_check( port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch ) {
+function http_vuln_check( port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch, icase ) {
 
-  local_var port, url, pattern, req, buf, debug, bodyonly, check_header, cookie, check_nomatch;
+  local_var port, url, pattern, check_header, debug, extra_check, hostname, cookie, check_nomatch;
+  local_var req, buf, ec, nm, icase;
 
-  if( ! url ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#http_vuln_check" );
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_vuln_check" );
-
-  if( isnull( pattern ) || pattern == "" ) {
-    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pattern#-#http_vuln_check" );
+  if( ! url ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#http_vuln_check" );
     return FALSE;
   }
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_vuln_check" );
+    return FALSE;
+  }
+
+  if( isnull( pattern ) || pattern == "" ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pattern#-#http_vuln_check" );
+    return FALSE;
+  }
+
+  if( isnull( icase ) ) icase = TRUE;
 
   req = http_get( item:url, port:port );
 
@@ -547,7 +567,7 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
     }
 
     foreach ec( extra_check ) {
-      if( ! egrep( pattern:ec, string:buf, icase:TRUE ) ) {
+      if( ! egrep( pattern:ec, string:buf, icase:icase ) ) {
         return FALSE;
       }
     }
@@ -560,13 +580,13 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
     }
 
     foreach nm( check_nomatch ) {
-      if( egrep( pattern:nm, string:buf, icase:TRUE ) ) {
+      if( egrep( pattern:nm, string:buf, icase:icase ) ) {
         return FALSE;
       }
     }
   }
 
-  if( egrep( pattern:pattern, string:buf, icase:TRUE ) ) {
+  if( egrep( pattern:pattern, string:buf, icase:icase ) ) {
     return buf;
   }
   return FALSE;
@@ -743,3 +763,35 @@ function http_get_req( port, url, add_headers, accept_header, user_agent ) {
 
   return req;
 }
+
+function recv_http_buf( port, url, bodyonly, nocache )
+{
+  local_var port, url, bodyonly, nocache, req;
+
+  if( ! port ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#recv_http_buf" );
+    return;
+  }
+
+  if( ! url ) {
+    set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#recv_http_buf" );
+    return;
+  }
+
+  if( ! nocache )
+  {
+    if( ! egrep( pattern:"(\?|&|#|;|\[|\]|=)", string:url  ) )
+      return http_get_cache( item:url,
+                             port:port );
+
+  }
+
+  req = http_get( item:url, port:port );
+  return http_keepalive_send_recv( port:port,
+                                   data:http_get( item:url, port:port ),
+                                   bodyonly:bodyonly );
+
+  return;
+
+}
+

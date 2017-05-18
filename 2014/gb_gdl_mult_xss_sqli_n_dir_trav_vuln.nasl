@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gdl_mult_xss_sqli_n_dir_trav_vuln.nasl 3522 2016-06-15 12:39:54Z benallard $
+# $Id: gb_gdl_mult_xss_sqli_n_dir_trav_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
 #
 # Ganesha Digital Library Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804509");
-  script_version("$Revision: 3522 $");
+  script_version("$Revision: 5827 $");
   script_bugtraq_id(65874);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 14:39:54 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2014-03-05 14:58:48 +0530 (Wed, 05 Mar 2014)");
   script_name("Ganesha Digital Library Multiple Vulnerabilities");
 
@@ -57,11 +57,10 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31961");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125464");
-  script_summary("Check if Ganesha Digital Library is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -76,10 +75,8 @@ http_port = "";
 gdlReq = "";
 gdlRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
@@ -90,8 +87,7 @@ foreach dir (make_list_unique("/", "/gdl", "/diglib", cgi_dirs(port:http_port)))
 
   if(dir == "/") dir = "";
 
-  gdlReq = http_get(item:string(dir, "/"),  port:http_port);
-  gdlRes = http_keepalive_send_recv(port:http_port, data:gdlReq);
+  gdlRes = http_get_cache(item:string(dir, "/"),  port:http_port);
 
   ## confirm the Application
   if("ITB. All rights reserved" >< gdlRes || "Powered By GDL" >< gdlRes)
@@ -101,7 +97,7 @@ foreach dir (make_list_unique("/", "/gdl", "/diglib", cgi_dirs(port:http_port)))
                  "%3Ealert(document.cookie)%3C/script%3E&type=all&submit=OK";
 
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"<script>alert\(document.cookie\)</script>",
+       pattern:"<script>alert\(document\.cookie\)</script>",
        extra_check: "GDL"))
     {
       report = report_vuln_url( port:http_port, url:url );

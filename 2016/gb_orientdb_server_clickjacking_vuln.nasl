@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_server_clickjacking_vuln.nasl 3926 2016-09-01 05:25:13Z antu123 $
+# $Id: gb_orientdb_server_clickjacking_vuln.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # OrientDB Server Clickjacking Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808754");
-  script_version("$Revision: 3926 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2015-2918");
   script_bugtraq_id(76610);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-01 07:25:13 +0200 (Thu, 01 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:00:11 +0530 (Mon, 08 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OrientDB Server Clickjacking Vulnerability");
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.kb.cert.org/vuls/id/845332");
 
-  script_summary("Check for the vulnerable version of OrientDB Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monitorix_63913.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_monitorix_63913.nasl 5699 2017-03-23 14:53:33Z cfi $
 #
 # Monitorix HTTP Server Remote Code Execution Vulnerability
 #
@@ -25,8 +25,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103855";
-
 tag_insight = "The handle_request() routine did not properly perform input sanitization
 which led into a number of security vulnerabilities.";
 
@@ -40,19 +38,17 @@ tag_vuldetect = "Send a special crafted HTTP GET request and check the response.
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103855");
  script_bugtraq_id(63913);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 5699 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Monitorix HTTP Server Remote Code Execution Vulnerability");
  script_xref(name:"URL", value:"http://www.monitorix.org/news.html#N331");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-12-12 14:22:20 +0100 (Thu, 12 Dec 2013)");
- script_summary("Determine if it is possible to execute the id command.");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_get_http_banner.nasl");
@@ -70,32 +66,22 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:8080);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:8080 );
+banner = get_http_banner( port:port );
+if( ! banner || "Monitorix" >!< banner ) exit( 0 );
 
-banner = get_http_banner(port:port);
-if(!banner || "Monitorix" >!< banner)exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list(cgi_dirs());
-
-foreach dir (dirs) {
-   
   url = dir + '|id|';
-
-  if(ret = http_vuln_check(port:port, url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*")) {
-
+  if( ret = http_vuln_check( port:port, url:url, pattern:"uid=[0-9]+.*gid=[0-9]+.*" ) ) {
     report = 'It was possible to execute the "id" command on the remote host.\n\n' +
              'By requesting the URL "' + url + '" we received the following response:' + 
              '\n\n' + ret + '\n';
-     
-    security_message(port:port, data:report);
-    exit(0);
-
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(99);
-
+exit( 99 );

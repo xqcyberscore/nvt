@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-11_win.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_google_chrome_stable-channel-update-for-desktop-2016-11_win.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Google Chrome Security Updates(stable-channel-update-for-desktop-2016-11)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809099");
-  script_version("$Revision: 5070 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-5198" );
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-16 18:08:48 +0530 (Wed, 16 Nov 2016)");
   script_name("Google Chrome Security Updates(stable-channel-update-for-desktop-2016-11)-Windows");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://googlechromereleases.blogspot.in/2016/11/stable-channel-update-for-desktop.html");
 
-  script_summary("Check for the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");

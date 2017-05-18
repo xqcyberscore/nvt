@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_remote_location_object_flaw.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: opera_remote_location_object_flaw.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Opera remote location object cross-domain scripting vulnerability
 #
 # Authors:
@@ -43,15 +43,14 @@ tag_solution = "Upgrade to Opera 7.54 or newer.";
 if(description)
 {
   script_id(14261);
-  script_version("$Revision: 3398 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2570");
   script_bugtraq_id(10873);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Opera remote location object cross-domain scripting vulnerability");
-  script_summary("Determines the version of Opera.exe");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

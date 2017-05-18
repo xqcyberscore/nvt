@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902935");
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5956 $");
   script_cve_id("CVE-2012-4964");
   script_bugtraq_id(56692);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-28 13:37:22 +0530 (Wed, 28 Nov 2012)");
   script_name("Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Nov/196");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118413/samsung-backdoor.txt");
 
-  script_summary("Check for authontication bypass vulnerability in Samsung Printers");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("SNMP");

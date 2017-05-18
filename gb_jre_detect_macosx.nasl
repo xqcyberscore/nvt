@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jre_detect_macosx.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_jre_detect_macosx.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Java Runtime Environment (JRE) Version Detection (Mac OS X)
 #
@@ -35,15 +35,14 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
+ script_version("$Revision: 6040 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-06 18:27:52 +0530 (Fri, 06 Apr 2012)");
 
   script_name("Java Runtime Environment (JRE) Version Detection (Mac OS X)");
 
-  script_summary("Detection of installed version of JRE on Mac OS X)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");

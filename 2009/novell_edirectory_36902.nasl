@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_36902.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: novell_edirectory_36902.nasl 5772 2017-03-29 16:44:30Z mime $
 #
 # Novell eDirectory NULL Base DN Denial Of Service Vulnerability
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:novell:edirectory";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100340");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 5772 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-11-09 11:17:02 +0100 (Mon, 09 Nov 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -71,108 +69,98 @@ if(description)
 }
 
 include("host_details.inc");
+include("version_func.inc");
+
+CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(!version = get_kb_item(string("ldap/", port, "/eDirectory")))exit(0);
-if(!isnull(version)) {
+if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
+  sp = "0";
 
-  versions = split(version,sep: " ", keep:FALSE);
+revision = get_kb_item( "ldap/eDirectory/" + port + "/build" );
+revision = str_replace( string:revision, find:".", replace:"" );
 
-  if(!isnull(versions[0])) {
-     major = versions[0];
+invers = major;
+
+if( sp > 0 )
+  invers += ' SP' + sp;
+
+if( major == "8.8" )
+{
+  if( sp && sp > 0 )
+  {
+    if( sp == 5 ) 
+    {
+      if( revision && revision < 2050100 )
+      {
+        vuln = TRUE;
+      }
+    } else
+    {
+      if( sp < 5 )
+      {
+        vuln = TRUE;
+      }
+    }
+  } else
+  {
+    vuln = TRUE;
+  }
+}
+else if( major =~ "^8\.7\.3" )
+{
+  m = major - "8.7.3";
+
+  if(m =~ "^\.[0-9]+") {
+     m -= ".";
+  }
+
+  if( strlen( m ) > 0 )
+  {
+    m = int(m);
+
+   if( m && m < 10 )
+   {
+     vuln = TRUE;
+   }
+
+   if( m && m == 10 )
+   {
+     if( ! sp && ! revision )
+     {
+       vuln = TRUE;
+     }
+   }
+
   } else {
-     exit(0);
-  }  
-
-  if(!isnull(versions[1])) {
-     if("SP" >< versions[1]) {
-       sp = versions[1];
-       sp -= "SP";
-       sp = int(sp);
-     } else {
-       revision = versions[1];
-     }   
-  }
-
-  if(sp && !isnull(versions[2])) {
-     revision = versions[2];
-  }  
-
-  if(revision) {
-   revision -= "(";
-   revision -= ")";
-   revision -= ".";
-   revision = int(revision);
-  }  
-
-  if(major == "8.8") {
-     if(sp && sp > 0) {   
-        if(sp == 5) { 
-
-           if(revision && revision < 2050100) {
-	      vuln = TRUE;
-           }
-
-        } else {
-
-          if(sp < 5) {
-            vuln = TRUE;
-	  }
-
-       }	  
-     } else {
-       vuln = TRUE;
-   }    
-  }
-
-  else if(major =~ "^8\.7\.3") { 
-
-    m = major - "8.7.3";
-
-    if(m =~ "^\.[0-9]+") {
-       m -= ".";
-    } 
-
-    if(strlen(m) > 0) {
-
-       m = int(m);
-
-       if(m && m < 10) {
-            vuln = TRUE;
-       }
-
-       if(m && m == 10) {
-         if(!sp && !revision) {
-             vuln = TRUE;
-          }  
-        }  
-
-    } else {
       vuln = TRUE;
-    }	
-  } 
-
-  else if(major == "8.8.1") {
-     vuln = TRUE;
-  } 
-
-  else if(major == "8.8.2") {
-    if(!revision && !sp) {
-       vuln = TRUE;
-    }  
-  }  
-
-  else if(major =~ "^[0-7]\.") {
-     vuln = TRUE;
-  }  
-
-  if(vuln) {
-      security_message(port:port);
-      exit(0);
   }
+}
+else if( major == "8.8.1" )
+{
+  vuln = TRUE;
+}
 
+else if( major == "8.8.2" )
+{
+  if( ! revision && ! sp )
+  {
+    vuln = TRUE;
+  }
+}
+
+else if( major =~ "^[0-7]\." )
+{
+  vuln = TRUE;
+}
+
+if( vuln )
+{
+  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  security_message( port:port, data:report );
+  exit(0);
 }
 
 exit(99);

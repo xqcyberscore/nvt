@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_scalar_52566.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_quantum_scalar_52566.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Multiple Vendor Products Security Vulnerabilities
 #
@@ -55,7 +55,7 @@ if (description)
  script_cve_id("CVE-2012-1841","CVE-2012-1842","CVE-2012-1844");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5931 $");
 
  script_name("Multiple Vendor Products Security Vulnerabilities");
 
@@ -63,9 +63,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.quantum.com/ServiceandSupport/SoftwareandDocumentationDownloads/SI500/Index.aspx");
  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/913483");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-04-11 09:50:54 +0200 (Wed, 11 Apr 2012)");
- script_summary("Determine if it is possible to read /etc/passwd");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

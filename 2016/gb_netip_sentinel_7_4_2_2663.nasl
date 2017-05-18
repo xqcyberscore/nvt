@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netip_sentinel_7_4_2_2663.nasl 3792 2016-08-03 15:02:55Z mime $
+# $Id: gb_netip_sentinel_7_4_2_2663.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # NetIQ Sentinel Server Authentication Bypass and Arbitrary File Download
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-1605");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 3792 $");
+ script_version ("$Revision: 5782 $");
 
  script_name("NetIQ Sentinel Server Authentication Bypass and Arbitrary File Download");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-03 17:02:55 +0200 (Wed, 03 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-08-03 12:16:39 +0200 (Wed, 03 Aug 2016)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -38,8 +38,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "https://lists.ubuntu.com/archives/ubuntu-security-announce/2012-February/001603.html");
   script_id(840908);
-  script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+  script_version("$Revision: 5888 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 19:03:29 +0530 (Fri, 09 Mar 2012)");
   script_cve_id("CVE-2012-0870");
   script_tag(name:"cvss_base", value:"7.9");
@@ -47,7 +47,6 @@ if(description)
   script_xref(name: "USN", value: "1374-1");
   script_name("Ubuntu Update for samba USN-1374-1");
 
-  script_summary("Check for the Version of samba");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

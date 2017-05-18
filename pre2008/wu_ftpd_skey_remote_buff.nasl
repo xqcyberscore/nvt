@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: wu_ftpd_skey_remote_buff.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: wu_ftpd_skey_remote_buff.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: wu-ftpd S/KEY authentication overflow
 #
 # Authors:
@@ -47,8 +47,8 @@ patches available at http://www.wu-ftpd.org";
 if(description)
 {
  script_id(14372);
- script_version("$Revision: 3398 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(8893);
  script_cve_id("CVE-2004-0185");
@@ -67,7 +67,6 @@ if(description)
 	
 		    
  
- script_summary("Checks the banner of the remote wu-ftpd server");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("FTP");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plone_detect.nasl 4388 2016-10-31 10:47:11Z ckuerste $
+# $Id: gb_plone_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
 #
 # Plone  Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103735");
- script_version ("$Revision: 4388 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-31 11:47:11 +0100 (Mon, 31 Oct 2016) $");
+ script_version ("$Revision: 5820 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
  script_tag(name:"creation_date", value:"2013-06-12 11:17:19 +0200 (Wed, 12 Jun 2013)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,7 +61,7 @@ include("host_details.inc");
 
 port = get_http_port(default: 80);
 
-dirs = make_list_unique("/plone", "/Plone", "/cms", cgi_dirs());
+dirs = make_list_unique("/plone", "/Plone", "/cms", cgi_dirs( port:port ));
 
 foreach dir (dirs) {
   buf = http_get_cache(item: dir, port: port);

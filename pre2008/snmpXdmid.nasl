@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: snmpXdmid.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: snmpXdmid.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: snmpXdmid overflow
 #
 # Authors:
@@ -32,8 +32,8 @@ it, or contact Sun for a patch";
 if(description)
 {
  script_id(10659);
- script_version("$Revision: 4803 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_xref(name:"IAVA", value:"2001-a-0003");
  script_bugtraq_id(2417);
@@ -47,7 +47,6 @@ if(description)
  script_name(name);
  
  summary = "heap overflow through snmpXdmid";
- script_summary(summary);
  
  script_category(ACT_MIXED_ATTACK); # mixed
  

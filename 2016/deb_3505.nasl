@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3505.nasl 2910 2016-03-23 04:54:42Z antu123 $
+# $Id: deb_3505.nasl 5732 2017-03-27 09:00:59Z teissa $
 # Auto-generated from advisory DSA 3505-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703505);
-    script_version("$Revision: 2910 $");
+    script_version("$Revision: 5732 $");
     script_cve_id("CVE-2015-7830", "CVE-2015-8711", "CVE-2015-8712", "CVE-2015-8713",
                   "CVE-2015-8714", "CVE-2015-8715", "CVE-2015-8716", "CVE-2015-8717",
                   "CVE-2015-8718", "CVE-2015-8719", "CVE-2015-8720", "CVE-2015-8721",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2015-8726", "CVE-2015-8727", "CVE-2015-8728", "CVE-2015-8729",
                   "CVE-2015-8730", "CVE-2015-8732", "CVE-2015-8733");
     script_name("Debian Security Advisory DSA 3505-1 (wireshark - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-03-23 05:54:42 +0100 (Wed, 23 Mar 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-03-04 00:00:00 +0100 (Fri, 04 Mar 2016)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -47,7 +47,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3505.html");
 
-    script_summary("Debian Security Advisory DSA 3505-1 (wireshark - security update)");
 
     script_category(ACT_GATHER_INFO);
 

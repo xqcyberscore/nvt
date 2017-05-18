@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: digital_scribe_login_sql_inject.nasl 3362 2016-05-20 11:19:10Z antu123 $
+# $Id: digital_scribe_login_sql_inject.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Digital Scribe login.php SQL Injection flaw
 #
 # Authors:
@@ -42,54 +42,43 @@ tag_solution = "Unknown at this time.";
 if(description)
 {
   script_id(19770);
-  script_version("$Revision: 3362 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 13:19:10 +0200 (Fri, 20 May 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2987");
   script_bugtraq_id(14843);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Digital Scribe login.php SQL Injection flaw");
- 
-  script_summary("Checks for SQL injection flaw in Digital Scribe");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_xref(name : "URL" , value : "http://retrogod.altervista.org/dscribe14.html");
   exit(0);
 }
 
-# the code!
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
-function check(req)
-{
-  buf = http_get(item:string(req,"/login.php"), port:port);
-  r = http_keepalive_send_recv(port:port, data:buf, bodyonly:1);
-  if( r == NULL )exit(0);
-  if (("<TITLE>Login Page</TITLE>" >< r) && (egrep(pattern:"www\.digital-scribe\.org>Digital Scribe v\.1\.[0-4]$</A>", string:r)))
-  {
- 	security_message(port);
-	exit(0);
+port = get_http_port(default:80);
+if(!can_host_php(port:port))exit(0);
+
+foreach dir( make_list_unique( "/DigitalScribe", "/scribe", cgi_dirs( port:port ) )) {
+
+  if( dir == "/" ) dir = "";
+  r = http_get_cache(item:string(dir,"/login.php"), port:port);
+  if( r == NULL ) continue;
+
+  if (("<TITLE>Login Page</TITLE>" >< r) && (egrep(pattern:"www\.digital-scribe\.org>Digital Scribe v\.1\.[0-4]$</A>", string:r))) {
+    security_message( port:port );
+    exit( 0 );
   }
 }
 
-port = get_http_port(default:80);
-if(!get_port_state(port)) exit(0);
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list("/DigitalScribe", "/scribe", cgi_dirs());
-
-foreach dir (dirs)
-{
-  check(req:dir);
-}
+exit( 99 );

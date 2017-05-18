@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_too_long_line.nasl 3481 2016-06-11 10:05:05Z cfi $
+# $Id: smtp_too_long_line.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: SMTP too long line
 #
 # Authors:
@@ -28,13 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11270");
-  script_version("$Revision: 3481 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-11 12:05:05 +0200 (Sat, 11 Jun 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("SMTP too long line");
-  script_summary("Sends a too long single line to the MTA");
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("SMTP problems");

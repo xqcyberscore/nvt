@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms16-078.nasl 3525 2016-06-15 13:24:44Z antu123 $
+# $Id: gb_ms16-078.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Microsoft Windows Diagnostic Hub Elevation of Privilege Vulnerability (3165479)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807339");
-  script_version("$Revision: 3525 $");
+  script_version("$Revision: 5836 $");
   script_cve_id("CVE-2016-3231");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 15:24:44 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-06-15 09:14:02 +0530 (Wed, 15 Jun 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Diagnostic Hub Elevation of Privilege Vulnerability (3165479)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-in/kb/3163018");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS16-078");
 
-  script_summary("Check for the vulnerable file 'Edgehtml.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

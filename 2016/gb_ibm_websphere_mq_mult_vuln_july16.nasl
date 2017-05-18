@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_mult_vuln_july16.nasl 3774 2016-07-29 14:35:03Z veerendragg $
+# $Id: gb_ibm_websphere_mq_mult_vuln_july16.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # IBM WebSphere MQ Multiple Vulnerabilities - July16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808620");
-  script_version("$Revision: 3774 $");
+  script_version("$Revision: 5675 $");
   script_cve_id("CVE-2016-0260", "CVE-2016-0259", "CVE-2015-7473");
   script_bugtraq_id(91060, 91064, 91041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 16:35:03 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-07-25 10:52:32 +0530 (Mon, 25 Jul 2016)");
   script_name("IBM WebSphere MQ Multiple Vulnerabilities - July16");
 
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21984564"); 
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM WebSphere MQ");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");

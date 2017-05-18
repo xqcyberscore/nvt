@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ad_manager_pro_mult_vuln.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_ad_manager_pro_mult_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
 #
 # Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803019");
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5841 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-30 17:10:10 +0530 (Thu, 30 Aug 2012)");
   script_name("Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities");
 
@@ -39,11 +39,10 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50427");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115877/admanagerpro-sqlxss.txt");
 
-  script_summary("Check if Ad Manager Pro is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -67,7 +66,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -81,16 +79,13 @@ dir = "";
 adReq = "";
 adRes = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Get Host name
-host = http_host_name(port:port);
-
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
+
+host = http_host_name(port:port);
 
 ## Iterate over the possible paths
 foreach dir (make_list_unique("/admanagerpro", "/AdManagerPro", "/ad", "/", cgi_dirs(port:port)))
@@ -98,8 +93,7 @@ foreach dir (make_list_unique("/admanagerpro", "/AdManagerPro", "/ad", "/", cgi_
 
   if(dir == "/") dir = "";
 
-  sndReq = http_get(item:string(dir, "/index.php"), port:port);
-  rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
   ## Confirm the application
   if(rcvRes && rcvRes =~ "HTTP/1\.[0-9]+ 200" &&
@@ -115,7 +109,7 @@ foreach dir (make_list_unique("/admanagerpro", "/AdManagerPro", "/ad", "/", cgi_
     ## Construct the POST request
     adReq = string("POST ", url, " HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
-                   "User-Agent:  XSS-TEST\r\n",
+                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
                    "Content-Length: ", strlen(postdata), "\r\n",
                    "\r\n", postdata);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882390");
-  script_version("$Revision: 3319 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 5732 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-11 06:41:04 +0100 (Thu, 11 Feb 2016)");
   script_cve_id("CVE-2015-7529");
   script_tag(name:"cvss_base", value:"10.0");
@@ -66,7 +66,6 @@ contains backported patches to correct these issues.
 
   script_xref(name: "CESA", value: "2016:0152");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-February/021666.html");
-  script_summary("Check for the Version of sos");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

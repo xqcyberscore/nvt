@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_50646.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_netmri_50646.nasl 5956 2017-04-14 09:02:12Z teissa $
 #
 # Infoblox NetMRI Admin Login Page Multiple Cross Site Scripting Vulnerabilities
 #
@@ -48,7 +48,7 @@ if (description)
  script_bugtraq_id(50646);
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5956 $");
 
  script_name("Infoblox NetMRI Admin Login Page Multiple Cross Site Scripting Vulnerabilities");
 
@@ -56,10 +56,9 @@ if (description)
  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/Nov/158");
  script_xref(name : "URL" , value : "http://www.infoblox.com/en/products/netmri.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-25 12:37:48 +0200 (Tue, 25 Sep 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
- script_summary("Determine if installed NetMRI version is vulnerable.");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

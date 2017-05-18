@@ -57,13 +57,12 @@ if(description)
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-2621", "CVE-2009-2622", "CVE-2009-2855", "CVE-2010-0308", "CVE-2010-0639", "CVE-2010-2951", "CVE-2010-3072", "CVE-2011-3205");
- script_version("$Revision: 3059 $");
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:48:29 +0200 (Thu, 14 Apr 2016) $");
+ script_version("$Revision: 5958 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-02-12 10:04:40 -0500 (Sun, 12 Feb 2012)");
  script_name("Gentoo Security Advisory GLSA 201110-24 (Squid)");
 
 
- script_summary("Gentoo Security Advisory GLSA 201110-24 (Squid)");
 
  script_category(ACT_GATHER_INFO);
 

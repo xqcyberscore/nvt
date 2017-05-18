@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_campaign_enterprise_56117.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_campaign_enterprise_56117.nasl 5716 2017-03-24 12:31:10Z cfi $
 #
 # Campaign Enterprise Multiple Security Vulnerabilities
 #
@@ -41,25 +41,19 @@ Campaign Enterprise 11.0.538 is vulnerable.";
 
 tag_solution = "Updates are available. Please see the references for more information.";
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103586";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103586");
  script_bugtraq_id(56117);
  script_cve_id("CVE-2012-3820","CVE-2012-3821","CVE-2012-3822","CVE-2012-3823","CVE-2012-3824");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3062 $");
-
+ script_version ("$Revision: 5716 $");
  script_name("Campaign Enterprise Multiple Security Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56117");
  script_xref(name : "URL" , value : "http://www.arialsoftware.com/enterprise.htm");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 13:31:10 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-10-22 13:15:10 +0200 (Mon, 22 Oct 2012)");
- script_summary("Determine if access to User-Edit.asp is restricted");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -73,29 +67,21 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
-if(!can_host_php(port:port))exit(0);
-
-dirs = make_list(cgi_dirs());
-
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = dir + '/User-Edit.asp?UID=1%20OR%201=1'; 
 
-  if(http_vuln_check(port:port, url:url,pattern:"<title>Campaign Enterprise", extra_check:make_list(">Logout</a>","Edit User","Admin Rights"))) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<title>Campaign Enterprise", extra_check:make_list( ">Logout</a>", "Edit User", "Admin Rights" ) ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

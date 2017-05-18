@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: redaxscript_detect.nasl 2711 2016-02-23 10:16:13Z antu123 $
+# $Id: redaxscript_detect.nasl 5739 2017-03-27 14:48:05Z cfi $
 #
 # Redaxscript Detection
 #
@@ -24,19 +24,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100121");
-  script_version("$Revision: 2711 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-23 11:16:13 +0100 (Tue, 23 Feb 2016) $");
+  script_version("$Revision: 5739 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:48:05 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-
   script_name("Redaxscript Detection");
-
-  script_summary("Checks for the presence of Redaxscript");
-
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -50,39 +46,30 @@ if (description)
   script_xref(name : "URL" , value : "http://redaxscript.com/");
 
   script_tag(name : "summary", value : "This host is running Redaxscript a free, PHP and MySQL driven
-Content Management System for small business and private websites.");
+  Content Management System for small business and private websites.");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/redaxscript", "/cms", "/php", cgi_dirs());
+foreach dir( make_list_unique( "/redaxscript", "/cms", "/php", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-  req = http_get(item:dir, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
-  if(buf == NULL || buf !~ 'HTTP/1.. 200')
-    continue;
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache( item:url, port:port );
+  if( buf == NULL ) continue;
 
   if ('"generator" content="Redaxscript' >< buf &&
       'Content could not be found.</p>' >!< buf)
   { 
-     if(strlen(dir)>0) {
-        install=dir;
-     } else {
-        install=string("/");
-     }  
-    
     vers = string("unknown");
 
     ### try to get version 

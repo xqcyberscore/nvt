@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 5029 2017-01-18 13:42:10Z cfi $
+# $Id: gb_apache_tomcat_detect.nasl 5907 2017-04-10 07:09:24Z cfi $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 5029 $");
+  script_version("$Revision: 5907 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-18 14:42:10 +0100 (Wed, 18 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 09:09:24 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -100,20 +100,22 @@ if( ! verFound ) {
   }
 }
 
-foreach url( make_list( "/manager/html", "/host-manager/html", "/manager/status" ) ) {
+authDirs = get_kb_list( "www/" + port + "/content/auth_required" );
+
+foreach url( authDirs ) {
+
+  if( "manager/" >!< url ) continue;
 
   authReq = http_get( item:url, port:port );
   authRes = http_keepalive_send_recv( port:port, data:authReq, bodyonly:FALSE );
 
-  if( authRes =~ "HTTP/1.. 401" ) {
-    set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
-    set_kb_item( name:"www/" + port + "/ApacheTomcat/auth_required", value:url );
-    replace_kb_item( name:"ApacheTomcat/auth_required", value:TRUE );
-    replace_kb_item( name:"www/content/auth_required", value:TRUE );
+  if( authRes =~ "^HTTP/1\.[01] 401" ) {
     if( "Tomcat Manager Application" >< authRes || "Tomcat Host Manager Application" >< authRes ||
         "Tomcat Manager Application" >< authRes ) {
-        identified = TRUE;
-        extraUrls += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
+      set_kb_item( name:"www/" + port + "/ApacheTomcat/auth_required", value:url );
+      replace_kb_item( name:"ApacheTomcat/auth_required", value:TRUE );
+      identified = TRUE;
+      extraUrls += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
     }
   }
 }
@@ -151,7 +153,7 @@ if( identified ) {
     cpe = 'cpe:/a:apache:tomcat';
 
   if( extraUrls ) {
-    extra = 'Administrative Backends are available at the following location:\n' + extraUrls;
+    extra = 'Administrative Backends are available at the following location(s):\n' + extraUrls;
   }
 
   register_product( cpe:cpe, location:"/", port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_insight_diag_mult_xss_vuln.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_hp_smh_insight_diag_mult_xss_vuln.nasl 5838 2017-04-03 10:26:36Z cfi $
 #
 # HP SMH Insight Diagnostics Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800189");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 5838 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-12-21 15:42:46 +0100 (Tue, 21 Dec 2010)");
   script_cve_id("CVE-2010-3003");
   script_tag(name:"cvss_base", value:"4.3");
@@ -71,18 +71,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 if(!hpsmhPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Host Name
 host = http_host_name(port:hpsmhPort);
 
 ## Construct XSS GET Attack request
 attackPath = '/hpdiags/globals.php?tabpage=";alert(document.cookie)//';
-req = string ( "GET ", attackPath, " HTTP/1.1\r\n", "Host: ", host, "\r\n",
-               "User-Agent: Portale e-commerce SQL Injection Test\r\n",
+req = string ( "GET ", attackPath, " HTTP/1.1\r\n",
+               "Host: ", host, "\r\n",
+               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                "Cookie: Compaq-HMMD=0001-8a3348dc-f004-4dae-a746-211a6" +
                "d70fd51-1292315018889768; HPSMH-browser-check=done for" +
                " this session; curlocation-hpsmh_anonymous=; PHPSESSID=" +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_password_disclosure.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_lantronix_password_disclosure.nasl 5958 2017-04-17 09:02:19Z teissa $
 #
 # Lantronix Device Server Password Disclosure
 #
@@ -38,14 +38,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103598";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5958 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Lantronix Device Server Password Disclosure");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-29 15:28:00 +0100 (Mon, 29 Oct 2012)");
- script_summary("Determine if it is possible to read the password");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("General");

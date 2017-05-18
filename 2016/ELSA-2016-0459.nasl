@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-0459.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-0459.nasl 5813 2017-03-31 09:01:08Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122902");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5813 $");
 script_tag(name:"creation_date", value:"2016-03-17 16:00:55 +0200 (Thu, 17 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-0459");
 script_tag(name: "insight", value: "ELSA-2016-0459 -  bind security update - [30:9.3.6-25.P1.8]- Fix issue with patch for CVE-2016-1285 and CVE-2016-1286 found by test suite[30:9.3.6-25.P1.7]- Fix CVE-2016-1285 and CVE-2016-1286"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-0459");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

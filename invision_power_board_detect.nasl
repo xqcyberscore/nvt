@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: invision_power_board_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: invision_power_board_detect.nasl 5737 2017-03-27 14:18:12Z cfi $
 #
 # IP.Board Detection
 #
@@ -37,18 +37,15 @@ extract the version number from the reply.";
 
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100107";
 
-if (description)
+if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 5737 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 16:18:12 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2009-04-06 18:10:45 +0200 (Mon, 06 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-
   script_name("IP.Board Detection");
-
-  script_summary("Checks for the presence of IP.Board");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Product detection");
@@ -60,7 +57,6 @@ if (description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("global_settings.inc");
@@ -68,20 +64,15 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default:80);
+if(!can_host_php(port:port)) exit(0);
 
-if(!get_port_state(port)){
-  exit(0);
-}
+foreach mdir( make_list_unique( "/forum", "/board", "/ipb", "/community", "/", cgi_dirs( port:port ) )) {
 
-if(!can_host_php(port:port)){
-  exit(0);
-}
+  install = mdir;
+  if( mdir == "/" ) mdir = "";
 
-dirs = make_list("/forum","/board","/ipb","/community", "/", cgi_dirs());
-foreach mdir (dirs)
-{
-  foreach dir (make_list("/", "/upload/"))
-  {
+  foreach dir( make_list( "/", "/upload/" ) ) {
+
     url = string(mdir, dir, "index.php");
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
@@ -96,13 +87,6 @@ foreach mdir (dirs)
     if(egrep(pattern:"Powered [Bb]y ?(<a [^>]+>)?(Invision Power Board|IP.Board)",
              string: buf, icase: TRUE) )
     {
-      if(strlen(mdir) > 0){
-        install=mdir;
-      }
-      else{
-        install=string("/");
-      }
-
       vers = string("unknown");
 
       ### try to get version
@@ -130,3 +114,5 @@ foreach mdir (dirs)
     }
   }
 }
+
+exit( 0 );

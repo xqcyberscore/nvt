@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atmail_WebAdmin_sql_root_password_disclosure.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_atmail_WebAdmin_sql_root_password_disclosure.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Atmail WebAdmin and Webmail Control Panel SQL Root Password Disclosure
 #
@@ -34,7 +34,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(54641);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5888 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("Atmail WebAdmin and Webmail Control Panel SQL Root Password Disclosure");
@@ -42,9 +42,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54641");
  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/114955/Atmail-WebAdmin-Webmail-Control-Panel-SQL-Root-Password-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-07-24 11:10:51 +0200 (Tue, 24 Jul 2012)");
- script_summary("Determine if it is possible to read the /config/dbconfig.ini");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

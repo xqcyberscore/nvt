@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_default_welcome_page_info_disc_vuln.nasl 2715 2016-02-24 10:08:51Z mime $
+# $Id: secpod_ms_iis_default_welcome_page_info_disc_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Microsoft IIS Default Welcome Page Information Disclosure Vulnerability
 #
@@ -29,14 +29,13 @@ CPE = 'cpe:/a:microsoft:iis';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802806");
-  script_version("$Revision: 2715 $");
+  script_version("$Revision: 6022 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-24 11:08:51 +0100 (Wed, 24 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-23 16:21:11 +0530 (Thu, 23 Feb 2012)");
   script_name("Microsoft IIS Default Welcome Page Information Disclosure Vulnerability");
 
-  script_summary("Check for IIS Misconfiguration");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 SecPod");
   script_family("Web Servers");

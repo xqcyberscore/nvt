@@ -33,8 +33,8 @@ if(description)
 {
  script_id(80109);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5016 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-17 10:06:21 +0100 (Tue, 17 Jan 2017) $");
+ script_version("$Revision: 5676 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-10-18 22:12:25 +0200 (Sun, 18 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("w3af (NASL wrapper)");
@@ -50,18 +50,18 @@ if(description)
  script_add_preference(name: 'Report broken w3af installation', value: 'no', type: 'checkbox');
  script_dependencies("find_service.nasl","httpver.nasl","http_login.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_timeout(0); 
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
 }
 
-# main code
+include("http_func.inc");
 
 cmdw3af = "w3af_console";
 
-port = get_kb_item("Services/www");
-if (! port) port = 80;
-if (! get_port_state(port)) exit(0);
+port = get_http_port( default:80 );
 
 encaps = get_port_transport(port);
 if (encaps > ENCAPS_IP) httprefix="https://";

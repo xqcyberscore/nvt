@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_tv_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_apple_tv_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Apple TV Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105899");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:11:23 +0200 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,7 +64,7 @@ if( ! banner || "DAAP-Server: iTunes/" >!< banner || "OS X" >!< banner ) exit( 0
 set_kb_item( name:'apple_tv/detected', value:TRUE );
 register_product( cpe:'cpe:/a:apple:apple_tv', location:"/", port:port, service:"www" );
 
-register_and_report_os( os:"Apple TV", cpe:"cpe:/o:apple:tv", banner_type:"HTTP banner", port:port, desc:"Apple TV Detection" );
+register_and_report_os( os:"Apple TV", cpe:"cpe:/o:apple:tv", banner_type:"HTTP banner", port:port, desc:"Apple TV Detection", runs_key:"unixoide" );
 
 log_message( port:port, data:"The remote host is an Apple TV device");
 exit( 0 );

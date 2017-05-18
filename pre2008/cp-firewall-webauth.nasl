@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cp-firewall-webauth.nasl 2435 2016-01-17 20:16:41Z jan $
+# $Id: cp-firewall-webauth.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: CheckPoint Firewall-1 Web Authentication Detection
 #
 # Authors:
@@ -25,13 +25,12 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10676");
- script_version("$Revision: 2435 $");
- script_tag(name:"last_modification", value:"$Date: 2016-01-17 21:16:41 +0100 (Sun, 17 Jan 2016) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
  script_name("CheckPoint Firewall-1 Web Authentication Detection");
- script_summary("The remote CheckPoint Firewall-1 can be authenticated with via a web interface");
  script_category(ACT_GATHER_INFO);
  script_family("Firewalls");
  script_copyright("This script is Copyright (C) 2001 SecuriTeam");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_domino_xss_n_bof_vuln.nasl 3743 2016-07-22 11:03:03Z cfi $
+# $Id: secpod_ibm_lotus_domino_xss_n_bof_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Lotus Domino Cross Site Scripting and Buffer Overflow Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902572");
-  script_version("$Revision: 3743 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-22 13:03:03 +0200 (Fri, 22 Jul 2016) $");
+  script_version("$Revision: 5701 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_bugtraq_id(49701, 49705);
   script_cve_id("CVE-2011-3575", "CVE-2011-3576");
@@ -77,15 +77,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! vers = get_highest_app_version( cpe:CPE ) ) exit( 0 );
 
 vers = ereg_replace( pattern:"FP", string:vers, replace:".FP" );
 
 ## Check for Vulnerable Lotus Domino Versions
 if( version_is_less( version:vers, test_version:"8.5.2.FP2" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"8.5.2 FP2" );
-  security_message( port:port, data:report );
+  security_message( port:0, data:report );
   exit( 0 );
 }
 

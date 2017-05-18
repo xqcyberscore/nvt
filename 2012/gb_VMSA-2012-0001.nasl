@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0001.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2012-0001.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # VMSA-2012-0001 VMware ESXi and ESX updates to third party library and ESX Service Console
 #
@@ -94,13 +94,12 @@ if (description)
  script_cve_id("CVE-2009-3560", "CVE-2009-3720", "CVE-2010-0547", "CVE-2010-0787", "CVE-2010-1634", "CVE-2010-2059", "CVE-2010-2089", "CVE-2010-3493", "CVE-2010-4649", "CVE-2011-0695", "CVE-2011-0711", "CVE-2011-0726", "CVE-2011-1015", "CVE-2011-1044", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080", "CVE-2011-1093", "CVE-2011-1163", "CVE-2011-1166", "CVE-2011-1170", "CVE-2011-1171", "CVE-2011-1172", "CVE-2011-1182", "CVE-2011-1494", "CVE-2011-1495", "CVE-2011-1521", "CVE-2011-1573", "CVE-2011-1576", "CVE-2011-1577", "CVE-2011-1593", "CVE-2011-1678", "CVE-2011-1745", "CVE-2011-1746", "CVE-2011-1763", "CVE-2011-1776", "CVE-2011-1780", "CVE-2011-1936", "CVE-2011-2022", "CVE-2011-2192", "CVE-2011-2213", "CVE-2011-2482", "CVE-2011-2491", "CVE-2011-2492", "CVE-2011-2495", "CVE-2011-2517", "CVE-2011-2519", "CVE-2011-2522", "CVE-2011-2525", "CVE-2011-2689", "CVE-2011-2694", "CVE-2011-2901", "CVE-2011-3378");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5977 $");
  script_name("VMSA-2012-0001 VMware ESXi and ESX updates to third party library and ESX Service Console");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-03-15 14:13:01 +0100 (Thu, 15 Mar 2012)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

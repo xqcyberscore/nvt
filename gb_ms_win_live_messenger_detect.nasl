@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms_win_live_messenger_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Microsoft Windows Live Messenger Client Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800331");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Live Messenger Client Version Detection");
@@ -63,17 +63,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("version_func.inc");
 include("host_details.inc");
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
-}
 
 osArch = "";
 key_list = "";

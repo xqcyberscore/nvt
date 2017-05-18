@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3553.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: ELSA-2016-3553.nasl 5867 2017-04-05 09:01:13Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122927");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5867 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:44 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3553");
 script_tag(name: "insight", value: "ELSA-2016-3553 - Unbreakable Enterprise kernel security update - kernel-uek[2.6.32-400.37.16uek]- sctp: Prevent soft lockup when sctp_accept() is called during a timeout event (Karl Heiss) [Orabug: 23222781] {CVE-2015-8767}"); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2016-3553");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_identity_management_xss_vuln.nasl 4621 2016-11-25 06:45:54Z cfi $
+# $Id: gb_oracle_identity_management_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # Oracle Identity Management 'username' Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802465");
-  script_version("$Revision: 4621 $");
+  script_version("$Revision: 5912 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:45:54 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-10-05 15:31:43 +0530 (Fri, 05 Oct 2012)");
   script_name("Oracle Identity Management 'username' Cross Site Scripting Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://dl.packetstormsecurity.net/1210-exploits/ZSL-2012-5110.txt");
   script_xref(name : "URL" , value : "http://www.exploitsdownload.com/exploit/na/oracle-identity-management-10g-cross-site-scripting");
 
-  script_summary("Check if Oracle Identity Management is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

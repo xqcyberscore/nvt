@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cfengine_authdiag.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: cfengine_authdiag.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: cfengine AuthenticationDialogue vulnerability
 #
 # Authors:
@@ -47,8 +47,8 @@ tag_solution = "Upgrade to 2.1.8 or newer.";
 if(description)
 {
  script_id(14314);
- script_version("$Revision: 3395 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+ script_version("$Revision: 6053 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-1701", "CVE-2004-1702");
  script_bugtraq_id(10899, 10900);
@@ -60,7 +60,6 @@ if(description)
  
 
  summary = "check for cfengine flaw based on its version";
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");

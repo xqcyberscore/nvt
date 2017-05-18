@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_revolution_callback_xss_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_modx_revolution_callback_xss_vuln.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # MODX Revolution 'callback' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,14 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805235");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 5889 $");
   script_cve_id("CVE-2014-8992");
   script_bugtraq_id(71821);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-01-07 14:55:47 +0530 (Wed, 07 Jan 2015)");
   script_name("MODX Revolution 'callback' Parameter Cross-Site Scripting Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_modx_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("modx_cms/installed");
+
+  script_xref(name:"URL", value:"https://github.com/modxcms/revolution/issues/12161");
 
   script_tag(name:"summary", value:"This host is installed with MODX
   Revolution and is prone to cross-site scripting vulnerability.");
@@ -64,78 +72,41 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://github.com/modxcms/revolution/issues/12161");
-  script_summary("Check if MODX Revolution is prone to XSS");
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 80);
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-req = "";
-res = "";
-md5File = "";
-resmd5 = "";
+cpe_list = make_list( "cpe:/a:modx:unknown",
+                      "cpe:/a:modx:revolution",
+                      "cpe:/a:modx:evolution" );
 
+if( ! infos = get_all_app_port_from_list( cpe_list:cpe_list ) ) exit( 0 );
+cpe = infos['cpe'];
+port = infos['port'];
 
-## Get http port
-http_port = get_http_port(default:80);
-if(!http_port){
-  http_port = 80;
+if( ! dir = get_app_location( cpe:cpe, port:port ) ) exit( 0 );
+
+if( dir == "/" ) dir = "";
+url = dir + '/manager/assets/fileapi/FileAPI.flash.image.swf';
+
+##MD5 Hash of .swf file
+md5File = 'ca807df6aa04b87a721239e38bf2e9e1';
+
+req = http_get( item:url, port:port );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+if( isnull( res ) ) exit( 0 );
+
+##Calculate MD5 of response
+resmd5 = hexstr( MD5( res ) );
+
+#Check if md5 hashes match and Confirm exploit
+if( resmd5 == md5File ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-## Check the port state
-if(!get_port_state(http_port)){
-  exit(0);
-}
-
-#Check if host supports php
-if(!can_host_php(port:http_port)){
-  exit(0);
-}
-
-#iterate over possible paths
-foreach dir (make_list_unique("/", "/modx", "/cms", cgi_dirs()))
-{
-
-  if( dir == "/" ) dir = "";
-
-  ## Send and Receive the response
-  req = http_get(item:string(dir, "/manager/index.php"), port:http_port);
-  res = http_send_recv(port:http_port, data:req);
-
-  ## confirm the application
-  if(res && res =~ ">MODX CMF Manager Login<")
-  {
-    ## Construct the attack request
-    url = dir + '/manager/assets/fileapi/FileAPI.flash.image.swf';
-
-    ##MD5 Hash of .swf file
-    md5File = 'ca807df6aa04b87a721239e38bf2e9e1';
-
-    ## Send and Receive the response
-    req = http_get(item:url, port:http_port);
-    res = http_keepalive_send_recv(port:http_port, data:req, bodyonly:TRUE);
-
-    ##Calculate MD5 of response
-    resmd5 = hexstr(MD5(res));
-
-    #Check if md5 hashes match and Confirm exploit
-    if(res && resmd5 == md5File)
-    {
-      security_message(port:http_port);
-      exit(0);
-    }
-  }
-}
-
-exit(99);
+exit( 99 );

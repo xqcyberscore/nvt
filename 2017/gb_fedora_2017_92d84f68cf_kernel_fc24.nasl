@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872371");
-  script_version("$Revision: 5386 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 13:58:39 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5806 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 09:21:48 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2017-02-20 11:39:10 +0100 (Mon, 20 Feb 2017)");
   script_cve_id("CVE-2017-5897");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for kernel FEDORA-2017-92d84f68cf");
   script_tag(name: "summary", value: "Check the version of kernel");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_sharing_web_server_detect.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_easy_file_sharing_web_server_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
 #
 # Easy File Sharing Web Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806517");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 5877 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 11:28:37 +0530 (Thu, 05 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Easy File Sharing Web Server Version Detection");
@@ -40,7 +40,6 @@ if(description)
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
-  script_summary("Set Version of Easy File Sharing Web Server in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

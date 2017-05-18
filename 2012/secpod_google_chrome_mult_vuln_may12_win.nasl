@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_may12_win.nasl 3060 2016-04-14 10:52:17Z benallard $
+# $Id: secpod_google_chrome_mult_vuln_may12_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities(02) - May 12 (Windows)
 #
@@ -48,20 +48,19 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(903030);
-  script_version("$Revision: 3060 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2011-3103", "CVE-2011-3104", "CVE-2011-3105", "CVE-2011-3106",
                 "CVE-2011-3107", "CVE-2011-3108", "CVE-2011-3110", "CVE-2011-3111",
                 "CVE-2011-3112", "CVE-2011-3113", "CVE-2011-3114", "CVE-2011-3115");
   script_bugtraq_id(53679);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:52:17 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-05-25 14:51:26 +0530 (Fri, 25 May 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(02) - May 12 (Windows)");
 
 
   script_copyright("Copyright (C) 2012 SecPod");
-  script_summary("Check the version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

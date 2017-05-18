@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lotuscms_php_code_exec_vuln.nasl 5670 2017-03-21 15:13:03Z cfi $
+# $Id: secpod_lotuscms_php_code_exec_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
 #
 # LotusCMS PHP Code Execution Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903312");
-  script_version("$Revision: 5670 $");
+  script_version("$Revision: 5798 $");
   script_bugtraq_id(52349);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 16:13:03 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-06-27 14:55:42 +0530 (Thu, 27 Jun 2013)");
   script_name("LotusCMS PHP Code Execution Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2011-21");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122161/lotus_eval.py.txt");
   script_xref(name : "URL" , value : "http://metasploit.org/modules/exploit/multi/http/lcms_php_exec");
-  script_summary("Check if LotusCMS is vulnerable to php code execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");
@@ -83,24 +82,22 @@ dir = "";
 url = "";
 cmds = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/lcms", "/cms", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
+  url = dir + "/index.php";
+  res = http_get_cache( item:url, port:port );
+  if( isnull( res ) ) continue;
 
-  ## Confirm the application
-  if(http_vuln_check(port:port, url:string(dir,"/index.php"), check_header:TRUE,
-                    pattern:"LotusCMS<", extra_check:"MSS<"))
-  {
+  if( res =~ "HTTP/1.. 200" && "LotusCMS<" >< res && "MSS<" >< res ) {
+
     cmds = exploit_commands();
 
     foreach cmd (keys(cmds))

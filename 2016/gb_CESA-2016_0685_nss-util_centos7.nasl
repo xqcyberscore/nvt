@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882476");
-  script_version("$Revision: 3640 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-04 07:07:03 +0200 (Mon, 04 Jul 2016) $");
+  script_version("$Revision: 5813 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-26 05:19:04 +0200 (Tue, 26 Apr 2016)");
   script_cve_id("CVE-2016-1978", "CVE-2016-1979");
   script_tag(name:"cvss_base", value:"7.5");
@@ -78,7 +78,6 @@ Bug Fix(es):
 
   script_xref(name: "CESA", value: "2016:0685");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-April/021849.html");
-  script_summary("Check for the Version of nss-util");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iis_anything_idq.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: iis_anything_idq.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: IIS IDA/IDQ Path Disclosure
 #
 # Authors:
@@ -38,8 +38,8 @@ mappings of your server.";
 if(description)
 {
  script_id(10492);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6040 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1065);
  script_cve_id("CVE-2000-0071");
@@ -51,7 +51,6 @@ if(description)
  
  summary = "Determines IIS IDA/IDQ Path Reveal vulnerability";
  
- script_summary(summary);
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
 

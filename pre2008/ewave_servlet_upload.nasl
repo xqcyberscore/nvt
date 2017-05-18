@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ewave_servlet_upload.nasl 3386 2016-05-25 19:06:55Z jan $
+# $Id: ewave_servlet_upload.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Unify eWave ServletExec 3.0C file upload
 #
 # Authors:
@@ -33,8 +33,8 @@ tag_solution = "Remove it";
 if(description)
 {
  script_id(10570);
- script_version("$Revision: 3386 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-25 21:06:55 +0200 (Wed, 25 May 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1876);
  script_tag(name:"cvss_base", value:"10.0");
@@ -51,7 +51,6 @@ if(description)
 
  summary = "Unify eWave ServletExec 3.0C file upload";
  
- script_summary(summary);
  
 
  script_category(ACT_GATHER_INFO);

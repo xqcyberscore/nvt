@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871426");
-  script_version("$Revision: 3258 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2015-5364", "CVE-2015-5366");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-10 14:10:28 +0200 (Tue, 10 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:36 +0530 (Fri, 06 May 2016)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2015:1623-01");
@@ -92,7 +92,6 @@ I/O stalls completing  ...
   script_xref(name: "RHSA", value: "2015:1623-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-August/msg00020.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

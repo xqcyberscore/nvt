@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2552_1.nasl 2944 2016-03-24 09:32:58Z benallard $
+# $Id: deb_2552_1.nasl 5977 2017-04-19 09:02:22Z teissa $
 # Description: Auto-generated from advisory DSA 2552-1 (tiff)
 #
 # Authors:
@@ -79,13 +79,12 @@ if(description)
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
  script_cve_id("CVE-2010-2482", "CVE-2010-2595", "CVE-2010-2597", "CVE-2010-2630", "CVE-2010-4665", "CVE-2012-2113", "CVE-2012-3401");
- script_version("$Revision: 2944 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:32:58 +0100 (Thu, 24 Mar 2016) $");
+ script_version("$Revision: 5977 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-10-03 11:10:30 -0400 (Wed, 03 Oct 2012)");
  script_name("Debian Security Advisory DSA 2552-1 (tiff)");
 
 
- script_summary("Debian Security Advisory DSA 2552-1 (tiff)");
 
  script_category(ACT_GATHER_INFO);
 

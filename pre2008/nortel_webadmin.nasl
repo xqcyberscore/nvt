@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nortel_webadmin.nasl 3302 2016-05-12 13:08:27Z benallard $
+# $Id: nortel_webadmin.nasl 5838 2017-04-03 10:26:36Z cfi $
 # Description: Nortel Web Management Default Username and Password (ro/ro)
 #
 # Authors:
@@ -25,20 +25,19 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.15716");
- script_version("$Revision: 3302 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 15:08:27 +0200 (Thu, 12 May 2016) $");
+ script_version("$Revision: 5838 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 12:26:36 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
  script_name("Nortel Web Management Default Username and Password (ro/ro)");
- script_summary("Checks for the presence of default username and password");
- 
  script_category(ACT_GATHER_INFO);
- 
  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
  script_family("Default Accounts");
- script_dependencies("http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
+ script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : "Set a strong password for this account or disable it");
  script_tag(name : "summary" , value : "It is possible to access the remote network device's web management console
  by providing it with a its default username and password (ro/ro). This username
@@ -79,7 +78,7 @@ if(nonce)
  md5 = hexstr(MD5(pre_md5));
  req = string("POST / HTTP/1.1\r\n",
 "Host: ", host, "\r\n",
-"User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7) Gecko/20040928 Firefox/0.9.3\r\n",
+"User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
 "Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5\r\n",
 "Accept-Language: en-us,en;q=0.5\r\n",
 "Accept-Encoding: gzip,deflate\r\n",

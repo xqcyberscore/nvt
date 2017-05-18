@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: towerblog_admin_bypass.nasl 3717 2016-07-15 19:04:33Z cfi $
+# $Id: towerblog_admin_bypass.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # TowerBlog Admin Bypass
 #
@@ -30,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18015");
-  script_version("$Revision: 3717 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-15 21:04:33 +0200 (Fri, 15 Jul 2016) $");
+  script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_bugtraq_id(13090);
   script_name("TowerBlog Admin Bypass");
-  script_summary("Checks for the presence of a TowerBlog Admin Bypassing");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");

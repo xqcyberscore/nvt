@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_mult_xss_vuln_may16.nasl 3388 2016-05-26 06:22:21Z antu123 $
+# $Id: gb_apache_wicket_mult_xss_vuln_may16.nasl 5782 2017-03-30 09:01:05Z teissa $
 #
 # Apache Wicket Multiple Cross-site scripting Vulnerabilities May16
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:wicket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807585");
-  script_version("$Revision: 3388 $");
+  script_version("$Revision: 5782 $");
   script_cve_id("CVE-2015-5347", "CVE-2015-7520");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-26 08:22:21 +0200 (Thu, 26 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-05-16 10:44:34 +0530 (Mon, 16 May 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Wicket Multiple Cross-site scripting Vulnerabilities May16");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://wicket.apache.org/news/2016/03/02/cve-2015-7520.html");
   script_xref(name : "URL" , value : "http://wicket.apache.org/news/2016/03/01/cve-2015-5347.html");
 
-  script_summary("Check for the vulnerable version of Apache Wicket");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

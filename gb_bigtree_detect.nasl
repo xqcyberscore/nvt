@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_detect.nasl 5329 2017-02-17 12:25:45Z mime $
+# $Id: gb_bigtree_detect.nasl 5968 2017-04-18 14:00:24Z cfi $
 #
-# Bigtree Remote Version Detection
+# BigTree CMS Remote Version Detection
 #
 # Authors:
 # Tushar Khelge <ktushar@secpod.com>
@@ -27,98 +27,75 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807791");
-  script_version("$Revision: 5329 $");
+  script_version("$Revision: 5968 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 13:25:45 +0100 (Fri, 17 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 16:00:24 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-18 12:45:32 +0530 (Mon, 18 Apr 2016)");
-  script_name("Bigtree Remote Version Detection");
-
-  script_tag(name : "summary" , value : "Detection of installed version
-  of Bigtree.
-
-  This script sends HTTP GET request and try to get the version from the
-  response, and sets the result in KB.");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the presence of Bigtree");
+  script_name("BigTree CMS Remote Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"Detection of installed version
+  of BigTree CMS.
+
+  This script sends HTTP GET request and try to get the version from the
+  response, and sets the result in KB.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
 include("http_func.inc");
+include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-bigPort = "";
-bigVer = "";
-url = "";
+if( ! port = get_http_port( default:80 ) ) exit( 0 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-##Get HTTP Port
-if(!bigPort = get_http_port(default:80)){
-  exit(0);
-}
+foreach dir( make_list_unique( "/", "/BigTree", "/cms", "/bigtree", cgi_dirs( port:port ) ) ) {
 
-## Check Host Supports PHP
-if(!can_host_php(port:bigPort)){
-  exit(0);
-}
-
-##Iterate over possible paths
-foreach dir (make_list_unique("/", "/BigTree", "/cms", "/bigtree", cgi_dirs(port:bigPort)))
-{
   install = dir;
-  if(dir == "/"){
-    dir = "";
-  }
+  if( dir == "/" ) dir = "";
 
-  urls = make_list( dir + "/site/index.php/admin/login/", dir + "/admin/login/" );
+  foreach url( make_list( dir + "/site/index.php/admin/login/", dir + "/admin/login/" ) ) {
 
-  foreach url ( urls )
-  {
+    req = http_get( item:url, port:port );
+    res = http_keepalive_send_recv( port:port, data:req );
+    if( isnull( res ) ) continue;
 
-    ## Send and receive response
-    sndReq = http_get(item:url, port:bigPort);
-    rcvRes = http_send_recv(port:bigPort, data:sndReq);
+    if( ( "<title>BigTree Site Login</title>" >< res && "<label>Password</label>" >< res ) ||
+        '<a href="http://www.bigtreecms.com" class="login_logo"' >< res ) {
 
-    ## Confirm the application
-    if( rcvRes && ( "<title>BigTree Site Login</title>" >< rcvRes || "<title>Trees of All Sizes Login</title>") &&
-                  "<label>Password</label>" >< rcvRes)
-    {
-      ## Grep for the version
-      version = eregmatch(pattern:'Version ([0-9.]+)', string:rcvRes);
-      if(version[1]){
-        bigVer = version[1];
-      }
-      else{
-        bigVer = "Unknown";
-      }
+      vers = "unknown";
 
-      ## Set the KB
-      set_kb_item(name:"BigTree/Installed", value:TRUE);
+      # Version was removed in 4.2+ from the login page: https://github.com/bigtreecms/BigTree-CMS/issues/269
+      # TODO: Try to find the version from some other place
+      version = eregmatch( pattern:'Version ([0-9.]+)', string:res );
+      if( version[1]) vers = version[1];
 
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:bigVer, exp:"^([0-9.]+)", base:"cpe:/a:bigtree:bigtree:");
-      if(!cpe)
-        cpe= "cpe:/a:bigtree:bigtree";
+      replace_kb_item( name:"BigTree/Installed", value:TRUE );
 
-      register_product(cpe:cpe, location:install, port:bigPort);
+      cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:bigtree:bigtree:" );
+      if( ! cpe )
+        cpe = "cpe:/a:bigtree:bigtree";
 
-      log_message(data: build_detection_report(app: "BigTree",
-                                               version: bigVer,
-                                               install: install,
-                                               cpe: cpe,
-                                               concluded: bigVer),
-                                               port: bigPort);
+      register_product( cpe:cpe, location:install, port:port );
 
+      log_message( data:build_detection_report( app:"BigTree CMS",
+                                                version:vers,
+                                                install:install,
+                                                cpe:cpe,
+                                                concluded:version[0] ),
+                                                port:port );
     }
   }
 }
+
+exit( 0 );

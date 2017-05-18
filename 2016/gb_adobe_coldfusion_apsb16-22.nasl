@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808165");
-  script_version("$Revision: 3604 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2016-4159");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-27 07:18:57 +0200 (Mon, 27 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-16 12:39:02 +0530 (Thu, 16 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Adobe ColdFusion Security Update APSB16-22");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/coldfusion/apsb16-22.html");
 
-  script_summary("Check for the vulnerable version of Adobe ColdFusion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

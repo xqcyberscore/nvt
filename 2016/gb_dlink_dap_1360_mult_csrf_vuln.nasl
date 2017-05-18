@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dap_1360_mult_csrf_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_dlink_dap_1360_mult_csrf_vuln.nasl 5708 2017-03-24 08:55:10Z teissa $
 #
 # D-Link DAP-1360 Multiple CSRF Vulnerabilities
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/h:dlink:dap";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810235");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 5708 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:55:10 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-12-10 10:43:14 +0530 (Sat, 10 Dec 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("D-Link DAP-1360 Multiple CSRF Vulnerabilities");
@@ -55,12 +55,9 @@ if(description)
   script_tag(name:"affected", value:"D-Link DAP-1360, Firmware 1.0.0.
   This model with other firmware versions also must be vulnerable.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as
-  of 25th January, 2017. Information regarding this issue will be updated
-  once the solution details are available.
-  For updates refer to http://www.dlink.com.");
+  script_tag(name: "solution" , value:"Update to DAP-1360/A/E1A (f/w version 2.5.4).  For updates refer to http://www.dlink.com.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Dec/9");
 
   script_category(ACT_GATHER_INFO);
@@ -97,9 +94,9 @@ if(!version =  get_app_version(cpe:CPE)){
 }
 
 ## Check for vulnerable model
-if(model =~ "1360$" && version_is_equal(version:version, test_version:"1.0.0"))
+if(model =~ "1360$" && version_is_less(version:version, test_version:"2.5.4"))
 {
-  report = report_fixed_ver(installed_version:version, fixed_version: "NoneAvailable");
+  report = report_fixed_ver(installed_version:version, fixed_version: "2.5.4");
   security_message( port:dlPort, data:report);
   exit(0);
 }

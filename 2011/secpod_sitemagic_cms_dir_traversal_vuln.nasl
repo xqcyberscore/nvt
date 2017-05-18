@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 5647 2017-03-21 09:46:08Z cfi $
+# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability
 #
@@ -45,17 +45,14 @@ traversal vulnerability.";
 if(description)
 {
   script_id(902452);
-  script_version("$Revision: 5647 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:46:08 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_bugtraq_id(48399);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability");
-
-
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check for directory traversal vulnerability in Sitemagic CMS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
@@ -74,26 +71,20 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Check for each possible path
-foreach dir (make_list("/Sitemagic", "/CMS", "/"))
-{
-  ## Send and Receive the response
-  req = http_get(item:string(dir, "/index.php"), port:port);
-  res = http_keepalive_send_recv(port:port,data:req);
+foreach dir( make_list_unique( "/Sitemagic", "/CMS", "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  res = http_get_cache(item:string(dir, "/index.php"), port:port);
 
   ## Confirm the application
   if("<title>Sitemagic CMS</title>" >< res)

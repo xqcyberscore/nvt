@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hello_detect.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: hello_detect.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # DCN HELLO detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11913");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DCN HELLO detection");
-  script_summary("Sends an DCH HELLO Message");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");
   script_family("Service detection");

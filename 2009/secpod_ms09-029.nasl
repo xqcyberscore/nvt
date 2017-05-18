@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-029.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-029.nasl 5934 2017-04-11 12:28:28Z antu123 $
 #
 # Microsoft Embedded OpenType Font Engine Remote Code Execution Vulnerabilities (961371)
 #
@@ -27,31 +27,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to disclose sensitive
-  information or compromise a vulnerable system.
-  Impact Level: System";
-tag_affected = "Microsoft Windows 2000 Service Pack 4 and prior
-  Microsoft Windows XP Service Pack 3 and prior
-  Microsoft Windows 2003 Service Pack 2 and prior
-  Microsoft Windows Vista Service Pack 1/2 and prior.
-  Microsoft Windows Server 2008 Service Pack 1/2 and prior.";
-tag_insight = "- A boundary error exists when parsing data records in embedded fonts can be
-    exploited to cause a heap-based buffer overflow via a specially crafted
-    embedded EOT font.
-  - An integer overflow error exists when parsing name tables in embedded fonts
-    can be exploited to corrupt memory via a specially crafted embedded EOT
-    font.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms09-029.mspx";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-029.";
-
 if(description)
 {
   script_id(900689);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5934 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 14:28:28 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-07-15 20:20:16 +0200 (Wed, 15 Jul 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -69,11 +49,25 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to disclose sensitive
+  information or compromise a vulnerable system.
+  Impact Level: System");
+  script_tag(name : "affected" , value : "Microsoft Windows 2000 Service Pack 4 and prior
+  Microsoft Windows XP Service Pack 3 and prior
+  Microsoft Windows 2003 Service Pack 2 and prior
+  Microsoft Windows Vista Service Pack 1/2 and prior.
+  Microsoft Windows Server 2008 Service Pack 1/2 and prior.");
+  script_tag(name : "insight" , value : "- A boundary error exists when parsing data records in embedded fonts can be
+    exploited to cause a heap-based buffer overflow via a specially crafted
+    embedded EOT font.
+  - An integer overflow error exists when parsing name tables in embedded fonts
+    can be exploited to corrupt memory via a specially crafted embedded EOT
+    font.");
+  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://www.microsoft.com/technet/security/bulletin/ms09-029.mspx");
+  script_tag(name : "summary" , value : "This host is missing a critical security update according to
+  Microsoft Bulletin MS09-029.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -85,21 +79,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## This function will return the version of the given file
-function get_file_version(sysPath, file_name)
-{
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:sysPath);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1",
-                       string:sysPath + "\" + file_name);
-
-  sysVer = GetVer(file:file, share:share);
-  if(!sysVer){
-    return(FALSE);
-  }
-
-  return(sysVer);
-}
-
 if(hotfix_check_sp(win2k:5, xp:4, win2003:3, winVista:3, win2008:3) <= 0){
   exit(0);
 }
@@ -110,11 +89,10 @@ if(hotfix_missing(name:"961371") == 0){
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\COM3\Setup",
-                          item:"Install Path");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  sysVer = get_file_version(sysPath, file_name:"Fontsub.dll");
+  sysVer = fetch_file_version(sysPath, file_name:"Fontsub.dll");
   if(!sysVer){
       exit(0);
   }
@@ -167,11 +145,10 @@ else if(hotfix_check_sp(win2003:3) > 0)
 }
 
 ## Get System32 path
-sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
-                          item:"PathName");
+sysPath = smb_get_system32root();
 if(sysPath)
 {
-  dllVer = get_file_version(sysPath, file_name:"System32\Fontsub.dll");
+  dllVer = fetch_file_version(sysPath, file_name:"Fontsub.dll");
   if(!dllVer){
     exit(0);
   }

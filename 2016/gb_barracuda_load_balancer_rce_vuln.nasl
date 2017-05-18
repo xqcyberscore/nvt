@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_load_balancer_rce_vuln.nasl 3756 2016-07-25 08:59:05Z ckuerste $
+# $Id: gb_barracuda_load_balancer_rce_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Barracuda Load Balancer Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:barracuda:load_balancer';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106152");
-  script_version("$Revision: 3756 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-25 10:59:05 +0200 (Mon, 25 Jul 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name: "creation_date", value: "2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -52,7 +52,6 @@ if (description)
   script_tag(name: "summary", value: "Barracuda Load Balancer is prone to a remote code exectuion
 vulnerability.");
 
-  script_summary("Checks the version");
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 

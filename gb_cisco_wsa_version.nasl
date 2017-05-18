@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_version.nasl 4938 2017-01-04 13:12:05Z cfi $
+# $Id: gb_cisco_wsa_version.nasl 5709 2017-03-24 08:56:58Z cfi $
 #
 # Cisco Web Security Appliance Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105441");
-  script_version("$Revision: 4938 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 14:12:05 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 5709 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-11-09 13:54:40 +0100 (Mon, 09 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ if( model ) set_kb_item( name:"cisco_wsa/model", value:model );
 cpe = 'cpe:/h:cisco:web_security_appliance:' + version;
 
 register_product( cpe:cpe );
-register_and_report_os( os:"Cisco AsyncOS", cpe:"cpe:/o:cisco:asyncos:" + version, banner_type:source, desc:"Cisco Web Security Appliance Detection" );
+register_and_report_os( os:"Cisco AsyncOS", cpe:"cpe:/o:cisco:asyncos:" + version, banner_type:source, desc:"Cisco Web Security Appliance Detection", runs_key:"unixoide" );
 
 report = 'Detected Cisco Web Security Appliance\nVersion: ' + version + '\nCPE: ' + cpe;
 if( model ) report += '\nModel: ' + model;

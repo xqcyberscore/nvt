@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: WikyBlog_38386.nasl 5401 2017-02-23 09:46:07Z teissa $
+# $Id: WikyBlog_38386.nasl 5762 2017-03-29 11:20:04Z cfi $
 #
 # WikyBlog Multiple Remote Input Validation Vulnerabilities
 #
@@ -41,12 +41,11 @@ Attackers can exploit these issues to:
 
 WikyBlog 1.7.3rc2 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100506);
- script_version("$Revision: 5401 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-23 10:46:07 +0100 (Thu, 23 Feb 2017) $");
+ script_version("$Revision: 5762 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 13:20:04 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-02-24 18:35:31 +0100 (Wed, 24 Feb 2010)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -54,7 +53,6 @@ if (description)
  script_bugtraq_id(38386);
 
  script_name("WikyBlog Multiple Remote Input Validation Vulnerabilities");
-
 
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
@@ -71,29 +69,23 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
-
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/blog","/Wiky",cgi_dirs());
+foreach dir( make_list_unique( "/blog", "/Wiky", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
+  if( dir == "/" ) dir = "";
   url = string(dir,"/index.php/Special/Main/Templates?cmd=copy&which=%3Cscript%3Ealert(%27openvas-xss-test%27)%3C/script%3E"); 
   req = http_get(item:url, port:port);
-  buf = http_keepalive_send_recv(port:port, data:req);  
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
   if( buf == NULL )continue;
 
   if(buf =~ "HTTP/1\.. 200" && egrep(pattern: "<script>alert\('openvas-xss-test'\)</script>", string: buf, icase: TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 99 );

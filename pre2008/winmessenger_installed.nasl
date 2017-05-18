@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: winmessenger_installed.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: winmessenger_installed.nasl 6053 2017-05-01 09:02:51Z teissa $
 # Description: Windows Messenger is installed
 #
 # Authors:
@@ -60,12 +60,12 @@ is prone to multiple vulnerabilities.";
 if(description)
 {
   script_id(11429);
-  script_version("$Revision: 3395 $");
+  script_version("$Revision: 6053 $");
   script_bugtraq_id(4028, 4316, 4675, 4827, 668);
   script_cve_id("CVE-1999-1484", "CVE-2002-0228", "CVE-2002-0472");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("Windows Messenger is installed");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/8084");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "http://versions.wikia.com/wiki/MSN_Messenger");
   script_xref(name : "URL" , value : "http://downloads.securityfocus.com/vulnerabilities/exploits/setupbbs.txt");
 
-  script_summary("Check the version of Microsoft Windows Messenger");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2003 Xue Yong Zhi");

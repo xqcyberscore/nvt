@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3586.nasl 3604 2016-06-27 05:18:57Z antu123 $
+# $Id: deb_3586.nasl 5745 2017-03-28 09:01:00Z teissa $
 # Auto-generated from advisory DSA 3586-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703586);
-    script_version("$Revision: 3604 $");
+    script_version("$Revision: 5745 $");
     script_cve_id("CVE-2016-4478");
     script_name("Debian Security Advisory DSA 3586-1 (atheme-services - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-27 07:18:57 +0200 (Mon, 27 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
     script_tag(name: "creation_date", value: "2016-05-23 00:00:00 +0200 (Mon, 23 May 2016)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3586.html");
 
-    script_summary("Debian Security Advisory DSA 3586-1 (atheme-services - security update)");
 
     script_category(ACT_GATHER_INFO);
 

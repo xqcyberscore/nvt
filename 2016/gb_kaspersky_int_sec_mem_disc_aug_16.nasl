@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_int_sec_mem_disc_aug_16.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_kaspersky_int_sec_mem_disc_aug_16.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Kaspersky Internet Security KLDISK Driver Multiple Kernel Memory Disclosure Vulnerabilities (Windows)
 #
@@ -36,8 +36,8 @@ tag_summary = "This host is running Kaspersky Internet Security 16.0.0.614 and i
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107095");
-  script_version("$Revision: 5070 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 13:17:56 +0100 (Thu, 24 Nov 2016)");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,7 +46,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.talosintelligence.com/reports/TALOS-2016-0168/");
 
   script_tag(name:"qod", value:"30");
-  script_summary("Check for the version of Kaspersky Total Security");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_family("General");

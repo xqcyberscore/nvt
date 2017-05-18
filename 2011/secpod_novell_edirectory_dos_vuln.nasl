@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_edirectory_dos_vuln.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: secpod_novell_edirectory_dos_vuln.nasl 5772 2017-03-29 16:44:30Z mime $
 #
 # Novell eDirectory NCP Request Remote Denial of Service Vulnerability
 #
@@ -24,15 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/a:novell:edirectory";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902291");
-  script_version("$Revision: 5190 $");
+  script_version("$Revision: 5772 $");
   script_cve_id("CVE-2010-4327");
   script_bugtraq_id(46263);
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-02-23 12:24:37 +0100 (Wed, 23 Feb 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -81,28 +79,31 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
+CPE = make_list( "cpe:/a:novell:edirectory","cpe:/a:netiq:edirectory" );
+
 # only eDirectory running under Linux is affected
 if( host_runs( "windows" ) == "yes" ) exit( 0 );
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! major = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Get the version from KB
-edirVer = get_kb_item(string("ldap/", port,"/eDirectory"));
-if(isnull(edirVer)){
- exit(0);
+if( ! sp = get_kb_item( "ldap/eDirectory/" + port + "/sp" ) )
+  sp = "0";
+
+
+invers = major;
+
+if( sp > 0 )
+  invers += ' SP' + sp;
+
+edirVer = major + '.' + sp;
+
+if(version_in_range(version:edirVer, test_version:"8.8.5", test_version2:"8.8.5.5") ||
+   version_in_range(version:edirVer, test_version:"8.8.6", test_version2:"8.8.6.1")) {
+  report =  report_fixed_ver( installed_version:invers, fixed_version:"See advisory" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-edirVer = eregmatch(pattern:"(([0-9.]+).?([a-zA-Z0-9]+)?)", string:edirVer);
-if(!isnull(edirVer[1]))
-{
-  ## Check for vulnerable versions
-  edirVer = ereg_replace(pattern:"-| ", replace:".", string:edirVer[1]);
-  if(version_in_range(version:edirVer, test_version:"8.8.5", test_version2:"8.8.5.SP5") ||
-     version_in_range(version:edirVer, test_version:"8.8.6", test_version2:"8.8.6.SP1")) {
-    security_message( port:port );
-    exit( 0 );
-  }
-}
 
 exit( 99 );

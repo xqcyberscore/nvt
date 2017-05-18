@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_detect.nasl 4032 2016-09-12 11:15:01Z teissa $
+# $Id: nginx_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # nginx Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100274");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4032 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 13:15:01 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("nginx Detection");
-  script_summary("Checks for the presence of nginx");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");

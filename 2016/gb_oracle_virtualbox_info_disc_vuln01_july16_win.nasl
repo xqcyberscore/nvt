@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_info_disc_vuln01_july16_win.nasl 3790 2016-08-03 10:30:40Z antu123 $
+# $Id: gb_oracle_virtualbox_info_disc_vuln01_july16_win.nasl 5850 2017-04-04 09:01:03Z teissa $
 #
 # Oracle Virtualbox Information Disclosure Vulnerability-01 July16 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808257");
-  script_version("$Revision: 3790 $");
+  script_version("$Revision: 5850 $");
   script_cve_id("CVE-2016-3612");
   script_bugtraq_id(91860);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-03 12:30:40 +0200 (Wed, 03 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-21 12:24:33 +0530 (Thu, 21 Jul 2016)");
   script_name("Oracle Virtualbox Information Disclosure Vulnerability-01 July16 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/security-advisory/cpujul2016-2881720.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: winmx_installed.nasl 5452 2017-03-01 08:53:44Z cfi $
+# $Id: winmx_installed.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: WinMX is installed
 #
 # Authors:
@@ -30,8 +30,8 @@ tag_solution = "Uninstall this software";
 if(description)
 {
  script_id(11430);
- script_version("$Revision: 5452 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-01 09:53:44 +0100 (Wed, 01 Mar 2017) $");
+ script_version("$Revision: 6063 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -46,7 +46,6 @@ if(description)
  
  summary = "Determines if WinMX is installed";
 
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");

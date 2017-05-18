@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54625.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_scrutinizer_54625.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability
 #
@@ -34,11 +34,10 @@ if(description)
  script_cve_id("CVE-2012-2962");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5988 $");
  script_name("Dell SonicWALL Scrutinizer 'q' Parameter SQL Injection Vulnerability");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-08-21 09:30:41 +0200 (Tue, 21 Aug 2012)");
- script_summary("Determine if sql injection is possible");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

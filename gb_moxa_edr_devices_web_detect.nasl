@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_edr_devices_web_detect.nasl 4351 2016-10-25 15:12:03Z mime $
+# $Id: gb_moxa_edr_devices_web_detect.nasl 5992 2017-04-20 14:42:07Z cfi $
 #
 # Moxa EDR Detection
 #
@@ -25,37 +25,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140015");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4351 $");
- script_tag(name:"last_modification", value:"$Date: 2016-10-25 17:12:03 +0200 (Tue, 25 Oct 2016) $");
- script_tag(name:"creation_date", value:"2016-10-25 10:43:45 +0200 (Tue, 25 Oct 2016)");
- script_name("Moxa EDR Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.140015");
+  script_version("$Revision: 5992 $");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"creation_date", value:"2016-10-25 10:43:45 +0200 (Tue, 25 Oct 2016)");
+  script_name("Moxa EDR Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary" , value: "This scriptperforms HTTP based detection of Moxa EDR devices.");
+  script_tag(name:"summary", value:"This scriptperforms HTTP based detection of Moxa EDR devices.");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- exit(0);
+  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
+if( ! can_host_asp( port:port ) ) exit( 0 );
 
 buf = http_get_cache( port:port, item:"/Login.asp" );
 
@@ -63,15 +62,12 @@ if( ! buf || "<TITLE>Moxa EDR</TITLE>" >!< buf ) exit( 0 );
 
 cpe = 'cpe:/h:moxa:edr';
 
-set_kb_item( name:"moxa_edr/detected", value:TRUE );
+replace_kb_item( name:"moxa_edr/detected", value:TRUE );
 
-if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf )
-{
-  if( "var ProjectModel" >< buf )
-  {
+if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf ) {
+  if( "var ProjectModel" >< buf ) {
     mn = eregmatch( pattern:'var ProjectModel = ([0-9]+);', string:buf );
-    if( ! isnull( mn[1] ) )
-    { 
+    if( ! isnull( mn[1] ) ) { 
       typ = mn[1]; 
 
       if( typ == 1 )
@@ -85,12 +81,9 @@ if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf )
       model = 'EDR-' + mod;
       set_kb_item( name:"moxa_edr/model", value:model );
     }
-  }
-  else
-  {
+  } else {
     mod = eregmatch( pattern:"var Model(Nmae|Name) = '(EDR-[^']+)';", string:buf );
-    if( ! isnull( mod[1] ) )
-    {
+    if( ! isnull( mod[1] ) ) {
       model = mod[1];
       set_kb_item( name:"moxa_edr/model", value:model );
       cpe_mod = split( model, sep:'-', keep:FALSE );
@@ -101,30 +94,22 @@ if( "Industrial Secure Router" >< buf || "var ProjectModel" >< buf )
       }
     }
   }
-}
-else if( "EtherDevice Secure Router" >< buf )
-{
+} else if( "EtherDevice Secure Router" >< buf ) {
   lines = split( buf );
   x = 0;
-  foreach line ( lines )
-  {
+  foreach line ( lines ) {
     x++;
-    if( "Moxa EtherDevice Secure Router" >< line )
-    {
-      for( i = 0; i < 10; i++ )
-      {
-        if( "EDR-" >< lines[ x + i ] )
-        {
+    if( "Moxa EtherDevice Secure Router" >< line ) {
+      for( i = 0; i < 10; i++ ) {
+        if( "EDR-" >< lines[ x + i ] ) {
           mod = eregmatch( pattern:'(EDR-[^ <]+)', string:lines[ x + i ] );
-           if( ! isnull( mod[1] ) )
-           {
-             model = mod[1];
-             set_kb_item( name:"moxa_edr/model", value:model );
-             cpe_mod = split( model, sep:'-', keep:FALSE );
-             if( ! isnull( cpe_mod[1] ) )
-             {
-               cpe_model = cpe_mod[1];
-               cpe += '-' + cpe_model;
+          if( ! isnull( mod[1] ) ) {
+            model = mod[1];
+            set_kb_item( name:"moxa_edr/model", value:model );
+            cpe_mod = split( model, sep:'-', keep:FALSE );
+            if( ! isnull( cpe_mod[1] ) ) {
+              cpe_model = cpe_mod[1];
+              cpe += '-' + cpe_model;
             }
           }
         }

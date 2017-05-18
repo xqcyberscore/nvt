@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_graphic_object_bof_vuln_macosx.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_libreoffice_graphic_object_bof_vuln_macosx.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # LibreOffice Graphic Object Loading Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -39,18 +39,17 @@ tag_summary = "This host is installed with LibreOffice and is prone to buffer
 if(description)
 {
   script_id(803085);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-1149");
   script_bugtraq_id(53570);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-12-24 16:32:25 +0530 (Mon, 24 Dec 2012)");
   script_name("LibreOffice Graphic Object Loading Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47244");
   script_xref(name : "URL" , value : "http://www.libreoffice.org/advisories/cve-2012-1149");
 
-  script_summary("Check for the version of LibreOffice on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_sling_adobe_aem_info_disc_vuln.nasl 2761 2016-03-03 06:47:29Z antu123 $
+# $Id: gb_apache_sling_adobe_aem_info_disc_vuln.nasl 5813 2017-03-31 09:01:08Z teissa $
 #
 # Apache Sling Framework (Adobe AEM) Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:experience_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807066");
-  script_version("$Revision: 2761 $");
+  script_version("$Revision: 5813 $");
   script_cve_id("CVE-2016-0956");
   script_bugtraq_id(83119);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 07:47:29 +0100 (Thu, 03 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:01:08 +0200 (Fri, 31 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Sling Framework (Adobe AEM) Information Disclosure Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39435");
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/experience-manager/apsb16-05.html");
-  script_summary("Check if Apache Sling Framework (Adobe AEM) is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

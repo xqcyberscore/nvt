@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_idera_uptime_infrastructure_monitor_info_disc_vuln.nasl 5083 2017-01-24 11:21:46Z cfi $
+# $Id: gb_idera_uptime_infrastructure_monitor_info_disc_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Idera Up.time Agent Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:idera:uptime_infrastructure_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808235");
-  script_version("$Revision: 5083 $");
+  script_version("$Revision: 5759 $");
   script_cve_id("CVE-2015-8268");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:21:46 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 17:28:12 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Idera Up.time Agent Information Disclosure Vulnerability");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://vuldb.com/?id.87807");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/204232");
 
-  script_summary("Check if Idera Up.time Agent is installed with vulnerable version or not.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

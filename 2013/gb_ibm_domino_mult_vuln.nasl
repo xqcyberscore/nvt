@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 3824 2016-08-11 09:45:01Z ckuerste $
+# $Id: gb_ibm_domino_mult_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Lotus Domino Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3824 $");
+  script_version("$Revision: 5701 $");
   script_cve_id("CVE-2013-0488", "CVE-2013-0487", "CVE-2013-0486");
   script_bugtraq_id(58648,58652,58646);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 11:45:01 +0200 (Thu, 11 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-12-10 11:48:14 +0530 (Tue, 10 Dec 2013)");
   script_name("IBM Lotus Domino Multiple Vulnerabilities");
 
@@ -96,15 +96,8 @@ include("version_func.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -112,6 +105,6 @@ domVer = ereg_replace(pattern:"FP", string:domVer, replace: ".");
 
 if(version_in_range(version:domVer, test_version:"8.5.0", test_version2:"8.5.3.2"))
 {
-  security_message(0);
+  security_message(port:0);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_weberp_50713.nasl 3108 2016-04-19 06:58:41Z benallard $
+# $Id: gb_weberp_50713.nasl 5751 2017-03-28 14:37:16Z cfi $
 #
 # webERP Information Disclosure, SQL Injection, and Cross Site Scripting Vulnerabilities
 #
@@ -45,11 +45,11 @@ webERP 4.0.5 is vulnerable; prior versions may also be affected.";
 tag_solution = "Vendor updates are available. Please see the references for more
 information.";
 
-if (description)
+if(description)
 {
  script_id(103343);
  script_bugtraq_id(50713);
- script_version ("$Revision: 3108 $");
+ script_version ("$Revision: 5751 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("webERP Information Disclosure, SQL Injection, and Cross Site Scripting Vulnerabilities");
@@ -59,10 +59,9 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520561");
  script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/multiple_vulnerabilities_in_weberp.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-19 08:58:41 +0200 (Tue, 19 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 16:37:16 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-21 08:36:41 +0100 (Mon, 21 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
- script_summary("Determine if installed webERP is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
@@ -77,25 +76,20 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/weberp","/erp",cgi_dirs());
+foreach dir( make_list_unique( "/weberp", "/erp", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir,'/AccountSections.php/%22%3E%3Cscript%3Ealert(/openvas-xss-test/);%3C/script%3E'); 
+  if( dir == "/" ) dir = "";
+  url = string(dir,'/AccountSections.php/%22%3E%3Cscript%3Ealert(/openvas-xss-test/);%3C/script%3E');
 
   if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\);</script>", check_header:TRUE)) {
-     
-    security_message(port:port);
-    exit(0);
-
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

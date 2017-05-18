@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: egp_detect.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: egp_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: EGP detection
 #
 # Authors:
@@ -39,8 +39,8 @@ if(description)
 {
   script_id(11908);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+ script_version("$Revision: 6063 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -49,7 +49,6 @@ if(description)
  
  
   summary = "Sends an EGP Neighbor Acquisition Message";
-  script_summary(summary);
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner"); 
   script_copyright("This script is Copyright (C) 2003 Michel Arboi");

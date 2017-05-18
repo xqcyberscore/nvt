@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms09-003.nasl 5363 2017-02-20 13:07:22Z cfi $
+# $Id: secpod_ms09-003.nasl 5863 2017-04-05 07:38:11Z antu123 $
 #
 # Vulnerabilities in Microsoft Exchange Could Allow Remote Code Execution (959239)
 #
@@ -40,8 +40,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(900079);
-  script_version("$Revision: 5363 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 14:07:22 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 5863 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 09:38:11 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-02-11 16:51:00 +0100 (Wed, 11 Feb 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -93,11 +93,7 @@ function Get_FileVersion()
     exit(0);
   }
 
-  excFile += "\bin\Davex.dll";
-  share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:excFile);
-  file =  ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:excFile);
-
-  dllVer = GetVer(file:file, share:share);
+  dllVer = fetch_file_version( sysPath:excFile, file_name:"\bin\Davex.dll" );
   if(!dllVer){
     return 0;
   }

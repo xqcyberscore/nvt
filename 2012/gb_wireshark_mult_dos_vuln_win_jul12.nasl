@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_win_jul12.nasl 3058 2016-04-14 10:45:44Z benallard $
+# $Id: gb_wireshark_mult_dos_vuln_win_jul12.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Windows)
 #
@@ -41,12 +41,12 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(802907);
-  script_version("$Revision: 3058 $");
+  script_version("$Revision: 6018 $");
   script_cve_id("CVE-2012-2392", "CVE-2012-2393", "CVE-2012-3825", "CVE-2012-3826");
   script_bugtraq_id(53651, 53652);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 12:45:44 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-05 13:52:34 +0530 (Thu, 05 Jul 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49226/");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2012-09.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=7138");
 
-  script_summary("Check for the version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

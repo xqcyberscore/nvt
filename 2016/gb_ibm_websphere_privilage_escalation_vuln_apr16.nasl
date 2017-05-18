@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_privilage_escalation_vuln_apr16.nasl 4270 2016-10-14 06:18:19Z antu123 $
+# $Id: gb_ibm_websphere_privilage_escalation_vuln_apr16.nasl 5689 2017-03-23 10:00:49Z teissa $
 #
 # IBM Websphere Application Server Privilage Escalation Vulnerability Apr16
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807650");
-  script_version("$Revision: 4270 $");
+  script_version("$Revision: 5689 $");
   script_cve_id("CVE-2015-1946");
   script_bugtraq_id(75496);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-14 08:18:19 +0200 (Fri, 14 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-04-12 18:40:47 +0530 (Tue, 12 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM Websphere Application Server Privilage Escalation Vulnerability Apr16");
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21959083");
 
-  script_summary("Check for the vulnerable version of IBM Websphere Application Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

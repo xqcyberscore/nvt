@@ -90,8 +90,8 @@ if(description)
   script_id(840927);
   script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 3050 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 11:05:26 +0200 (Tue, 12 Apr 2016) $");
+ script_version("$Revision: 5931 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-09 10:26:06 +0530 (Fri, 09 Mar 2012)");
   script_cve_id("CVE-2011-1927", "CVE-2010-4250", "CVE-2010-4650", "CVE-2011-0006",
                 "CVE-2011-0716", "CVE-2011-1476", "CVE-2011-1477", "CVE-2011-1759",
@@ -100,7 +100,6 @@ if(description)
   script_xref(name: "USN", value: "1394-1");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1394-1");
 
-  script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

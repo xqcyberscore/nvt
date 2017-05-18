@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_xml_dos_n_createvar_sec_bypass_vuln.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_ibm_db2_xml_dos_n_createvar_sec_bypass_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
 #
 # IBM DB2 XML Feature DoS and CREATE VARIABLE Security Bypass Vulnerabilities
 #
@@ -54,12 +54,12 @@ and security bypass vulnerabilities.";
 if(description)
 {
   script_id(802730);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5999 $");
   script_cve_id("CVE-2012-0712", "CVE-2012-0709");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:41:54 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 XML Feature DoS and CREATE VARIABLE Security Bypass Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48279/");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC81379");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of IBM DB2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Databases");

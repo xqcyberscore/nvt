@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3438.nasl 3319 2016-05-13 10:33:42Z benallard $
+# $Id: deb_3438.nasl 5836 2017-04-03 09:37:08Z teissa $
 # Auto-generated from advisory DSA 3438-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703438);
-    script_version("$Revision: 3319 $");
+    script_version("$Revision: 5836 $");
     script_cve_id("CVE-2015-8025");
     script_name("Debian Security Advisory DSA 3438-1 (xscreensaver - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-05-13 12:33:42 +0200 (Fri, 13 May 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
     script_tag(name: "creation_date", value: "2016-01-09 00:00:00 +0100 (Sat, 09 Jan 2016)");
     script_tag(name:"cvss_base", value:"2.1");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2016/dsa-3438.html");
 
-    script_summary("Debian Security Advisory DSA 3438-1 (xscreensaver - security update)");
 
     script_category(ACT_GATHER_INFO);
 

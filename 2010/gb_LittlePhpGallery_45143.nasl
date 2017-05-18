@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_LittlePhpGallery_45143.nasl 5651 2017-03-21 10:09:09Z cfi $
+# $Id: gb_LittlePhpGallery_45143.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # LittlePhpGallery 'gallery.php' Local File Include Vulnerability
 #
@@ -36,16 +36,15 @@ also possible.
 LittlePhpGallery 1.0.2 is vulnerable; other versions may also
 be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100930);
- script_version("$Revision: 5651 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:09:09 +0100 (Tue, 21 Mar 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-12-02 12:48:19 +0100 (Thu, 02 Dec 2010)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2010-4406");
+ script_cve_id("CVE-2010-4406");
  script_bugtraq_id(45143);
 
  script_name("LittlePhpGallery 'gallery.php' Local File Include Vulnerability");
@@ -67,25 +66,26 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/gallery","/images",cgi_dirs());
 files = traversal_files();
 
-foreach dir (dirs) {
+foreach dir( make_list_unique( "/gallery", "/images", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
-   
-    url = string(dir, "/gallery.php?repertoire=",crap(data:"../",length:3*9),files[file],"%00"); 
+
+    url = string(dir, "/gallery.php?repertoire=",crap(data:"../",length:3*9),files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-     
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
-exit(0);
+
+exit( 99 );

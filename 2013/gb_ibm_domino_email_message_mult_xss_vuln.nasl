@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 3824 2016-08-11 09:45:01Z ckuerste $
+# $Id: gb_ibm_domino_email_message_mult_xss_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
 #
 # IBM Domino Email Message Cross-Site Scripting Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3824 $");
+  script_version("$Revision: 5701 $");
   script_cve_id("CVE-2013-4063", "CVE-2013-4064", "CVE-2013-4065");
   script_bugtraq_id(64445, 64451, 64444);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 11:45:01 +0200 (Thu, 11 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
   script_tag(name:"creation_date", value:"2013-12-26 10:59:41 +0530 (Thu, 26 Dec 2013)");
   script_name("IBM Domino Email Message Cross-Site Scripting Vulnerabilities");
 
@@ -92,15 +92,8 @@ include("version_func.inc");
 
 ## Variable Initialization
 domVer = "";
-domPort = "";
 
-# get the port
-if(!domPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
-  exit(0);
-}
-
-# get the version
-if(!domVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:domPort)){
+if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -109,6 +102,6 @@ domVer = ereg_replace(pattern:"FP", string:domVer, replace: ".");
 if(version_is_equal(version:domVer, test_version:"9.0.0") ||
    version_in_range(version:domVer, test_version:"8.5.0.0", test_version2:"8.5.3.5"))
 {
-  security_message(domPort);
+  security_message(port:0);
   exit(0);
 }

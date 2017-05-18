@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: esoft_slk_ssa_2003_141_02.nasl 5356 2017-02-20 10:49:58Z cfi $
+# $Id: esoft_slk_ssa_2003_141_02.nasl 5950 2017-04-13 09:02:06Z teissa $
 # Description: Auto-generated from the corresponding slackware advisory
 #
 # Authors:
@@ -44,15 +44,14 @@ if(description)
 {
  script_id(53895);
  script_tag(name:"creation_date", value:"2012-09-11 01:34:21 +0200 (Tue, 11 Sep 2012)");
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 11:49:58 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 5356 $");
+ script_version("$Revision: 5950 $");
  name = "Slackware Advisory SSA:2003-141-02 BitchX security fixes ";
  script_name(name);
 
 
- script_summary("Slackware Advisory SSA:2003-141-02 BitchX security fixes");
 
  script_category(ACT_GATHER_INFO);
 

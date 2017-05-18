@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: macosx_safari_detect.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: macosx_safari_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # Apple Safari Detect Script (Mac OS X)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.102021";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2837 $");
+  script_version("$Revision: 6032 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-04-06 10:41:02 +0200 (Tue, 06 Apr 2010)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple Safari Detect Script (Mac OS X)");
@@ -50,7 +50,6 @@ via command line option 'defaults read'.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Check for Apple Safari version on Mac OS X host");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 LSS");
   script_family("Product detection");

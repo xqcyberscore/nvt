@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)
 #
@@ -36,19 +36,18 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 if(description)
 {
   script_id(802950);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-1726");
   script_bugtraq_id(53948);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-22 19:06:04 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48589");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
   script_xref(name : "URL" , value : "http://www.metasploit.com/modules/exploit/multi/browser/java_atomicreferencearray");
 
-  script_summary("Check for the version of Sun Java SE JRE");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

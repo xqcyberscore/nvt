@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_open_redirect_vuln.nasl 4105 2016-09-19 09:15:54Z ckuerste $
+# $Id: gb_splunk_enterprise_open_redirect_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Splunk Enterprise Open Redirection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809013");
-  script_version("$Revision: 4105 $");
+  script_version("$Revision: 5759 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-19 11:15:54 +0200 (Mon, 19 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-08-26 17:00:30 +0530 (Fri, 26 Aug 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Splunk Enterprise Open Redirection Vulnerability");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAPQ6");
   
-  script_summary("Check for the vulnerable version of Splunk Enterprise");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");

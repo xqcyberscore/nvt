@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alienform.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: alienform.nasl 6046 2017-04-28 09:02:54Z teissa $
 #
 # AlienForm CGI script
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11027");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6046 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4983);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_cve_id("CVE-2002-0934");
   script_name("AlienForm CGI script");
-  script_summary("Checks if the AlienForm CGI script is vulnerable");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2002 Andrew Hintz (http://guh.nu)");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0088.nasl 4512 2016-11-15 09:27:35Z cfi $
+# $Id: mgasa-2016-0088.nasl 5712 2017-03-24 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131249");
-script_version("$Revision: 4512 $");
+script_version("$Revision: 5712 $");
 script_tag(name:"creation_date", value:"2016-03-03 14:39:18 +0200 (Thu, 03 Mar 2016)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:27:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:00:49 +0100 (Fri, 24 Mar 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0088");
 script_tag(name: "insight", value: "Updated xerces-c packages fix security vulnerability: The Xerces-C XML parser mishandles certain kinds of malformed input documents, resulting in buffer overlows during processing and error reporting. The overflows can manifest as a segmentation fault or as memory corruption during a parse operation. The bugs allow for a denial of service attack in many applications by an unauthenticated attacker, and could conceivably result in remote code execution (CVE-2016-0729)."); 
 script_tag(name : "solution", value : "update software");
@@ -43,7 +43,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2016-0088");
-script_summary("Mageia Linux Local Security Checks mgasa-2016-0088");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

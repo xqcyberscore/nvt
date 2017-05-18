@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: CSCdu35577_web.nasl 3376 2016-05-24 07:53:16Z antu123 $
+# $Id: CSCdu35577_web.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Cisco bug ID CSCdu35577 (Web Check)
 #
 # Authors:
@@ -34,8 +34,8 @@ tag_solution = "http://www.cisco.com/warp/public/707/vpn3k-multiple-vuln-pub.sht
 if(description)
 {
   script_id(14718);
-  script_version("$Revision: 3376 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:53:16 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(5624);
   script_cve_id("CVE-2002-1094");
@@ -49,7 +49,6 @@ if(description)
 
  summary = "Checks web interface for Cisco bug ID CSCdu35577";
  
- script_summary(summary);
  
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

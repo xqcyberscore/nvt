@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: turboseek_read_file.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: turboseek_read_file.nasl 6056 2017-05-02 09:02:50Z teissa $
 #
 # Turbo Seek files reading
 #
@@ -30,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14719");
-  script_version("$Revision: 4149 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(11163);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Turbo Seek files reading");
-  script_summary("Checks for the presence of tseekdir.cgi");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
   script_family("Web application abuses");

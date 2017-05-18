@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_http_session_info_disc_vuln_macosx.nasl 3045 2016-04-11 13:50:48Z benallard $
+# $Id: gb_google_chrome_http_session_info_disc_vuln_macosx.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Google Chrome 'HTTP session' Information Disclosure Vulnerability (MAC OS X)
 #
@@ -38,19 +38,18 @@ tag_summary = "The host is installed with Google Chrome and is prone to
 if(description)
 {
   script_id(802702);
-  script_version("$Revision: 3045 $");
+  script_version("$Revision: 6022 $");
   script_cve_id("CVE-2011-3022");
   script_bugtraq_id(52031);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:50:48 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:33:27 +0530 (Tue, 21 Feb 2012)");
   script_name("Google Chrome 'HTTP session' Information Disclosure Vulnerability (MAC OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48016/");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/02/chrome-stable-update.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_summary("Check the version of Google Chrome");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

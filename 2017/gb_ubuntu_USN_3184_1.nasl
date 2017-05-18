@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843030");
-  script_version("$Revision: 5610 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 09:09:51 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 5925 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 08:36:17 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2017-02-03 12:11:07 +0530 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2016-7553", "CVE-2017-5193", "CVE-2017-5194", "CVE-2017-5195",
 		"CVE-2017-5196", "CVE-2017-5356");
@@ -71,7 +71,7 @@ resulting in a denial of service. (CVE-2017-5356)");
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
 
   script_xref(name: "USN", value: "3184-1");
-  script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2017-February/003710.html");
+  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3184-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

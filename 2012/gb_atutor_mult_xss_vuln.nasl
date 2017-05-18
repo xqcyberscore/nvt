@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_mult_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_atutor_mult_xss_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Atutor Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802561");
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5963 $");
   script_bugtraq_id(51423);
   script_cve_id("CVE-2012-6528");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:09:44 +0530 (Tue, 17 Jan 2012)");
   script_name("Atutor Multiple Cross Site Scripting Vulnerabilities");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521260");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108706/SSCHADV2012-002.txt");
 
-  script_summary("Check if Atutor is vulnerable to Cross Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: opera_skin_zip_file_overflow.nasl 3395 2016-05-27 12:54:51Z antu123 $
+# $Id: opera_skin_zip_file_overflow.nasl 6040 2017-04-27 09:02:38Z teissa $
 # Description: Opera skin zip file buffer overflow vulnerability
 #
 # Authors:
@@ -38,15 +38,14 @@ tag_solution = "Install Opera 7.23 or newer.";
 if(description)
 {
   script_id(14250);
-  script_version("$Revision: 3395 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-27 14:54:51 +0200 (Fri, 27 May 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(9089);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Opera skin zip file buffer overflow vulnerability");
 
-  script_summary("Determines the version of Opera.exe");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");

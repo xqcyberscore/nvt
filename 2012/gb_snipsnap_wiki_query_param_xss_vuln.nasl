@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snipsnap_wiki_query_param_xss_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_snipsnap_wiki_query_param_xss_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
 #
 # SnipSnap Wiki 'query' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802606");
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 6018 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-09 12:12:12 +0530 (Thu, 09 Feb 2012)");
   script_name("SnipSnap Wiki 'query' Parameter Cross Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109543/snipsnap-xss.txt");
   script_xref(name : "URL" , value : "http://st2tea.blogspot.in/2012/02/snipsnap-cross-site-scripting.html");
 
-  script_summary("Check if SnipSnap is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

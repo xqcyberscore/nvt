@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpdx_wildcards_remote_dos_vuln.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_httpdx_wildcards_remote_dos_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # httpdx Wildcards Remote Denial of Service Vulnerability
 #
@@ -49,17 +49,16 @@ CPE = "cpe:/a:jasper:httpdx";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3062 $");
+  script_version("$Revision: 5931 $");
   script_bugtraq_id(54629);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-27 12:12:12 +0530 (Fri, 27 Jul 2012)");
   script_name("httpdx Wildcards Remote Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54629");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/19988");
 
-  script_summary("Determine if httpdx is prone to a denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

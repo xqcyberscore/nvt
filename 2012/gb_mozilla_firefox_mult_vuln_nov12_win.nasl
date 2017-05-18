@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is installed with Mozilla Firefox and is prone to multi
 if(description)
 {
   script_id(803059);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2012-4203", "CVE-2012-5837");
   script_bugtraq_id(56623, 56645);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:47:00 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358/");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-95.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-102.html");
 
-  script_summary("Check for the version of Mozilla Firefox on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

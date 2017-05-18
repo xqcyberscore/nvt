@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_sawmill_61075.nasl 2561 2016-02-02 17:02:56Z cfi $
+# $Id: sw_sawmill_61075.nasl 5759 2017-03-29 09:01:08Z teissa $
 #
 # Sawmill < 8.6.3 Unspecified Remote Security Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:sawmill:sawmill";
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111083");
- script_version("$Revision: 2561 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-02 18:02:56 +0100 (Tue, 02 Feb 2016) $");
+ script_version("$Revision: 5759 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-02-02 17:00:00 +0100 (Tue, 02 Feb 2016)");
  script_bugtraq_id(61075);
  script_cve_id("CVE-2013-4947");
@@ -42,7 +42,6 @@ if(description)
  script_xref(name:"URL", value:"http://www.sawmill.net");
  script_xref(name:"URL", value:"http://www.sawmill.net/version_history8.html");
 
- script_summary("Determine if Sawmill version is < 8.6.3");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");

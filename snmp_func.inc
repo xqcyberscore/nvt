@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_func.inc 5516 2017-03-08 13:28:03Z mime $
+# $Id: snmp_func.inc 5939 2017-04-11 16:02:44Z mime $
 #
 # Functions for SNMP
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5516 $
+# $Revision: 5939 $
 #
 ###############################################################################
 
@@ -157,12 +157,12 @@ function snmp_get( port, oid, version, community ) {
                          authpass: v3_password, authproto: v3_authalgo, privpass: v3_privpass,
                          privproto: v3_privalgo );
 
-        if (ret[0] != 0 || "No Such Instance" >< ret[1]) {
+        if (ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
           last_snmp_error = ret[1];
           return;
         }
 
-        if (ret[0] == 0 && "No Such Instance" >!< ret[1])
+        if (ret[0] == 0 && ! snmp_is_error_message( ret[1] ))
           return snmp_clean_ret( ret[1] );
       }
     }
@@ -174,12 +174,13 @@ function snmp_get( port, oid, version, community ) {
         community = get_community( version:2 );
       if (community && community != "") {
         ret = snmpv2c_get(port: port, oid: oid, protocol: "udp", community: community);
-        if (ret[0] != 0 || "No Such Instance" >< ret[1]) {
+
+        if (ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
           last_snmp_error = ret[1];
           return;
         }
 
-        if (ret[0] == 0 && "No Such Instance" >!< ret[1])
+        if (ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
           return snmp_clean_ret( ret[1] );
       }
     }
@@ -191,11 +192,11 @@ function snmp_get( port, oid, version, community ) {
         community = get_community( version:1 );
       if (community && community != "") {
         ret = snmpv1_get(port: port, oid: oid, protocol: "udp", community: community);
-        if (ret[0] != 0) {
+        if (ret[0] != 0 || snmp_is_error_message( ret[1] ) ) {
           last_snmp_error = ret[1];
           return;
         }
-        if (ret[0] == 0)
+        if (ret[0] == 0 && ! snmp_is_error_message( ret[1] ) )
           return snmp_clean_ret( ret[1] );
       }
     }
@@ -231,5 +232,28 @@ function get_community( version )
 
   return clist[ 0 ];
 
+}
+
+function snmp_is_error_message()
+{
+  local_var message, errors, error;
+
+  message = _FCT_ANON_ARGS[0];
+
+  if( ! message )
+    return;
+
+  errors = make_list(
+                     "No Such Object available on this agent at this OID",
+                     "No Such Instance"
+                     );
+
+  foreach error ( errors )
+  {
+    if( error >< message )
+      return TRUE;
+  }
+
+  return;
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jre_mult_code_exec_vuln_win.nasl 3565 2016-06-21 07:20:17Z benallard $
+# $Id: gb_oracle_java_se_jre_mult_code_exec_vuln_win.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # Oracle Java SE JRE Multiple Remote Code Execution Vulnerabilities - (Windows)
 #
@@ -42,19 +42,18 @@ tag_summary = "This host is installed with Oracle Java SE JRE and is prone to
 if(description)
 {
   script_id(803020);
-  script_version("$Revision: 3565 $");
+  script_version("$Revision: 5963 $");
   script_cve_id("CVE-2012-4681", "CVE-2012-1682", "CVE-2012-3136");
   script_bugtraq_id(53135, 55336, 55337);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:20:17 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-03 11:54:23 +0530 (Mon, 03 Sep 2012)");
   script_name("Oracle Java SE JRE Multiple Remote Code Execution Vulnerabilities - (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50133");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027458");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/alert-cve-2012-4681-1835715.html");
 
-  script_summary("Check for the version of Sun Java SE JRE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

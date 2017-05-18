@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aardvark_topsites_php_cms_xss_vuln.nasl 5263 2017-02-10 13:45:51Z teissa $
+# $Id: gb_aardvark_topsites_php_cms_xss_vuln.nasl 5676 2017-03-22 16:29:37Z cfi $
 #
 # Aardvark Topsites PHP 'index.php' Multiple Cross Site Scripting Vulnerabilities
 #
@@ -47,8 +47,8 @@ tag_summary = "This host is running Aardvark Topsites PHP CMS and is prone to cr
 if(description)
 {
   script_id(801556);
-  script_version("$Revision: 5263 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 14:45:51 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 5676 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-12-09 06:36:39 +0100 (Thu, 09 Dec 2010)");
   script_cve_id("CVE-2010-4097");
   script_bugtraq_id(44390);
@@ -62,8 +62,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -77,16 +79,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-adpPort = get_kb_item("Services/www");
-if(!adpPort){
-  exit(0);
-}
+adpPort = get_http_port( default:80 );
 
 foreach path (make_list("/atsphp", "/"))
 {
   ## Check for the passible paths
-  sndReq = http_get(item:string(path, "/index.php"), port:adpPort);
-  rcvRes = http_keepalive_send_recv(port:adpPort, data:sndReq);
+  rcvRes = http_get_cache(item:string(path, "/index.php"), port:adpPort);
 
   ##  Confirm server installation for each path
   if(">Aardvark Topsites PHP<" >< rcvRes)

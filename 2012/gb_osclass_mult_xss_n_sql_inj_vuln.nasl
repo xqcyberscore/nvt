@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
 #
 # OSClass Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802970");
-  script_version("$Revision: 3047 $");
+  script_version("$Revision: 5940 $");
   script_bugtraq_id(51662);
   script_cve_id("CVE-2012-0973", "CVE-2012-0974", "CVE-2012-5162", "CVE-2012-5163");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-09-27 10:53:49 +0530 (Thu, 27 Sep 2012)");
   script_name("OSClass Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -43,7 +43,6 @@ if (description)
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-01/0157.html");
   script_xref(name : "URL" , value : "http://www.codseq.it/advisories/multiple_vulnerabilities_in_osclass");
 
-  script_summary("Determine if OSClass is prone to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

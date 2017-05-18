@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_setup_config_mult_vuln.nasl 3520 2016-06-15 04:22:26Z ckuerste $
+# $Id: gb_wordpress_setup_config_mult_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
 #
 # WordPress 'setup-config.php' Multiple Vulnerabilities
 #
@@ -50,11 +50,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3520 $");
+  script_version("$Revision: 5912 $");
   script_cve_id("CVE-2011-4898", "CVE-2011-4899", "CVE-2012-0782");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-15 06:22:26 +0200 (Wed, 15 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-01 09:09:09 +0530 (Wed, 01 Feb 2012)");
   script_name("WordPress 'setup-config.php' Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18417");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.trustwave.com/spiderlabs/advisories/TWSL2012-002.txt");
   script_xref(name : "URL" , value : "http://wordpress.org/support/topic/wordpress-331-code-execution-cross-site-scripting");
 
-  script_summary("Check if WordPress is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

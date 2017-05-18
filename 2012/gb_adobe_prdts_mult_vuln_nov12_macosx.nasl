@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_nov12_macosx.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_prdts_mult_vuln_nov12_macosx.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities - November12 (Mac OS X)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(803045);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-5274", "CVE-2012-5275", "CVE-2012-5276", "CVE-2012-5277",
                 "CVE-2012-5278", "CVE-2012-5279", "CVE-2012-5280");
   script_bugtraq_id(56412);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-11-08 18:02:59 +0530 (Thu, 08 Nov 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51213");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-24.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

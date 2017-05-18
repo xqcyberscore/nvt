@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_debug_xss_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_phpldapadmin_debug_xss_vuln.nasl 5793 2017-03-30 13:40:15Z cfi $
 #
 # phpLDAPadmin '_debug' Cross Site Scripting Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is running phpLDAPadmin and is prone to cross site
 if(description)
 {
   script_id(802265);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 5793 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:40:15 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2011-11-03 12:22:48 +0100 (Thu, 03 Nov 2011)");
   script_cve_id("CVE-2011-4074");
   script_bugtraq_id(50331);
@@ -55,13 +55,12 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=748538");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if phpLDAPadmin is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("phpldapadmin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("phpldapadmin/installed");
+  script_mandatory_keys("phpldapadmin/installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -70,20 +69,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Port State
-if(!get_port_state(port)) {
-  exit(0);
-}
-
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -93,7 +84,8 @@ if(! dir = get_dir_from_kb(port:port,app:"phpldapadmin")){
   exit(0);
 }
 
-## Send and Receive the response
+if( dir == "/" ) dir = "";
+
 req = http_get(item:string(dir, "/index.php"),  port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 

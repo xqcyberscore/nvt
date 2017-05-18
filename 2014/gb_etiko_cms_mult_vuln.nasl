@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etiko_cms_mult_vuln.nasl 3517 2016-06-14 12:46:45Z benallard $
+# $Id: gb_etiko_cms_mult_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
 #
 # Etiko CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804882");
-  script_version("$Revision: 3517 $");
+  script_version("$Revision: 5790 $");
   script_cve_id("CVE-2014-8506", "CVE-2014-8505");
   script_bugtraq_id(70797, 70796);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:46:45 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2014-11-13 12:51:58 +0530 (Thu, 13 Nov 2014)");
   script_name("Etiko CMS Multiple Vulnerabilities");
 
@@ -62,11 +62,10 @@ if(description)
   the product by another one.");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128644");
-  script_summary("Check if Etiko CMS is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -81,26 +80,20 @@ include("http_keepalive.inc");
 
 ## Variable Initialization
 http_port = "";
-sndReq = "";
 rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/etiko", "/cms",  cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
-  sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
-  rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
+  rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
   ##Confirm Application
   if(rcvRes && ">Etiko<" >< rcvRes && "etikweb.com" >< rcvRes)
@@ -110,7 +103,7 @@ foreach dir (make_list_unique("/", "/etiko", "/cms",  cgi_dirs(port:http_port)))
 
     ## Check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
-       pattern:"><script>alert\(document.cookie\)</script>",
+       pattern:"><script>alert\(document\.cookie\)</script>",
        extra_check:">Etiko<"))
     {
       report = report_vuln_url( port:http_port, url:url );

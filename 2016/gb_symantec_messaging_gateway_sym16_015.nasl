@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_015.nasl 4126 2016-09-21 13:04:39Z mime $
+# $Id: gb_symantec_messaging_gateway_sym16_015.nasl 6044 2017-04-28 08:14:10Z teissa $
 #
 # Symantec Messaging Gateway Decomposer Engine Security Update (SYM16-015)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105897");
-  script_version("$Revision: 4126 $");
+  script_version("$Revision: 6044 $");
   script_cve_id("CVE-2016-5310","CVE-2016-5309");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-21 15:04:39 +0200 (Wed, 21 Sep 2016) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-09-21 10:37:51 +0200 (Wed, 21 Sep 2016)");
   script_name("Symantec Messaging Gateway Decomposer Engine Security Update (SYM16-015)");
 

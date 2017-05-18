@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809180");
-  script_version("$Revision: 4798 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 10:23:30 +0100 (Mon, 19 Dec 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-08-26 05:50:24 +0200 (Fri, 26 Aug 2016)");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_tag(name:"cvss_base", value:"6.5");
@@ -50,7 +50,6 @@ postgresql-server sub-package.
   script_xref(name: "FEDORA", value: "2016-30b01bdedd");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/ZARCB6CMZFVKRQM667MVBQHKUSLZL6EW");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of postgresql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

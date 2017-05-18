@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mod_currencyconverter_xss_vuln.nasl 3508 2016-06-14 06:49:53Z ckuerste $
+# $Id: gb_joomla_mod_currencyconverter_xss_vuln.nasl 5931 2017-04-11 09:02:04Z teissa $
 #
 # Joomla! Currency Converter Module 'from' Parameter Cross-Site Scripting Vulnerability
 #
@@ -47,18 +47,17 @@ is prone to cross-site scripting vulnerability.";
 if(description)
 {
   script_id(802588);
-  script_version("$Revision: 3508 $");
+  script_version("$Revision: 5931 $");
   script_cve_id("CVE-2012-1018");
   script_bugtraq_id(51804);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 08:49:53 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-02-09 12:55:09 +0530 (Thu, 09 Feb 2012)");
   script_name("Joomla! Currency Converter Module 'from' Parameter Cross-Site Scripting Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72917");
   script_xref(name : "URL" , value : "http://dl.packetstormsecurity.net/1202-exploits/joomlacurrencyconverter-xss.txt");
 
-  script_summary("Check if Joomla Currency Converter Module vulnerable for XSS attack");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fsecure_policy_manager_xss_n_path_disc_vuln.nasl 3507 2016-06-14 04:32:30Z ckuerste $
+# $Id: gb_fsecure_policy_manager_xss_n_path_disc_vuln.nasl 5829 2017-04-03 07:00:29Z cfi $
 #
 # F-Secure Policy Manager 'WebReporting' Module XSS And Path Disclosure Vulnerabilities
 #
@@ -55,8 +55,8 @@ tag_summary = "This host is running F-Secure Policy Manager and is prone to cros
 if(description)
 {
   script_id(801852);
-  script_version("$Revision: 3507 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 06:32:30 +0200 (Tue, 14 Jun 2016) $");
+  script_version("$Revision: 5829 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-1102", "CVE-2011-1103");
   script_bugtraq_id(46547);
@@ -69,12 +69,12 @@ if(description)
   script_xref(name : "URL" , value : "http://www.f-secure.com/en_EMEA/support/security-advisory/fsc-2011-2.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if F-Secure Policy Manager is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -83,23 +83,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:8081);
-if(!port){
-  port = 8081;
-}
 
-if(!get_port_state(port)){
-  exit(0);
-}
-
-## Send and Receive the response
-req = http_get(item:string(dir,"/"),  port:port);
-res = http_keepalive_send_recv(port:port, data:req);
+res = http_get_cache(item:string(dir,"/"),  port:port);
 
 ## Confirm the application
 if(">F-Secure Policy Manager Web Reporting<" >< res)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SquidClamAv_55293.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_SquidClamAv_55293.nasl 5963 2017-04-18 09:02:14Z teissa $
 #
 # SquidClamav Multiple Cross Site Scripting Vulnerabilities
 #
@@ -47,16 +47,15 @@ if (description)
  script_cve_id("CVE-2012-4667");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 5963 $");
 
  script_name("SquidClamav Multiple Cross Site Scripting Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55293");
  script_xref(name : "URL" , value : "http://squidclamav.darold.net/news.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
  script_tag(name:"creation_date", value:"2012-09-17 11:57:49 +0200 (Mon, 17 Sep 2012)");
- script_summary("Determine if SquidClamav is prone to cross-site scripting");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

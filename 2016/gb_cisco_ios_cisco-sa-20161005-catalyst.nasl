@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20161005-catalyst.nasl 4221 2016-10-06 06:32:23Z ckuerste $
+# $Id: gb_cisco_ios_cisco-sa-20161005-catalyst.nasl 5675 2017-03-22 10:00:52Z teissa $
 #
 # Cisco IOS Software for Cisco Catalyst 6500 Series Switches and 7600 Series Routers ACL Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-6422");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 4221 $");
+ script_version ("$Revision: 5675 $");
 
  script_name("Cisco IOS Software for Cisco Catalyst 6500 Series Switches and 7600 Series Routers ACL Bypass Vulnerability");
 
@@ -60,9 +60,8 @@ in the PACL for a targeted system.");
 
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-06 08:32:23 +0200 (Thu, 06 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-22 11:00:52 +0100 (Wed, 22 Mar 2017) $");
  script_tag(name:"creation_date", value:"2016-10-06 10:27:02 +0700 (Thu, 06 Oct 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

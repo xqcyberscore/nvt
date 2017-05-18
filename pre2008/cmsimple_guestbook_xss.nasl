@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cmsimple_guestbook_xss.nasl 4149 2016-09-27 08:27:35Z cfi $
+# $Id: cmsimple_guestbook_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
 #
 # CMSimple index.php guestbook XSS
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19693");
-  script_version("$Revision: 4149 $");
+  script_version("$Revision: 6063 $");
   script_bugtraq_id(12303);
   script_xref(name:"OSVDB", value:"13130");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-27 10:27:35 +0200 (Tue, 27 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("CMSimple index.php guestbook XSS");
-  script_summary("Checks for XSS in guestbook module in index.php");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("(C) 2005 Josh Zlatin-Amishav");

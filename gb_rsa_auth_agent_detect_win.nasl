@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_detect_win.nasl 3048 2016-04-12 07:04:51Z antu123 $
+# $Id: gb_rsa_auth_agent_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # RSA Authentication Agent Detection (Windows)
 #
@@ -32,10 +32,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803748");
-  script_version("$Revision: 3048 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 09:04:51 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2013-08-28 10:27:23 +0530 (Wed, 28 Aug 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("RSA Authentication Agent Detection (Windows)");
@@ -71,18 +71,6 @@ key = "";
 rsaVer= "";
 insloc= "";
 rsaName = "";
-
-## Function to Register Product and Build report
-function build_report(app, ver, cpe, loc, con)
-{
-  register_product(cpe:cpe, location:loc);
-
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: loc,
-                                           cpe: cpe,
-                                           concluded: con));
-}
 
 ## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
@@ -147,7 +135,7 @@ foreach key(key_list)
       }
 
       ## Register product and build report
-      build_report(app:"RSA Authentication Agent", ver:rsaVer, cpe:cpe, loc:insloc, con:rsaVer);
+      build_report(app:"RSA Authentication Agent", ver:rsaVer, cpe:cpe, insloc:insloc, concluded:rsaVer);
 
       continue;
     }
@@ -172,7 +160,7 @@ foreach key(key_list)
       }
 
       ## Register product and build report
-      build_report(app:"RSA Authentication Agent", ver:rsaVer, cpe:cpe, loc:insloc, con:rsaVer);
+      build_report(app:"RSA Authentication Agent", ver:rsaVer, cpe:cpe, insloc:insloc, concluded:rsaVer);
     }
   }
 }

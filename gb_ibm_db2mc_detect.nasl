@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2mc_detect.nasl 2729 2016-02-26 07:20:51Z cfi $
+# $Id: gb_ibm_db2mc_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # DB2 Monitoring Console Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800690");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2729 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 08:20:51 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6040 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DB2 Monitoring Console Version Detection");
-  script_summary("Set the version of DB2 Monitoring Console in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

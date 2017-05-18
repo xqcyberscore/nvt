@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_django_detect_lin.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_django_detect_lin.nasl 5904 2017-04-10 06:18:08Z teissa $
 #
 # Django Version Detection (Linux)
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800923);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 5904 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-10 08:18:08 +0200 (Mon, 10 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-08-11 07:36:16 +0200 (Tue, 11 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Django Version Detection (Linux)");
@@ -41,6 +41,7 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Service detection");
+  script_require_ports("Services/ssh", 22);
   script_mandatory_keys("login/SSH/Linux");
   script_dependencies("gather-package-list.nasl");
   script_tag(name : "summary" , value : tag_summary);
@@ -78,9 +79,14 @@ foreach binaryFile (getPath)
     
     ## build cpe and store it as host_detail
     cpe = build_cpe(value:djangoVer[0], exp:"^([0-9.]+)", base:"cpe:/a:django_project:django:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-
+    if (isnull(cpe))
+        cpe = "cpe:/a:django_project:django";
+    register_product(cpe:cpe, location: binaryFile);
+    log_message(data: build_detection_report(app: "Django",
+                                             version: djangoVer[0],
+                                             install: binaryFile,
+                                             cpe: cpe,
+                                             concluded: djangoVer));
   }
 }
 ssh_close_connection();

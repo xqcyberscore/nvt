@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ident_backdoor.nasl 3398 2016-05-30 07:58:00Z antu123 $
+# $Id: ident_backdoor.nasl 6063 2017-05-03 09:03:05Z teissa $
 # Description: IRC bot ident server detection
 #
 # Authors:
@@ -45,8 +45,8 @@ tag_solution = "re-install the remote system";
 if(description)
 {
 	script_id(14841);
-	script_version("$Revision: 3398 $");
-	script_tag(name:"last_modification", value:"$Date: 2016-05-30 09:58:00 +0200 (Mon, 30 May 2016) $");
+	script_version("$Revision: 6063 $");
+	script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
 	script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,7 +55,6 @@ if(description)
 	summary = "Determines the presence of a malicious ident server";
 	family = "Malware";
 	script_name(name);
-	script_summary(summary);
 	script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
 	script_copyright("This script is Copyright (C) 2004 Brian Smith-Sweeney");

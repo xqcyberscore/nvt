@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_libpurple_cipher_api_info_disc_vuln_win.nasl 3566 2016-06-21 07:31:36Z benallard $
+# $Id: gb_pidgin_libpurple_cipher_api_info_disc_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
 #
 # Pidgin 'Libpurple' Cipher API Information Disclosure Vulnerability (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with Pidgin and is prone to information
 if(description)
 {
   script_id(802935);
-  script_version("$Revision: 3566 $");
+  script_version("$Revision: 5977 $");
   script_cve_id("CVE-2011-4922");
   script_bugtraq_id(46307);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:31:36 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-08-17 17:21:39 +0530 (Fri, 17 Aug 2012)");
   script_name("Pidgin 'Libpurple' Cipher API Information Disclosure Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/43271/");
   script_xref(name : "URL" , value : "http://www.pidgin.im/news/security/?id=50");
   script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2012/01/04/13");
 
-  script_summary("Check for the Version of Pidgin on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");

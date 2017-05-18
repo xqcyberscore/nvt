@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_meinberg_lantime_mult_vuln.nasl 5534 2017-03-10 10:00:33Z teissa $
+# $Id: gb_meinberg_lantime_mult_vuln.nasl 5889 2017-04-07 09:14:58Z cfi $
 #
 # Meinberg LANTIME Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106110");
-  script_version("$Revision: 5534 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-10 11:00:33 +0100 (Fri, 10 Mar 2017) $");
+  script_version("$Revision: 5889 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name: "creation_date", value: "2016-06-24 16:45:17 +0700 (Fri, 24 Jun 2016)");
   script_tag(name: "cvss_base", value: "8.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:N");
@@ -80,28 +80,22 @@ IMS-LANTIME M500, LANTIME M900, LANTIME M600, LANTIME M400, LANTIME M300, LANTIM
 include("host_details.inc");
 include("version_func.inc");
 
-cpes = make_list("cpe:/a:meinberg:lantime_m3000",
-                 "cpe:/a:meinberg:lantime_m1000",
-                 "cpe:/a:meinberg:lantime_m500",
-                 "cpe:/a:meinberg:lantime_m900",
-                 "cpe:/a:meinberg:lantime_m600",
-                 "cpe:/a:meinberg:lantime_m400",
-                 "cpe:/a:meinberg:lantime_m300",
-                 "cpe:/a:meinberg:lantime_m200",
-                 "cpe:/a:meinberg:lantime_m100");
+cpe_list = make_list( "cpe:/a:meinberg:lantime_m3000",
+                      "cpe:/a:meinberg:lantime_m1000",
+                      "cpe:/a:meinberg:lantime_m500",
+                      "cpe:/a:meinberg:lantime_m900",
+                      "cpe:/a:meinberg:lantime_m600",
+                      "cpe:/a:meinberg:lantime_m400",
+                      "cpe:/a:meinberg:lantime_m300",
+                      "cpe:/a:meinberg:lantime_m200",
+                      "cpe:/a:meinberg:lantime_m100" );
 
-foreach cpe (cpes) {
-  if (!port = get_app_port(cpe: cpe))
-    continue;
+if( ! version = get_app_version( cpe:cpe_list ) ) exit( 0 );
 
-  if (!version = get_app_version(cpe: cpe, port: port))
-    continue;
-
-  if (version_is_less(version: version ,test_version: "6.20.004")) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "6.20.004");
-    security_message(port: port, data: report);
-    exit(0);
-  }
+if( version_is_less( version:version, test_version:"6.20.004" ) ) {
+  report = report_fixed_ver( installed_version:version, fixed_version:"6.20.004" );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-exit(0);
+exit( 99 );

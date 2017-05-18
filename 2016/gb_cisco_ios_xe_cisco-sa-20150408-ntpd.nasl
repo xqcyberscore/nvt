@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20150408-ntpd.nasl 3259 2016-05-10 13:30:24Z mime $
+# $Id: gb_cisco_ios_xe_cisco-sa-20150408-ntpd.nasl 5836 2017-04-03 09:37:08Z teissa $
 #
 # Multiple Vulnerabilities in ntpd (April 2015) Affecting Cisco Products
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-1799","CVE-2015-1798");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
- script_version ("$Revision: 3259 $");
+ script_version ("$Revision: 5836 $");
 
  script_name("Multiple Vulnerabilities in ntpd (April 2015) Affecting Cisco Products");
 
@@ -60,9 +60,8 @@ http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-10 15:30:24 +0200 (Tue, 10 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
  script_tag(name:"creation_date", value:"2016-05-10 10:51:31 +0200 (Tue, 10 May 2016)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

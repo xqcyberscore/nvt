@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_win.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_win.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - Windows
 #
@@ -29,12 +29,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802558";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 5888 $");
   script_cve_id("CVE-2011-4370", "CVE-2011-4371", "CVE-2011-4372", "CVE-2011-4373");
   script_bugtraq_id(51348, 51351, 51349, 51350);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-16 11:41:01 +0530 (Mon, 16 Jan 2012)");
   script_name("Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - Windows");
 
@@ -81,7 +81,6 @@ For updates refer to http://www.adobe.com/";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/45852/");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1026496");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-01.html");
-  script_summary("Check for the version of Adobe Reader/Acrobat");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

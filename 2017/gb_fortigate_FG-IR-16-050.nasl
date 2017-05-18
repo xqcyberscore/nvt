@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-16-050.nasl 5253 2017-02-09 16:35:48Z mime $
+# $Id: gb_fortigate_FG-IR-16-050.nasl 5910 2017-04-10 08:31:29Z teissa $
 #
 # FortiOS: Local Admin Password Hash Leak Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140156");
  script_cve_id("CVE-2016-7542");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 5253 $");
+ script_tag(name:"cvss_base", value:"4.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+ script_version ("$Revision: 5910 $");
 
  script_name("FortiOS: Local Admin Password Hash Leak Vulnerability");
 
@@ -52,7 +52,7 @@ Upgrade to 5.2.10 GA");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-09 17:35:48 +0100 (Thu, 09 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:31:29 +0200 (Mon, 10 Apr 2017) $");
  script_tag(name:"creation_date", value:"2017-02-09 13:57:20 +0100 (Thu, 09 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");

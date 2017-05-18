@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_ghost_solutions_suite_detect_win.nasl 3774 2016-07-29 14:35:03Z veerendragg $
+# $Id: gb_symantec_ghost_solutions_suite_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
 #
 # Symantec Ghost Solutions Suite (GSS) Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808539");
-  script_version("$Revision: 3774 $");
+  script_version("$Revision: 6040 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-29 16:35:03 +0200 (Fri, 29 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-07-07 18:14:15 +0530 (Thu, 07 Jul 2016)");
   script_name("Symantec Ghost Solutions Suite (GSS) Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   path in the registry and reads the version information from 'ngtray.exe' file.");
 
   script_tag(name:"qod_type", value:"executable_version");
-  script_summary("Detection of installed version of Symantec Ghost Solutions Suite");
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

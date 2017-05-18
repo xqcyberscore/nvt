@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pecio_cms_xss_vuln.nasl 5323 2017-02-17 08:49:23Z teissa $
+# $Id: gb_pecio_cms_xss_vuln.nasl 5794 2017-03-30 13:52:29Z cfi $
 #
 # pecio cms 'target' Parameter Cross Site Scripting Vulnerability
 #
@@ -49,8 +49,8 @@ tag_summary = "The host is running Pecio CMS and is prone to Cross-Site Scriptin
 if(description)
 {
   script_id(801544);
-  script_version("$Revision: 5323 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-17 09:49:23 +0100 (Fri, 17 Feb 2017) $");
+  script_version("$Revision: 5794 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:52:29 +0200 (Thu, 30 Mar 2017) $");
   script_tag(name:"creation_date", value:"2010-11-23 14:41:37 +0100 (Tue, 23 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -65,8 +65,10 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2010 Greenbone Networks");
   script_family("Web application abuses");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
@@ -76,19 +78,16 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
 pcmsPort = get_http_port(default:80);
-if(!pcmsPort){
-  exit(0);
-}
 
-foreach dir (make_list("/pecio-2.0.5","/pecio-cms"))
-{
-  sndReq = http_get(item:string(dir, "/index.php"), port:pcmsPort);
-  rcvRes = http_send_recv(port:pcmsPort, data:sndReq);
+foreach dir( make_list_unique( "/pecio-2.0.5", "/pecio-cms", cgi_dirs( port:pcmsPort ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  rcvRes = http_get_cache(item:string(dir, "/index.php"), port:pcmsPort);
 
   ## Confirm the application
   if(">pecio homepage</" >< rcvRes)

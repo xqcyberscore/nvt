@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_afim_50523.nasl 5424 2017-02-25 16:52:36Z teissa $
+# $Id: gb_afim_50523.nasl 5747 2017-03-28 12:18:28Z cfi $
 #
 # Ajax File and Image Manager 'data.php' PHP Code Injection Vulnerability
 #
@@ -24,12 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103334");
  script_cve_id("CVE-2011-4825");
  script_bugtraq_id(50523);
- script_version ("$Revision: 5424 $");
+ script_version ("$Revision: 5747 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Ajax File and Image Manager 'data.php' PHP Code Injection Vulnerability");
@@ -37,7 +37,7 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50523");
  script_xref(name : "URL" , value : "http://www.phpletter.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-25 17:52:36 +0100 (Sat, 25 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-28 14:18:28 +0200 (Tue, 28 Mar 2017) $");
  script_tag(name:"creation_date", value:"2011-11-07 07:36:01 +0100 (Mon, 07 Nov 2011)");
  script_tag(name:"qod_type", value:"remote_vul");
  script_category(ACT_ATTACK);
@@ -63,18 +63,15 @@ include("host_details.inc");
 include("http_keepalive.inc");
    
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 if(!can_host_php(port:port))exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+host = http_host_name( port:port );
 
 ex = string("bla=1&blub=2&foo=<?php phpinfo(); ?>");
 
-dirs = make_list("/fm","/file","/filemanager",cgi_dirs());
+foreach dir( make_list_unique( "/fm", "/file", "/filemanager", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
+  if( dir == "/" ) dir = "";
 
   filename = string(dir,"/ajaxfilemanager/ajax_create_folder.php");
 

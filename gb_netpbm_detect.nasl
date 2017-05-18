@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netpbm_detect.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_netpbm_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
 #
 # NetPBM Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800470);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6032 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
   script_tag(name:"creation_date", value:"2010-02-17 08:26:50 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Netpbm Version Detection");
-  script_summary("Check for NetPBM version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 Greenbone Networks");

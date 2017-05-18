@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: php_nuke_bb_smilies_passwd.nasl 2660 2016-02-15 11:08:54Z cfi $
+# $Id: php_nuke_bb_smilies_passwd.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: PHP-Nuke security vulnerability (bb_smilies.php)
 #
 # Authors:
@@ -29,14 +29,13 @@ CPE = "cpe:/a:phpnuke:php-nuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10630");
-  script_version("$Revision: 2660 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-15 12:08:54 +0100 (Mon, 15 Feb 2016) $");
+  script_version("$Revision: 6056 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2001-0320");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("PHP-Nuke security vulnerability (bb_smilies.php)");
-  script_summary("Determine if a remote host is vulnerable to the bb_smilies.php vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");

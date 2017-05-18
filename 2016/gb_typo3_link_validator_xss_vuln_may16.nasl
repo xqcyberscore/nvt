@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_link_validator_xss_vuln_may16.nasl 3674 2016-07-07 17:35:10Z cfi $
+# $Id: gb_typo3_link_validator_xss_vuln_may16.nasl 5867 2017-04-05 09:01:13Z teissa $
 #
 # TYPO3 Link Validator Component XSS Vulnerability May16 (SA-2016-002)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807827");
-  script_version("$Revision: 3674 $");
+  script_version("$Revision: 5867 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-07 19:35:10 +0200 (Thu, 07 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 17:40:01 +0530 (Fri, 20 May 2016)");
   script_name("TYPO3 Link Validator Component XSS Vulnerability May16 (SA-2016-002)");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2016-002");
 
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

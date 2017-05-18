@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: oracle_one_hour_install.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: oracle_one_hour_install.nasl 6046 2017-04-28 09:02:54Z teissa $
 # Description: Oracle Applications One-Hour Install Detect
 #
 # Authors:
@@ -35,8 +35,8 @@ port on your Firewall.";
 if(description)
 {
  script_id(10737);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version("$Revision: 6046 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
  script_name(name);
 
  summary = "Oracle Applications One-Hour Install Detect";
- script_summary(summary);
 
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

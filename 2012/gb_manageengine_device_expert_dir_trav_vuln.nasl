@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_device_expert_dir_trav_vuln.nasl 5641 2017-03-21 08:24:30Z cfi $
+# $Id: gb_manageengine_device_expert_dir_trav_vuln.nasl 5988 2017-04-20 09:02:29Z teissa $
 #
 # Zoho ManageEngine Device Expert Directory Traversal Vulnerability
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802720");
-  script_version("$Revision: 5641 $");
+  script_version("$Revision: 5988 $");
   script_bugtraq_id(52559);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 09:24:30 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:02:29 +0200 (Thu, 20 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 15:57:28 +0530 (Tue, 20 Mar 2012)");
   script_name("Zoho ManageEngine Device Expert Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48456/");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522004");
   script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/110985/manageenginede56-traversal.txt");
 
-  script_summary("Check if ManageEngine DeviceExpert is prone to directory traversal vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");

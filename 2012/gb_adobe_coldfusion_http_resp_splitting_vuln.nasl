@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 3563 2016-06-20 14:55:04Z benallard $
+# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
 #
 # Adobe ColdFusion HTTP Response Splitting Vulnerability
 #
@@ -43,19 +43,18 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3563 $");
+  script_version("$Revision: 6022 $");
   script_bugtraq_id(53941);
   script_cve_id("CVE-2012-2041");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:55:04 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-07-23 14:14:14 +0530 (Mon, 23 Jul 2012)");
   script_name("Adobe ColdFusion HTTP Response Splitting Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49517");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53941");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-15.html");
 
-  script_summary("Determine if ColdFusion is vulnerable to HTTP Response Splitting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

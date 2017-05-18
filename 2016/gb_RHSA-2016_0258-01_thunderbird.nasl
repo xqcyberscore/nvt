@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871562");
-  script_version("$Revision: 2731 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 08:59:20 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 5759 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 06:17:58 +0100 (Fri, 19 Feb 2016)");
   script_cve_id("CVE-2016-1930", "CVE-2016-1935");
   script_tag(name:"cvss_base", value:"10.0");
@@ -67,7 +67,6 @@ Desktop (v. 6),
   script_xref(name: "RHSA", value: "2016:0258-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2016-February/msg00036.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

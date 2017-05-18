@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882464");
-  script_version("$Revision: 3692 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-13 08:47:53 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 5836 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-03 11:37:08 +0200 (Mon, 03 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-14 05:19:49 +0200 (Thu, 14 Apr 2016)");
   script_cve_id("CVE-2015-5370", "CVE-2016-2110", "CVE-2016-2111", "CVE-2016-2112", 
                 "CVE-2016-2113", "CVE-2016-2114", "CVE-2016-2115", "CVE-2016-2118");
@@ -94,7 +94,6 @@ protection for LDAP connections. A man-in-the-middle attacker could u ...
 
   script_xref(name: "CESA", value: "2016:0612");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2016-April/021818.html");
-  script_summary("Check for the Version of libtevent");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

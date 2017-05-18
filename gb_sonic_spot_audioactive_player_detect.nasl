@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonic_spot_audioactive_player_detect.nasl 5372 2017-02-20 16:26:11Z cfi $
+# $Id: gb_sonic_spot_audioactive_player_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
 #
 # Sonic Spot Audioactive Player Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(800571);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5372 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:26:11 +0100 (Mon, 20 Feb 2017) $");
+ script_version("$Revision: 5943 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
   script_tag(name:"creation_date", value:"2009-06-09 08:37:33 +0200 (Tue, 09 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sonic Spot Audioactive Player Version Detection");
@@ -57,17 +57,6 @@ include("host_details.inc");
 SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800571";
 SCRIPT_DESC = "Sonic Spot Audioactive Player Version Detection";
 
-
-## functions for script
-function register_cpe(tmpVers, tmpExpr, tmpBase){
-
-   local_var cpe;
-   ## build cpe and store it as host_detail
-   cpe = build_cpe(value:tmpVers, exp:tmpExpr, base:tmpBase);
-   if(!isnull(cpe))
-      register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-}
-
 ## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
@@ -81,12 +70,10 @@ foreach item (registry_enum_keys(key:key))
   if(audioactiveVer != NULL)
   {
     set_kb_item(name:"SonicSpot/Audoiactive/Player/Ver", value:audioactiveVer[0]);
-    log_message(data:"Sonic Spot Audioactive Player version " + audioactiveVer[0] +
-                    " was detected on the host");
      
     ## build cpe and store it as host_detail
-    register_cpe(tmpVers:audioactiveVer[0], tmpExpr:"^([0-9.]+([a-z0-9]+)?)", tmpBase:"cpe:/a:sonicspot:audioactive_player:");
-    register_cpe(tmpVers:audioactiveVer[0], tmpExpr:"^([0-9.]+)", tmpBase:"cpe:/a:sonicspot:audioactive_player:");
+    register_and_report_cpe(app:"Sonic Spot Audioactive Player", ver:audioactiveVer[0],
+                            base:"cpe:/a:sonicspot:audioactive_player:", expr:"^([0-9.]+([a-z0-9]+)?)");
     exit(0);
   }
 }

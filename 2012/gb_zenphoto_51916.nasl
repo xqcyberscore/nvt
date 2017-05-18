@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenphoto_51916.nasl 3062 2016-04-14 11:03:39Z benallard $
+# $Id: gb_zenphoto_51916.nasl 5715 2017-03-24 11:34:41Z cfi $
 #
 # Zenphoto Multiple Security Vulnerabilities
 #
@@ -48,21 +48,18 @@ references for more information.";
 if (description)
 {
  script_id(103412);
- script_version ("$Revision: 3062 $");
+ script_version("$Revision: 5715 $");
  script_bugtraq_id(51916);
  script_cve_id("CVE-2011-4448","CVE-2012-0993","CVE-2012-0995");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Zenphoto Multiple Security Vulnerabilities");
-
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51916");
  script_xref(name : "URL" , value : "http://www.zenphoto.org/news/zenphoto-1.4.2.1");
  script_xref(name : "URL" , value : "http://www.zenphoto.org/");
  script_xref(name : "URL" , value : "https://www.htbridge.ch/advisory/HTB23070");
-
- script_tag(name:"last_modification", value:"$Date: 2016-04-14 13:03:39 +0200 (Thu, 14 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-03-24 12:34:41 +0100 (Fri, 24 Mar 2017) $");
  script_tag(name:"creation_date", value:"2012-02-09 12:57:10 +0100 (Thu, 09 Feb 2012)");
- script_summary("Determine if installed Zenphoto is vulnerable");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");
@@ -76,27 +73,21 @@ if (description)
 }
 
 include("http_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
-dirs = make_list("/zenphoto",cgi_dirs());
+foreach dir( make_list_unique( "/zenphoto", cgi_dirs( port:port ) ) ) {
 
-foreach dir (dirs) {
-   
-  url = string(dir, "/zp-core/admin.php?a=&quot;&gt;&lt;script&gt;alert(/openvas-xss-test/)&lt;/script&gt;"); 
+  if( dir == "/" ) dir = "";
+  url = dir + "/zp-core/admin.php?a=&quot;&gt;&lt;script&gt;alert(/openvas-xss-test/)&lt;/script&gt;";
 
-  if(http_vuln_check(port:port, url:url,pattern:"<script>alert\(/openvas-xss-test/\)</script>",check_header:TRUE, extra_check:"zen-logo.png")) {
-     
-    security_message(port:port);
-    exit(0);
-
+  if( http_vuln_check( port:port, url:url, pattern:"<script>alert\(/openvas-xss-test/\)</script>", check_header:TRUE, extra_check:"zen-logo.png" ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(0);
-
+exit( 99 );

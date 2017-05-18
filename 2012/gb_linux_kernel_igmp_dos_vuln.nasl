@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
 #
 # Linux Kernel IGMP Remote Denial Of Service Vulnerability
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is running Linux and prone to remote denial of service
 if(description)
 {
   script_id(802295);
-  script_version("$Revision: 5309 $");
+  script_version("$Revision: 5888 $");
   script_bugtraq_id(51343);
   script_cve_id("CVE-2012-0207");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
   script_tag(name:"creation_date", value:"2012-01-19 14:14:14 +0530 (Thu, 19 Jan 2012)");
   script_name("Linux Kernel IGMP Remote Denial Of Service Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/47472");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=a8c1f65c79cbbb2f7da782d4c9d15639a9b94b27");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Linux kernel is vulnerable to denial of service");
   script_category(ACT_KILL_HOST);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");

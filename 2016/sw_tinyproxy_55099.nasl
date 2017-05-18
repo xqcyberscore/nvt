@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tinyproxy_55099.nasl 2551 2016-02-01 12:12:49Z cfi $
+# $Id: sw_tinyproxy_55099.nasl 5732 2017-03-27 09:00:59Z teissa $
 #
 # Tinyproxy < 1.8.4 Header Multiple Denial of Service Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:banu:tinyproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111081");
-  script_version("$Revision: 2551 $");
+  script_version("$Revision: 5732 $");
   script_cve_id("CVE-2012-3505");
   script_bugtraq_id(55099);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-01 13:12:49 +0100 (Mon, 01 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-03-27 11:00:59 +0200 (Mon, 27 Mar 2017) $");
   script_tag(name:"creation_date", value:"2016-02-01 11:00:00 +0100 (Mon, 01 Feb 2016)");
   script_name("Tinyproxy < 1.8.4 Header Multiple Denial of Service Vulnerabilities");
 
@@ -53,7 +53,6 @@ if(description)
   script_xref(name:"URL", value:"https://tinyproxy.github.io/");
   
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_summary("Check for the vulnerable version of Tinyproxy");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("sw_tinyproxy_detect.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: aspjar_sql_injection.nasl 3602 2016-06-26 20:28:12Z cfi $
+# $Id: aspjar_sql_injection.nasl 6053 2017-05-01 09:02:51Z teissa $
 #
 # ASPjar Guestbook SQL Injection
 #
@@ -31,15 +31,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16389");
-  script_version("$Revision: 3602 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-26 22:28:12 +0200 (Sun, 26 Jun 2016) $");
+  script_version("$Revision: 6053 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0423");
   script_bugtraq_id(12521, 12823);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("ASPjar Guestbook SQL Injection");
-  script_summary("Checks for the presence of an SQL injection in login.asp");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Noam Rathaus");
   script_family("Web application abuses");

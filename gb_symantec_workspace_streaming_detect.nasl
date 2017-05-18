@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_workspace_streaming_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_symantec_workspace_streaming_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
 #
 # Symantec Workspace Streaming (SWS) Agent Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805541");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 5871 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
   script_tag(name:"creation_date", value:"2015-04-28 18:51:34 +0530 (Tue, 28 Apr 2015)");
   script_name("Symantec Workspace Streaming (SWS) Agent Version Detection (Windows)");
 
@@ -49,17 +49,6 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
-}
-
-# Function to Register Product and Build report
-function build_report(app, ver, cpe, insloc)
-{
-  register_product(cpe:cpe, location:insloc);
-  log_message(data: build_detection_report(app: app,
-                                           version: ver,
-                                           install: insloc,
-                                           cpe: cpe,
-                                           concluded: ver));
 }
 
 ## variable Initialization

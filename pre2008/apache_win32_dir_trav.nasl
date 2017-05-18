@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_win32_dir_trav.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: apache_win32_dir_trav.nasl 6056 2017-05-02 09:02:50Z teissa $
 # Description: Apache 2.0.39 Win32 directory traversal
 #
 # Authors:
@@ -32,8 +32,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11092");
- script_version("$Revision: 3694 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+ script_version("$Revision: 6056 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,7 +56,6 @@ if(description)
  script_require_keys("www/apache");
 
  script_tag(name: "summary", value: "Apache 2.0.39 Win32 directory traversal");
- script_summary("Send a special crafted HTTP GET request and check the response");
 
  script_tag(name: "vuldetect", value: "Sends a crafted GET request and checks the response.");
 

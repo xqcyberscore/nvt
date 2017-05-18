@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_philips_insight_default_web_credentials.nasl 4455 2016-11-09 11:42:46Z cfi $
+# $Id: sw_philips_insight_default_web_credentials.nasl 5975 2017-04-19 07:43:02Z teissa $
 #
 # Philips In.Sight Default Webinterface Credentials
 #
@@ -28,14 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111097");
-  script_version("$Revision: 4455 $");
+  script_version("$Revision: 5975 $");
   script_cve_id("CVE-2015-2882");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Philips In.Sight Default Webinterface Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 12:42:46 +0100 (Wed, 09 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
   script_tag(name:"creation_date", value:"2016-04-24 12:00:00 +0200 (Sun, 24 Apr 2016)");
-  script_summary("Determine if it is possible to login with default credentials");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
