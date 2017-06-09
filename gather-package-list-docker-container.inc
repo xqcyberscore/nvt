@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: gather-package-list-docker-container.inc 6011 2017-04-21 20:31:32Z cfi $
+# $Id: gather-package-list-docker-container.inc 6077 2017-05-07 13:11:36Z cfi $
 #
 # Functions for OS Detection in Docker Containers
 #
@@ -25,7 +25,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 6011 $
+# $Revision: 6077 $
 #
 ###############################################################################
 
@@ -140,6 +140,7 @@ OS_CPE = make_array(
     "FC1",  "cpe:/o:fedoraproject:fedora_core:1",
 
     # Debian
+    "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
     "DEB8.7", "cpe:/o:debian:debian_linux:8.7",
     "DEB8.6", "cpe:/o:debian:debian_linux:8.6",
     "DEB8.5", "cpe:/o:debian:debian_linux:8.5",
@@ -471,7 +472,7 @@ function get_container_os( container_id, soc )
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/rpms", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:rls, oskey:"FC21");
     return ret;
-  } 
+  }
 
   if("Fedora release 22" >< rls && "(Twenty Two)" >< rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
@@ -1100,13 +1101,18 @@ function get_container_os( container_id, soc )
     return ret;
   }
 
- if("8.7"><rls) {
+  if("8.8"><rls) {
+    buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
+    if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
+    ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.8 (Jessie)", oskey:"DEB8.8");
+    return ret;
+  }
+  if("8.7"><rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );
     ret = register_detected_docker_os(container_id:container_id, os:"Debian 8.7 (Jessie)", oskey:"DEB8.7");
     return ret;
-  } 
-
+  }
   if("8.6"><rls) {
     buf = ssh_cmd(socket:soc, cmd:base_cmd + "bash -c 'COLUMNS=400 dpkg -l'", nosh:TRUE);
     if( buf ) set_kb_item( name:"docker/lsc/container/" + container_id + "/packages", value: ";" + buf );

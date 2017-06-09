@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln01_apr13_macosx.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_seamonkey_mult_vuln01_apr13_macosx.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Mozilla SeaMonkey Multiple Vulnerabilities -01 Apr13 (Mac OS X)
 #
@@ -51,7 +51,7 @@ tag_summary = "This host is installed with Mozilla SeaMonkey and is prone to mul
 if(description)
 {
   script_id(803472);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-0788", "CVE-2013-0789", "CVE-2013-0791", "CVE-2013-0792",
                 "CVE-2013-0793", "CVE-2013-0794", "CVE-2013-0795", "CVE-2013-0797",
                                                   "CVE-2013-0800");
@@ -59,13 +59,12 @@ if(description)
                                   58836, 58827, 58825);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-08 15:42:50 +0530 (Mon, 08 Apr 2013)");
   script_name("Mozilla SeaMonkey Multiple Vulnerabilities -01 Apr13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52770");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52293");
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=825721");
-  script_summary("Check for the vulnerable version of Mozilla SeaMonkey on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

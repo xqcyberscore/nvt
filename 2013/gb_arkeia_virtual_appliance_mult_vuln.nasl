@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_virtual_appliance_mult_vuln.nasl 3826 2016-08-11 11:11:15Z teissa $
+# $Id: gb_arkeia_virtual_appliance_mult_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Arkeia Appliance Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:knox_software:arkeia_appliance";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3826 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-11 13:11:15 +0200 (Thu, 11 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-18 15:16:06 +0530 (Wed, 18 Sep 2013)");
   script_name("Arkeia Appliance Multiple Vulnerabilities");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.arkeia.com/download ";
   script_tag(name : "impact" , value : tag_impact);
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/28330");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123275");
-  script_summary("Check if Arkeia Appliance is vulnerable to LFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

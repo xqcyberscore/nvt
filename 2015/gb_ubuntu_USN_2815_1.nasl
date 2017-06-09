@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842538");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:27:51 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2012-3425", "CVE-2015-7981", "CVE-2015-8126");
   script_tag(name:"cvss_base", value:"7.5");
@@ -61,7 +61,6 @@ invoking the program. (CVE-2015-8126)");
   script_xref(name: "USN", value: "2815-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-November/003197.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libpng");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

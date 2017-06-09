@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1980.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1980.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122727");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:05:17 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1980");
 script_tag(name: "insight", value: "ELSA-2015-1980 -  nss and nspr security update - nspr[4.10.8-2]- Resolves: Bug 1269359 - CVE-2015-7183- nspr: heap-buffer overflow in PL_ARENA_ALLOCATE can lead to crash (under ASAN), potential memory corruption [rhel-5.11.z]nss[3.19.1-2]- Resolves: Bug 1269354 - CVE-2015-7182 CVE-2015-7181"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1980");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

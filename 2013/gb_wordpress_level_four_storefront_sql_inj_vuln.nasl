@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_level_four_storefront_sql_inj_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wordpress_level_four_storefront_sql_inj_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Wordpress Level Four Storefront Plugin SQL Injection Vulnerability
 #
@@ -46,16 +46,15 @@ Plugin and is prone to sql injection vulnerability.";
 if(description)
 {
   script_id(803449);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6115 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-26 15:01:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress Level Four Storefront Plugin SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120950/wplevelfourstorefront-sql.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-level-four-storefront-sql-injection");
 
-  script_summary("Check if WordPress Level Four Storefront Plugin is vulnerable sql injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869865");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-14 05:33:02 +0200 (Fri, 14 Aug 2015)");
   script_cve_id("CVE-2015-0847");
   script_tag(name:"cvss_base", value:"7.8");
@@ -45,7 +45,6 @@ device, allowing you to use remote block devices over a TCP/IP network.
   script_xref(name: "FEDORA", value: "2015-12719");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-August/163727.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nbd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

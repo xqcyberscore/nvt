@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-042.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-042.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Microsoft Office Publisher Remote Code Execution Vulnerability (2830397)
 #
@@ -46,7 +46,7 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(902970);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-1316", "CVE-2013-1317", "CVE-2013-1318", "CVE-2013-1319",
                 "CVE-2013-1320", "CVE-2013-1321", "CVE-2013-1322", "CVE-2013-1323",
                 "CVE-2013-1327", "CVE-2013-1328", "CVE-2013-1329");
@@ -54,7 +54,7 @@ if(description)
                     59771, 59772);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 10:32:57 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Office Publisher Remote Code Execution Vulnerability (2830397)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53370/");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2553147");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-042");
 
-  script_summary("Check for the vulnerable 'Mspub.exe' file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

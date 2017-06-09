@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_sandbox_profiles_sec_bypass_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_macosx_sandbox_profiles_sec_bypass_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Apple Mac OS X Predefined Sandbox Profiles Security Bypass Vulnerability
 #
@@ -48,12 +48,12 @@ tag_summary = "The host is installed with Apple Mac OS X operating system and
 if(description)
 {
   script_id(803223);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2011-1516", "CVE-2008-7303");
   script_bugtraq_id(50644, 50716);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 12:42:10 +0530 (Fri, 01 Feb 2013)");
   script_name("Apple Mac OS X Predefined Sandbox Profiles Security Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48980");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.coresecurity.com/content/apple-osx-sandbox-bypass");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Checks for Vulnerable Mac OS X versions");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gather-package-list.nasl", "ssh_authorization_init.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_dec15_win.nasl 3175 2016-04-27 05:25:38Z antu123 $
+# $Id: gb_adobe_air_mult_vuln_dec15_win.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Adobe Air Multiple Vulnerabilities Dec15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806781");
-  script_version("$Revision: 3175 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-8045", "CVE-2015-8047", "CVE-2015-8048", "CVE-2015-8049",
                 "CVE-2015-8050", "CVE-2015-8418", "CVE-2015-8454", "CVE-2015-8455",
                 "CVE-2015-8055", "CVE-2015-8056", "CVE-2015-8057", "CVE-2015-8058",
@@ -56,7 +56,7 @@ if(description)
   script_bugtraq_id(78717, 78718, 78715, 78714, 78716, 78712, 78710, 78715, 78713);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-27 07:25:38 +0200 (Wed, 27 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-10 13:31:37 +0530 (Thu, 10 Dec 2015)");
   script_name("Adobe Air Multiple Vulnerabilities Dec15 (Windows)");
 
@@ -95,7 +95,6 @@ if(description)
 
   script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb15-32.html");
 
-  script_summary("Check for the vulnerable version of Adobe Air on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

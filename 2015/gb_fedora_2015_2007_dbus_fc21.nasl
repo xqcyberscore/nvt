@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869014");
-  script_version("$Revision: 3472 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 07:37:16 +0200 (Fri, 10 Jun 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-16 05:44:10 +0100 (Mon, 16 Feb 2015)");
   script_cve_id("CVE-2015-0245", "CVE-2014-3635", "CVE-2014-3636", "CVE-2014-3637",
                 "CVE-2014-3638", "CVE-2014-3639", "CVE-2014-7824");
@@ -47,7 +47,6 @@ and as a per-user-login-session messaging facility.
   script_xref(name: "FEDORA", value: "2015-2007");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/150046.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of dbus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-177.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-177.nasl 6086 2017-05-09 09:03:30Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120561");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6086 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:29:37 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-177");
 script_tag(name: "insight", value: "A heap overflow flaw was found in Perl. If a Perl application allowed user input to control the count argument of the string repeat operator, an attacker could cause the application to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2012-5195 )A denial of service flaw was found in the way Perl's rehashing code implementation, responsible for recalculation of hash keys and redistribution of hash content, handled certain input. If an attacker supplied specially-crafted input to be used as hash keys by a Perl application, it could cause excessive memory consumption. (CVE-2013-1667 )It was found that the Perl CGI module, used to handle Common Gateway Interface requests and responses, incorrectly sanitized the values for Set-Cookie and P3P headers. If a Perl application using the CGI module reused cookies values and accepted untrusted input from web browsers, a remote attacker could use this flaw to alter member items of the cookie or add new items. (CVE-2012-5526 )It was found that the Perl Locale::Maketext module, used to localize Perl applications, did not properly handle backslashes or fully-qualified method names. An attacker could possibly use this flaw to execute arbitrary Perl code with the privileges of a Perl application that uses untrusted Locale::Maketext templates. (CVE-2012-6329 )"); 
 script_tag(name : "solution", value : "Run yum update perl to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-177");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

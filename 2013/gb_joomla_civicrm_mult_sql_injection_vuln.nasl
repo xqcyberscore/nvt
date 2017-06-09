@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_civicrm_mult_sql_injection_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_joomla_civicrm_mult_sql_injection_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Joomla Plugin CiviCRM '_value' Parameter SQL Injection Vulnerability
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-5957");
   script_bugtraq_id(64007);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-05 10:52:35 +0530 (Thu, 05 Dec 2013)");
   script_name("Joomla Plugin CiviCRM '_value' Parameter SQL Injection Vulnerability");
 
@@ -73,7 +73,6 @@ Impact Level: Application";
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "impact" , value : tag_impact);
   script_xref(name : "URL" , value : "http://civicrm.org/advisory/civi-sa-2013-009-sql-injection-vulnerability");
-  script_summary("Check if CiviCRM is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

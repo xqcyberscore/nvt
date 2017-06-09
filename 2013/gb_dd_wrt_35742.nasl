@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dd_wrt_35742.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dd_wrt_35742.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # DD-WRT Web Management Interface Remote Arbitrary Shell Command Injection Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(35742);
  script_cve_id("CVE-2009-2765");
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6074 $");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -60,9 +60,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.dd-wrt.com");
  script_xref(name:"URL", value:"http://www.heise.de/ct/artikel/Aufstand-der-Router-1960334.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-09-23 13:51:05 +0200 (Mon, 23 Sep 2013)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

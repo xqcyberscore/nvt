@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-244.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-244.nasl 6074 2017-05-05 09:03:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120123");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6074 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:18:06 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-244");
 script_tag(name: "insight", value: "An array index error, leading to a heap-based out-of-bounds buffer read flaw, was found in the way PostgreSQL performed certain error processing using enumeration types. An unprivileged database user could issue a specially crafted SQL query that, when processed by the server component of the PostgreSQL service, would lead to a denial of service (daemon crash) or disclosure of certain portions of server memory. (CVE-2013-0255 )A flaw was found in the way the pgcrypto contrib module of PostgreSQL (re)initialized its internal random number generator. This could lead to random numbers with less bits of entropy being used by certain pgcrypto functions, possibly allowing an attacker to conduct other attacks. (CVE-2013-1900 )"); 
 script_tag(name : "solution", value : "Run yum update postgresql8 to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-244");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

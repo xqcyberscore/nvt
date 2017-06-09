@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_mult_vulns_06_13.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_qnap_mult_vulns_06_13.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Qnap Multiple Vulnerabillities
 #
@@ -47,7 +47,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103732";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6074 $");
  script_cve_id("CVE-2013-0142","CVE-2013-0144");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -58,9 +58,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/927644");
  script_xref(name:"URL", value:"http://www.h-online.com/security/news/item/Serious-vulnerabilities-in-QNAP-storage-and-surveillance-systems-1883263.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-06-07 10:32:41 +0200 (Fri, 07 Jun 2013)");
- script_summary("Determine if it is possible to access /cgi-bin/create_user.cgi");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

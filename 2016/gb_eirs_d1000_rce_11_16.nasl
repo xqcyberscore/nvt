@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eirs_d1000_rce_11_16.nasl 4477 2016-11-11 11:29:49Z mime $
+# $Id: gb_eirs_d1000_rce_11_16.nasl 6142 2017-05-17 09:56:17Z ckuerste $
 #
 # Eir D1000 Modem CWMP Remote Command Execution
 #
@@ -30,9 +30,11 @@ CPE = 'cpe:/a:allegrosoft:rompager';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140054");
- script_version ("$Revision: 4477 $");
+ script_version ("$Revision: 6142 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+
+ script_cve_id("CVE-2016-10372");
 
  script_name("Eir D1000 Modem CWMP Remote Command Execution");
 
@@ -46,7 +48,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-11-11 12:29:49 +0100 (Fri, 11 Nov 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:56:17 +0200 (Wed, 17 May 2017) $");
  script_tag(name:"creation_date", value:"2016-11-11 10:15:15 +0100 (Fri, 11 Nov 2016)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");

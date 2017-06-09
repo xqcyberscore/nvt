@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805066");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6211 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 12:59:34 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Spark Cluster Arbitrary Code Execution Vulnerability");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/36562");
   script_xref(name : "URL" , value : "http://codebreach.in/blog/2015/03/arbitary-code-execution-in-unsecured-apache-spark-cluster");
 
-  script_summary("Check if  Apache Spark Cluster is prone to RCE");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

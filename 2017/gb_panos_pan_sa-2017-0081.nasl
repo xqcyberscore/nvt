@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017-0081.nasl 6058 2017-05-02 14:12:25Z teissa $
+# $Id: gb_panos_pan_sa-2017-0081.nasl 6067 2017-05-04 13:15:52Z teissa $
 #
 # Palo Alto Networks PAN-OS CVE-2017-7409 Cross Site Scripting Vulnerability
 #
@@ -29,14 +29,14 @@ CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107161");
-  script_version("$Revision: 6058 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 16:12:25 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 6067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-02 14:04:20 +0200 (Tue, 02 May 2017)");
   script_cve_id("CVE-2017-7409");
   script_bugtraq_id(97953);
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"package");
 

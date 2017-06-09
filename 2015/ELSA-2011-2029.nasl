@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-2029.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-2029.nasl 6132 2017-05-16 09:03:39Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122075");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6132 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:12:39 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-2029");
 script_tag(name: "insight", value: "ELSA-2011-2029 -  Unbreakable Enterprise kernel security update - [2.6.32-200.20.1.el6uek]- af_packet: prevent information leak {CVE-2011-2898}- gro: Only reset frag0 when skb can be pulled {CVE-2011-2723}- vm: fix vm_pgoff wrap in stack expansion {CVE-2011-2496}- vm: fix vm_pgoff wrap in upward expansion {CVE-2011-2496}- taskstats: don't allow duplicate entries in listener mode {CVE-2011-2484}- Ecryptfs: Add mount option to check uid of device being mounted {CVE-2011-1833}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-2029");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

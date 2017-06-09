@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_S7_1200_plc_detect.nasl 3532 2016-06-16 09:35:52Z ckuerste $
+# $Id: gb_simatic_S7_1200_plc_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Siemens SIMATIC S7-1200 PLC Detection
 #
@@ -30,11 +30,10 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103583");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3532 $");
- script_tag(name:"last_modification", value:"$Date: 2016-06-16 11:35:52 +0200 (Thu, 16 Jun 2016) $");
+ script_version ("$Revision: 6065 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2012-10-10 11:28:02 +0200 (Wed, 10 Oct 2012)");
  script_name("Siemens SIMATIC S7-1200 PLC Detection");
- script_summary("Checks for the presence of Siemens SIMATIC S7-1200 PLC");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

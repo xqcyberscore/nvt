@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_creative_cloud_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_adobe_creative_cloud_detect_win.nasl 6075 2017-05-05 13:43:51Z antu123 $
 #
 # Adobe Creative Cloud Version Detection (Windows)
 #
@@ -27,18 +27,18 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807666");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 6075 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 15:43:51 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2016-04-14 18:14:10 +0530 (Thu, 14 Apr 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Creative Cloud Version Detection (Windows)");
 
   script_tag(name : "summary" , value : "Detection of installed version
-  of Adobe Digital Edition on Windows. 
+  of Adobe Creative Cloud Desktop Application on Windows. 
 
-  The script logs in via smb, searches for Adobe Digital in the registry
+  The script logs in via smb, searches for Adobe Creative Cloud in the registry
   and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
@@ -61,57 +61,87 @@ cclName="";
 cclPath="";
 cclVer="";
 osArch = "";
-key_list = "";
+key = "";
+cloud_key = "";
+key_enum = "";
 
 ## Get os architecture
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch){
-  exit(-1);
+  exit(0);
 }
 
 ## if os is 32 bit iterate over common path
-if("x86" >< osArch){
-  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+if("x86" >< osArch)
+{
+  cloud_key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Adobe Creative Cloud\";
+  key_enum = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 #currently 64 bit app is not available
-else if("x64" >< osArch){
-  key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
+else if("x64" >< osArch)
+{
+  cloud_key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Adobe Creative Cloud\";
+  key_enum = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-foreach item (registry_enum_keys(key:key))
+##Check which key to use
+if(registry_key_exists(key:cloud_key))
 {
-  cclName = registry_get_sz(key:key + item, item:"DisplayName");
-
+  ##Lets try to get version without enumerating all keys
+  cclName = registry_get_sz(key:cloud_key, item:"DisplayName");
   ## confirm the application
   if("Adobe Creative Cloud" >< cclName)
   {
+    acc = TRUE;
+    key = cloud_key;
+  }
+} else
+{
+  ##Enumerate over all keys
+  foreach item (registry_enum_keys(key:key_enum))
+  {
+    cclName = registry_get_sz(key:key_enum + item, item:"DisplayName");
+    ## confirm the application
+    if("Adobe Creative Cloud" >< cclName){
+      acc_enum = TRUE;
+      key = key_enum + item;
+      break;
+    }
+  }
+}
 
-    ## Get the version
-    cclVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+if(key)
+{
+  ## Get the version
+  cclVer = registry_get_sz(key:key, item:"DisplayVersion");
 
+  if(cclVer)
+  {
     ## Get the installed path
-    cclPath = registry_get_sz(key:key + item, item:"UninstallString");
-    if(!cclPath){
+    cclPath = registry_get_sz(key:key, item:"UninstallString");
+
+    if(cclPath && "Utils" >< cclPath && "Creative Cloud Uninstaller" >< cclPath)
+    {
+      cclPath = cclPath - "Utils\Creative Cloud Uninstaller.exe";
+      cclPath = ereg_replace(string: cclPath, pattern: '"', replace: "");
+    } else if(!cclPath) {
       cclPath = "Couldn find the install location from registry";
     }
+  
+    set_kb_item(name:"AdobeCreativeCloud/Win/Ver", value:cclVer);
 
-    if(cclVer)
-    {
-      set_kb_item(name:"AdobeCreativeCloud/Win/Ver", value:cclVer);
+    ## build cpe
+    cpe = build_cpe(value:cclVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:creative_cloud:");
+    if(!cpe)
+      cpe = "cpe:/a:adobe:creative_cloud";
 
-      ## build cpe
-      cpe = build_cpe(value:cclVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:creative_cloud:");
-      if(!cpe)
-        cpe = "cpe:/a:adobe:creative_cloud";
-
-      register_product(cpe:cpe, location:cclPath);
-      log_message(data: build_detection_report(app: "Adobe Creative Cloud",
-                                               version: cclVer,
-                                               install: cclPath,
-                                               cpe: cpe,
-                                               concluded: cclVer));
-      exit(0);
-    }
+    register_product(cpe:cpe, location:cclPath);
+    log_message(data: build_detection_report(app: "Adobe Creative Cloud",
+                                             version: cclVer,
+                                             install: cclPath,
+                                             cpe: cpe,
+                                             concluded: cclVer));
+    exit(0);
   }
 }

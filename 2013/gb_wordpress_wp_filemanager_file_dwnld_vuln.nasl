@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_filemanager_file_dwnld_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wordpress_wp_filemanager_file_dwnld_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # WordPress wp-FileManager Plugin File Download Vulnerability
 #
@@ -44,10 +44,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-17 17:30:46 +0530 (Wed, 17 Apr 2013)");
   script_name("WordPress wp-FileManager Plugin File Download Vulnerability");
   script_xref(name : "URL" , value : "www.exploit-db.com/exploits/25440");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/wp-filemanager/changelog");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-wp-filemanager-file-download");
   script_xref(name : "URL" , value : "http://security4you.net/blog/wordpress-wp-filemanager-local-file-download-vulnerability");
-  script_summary("Check for file download vulnerability in WordPress wp-FileManager Plugin");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

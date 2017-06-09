@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0328.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0328.nasl 6132 2017-05-16 09:03:39Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130056");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6132 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:08 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0328");
 script_tag(name: "insight", value: "Cross-site scripting (XSS) vulnerability in the Autocomplete system in Drupal before 7.39 allows remote attackers to inject arbitrary web script or HTML via a crafted URL, related to uploading files (CVE-2015-6658). SQL injection vulnerability in the SQL comment filtering system in the Database API in Drupal before 7.39 allows remote attackers to execute arbitrary SQL commands via an SQL comment (CVE-2015-6659). The Form API in Drupal 6.x before 6.37 and 7.x before 7.39 does not properly validate the form token, which allows remote attackers to conduct CSRF attacks that upload files in a different user's account via vectors related to file upload value callbacks (CVE-2015-6660). Drupal before 7.39 allows remote attackers to obtain sensitive node titles by reading the menu (CVE-2015-6661). Cross-site scripting (XSS) vulnerability in the Ajax handler in Drupal before 7.39 allows remote attackers to inject arbitrary web script or HTML via vectors involving a whitelisted HTML element, possibly related to the a tag (CVE-2015-6665)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0328");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0328");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

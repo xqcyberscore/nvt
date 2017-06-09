@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872633");
-  script_version("$Revision: 6062 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 10:52:29 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 6067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-03 14:19:13 +0530 (Wed, 03 May 2017)");
   script_cve_id("CVE-2015-6644");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for bouncycastle FEDORA-2017-4c3ac44551");
   script_tag(name: "summary", value: "Check the version of bouncycastle");

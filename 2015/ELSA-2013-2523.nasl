@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-2523.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-2523.nasl 6125 2017-05-15 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123629");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6125 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:29 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-2523");
 script_tag(name: "insight", value: "ELSA-2013-2523 - Unbreakable Enterprise kernel security and bugfix update - [2.6.39-400.23.1]- Parallel mtrr init between cpus (Zhenzhong Duan) [Orabug: 16777774]- Merge tag 'v2.6.39-400.21.1.16748891' of git://ca-git.us.oracle.com/linux-uek-2.6.39-ofed into uek-2.6.39-400 (Maxim Uvarov) [Orabug: 16748891]- xen-blkfront: use a different scatterlist for each request (Roger Pau Monne)- Fix EN driver to work with newer FWs based on latest mlx4_core (Yuval Shaia) [Orabug: 16748891][2.6.39-400.22.1]- block: default SCSI command filter does not accomodate commands overlap across device classes (Jamie Iles) [Orabug: 16387137] {CVE-2012-4542}- Merge tag 'v2.6.39-400.21.1#bug16684527' of git://ca-git.us.oracle.com/linux-joejin-public into uek-2.6.39-400_errata (Maxim Uvarov) [Orabug: 16684527]- KVM: x86: Convert MSR_KVM_SYSTEM_TIME to use gfn_to_hva_cache functions (CVE-2013-1797) (Andy Honig) [Orabug: 16711660] {CVE-2013-1797}- Bluetooth: Fix incorrect strncpy() in hidp_setup_hid() (Anderson Lizardo) [Orabug: 16711065] {CVE-2013-0349}- USB: io_ti: Fix NULL dereference in chase_port() (Wolfgang Frisch) [Orabug: 16425358] {CVE-2013-1774}- keys: fix race with concurrent install_user_keyrings() (David Howells) [Orabug: 16493354] {CVE-2013-1792}- KVM: Fix bounds checking in ioapic indirect register reads (CVE-2013-1798) (Andy Honig) [Orabug: 16710951] {CVE-2013-1798}- KVM: x86: fix for buffer overflow in handling of MSR_KVM_SYSTEM_TIME (CVE-2013-1796) (Andy Honig) [Orabug: 16710806] {CVE-2013-1796}- tmpfs: fix use-after-free of mempolicy object (Greg Thelen) [Orabug: 16515833] {CVE-2013-1767}- procfs: do not confuse jiffies with cputime64_t (Andreas Schwab) [Orabug: 16673925]- procfs: do not overflow get_{idle,iowait}_time for nohz (Michal Hocko) [Orabug: 16673925]- xen/evtchn: Handle VIRQ_TIMER before any other hardirq in event loop. (Keir Fraser) [Orabug: 16093126]- Fix device removal NULL pointer dereference (Joe Jin) [Orabug: 16684527]- put stricter guards on queue dead checks (James Bottomley) [Orabug: 16684527]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-2523");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

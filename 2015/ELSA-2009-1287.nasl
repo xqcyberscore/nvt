@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1287.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-1287.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122441");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:45:28 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1287");
 script_tag(name: "insight", value: "ELSA-2009-1287 -  openssh security, bug fix, and enhancement update - [4.3p2-36]- tiny change in chroot sftp capability into openssh-server solve ls speed problem (#440240)[4.3p2-35]- workaround to plaintext recovery attack against CBC ciphers CVE-2008-5161 (#502230)[4.3p2-34]- disable protocol 1 in the FIPS mode[4.3p2-33]- fix scp hangup on exit (#454812)- call integrity checks only on binaries which are part of the OpenSSH FIPS modules[4.3p2-32]- log if FIPS mode is initialized (#492363)- check the integrity of the binaries in the FIPS mode (#467268)[4.3p2-31]- fix ssh hangup on exit (#454812)[4.3p2-30]- add chroot sftp capability into openssh-server (#440240)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-1287");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0806.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-0806.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123133");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:46 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0806");
 script_tag(name: "insight", value: "ELSA-2015-0806 -  java-1.7.0-openjdk security update - [1:1.7.0.75-2.5.5.1.0.1.el7_1]- Update DISTRO_NAME in specfile[1:1.7.0.75-2.5.5.1]- repacked sources- Resolves: rhbz#1209072[1:1.7.0.75-2.5.5.0]- Bump to 2.5.5 using OpenJDK 7u79 b14.- Update OpenJDK tarball creation comments- Remove test case for RH1191652 now fix has been verified.- Drop AArch64 version of RH1191652 HotSpot patch as included upstream.- Resolves: rhbz#1209072"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-0806");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

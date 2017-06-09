@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_aug13_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_aug13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-01 August13 (Windows)
 #
@@ -30,13 +30,13 @@ tag_impact = "
 if (description)
 {
   script_id(803877);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-2887", "CVE-2013-2900", "CVE-2013-2901", "CVE-2013-2902",
                 "CVE-2013-2903", "CVE-2013-2904", "CVE-2013-2905");
   script_bugtraq_id(61885, 61887, 61891, 61886, 61888, 61889, 61890);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-26 11:59:27 +0530 (Mon, 26 Aug 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 August13 (Windows)");
 
@@ -80,7 +80,6 @@ For updates refer to http://www.google.com/chrome";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54479");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/08/stable-channel-update.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

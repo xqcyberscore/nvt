@@ -1,8 +1,8 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: showmount.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: showmount.nasl 6164 2017-05-18 12:00:33Z cfi $
 #
-# Showmount
+# NFS export
 #
 # LSS-NVT-2009-014
 #
@@ -24,34 +24,35 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_summary = "This plugin lists NFS exported shares, and warns if some of
-them are readable.
-
-It also warns if the remote NFS server is superfluous.
-
-Tested on Ubuntu/Debian mountd";
+# Tested on Ubuntu/Debian mountd
 
 if(description)
 {
- script_id(102014);
- script_version("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
- script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
- script_cve_id("CVE-1999-0554", "CVE-1999-0548");
- script_name("NFS export");
+  script_oid("1.3.6.1.4.1.25623.1.0.102014");
+  script_version("$Revision: 6164 $");
+  script_cve_id("CVE-1999-0554", "CVE-1999-0548");
+  script_name("NFS export");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 14:00:33 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2009 LSS");
+  script_family("Remote file access");
+  script_dependencies("secpod_rpc_portmap.nasl");
+  script_require_keys("rpc/portmap");
 
+  tag_summary = "This plugin lists NFS exported shares, and warns if some of
+  them are readable.
 
+  It also warns if the remote NFS server is superfluous.";
 
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_analysis");
- script_copyright("Copyright (C) 2009 LSS");
- script_family("Remote file access");
- script_dependencies("secpod_rpc_portmap.nasl");
- script_require_keys("rpc/portmap");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -197,11 +198,9 @@ proto = "udp";
 if(isnull(list)){
    report = 'You are running a superfluous NFS daemon.\nYou should consider removing it\n';
    security_message(port:RPC_NFSD_port, data:report, proto:proto);
-   #display(report);
    exit(0);
 }else{
-  report = 'Here is the export list of ' + get_host_name() + ' : \n' + list + '\n' + 'Please check the permissions of this exports.\n';
+  report = 'Here is the export list of ' + get_host_name() + ' : \n' + list + '\n' + 'Please check the permissions of these exports.\n';
   security_message(port:RPC_NFSD_port, data:report, proto:proto);
-  #display(report);
   exit(0);
 }

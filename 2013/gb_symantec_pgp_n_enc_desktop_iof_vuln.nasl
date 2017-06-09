@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_n_enc_desktop_iof_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_symantec_pgp_n_enc_desktop_iof_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Symantec PGP Desktop and Encryption Desktop Integer Overflow Vulnerability
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803889";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2012-4351");
   script_bugtraq_id(57170);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-06 17:12:34 +0530 (Fri, 06 Sep 2013)");
   script_name("Symantec PGP Desktop and Encryption Desktop Integer Overflow Vulnerability");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.symantec.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51762");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52219");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Symantec PGP/Encryption Desktop");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("General");

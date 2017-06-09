@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCum00556.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCum00556.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Cisco ASA Health and Performance Monitor DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105979");
-  script_version("$Revision: 5000 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 6207 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name : "creation_date", value : "2015-03-13 11:52:01 +0700 (Fri, 13 Mar 2015)");
   script_tag(name : "cvss_base", value : "7.8");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,6 @@ if (description)
 
   script_tag(name : "summary", value : "The Health and Performance Monitor of Cisco ASA is prone to a Denial of
 Service vulnerability.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Checks the version.");
 

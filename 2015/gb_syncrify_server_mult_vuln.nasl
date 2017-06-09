@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_server_mult_vuln.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_syncrify_server_mult_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Syncrify Server Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:syncrify:server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805551");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-3140");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-12 10:45:47 +0530 (Tue, 12 May 2015)");
   script_name("Syncrify Server Multiple Vulnerabilities");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/36950");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Syncrify Server");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_syncrify_server_detect.nasl");

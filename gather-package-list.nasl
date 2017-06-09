@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 6011 2017-04-21 20:31:32Z cfi $
+# $Id: gather-package-list.nasl 6209 2017-05-24 14:42:39Z cfi $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 6011 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 22:31:32 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 6209 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 16:42:39 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -201,6 +201,7 @@ OS_CPE = make_array(
     "FC1",  "cpe:/o:fedoraproject:fedora_core:1",
 
     # Debian
+    "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
     "DEB8.7", "cpe:/o:debian:debian_linux:8.7",
     "DEB8.6", "cpe:/o:debian:debian_linux:8.6",
     "DEB8.5", "cpe:/o:debian:debian_linux:8.5",
@@ -1099,6 +1100,34 @@ if("Amazon Linux AMI release" >< rls) {
   set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
   log_message(port:port, data:string("We are able to login and detect that you are running Amazon Linux"));
   register_detected_os(os:"Amazon", oskey:"AMAZON");
+  exit(0);
+}
+
+# EON runs on CentOS
+if( "EyesOfNetwork release" >< rls ) {
+
+  set_kb_item( name:"eyesofnetwork/ssh/port", value:port );
+  set_kb_item( name:"eyesofnetwork/ssh/" + port + "/concludedFile", value:"/etc/system-release" );
+  set_kb_item( name:"eyesofnetwork/rls", value:rls );
+
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  set_kb_item( name:"ssh/login/rpms", value: ";" + buf);
+
+  buf = ssh_cmd( socket:sock, cmd:"cat /etc/system-release-cpe" );
+
+  # EON 4.0 has a wrong cpe:/o:centos:linux in the system-release-cpe
+  buf = str_replace( string:buf, find:"centos:linux", replace:"centos:centos" );
+  
+  os_ver = eregmatch( pattern:"cpe:/o:centos:centos:([0-9])", string:buf );
+  if( ! isnull( os_ver[1] ) ) {
+    oskey = "CentOS" + os_ver[1];
+    log_message( port:port, data:"We are able to login and detect that you are running CentOS release " + os_ver[1] );
+    set_kb_item( name:"ssh/login/release", value:oskey );
+    register_and_report_os( os:"CentOS release " + os_ver[1], cpe:buf, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+    log_message( port:port, data:"We are able to login and detect that you are running CentOS" );
+  }
   exit(0);
 }
 
@@ -2279,6 +2308,13 @@ if("7.0"><rls) {
     exit(0);
 }
 
+if("8.8"><rls) {
+    buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
+    set_kb_item(name:"ssh/login/packages", value:buf);
+    log_message(port:port, data:"We are able to login and detect that you are running Debian 8.8 (Jessie)");
+    register_detected_os(os:"Debian 8.8 (Jessie)", oskey:"DEB8.8");
+    exit(0);
+}
 if("8.7"><rls) {
     buf = ssh_cmd(socket:sock, cmd:"COLUMNS=400 dpkg -l");
     set_kb_item(name:"ssh/login/packages", value:buf);

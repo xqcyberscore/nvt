@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3368.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3368.nasl 6125 2017-05-15 09:03:42Z teissa $
 # Auto-generated from advisory DSA 3368-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703368);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6125 $");
     script_cve_id("CVE-2013-4122");
     script_name("Debian Security Advisory DSA 3368-1 (cyrus-sasl2 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
     script_tag(name: "creation_date", value: "2015-09-25 00:00:00 +0200 (Fri, 25 Sep 2015)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3368.html");
 
-    script_summary("Debian Security Advisory DSA 3368-1 (cyrus-sasl2 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

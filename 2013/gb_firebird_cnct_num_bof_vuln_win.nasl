@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)
 #
@@ -40,12 +40,12 @@ tag_summary = "This host is running Firebird server and is prone to buffer overf
 if(description)
 {
   script_id(803185);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-2492");
   script_bugtraq_id(58393);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-25 15:25:55 +0530 (Mon, 25 Mar 2013)");
   script_name("Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52506");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "https://gist.github.com/zeroSteiner/85daef257831d904479c");
   script_xref(name : "URL" , value : "https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/windows/misc/fb_cnct_group.rb");
 
-  script_summary("Check if Firebird Server is vulnerable to Buffer overflow");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_multiple_vuln.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_owncloud_multiple_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # ownCloud Cross-Site Scripting and File Upload Vulnerabilities
 #
@@ -33,13 +33,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803741";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2012-5606", "CVE-2012-5607", "CVE-2012-5608", "CVE-2012-5609",
                 "CVE-2012-5610");
   script_bugtraq_id(56658, 56764);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:55:36 +0530 (Wed, 21 Aug 2013)");
   script_name("ownCloud Cross-Site Scripting and File Upload Vulnerabilities");
 
@@ -88,7 +88,6 @@ For updates refer to http://owncloud.org";
   script_xref(name : "URL" , value : "https://github.com/owncloud/core/commit/e45f36c");
   script_xref(name : "URL" , value : "https://github.com/owncloud/core/commit/e5f2d46");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/11/30/3");
-  script_summary("Check if ownCloud vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

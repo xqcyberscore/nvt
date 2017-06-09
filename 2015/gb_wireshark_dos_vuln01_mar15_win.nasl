@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_mar15_win.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wireshark_dos_vuln01_mar15_win.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Wireshark Denial-of-Service Vulnerability-01 Mar15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805485");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-2192", "CVE-2015-2190", "CVE-2015-2187");
   script_bugtraq_id(72937, 72938, 72940);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-09 16:41:59 +0530 (Mon, 09 Mar 2015)");
   script_name("Wireshark Denial-of-Service Vulnerability-01 Mar15 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/62367");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2015-06.html");
-  script_summary("Check for the vulnerable version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

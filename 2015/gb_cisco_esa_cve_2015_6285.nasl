@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cve_2015_6285.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_esa_cve_2015_6285.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Cisco Email Security Appliance Format String Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6285");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6207 $");
 
  script_name("Cisco Email Security Appliance Format String Vulnerability");
 
@@ -53,9 +53,8 @@ to the affected device. An exploit could allow the attacker to impact the integr
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
  script_tag(name:"creation_date", value:"2015-09-11 12:20:50 +0200 (Fri, 11 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

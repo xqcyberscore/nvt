@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_derby_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_apache_derby_detect.nasl 6090 2017-05-09 14:38:15Z cfi $
 #
 # Apache Derby Detection
 #
@@ -24,29 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Apache Derby, an open source relational database
-implemented entirely in Java and available under the Apache License, Version
-2.0.";
-
-if (description)
+if(description)
 {
- 
- script_id(100795);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
- script_tag(name:"creation_date", value:"2010-09-09 19:37:11 +0200 (Thu, 09 Sep 2010)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("Apache Derby Detection");
- script_category(ACT_GATHER_INFO);
+  script_oid("1.3.6.1.4.1.25623.1.0.100795");
+  script_version("$Revision: 6090 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 16:38:15 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"creation_date", value:"2010-09-09 19:37:11 +0200 (Thu, 09 Sep 2010)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Apache Derby Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/unknown", 1527);
+
+  script_xref(name:"URL" , value:"http://db.apache.org/derby/");
+
+  tag_summary = "This host is running Apache Derby, an open source relational database
+  implemented entirely in Java and available under the Apache License, Version 2.0.";
+
+  script_tag(name:"summary", value:tag_summary);
+
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/unknown", 1527);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://db.apache.org/derby/");
- exit(0);
+
+  exit(0);
 }
 
 include("misc_func.inc");
@@ -76,7 +78,7 @@ p = raw_string(
 send(socket:soc, data:p);
 res = recv(socket:soc, length:1024);
 
-if(strlen(res) && ord(res[0]) == 0 &&  ord(res[1]) == 131 && ord(res[2]) == 208) {
+if(strlen(res) > 2 && ord(res[0]) == 0 && ord(res[1]) == 131 && ord(res[2]) == 208) {
 
   p = raw_string(
                 0x00,0x2d,0xd0,0x41,0x00,0x01,0x00,0x27,0x10,0x6e,0x00,0x06,0x11,0xa2,0x00,0x04,
@@ -118,7 +120,7 @@ if(strlen(res) && ord(res[0]) == 0 &&  ord(res[1]) == 131 && ord(res[2]) == 208)
           ver += ".";
       }
 
-      set_kb_item(name:string("apache_derby/",port,"/version"),value:ver);
+      set_kb_item(name:"apache_derby/" + port + "/version", value:ver);
       register_host_detail(name:"App", value:string("cpe:/a:apache:derby:",ver), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
 
     } else {
@@ -129,12 +131,8 @@ if(strlen(res) && ord(res[0]) == 0 &&  ord(res[1]) == 131 && ord(res[2]) == 208)
     info += string(ver);
     info += string("' was detected on the remote host\n\n");
 
-    if(report_verbosity > 0) {
-      log_message(port:port,data:info);
-    }
-    
+    log_message(port:port,data:info);
     exit(0);
-
   }
 } else {
   close(soc);

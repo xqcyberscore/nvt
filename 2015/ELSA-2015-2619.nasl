@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2619.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2619.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122802");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:50:30 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2619");
 script_tag(name: "insight", value: "ELSA-2015-2619 -  libreoffice security update - [4.3.7.2-5.0.1.1]- Replaced RedHat colors with Oracle colors, and the filename redhat.soc with oracle.soc in specfile- Build with --with-vendor='Oracle America, Inc.'[1:4.3.7.2-5.1]- Resolves: rhbz#1285820 various flaws- CVE-2015-4551 Arbitrary file disclosure in Calc and Writer- CVE-2015-5212 Integer underflow in PrinterSetup length- CVE-2015-5213 Integer overflow in DOC files- CVE-2015-5214 Bookmarks in DOC documents are insufficiently checked causing memory corruption"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2619");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

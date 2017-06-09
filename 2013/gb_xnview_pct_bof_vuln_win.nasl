@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_pct_bof_vuln_win.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_xnview_pct_bof_vuln_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # XnView PCT File Handling Buffer Overflow Vulnerability
 #
@@ -33,11 +33,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803740";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-2577");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-21 12:23:59 +0530 (Wed, 21 Aug 2013)");
   script_name("XnView PCT File Handling Buffer Overflow Vulnerability");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.xnview.com/en/xnview/#downloads";
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028817");
   script_xref(name : "URL" , value : "http://www.coresecurity.com/advisories/xnview-buffer-overflow-vulnerability");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-07/0153.html");
-  script_summary("Check for the vulnerable version of XnView on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_mult_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_xcart_mult_xss_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # X_CART Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:qualiteam:x-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805600");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-1178");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:06:16 +0530 (Mon, 27 Apr 2015)");
   script_name("X_CART Multiple Cross Site Scripting Vulnerabilities");
-  script_summary("Check if XCART is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

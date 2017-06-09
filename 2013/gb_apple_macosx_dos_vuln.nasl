@@ -29,11 +29,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804183";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-6799");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-31 20:51:30 +0530 (Tue, 31 Dec 2013)");
   script_name("Apple Mac OS X Denial of Service Vulnerability");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/447755.php");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013110059");
-  script_summary("Check for the vulnerable version of Apple Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

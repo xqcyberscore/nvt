@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17047.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol17047.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # F5 BIG-IP - ICMP packet processing vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5058");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6159 $");
 
  script_name("F5 BIG-IP - ICMP packet processing vulnerability");
 
@@ -50,9 +50,8 @@ large number of crafted ICMP packets.");
  script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
  script_tag(name: "summary" , value:"F5 BIG-IP is prone to a ICMP packet processing vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
  script_tag(name:"creation_date", value:"2015-08-31 11:23:51 +0200 (Mon, 31 Aug 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("F5 Local Security Checks");

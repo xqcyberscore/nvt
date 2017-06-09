@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_internet_security_detect.nasl 3476 2016-06-10 12:46:24Z antu123 $
+# $Id: gb_avast_internet_security_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Avast Internet Security Antivirus Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808032");
-  script_version("$Revision: 3476 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 14:46:24 +0200 (Fri, 10 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 18:37:25 +0530 (Fri, 03 Jun 2016)");
   script_name("Avast Internet Security Antivirus Version Detection (Windows)");
 
@@ -40,7 +40,6 @@ if(description)
   registry and reads the version information from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Detection of installed version of Avast Internet Security");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_database_auth_protocol_sec_bypass_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_oracle_database_auth_protocol_sec_bypass_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Oracle Database Server Authentication Protocol Security Bypass Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:oracle:database_server';
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2012-3137");
   script_bugtraq_id(55651);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-28 17:27:36 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle Database Server Authentication Protocol Security Bypass Vulnerability");
 
@@ -86,7 +86,6 @@ NOTE: Ignore this warning if above mentioned patch is installed.
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/117503");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle Database Server");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("oracle_tnslsnr_version.nasl");

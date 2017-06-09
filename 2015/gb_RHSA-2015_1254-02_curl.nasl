@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871401");
-  script_version("$Revision: 3339 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2014-3613", "CVE-2014-3707", "CVE-2014-8150",
                 "CVE-2015-3143", "CVE-2015-3148");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:26:32 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-23 06:25:30 +0200 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for curl RHSA-2015:1254-02");
@@ -96,7 +96,6 @@ terminate unexpectedly with a segmentation fault. Now, adding ...
   script_xref(name: "RHSA", value: "2015:1254-02");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of curl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

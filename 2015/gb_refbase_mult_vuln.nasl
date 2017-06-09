@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_refbase_mult_vuln.nasl 3883 2016-08-25 05:37:27Z antu123 $
+# $Id: gb_refbase_mult_vuln.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # Web Reference Database Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:refbase:refbase";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806062");
-  script_version("$Revision: 3883 $");
+  script_version("$Revision: 6211 $");
   script_cve_id("CVE-2015-6007", "CVE-2015-6008", "CVE-2015-6009", "CVE-2015-6010",
                 "CVE-2015-6011", "CVE-2015-6012", "CVE-2015-7381", "CVE-2015-7382",
                 "CVE-2015-7383");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-25 07:37:27 +0200 (Thu, 25 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-05 13:23:43 +0530 (Mon, 05 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("Web Reference Database Multiple Vulnerabilities");
@@ -91,7 +91,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/374092");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38292");
 
-  script_summary("Check if refbase is prone to SQL");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_54932.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_joomla_54932.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Joomla S5 Clan Roster com_s5clanroster 'id' Parameter SQL Injection Vulnerability
 #
@@ -40,7 +40,7 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6125 $");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
 
@@ -50,9 +50,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.shape5.com/product_details/club_extensions/s5_clan_roster.html");
  script_xref(name:"URL", value:"http://www.joomla.org");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-17 11:02:29 +0200 (Fri, 17 May 2013)");
- script_summary("Determine if it is possible to inject SQL code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

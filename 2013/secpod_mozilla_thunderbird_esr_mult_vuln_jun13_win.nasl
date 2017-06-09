@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_win.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Windows)
 #
@@ -51,7 +51,7 @@ tag_summary = "The host is installed with Mozilla Thunderbird ESR and is prone t
 if(description)
 {
   script_id(903217);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_cve_id( "CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686", "CVE-2013-1687",
                  "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694",
                  "CVE-2013-1697", "CVE-2013-1682");
@@ -59,13 +59,12 @@ if(description)
                     60784);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-26 17:09:51 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53970");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028702");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-50.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird ESR on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("General");

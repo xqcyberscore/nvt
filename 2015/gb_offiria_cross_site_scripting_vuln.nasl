@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_offiria_cross_site_scripting_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_offiria_cross_site_scripting_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Offiria Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:slashes&dots:offria";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805191");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 6207 $");
   script_cve_id("CVE-2014-2689");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-27 16:23:32 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Offiria Cross-Site Scripting Vulnerability");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/532048");
   script_xref(name : "URL" , value : "http://www.zerodaylab.com/vulnerabilities/CVE-2014/CVE-2014-2689.html");
 
-  script_summary("Check if Offiria is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

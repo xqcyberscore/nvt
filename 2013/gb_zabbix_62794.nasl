@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_62794.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_zabbix_62794.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # ZABBIX API and Frontend  Multiple SQL Injection Vulnerabilities
 #
@@ -54,7 +54,7 @@ if (description)
  script_cve_id("CVE-2013-5743");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6079 $");
 
  script_name("ZABBIX API and Frontend  Multiple SQL Injection Vulnerabilities");
 
@@ -62,9 +62,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62794");
  script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-7091");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-15 14:09:10 +0200 (Tue, 15 Oct 2013)");
- script_summary("Determine if it is possible to inject sql code");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

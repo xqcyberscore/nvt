@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_WNDAP350_48085.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_netgear_WNDAP350_48085.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # NetGear WNDAP350 Wireless Access Point Multiple Information Disclosure Vulnerabilities
 #
@@ -42,7 +42,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(48085);
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6074 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -52,9 +52,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.netgear.com/");
  script_xref(name:"URL", value:"https://revspace.nl/RevelationSpace/NewsItem11x05x30x0");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-04-22 13:20:27 +0200 (Mon, 22 Apr 2013)");
- script_summary("Determine if /downloadFile.php reveals information.");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

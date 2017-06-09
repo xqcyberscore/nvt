@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4014982.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_dotnet_framework_kb4014982.nasl 6108 2017-05-11 13:33:19Z antu123 $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (KB4014982)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810697");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 6108 $");
   script_cve_id("CVE-2017-0160");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 15:33:19 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-13 11:30:09 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (KB4014982)");
@@ -64,8 +64,6 @@ if(description)
   https://support.microsoft.com/en-us/help/4014982");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_tag(name:"qod_type", value:"executable_version");
-
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4014982");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -151,7 +149,7 @@ foreach item (registry_enum_keys(key:key))
       {
         report = 'File checked:     ' + dotPath + "\system.management.dll" + '\n' +
                  'File version:     ' + sysdllVer  + '\n' +
-                 'Vulnerable range: ' + vulnerable_range + '\n' ;
+                 'Vulnerable range: ' + Vulnerable_range + '\n' ;
         security_message(data:report);
         exit(0);
       }

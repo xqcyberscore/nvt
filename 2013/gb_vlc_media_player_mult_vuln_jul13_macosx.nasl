@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_jul13_macosx.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_vlc_media_player_mult_vuln_jul13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # VLC Media Player Multiple Vulnerabilities - July 13 (MAC OS X)
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if(description)
 {
   script_id(803901);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-1868", "CVE-2012-5855");
   script_bugtraq_id(57079,56405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-16 14:45:11 +0530 (Tue, 16 Jul 2013)");
   script_name("VLC Media Player Multiple Vulnerabilities - July 13 (MAC OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.videolan.org/vlc";
   script_xref(name : "URL" , value : "http://www.videolan.org/news.html");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79823");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VLC Media Player on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");

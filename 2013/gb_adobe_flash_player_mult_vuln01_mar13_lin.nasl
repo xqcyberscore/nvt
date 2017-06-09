@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_mar13_lin.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln01_mar13_lin.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 March13 (Linux)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(803324);
-  script_version("$Revision: 2923 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-04 18:54:31 +0530 (Mon, 04 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52374");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-08.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

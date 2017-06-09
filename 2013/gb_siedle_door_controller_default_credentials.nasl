@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siedle_door_controller_default_credentials.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_siedle_door_controller_default_credentials.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Siedle Door Controller Default Password
 #
@@ -42,16 +42,15 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103820";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6115 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
  script_name("Siedle Door Controller Default Password");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-24 10:01:48 +0100 (Thu, 24 Oct 2013)");
- script_summary("Determine if the remote Siedle Door Controller has a default password");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

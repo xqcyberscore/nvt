@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_hyper_v_dos_vul_kb3217841.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_ms_hyper_v_dos_vul_kb3217841.nasl 6169 2017-05-19 08:26:16Z antu123 $
 #
-# Microsoft Windows Hyper-V Denial of Service Vulnerability (3217841)
+# Microsoft Windows Hyper-V Denial of Service Vulnerability (KB3217841)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810847");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 6169 $");
   script_cve_id("CVE-2017-0184");
   script_bugtraq_id(97435);
   script_tag(name:"cvss_base", value:"5.2");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 10:26:16 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 11:24:16 +0530 (Wed, 12 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
-  script_name("Microsoft Windows Hyper-V Denial of Service Vulnerability (3217841)");
+  script_name("Microsoft Windows Hyper-V Denial of Service Vulnerability (KB3217841)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
-  update according to Microsoft security updates April 2017 Kb3217841.");
+  update according to Microsoft KB3217841.");
 
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");

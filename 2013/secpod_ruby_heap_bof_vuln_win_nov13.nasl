@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_heap_bof_vuln_win_nov13.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ruby_heap_bof_vuln_win_nov13.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Ruby Interpreter Heap Overflow Vulnerability Nov13 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-4164");
   script_bugtraq_id(63873);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-27 20:39:27 +0530 (Wed, 27 Nov 2013)");
   script_name("Ruby Interpreter Heap Overflow Vulnerability Nov13 (Windows)");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.ruby-lang.org";
   script_tag(name : "impact" , value : tag_impact);
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55787");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89191");
-  script_summary("Check for the vulnerable version of Ruby Interpreter");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2013 SecPod");

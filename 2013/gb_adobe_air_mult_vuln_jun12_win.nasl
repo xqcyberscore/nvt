@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_jun12_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_air_mult_vuln_jun12_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Adobe Air Multiple Vulnerabilities June-2012 (Windows)
 #
@@ -44,19 +44,18 @@ tag_summary = "This host is installed with Adobe Air and is prone to multiple
 if(description)
 {
   script_id(803813);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-11 15:04:41 +0530 (Thu, 11 Jul 2013)");
   script_name("Adobe Air Multiple Vulnerabilities June-2012 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49388");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027139");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-14.html");
-  script_summary("Check for the version of Adobe Air on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

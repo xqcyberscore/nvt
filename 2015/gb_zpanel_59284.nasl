@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zpanel_59284.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_zpanel_59284.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # ZPanel Information Disclosure Vulnerability
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:zpanel:zpanel";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105415");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6194 $");
  script_cve_id("CVE-2013-2097");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,9 +48,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_vul");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
  script_tag(name:"creation_date", value:"2015-10-21 11:32:00 +0200 (Wed, 21 Oct 2015)");
- script_summary("Try to read cnf/db.php");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

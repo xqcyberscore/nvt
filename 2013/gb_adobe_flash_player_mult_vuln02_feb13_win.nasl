@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln02_feb13_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln02_feb13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities -02 Feb13 (Windows)
 #
@@ -42,8 +42,8 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(803407);
-  script_version("$Revision: 2923 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6074 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-14 12:22:01 +0530 (Thu, 14 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -59,7 +59,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52166");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-05.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

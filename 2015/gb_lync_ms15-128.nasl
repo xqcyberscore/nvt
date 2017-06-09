@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_ms15-128.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_lync_ms15-128.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Microsoft Lync Remote Code Execution Vulnerabilities (3104503)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806181");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2015-6106", "CVE-2015-6107", "CVE-2015-6108");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-09 19:52:06 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Lync Remote Code Execution Vulnerabilities (3104503)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3115871"); 
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-128");
 
-  script_summary("Check for the vulnerable file 'Rtmpltfm.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804039";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-5609", "CVE-2013-5610", "CVE-2013-5611", "CVE-2013-5612",
                 "CVE-2013-5613", "CVE-2013-5614", "CVE-2013-5615", "CVE-2013-5616",
                 "CVE-2013-5618", "CVE-2013-5619", "CVE-2013-6671", "CVE-2013-6672",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(64204, 64206, 64214, 64205, 64203, 64207, 64216, 64209, 64211, 64215, 64212, 64210, 64213);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-24 12:51:53 +0530 (Tue, 24 Dec 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Dec13 (Windows)");
 
@@ -79,7 +79,6 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56002");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-104.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3419.nasl 3164 2016-04-26 06:44:24Z antu123 $
+# $Id: deb_3419.nasl 6194 2017-05-23 09:04:00Z teissa $
 # Auto-generated from advisory DSA 3419-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703419);
-    script_version("$Revision: 3164 $");
+    script_version("$Revision: 6194 $");
     script_cve_id("CVE-2015-8560");
     script_name("Debian Security Advisory DSA 3419-1 (cups-filters - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-04-26 08:44:24 +0200 (Tue, 26 Apr 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
     script_tag(name: "creation_date", value: "2015-12-15 00:00:00 +0100 (Tue, 15 Dec 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3419.html");
 
-    script_summary("Debian Security Advisory DSA 3419-1 (cups-filters - security update)");
 
     script_category(ACT_GATHER_INFO);
 

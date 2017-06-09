@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_total_protection_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mcafee_total_protection_mult_vuln.nasl 6155 2017-05-18 06:34:14Z cfi $
 #
 # McAfee Total Protection Multiple Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mcafee:total_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807237");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6155 $");
   script_cve_id("CVE-2015-8772", "CVE-2015-8773");
   script_bugtraq_id(82143, 82144);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 08:34:14 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2016-02-08 17:22:31 +0530 (Mon, 08 Feb 2016)");
   script_name("McAfee Total Protection Multiple Vulnerabilities (Windows)");
 
@@ -75,9 +75,9 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
+include("secpod_smb_func.inc");
 
 ## Variables Initialization
 syspath = "";

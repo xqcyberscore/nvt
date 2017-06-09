@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_default_web_credential.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_siemens_scalance_default_web_credential.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Siemens Scalance Default Credentials 
 #
@@ -41,14 +41,13 @@ if (description)
 {
  
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6093 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-30 16:44:04 +0200 (Thu, 30 May 2013)");
  script_name("Siemens Scalance Default Credentials");
 
- script_summary("Checks if it is possible to login as user admain");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

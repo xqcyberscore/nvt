@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_excel_viewer_ms13-073.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms_excel_viewer_ms13-073.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Microsoft Office Excel Viewer Remote Code Execution Vulnerabilities (2858300)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(902998);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-1315", "CVE-2013-3158", "CVE-2013-3159");
   script_bugtraq_id(62167, 62219, 62225);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-11 13:36:18 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Excel Viewer Remote Code Execution Vulnerabilities (2858300)");
 
@@ -76,7 +76,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-073";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54739");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2760590");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-073");
-  script_summary("Check for the version of 'Xlview.exe' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

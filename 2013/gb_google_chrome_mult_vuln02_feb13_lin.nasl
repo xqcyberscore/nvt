@@ -43,12 +43,12 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(803401);
-  script_version("$Revision: 2936 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-0839", "CVE-2013-0840", "CVE-2013-0841", "CVE-2013-0842");
   script_bugtraq_id(57502);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:39:40 +0530 (Mon, 04 Feb 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Feb2013 (Linux)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51935");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/01/stable-channel-update_22.html");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl", "ssh_authorization_init.nasl");

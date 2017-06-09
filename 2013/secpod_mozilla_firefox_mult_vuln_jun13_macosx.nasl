@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_firefox_mult_vuln_jun13_macosx.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_mozilla_firefox_mult_vuln_jun13_macosx.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - June 13 (Mac OS X)
 #
@@ -60,7 +60,7 @@ tag_summary = "This host is installed with Mozilla Firefox and is prone to multi
 if(description)
 {
   script_id(903218);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-1683", "CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686",
                 "CVE-2013-1687", "CVE-2013-1688", "CVE-2013-1690", "CVE-2013-1692",
                 "CVE-2013-1693", "CVE-2013-1694", "CVE-2013-1695", "CVE-2013-1696",
@@ -69,13 +69,12 @@ if(description)
                     60776, 60789, 60788, 60784, 60790, 60785, 60765);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-26 17:20:31 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53970");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028702");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-50.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("General");

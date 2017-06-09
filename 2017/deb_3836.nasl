@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3836.nasl 6051 2017-04-28 14:26:48Z teissa $
+# $Id: deb_3836.nasl 6067 2017-05-04 13:15:52Z teissa $
 # Auto-generated from advisory DSA 3836-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703836);
-    script_version("$Revision: 6051 $");
+    script_version("$Revision: 6067 $");
     script_cve_id("CVE-2017-8073");
     script_name("Debian Security Advisory DSA 3836-1 (weechat - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-04-28 16:26:48 +0200 (Fri, 28 Apr 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
     script_tag(name: "creation_date", value: "2017-04-27 00:00:00 +0200 (Thu, 27 Apr 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

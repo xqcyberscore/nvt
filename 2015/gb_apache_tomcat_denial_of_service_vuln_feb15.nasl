@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 5654 2017-03-21 10:23:47Z cfi $
+# $Id: gb_apache_tomcat_denial_of_service_vuln_feb15.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Apache Tomcat Denial Of Service Vulnerability - Mar15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805474");
-  script_version("$Revision: 5654 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2014-0227");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 17:41:16 +0530 (Fri, 06 Mar 2015)");
   script_name("Apache Tomcat Denial Of Service Vulnerability - Mar15");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.apache.org/security-6.html");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2015-02/0067.html");
 
-  script_summary("Check the version of apache tomcat is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");

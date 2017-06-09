@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-112.nasl 2374 2016-01-11 12:21:23Z antu123 $
+# $Id: gb_ms15-112.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3104517)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805773");
-  script_version("$Revision: 2374 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-2427", "CVE-2015-6064", "CVE-2015-6065", "CVE-2015-6066",
                 "CVE-2015-6068", "CVE-2015-6069", "CVE-2015-6070", "CVE-2015-6071",
                 "CVE-2015-6072", "CVE-2015-6073", "CVE-2015-6074", "CVE-2015-6075",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2015-6089");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-11 13:21:23 +0100 (Mon, 11 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3104517)");
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3104517");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-112");
 
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

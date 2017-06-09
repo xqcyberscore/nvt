@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_urgence_vaccin_detect.nasl 4624 2016-11-25 07:00:59Z cfi $
+# $Id: gb_open_urgence_vaccin_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # openUrgence Vaccin Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800765");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4624 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 08:00:59 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2010-05-05 15:59:12 +0200 (Wed, 05 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("openUrgence Vaccin Version Detection");
-  script_summary("Set the version of openUrgence Vaccin in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -29,10 +29,10 @@ CPE = "cpe:/a:artica:pandora_fms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805706");
-  script_version("$Revision: 3626 $");
+  script_version("$Revision: 6159 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:46:24 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-23 10:58:30 +0530 (Tue, 23 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Pandora FMS Authentication Bypass Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37255");
 
-  script_summary("Check for the vulnerable version of Pandora FMS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

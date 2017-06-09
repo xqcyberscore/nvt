@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869344");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-05 06:12:57 +0200 (Tue, 05 May 2015)");
   script_cve_id("CVE-2015-0295", "CVE-2015-1858", "CVE-2015-1859", "CVE-2015-1860");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,6 @@ Windows cross-compiler.
   script_xref(name: "FEDORA", value: "2015-6925");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/157203.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mingw-qt5-qtbase");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

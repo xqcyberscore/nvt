@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_mult_info_disc_vuln.nasl 2398 2016-01-14 10:39:46Z cfi $
+# $Id: gb_ibm_lotus_domino_mult_info_disc_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # IBM Lotus Domino Multiple Information Disclosure Vulnerabilities
 #
@@ -29,16 +29,15 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803755");
-  script_version("$Revision: 2398 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-14 11:39:46 +0100 (Thu, 14 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-04 16:22:08 +0530 (Wed, 04 Sep 2013)");
   script_name("IBM Lotus Domino Multiple Information Disclosure Vulnerabilities");
 
   script_xref(name : "URL" , value : "http://websecurity.com.ua/5829");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Apr/248");
-  script_summary("Read the user information from names.nsf");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

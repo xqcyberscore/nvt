@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842531");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6132 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 06:06:51 +0100 (Wed, 11 Nov 2015)");
   script_cve_id("CVE-2015-5310", "CVE-2015-5314", "CVE-2015-5315", "CVE-2015-5316");
   script_tag(name:"cvss_base", value:"10.0");
@@ -56,7 +56,6 @@ denial of service. This issue only applied to Ubuntu 15.10. (CVE-2015-5316)");
   script_xref(name: "USN", value: "2808-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-November/003189.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of wpa");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

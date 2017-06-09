@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871479");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:19:53 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2015-5281");
   script_tag(name:"cvss_base", value:"2.6");
@@ -95,7 +95,6 @@ GRUB2 did not receive notifications of the Address Resolution Protocol
   script_xref(name: "RHSA", value: "2015:2401-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00046.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of grub2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

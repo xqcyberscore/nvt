@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_from_line_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_email_from_line_dos_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # OTRS Email From Line Denial of Service Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2010-4767");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-22 13:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Email From Line Denial of Service Vulnerability");
 
@@ -70,7 +70,6 @@ For updates refer to http://www.otrs.com/en/";
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
-  script_summary("Determine if the OTRS version is less than 2.3.6");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

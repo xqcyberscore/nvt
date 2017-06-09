@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability
 #
@@ -48,18 +48,17 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 6104 $");
   script_bugtraq_id(57220);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:17:27 +0530 (Thu, 17 Jan 2013)");
   script_name("WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability");
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51739/");
   script_xref(name : "URL" , value : "http://plugins.trac.wordpress.org/changeset/648432/browser-rejector");
 
-  script_summary("Check if WP Browser Rejector Plugin is vulnerable to RFI");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

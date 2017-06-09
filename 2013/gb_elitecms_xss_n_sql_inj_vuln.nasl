@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elitecms_xss_n_sql_inj_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_elitecms_xss_n_sql_inj_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Elite Graphix ElitCMS Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804029");
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6104 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-21 19:27:04 +0530 (Mon, 21 Oct 2013)");
   script_name("Elite Graphix ElitCMS Cross Site Scripting and SQL Injection Vulnerabilities");
 
@@ -56,7 +56,6 @@ if (description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123672");
   script_xref(name : "URL" , value : "http://www.vulnerability-lab.com/get_content.php?id=1117");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/elite-graphix-elitcms-101-pro-cross-site-scripting-sql-injection");
-  script_summary("Check if Elite Graphix ElitCMS is prone to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

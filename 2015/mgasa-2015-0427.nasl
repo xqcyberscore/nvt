@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0427.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0427.nasl 6132 2017-05-16 09:03:39Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131115");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6132 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:02:10 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0427");
 script_tag(name: "insight", value: "Several flaws were found in the processing of malformed web content. A web page containing malicious content could cause Firefox to crash or, potentially, execute arbitrary code with the privileges of the user running Firefox. (CVE-2015-4513, CVE-2015-7189, CVE-2015-7194, CVE-2015-7196, CVE-2015-7198, CVE-2015-7197) A same-origin policy bypass flaw was found in the way Firefox handled certain cross-origin resource sharing (CORS) requests. A web page containing malicious content could cause Firefox to disclose sensitive information. (CVE-2015-7193) A same-origin policy bypass flaw was found in the way Firefox handled URLs containing IP addresses with white-space characters. This could lead to cross-site scripting attacks. (CVE-2015-7188) A use-after-poison flaw and a heap-based buffer overflow flaw were found in the way NSS parsed certain ASN.1 structures. An attacker could use these flaws to cause NSS to crash or execute arbitrary code with the permissions of the user running an application compiled against the NSS library. (CVE-2015-7181, CVE-2015-7182) A heap-based buffer overflow was found in NSPR. An attacker could use this flaw to cause NSPR to crash or execute arbitrary code with the permissions of the user running an application compiled against the NSPR library. (CVE-2015-7183) Note: Applications using NSPR's PL_ARENA_ALLOCATE, PR_ARENA_ALLOCATE, PL_ARENA_GROW, or PR_ARENA_GROW macros need to be rebuilt against the fixed nspr packages to completely resolve the CVE-2015-7183 issue."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0427");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0427");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

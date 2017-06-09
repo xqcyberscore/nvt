@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybris_dir_traversal_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_hybris_dir_traversal_vuln.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # hybris Commerce Directory Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105955");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name : "creation_date", value : "2015-02-25 14:49:12 +0700 (Wed, 25 Feb 2015)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if (description)
 
   script_tag(name : "summary", value : "hybris Commerce Software Suite is vulnerable to a
 directory traversal attack.");
-  script_summary("Try to read a local file");
 
   script_tag(name : "vuldetect", value : "Send a crafted exploit string via HTTP
 GET request and check whether it is possible to access local files.");

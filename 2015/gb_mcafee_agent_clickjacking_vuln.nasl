@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_clickjacking_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_mcafee_agent_clickjacking_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # McAfee Agent (MA) Log Viewing Feature Unspecified Clickjacking Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805294");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-2053");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-02 15:30:43 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Agent (MA) Log Viewing Feature Unspecified Clickjacking Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10094");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of McAfee Agent on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_mcafee_agent_detect.nasl");

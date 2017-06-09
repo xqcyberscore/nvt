@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_mar13_macosx.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln01_mar13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 March13 (Mac OS X)
 #
@@ -47,8 +47,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803325);
-  script_version("$Revision: 2923 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6079 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-04 19:11:31 +0530 (Mon, 04 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52374");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-08.html");
 
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

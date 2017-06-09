@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opsview_mult_xss_vuln_jun15.nasl 3626 2016-06-30 06:46:24Z antu123 $
+# $Id: gb_opsview_mult_xss_vuln_jun15.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Opsview Multiple Cross Site Scripting Vulnerabilities - June15
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805663");
-  script_version("$Revision: 3626 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-4420");
   script_bugtraq_id(75223);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:46:24 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-23 19:01:29 +0530 (Tue, 23 Jun 2015)");
   script_name("Opsview Multiple Cross Site Scripting Vulnerabilities - June15");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37271/");
 
-  script_summary("Check for the vulnerable version of Opsview");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868916");
-  script_version("$Revision: 3341 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:44:01 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-11 06:23:21 +0100 (Sun, 11 Jan 2015)");
   script_cve_id("CVE-2014-1344", "CVE-2014-1384", "CVE-2014-1385", "CVE-2014-1386",
                 "CVE-2014-1387", "CVE-2014-1388", "CVE-2014-1389", "CVE-2014-1390");
@@ -48,7 +48,6 @@ This package contains WebKitGTK+ for GTK+ 3.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-January/147863.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of webkitgtk3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firewall_builder_detect_lin.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_firewall_builder_detect_lin.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Firewall Builder Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800995);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Firewall Builder Version Detection (Linux)");
-  script_summary("Set version of Firewall Builder in KB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");

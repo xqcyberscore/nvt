@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_os_detection.nasl 5130 2017-01-28 16:03:57Z cfi $
+# $Id: gb_snmp_os_detection.nasl 6162 2017-05-18 11:36:31Z cfi $
 #
 # SNMP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103429");
-  script_version("$Revision: 5130 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-28 17:03:57 +0100 (Sat, 28 Jan 2017) $");
+  script_version("$Revision: 6162 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 13:36:31 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2012-02-17 10:17:12 +0100 (Fri, 17 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -439,13 +439,7 @@ if( "Novell UnixWare" >< sysdesc ) {
 }
 
 if( "ProSafe" >< sysdesc ) {
-
-  set_kb_item( name:"Host/OS/SNMP", value:"Netgear Prosafe Firmware" );
-  set_kb_item( name:"Host/OS/SNMP/Confidence", value:100 );
-
-  register_and_report_os( os:'Netgear Prosafe Firmware', cpe:"cpe:/o:netgear:prosafe_firmware", banner_type:BANNER_TYPE, proto:"udp", banner:sysdesc, desc:SCRIPT_DESC, runs_key:"unknown" );
-
-  exit( 0 );
+  exit( 0 ); # 1.3.6.1.4.1.25623.1.0.108163 (gb_netgear_prosafe_snmp_detect.nasl)
 }
 
 if( "Cisco IOS XR" >< sysdesc ) {
@@ -457,7 +451,7 @@ if( "ArubaOS" >< sysdesc ) {
 }
 
 if( "Cisco NX-OS" >< sysdesc ) {
-  exit( 0 );
+  exit( 0 ); # 1.3.6.1.4.1.25623.1.0.103799 (gb_cisco_nx_os_detect.nasl)
 }
 
 if( "Cisco Adaptive Security Appliance" >< sysdesc ) {

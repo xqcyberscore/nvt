@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0448.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0448.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131131");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-11-17 10:59:59 +0200 (Tue, 17 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0448");
 script_tag(name: "insight", value: "Updated chromium-browser-stable packages fix security vulnerabilities: The PDF viewer in Google Chrome before 46.0.2490.86 does not properly restrict scripting messages and API exposure, which allows remote attackers to bypass the Same Origin Policy via an unintended embedder or unintended plugin loading, related to pdf.js and out_of_process_instance.cc (CVE-2015-1302)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0448");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0448");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

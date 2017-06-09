@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871514");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-08 10:49:09 +0100 (Tue, 08 Dec 2015)");
   script_cve_id("CVE-2015-1819", "CVE-2015-5312", "CVE-2015-7497", "CVE-2015-7498",
                 "CVE-2015-7499", "CVE-2015-7500", "CVE-2015-7941", "CVE-2015-7942",
@@ -70,7 +70,6 @@ restarted (log out, then log back in) for this update to take effect.
   script_xref(name: "RHSA", value: "2015:2550-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-December/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libxml2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

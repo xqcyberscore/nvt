@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869204");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 06:52:12 +0200 (Tue, 07 Apr 2015)");
   script_cve_id("CVE-2015-1827", "CVE-2015-0283");
   script_tag(name:"cvss_base", value:"7.8");
@@ -46,7 +46,6 @@ Policy (configuration settings, access control information) and Audit (events, l
   script_xref(name: "FEDORA", value: "2015-4747");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/154314.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of freeipa");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

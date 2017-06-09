@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mul_input_val_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_mul_input_val_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # OTRS Multiple Input Validation Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2005-3893", "CVE-2005-3894", "CVE-2005-3895");
   script_bugtraq_id(15537);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-25 15:32:50 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Multiple Input Validation Vulnerabilities");
 
@@ -80,7 +80,6 @@ For updates refer to http://www.otrs.com/en/";
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/15537");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/34164");
   script_xref(name : "URL" , value : "http://www.otrs.com/en/open-source/community-news/security-advisories/security-advisory-2005-01/");
-  script_summary("Check if XSS exploit is working");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

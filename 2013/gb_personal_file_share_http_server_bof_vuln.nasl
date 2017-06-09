@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_personal_file_share_http_server_bof_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_personal_file_share_http_server_bof_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Personal File Share HTTP Server Remote Buffer Overflow Vulnerability
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803196");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-02 13:34:27 +0530 (Thu, 02 May 2013)");
   script_name("Personal File Share HTTP Server Remote Buffer Overflow Vulnerability");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Apr/184");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/526480");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/personal-file-share-http-server-remote-overflow");
-  script_summary("Check Personal File Share HTTP Server is vulnerable by sending crafted packets");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

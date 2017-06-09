@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0505.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0505.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123704");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:27 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0505");
 script_tag(name: "insight", value: "ELSA-2013-0505 -  squid security and bug fix update - [7:3.1.10-16]- Resolves: #888198 - CVE-2012-5643: improved upstream patch[7:3.1.10-15]- Reverts: #861062 - Squid delays on FQDNs that don't contains AAAA record[7:3.1.10-14]- Resolves: #888198 - CVE-2012-5643: patch[7:3.1.10-13]- Resolves: #888198 - CVE-2012-5643: DoS (excessive resource consumption)[7:3.1.10-12]- Resolves #861062 - add configure directive --enable-internal-dns[7:3.1.10-11 ]- Resolves #861062 - Squid delays on FQDNs that don't contains AAAA record[7:3.1.10-10]- Resolves #798090 - Client timeout uses server-side 'read_timeout'- Resolves #833086 - Private md5 hash function does not comply FIPS- Resolves #782732 - Squid crashes by segfault when it reboots- Resolves #797571 - Squid userid is not added to wbpriv group- Disable strict-error-checking on account of squid-fips.patch"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0505");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

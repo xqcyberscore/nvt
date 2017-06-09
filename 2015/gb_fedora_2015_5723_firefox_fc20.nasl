@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869276");
-  script_version("$Revision: 3346 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:12 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6132 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 07:21:21 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,6 @@ compliance, performance and portability.
   script_xref(name: "FEDORA", value: "2015-5723");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/155185.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

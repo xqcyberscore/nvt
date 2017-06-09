@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_jsa10778.nasl 5951 2017-04-13 12:17:37Z ckuerste $
+# $Id: gb_junos_jsa10778.nasl 6101 2017-05-11 08:27:07Z teissa $
 #
 # Junos BGP UPDATE DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106752");
-  script_version ("$Revision: 5951 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-13 14:17:37 +0200 (Thu, 13 Apr 2017) $");
+  script_version ("$Revision: 6101 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-11 10:27:07 +0200 (Thu, 11 May 2017) $");
   script_tag(name: "creation_date", value: "2017-04-13 08:24:49 +0200 (Thu, 13 Apr 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2017-2313");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easyphp_web_server_mult_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_easyphp_web_server_mult_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # EasyPHP Webserver Multiple Vulnerabilities
 #
@@ -48,14 +48,13 @@ vulnerabilities.";
 if(description)
 {
   script_id(803189);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6115 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-09 11:29:34 +0530 (Tue, 09 Apr 2013)");
   script_name("EasyPHP Webserver Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/easyphp-webserver-php-command-execution");
-  script_summary("Try to read the content of 'phpinfo.php' file");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

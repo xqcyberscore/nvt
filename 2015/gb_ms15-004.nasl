@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-004.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_ms15-004.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # Microsoft Windows Components Privilege Elevation Vulnerability (3025421)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805037");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6211 $");
   script_cve_id("CVE-2015-0016");
   script_bugtraq_id(71965);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-14 10:22:41 +0530 (Wed, 14 Jan 2015)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Components Privilege Elevation Vulnerability (3025421)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3025421");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-004");
 
-  script_summary("Check for the vulnerable 'Tswbprxy.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

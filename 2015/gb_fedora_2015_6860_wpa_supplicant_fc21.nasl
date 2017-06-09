@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869304");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-28 05:16:30 +0200 (Tue, 28 Apr 2015)");
   script_cve_id("CVE-2015-1863");
   script_tag(name:"cvss_base", value:"5.8");
@@ -48,7 +48,6 @@ roaming and IEEE 802.11 authentication/association of the wlan driver.
   script_xref(name: "FEDORA", value: "2015-6860");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/156218.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of wpa_supplicant");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

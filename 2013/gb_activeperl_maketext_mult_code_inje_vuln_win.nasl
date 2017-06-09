@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_maketext_mult_code_inje_vuln_win.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_activeperl_maketext_mult_code_inje_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Active Perl Locale::Maketext Module Multiple Code Injection Vulnerabilities (Windows)
 #
@@ -44,12 +44,12 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803339);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2012-6329");
   script_bugtraq_id(56852);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-24 12:42:04 +0530 (Thu, 24 Jan 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -57,7 +57,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51498");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80566");
-  script_summary("Check for the vulnerable version of Active Perl on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

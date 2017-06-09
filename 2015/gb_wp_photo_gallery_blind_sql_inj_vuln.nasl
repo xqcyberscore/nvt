@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wp_photo_gallery_blind_sql_inj_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Wordpress Photo Gallery Blind SQL injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805127");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2015-1055");
   script_bugtraq_id(72015);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-20 11:04:59 +0530 (Tue, 20 Jan 2015)");
   script_name("Wordpress Photo Gallery Blind SQL injection Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129927");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/36");
 
-  script_summary("Check if Wordpress Photo Gallery plugin is prone to blind sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

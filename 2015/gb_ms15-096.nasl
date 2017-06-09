@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-096.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-096.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # MS Windows Active Directory Service Denial of Service Vulnerability (3072595)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806044");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-2535");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 08:24:16 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Active Directory Service Denial of Service Vulnerability (3072595)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3072595");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-096");
 
-  script_summary("Check for the vulnerable 'Samsrv.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

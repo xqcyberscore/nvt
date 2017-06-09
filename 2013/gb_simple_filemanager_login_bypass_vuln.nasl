@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803666");
-  script_version("$Revision: 2938 $");
+  script_version("$Revision: 6086 $");
   script_bugtraq_id(60579);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:37:56 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-19 13:47:05 +0530 (Wed, 19 Jun 2013)");
   script_name("Simple File Manager Login Bypass Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26246");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013060142");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/php/simple-file-manager-v024-login-bypass-vulnerability");
-  script_summary("Check if simple file manager is able to bypass login");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_desktop_usp_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_symantec_pgp_desktop_usp_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Symantec PGP Desktop Untrusted Search Path Vulnerability
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803890";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2010-3397");
   script_bugtraq_id(42856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-10 13:52:56 +0530 (Tue, 10 Sep 2013)");
   script_name("Symantec PGP Desktop Untrusted Search Path Vulnerability");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.symantec.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/41135");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2010/Sep/170");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Symantec PGP Desktop");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("General");

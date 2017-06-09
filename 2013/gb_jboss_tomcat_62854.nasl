@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_tomcat_62854.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_jboss_tomcat_62854.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Apache Tomcat/JBoss EJBInvokerServlet / JMXInvokerServlet (RMI over HTTP) Marshalled Object Remote Code Execution
 #
@@ -29,7 +29,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103811");
  script_bugtraq_id(62854);
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6079 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_cve_id("CVE-2013-4810");
@@ -39,9 +39,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62854");
  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/28713/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-15 10:27:36 +0200 (Tue, 15 Oct 2013)");
- script_summary("Determine if EJBInvokerServlet/JMXInvokerServlet accessible without authentication.");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

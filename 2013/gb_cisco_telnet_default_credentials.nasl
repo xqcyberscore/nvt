@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telnet_default_credentials.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_telnet_default_credentials.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Cisco Default Telnet Login
 #
@@ -33,11 +33,10 @@ if (description)
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
  script_id(103807);
- script_version("$Revision: 3859 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+ script_version("$Revision: 6079 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-11 17:38:09 +0200 (Fri, 11 Oct 2013)");
  script_name("Cisco Default Telnet Login");
- script_summary("Checks if login with default credentials is possible");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

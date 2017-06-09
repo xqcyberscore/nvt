@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_websockets_dos_macosx.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_seamonkey_websockets_dos_macosx.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Mozilla Seamonkey 'WebSockets' Denial of Service Vulnerability (Mac OS X)
 #
@@ -40,18 +40,17 @@ tag_summary = "The host is installed with Mozilla Seamonkey and is prone to mult
 if(description)
 {
   script_id(803393);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2012-4191");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Seamonkey 'WebSockets' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50935");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-88.html");
-  script_summary("Check for the vulnerable version of Mozilla SeaMonkey on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1186.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-1186.nasl 6132 2017-05-16 09:03:39Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122465");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6132 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:45:56 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1186");
 script_tag(name: "insight", value: "ELSA-2009-1186 -  nspr and nss security, bug fix, and enhancement update - nspr:[4.7.4-1.el5_3.1]- create z-stream version[4.7.4-1]- Update to NSPR 4.7.4nss:[3.12.3.99.3-1.0.1.el5_3.2]- Update clean.gif in the nss-3.12.3.99.3-stripped.tar.bz2 tarball[3.12.3.99.3-1.el5_3.2]- adjust ssl cipher count constant (bug 505650)[3.12.3.99.3-1.el5_3.1]- create z-stream version[3.12.3.99.3-1]- updated to NSS_3_12_4_FIPS1_WITH_CKBI_1_75[3.12.3-5]- updated patch to seckey[3.12.3-4]- add a patch to seckey[3.12.3-3]- remove references to SEED[3.12.3-2]- update to NSS 3.12.3"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-1186");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

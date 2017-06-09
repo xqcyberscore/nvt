@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_62851.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_ucs_62851.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Cisco Unified Computing System Multiple Vulnerabilities
 #
@@ -78,7 +78,7 @@ if (description)
  script_cve_id("CVE-2013-1182","CVE-2013-1183","CVE-2013-1184","CVE-2013-1185","CVE-2013-1186");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6079 $");
 
  script_name("Cisco Unified Computing System Multiple Vulnerabilities");
 
@@ -91,9 +91,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://www.cisco.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-10 19:10:32 +0200 (Thu, 10 Oct 2013)");
- script_summary("Check the installed version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

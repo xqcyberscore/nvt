@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_mult_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_open_xchange_server_mult_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Open-Xchange Server Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803182");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-1646", "CVE-2013-1647", "CVE-2013-1648", "CVE-2013-1650",
                 "CVE-2013-1651");
   script_bugtraq_id(58465, 58473, 58475, 58469, 58470);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:14:58 +0530 (Mon, 18 Mar 2013)");
   script_name("Open-Xchange Server Multiple Vulnerabilities");
 
@@ -42,7 +42,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24791");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120785");
 
-  script_summary("Check if Open-Xchange Server is vulnerable to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

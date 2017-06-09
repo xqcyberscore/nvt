@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_kb4014981.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_dotnet_framework_kb4014981.nasl 6106 2017-05-11 10:32:49Z antu123 $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (KB4014981)
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810861");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 6106 $");
   script_cve_id("CVE-2017-0160");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-13 11:30:09 +0530 (Thu, 13 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (KB4014981)");
 
   script_tag(name:"summary", value:"This host is missing a critical security

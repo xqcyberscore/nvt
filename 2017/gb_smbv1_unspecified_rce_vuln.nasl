@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_unspecified_rce_vuln.nasl 5772 2017-03-29 16:44:30Z mime $
+# $Id: gb_smbv1_unspecified_rce_vuln.nasl 6154 2017-05-18 05:54:36Z cfi $
 #
 # SMBv1 enabled
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810554");
-  script_version("$Revision: 5772 $");
+  script_version("$Revision: 6154 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 07:54:36 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-15 13:56:01 +0530 (Wed, 15 Feb 2017)");
   script_name("SMBv1 enabled.");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -45,7 +45,10 @@ if(description)
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS17-010");
 
   script_tag(name:"summary", value:"The host has enabled SMBv1 for the SMB Client or Server and is prone to
-  an unspecified remote code execution vulnerability.");
+  an unspecified remote code execution vulnerability.
+
+  This NVT has been replaced by NVT 'Microsoft Windows SMB Server Multiple Vulnerabilities (4013389)'
+  (OID: 1.3.6.1.4.1.25623.1.0.810676).");
 
   script_tag(name:"vuldetect", value:"Check if SMBv1 is enabled for the SMB Client or Server on the host
   with the help of detect nvt.");
@@ -67,8 +70,12 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"Workaround");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 report = "";
 

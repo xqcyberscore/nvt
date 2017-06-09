@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-090.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-090.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Microsoft Windows ActiveX Control RCE Vulnerability (2900986)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(901225);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-3918");
   script_bugtraq_id(63631);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-13 12:27:27 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Windows ActiveX Control RCE Vulnerability (2900986)");
 
@@ -86,7 +86,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-090";
   script_xref(name : "URL" , value : "http://www.zdnet.com/microsoft-to-patch-zero-day-bug-tuesday-7000023066/");
   script_xref(name : "URL" , value : "http://www.fireeye.com/blog/uncategorized/2013/11/new-ie-zero-day-found-in-watering-hole-attack.html");
   script_xref(name : "URL" , value : "http://blogs.technet.com/b/msrc/archive/2013/11/11/activex-control-issue-being-addressed-in-update-tuesday.aspx");
-  script_summary("Check for the CLSID and Patch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

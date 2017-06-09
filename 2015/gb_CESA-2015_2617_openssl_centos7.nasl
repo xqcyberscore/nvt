@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882337");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-15 05:46:32 +0100 (Tue, 15 Dec 2015)");
   script_cve_id("CVE-2015-3194", "CVE-2015-3195", "CVE-2015-3196");
   script_tag(name:"cvss_base", value:"5.0");
@@ -65,7 +65,6 @@ the system rebooted.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:2617");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-December/021523.html");
-  script_summary("Check for the Version of openssl");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

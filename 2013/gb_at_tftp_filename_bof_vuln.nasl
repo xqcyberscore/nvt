@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_at_tftp_filename_bof_vuln.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_at_tftp_filename_bof_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # AT-TFTP Server Long Filename BoF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802065");
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6086 $");
   script_bugtraq_id(21320);
   script_cve_id("CVE-2006-6184");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:32:51 +0530 (Tue, 26 Nov 2013)");
   script_name("AT-TFTP Server Long Filename BoF Vulnerability");
 
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/30539");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/16350");
   script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/attftp-adv.txt");
-  script_summary("Check if AT-TFTP Server is vulnerable to BoF");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

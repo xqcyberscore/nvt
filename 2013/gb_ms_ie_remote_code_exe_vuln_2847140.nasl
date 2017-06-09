@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ms_ie_remote_code_exe_vuln_2847140.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # MS Internet Explorer Remote Code Execution Vulnerability (2847140)
 #
@@ -41,19 +41,18 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(803395);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-1347");
   script_bugtraq_id(59641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-06 18:35:10 +0530 (Mon, 06 May 2013)");
   script_name("MS Internet Explorer Remote Code Execution Vulnerability (2847140)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53314");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2847140");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/25294");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-038");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

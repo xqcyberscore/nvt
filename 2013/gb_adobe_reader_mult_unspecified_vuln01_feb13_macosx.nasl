@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_unspecified_vuln01_feb13_macosx.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_reader_mult_unspecified_vuln01_feb13_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Adobe Reader Multiple Unspecified Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.803416";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_bugtraq_id(57931, 57947);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-19 18:24:49 +0530 (Tue, 19 Feb 2013)");
   script_name("Adobe Reader Multiple Unspecified Vulnerabilities -01 Feb13 (Mac OS X)");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.adobe.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52196");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/advisories/apsa13-02.html");
   script_xref(name : "URL" , value : "http://blogs.adobe.com/psirt/2013/02/adobe-reader-and-acrobat-vulnerability-report.html");
-  script_summary("Check for the vulnerable version of Adobe Reader on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

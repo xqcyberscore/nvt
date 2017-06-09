@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_jk_auth_bypass_vuln.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_apache_mod_jk_auth_bypass_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Apache Tomcat Connector Authentication Bypass Vulnerability May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:mod_jk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805612");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2014-8111");
   script_bugtraq_id(74265);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-11 12:56:25 +0530 (Mon, 11 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache Tomcat Connector Authentication Bypass Vulnerability May15");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://cxsecurity.com/cveshow/CVE-2014-8111");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1182591");
 
-  script_summary("Check for the vulnerable version of Apache Tomcat Connector");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");

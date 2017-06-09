@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kilerrat_trojan_detect.nasl 5875 2017-04-06 05:33:38Z cfi $
+# $Id: gb_kilerrat_trojan_detect.nasl 6113 2017-05-12 06:37:43Z cfi $
 #
 # KilerRat Trojan Detection
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5875 $");
+ script_version("$Revision: 6113 $");
 
  script_name("KilerRat Trojan Detection");
 
@@ -41,9 +41,9 @@ if (description)
  script_tag(name: "vuldetect" , value:"Check the response on port 6666.");
  script_tag(name:"solution_type", value: "Workaround");
 
- script_tag(name:"qod_type", value:"remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 07:33:38 +0200 (Thu, 06 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 08:37:43 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2017-04-05 15:14:52 +0200 (Wed, 05 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
@@ -64,9 +64,11 @@ data = '0|Kiler|OpenVAS|Kiler|OpenVAS|Kiler[endof]';
 
 buf = socket_send_recv( port:port, data:data, length:64 );
 
+# TBD: The data from above is an OR regex here causing false positives
+# The check itself is also quite error prone and AFAICS would only check for a C&C and not for the trojan
 if( buf =~ '^ACK' + data + '$' )
 {
-  register_service( port:port, proto:"KilerRat", message:"The KilerRat trojan seems to be running at this port" );
+  #register_service( port:port, proto:"KilerRat", message:"The KilerRat trojan seems to be running at this port" );
   security_message( port:port, data:'The KilerRat trojan seems to be running at this port.\n\nResponse:\n\n' + buf);
   exit( 0 );
 }

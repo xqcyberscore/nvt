@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0965.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0965.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122547");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:45 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0965");
 script_tag(name: "insight", value: "ELSA-2008-0965 -  lynx security update - [2.8.5-28.1.1]- add patch for CVE-2008-4690 (rhbz#468184) - prompt user before executing commands from the lynxcgi: handler, even in the advanced user mode - mark all lynxcgi: URIs as untrusted in the default lynx.cfg- add patch to prevent lynx from opening configuration files in the current working directory (CVE to be assigned) (rhbz#214205)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0965");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_IPmux-2L_default_credentials.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_IPmux-2L_default_credentials.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # IPmux-2L TDM Pseudowire Access Gateway Default Credentials
 #
@@ -39,16 +39,15 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103860";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6074 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-12-18 11:44:04 +0200 (Wed, 18 Dec 2013)");
  script_name("IPmux-2L TDM Pseudowire Access Gateway Default Credentials");
 
  script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/12/17/ipmux-2l-tdm-pseudowire-access-gateway-default-credentials/");
 
- script_summary("Checks if it is possible to login as user SU");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

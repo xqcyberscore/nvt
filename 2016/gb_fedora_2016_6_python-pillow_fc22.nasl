@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807783");
-  script_version("$Revision: 5568 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
+  script_version("$Revision: 6067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2016-04-11 05:16:34 +0200 (Mon, 11 Apr 2016)");
   script_cve_id("CVE-2016-3076");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-pillow FEDORA-2016-6");
   script_tag(name: "summary", value: "Check the version of python-pillow");

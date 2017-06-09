@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_libjpeg_info_disclosure_kb4014652.nasl 5945 2017-04-12 15:37:08Z antu123 $
+# $Id: gb_ms_libjpeg_info_disclosure_kb4014652.nasl 6169 2017-05-19 08:26:16Z antu123 $
 #
-# Microsoft Windows libjpeg Information Disclosure Vulnerability (4014652)
+# Microsoft Windows libjpeg Information Disclosure Vulnerability (KB4014652)
 #
 # Authors:
 # Kashinath T <tkashinath@secpod.com>
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810846");
-  script_version("$Revision: 5945 $");
+  script_version("$Revision: 6169 $");
   script_cve_id("CVE-2013-6629");
   script_bugtraq_id(63676);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 17:37:08 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 10:26:16 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:35:10 +0530 (Wed, 12 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
-  script_name("Microsoft Windows libjpeg Information Disclosure Vulnerability (4014652)");
+  script_name("Microsoft Windows libjpeg Information Disclosure Vulnerability (KB4014652)");
 
   script_tag(name: "summary" , value:"This host is missing an important security
-  update according to Microsoft security updates April 2017 Kb4014652.");
+  update according to Microsoft KB4014652.");
 
   script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");

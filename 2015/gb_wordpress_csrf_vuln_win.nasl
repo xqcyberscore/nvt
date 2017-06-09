@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_csrf_vuln_win.nasl 5087 2017-01-24 11:37:34Z cfi $
+# $Id: gb_wordpress_csrf_vuln_win.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)
 #
@@ -28,10 +28,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805946");
-  script_version("$Revision: 5087 $");
+  script_version("$Revision: 6141 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:37:34 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-07 11:29:02 +0530 (Fri, 07 Aug 2015)");
   script_name("WordPress 'admin impersonation via comments' CSRF Vulnerability (Windows)");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Aug/10");
   script_xref(name : "URL" , value : "https://security.dxw.com/advisories/comment-form-csrf-allows-admin-impersonation-via-comments-in-wordpress-4-2-2/");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of wordpress on windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");

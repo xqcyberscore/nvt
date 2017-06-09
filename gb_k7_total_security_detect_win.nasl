@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_total_security_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_k7_total_security_detect_win.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # K7 Total Security Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805460");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 11:26:06 +0530 (Fri, 02 Jan 2015)");
   script_name("K7 Total Security Version Detection (Windows)");
 
@@ -41,7 +41,6 @@ if(description)
   and gets the version from 'DisplayVersion' string from registry.");
 
   script_tag(name:"qod_type", value:"registry");
-  script_summary("Set version of K7 Total Security in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

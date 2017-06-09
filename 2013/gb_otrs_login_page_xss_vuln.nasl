@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_login_page_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_login_page_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # OTRS Login Page Multiple XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2008-7275");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-25 16:04:50 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Login Page Multiple XSS Vulnerability");
 
@@ -71,7 +71,6 @@ later, For updates refer to http://www.otrs.com/en/";
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
 
-  script_summary("Determine if the OTRS version is less than 2.3.3");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

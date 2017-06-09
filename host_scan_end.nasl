@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_scan_end.nasl 2837 2016-03-11 09:19:51Z benallard $
+# $Id: host_scan_end.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Host Scan End
 #
@@ -34,14 +34,13 @@ SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.103739";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2837 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:19:51 +0100 (Fri, 11 Mar 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-17 10:52:11 +0100 (Mon, 17 Jun 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Host Scan End");
   
-  script_summary("Final routine when scan of host finished");
   script_category(ACT_END);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4689.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_junos_cve_2013_4689.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Junos CSRF Protection bypass vulnerability in J-Web
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103951");
-  script_version ("$Revision: 2939 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_version ("$Revision: 6104 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-15 14:20:14 +0700 (Fri, 15 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if (description)
 
   script_name("Junos CSRF Protection Bypass Vulnerability in J-Web");
 
-  script_summary("Junos CVE-2013-4689");
 
   script_category(ACT_GATHER_INFO);
 

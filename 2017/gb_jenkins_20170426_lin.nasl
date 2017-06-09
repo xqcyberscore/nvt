@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_20170426_lin.nasl 6057 2017-05-02 14:10:26Z cfi $
+# $Id: gb_jenkins_20170426_lin.nasl 6131 2017-05-16 07:17:49Z cfi $
 #
 # Jenkins Security Advisory Apr17 -26 Multiple Vulnerabilities (Linux)
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107156");
-  script_version("$Revision: 6057 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 16:10:26 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 6131 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 09:17:49 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-28 12:09:09 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-1000353", "CVE-2017-1000354", "CVE-2017-1000355");
   script_bugtraq_id(98056);
@@ -96,7 +96,7 @@ if(version_is_less(version: Ver, test_version:"2.46.2"))
     vuln = TRUE;
     fix = "2.46.2";
 }
-if (version_in_range(version: Ver, test_version: "2.33", test_version2: "2.57"))
+if (version_in_range(version: Ver, test_version: "2.47", test_version2: "2.57"))
 {
     vuln = TRUE;
     fix = "2.57";

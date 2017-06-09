@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 5934 2017-04-11 12:28:28Z antu123 $
+# $Id: smb_nt.inc 6107 2017-05-11 12:56:05Z cfi $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5934 $
+# $Revision: 6107 $
 #
 ###############################################################################
 
@@ -34,6 +34,28 @@
 global_var multiplex_id, g_mhi, g_mlo, s_sign_key, initial, seq_number, ntlmssp_flag, ntlmv2_flag, isSignActive, sign_key, smb;
 
 ntlmssp_flag = string( get_kb_item( "SMB/NTLMSSP" ) );
+
+## An ISSUE reported as #71142, registry methods of smb_nt.inc are currently failing
+## against a Windows Vista Ulimate SP1 and Windows Server (R) 2008 SP1 systems. Moreover,
+## Windows Vista has already reached End of Life.
+## Adding a workaround to check if target is Windows Vista Service Pack 1 or Windows Server
+## (R) 2008 Service Pack 1 and if so force target to use SMB1 instead of SMB2, which is
+## working fine.
+
+_Workaround = get_kb_list( "HostDetails/NVT/1.3.6.1.4.1.25623.1.0.102011/OS" );
+
+if( _Workaround ) {
+  foreach Workaround( _Workaround ) {
+    if( ( "Windows Vista (TM) Ultimate 6001 Service Pack 1" >< Workaround ) ||
+        ( "windows_vista" >< Workaround && "sp1" >< Workaround ) ||
+        ( "Windows Server (R) 2008 Enterprise 6001 Service Pack 1" >< Workaround ) ||
+        ( "windows_server_2008" >< Workaround && "sp1" >< Workaround ) ) {
+      ntlmssp_flag = 0;
+      break;
+    }
+  }
+}
+
 ntlmv2_flag = string( get_kb_item( "SMB/dont_send_ntlmv1" ) );
 
 if( ntlmssp_flag ) {

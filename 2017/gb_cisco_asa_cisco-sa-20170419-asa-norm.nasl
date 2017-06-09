@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_cisco-sa-20170419-asa-norm.nasl 5986 2017-04-20 07:10:53Z ckuerste $
+# $Id: gb_cisco_asa_cisco-sa-20170419-asa-norm.nasl 6067 2017-05-04 13:15:52Z teissa $
 #
 # Cisco ASA Software TCP Normalizer Denial of Service Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106767");
  script_cve_id("CVE-2017-3793");
- script_tag(name: "cvss_base", value: "2.6");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 5986 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+ script_version("$Revision: 6067 $");
 
  script_name("Cisco ASA Software TCP Normalizer Denial of Service Vulnerability");
 
@@ -58,7 +58,7 @@ a DoS condition.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-20 09:10:53 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
  script_tag(name: "creation_date", value: "2017-04-20 08:21:20 +0200 (Thu, 20 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

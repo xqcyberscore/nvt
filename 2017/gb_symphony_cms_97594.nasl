@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_cms_97594.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_symphony_cms_97594.nasl 6126 2017-05-15 10:06:16Z ckuerste $
 #
 # Symphony CMS <= 2.6.11 Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symphony-cms:symphony_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108142");
-  script_version("$Revision: 6012 $");
-  script_cve_id("CVE-2017-7694");
+  script_version("$Revision: 6126 $");
+  script_cve_id("CVE-2017-7694", "CVE-2017-8876");
   script_bugtraq_id(97594);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 12:06:16 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 06:57:33 +0200 (Wed, 19 Apr 2017)");
   script_name("Symphony CMS <= 2.6.11 Remote Code Execution Vulnerability");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");

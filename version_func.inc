@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: version_func.inc 5872 2017-04-05 14:13:06Z cfi $
+# $Id: version_func.inc 6155 2017-05-18 06:34:14Z cfi $
 #
 # Helper functions for SSH-based target host access
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5872 $
+# $Revision: 6155 $
 #
 ###############################################################################
 
@@ -445,6 +445,9 @@ function fetch_file_version( sysPath, file_name ) {
 
   share = ereg_replace( pattern:"([A-Za-z]):.*", replace:"\1$", string:sysPath );
   file =  ereg_replace( pattern:"[A-Za-z]:(.*)", replace:"\1", string:sysPath + "\" + file_name );
+
+  # openvas-nasl-lint currently can't detect a missing function within a function
+  if( ! defined_func( "GetVer" ) ) include( "secpod_smb_func.inc" );
 
   sysVer = GetVer( file:file, share:share );
   if( ! sysVer || isnull( sysVer ) || sysVer == "" || sysVer == 0 || sysVer == '0' ) {

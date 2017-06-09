@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_july16.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_july16.nasl 6066 2017-05-04 12:05:07Z antu123 $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities- July16
 #
@@ -30,18 +30,19 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808510");
-  script_version("$Revision: 5580 $");
+  script_version("$Revision: 6066 $");
   script_cve_id("CVE-2016-2207", "CVE-2016-2209", "CVE-2016-2210", "CVE-2016-2211",
                 "CVE-2016-3644", "CVE-2016-3645", "CVE-2016-3646", "CVE-2016-3647",
                 "CVE-2016-3648", "CVE-2016-3649", "CVE-2016-3650", "CVE-2016-3651",
                 "CVE-2016-3652", "CVE-2016-3653", "CVE-2016-5304", "CVE-2016-5305",
-                "CVE-2016-5306", "CVE-2016-5307", "CVE-2015-8801");
+                "CVE-2016-5306", "CVE-2016-5307", "CVE-2015-8801", "CVE-2016-5309",
+                "CVE-2016-5310");
   script_bugtraq_id(91434, 91436, 91437, 91438, 91431, 91439, 91435, 91433, 91441,
                     91440, 91432, 91445, 91444, 91442, 91447, 91448, 91449, 91443,
-                    91446 );
+                    91446, 92866, 92868);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 14:05:07 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:15:06 +0530 (Mon, 04 Jul 2016)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities- July16");
 
@@ -54,7 +55,9 @@ if(description)
   script_tag(name: "insight" , value: "Multiple flaws are due to,
   - An error in parsing of maliciously-formatted container files in symantecs
     decomposer engine.
-  - An improper validation in the management console.");
+  - An improper validation in the management console.
+  - The mishandling of RAR file by RAR file parser component in the AntiVirus 
+    Decomposer engine.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow attackers
   to cause memory corruption, integer overflow or buffer overflow results in an

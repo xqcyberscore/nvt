@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_use_after_free_vuln_jul15_win.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_flash_use_after_free_vuln_jul15_win.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # Adobe Flash Player Use-After-Free Vulnerability July15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805902");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6132 $");
   script_cve_id("CVE-2015-5119", "CVE-2014-0578", "CVE-2015-3114", "CVE-2015-3115",
                 "CVE-2015-3116", "CVE-2015-3117", "CVE-2015-3118", "CVE-2015-3119",
                 "CVE-2015-3120", "CVE-2015-3121", "CVE-2015-3122", "CVE-2015-3123",
@@ -42,7 +42,7 @@ if(description)
   script_bugtraq_id(75568, 75594, 75593, 75591, 75590, 75595, 75596, 75592);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-08 14:07:29 +0530 (Wed, 08 Jul 2015)");
   script_name("Adobe Flash Player Use-After-Free Vulnerability July15 (Windows)");
 
@@ -83,7 +83,6 @@ if(description)
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsa15-03.html");
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-16.html");
   script_xref(name: "URL" , value : "http://blog.trendmicro.com/trendlabs-security-intelligence/unpatched-flash-player-flaws-more-pocs-found-in-hacking-team-leak");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

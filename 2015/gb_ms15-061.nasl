@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-061.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-061.nasl 6176 2017-05-19 12:35:07Z cfi $
 #
 # MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3057839)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805582");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6176 $");
   script_cve_id("CVE-2015-1719", "CVE-2015-1720", "CVE-2015-1721", "CVE-2015-1722",
                 "CVE-2015-1723", "CVE-2015-1724", "CVE-2015-1725", "CVE-2015-1726",
                 "CVE-2015-1727", "CVE-2015-1768", "CVE-2015-2360");
@@ -35,7 +35,7 @@ if(description)
                     75008, 75024, 75025);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 14:35:07 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:00:55 +0530 (Wed, 10 Jun 2015)");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3057839)");
 
@@ -46,20 +46,20 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value: "Multiple flaws exists due to,
-<<<<<<< .mine
-  - An improper handling of buffer elements by windows kernel-mode driver under
-    certain conditions.
-  - An improper freeing of an object in memory by windows kernel-mode driver.
-=======
+
   - Improper handling of buffer elements by windows kernel-mode driver under
     certain conditions.
+
   - Improper freeing of an object in memory by windows kernel-mode driver.
->>>>>>> .r4188
+
   - Insufficient validation of certain data passed from user mode by the windows
     kernel-mode driver.
+
   - Windows kernel-mode driver when it accesses an object in memory that has
     either not been correctly initialized or deleted.
+
   - Windows kernel-mode driver when it improperly validates user input.
+
   - Windows kernel-mode driver 'Win32k.sys' fails to properly free memory.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow remote
@@ -89,7 +89,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3057839");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms15-061.aspx");
 
-  script_summary("Check for the vulnerable 'Win32k.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

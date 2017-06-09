@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_info_disclosure_vuln_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_apple_safari_info_disclosure_vuln_macosx.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Apple Safari 'Webkit' Information Disclosure Vulnerability (Mac OS X)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-5130");
   script_bugtraq_id(63289);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-06 11:33:36 +0530 (Wed, 06 Nov 2013)");
   script_name("Apple Safari 'Webkit' Information Disclosure Vulnerability (Mac OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to 'http://www.apple.com/support'";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55448");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2013/Oct/msg00003.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apple Safari on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("macosx_safari_detect.nasl");

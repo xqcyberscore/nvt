@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fuzzylime_cms_detect.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: secpod_fuzzylime_cms_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Fuzzylime(cms) Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900583");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Fuzzylime(cms) Version Detection");
-  script_summary("Sets the KB for the version of Fuzzylime(cms)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

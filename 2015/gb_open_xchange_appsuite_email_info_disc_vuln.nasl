@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_email_info_disc_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_open_xchange_appsuite_email_info_disc_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # Open-Xchange AppSuite Email Configuration Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806081");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2014-2078");
   script_bugtraq_id(71888);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:M/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-09 15:08:44 +0530 (Fri, 09 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange AppSuite Email Configuration Information Disclosure Vulnerability");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2014-03/0108.html");
 
-  script_summary("Check if Open-Xchange (OX) AppSuite is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

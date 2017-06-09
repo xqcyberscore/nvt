@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # D-Link Multiple Devices Backdoor
 #
@@ -44,7 +44,7 @@ tag_vuldetect = "Try to bypass authentication by using 'xmlset_roodkcableoj28840
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6104 $");
  script_cve_id("CVE-2013-6026");
  script_bugtraq_id(62990);
  script_tag(name:"cvss_base", value:"10.0");
@@ -56,9 +56,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/");
  script_xref(name:"URL", value:"http://www.d-link.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 19:24:10 +0200 (Mon, 14 Oct 2013)");
- script_summary("Determine if it is possible to bypass authentication");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

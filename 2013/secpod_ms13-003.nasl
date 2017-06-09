@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-003.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-003.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # MS System Center Operations Manager XSS Vulnerabilities (2748552)
 #
@@ -43,12 +43,12 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903100);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-0009", "CVE-2013-0010");
   script_bugtraq_id(55408, 55401);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-09 10:25:58 +0530 (Wed, 09 Jan 2013)");
   script_name("MS System Center Operations Manager XSS Vulnerabilities (2748552)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51686/");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/78070");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-003");
 
-  script_summary("Check for the version of vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_access_ctrl_bypass_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_rsa_auth_agent_access_ctrl_bypass_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # EMC RSA Authentication Agent Access Control Bypass Vulnerability (Windows)
 #
@@ -33,12 +33,12 @@ CPE = "cpe:/a:emc:rsa_authentication_agent";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-2287");
   script_bugtraq_id(55662);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-29 12:11:58 +0530 (Thu, 29 Aug 2013)");
   script_name("EMC RSA Authentication Agent Access Control Bypass Vulnerability (Windows)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.rsa.com/node.aspx?id=2575";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50735");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/78802");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-09/att-0102/ESA-2012-037.txt");
-  script_summary("Check for the vulnerable version of RSA Authentication Agent on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

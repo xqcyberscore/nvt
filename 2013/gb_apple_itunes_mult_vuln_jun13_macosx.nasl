@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_jun13_macosx.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_apple_itunes_mult_vuln_jun13_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Apple iTunes Multiple Vulnerabilities - June13 (Mac OS X)
 #
@@ -48,7 +48,7 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803807);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-1014", "CVE-2013-1011", "CVE-2013-1010", "CVE-2013-1008",
                 "CVE-2013-1007", "CVE-2013-1006", "CVE-2013-1005", "CVE-2013-1004",
                 "CVE-2013-1003", "CVE-2013-1002", "CVE-2013-1001", "CVE-2013-1000",
@@ -60,7 +60,7 @@ if(description)
                                          59956, 59955, 59954, 59953, 59944);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 13:03:34 +0530 (Thu, 06 Jun 2013)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5766");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53471");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2013/May/msg00000.html");
-  script_summary("Check for the version of Apple iTunes on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

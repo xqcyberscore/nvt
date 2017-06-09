@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-2016.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-2016.nasl 6170 2017-05-19 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122175");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6170 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:16 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-2016");
 script_tag(name: "insight", value: "ELSA-2011-2016 - Unbreakable Enterprise kernel security fix update - A[2.6.32-100.28.17.el6]- [net] Extend prot->slab size when add sock extend fields.[2.6.32-100.28.16.el6]- kernel: Fix unlimited socket backlog DoS {CVE-2010-4251}- RDS: Fix congestion issues for loopback- rds: prevent BUG_ON triggering on congestion map updates {CVE-2011-1023}- epoll: prevent creating circular epoll structures {CVE-2011-1082}- fs: fix corrupted OSF partition table parsing {CVE-2011-1163}- fs: Increase OSF partition limit from 8 to 18 {CVE-2011-1163}- netfilter: arp_tables: fix infoleak to userspace {CVE-2011-1170}- netfilter: ip_tables: fix infoleak to userspace {CVE-2011-1171}- ipv6: netfilter: ip6_tables: fix infoleak to userspace {CVE-2011-1172}- [SCSI] mpt2sas: prevent heap overflows and unchecked reads {CVE-2011-1494, CVE-2011-1495}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-2016");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

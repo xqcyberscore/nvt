@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_iis_auth_bypass_vuln_win.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_rsa_auth_agent_iis_auth_bypass_vuln_win.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # RSA Authentication Agent for IIS Authentication Bypass Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:emc:rsa_authentication_agent_iis";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-3280");
   script_bugtraq_id(63303);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-25 15:39:27 +0530 (Mon, 25 Nov 2013)");
   script_name("RSA Authentication Agent for IIS Authentication Bypass Vulnerability");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.rsa.com/node.aspx?id=2575";
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/446935.php");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123755");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Oct/att-117/ESA-2013-067.txt");
-  script_summary("Check for the vulnerable version of RSA Authentication Agent");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

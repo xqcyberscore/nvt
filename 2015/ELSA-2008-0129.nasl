@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0129.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0129.nasl 6207 2017-05-24 09:04:07Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122611");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6207 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:49:16 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0129");
 script_tag(name: "insight", value: "ELSA-2008-0129 -  Important: kernel security update - [2.6.18-53.1.13.0.1.el5] - [NET] Add entropy support to e1000 and bnx2 (John Sobecki) [orabug 6045759] - [NET] Fix msi issue with kexec/kdump (Michael Chan) [orabug 6219364] - [MM] Fix alloc_pages_node() static `nid race made kernel crash (Joe Jin) [orabug 6187457] - [splice] Fix bad unlock_page() in error case (Jens Axboe) [orabug 6263574] - [dio] fix error-path crashes (Linus Torvalds) [orabug 6242289] - [MM] Fix leak in hugepages, regression for shared pagetables patch (Adam Litke) [orabug 6732368] [2.6.18-53.1.13] - revert to 2.6.18-53.1.6.el5 - [x86_64] kernel vmsplice_to_pipe flaw (Alexander Viro ) [432252] {CVE-2008-0600}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0129");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vse_priv_esc_vuln_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_mcafee_vse_priv_esc_vuln_win.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # McAfee VirusScan Enterprise Privilege Escalation Vulnerability (Windows)
 #
@@ -38,17 +38,16 @@ tag_summary = "This host is installed with McAfee VirusScan Enterprise and is
 if(description)
 {
   script_id(803320);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2010-5143");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-04 10:10:22 +0530 (Mon, 04 Mar 2013)");
   script_name("McAfee VirusScan Enterprise Privilege Escalation Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2010-5143");
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10014");
 
-  script_summary("Check for the vulnerable version of McAfee VirusScan Enterprise on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Privilege escalation");

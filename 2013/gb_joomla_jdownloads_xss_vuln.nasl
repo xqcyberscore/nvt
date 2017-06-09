@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_jdownloads_xss_vuln.nasl 3509 2016-06-14 08:00:34Z ckuerste $
+# $Id: gb_joomla_jdownloads_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Joomla Component JDownloads Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3509 $");
+  script_version("$Revision: 6093 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 10:00:34 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-19 15:16:13 +0530 (Mon, 19 Aug 2013)");
   script_name("Joomla Component JDownloads Cross Site Scripting Vulnerability");
 
@@ -76,7 +76,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://hardeningsecurity.com/?p=428");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013080149");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122854");
-  script_summary("Check if Joomla JDownloads component is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

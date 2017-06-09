@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882093");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:56:27 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-7823");
   script_tag(name:"cvss_base", value:"5.0");
@@ -88,7 +88,6 @@ no longer circumvent sVirt protection when the ...
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:0008");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-January/020859.html");
-  script_summary("Check for the Version of libvirt");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

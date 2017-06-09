@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_62598.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_dell_drac_62598.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability
 #
@@ -60,7 +60,7 @@ if (description)
  script_cve_id("CVE-2013-3589");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 5655 $");
+ script_version ("$Revision: 6074 $");
 
  script_name("Dell iDRAC6 and iDRAC7 'ErrorMsg' Parameter Cross Site Scripting Vulnerability");
 
@@ -68,9 +68,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62598");
  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/920038");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-14 11:13:22 +0200 (Mon, 14 Oct 2013)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_informix_detect.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: gb_informix_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Informix Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100517");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4034 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2010-03-06 09:57:46 +0100 (Sat, 06 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Informix Detection");
-  script_summary("Checks for the presence of Informix");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Service detection");

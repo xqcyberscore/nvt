@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_csrf_vuln.nasl 5644 2017-03-21 09:07:05Z teissa $
+# $Id: gb_bigtree_csrf_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # BigTree CMS Multiple CSRF Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:bigtree:bigtree";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106666");
-  script_version("$Revision: 5644 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 10:07:05 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-03-17 13:15:28 +0700 (Fri, 17 Mar 2017)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -40,7 +40,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("BigTree CMS Multiple CSRF Vulnerabilities");
 
@@ -69,8 +69,7 @@ if (description)
 
   script_tag(name: "affected", value: "BigTree 4.1.18 and 4.2.16");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 17th March, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to version 4.2.17 or later.");
 
   script_xref(name: "URL", value: "https://github.com/bigtreecms/BigTree-CMS/issues/275");
 
@@ -86,9 +85,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_equal(version: version, test_version: "4.1.18") ||
-    version_is_equal(version: version, test_version: "4.2.16")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "None");
+if (version_is_less(version: version, test_version: "4.2.17")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "4.2.17");
   security_message(port: port, data: report);
   exit(0);
 }

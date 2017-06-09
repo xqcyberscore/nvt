@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_foxit_reader_npfoxitreader_bof_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Foxit Reader Plugin URL Processing Buffer Overflow Vulnerability
 #
@@ -41,11 +41,11 @@ tag_summary = "The host is installed with Foxit Reader and is prone to buffer
 if(description)
 {
   script_id(803163);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6104 $");
   script_bugtraq_id(57174);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-24 13:51:25 +0530 (Thu, 24 Jan 2013)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51733");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/23944");
   script_xref(name : "URL" , value : "http://www.foxitsoftware.com/support/security_bulletins.php#FRD-18");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the version of Foxit Reader");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_family("Buffer overflow");

@@ -28,12 +28,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804127");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-6283");
   script_bugtraq_id(61844 );
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-05 02:32:13 +0530 (Tue, 05 Nov 2013)");
   script_name("VLC Media Player M3U Denial of Service Vulnerability (Linux)");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.videolan.org/vlc";
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/447008.php");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27700");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VLC Media Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_lin.nasl");

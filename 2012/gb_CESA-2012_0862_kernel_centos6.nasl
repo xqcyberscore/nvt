@@ -60,8 +60,8 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://lists.centos.org/pipermail/centos-announce/2012-July/018715.html");
   script_id(881132);
-  script_version("$Revision: 3011 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-08 11:54:34 +0200 (Fri, 08 Apr 2016) $");
+  script_version("$Revision: 6210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 17:02:34 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:18:21 +0530 (Mon, 30 Jul 2012)");
   script_cve_id("CVE-2011-1083", "CVE-2011-4131");
   script_tag(name:"cvss_base", value:"4.9");
@@ -83,7 +83,7 @@ if(description)
   exit(0);
 }
 
-
+include("revisions-lib.inc");
 include("pkg-lib-rpm.inc");
 
 release = get_kb_item("ssh/login/release");

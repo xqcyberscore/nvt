@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deepOfix_auth_bypass_11_13.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_deepOfix_auth_bypass_11_13.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # DeepOfix SMTP Authentication Bypass
 #
@@ -53,16 +53,15 @@ if (description)
  script_cve_id("CVE-2013-6796");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6104 $");
 
  script_name("DeepOfix SMTP Authentication Bypass");
 
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124054/DeepOfix-3.3-SMTP-Authentication-Bypass.html");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
- script_summary("Determine if it is possible to bypass authentication");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("SMTP problems");

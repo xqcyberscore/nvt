@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_repeatcpy_bof_vuln_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_perl_repeatcpy_bof_vuln_win.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Strawberry Perl 'Perl_repeatcpy()' Function Buffer Overflow Vulnerability (Windows)
 #
@@ -41,17 +41,16 @@ tag_summary = "The host is installed with Strawberry Perl and is prone to heap
 if(description)
 {
   script_id(803161);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2012-5195");
   script_bugtraq_id(56287);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-23 19:28:09 +0530 (Wed, 23 Jan 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Strawberry Perl 'Perl_repeatcpy()' Function Buffer Overflow Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51457");
   script_xref(name : "URL" , value : "http://www.nntp.perl.org/group/perl.perl5.porters/2012/10/msg193886.html");
-  script_summary("Check for the vulnerable version of Strawberry Perl on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

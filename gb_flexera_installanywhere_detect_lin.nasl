@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_detect_lin.nasl 3914 2016-08-31 09:49:38Z antu123 $
+# $Id: gb_flexera_installanywhere_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Flexera InstallAnywhere Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809016");
-  script_version("$Revision: 3914 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-31 11:49:38 +0200 (Wed, 31 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_name("Flexera InstallAnywhere Version Detection (Linux)");
 
@@ -40,7 +40,6 @@ if(description)
   The script logs in via ssh, searches for executable and queries the
   version from 'config.json' file.");
   
-  script_summary("Set KB for the version of Flexera InstallAnywhere");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

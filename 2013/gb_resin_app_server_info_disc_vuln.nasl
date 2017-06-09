@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_resin_app_server_info_disc_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_resin_app_server_info_disc_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Resin Application Server Source Code Disclosure Vulnerability
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803713");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6093 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-10 16:11:12 +0530 (Mon, 10 Jun 2013)");
   script_name("Resin Application Server Source Code Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121933");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013060064");
   script_xref(name:"URL", value:"http://www.zeroscience.mk/codes/resin_scd.txt");
   script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5144.php");
-  script_summary("Try to access the source code of Resin Application Server");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

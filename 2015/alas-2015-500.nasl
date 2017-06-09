@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-500.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-500.nasl 6207 2017-05-24 09:04:07Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120369");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6207 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:24:50 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-500");
 script_tag(name: "insight", value: "Multiple heap-based buffer overflows in the status_handler function in (1) engine-gpgsm.c and (2) engine-uiserver.c in GPGME before 1.5.1 allow remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via vectors related to different line lengths in a specific order."); 
 script_tag(name : "solution", value : "Run yum update gpgme to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-500");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

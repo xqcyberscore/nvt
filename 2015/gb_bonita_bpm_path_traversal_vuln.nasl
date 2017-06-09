@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Bonita BPM Path Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:bonitasoft:bonita_bpm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106010");
-  script_version("$Revision: 5629 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6207 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("bonita_bpm/installed");
 
   script_tag(name: "summary", value: "Bonita BPM is prone to a path traversal vulnerability");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Send a special crafted HTTP GET request and check the response.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_netweaver_detect.nasl 3756 2016-07-25 08:59:05Z ckuerste $
+# $Id: gb_sap_netweaver_detect.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # SAP NetWeaver Application Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105302");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 3756 $");
- script_tag(name:"last_modification", value:"$Date: 2016-07-25 10:59:05 +0200 (Mon, 25 Jul 2016) $");
+ script_version ("$Revision: 6211 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-22 11:54:01 +0200 (Mon, 22 Jun 2015)");
  script_name("SAP NetWeaver Application Server Detection");
 
@@ -41,7 +41,6 @@ from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of SAP NetWeaver Application Server");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
@@ -60,7 +59,6 @@ port = get_http_port( default:443 );
 
 req = http_get(item: "/irj/portal", port: port);
 buf =  http_keepalive_send_recv(port: port, data: req, bodyonly: false);
-
 if ("TITLE>SAP NetWeaver Application Server" >!< buf && "erver: SAP NetWeaver Application Server" >!< buf &&
     ("<title>Application Server Error" >!< buf && "SAP AG" >!< buf))
   exit(0);

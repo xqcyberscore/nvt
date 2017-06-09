@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_out_of_bounds_vuln_feb15_win.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_adobe_acrobat_out_of_bounds_vuln_feb15_win.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # Adobe Acrobat Out-of-bounds Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805440");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6211 $");
   script_cve_id("CVE-2014-9161");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:42:27 +0530 (Tue, 03 Feb 2015)");
   script_name("Adobe Acrobat Out-of-bounds Vulnerability Feb15 (Windows)");
 
@@ -63,7 +63,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name : "URL" , value : "http://code.google.com/p/google-security-research/issues/detail?id=149");
-  script_summary("Check for the vulnerable version of Adobe Acrobat on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-219.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-219.nasl 6079 2017-05-08 09:03:33Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120438");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6079 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:26:22 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-219");
 script_tag(name: "insight", value: "Unspecified vulnerability in Puppet 2.7.x before 2.7.23 and 3.2.x before 3.2.4, and Puppet Enterprise 2.8.x before 2.8.3 and 3.0.x before 3.0.1, allows remote attackers to execute arbitrary Ruby programs from the master via the resource_type service. NOTE: this vulnerability can only be exploited utilizing unspecified local file system access to the Puppet Master. Puppet Module Tool (PMT), as used in Puppet 2.7.x before 2.7.23 and 3.2.x before 3.2.4, and Puppet Enterprise 2.8.x before 2.8.3 and 3.0.x before 3.0.1, installs modules with weak permissions if those permissions were used when the modules were originally built, which might allow local users to read or modify those modules depending on the original permissions."); 
 script_tag(name : "solution", value : "Run yum update puppet to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-219");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

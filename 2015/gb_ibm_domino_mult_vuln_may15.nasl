@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln_may15.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_ibm_domino_mult_vuln_may15.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # IBM Domino Multiple Vulnerabilities - May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805549");
-  script_version("$Revision: 5701 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-0117", "CVE-2015-0179");
   script_bugtraq_id(73911, 73913);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-08 16:03:56 +0530 (Fri, 08 May 2015)");
   script_name("IBM Domino Multiple Vulnerabilities - May15");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21700029");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Domino");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_lotus_domino_detect.nasl");

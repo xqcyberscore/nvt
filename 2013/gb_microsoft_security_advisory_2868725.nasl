@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2868725.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_microsoft_security_advisory_2868725.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Microsoft RC4 Disabling Security Advisory (2868725)
 #
@@ -28,10 +28,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804142";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-14 11:28:18 +0530 (Thu, 14 Nov 2013)");
   script_name("Microsoft RC4 Disabling Security Advisory (2868725)");
 
@@ -71,7 +71,6 @@ http://support.microsoft.com/kb/2868725";
   script_tag(name : "impact" , value : tag_impact);
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2868725");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/advisory/2868725");
-  script_summary("Check for the vulnerable 'Schannel.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

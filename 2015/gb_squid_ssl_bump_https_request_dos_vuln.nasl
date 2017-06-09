@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_ssl_bump_https_request_dos_vuln.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_squid_ssl_bump_https_request_dos_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Squid SSL-Bump HTTPS Requests Processing Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806107");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2014-0128");
   script_bugtraq_id(66112);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 16:31:16 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid SSL-Bump HTTPS Requests Processing Denial of Service Vulnerability");
@@ -64,7 +64,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2014_1.txt");
-  script_summary("Check for the vulnerable version of Squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

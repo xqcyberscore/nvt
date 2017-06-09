@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_lin.nasl 3337 2016-05-18 07:23:41Z antu123 $
+# $Id: secpod_imagemagick_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # ImageMagick Version Detection (Linux)
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900563");
-  script_version("$Revision: 3337 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:23:41 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick version Detection (Linux)");
@@ -45,7 +45,6 @@ if(description)
   The script logs in via ssh, searches for executable 'identify' and
   queries the found executables via command line option '-version'.");
 
-  script_summary("Set KB for the version of ImageMagick");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

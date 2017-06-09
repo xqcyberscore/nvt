@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850646");
-  script_version("$Revision: 3353 $");
+  script_version("$Revision: 6132 $");
   script_cve_id("CVE-2015-0817", "CVE-2015-0818");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-01 07:19:02 +0200 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for seamonkey openSUSE-SU-2015:0636-1 (seamonkey)");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2015:0636_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-03/msg00036.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of seamonkey");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

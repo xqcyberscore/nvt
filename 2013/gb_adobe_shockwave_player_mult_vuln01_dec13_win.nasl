@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_dec13_win.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_dec13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities-01 Dec13 (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804172";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-5334", "CVE-2013-5333");
   script_bugtraq_id(64197, 64200);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-18 18:10:27 +0530 (Wed, 18 Dec 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities-01 Dec13 (Windows)");
 
@@ -75,7 +75,6 @@ For updates refer to http://get.adobe.com/shockwave";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55952");
   script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/shockwave/apsb13-29.html");
-  script_summary("Check for the vulnerable version of Adobe Shockwave Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

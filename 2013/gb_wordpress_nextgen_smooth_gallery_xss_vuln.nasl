@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen_smooth_gallery_xss_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wordpress_nextgen_smooth_gallery_xss_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # WordPress NextGen Smooth Gallery Plugin Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-04 17:41:47 +0530 (Wed, 04 Sep 2013)");
   script_name("WordPress NextGen Smooth Gallery Plugin Cross Site Scripting Vulnerability");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013090036");
   script_xref(name : "URL" , value : "http://dl.packetstormsecurity.net/1309-exploits/wpngsg-xss.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-nextgen-smooth-gallery-cross-site-scripting");
-  script_summary("Check if WordPress NextGen Smooth Gallery plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

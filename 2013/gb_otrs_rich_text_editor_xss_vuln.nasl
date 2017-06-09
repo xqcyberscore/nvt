@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_rich_text_editor_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_rich_text_editor_xss_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # OTRS Rich-text-editor XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2010-4762");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-21 23:18:31 +0530 (Sat, 21 Sep 2013)");
   script_name("OTRS Rich-text-editor XSS Vulnerability");
 
@@ -71,7 +71,6 @@ later, For updates refer to http://www.otrs.com/en/";
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
 
-  script_summary("Determine if the OTRS version is less than  3.0.0-beta2");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

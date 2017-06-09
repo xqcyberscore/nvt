@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6015.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_junos_cve_2013_6015.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Junos TCP Packet Handling Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103953");
-  script_version ("$Revision: 2939 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_version ("$Revision: 6093 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-21 11:20:27 +0700 (Thu, 21 Nov 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -43,7 +43,6 @@ if (description)
 
   script_name("Junos TCP Packet Handling Denial of Service Vulnerability");
 
-  script_summary("Junos CVE-2013-6015");
 
   script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_mse_77432.nasl 2906 2016-03-22 09:56:56Z cfi $
+# $Id: gb_cisco_mse_77432.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Cisco Mobility Services Engine Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-6316","CVE-2015-4282");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2906 $");
+ script_version ("$Revision: 6194 $");
 
  script_name("Cisco Mobility Services Engine Multiple Vulnerabilities");
 
@@ -56,9 +56,8 @@ A local attacker may exploit this issue to gain elevated root privileges on the 
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-22 10:56:56 +0100 (Tue, 22 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
  script_tag(name:"creation_date", value:"2015-11-20 14:02:20 +0100 (Fri, 20 Nov 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

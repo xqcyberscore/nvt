@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mul_vuln.nasl 5985 2017-04-19 14:48:26Z ckuerste $
+# $Id: gb_cybozu_office_mul_vuln.nasl 6084 2017-05-09 05:36:00Z cfi $
 #
 # Cybozu Office Multiple Security Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107149");
-  script_version("$Revision: 5985 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 16:48:26 +0200 (Wed, 19 Apr 2017) $");
+  script_version("$Revision: 6084 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 07:36:00 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 14:53:28 +0200 (Wed, 19 Apr 2017)");
   script_cve_id("CVE-2017-2114", "CVE-2017-2115", "CVE-2017-2116", "CVE-2016-4449");
 
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name(" Cybozu Office Multiple Security Vulnerabilities");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 5825 2017-03-31 15:35:59Z cfi $
+# $Id: gb_ssl_dh_weak_keysize_vuln.nasl 6114 2017-05-12 07:32:36Z cfi $
 #
 # SSL/TLS: Diffie-Hellman Key Exchange Insufficient DH Group Strength Vulnerability
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106223");
-  script_version("$Revision: 5825 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-03-31 17:35:59 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 6114 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-05-12 09:32:36 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value: "2016-09-06 12:25:58 +0700 (Tue, 06 Sep 2016)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
@@ -54,7 +54,10 @@ if(description)
   script_tag(name:"impact", value:"An attacker might be able to decrypt the SSL/TLS communication offline.");
 
   script_tag(name:"solution", value:"Deploy (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE) or use
-  a 2048-bit or stronger Diffie-Hellman group. (see https://weakdh.org/sysadmin.html)");
+  a 2048-bit or stronger Diffie-Hellman group. (see https://weakdh.org/sysadmin.html).
+
+  For Apache Web Servers:
+  Beginning with version 2.4.7, mod_ssl will use DH parameters which include primes with lengths of more than 1024 bits.");
 
   script_tag(name:"vuldetect", value:"Checks the DHE temporary public key size.");
 

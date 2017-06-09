@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_tmp_dir_rest_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_tmp_dir_rest_bypass_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # OTRS /tmp/ Directory Restriction Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2008-7276");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-17 19:18:31 +0530 (Tue, 17 Sep 2013)");
   script_name("OTRS /tmp/ Directory Restriction Bypass Vulnerability");
 
@@ -71,7 +71,6 @@ For updates refer to http://www.otrs.com/en/";
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "affected" , value : tag_affected);
 
-  script_summary("Determine if the OTRS version is less than 2.3.2");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

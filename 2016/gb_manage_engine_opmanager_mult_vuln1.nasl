@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 5238 2017-02-08 15:45:20Z teissa $
+# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106402");
-  script_version("$Revision: 5238 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-08 16:45:20 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2016-11-22 11:33:23 +0700 (Tue, 22 Nov 2016)");
   script_tag(name: "cvss_base", value: "7.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -67,8 +67,8 @@ Unauthenticated attackers may inject web script or HTML and steal sensitive data
 
   script_tag(name: "affected", value: "Version v12.2 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of
- 08th February, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
+regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://seclists.org/bugtraq/2016/Nov/70");
 

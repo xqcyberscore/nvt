@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_aug12_macosx.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_aug12_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is installed with Mozilla Thunderbird ESR and is prone 
 if(description)
 {
   script_id(803909);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2012-3980");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-17 13:09:32 +0530 (Wed, 17 Jul 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50088");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027451");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-67.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-72.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird ESR on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

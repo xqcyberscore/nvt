@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805805");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-3165");
   script_bugtraq_id(74787);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-24 15:36:26 +0530 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("PostgreSQL Remote Denial Of Service Vulnerability June15 (Linux)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.postgresql.org/about/news/1587");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of PostgreSQL on linux");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("postgresql_detect.nasl","os_detection.nasl");

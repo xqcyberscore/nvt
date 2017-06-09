@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_cgipm_module_header_inje_vuln_win.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_activeperl_cgipm_module_header_inje_vuln_win.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Active Perl CGI.pm 'Set-Cookie' and 'P3P' HTTP Header Injection Vulnerability (Windows)
 #
@@ -39,18 +39,17 @@ tag_summary = "The host is installed with Active Perl and is prone to HTTP heade
 if(description)
 {
   script_id(803344);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2012-5526");
   script_bugtraq_id(56562);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-23 18:18:09 +0530 (Wed, 23 Jan 2013)");
   script_name("Active Perl CGI.pm 'Set-Cookie' and 'P3P' HTTP Header Injection Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80098");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1027780");
   script_xref(name : "URL" , value : "http://cpansearch.perl.org/src/MARKSTOS/CGI.pm-3.63/Changes");
-  script_summary("Check for the vulnerable version of Active Perl CGI.pm module on Windows ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

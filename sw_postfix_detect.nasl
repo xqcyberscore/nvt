@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_postfix_detect.nasl 2598 2016-02-05 16:02:56Z cfi $
+# $Id: sw_postfix_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Postfix SMTP Server Detection
 #
@@ -28,14 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111086");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2598 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 17:02:56 +0100 (Fri, 05 Feb 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2016-02-04 17:00:00 +0100 (Thu, 04 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Postfix SMTP Server Detection");
  
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
-  script_summary("Checks for the presence of Postfix");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection"); 
   script_dependencies("smtpserver_detect.nasl");

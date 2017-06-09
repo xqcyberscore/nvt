@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_leaguemanager_plugin_mult_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_leaguemanager_plugin_mult_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Wordpress LeagueManager Plugin Multiple Vulnerabilities
 #
@@ -52,12 +52,12 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803439);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6125 $");
   script_bugtraq_id(58503);
   script_cve_id("CVE-2013-1852");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:46:35 +0530 (Mon, 18 Mar 2013)");
   script_name("Wordpress LeagueManager Plugin Multiple Vulnerabilities");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mondounix.com/wordpress-leaguemanager-3-8-sql-injection");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-leaguemanager-38-sql-injection");
 
-  script_summary("Check if WordPress LeagueManager Plugin is vulnerable sql injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

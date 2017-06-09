@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_webkit_remote_code_exec_vuln_lin.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_google_chrome_webkit_remote_code_exec_vuln_lin.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Google Chrome Webkit Remote Code Execution Vulnerability (Linux)
 #
@@ -39,18 +39,17 @@ tag_summary = "The host is installed with Google Chrome and is prone to remote
 if(description)
 {
   script_id(803624);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-0912");
   script_bugtraq_id(58388);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-28 17:26:01 +0530 (Tue, 28 May 2013)");
   script_name("Google Chrome Webkit Remote Code Execution Vulnerability (Linux)");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52534");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/03/stable-channel-update_7.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

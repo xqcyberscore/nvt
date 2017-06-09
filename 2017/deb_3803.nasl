@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3803.nasl 5532 2017-03-10 08:33:58Z teissa $
+# $Id: deb_3803.nasl 6157 2017-05-18 08:15:25Z teissa $
 # Auto-generated from advisory DSA 3803-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703803);
-    script_version("$Revision: 5532 $");
+    script_version("$Revision: 6157 $");
     script_cve_id("CVE-2016-10243");
     script_name("Debian Security Advisory DSA 3803-1 (texlive-base - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-03-10 09:33:58 +0100 (Fri, 10 Mar 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-18 10:15:25 +0200 (Thu, 18 May 2017) $");
     script_tag(name: "creation_date", value: "2017-03-08 00:00:00 +0100 (Wed, 08 Mar 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.5");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

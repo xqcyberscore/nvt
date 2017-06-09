@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 4116 2016-09-20 04:49:26Z cfi $
+# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # Apache Subversion Multiple Vulnerabilities - Aug15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805095");
-  script_version("$Revision: 4116 $");
+  script_version("$Revision: 6132 $");
   script_cve_id("CVE-2015-3184", "CVE-2015-3187");
   script_bugtraq_id(76274, 76273);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-20 06:49:26 +0200 (Tue, 20 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-18 13:39:48 +0530 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Subversion Multiple Vulnerabilities - Aug15");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://subversion.apache.org/security/CVE-2015-3187-advisory.txt");
   script_xref(name : "URL" , value : "http://subversion.apache.org/security/CVE-2015-3184-advisory.txt");
 
-  script_summary("Check for the vulnerable version of Apache Subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

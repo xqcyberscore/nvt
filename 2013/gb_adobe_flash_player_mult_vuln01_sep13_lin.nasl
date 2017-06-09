@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_sep13_lin.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln01_sep13_lin.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 Sep13 (Linux)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803899";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-5324", "CVE-2013-3361", "CVE-2013-3362", "CVE-2013-3363");
   script_bugtraq_id(62296, 62290, 62294, 62295);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-18 19:01:01 +0530 (Wed, 18 Sep 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 Sep13 (Linux)");
 
@@ -75,7 +75,6 @@ For updates refer to  http://get.adobe.com/flashplayer";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54697/");
   script_xref(name : "URL" , value : "https://www.adobe.com/support/security/bulletins/apsb13-21.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

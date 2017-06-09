@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15931.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol15931.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # F5 BIG-IP - Remote Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-8602");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6183 $");
 
  script_name("F5 BIG-IP - Remote Denial of Service Vulnerability");
 
@@ -54,9 +54,8 @@ of referrals. ");
  script_tag(name: "summary" , value:"F5 BIG-IP is prone to a remote denial-of-service vulnerability.");
  script_tag(name: "affected" , value:"F5 BIG-IP LTM 11.2.0-11.6.0");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
  script_tag(name:"creation_date", value:"2015-01-09 14:08:36 +0100 (Fri, 09 Jan 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("F5 Local Security Checks");

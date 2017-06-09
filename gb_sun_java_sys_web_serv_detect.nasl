@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_sun_java_sys_web_serv_detect.nasl 6089 2017-05-09 13:03:19Z cfi $
 #
-# Sun Java System Web Server Version Detection
+# Sun/Oracle Web Server Version Detection
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -35,35 +35,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800810");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2664 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+  script_version("$Revision: 6089 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 15:03:19 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Sun Java System Web Server Version Detection");
-
-  script_summary("Checks for the presence of Sun Java System Web Server");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Sun/Oracle Web Server Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 443, 8080, 8800, 8989, 8888);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "Detection of Sun Java System Web Server.
+  script_tag(name:"summary", value:"Detection of Sun/Oracle Web Server.
 
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  
-
   exit(0);
 }
 
-
 include("cpe.inc");
-include("http_func.inc");
 include("host_details.inc");
+include("http_func.inc");
 include("http_keepalive.inc");
 
 vers = "";
@@ -73,85 +70,85 @@ jswsPort = 0;
 version = NULL;
 jswsVer = NULL;
 
-app = "Sun Java System Web Server";
-
 httpPorts = get_kb_list( "Services/www" );
 
 foreach jswsPort( make_list_unique( httpPorts, 80, 443, 8080, 8800, 8989, 8888 ) ) {
 
-  if( get_port_state( jswsPort ) ) {
+  if( ! get_port_state( jswsPort ) ) continue;
+  banner = get_http_banner( port:jswsPort );
+  if( ! banner || banner == "" ) continue;
 
-    banner = get_http_banner(port:jswsPort);
+  if( "erver: Sun-" >< banner || "erver: Oracle-iPlanet-Web-Server" >< banner ) {
 
-    if( banner ) {
+    url = "/admingui/version/copyright";
+    req = http_get( item:url, port:jswsPort );
+    body = http_keepalive_send_recv( port: jswsPort, data:req );
 
-      if( "erver: Sun-" >< banner || "erver: Oracle-iPlanet-Web-Server" >< banner ) {
+    if( "Sun Java System Web Server" >< body || "Sun-Java-System-Web-Server" >< body ) {
 
-        url = "/admingui/version/copyright";
-        req = http_get( item:url, port:jswsPort );
-        body = http_keepalive_send_recv( port: jswsPort, data: req );
+      app = "Sun Java System Web Server";
+      version = eregmatch( pattern:"Sun[ |-]Java[ |-]System[ |-]Web[ |-]Server[ |/]([0-9.]+)", string:body );
 
-        if( "Sun Java System Web Server" >< body || "Sun-Java-System-Web-Server" >< body) {
+      if( version[1] ) {
+        set_kb_item( name:"Sun/JavaSysWebServ/Ver", value:version[1] );
+        set_kb_item( name:"Sun/JavaSysWebServ/" + jswsPort + "/Ver", value:version[1] );
+      }
 
-          version = eregmatch(pattern: "Sun[ |-]Java[ |-]System[ |-]Web[ |-]Server[ |/]([0-9.]+)", string: body);
+      set_kb_item( name:"Sun/JavaSysWebServ/Port", value:jswsPort );
+      replace_kb_item( name:"java_system_web_server/installed", value:TRUE );
 
-          if( version[1] ) {
-            set_kb_item( name:"Sun/JavaSysWebServ/Ver", value:version[1] );
-            set_kb_item(name: "Sun/JavaSysWebServ/" + jswsPort + "/Ver", value: version[1] );
-          }
+      cpe = build_cpe( value:version[1], exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:sun:java_system_web_server:" );
+      if( isnull( cpe ) )
+        cpe = 'cpe:/a:sun:java_system_web_server';
 
-          set_kb_item( name:"Sun/JavaSysWebServ/Port", value:jswsPort );
-          set_kb_item( name:"java_system_web_server/installed",value:TRUE);
+    } else if( "Oracle iPlanet Web Server" >< body || "Oracle-iPlanet-Web-Server" >< body ) {
 
-          cpe = build_cpe( value:version[1], exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:sun:java_system_web_server:" );
+      app = "Oracle iPlanet Web Server";
+      version = eregmatch( pattern:"Oracle[ |-]iPlanet[ |-]Web[ |-]Server[ |/]([0-9.]+)", string:body );
 
-          if( isnull( cpe ) )
-            cpe = 'cpe:/a:sun:java_system_web_server';
+      if( version[1] ) {
+        set_kb_item( name:"Oracle/iPlanetWebServ/Ver", value:version[1] );
+        set_kb_item( name:"Oracle/iPlanetWebServ/" + jswsPort + "/Ver", value:version[1] );
+      }
 
-        } else if( "Oracle iPlanet Web Server" >< body || "Oracle-iPlanet-Web-Server" >< body ) {
+      set_kb_item( name:"Oracle/iPlanetWebServ/Port", value:jswsPort );
+      replace_kb_item( name:"oracle_iplanet_web_server/installed", value:TRUE );
 
-          app = "Oracle iPlanet Web Server";
-          version = eregmatch( pattern: "Oracle[ |-]iPlanet[ |-]Web[ |-]Server[ |/]([0-9.]+)", string: body );
+      cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:iplanet_web_server:" );
+      if( isnull( cpe ) )
+        cpe = 'cpe:/a:sun:iplanet_web_server';
 
-          if( version[1] ) {
-            set_kb_item( name:"Oracle/iPlanetWebServ/Ver", value:version[1] );
-            set_kb_item(name: "Oracle/iPlanetWebServ/" + jswsPort + "/Ver", value: version[1] );
-          }
+    } else if( "Sun-ONE-Web-Server" >< banner ) {
 
-          set_kb_item( name:"Oracle/iPlanetWebServ/Port", value:jswsPort );
-          set_kb_item( name:"oracle_iplanet_web_server/installed",value:TRUE);
+      app = "Sun ONE Web Server";
+      version = eregmatch( pattern:"Sun-ONE-Web-Server/([0-9.]+)", string:banner );
 
-          cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:iplanet_web_server:" );
-          if( isnull( cpe ) )
-            cpe = 'cpe:/a:sun:iplanet_web_server';
+      if( version[1] ) {
+        set_kb_item( name:"Sun/OneWebServ/Ver", value:version[1] );
+        set_kb_item( name:"Sun/OneWebServ/" + jswsPort + "/Ver", value:version[1] );
+      }
 
-        } else if( "Sun-ONE-Web-Server" >< banner ) {
+      set_kb_item( name:"Sun/OneWebServ/Port", value:jswsPort );
+      replace_kb_item( name:"sun_one_web_server/installed", value:TRUE );
 
-          app = "Sun ONE Web Server";
-          version = eregmatch( pattern: "Sun-ONE-Web-Server/([0-9.]+)", string: banner );
+      cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:one_web_server:" );
+      if( isnull( cpe ) )
+        cpe = 'cpe:/a:sun:one_web_server';
 
-          if( version[1] ) {
-            set_kb_item( name:"Sun/OneWebServ/Ver", value:version[1] );
-            set_kb_item(name: "Sun/OneWebServ/" + jswsPort + "/Ver", value: version[1] );
-          }
-
-          set_kb_item( name:"Sun/OneWebServ/Port", value:jswsPort );
-          set_kb_item( name:"sun_one_web_server/installed",value:TRUE);
-
-          cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:one_web_server:" );
-          if( isnull( cpe ) )
-            cpe = 'cpe:/a:sun:one_web_server';
-        } else {
-          app = "Unknown Sun Web Server";
-        }
-
-        register_product( cpe:cpe, location:jswsPort + "/tcp", port:jswsPort );
-
-        log_message( data: build_detection_report( app:app, version:version[1],
-                      install:jswsPort + "/tcp", cpe:cpe, concluded: version[0] ), port:jswsPort );
-      }  
+    } else {
+      app = "Unknown Sun Web Server";
+      cpe = 'cpe:/a:sun:unknown_web_server';
     }
+
+    register_product( cpe:cpe, location:jswsPort + "/tcp", port:jswsPort );
+
+    log_message( data:build_detection_report( app:app,
+                                              version:version[1],
+                                              install:jswsPort + "/tcp",
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                                              port:jswsPort );
   }
 }
 
-exit(0);
+exit( 0 );

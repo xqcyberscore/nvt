@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsa_admin_login.nasl 4080 2016-09-16 09:49:57Z cfi $
+# $Id: gb_gsa_admin_login.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # GSA Default Admin Credentials
 #
@@ -30,13 +30,12 @@ CPE = 'cpe:/a:greenbone:security_assistant';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105354");
-  script_version("$Revision: 4080 $");
+  script_version("$Revision: 6132 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("GSA Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:49:57 +0200 (Fri, 16 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 14:47:11 +0200 (Mon, 14 Sep 2015)");
-  script_summary("Determine if it is possible to login with default credentials");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

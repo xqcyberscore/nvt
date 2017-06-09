@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_foundation_ms13-084.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_sharepoint_foundation_ms13-084.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Microsoft SharePoint Foundation Remote Code Execution vulnerability (2885089)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:sharepoint_foundation";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-09 16:29:38 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft SharePoint Foundation Remote Code Execution vulnerability (2885089)");
 
@@ -77,7 +77,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-084";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55131");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-084");
-  script_summary("Check for the vulnerable 'Onetutil.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

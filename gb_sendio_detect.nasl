@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendio_detect.nasl 2664 2016-02-16 07:43:49Z antu123 $
+# $Id: gb_sendio_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Sendio Detection
 #
@@ -32,8 +32,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105292");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 2664 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 08:43:49 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 6065 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-10 11:04:45 +0200 (Wed, 10 Jun 2015)");
  script_name("Sendio Detection");
 
@@ -41,7 +41,6 @@ if (description)
 from the reply.");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_summary("Checks for the presence of Sendio");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

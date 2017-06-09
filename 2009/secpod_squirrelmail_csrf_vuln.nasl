@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_squirrelmail_csrf_vuln.nasl 5122 2017-01-27 12:16:00Z teissa $
+# $Id: secpod_squirrelmail_csrf_vuln.nasl 6071 2017-05-04 16:19:49Z cfi $
 #
 # SquirrelMail Multiple Cross-Site Request Forgery Vulnerabilities
 #
@@ -24,78 +24,74 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Attacker may leverage this issue to modify user preferences, delete emails,
-  and potentially send emails, and can hijack the authentication of unspecified
-  victims.
-  Impact Level: System/Application";
-tag_affected = "SquirrelMail version 1.4.19 and prior on Linux.";
-tag_insight = "Multiple CSRF errors are caused via features such as send message and change
-  preferences, related to addrbook_search_html.php, folders_rename_getname.php,
-  folders_rename_do.php, folders_subscribe.php, move_messages.php, options.php,
-  options_highlight.php, options_identities.php, options_order.php, search.php,
-  addressbook.php, compose.php, folders.php, folders_create.php, vcard.php and
-  folders_delete.php in /src and mailbox_display.php in functions directory.";
-tag_solution = "Upgrade to version 1.4.20 RC1 or latest
-  http://www.squirrelmail.org/download.php
-  or
-  Apply Patch from below link
-  http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail?view=rev&revision=13818";
-tag_summary = "This host is running SquirrelMail and is prone to multiple Cross
-  Site Request Forgery vulnerabilities.";
+CPE = 'cpe:/a:squirrelmail:squirrelmail';
 
 if(description)
 {
-  script_id(900830);
-  script_version("$Revision: 5122 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-27 13:16:00 +0100 (Fri, 27 Jan 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.900830");
+  script_version("$Revision: 6071 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 18:19:49 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-08-28 14:39:11 +0200 (Fri, 28 Aug 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2009-2964");
   script_name("SquirrelMail Multiple Cross-Site Request Forgery Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/34627");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/52406");
-  script_xref(name : "URL" , value : "http://www.squirrelmail.org/security/issue/2009-08-12");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("squirrelmail_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("squirrelmail/installed");
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/34627");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/52406");
+  script_xref(name:"URL", value:"http://www.squirrelmail.org/security/issue/2009-08-12");
+
+  tag_impact = "Attacker may leverage this issue to modify user preferences, delete emails,
+  and potentially send emails, and can hijack the authentication of unspecified victims.
+
+  Impact Level: System/Application";
+
+  tag_affected = "SquirrelMail version 1.4.19 and prior on Linux.";
+
+  tag_insight = "Multiple CSRF errors are caused via features such as send message and change
+  preferences, related to addrbook_search_html.php, folders_rename_getname.php,
+  folders_rename_do.php, folders_subscribe.php, move_messages.php, options.php,
+  options_highlight.php, options_identities.php, options_order.php, search.php,
+  addressbook.php, compose.php, folders.php, folders_create.php, vcard.php and
+  folders_delete.php in /src and mailbox_display.php in functions directory.";
+
+  tag_solution = "Upgrade to version 1.4.20 RC1 or latest
+  http://www.squirrelmail.org/download.php
+  or
+  Apply Patch from below link
+  http://squirrelmail.svn.sourceforge.net/viewvc/squirrelmail?view=rev&revision=13818";
+
+  tag_summary = "This host is running SquirrelMail and is prone to multiple Cross
+  Site Request Forgery vulnerabilities.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-squirrelPort = get_http_port(default:80);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if(isnull(squirrelPort))
-{
-  exit(0);
+if( version_is_less_equal( version:vers, test_version:"1.4.19" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.4.20 RC1" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-squirrelVer = get_kb_item("www/" + squirrelPort + "/squirrelmail");
-
-if(isnull(squirrelVer))
-{
-  exit(0);
-}
-
-squirrelVer = eregmatch(pattern:"^(.+) under (/.*)$", string:squirrelVer);
-squirrelVer[1] = ereg_replace(pattern:"-", replace:".", string:squirrelVer[1]);
-
-if(!isnull(squirrelVer[1]))
-{
-  # Check for SquirrelMail version <= 1.4.19
-  if(version_is_less_equal(version:squirrelVer[1], test_version:"1.4.19")){
-    security_message(squirrelPort);
-  }
-}
+exit( 99 );

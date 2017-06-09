@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # WordPress Traffic Analyzer Plugin XSS Vulnerability
 #
@@ -48,18 +48,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-3526");
   script_bugtraq_id(58948);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-12 17:30:46 +0530 (Fri, 12 Apr 2013)");
   script_name("WordPress Traffic Analyzer Plugin XSS Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52929");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121167");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-traffic-analyzer-cross-site-scripting");
-  script_summary("Check if WordPress Traffic Analyzer Plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

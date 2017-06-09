@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3340.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3340.nasl 6159 2017-05-18 09:03:44Z teissa $
 # Auto-generated from advisory DSA 3340-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703340);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6159 $");
     script_cve_id("CVE-2015-5161");
     script_name("Debian Security Advisory DSA 3340-1 (zendframework - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
     script_tag(name: "creation_date", value: "2015-08-19 00:00:00 +0200 (Wed, 19 Aug 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3340.html");
 
-    script_summary("Debian Security Advisory DSA 3340-1 (zendframework - security update)");
 
     script_category(ACT_GATHER_INFO);
 

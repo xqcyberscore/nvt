@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_remote_code_exec_vuln_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_apple_safari_webkit_remote_code_exec_vuln_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Apple Safari Webkit Remote Code Execution Vulnerability - May13 (Mac OS X)
 #
@@ -39,17 +39,16 @@ tag_summary = "The host is installed with Apple Safari web browser and is prone
 if(description)
 {
   script_id(803604);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-0912");
   script_bugtraq_id(58388);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-27 18:02:13 +0530 (Mon, 27 May 2013)");
   script_name("Apple Safari Webkit Remote Code Execution Vulnerability - May13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5701");
   script_xref(name : "URL" , value : "http://prod.lists.apple.com/archives/security-announce/2013/Apr/msg00000.html");
-  script_summary("Check for the vulnerable version of Apple Safari on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

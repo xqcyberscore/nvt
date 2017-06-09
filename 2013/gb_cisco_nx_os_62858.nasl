@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_62858.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_62858.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Cisco NX-OS Border Gateway Protocol Component Denial of Service Vulnerability
 #
@@ -52,7 +52,7 @@ if (description)
  script_cve_id("CVE-2012-4098");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 6074 $");
 
  script_name("Cisco NX-OS Border Gateway Protocol Component Denial of Service Vulnerability");
 
@@ -60,9 +60,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62858");
  script_xref(name:"URL", value:"http://tools.cisco.com/Support/BugToolKit/search/getBugDetails.do?method=fetchBugDetails&bugId=CSCtn13055");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-18 10:24:45 +0200 (Fri, 18 Oct 2013)");
- script_summary("Check the NX OS version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

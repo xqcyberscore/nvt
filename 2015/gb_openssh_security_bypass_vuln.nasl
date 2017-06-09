@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssh_security_bypass_vuln.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_security_bypass_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # OpenSSH Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806049");
-  script_version("$Revision: 4336 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-5352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-10 14:36:41 +0530 (Thu, 10 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH Security Bypass Vulnerability");
@@ -59,7 +59,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value :"http://openwall.com/lists/oss-security/2015/07/01/10");
-  script_summary("Check for the vulnerable version of OpenSSH");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

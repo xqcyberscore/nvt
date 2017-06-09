@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871501");
-  script_version("$Revision: 3355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 16:44:18 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:24:47 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2013-1752", "CVE-2013-1753", "CVE-2014-4616", "CVE-2014-4650",
                 "CVE-2014-7185", "CVE-2014-9365");
@@ -95,7 +95,6 @@ argument' error. Subprocesses h ...
   script_xref(name: "RHSA", value: "2015:2101-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00019.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_57841.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_cisco_nx_os_57841.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability
 #
@@ -48,7 +48,7 @@ if (description)
  script_cve_id("CVE-2013-1122");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5655 $");
+ script_version ("$Revision: 6115 $");
 
  script_name("Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability");
 
@@ -74,9 +74,8 @@ Solution:
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57841");
  script_xref(name:"URL", value:"http://www.cisco.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-10 12:14:44 +0200 (Thu, 10 Oct 2013)");
- script_summary("Check the installed NX-OS version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

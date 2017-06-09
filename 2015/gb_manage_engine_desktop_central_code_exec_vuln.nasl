@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_manage_engine_desktop_central_code_exec_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805716");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
   script_name("ManageEngine Desktop Central MSP Arbitrary Code Execution Vulnerability");
 
@@ -65,7 +65,6 @@ if (description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-420/");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of ManageEngine Desktop Central MSP");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_manage_engine_desktop_central_detect.nasl");

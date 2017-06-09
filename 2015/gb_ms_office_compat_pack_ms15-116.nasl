@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-116.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_office_compat_pack_ms15-116.nasl 6155 2017-05-18 06:34:14Z cfi $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806162");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6155 $");
   script_cve_id("CVE-2015-6038", "CVE-2015-6092");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 08:34:14 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 14:17:20 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3104540)");
@@ -75,9 +75,9 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
+include("secpod_smb_func.inc");
 
 ## Variable Initialization
 xlcnvVer = "";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-059.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-059.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2862772)
 #
@@ -30,7 +30,7 @@ tag_impact = "
 if(description)
 {
   script_id(903315);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3184", "CVE-2013-3186", "CVE-2013-3187", "CVE-2013-3188",
                 "CVE-2013-3189", "CVE-2013-3190", "CVE-2013-3191", "CVE-2013-3192",
                  "CVE-2013-3193", "CVE-2013-3194", "CVE-2013-3199");
@@ -38,7 +38,7 @@ if(description)
                     61678, 61679, 61680);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-14 08:14:59 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2862772)");
 
@@ -81,7 +81,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-059";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53998");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS13-059");
   script_xref(name : "URL" , value : "http://support.microsoft.com/default.aspx?scid=kb;EN-US;2862772");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

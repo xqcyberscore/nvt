@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804154";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-5607");
   script_bugtraq_id(63802);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-26 09:47:20 +0530 (Tue, 26 Nov 2013)");
   script_name("Mozilla Firefox ESR Integer Overflow Vulnerability-01 Nov13 (Mac OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.mozilla.org/en-US/firefox/organizations/all.html
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55732");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-103.html");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/current/0105.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

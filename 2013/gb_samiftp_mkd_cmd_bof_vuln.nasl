@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samiftp_mkd_cmd_bof_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_samiftp_mkd_cmd_bof_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # SamiFTP Server 'MKD' Command Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_id(803738);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-17 16:46:05 +0530 (Sat, 17 Aug 2013)");
   script_name("SamiFTP Server 'MKD' Command Buffer Overflow Vulnerability");
 
@@ -71,7 +71,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27523");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/sami-ftp-201-mkd-buffer-overflow");
-  script_summary("Determine if SamiFTP Server is prone to BoF vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

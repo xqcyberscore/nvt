@@ -29,12 +29,12 @@ CPE = "cpe:/a:manageengine:supportcenter_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805807");
-  script_version("$Revision: 3626 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-5149", "CVE-2015-5150");
   script_bugtraq_id(75512, 75506);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:46:24 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-25 12:35:38 +0530 (Thu, 25 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine SupportCenter Plus Multiple Vulnerabilities - June15");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/535796/30/0/threaded");
   script_xref(name:"URL", value:"http://www.vulnerability-lab.com/download_content.php?id=1501");
 
-  script_summary("Check for the vulnerable version of ManageEngine SupportCenter Plus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

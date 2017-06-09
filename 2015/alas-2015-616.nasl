@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-616.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-616.nasl 6132 2017-05-16 09:03:39Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120606");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6132 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:19 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-616");
 script_tag(name: "insight", value: "Multiple flaws were discovered in the CORBA, Libraries, RMI, Serialization, and 2D components in OpenJDK. An untrusted Java application or applet could use these flaws to completely bypass Java sandbox restrictions. (CVE-2015-4835 , CVE-2015-4881 , CVE-2015-4843 , CVE-2015-4883 , CVE-2015-4860 , CVE-2015-4805 , CVE-2015-4844 )Multiple denial of service flaws were found in the JAXP component in OpenJDK. A specially crafted XML file could cause a Java application using JAXP to consume an excessive amount of CPU and memory when parsed. (CVE-2015-4803 , CVE-2015-4893 , CVE-2015-4911 )It was discovered that the Security component in OpenJDK failed to properly check if a certificate satisfied all defined constraints. In certain cases, this could cause a Java application to accept an X.509 certificate which does not meet requirements of the defined policy. (CVE-2015-4872 )Multiple flaws were found in the Libraries, CORBA, JAXP, JGSS, and RMI components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass certain Java sandbox restrictions. (CVE-2015-4806 , CVE-2015-4882 , CVE-2015-4842 , CVE-2015-4734 , CVE-2015-4903 )"); 
 script_tag(name : "solution", value : "Run yum update java-1.6.0-openjdk to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-616");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

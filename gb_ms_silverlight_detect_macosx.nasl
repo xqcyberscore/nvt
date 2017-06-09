@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_detect_macosx.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_ms_silverlight_detect_macosx.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Microsoft Silverlight Version Detection (Mac OS X)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802854");
-  script_version("$Revision: 2835 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2012-05-14 14:56:10 +0530 (Mon, 14 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Silverlight Version Detection (Mac OS X)");
@@ -49,7 +49,6 @@ for string 'CFBundleShortVersionString' via command line option
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Microsoft Silverlight on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");

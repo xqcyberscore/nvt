@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3019.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-3019.nasl 6170 2017-05-19 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123144");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6170 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:48:27 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3019");
 script_tag(name: "insight", value: "ELSA-2015-3019 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-68.1.2]- IB/core: Prevent integer overflow in ib_umem_get address arithmetic (Shachar Raindel) [Orabug: 20799875] {CVE-2014-8159} {CVE-2014-8159}[3.8.13-68.1.1]- xen-pciback: limit guest control of command register (Jan Beulich) [Orabug: 20697017] {CVE-2015-2150} {CVE-2015-2150}- net: sctp: fix slab corruption from use after free on INIT collisions (Daniel Borkmann) [Orabug: 20780347] {CVE-2015-1421}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-3019");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

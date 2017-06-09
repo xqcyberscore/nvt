@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3238.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3238.nasl 6194 2017-05-23 09:04:00Z teissa $
 # Auto-generated from advisory DSA 3238-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703238);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6194 $");
     script_cve_id("CVE-2015-1235", "CVE-2015-1236", "CVE-2015-1237", "CVE-2015-1238",
                   "CVE-2015-1240", "CVE-2015-1241", "CVE-2015-1242", "CVE-2015-1244",
                   "CVE-2015-1245", "CVE-2015-1246", "CVE-2015-1247", "CVE-2015-1248",
                   "CVE-2015-1249", "CVE-2015-3333", "CVE-2015-3334", "CVE-2015-3336");
     script_name("Debian Security Advisory DSA 3238-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
     script_tag(name: "creation_date", value: "2015-04-26 00:00:00 +0200 (Sun, 26 Apr 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3238.html");
 
-    script_summary("Debian Security Advisory DSA 3238-1 (chromium-browser - security update)");
 
     script_category(ACT_GATHER_INFO);
 

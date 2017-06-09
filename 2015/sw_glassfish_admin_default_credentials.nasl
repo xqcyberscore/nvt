@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_glassfish_admin_default_credentials.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: sw_glassfish_admin_default_credentials.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # Oracle GlassFish Admin Default Credentials
 #
@@ -30,16 +30,15 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111073");
- script_version ("$Revision: 3694 $");
+ script_version ("$Revision: 6211 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Oracle GlassFish Admin Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
  script_tag(name:"creation_date", value:"2015-12-17 15:00:00 +0100 (Thu, 17 Dec 2015)");
 
  script_tag(name: "summary" , value: 'The remote Oracle GlassFish is prone to a default
  account authentication bypass vulnerability.');
- script_summary("Try to login with default credentials");
  script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
  access to sensitive information.');
  script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');

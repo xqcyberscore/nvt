@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_emet_rop_vuln.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_microsoft_emet_rop_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_id(803972);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-6791");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-03 13:41:01 +0530 (Tue, 03 Dec 2013)");
   script_name("Microsoft Enhanced Mitigation Experience Toolkit (EMET) ROP Vulnerability");
 
@@ -70,7 +70,6 @@ Impact Level: System";
 
   script_xref(name : "URL" , value : "http://en.nsfocus.com/2013/advisories_0620/150.html");
   script_xref(name : "URL" , value : "http://blogs.technet.com/b/srd/archive/2013/06/17/emet-4-0-now-available-for-download.aspx");
-  script_summary("Check for EMET version is less than 4.0");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

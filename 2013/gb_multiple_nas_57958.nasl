@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_nas_57958.nasl 4089 2016-09-16 11:59:09Z cfi $
+# $Id: gb_multiple_nas_57958.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # RaidSonic IB-NAS5220 and IB-NAS4220-B Multiple Security Vulnerabilities
 #
@@ -29,13 +29,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103793");
   script_bugtraq_id(57958);
-  script_version("$Revision: 4089 $");
+  script_version("$Revision: 6079 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RaidSonic IB-NAS5220 and IB-NAS4220-B Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 13:59:09 +0200 (Fri, 16 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-24 12:37:41 +0200 (Tue, 24 Sep 2013)");
-  script_summary("Determine if it is possible to execute a command");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

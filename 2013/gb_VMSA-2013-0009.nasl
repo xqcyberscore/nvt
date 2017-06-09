@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0009.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_VMSA-2013-0009.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # VMSA-2013-0009 VMware ESX and ESXi updates to third party libraries
 #
@@ -65,15 +65,14 @@ if (description)
  script_cve_id("CVE-2013-0169","CVE-2013-0166","CVE-2013-0338","CVE-2013-2116","CVE-2013-0268","CVE-2013-0871");
  script_tag(name:"cvss_base", value:"6.9");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5351 $");
+ script_version ("$Revision: 6074 $");
  script_name("VMSA-2013-0009 VMware ESX and ESXi updates to third party libraries");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0009.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-07 14:04:01 +0100 (Wed, 07 Aug 2013)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

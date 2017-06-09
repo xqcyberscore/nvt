@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rockmongo_xss_n_dir_trav_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_rockmongo_xss_n_dir_trav_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # RockMongo Cross Site Scripting and Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rockmongo:rockmongo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804176");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-5108", "CVE-2013-5107");
   script_bugtraq_id(63969, 63975);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-24 09:13:23 +0530 (Tue, 24 Dec 2013)");
   script_name("RockMongo Cross Site Scripting and Directory Traversal Vulnerabilities");
 
@@ -59,7 +59,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89366");
   script_xref(name : "URL" , value : "https://www.trustwave.com/spiderlabs/advisories/TWSL2013-026.txt");
-  script_summary("Check if RockMongo is vulnerable to cross site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

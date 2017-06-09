@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_version.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_simatic_s7_version.nasl 6160 2017-05-18 09:39:36Z ckuerste $
 #
 # Siemens SIMATIC S7 Device Version
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106096");
- script_version ("$Revision: 6040 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version ("$Revision: 6160 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-18 11:39:36 +0200 (Thu, 18 May 2017) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:30:33 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,9 +79,10 @@ if (version = get_kb_item("simatic_s7/" + source + "/version")) {
   set_kb_item(name: "simatic_s7/version", value: version);
 }
 
-cpe = build_cpe(value: version, exp:"([0-9.]+)", base: 'cpe:/a:siemens:simatic_s7_' + model + ':');
+cpe_model = tolower(ereg_replace(pattern: "[ /]", string: model, replace: "_"));
+cpe = build_cpe(value: version, exp:"([0-9.]+)", base: 'cpe:/a:siemens:simatic_s7_' + cpe_model + ':');
 if (isnull(cpe))
-  cpe = 'cpe:/a:siemens:simatic_s7_' + model;
+  cpe = 'cpe:/a:siemens:simatic_s7_' + cpe_model;
 
 port = get_kb_item("simatic_s7/" + source + "/port");
 

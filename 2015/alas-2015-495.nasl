@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-495.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-495.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120169");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:19:06 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-495");
 script_tag(name: "insight", value: "An out-of-bounds read flaw was found in the way glibc's iconv() function converted certain encoded data to UTF-8. An attacker able to make an application call the iconv() function with a specially crafted argument could use this flaw to crash that application. (CVE-2014-6040 )It was found that the files back end of Name Service Switch (NSS) did not isolate iteration over an entire database from key-based look-up API calls. An application performing look-ups on a database while iterating over it could enter an infinite loop, leading to a denial of service. (CVE-2014-8121 )"); 
 script_tag(name : "solution", value : "Run yum update glibc to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-495");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

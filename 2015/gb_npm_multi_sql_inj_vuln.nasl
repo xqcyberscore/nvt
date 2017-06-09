@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_npm_multi_sql_inj_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_npm_multi_sql_inj_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # SolarWinds Network Performance Monitor Multiple SQL Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:solarwinds:orion_network_performance_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105966");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name : "creation_date", value : "2015-03-06 12:47:16 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -55,7 +55,6 @@ if (description)
 SQL Injection vulnerabilities.");
 
   script_tag(name : "vuldetect", value : "Check the version.");
-  script_summary("Check the version");
 
   script_tag(name : "insight", value : "On both the GetAccounts and GetAccountGroups endpoints, the
 'sort' and 'dir' parameters are susceptible to boolean-/time-based, and stacked injections. The attacker

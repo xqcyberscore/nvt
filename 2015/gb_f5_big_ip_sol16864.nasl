@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16864.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol16864.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # F5 BIG-IP - SOL16864 - SSL/TLS RC4 vulnerability CVE-2015-2808
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-2808");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6211 $");
 
  script_name("F5 BIG-IP - SOL16864 - SSL/TLS RC4 vulnerability CVE-2015-2808");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
  script_tag(name:"creation_date", value:"2015-09-18 15:48:23 +0200 (Fri, 18 Sep 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

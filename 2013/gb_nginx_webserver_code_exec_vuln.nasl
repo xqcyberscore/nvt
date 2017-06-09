@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nginx_webserver_code_exec_vuln.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_nginx_webserver_code_exec_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # nginx Arbitrary Code Execution Vulnerability
 #
@@ -48,16 +48,15 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-22 15:03:39 +0530 (Mon, 22 Apr 2013)");
   script_name("nginx Arbitrary Code Execution Vulnerability");
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24967/");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/multiple/nginx-06x-arbitrary-code-execution-nullbyte-injection");
-  script_summary("Check vulnerable version of nginx");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

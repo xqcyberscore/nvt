@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-082.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-082.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903412);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3860", "CVE-2013-3861");
   script_bugtraq_id(62819,  62820, 62807);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-09 12:14:29 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)");
 
@@ -80,7 +80,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-082";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55043");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2878890");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-082");
-  script_summary("Check for the vulnerable version of files");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_ms13-054.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms_office_ms13-054.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2848295)
 #
@@ -42,12 +42,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902980);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-3129");
   script_bugtraq_id(60978);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-10 11:19:43 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2848295)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54057/");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028750");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-054");
 
-  script_summary("Check for the version of Ogl.dll file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

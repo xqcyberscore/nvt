@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_meinberg_lantime_detect.nasl 3997 2016-09-07 13:51:55Z cfi $
+# $Id: gb_meinberg_lantime_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Meinberg LANTIME Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106109");
- script_version ("$Revision: 3997 $");
- script_tag(name: "last_modification", value: "$Date: 2016-09-07 15:51:55 +0200 (Wed, 07 Sep 2016) $");
+ script_version ("$Revision: 6065 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name: "creation_date", value: "2016-06-24 14:37:30 +0700 (Fri, 24 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,6 @@ This script performs SNMP based detection of Meinberg NTP Timeserver LANTIME.");
 
  script_xref(name: "URL", value: "https://www.meinbergglobal.com/english/products/ntp-time-server.htm");
 
- script_summary("This script performs SNMP based detection of Meinberg NTP Timeserver LANTIME");
 
  exit(0);
 }

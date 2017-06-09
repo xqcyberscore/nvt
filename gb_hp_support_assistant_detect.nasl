@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_support_assistant_detect.nasl 3153 2016-04-22 12:52:52Z antu123 $
+# $Id: gb_hp_support_assistant_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # HP Support Assistant Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807804");
-  script_version("$Revision: 3153 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:52:52 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2016-04-20 16:08:25 +0530 (Wed, 20 Apr 2016)");
   script_name("HP Support Assistant Version Detection (Windows)");
 
@@ -42,7 +42,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_summary("Detection of installed version of HP Support Assistant");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

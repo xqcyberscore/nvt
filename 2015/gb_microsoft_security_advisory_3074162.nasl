@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3074162.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_microsoft_security_advisory_3074162.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # MS Malicious Software Removal Tool Privilege Escalation Security Advisory (3057154)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805937");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-2418");
   script_bugtraq_id(75962);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-23 17:52:04 +0530 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Malicious Software Removal Tool Privilege Escalation Security Advisory (3057154)");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3074162");
 
-  script_summary("Check for the vulnerable 'Mrt.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

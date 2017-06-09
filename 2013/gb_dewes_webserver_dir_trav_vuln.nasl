@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dewes_webserver_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_dewes_webserver_dir_trav_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Twilight CMS DeWeS Web Server Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803746");
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-4900");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-22 12:47:40 +0530 (Thu, 22 Aug 2013)");
   script_name("Twilight CMS DeWeS Web Server Directory Traversal Vulnerability");
 
@@ -58,7 +58,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/528139/30/0/threaded");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/dewes-042-path-traversal");
 
-  script_summary("Check if Twilight CMS DeWeS web server is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

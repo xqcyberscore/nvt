@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_verax_nms_multiple_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_verax_nms_multiple_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Verax Network Management System Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803181");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-1350", "CVE-2013-1351", "CVE-2013-1352", "CVE-2013-1631)");
   script_bugtraq_id(58334);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-15 13:15:33 +0530 (Fri, 15 Mar 2013)");
   script_name("Verax Network Management System Multiple Vulnerabilities");
 
@@ -45,7 +45,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525917");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525918");
 
-  script_summary("Read the detailed information about the each users");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

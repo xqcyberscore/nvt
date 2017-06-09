@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX139017.nasl 2641 2016-02-11 16:51:04Z mime $
+# $Id: gb_citrix_netscaler_CTX139017.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # Citrix NetScaler Denial of Service Vulnerability (CTX139017)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2013-6011");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2641 $");
+ script_version ("$Revision: 6132 $");
 
  script_name("Citrix NetScaler Denial of Service Vulnerability (CTX139017)");
 
@@ -53,9 +53,8 @@ vulnerability.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 17:51:04 +0100 (Thu, 11 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
  script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

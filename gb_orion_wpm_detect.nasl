@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_wpm_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_orion_wpm_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # SolarWinds Orion Web Performance Monitor Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105965");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 15:16:41 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -47,7 +47,6 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name: "summary", value: "Checks for the presence of SolarWinds Orion Web Performance Monitor.");
-  script_summary("Checks for the presence of SolarWinds Orion Web Performance Monitor");
   script_xref(name: "URL" , value: "http://www.solarwinds.com/products/orion/");
   exit(0);
 }

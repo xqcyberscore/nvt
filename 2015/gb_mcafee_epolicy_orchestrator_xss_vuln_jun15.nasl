@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_xss_vuln_jun15.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_mcafee_epolicy_orchestrator_xss_vuln_jun15.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # McAfee ePolicy Orchestrator Cross Site Scripting Vulnerability - June15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805594");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-4559");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-24 11:25:11 +0530 (Wed, 24 Jun 2015)");
   script_name("McAfee ePolicy Orchestrator Cross Site Scripting Vulnerability - June15");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10121");
 
-  script_summary("Check if the version McAfee ePolicy Orchestrator is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

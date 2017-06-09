@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0271.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0271.nasl 6183 2017-05-22 09:03:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130107");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6183 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:47 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0271");
 script_tag(name: "insight", value: "In Portable OpenSSH before 6.9p1, when forwarding X11 connections with ForwardX11Trusted=no, connections made after ForwardX11Timeout expired could be permitted and no longer subject to XSECURITY restrictions because of an ineffective timeout check in ssh (CVE-2015-5352)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0271");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0271");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

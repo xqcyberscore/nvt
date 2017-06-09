@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_nov13_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_google_chrome_mult_vuln01_nov13_win.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities Nov2013 (Windows)
 #
@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803963";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-6621", "CVE-2013-6622", "CVE-2013-6623", "CVE-2013-6624",
                 "CVE-2013-6625", "CVE-2013-6626", "CVE-2013-6627", "CVE-2013-6628",
                 "CVE-2013-6629", "CVE-2013-6630", "CVE-2013-6631", "CVE-2013-2931");
@@ -38,7 +38,7 @@ if(description)
                     63676, 63679, 63673, 63677);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-19 16:33:37 +0530 (Tue, 19 Nov 2013)");
   script_name("Google Chrome Multiple Vulnerabilities Nov2013 (Windows)");
 
@@ -86,7 +86,6 @@ For updates refer to http://www.google.com/chrome";
 
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/11/stable-channel-update.html");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Nov/76");
-  script_summary("Check the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

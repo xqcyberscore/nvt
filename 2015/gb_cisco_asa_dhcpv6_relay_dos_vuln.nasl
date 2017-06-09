@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806529");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 6207 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2015-0578");
   script_bugtraq_id(72718);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 12:27:12 +0530 (Fri, 20 Nov 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=37022");
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150115-asa-dhcp");
 
-  script_summary("Check for the vulnerable version of Cisco ASA Software");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CISCO");

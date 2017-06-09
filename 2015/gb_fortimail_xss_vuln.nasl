@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_xss_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_fortimail_xss_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # FortiMail Stored Cross Site Scripting Vulnerability - June 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:fortinet:fortimail";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805646");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2014-8617");
   script_bugtraq_id(72820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-08 11:54:11 +0530 (Mon, 08 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiMail Stored Cross Site Scripting Vulnerability - June 2015");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-IR-15-005/");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Fortinet FortiOS");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
   script_dependencies("gb_fortimail_version.nasl");

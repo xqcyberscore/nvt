@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_escparameters_dos_vuln_dec15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_openssl_escparameters_dos_vuln_dec15_win.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # OpenSSL ECParameters Denial of Service Vulnerability Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806746");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6132 $");
   script_cve_id("CVE-2015-1788");
   script_bugtraq_id(75158);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL ECParameters Denial of Service Vulnerability Dec15 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20150611.txt");
   script_xref(name : "URL" , value : "https://www.openssl.org/news/vulnerabilities.html");
 
-  script_summary("Check for the vulnerable version of OpenSSL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

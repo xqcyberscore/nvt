@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-251.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-251.nasl 6115 2017-05-12 09:03:25Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120544");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6115 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:29:07 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-251");
 script_tag(name: "insight", value: "Two flaws were found in Wireshark. If Wireshark read a malformed packet off a network or opened a malicious dump file, it could crash or, possibly, execute arbitrary code as the user running Wireshark. (CVE-2013-3559 , CVE-2013-4083 )Several denial of service flaws were found in Wireshark. Wireshark could crash or stop responding if it read a malformed packet off a network, or opened a malicious dump file. (CVE-2012-2392 , CVE-2012-3825 , CVE-2012-4285 , CVE-2012-4288 , CVE-2012-4289 , CVE-2012-4290 , CVE-2012-4291 , CVE-2012-4292 , CVE-2012-5595 , CVE-2012-5597 , CVE-2012-5598 , CVE-2012-5599 , CVE-2012-5600 , CVE-2012-6056 , CVE-2012-6059 , CVE-2012-6060 , CVE-2012-6061 , CVE-2012-6062 , CVE-2013-3557 , CVE-2013-3561 , CVE-2013-4081 , CVE-2013-4927 , CVE-2013-4931 , CVE-2013-4932 , CVE-2013-4933 , CVE-2013-4934 , CVE-2013-4935 , CVE-2013-4936 , CVE-2013-5721 )"); 
 script_tag(name : "solution", value : "Run yum update wireshark to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-251");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

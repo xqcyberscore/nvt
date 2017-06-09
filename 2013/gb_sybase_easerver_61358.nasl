@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_easerver_61358.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_sybase_easerver_61358.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Sybase EAServer Multiple Security Vulnerabilities
 #
@@ -47,7 +47,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(61358);
- script_version ("$Revision: 5627 $");
+ script_version ("$Revision: 6074 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -57,9 +57,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61358");
  script_xref(name:"URL", value:"http://www.sybase.com/products/modelingdevelopment/easerver");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-08 13:44:48 +0200 (Thu, 08 Aug 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

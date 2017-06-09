@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869522");
-  script_version("$Revision: 5851 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:21:55 +0200 (Tue, 04 Apr 2017) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:22:14 +0200 (Tue, 07 Jul 2015)");
   script_cve_id("CVE-2015-4556");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,6 @@ extensions.
   script_xref(name: "FEDORA", value: "2015-10333");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160940.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of chicken");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882250");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6207 $");
   script_cve_id("CVE-2014-6568", "CVE-2015-0374", "CVE-2015-0381", "CVE-2015-0382",
                 "CVE-2015-0391", "CVE-2015-0411", "CVE-2015-0432", "CVE-2015-0433",
                 "CVE-2015-0441", "CVE-2015-0499", "CVE-2015-0501", "CVE-2015-0505",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2015-4752", "CVE-2015-4757");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-18 06:49:53 +0200 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for mysql55-mysql CESA-2015:1628 centos5 ");
@@ -65,7 +65,6 @@ these issues. After installing this update, the MySQL server daemon
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1628");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-August/021331.html");
-  script_summary("Check for the Version of mysql55-mysql");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

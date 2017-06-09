@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_msg_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_email_msg_xss_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # OTRS Email Message XSS Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2012-4600");
   script_bugtraq_id(55328);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-25 19:21:59 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Email Message XSS Vulnerability");
 
@@ -81,7 +81,6 @@ vendor advisory link http://otrs.org/advisory/OSA-2012-02-en/";
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79451");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20959/");
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2012-02-en/");
-  script_summary("Determine if the OTRS version is 2.4 to 2.4.13,3.0 to 3.0.15 and 3.1 to 3.1.9");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

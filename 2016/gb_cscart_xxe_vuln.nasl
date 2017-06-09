@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cscart_xxe_vuln.nasl 5238 2017-02-08 15:45:20Z teissa $
+# $Id: gb_cscart_xxe_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # CS-Cart XXE Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cs-cart:cs-cart";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106398");
-  script_version("$Revision: 5238 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-08 16:45:20 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -59,7 +59,8 @@ Addon and in the Amazon Payment Addon.");
   script_tag(name: "impact", value: "An unauthenticated attacker may read arbitrary files or conduct a denial
 of service attack.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 08th February, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
+regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40770/");
 

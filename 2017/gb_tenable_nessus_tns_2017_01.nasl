@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tenable_nessus_tns_2017_01.nasl 5070 2017-01-24 10:05:10Z antu123 $
+# $Id: gb_tenable_nessus_tns_2017_01.nasl 6127 2017-05-15 12:07:00Z cfi $
 #
-# Tenable Nessus < 6.9.3 Stored Cross-Site Scripting Vulnerability
+# Tenable Nessus < 6.9.3 Stored Cross-Site Scripting Vulnerabilities
 #
 # Authors:
 # Christian Fischer <christian.fischer@greenbone.net>
@@ -29,13 +29,13 @@ CPE = 'cpe:/a:tenable:nessus';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108040");
-  script_version("$Revision: 5070 $");
-  script_cve_id("CVE-2017-5179");
+  script_version("$Revision: 6127 $");
+  script_cve_id("CVE-2017-5179", "CVE-2017-2122");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 11:05:10 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 14:07:00 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2017-01-06 13:00:00 +0100 (Fri, 06 Jan 2017)");
-  script_name("Tenable Nessus < 6.9.3 Stored Cross-Site Scripting Vulnerability");
+  script_name("Tenable Nessus < 6.9.3 Stored Cross-Site Scripting Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -44,7 +44,7 @@ if(description)
   script_require_ports("Services/www", 8834);
 
   script_tag(name:"summary", value:"This host is installed with Nessus and is prone to
-  a stored Cross-Site Scripting vulnerability");
+  two stored Cross-Site Scripting Vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Check the version whether it is vulnerable or not.");
 
@@ -53,12 +53,13 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"Tenable Nessus versions 6.8.0, 6.8.1, 6.9.0, 6.9.2 and 6.9.2.");
+  script_tag(name:"affected", value:"Tenable Nessus versions 6.8.0, 6.8.1, 6.9.0, 6.9.1 and 6.9.2.");
 
   script_tag(name:"solution", value:"Upgrade Tenable Nessus to 6.9.3. For updates refer to
   http://www.tenable.com/products/nessus");
 
   script_xref(name:"URL", value:"https://www.tenable.com/security/tns-2017-01");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN87760109/index.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

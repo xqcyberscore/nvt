@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kyocera_printers_default_credentials.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_kyocera_printers_default_credentials.nasl 6104 2017-05-11 09:03:48Z teissa $
 # OVAS-B-A10
 # Kyocera Printer Default Account Authentication Bypass Vulnerability
 #
@@ -38,7 +38,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103708";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6104 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -46,9 +46,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.h-online.com/security/news/item/Report-Thousands-of-embedded-systems-on-the-net-without-protection-1446441.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-08 13:51:27 +0100 (Wed, 08 May 2013)");
- script_summary("Determine if it is possible to login into the remote printer");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

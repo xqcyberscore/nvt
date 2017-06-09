@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_desktop_board_bios_info_detect_win.nasl 4487 2016-11-14 07:41:39Z cfi $
+# $Id: gb_desktop_board_bios_info_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Desktop Boards BIOS Information Detection for Windows
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96197");
-  script_version("$Revision: 4487 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 08:41:39 +0100 (Mon, 14 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-16 10:59:11 +0100 (Thu, 16 Apr 2015)");
   script_name("Desktop Boards BIOS Information Detection for Windows");
 
@@ -39,7 +39,6 @@ if(description)
   Desktop Boards BIOS.
 
   The script logs in via smb and queries for the version.");
-  script_summary("Gather Boards BIOS related Information");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

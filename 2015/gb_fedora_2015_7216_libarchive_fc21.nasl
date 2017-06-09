@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869379");
-  script_version("$Revision: 3348 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:08 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:44:50 +0200 (Tue, 09 Jun 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,6 @@ can also write shar archives and read ISO9660 CDROM images and ZIP archives.
   script_xref(name: "FEDORA", value: "2015-7216");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/158373.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libarchive");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

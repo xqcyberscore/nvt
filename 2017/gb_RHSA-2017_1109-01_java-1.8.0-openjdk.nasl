@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871808");
-  script_version("$Revision: 6048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 12:13:58 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-22 06:44:03 +0200 (Sat, 22 Apr 2017)");
   script_cve_id("CVE-2017-3509", "CVE-2017-3511", "CVE-2017-3526", "CVE-2017-3533",
                 "CVE-2017-3539", "CVE-2017-3544", "CVE-2016-5542");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for java-1.8.0-openjdk RHSA-2017:1109-01");
   script_tag(name: "summary", value: "Check the version of java-1.8.0-openjdk");

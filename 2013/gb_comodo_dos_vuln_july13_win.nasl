@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_dos_vuln_july13_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_comodo_dos_vuln_july13_win.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Comodo Internet Security Denial of Service Vulnerability July 13
 #
@@ -39,17 +39,16 @@ tag_summary = "The host is installed with Comodo Internet Security and is prone
 if(description)
 {
   script_id(803695);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2012-2273");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-16 12:47:17 +0530 (Tue, 16 Jul 2013)");
   script_name("Comodo Internet Security Denial of Service Vulnerability July 13");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Apr/13");
   script_xref(name : "URL" , value : "http://www.comodo.com/home/download/release-notes.php?p=anti-malware");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Comodo Internet Security");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_comodo_internet_security_detect_win.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_is_auth_bypass_vuln_may15.nasl 3549 2016-06-17 12:10:37Z antu123 $
+# $Id: gb_bullguard_is_auth_bypass_vuln_may15.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # BullGuard Internet Security Authentication Bypass Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bullguard:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805622");
-  script_version("$Revision: 3549 $");
+  script_version("$Revision: 6159 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 14:10:37 +0200 (Fri, 17 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-20 12:02:31 +0530 (Wed, 20 May 2015)");
   script_name("BullGuard Internet Security Authentication Bypass Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131809");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of BullGuard Internet Security on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_bullguard_internet_security_detect.nasl");

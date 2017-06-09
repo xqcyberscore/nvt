@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_advanced_pdf_editor_bof_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_foxit_advanced_pdf_editor_bof_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Foxit Advanced PDF Editor Buffer Overflow Vulnerability
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is installed with Foxit Advanced PDF Editor and is prone
 if(description)
 {
   script_id(803304);
-  script_version("$Revision: 2939 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_version("$Revision: 6086 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 19:35:22 +0530 (Fri, 01 Feb 2013)");
   script_bugtraq_id(57558);
   script_cve_id("CVE-2013-0107");
@@ -52,7 +52,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2013-0107");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Foxit Advanced PDF Editor");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("Buffer overflow");

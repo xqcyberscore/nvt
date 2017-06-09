@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869336");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-03 05:41:26 +0200 (Sun, 03 May 2015)");
   script_cve_id("CVE-2015-3340", "CVE-2015-2752", "CVE-2015-2756", "CVE-2015-2751",
                 "CVE-2015-2152", "CVE-2015-2151", "CVE-2015-1563", "CVE-2015-2044",
@@ -50,7 +50,6 @@ hypervisor
   script_xref(name: "FEDORA", value: "2015-6670");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/156979.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_awk_info_disc_vuln3.nasl 5942 2017-04-12 14:42:13Z ckuerste $
+# $Id: gb_moxa_awk_info_disc_vuln3.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # Moxa AWK Series asqc.asp Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/h:moxa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106743");
-  script_version("$Revision: 5942 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-12 16:42:13 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-04-12 08:26:22 +0200 (Wed, 12 Apr 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,7 +61,7 @@ sensitive information to an attacker.");
 
   script_tag(name: "impact", value: "An unauthenticated attacker may obtain sentive information.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 12th April, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.talosintelligence.com/reports/TALOS-2016-0236/");

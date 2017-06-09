@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mailsecure_61473.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_pineapp_mailsecure_61473.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # PineApp Mail-SeCure 'livelog.html' Remote Command Injection Vulnerability
 #
@@ -29,15 +29,14 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103759");
  script_bugtraq_id(61473);
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6086 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("PineApp Mail-SeCure 'livelog.html' Remote Command Injection Vulnerability");
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61473");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-13 12:13:20 +0200 (Tue, 13 Aug 2013)");
- script_summary("Determine if it is possible to execute the 'id' command");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3167.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3167.nasl 6092 2017-05-10 07:02:40Z cfi $
 # Auto-generated from advisory DSA 3167-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703167);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6092 $");
     script_cve_id("CVE-2014-9680");
     script_name("Debian Security Advisory DSA 3167-1 (sudo - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
     script_tag(name: "creation_date", value: "2015-02-22 00:00:00 +0100 (Sun, 22 Feb 2015)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"2.1");
+    script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3167.html");

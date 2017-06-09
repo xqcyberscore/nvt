@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_httpd_info_disc_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_mini_httpd_info_disc_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # mini_httpd server Long Protocol String Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805289");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-1548");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-24 16:28:18 +0530 (Tue, 24 Feb 2015)");
   script_name("mini_httpd server Long Protocol String Information Disclosure Vulnerability");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://itinsight.hu/en/posts/articles/2015-01-23-mini-httpd");
 
-  script_summary("Check if mini_httpd server is prone to information disclosure vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

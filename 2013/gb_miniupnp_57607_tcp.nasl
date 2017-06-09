@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniupnp_57607_tcp.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_miniupnp_57607_tcp.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # MiniUPnP Multiple Denial of Service Vulnerabilities (TCP)
 #
@@ -32,15 +32,14 @@ if(description)
   script_cve_id("CVE-2013-0229", "CVE-2013-0230", "CVE-2013-1461", "CVE-2013-1462");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6079 $");
 
   script_name("MiniUPnP Multiple Denial of Service Vulnerabilities (TCP)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57607");
 
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-06 14:48:10 +0100 (Wed, 06 Feb 2013)");
-  script_summary("Determine if the installed MiniUPnP version is < 1.4");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

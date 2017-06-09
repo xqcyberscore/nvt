@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)
 #
@@ -45,18 +45,17 @@ unspecified vulnerability.";
 if(description)
 {
   script_id(803306);
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-1490");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-06 10:54:26 +0530 (Wed, 06 Feb 2013)");
   script_name("Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Jan/142");
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2013-1490");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2013-1841061.html");
 
-  script_summary("Check for the vulnerable version of Oracle Java SE JRE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

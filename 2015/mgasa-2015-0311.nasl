@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0311.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0311.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130068");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:19 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0311");
 script_tag(name: "insight", value: "Adobe Flash Player 11.2.202.508 contains fixes to critical security vulnerabilities found in earlier versions that could potentially allow an attacker to take control of the affected system. This update resolves type confusion vulnerabilities that could lead to code execution (CVE-2015-5128, CVE-2015-5554, CVE-2015-5555, CVE-2015-5558, CVE-2015-5562). This update includes further hardening to a mitigation against vector length corruptions (CVE-2015-5125). This update resolves use-after-free vulnerabilities that could lead to code execution (CVE-2015-5550, CVE-2015-5551, CVE-2015-3107, CVE-2015-5556, CVE-2015-5130, CVE-2015-5134, CVE-2015-5539, CVE-2015-5540, CVE-2015-5557, CVE-2015-5559, CVE-2015-5127, CVE-2015-5563, CVE-2015-5561, CVE-2015-5124). This update resolves heap buffer overflow vulnerabilities that could lead to code execution (CVE-2015-5129, CVE-2015-5541). This update resolves buffer overflow vulnerabilities that could lead to code execution (CVE-2015-5131, CVE-2015-5132, CVE-2015-5133). This update resolves memory corruption vulnerabilities that could lead to code execution (CVE-2015-5544, CVE-2015-5545, CVE-2015-5546, CVE-2015-5547, CVE-2015-5548, CVE-2015-5549, CVE-2015-5552, CVE-2015-5553). This update resolves an integer overflow vulnerability that could lead to code execution (CVE-2015-5560)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0311");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0311");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

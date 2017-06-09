@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10669.nasl 3817 2016-08-10 05:18:42Z ckuerste $
+# $Id: gb_junos_JSA10669.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Junos Multiple libxml2 Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
   script_bugtraq_id(48056, 56684, 52107, 61050, 58180);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version ("$Revision: 3817 $");
+  script_version ("$Revision: 6207 $");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -48,7 +48,6 @@ if (description)
 
   script_tag(name: "impact", value: "The vulnerabilities may lead to DoS attacks or arbitrary code
 execution.");
-  script_summary("Check the OS build");
 
   script_tag(name: "insight", value :"libxml2 has been updated from 2.7.6 to 2.9.1 in Junos OS to
 address multiple vulnerabilities.");
@@ -57,7 +56,7 @@ address multiple vulnerabilities.");
   script_tag(name: "solution" , value: "New builds of Junos OS software are available from Juniper.");
   script_tag(name: "affected", value: "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.3 and 14.1");
 
-  script_tag(name:"last_modification", value:"$Date: 2016-08-10 07:18:42 +0200 (Wed, 10 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-23 10:32:34 +0700 (Fri, 23 Jan 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("JunOS Local Security Checks");

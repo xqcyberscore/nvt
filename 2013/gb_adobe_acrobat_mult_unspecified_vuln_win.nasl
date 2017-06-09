@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_unspecified_vuln_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_acrobat_mult_unspecified_vuln_win.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Adobe Acrobat Multiple Unspecified Vulnerabilities - Windows
 #
@@ -38,16 +38,15 @@ tag_summary = "This host is installed with Adobe Acrobat and is prone to
 if(description)
 {
   script_id(803803);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2012-4363");
   script_bugtraq_id(55055);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2012-08-24 16:05:37 +0530 (Fri, 24 Aug 2012)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities - Windows");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50290");
-  script_summary("Check for the version of Adobe Acrobat on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

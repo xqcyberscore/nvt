@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803715");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-11 13:49:12 +0530 (Tue, 11 Jun 2013)");
   script_name("ASUS RT56U Router Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/25998");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/asus-rt56u-remote-command-injection");
   script_xref(name : "URL" , value : "http://forelsec.blogspot.in/2013/06/asus-rt56u-remote-command-injection.html");
-  script_summary("Try to read the restricted file Nologin.asp");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks");

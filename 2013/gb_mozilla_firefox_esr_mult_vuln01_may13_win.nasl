@@ -49,7 +49,7 @@ tag_summary = "This host is installed with Mozilla Firefox ESR and is prone to m
 if(description)
 {
   script_id(803607);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1672", "CVE-2013-1670", "CVE-2013-0801");
@@ -57,13 +57,12 @@ if(description)
                     59865, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-27 12:30:20 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities -01 May13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53410");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028555");
   script_xref(name : "URL" , value : "http://www.dhses.ny.gov/ocs/advisories/2013/2013-051.cfm");
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

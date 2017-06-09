@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871914");
-  script_version("$Revision: 4707 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 06:46:19 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6197 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 13:14:19 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2016-12-07 05:20:16 +0100 (Wed, 07 Dec 2016)");
   script_cve_id("CVE-2016-4855");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for php-adodb FEDORA-2016-47f8ba6b94");
   script_tag(name: "summary", value: "Check the version of php-adodb");

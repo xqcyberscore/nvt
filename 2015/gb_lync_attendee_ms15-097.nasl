@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-097.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_lync_attendee_ms15-097.nasl 6156 2017-05-18 06:51:25Z cfi $
 #
 # Microsoft Lync Attendee Buffer Overflow Vulnerability (3089656)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806118");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6156 $");
   script_cve_id("CVE-2015-2510");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 08:51:25 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 14:36:41 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Lync Attendee Buffer Overflow Vulnerability (3089656)");
 
@@ -74,8 +74,9 @@ if(description)
   exit(0);
 }
 
-
+include("smb_nt.inc");
 include("version_func.inc");
+include("secpod_smb_func.inc");
 
 ## Variables Initialization
 path = "";

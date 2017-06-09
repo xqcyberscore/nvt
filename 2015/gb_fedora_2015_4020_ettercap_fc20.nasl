@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869133");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6207 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-27 06:52:19 +0100 (Fri, 27 Mar 2015)");
   script_cve_id("CVE-2014-6395", "CVE-2014-6396", "CVE-2014-9376", "CVE-2014-9377",
                 "CVE-2014-9378", "CVE-2014-9379", "CVE-2014-9380", "CVE-2014-9381");
@@ -49,7 +49,6 @@ network and host analysis.
   script_xref(name: "FEDORA", value: "2015-4020");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/152866.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ettercap");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

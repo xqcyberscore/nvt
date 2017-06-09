@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_wicket_detect.nasl 3363 2016-05-20 12:32:04Z antu123 $
+# $Id: gb_apache_wicket_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Apache Wicket Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807584");
-  script_version("$Revision: 3363 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-20 14:32:04 +0200 (Fri, 20 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2016-05-10 15:16:04 +0530 (Tue, 10 May 2016)");
   script_name("Apache Wicket Version Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -41,7 +41,6 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_summary("Set the version of Apache Wicket in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

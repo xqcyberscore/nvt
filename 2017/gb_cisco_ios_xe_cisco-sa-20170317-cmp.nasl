@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170317-cmp.nasl 5635 2017-03-21 03:25:11Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170317-cmp.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3881");
  script_tag(name: "cvss_base", value: "10.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 5635 $");
+ script_version("$Revision: 6166 $");
 
  script_name("Cisco IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability");
 
@@ -41,8 +41,7 @@ if (description)
 
  script_tag(name: "vuldetect", value: "Check the version.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 21th March, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+ script_tag(name: "solution", value: "See the referenced vendor advisory for a solution.");
 
  script_tag(name: "summary", value: "A vulnerability in the Cisco Cluster Management Protocol (CMP) processing
 code in Cisco IOS XE Software could allow an unauthenticated, remote attacker to cause a reload of an
@@ -63,9 +62,9 @@ a Telnet session with an affected Cisco device configured to accept Telnet conne
 control of the device or cause a reload of the affected device.");
 
  script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "NoneAvailable");
+ script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-21 04:25:11 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
  script_tag(name: "creation_date", value: "2017-03-20 11:02:32 +0700 (Mon, 20 Mar 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -171,7 +170,7 @@ affected = make_list(
 
 foreach af (affected) {
   if (version == af) {
-    report = report_fixed_ver(installed_version: version, fixed_version: "None");
+    report = report_fixed_ver(installed_version: version, fixed_version: "See advisory");
     security_message(port: 0, data: report);
     exit(0);
   }

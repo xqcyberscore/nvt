@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6207 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/132050/synologydiskstation-xss.txt");
   script_xref(name : "URL" , value : "https://www.securify.nl/advisory/SFY20150503/reflected_cross_site_scripting_in_synology_diskstation_manager.html");
 
-  script_summary("Check if Synology DiskStation Manager is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

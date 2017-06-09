@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_hosting_manager_mult_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_free_hosting_manager_mult_vuln.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Free Hosting Manager Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803446");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6065 $");
   script_bugtraq_id(56991,56754);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-25 14:43:46 +0530 (Mon, 25 Mar 2013)");
   script_name("Free Hosting Manager Multiple Vulnerabilities");
 
@@ -62,7 +62,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_summary("Check if Free Hosting Manager is vulnerable sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

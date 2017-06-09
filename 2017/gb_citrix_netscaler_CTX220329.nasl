@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX220329.nasl 5606 2017-03-17 17:09:01Z cfi $
+# $Id: gb_citrix_netscaler_CTX220329.nasl 6142 2017-05-17 09:56:17Z ckuerste $
 #
 # Vulnerability in Citrix NetScaler Application Delivery Controller and Citrix NetScaler Gateway GCM Nonce Generation
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-5933");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5606 $");
+ script_version ("$Revision: 6142 $");
 
  script_name("Vulnerability in Citrix NetScaler Application Delivery Controller and Citrix NetScaler Gateway GCM Nonce Generation");
 
@@ -56,7 +56,7 @@ Citrix NetScaler ADC and NetScaler Gateway version 10.5 Build 65.11 and later");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 18:09:01 +0100 (Fri, 17 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:56:17 +0200 (Wed, 17 May 2017) $");
  script_tag(name:"creation_date", value:"2017-02-08 12:46:21 +0100 (Wed, 08 Feb 2017)");
  script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
@@ -77,7 +77,7 @@ if( ! build = get_kb_item( "citrix_netscaler/build" ) ) exit( 0 );
 if( get_kb_item( "citrix_netscaler/enhanced_build" ) ) enhanced = TRUE;
 
 version = vers + '.' + build;
-report_version = vers + ' build ' + build;
+report_version = vers + ' Build ' + build;
 
 if( enhanced )
   exit( 99 );
@@ -102,7 +102,7 @@ if( fix )
 {
   report = report_fixed_ver( installed_version:report_version, fixed_version:fix );
 
-  security_message( port:port, data:report );
+  security_message( port: 0, data:report );
   exit( 0 );
 }
 

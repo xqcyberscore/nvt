@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_dos_vuln_oct15_macosx.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_shockwave_dos_vuln_oct15_macosx.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806521");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-7649");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-30 12:40:17 +0530 (Fri, 30 Oct 2015)");
   script_name("Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Mac OS X)");
 
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/shockwave/apsb15-26.html");
 
-  script_summary("Check for the vulnerable version of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

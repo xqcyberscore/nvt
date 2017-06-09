@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3153.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3153.nasl 6211 2017-05-25 09:04:14Z teissa $
 # Auto-generated from advisory DSA 3153-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703153);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6211 $");
     script_cve_id("CVE-2014-5352", "CVE-2014-9421", "CVE-2014-9422", "CVE-2014-9423");
     script_name("Debian Security Advisory DSA 3153-1 (krb5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
     script_tag(name: "creation_date", value: "2015-02-03 00:00:00 +0100 (Tue, 03 Feb 2015)");
     script_tag(name:"cvss_base", value:"9.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3153.html");
 
-    script_summary("Debian Security Advisory DSA 3153-1 (krb5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

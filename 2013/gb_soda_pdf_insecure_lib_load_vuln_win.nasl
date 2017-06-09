@@ -30,12 +30,12 @@ CPE = "cpe:/a:soda:soda_pdf";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3485");
   script_bugtraq_id(61727);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-03 11:21:22 +0530 (Tue, 03 Sep 2013)");
   script_name("Soda PDF Insecure Library Loading Vulnerability (Windows)");
 
@@ -79,7 +79,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53207");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/86353");
   script_xref(name : "URL" , value : "http://forums.cnet.com/7726-6132_102-5486855.html");
-  script_summary("Check for the vulnerable version of Soda PDF on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

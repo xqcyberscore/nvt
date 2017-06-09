@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_motion_cam_video_sig_mon_mult_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: secpod_motion_cam_video_sig_mon_mult_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Motion Camera Video Signal Monitor Multiple Vulnerabilities
 #
@@ -50,15 +50,14 @@ prone to multiple vulnerabilities.";
 if(description)
 {
   script_id(903313);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6104 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-28 10:45:03 +0530 (Fri, 28 Jun 2013)");
   script_name("Motion Camera Video Signal Monitor Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122171/motion3212-sqlxssxsrfoverflow.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/motion-3212-xss-csrf-buffer-overflow-sql-injection");
-  script_summary("Check if Motion Video Signal Monitor is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 SecPod");

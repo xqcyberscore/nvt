@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869600");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:26:25 +0200 (Tue, 07 Jul 2015)");
   script_cve_id("CVE-2015-0261", "CVE-2015-2154", "CVE-2015-2153", "CVE-2015-2155");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,6 @@ Install tcpdump if you need a program to monitor network traffic.
   script_xref(name: "FEDORA", value: "2015-4804");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/153999.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tcpdump");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

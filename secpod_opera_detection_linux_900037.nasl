@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_detection_linux_900037.nasl 2833 2016-03-11 08:36:30Z benallard $
+# $Id: secpod_opera_detection_linux_900037.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Opera Version Detection for Linux
 #
@@ -41,13 +41,12 @@ if(description)
 {
   script_oid(SCRIPT_OID);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2833 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:36:30 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Opera Version Detection for Linux");
-  script_summary("Detection of installed version of Opera");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Product detection");

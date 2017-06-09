@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_hardcoded_telnet_account.nasl 2936 2016-03-24 08:30:15Z benallard $
+# $Id: gb_grandstream_hardcoded_telnet_account.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Grandstream Devices Backdoor in Telnet Protocol
 #
@@ -35,7 +35,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103737";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2936 $");
+ script_version ("$Revision: 6086 $");
  script_cve_id("CVE-2013-3542","CVE-2013-3962","CVE-2013-3963");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,9 +44,8 @@ if (description)
 
  script_xref(name:"URL", value: "http://seclists.org/fulldisclosure/2013/Jun/84");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
  script_tag(name:"creation_date", value:"2013-06-11 14:29:08 +0200 (Tue, 11 Jun 2013)");
- script_summary("Determine if the remote Grandstream device has a hardcoded user/password");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

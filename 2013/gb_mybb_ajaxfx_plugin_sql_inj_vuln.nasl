@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_ajaxfx_plugin_sql_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mybb_ajaxfx_plugin_sql_inj_vuln.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # MyBB Ajaxfs Plugin 'usertooltip' Parameter SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803966");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-6936");
   script_bugtraq_id(63818);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-22 11:50:32 +0530 (Fri, 22 Nov 2013)");
   script_name("MyBB Ajaxfs Plugin 'usertooltip' Parameter SQL Injection Vulnerability");
 
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89084");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124091");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/529907");
-  script_summary("Check if MyBB Ajaxfs Plugin is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

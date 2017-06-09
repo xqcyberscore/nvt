@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_archiva_detect.nasl 3803 2016-08-05 11:06:55Z antu123 $
+# $Id: gb_apache_archiva_detect.nasl 6195 2017-05-23 10:02:52Z ckuerste $
 #
 # Apache Archiva Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100923"); 
- script_version("$Revision: 3803 $");
+ script_version("$Revision: 6195 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2016-08-05 13:06:55 +0200 (Fri, 05 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
  script_tag(name:"creation_date", value:"2010-12-01 13:10:27 +0100 (Wed, 01 Dec 2010)");
  script_name("Apache Archiva Detection");
  
@@ -53,64 +53,58 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialization
-dir = "";
-req = "";
-buf = "";
-arPort = 0;
-version = 0;
+port = get_http_port(default: 80);
 
-##Get HTTP Port
-if(!arPort = get_http_port(default:80)){
-  exit(0);
+res = http_get_cache(port: port, item: "/");
+
+if ("<title>Apache Archiva" >!< res && "Archiva needs Javascript" >!< res) {
+  res = http_get_cache(port: port, item: "/archiva/index.action");
+
+  if ("<title>Apache Archiva" >!< res && "The Apache Software Foundation" >!< res &&
+      ("Artifact ID" >!< res && ">Login" >!< res))
+    exit(0);
+  else
+    install = "/archiva";
 }
+else
+  install = "/";
 
-dir = "/archiva";
+version = "unknown";
 
-## Send request and receive response
-req = http_get(item:dir + "/index.action", port:arPort);
-buf = http_send_recv(port:arPort, data:req, bodyonly:FALSE);
+if (install == "/") {
+  url = '/restServices/archivaUiServices/runtimeInfoService/archivaRuntimeInfo/en';
+  req = http_get_req(port: port, url: url,
+                     add_headers: make_array("X-Requested-With", "XMLHttpRequest",
+                                             "Accept", "application/json, text/javascript, */*; q=0.01"));
+  res = http_keepalive_send_recv(port: port, data: req);
 
-if(buf =~ "HTTP/1.. 302 Found")
-{
-  req = http_get(item:dir + "/security/addadmin.action", port:arPort);
-  buf = http_send_recv(port:arPort, data:req, bodyonly:FALSE);
-}
-
-if(buf == NULL) exit(0);
-
-if("<title>Apache Archiva" >< buf && "The Apache Software Foundation" >< buf &&
-   ("Artifact ID" >< buf || ">Login" >< buf))
-{
-  install = dir;
-
-  vers = string("unknown");
-
-  ## try to get version 
-  version = eregmatch(string: buf, pattern: ">Apache Archiva( |&nbsp;-&nbsp;)([0-9.]+[^<]+)<",icase:TRUE);
-
-  if(!isnull(version[2])){
-    vers=chomp(version[2]);
+  vers = eregmatch(pattern: '"version":"([0-9.]+)",', string: res);
+  if (!isnull(vers[1])) {
+    version = vers[1];
+    set_kb_item(name: "apache_archiva/version", value: version);
   }
-
-  set_kb_item(name: string("www/", arPort, "/apache_archiva"), value: string(vers," under Archiva"));
-  set_kb_item(name:"apache_archiva/installed",value:TRUE);
-
-  cpe = build_cpe(value:vers, exp:"^([0-9.A-Z-]+)", base:"cpe:/a:apache:archiva:");
-  if(isnull(cpe))
-    cpe = 'cpe:/a:apache:archiva';
-
-  register_product(cpe:cpe, location:install, port:arPort);
-
-  log_message(data: build_detection_report(app:"Apache Archiva",
-                                           version:vers,
-                                           install:install,
-                                           cpe:cpe,
-                                           concluded: version[0]),
-                                           port:arPort);
 }
+else {
+  vers = eregmatch(string: res, pattern: ">Apache Archiva( |&nbsp;-&nbsp;)([0-9.]+[^<]+)<",icase: TRUE);
+  if (!isnull(vers[2])) {
+    version = vers[2];
+    set_kb_item(name: "apache_archiva/version", value: version);
+  }
+}
+
+set_kb_item(name: "apache_archiva/installed", value: TRUE);
+
+cpe = build_cpe(value: version, exp: "^([0-9.A-Z-]+)", base: "cpe:/a:apache:archiva:");
+if (!cpe)
+  cpe = 'cpe:/a:apache:archiva';
+
+register_product(cpe: cpe, location: install, port: port);
+
+log_message(data: build_detection_report(app: "Apache Archiva", version: version, install: install, cpe: cpe,
+                                         concluded: vers[0], concludedUrl: url),
+            port: port);
+
 exit(0);

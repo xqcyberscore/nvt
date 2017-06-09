@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_namespace_xss_vuln.nasl 3422 2016-06-02 16:45:44Z teissa $
+# $Id: gb_apache_struts_showcase_namespace_xss_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Apache Struts2 showcase namespace XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803958");
-  script_version("$Revision: 3422 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-6348");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-02 18:45:44 +0200 (Thu, 02 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-29 15:36:50 +0530 (Tue, 29 Oct 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 showcase namespace XSS Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/struts-23153-cross-site-scripting");
   script_xref(name : "URL" , value : "http://www.securityhome.eu/exploits/exploit.php?eid=156451617526e27dd866c97.43571723");
-  script_summary("Check if Apache Struts2 is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");

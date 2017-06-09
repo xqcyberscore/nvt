@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eXtplorer_57058.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_eXtplorer_57058.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # eXtplorer 'ext_find_user()' Function Authentication Bypass Vulnerability
 #
@@ -42,7 +42,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(57058);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6093 $");
  script_tag(name:"cvss_base", value:"9.7");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
@@ -51,9 +51,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57058");
  script_xref(name : "URL" , value : "http://extplorer.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-01-10 12:43:09 +0100 (Thu, 10 Jan 2013)");
- script_summary("Determine if it is possible to bypass authentication");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

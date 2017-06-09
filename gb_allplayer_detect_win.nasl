@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allplayer_detect_win.nasl 2644 2016-02-12 06:47:32Z antu123 $
+# $Id: gb_allplayer_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # ALLPlayer Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805100");
-  script_version("$Revision: 2644 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 07:47:32 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2014-11-21 09:52:53 +0530 (Fri, 21 Nov 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ALLPlayer Version Detection (Windows)");
@@ -40,7 +40,6 @@ if(description)
 
   The script logs in via smb, searches for ALLPlayer in the registry
   and gets the version from registry or file.");
-  script_summary("Check for the presence of ALLPlayer");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

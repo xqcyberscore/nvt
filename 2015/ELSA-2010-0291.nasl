@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0291.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2010-0291.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122375");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:17:45 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0291");
 script_tag(name: "insight", value: "ELSA-2010-0291 -  gfs-kmod security, bug fix and enhancement update - [0.1.34-12]- Fixes a problem where improper locking commands can crash the system.- Resolves: rhbz#571298[0.1.34-11]- Fixes 'Resource tempory unavailable' for EWOULDBLOCK message with flocks on gfs file- Resolves: rhbz#515717[0.1.34-10]- Fixes 'Resource tempory unavailable' for EWOULDBLOCK message with flocks on gfs file- Resolves: rhbz#515717[0.1.34-9]- Change gfs freeze/unfreeze to use new standard- Resolves: rhbz#487610[0.1.34-8]- Fixes problem that produces this error message: fatal: assertion 'gfs_glock_is_locked_by_me(gl) && gfs_glock_is_held_excl(gl)' failed- Resolves: rhbz#471258[0.1.34-7]- GFS kernel panic, suid + nfsd with posix ACLs enabled- Resolves: rhbz#513885[0.1.34-5]- GFS: New mount option: -o errors=withdraw or panic- Resolves: rhbz#517145"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2010-0291");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

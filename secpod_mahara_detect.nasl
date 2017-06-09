@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mahara_detect.nasl 2770 2016-03-03 12:38:22Z cfi $
+# $Id: secpod_mahara_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Mahara Version Detection
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900381");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2770 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 13:38:22 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-06-26 07:55:21 +0200 (Fri, 26 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mahara Version Detection");
-  script_summary("Set KB for the Version of Mahara");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

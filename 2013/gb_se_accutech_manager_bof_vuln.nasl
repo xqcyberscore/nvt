@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_se_accutech_manager_bof_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_se_accutech_manager_bof_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Schneider Electric Accutech Manager Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803170");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6115 $");
   script_bugtraq_id(57651);
   script_cve_id("CVE-2013-0658");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-11 19:51:40 +0530 (Mon, 11 Feb 2013)");
   script_name("Schneider Electric Accutech Manager Buffer Overflow Vulnerability");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24474");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52034");
 
-  script_summary("Check if Schneider Electric Accutech Manager is vulnerable to BOF");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

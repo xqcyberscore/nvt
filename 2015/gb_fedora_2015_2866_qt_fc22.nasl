@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869561");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:24:58 +0200 (Tue, 07 Jul 2015)");
   script_cve_id("CVE-2015-0295");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,6 @@ handling.
   script_xref(name: "FEDORA", value: "2015-2866");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151034.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

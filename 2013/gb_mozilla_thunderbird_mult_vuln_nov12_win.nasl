@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_nov12_win.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_thunderbird_mult_vuln_nov12_win.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - November12 (Windows)
 #
@@ -43,18 +43,17 @@ tag_summary = "This host is installed with Mozilla Thunderbird and is prone to m
 if(description)
 {
   script_id(803628);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51144");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1027703");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-90.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

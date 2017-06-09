@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_july13.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_hp_smh_mult_vuln_july13.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # HP System Management Homepage Multiple Vulnerabilities-July2013
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2012-5217", "CVE-2013-2355", "CVE-2013-2356", "CVE-2013-2357",
                 "CVE-2013-2358", "CVE-2013-2359", "CVE-2013-2360", "CVE-2013-2361",
                 "CVE-2013-2362", "CVE-2013-2363", "CVE-2013-2364", "CVE-2013-4821");
@@ -38,7 +38,7 @@ if(description)
                     61335, 61341);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-30 11:22:25 +0530 (Tue, 30 Jul 2013)");
   script_name("HP System Management Homepage Multiple Vulnerabilities-July2013");
 
@@ -80,7 +80,6 @@ http://h18013.www1.hp.com/products/servers/management/agents/index.html";
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Jul/128");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Jul/135");
   script_xref(name : "URL" , value : "http://h20565.www2.hp.com/portal/site/hpsc/template.PAGE/public/kb/docDisplay/?docId=emr_na-c03839862-1");
-  script_summary("Check for the version of HP SMH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

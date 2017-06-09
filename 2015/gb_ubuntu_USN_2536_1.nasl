@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842134");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6132 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-19 05:52:47 +0100 (Thu, 19 Mar 2015)");
   script_cve_id("CVE-2015-1802", "CVE-2015-1803", "CVE-2015-1804");
   script_tag(name:"cvss_base", value:"8.5");
@@ -49,7 +49,6 @@ execute arbitrary code in order to gain privileges.");
   script_xref(name: "USN", value: "2536-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-March/002873.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libxfont");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

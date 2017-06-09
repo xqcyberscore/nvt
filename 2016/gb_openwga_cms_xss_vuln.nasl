@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openwga_cms_xss_vuln.nasl 5764 2017-03-29 12:01:23Z teissa $
+# $Id: gb_openwga_cms_xss_vuln.nasl 6102 2017-05-11 08:34:20Z teissa $
 #
 # OpenWGA Content Manager Cross-site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:OpenWGA_CMS:openwga";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807687");
-  script_version("$Revision: 5764 $");
+  script_version("$Revision: 6102 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 14:01:23 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 10:34:20 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2016-05-03 16:40:17 +0530 (Tue, 03 May 2016)");
   script_name("OpenWGA Content Manager Cross-site Scripting Vulnerability");
 
@@ -56,11 +56,10 @@ if(description)
   OpenWGA Content Manager 7.1.9 (Build 230)
   OpenWGA Admin Client 7.1.7 (Build 82)
   OpenWGA Server 7.1.9 Maintenance Release (Build 642)");
-  script_tag(name:"solution", value:"No solution or patch is available 
-  as of 29th March, 2017. Information regarding this issue will be disclosed once the
-  solution details are available. For updates refer to https://www.openwga.com/");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one. 
+");
 
-  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

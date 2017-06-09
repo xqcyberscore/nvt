@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_libjpeg_info_disclosure_kb4015383.nasl 5955 2017-04-13 18:33:58Z veerendragg $
+# $Id: gb_ms_libjpeg_info_disclosure_kb4015383.nasl 6106 2017-05-11 10:32:49Z antu123 $
 #
 # Microsoft Windows 'libjpeg' Information Disclosure Vulnerability (KB4015383)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810928");
-  script_version("$Revision: 5955 $");
+  script_version("$Revision: 6106 $");
   script_cve_id("CVE-2013-6629");
   script_bugtraq_id(63676);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 20:33:58 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:47:16 +0530 (Wed, 12 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows 'libjpeg' Information Disclosure Vulnerability (KB4015383)");
 
   script_tag(name: "summary" , value:"This host is missing an important security

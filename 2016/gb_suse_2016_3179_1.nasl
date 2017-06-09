@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851458");
-  script_version("$Revision: 4845 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-23 06:29:54 +0100 (Fri, 23 Dec 2016) $");
+  script_version("$Revision: 6181 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 16:58:21 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2016-12-17 05:31:23 +0100 (Sat, 17 Dec 2016)");
   script_cve_id("CVE-2016-8649");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for lxc openSUSE-SU-2016:3179-1 (lxc)");
   script_tag(name: "summary", value: "Check the version of lxc");

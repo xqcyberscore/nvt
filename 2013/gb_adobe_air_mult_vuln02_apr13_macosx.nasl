@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln02_apr13_macosx.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_air_mult_vuln02_apr13_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Adobe AIR Multiple Vulnerabilities -02 April 13 (Mac OS X)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with Adobe AIR and is prone to multiple
 if(description)
 {
   script_id(803386);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-1380","CVE-2013-1379","CVE-2013-1378","CVE-2013-2555");
   script_bugtraq_id(58949, 58951, 58947, 58396);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-19 11:30:01 +0530 (Fri, 19 Apr 2013)");
   script_name("Adobe AIR Multiple Vulnerabilities -02 April 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52931");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-11.html");
   script_xref(name : "URL" , value : "http://www.cert.be/pro/advisories/adobe-flash-player-air-multiple-vulnerabilities-3");
-  script_summary("Check for the vulnerable version of Adobe AIR on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

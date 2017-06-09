@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wonderdesk_mult_xss_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wonderdesk_mult_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803625");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-1788");
   script_bugtraq_id(52193);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-03 15:30:38 +0530 (Mon, 03 Jun 2013)");
   script_name("Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://st2tea.blogspot.in/2012/02/wonderdesk-cross-site-scripting.html");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/110224/WonderDesk-Cross-Site-Scripting.html");
 
-  script_summary("Check if Wonderdesk SQL is vulnarable to cross-site scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

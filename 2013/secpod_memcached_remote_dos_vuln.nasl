@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_memcached_remote_dos_vuln.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_memcached_remote_dos_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Memcached Remote Denial of Service Vulnerability
 #
@@ -46,17 +46,16 @@ vulnerability.";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2011-4971");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-30 12:50:48 +0530 (Tue, 30 Apr 2013)");
   script_name("Memcached Remote Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://insecurety.net/?p=872");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121445/killthebox.py.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/memcached-remote-denial-of-service");
-  script_summary("Check for the denial of service vulnerability in Memcached");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 SecPod");

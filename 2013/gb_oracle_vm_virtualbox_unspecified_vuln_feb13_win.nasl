@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_vm_virtualbox_unspecified_vuln_feb13_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_oracle_vm_virtualbox_unspecified_vuln_feb13_win.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability - Feb13 (Windows)
 #
@@ -44,12 +44,12 @@ tag_summary = "This host is installed with Oracle VM VirtualBox and is prone to
 if(description)
 {
   script_id(803300);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-0420");
   script_bugtraq_id(57383);
   script_tag(name:"cvss_base", value:"2.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:01:15 +0530 (Fri, 01 Feb 2013)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability - Feb13 (Windows)");
 
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51893");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2013-1515902.html");
 
-  script_summary("Check the vulnerable version of Oracle VM VirtualBox on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

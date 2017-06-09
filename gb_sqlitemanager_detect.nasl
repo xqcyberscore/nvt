@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sqlitemanager_detect.nasl 4623 2016-11-25 06:56:52Z cfi $
+# $Id: gb_sqlitemanager_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Sqlitemanager Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800280");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4623 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:56:52 +0100 (Fri, 25 Nov 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2010-01-16 12:13:24 +0100 (Sat, 16 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sqlitemanager Version Detection");
-  script_summary("Set the version of Sqlitemanager in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Product detection");

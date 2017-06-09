@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_mar15_win.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln01_mar15_win.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities - 01 Mar15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805491");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-0342", "CVE-2015-0341", "CVE-2015-0340", "CVE-2015-0339",
                 "CVE-2015-0338", "CVE-2015-0337", "CVE-2015-0336", "CVE-2015-0335",
                 "CVE-2015-0334", "CVE-2015-0333", "CVE-2015-0332");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 15:45:26 +0530 (Fri, 20 Mar 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - 01 Mar15 (Windows)");
 
@@ -67,7 +67,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-05.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

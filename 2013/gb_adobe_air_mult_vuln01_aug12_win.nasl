@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug12_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_air_mult_vuln01_aug12_win.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Adobe Air Multiple Vulnerabilities -01 August 12 (Windows)
 #
@@ -45,13 +45,13 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803490);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2012-4163", "CVE-2012-4164", "CVE-2012-4165", "CVE-2012-4166",
                 "CVE-2012-4167", "CVE-2012-4168", "CVE-2012-4171", "CVE-2012-5054");
   script_bugtraq_id(55136, 55365);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2012-08-24 11:31:28 +0530 (Fri, 24 Aug 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,7 +59,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50354");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-19.html");
-  script_summary("Check for the version of Adobe Air on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_mult_vuln.nasl 2476 2016-01-22 08:36:19Z cfi $
+# $Id: gb_http_file_server_mult_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # HTTP File Server Multiple Vulnerabilities
 #
@@ -29,17 +29,16 @@ CPE = "cpe:/a:httpfilesever:hfs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803171");
-  script_version("$Revision: 2476 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-22 09:36:19 +0100 (Fri, 22 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-19 15:17:57 +0530 (Tue, 19 Feb 2013)");
   script_name("HTTP File Server Multiple Vulnerabilities");
 
   script_xref(name:"URL", value:"http://1337day.com/exploit/20345");
   script_xref(name:"URL", value:"http://bot24.blogspot.in/2013/02/http-file-server-v2x-xss-and-file.html");
 
-  script_summary("Check the HttpFileServer version <= 2.2f");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

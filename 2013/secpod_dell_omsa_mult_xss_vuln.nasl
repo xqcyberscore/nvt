@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dell_omsa_mult_xss_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: secpod_dell_omsa_mult_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Dell OpenManage Server Administrator Multiple XSS Vulnerabilities
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902941");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2012-6272");
   script_bugtraq_id(57212);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-30 15:21:55 +0530 (Wed, 30 Jan 2013)");
   script_name("Dell OpenManage Server Administrator Multiple XSS Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51764");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/950172");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/81158");
 
-  script_summary("Check the XSS vulnerability in OpenManage Server Administrator");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");

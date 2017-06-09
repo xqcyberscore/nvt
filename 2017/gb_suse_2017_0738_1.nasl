@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851525");
-  script_version("$Revision: 5667 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 14:27:53 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2017-03-18 06:37:25 +0100 (Sat, 18 Mar 2017)");
   script_cve_id("CVE-2017-5029", "CVE-2017-5030", "CVE-2017-5031", "CVE-2017-5032", 
                 "CVE-2017-5033", "CVE-2017-5034", "CVE-2017-5035", "CVE-2017-5036", 
                 "CVE-2017-5037", "CVE-2017-5038", "CVE-2017-5039", "CVE-2017-5040", 
                 "CVE-2017-5041", "CVE-2017-5042", "CVE-2017-5043", "CVE-2017-5044", 
                 "CVE-2017-5045", "CVE-2017-5046");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Chromium openSUSE-SU-2017:0738-1 (Chromium)");
   script_tag(name: "summary", value: "Check the version of Chromium");

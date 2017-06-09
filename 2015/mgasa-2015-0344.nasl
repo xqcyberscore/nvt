@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0344.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0344.nasl 6170 2017-05-19 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130043");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6170 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:41:55 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0344");
 script_tag(name: "insight", value: "Updated webmin package fixes security vulnerability: A malicious website could create links or Javascript referencing the xmlrpc.cgi script, triggered when a user logged into Webmin visits the attacking site (CVE-2015-1990)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0344");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0344");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

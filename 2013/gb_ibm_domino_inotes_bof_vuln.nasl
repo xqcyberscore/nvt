@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_inotes_bof_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_ibm_domino_inotes_bof_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # IBM Lotus Domino iNotes Buffer Overflow Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5701 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-4068");
   script_bugtraq_id(62481);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-05 17:56:32 +0530 (Thu, 05 Dec 2013)");
   script_name("IBM Lotus Domino iNotes Buffer Overflow Vulnerability");
 
@@ -76,7 +76,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21649476";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/86599");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21649476");
-  script_summary("Determine if IBM Lotus Domino version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

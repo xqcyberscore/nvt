@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipam_multi_sql_inj_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_ipam_multi_sql_inj_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # SolarWinds IP Address Manager Multiple SQL Injection Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:solarwinds:ip_address_manager_web_interface';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105969");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6207 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name : "creation_date", value : "2015-03-06 13:50:43 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name : "summary", value : "SolarWinds IP Address Manager is prone to multiple
 SQL Injection vulnerabilities.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Check the version.");
 

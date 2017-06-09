@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmiv15_sessionid_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_ipmiv15_sessionid_vuln.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # Dell iDRAC Weak SessionID Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105939");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6132 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name : "creation_date", value : "2015-01-21 09:55:57 +0700 (Wed, 21 Jan 2015)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -51,7 +51,6 @@ if (description)
 
   script_tag(name : "summary", value : "IPMI v1.5 SessionID's are not randomized sufficiently across
 different channels.");
-  script_summary("Checks randomness of the session ID's by activating sessions");
 
   script_tag(name : "vuldetect", value : "Checks randomness of the session ID's by activating sessions.");
 

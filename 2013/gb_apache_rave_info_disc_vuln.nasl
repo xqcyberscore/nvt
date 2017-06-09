@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_rave_info_disc_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_apache_rave_info_disc_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Apache Rave User Information Disclosure Vulnerability
 #
@@ -42,12 +42,12 @@ CPE = "cpe:/a:apache:rave:";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-1814");
   script_bugtraq_id(58455);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-14 16:32:56 +0530 (Thu, 14 Mar 2013)");
   script_name("Apache Rave User Information Disclosure Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82758");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525982/30/0/threaded");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for inforamtion disclosure vulnerability in Apache Rave");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");

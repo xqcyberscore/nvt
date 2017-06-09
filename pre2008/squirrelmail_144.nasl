@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: squirrelmail_144.nasl 6056 2017-05-02 09:02:50Z teissa $
-# Description: SquirrelMail < 1.4.4 XSS Vulnerabilities
+# $Id: squirrelmail_144.nasl 6071 2017-05-04 16:19:49Z cfi $
+#
+# SquirrelMail < 1.4.4 XSS Vulnerabilities
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>
@@ -20,87 +22,70 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The target is running at least one instance of SquirrelMail whose
-version number suggests it is vulnerable to one or more cross-site
-scripting vulnerabilities :
+CPE = 'cpe:/a:squirrelmail:squirrelmail';
 
-- Insufficient escaping of integer variables in webmail.php allows a
-remote attacker to include HTML / script into a SquirrelMail webpage
-(affects 1.4.0-RC1 - 1.4.4-RC1). 
-
-- Insufficient checking of incoming URL vars in webmail.php allows an
-attacker to include arbitrary remote web pages in the SquirrelMail
-frameset (affects 1.4.0-RC1 - 1.4.4-RC1). 
-
-- A recent change in prefs.php allows an attacker to provide a
-specially crafted URL that could include local code into the
-SquirrelMail code if and only if PHP's register_globals setting is
-enabled (affects 1.4.3-RC1 - 1.4.4-RC1). 
- 
-***** OpenVAS has determined the vulnerability exists on the target
-***** simply by looking at the version number of Squirrelmail 
-***** installed there.";
-
-tag_solution = "Upgrade to SquirrelMail 1.4.4 or later.";
-
-if (description) {
-  script_id(16228);
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.16228");
+  script_version("$Revision: 6071 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 18:19:49 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(12337);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-  script_cve_id(
-    "CVE-2005-0075",
-    "CVE-2005-0103", 
-    "CVE-2005-0104"
-  );
- 
-  name = "SquirrelMail < 1.4.4 XSS Vulnerabilities";
-  script_name(name);
- 
-  summary = "Checks for Three XSS Vulnerabilities in SquirrelMail < 1.4.4";
- 
+  script_cve_id("CVE-2005-0075", "CVE-2005-0103", "CVE-2005-0104");
+  script_name("SquirrelMail < 1.4.4 XSS Vulnerabilities");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2005 George A. Theall");
-
-  family = "Web application abuses";
-  script_family(family);
-
-  script_dependencies("global_settings.nasl", "squirrelmail_detect.nasl");
+  script_family("Web application abuses");
+  script_dependencies("squirrelmail_detect.nasl");
   script_require_ports("Services/www", 80);
+  script_mandatory_keys("squirrelmail/installed");
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  tag_summary = "The target is running at least one instance of SquirrelMail whose
+  version number suggests it is vulnerable to one or more cross-site
+  scripting vulnerabilities :
+
+  - Insufficient escaping of integer variables in webmail.php allows a
+  remote attacker to include HTML / script into a SquirrelMail webpage
+  (affects 1.4.0-RC1 - 1.4.4-RC1). 
+
+  - Insufficient checking of incoming URL vars in webmail.php allows an
+  attacker to include arbitrary remote web pages in the SquirrelMail
+  frameset (affects 1.4.0-RC1 - 1.4.4-RC1). 
+
+  - A recent change in prefs.php allows an attacker to provide a
+  specially crafted URL that could include local code into the
+  SquirrelMail code if and only if PHP's register_globals setting is
+  enabled (affects 1.4.3-RC1 - 1.4.4-RC1). 
+ 
+  ***** OpenVAS has determined the vulnerability exists on the target
+  ***** simply by looking at the version number of Squirrelmail 
+  ***** installed there.";
+
+  tag_solution = "Upgrade to SquirrelMail 1.4.4 or later.";
+
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-include("global_settings.inc");
-include("http_func.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port(default:80);
-if (!get_port_state(port)) exit(0);
-debug_print("searching for 3 XSS vulnerabilities in SquirrelMail < 1.4.3 on port ", port, ".");
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-
-# Check each installed instance, stopping if we find a vulnerability.
-installs = get_kb_list(string("www/", port, "/squirrelmail"));
-if (isnull(installs)) exit(0);
-foreach install (installs) {
-  matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
-  if (!isnull(matches)) {
-    ver = matches[1];
-    dir = matches[2];
-    debug_print("checking version ", ver, " under ", dir, ".");
-
-    if (ereg(pattern:"^1\.4\.([0-3](-RC.*)?|4-RC1)$", string:ver)) {
-      security_message(port);
-      exit(0);
-    }
-  }
+if( version_is_less( version:vers, test_version:"1.4.4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.4.4" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

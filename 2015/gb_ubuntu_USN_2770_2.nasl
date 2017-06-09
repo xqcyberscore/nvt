@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842501");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-26 15:33:08 +0100 (Mon, 26 Oct 2015)");
   script_cve_id("CVE-2015-6755", "CVE-2015-6757", "CVE-2015-6759", "CVE-2015-6761",
                 "CVE-2015-6762", "CVE-2015-6763", "CVE-2015-7834");
@@ -88,7 +88,6 @@ sandboxed render process. (CVE-2015-7834)");
   script_xref(name: "USN", value: "2770-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-October/003160.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of oxide-qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

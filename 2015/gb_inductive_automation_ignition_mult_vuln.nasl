@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Inductive Automation Ignition Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805472");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2015-0995", "CVE-2015-0994", "CVE-2015-0993", "CVE-2015-0992",
                 "CVE-2015-0991", "CVE-2015-0976");
   script_bugtraq_id(73475, 73474, 73473, 73471, 73469, 73468);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-11 14:20:21 +0530 (Sat, 11 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Inductive Automation Ignition Multiple Vulnerabilities");
@@ -75,7 +75,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-090-01");
 
-  script_summary("Check for the vulnerable version of Inductive Automation Ignition");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

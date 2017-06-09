@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharp_mx_m850_default_administrator_password.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_sharp_mx_m850_default_administrator_password.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Sharp MX-M850 Default Administrator Password
 #
@@ -35,7 +35,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103667";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6065 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -43,9 +43,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://sharp-world.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2013-02-22 12:01:48 +0100 (Fri, 22 Feb 2013)");
- script_summary("Determine if the remote Sharp MX-M850 has a default password");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

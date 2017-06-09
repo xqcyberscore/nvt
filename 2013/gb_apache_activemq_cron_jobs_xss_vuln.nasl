@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Apache ActiveMQ 'Cron Jobs' Cross Site Scripting Vulnerability
 #
@@ -32,12 +32,12 @@ CPE = "cpe:/a:apache:activemq";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803866");
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-1879");
   script_bugtraq_id(61142);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-13 14:52:49 +0530 (Tue, 13 Aug 2013)");
   script_name("Apache ActiveMQ 'Cron Jobs' Cross Site Scripting Vulnerability");
 
@@ -76,7 +76,6 @@ For Updates refer to http://activemq.apache.org";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54073");
   script_xref(name : "URL" , value : "https://issues.apache.org/jira/browse/AMQ-4397");
-  script_summary("Check if Apache ActiveMQ is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

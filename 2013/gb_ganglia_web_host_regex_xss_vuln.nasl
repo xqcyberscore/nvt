@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_web_host_regex_xss_vuln.nasl 4117 2016-09-20 05:23:18Z cfi $
+# $Id: gb_ganglia_web_host_regex_xss_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Ganglia Web 'host_regex' Cross Site Scripting Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:ganglia:ganglia-web";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803786");
-  script_version("$Revision: 4117 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-6395");
   script_bugtraq_id(63921);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-20 07:23:18 +0200 (Tue, 20 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-18 15:34:41 +0530 (Wed, 18 Dec 2013)");
   script_name("Ganglia Web 'host_regex' Cross Site Scripting Vulnerability");
-  script_summary("Check if Ganglia Web is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

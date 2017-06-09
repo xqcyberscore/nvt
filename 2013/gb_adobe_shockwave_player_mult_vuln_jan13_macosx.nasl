@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Mac OS X)
 #
@@ -50,12 +50,12 @@ to multiple vulnerabilities.";
 if(description)
 {
   script_id(803093);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-6270", "CVE-2012-6271");
   script_bugtraq_id(56975, 56972);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-02 15:03:25 +0530 (Wed, 02 Jan 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/546769");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80712");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80713");
 
-  script_summary("Check for the version of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

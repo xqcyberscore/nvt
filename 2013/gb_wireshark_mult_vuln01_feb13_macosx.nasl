@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_feb13_macosx.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wireshark_mult_vuln01_feb13_macosx.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Wireshark Multiple Vulnerabilities(01) - Feb2013 (Mac OS X)
 #
@@ -47,7 +47,7 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(803166);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-1572", "CVE-2013-1573", "CVE-2013-1574", "CVE-2013-1575",
                 "CVE-2013-1576", "CVE-2013-1577", "CVE-2013-1578", "CVE-2013-1579",
                 "CVE-2013-1580", "CVE-2013-1581", "CVE-2013-1582", "CVE-2013-1583",
@@ -56,7 +56,7 @@ if(description)
   script_bugtraq_id(57616);
   script_tag(name:"cvss_base", value:"2.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-04 19:46:29 +0530 (Mon, 04 Feb 2013)");
   script_name("Wireshark Multiple Vulnerabilities(01) - Feb2013 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51968");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=8198");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=8222");
 
-  script_summary("Check the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

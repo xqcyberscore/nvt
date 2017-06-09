@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_activemq_multiple_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_apache_activemq_multiple_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Apache ActiveMQ Multiple Vulnerabilities
 #
@@ -47,12 +47,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903306");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2012-6092", "CVE-2012-6551", "CVE-2013-3060");
   script_bugtraq_id(59400, 59401, 59402);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-27 12:08:18 +0530 (Sat, 27 Apr 2013)");
   script_name("Apache ActiveMQ Multiple Vulnerabilities");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "https://issues.apache.org/jira/browse/AMQ-4124");
   script_xref(name : "URL" , value : "http://activemq.apache.org/activemq-580-release.html");
   script_xref(name : "URL" , value : "https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12311210&version=12323282");
-  script_summary("Check if Apache ActiveMQ is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");

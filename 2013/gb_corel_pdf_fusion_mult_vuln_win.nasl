@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804109";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-0742", "CVE-2013-3248");
   script_bugtraq_id(61160, 61010);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-15 14:34:30 +0530 (Tue, 15 Oct 2013)");
   script_name("Corel PDF Fusion Multiple Vulnerabilities (Windows)");
 
@@ -84,7 +84,6 @@ http://www.corel.com/corel/product/index.jsp?pid=prod4100140";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52707/");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/61010");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-0742");
-  script_summary("Check for the vulnerable version of Corel PDF Fusion on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

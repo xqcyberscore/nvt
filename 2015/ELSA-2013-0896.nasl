@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0896.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0896.nasl 6207 2017-05-24 09:04:07Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123614");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6207 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:18 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0896");
 script_tag(name: "insight", value: "ELSA-2013-0896 -  qemu-kvm security and bug fix update - [0.12.1.2-2.355.el6_4.5]- kvm-e1000-fix-link-down-handling-with-auto-negotiation.patch [bz#907716]- kvm-e1000-unbreak-the-guest-network-when-migration-to-RH.patch [bz#907716]- kvm-reimplement-error_setg-and-error_setg_errno-for-RHEL.patch [bz#957056]- kvm-qga-set-umask-0077-when-daemonizing-CVE-2013-2007.patch [bz#957056]- kvm-qga-distinguish-binary-modes-in-guest_file_open_mode.patch [bz#957056]- kvm-qga-unlink-just-created-guest-file-if-fchmod-or-fdop.patch [bz#957056]- Resolves: bz#907716 (use set_link to change rtl8139 and e1000 network card's status but fail to make effectively after reboot guest)- Resolves: bz#957056 (CVE-2013-2007 qemu: guest agent creates files with insecure permissions in deamon mode [rhel-6.4.z])[0.12.1.2-2.355.el6_4.4]- kvm-virtio-balloon-fix-integer-overflow-in-BALLOON_CHANG.patch [bz#958750]- Resolves: bz#958750 (QMP event shows incorrect balloon value when balloon size is grater than or equal to 4G)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0896");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

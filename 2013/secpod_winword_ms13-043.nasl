@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winword_ms13-043.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_winword_ms13-043.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (2830399)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is missing a important security update according to
 if(description)
 {
   script_id(902968);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-1335");
   script_bugtraq_id(59759);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 09:30:40 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (2830399)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53379");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2810046");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-043");
 
-  script_summary("Check for the vulnerable 'Winword.exe' file versions");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 SecPod");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2699.nasl 2863 2016-03-16 08:34:49Z benallard $
+# $Id: deb_2699.nasl 6115 2017-05-12 09:03:25Z teissa $
 # Auto-generated from advisory DSA 2699-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -69,17 +69,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892699);
-    script_version("$Revision: 2863 $");
+    script_version("$Revision: 6115 $");
     script_cve_id("CVE-2013-1677", "CVE-2013-0776", "CVE-2013-1674", "CVE-2013-0787", "CVE-2013-0780", "CVE-2013-0775", "CVE-2013-1675", "CVE-2013-1678", "CVE-2013-0782", "CVE-2013-1676", "CVE-2013-0795", "CVE-2013-0801", "CVE-2013-1681", "CVE-2013-0800", "CVE-2013-0793", "CVE-2013-0796", "CVE-2013-1679", "CVE-2013-0788", "CVE-2013-1680", "CVE-2013-0783", "CVE-2013-0773", "CVE-2013-1670");
     script_name("Debian Security Advisory DSA 2699-1 (iceweasel - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 09:34:49 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
     script_tag(name: "creation_date", value:"2013-06-02 00:00:00 +0200 (Sun, 02 Jun 2013)");
     script_tag(name: "cvss_base", value:"10.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2699.html");
 
-    script_summary("Debian Security Advisory DSA 2699-1 (iceweasel - several vulnerabilities)");
 
     script_category(ACT_GATHER_INFO);
 

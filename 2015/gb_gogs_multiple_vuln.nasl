@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gogs_multiple_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_gogs_multiple_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Gogs Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:gogits:gogs';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105952");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name : "creation_date", value : "2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name : "cvss_base", value : "7.5");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -50,7 +50,6 @@ if (description)
   script_mandatory_keys("gogs/installed");
 
   script_tag(name : "summary", value : "Gogs (Go Git Service) is prone to multiple vulnerabilities.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Check the version");
 

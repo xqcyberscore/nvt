@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-604.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-604.nasl 6207 2017-05-24 09:04:07Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120594");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6207 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:10:56 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-604");
 script_tag(name: "insight", value: "It was discovered that libwmf did not correctly process certain WMF (Windows Metafiles) with embedded BMP images. By tricking a victim into opening a specially crafted WMF file in an application using libwmf, a remote attacker could possibly use this flaw to execute arbitrary code with the privileges of the user running the application. (CVE-2015-0848 , CVE-2015-4588 )It was discovered that libwmf did not properly process certain WMF files. By tricking a victim into opening a specially crafted WMF file in an application using libwmf, a remote attacker could possibly exploit this flaw to cause a crash or execute arbitrary code with the privileges of the user running the application. (CVE-2015-4696 )It was discovered that libwmf did not properly process certain WMF files. By tricking a victim into opening a specially crafted WMF file in an application using libwmf, a remote attacker could possibly exploit this flaw to cause a crash. (CVE-2015-4695 )The gdPngReadData function in libgd 2.0.34 allows user-assisted attackers to cause a denial of service (CPU consumption) via a crafted PNG image with truncated data, which causes an infinite loop in the png_read_info function in libpng. (CVE-2007-2756 )Buffer overflow in the gdImageStringFTEx function in gdft.c in GD Graphics Library 2.0.33 and earlier allows remote attackers to cause a denial of service (application crash) and possibly execute arbitrary code via a crafted string with a JIS encoded font. (CVE-2007-0455 )The _gdGetColors function in gd_gd.c in PHP 5.2.11 and 5.3.x before 5.3.1, and the GD Graphics Library 2.x, does not properly verify a certain colorsTotal structure member, which might allow remote attackers to conduct buffer overflow or buffer over-read attacks via a crafted GD file, a different vulnerability than CVE-2009-3293 . NOTE: some of these details are obtained from third party information. (CVE-2009-3546 )Integer overflow in gdImageCreateTrueColor function in the GD Graphics Library (libgd) before 2.0.35 allows user-assisted remote attackers to have unspecified attack vectors and impact. (CVE-2007-3472 )The gdImageCreateXbm function in the GD Graphics Library (libgd) before 2.0.35 allows user-assisted remote attackers to cause a denial of service (crash) via unspecified vectors involving a gdImageCreate failure. (CVE-2007-3473 )"); 
 script_tag(name : "solution", value : "Run yum update libwmf to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-604");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3081.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-3081.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123275");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:37 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-3081");
 script_tag(name: "insight", value: "ELSA-2014-3081 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-44.1.3.el7uek]- ALSA: control: Don't access controls outside of protected regions (Lars-Peter Clausen) [Orabug: 19817785] {CVE-2014-4653} {CVE-2014-4654} {CVE-2014-4655}- ALSA: control: Fix replacing user controls (Lars-Peter Clausen) [Orabug: 19817747] {CVE-2014-4653} {CVE-2014-4654} {CVE-2014-4655}- kvm: iommu: fix the third parameter of kvm_iommu_put_pages (CVE-2014-3601) (Michael S. Tsirkin) [Orabug: 19817646] {CVE-2014-3601}- net: sctp: inherit auth_capable on INIT collisions (Daniel Borkmann) [Orabug: 19816067] {CVE-2014-5077}[3.8.13-44.1.2.el7uek]- CVE-2014-3535: NULL pointer dereference in VxLAN packet logging. (Sasha Levin) [Orabug: 19613139]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-3081");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

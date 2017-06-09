@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_compat_pack_ms13-072.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms_compat_pack_ms13-072.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # MS Office Compatibility Pack Remote Code Execution Vulnerabilities (2845537)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_id(903404);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-3160", "CVE-2013-3847", "CVE-2013-3848", "CVE-2013-3849",
                 "CVE-2013-3850", "CVE-2013-3851", "CVE-2013-3852", "CVE-2013-3853",
                 "CVE-2013-3854", "CVE-2013-3855", "CVE-2013-3856", "CVE-2013-3857",
@@ -36,7 +36,7 @@ if(description)
                     62222, 62223, 62224, 62226);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-11 17:22:16 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Office Compatibility Pack Remote Code Execution Vulnerabilities (2845537)");
 
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-072";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54737");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2760823");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-072");
-  script_summary("Check for the version of 'Wordcnv.dll' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

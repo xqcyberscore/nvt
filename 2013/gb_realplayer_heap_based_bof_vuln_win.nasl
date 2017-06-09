@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_heap_based_bof_vuln_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_realplayer_heap_based_bof_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # RealNetworks RealPlayer Heap Based BoF Vulnerability (Windows)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with RealPlayer which is prone to heap
 if(description)
 {
   script_id(803601);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-1750");
   script_bugtraq_id(58539);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-14 18:27:30 +0530 (Tue, 14 May 2013)");
   script_name("RealNetworks RealPlayer Heap Based BoF Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.8026");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-1750");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/03152013_player/en");
-  script_summary("Check for the vulnerable version of RealPlayer on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

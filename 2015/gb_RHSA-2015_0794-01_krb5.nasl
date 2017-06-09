@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871351");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-10 07:10:58 +0200 (Fri, 10 Apr 2015)");
   script_cve_id("CVE-2014-5352", "CVE-2014-5353", "CVE-2014-5355", "CVE-2014-9421", "CVE-2014-9422");
   script_tag(name:"cvss_base", value:"9.0");
@@ -86,7 +86,6 @@ contain backported patches to correct these issues.
   script_xref(name: "RHSA", value: "2015:0794-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-April/msg00013.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

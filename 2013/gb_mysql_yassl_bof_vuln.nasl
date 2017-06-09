@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_yassl_bof_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_mysql_yassl_bof_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # MySQL 'yaSSL' Buffer Overflow Vulnerability
 #
@@ -42,10 +42,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-0553", "CVE-2013-1492");
   script_bugtraq_id(58594, 58595);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-04 13:53:42 +0530 (Thu, 04 Apr 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52445");
   script_xref(name : "URL" , value : "http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-68.html");
   script_xref(name : "URL" , value : "https://blogs.oracle.com/sunsecurity/entry/cve_2012_0553_buffer_overflow");
-  script_summary("Check for the vulnerable version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

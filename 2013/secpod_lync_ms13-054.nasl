@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lync_ms13-054.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_lync_ms13-054.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Microsoft Lync Remote Code Execution Vulnerability (2848295)
 #
@@ -43,12 +43,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902982";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-3129");
   script_bugtraq_id(60978);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-10 13:08:01 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Lync Remote Code Execution Vulnerability (2848295)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54057");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028750");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-054");
 
-  script_summary("Check for the vulnerable 'Rtmpltfm.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 SecPod");

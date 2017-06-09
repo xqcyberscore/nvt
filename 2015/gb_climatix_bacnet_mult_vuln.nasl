@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_climatix_bacnet_mult_vuln.nasl 3514 2016-06-14 11:29:47Z mime $
+# $Id: gb_climatix_bacnet_mult_vuln.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Climatix BACnet/IP Communication Module Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805713");
-  script_version("$Revision: 3514 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-4174");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:29:47 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-03 16:04:22 +0530 (Fri, 03 Jul 2015)");
   script_name("Climatix BACnet/IP Communication Module Multiple Vulnerabilities");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132514/climatixbacnet-xss.txt");
   script_xref(name : "URL" , value : "http://www.siemens.com/innovation/pool/de/forschungsfelder/siemens_security_advisory_ssa-142512.pdf");
 
-  script_summary("Check if Climatix BACnet/IP communication module is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

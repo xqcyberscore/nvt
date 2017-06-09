@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-056.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-056.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3058515)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805196");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-1687", "CVE-2015-1730", "CVE-2015-1731", "CVE-2015-1732",
                 "CVE-2015-1735", "CVE-2015-1736", "CVE-2015-1737", "CVE-2015-1739",
                 "CVE-2015-1740", "CVE-2015-1741", "CVE-2015-1742", "CVE-2015-1743",
@@ -39,7 +39,7 @@ if(description)
   script_bugtraq_id(74974, 74982, 74985, 74986, 74988, 74990, 74991);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:08:31 +0530 (Wed, 10 Jun 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (3058515)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3058515");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-056");
 
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

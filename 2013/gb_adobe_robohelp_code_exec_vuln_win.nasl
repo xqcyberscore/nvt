@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_robohelp_code_exec_vuln_win.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_robohelp_code_exec_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Adobe RoboHelp Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803771";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-5327");
   script_bugtraq_id(62887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-17 16:38:27 +0530 (Thu, 17 Oct 2013)");
   script_name("Adobe RoboHelp Arbitrary Code Execution Vulnerability (Windows)");
 
@@ -76,7 +76,6 @@ http://www.adobe.com/support/security/bulletins/apsb13-24.html ";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54647");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-24.html");
-  script_summary("Check for the vulnerable version of 'MDBMS.dll' file on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar13_win.nasl 2936 2016-03-24 08:30:15Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_mar13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-01 March 2013 (Windows)
 #
@@ -39,7 +39,7 @@ tag_summary = "This host is installed with Google Chrome and is prone to multipl
 if(description)
 {
   script_id(803313);
-  script_version("$Revision: 2936 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-0879","CVE-2013-0880","CVE-2013-0881","CVE-2013-0882",
                 "CVE-2013-0883","CVE-2013-0884","CVE-2013-0885","CVE-2013-0887",
                 "CVE-2013-0888","CVE-2013-0889","CVE-2013-0890","CVE-2013-0891",
@@ -49,7 +49,7 @@ if(description)
   script_bugtraq_id(58101);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-01 10:00:20 +0530 (Fri, 01 Mar 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 March 2013 (Windows)");
   script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/438026.php");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/02/stable-channel-update_21.html");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Google Chrome on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_win.nasl");

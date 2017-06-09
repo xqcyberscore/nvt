@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871442");
-  script_version("$Revision: 3339 $");
+  script_version("$Revision: 6159 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:26:32 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-02 06:58:22 +0200 (Wed, 02 Sep 2015)");
   script_cve_id("CVE-2015-2730");
   script_tag(name:"qod_type", value:"package");
@@ -59,7 +59,6 @@ which contain a backported patch to correct this issue.
   script_xref(name: "RHSA", value: "2015:1699-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-September/msg00000.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nss-softokn");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

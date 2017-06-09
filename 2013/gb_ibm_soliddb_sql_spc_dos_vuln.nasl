@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_sql_spc_dos_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_soliddb_sql_spc_dos_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # IBM solidDB Stored Procedure Call Handling Denial of Service Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:soliddb";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-3031");
   script_bugtraq_id(59637);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-20 12:22:19 +0530 (Fri, 20 Sep 2013)");
   script_name("IBM solidDB Stored Procedure Call Handling Denial of Service Vulnerability");
 
@@ -79,7 +79,6 @@ http://www-03.ibm.com/software/products/us/en/ibmsoli";
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC94043");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC88797");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC88796");
-  script_summary("Check for the version vulnerable version of IBM solidDB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

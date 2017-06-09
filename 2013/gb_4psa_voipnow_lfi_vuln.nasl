@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_4psa_voipnow_lfi_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_4psa_voipnow_lfi_vuln.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # 4psa Voipnow Local File Inclusion Vulnerability
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803195");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-22 18:28:32 +0530 (Mon, 22 Apr 2013)");
   script_name("4psa Voipnow Local File Inclusion Vulnerability");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121374");
   script_xref(name : "URL" , value : "http://bot24.blogspot.in/2013/04/voipnow-24-local-file-inclusion.html");
-  script_summary("Read the content of the configuration file voipnow.conf");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

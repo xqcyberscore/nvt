@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_multiple_rce_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_plesk_multiple_rce_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Parallels Plesk PHP Code Execution and Command Execution Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803712");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3843", "CVE-2013-4878");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-06 11:34:50 +0530 (Thu, 06 Jun 2013)");
   script_name("Parallels Plesk PHP Code Execution and Command Execution Vulnerabilities");
 
@@ -41,7 +41,6 @@ if(description)
   script_xref(name : "URL" , value : "http://permalink.gmane.org/gmane.comp.security.full-disclosure/89512");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/php/plesk-apache-zeroday-remote-exploit");
 
-  script_summary("Check if Plesk is vulnerable to RCE");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

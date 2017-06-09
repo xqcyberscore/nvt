@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln_jun.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_advantech_webaccess_mult_vuln_jun.nasl 6143 2017-05-17 10:03:21Z teissa $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106108");
-  script_version("$Revision: 5689 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 6143 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-17 12:03:21 +0200 (Wed, 17 May 2017) $");
   script_tag(name: "creation_date", value: "2016-06-24 11:38:08 +0700 (Fri, 24 Jun 2016)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-4525", "CVE-2016-4528", "CVE-2016-5810");
 

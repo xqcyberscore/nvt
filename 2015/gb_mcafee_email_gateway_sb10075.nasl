@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10075.nasl 2774 2016-03-04 08:00:52Z antu123 $
+# $Id: gb_mcafee_email_gateway_sb10075.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # McAfee Email Gateway - OpenSSL vulnerabilities patched in McAfee products
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-0224","CVE-2014-0221","CVE-2014-0195","CVE-2014-0198","CVE-2010-5298","CVE-2014-3470","CVE-2014-0076");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2774 $");
+ script_version ("$Revision: 6132 $");
 
  script_name("McAfee Email Gateway - OpenSSL vulnerabilities patched in McAfee products");
 
@@ -46,9 +46,8 @@ if (description)
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 09:00:52 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
  script_tag(name:"creation_date", value:"2015-01-07 17:42:14 +0100 (Wed, 07 Jan 2015)");
- script_summary("Check the installed version and hotfixes");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

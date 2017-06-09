@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2818.nasl 2865 2016-03-16 09:26:51Z benallard $
+# $Id: deb_2818.nasl 6065 2017-05-04 09:03:08Z teissa $
 # Auto-generated from advisory DSA 2818-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -72,17 +72,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(702818);
-    script_version("$Revision: 2865 $");
+    script_version("$Revision: 6065 $");
     script_cve_id("CVE-2013-1861", "CVE-2013-2162", "CVE-2013-3783", "CVE-2013-3793", "CVE-2013-3802", "CVE-2013-3804", "CVE-2013-3809", "CVE-2013-3812", "CVE-2013-3839", "CVE-2013-5807");
     script_name("Debian Security Advisory DSA 2818-1 (mysql-5.5 - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 10:26:51 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
     script_tag(name: "creation_date", value:"2013-12-16 00:00:00 +0100 (Mon, 16 Dec 2013)");
     script_tag(name: "cvss_base", value:"5.0");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2818.html");
 
-    script_summary("Debian Security Advisory DSA 2818-1 (mysql-5.5 - several vulnerabilities)");
 
     script_category(ACT_GATHER_INFO);
 

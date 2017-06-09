@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-603.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-603.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120566");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-11-08 13:10:55 +0200 (Sun, 08 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-603");
 script_tag(name: "insight", value: "Race condition in the IPC object implementation in the Linux kernel through 4.2.3 allows local users to gain privileges by triggering an ipc_addid call that leads to uid and gid comparisons against uninitialized data, related to msg.c, shm.c, and util.c. (CVE-2015-7613 )Linux kernels built with the name spaces support(CONFIG_NAMESPACE) is vulnerable to a potential privilege escalation flaw. It could occur when a process within a container escapes the intended bind mounts to access the full file system. A privileged user inside a container could use this flaw to potentially gain full privileges on a system. (CVE-2015-2925 )"); 
 script_tag(name : "solution", value : "Run yum clean all followed by yum update kernel to update your system. You will need to reboot your system in order for the new kernel to be running.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-603");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_server_mult_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_pcman_ftp_server_mult_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # PCMan's FTP Server Multiple Vulnerabilities
 #
@@ -46,10 +46,10 @@ prone to multiple vulnerabilities.";
 if(description)
 {
   script_id(803825);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-4730");
   script_bugtraq_id(65289, 65299);
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-02 11:35:46 +0530 (Tue, 02 Jul 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26495");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122173/pcman-traversal.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/pcmans-ftp-server-20-denial-of-service");
-  script_summary("Determine if PCMan's Server is prone to buffer overflow vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

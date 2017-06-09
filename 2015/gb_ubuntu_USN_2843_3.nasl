@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842573");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-18 05:44:51 +0100 (Fri, 18 Dec 2015)");
   script_cve_id("CVE-2015-7799", "CVE-2015-7872", "CVE-2015-7884", "CVE-2015-7885");
   script_tag(name:"cvss_base", value:"4.9");
@@ -59,7 +59,6 @@ obtain sensitive information from the kernel. (CVE-2015-7885)");
   script_xref(name: "USN", value: "2843-3");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-December/003232.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-raspi2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

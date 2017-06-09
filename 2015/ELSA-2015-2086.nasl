@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2086.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2086.nasl 6170 2017-05-19 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122736");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6170 $");
 script_tag(name:"creation_date", value:"2015-11-19 07:51:09 +0200 (Thu, 19 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2086");
 script_tag(name: "insight", value: "ELSA-2015-2086 -  java-1.6.0-openjdk security update - [1:1.6.0.35-1.13.9.4.0.1.el5_11]- Add oracle-enterprise.patch[1:1.6.0.37-1.13.9.4]- Update with new IcedTea & b37 tarballs, including fix for appletviewer regression.- Resolves: rhbz#1271926[1:1.6.0.37-1.13.9.3]- Update with new IcedTea & b37 tarballs, including more Kerberos fixes for TCK regression.- Resolves: rhbz#1271926[1:1.6.0.37-1.13.9.2]- Update with new IcedTea & b37 tarballs, including Kerberos fixes for TCK regression.- Resolves: rhbz#1271926[1:1.6.0.37-1.13.9.1]- Update with newer tarball, including 6763122 fix for TCK regression.- Resolves: rhbz#1271926[1:1.6.0.37-1.13.9.1]- Drop java-1.6.0-openjdk-pstack.patch. 6310967, the upstream version, is applied in OpenJDK 6.- Resolves: rhbz#1271926[1:1.6.0.37-1.13.9.0]- Update to IcedTea 1.13.9- Resolves: rhbz#1271926"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2086");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

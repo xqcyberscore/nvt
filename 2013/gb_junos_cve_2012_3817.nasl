@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2012_3817.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_junos_cve_2012_3817.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Junos DNSSEC validation Denial of Service
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103948");
-  script_version ("$Revision: 2939 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_version ("$Revision: 6086 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-15 21:39:27 +0700 (Tue, 15 Oct 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -43,7 +43,6 @@ if (description)
 
   script_name("Junos DNSSEC validation Denial of Service");
 
-  script_summary("Junos CVE-2012-3817");
 
   script_category(ACT_GATHER_INFO);
 

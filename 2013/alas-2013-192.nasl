@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-192.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-192.nasl 6093 2017-05-10 09:03:18Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120095");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6093 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:17:18 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-192");
 script_tag(name: "insight", value: "A buffer overflow flaw was found in Openswan. If Opportunistic Encryption were enabled (oe=yes in /etc/ipsec.conf) and an RSA key configured, an attacker able to cause a system to perform a DNS lookup for an attacker-controlled domain containing malicious records (such as by sending an email that triggers a DKIM or SPF DNS record lookup) could cause Openswan's pluto IKE daemon to crash or, potentially, execute arbitrary code with root privileges. With oe=yes but no RSA key configured, the issue can only be triggered by attackers on the local network who can control the reverse DNS entry of the target system. Opportunistic Encryption is disabled by default. (CVE-2013-2053 )"); 
 script_tag(name : "solution", value : "Run yum update openswan to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-192");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

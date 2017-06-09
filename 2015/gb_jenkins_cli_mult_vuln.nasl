@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_cli_mult_vuln.nasl 2675 2016-02-17 09:01:04Z benallard $
+# $Id: gb_jenkins_cli_mult_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Jenkins CLI Multiple Vulnerabilities 
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806621");
-  script_version("$Revision: 2675 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320", "CVE-2015-5324",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5325",
                 "CVE-2015-5326");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:01:04 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-17 12:48:36 +0530 (Tue, 17 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Jenkins CLI Multiple Vulnerabilities");
@@ -87,7 +87,6 @@ if(description)
   script_xref(name : "URL" , value : "https://jenkins-ci.org/content/mitigating-unauthenticated-remote-code-execution-0-day-jenkins-cli");
   script_xref(name : "URL" , value : "http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability");
 
-  script_summary("Check if Jenkins is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

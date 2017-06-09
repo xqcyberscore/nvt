@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_mult_vulns_09_13.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_synology_dsm_mult_vulns_09_13.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Synology DSM 4.3-3776 XSS / File Disclosure / Command Injection
 #
@@ -41,7 +41,7 @@ tag_vuldetect = "Tries to read /etc/synoinfo.conf by sending a special crafted H
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6065 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
@@ -51,9 +51,8 @@ if (description)
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123182/Synology-DSM-4.3-3776-XSS-File-Disclosure-Command-Injection.html");
  script_xref(name:"URL", value:"http://www.synology.com/enu/index.php");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2013-09-12 11:33:59 +0200 (Thu, 12 Sep 2013)");
- script_summary("Determine if it is possible to read /etc/synoinfo.conf");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX202482.nasl 2641 2016-02-11 16:51:04Z mime $
+# $Id: gb_citrix_netscaler_CTX202482.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Citrix NetScaler Service Delivery Appliance Multiple Security Updates (CTX202482)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7996","CVE-2015-7997","CVE-2015-7998");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N"); 
- script_version ("$Revision: 2641 $");
+ script_version ("$Revision: 6125 $");
 
  script_name("Citrix NetScaler Service Delivery Appliance Multiple Security Updates (CTX202482)");
 
@@ -57,9 +57,8 @@ Version 10.1, 10.1e and earlier up to and including 10.1 Build 132.8");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-11 17:51:04 +0100 (Thu, 11 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
  script_tag(name:"creation_date", value:"2015-11-16 11:03:39 +0100 (Mon, 16 Nov 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

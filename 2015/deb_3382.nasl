@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3382.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3382.nasl 6170 2017-05-19 09:03:42Z teissa $
 # Auto-generated from advisory DSA 3382-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703382);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6170 $");
     script_cve_id("CVE-2014-8958", "CVE-2014-9218", "CVE-2015-2206", "CVE-2015-3902",
                   "CVE-2015-3903", "CVE-2015-6830", "CVE-2015-7873");
     script_name("Debian Security Advisory DSA 3382-1 (phpmyadmin - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
     script_tag(name: "creation_date", value: "2015-10-28 00:00:00 +0100 (Wed, 28 Oct 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3382.html");
 
-    script_summary("Debian Security Advisory DSA 3382-1 (phpmyadmin - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 6050 2017-04-28 14:26:18Z teissa $
+# $Id: gb_mcafee_virusscan_ent_mem_corrupt_vul.nasl 6101 2017-05-11 08:27:07Z teissa $
 #
 # McAfee VirusScan Enterprise CVE-2016-8030 Memory Corruption Vulnerability (Windows)
 #
@@ -29,13 +29,13 @@ CPE = 'cpe:/a:mcafee:virusscan_enterprise_for_windows';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107159");
-  script_version("$Revision: 6050 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 16:26:18 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6101 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 10:27:07 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-27 13:33:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2016-8030");
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"registry");
 

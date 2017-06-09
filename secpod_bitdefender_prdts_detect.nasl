@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bitdefender_prdts_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: secpod_bitdefender_prdts_detect.nasl 6066 2017-05-04 12:05:07Z antu123 $
 #
 # BitDefender Product(s) Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900326");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6066 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 14:05:07 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-03-20 07:08:52 +0100 (Fri, 20 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("BitDefender Product(s) Version Detection");
@@ -129,8 +129,6 @@ foreach bitKey (key_list)
       if(isnull(cpe))
         cpe = "cpe:/a:bitdefender:internet_security";
 
-      build_report(app:bitName, ver:bitVer, cpe:cpe, insloc:insLoc, concluded:bitVer);
-
       ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch && "Wow6432Node" >!< bitKey)
       {
@@ -140,9 +138,10 @@ foreach bitKey (key_list)
         cpe = build_cpe(value:bitVer, exp:"^([0-9.]+)", base:"cpe:/a:bitdefender:internet_security:x64:");
         if(isnull(cpe))
           cpe = "cpe:/a:bitdefender:internet_security:x64";
-
-        build_report(app:bitName, ver:bitVer, cpe:cpe, insloc:insLoc, concluded:bitVer);
       }
+      register_product(cpe:cpe, location:insLoc);
+      log_message(data: build_detection_report(app:bitName, version:bitVer,
+                                                 install:insLoc, cpe:cpe, concluded:bitVer));
     }
   }
 
@@ -176,8 +175,6 @@ foreach bitKey (key_list)
       if(isnull(cpe))
         cpe = "cpe:/a:bitdefender:bitdefender_antivirus";
 
-      build_report(app:bitName, ver:bitVer, cpe:cpe, insloc:insLoc, concluded:bitVer);
-
       ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch && "Wow6432Node" >!< bitKey)
       {
@@ -187,9 +184,57 @@ foreach bitKey (key_list)
         cpe = build_cpe(value:bitVer, exp:"^([0-9.]+)", base:"cpe:/a:bitdefender:bitdefender_antivirus:x64:");
         if(isnull(cpe))
           cpe = "cpe:/a:bitdefender:bitdefender_antivirus:x64";
-
-        build_report(app:bitName, ver:bitVer, cpe:cpe, insloc:insLoc, concluded:bitVer);
       }
+      register_product(cpe:cpe, location:insLoc);
+      log_message(data: build_detection_report(app:bitName, version:bitVer,
+                                                 install:insLoc, cpe:cpe, concluded:bitVer));
+    }
+  }
+
+  ## Check for BitDefender total security
+  if("bitdefender total security" >< tolower(bitName))
+  {
+    bitVer = registry_get_sz(key:bitKey, item:"ProductVersion");
+
+    if(bitVer == NULL)
+    {
+      if("Wow6432Node" >< bitKey){
+        key = "SOFTWARE\Wow6432Node\BitDefender\BitDefender Desktop\Maintenance\TotalSecurity";
+      } else {
+        key = "SOFTWARE\BitDefender\BitDefender Desktop\Maintenance\TotalSecurity";
+      }
+
+      bitVer = registry_get_sz(key:key, item:"ProductVersion");
+    }
+
+    if(bitVer)
+    {
+      insLoc = registry_get_sz(key:bitKey - 'About\\', item:"InstallDir");
+      if(!insLoc){
+        insLoc = "Could not find the install Location from registry";
+      }
+
+      set_kb_item(name:"BitDefender/TotalSec/Ver", value:bitVer);
+
+      ## build cpe
+      cpe = build_cpe(value:bitVer, exp:"^([0-9.]+)", base:"cpe:/a:bitdefender:total_security:");
+      if(isnull(cpe))
+        cpe = "cpe:/a:bitdefender:total_security";
+
+      ## Register for 64 bit app on 64 bit OS once again
+      if("64" >< os_arch && "Wow6432Node" >!< bitKey)
+      {
+        set_kb_item(name:"BitDefender64/InetSec/Ver", value:bitVer);
+
+        ## Build CPE
+        cpe = build_cpe(value:bitVer, exp:"^([0-9.]+)", base:"cpe:/a:bitdefender:total_security:x64:");
+        if(isnull(cpe))
+          cpe = "cpe:/a:bitdefender:total_security:x64";
+      }
+
+      register_product(cpe:cpe, location:insLoc);
+      log_message(data: build_detection_report(app:bitName, version:bitVer,
+                                                 install:insLoc, cpe:cpe, concluded:bitVer));
     }
   }
 }

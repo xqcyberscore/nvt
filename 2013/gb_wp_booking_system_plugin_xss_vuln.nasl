@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_booking_system_plugin_xss_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wp_booking_system_plugin_xss_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # WordPress Booking System Plugin XSS Vulnerability
 #
@@ -54,17 +54,16 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-08 16:10:14 +0530 (Mon, 08 Jul 2013)");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_name("WordPress Booking System Plugin XSS Vulnerability");
 
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-booking-system-cross-site-scripting");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122289/WordPress-Booking-System-Cross-Site-Scripting.html");
-  script_summary("Check if Booking System plugin is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

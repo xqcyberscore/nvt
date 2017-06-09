@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_auth_bypass_vuln_win.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_rsa_auth_agent_auth_bypass_vuln_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # RSA Authentication Agent Authentication Bypass Vulnerability (Windows)
 #
@@ -33,12 +33,12 @@ CPE = "cpe:/a:emc:rsa_authentication_agent";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-0931");
   script_bugtraq_id(58248);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-28 11:21:00 +0530 (Wed, 28 Aug 2013)");
   script_name("RSA Authentication Agent Authentication Bypass Vulnerability (Windows)");
 
@@ -81,7 +81,6 @@ For updates refer to http://www.rsa.com/node.aspx?id=2575";
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120606");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/att-0/ESA-2013-012.txt");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-03/att-0001/ESA-2013-012.txt");
-  script_summary("Check for the vulnerable version of RSA Authentication Agent on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

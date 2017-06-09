@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_mult_vuln_72255.nasl 3690 2016-07-12 18:36:57Z cfi $
+# $Id: gb_emc_mult_vuln_72255.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # EMC M&R (Watch4net) Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0513","CVE-2015-0515","CVE-2015-0516");
  script_tag(name:"cvss_base", value:"6.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 3690 $");
+ script_version ("$Revision: 6170 $");
 
  script_name("EMC M&R (Watch4net) Multiple Vulnerabilities");
 
@@ -80,9 +80,8 @@ Alerting Frontend.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-12 20:36:57 +0200 (Tue, 12 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
  script_tag(name:"creation_date", value:"2015-03-20 10:57:29 +0100 (Fri, 20 Mar 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

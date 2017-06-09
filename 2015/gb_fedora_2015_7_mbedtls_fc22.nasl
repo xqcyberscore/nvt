@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806140");
-  script_version("$Revision: 3348 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:08 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-24 07:56:21 +0200 (Sat, 24 Oct 2015)");
   script_cve_id("CVE-2015-5291");
   script_tag(name:"cvss_base", value:"6.8");
@@ -48,7 +48,6 @@ FOSS License Exception: 'https://tls.mbed.org/foss-license-exception'
   script_xref(name: "FEDORA", value: "2015-7");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-October/169765.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mbedtls");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

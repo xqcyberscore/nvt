@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_code_exec_vuln_nov12_macosx.nasl 5357 2017-02-20 11:05:23Z cfi $
+# $Id: gb_mozilla_firefox_esr_code_exec_vuln_nov12_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Mozilla Firefox ESR Code Execution Vulnerabilities - November12 (Mac OS X)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Mozilla Firefox ESR and is prone to m
 if(description)
 {
   script_id(803348);
-  script_version("$Revision: 5357 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-4210");
   script_bugtraq_id(56646);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:05:23 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-01 17:03:21 +0530 (Mon, 01 Apr 2013)");
   script_name("Mozilla Firefox ESR Code Execution Vulnerabilities - November12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027792");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-104.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

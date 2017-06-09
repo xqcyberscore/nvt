@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_comfy_admin_default_credentials.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_comfy_admin_default_credentials.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # ComfortableMexicanSofa CMS Engine Admin Default Credentials
 #
@@ -30,13 +30,12 @@ CPE = "cpe:/a:comfy:comfy";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111072");
- script_version("$Revision: 2568 $");
+ script_version("$Revision: 6183 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("ComfortableMexicanSofa CMS Engine Admin Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
  script_tag(name:"creation_date", value:"2015-12-15 19:00:00 +0100 (Tue, 15 Dec 2015)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

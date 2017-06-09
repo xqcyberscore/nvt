@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_76326.nasl 3686 2016-07-11 16:22:45Z mime $
+# $Id: gb_cisco_vcs_76326.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Cisco TelePresence Video Communication Server Expressway Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4314");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 3686 $");
+ script_version ("$Revision: 6159 $");
 
  script_name("Cisco TelePresence Video Communication Server Expressway Information Disclosure Vulnerability");
 
@@ -56,9 +56,8 @@ This issue is being tracked by Cisco BugId CSCuv40422. ");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-11 18:22:45 +0200 (Mon, 11 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
  script_tag(name:"creation_date", value:"2015-08-27 15:44:02 +0200 (Thu, 27 Aug 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_comments_stored_xss_vuln.nasl 3516 2016-06-14 12:25:12Z mime $
+# $Id: gb_wordpress_comments_stored_xss_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # Wordpress Comments Stored Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805176");
-  script_version("$Revision: 3516 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-3440");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 14:25:12 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-04 18:50:27 +0530 (Mon, 04 May 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Comments Stored Cross Site Scripting Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/7945");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/535370");
 
-  script_summary("Check if Wordpress is prone to stored XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_kace_k1000_sma_mult_sql_inj_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_dell_kace_k1000_sma_mult_sql_inj_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Dell KACE K1000 SMA Multiple SQL Injection Vulnerabilities
 #
@@ -33,11 +33,11 @@ CPE = "cpe:/a:dell:x_dellkace";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2014-1671");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-12 20:18:38 +0530 (Mon, 12 Aug 2013)");
   script_name("Dell KACE K1000 SMA Multiple SQL Injection Vulnerabilities");
 
@@ -75,7 +75,6 @@ For updates refer to http://www.kace.com/products/systems-management-appliance "
   script_tag(name : "impact" , value : tag_impact);
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27039");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Jul/194");
-  script_summary("Check the vulnerable versions Dell KACE K1000 Systems Management Appliance");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

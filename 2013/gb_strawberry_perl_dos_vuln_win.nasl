@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_strawberry_perl_dos_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_strawberry_perl_dos_vuln_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Strawberry Perl Denial of Service Vulnerability (Windows)
 #
@@ -43,12 +43,12 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803371);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-1667");
   script_bugtraq_id(58311);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-09 18:21:13 +0530 (Tue, 09 Apr 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://perlnews.org/2013/03/rehashing-flaw");
   script_xref(name : "URL" , value : "http://perlnews.org/2013/03/perl-5-16-3-and-5-14-4-just-released");
   script_xref(name : "URL" , value : "http://www.nntp.perl.org/group/perl.perl5.porters/2013/03/msg199755.html");
-  script_summary("Check for the vulnerable version of Stwarberry Perl on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

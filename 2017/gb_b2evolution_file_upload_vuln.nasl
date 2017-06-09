@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2evolution_file_upload_vuln.nasl 5597 2017-03-17 09:27:53Z ckuerste $
+# $Id: gb_b2evolution_file_upload_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # b2evolution File Upload Vulnerability
 #
@@ -30,13 +30,11 @@ CPE = "cpe:/a:b2evolution:b2evolution";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106669");
-  script_version("$Revision: 5597 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-17 10:27:53 +0100 (Fri, 17 Mar 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-03-17 15:44:20 +0700 (Fri, 17 Mar 2017)");
   script_tag(name: "cvss_base", value: "6.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:P/A:P");
-
-  script_cve_id("CVE-2017-6902");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -66,8 +64,13 @@ regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://rungga.blogspot.co.id/2017/03/remote-file-upload-vulnerability-in.html");
 
+## Deprecated since CVE-2017-6902 has been REJECTED
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

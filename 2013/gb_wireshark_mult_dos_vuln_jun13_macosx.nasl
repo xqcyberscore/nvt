@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_jun13_macosx.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wireshark_mult_dos_vuln_jun13_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Wireshark Multiple DoS Vulnerabilities - June 13 (Mac OS X)
 #
@@ -41,18 +41,17 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(803653);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-4081","CVE-2013-4074");
   script_bugtraq_id(60505, 60500);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:52:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple DoS Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028648");
   script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.8.8.html");
   script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.6.16.html");
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

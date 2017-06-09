@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln_lin.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln_lin.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability (Linux)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-4033");
   script_bugtraq_id(62018);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-05 17:50:25 +0530 (Thu, 05 Sep 2013)");
   script_name("IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability (Linux)");
 
@@ -77,7 +77,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21646809";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54644");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/86093");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21646809");
-  script_summary("Check for the vulnerable version of IBM DB2 on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Databases");

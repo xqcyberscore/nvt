@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nameko_webmail_xss_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_nameko_webmail_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Nameko Webmail Cross-Site Scripting Vulnerability
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803826");
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6093 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-08 14:53:58 +0530 (Mon, 08 Jul 2013)");
   script_name("Nameko Webmail Cross-Site Scripting Vulnerability");
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122221/Nameko_Webmail_XSS.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/nameko-webmail-cross-site-scripting");
-  script_summary("Check if Nameko Webmail is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

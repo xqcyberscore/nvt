@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3120.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3120.nasl 6170 2017-05-19 09:03:42Z teissa $
 # Auto-generated from advisory DSA 3120-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(703120);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6170 $");
     script_cve_id("CVE-2013-1811", "CVE-2013-1934", "CVE-2013-4460", "CVE-2014-6316",
                   "CVE-2014-6387", "CVE-2014-7146", "CVE-2014-8553", "CVE-2014-8554",
                   "CVE-2014-8598", "CVE-2014-8986", "CVE-2014-8988", "CVE-2014-9089",
@@ -38,7 +38,7 @@ if(description)
                   "CVE-2014-9272", "CVE-2014-9280", "CVE-2014-9281", "CVE-2014-9388",
                   "CVE-2014-9506");
     script_name("Debian Security Advisory DSA 3120-1 (mantis - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
     script_tag(name: "creation_date", value: "2015-01-06 00:00:00 +0100 (Tue, 06 Jan 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3120.html");
 
-    script_summary("Debian Security Advisory DSA 3120-1 (mantis - security update)");
 
     script_category(ACT_GATHER_INFO);
 

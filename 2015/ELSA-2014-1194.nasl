@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1194.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1194.nasl 6170 2017-05-19 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123308");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6170 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:04 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1194");
 script_tag(name: "insight", value: "ELSA-2014-1194 -  conga security and bug fix update - [0.12.2-81.0.2.el5]- Replaced redhat logo image in Data.fs[0.12.2-81.0.1.el5]- Added conga-enterprise-Carthage.patch to support OEL5- Replaced redhat logo image in conga-0.12.2.tar.gz[0.12.2-81]- luci: prevent non-admin user from unauthorized executive access Resolves: rhbz#1089310[0.12.2-79]- luci: drop unsuccessful monkey patch application wrt. Plone 20121106 advisory Related: rhbz#956861[0.12.2-78]- luci: reflect startup_wait parameter added in postgres-8 RA Resolves: rhbz#1065263- luci: Multiple information leak flaws in various luci site extensions Resolves: rhbz#1076148[0.12.2-72]- luci: fix mishandling of distro release string Resolves: rhbz#1072075- luci: fix initscript does not check return values correctly Resolves: rhbz#970288- ricci: fix end-use modules do not handle stdin polling correctly Resolves: rhbz#1076711[0.12.2-69]- luci: apply relevant parts of Plone 20121106 advisory (multiple vectors) Resolves: rhbz#956861"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1194");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-557.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-557.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120040");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:15:56 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-557");
 script_tag(name: "insight", value: "Integer signedness error in the mobility_opt_print function in the IPv6 mobility printer in tcpdump before 4.7.2 allows remote attackers to cause a denial of service (out-of-bounds read and crash) or possibly execute arbitrary code via a negative length value. (CVE-2015-0261 )The osi_print_cksum function in print-isoclns.c in the ethernet printer in tcpdump before 4.7.2 allows remote attackers to cause a denial of service (out-of-bounds read and crash) via a crafted (1) length, (2) offset, or (3) base pointer checksum value. (CVE-2015-2154 )"); 
 script_tag(name : "solution", value : "Run yum update tcpdump to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-557");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

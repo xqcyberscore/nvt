@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842116");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-05 05:43:51 +0100 (Thu, 05 Mar 2015)");
   script_cve_id("CVE-2015-0239", "CVE-2014-8133", "CVE-2014-8160", "CVE-2014-8559",
                 "CVE-2014-8989", "CVE-2014-9419", "CVE-2014-9420", "CVE-2014-9428",
@@ -99,7 +99,6 @@ A memory leak was discovered in the ISO 9660 CDROM file system wh ...
   script_xref(name: "USN", value: "2515-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-March/002852.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-trusty");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

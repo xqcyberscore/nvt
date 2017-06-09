@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_mult_vuln_feb15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_manage_engine_servicedesk_mult_vuln_feb15.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # ZOHO ManageEngine ServiceDesk Plus (SDP) Multiple Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805138");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6207 $");
   script_cve_id("CVE-2015-1479", "CVE-2015-1480");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-12 17:19:03 +0530 (Thu, 12 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ZOHO ManageEngine ServiceDesk Plus (SDP) Multiple Vulnerabilities - Feb15");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.manageengine.com/products/service-desk/readme-9.0.html");
   script_xref(name:"URL", value:"http://www.rewterz.com/vulnerabilities/manageengine-servicedesk-sql-injection-vulnerability");
 
-  script_summary("Check the version of ZOHO ManageEngine ServiceDesk Plus (SDP) is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

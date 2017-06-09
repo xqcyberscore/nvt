@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903501);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-3887");
   script_bugtraq_id(63545);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:16:37 +0530 (Wed, 13 Nov 2013)");
   script_name("MS Windows Ancillary Function Driver Information Disclosure Vulnerability (2875783)");
 
@@ -80,7 +80,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-093";
    script_xref(name : "URL" , value : "http://secunia.com/advisories/55558");
    script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2875783");
    script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-093");
-   script_summary("Check for the vulnerable file 'afd.sys' version");
    script_category(ACT_GATHER_INFO);
    script_copyright("Copyright (C) 2013 SecPod");
    script_family("Windows : Microsoft Bulletins");

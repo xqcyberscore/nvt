@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_iloveit_theme_mult_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wp_iloveit_theme_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Wordpress I Love It Theme Multiple Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6079 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-29 12:46:47 +0530 (Mon, 29 Jul 2013)");
   script_name("Wordpress I Love It Theme Multiple Vulnerabilities");
 
@@ -78,7 +78,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013070104");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122386/wpiloveit-xssdisclose.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-i-love-it-xss-content-spoofing-path-disclosure");
-  script_summary("Check if Wordpress I Love It Theme is prone to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

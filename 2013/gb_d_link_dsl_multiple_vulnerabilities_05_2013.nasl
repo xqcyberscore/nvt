@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_d_link_dsl_multiple_vulnerabilities_05_2013.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_d_link_dsl_multiple_vulnerabilities_05_2013.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # D-Link DSL-320B Multiple Security Vulnerabilities
 #
@@ -44,7 +44,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103706";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6093 $");
 
  script_name("D-Link DSL-320B Multiple Security Vulnerabilities");
  script_tag(name:"cvss_base", value:"9.0");
@@ -54,9 +54,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.dlink.com/de/de/home-solutions/connect/modems-and-gateways/dsl-320b-adsl-2-ethernet-modem");
  script_xref(name:"URL", value:"http://www.dlink.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-06 12:58:41 +0200 (Mon, 06 May 2013)");
- script_summary("Determine if it is possible to download /config.bin");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

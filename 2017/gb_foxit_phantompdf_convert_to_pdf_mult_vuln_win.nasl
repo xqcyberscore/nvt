@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_convert_to_pdf_mult_vuln_win.nasl 5910 2017-04-10 08:31:29Z teissa $
+# $Id: gb_foxit_phantompdf_convert_to_pdf_mult_vuln_win.nasl 6143 2017-05-17 10:03:21Z teissa $
 #
-# Foxit PhantomPDF 'ConvertToPDF' TIFF Parsing Multiple Vulnerabilities (Windows)
+# Foxit PhantomPDF Multiple Vulnerabilities - May17 (Windows)
 #
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
@@ -29,14 +29,14 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810595");
-  script_version("$Revision: 5910 $");
-  script_cve_id("CVE-2017-6883");
-  script_bugtraq_id(96870);
-  script_tag(name:"cvss_base", value:"2.6");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 10:31:29 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 6143 $");
+  script_cve_id("CVE-2017-6883", "CVE-2017-8454", "CVE-2017-8455", "CVE-2017-8453");
+  script_bugtraq_id(96870, 98317, 98320, 98319);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 12:03:21 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-05 18:47:49 +0530 (Wed, 05 Apr 2017)");
-  script_name("Foxit PhantomPDF 'ConvertToPDF' TIFF Parsing Multiple Vulnerabilities (Windows)");
+  script_name("Foxit PhantomPDF Multiple Vulnerabilities - May17 (Windows)");
 
   script_tag(name: "summary" , value:"The host is installed with Foxit PhantomPDF
   and is prone to multiple vulnerabilities.");
@@ -44,9 +44,13 @@ if(description)
   script_tag(name: "vuldetect" , value:"Get the installed version with the help
   of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists within the parsing of TIFF
-  images. The issue results from the lack of proper validation of user-supplied
-  data which can result in a read past the end of an allocated object."); 
+  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  - An error within the parsing of TIFF images. The issue results from the lack
+    of proper validation of user-supplied data which can result in a read past
+    the end of an allocated object.
+  - Multiple errors within the parsing of fonts in PDF files.The issue results
+    from the lack of proper validation of user-supplied data, which can result
+    in a read past the end of an allocated object."); 
 
   script_tag(name: "impact" , value:"Successful exploitation will allow remote
   attackers to cause a denial of service (out-of-bounds read and application crash) 
@@ -65,6 +69,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name : "URL" , value:"http://www.zerodayinitiative.com/advisories/ZDI-17-133");
+  script_xref(name : "URL" , value:"http://www.zerodayinitiative.com/advisories/ZDI-17-134");
+  script_xref(name : "URL" , value:"http://www.zerodayinitiative.com/advisories/ZDI-17-135");
+  script_xref(name : "URL" , value:"http://www.zerodayinitiative.com/advisories/ZDI-17-140");
   script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

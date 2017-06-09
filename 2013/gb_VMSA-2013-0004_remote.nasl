@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0004_remote.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_VMSA-2013-0004_remote.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # VMSA-2013-0004 VMware ESXi security update for third party library (remote check)
 #
@@ -43,13 +43,12 @@ if (description)
  script_cve_id("CVE-2012-5134");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6065 $");
  script_name("VMSA-2013-0004 VMware ESXi security update for third party library (remote check)");
 
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2013-12-03 14:03:01 +0100 (Tue, 03 Dec 2013)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

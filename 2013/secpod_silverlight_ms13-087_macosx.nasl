@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_silverlight_ms13-087_macosx.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_silverlight_ms13-087_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft Silverlight Information Disclosure Vulnerability-2890788 (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.901224";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-3896");
   script_bugtraq_id(62793);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-09 12:56:06 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Silverlight Information Disclosure Vulnerability-2890788 (Mac OS X)");
 
@@ -77,7 +77,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-087";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55149");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2890788");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-052");
-  script_summary("Check for the vulnerable version of Silverlight on Mac OS X)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Mac OS X Local Security Checks");

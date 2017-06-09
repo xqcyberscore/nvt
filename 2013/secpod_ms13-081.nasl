@@ -27,13 +27,13 @@
 if(description)
 {
   script_id(903500);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3200", "CVE-2013-3879", "CVE-2013-3880",
                 "CVE-2013-3881", "CVE-2013-3888", "CVE-2013-3894");
   script_bugtraq_id(62819, 62823, 62828, 62833, 62830, 62831, 62821);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-09 09:16:37 +0530 (Wed, 09 Oct 2013)");
   script_name("MS Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2870008)");
 
@@ -97,7 +97,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-081";
    script_xref(name : "URL" , value : "http://secunia.com/advisories/55052/");
    script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2862330");
    script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-081");
-   script_summary("Check for the vulnerable files version");
    script_category(ACT_GATHER_INFO);
    script_copyright("Copyright (C) 2013 SecPod");
    script_family("Windows : Microsoft Bulletins");

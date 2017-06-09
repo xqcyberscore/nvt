@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200_mult_dos_vuln.nasl 3532 2016-06-16 09:35:52Z ckuerste $
+# $Id: gb_simatic_s7_1200_mult_dos_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Siemens SIMATIC S7-1200 Multiple Denial of Service Vulnerabilities
 #
@@ -49,18 +49,17 @@ if (description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_oid("1.3.6.1.4.1.25623.1.0.803387");
-  script_version ("$Revision: 3532 $");
+  script_version ("$Revision: 6086 $");
   script_cve_id("CVE-2013-0700","CVE-2013-2780");
   script_bugtraq_id(59399,57023);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-16 11:35:52 +0200 (Thu, 16 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-25 16:01:27 +0530 (Thu, 25 Apr 2013)");
   script_name("Siemens SIMATIC S7-1200 Multiple Denial of Service Vulnerabilities");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-0700");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-2780");
   script_xref(name : "URL" , value : "http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-724606.pdf");
-  script_summary("Check for vulnerable version of Siemens SIMATIC S7-1200");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

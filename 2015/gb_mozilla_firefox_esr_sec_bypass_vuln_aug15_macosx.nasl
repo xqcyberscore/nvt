@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_sec_bypass_vuln_aug15_macosx.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mozilla_firefox_esr_sec_bypass_vuln_aug15_macosx.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # Mozilla Firefox ESR Security Bypass Vulnerability - Aug15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806007");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-4495");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-10 16:07:17 +0530 (Mon, 10 Aug 2015)");
   script_name("Mozilla Firefox ESR Security Bypass Vulnerability - Aug15 (Mac OS X)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-78/");
   script_xref(name:"URL", value:"https://blog.mozilla.org/security/2015/08/06/firefox-exploit-found-in-the-wild/");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

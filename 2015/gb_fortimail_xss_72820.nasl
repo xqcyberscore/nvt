@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_xss_72820.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_fortimail_xss_72820.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Fortinet FortiMail Web Action Quarantine Release Feature Cross Site Scripting Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
  script_bugtraq_id(72820);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 2617 $");
+ script_version ("$Revision: 6125 $");
 
  script_name("Fortinet FortiMail Web Action Quarantine Release Feature Cross Site Scripting Vulnerability");
 
@@ -57,9 +57,8 @@ because it fails to properly sanitize user-supplied input.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
  script_tag(name:"creation_date", value:"2015-03-18 13:18:03 +0100 (Wed, 18 Mar 2015)");
- script_summary("Check for XSS");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

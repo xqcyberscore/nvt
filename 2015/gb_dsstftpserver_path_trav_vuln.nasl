@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dsstftpserver_path_trav_vuln.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: gb_dsstftpserver_path_trav_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # DSS TFTP Server Path Traversal Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105957");
-  script_version("$Revision: 5629 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_version("$Revision: 6159 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name : "creation_date", value : "2015-03-04 09:41:51 +0700 (Wed, 04 Mar 2015)");
   script_tag(name : "cvss_base", value : "6.4");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -48,7 +48,6 @@ if (description)
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name : "summary", value : "DSS TFTP Server is prone to a path traversal vulnerability.");
-  script_summary("Sends a crafted GET request and checks the response");
 
   script_tag(name : "vuldetect", value : "Sends a crafted GET request and checks if it can
 download some system files.");

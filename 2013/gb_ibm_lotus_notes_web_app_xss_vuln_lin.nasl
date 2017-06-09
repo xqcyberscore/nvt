@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_notes_web_app_xss_vuln_lin.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_lotus_notes_web_app_xss_vuln_lin.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # IBM Lotus Notes Web Application XSS Vulnerability (Linux)
 #
@@ -44,12 +44,12 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803216);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2012-4846");
   script_bugtraq_id(56944);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-23 13:22:09 +0530 (Wed, 23 Jan 2013)");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/79535");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21619604");
 
-  script_summary("Check for the version of IBM Lotus Notes on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linkspheric_detect.nasl 2820 2016-03-09 23:02:12Z cfi $
+# $Id: gb_linkspheric_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # linkSpheric Version Detection
 #
@@ -28,13 +28,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801112");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2820 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-10 00:02:12 +0100 (Thu, 10 Mar 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("linkSpheric Version Detection");
 
-  script_summary("Set version of linkSpheric in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

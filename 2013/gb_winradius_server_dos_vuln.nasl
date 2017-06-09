@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winradius_server_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_winradius_server_dos_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # WinRadius Server Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803716");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6115 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-12 12:06:46 +0530 (Wed, 12 Jun 2013)");
   script_name("WinRadius Server Denial of Service Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121982");
   script_xref(name : "URL" , value : "http://www.iodigitalsec.com/blog/fuzz-to-denial-of-service-winradius-2-11");
 
-  script_summary("Determine if WinRadius Server is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Denial of Service");

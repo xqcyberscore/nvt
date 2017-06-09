@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_ticket_split_info_disclosure_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_itsm_ticket_split_info_disclosure_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # OTRS ITSM Ticket Split Information Disclosure Vulnerability
 #
@@ -31,13 +31,13 @@ ITSMCPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-3551");
   script_bugtraq_id(60117);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 15:32:31 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS ITSM Ticket Split Information Disclosure Vulnerability");
 
@@ -82,7 +82,6 @@ http://www.otrs.com/en/open-source/community-news/security-advisories/security-a
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/60117");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53496/");
   script_xref(name : "URL" , value : "http://www.otrs.com/en/open-source/community-news/security-advisories/security-advisory-2013-03/");
-  script_summary("Check for the vulnerable version of OTRS and OTRS::ITSM");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-103.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-103.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Microsoft VS Team Foundation Server SignalR XSS Vulnerability (2905244)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:visual_studio_team_foundation_server";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-5042");
   script_bugtraq_id(64093);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-11 10:49:08 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft VS Team Foundation Server SignalR XSS Vulnerability (2905244)");
 
@@ -78,7 +78,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-103";
 
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2903566");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-103");
-  script_summary("Check for the vulnerable version of MS VS Team Foundation Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

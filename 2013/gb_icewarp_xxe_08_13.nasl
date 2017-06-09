@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xxe_08_13.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_icewarp_xxe_08_13.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # IceWarp Web Mail Information Disclosure Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103750");
- script_version ("$Revision: 5627 $");
+ script_version ("$Revision: 6065 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
 
@@ -37,9 +37,8 @@ if (description)
  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/icewarp-mail-server-1045-xss-xxe-injection");
  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20130625-0_IceWarp_Mail_Server_Multiple_Vulnerabilities_v10.txt");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-07 16:35:04 +0200 (Wed, 07 Aug 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

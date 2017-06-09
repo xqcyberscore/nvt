@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850744");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 14:06:52 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2015-0822", "CVE-2015-0827", "CVE-2015-0831", "CVE-2015-0836",
                 "CVE-2015-0835");
@@ -89,7 +89,6 @@ http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-0836");
   script_xref(name: "SUSE-SU", value: "2015:0446_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-03/msg00006.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of Mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

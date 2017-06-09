@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_notes_url_cmd_inj_rce_vuln_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_lotus_notes_url_cmd_inj_rce_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # IBM Lotus Notes URL Command Injection RCE Vulnerability (Windows)
 #
@@ -39,12 +39,12 @@ tag_summary = "This host is installed with IBM Lotus Notes and is prone to remot
 if(description)
 {
   script_id(803214);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2012-2174");
   script_bugtraq_id(54070);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-23 11:08:14 +0530 (Wed, 23 Jan 2013)");
   script_name("IBM Lotus Notes URL Command Injection RCE Vulnerability (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/49601");
@@ -55,7 +55,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-304.ibm.com/support/docview.wss?uid=swg21598348");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/119058/IBM-Lotus-Notes-Client-URL-Handler-Command-Injection.html");
 
-  script_summary("Check for the version of IBM Lotus Notes on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_aug13_win.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_aug13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - August 13 (Windows)
 #
@@ -30,14 +30,14 @@ tag_impact = "
 if (description)
 {
   script_id(803858);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-1701", "CVE-2013-1706", "CVE-2013-1707", "CVE-2013-1709",
                 "CVE-2013-1710", "CVE-2013-1712", "CVE-2013-1713", "CVE-2013-1714",
                 "CVE-2013-1717");
   script_bugtraq_id(61641);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-08 17:01:57 +0530 (Thu, 08 Aug 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - August 13 (Windows)");
 
@@ -87,7 +87,6 @@ For updates refer to http://www.mozilla.org/en-US/thunderbird";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54413");
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=406541");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-75.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird ESR on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

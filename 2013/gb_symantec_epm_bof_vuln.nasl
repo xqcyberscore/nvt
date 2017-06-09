@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_bof_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_symantec_epm_bof_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Symantec Endpoint Protection Manager (SEPM) Buffer Overflow Vulnerability
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if (description)
 {
   script_id(803882);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-1612");
   script_bugtraq_id(60542);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-29 12:35:52 +0530 (Thu, 29 Aug 2013)");
   script_name("Symantec Endpoint Protection Manager (SEPM) Buffer Overflow Vulnerability");
 
@@ -72,7 +72,6 @@ For updates refer to http://www.symantec.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53864");
   script_xref(name : "URL" , value : "http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&suid=20130618_00");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Symantec Endpoint Protection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("Buffer overflow");

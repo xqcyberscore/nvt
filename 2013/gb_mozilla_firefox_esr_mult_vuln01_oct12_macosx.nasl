@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_oct12_macosx.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_oct12_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 (Mac OS X)
 #
@@ -58,7 +58,7 @@ tag_summary = "The host is installed with Mozilla firefox ESR and is prone to mu
 if(description)
 {
   script_id(803642);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2012-4188", "CVE-2012-4187", "CVE-2012-4186", "CVE-2012-4185",
                 "CVE-2012-4184", "CVE-2012-3982", "CVE-2012-3990", "CVE-2012-3988",
                 "CVE-2012-3986", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-4183",
@@ -67,7 +67,7 @@ if(description)
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");
@@ -84,7 +84,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-82.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-74.html");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-83.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");

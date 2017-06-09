@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Apache Struts2 Redirection and Security Bypass Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_id(803838);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-2248", "CVE-2013-2251");
   script_bugtraq_id(61196, 61189);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-24 11:58:54 +0530 (Wed, 24 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Redirection and Security Bypass Vulnerabilities");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://struts.apache.org/development/2.x/docs/s2-016.html");
   script_xref(name : "URL" , value : "http://struts.apache.org/development/2.x/docs/s2-017.html");
   script_xref(name : "URL" , value : "http://struts.apache.org/release/2.3.x/docs/version-notes-23151.html");
-  script_summary("Check if Apache Struts2 is vulnerable to arbitrary redirection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");

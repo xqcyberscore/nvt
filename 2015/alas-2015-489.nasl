@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-489.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-489.nasl 6159 2017-05-18 09:03:44Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120321");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6159 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:23:30 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-489");
 script_tag(name: "insight", value: "A flaw was found in the way the Linux kernel's XFS file system handled replacing of remote attributes under certain conditions. A local user with access to XFS file system mount could potentially use this flaw to escalate their privileges on the system."); 
 script_tag(name : "solution", value : "Run yum clean all followed by yum update kernel to update your system. You will need to reboot your system in order for the new kernel to be running.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-489");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-074.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms15-074.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (3072630)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805078");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2015-2371");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 09:12:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Installer Service Privilege Escalation Vulnerarbility (3072630)");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3072630");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-074");
 
-  script_summary("Check for the vulnerable file 'msi.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

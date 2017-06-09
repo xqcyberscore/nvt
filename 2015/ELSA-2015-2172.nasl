@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2172.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2172.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122790");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-11-27 10:55:19 +0200 (Fri, 27 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2172");
 script_tag(name: "insight", value: "ELSA-2015-2172 -  glibc security update - [2.17-106.0.1.1]- Remove strstr and strcasestr implementations using sse4.2 instructions.- Upstream commits 584b18eb4df61ccd447db2dfe8c8a7901f8c8598 and 1818483b15d22016b0eae41d37ee91cc87b37510 backported.[2.17-106.1]- Rebuild with corrected release.[2.17-106]- Add fix for CVE-2015-5277 (#1275920)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2172");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

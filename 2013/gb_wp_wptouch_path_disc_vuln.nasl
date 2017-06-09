@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_wptouch_path_disc_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wp_wptouch_path_disc_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # WordPress WPtouch Plugin Path Disclosure Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6079 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-06 11:43:33 +0530 (Tue, 06 Aug 2013)");
   script_name("WordPress WPtouch Plugin Path Disclosure Vulnerability");
 
@@ -73,7 +73,6 @@ For Updated refer to http://wordpress.org/plugins/wptouch";
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013080037");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122687");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wptouch-wptouch-pro-xss-path-disclosure");
-  script_summary("Check if WordPress WPtouch plugin is prone to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

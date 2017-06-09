@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-097.nasl 3146 2016-04-22 11:06:11Z antu123 $
+# $Id: gb_ms15-097.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3089656)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805979");
-  script_version("$Revision: 3146 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-2506", "CVE-2015-2507", "CVE-2015-2508", "CVE-2015-2510",
                 "CVE-2015-2511", "CVE-2015-2512", "CVE-2015-2517", "CVE-2015-2518",
                 "CVE-2015-2527", "CVE-2015-2529", "CVE-2015-2546");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-22 13:06:11 +0200 (Fri, 22 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 15:01:49 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3089656)");
 
@@ -84,7 +84,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3087135");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-097");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

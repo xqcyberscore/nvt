@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilo_HPSBHF03420.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_ilo_HPSBHF03420.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # HP Integrated Lights-Out 3 and 4 Remote Denial of Service
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5435");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6159 $");
 
  script_name("HP Integrated Lights-Out 3 and 4 Remote Denial of Service");
 
@@ -48,9 +48,8 @@ HP Integrated Lights-Out 4 (iLO 4) prior to firmware version 2.22");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
  script_tag(name:"creation_date", value:"2015-10-01 14:58:10 +0200 (Thu, 01 Oct 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("Denial of Service");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

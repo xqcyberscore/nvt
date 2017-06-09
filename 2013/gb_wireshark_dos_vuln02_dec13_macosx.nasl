@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804052";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-7113");
   script_bugtraq_id(64413);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-30 21:06:19 +0530 (Mon, 30 Dec 2013)");
   script_name("Wireshark BSSGP Dissector Denial of Service Vulnerability-02 Dec13 (Mac OS X)");
 
@@ -74,7 +74,6 @@ For updates refer to http://www.wireshark.org/download";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56097");
   script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2013-66.html");
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

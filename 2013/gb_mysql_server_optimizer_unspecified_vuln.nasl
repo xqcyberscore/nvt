@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_server_optimizer_unspecified_vuln.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_mysql_server_optimizer_unspecified_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # MySQL Server Optimizer Component Unspecified Vulnerability
 #
@@ -41,17 +41,16 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2012-1696");
   script_bugtraq_id(53071);
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-04 13:19:03 +0530 (Tue, 04 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
   script_name("MySQL Server Optimizer Component Unspecified Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48890");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2012-366314.html#AppendixMSQL");
-  script_summary("Check for the vulnerable version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

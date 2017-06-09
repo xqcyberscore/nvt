@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trueconf_mult_vuln.nasl 5131 2017-01-30 06:12:36Z ckuerste $
+# $Id: gb_trueconf_mult_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # TrueConf Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:trueconf:trueconf";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106551");
-  script_version("$Revision: 5131 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-01-30 07:12:36 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-01-30 10:52:02 +0700 (Mon, 30 Jan 2017)");
   script_tag(name: "cvss_base", value: "4.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -69,7 +69,7 @@ to execute arbitrary HTML and script code in a user's browser session in context
 
   script_tag(name: "affected", value: "TrueConf 4.3.7.12255 and 4.3.7.12219.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 30th January, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2017-5393.php");
@@ -80,17 +80,11 @@ regarding this issue will be updated once the solution details are available.");
 include("host_details.inc");
 include("version_func.inc");
 
-display("entering\n");
-
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-display(port, "\n");
-
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
-
-display(version, "\n");
 
 if (version == "4.3.7.12255" || version == "4.3.7.12219") {
   report = report_fixed_ver(installed_version: version, fixed_version: "None");

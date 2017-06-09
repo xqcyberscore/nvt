@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_ip_cameras_mult_vuln.nasl 5556 2017-03-13 09:09:23Z ckuerste $
+# $Id: gb_mult_ip_cameras_mult_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # Multiple IP-Cameras Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106636");
-  script_version("$Revision: 5556 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 10:09:23 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-03-08 12:16:59 +0700 (Wed, 08 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -73,7 +73,7 @@ the response.");
   script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code and read arbitrary
 files.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 8th March, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://pierrekim.github.io/blog/2017-03-08-camera-goahead-0day.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_59452.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_59452.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Multiple Cisco Products Multiple Remote Buffer Overflow Vulnerabilities
 #
@@ -55,7 +55,7 @@ if (description)
  script_cve_id("CVE-2013-1178","CVE-2013-1179","CVE-2013-1180");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 6115 $");
 
  script_name("Multiple Cisco Products  Multiple Remote Buffer Overflow Vulnerabilities");
 
@@ -86,9 +86,8 @@ Solution:
  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1180");
  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130424-nxosmulti");
  
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-09 17:02:49 +0200 (Wed, 09 Oct 2013)");
- script_summary("Check the installed NX-OS version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libupnp_57602_tcp.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_libupnp_57602_tcp.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # libupnp Multiple Buffer Overflow Vulnerabilities (TCP)
 #
@@ -34,11 +34,10 @@ if(description)
                 "CVE-2012-5964", "CVE-2012-5965");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6093 $");
   script_name("libupnp Multiple Buffer Overflow Vulnerabilities (TCP)");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-06 15:35:24 +0100 (Wed, 06 Feb 2013)");
-  script_summary("Determine if installed libupnp version is < 1.6.18");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

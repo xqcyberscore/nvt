@@ -29,11 +29,11 @@ CPE = "cpe:/a:cisco:jabber";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805712");
-  script_version("$Revision: 3736 $");
+  script_version("$Revision: 6132 $");
   script_cve_id("CVE-2015-4218");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-20 12:32:19 +0200 (Wed, 20 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-03 11:19:11 +0530 (Fri, 03 Jul 2015)");
   script_name("Cisco Jabber Information Disclosure Vulnerability June15 (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name: "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39494");
 
-  script_summary("Check for the vulnerable version of Cisco Jabber on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CISCO");

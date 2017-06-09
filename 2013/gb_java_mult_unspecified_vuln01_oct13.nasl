@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_oct13.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_java_mult_unspecified_vuln01_oct13.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Oct 2013 (Windows)
 #
@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804117";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-5829", "CVE-2013-5830", "CVE-2013-5840", "CVE-2013-5780",
                 "CVE-2013-5842", "CVE-2013-5814", "CVE-2013-5817", "CVE-2013-5825",
                 "CVE-2013-5843", "CVE-2013-5850", "CVE-2013-5849", "CVE-2013-3829",
@@ -42,7 +42,7 @@ if(description)
                      63082, 63149, 63118, 63134, 63128, 63103, 63154);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-25 15:41:52 +0530 (Fri, 25 Oct 2013)");
   script_name("Oracle Java SE JRE Multiple Unspecified  Vulnerabilities-01 Oct 2013 (Windows)");
 
@@ -86,7 +86,6 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html";
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/63121");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/63129");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
-  script_summary("Check the vulnerable version of Oracle Java SE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

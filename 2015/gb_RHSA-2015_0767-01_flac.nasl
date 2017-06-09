@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871349");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-02 07:09:58 +0200 (Thu, 02 Apr 2015)");
   script_cve_id("CVE-2014-8962", "CVE-2014-9028");
   script_tag(name:"cvss_base", value:"7.5");
@@ -62,7 +62,6 @@ for this update to take effect.
   script_xref(name: "RHSA", value: "2015:0767-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-April/msg00000.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of flac");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

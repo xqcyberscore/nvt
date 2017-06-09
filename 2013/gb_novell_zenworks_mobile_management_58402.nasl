@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_58402.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_novell_zenworks_mobile_management_58402.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Novell ZENworks Mobile Management  Local File Include Vulnerability
 #
@@ -51,16 +51,15 @@ if (description)
  script_cve_id("CVE-2013-1081");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5627 $");
+ script_version ("$Revision: 6104 $");
 
  script_name("Novell ZENworks Mobile Management  Local File Include Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58402");
  script_xref(name:"URL", value:"http://www.novell.com/support/kb/doc.php?id=7011895");
  
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-06-10 13:05:34 +0200 (Mon, 10 Jun 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

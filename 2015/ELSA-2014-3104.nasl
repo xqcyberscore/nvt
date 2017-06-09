@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3104.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-3104.nasl 6183 2017-05-22 09:03:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123223");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6183 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:00:55 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-3104");
 script_tag(name: "insight", value: "ELSA-2014-3104 - Unbreakable Enterprise kernel security update - [2.6.39-400.215.14] - HID: magicmouse: sanity check report size in raw_event() callback (Jiri Kosina) [Orabug: 19849355] {CVE-2014-3181} - ALSA: control: Protect user controls against concurrent access (Lars-Peter Clausen) [Orabug: 20192542] {CVE-2014-4652} - target/rd: Refactor rd_build_device_space + rd_release_device_space (Nicholas Bellinger) [Orabug: 20192517] {CVE-2014-4027} - media-device: fix infoleak in ioctl media_enum_entities() (Salva Peiro) [Orabug: 20192501] {CVE-2014-1739} {CVE-2014-1739} - udf: Avoid infinite loop when processing indirect ICBs (Jan Kara) [Orabug: 20192449] {CVE-2014-6410} - ALSA: control: Make sure that id->index does not overflow (Lars-Peter Clausen) [Orabug: 20192418] {CVE-2014-4656} - ALSA: control: Handle numid overflow (Lars-Peter Clausen) [Orabug: 20192376] {CVE-2014-465} - HID: picolcd: sanity check report size in raw_event() callback (Jiri Kosina) [Orabug: 20192205] {CVE-2014-3186} - net: sctp: fix remote memory pressure from excessive queueing (Daniel Borkmann) [Orabug: 20192059] {CVE-2014-3688}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-3104");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

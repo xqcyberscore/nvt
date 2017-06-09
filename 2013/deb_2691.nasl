@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2691.nasl 2863 2016-03-16 08:34:49Z benallard $
+# $Id: deb_2691.nasl 6125 2017-05-15 09:03:42Z teissa $
 # Auto-generated from advisory DSA 2691-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -51,17 +51,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892691);
-    script_version("$Revision: 2863 $");
+    script_version("$Revision: 6125 $");
     script_cve_id("CVE-2013-1985");
     script_name("Debian Security Advisory DSA 2691-1 (libxinerama - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 09:34:49 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
     script_tag(name: "creation_date", value:"2013-05-23 00:00:00 +0200 (Thu, 23 May 2013)");
     script_tag(name: "cvss_base", value:"6.8");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2691.html");
 
-    script_summary("Debian Security Advisory DSA 2691-1 (libxinerama - several vulnerabilities)");
 
     script_category(ACT_GATHER_INFO);
 

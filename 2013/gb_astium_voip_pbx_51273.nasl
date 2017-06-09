@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_astium_voip_pbx_51273.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_astium_voip_pbx_51273.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Astium VoIP PBX SQL Injection Vulnerability
 #
@@ -41,7 +41,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103631";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2923 $");
+ script_version ("$Revision: 6086 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -49,9 +49,8 @@ if (description)
 
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/23831/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
  script_tag(name:"creation_date", value:"2013-01-02 15:53:02 +0100 (Wed, 02 Jan 2013)");
- script_summary("Determine if it is possible to login using sql injection");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

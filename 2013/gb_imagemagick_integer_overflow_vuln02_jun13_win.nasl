@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln02_jun13_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_imagemagick_integer_overflow_vuln02_jun13_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # ImageMagick Integer Overflow Vulnerability - 02 June13 (Windows)
 #
@@ -41,17 +41,16 @@ tag_summary = "The host is installed with ImageMagick and is prone to integer
 if(description)
 {
   script_id(803817);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2012-1610");
   script_bugtraq_id(52898);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 13:28:50 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_name("ImageMagick Integer Overflow Vulnerability - 02 June13 (Windows)");
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2012/q2/19");
   script_xref(name : "URL" , value : "http://www.cert.fi/en/reports/2012/vulnerability635606.html");
-  script_summary("Check for the vulnerable version of ImageMagick on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

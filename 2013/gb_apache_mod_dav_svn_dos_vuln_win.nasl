@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_dav_svn_dos_vuln_win.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_apache_mod_dav_svn_dos_vuln_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Apache HTTP Server 'mod_dav_svn' Denial of Service Vulnerability (Windows)
 #
@@ -33,12 +33,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803743";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-1896");
   script_bugtraq_id(61129);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-21 18:57:17 +0530 (Wed, 21 Aug 2013)");
   script_name("Apache HTTP Server 'mod_dav_svn' Denial of Service Vulnerability (Windows)");
 
@@ -78,7 +78,6 @@ For updates refer to http://svn.apache.org";
 
   script_xref(name : "URL" , value : "http://www.apache.org/dist/httpd/Announcement2.2.html");
   script_xref(name : "URL" , value : "http://svn.apache.org/viewvc/httpd/httpd/trunk/modules/dav/main/mod_dav.c?view=log");
-  script_summary("Check for the version of Apache HTTP Server on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web Servers");

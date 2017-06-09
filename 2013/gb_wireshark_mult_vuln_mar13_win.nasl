@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_mar13_win.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wireshark_mult_vuln_mar13_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - March 13 (Windows)
 #
@@ -39,20 +39,19 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(803331);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-2486", "CVE-2013-2487", "CVE-2013-2479", "CVE-2013-2477",
                 "CVE-2013-2476", "CVE-2013-2475");
   script_bugtraq_id(58363,58350,58354,58358,58349,58364);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:15:06 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - March 13 (Windows)");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52471");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1028254");
   script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.8.6.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

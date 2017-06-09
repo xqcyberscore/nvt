@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_dgn_remote_code_ex_06_13.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_netgear_dgn_remote_code_ex_06_13.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Netgear DGN Remote Code Execution Vulnerability
 #
@@ -38,7 +38,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103728";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6115 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -46,9 +46,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121860/Netgear-DGN-Authentication-Bypass-Command-Execution.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-06-04 11:47:22 +0200 (Tue, 04 Jun 2013)");
- script_summary("Determine if it is possible to execute a command");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

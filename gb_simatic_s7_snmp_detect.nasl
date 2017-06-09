@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_snmp_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_simatic_s7_snmp_detect.nasl 6160 2017-05-18 09:39:36Z ckuerste $
 #
 # Siemens SIMATIC S7 Device Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106097");
- script_version ("$Revision: 6032 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 6160 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-18 11:39:36 +0200 (Thu, 18 May 2017) $");
  script_tag(name: "creation_date", value: "2016-06-15 15:54:49 +0700 (Wed, 15 Jun 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,8 +64,8 @@ if (!sysdesc)
   exit(0);
 
 if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC( S7,)|(, S7)")) {
-  mo = eregmatch(pattern: "SIMATIC( S7)?, ((S7-)|(CPU-)|(IM))([0-9]+)", string: sysdesc);
-  model = mo[6];
+  mo = eregmatch(pattern: "SIMATIC( S7)?, (S7-|CPU-|IM|CPU)([^,]+)", string: sysdesc);
+  model = mo[3];
 
   version = "unknown";
   sp = split(sysdesc, sep: ",", keep: FALSE);

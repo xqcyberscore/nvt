@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57554.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_57554.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # WordPress Pingback Vulnerability
 #
@@ -49,16 +49,15 @@ if (description)
  script_cve_id("CVE-2013-0235");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6115 $");
 
  script_name("WordPress Pingback Vulnerability");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57554");
  script_xref(name : "URL" , value : "http://www.acunetix.com/blog/web-security-zone/wordpress-pingback-vulnerability/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-02-07 10:52:18 +0100 (Thu, 07 Feb 2013)");
- script_summary("Determine if installed Wordpress is affected by the Pingback Vulnerability");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

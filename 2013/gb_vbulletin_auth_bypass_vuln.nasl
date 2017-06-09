@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_auth_bypass_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_vbulletin_auth_bypass_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Vbulletin Authentication Bypass Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804144");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-6129");
   script_bugtraq_id(62909);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-15 12:55:00 +0530 (Fri, 15 Nov 2013)");
   script_name("Vbulletin Authentication Bypass Vulnerability");
-  script_summary("Check if vBulletin is vulnerable to authentication bypass vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

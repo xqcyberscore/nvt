@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-037.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-037.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Microsoft Internet Explorer Multiple Use After Free Vulnerabilities (2829530)
 #
@@ -41,7 +41,7 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(903307);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-1297", "CVE-2013-0811", "CVE-2013-1306", "CVE-2013-1307",
                 "CVE-2013-1308", "CVE-2013-1309", "CVE-2013-1310", "CVE-2013-1311",
                                  "CVE-2013-1312", "CVE-2013-2551", "CVE-2013-3140");
@@ -49,12 +49,11 @@ if(description)
                     59751, 59752, 59753, 59754, 59755, 58570);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 08:20:51 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Internet Explorer Multiple Use After Free Vulnerabilities (2829530)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53327");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-037");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

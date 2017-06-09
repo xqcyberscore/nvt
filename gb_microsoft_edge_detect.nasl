@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_edge_detect.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_microsoft_edge_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Microsoft Edge Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806184");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2016-01-04 15:07:42 +0530 (Mon, 04 Jan 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Edge Version Detection (Windows)");
@@ -38,7 +38,6 @@ if(description)
 
 The script logs in via smb, detects the version of Microsoft Edge
 on remote host and sets the KB.");
-  script_summary("Check for Microsoft Edge version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

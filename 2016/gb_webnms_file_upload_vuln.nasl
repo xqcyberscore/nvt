@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webnms_file_upload_vuln.nasl 5251 2017-02-09 15:54:34Z teissa $
+# $Id: gb_webnms_file_upload_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # WebNMS 5.2 / 5.2 SP1 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106242");
-  script_version("$Revision: 5251 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-09 16:54:34 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2016-09-13 17:11:16 +0700 (Tue, 13 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -38,7 +38,7 @@ if (description)
 
   script_tag(name: "qod_type", value: "remote_analysis");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "Mitigation");
 
   script_name("WebNMS 5.2 / 5.2 SP1 Multiple Vulnerabilities");
 
@@ -70,7 +70,7 @@ user which the WebNMS server is running and to gain access to sensitive data on 
 
   script_tag(name: "affected", value: "WebNMS Framework Server 5.2 and 5.2 SP1");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 09th February, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "See https://forums.webnms.com/topic/recent-vulnerabilities-in-webnms-and-how-to-protect-the-server-against-them for a mitigation procedure.");
 
   script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/2712");
 

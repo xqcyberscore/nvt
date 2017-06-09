@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_xss_n_csrf_vuln.nasl 2852 2016-03-15 09:56:52Z antu123 $
+# $Id: gb_cisco_ironport_csma_xss_n_csrf_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Cisco Content Security Management Appliance XSS and CSRF Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:cisco:content_security_management_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803754");
-  script_version("$Revision: 2852 $");
+  script_version("$Revision: 6115 $");
   script_bugtraq_id(60919, 60829);
   script_cve_id("CVE-2013-3395", "CVE-2013-3396");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-15 10:56:52 +0100 (Tue, 15 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-04 11:53:49 +0530 (Wed, 04 Sep 2013)");
   script_name("Cisco Content Security Management Appliance XSS and CSRF Vulnerabilities");
 
@@ -81,7 +81,6 @@ For updates refer to http://www.cisco.com/en/US/products/ps12503/index.html ";
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=29844");
   script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2013-3396");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/cisco-ironport-cross-site-request-forgery-cross-site-scripting");
-  script_summary("Check the vulnerable version of Cisco Content Security Management Appliance");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

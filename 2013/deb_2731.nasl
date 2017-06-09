@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2731.nasl 2865 2016-03-16 09:26:51Z benallard $
+# $Id: deb_2731.nasl 6079 2017-05-08 09:03:33Z teissa $
 # Auto-generated from advisory DSA 2731-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -53,17 +53,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892731);
-    script_version("$Revision: 2865 $");
+    script_version("$Revision: 6079 $");
     script_cve_id("CVE-2013-4242");
     script_name("Debian Security Advisory DSA 2731-1 (libgcrypt11 - information leak)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 10:26:51 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
     script_tag(name: "creation_date", value:"2013-07-29 00:00:00 +0200 (Mon, 29 Jul 2013)");
     script_tag(name: "cvss_base", value:"1.9");
     script_tag(name: "cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2731.html");
 
-    script_summary("Debian Security Advisory DSA 2731-1 (libgcrypt11 - information leak)");
 
     script_category(ACT_GATHER_INFO);
 

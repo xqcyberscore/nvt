@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_colorqube_60844.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_xerox_colorqube_60844.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Xerox ColorQube Multiple Unspecified Security Vulnerabilities
 #
@@ -45,7 +45,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(60844);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6079 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -68,9 +68,8 @@ Solution:
  script_xref(name:"URL", value:"http://www.xerox.com");
  script_xref(name:"URL", value:"http://www.xerox.com/download/security/security-bulletin/18344-4e02474da251c/cert_XRX13-006_v1.2.pdf");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-11 11:54:40 +0200 (Fri, 11 Oct 2013)");
- script_summary("Determine if System Software is < 071.180.203.06400");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

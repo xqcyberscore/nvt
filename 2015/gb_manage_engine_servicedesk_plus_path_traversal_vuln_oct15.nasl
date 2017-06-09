@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806510");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6183 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-21 13:10:53 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38395");
 
-  script_summary("Check if ManageEngine ServiceDesk Plus is prone to directory traversal vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

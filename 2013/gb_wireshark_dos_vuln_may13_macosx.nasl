@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_may13_macosx.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wireshark_dos_vuln_may13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Wireshark ASN.1 BER Dissector DoS Vulnerability - May 13 (Mac OS X)
 #
@@ -41,17 +41,16 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 if(description)
 {
   script_id(803619);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3557", "CVE-2013-3556");
   script_bugtraq_id(59997, 60021);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:52:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark ASN.1 BER Dissector DoS Vulnerability - May 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53425");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2013-25.html");
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

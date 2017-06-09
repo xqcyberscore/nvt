@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cve_2015_6290.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_wsa_cve_2015_6290.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Cisco Web Security Appliance Malformed HTTP Response Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6290");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6125 $");
 
  script_name("Cisco Web Security Appliance Malformed HTTP Response Denial of Service Vulnerability");
 
@@ -54,9 +54,8 @@ the device to improperly close TCP connections and fail to free memory resources
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
  script_tag(name:"creation_date", value:"2015-09-11 13:28:16 +0200 (Fri, 11 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

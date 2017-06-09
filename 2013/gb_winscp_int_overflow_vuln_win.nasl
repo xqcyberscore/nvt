@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winscp_int_overflow_vuln_win.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_winscp_int_overflow_vuln_win.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # WinSCP Integer Overflow Vulnerability (Windows)
 #
@@ -33,12 +33,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803873";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-4852");
   script_bugtraq_id(61599);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-21 13:50:22 +0530 (Wed, 21 Aug 2013)");
   script_name("WinSCP Integer Overflow Vulnerability (Windows)");
 
@@ -79,7 +79,6 @@ For updates refer to http://winscp.net";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54355");
   script_xref(name : "URL" , value : "http://winscp.net/eng/docs/history#5.1.6");
   script_xref(name : "URL" , value : "http://winscp.net/tracker/show_bug.cgi?id=1017");
-  script_summary("Check for the vulnerable version of WinSCP on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

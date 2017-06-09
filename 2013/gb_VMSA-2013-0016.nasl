@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0016.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_VMSA-2013-0016.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX
 #
@@ -71,15 +71,14 @@ if (description)
  script_cve_id("CVE-2013-5973");
  script_tag(name:"cvss_base", value:"4.4");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6086 $");
  script_name("VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0016.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
  script_tag(name:"creation_date", value:"2013-12-27 10:04:01 +0100 (Fri, 27 Dec 2013)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

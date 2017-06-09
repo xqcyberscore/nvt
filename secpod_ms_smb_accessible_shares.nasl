@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_smb_accessible_shares.nasl 5336 2017-02-18 15:08:15Z cfi $
+# $Id: secpod_ms_smb_accessible_shares.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft Windows SMB Accessible Shares
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(902425);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 16:08:15 +0100 (Sat, 18 Feb 2017) $");
+ script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2012-02-29 12:08:36 +0530 (Wed, 29 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft Windows SMB Accessible Shares");
-  script_summary("Check for SMB Accessible Shares");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2012 SecPod");

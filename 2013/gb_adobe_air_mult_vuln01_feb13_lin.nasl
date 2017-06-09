@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_feb13_lin.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_air_mult_vuln01_feb13_lin.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Adobe AIR Multiple Vulnerabilities -01 Feb13 (Linux)
 #
@@ -46,8 +46,8 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803412);
-  script_version("$Revision: 2923 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6079 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-15 11:06:40 +0530 (Fri, 15 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52166");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-05.html");
 
-  script_summary("Check for the version of Adobe AIR on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

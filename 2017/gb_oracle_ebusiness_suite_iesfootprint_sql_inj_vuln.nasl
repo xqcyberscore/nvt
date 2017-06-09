@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_ebusiness_suite_iesfootprint_sql_inj_vuln.nasl 6049 2017-04-28 11:07:48Z antu123 $
+# $Id: gb_oracle_ebusiness_suite_iesfootprint_sql_inj_vuln.nasl 6092 2017-05-10 07:02:40Z cfi $
 #
 # Oracle E-Business Suite 'IESFOOTPRINT' SQL Injection Vulnerability
 # 
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:e-business_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811016");
-  script_version("$Revision: 6049 $");
+  script_version("$Revision: 6092 $");
   script_cve_id("CVE-2017-3549");
   script_bugtraq_id(97748);
-  script_tag(name:"cvss_base", value:"9.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 13:07:48 +0200 (Fri, 28 Apr 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-27 11:25:39 +0530 (Thu, 27 Apr 2017)");
   script_name("Oracle E-Business Suite 'IESFOOTPRINT' SQL Injection Vulnerability");
 

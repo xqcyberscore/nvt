@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_super_functions_pack_xss_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wp_super_functions_pack_xss_vuln.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # WordPress April's Super Functions Pack Plugin Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805268");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2014-100026");
   script_bugtraq_id(64699);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-04 12:02:20 +0530 (Wed, 04 Feb 2015)");
   script_name("WordPress April's Super Functions Pack Plugin Cross Site Scripting Vulnerability");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90172");
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/aprils-super-functions-pack/changelog");
 
-  script_summary("Check if Wordpress April's Super Functions Pack Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

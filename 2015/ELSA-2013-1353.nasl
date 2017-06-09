@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1353.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1353.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123560");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:32 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1353");
 script_tag(name: "insight", value: "ELSA-2013-1353 -  sudo security and bug fix update - [1.7.2p1-28] - backported fixes for CVE-2013-1775 CVE-2013-1776 CVE-2013-2776 CVE-2013-2777 Resolves: rhbz#968221 [1.7.2p1-27] - visudo: fixed incorrect warning and parse error regarding undefined aliases which were in fact defined Resolves: rhbz#849679 Resolves: rhbz#905624 [1.7.2p1-26] - updated sudoers man-page to clarify the behavior of the user negation operator and the behavior of wildcard matching in command specifications Resolves: rhbz#846118 Resolves: rhbz#856902 [1.7.2p1-25] - fixed regression in escaping of sudo -i arguments Resolves: rhbz#853203 [1.7.2p1-24] - bump release number [1.7.2p1-23] - Fixed caching of user and group names - Backported RFC 4515 escaping of LDAP queries Resolves: rhbz#855836 Resolves: rhbz#869287"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1353");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

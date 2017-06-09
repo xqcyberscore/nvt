@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_cmd_inj_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_hp_smh_cmd_inj_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # HP System Management Homepage Command Injection Vulnerability-July2013
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3576");
   script_bugtraq_id(60471);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-30 13:30:42 +0530 (Tue, 30 Jul 2013)");
   script_name("HP System Management Homepage Command Injection Vulnerability-July2013");
 
@@ -75,7 +75,6 @@ http://h18013.www1.hp.com/products/servers/management/agents/index.html";
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26420");
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/735364");
-  script_summary("Check for the version of HP SMH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

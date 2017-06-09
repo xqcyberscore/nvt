@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_apr13_lin.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_google_chrome_dos_vuln_apr13_lin.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Google Chrome Denial of Service Vulnerability - April 13 (Linux)
 #
@@ -38,18 +38,17 @@ tag_summary = "The host is running Google Chrome and is prone to denial of
 if(description)
 {
   script_id(803356);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-2632");
   script_bugtraq_id(58697);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-02 11:17:26 +0530 (Tue, 02 Apr 2013)");
   script_name("Google Chrome Denial of Service Vulnerability - April 13 (Linux)");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-2632");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/03/dev-channel-update_18.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

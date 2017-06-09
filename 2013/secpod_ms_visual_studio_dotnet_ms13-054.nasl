@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_visual_studio_dotnet_ms13-054.nasl 4456 2016-11-09 12:40:37Z cfi $
+# $Id: secpod_ms_visual_studio_dotnet_ms13-054.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Microsoft Visual Studio .NET Remote Code Execution Vulnerability (2848295)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902988);
-  script_version("$Revision: 4456 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3129");
   script_bugtraq_id(60978);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 13:40:37 +0100 (Wed, 09 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-11 19:20:12 +0530 (Thu, 11 Jul 2013)");
   script_name("Microsoft Visual Studio .NET Remote Code Execution Vulnerability (2848295)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54057/");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2856545");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028750");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-054");
-  script_summary("Check for the version of Mso.dll file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

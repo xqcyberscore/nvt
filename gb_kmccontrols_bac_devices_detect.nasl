@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kmccontrols_bac_devices_detect.nasl 4893 2016-12-30 15:49:57Z cfi $
+# $Id: gb_kmccontrols_bac_devices_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # KMC Controls BAC Devices Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106128");
- script_version ("$Revision: 4893 $");
- script_tag(name: "last_modification", value: "$Date: 2016-12-30 16:49:57 +0100 (Fri, 30 Dec 2016) $");
+ script_version ("$Revision: 6065 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name: "creation_date", value: "2016-07-12 10:36:40 +0700 (Tue, 12 Jul 2016)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,6 @@ Tries to detect KMC Controls BAC devices over the BACnet protocol.");
 
  script_xref(name: "URL", value: "http://www.kmccontrols.com");
 
- script_summary("Detection of KMC Controls BAC-Devices");
 
  exit(0);
 }

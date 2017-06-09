@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1223.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1223.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123832");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:08 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1223");
 script_tag(name: "insight", value: "ELSA-2012-1223 -  java-1.7.0-openjdk security update - [1.7.0.5-2.2.1.0.1.el6_3.3]- Modify DISTRO_NAME for Oracle[1.7.0.5-2.2.1.el6.3]- Removed patch 304 java-1.7.0-openjdk-beans-isPackageAccessible.patch- Applied upstream patches for same issue: patch 1001 sec-webrevs-openjdk7-29_aug_2012-7162473.patch patch 1002 sec-webrevs-openjdk7-29_aug_2012-7162476.patch patch 1003 sec-webrevs-openjdk7-29_aug_2012-7163201.patch patch 1004 sec-webrevs-openjdk7-29_aug_2012-7194567.patch patch 1005 sec-webrevs-openjdk7-29_aug_2012-78e01a6ca8d3.patch- Resolves: rhbz#852299[1.7.0.5-2.2.1.1.el6]- Added patch 304 java-1.7.0-openjdk-beans-isPackageAccessible.patch to fix vulnerability until it is fixed in upstream sources. - Resolves: rhbz#852299"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1223");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

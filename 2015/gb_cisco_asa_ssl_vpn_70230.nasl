@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_asa_ssl_vpn_70230.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # Cisco ASA Software Information Disclosure Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-3398");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3859 $");
+ script_version ("$Revision: 6211 $");
 
  script_name("Cisco ASA Software Information Disclosure Vulnerability");
 
@@ -51,9 +51,8 @@ vulnerability.");
  script_tag(name: "insight" , value:"This issue is being tracked by Cisco bug ID CSCuq65542.");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
  script_tag(name:"creation_date", value:"2015-02-03 11:59:05 +0100 (Tue, 03 Feb 2015)");
- script_summary("Read /CSCOSSLC/config-auth");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

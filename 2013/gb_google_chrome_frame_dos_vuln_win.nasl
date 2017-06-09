@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_google_chrome_frame_dos_vuln_win.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with google chrome frame plugin for
 if(description)
 {
   script_id(803461);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-2493");
   script_bugtraq_id(58562);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-02 12:21:11 +0530 (Tue, 02 Apr 2013)");
   script_name("Google Chrome Frame Plugin For Microsoft IE Denial Of Service Vulnerability (Windows)");
   script_xref(name : "URL" , value : "https://chromiumcodereview.appspot.com/12395021");
   script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=178415");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/03/beta-channel-update.html");
-  script_summary("Check for the vulnerable version of Google Chrome Frame plugin on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

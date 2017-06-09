@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2016-0141.nasl 5612 2017-03-20 10:00:41Z teissa $
+# $Id: mgasa-2016-0141.nasl 6067 2017-05-04 13:15:52Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -27,17 +27,17 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131306");
-script_version("$Revision: 5612 $");
+script_version("$Revision: 6067 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:18:08 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-03-20 11:00:41 +0100 (Mon, 20 Mar 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2016-0141");
 script_tag(name: "insight", value: "This update fixes an integer overflow in Jpeg2KEncode.c causing a buffer overflow (CVE-2016-3076)."); 
 script_tag(name : "solution", value : "update software");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://advisories.mageia.org/MGASA-2016-0141.html");
 script_cve_id("CVE-2016-3076");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"4.3");
+script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");

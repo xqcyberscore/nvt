@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-042.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-042.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft Windows Hyper-V Denial of Service Vulnerability (3047234)
 #
@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805532");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2015-1647");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-15 07:56:26 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Windows Hyper-V Denial of Service Vulnerability (3047234)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3047234");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-042");
 
-  script_summary("Check for the vulnerable 'Vmms.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

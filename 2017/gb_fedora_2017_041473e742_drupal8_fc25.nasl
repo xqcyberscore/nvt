@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872636");
-  script_version("$Revision: 6062 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 10:52:29 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 6067 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-03 14:19:19 +0530 (Wed, 03 May 2017)");
   script_cve_id("CVE-2017-6919");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for drupal8 FEDORA-2017-041473e742");
   script_tag(name: "summary", value: "Check the version of drupal8");

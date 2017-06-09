@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0004.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_VMSA-2013-0004.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # VMSA-2013-0004 VMware ESXi security update for third party library
 #
@@ -48,13 +48,12 @@ if (description)
  script_cve_id("CVE-2012-5134");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5351 $");
+ script_version ("$Revision: 6079 $");
  script_name("VMSA-2013-0004 VMware ESXi security update for third party library");
 
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-04-02 14:04:01 +0100 (Tue, 02 Apr 2013)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");

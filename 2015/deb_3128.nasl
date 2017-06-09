@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3128.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3128.nasl 6211 2017-05-25 09:04:14Z teissa $
 # Auto-generated from advisory DSA 3128-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703128);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6211 $");
     script_cve_id("CVE-2013-6885", "CVE-2014-8133", "CVE-2014-9419", "CVE-2014-9529",
                   "CVE-2014-9584");
     script_name("Debian Security Advisory DSA 3128-1 (linux - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
     script_tag(name: "creation_date", value: "2015-01-15 00:00:00 +0100 (Thu, 15 Jan 2015)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3128.html");
 
-    script_summary("Debian Security Advisory DSA 3128-1 (linux - security update)");
 
     script_category(ACT_GATHER_INFO);
 

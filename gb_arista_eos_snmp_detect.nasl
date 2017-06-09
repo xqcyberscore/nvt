@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arista_eos_snmp_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_arista_eos_snmp_detect.nasl 6164 2017-05-18 12:00:33Z cfi $
 #
 # Arista EOS Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106494");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 6164 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 14:00:33 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2017-01-05 14:24:16 +0700 (Thu, 05 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -85,7 +85,7 @@ if ("Arista Networks EOS" >< sysdesc) {
   if (!cpe)
     cpe = 'cpe:/o:arista:eos';
 
-  register_product(cpe: cpe, port: port, service: "snmp");
+  register_product(cpe: cpe, port: port, service: "snmp", proto: "udp");
   register_and_report_os(os: "Arista EOS", cpe: cpe, banner_type: "SNMP sysdesc", banner: sysdesc, port: port,
                          proto: "udp", desc: "Arista EOS Detection (SNMP)", runs_key: "unixoide");
 

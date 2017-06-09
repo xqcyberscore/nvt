@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_CSCuu25770.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_catalyst_4500_CSCuu25770.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Cisco Catalyst 4500 IOS XE Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6294");
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6125 $");
 
  script_name("Cisco Catalyst 4500 IOS XE Cisco Discovery Protocol Packet Processing Denial of Service Vulnerability");
 
@@ -52,9 +52,8 @@ Protocol packets to be processed by an affected device. An exploit could allow t
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
  script_tag(name:"creation_date", value:"2015-09-21 15:09:03 +0200 (Mon, 21 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

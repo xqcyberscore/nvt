@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_jevents_com_sql_inj_vuln.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_joomla_jevents_com_sql_inj_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Joomla! JEvents Component SQL Injection Vulnerability
 #
@@ -49,17 +49,16 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_bugtraq_id(57208);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-29 14:06:14 +0530 (Tue, 29 Jan 2013)");
   script_name("Joomla! JEvents Component SQL Injection Vulnerability");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/81088");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/119361/joomlajevents-sql.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-jevents-150-sql-injection");
-  script_summary("Check if Joomla! JEvents Component is vulnerable to SQL Injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 SecPod");

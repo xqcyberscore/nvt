@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882229");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-2724", "CVE-2015-2725", "CVE-2015-2731", "CVE-2015-2734",
                 "CVE-2015-2735", "CVE-2015-2736", "CVE-2015-2737", "CVE-2015-2738",
                 "CVE-2015-2739", "CVE-2015-2740", "CVE-2015-2741");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-21 06:36:36 +0200 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for thunderbird CESA-2015:1455 centos5 ");
@@ -76,7 +76,6 @@ to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1455");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-July/021252.html");
-  script_summary("Check for the Version of thunderbird");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

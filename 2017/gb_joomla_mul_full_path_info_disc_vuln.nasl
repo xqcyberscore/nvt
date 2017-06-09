@@ -1,6 +1,5 @@
-###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 6050 2017-04-28 14:26:18Z teissa $
+# $Id: gb_joomla_mul_full_path_info_disc_vuln.nasl 6124 2017-05-15 08:24:33Z teissa $
 #
 # Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities
 #
@@ -29,20 +28,20 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107158");
-  script_version("$Revision: 6050 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 16:26:18 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6124 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 10:24:33 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-27 14:05:12 +0200 (Thu, 27 Apr 2017)");
   script_cve_id("CVE-2017-8057");
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name(" Joomla! CVE-2017-8057 Multiple Full Path Information Disclosure Vulnerabilities");
-  script_tag(name: "summary", value: "__SCRIPT_DESC__");
+  script_tag(name: "summary", value: "Joomla is vulnerable to multiple full path information disclosure vulnerabilities.");
   script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
   script_tag(name: "insight", value: "Joomla! is prone to multiple information-disclosure vulnerabilities.                                                                   Remote attackers can exploit these issues to obtain sensitive information that may lead to further attacks.                                                                    Joomla! 3.4.0 through 3.6.5 are vulnerable..");
-  script_tag(name: "impact" , value: "I.");
+  script_tag(name: "impact" , value: "Successful exploitation will allow remote attackers to obtain sensitive information.");
   script_tag(name: "affected", value: "Joomla! 3.4.0 through 3.6.5 are vulnerable");
   script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
 

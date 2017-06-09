@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability
 #
@@ -50,7 +50,7 @@ tag_vuldetect = "Upload a file by sending a HTTP POST request.";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6079 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability");
@@ -58,9 +58,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=1080");
  script_xref(name:"URL", value:"http://codecanyon.net/item/complete-gallery-manager-for-wordpress/2418606");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-09-19 11:10:11 +0200 (Thu, 19 Sep 2013)");
- script_summary("Determine if it is possible to upload a file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

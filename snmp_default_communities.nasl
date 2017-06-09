@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_default_communities.nasl 3875 2016-08-23 16:17:25Z mime $
-# Description: Default community names of the SNMP Agent
+# $Id: snmp_default_communities.nasl 6188 2017-05-22 13:39:43Z cfi $
+#
+# Default community names of the SNMP Agent
 #
 # Authors:
 # Noam Rathaus <noamr@securiteam.com>
@@ -29,7 +31,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # References:
 #
@@ -62,41 +64,33 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103914");
- script_version("$Revision: 3875 $");
- script_tag(name:"last_modification", value:"$Date: 2016-08-23 18:17:25 +0200 (Tue, 23 Aug 2016) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_xref(name:"IAVA", value:"2001-B-0001");
- script_name("Check default community names of the SNMP Agent");
+  script_oid("1.3.6.1.4.1.25623.1.0.103914");
+  script_version("$Revision: 6188 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 15:39:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_xref(name:"IAVA", value:"2001-B-0001");
+  script_name("Check default community names of the SNMP Agent");
+  script_category(ACT_SETTINGS);
+  script_copyright("This script is Copyright (C) 1999 SecuriTeam");
+  script_family("SNMP");
+  script_dependencies("snmp_detect.nasl");
+  script_require_udp_ports("Services/udp/snmp", 161);
 
- script_summary("Check default community names of the SNMP Agent");
- script_category(ACT_SETTINGS);
- script_copyright("This script is Copyright (C) 1999 SecuriTeam");
- script_family("SNMP");
- script_dependencies("snmp_detect.nasl");
- script_require_udp_ports("Services/udp/snmp", 161);
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
+  login with default communities. Successful logins are storen in the KB.");
 
- script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
-login with default communities. Successful logins are storen in the KB.");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"qod_type", value:"remote_banner");
- exit(0);
+  exit(0);
 }
 
+include("global_settings.inc");
 
-#
-# The script code starts here
-#
-
-include('global_settings.inc');
-
-port = get_kb_item("Services/udp/snmp");
-if(!port)port = 161;
-
-if(get_udp_port_state(port))
- {
+port = get_kb_item( "Services/udp/snmp" );
+if( ! port ) port = 161;
+if( get_udp_port_state( port ) ) {
 
 i = 0;
 comm[i++]= "private";
@@ -158,6 +152,9 @@ comm[i++]= "password";
  comm[i++] = "proxy";
  comm[i++] = "regional";
  comm[i++] = "core";
+
+ # Eyes of Network (EON)
+ comm[i++] = "EyesOfNetwork";
 
 # Add router name
 name = get_host_name();
@@ -273,7 +270,8 @@ for(j=0; comm[j] ; j = j + 1)
   }
 }
 
-
 if (count > 4) {
   set_kb_item(name:"SNMP/all_communities", value:TRUE);
 }
+
+exit( 0 );

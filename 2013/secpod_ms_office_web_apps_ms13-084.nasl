@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_web_apps_ms13-084.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms_office_web_apps_ms13-084.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Microsoft Office Web Apps Remote Code Execution vulnerability (2885089)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:04:48 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Web Apps Remote Code Execution vulnerability (2885089)");
 
@@ -78,7 +78,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-084";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55131");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-084");
-  script_summary("Check for the vulnerable 'msoserver.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

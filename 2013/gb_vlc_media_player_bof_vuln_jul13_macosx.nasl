@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vuln_jul13_macosx.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_vlc_media_player_bof_vuln_jul13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # VLC Media Player Buffer Overflow Vulnerability - July 13 (MAC OS X)
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if(description)
 {
   script_id(803699);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-1954");
   script_bugtraq_id(57333);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-16 13:56:02 +0530 (Tue, 16 Jul 2013)");
   script_name("VLC Media Player Buffer Overflow Vulnerability - July 13 (MAC OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to http://www.videolan.org/vlc";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51995");
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1302.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of VLC Media Player on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");

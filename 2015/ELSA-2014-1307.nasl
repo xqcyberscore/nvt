@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1307.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1307.nasl 6159 2017-05-18 09:03:44Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123298");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6159 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1307");
 script_tag(name: "insight", value: "ELSA-2014-1307 -  nss security update - nss [3.16.2-7.0.1.el7_0] - Added nss-vendor.patch to change vendor [3.16.2-7] - Resolves: Bug 1145433 - CVE-2014-1568 [3.16.2-6] - Rolling back to commit e5fb6e476c179665976e906604496cbbb24f22a7 - Related: Bug 1145433 nss-softokn [3.16.2-3] - Resolves: Bug 1145433 - CVE-2014-1568 nss-util [3.16.2-2] - Resolves: bug 1145433 - CVE-2014-1568"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1307");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

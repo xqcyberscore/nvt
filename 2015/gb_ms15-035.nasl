@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-035.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-035.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3046306)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805534");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2015-1645");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-15 10:40:36 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3046306)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3046306");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-035");
 
-  script_summary("Check for the vulnerable 'Gdi32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

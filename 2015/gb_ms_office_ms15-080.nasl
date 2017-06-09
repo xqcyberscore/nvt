@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms15-080.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_office_ms15-080.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Microsoft Office Font Drivers Remote Code Execution Vulnerability (3078662)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805083");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 12:46:32 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Office Font Drivers Remote Code Execution Vulnerability (3078662)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054890");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-080");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

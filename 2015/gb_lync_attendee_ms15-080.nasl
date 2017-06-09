@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-080.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_lync_attendee_ms15-080.nasl 6156 2017-05-18 06:51:25Z cfi $
 #
 # Microsoft Lync Attendee Remote Code Execution Vulnerabilities (3078662)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805086");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6156 $");
   script_cve_id("CVE-2015-2431", "CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 08:51:25 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 13:06:46 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft Lync Attendee Remote Code Execution Vulnerabilities (3078662)");
 
@@ -75,8 +75,9 @@ if(description)
   exit(0);
 }
 
-
+include("smb_nt.inc");
 include("version_func.inc");
+include("secpod_smb_func.inc");
 
 ## Variables Initialization
 path = "";

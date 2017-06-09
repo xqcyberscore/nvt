@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
+# $Id: gb_bonita_bpm_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Bonita BPM Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106009");
- script_version ("$Revision: 5723 $");
- script_tag(name: "last_modification", value: "$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
+ script_version ("$Revision: 6065 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,6 @@ The script sends a connection request to the server and attempts to detect Bonit
  script_require_ports("Services/www", 8080);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_summary("Checks for the presence of Bonita BPM.");
  exit(0);
 }
 

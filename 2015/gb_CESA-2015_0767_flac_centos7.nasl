@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882152");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-02 07:11:12 +0200 (Thu, 02 Apr 2015)");
   script_cve_id("CVE-2014-8962", "CVE-2014-9028");
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,7 +58,6 @@ for this update to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:0767");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-April/021045.html");
-  script_summary("Check for the Version of flac");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_navicopa_server_detect.nasl 5676 2017-03-22 16:29:37Z cfi $
+# $Id: gb_navicopa_server_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # NaviCOPA Server Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_id(801100);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5676 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-22 17:29:37 +0100 (Wed, 22 Mar 2017) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2010-01-09 13:17:56 +0100 (Sat, 09 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NaviCOPA Server Version Detection");
@@ -40,7 +40,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_summary("Set the version of NaviCOPA Server");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("NaviCOPA/banner");
   script_require_ports("Services/www",80);

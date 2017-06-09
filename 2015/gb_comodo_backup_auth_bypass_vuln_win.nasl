@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_backup_auth_bypass_vuln_win.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_comodo_backup_auth_bypass_vuln_win.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # COMODO BackUp Authentication Bypass Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:comodo:backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805344");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6194 $");
   script_cve_id("CVE-2014-9633");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:49:43 +0530 (Fri, 06 Mar 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("COMODO BackUp Authentication Bypass Vulnerability (Windows)");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35905");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130094/Comodo-Backup-4.4.0.0-NULL-Pointer-Dereference.html");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of COMODO BackUp on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_comodo_backup_detect_win.nasl");

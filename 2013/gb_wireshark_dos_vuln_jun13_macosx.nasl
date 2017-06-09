@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln_jun13_macosx.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wireshark_dos_vuln_jun13_macosx.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Wireshark DCP ETSI Dissector DoS Vulnerability - June 13 (Mac OS X)
 #
@@ -39,18 +39,17 @@ tag_summary = "This host is installed with Wireshark and is prone to denial of
 if(description)
 {
   script_id(803651);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-4083");
   script_bugtraq_id(60504);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:52:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark DCP ETSI Dissector DoS Vulnerability - June 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028648");
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2013-4083");
   script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2013-41.html");
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

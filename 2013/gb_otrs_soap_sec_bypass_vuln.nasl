@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_soap_sec_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_soap_sec_bypass_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # OTRS SOAP Security Bypass Vulnerability
 #
@@ -32,12 +32,12 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803947");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2008-1515");
   script_bugtraq_id(74733);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-28 13:08:01 +0530 (Sat, 28 Sep 2013)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OTRS SOAP Security Bypass Vulnerability");
@@ -65,7 +65,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_summary("Check for the vulnerable version of OTRS");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

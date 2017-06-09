@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0399.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0399.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131094");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-10-15 06:54:51 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0399");
 script_tag(name: "insight", value: "Adobe Flash Player 11.2.202.535 contains fixes to critical security vulnerabilities found in earlier versions that could potentially allow an attacker to take control of the affected system. This update resolves a vulnerability that could be exploited to bypass the same-origin-policy and lead to information disclosure (CVE-2015-7628). This update includes a defense-in-depth feature in the Flash broker API (CVE-2015-5569). This update resolves use-after-free vulnerabilities that could lead to code execution (CVE-2015-7629, CVE-2015-7631, CVE-2015-7643, CVE-2015-7644). This update resolves a buffer overflow vulnerability that could lead to code execution (CVE-2015-7632). This update resolves memory corruption vulnerabilities that could lead to code execution (CVE-2015-7625, CVE-2015-7626, CVE-2015-7627, CVE-2015-7630, CVE-2015-7633, CVE-2015-7634)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0399");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0399");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

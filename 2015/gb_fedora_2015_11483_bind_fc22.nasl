@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869770");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-18 06:25:49 +0200 (Sat, 18 Jul 2015)");
   script_cve_id("CVE-2015-4620");
   script_tag(name:"cvss_base", value:"7.8");
@@ -48,7 +48,6 @@ tools for verifying that the DNS server is operating properly.
   script_xref(name: "FEDORA", value: "2015-11483");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/162040.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of bind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

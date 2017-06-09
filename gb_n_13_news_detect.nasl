@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_n_13_news_detect.nasl 2782 2016-03-04 20:50:14Z cfi $
+# $Id: gb_n_13_news_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # N-13 News Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801737");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2782 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-04 21:50:14 +0100 (Fri, 04 Mar 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2011-02-08 15:34:31 +0100 (Tue, 08 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("N-13 News Version Detection");
-  script_summary("Set the version of N-13 News in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Product detection");

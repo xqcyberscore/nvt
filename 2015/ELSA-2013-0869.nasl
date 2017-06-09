@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0869.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0869.nasl 6125 2017-05-15 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123619");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6125 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:21 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0869");
 script_tag(name: "insight", value: "ELSA-2013-0869 -  tomcat6 security update - [0:6.0.24-55]- Related: rhbz#955976 CVE-2013-1976. Changed log location- so only root can use it. Touching TOMCAT_LOG is no longer- required[0:6.0.24-54]- Resolves: rhbz#956771 Related: CVE-2012-3439 digest- authentication broken after errata for cve-2012-3439- patch for 3439 corrected[0:6.0.24-53]- Resolves: rhbz#955976 CVE-2013-1976 improper TOMCAT_LOG- management in init script"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0869");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

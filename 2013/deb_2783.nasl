@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2783.nasl 2865 2016-03-16 09:26:51Z benallard $
+# $Id: deb_2783.nasl 6115 2017-05-12 09:03:25Z teissa $
 # Auto-generated from advisory DSA 2783-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -71,17 +71,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892783);
-    script_version("$Revision: 2865 $");
+    script_version("$Revision: 6115 $");
     script_cve_id("CVE-2011-5036", "CVE-2013-0183", "CVE-2013-0184", "CVE-2013-0263");
     script_name("Debian Security Advisory DSA 2783-1 (librack-ruby - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 10:26:51 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
     script_tag(name: "creation_date", value:"2013-10-21 00:00:00 +0200 (Mon, 21 Oct 2013)");
     script_tag(name: "cvss_base", value:"5.1");
     script_tag(name: "cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2783.html");
 
-    script_summary("Debian Security Advisory DSA 2783-1 (librack-ruby - several vulnerabilities)");
 
     script_category(ACT_GATHER_INFO);
 

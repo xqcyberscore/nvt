@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_seowonintech_devices_rce_06_13.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_multiple_seowonintech_devices_rce_06_13.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Seowonintech Routers Remote Root Command Execution Vulnerability
 #
@@ -40,7 +40,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103745";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6115 $");
  script_cve_id("CVE-2013-7183", "CVE-2013-7179");
  script_tag(name:"cvss_base", value:"8.3");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,9 +49,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122126/Seowonintech-Remote-Root.html");
  
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-06-24 12:51:39 +0200 (Mon, 24 Jun 2013)");
- script_summary("Determine if it is possible to execute the id command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

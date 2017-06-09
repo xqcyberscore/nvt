@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_itsm_faq_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_itsm_faq_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # OTRS ITSM FAQ XSS Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:otrs:otrs_itsm";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-2637");
   script_bugtraq_id(58930);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 15:11:15 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS ITSM FAQ XSS Vulnerability");
 
@@ -77,7 +77,6 @@ http://otrs.org/advisory/OSA-2012-02-en/";
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/58930");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24922/");
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2012-02-en/");
-  script_summary("Determine if the OTRS::ITSM version 3.1.0 to 3.1.7, 3.0.0 to 3.0.6 and 3.2.0 to 3.2.3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

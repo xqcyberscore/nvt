@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: apache_SSL_complain.nasl 4683 2016-12-06 08:45:07Z cfi $
+# $Id: apache_SSL_complain.nasl 6065 2017-05-04 09:03:08Z teissa $
 # Description: Detect Apache HTTPS
 #
 # Authors:
@@ -26,12 +26,11 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.15588");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4683 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-06 09:45:07 +0100 (Tue, 06 Dec 2016) $");
+ script_version("$Revision: 6065 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Detect Apache HTTPS");
- script_summary("Web server complains that we are talking plain HTTP on HTTPS port");
  script_category(ACT_GATHER_INFO);
  script_copyright("This script is Copyright (C) 2004 Michel Arboi");
  script_family( "Service detection");

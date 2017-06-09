@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_securetransport_49355.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_securetransport_49355.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # Tumbleweed SecureTransport Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:tumbleweed:securetransport_server_app';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111020");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6132 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 08:00:00 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,6 @@ if(description)
 
   script_name("Tumbleweed SecureTransport Directory Traversal Vulnerability");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

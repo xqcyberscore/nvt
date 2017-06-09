@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869074");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-10 06:32:19 +0100 (Tue, 10 Mar 2015)");
   script_cve_id("CVE-2015-0295", "CVE-2014-0190");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +51,6 @@ applications, as well as the README files for Qt 3.
   script_xref(name: "FEDORA", value: "2015-2901");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151352.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qt3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

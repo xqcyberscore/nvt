@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 5488 2017-03-05 10:28:39Z cfi $
+# $Id: nmap.nasl 6174 2017-05-19 10:55:33Z cfi $
 #
 # Nmap (NASL wrapper)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 5488 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-05 11:28:39 +0100 (Sun, 05 Mar 2017) $");
+  script_version("$Revision: 6174 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 12:55:33 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,6 +67,7 @@ if(description)
   script_add_preference(name:"Do not scan targets not in the file", value:"no", type:"checkbox");
   script_add_preference(name:"Data length : ", value: "", type: "entry");
   script_add_preference(name:"Run dangerous port scans even if safe checks are set", value:"no", type:"checkbox");
+  script_add_preference(name:"Log nmap output", value:"no", type:"checkbox");
 
   tag_summary = "This plugin runs nmap to find open ports.";
 
@@ -79,6 +80,7 @@ if(description)
 
 include("host_details.inc");
 include("network_func.inc");
+#nb: misc_func.inc is included down below only when needed
 
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
 if( get_kb_item( "Host/ping_failed" ) ) exit( 0 );
@@ -149,7 +151,7 @@ if (! res)
  }
 
  argv[i++] = "-n";
- argv[i++] = "-P0";	# Nmap ping is not reliable
+ argv[i++] = "-Pn"; # Nmap ping is not reliable
  argv[i++] = "-oG";
 
  tmpdir = get_tmp_dir();
@@ -310,6 +312,13 @@ if (! res)
    custom_policy ++;
  }
 
+ p = script_get_preference("Log nmap output");
+ if ("yes" >< p)
+ {
+   argv[i++] = "-vv";
+   log_output = TRUE;
+ }
+
  if (phase == 1)
    argv[i++] = network_targets ();
  else
@@ -324,10 +333,15 @@ if (! res)
    exit( 0 );
  }
 
+ if( log_output ) {
+   include("misc_func.inc");
+   log_message( port:0, data:"nmap command: " + join( list:argv ) + '\n\n' + res );
+ }
+
  if (tmpfile && file_stat(tmpfile))
-  res = fread(tmpfile);
+   res = fread(tmpfile);
  # display(argv, "\n", res, "\n\n");
- if (! res) exit(0);	# error
+ if (! res) exit(0); # error
 
 }
 
@@ -336,7 +350,7 @@ if (phase == 0)
   if (egrep(string: res, pattern: '^# +Ports scanned: +TCP\\(65535;'))
     full_scan = 1;
   else
-   full_scan = 0;
+    full_scan = 0;
 
   res = egrep(pattern: "Host: +" + esc_ip + " ", string: res);
   if (! res)
@@ -411,7 +425,7 @@ a potential security risk");
     {
       log_message(port: 0, data: "The TCP initial sequence number of the remote host look truly random. Excellent!");
       set_kb_item(name: "Host/tcp_seq", value: "random");
-     }
+    }
     else if (idx == 0)
     {
       set_kb_item(name: "Host/tcp_seq", value: "constant");

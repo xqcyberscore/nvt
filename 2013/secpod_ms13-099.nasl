@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903505);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-5056");
   script_bugtraq_id(64082);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:15:24 +0530 (Wed, 11 Dec 2013)");
   script_name("MS Windows Scripting Runtime Object Library RCE Vulnerability (2909158)");
 
@@ -87,7 +87,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-099";
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2892075");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2892076");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-099");
-  script_summary("Check for the vulnerable 'Scrrun.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_icloud_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_apple_icloud_detect_win.nasl 6168 2017-05-19 07:06:42Z antu123 $
 #
 # Apple iCloud Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810573");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6168 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 09:06:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-28 12:11:46 +0530 (Tue, 28 Feb 2017)");
   script_name("Apple iCloud Version Detection (Windows)");
 
@@ -72,41 +72,64 @@ if(!os_arch){
 
 ## Check for 32 bit platform
 if("x86" >< os_arch){
-  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 ## Check for 64 bit platform
 else if("x64" >< os_arch){
-  key  = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
+                        "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-if(isnull(key)){
+if(isnull(key_list)){
   exit(0);
 }
 
-foreach item (registry_enum_keys(key:key))
+foreach key (key_list)
 {
-  itName = registry_get_sz(key:key + item, item:"DisplayName");
-
-  ## Confirm for K7TotalSecurity
-  if("iCloud" >< itName)
+  foreach item (registry_enum_keys(key:key))
   {
-    itVer = registry_get_sz(key:key + item, item:"DisplayVersion");
-    itPath = registry_get_sz(key:key + item, item:"InstallLocation");
-    if(!itPath)
+    itName = registry_get_sz(key:key + item, item:"DisplayName");
+
+    ## Confirm for iCloud
+    if("iCloud" >< itName)
     {
-      itPath = "Unable to find the install location from registry";
+      itVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+      itPath = registry_get_sz(key:key + item, item:"InstallLocation");
+      if(!itPath)
+      {
+        itPath = "Unable to find the install location from registry";
+      }
+
+      if(itVer)
+      {
+        ## Set kb
+        set_kb_item(name:"apple/icloud/Win/Ver", value:itVer);
+
+        ## build cpe and store it as host_detail
+        cpe = build_cpe(value:itVer, exp:"^([0-9.]+)", base:"cpe:/a:apple:icloud:");
+        if(isnull(cpe))
+          cpe = "cpe:/a:apple:icloud";
+
+        ## Register for 64 bit app on 64 bit OS once again
+        if("64" >< os_arch && "Wow6432Node" >!< key)
+        {
+          set_kb_item(name:"apple/icloud64/Win/Ver", value:itVer);
+          cpe = build_cpe(value:itVer, exp:"^([0-9.]+)", base:"cpe:/a:apple:icloud:x64:");
+
+          if(isnull(cpe))
+            cpe = "cpe:/a:apple:icloud:x64";
+        }
+
+        ## Register Product and Build Report
+        register_product(cpe:cpe, location:itPath);
+
+        log_message(data: build_detection_report(app: "iCloud",
+                                                 version: itVer,
+                                                 install: itPath,
+                                                 cpe: cpe,
+                                                 concluded: itVer));
+      }
     }
-
-    ## Set kb
-    set_kb_item(name:"apple/icloud/Win/Ver", value:itVer);
-
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:itVer, exp:"^([0-9.]+)", base:"cpe:/a:apple:icloud:");
-    if(isnull(cpe))
-      cpe = "cpe:/a:apple:icloud";
-
-    ## Register Product and Build Report
-    build_report(app:"Apple iCloud", ver:itVer, cpe:cpe, insloc:itPath);
   }
 }

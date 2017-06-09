@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_sa-20151111-fmc.nasl 3773 2016-07-29 10:23:46Z ckuerste $
+# $Id: gb_cisco_firesight_management_center_sa-20151111-fmc.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Cisco FireSight Management Center Web Framework Cross-Site Scripting Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6363");
  script_tag(name:"cvss_base", value:"3.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 3773 $");
+ script_version ("$Revision: 6207 $");
 
  script_name("Cisco FireSight Management Center Web Framework Cross-Site Scripting Vulnerability");
 
@@ -52,9 +52,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 12:23:46 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
  script_tag(name:"creation_date", value:"2015-11-16 16:14:53 +0100 (Mon, 16 Nov 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

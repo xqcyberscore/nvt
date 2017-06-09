@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_release_42827.nasl 3169 2016-04-26 11:26:48Z cfi $
+# $Id: gb_tandberg_release_42827.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # TANDBERG MXP Series Video Conferencing Device Remote Denial Of Service Vulnerability
 #
@@ -31,13 +31,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103788");
   script_bugtraq_id(42827);
-  script_version ("$Revision: 3169 $");
+  script_version ("$Revision: 6093 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("TANDBERG MXP Series Video Conferencing Device Remote Denial Of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-26 13:26:48 +0200 (Tue, 26 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-12 13:33:18 +0200 (Thu, 12 Sep 2013)");
-  script_summary("Determine if Codec Release is <= F8.2");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_monthly_rollup_kb4015549.nasl 5945 2017-04-12 15:37:08Z antu123 $
+# $Id: gb_ms_monthly_rollup_kb4015549.nasl 6106 2017-05-11 10:32:49Z antu123 $
 #
 # Microsoft Windows Monthly Rollup (KB4015549)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810851");
-  script_version("$Revision: 5945 $");
+  script_version("$Revision: 6106 $");
   script_cve_id("CVE-2013-6629", "CVE-2017-0058", "CVE-2017-0155", "CVE-2017-0156",
 		"CVE-2017-0158", "CVE-2017-0163", "CVE-2017-0166", "CVE-2017-0168",
 		"CVE-2017-0180", "CVE-2017-0182", "CVE-2017-0183", "CVE-2017-0184",
@@ -37,9 +37,8 @@ if(description)
                     97427, 97428, 97435, 97466, 97452, 97498, 97441, 97512);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 17:37:08 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 12:43:38 +0530 (Wed, 12 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Monthly Rollup (KB4015549)");
 
   script_tag(name: "summary" , value:"This host is missing a monthly rollup according

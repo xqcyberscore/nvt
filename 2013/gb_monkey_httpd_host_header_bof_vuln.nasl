@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Monkey HTTPD Host Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803711");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-05 11:55:02 +0530 (Wed, 05 Jun 2013)");
   script_name("Monkey HTTPD Host Header Buffer Overflow Vulnerability");
 
@@ -39,7 +39,6 @@ if(description)
   script_xref(name:"URL", value:"http://bugs.monkey-project.com/ticket/182");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/monkey-120-buffer-overflow");
 
-  script_summary("Check Monkey HTTPD is vulnerable to BoF");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2013 Greenbone Networks");
   script_family("Buffer overflow");

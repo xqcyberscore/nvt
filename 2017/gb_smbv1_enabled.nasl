@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smbv1_enabled.nasl 5772 2017-03-29 16:44:30Z mime $
+# $Id: gb_smbv1_enabled.nasl 6154 2017-05-18 05:54:36Z cfi $
 #
 # SMBv1 enabled (Remote Check)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140151");
-  script_version("$Revision: 5772 $");
+  script_version("$Revision: 6154 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 18:44:30 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 07:54:36 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-04 09:33:13 +0100 (Sat, 04 Feb 2017)");
   script_name("SMBv1 enabled (Remote Check)");
   script_category(ACT_GATHER_INFO);
@@ -42,20 +42,29 @@ if(description)
   script_mandatory_keys("smb_v1/supported", "Host/runs_windows");
   script_exclude_keys("SMB/samba");
 
-  script_tag(name:"summary", value:"The remote Windows host is prone to an unspecified remote code execution vulnerability in SMBv1 protocol.");
+  script_tag(name:"summary", value:"The remote Windows host is prone to an unspecified remote code execution vulnerability in SMBv1 protocol.
+
+  This NVT has been replaced by NVT 'Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)'
+  (OID: 1.3.6.1.4.1.25623.1.0.810810).");
+
   script_tag(name:"insight", value:"The remote Windows host is supporting SMBv1 and is therefore prone to an unspecified remote code execution vulnerability. This vulnerability is related to the `Shadow Brokers` group.");
+
   script_tag(name:"solution", value:"Disable SMB v1 and/or block all versions of SMB at the network boundary by blocking TCP port 445 with related protocols on UDP ports 137-138 and TCP port 139, for all boundary devices.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_xref(name:"URL", value:"https://www.us-cert.gov/ncas/current-activity/2017/01/16/SMB-Security-Best-Practices");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2696547");
   script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/204279");
   script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS17-010");
 
+  script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
+
+exit(66);
 
 include("smb_nt.inc");
 include("host_details.inc");

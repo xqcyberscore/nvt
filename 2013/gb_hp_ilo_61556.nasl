@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_61556.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_hp_ilo_61556.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # HP Integrated Lights-Out Unspecified Authentication Bypass Vulnerability
 #
@@ -50,7 +50,7 @@ if (description)
  script_cve_id("CVE-2013-4805");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6074 $");
 
  script_name("HP Integrated Lights-Out  Unspecified Authentication Bypass Vulnerability");
 
@@ -58,9 +58,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61556");
  script_xref(name:"URL", value:"http://www.hp.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-09-10 14:47:03 +0200 (Tue, 10 Sep 2013)");
- script_summary("Determine if firmware version is <1.60/1.30");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

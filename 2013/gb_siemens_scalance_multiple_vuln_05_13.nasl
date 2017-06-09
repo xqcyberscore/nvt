@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 2938 2016-03-24 08:37:56Z benallard $
+# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Siemens Scalance X200 Series Switches Multiple Vulnerabillities.
 #
@@ -52,7 +52,7 @@ if (description)
  script_cve_id("CVE-2013-3634","CVE-2013-3633");
  script_tag(name:"cvss_base", value:"8.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
- script_version ("$Revision: 2938 $");
+ script_version ("$Revision: 6104 $");
 
  script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabillities");
 
@@ -61,9 +61,8 @@ if (description)
  script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
  script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:37:56 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-30 17:50:28 +0200 (Thu, 30 May 2013)");
- script_summary("Check the Firmware version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_banners_lite_xss_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_wp_banners_lite_xss_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Wordpress WP Banners Lite Plugin Cross Site Scripting Vulnerability
 #
@@ -51,10 +51,10 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803450);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-26 15:56:32 +0530 (Tue, 26 Mar 2013)");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_name("Wordpress WP Banners Lite Plugin Cross Site Scripting Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120928");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Mar/209");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wp-banners-lite-140-cross-site-scripting");
-  script_summary("Check if WordPress WP Banners Lite Plugin is vulnerable to XSS Vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

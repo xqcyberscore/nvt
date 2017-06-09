@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monsta_ftp_mult_vuln.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_monsta_ftp_mult_vuln.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Monsta FTP Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:monsta:ftp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806050");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6141 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-15 09:23:14 +0530 (Tue, 15 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Monsta FTP Multiple Vulnerabilities");
@@ -61,7 +61,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38148");
-  script_summary("Check if Monsta FTP is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_raritan_poweriq_sql_inj_vuln.nasl 5235 2017-02-08 14:09:56Z cfi $
+# $Id: gb_raritan_poweriq_sql_inj_vuln.nasl 6184 2017-05-22 10:25:33Z ckuerste $
 #
 # Raritan Power IQ SQL Injection Vulnerability
 #
@@ -25,11 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:raritan:power_iq";
+
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105922");
-  script_version("$Revision: 5235 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-08 15:09:56 +0100 (Wed, 08 Feb 2017) $");
+  script_version("$Revision: 6184 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 12:25:33 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2014-08-15 16:50:19 +0700 (Fri, 15 Aug 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,9 +49,9 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl");
+  script_dependencies("gb_raritan_poweriq_detect.nasl");
+  script_mandatory_keys("raritan_poweriq/detected");
   script_require_ports("Services/www", 443);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name: "summary", value: "Raritan Power IQ SQL Injection Vulnerability");
 
@@ -77,10 +79,12 @@ https://www.raritan.com/support/product/poweriq/security-patches");
   exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:443);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
 host = http_host_name(port:port);
 

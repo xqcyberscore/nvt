@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avocent_kvm_default_login.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_avocent_kvm_default_login.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Avocent KVM Default Login
 #
@@ -29,14 +29,13 @@ if (description)
 {
  
  script_oid("1.3.6.1.4.1.25623.1.0.103767");
- script_version ("$Revision: 2923 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+ script_version ("$Revision: 6079 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-19 11:03:03 +0100 (Mon, 19 Aug 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Avocent KVM Default Login");
 
- script_summary("Try to login with default credential");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

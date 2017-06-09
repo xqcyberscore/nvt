@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871356");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-16 07:00:48 +0200 (Thu, 16 Apr 2015)");
   script_cve_id("CVE-2005-1080", "CVE-2015-0460", "CVE-2015-0469", "CVE-2015-0477",
                 "CVE-2015-0478", "CVE-2015-0480", "CVE-2015-0488");
@@ -81,7 +81,6 @@ must be restarted for the update to take effect.
   script_xref(name: "RHSA", value: "2015:0807-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-April/msg00020.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of java-1.7.0-openjdk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2180.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2180.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122750");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:17:25 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2180");
 script_tag(name: "insight", value: "ELSA-2015-2180 -  rubygem-bundler and rubygem-thor security, bug fix, and enhancement update - rubygem-bundler[1.7.8-3]- Enforce higher Thor version, which is required by Bundler. Related: rhbz#1194243[1.7.8-2]- Update to Bundler 1.7.8. Resolves: rhbz#1194243- Use symlinks for vendored libraries. Resolves: rhbz#1163076[1.3.1-3]- Mass rebuild 2013-12-27[1.3.1-2]- Always include Patch100 in SRPM.[1.3.1-1]rubygem-thor[0.19.1-1]- Update to thor 1.19.1. Resolves: rhbz#1209921"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2180");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

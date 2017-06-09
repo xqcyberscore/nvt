@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20170215-asyncos.nasl 5471 2017-03-03 07:01:03Z cfi $
+# $Id: gb_cisco_wsa_cisco-sa-20170215-asyncos.nasl 6126 2017-05-15 10:06:16Z ckuerste $
 #
 # Cisco AsyncOS Software for Cisco WSA Filtering Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3827");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 5471 $");
+ script_version("$Revision: 6126 $");
 
  script_name("Cisco AsyncOS Software for Cisco WSA Filtering Bypass Vulnerability");
 
@@ -59,7 +59,7 @@ the device.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-03-03 08:01:03 +0100 (Fri, 03 Mar 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-15 12:06:16 +0200 (Mon, 15 May 2017) $");
  script_tag(name: "creation_date", value: "2017-02-16 11:36:45 +0700 (Thu, 16 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -67,8 +67,13 @@ the device.");
  script_dependencies("gb_cisco_wsa_version.nasl");
  script_mandatory_keys("cisco_wsa/installed");
 
+ # Cisco states WSA as not vulnerable anymore.
+ script_tag(name: "deprecated", value: TRUE);
+
  exit(0);
 }
+
+exit(66);
 
 include("host_details.inc");
 include("version_func.inc");

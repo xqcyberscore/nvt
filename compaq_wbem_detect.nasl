@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compaq_wbem_detect.nasl 5408 2017-02-23 18:18:57Z cfi $
+# $Id: compaq_wbem_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Compaq WBEM Server Detection
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10746");
-  script_version("$Revision: 5408 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 19:18:57 +0100 (Thu, 23 Feb 2017) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Compaq WBEM Server Detection");
-  script_summary("Compaq WBEM Server Detect");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 SecuriTeam");
   script_family("Service detection");

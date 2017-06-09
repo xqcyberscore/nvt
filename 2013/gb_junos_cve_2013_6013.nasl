@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6013.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_junos_cve_2013_6013.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Junos flowd Buffer Overflow Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103954");
-  script_version ("$Revision: 2939 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_version ("$Revision: 6115 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-22 23:25:39 +0700 (Fri, 22 Nov 2013)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -43,7 +43,6 @@ if (description)
 
   script_name("Junos flowd Buffer Overflow Vulnerability");
 
-  script_summary("Junos CVE-2013-6013");
 
   script_category(ACT_GATHER_INFO);
 

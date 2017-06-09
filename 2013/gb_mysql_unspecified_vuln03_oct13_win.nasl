@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln03_oct13_win.nasl 5080 2017-01-24 11:02:59Z cfi $
+# $Id: gb_mysql_unspecified_vuln03_oct13_win.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Oracle MySQL Server Component 'Replication' Unspecified vulnerability Oct-2013 (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5080 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-5807");
   script_bugtraq_id(63105);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:02:59 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-28 16:48:25 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle MySQL Server Component 'Replication' Unspecified vulnerability Oct-2013 (Windows)");
 
@@ -73,7 +73,6 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55327");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
-  script_summary("Check for the vulnerable version of Oracle MySQL on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Databases");

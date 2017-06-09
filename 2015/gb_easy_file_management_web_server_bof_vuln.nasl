@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_management_web_server_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_easy_file_management_web_server_bof_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Easy File Management Web Server USERID Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805096");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6194 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-24 16:20:19 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Easy File Management Web Server USERID Buffer Overflow Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37808");
 
-  script_summary("Check if Easy File Management Web Server is vulnerable to buffer overflow");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

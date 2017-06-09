@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_omsa_remote_detect.nasl 3201 2016-04-29 13:33:43Z antu123 $
+# $Id: gb_dell_omsa_remote_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Dell OpenManage Server Administrator Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807563");
-  script_version("$Revision: 3201 $");
+  script_version("$Revision: 6125 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-29 15:33:43 +0200 (Fri, 29 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2016-04-27 10:47:16 +0530 (Wed, 27 Apr 2016)");
   script_name("Dell OpenManage Server Administrator Remote Detection");
 
@@ -41,7 +41,6 @@ if(description)
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Set the version of Dell OpenManage Server Administrator in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");

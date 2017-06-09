@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_gsm_manager_auth_bypass_11_13.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # GSM Manager Authentication Bypass
 #
@@ -48,7 +48,7 @@ If public OMP is not enabled, check the GOS version.";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6115 $");
  script_cve_id("CVE-2013-6765");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,9 +58,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://greenbone.net/technology/gbsa2013-01.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-11-08 13:02:55 +0200 (Fri, 08 Nov 2013)");
- script_summary("Determine if it is possible to bypass OMP authentcation or check the version.");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("General");

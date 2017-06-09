@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2729.nasl 2865 2016-03-16 09:26:51Z benallard $
+# $Id: deb_2729.nasl 6115 2017-05-12 09:03:25Z teissa $
 # Auto-generated from advisory DSA 2729-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -52,17 +52,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892729);
-    script_version("$Revision: 2865 $");
+    script_version("$Revision: 6115 $");
     script_cve_id("CVE-2013-4134", "CVE-2013-4135");
     script_name("Debian Security Advisory DSA 2729-1 (openafs - several vulnerabilities)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 10:26:51 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
     script_tag(name: "creation_date", value:"2013-07-28 00:00:00 +0200 (Sun, 28 Jul 2013)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2729.html");
 
-    script_summary("Debian Security Advisory DSA 2729-1 (openafs - several vulnerabilities)");
 
     script_category(ACT_GATHER_INFO);
 

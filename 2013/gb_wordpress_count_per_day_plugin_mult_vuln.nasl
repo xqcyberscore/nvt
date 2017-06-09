@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_mult_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_count_per_day_plugin_mult_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Wordpress Count per Day Plugin Multiple Vulnerabilities
 #
@@ -54,15 +54,14 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:34:32 +0530 (Wed, 06 Mar 2013)");
   script_name("Wordpress Count per Day Plugin Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Mar/43");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Mar/48");
-  script_summary("Check if WordPress Count per Day Plugin is vulnerable to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

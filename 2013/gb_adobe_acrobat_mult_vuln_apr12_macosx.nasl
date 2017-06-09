@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln_apr12_macosx.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_acrobat_mult_vuln_apr12_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Adobe Acrobat Multiple Vulnerabilities April-2012 (Mac OS X)
 #
@@ -44,18 +44,17 @@ tag_summary = "This host is installed with Adobe Acrobat and is prone to
 if(description)
 {
   script_id(803827);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-0777", "CVE-2012-0776", "CVE-2012-0774", "CVE-2012-0775");
   script_bugtraq_id(52950, 52952, 52951, 52949);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-11 15:26:49 +0530 (Thu, 11 Jul 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities April-2012 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48733");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026908");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-08.html");
-  script_summary("Check for the version of Adobe Acrobat on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

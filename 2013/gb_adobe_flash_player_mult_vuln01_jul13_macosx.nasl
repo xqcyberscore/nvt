@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jul13_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln01_jul13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 July13 (Mac OS X)
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if(description)
 {
   script_id(803832);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3347", "CVE-2013-3345", "CVE-2013-3344");
   script_bugtraq_id(61048, 61045, 61043);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-25 17:41:58 +0530 (Thu, 25 Jul 2013)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 July13 (Mac OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to  http://get.adobe.com/flashplayer";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53975");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-17.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

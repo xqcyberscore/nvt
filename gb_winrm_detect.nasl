@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winrm_detect.nasl 4626 2016-11-25 07:20:06Z cfi $
+# $Id: gb_winrm_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Detection of WinRM
 #
@@ -28,14 +28,13 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103923");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4626 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-25 08:20:06 +0100 (Fri, 25 Nov 2016) $");
+ script_version("$Revision: 6065 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2014-03-19 12:39:47 +0100 (Wed, 19 Mar 2014)");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("WinRM Detection");
 
- script_summary("Check for WinRM");
  script_category(ACT_GATHER_INFO);
  script_family("Service detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_pcman_ftp_stor_buff_overflow_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # PCMAN FTP Server STOR Command Buffer Overflow vulnerability
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_id(803875);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6093 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:49:10 +0530 (Wed, 21 Aug 2013)");
   script_name("PCMAN FTP Server STOR Command Buffer Overflow vulnerability");
 
@@ -74,7 +74,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27703");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013080160");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122883");
-  script_summary("Determine if PCMan's Server is prone to buffer overflow vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_fsm_detect.nasl 5736 2017-03-27 13:36:24Z cfi $
+# $Id: gb_solarwinds_fsm_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Solarwinds Firewall Security Manager Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106013");
- script_version ("$Revision: 5736 $");
- script_tag(name: "last_modification", value: "$Date: 2017-03-27 15:36:24 +0200 (Mon, 27 Mar 2017) $");
+ script_version ("$Revision: 6065 $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name: "creation_date", value: "2015-06-30 10:54:34 +0700 (Tue, 30 Jun 2015)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -51,7 +51,6 @@ Security Manager (FSM).");
  script_require_ports("Services/www", 48080);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_summary("Checks for the presence of Solarwinds Firewall Security Manager.");
 
  exit(0);
 }

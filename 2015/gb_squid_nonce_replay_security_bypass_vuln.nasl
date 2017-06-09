@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 2790 2016-03-08 06:11:44Z antu123 $
+# $Id: gb_squid_nonce_replay_security_bypass_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # Squid Nonce Replay Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806902");
-  script_version("$Revision: 2790 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2014-9749");
   script_bugtraq_id(77040);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 07:11:44 +0100 (Tue, 08 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-23 13:34:49 +0530 (Wed, 23 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Nonce Replay Security Bypass Vulnerability");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/10/11/4");
   script_xref(name : "URL" , value : "http://bugs.squid-cache.org/show_bug.cgi?id=4066");
 
-  script_summary("Check for the vulnerable version of squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

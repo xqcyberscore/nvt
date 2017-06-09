@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_modules_mult_vuln_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_activeperl_modules_mult_vuln_win.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Active Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -61,11 +61,11 @@ tag_summary = "The host is installed with Active Perl and is prone to multiple
 if(description)
 {
   script_id(803343);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-27 11:15:50 +0530 (Wed, 27 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -77,7 +77,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=731246");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=753955");
   script_xref(name : "URL" , value : "https://rt.cpan.org/Public/Bug/Display.html?id=69560");
-  script_summary("Check for the vulnerable version of Active Perl on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Denial of Service");

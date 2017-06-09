@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3386.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3386.nasl 6207 2017-05-24 09:04:07Z teissa $
 # Auto-generated from advisory DSA 3386-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703386);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6207 $");
     script_cve_id("CVE-2015-7696", "CVE-2015-7697");
     script_name("Debian Security Advisory DSA 3386-1 (unzip - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
     script_tag(name: "creation_date", value: "2015-10-31 00:00:00 +0100 (Sat, 31 Oct 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3386.html");
 
-    script_summary("Debian Security Advisory DSA 3386-1 (unzip - security update)");
 
     script_category(ACT_GATHER_INFO);
 

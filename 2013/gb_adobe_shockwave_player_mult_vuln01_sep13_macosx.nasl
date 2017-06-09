@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_sep13_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_sep13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities-01 Sep13 (Mac OS X)
 #
@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804003";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3359", "CVE-2013-3359");
   script_bugtraq_id(62291, 62292);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-18 19:41:53 +0530 (Wed, 18 Sep 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities-01 Sep13 (Mac OS X)");
 
@@ -77,7 +77,6 @@ For updates refer to http://get.adobe.com/shockwave";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54700");
   script_xref(name : "URL" , value : "https://www.adobe.com/support/security/bulletins/apsb13-23.html");
-  script_summary("Check for the vulnerable version of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

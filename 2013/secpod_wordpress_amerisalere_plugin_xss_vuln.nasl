@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_amerisalere_plugin_xss_vuln.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_wordpress_amerisalere_plugin_xss_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # WordPress Amerisale-Re Plugin Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-28 14:48:09 +0530 (Thu, 28 Nov 2013)");
   script_name("WordPress Amerisale-Re Plugin Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ features, remove the product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124187");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-amerisale-re-cross-site-scripting");
-  script_summary("Check if WordPress Amerisale-Re Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 SecPod");

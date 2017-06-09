@@ -44,9 +44,9 @@ multiple unspecified vulnerabilities.";
 if(description)
 {
   script_id(803419);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6115 $");
   script_bugtraq_id(57931, 57947);
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-19 19:32:21 +0530 (Tue, 19 Feb 2013)");
   script_cve_id("CVE-2013-0640", "CVE-2013-0641");
   script_tag(name:"cvss_base", value:"9.3");
@@ -56,7 +56,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/advisories/apsa13-02.html");
   script_xref(name : "URL" , value : "http://blogs.adobe.com/psirt/2013/02/adobe-reader-and-acrobat-vulnerability-report.html");
 
-  script_summary("Check for the vulnerable version of Adobe Acrobat on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

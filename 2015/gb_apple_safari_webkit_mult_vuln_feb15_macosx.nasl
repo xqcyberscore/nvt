@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_feb15_macosx.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_apple_safari_webkit_mult_vuln_feb15_macosx.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities -01 Feb15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805336");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2014-4479", "CVE-2014-4477", "CVE-2014-4476");
   script_bugtraq_id(72330, 72331, 72329);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-09 18:15:32 +0530 (Mon, 09 Feb 2015)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities -01 Feb15 (Mac OS X)");
 
@@ -63,7 +63,6 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_xref(name : "URL" , value : "http://support.apple.com/en-us/HT204243");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Jan/msg00002.html");
-  script_summary("Check for the vulnerable version of Apple Safari on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

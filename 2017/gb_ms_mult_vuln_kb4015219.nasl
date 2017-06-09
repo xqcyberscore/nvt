@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_mult_vuln_kb4015219.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_ms_mult_vuln_kb4015219.nasl 6106 2017-05-11 10:32:49Z antu123 $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4015219)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810922");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 6106 $");
   script_cve_id("CVE-2017-0202", "CVE-2017-0203", "CVE-2017-0205", "CVE-2017-0208",
                 "CVE-2017-0210", "CVE-2017-0211", "CVE-2017-0192", "CVE-2017-0191",
                 "CVE-2017-0189", "CVE-2017-0188", "CVE-2017-0186", "CVE-2017-0185",
@@ -38,9 +38,8 @@ if(description)
                 "CVE-2017-0156", "CVE-2017-0093", "CVE-2017-0058", "CVE-2013-6629");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 10:47:16 +0530 (Wed, 12 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4015219)");
 
   script_tag(name: "summary" , value:"This host is missing an important security

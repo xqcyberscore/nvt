@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_select_statement_dos_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_soliddb_select_statement_dos_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # IBM solidDB 'SELECT' Statement Denial Of Service Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:soliddb";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2011-4890");
   script_bugtraq_id(51629);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-23 15:49:43 +0530 (Mon, 23 Sep 2013)");
   script_name("IBM solidDB 'SELECT' Statement Denial Of Service Vulnerability");
 
@@ -75,7 +75,6 @@ http://www-03.ibm.com/software/products/us/en/ibmsoli";
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1026555");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC79861");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC80675");
-  script_summary("Check for the version vulnerable version of IBM solidDB");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

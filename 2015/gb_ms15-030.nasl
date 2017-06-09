@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-030.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-030.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Microsoft Windows Remote Desktop Denial of Service Vulnerability (3039976)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805500");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-0079");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 09:50:50 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Windows Remote Desktop Denial of Service Vulnerability (3039976)");
 
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3035017");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-030");
 
-  script_summary("Check for the vulnerable 'Rdpcorets.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

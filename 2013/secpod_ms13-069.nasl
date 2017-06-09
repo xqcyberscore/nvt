@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-069.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-069.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2870699)
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-3201", "CVE-2013-3202", "CVE-2013-3203", "CVE-2013-3204",
                 "CVE-2013-3205", "CVE-2013-3206", "CVE-2013-3207", "CVE-2013-3208",
                 "CVE-2013-3209", "CVE-2013-3845");
@@ -38,7 +38,7 @@ if(description)
                  62214);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-11 07:47:44 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Internet Explorer Multiple Memory Corruption Vulnerabilities (2870699)");
 
@@ -80,7 +80,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-069";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54725");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2870699");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS13-069");
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

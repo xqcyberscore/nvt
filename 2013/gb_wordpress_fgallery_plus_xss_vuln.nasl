@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_fgallery_plus_xss_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_fgallery_plus_xss_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # WordPress fgallery_plus Plugin Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-04 15:50:14 +0530 (Fri, 04 Oct 2013)");
   script_name("WordPress fgallery_plus Plugin Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://www.iedb.ir/exploits-584.html");
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Sep/108");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/528803");
-  script_summary("Check if WordPress fgallery_plus plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0406.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-0406.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123424");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:03:37 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0406");
 script_tag(name: "insight", value: "ELSA-2014-0406 -  java-1.7.0-openjdk security update - [1.7.0.51-2.4.7.1.0.1.el6_5]- Update DISTRO_NAME in specfile[1.7.0.51-2.4.7.1.el6]- regenerated sources to fix TCK failure- Resolves: rhbz#1085002[1.7.0.51-2.4.7.0.el6]- bumped to future icedtea-forest 2.4.7- updatever set to 55, buildver se to 13, release reset to 0- removed upstreamed patch402 gstackbounds.patch- removed BuildRequires on pulseaudio >= 0.9.1, devel is enough- removed Requires: rhino, BuildRequires is enough- added JRE_RELEASE_VERSION and ALT_PARALLEL_COMPILE_JOBS- fixed FT2_CFLAGS and FT2_LIBS- ppc64 repalced by power64 macro- patch111 applied as dry-run (6.5 forward port)- Resolves: rhbz#1085002"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-0406");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_bof_vuln_jan13_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_air_bof_vuln_jan13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Adobe Air Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Adobe Air and is prone to buffer
 if(description)
 {
   script_id(803444);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-0630");
   script_bugtraq_id(57184);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-21 13:16:05 +0530 (Thu, 21 Mar 2013)");
   script_name("Adobe Air Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51771");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027950");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-01.html");
 
-  script_summary("Check for the version of Adobe Air on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

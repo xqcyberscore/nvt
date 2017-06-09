@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_binutils_detect_lin.nasl 2686 2016-02-17 17:41:55Z mime $
+# $Id: gb_gnu_binutils_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # GNU Binutils Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806085");
-  script_version("$Revision: 2686 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 18:41:55 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:03:47 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("GNU Binutils Version Detection (Linux)");
@@ -40,7 +40,6 @@ if(description)
 
   The script logs in via ssh, execute the command 'dpkg' and get version.");
 
-  script_summary("Detection of installed version of GNU Binutils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_bof_vuln_jan13_macosx.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_prdts_bof_vuln_jan13_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Adobe Flash Player Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -39,19 +39,18 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(803153);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-0630");
   script_bugtraq_id(57184);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-15 16:09:23 +0530 (Tue, 15 Jan 2013)");
   script_name("Adobe Flash Player Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51771");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027950");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-01.html");
 
-  script_summary("Check for the version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

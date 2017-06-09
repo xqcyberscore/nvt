@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_mult_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_moinmoin_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # MoinMoin Multiple Vulnerabilities
 #
@@ -50,12 +50,12 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2012-6080", "CVE-2012-6081", "CVE-2012-6082", "CVE-2012-6495");
   script_bugtraq_id(57076, 57082, 57089, 57147);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-21 15:03:34 +0530 (Thu, 21 Mar 2013)");
   script_name("MoinMoin Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://moinmo.in/SecurityFixes");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/12/29/6");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/12/30/6");
 
-  script_summary("Check if MoinMoin is vulnerable to XSS vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

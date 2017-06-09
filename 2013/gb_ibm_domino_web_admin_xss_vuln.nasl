@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_web_admin_xss_vuln.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_ibm_domino_web_admin_xss_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # IBM Lotus Domino Web Administrator Cross Site Scripting Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5701 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-4055", "CVE-2013-4051", "CVE-2013-4050");
   script_bugtraq_id(63578,63577,63576);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-05 13:26:26 +0530 (Thu, 05 Dec 2013)");
   script_name("IBM Lotus Domino Web Administrator Cross Site Scripting Vulnerability");
 
@@ -77,7 +77,6 @@ product or replace the product by another one.";
 
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/86544");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21652988");
-  script_summary("Determine if IBM Lotus Domino version is vulnerable");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -46,12 +46,12 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to multip
 if(description)
 {
   script_id(803156);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2012-3174", "CVE-2013-0422");
   script_bugtraq_id(57246, 57312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-17 12:41:59 +0530 (Thu, 17 Jan 2013)");
   script_name("Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51820/");
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/java/javase/7u11-relnotes-1896856.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/alert-cve-2013-0422-1896849.html");
 
-  script_summary("Check for the version of Oracle Java SE JRE on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1647.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1647.nasl 6170 2017-05-19 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123281");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6170 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:41 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1647");
 script_tag(name: "insight", value: "ELSA-2014-1647 -  thunderbird security update - [31.2.0-3.0.1.el6_5]- Replaced thunderbird-redhat-default-prefs.js with thunderbird-oracle-default-prefs.js[31.2.0-3]- Enabled jemalloc on ppc(64) and s390(x)[31.2.0-2]- Update to 31.2.0[31.1.1-2]- Sync preferences with Firefox[31.1.1-1]- Update to 31.1.1[31.1.0-1]- Update to 31.1.0[31.0-1]- Rebase to 31 ESR"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1647");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

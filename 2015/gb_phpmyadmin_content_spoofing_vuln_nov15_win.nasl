@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_phpmyadmin_content_spoofing_vuln_nov15_win.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # phpMyAdmin Content spoofing vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806549");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-7873");
   script_bugtraq_id(77299);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-27 12:26:46 +0530 (Fri, 27 Nov 2015)");
   script_name("phpMyAdmin Content spoofing vulnerability Nov15 (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.phpmyadmin.net/security/PMASA-2015-5");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of phpMyAdmin on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");

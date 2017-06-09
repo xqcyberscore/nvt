@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_olap_query_dos_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_db2_olap_query_dos_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # IBM DB2 OLAP Specification Query Denial of Service Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-6717");
   script_bugtraq_id(64336);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-26 17:35:04 +0530 (Thu, 26 Dec 2013)");
   script_name("IBM DB2 OLAP Specification Query Denial of Service Vulnerability");
 
@@ -81,7 +81,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21660041 ";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56012");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89116");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21660041");
-  script_summary("Check for the vulnerable version of IBM DB2");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

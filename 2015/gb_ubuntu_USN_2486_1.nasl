@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842076");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-28 06:10:59 +0100 (Wed, 28 Jan 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2014-6587", "CVE-2014-6601", "CVE-2015-0395",
                 "CVE-2015-0408", "CVE-2015-0412", "CVE-2014-6585", "CVE-2014-6591",
@@ -68,7 +68,6 @@ An attacker could this exploit to cause a denial of service.
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-January/002814.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

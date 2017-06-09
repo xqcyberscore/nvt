@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_win.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_putty_info_disc_vuln_win.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # PuTTY Information Disclosure vulnerability (Windows)
 #
@@ -33,12 +33,12 @@ CPE = "cpe:/a:putty:putty";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2011-4607");
   script_bugtraq_id(51021);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-26 15:35:39 +0530 (Mon, 26 Aug 2013)");
   script_name("PuTTY Information Disclosure vulnerability (Windows)");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2011/q4/500");
   script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2011-4607");
   script_xref(name : "URL" , value : "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/password-not-wiped.html");
-  script_summary("Check for the vulnerable version of PuTTy on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

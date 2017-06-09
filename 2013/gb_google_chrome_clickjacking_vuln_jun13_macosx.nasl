@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_clickjacking_vuln_jun13_macosx.nasl 2936 2016-03-24 08:30:15Z benallard $
+# $Id: gb_google_chrome_clickjacking_vuln_jun13_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Google Chrome Clickjacking Vulnerability June13 (MAC OS X)
 #
@@ -39,17 +39,16 @@ tag_summary = "The host is installed with Google Chrome and is prone to
 if(description)
 {
   script_id(803676);
-  script_version("$Revision: 2936 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-2866");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:10:48 +0530 (Mon, 24 Jun 2013)");
   script_name("Google Chrome Clickjacking Vulnerability June13 (MAC OS X)");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1028694");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/06/stable-channel-update_18.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

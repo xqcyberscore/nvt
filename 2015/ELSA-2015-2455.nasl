@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2455.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2455.nasl 6207 2017-05-24 09:04:07Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122740");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6207 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:17:17 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2455");
 script_tag(name: "insight", value: "ELSA-2015-2455 -  unbound security and bug fix update - [1.4.20-26]- Added Conficts on redhat-release packages without unbound-anchor.timer in presets (Related #1215645)[1.4.20-25]- Resolve ordering loop with nss-lookup.target and ntpdate (#1259806)[1.4.20-24]- Fix CVE-2014-8602 (#1253961)[1.4.20-23]- Removed usage of DLV from the default configuration (#1223339)[1.4.20-22]- unbound.service now Wants unbound-anchor.timer (Related: #1180267)[1.4.20-21]- Fix dependencies and minor scriptlet issues due to systemd timer unit (Related: #1180267)[1.4.20-20]- Install tmpfiles configuration into /usr/lib/tmpfiles.d (#1180995)- Fix root key management to comply to RFC5011 (#1180267)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2455");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

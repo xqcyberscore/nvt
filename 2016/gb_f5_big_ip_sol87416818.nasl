@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol87416818.nasl 5104 2017-01-25 12:03:53Z antu123 $
+# $Id: gb_f5_big_ip_sol87416818.nasl 6197 2017-05-23 11:14:19Z teissa $
 #
 # F5 BIG-IP - SOL87416818 - TMM vulnerability CVE-2016-7476
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140057");
  script_cve_id("CVE-2016-7476");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5104 $");
+ script_tag(name:"cvss_base", value:"5.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+ script_version ("$Revision: 6197 $");
 
  script_name("F5 BIG-IP - SOL87416818 - TMM vulnerability CVE-2016-7476");
 
@@ -48,7 +48,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-25 13:03:53 +0100 (Wed, 25 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-23 13:14:19 +0200 (Tue, 23 May 2017) $");
  script_tag(name:"creation_date", value:"2016-11-14 14:11:08 +0100 (Mon, 14 Nov 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");

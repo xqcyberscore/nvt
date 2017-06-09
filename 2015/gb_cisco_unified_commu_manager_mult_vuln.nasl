@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Cisco Unified Communications Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805097");
-  script_version("$Revision: 3859 $");
+  script_version("$Revision: 6183 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-24 17:37:08 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Cisco Unified Communications Manager Multiple Vulnerabilities");
@@ -75,7 +75,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37816/");
 
-  script_summary("Check if Easy File Management Web Server is vulnerable to buffer overflow");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CISCO");

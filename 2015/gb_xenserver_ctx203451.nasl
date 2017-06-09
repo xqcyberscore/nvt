@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx203451.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx203451.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Citrix XenServer Security Update for CVE-2015-8339 & CVE-2015-8340 (CTX203451)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-8339","CVE-2015-8340");
  script_tag(name:"cvss_base", value:"4.7");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 5595 $");
+ script_version ("$Revision: 6207 $");
 
  script_name("Citrix XenServer Security Update for CVE-2015-8339 & CVE-2015-8340 (CTX203451))");
 
@@ -48,9 +48,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
  script_tag(name:"creation_date", value:"2015-12-09 18:03:53 +0100 (Wed, 09 Dec 2015)");
- script_summary("Check the installed hotfixes");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-572.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-572.nasl 6183 2017-05-22 09:03:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120278");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6183 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:22:26 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-572");
 script_tag(name: "insight", value: "It was found that libuser, as used in the chfn userhelper functionality, does not properly filter out newline characters, which allows an authenticated local attacker to corrupt the /etc/passwd file and cause denial-of-service against the system. (CVE-2015-3245 )A flaw was found in the way the libuser library handled the /etc/passwd file. A local attacker could use an application compiled against libuser (for example, userhelper) to manipulate the /etc/passwd file, which could result in a denial of service or possibly allow the attacker to escalate their privileges to root. (CVE-2015-3246 )"); 
 script_tag(name : "solution", value : "Run yum update usermode libuser to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-572");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

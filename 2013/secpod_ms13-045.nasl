@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-045.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-045.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Windows Essentials Information Disclosure Vulnerability (2813707)
 #
@@ -40,16 +40,15 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_id(903210);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-0096");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 16:30:40 +0530 (Wed, 15 May 2013)");
   script_name("Windows Essentials Information Disclosure Vulnerability (2813707)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2813707");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-045");
-  script_summary("Check for the vulnerable 'wlarp.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

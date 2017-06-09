@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_rce_02_2013.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dlink_rce_02_2013.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # D-Link DIR-600/DIR 300 Remote Code Execution Vulnerabilities
 #
@@ -49,16 +49,15 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103656";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 5390 $");
+ script_version ("$Revision: 6093 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("D-Link DIR-600/DIR 300 Remote Code Execution Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120052/D-Link-DIR-600-DIR-300-Command-Execution-Bypass-Disclosure.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-02-05 16:00:07 +0100 (Tue, 05 Feb 2013)");
- script_summary("Determine if it is possible to execute the ls command");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

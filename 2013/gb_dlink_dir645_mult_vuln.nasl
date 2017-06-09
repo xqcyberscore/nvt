@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dlink_dir645_mult_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # D-Link DIR-645 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803730");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-7389");
   script_bugtraq_id(61579);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-05 15:17:38 +0530 (Mon, 05 Aug 2013)");
   script_name("D-Link DIR-645 Router Multiple Vulnerabilities");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name:"URL", value:"http://roberto.greyhats.it/advisories/20130801-dlink-dir645.txt");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/hardware/d-link-dir-645-103b08-multiple-vulnerabilities");
 
-  script_summary("Check if D-Link DIR-645 is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

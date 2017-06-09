@@ -30,14 +30,14 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804012";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-1718", "CVE-2013-1722", "CVE-2013-1725", "CVE-2013-1726",
                 "CVE-2013-1730", "CVE-2013-1732", "CVE-2013-1735", "CVE-2013-1736",
                 "CVE-2013-1737");
   script_bugtraq_id(62463, 62460, 62467, 62482, 62473, 62469, 62479, 62478, 62475);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-24 15:40:41 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 Sep13 (Mac OS X)");
 
@@ -78,7 +78,6 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54896");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-88.html");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird ESR on Mac oS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

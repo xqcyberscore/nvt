@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3218.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3218.nasl 6141 2017-05-17 09:03:37Z teissa $
 # Auto-generated from advisory DSA 3218-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703218);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6141 $");
     script_cve_id("CVE-2015-0844");
     script_name("Debian Security Advisory DSA 3218-1 (wesnoth-1.10 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
     script_tag(name: "creation_date", value: "2015-04-10 00:00:00 +0200 (Fri, 10 Apr 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3218.html");
 
-    script_summary("Debian Security Advisory DSA 3218-1 (wesnoth-1.10 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

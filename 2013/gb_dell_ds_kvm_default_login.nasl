@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_ds_kvm_default_login.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_dell_ds_kvm_default_login.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Dell KVM Default Login
 #
@@ -29,14 +29,13 @@ if (description)
 {
  
  script_oid("1.3.6.1.4.1.25623.1.0.103764");
- script_version ("$Revision: 2939 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_version ("$Revision: 6104 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-19 11:03:03 +0100 (Mon, 19 Aug 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Dell KVM Default Login");
 
- script_summary("Try to login with default credential");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

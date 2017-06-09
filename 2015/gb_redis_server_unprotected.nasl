@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_server_unprotected.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_redis_server_unprotected.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Redis Server No Password
 #
@@ -30,13 +30,12 @@ CPE = 'cpe:/a:redis:redis';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105291");
- script_version("$Revision: 2676 $");
+ script_version("$Revision: 6194 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Redis Server No Password");
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-05 15:48:46 +0200 (Fri, 05 Jun 2015)");
- script_summary("Determine if the remote redis is protected by a password");
  script_category(ACT_ATTACK);
  script_family("Databases");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-077.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms15-077.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Microsoft ATM Font Driver Privilege Elevation Vulnerability (3077657)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805073");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-2387");
   script_bugtraq_id(75587);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 08:18:46 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft ATM Font Driver Privilege Elevation Vulnerability (3077657)");
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3077657");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-077");
 
-  script_summary("Check for the vulnerable file 'Atmfd.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

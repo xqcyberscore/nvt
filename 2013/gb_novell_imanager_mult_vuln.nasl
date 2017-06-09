@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_imanager_mult_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_novell_imanager_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Novell iManager Multiple Vulnerabilities
 #
@@ -52,17 +52,16 @@ if (description)
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "solution" , value : tag_solution);
   script_id(803626);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3268", "CVE-2013-1088");
   script_bugtraq_id(59042, 59450);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-04 16:30:14 +0530 (Tue, 04 Jun 2013)");
   script_name("Novell iManager Multiple Vulnerabilities");
 
   script_xref(name : "URL" , value : "http://www.novell.com/support/kb/doc.php?id=7010166");
-  script_summary("Check for the vulnerable version of Novell iManager");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

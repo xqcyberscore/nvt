@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803968";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-6802", "CVE-2013-6632");
   script_bugtraq_id(63729, 63727);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-25 14:00:39 +0530 (Mon, 25 Nov 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Nov2013 (Linux)");
 
@@ -77,7 +77,6 @@ For updates refer to http://www.google.com/chrome";
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/11/stable-channel-update_14.html");
-  script_summary("Check the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

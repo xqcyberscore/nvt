@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 5884 2017-04-06 14:57:35Z teissa $
+# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 6158 2017-05-18 08:17:39Z teissa $
 #
 # Freeproxy Internet Suite Denial of Service Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:freeproxy_internet_suite:freeproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806895");
-  script_version("$Revision: 5884 $");
+  script_version("$Revision: 6158 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 16:57:35 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 10:17:39 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:03:06 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Freeproxy Internet Suite Denial of Service Vulnerability");
@@ -54,12 +54,10 @@ if(description)
 
   script_tag(name:"affected" , value:"Freeproxy Internet Suite 4.10.1751");
 
-  script_tag(name:"solution" , value:"No solution or patch is available as
-  of 06th April, 2017. Information regarding this issue will be updated once
-  the solution details are available.
-  For updates refer to http://www.handcraftedsoftware.org/index.php?page=download");
+  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39517/");
 

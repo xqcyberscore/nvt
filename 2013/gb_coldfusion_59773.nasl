@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coldfusion_59773.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_coldfusion_59773.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Adobe ColdFusion  Information Disclosure Vulnerability
 #
@@ -45,7 +45,7 @@ if (description)
  script_cve_id("CVE-2013-3336", "CVE-2013-1389");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5627 $");
+ script_version ("$Revision: 6074 $");
 
  script_name("Adobe ColdFusion  Information Disclosure Vulnerability");
 
@@ -53,9 +53,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.adobe.com/products/coldfusion/");
  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-13.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-10 11:21:00 +0200 (Fri, 10 May 2013)");
- script_summary("Determine if LFI is possible");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

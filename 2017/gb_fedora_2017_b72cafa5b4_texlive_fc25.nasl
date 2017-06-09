@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872531");
-  script_version("$Revision: 5822 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:37:24 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 6157 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 10:15:25 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2017-03-29 06:26:59 +0200 (Wed, 29 Mar 2017)");
   script_cve_id("CVE-2016-10243");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for texlive FEDORA-2017-b72cafa5b4");
   script_tag(name: "summary", value: "Check the version of texlive");

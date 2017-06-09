@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842163");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6194 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-09 07:09:48 +0200 (Thu, 09 Apr 2015)");
   script_cve_id("CVE-2014-8159", "CVE-2015-1593", "CVE-2015-2041", "CVE-2015-2042");
   script_tag(name:"cvss_base", value:"6.9");
@@ -60,7 +60,6 @@ this flaw to read data from other sysctl settings. (CVE-2015-2042)");
   script_xref(name: "USN", value: "2561-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-April/002899.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

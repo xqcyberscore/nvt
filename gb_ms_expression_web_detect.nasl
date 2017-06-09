@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_expression_web_detect.nasl 2835 2016-03-11 08:45:17Z benallard $
+# $Id: gb_ms_expression_web_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Microsoft Expression Web Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802885");
-  script_version("$Revision: 2835 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 09:45:17 +0100 (Fri, 11 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2012-07-11 18:35:57 +0530 (Wed, 11 Jul 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Expression Web Detection");
@@ -47,7 +47,6 @@ in the registry and gets the version from 'Version' string in registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Detection of installed version of Microsoft Expression Web");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");

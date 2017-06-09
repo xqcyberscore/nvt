@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_imc_cisco-sa-20151211-imc.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_imc_cisco-sa-20151211-imc.nasl 6194 2017-05-23 09:04:00Z teissa $
 #
 # Cisco Integrated Management Controller Denial of Service Vulnerability 
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6399");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6194 $");
 
  script_name("Cisco Integrated Management Controller Denial of Service Vulnerability");
 
@@ -52,9 +52,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
  script_tag(name:"creation_date", value:"2015-12-15 11:41:43 +0100 (Tue, 15 Dec 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

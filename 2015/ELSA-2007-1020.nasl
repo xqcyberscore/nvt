@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-1020.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-1020.nasl 6159 2017-05-18 09:03:44Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122647");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6159 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:14 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-1020");
 script_tag(name: "insight", value: "ELSA-2007-1020 -  Important: cups security and bug fix update - [1.2.4-11.14.el5_1.1] - Applied patch to fix CVE-2007-4351 (STR #2561, bug #353981). [1.2.4-11.14] - Applied patch to fix cupsd crash when failing to open a file: URI (STR #2351, bug #250415). [1.2.4-11.13] - Moved LSPP security attributes check before job creation (bug #231522). [1.2.4-11.12] - Moved LSPP access check before job creation (bug #231522). [1.2.4-11.11] - Better error checking in the LSPP patch (bug #231522). [1.2.4-11.10] - Applied patch to fix CVE-2007-3387 (bug #248223). [1.2.4-11.9] - Fixed IPv6 address parsing (bug #241400, STR #2117). - Fixed a bug that caused cups-lpd not to set the correct value for job-originating-host-name (bug #240223, STR #2023). - Cleaned up initscript error handling (bug #237953). - Fixed cups-lpd -odocument-format=... option (bug #230073, STR #2266). - Fixed If-Modified-Since: handling in libcups (bug #218764, STR #2133). - Make the initscript use start priority 56 (bug #213828). [1.2.4-11.8] - Applied fix for STR #2264 (bug #230118). - Added patch for UNIX domain sockets authentication (bug #230613). - LSPP: Updated patch for line-wrapped labels (bug #228107). [1.2.4-11.7] - Don't reload CUPS after rotating the logs with logrotate, but make sure to use the new file in that case (bug #215024). [1.2.4-11.6] - LSPP: added check_context() function for get_jobs(), get_job_attrs() and validate_user() (bug #229673). - Fixed a potential scheduler crash (bug #231522)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-1020");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

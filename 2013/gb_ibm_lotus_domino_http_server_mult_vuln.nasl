@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_domino_http_server_mult_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_ibm_lotus_domino_http_server_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # IBM Lotus Domino HTTP Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:ibm:lotus_domino';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803187");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_bugtraq_id(55095, 58152);
   script_cve_id("CVE-2012-3301", "CVE-2012-3302", "CVE-2012-4842", "CVE-2012-4844");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-27 14:56:20 +0530 (Wed, 27 Mar 2013)");
   script_name("IBM Lotus Domino HTTP Server Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/50330");
@@ -45,7 +45,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21614077");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21608160");
 
-  script_summary("Read the configuration information from domcfg.nsf");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

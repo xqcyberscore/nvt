@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_xss_vuln_aug13.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_joomla_xss_vuln_aug13.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Joomla 'lang' Parameter Cross Site Scripting Vulnerability-August13
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-06 12:51:57 +0530 (Tue, 06 Aug 2013)");
   script_name("Joomla 'lang' Parameter Cross Site Scripting Vulnerability-August13");
 
@@ -72,7 +72,6 @@ For updates refer to http://www.joomla.org/download.html";
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013080045");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/527765");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-315-cross-site-scripting");
-  script_summary("Check if Joomla is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

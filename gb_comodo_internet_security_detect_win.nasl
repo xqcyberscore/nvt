@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_internet_security_detect_win.nasl 3048 2016-04-12 07:04:51Z antu123 $
+# $Id: gb_comodo_internet_security_detect_win.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Comodo Internet Security Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803683");
-  script_version("$Revision: 3048 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-12 09:04:51 +0200 (Tue, 12 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-05 13:15:00 +0530 (Fri, 05 Jul 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Comodo Internet Security Version Detection (Windows)");
@@ -46,7 +46,6 @@ registry and gets the version from registry";
 
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Detection of installed version of Comodo Internet Security on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");

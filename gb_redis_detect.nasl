@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_detect.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: gb_redis_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Redis Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103844");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_version ("$Revision: 4034 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
+  script_version ("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-02 13:58:18 +0100 (Mon, 02 Dec 2013)");
   script_name("Redis Detection");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -39,7 +39,6 @@ if(description)
   script_tag(name : "summary" , value:"The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
-  script_summary("Checks for the presence of Redis");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

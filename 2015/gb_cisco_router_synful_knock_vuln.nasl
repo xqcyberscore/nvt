@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_router_synful_knock_vuln.nasl 4263 2016-10-13 11:24:25Z antu123 $
+# $Id: gb_cisco_router_synful_knock_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Cisco Router SYNful Knock Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805740");
-  script_version("$Revision: 4263 $");
+  script_version("$Revision: 6183 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-13 13:24:25 +0200 (Thu, 13 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-23 12:30:00 +0530 (Wed, 23 Sep 2015)");
   script_name("Cisco Router SYNful Knock Vulnerability");
-  script_summary("Check if Cisco router is vulnerable to SYNful Knock");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("CISCO");

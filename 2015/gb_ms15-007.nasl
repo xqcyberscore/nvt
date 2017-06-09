@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-007.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-007.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Microsoft Windows Network Policy Server Denial-of-Service Vulnerability (3014029)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805241");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2015-0015");
   script_bugtraq_id(71933);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-14 11:08:22 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows Network Policy Server Denial-of-Service Vulnerability (3014029)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/62148");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3014029");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-007");
-  script_summary("Check for the version of 'Iassam.dll' vulnerable file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

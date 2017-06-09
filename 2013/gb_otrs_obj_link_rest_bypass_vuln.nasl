@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_obj_link_rest_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_obj_link_rest_bypass_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # OTRS Object Link Restriction Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-2625");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-25 18:35:59 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Object Link Restriction Bypass Vulnerability");
 
@@ -76,7 +76,6 @@ vendor advisory link http://otrs.org/advisory/OSA-2013-01-en/";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52969");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52969");
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2013-01-en/");
-  script_summary("Determine if the OTRS version is 3.0.x to 3.0.18, 3.1.x to 3.1.13 and 3.2.x to 3.2.3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

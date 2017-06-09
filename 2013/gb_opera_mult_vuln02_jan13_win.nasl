@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln02_jan13_win.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_opera_mult_vuln02_jan13_win.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Opera Multiple Vulnerabilities-02 Jan13 (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "The host is installed with Opera and is prone to multiple
 if(description)
 {
   script_id(803141);
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2012-6468", "CVE-2012-6469");
   script_bugtraq_id(56594);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-07 14:59:24 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-02 Jan13 (Windows)");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1037/");
   script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1036/");
   script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/unified/1212/");
 
-  script_summary("Check for the version of Opera for Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

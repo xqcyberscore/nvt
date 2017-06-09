@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3308.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3308.nasl 6141 2017-05-17 09:03:37Z teissa $
 # Auto-generated from advisory DSA 3308-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703308);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6141 $");
     script_cve_id("CVE-2015-2582", "CVE-2015-2620", "CVE-2015-2643", "CVE-2015-2648",
                   "CVE-2015-4737", "CVE-2015-4752");
     script_name("Debian Security Advisory DSA 3308-1 (mysql-5.5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
     script_tag(name: "creation_date", value: "2015-07-18 00:00:00 +0200 (Sat, 18 Jul 2015)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3308.html");
 
-    script_summary("Debian Security Advisory DSA 3308-1 (mysql-5.5 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

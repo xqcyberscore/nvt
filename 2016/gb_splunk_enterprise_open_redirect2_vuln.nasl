@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_enterprise_open_redirect2_vuln.nasl 4105 2016-09-19 09:15:54Z ckuerste $
+# $Id: gb_splunk_enterprise_open_redirect2_vuln.nasl 6197 2017-05-23 11:14:19Z teissa $
 #
 # Splunk Enterprise Open Redirect Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:splunk:splunk';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106264");
-  script_version("$Revision: 4105 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-19 11:15:54 +0200 (Mon, 19 Sep 2016) $");
+  script_version("$Revision: 6197 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-23 13:14:19 +0200 (Tue, 23 May 2017) $");
   script_tag(name: "creation_date", value: "2016-09-19 11:58:34 +0700 (Mon, 19 Sep 2016)");
-  script_tag(name: "cvss_base", value: "2.6");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
   script_cve_id("CVE-2016-4857");
 

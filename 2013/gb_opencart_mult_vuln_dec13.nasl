@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln_dec13.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_opencart_mult_vuln_dec13.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # OpenCart Multiple Vulnerabilities Dec-13
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:opencart:opencart";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 6115 $");
   script_bugtraq_id(64162);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-09 19:52:35 +0530 (Mon, 09 Dec 2013)");
   script_name("OpenCart Multiple Vulnerabilities Dec-13");
 
@@ -81,7 +81,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Dec/29");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/53036");
   script_xref(name : "URL" , value : "http://www.garda.ir/Opencart_Multiple_Vulnerabilities.html");
-  script_summary("Check if opencart is vulnerable");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

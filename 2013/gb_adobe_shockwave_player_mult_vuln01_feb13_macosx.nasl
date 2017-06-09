@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_feb13_macosx.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_feb13_macosx.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -38,8 +38,8 @@ tag_summary = "This host is installed with Adobe Shockwave player and is prone t
 if(description)
 {
   script_id(803414);
-  script_version("$Revision: 2923 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_version("$Revision: 6104 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-15 19:12:08 +0530 (Fri, 15 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.qualys.com/research/alerts/view.php/2013-02-12-2");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-06.html");
 
-  script_summary("Check for the version of Adobe Shockwave Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

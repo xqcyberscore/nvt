@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_pp_priv_escal_vuln_feb15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_bullguard_pp_priv_escal_vuln_feb15.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # BullGuard Premium Protection 'BdAgent.sys' Driver Privilege Escalation Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:bullguard:premium_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805277");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6207 $");
   script_cve_id("CVE-2014-9642");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-13 12:27:54 +0530 (Fri, 13 Feb 2015)");
   script_name("BullGuard Premium Protection 'BdAgent.sys' Driver Privilege Escalation Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.bullguard.com/about/release-notes.aspx");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of BullGuard Premium Protection on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_bullguard_premium_protection_detect.nasl");

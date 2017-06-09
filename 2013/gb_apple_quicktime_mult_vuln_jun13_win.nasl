@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_quicktime_mult_vuln_jun13_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_apple_quicktime_mult_vuln_jun13_win.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Apple QuickTime Multiple Vulnerabilities - June13 (Windows)
 #
@@ -45,7 +45,7 @@ tag_summary = "This host is installed with QuickTime Player and is prone
 if(description)
 {
   script_id(803809);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-1022", "CVE-2013-1021", "CVE-2013-1020", "CVE-2013-1019",
                 "CVE-2013-1018", "CVE-2013-1017", "CVE-2013-1016", "CVE-2013-1015",
                 "CVE-2013-0989", "CVE-2013-0988", "CVE-2013-0987", "CVE-2013-0986");
@@ -53,13 +53,12 @@ if(description)
                     60092, 60110, 60101, 60100, 60109, 60099);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-07 18:15:48 +0530 (Fri, 07 Jun 2013)");
   script_name("Apple QuickTime Multiple Vulnerabilities - June13 (Windows)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5770");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53520");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2013/May/msg00001.html");
-  script_summary("Check for the version of QuickTime Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

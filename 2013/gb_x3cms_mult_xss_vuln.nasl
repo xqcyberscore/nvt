@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_x3cms_mult_xss_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_x3cms_mult_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # X3 CMS Multiple cross-site scripting (XSS) vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803403");
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2011-5255");
   script_bugtraq_id(51346);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-05 13:26:26 +0530 (Tue, 05 Feb 2013)");
   script_name("X3 CMS Multiple cross-site scripting (XSS) vulnerabilities");
 
@@ -40,7 +40,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72279");
   script_xref(name : "URL" , value : "http://www.infoserve.de/system/files/advisories/INFOSERVE-ADV2011-04.txt");
 
-  script_summary("Check for X3CMS is vulnarable to cross-site scripting ");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

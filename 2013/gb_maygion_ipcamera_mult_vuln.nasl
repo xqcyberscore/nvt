@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maygion_ipcamera_mult_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_maygion_ipcamera_mult_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # MayGion IP Cameras Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803774");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6104 $");
   script_bugtraq_id(60192, 60196);
   script_cve_id("CVE-2013-1604", "CVE-2013-1605");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("MayGion IP Cameras Multiple Vulnerabilities");
 
@@ -58,7 +58,6 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/May/194");
   script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/maygion-IP-cameras-multiple-vulnerabilities");
 
-  script_summary("Check if MayGion IP camera is vulnerable to directory traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

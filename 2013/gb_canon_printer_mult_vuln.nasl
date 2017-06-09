@@ -53,18 +53,17 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803718";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-4613", "CVE-2013-4614", "CVE-2013-4615");
   script_bugtraq_id(60612, 60601, 60598);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-19 12:00:59 +0530 (Wed, 19 Jun 2013)");
   script_name("Canon Printer Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122073/");
   script_xref(name : "URL" , value : "http://www.mattandreko.com/2013/06/canon-y-u-no-security.html");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/canon-printer-dos-secret-disclosure");
-  script_summary("Try to read the restricted file wls_set_content.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks");

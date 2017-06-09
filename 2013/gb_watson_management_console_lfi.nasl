@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watson_management_console_lfi.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_watson_management_console_lfi.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Watson Management Console Directory Traversal Vulnerability
 #
@@ -41,7 +41,7 @@ if (description)
 {
  script_oid(SCRIPT_OID);
  script_bugtraq_id(57237);
- script_version ("$Revision: 2935 $");
+ script_version ("$Revision: 6079 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -50,9 +50,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57237");
  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/23995/");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-01-10 13:28:43 +0100 (Thu, 10 Jan 2013)");
- script_summary("Determine if it is possible to read a local file");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

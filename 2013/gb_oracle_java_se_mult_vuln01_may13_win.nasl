@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln01_may13_win.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_oracle_java_se_mult_vuln01_may13_win.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Oracle Java SE Multiple Vulnerabilities -01 May 13 (Windows)
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with Oracle Java SE and is prone to
 if(description)
 {
   script_id(803486);
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-2440", "CVE-2013-2435", "CVE-2013-2433", "CVE-2013-2418",
                 "CVE-2013-2422", "CVE-2013-1558", "CVE-2013-1540", "CVE-2013-1563");
   script_bugtraq_id(59124, 59089, 59220, 59145, 59228, 59219, 59149, 59208);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-06 16:37:14 +0530 (Mon, 06 May 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -01 May 13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53008");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpuapr2013-1928497.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpuapr2013verbose-1928687.html");
-  script_summary("Check for vulnerable version of Oracle Java SE JRE on windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

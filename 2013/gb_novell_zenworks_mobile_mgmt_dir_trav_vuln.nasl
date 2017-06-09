@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_mgmt_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_novell_zenworks_mobile_mgmt_dir_trav_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Novell ZENworks Mobile Management Directory Traversal Vulnerability
 #
@@ -42,18 +42,17 @@ CPE = "cpe:/a:novell:zenworks_mobile_management";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-1082");
   script_bugtraq_id(60179);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-14 11:06:05 +0530 (Fri, 14 Jun 2013)");
   script_name("Novell ZENworks Mobile Management Directory Traversal Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52545");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1028265");
   script_xref(name : "URL" , value : "http://www.novell.com/support/kb/doc.php?id=7011896");
-  script_summary("Determine if it is possible to read a local file");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

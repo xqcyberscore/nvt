@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_detect.nasl 3004 2016-04-07 07:27:20Z antu123 $
+# $Id: cisco_vpn_client_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 # Description: Cisco VPN Client Version Detection
 #
 # Authors:
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80037");
-  script_version("$Revision: 3004 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 09:27:20 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Cisco VPN Client Version Detection");
@@ -42,7 +42,6 @@ and gets the version from registry.";
 
 
   script_tag(name : "summary" , value : tag_summary);
-  script_summary("Detection of installed version of Cisco VPN Client");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2007 Ferdy Riphagen");
   script_family("Product detection");

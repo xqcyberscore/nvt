@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_loc_dos_vuln01_oct13_macosx.nasl 2934 2016-03-24 08:23:55Z benallard $
+# $Id: gb_oracle_virtualbox_loc_dos_vuln01_oct13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Oracle VM VirtualBox Local Denial of Service Vulnerability-01 Oct2013 (Mac OS X)
 #
@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804122";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2934 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3792");
   script_bugtraq_id(60794);
   script_tag(name:"cvss_base", value:"3.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:23:55 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-28 09:51:57 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle VM VirtualBox Local Denial of Service Vulnerability-01 Oct2013 (Mac OS X)");
 
@@ -76,7 +76,6 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53858");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/60794");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
-  script_summary("Check for the vulnerable version of Oracle VM VirtualBox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

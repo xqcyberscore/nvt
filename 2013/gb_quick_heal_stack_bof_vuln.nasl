@@ -29,12 +29,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804181";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-6767");
   script_bugtraq_id(64402);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-30 20:51:30 +0530 (Mon, 30 Dec 2013)");
   script_name("Quick Heal Antivirus Pro 'pepoly.dll' Stack Buffer Overflow Vulnerability");
 
@@ -74,7 +74,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/30374");
   script_xref(name : "URL" , value : "http://www.vulnerability-lab.com/get_content.php?id=1171");
-  script_summary("Check for the vulnerable version of Quick Heal AntiVirus Pro");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

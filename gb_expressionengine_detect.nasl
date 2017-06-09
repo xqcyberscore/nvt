@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_expressionengine_detect.nasl 2657 2016-02-12 15:12:51Z cfi $
+# $Id: gb_expressionengine_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # ExpressionEngine CMS Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800262");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2657 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 16:12:51 +0100 (Fri, 12 Feb 2016) $");
+  script_version("$Revision: 6125 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ExpressionEngine CMS Version Detection");
-  script_summary("Set the KB for the Version of ExpressionEngine CMS");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

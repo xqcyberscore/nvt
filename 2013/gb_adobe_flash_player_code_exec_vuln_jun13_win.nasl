@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_code_exec_vuln_jun13_win.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_flash_player_code_exec_vuln_jun13_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Adobe Flash Player Remote Code Execution Vulnerability -June13 (Windows)
 #
@@ -40,17 +40,16 @@ tag_summary = "This host is installed with Adobe Flash Player and is prone to
 if(description)
 {
   script_id(803661);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3343");
   script_bugtraq_id(60478);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-18 13:23:17 +0530 (Tue, 18 Jun 2013)");
   script_name("Adobe Flash Player Remote Code Execution Vulnerability -June13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53751");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-16.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

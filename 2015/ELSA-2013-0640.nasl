@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0640.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0640.nasl 6183 2017-05-22 09:03:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123663");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6183 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:57 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0640");
 script_tag(name: "insight", value: "ELSA-2013-0640 -  tomcat5 security update - [0:5.5.23-0jpp.38]- Resolves: CVE-2012-3439 rhbz#882008 three DIGEST authentication- implementation- Resolves: CVE-2012-3546, rhbz#913034 Bypass of security constraints.- Remove unneeded handling of FORM authentication in RealmBase"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0640");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

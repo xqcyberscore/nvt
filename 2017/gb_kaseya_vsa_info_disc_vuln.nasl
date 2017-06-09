@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_info_disc_vuln.nasl 5919 2017-04-10 15:17:44Z ckuerste $
+# $Id: gb_kaseya_vsa_info_disc_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # Kaseya VSA Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:kaseya:virtual_system_administrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106739");
-  script_version("$Revision: 5919 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-10 17:17:44 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -59,7 +59,7 @@ application and its underlying system.");
   script_tag(name: "impact", value: "An unauthenticated attacker may obtain sensitive information about the
 application and its underlying system.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 10th April, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.osisecurity.com.au/kaseya-information-disclosure-vulnerability.html");

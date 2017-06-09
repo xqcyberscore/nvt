@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec13_macosx.nasl 2936 2016-03-24 08:30:15Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_dec13_macosx.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec2013 (Mac OS X)
 #
@@ -29,13 +29,13 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804163";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2936 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-6635", "CVE-2013-6634", "CVE-2013-6640", "CVE-2013-6636",
                 "CVE-2013-6639", "CVE-2013-6638", "CVE-2013-6637");
   script_bugtraq_id(64078);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-10 12:07:29 +0530 (Tue, 10 Dec 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec2013 (Mac OS X)");
 
@@ -88,7 +88,6 @@ For updates refer to http://www.google.com/chrome";
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1029442");
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/12/stable-channel-update.html");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
-  script_summary("Check the vulnerable version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 5948 2017-04-13 07:29:37Z cfi $
+# $Id: cpe.inc 6085 2017-05-09 05:52:45Z antu123 $
 #
 # CPE Support Functions
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5948 $
+# $Revision: 6085 $
 #
 ###############################################################################
 
@@ -135,23 +135,26 @@ function register_and_report_cpe( app, ver, concluded, cpename, base, expr, insl
   ##Build CPE
   if( ! cpename && base ) {
     cpename = build_cpe( value:ver, exp:expr, base:base );
-    if( isnull( cpename ) ) {
-      cpename = base + ":" + ver;
+    if(tolower(ver) == "unknown") {
+      cpename = base ;
     }
   }
 
   if( ! defined_func( "register_product" ) ) include( "host_details.inc" );
 
-  register_product( cpe:cpename, location:insloc, port:regPort, proto:regProto, service:regService );
+  if(cpename)
+  {
+    register_product( cpe:cpename, location:insloc, port:regPort, proto:regProto, service:regService );
 
-  log_message( data:build_detection_report( app:app,
-                                            version:ver,
-                                            install:insloc,
-                                            cpe:cpename,
-                                            extra:extra,
-                                            concluded:concluded,
-                                            concludedUrl:conclUrl ),
-                                            port:regPort,
-                                            proto:regProto );
-  return NULL;
+    log_message( data:build_detection_report( app:app,
+                                              version:ver,
+                                              install:insloc,
+                                              cpe:cpename,
+                                              extra:extra,
+                                              concluded:concluded,
+                                              concludedUrl:conclUrl ),
+                                              port:regPort,
+                                              proto:regProto );
+    return NULL;
+  }
 }

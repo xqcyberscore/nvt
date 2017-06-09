@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_spicy_blogroll_file_incl_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wp_spicy_blogroll_file_incl_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Wordpress Spicy Blogroll Plugin File Inclusion Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6079 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-26 16:57:57 +0530 (Fri, 26 Jul 2013)");
   script_name("Wordpress Spicy Blogroll Plugin File Inclusion Vulnerability");
 
@@ -77,7 +77,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://1337day.com/exploits/20994");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26804");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013070111");
-  script_summary("Determine if is is possible to read a local file");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

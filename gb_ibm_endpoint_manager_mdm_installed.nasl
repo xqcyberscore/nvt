@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 2662 2016-02-16 06:27:52Z antu123 $
+# $Id: gb_ibm_endpoint_manager_mdm_installed.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # IBM Endpoint Manager MDM Installed
 #
@@ -31,8 +31,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 2662 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-16 07:27:52 +0100 (Tue, 16 Feb 2016) $");
+ script_version ("$Revision: 6125 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
  script_tag(name:"creation_date", value:"2014-12-03 13:24:33 +0100 (Wed, 03 Dec 2014)");
  script_name("IBM Endpoint Manager MDM Installed");
 
@@ -40,7 +40,6 @@ if (description)
 request to the server and attempts to detect if Mobile Device Management
 component is installed.");
 
- script_summary("Checks for the presence of IBM Endpoint MDM");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

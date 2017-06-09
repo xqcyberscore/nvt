@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_remote_code_exec_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms_ie_remote_code_exec_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (2794220)
 #
@@ -41,12 +41,12 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902699);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2012-4792");
   script_bugtraq_id(57070);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-01-02 10:52:56 +0530 (Wed, 02 Jan 2013)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2794220)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51695");
@@ -57,7 +57,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2794220");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-au/security/bulletin/ms13-008");
 
-  script_summary("Check for the vulnerable 'Mshtml.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

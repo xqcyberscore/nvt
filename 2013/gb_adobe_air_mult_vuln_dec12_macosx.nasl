@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_dec12_macosx.nasl 5357 2017-02-20 11:05:23Z cfi $
+# $Id: gb_adobe_air_mult_vuln_dec12_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Adobe Air Multiple Vulnerabilities - December12 (Mac OS X)
 #
@@ -38,12 +38,12 @@ tag_summary = "This host is installed with Adobe Air and is prone to multiple
 if(description)
 {
   script_id(803455);
-  script_version("$Revision: 5357 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2012-5676", "CVE-2012-5677", "CVE-2012-5678");
   script_bugtraq_id(56892, 56896, 56898);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:05:23 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-28 18:17:03 +0530 (Thu, 28 Mar 2013)");
   script_name("Adobe Air Multiple Vulnerabilities - December12 (Mac OS X)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51560");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2755801");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-27.html");
 
-  script_summary("Check for the version of Adobe Air on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

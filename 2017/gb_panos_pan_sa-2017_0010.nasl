@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0010.nasl 5946 2017-04-12 15:42:01Z mime $
+# $Id: gb_panos_pan_sa-2017_0010.nasl 6203 2017-05-24 04:40:49Z ckuerste $
 #
 # Palo Alto PAN-OS  Information Disclosure in the Management Web Interface
 #
@@ -30,10 +30,10 @@ CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140253");
- script_cve_id("CVE-2017-7126");
+ script_cve_id("CVE-2017-7216");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 5946 $");
+ script_version ("$Revision: 6203 $");
 
  script_name("Palo Alto PAN-OS Information Disclosure in the Management Web Interface");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 17:42:01 +0200 (Wed, 12 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-24 06:40:49 +0200 (Wed, 24 May 2017) $");
  script_tag(name:"creation_date", value:"2017-04-12 16:25:31 +0200 (Wed, 12 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");

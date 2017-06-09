@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_froxlor_info_discl.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_froxlor_info_discl.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # Froxlor Information Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:froxlor:froxlor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106036");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name: "creation_date", value: "2015-08-03 13:44:55 +0700 (Mon, 03 Aug 2015)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,7 +50,6 @@ if (description)
   script_mandatory_keys("froxlor/installed");
 
   script_tag(name: "summary", value: "Froxlor is prone to a information disclosure vulnerability.");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Send a crafted GET request and check the response.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 5284 2017-02-13 09:55:54Z cfi $
+# $Id: find_service2.nasl 6200 2017-05-23 16:01:55Z cfi $
 #
 # Identify unknown services with 'HELP'
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 5284 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-13 10:55:54 +0100 (Mon, 13 Feb 2017) $");
+  script_version("$Revision: 6200 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-23 18:01:55 +0200 (Tue, 23 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -340,14 +340,12 @@ if ("421 Server is temporarily unavailable - pleast try again later" >< r &&
  exit(0);
 }
 
-
-if ("RSTP/1.0 505 RSTP Version not supported" >< r )
+if (egrep(pattern:"RTSP/1\.0 505( Protocol | RTSP | )Version [nN]ot [sS]upported", string:r))
 {
  register_service(port:port, proto:"rtsp");
- log_message(port:port, data:"A RSTP (shoutcast) server is running on this port");
+ log_message(port:port, data:"A RTSP (shoutcast) server is running on this port");
  exit(0);
 }
-
 
 if ("ERR INVALID-ARGUMENT" >< r &&
     "ERR UNKNOWN-COMMAND" >< r )
@@ -1410,14 +1408,14 @@ if (r =~ '^SPAMD/[0-9.]+ [0-9]+ Bad header line:')
 }
 
 # SOCKS5
-if (ord(r[0]) == 5 && ord(r[1]) <= 8 && ord(r[2]) == 0 && ord(r[3]) <= 4)
+if (strlen(r) > 3 && ord(r[0]) == 5 && ord(r[1]) <= 8 && ord(r[2]) == 0 && ord(r[3]) <= 4)
 {
   register_service(port: port, proto: "socks5");
   report_and_exit(port: port, data: "A SOCKS5 server seems to be running on this port");
 }
 
 # SOCKS4
-if (ord(r[0]) == 0 && ord(r[1]) >= 90 && ord(r[1]) <= 93)
+if (strlen(r) > 1 && ord(r[0]) == 0 && ord(r[1]) >= 90 && ord(r[1]) <= 93)
 {
   register_service(port: port, proto: "socks4");
   report_and_exit(port: port, data: "A SOCKS4 server seems to be running on this port");

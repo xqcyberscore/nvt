@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_default_telnet_cred.nasl 2938 2016-03-24 08:37:56Z benallard $
+# $Id: gb_sitecom_default_telnet_cred.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Sitecom Devices Hard-coded credentials
 #
@@ -45,7 +45,7 @@ tag_vuldetect = "Start a telnet session with the hard-coded credentials.";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2938 $");
+ script_version ("$Revision: 6086 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -54,9 +54,8 @@ if (description)
 
  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/sitecom-n300-n600-access-bypass");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:37:56 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-21 16:02:55 +0200 (Wed, 21 Aug 2013)");
- script_summary("Determine if telnet login with hard-coded credentials is possible");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

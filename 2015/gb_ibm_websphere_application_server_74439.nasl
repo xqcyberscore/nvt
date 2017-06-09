@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_74439.nasl 3775 2016-07-29 16:30:59Z mime $
+# $Id: gb_ibm_websphere_application_server_74439.nasl 6211 2017-05-25 09:04:14Z teissa $
 #
 # IBM WebSphere Application Server Remote Code Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-1920");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3775 $");
+ script_version ("$Revision: 6211 $");
 
  script_name("IBM WebSphere Application Server Remote Code Execution Vulnerability");
 
@@ -55,9 +55,8 @@ instructions in a management-port session.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 18:30:59 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-03 09:34:17 +0200 (Wed, 03 Jun 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

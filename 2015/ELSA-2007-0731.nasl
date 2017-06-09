@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0731.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0731.nasl 6159 2017-05-18 09:03:44Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122668");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6159 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:43 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0731");
 script_tag(name: "insight", value: "ELSA-2007-0731 -  Important: tetex security update - [2.0.2-22.0.1.EL4.8] - backport upstream fix for xpdf integer overflow CVE-2007-3387 (#248207) Resolves: #248207"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0731");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

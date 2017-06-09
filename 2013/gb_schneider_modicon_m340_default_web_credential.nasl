@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modicon_m340_default_web_credential.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_schneider_modicon_m340_default_web_credential.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Schneider Modicon M340 Default Credentials 
 #
@@ -40,16 +40,15 @@ CPE = 'cpe:/h:schneider-electric:modicon_m340';
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6079 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-12-16 11:44:04 +0200 (Mon, 16 Dec 2013)");
  script_name("Schneider Modicon M340 Default Credentials");
 
  script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/12/08/schneider-modicon-m340-for-ethernet-multiple-default-credentials/");
 
- script_summary("Checks if it is possible to login as user USER");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

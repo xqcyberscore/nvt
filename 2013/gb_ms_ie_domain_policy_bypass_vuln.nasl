@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft Internet Explorer Domain Policy Bypass Vulnerability
 #
@@ -40,17 +40,16 @@ tag_summary = "This host is installed with Microsoft Internet Explorer and is
 if(description)
 {
   script_id(803302);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2012-6502");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:11:56 +0530 (Fri, 01 Feb 2013)");
   script_name("Microsoft Internet Explorer Domain Policy Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://www.nsfocus.com/en/2012/advisories_1228/119.html");
   script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2012-6502");
 
-  script_summary("Check the vulnerable version of Internet Explorer on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

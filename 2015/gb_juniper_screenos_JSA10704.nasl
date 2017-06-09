@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10704.nasl 2675 2016-02-17 09:01:04Z benallard $
+# $Id: gb_juniper_screenos_JSA10704.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Network based denial of service vulnerability in ScreenOS
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7750");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2675 $");
+ script_version ("$Revision: 6207 $");
 
  script_name("Network based denial of service vulnerability in ScreenOS");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:01:04 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
  script_tag(name:"creation_date", value:"2015-10-16 12:12:00 +0200 (Fri, 16 Oct 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphite_61894.nasl 2936 2016-03-24 08:30:15Z benallard $
+# $Id: gb_graphite_61894.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Graphite Remote Code Execution Vulnerability
 #
@@ -52,19 +52,18 @@ if (description)
  script_cve_id("CVE-2013-5093");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2936 $");
+ script_version ("$Revision: 6065 $");
 
  script_name("Graphite Remote Code Execution Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61894");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:30:15 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-22 17:46:22 +0200 (Thu, 22 Aug 2013)");
  script_tag(name:"qod_type", value:"remote_analysis");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_summary("Determine if it is possible to execute a command.");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

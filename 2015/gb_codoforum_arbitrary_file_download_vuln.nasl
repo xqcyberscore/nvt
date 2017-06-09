@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_arbitrary_file_download_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_codoforum_arbitrary_file_download_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Codoforum Arbitrary File Download Vulnerability
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:codoforum:codoforum";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805494");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6183 $");
   script_cve_id("CVE-2014-9261");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-17 12:08:01 +0530 (Tue, 17 Mar 2015)");
   script_name("Codoforum Arbitrary File Download Vulnerability");
-  script_summary("Check if Codoforum is prone to arbitrary file download");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

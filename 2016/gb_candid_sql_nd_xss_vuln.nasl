@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_candid_sql_nd_xss_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_candid_sql_nd_xss_vuln.nasl 6102 2017-05-11 08:34:20Z teissa $
 #
 # CANDID 'view.php' SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nicholas_berry:candid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807583");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 6102 $");
   script_cve_id("CVE-2010-4978", "CVE-2010-4979");
   script_bugtraq_id(41216);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 10:34:20 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2016-05-09 16:11:35 +0530 (Mon, 09 May 2016)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("CANDID 'view.php' SQL Injection and Cross Site Scripting Vulnerabilities");
@@ -59,12 +59,10 @@ if(description)
   script_tag(name:"affected", value:"CANDID version 2.50 and probably earlier 
   versions.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  25th January, 2017. Information regarding this issue will be updated once the
-  solution details are available.
-  For updates refer to http://sourceforge.net/projects/candid");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
+");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/41216");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/91251");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nospampti_blind_sql_inj_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_nospampti_blind_sql_inj_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # WordPress NOSpamPTI Plugin 'comment_post_ID' Parameter SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-5917");
   script_bugtraq_id(62580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 18:32:16 +0530 (Fri, 27 Sep 2013)");
   script_name("WordPress NOSpamPTI Plugin 'comment_post_ID' Parameter SQL Injection Vulnerability");
 
@@ -79,7 +79,6 @@ features, remove the product or replace the product by another one.";
   script_tag(name:"qod_type", value:"remote_analysis");
 
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Sep/101");
-  script_summary("Check if WordPress NOSpamPTI plugin is prone to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

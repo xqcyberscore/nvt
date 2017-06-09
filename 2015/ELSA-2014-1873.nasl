@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1873.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1873.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123246");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:13 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1873");
 script_tag(name: "insight", value: "ELSA-2014-1873 -  libvirt security and bug fix update - [0.10.2-46.0.1.el6_6.2]- Replace docs/et.png in tarball with blank image[0.10.2-46.el6_6.2]- qemu: allow restore with non-migratable XML input (rhbz#1155564)- qemu: Introduce qemuDomainDefCheckABIStability (rhbz#1155564)- Make ABI stability issue easier to debug (rhbz#1155564)- CVE-2014-3633: qemu: blkiotune: Use correct definition when looking up disk (CVE-2014-3633)- domain_conf: fix domain deadlock (CVE-2014-3657)- CVE-2014-7823: dumpxml: security hole with migratable flag (CVE-2014-7823)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1873");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_devices_default_password.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_tandberg_devices_default_password.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Tandberg Devices Default Password
 #
@@ -35,15 +35,14 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103695";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6065 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
  script_name("Tandberg Devices Default Password");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2013-04-10 12:01:48 +0100 (Wed, 10 Apr 2013)");
- script_summary("Determine if the remote Tandberg device has a default password");
  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

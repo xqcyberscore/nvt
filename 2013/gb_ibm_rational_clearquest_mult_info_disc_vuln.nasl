@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_clearquest_mult_info_disc_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_ibm_rational_clearquest_mult_info_disc_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # IBM Rational ClearQuest Multiple Information Disclosure Vulnerabilities
 #
@@ -40,18 +40,17 @@ tag_summary = "This host is installed with IBM Rational ClearQuest and is prone 
 if(description)
 {
   script_id(803709);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6093 $");
   script_bugtraq_id(54222);
   script_cve_id("CVE-2012-0744");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-03 17:40:28 +0530 (Mon, 03 Jun 2013)");
   script_name("IBM Rational ClearQuest Multiple Information Disclosure Vulnerabilities");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74671");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21606317");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21599361");
-  script_summary("Check if IBM Rational ClearQuest is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

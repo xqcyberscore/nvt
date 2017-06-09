@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_video_surveillance_lfi_03_2013.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cisco_video_surveillance_lfi_03_2013.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Cisco Video Surveillance Operations Manager Multiple vulnerabilities
 #
@@ -37,16 +37,15 @@ CPE = 'cpe:/a:cisco:video_surveillance_manager';
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6093 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
  script_name("Cisco Video Surveillance Operations Manager Multiple vulnerabilities");
 
  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120790/Cisco-Video-Surveillance-Operations-Manager-6.3.2-XSS-LFI-Bypass.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-03-14 17:43:31 +0100 (Thu, 14 Mar 2013)");
- script_summary("Determine if it is possible to read the /etc/passwd");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("CISCO");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-078.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-078.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Microsoft FrontPage Information Disclosure Vulnerability (2825621)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:microsoft:frontpage";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3137");
   script_bugtraq_id(62185);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-11 11:12:46 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft FrontPage Information Disclosure Vulnerability (2825621)");
 
@@ -76,7 +76,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-078";
 
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2825621");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS13-078");
-  script_summary("Check for the vulnerable version of Microsoft FrontPage on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magnolia_access_bypass_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_magnolia_access_bypass_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Magnolia CMS Access Bypass Vulnerability
 #
@@ -41,17 +41,16 @@ tag_summary = "This host is running Magnolia CMS and is prone to access bypass
 if(description)
 {
   script_id(803679);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-4621");
   script_bugtraq_id(60761);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-07-01 10:09:04 +0530 (Mon, 01 Jul 2013)");
   script_name("Magnolia CMS Access Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Jun/202");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/magnolia-cms-458-access-bypass");
-  script_summary("Check for access bypass vulnerability in Magnolia CMS");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

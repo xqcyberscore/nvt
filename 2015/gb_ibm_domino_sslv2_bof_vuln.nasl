@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_sslv2_bof_vuln.nasl 5724 2017-03-24 15:54:58Z cfi $
+# $Id: gb_ibm_domino_sslv2_bof_vuln.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # IBM Domino SSLv2 'nldap.exe' Buffer Overflow Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805548");
-  script_version("$Revision: 5724 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-0134");
   script_bugtraq_id(73912);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-08 15:03:56 +0530 (Fri, 08 May 2015)");
   script_name("IBM Domino SSLv2 'nldap.exe' Buffer Overflow Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21700029");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Domino");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("gb_lotus_domino_detect.nasl");

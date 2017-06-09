@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 5907 2017-04-10 07:09:24Z cfi $
+# $Id: cgi_directories.nasl 6130 2017-05-15 14:47:43Z cfi $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 5907 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 09:09:24 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 6130 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 16:47:43 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,19 +39,24 @@ if(description)
   script_dependencies("webmirror.nasl", "DDI_Directory_Scanner.nasl", "gb_twonky_server_detect.nasl",
   "gb_owncloud_detect.nasl", "gb_adobe_aem_remote_detect.nasl", "gb_libreoffice_online_detect.nasl"); # gb_* are additional dependencies setting auth_required
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"The script consolidates various information for CGI scanning.
 
   This information is based on the following scripts / settings:
 
+  - HTTP-Version Detection (OID: 1.3.6.1.4.1.25623.1.0.100034)
+
+  - No 404 check (OID: 1.3.6.1.4.1.25623.1.0.10386)
+
   - Web mirroring / webmirror.nasl (OID: 1.3.6.1.4.1.25623.1.0.10662)
 
   - Directory Scanner / DDI_Directory_Scanner.nasl (OID: 1.3.6.1.4.1.25623.1.0.11032)
 
-  - The configured 'cgi_path' within the 'Scanner Preferences' of the scan config in use");
+  - The configured 'cgi_path' within the 'Scanner Preferences' of the scan config in use
 
-  # TDB: If you think any of these are wrong please report openvas-plugins@wald.intevation.org
+  - The configured 'Enable CGI scanning' within the 'Global variable settings' of the scan config in use
+
+  If you think any of these are wrong please report openvas-plugins@wald.intevation.org");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -61,6 +66,11 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+
+if( get_kb_item( "Settings/disable_cgi_scanning" ) ) {
+  log_message( port:0, data:"CGI Scanning is disabled for this host via the 'Enable CGI scanning' option within the 'Global variable settings' of the scan config in use." );
+  exit( 0 );
+}
 
 port = get_http_port( default:80 );
 
@@ -76,21 +86,32 @@ coffeecupList = get_kb_list( "www/" + port + "/content/coffeecup" );
 frontpageList = get_kb_list( "www/" + port + "/content/frontpage_results" );
 skippedDirList = get_kb_list( "www/" + port + "/content/skipped_directories" );
 excludedDirList = get_kb_list( "www/" + port + "/content/excluded_directories" );
+httpVersion = get_kb_item( "http/" + port );
 
 #report = 'The hostname "' + http_host_name( port:port ) + '" is used.\n\n'; #TODO is this forking?
 
 #TODO: Add no404.nasl
 
+if( get_kb_item( "Services/www/" + port + "/broken" ) ) {
+  report += 'This service is marked as broken and no CGI scanning is launched against it.\n\n';
+}
+
+if( httpVersion == "10" ) {
+  report += 'Requests to this service are done via HTTP/1.0.\n\n';
+} else if( httpVersion == "11" ) {
+  report += 'Requests to this service are done via HTTP/1.1.\n\n';
+}
+
 if( can_host_php( port:port ) ) {
-  report += 'The host seems to be able to host PHP scripts.\n\n';
+  report += 'This service seems to be able to host PHP scripts.\n\n';
 } else {
-  report += 'The host seems to be NOT able to host PHP scripts.\n\n';
+  report += 'This service seems to be NOT able to host PHP scripts.\n\n';
 }
 
 if( can_host_asp( port:port ) ) {
-  report += 'The host seems to be able to host ASP scripts.\n\n';
+  report += 'This service seems to be able to host ASP scripts.\n\n';
 } else {
-  report += 'The host seems to be NOT able to host ASP scripts.\n\n';
+  report += 'This service seems to be NOT able to host ASP scripts.\n\n';
 }
 
 if( ! isnull( authRequireDirs ) ) {
@@ -271,6 +292,6 @@ if( ! isnull( excludedCgiList ) ) {
   }
 }
 
-log_message( data:report , port:port );
+log_message( data:report, port:port );
 
 exit( 0 );

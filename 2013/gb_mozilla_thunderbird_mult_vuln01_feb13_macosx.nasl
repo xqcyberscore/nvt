@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_feb13_macosx.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_feb13_macosx.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -56,7 +56,7 @@ if(description)
   script_tag(name : "solution" , value : tag_solution);
   script_tag(name : "summary" , value : tag_summary);
   script_id(803425);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-0784", "CVE-2013-0783", "CVE-2013-0782", "CVE-2013-0781",
                 "CVE-2013-0780", "CVE-2013-0779", "CVE-2013-0778", "CVE-2013-0777",
                 "CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
@@ -65,7 +65,7 @@ if(description)
                     58034, 58041, 58038, 58042, 58044);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-02-21 19:36:53 +0530 (Thu, 21 Feb 2013)");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,7 +77,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/cve/CVE-2013-0784");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-28.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

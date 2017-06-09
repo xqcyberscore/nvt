@@ -27,13 +27,13 @@
 if(description)
 {
   script_id(903417);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-3899", "CVE-2013-3902", "CVE-2013-3903", "CVE-2013-3907",
                 "CVE-2013-5058");
   script_bugtraq_id(64080, 64084, 64090, 64087, 64091);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:49:46 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Windows Kernel Local Privilege Escalation Vulnerabilities (2880430)");
 
@@ -92,7 +92,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-101";
    script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2887069");
    script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1029461");
    script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-101");
-   script_summary("Check for the vulnerable files version");
    script_category(ACT_GATHER_INFO);
    script_copyright("Copyright (C) 2013 SecPod");
    script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_dvr_information_disclosure.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_multiple_dvr_information_disclosure.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Multiple DVR Information Disclosure Vulnerability
 #
@@ -40,7 +40,7 @@ if (description)
  script_oid(SCRIPT_OID);
  script_bugtraq_id(57579);
  script_cve_id("CVE-2013-1391");
- script_version ("$Revision: 2924 $");
+ script_version ("$Revision: 6079 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -49,9 +49,8 @@ if (description)
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57579");
  script_xref(name : "URL" , value : "http://www.securitybydefault.com/2013/01/12000-grabadores-de-video-expuestos-en.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-02-01 10:51:23 +0100 (Fri, 01 Feb 2013)");
- script_summary("Determine if it is possible to read the /DVR.cfg");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

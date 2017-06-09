@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-104.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-104.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft Office Information Disclosure Vulnerability (2909976)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903419);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6125 $");
   script_cve_id("CVE-2013-5054");
   script_bugtraq_id(64092);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-11 11:06:48 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Office Information Disclosure Vulnerability (2909976)");
 
@@ -78,7 +78,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-104";
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2850064");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1029464");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-104");
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

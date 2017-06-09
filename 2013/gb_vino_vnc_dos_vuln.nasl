@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vino_vnc_dos_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_vino_vnc_dos_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Vino VNC Server Remote Denial Of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(802061);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6104 $");
   script_bugtraq_id(62443);
   script_cve_id("CVE-2013-5745");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 16:12:45 +0530 (Fri, 27 Sep 2013)");
   script_name("Vino VNC Server Remote Denial Of Service Vulnerability");
 
@@ -75,7 +75,6 @@ https://wiki.gnome.org/Vino";
   script_xref(name : "URL" , value : "https://bugzilla.gnome.org/show_bug.cgi?id=707905");
   script_xref(name : "URL" , value : "https://bugzilla.gnome.org/show_bug.cgi?id=641811");
   script_xref(name : "URL" , value : "https://access.redhat.com/security/cve/CVE-2013-5745");
-  script_summary("Check if Vino VNC Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # TRENDnet Print Server Authentication Bypass Vulnerability
 #
@@ -47,15 +47,14 @@ authentication bypass vulnerability.";
 if(description)
 {
   script_id(803720);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6079 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-25 12:51:19 +0530 (Tue, 25 Jun 2013)");
   script_name("TRENDnet Print Server Authentication Bypass Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26401");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/trendnet-te100-p1u-authentication-bypass");
-  script_summary("Try to read the restricted file Network.htm");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks");

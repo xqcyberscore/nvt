@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871509");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-24 08:26:57 +0100 (Tue, 24 Nov 2015)");
   script_cve_id("CVE-2015-5273", "CVE-2015-5287", "CVE-2015-5302");
   script_tag(name:"cvss_base", value:"6.9");
@@ -82,7 +82,6 @@ packages, which contain backported patches to correct these issues.
   script_xref(name: "RHSA", value: "2015:2505-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00059.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of abrt and libreport");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

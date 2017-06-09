@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842253");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6170 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-24 06:17:46 +0200 (Wed, 24 Jun 2015)");
   script_cve_id("CVE-2010-4651", "CVE-2014-9637", "CVE-2015-1196", "CVE-2015-1395",
                 "CVE-2015-1396");
@@ -70,7 +70,6 @@ affected Ubuntu 14.04 LTS and Ubuntu 14.10. (CVE-2015-1396)");
   script_xref(name: "USN", value: "2651-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-June/002998.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of patch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

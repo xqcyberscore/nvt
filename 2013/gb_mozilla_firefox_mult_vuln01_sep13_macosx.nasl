@@ -30,7 +30,7 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804006";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-1718", "CVE-2013-1719", "CVE-2013-1720", "CVE-2013-1721",
                 "CVE-2013-1722", "CVE-2013-1723", "CVE-2013-1724", "CVE-2013-1725",
                 "CVE-2013-1726", "CVE-2013-1728", "CVE-2013-1730", "CVE-2013-1732",
@@ -39,7 +39,7 @@ if(description)
                     62482, 62468, 62473, 62469, 62479, 62478, 62475, 62466);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-24 13:40:22 +0530 (Tue, 24 Sep 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Sep13 (Mac OS X)");
 
@@ -80,7 +80,6 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54892");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-88.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

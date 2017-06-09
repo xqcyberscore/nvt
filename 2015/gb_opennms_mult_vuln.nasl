@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opennms_mult_vuln.nasl 2945 2016-03-24 09:46:54Z cfi $
+# $Id: gb_opennms_mult_vuln.nasl 6159 2017-05-18 09:03:44Z teissa $
 #
 # OpenNMS Default Credentials and XXE Vulnerabilities
 #
@@ -29,14 +29,13 @@ CPE = "cpe:/a:opennms:opennms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806531");
-  script_version("$Revision: 2945 $");
+  script_version("$Revision: 6159 $");
   script_cve_id("CVE-2015-7856", "CVE-2015-0975");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 10:46:54 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-04 13:01:47 +0530 (Wed, 04 Nov 2015)");
   script_name("OpenNMS Default Credentials and XXE Vulnerabilities");
-  script_summary("Check if OpenNMS is prone to default account authentication bypass vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Default Accounts");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ajaxportal_detect.nasl 2673 2016-02-17 08:27:50Z cfi $
+# $Id: gb_ajaxportal_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # AjaxPortal Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800816");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2673 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 09:27:50 +0100 (Wed, 17 Feb 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("AjaxPortal Version Detection");
-  script_summary("Set Version of AjaxPortal in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssl_cert_details.nasl 4768 2016-12-14 11:17:11Z cfi $
+# $Id: ssl_cert_details.nasl 6090 2017-05-09 14:38:15Z cfi $
 #
 # SSL/TLS: Collect and Report Certificate Details
 #
@@ -91,8 +91,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103692");
-  script_version("$Revision: 4768 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-14 12:17:11 +0100 (Wed, 14 Dec 2016) $");
+  script_version("$Revision: 6090 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 16:38:15 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-09 14:14:14 +0200 (Tue, 09 Apr 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -145,6 +145,11 @@ function read_and_parse_certs( cert, port ) {
   }
 
   fpr = cert_query( certobj, "fpr-sha-256" );
+  if( ! fpr ) {
+    set_kb_item( name:"HostDetails/SSLInfo/" + port, value:"[ERROR]" );
+    log_message( data:"The certificates SHA-256 fingerprint of the remote service cannot be gathered!", port:port );
+    return;
+  }
 
   # Insert the certificiate details into the list of certificates if
   # not already done. Because we use the fingerprint we know that all

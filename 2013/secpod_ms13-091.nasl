@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-091.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-091.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2885093)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903414);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-0082", "CVE-2013-1324", "CVE-2013-1325");
   script_bugtraq_id(63559, 63569, 63570);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-13 15:08:45 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2885093)");
 
@@ -79,7 +79,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-091";
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2760781");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2768005");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-091");
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_zimbcomment_mult_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_joomla_zimbcomment_mult_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # ZiMB Comment Joomla! Component 'controller' Parameter Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2010-1602");
   script_bugtraq_id(39548);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-30 20:15:21 +0530 (Mon, 30 Sep 2013)");
   script_name("ZiMB Comment Joomla! Component 'controller' Parameter Multiple Vulnerabilities");
 
@@ -78,7 +78,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://www.iedb.ir/exploits-611.html");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/12283");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/88626");
-  script_summary("Check if Joomla Component ZiMB Comment is prone to information disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

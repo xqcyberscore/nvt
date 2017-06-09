@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_media_player_classic_detect.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_media_player_classic_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Gabest Media Player Classic Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900947");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 08:01:03 +0200 (Fri, 18 Sep 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Gabset Media Player Classic Version Detection");
@@ -48,7 +48,6 @@ gets the version from registry.";
 
   script_tag(name : "summary" , value : tag_summary);
 
-  script_summary("Set KB for the version of Media Player Classic");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");

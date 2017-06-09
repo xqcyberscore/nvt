@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0294.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0294.nasl 6159 2017-05-18 09:03:44Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130084");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6159 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:31 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0294");
 script_tag(name: "insight", value: "In Spring Framework before 3.2.14, if DTD is not entirely disabled, inline DTD declarations can be used to perform denial of service attacks known as XML bombs. Such declarations are both well-formed and valid according to XML schema rules but when parsed can cause out of memory errors. To protect against this kind of attack DTD support must be disabled by setting the disallow-doctype-dec feature in the DOM and SAX APIs to true and by setting the supportDTD property in the StAX API to false (CVE-2015-3192). This package is no longer supported for Mageia 4. Users of this package are advised to upgrade to Mageia 5"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0294");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0294");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

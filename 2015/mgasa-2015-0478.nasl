@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0478.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0478.nasl 6159 2017-05-18 09:03:44Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131158");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6159 $");
 script_tag(name:"creation_date", value:"2015-12-18 06:57:26 +0200 (Fri, 18 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0478");
 script_tag(name: "insight", value: "An unsafe use of string concatenation in a shell string occurs in FontManager. If the developer allows the attacker to choose the font and outputs an image, the attacker can execute any shell command on the remote system. The name variable injected comes from the constructor of FontManager, which is invoked by ImageFormatter from options (CVE-2015-8557, rhbz#1276321)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0478");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0478");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

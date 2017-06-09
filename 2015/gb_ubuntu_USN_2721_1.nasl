@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842420");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6211 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-21 07:50:15 +0200 (Fri, 21 Aug 2015)");
   script_cve_id("CVE-2014-3580", "CVE-2014-8108", "CVE-2015-0202", "CVE-2015-0248",
                 "CVE-2015-0251", "CVE-2015-3184", "CVE-2015-3187");
@@ -78,7 +78,6 @@ path information. (CVE-2015-3187)");
   script_xref(name: "USN", value: "2721-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-August/003091.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

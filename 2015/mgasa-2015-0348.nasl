@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0348.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0348.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130039");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:41:52 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0348");
 script_tag(name: "insight", value: "Updated ntp packages fix security vulnerability: A flaw was found in the way ntpd processed certain remote configuration packets. An attacker could use a specially crafted package to cause ntpd to crash if the attacker had authenticated access to remote ntpd configuration (CVE-2015-5146). It was found that ntpd could crash due to an uninitialized variable when processing malformed logconfig configuration commands, for example, ntpq -c :config logconfig a (CVE-2015-5194). It was found that ntpd exits with a segmentation fault when a statistics type that was not enabled during compilation (e.g. timingstats) is referenced by the statistics or filegen configuration command, for example, ntpq -c ':config statistics timingstats' ntpq -c ':config filegen timingstats' (CVE-2015-5195). It was found that the :config command can be used to set the pidfile and driftfile paths without any restrictions. A remote attacker could use this flaw to overwrite a file on the file system with a file containing the pid of the ntpd process (immediately) or the current estimated drift of the system clock (in hourly intervals). For example, ntpq -c ':config pidfile /tmp/ntp.pid' ntpq -c ':config driftfile /tmp/ntp.drift' (CVE-2015-5196). It was discovered that sntp would hang in an infinite loop when a crafted NTP packet was received, related to the conversion of the precision value in the packet to double (CVE-2015-5219)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0348");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0348");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

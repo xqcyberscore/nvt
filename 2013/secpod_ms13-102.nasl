@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-102.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-102.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Microsoft Windows Local Procedure Call Local Privilege Escalation Vulnerability (2898715)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903416);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3878");
   script_bugtraq_id(64088);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:19:14 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Windows Local Procedure Call Local Privilege Escalation Vulnerability (2898715)");
 
@@ -79,7 +79,6 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-102";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55988/");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2898715");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-102");
-  script_summary("Check for the vulnerable 'Rpcrt4.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_mar13_macosx.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wireshark_mult_dos_vuln_mar13_macosx.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Mac OS X)
 #
@@ -39,20 +39,19 @@ tag_summary = "This host is installed with Wireshark and is prone to multiple
 if(description)
 {
   script_id(803332);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-2478", "CVE-2013-2480", "CVE-2013-2481", "CVE-2013-2482",
                 "CVE-2013-2483", "CVE-2013-2484", "CVE-2013-2485", "CVE-2013-2488");
   script_bugtraq_id(58357, 58351, 58340, 58353, 58355, 58356, 58362, 58365);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-11 19:20:06 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Mac OS X)");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52471");
   script_xref(name : "URL" , value : "http://securitytracker.com/id/1028254");
   script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.8.6.html");
 
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");

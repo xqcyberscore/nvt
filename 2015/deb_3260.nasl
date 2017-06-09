@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3260.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3260.nasl 6183 2017-05-22 09:03:43Z teissa $
 # Auto-generated from advisory DSA 3260-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703260);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6183 $");
     script_cve_id("CVE-2011-3079", "CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710",
                   "CVE-2015-2713", "CVE-2015-2716");
     script_name("Debian Security Advisory DSA 3260-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
     script_tag(name: "creation_date", value: "2015-05-13 00:00:00 +0200 (Wed, 13 May 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3260.html");
 
-    script_summary("Debian Security Advisory DSA 3260-1 (iceweasel - security update)");
 
     script_category(ACT_GATHER_INFO);
 

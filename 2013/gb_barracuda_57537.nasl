@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_57537.nasl 3479 2016-06-10 16:37:47Z jan $
+# $Id: gb_barracuda_57537.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Multiple Barracuda Products Security Bypass and Backdoor Unauthorized Access Vulnerabilities
 #
@@ -53,13 +53,12 @@ if (description)
  script_xref(name : "URL" , value : "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20130124-0_Barracuda_Appliances_Backdoor_wo_poc_v10.txthttps://www.barracudanetworks.com/products/");
  script_oid(SCRIPT_OID);
  script_bugtraq_id(57537);
- script_version ("$Revision: 3479 $");
+ script_version ("$Revision: 6104 $");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
  script_name("Multiple Barracuda Products Security Bypass and Backdoor Unauthorized Access Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2016-06-10 18:37:47 +0200 (Fri, 10 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-01-29 10:48:20 +0100 (Tue, 29 Jan 2013)");
- script_summary("Determine if it is possible to login using default credentials");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Default Accounts");

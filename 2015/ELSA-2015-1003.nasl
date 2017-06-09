@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1003.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1003.nasl 6125 2017-05-15 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123116");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6125 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:33 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1003");
 script_tag(name: "insight", value: "ELSA-2015-1003 -  kvm security update - [kvm-83-272.0.1.el5]- Added kvm-add-oracle-workaround-for-libvirt-bug.patch- Added kvm-Introduce-oel-machine-type.patch[kvm-83.272.el5]- kvm-fdc-force-the-fifo-access-to-be-in-bounds-of-the-all.patch [bz#1219266]- Resolves: bz#1219266 (kvm: qemu: floppy disk controller flaw [rhel-5.11.z])"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1003");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 5558 2017-03-13 10:17:05Z antu123 $
+# $Id: gb_nagios_priv_esc_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:nagios:nagios';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106606");
-  script_version("$Revision: 5558 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-13 11:17:05 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-02-17 10:06:51 +0700 (Fri, 17 Feb 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,7 +64,7 @@ symlink. An identical attack not addressed by CVE-2016-8641 works with hardlinks
 
   script_tag(name: "affected", value: "Nagios 4.2.4 and before (4.x.x).");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 17th February, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://seclists.org/oss-sec/2016/q4/783");

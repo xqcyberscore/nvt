@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability
 #
@@ -40,10 +40,10 @@ tag_summary = "The host is running Sysax Multi Server and is prone to denial of
 if(description)
 {
   script_id(803191);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52934");
@@ -51,7 +51,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121207");
   script_xref(name : "URL" , value : "http://www.mattandreko.com/2013/04/sysax-multi-server-610-ssh-dos.html");
 
-  script_summary("Check if Sysax Multi Server SSH is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

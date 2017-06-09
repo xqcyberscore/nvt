@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cups_CVE_2015_1158.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cups_CVE_2015_1158.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # CUPS < 2.0.3 Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
  script_bugtraq_id(75098, 75106);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 2583 $");
+ script_version("$Revision: 6183 $");
 
  script_name("CUPS < 2.0.3 Multiple Vulnerabilities");
 
@@ -77,9 +77,8 @@ to a privilege escalation due to a memory management error.");
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-15 15:24:12 +0200 (Mon, 15 Jun 2015)");
- script_summary("Check if CUPS is prone to XSS");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

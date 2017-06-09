@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869143");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6159 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-31 07:08:01 +0200 (Tue, 31 Mar 2015)");
   script_cve_id("CVE-2015-0252");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +51,6 @@ Namespaces in XML 1.1, XML Schema, XML Inclusions).
   script_xref(name: "FEDORA", value: "2015-4251");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/153829.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xerces-c");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

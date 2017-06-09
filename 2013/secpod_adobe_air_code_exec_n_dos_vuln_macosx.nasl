@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_air_code_exec_n_dos_vuln_macosx.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_adobe_air_code_exec_n_dos_vuln_macosx.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Adobe Air Code Execution and DoS Vulnerabilities (MAC OS X)
 #
@@ -30,12 +30,12 @@ tag_impact = "
 if(description)
 {
   script_id(903318);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-26 14:01:59 +0530 (Mon, 26 Aug 2013)");
   script_name("Adobe Air Code Execution and DoS Vulnerabilities (MAC OS X)");
 
@@ -76,7 +76,6 @@ For updates refer to http://get.adobe.com/air";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/48623");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026859");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-07.html");
-  script_summary("Check for the version of Adobe Air on MAC OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("General");

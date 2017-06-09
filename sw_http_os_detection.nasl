@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 5703 2017-03-23 18:49:52Z cfi $
+# $Id: sw_http_os_detection.nasl 6210 2017-05-24 15:02:34Z cfi $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 5703 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 19:49:52 +0100 (Thu, 23 Mar 2017) $");
+  script_version("$Revision: 6210 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 17:02:34 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,7 +104,13 @@ if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE
     }
 
     if( "(CentOS)" >< banner ) {
-      register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      if( "Apache/2.4.6 (CentOS)" >< banner ) {
+        register_and_report_os( os:"CentOS", version:"7", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else if( "Apache/2.2.15 (CentOS)" >< banner ) {
+        register_and_report_os( os:"CentOS", version:"6", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
       exit( 0 );
     }
 

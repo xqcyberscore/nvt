@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0648.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0648.nasl 6125 2017-05-15 09:03:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122558");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6125 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:58 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0648");
 script_tag(name: "insight", value: "ELSA-2008-0648 -  tomcat security update - [5.5.23-0jpp.7.el5_2.1]- add patch for CVE-2008-1232 Resolves: rhbz#457727- add patch for CVE-2008-1947 Resolves: rhbz#449916- add patch for CVE-2008-2370 Resolves: rhbz#458634- add patch for CVE-2008-2938 Resolves: rhbz#456214"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0648");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

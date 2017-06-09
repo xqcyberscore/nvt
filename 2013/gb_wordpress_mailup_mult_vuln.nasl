@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailup_mult_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_mailup_mult_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # Wordpress MailUp Plugin Multiple Vulnerabilities
 #
@@ -40,19 +40,18 @@ tag_summary = "This host is installed with Wordpress MailUp Plugin and is prone
 if(description)
 {
   script_id(803448);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6086 $");
   script_cve_id("CVE-2013-2640");
   script_bugtraq_id(58467);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-26 13:22:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress MailUp Plugin Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51917");
   script_xref(name : "URL" , value : "http://plugins.trac.wordpress.org/changeset?new=682420");
   script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/wp-mailup/changelog");
 
-  script_summary("Check if Wordpress MailUp Plugin is prone to path disclosure vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

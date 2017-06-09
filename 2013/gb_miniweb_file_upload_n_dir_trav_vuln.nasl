@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_id(803477);
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6093 $");
   script_bugtraq_id(58946);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-17 18:42:05 +0530 (Wed, 17 Apr 2013)");
   script_name("MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities");
 
@@ -72,7 +72,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52923");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121168");
   script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52923");
-  script_summary("Check if the file is uploaded in MiniWeb");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sicunet_access_controller_mult_vuln.nasl 5635 2017-03-21 03:25:11Z ckuerste $
+# $Id: gb_sicunet_access_controller_mult_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
 #
 # SICUNET Access Controller Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106672");
-  script_version("$Revision: 5635 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-21 04:25:11 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6166 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
   script_tag(name: "creation_date", value: "2017-03-21 09:07:37 +0700 (Tue, 21 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,7 +65,7 @@ if (description)
 
   script_tag(name: "impact", value: "An unauthenticated attacker may gain complete control over the device.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 21th March, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Mar/25");

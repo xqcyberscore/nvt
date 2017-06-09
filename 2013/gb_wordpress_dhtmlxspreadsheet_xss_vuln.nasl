@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dhtmlxspreadsheet_xss_vuln.nasl 2935 2016-03-24 08:28:18Z benallard $
+# $Id: gb_wordpress_dhtmlxspreadsheet_xss_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # WordPress dhtmlxspreadsheet Plugin Cross Site Scripting Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2935 $");
+  script_version("$Revision: 6115 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:28:18 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-22 19:57:26 +0530 (Tue, 22 Oct 2013)");
   script_name("WordPress dhtmlxspreadsheet Plugin Cross Site Scripting Vulnerability");
 
@@ -78,7 +78,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/55396");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123699");
   script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013100130");
-  script_summary("Check if WordPress dhtmlxspreadsheet Plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

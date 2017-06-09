@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ds3_authentication_server_mult_vuln.nasl 4622 2016-11-25 06:51:16Z cfi $
+# $Id: gb_ds3_authentication_server_mult_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
 #
 # DS3 Authentication Server Multiple Vulnerabilities
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803710");
-  script_version("$Revision: 4622 $");
+  script_version("$Revision: 6086 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-25 07:51:16 +0100 (Fri, 25 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-04 13:59:02 +0530 (Tue, 04 Jun 2013)");
   script_name("DS3 Authentication Server Multiple Vulnerabilities");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/526784/30/0/threaded");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121862/ds3authserv-exec.txt");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/ds3-authentication-server-command-execution");
 
-  script_summary("Try to read the restricted file ErrorViewer.jsp");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1385.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1385.nasl 6194 2017-05-23 09:04:00Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123797");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6194 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:41 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1385");
 script_tag(name: "insight", value: "ELSA-2012-1385 -  java-1.6.0-openjdk security update - [1:1.6.0.0-1.28.1.10.10.0.1.el5_8]- Add oracle-enterprise.patch[1:1.6.0.0-1.28.1.10.10]- Updated to IcedTea6 1.10.10- Resolves rhbz#s 856124, 865346, 865348, 865350, 865352, 865354, 865357, 865359, 865363, 865365, 865370, 865428, 865471, 865434, 865511, 865514, 865519, 865531, 865541, 865568"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1385");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

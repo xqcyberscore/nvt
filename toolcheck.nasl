@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 5349 2017-02-19 11:48:49Z jan $
+# $Id: toolcheck.nasl 6065 2017-05-04 09:03:08Z teissa $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -33,13 +33,12 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.810000");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5349 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-19 12:48:49 +0100 (Sun, 19 Feb 2017) $");
+ script_version("$Revision: 6065 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Availability of scanner helper tools");
 
- script_summary("Check for presence of tools that support scanning");
 
  script_category(ACT_INIT);
   script_tag(name:"qod_type", value:"remote_banner");

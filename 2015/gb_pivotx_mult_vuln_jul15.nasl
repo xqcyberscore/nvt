@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pivotx_mult_vuln_jul15.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_pivotx_mult_vuln_jul15.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # PivotX Multiple Vulnerabilities - Jul15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:pivotx:pivotx";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805938");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-5456", "CVE-2015-5457", "CVE-2015-5458");
   script_bugtraq_id(75577);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-27 14:22:08 +0530 (Mon, 27 Jul 2015)");
   script_name("PivotX Multiple Vulnerabilities - Jul15");
 
@@ -72,7 +72,6 @@ if (description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132474");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535860/100/0/threaded");
 
-  script_summary("Check if PivotX is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

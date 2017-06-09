@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mail-secure_abs_path_trav_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_pineapp_mail-secure_abs_path_trav_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # PineApp Mail-SeCure Absolute Path Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802066");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_bugtraq_id(63827);
   script_cve_id("CVE-2013-6827");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-04 12:01:21 +0530 (Wed, 04 Dec 2013)");
   script_name("PineApp Mail-SeCure Absolute Path Traversal Vulnerability");
 
@@ -56,7 +56,6 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Nov/136");
   script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/2013-11/0133.html");
-  script_summary("Check if PineApp Mail-SeCure Appliance is vulnerable to absolute path traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

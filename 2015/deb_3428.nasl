@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3428.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3428.nasl 6170 2017-05-19 09:03:42Z teissa $
 # Auto-generated from advisory DSA 3428-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703428);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6170 $");
     script_cve_id("CVE-2014-7810");
     script_name("Debian Security Advisory DSA 3428-1 (tomcat8 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
     script_tag(name: "creation_date", value: "2015-12-18 00:00:00 +0100 (Fri, 18 Dec 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3428.html");
 
-    script_summary("Debian Security Advisory DSA 3428-1 (tomcat8 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

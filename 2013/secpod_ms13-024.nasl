@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-024.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-024.nasl 6125 2017-05-15 09:03:42Z teissa $
 #
 # Microsoft SharePoint Server Privilege Elevation Vulnerabilities (2780176)
 #
@@ -49,12 +49,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902953";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6125 $");
   script_bugtraq_id(58372, 58370, 58367, 58371);
   script_cve_id("CVE-2013-0080", "CVE-2013-0083", "CVE-2013-0084", "CVE-2013-0085");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-13 11:50:53 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft SharePoint Server Privilege Elevation Vulnerabilities (2780176)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028278");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-024");
 
-  script_summary("Check for the vulnerable file versions");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

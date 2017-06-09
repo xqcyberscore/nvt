@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-094.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: secpod_ms13-094.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # Microsoft Outlook Information Disclosure Vulnerability (2894514)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(903413);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3905");
   script_bugtraq_id(63603);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-13 09:27:15 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Outlook Information Disclosure Vulnerability (2894514)");
 
@@ -82,7 +82,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-094";
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2837597");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2837618");
   script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-094");
-  script_summary("Check for the version of 'Outlook.exe' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

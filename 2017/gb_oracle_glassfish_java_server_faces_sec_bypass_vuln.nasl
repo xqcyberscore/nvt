@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 5978 2017-04-19 12:01:36Z antu123 $
+# $Id: gb_oracle_glassfish_java_server_faces_sec_bypass_vuln.nasl 6084 2017-05-09 05:36:00Z cfi $
 #
 # Oracle GlassFish Server 'Java Server Faces' Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810747");
-  script_version("$Revision: 5978 $");
+  script_version("$Revision: 6084 $");
   script_cve_id("CVE-2017-3626");
   script_bugtraq_id(97896);
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 14:01:36 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 07:36:00 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-19 13:45:58 +0530 (Wed, 19 Apr 2017)");
   script_name("Oracle GlassFish Server 'Java Server Faces' Security Bypass Vulnerability");
 

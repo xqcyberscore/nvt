@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0012_remote.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_VMSA-2013-0012_remote.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # VMSA-2013-0012 VMware vSphere updates address multiple vulnerabilities (remote check)
 #
@@ -80,15 +80,14 @@ if (description)
  script_cve_id("CVE-2013-5970","CVE-2013-5971");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6115 $");
  script_name("VMSA-2013-0012 VMware vSphere updates address multiple vulnerabilities (remote check)");
 
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0012.html");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-12-03 14:04:01 +0100 (Tue, 03 Dec 2013)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

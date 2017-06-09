@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: snmp_detect.nasl 5129 2017-01-28 15:34:30Z cfi $
+# $Id: snmp_detect.nasl 6188 2017-05-22 13:39:43Z cfi $
 #
 # A SNMP Agent is running
 #
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10265");
-  script_version("$Revision: 5129 $");
+  script_version("$Revision: 6188 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-28 16:34:30 +0100 (Sat, 28 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 15:39:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("A SNMP Agent is running");
   script_category(ACT_SETTINGS);
@@ -53,163 +53,156 @@ if(description)
 include("misc_func.inc");
 include("snmp_func.inc");
 
-if( defined_func( "snmpv3_get" ) )
-{
+if( defined_func( "snmpv3_get" ) ) {
+
   if( ! port = get_kb_item( "UDP/PORTS" ) ) port = 161;
   if( ! get_udp_port_state( port ) ) exit( 0 );
 
   community = get_kb_item( "SNMP/V2/community" );
-  if( ! community || strlen( community ) == 0 )
-  {
+  if( ! community || strlen( community ) == 0 ) {
     community = "public";
     pub_comm = TRUE;
-  }
-  else
+  } else {
     v1_v2_creds = TRUE;
+  }
 
-  if( check_snmpv1( port:port, community:community ) )
-  {
+  if( check_snmpv1( port:port, community:community ) ) {
+
     SNMP_v1 = TRUE;
-    replace_kb_item(name: "SNMP/V1/working", value: TRUE);
-    replace_kb_item(name: "SNMP/working", value: TRUE);
-    replace_kb_item(name: "SNMP/prefered_version", value: 1);
+    replace_kb_item( name:"SNMP/V1/working", value:TRUE );
+    replace_kb_item( name:"SNMP/working", value:TRUE );
+    replace_kb_item( name:"SNMP/prefered_version", value:1 );
 
-    if (pub_comm) {
-      replace_kb_item(name: "SNMP/community", value: community);
-      replace_kb_item(name: "SNMP/V2/community", value: community);
+    if( pub_comm ) {
+      replace_kb_item( name:"SNMP/community", value:community );
+      replace_kb_item( name:"SNMP/V2/community", value:community );
     }
   }
 
-  if( check_snmpv2( port:port, community:community ) )
-  {
+  if( check_snmpv2( port:port, community:community ) ) {
+
     SNMP_v2 = TRUE;
-    replace_kb_item(name: "SNMP/V2/working", value: TRUE);
-    replace_kb_item(name: "SNMP/working", value: TRUE);
-    replace_kb_item(name: "SNMP/prefered_version", value: 2);
-    if (pub_comm) {
-      replace_kb_item(name: "SNMP/community", value: community);
-      replace_kb_item(name: "SNMP/V2/community", value: community);
+    replace_kb_item( name:"SNMP/V2/working", value:TRUE );
+    replace_kb_item( name:"SNMP/working", value:TRUE );
+    replace_kb_item( name:"SNMP/prefered_version", value:2 );
+
+    if( pub_comm ) {
+      replace_kb_item( name:"SNMP/community", value:community );
+      replace_kb_item( name:"SNMP/V2/community", value:community );
     }
   }
 
   v3check = check_snmpv3( port:port );
-  if( v3check == 1 )
-  {
+  if( v3check == 1 ) {
     SNMP_v3 = TRUE;
-    replace_kb_item( name: "SNMP/V3/working", value: TRUE );
-    replace_kb_item( name: "SNMP/working", value: TRUE );
-    replace_kb_item( name: "SNMP/prefered_version", value: 3 );
+    replace_kb_item( name:"SNMP/V3/working", value:TRUE );
+    replace_kb_item( name:"SNMP/working", value:TRUE );
+    replace_kb_item( name:"SNMP/prefered_version", value:3 );
+  } else if( v3check == 2 ) {
+    SNMP_v3 = TRUE;
   }
-  else if( v3check == 2 )
-    SNMP_v3 = TRUE;
 
-  if (SNMP_v1 || SNMP_v2|| SNMP_v3) {
+  if( SNMP_v1 || SNMP_v2|| SNMP_v3 ) {
+
     report = 'A SNMP server is running on this host.\n\n';
+
     # worked with provided community string
-    if ((SNMP_v1 || SNMP_v2) && v1_v2_creds)
+    if( ( SNMP_v1 || SNMP_v2 ) && v1_v2_creds )
       report += 'SNMPv1|v2: It was possible to log in using the provided community string.\n';
+
     # worked with default community string 'public'
-    if ((SNMP_v1 || SNMP_v2) && pub_comm)
+    if( ( SNMP_v1 || SNMP_v2 ) && pub_comm )
       report += 'SNMPv1|v2: It was possible to log in using the default community string \'public\'.\n';
 
     # Notify the user if the provided community string did not work
-    if ((!SNMP_v1 || !SNMP_v2) && v1_v2_creds)
+    if( ( ! SNMP_v1 || ! SNMP_v2 ) && v1_v2_creds )
       report += 'SNMPv1|v2: It was not possible to log in using the provided community string.\n';
 
-    if (SNMP_v3)
+    if( SNMP_v3 ) {
       # correct provided credentials
-      if (!snmp_error)
-        report += 'SNMPv3: It was possible to log in using the provided credentials.\n';
+      if( ! snmp_error ) report += 'SNMPv3: It was possible to log in using the provided credentials.\n';
       else
         # wrong provided credentials
-        if (v3_creds)
-          report += 'SNMPv3: It was not possible to log in using the provided credentials. Error: ' + snmp_error + '\n';
+        if( v3_creds ) report += 'SNMPv3: It was not possible to log in using the provided credentials. Error: ' + snmp_error + '\n';
+    }
 
     report += '\nThe following SNMP versions are supported:\n';
-    if (SNMP_v1)
-      report += 'SNMP v1\n';
-    if (SNMP_v2)
-      report += 'SNMP v2c\n';
-    if (SNMP_v3)
-      report += 'SNMP v3\n';
+    if( SNMP_v1 ) report += 'SNMP v1\n';
+    if( SNMP_v2 ) report += 'SNMP v2c\n';
+    if( SNMP_v3 ) report += 'SNMP v3\n';
 
-    log_message(port: port, proto:'udp', data: report);
-    exit(0);
+    log_message( port:port, proto:"udp", data:report );
+    register_service( port:port, ipproto:"udp", proto:"snmp" );
+    replace_kb_item( name:"SNMP/running", value:TRUE );
+    exit( 0 );
   }
-}
-else
-{
- if(!(get_udp_port_state(161)))exit(0);
+} else {
+
+  port = 161;
+  if( ! ( get_udp_port_state( port ) ) ) exit( 0 );
+  socudp161 = open_sock_udp( port );
  
- socudp161 = open_sock_udp(161);
- 
- data = 'A SNMP server is running on this host\nThe following versions are supported\n';
- flag = 0;
+  data = 'A SNMP server is running on this host\nThe following versions are supported\n';
+  flag = 0;
 
- ver[0] = "1";
- ver[1] = "2c";
- ver[2] = "2u";
+  ver[0] = "1";
+  ver[1] = "2c";
+  ver[2] = "2u";
 
- community = get_kb_item("SNMP/community");
- if(!community)community = "public";
+  community = get_kb_item( "SNMP/community" );
+  if( ! community ) community = "public";
 
- SNMP_BASE = 31;
- COMMUNITY_SIZE = strlen(community);
+  SNMP_BASE = 31;
+  COMMUNITY_SIZE = strlen( community );
 
- sz = COMMUNITY_SIZE % 256;
+  sz = COMMUNITY_SIZE % 256;
 
- len = SNMP_BASE + COMMUNITY_SIZE;
- len_hi = len / 256;
- len_lo = len % 256;
+  len = SNMP_BASE + COMMUNITY_SIZE;
+  len_hi = len / 256;
+  len_lo = len % 256;
 
- if (socudp161) {
-  for (i=0; i<3; i++) { 
+  if( socudp161 ) {
+    for( i = 0; i < 3; i++ ) { 
 
-      req = raw_string(
-                0x30, 0x82, len_hi, len_lo, 
-                0x02, 0x01, i, 0x04,
-                sz);
+      req = raw_string( 0x30, 0x82, len_hi, len_lo, 
+                        0x02, 0x01, i, 0x04,
+                        sz );
 
-     req = req + community + 
-            raw_string(0xA1,0x18, 0x02, 
-                0x01, 0x01, 0x02, 0x01, 
-                0x00, 0x02, 0x01, 0x00, 
-                0x30, 0x0D, 0x30, 0x82, 
-                0x00, 0x09, 0x06, 0x05, 
-                0x2B, 0x06, 0x01, 0x02,
-                0x01, 0x05, 0x00);
-       
-      send(socket:socudp161, data:req);
-  
-      result = recv(socket:socudp161, length:1000, timeout:1);
-      if (result) {
-          flag++;
-          data += string("SNMP version",ver[i],"\n");
+      req = req + community + 
+            raw_string( 0xA1,0x18, 0x02, 
+                 0x01, 0x01, 0x02, 0x01, 
+                 0x00, 0x02, 0x01, 0x00, 
+                 0x30, 0x0D, 0x30, 0x82, 
+                 0x00, 0x09, 0x06, 0x05, 
+                 0x2B, 0x06, 0x01, 0x02,
+                 0x01, 0x05, 0x00 );
+      send( socket:socudp161, data:req );
+
+      result = recv( socket:socudp161, length:1000, timeout:1 );
+      if( result ) {
+        flag++;
+        data += string("SNMP version",ver[i],"\n");
       }
-  }   
+    }
 
-  if (flag > 0) {
-       log_message(port:161, data:data, protocol:"udp");
-       register_service(port:161, ipproto: "udp", proto:"snmp");
-       set_kb_item(name:"SNMP/running", value:TRUE);
+    if( flag > 0 ) {
+      log_message( port:port, data:data, protocol:"udp" );
+      register_service( port:port, ipproto:"udp", proto:"snmp" );
+      replace_kb_item( name:"SNMP/running", value:TRUE );
+    }
+  } # end if (socudp161)
+
+  port = 162;
+  socudp162 = open_sock_udp( port );
+  if( socudp162 ) {
+    send( socket:socudp162, data:string( "\r\n" ) );
+    result = recv( socket:socudp162, length:1, timeout:1 );
+    if( strlen( result ) > 1 ) {
+      data = "SNMP Trap Agent port open, it is possible to overflow the SNMP Traps log with fake traps (if proper community names are known), causing a Denial of Service";
+      log_message( port:port, data:data, protocol:"udp" );
+    }
   }
- }   # end if (socudp161)
- 
-
- socudp162 = open_sock_udp(162);
- if (socudp162)
- {
-  send(socket:socudp162, data:string("\r\n"));
-  result = recv(socket:socudp162, length:1, timeout:1);
-  if (strlen(result)>1)
-  {
-    data = "SNMP Trap Agent port open, it is possible to
-overflow the SNMP Traps log with fake traps (if proper community
-names are known), causing a Denial of Service";
-   log_message(port:162, data:data, protocol:"udp");
-  }
- }
-
- close(socudp162);
+  close( socudp162 );
 }
 
+exit( 0 );

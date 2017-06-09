@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln02_aug13.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln02_aug13.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # McAfee ePolicy Orchestrator (ePO) Multiple Vulnerabilities-02 August13
 #
@@ -33,12 +33,12 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-4882", "CVE-2013-4883");
   script_bugtraq_id(61421, 61422);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-09 15:40:39 +0530 (Fri, 09 Aug 2013)");
   script_name("McAfee ePolicy Orchestrator (ePO) Multiple Vulnerabilities-02 August13");
 
@@ -85,7 +85,6 @@ For updates refer to http://www.mcafee.com/in/products/epolicy-orchestrator.aspx
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54143");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26807");
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=KB78824");
-  script_summary("Check the vulnerable versions of McAfee ePolicy Orchestrator");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

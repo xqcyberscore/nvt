@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871314");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6132 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 05:39:21 +0100 (Wed, 11 Feb 2015)");
   script_cve_id("CVE-2014-3528", "CVE-2014-3580");
   script_tag(name:"cvss_base", value:"5.0");
@@ -68,7 +68,6 @@ serving Subversion repositories via the svn:// protocol.
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-February/msg00017.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

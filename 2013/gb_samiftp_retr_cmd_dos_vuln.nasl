@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_samiftp_retr_cmd_dos_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # SamiFTP Server 'RETR' Command Denial of Service Vulnerability
 #
@@ -43,16 +43,15 @@ service vulnerability.";
 if(description)
 {
   script_id(803717);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6074 $");
   script_bugtraq_id(60513);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-13 15:16:51 +0530 (Thu, 13 Jun 2013)");
   script_name("SamiFTP Server 'RETR' Command Denial of Service Vulnerability");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26133");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/windows/sami-ftp-server-201-retr-denial-of-service");
-  script_summary("Determine if SamiFTP Server is prone to denial of service vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

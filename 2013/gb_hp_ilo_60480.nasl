@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_ilo_60480.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_hp_ilo_60480.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # HP Integrated Lights-Out Remote Unauthorized Access Vulnerability
 #
@@ -50,7 +50,7 @@ if (description)
  script_cve_id("CVE-2013-2338");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6115 $");
 
  script_name("HP Integrated Lights-Out  Remote Unauthorized Access Vulnerability");
 
@@ -58,9 +58,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60480");
  script_xref(name:"URL", value:"http://www.hp.com");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
  script_tag(name:"creation_date", value:"2013-09-10 18:32:43 +0200 (Tue, 10 Sep 2013)");
- script_summary("Check the firmware version");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

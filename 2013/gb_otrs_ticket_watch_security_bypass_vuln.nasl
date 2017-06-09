@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_ticket_watch_security_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_ticket_watch_security_bypass_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # OTRS Ticket Watch Security Bypass Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-4088");
   script_bugtraq_id(60688);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-22 10:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Ticket Watch Security Bypass Vulnerability");
 
@@ -77,7 +77,6 @@ tag_solution =
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/60688");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53851/");
   script_xref(name : "URL" , value : "http://www.otrs.com/en/open-source/community-news/security-advisories/Security-Advisory-2013-04/");
-  script_summary("Check for the vulnerable version of OTRS");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

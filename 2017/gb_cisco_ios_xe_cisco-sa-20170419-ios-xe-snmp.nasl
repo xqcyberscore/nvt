@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_cisco-sa-20170419-ios-xe-snmp.nasl 5991 2017-04-20 14:40:36Z ckuerste $
+# $Id: gb_cisco_ios_xe_cisco-sa-20170419-ios-xe-snmp.nasl 6067 2017-05-04 13:15:52Z teissa $
 #
 # Cisco IOS XE Software Simple Network Management Protocol Subsystem Denial of Service Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106779");
  script_cve_id("CVE-2017-6615");
- script_tag(name: "cvss_base", value: "4.9");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:S/C:N/I:N/A:C");
- script_version("$Revision: 5991 $");
+ script_tag(name:"cvss_base", value:"6.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
+ script_version("$Revision: 6067 $");
 
  script_name("Cisco IOS XE Software Simple Network Management Protocol Subsystem Denial of Service Vulnerability");
 
@@ -59,7 +59,7 @@ the device.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-04-20 16:40:36 +0200 (Thu, 20 Apr 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-04 15:15:52 +0200 (Thu, 04 May 2017) $");
  script_tag(name: "creation_date", value: "2017-04-20 16:12:29 +0200 (Thu, 20 Apr 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

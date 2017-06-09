@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln_jan.nasl 5303 2017-02-16 02:34:36Z ckuerste $
+# $Id: gb_advantech_webaccess_mult_vuln_jan.nasl 6080 2017-05-08 09:21:57Z cfi $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106514");
-  script_version("$Revision: 5303 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-16 03:34:36 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6080 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-08 11:21:57 +0200 (Mon, 08 May 2017) $");
   script_tag(name: "creation_date", value: "2017-01-13 14:10:12 +0700 (Fri, 13 Jan 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2017-5152", "CVE-2017-5154", "CVE-2017-5175");
+  script_cve_id("CVE-2017-5152", "CVE-2017-5154", "CVE-2017-5175", "CVE-2017-7929");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -72,6 +72,7 @@ data files.");
 
   script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-012-01");
   script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-045-01");
+  script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-17-124-03");
 
   exit(0);
 }

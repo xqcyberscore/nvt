@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_language_param_xss_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_livezilla_language_param_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # LiveZilla 'g_language' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803785");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-7002", "CVE-2013-6224");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-12-17 13:21:53 +0530 (Tue, 17 Dec 2013)");
   script_name("LiveZilla 'g_language' Parameter Cross Site Scripting Vulnerability");
 
@@ -60,7 +60,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Dec/31");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124344");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/530209");
-  script_summary("Check if LiveZilla is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

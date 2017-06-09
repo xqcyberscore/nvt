@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_null_usernames_allowed.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_ipmi_null_usernames_allowed.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # IPMI Null Usernames Allowed
 #
@@ -33,13 +33,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103838";
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 2939 $");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_version ("$Revision: 6104 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-11-26 12:23:03 +0100 (Tue, 26 Nov 2013)");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:N");
  script_name("IPMI Null Usernames Allowed");
- script_summary("Check if null usernames are allowed.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");

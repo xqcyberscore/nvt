@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_apr13_win.nasl 2923 2016-03-23 11:23:31Z benallard $
+# $Id: gb_adobe_air_mult_vuln01_apr13_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Adobe AIR Multiple Vulnerabilities -01 April 13 (Windows)
 #
@@ -41,18 +41,17 @@ tag_summary = "This host is installed with Adobe AIR and is prone to multiple
 if(description)
 {
   script_id(803377);
-  script_version("$Revision: 2923 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-1375","CVE-2013-1371","CVE-2013-0650","CVE-2013-0646");
   script_bugtraq_id(58439,58438,58440,58436);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:23:31 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-18 15:30:14 +0530 (Thu, 18 Apr 2013)");
   script_name("Adobe AIR Multiple Vulnerabilities -01 April 13 (Windows)");
   script_xref(name : "URL" , value : "http://secunia.com/advisories/52590");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-09.html");
   script_xref(name : "URL" , value : "https://www.cert.be/pro/advisories/adobe-flash-player-air-multiple-vulnerabilities-2");
-  script_summary("Check for the vulnerable version of Adobe AIR on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_rsaauth_auth_bypass_vuln.nasl 3674 2016-07-07 17:35:10Z cfi $
+# $Id: gb_typo3_rsaauth_auth_bypass_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # TYPO3 'rsaauth' extension Authentication Bypass Vulnerability (SA-2015-001)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805295");
-  script_version("$Revision: 3674 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-2047");
   script_bugtraq_id(72763);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-07 19:35:10 +0200 (Thu, 07 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-02 18:06:26 +0530 (Mon, 02 Mar 2015)");
   script_name("TYPO3 'rsaauth' extension Authentication Bypass Vulnerability (SA-2015-001)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name: "URL" , value : "https://review.typo3.org/#/c/37013");
   script_xref(name: "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2015-001");
 
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

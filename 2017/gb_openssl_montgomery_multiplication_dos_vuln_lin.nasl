@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_montgomery_multiplication_dos_vuln_lin.nasl 5301 2017-02-15 09:16:50Z antu123 $
+# $Id: gb_openssl_montgomery_multiplication_dos_vuln_lin.nasl 6185 2017-05-22 11:17:57Z teissa $
 #
 # OpenSSL Montgomery Multiplication Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810544");
-  script_version("$Revision: 5301 $");
+  script_version("$Revision: 6185 $");
   script_cve_id("CVE-2016-7055");
   script_bugtraq_id(94242);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-15 10:16:50 +0100 (Wed, 15 Feb 2017) $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 13:17:57 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-09 18:50:03 +0530 (Thu, 09 Feb 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Montgomery Multiplication Denial of Service Vulnerability (Linux)");

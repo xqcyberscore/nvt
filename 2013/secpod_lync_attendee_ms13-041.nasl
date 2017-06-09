@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lync_attendee_ms13-041.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_lync_attendee_ms13-041.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # Microsoft Lync Attendee Remote Code Execution Vulnerability (2834695)
 #
@@ -45,12 +45,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902972";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6074 $");
   script_bugtraq_id(59791);
   script_cve_id("CVE-2013-1302");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-05-15 18:20:36 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Lync Attendee Remote Code Execution Vulnerability (2834695)");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2827752");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53363/");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-041");
 
-  script_summary("Check for the vulnerable 'Appshapi.dll' file versions");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 SecPod");

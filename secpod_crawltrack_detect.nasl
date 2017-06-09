@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_crawltrack_detect.nasl 2770 2016-03-03 12:38:22Z cfi $
+# $Id: secpod_crawltrack_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # CrawlTrack Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901178");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2770 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-03 13:38:22 +0100 (Thu, 03 Mar 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CrawlTrack Version Detection");
-  script_summary("Check for CrawlTrack version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Product detection");

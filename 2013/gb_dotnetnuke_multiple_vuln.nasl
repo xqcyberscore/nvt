@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_multiple_vuln.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_dotnetnuke_multiple_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # DotNetNuke Redirection Weakness and Cross Site Scripting Vulnerabilities
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803874");
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2013-3943", "CVE-2013-4649", "CVE-2013-7335");
   script_bugtraq_id(61809, 61770);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-21 15:43:57 +0530 (Wed, 21 Aug 2013)");
   script_name("DotNetNuke Redirection Weakness and Cross Site Scripting Vulnerabilities");
-  script_summary("Check if DotNetNuke is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

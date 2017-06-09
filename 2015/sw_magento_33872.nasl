@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_33872.nasl 3373 2016-05-23 18:32:02Z jan $
+# $Id: sw_magento_33872.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Magento Multiple Cross Site Scripting Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105224");
-  script_version("$Revision: 3373 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-23 20:32:02 +0200 (Mon, 23 May 2016) $");
+  script_version("$Revision: 6141 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -44,7 +44,6 @@ if(description)
 
   script_name("Magento Multiple Cross Site Scripting Vulnerabilities");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

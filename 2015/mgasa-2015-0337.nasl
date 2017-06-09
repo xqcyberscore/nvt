@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0337.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0337.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130049");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:02 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0337");
 script_tag(name: "insight", value: "Updated openafs packages fix security vulnerabilities: Memory allocated by vos for VLDB entry structures was not cleared prior to use, meaning stack data could be sent over the network, possibly in the clear if crypt mode was not in use (CVE-2015-3282). The default use by bos of clear rather than crypt mode can allow spoofing commands, including some which modify server state if restricted mode was not enabled (CVE-2015-3283). A local user executing commands which make pioctl calls to the kernel will have some contents of kernel memory leaked when buffers used are larger than data being returned (CVE-2015-3284). A local user executing the OSD FS command pioctl can trigger a panic due to an incorrect buffer being used for return status of the command (CVE-2015-3285). The vlserver allows pattern matching on volume names via regular expressions when listing attributes. Because the regular expression is not checked for situations which can overflow the buffers used, an attack is possible which reads arbitrary memory beyond the end of the buffer and can act on it as part of the expression evaluation, potentially crashing the process (CVE-2015-6587)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0337");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0337");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cgit_60164.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_cgit_60164.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # cgit 'url' Parameter Directory Traversal Vulnerability
 #
@@ -45,16 +45,15 @@ if (description)
  script_cve_id("CVE-2013-2117");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6093 $");
 
  script_name("cgit 'url' Parameter Directory Traversal Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60164");
  script_xref(name:"URL", value:"http://hjemli.net/git/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-05-28 13:55:35 +0200 (Tue, 28 May 2013)");
- script_summary("Determine if it is possible to read /etc/passwd");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

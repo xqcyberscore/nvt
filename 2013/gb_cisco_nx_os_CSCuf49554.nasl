@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_CSCuf49554.nasl 3306 2016-05-12 16:54:38Z mime $
+# $Id: gb_cisco_nx_os_CSCuf49554.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Cisco NX-OS Denial of Service Vulnerability
 #
@@ -46,7 +46,7 @@ if (description)
  script_cve_id("CVE-2013-1121");
  script_tag(name:"cvss_base", value:"5.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 3306 $");
+ script_version ("$Revision: 6093 $");
 
  script_name("Cisco NX-OS Denial of Service Vulnerability");
 
@@ -54,9 +54,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62446");
  script_xref(name:"URL", value:"http://tools.cisco.com/Support/BugToolKit/search/getBugDetails.do?method=fetchBugDetails&bugId=CSCuf49554");
 
- script_tag(name:"last_modification", value:"$Date: 2016-05-12 18:54:38 +0200 (Thu, 12 May 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-22 17:24:45 +0200 (Tue, 22 Oct 2013)");
- script_summary("Check the NX OS version.");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");

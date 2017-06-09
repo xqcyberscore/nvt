@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_netpet_cms_detect.nasl 2642 2016-02-11 19:00:31Z cfi $
+# $Id: secpod_netpet_cms_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Netpet CMS Version Detection
 #
@@ -28,12 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902023");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 2642 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-11 20:00:31 +0100 (Thu, 11 Feb 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_name("Netpet CMS Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
-  script_summary("Set the version of Netpet CMS in KB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 SecPod");
   script_family("Product detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeftpd_pass_cmd_bof_vuln.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_freeftpd_pass_cmd_bof_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # freeFTPD PASS Command Buffer Overflow Vulnerability
 #
@@ -30,10 +30,10 @@ tag_impact = "
 if(description)
 {
   script_id(803747);
-  script_version("$Revision: 2939 $");
+  script_version("$Revision: 6074 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-22 16:55:03 +0530 (Thu, 22 Aug 2013)");
   script_name("freeFTPD PASS Command Buffer Overflow Vulnerability");
 
@@ -70,7 +70,6 @@ For updates refer to http://www.freesshd.com/?ctt=download";
    script_xref(name : "URL" , value : "http://1337day.com/exploits/21139");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27747/");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/freeftpd-1010-buffer-overflow");
-  script_summary("Check if freeFTPd is prone to BoF vulnerability");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

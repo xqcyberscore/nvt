@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeroshell_lfi_08_13.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_zeroshell_lfi_08_13.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # ZeroShell 2.0RC2 File Disclosure / Command Execution
 #
@@ -28,15 +28,14 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103761");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6074 $");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
  script_name("ZeroShell 2.0RC2 File Disclosure / Command Execution");
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122799/ZeroShell-2.0RC2-File-Disclosure-Command-Execution.html");
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-14 10:33:56 +0200 (Wed, 14 Aug 2013)");
- script_summary("Determine if it is possible to read /etc/passwd");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

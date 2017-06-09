@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_multiple_dir_trav_vuln.nasl 5627 2017-03-20 15:22:38Z cfi $
+# $Id: gb_typo3_multiple_dir_trav_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Typo3 Multiple Directory Traversal Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803776");
-  script_version("$Revision: 5627 $");
+  script_version("$Revision: 6079 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:22:38 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-20 11:33:55 +0530 (Wed, 20 Nov 2013)");
   script_name("Typo3 Multiple Directory Traversal Vulnerabilities");
 
@@ -56,7 +56,6 @@ vulnerabilities.");
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/29355");
   script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/php/typo3-directory-traversal-vulnerability");
-  script_summary("Check if Typo3 is vulnerable to file reading vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");

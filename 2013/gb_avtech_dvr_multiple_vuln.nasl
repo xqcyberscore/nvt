@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_dvr_multiple_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_avtech_dvr_multiple_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # AVTECH DVR Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_id(803768);
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-4980", "CVE-2013-4981", "CVE-2013-4982");
   script_bugtraq_id(62035, 62037, 62033);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-10-07 16:31:24 +0530 (Mon, 07 Oct 2013)");
   script_name("AVTECH DVR Multiple Vulnerabilities");
 
@@ -80,7 +80,6 @@ features, remove the product or replace the product by another one.";
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27942");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Aug/284");
   script_xref(name : "URL" , value : "http://www.coresecurity.com/advisories/avtech-dvr-multiple-vulnerabilities");
-  script_summary("check it is possible bypass the captcha verification or not.");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

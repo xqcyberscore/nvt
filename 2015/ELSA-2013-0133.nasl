@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0133.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0133.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123761");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:10 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0133");
 script_tag(name: "insight", value: "ELSA-2013-0133 -  hplip3 security and bug fix update - [3.9.8-15] - Another D-Bus fix, part of bug #501834. [3.9.8-14] - Create debugging files securely (CVE-2011-2722, bug #725830). [3.9.8-13] - Several parallel-install fixes (bug #501834). [3.9.8-12] - Applied patch to fix CVE-2010-4267, remote stack overflow vulnerability (bug #662740)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0133");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

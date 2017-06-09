@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-076.nasl 2933 2016-03-24 08:20:46Z benallard $
+# $Id: secpod_ms13-076.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # MS Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2876315)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_id(902994);
-  script_version("$Revision: 2933 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2013-1341", "CVE-2013-1342", "CVE-2013-1343", "CVE-2013-1344",
                 "CVE-2013-3864", "CVE-2013-3865", "CVE-2013-3866");
   script_bugtraq_id(62180, 62193, 62195, 62196, 62197, 62198, 62199);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:20:46 +0100 (Thu, 24 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-11 08:37:33 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2876315)");
 
@@ -85,7 +85,6 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-076";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54743");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2876315");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-076");
-  script_summary("Check for the vulnerable 'Win32k.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");

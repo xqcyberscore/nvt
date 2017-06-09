@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0412.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-0412.nasl 6183 2017-05-22 09:03:43Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122203");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6183 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:45 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0412");
 script_tag(name: "insight", value: "ELSA-2011-0412 -  glibc security update - [2.5-58.el5_6.2]- Avoid too much stack use in fnmatch (#681054, CVE-2011-1071)- Properly quote output of locale (#625893, CVE-2011-1095)- Don't leave empty element in rpath when skipping the first element, ignore rpath elements containing non-isolated use of when privileged (#667974, CVE-2011-0536)- Fix handling of newline in addmntent (#559579, CVE-2010-0296)[2.5-58.el5_6.1]- Don't ignore in libraries (#682991)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-0412");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

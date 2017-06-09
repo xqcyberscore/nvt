@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869746");
-  script_version("$Revision: 4821 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:18:13 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-14 06:37:01 +0200 (Tue, 14 Jul 2015)");
   script_cve_id("CVE-2015-3210", "CVE-2015-5073");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,6 @@ for the POSIX-style functions is called pcreposix.h.
   script_xref(name: "FEDORA", value: "2015-11027");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/161753.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pcre");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

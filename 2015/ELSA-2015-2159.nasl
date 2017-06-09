@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2159.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2159.nasl 6141 2017-05-17 09:03:37Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122761");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6141 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:17:33 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2159");
 script_tag(name: "insight", value: "ELSA-2015-2159 -  curl security, bug fix, and enhancement update - [7.29.0-25.0.1]- disable check to make build pass[7.29.0-25]- fix spurious failure of test 1500 on ppc64le (#1218272)[7.29.0-24]- use the default min/max TLS version provided by NSS (#1170339)- improve handling of timeouts and blocking direction to speed up FTP (#1218272)[7.29.0-23]- require credentials to match for NTLM re-use (CVE-2015-3143)- close Negotiate connections when done (CVE-2015-3148)[7.29.0-22]- reject CRLFs in URLs passed to proxy (CVE-2014-8150)[7.29.0-21]- use only full matches for hosts used as IP address in cookies (CVE-2014-3613)- fix handling of CURLOPT_COPYPOSTFIELDS in curl_easy_duphandle (CVE-2014-3707)[7.29.0-20]- eliminate unnecessary delay when resolving host from /etc/hosts (#1130239)- allow to enable/disable new AES cipher-suites (#1066065)- call PR_Cleanup() on curl tool exit if NSPR is used (#1071254)- implement non-blocking TLS handshake (#1091429)- fix limited connection re-use for unencrypted HTTP (#1101092)- disable libcurl-level downgrade to SSLv3 (#1154060)- include response headers added by proxy in CURLINFO_HEADER_SIZE (#1161182)- ignore CURLOPT_FORBID_REUSE during NTLM HTTP auth (#1166264)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2159");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

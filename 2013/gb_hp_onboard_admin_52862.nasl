@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_admin_52862.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_hp_onboard_admin_52862.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # HP Onboard Administrator Multiple Security Vulnerabilities
 #
@@ -50,7 +50,7 @@ if (description)
  script_cve_id("CVE-2012-0128","CVE-2012-0129","CVE-2012-0130");
  script_tag(name:"cvss_base", value:"7.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6074 $");
 
  script_name("HP Onboard Administrator Multiple Security Vulnerabilities");
 
@@ -59,9 +59,8 @@ if (description)
  script_xref(name:"URL", value:"http://h18004.www1.hp.com/products/blades/components/onboard/index.html?jumpid=reg_R1002_USEN");
  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03263573");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-01 11:28:03 +0200 (Tue, 01 Oct 2013)");
- script_summary("Determine if HP Onboard Administrator version is < 3.50");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("Web application abuses");

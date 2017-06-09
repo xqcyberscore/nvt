@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3098.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3098.nasl 6132 2017-05-16 09:03:39Z teissa $
 # Auto-generated from advisory DSA 3098-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703098);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6132 $");
     script_cve_id("CVE-2014-9157");
     script_name("Debian Security Advisory DSA 3098-1 (graphviz - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
     script_tag(name: "creation_date", value: "2014-12-11 00:00:00 +0100 (Thu, 11 Dec 2014)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3098.html");
 
-    script_summary("Debian Security Advisory DSA 3098-1 (graphviz - security update)");
 
     script_category(ACT_GATHER_INFO);
 

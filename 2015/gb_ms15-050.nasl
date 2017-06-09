@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-050.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-050.nasl 6132 2017-05-16 09:03:39Z teissa $
 #
 # Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805615");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6132 $");
   script_cve_id("CVE-2015-1702");
   script_bugtraq_id(74492);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:46:24 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3055642");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-050");
 
-  script_summary("Check for the vulnerable file 'Services.exe' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

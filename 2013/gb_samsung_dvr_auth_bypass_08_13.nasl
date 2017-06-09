@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # Samsung DVR Authentication Bypass
 #
@@ -48,7 +48,7 @@ tag_vuldetect = "Check if /cgi-bin/setup_user is accessible without authenticati
 if (description)
 {
  script_oid(SCRIPT_OID);
- script_version ("$Revision: 3561 $");
+ script_version ("$Revision: 6104 $");
  script_cve_id("CVE-2013-3585", "CVE-2013-3586");
  script_bugtraq_id(61942, 61938);
  script_tag(name:"cvss_base", value:"7.6");
@@ -61,9 +61,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27753");
  script_xref(name:"URL", value:"http://www.andreafabrizi.it/?exploits:samsung:dvr");
 
- script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-21 14:27:11 +0200 (Wed, 21 Aug 2013)");
- script_summary("Determine if /cgi-bin/setup_user is accessible without authentication");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

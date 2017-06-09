@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_platinum_seo_xss_vuln.nasl 3561 2016-06-20 14:43:26Z benallard $
+# $Id: gb_wordpress_platinum_seo_xss_vuln.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # WordPress Platinum SEO plugin Cross Site Scripting Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3561 $");
+  script_version("$Revision: 6065 $");
   script_cve_id("CVE-2013-5918");
   script_bugtraq_id(62692);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 16:43:26 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 18:05:55 +0530 (Fri, 27 Sep 2013)");
   script_name("WordPress Platinum SEO plugin Cross Site Scripting Vulnerability");
 
@@ -72,7 +72,6 @@ For Updated refer to http://wordpress.org/plugins/platinum-seo-pack";
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "impact" , value : tag_impact);
 
-  script_summary("Check if WordPress Platinum SEO plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

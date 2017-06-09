@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-044.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_lync_attendee_ms15-044.nasl 6170 2017-05-19 09:03:42Z teissa $
 #
 # Microsoft Lync Attendee Remote Code Execution Vulnerability (3057110)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805560");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6170 $");
   script_cve_id("CVE-2015-1671");
   script_bugtraq_id(74490);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-14 12:44:26 +0530 (Thu, 14 May 2015)");
   script_name("Microsoft Lync Attendee Remote Code Execution Vulnerability (3057110)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3057110");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-044");
 
-  script_summary("Check for the vulnerable file 'Ogl.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -73,8 +72,9 @@ if(description)
   exit(0);
 }
 
-
+include("smb_nt.inc");
 include("version_func.inc");
+include("secpod_smb_func.inc");
 
 ## Variables Initialization
 path = "";

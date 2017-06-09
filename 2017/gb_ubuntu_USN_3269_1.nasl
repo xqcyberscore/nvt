@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843146");
-  script_version("$Revision: 6048 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 12:13:58 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6092 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-28 07:04:48 +0200 (Fri, 28 Apr 2017)");
   script_cve_id("CVE-2017-3302", "CVE-2017-3305", "CVE-2017-3308", "CVE-2017-3309",
                 "CVE-2017-3329", "CVE-2017-3331", "CVE-2017-3450", "CVE-2017-3453",
@@ -35,8 +35,8 @@ if(description)
                 "CVE-2017-3458", "CVE-2017-3459", "CVE-2017-3460", "CVE-2017-3461",
                 "CVE-2017-3462", "CVE-2017-3463", "CVE-2017-3464", "CVE-2017-3465",
                 "CVE-2017-3467", "CVE-2017-3468", "CVE-2017-3599", "CVE-2017-3600");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for mysql-5.7 USN-3269-1");
   script_tag(name: "summary", value: "Check the version of mysql-5.7");

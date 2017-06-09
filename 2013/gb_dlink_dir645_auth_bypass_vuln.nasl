@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_auth_bypass_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dlink_dir645_auth_bypass_vuln.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # D-Link DIR-645 Router Authentication Bypass Vulnerability
 #
@@ -27,17 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803174");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6065 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-01 12:01:42 +0530 (Fri, 01 Mar 2013)");
   script_name("D-Link DIR-645 Router Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Feb/150");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120591");
 
-  script_summary("Read the content of the configuration file getcfg.php");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

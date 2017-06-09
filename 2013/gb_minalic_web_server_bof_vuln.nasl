@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minalic_web_server_bof_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_minalic_web_server_bof_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
 #
 # MinaliC Host Header Handling Remote Buffer Overflow Vulnerability
 #
@@ -27,18 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803192");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6104 $");
   script_cve_id("CVE-2012-0273");
   script_bugtraq_id(52873);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-16 13:14:39 +0530 (Tue, 16 Apr 2013)");
   script_name("MinaliC Host Header Handling Remote Buffer Overflow Vulnerability");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24958/");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121296/");
-  script_summary("Check MinaliC Webserver is vulnerable by sending crafted pacakets");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

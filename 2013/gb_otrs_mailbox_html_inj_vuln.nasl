@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mailbox_html_inj_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_otrs_mailbox_html_inj_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # OTRS Mailbox HTML Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6115 $");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-27 16:50:31 +0530 (Fri, 27 Sep 2013)");
   script_name("OTRS Mailbox HTML Injection Vulnerability");
 
@@ -73,7 +73,6 @@ advisory link http://otrs.org/advisory/OSA-2007-01-en/";
   script_tag(name : "affected" , value : tag_affected);
 
   script_xref(name : "URL" , value : "http://otrs.org/advisory/OSA-2007-01-en/");
-  script_summary("Determine if the OTRS version is 2.0.0 to 2.0.4");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");

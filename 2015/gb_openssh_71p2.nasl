@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_71p2.nasl 4336 2016-10-24 15:48:20Z mime $
+# $Id: gb_openssh_71p2.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # OpenSSH Client Information Leak
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2016-0777","CVE-2016-0778");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 4336 $");
+ script_version ("$Revision: 6183 $");
 
  script_name("OpenSSH Client Information Leak");
 
@@ -49,9 +49,8 @@ by a man-in-the-middle, so this information leak is restricted to connections to
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:48:20 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
  script_tag(name:"creation_date", value:"2016-01-14 17:31:53 +0100 (Thu, 14 Jan 2016)");
- script_summary("Check the version from ssh-banner");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

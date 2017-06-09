@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2638.nasl 2863 2016-03-16 08:34:49Z benallard $
+# $Id: deb_2638.nasl 6086 2017-05-09 09:03:30Z teissa $
 # Auto-generated from advisory DSA 2638-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -49,17 +49,16 @@ tag_vuldetect = "This check tests the installed software version using the apt p
 if(description)
 {
     script_id(892638);
-    script_version("$Revision: 2863 $");
+    script_version("$Revision: 6086 $");
     script_cve_id("CVE-2013-1794", "CVE-2013-1795");
     script_name("Debian Security Advisory DSA 2638-1 (openafs - buffer overflow)");
-    script_tag(name: "last_modification", value:"$Date: 2016-03-16 09:34:49 +0100 (Wed, 16 Mar 2016) $");
+    script_tag(name: "last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
     script_tag(name: "creation_date", value:"2013-03-04 00:00:00 +0100 (Mon, 04 Mar 2013)");
     script_tag(name:"cvss_base", value:"6.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2013/dsa-2638.html");
 
-    script_summary("Debian Security Advisory DSA 2638-1 (openafs - buffer overflow)");
 
     script_category(ACT_GATHER_INFO);
 

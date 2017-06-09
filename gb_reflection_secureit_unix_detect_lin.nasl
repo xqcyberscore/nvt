@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_reflection_secureit_unix_detect_lin.nasl 2836 2016-03-11 09:07:07Z benallard $
+# $Id: gb_reflection_secureit_unix_detect_lin.nasl 6065 2017-05-04 09:03:08Z teissa $
 #
 # Reflection for Secure IT Version Detection (Linux)
 #
@@ -31,12 +31,11 @@ if(description)
 {
   script_id(800227);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 2836 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-11 10:07:07 +0100 (Fri, 11 Mar 2016) $");
+ script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Reflection for Secure IT Version Detection (Linux)");
-  script_summary("Set the KB of Reflections for Secure IT (Linux)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-269.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-269.nasl 6115 2017-05-12 09:03:25Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120466");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6115 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:27:03 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-269");
 script_tag(name: "insight", value: "The is_this_legal function in mod_dontdothat for Apache Subversion 1.4.0 through 1.7.13 and 1.8.0 through 1.8.4 allows remote attackers to bypass intended access restrictions and possibly cause a denial of service (resource consumption) via a relative URL in a REPORT request.The get_parent_resource function in repos.c in mod_dav_svn Apache HTTPD server module in Subversion 1.7.11 through 1.7.13 and 1.8.1 through 1.8.4, when built with assertions enabled and SVNAutoversioning is enabled, allows remote attackers to cause a denial of service (assertion failure and Apache process abort) via a non-canonical URL in a request, as demonstrated using a trailing /."); 
 script_tag(name : "solution", value : "Run yum update subversion to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-269");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

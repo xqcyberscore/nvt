@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_laserjet_pro_61565.nasl 2939 2016-03-24 08:47:34Z benallard $
+# $Id: gb_hp_laserjet_pro_61565.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability
 #
@@ -60,7 +60,7 @@ if (description)
  script_cve_id("CVE-2013-4807");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
- script_version ("$Revision: 2939 $");
+ script_version ("$Revision: 6079 $");
 
  script_name("Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability");
 
@@ -68,9 +68,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61565");
  script_xref(name:"URL", value:"http://www.hp.com/");
  
- script_tag(name:"last_modification", value:"$Date: 2016-03-24 09:47:34 +0100 (Thu, 24 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
  script_tag(name:"creation_date", value:"2013-08-12 16:59:44 +0200 (Mon, 12 Aug 2013)");
- script_summary("Determine if it is possible to read /dev/save_restore.xml");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("Web application abuses");

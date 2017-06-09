@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zikula_returnpage_xss_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_zikula_returnpage_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Zikula returnpage Cross Site Scripting Vulnerability
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:zikula:zikula_application_framework";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803962");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-6168");
   script_bugtraq_id(63186);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-15 17:56:51 +0530 (Fri, 15 Nov 2013)");
   script_name("Zikula returnpage Cross Site Scripting Vulnerability");
-  script_summary("Check if Zikula is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");

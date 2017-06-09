@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yppasswdd.nasl 4803 2016-12-19 13:00:35Z mime $
+# $Id: yppasswdd.nasl 6065 2017-05-04 09:03:08Z teissa $
 # Description: yppasswdd overflow
 #
 # Authors:
@@ -32,8 +32,8 @@ it, or contact Sun for a patch";
 if(description)
 {
  script_id(80035);
- script_version("$Revision: 4803 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-19 14:00:35 +0100 (Mon, 19 Dec 2016) $");
+ script_version("$Revision: 6065 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(2763);
 script_cve_id("CVE-2001-0779");
@@ -45,7 +45,6 @@ script_cve_id("CVE-2001-0779");
  script_name(name);
  
  summary = "heap overflow through yppasswdd";
- script_summary(summary);
  
  script_category(ACT_DENIAL);
  

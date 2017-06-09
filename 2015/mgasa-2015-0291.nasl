@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0291.nasl 5975 2017-04-19 07:43:02Z teissa $
+# $Id: mgasa-2015-0291.nasl 6211 2017-05-25 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130087");
-script_version("$Revision: 5975 $");
+script_version("$Revision: 6211 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:33 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2017-04-19 09:43:02 +0200 (Wed, 19 Apr 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0291");
 script_tag(name: "insight", value: "The FreeRADIUS server relies on OpenSSL to perform certificate validation, including Certificate Revocation List (CRL) checks. The FreeRADIUS usage of OpenSSL, in CRL application, limits the checks to leaf certificates, therefore not detecting revocation of intermediate CA certificates. An unexpired client certificate, issued by an intermediate CA with a revoked certificate, is therefore accepted by FreeRADIUS (CVE-2015-4680). The freeradius package has been updated to version 2.2.8, which fixes this issue, as well as the failure to run on Mageia 5 due to an OpenSSL issue."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0291");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0291");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

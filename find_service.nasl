@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service.nasl 5180 2017-02-03 07:25:25Z cfi $
+# $Id: find_service.nasl 6149 2017-05-17 15:42:24Z cfi $
 #
 # Wrapper for calling built-in NVT "find_service" which was previously
 # a binary ".nes".
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10330");
-  script_version("$Revision: 5180 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 08:25:25 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 6149 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 17:42:24 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,10 +39,12 @@ if(description)
   script_copyright("Written by Renaud Deraison <deraison@cvs.nessus.org>");
   script_dependencies("dont_scan_printers.nasl", "dont_print_on_printers.nasl");
 
+  # Keep these settings in sync with the nasl_builtin_find_service.c
   script_add_preference(name:"Number of connections done in parallel : ", value:"6", type:"entry");
-  script_add_preference(name:"Network connection timeout : ", value:"5", type:"entry");
-  script_add_preference(name:"Network read/write timeout : ", value:"5", type:"entry");
-  script_add_preference(name:"Wrapped service read timeout : ", value:"2", type:"entry");
+  script_add_preference(name:"Network connection timeout : ", value:"20", type:"entry");
+  script_add_preference(name:"Network read/write timeout : ", value:"20", type:"entry");
+  script_add_preference(name:"Wrapped service read timeout : ", value:"20", type:"entry");
+
   script_add_preference(name:"SSL certificate : ", type:"file", value:"");
   script_add_preference(name:"SSL private key : ", type:"file", value:"");
   script_add_preference(name:"PEM password : ", type:"password", value:"");

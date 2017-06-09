@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_priv_elevation_n_info_disc_kb4015195.nasl 6012 2017-04-24 04:58:27Z teissa $
+# $Id: gb_ms_priv_elevation_n_info_disc_kb4015195.nasl 6106 2017-05-11 10:32:49Z antu123 $
 #
 # Microsoft Privilege Elevation And Information Disclosure Vulnerabilities (KB4015195)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810925");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 6106 $");
   script_cve_id("CVE-2017-0058", "CVE-2017-0155");
   script_bugtraq_id(97462, 97471);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 17:38:58 +0530 (Wed, 12 Apr 2017)");
-  script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Privilege Elevation And Information Disclosure Vulnerabilities (KB4015195)");
 
   script_tag(name: "summary" , value:"This host is missing an important security

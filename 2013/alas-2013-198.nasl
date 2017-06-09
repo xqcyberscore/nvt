@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-198.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-198.nasl 6079 2017-05-08 09:03:33Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120306");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6079 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:23:14 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-198");
 script_tag(name: "insight", value: "An out-of-bounds access flaw was found in Mesa. If an application using Mesa exposed the Mesa API to untrusted inputs (Mozilla Firefox does this), an attacker could cause the application to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2013-1872 )It was found that Mesa did not correctly validate messages from the X server. A malicious X server could cause an application using Mesa to crash or, potentially, execute arbitrary code with the privileges of the user running the application. (CVE-2013-1993 )"); 
 script_tag(name : "solution", value : "Run yum update mesa to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-198");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln02_jun13_win.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_imagemagick_mult_dos_vuln02_jun13_win.nasl 6115 2017-05-12 09:03:25Z teissa $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 02 June13 (Windows)
 #
@@ -42,10 +42,10 @@ tag_summary = "The host is installed with ImageMagick and is prone to multiple
 if(description)
 {
   script_id(803816);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6115 $");
   script_cve_id("CVE-2012-0248", "CVE-2012-0247");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
   script_tag(name:"creation_date", value:"2013-06-24 13:05:53 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,6 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027032");
   script_xref(name : "URL" , value : "http://www.cert.fi/en/reports/2012_15/vulnerability595210.html");
   script_xref(name : "URL" , value : "http://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=20286");
-  script_summary("Check for the vulnerable version of ImageMagick on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

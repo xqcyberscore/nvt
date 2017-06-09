@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_21957.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_firepass_21957.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # F5 Firepass Multiple Input Validation Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111016");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6183 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
   script_name("F5 Firepass Multiple Input Validation Vulnerabilities");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms15-103.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_exchange_server_ms15-103.nasl 6141 2017-05-17 09:03:37Z teissa $
 #
 # Microsoft Exchange Server information Disclosure Vulnerability (3089250)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806108");
-  script_version("$Revision: 2617 $");
+  script_version("$Revision: 6141 $");
   script_cve_id("CVE-2015-2505", "CVE-2015-2543", "CVE-2015-2544");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 09:39:00 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Exchange Server information Disclosure Vulnerability (3089250)");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3089250");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-103");
 
-  script_summary("Check for the vulnerable file 'ExSetup.exe' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_CSCuv72412.nasl 3686 2016-07-11 16:22:45Z mime $
+# $Id: gb_cisco_vcs_CSCuv72412.nasl 6183 2017-05-22 09:03:43Z teissa $
 #
 # Cisco TelePresence Video Communication Server Cross-Site Request Forgery Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6376");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3686 $");
+ script_version ("$Revision: 6183 $");
 
  script_name("Cisco TelePresence Video Communication Server Cross-Site Request Forgery Vulnerability");
 
@@ -48,9 +48,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-11 18:22:45 +0200 (Mon, 11 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
  script_tag(name:"creation_date", value:"2015-11-26 13:00:05 +0100 (Thu, 26 Nov 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: xtelw_detect.nasl 4034 2016-09-12 12:12:26Z cfi $
+# $Id: xtelw_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
 # Description: xtelw detection
 #
 # Authors:
@@ -35,13 +35,12 @@ if(description)
 {
   script_id(11120);
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4034 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-12 14:12:26 +0200 (Mon, 12 Sep 2016) $");
+  script_version("$Revision: 6065 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("xtelw detection");
   summary = "Detect xteld in HyperTerminal mode";
-  script_summary(summary);
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");

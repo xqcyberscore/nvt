@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_aug13_macosx.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_realplayer_mult_vuln_aug13_macosx.nasl 6074 2017-05-05 09:03:14Z teissa $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities August13 (Mac OS X)
 #
@@ -33,12 +33,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803881";
 if (description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6074 $");
   script_cve_id("CVE-2013-4973", "CVE-2013-4974");
   script_bugtraq_id(61989, 61990);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-29 10:36:10 +0530 (Thu, 29 Aug 2013)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities August13 (Mac OS X)");
 
@@ -79,7 +79,6 @@ For updates refer to http://www.real.com/player";
   script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/246524");
   script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/08232013_player/en");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of RealPlayer on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_realplayer_detect_macosx.nasl");

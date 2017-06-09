@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_aug13_macosx.nasl 2924 2016-03-23 11:28:16Z benallard $
+# $Id: gb_mozilla_firefox_mult_vuln_aug13_macosx.nasl 6093 2017-05-10 09:03:18Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August 13 (Mac OS X)
 #
@@ -30,7 +30,7 @@ tag_impact = "
 if (description)
 {
   script_id(803853);
-  script_version("$Revision: 2924 $");
+  script_version("$Revision: 6093 $");
   script_cve_id("CVE-2013-1701", "CVE-2013-1702", "CVE-2013-1704", "CVE-2013-1705",
                 "CVE-2013-1706", "CVE-2013-1707", "CVE-2013-1708", "CVE-2013-1709",
                 "CVE-2013-1710", "CVE-2013-1711", "CVE-2013-1712", "CVE-2013-1713",
@@ -38,7 +38,7 @@ if (description)
   script_bugtraq_id(61641);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-23 12:28:16 +0100 (Wed, 23 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
   script_tag(name:"creation_date", value:"2013-08-08 13:09:08 +0530 (Thu, 08 Aug 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August 13 (Mac OS X)");
 
@@ -95,7 +95,6 @@ For updates refer to http://www.mozilla.com/en-US/firefox/all.html";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/54413");
   script_xref(name : "URL" , value : "https://bugzilla.mozilla.org/show_bug.cgi?id=406541");
   script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-75.html");
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

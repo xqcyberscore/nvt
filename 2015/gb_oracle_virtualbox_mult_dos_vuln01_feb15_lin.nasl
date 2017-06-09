@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_dos_vuln01_feb15_lin.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_oracle_virtualbox_mult_dos_vuln01_feb15_lin.nasl 6207 2017-05-24 09:04:07Z teissa $
 #
 # Oracle Virtualbox Multiple DoS Vulnerabilities Feb15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805429");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6207 $");
   script_cve_id("CVE-2015-0418", "CVE-2015-0377");
   script_bugtraq_id(72194, 72219);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-02 10:04:10 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Virtualbox Multiple DoS Vulnerabilities Feb15 (Linux)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_sun_virtualbox_detect_lin.nasl");

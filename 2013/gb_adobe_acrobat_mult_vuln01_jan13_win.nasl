@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 3556 2016-06-20 08:00:00Z benallard $
+# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_id(803434);
-  script_version("$Revision: 3556 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -40,7 +40,7 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:00:00 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-03-12 19:05:12 +0530 (Tue, 12 Mar 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)");
 
@@ -82,7 +82,6 @@ For updates refer to http://www.adobe.com";
   script_xref(name : "URL" , value : "http://secunia.com/advisories/51791");
   script_xref(name : "URL" , value : "http://securitytracker.com/id?1027952");
   script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-02.html");
-  script_summary("Check for the Vulnerable version of Adobe Acrobat on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

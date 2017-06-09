@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpver.nasl 5855 2017-04-04 12:10:49Z cfi $
+# $Id: httpver.nasl 6089 2017-05-09 13:03:19Z cfi $
 #
-# Detection of HTTP-Version
+# HTTP-Version Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100034");
-  script_version("$Revision: 5855 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 14:10:49 +0200 (Tue, 04 Apr 2017) $");
+  script_version("$Revision: 6089 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-09 15:03:19 +0200 (Tue, 09 May 2017) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -69,19 +69,22 @@ buf = http_recv_headers2( socket:soc );
 close( soc );
 if( isnull( buf ) || buf == "" ) exit( 0 );
 
-if( buf =~ "HTTP/1.1 20[0-6]" || buf =~ "HTTP/1.1 30[0-7]" || buf =~ "HTTP/1.1 40[13]" ) {
+# https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_error
+# Don't check for 505 as some servers might return 505 for a HTTP/1.1 request if they support only 1.0
+# TBD: Other 50x to check here? What about servers which might throw a 500 on "/" but not on subdirs / files?
+if( buf =~ "^HTTP/1\.[0-1] 50[0-4]" ) {
+  set_kb_item( name:"Services/www/" + port + "/broken/", value:TRUE );
+  set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );
+  exit( 0 );
+}
+
+else if( buf =~ "^HTTP/1\.1 [1-5][0-9][0-9]" ) {
   set_kb_item( name:"http/" + port, value:"11" );
   exit( 0 );
 }
 
-else if( buf =~ "HTTP/1.0 20[0-6]" || buf =~ "HTTP/1.0 30[0-7]" || buf =~ "HTTP/1.0 40[13]" ) {
+else if( buf =~ "^HTTP/1\.0 [1-5][0-9][0-9]" ) {
   set_kb_item( name:"http/" + port, value:"10" );
-  exit( 0 );
-}
-
-else if( buf =~ "HTTP/1\.[0-1] 50[0-4]" ) {
-  set_kb_item( name:"Services/www/" + port + "/broken/", value:TRUE );
-  set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );
   exit( 0 );
 }
 
@@ -96,12 +99,17 @@ else {
   close( soc );
   if( isnull( buf ) || buf == "" ) exit( 0 );
 
-  if( buf =~ "HTTP/1.0 20[0-6]" || buf =~ "HTTP/1.0 30[0-7]" || buf =~ "HTTP/1.0 40[13]" ) {
-    set_kb_item( name:"http/" + port, value:"10" );
-    exit( 0 );
-  } else if( buf =~ "HTTP/1\.[0-1] 50[0-9]" ) {
+  # https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_error
+  # Don't check for 505 as some servers might return 505 for a HTTP/1.0 request if they support only 0.9
+  # TBD: Other 50x to check here? What about servers which might throw a 500 on "/" but not on subdirs / files? 
+  if( buf =~ "^HTTP/1\.[0-1] 50[0-4]" ) {
     set_kb_item( name:"Services/www/" + port + "/broken/", value:TRUE );
     set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );
+    exit( 0 );
+  }
+
+  else if( buf =~ "^HTTP/1\.0 [1-5][0-9][0-9]" ) {
+    set_kb_item( name:"http/" + port, value:"10" );
     exit( 0 );
   }
 }

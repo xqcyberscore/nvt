@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_multiple_unspecified_vuln01.nasl 3557 2016-06-20 08:07:14Z benallard $
+# $Id: gb_mysql_multiple_unspecified_vuln01.nasl 6079 2017-05-08 09:03:33Z teissa $
 #
 # MySQL Multiple Unspecified Vulnerabilities - 01
 #
@@ -43,10 +43,10 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 3557 $");
+  script_version("$Revision: 6079 $");
   script_cve_id("CVE-2013-2392", "CVE-2013-2391", "CVE-2013-2389", "CVE-2013-2375");
   script_bugtraq_id(59224, 59242, 59207, 59209);
-  script_tag(name:"last_modification", value:"$Date: 2016-06-20 10:07:14 +0200 (Mon, 20 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
   script_tag(name:"creation_date", value:"2013-04-22 16:38:19 +0530 (Mon, 22 Apr 2013)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/53022");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2013-1899555.html");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2013-1899555.html#AppendixMSQL");
-  script_summary("Check for the vulnerable version of MySQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

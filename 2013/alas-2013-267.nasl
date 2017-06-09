@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2013-267.nasl 4515 2016-11-15 10:21:35Z cfi $
+# $Id: alas-2013-267.nasl 6104 2017-05-11 09:03:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120464");
-script_version("$Revision: 4515 $");
+script_version("$Revision: 6104 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:27:00 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 11:21:35 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2013-267");
 script_tag(name: "insight", value: "An uninitialized memory read issue was found in the way libjpeg-turbo decoded images with missing Start Of Scan (SOS) JPEG markers or Define Huffman Table (DHT) JPEG markers. A remote attacker could create a specially crafted JPEG image that, when decoded, could possibly lead to a disclosure of potentially sensitive information. (CVE-2013-6629 , CVE-2013-6630 )"); 
 script_tag(name : "solution", value : "Run yum update libjpeg-turbo to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2013-267");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);
