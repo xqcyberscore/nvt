@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850785");
-  script_version("$Revision: 3353 $");
+  script_version("$Revision: 6376 $");
   script_tag(name: "cvss_base", value:"10.0");
   script_tag(name: "cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:39:29 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for vsftpd SUSE-SU-2015:0136-1 (vsftpd)");
@@ -44,7 +44,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2015:0136_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-01/msg00023.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of vsftpd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

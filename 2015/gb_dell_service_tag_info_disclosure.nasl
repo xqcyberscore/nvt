@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_service_tag_info_disclosure.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dell_service_tag_info_disclosure.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Dell Foundation Services Service Tag Remote Information Disclosure
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105475");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_version ("$Revision: 6333 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-03 10:52:22 +0100 (Thu, 03 Dec 2015)");
  script_name("Dell Foundation Services 'Service Tag' Remote Information Disclosure");
 
@@ -47,7 +47,6 @@ One of the JSONP API endpoints to obtain the service tag does not need a valid s
  script_tag(name:"qod_type", value:"remote_active");
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_summary("Send a HTTP GET request and check the response");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869481");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-03 06:09:51 +0200 (Fri, 03 Jul 2015)");
   script_cve_id("CVE-2015-3231", "CVE-2015-3232", "CVE-2015-3233", "CVE-2015-3234");
   script_tag(name:"cvss_base", value:"5.8");
@@ -47,7 +47,6 @@ Drupal is highly configurable, skinnable, and secure.
   script_xref(name: "FEDORA", value: "2015-10189");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/161265.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of drupal7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

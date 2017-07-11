@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsparker_rce_vuln_win.nasl 3883 2016-08-25 05:37:27Z antu123 $
+# $Id: gb_netsparker_rce_vuln_win.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Netsparker Remote Code Execution Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:netsparker:wass";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805961");
-  script_version("$Revision: 3883 $");
+  script_version("$Revision: 6229 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-08-25 07:37:27 +0200 (Thu, 25 Aug 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-24 11:47:10 +0530 (Mon, 24 Aug 2015)");
   script_name("Netsparker Remote Code Execution Vulnerability (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37746");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Netsparker on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_netsparker_detect_win.nasl");

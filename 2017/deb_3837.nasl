@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3837.nasl 6054 2017-05-02 07:54:10Z teissa $
+# $Id: deb_3837.nasl 6409 2017-06-22 16:09:11Z cfischer $
 # Auto-generated from advisory DSA 3837-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703837);
-    script_version("$Revision: 6054 $");
+    script_version("$Revision: 6409 $");
     script_cve_id("CVE-2017-7870");
     script_name("Debian Security Advisory DSA 3837-1 (libreoffice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-02 09:54:10 +0200 (Tue, 02 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-22 18:09:11 +0200 (Thu, 22 Jun 2017) $");
     script_tag(name: "creation_date", value: "2017-04-27 00:00:00 +0200 (Thu, 27 Apr 2017)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -527,7 +527,8 @@ if ((res = isdpkgvuln(pkg:"libreoffice-math", ver:"1:5.2.5-1", rls_regex:"DEB9.[
 if ((res = isdpkgvuln(pkg:"libreoffice-mysql-connector", ver:"1:5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libreoffice-nlpsolver", ver:"1:5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
+#This package has a different version in form of 0.9+LibO5.2.7-1
+if ((res = isdpkgvuln(pkg:"libreoffice-nlpsolver", ver:"0.9+LibO5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
     report += res;
 }
 if ((res = isdpkgvuln(pkg:"libreoffice-officebean", ver:"1:5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
@@ -584,7 +585,8 @@ if ((res = isdpkgvuln(pkg:"libreoffice-subsequentcheckbase", ver:"1:5.2.5-1", rl
 if ((res = isdpkgvuln(pkg:"libreoffice-systray", ver:"1:5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libreoffice-wiki-publisher", ver:"1:5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
+#This package has a different version in form of 1.2.0+LibO5.2.7-1
+if ((res = isdpkgvuln(pkg:"libreoffice-wiki-publisher", ver:"1.2.0+LibO5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
     report += res;
 }
 if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:5.2.5-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
@@ -1112,7 +1114,8 @@ if ((res = isdpkgvuln(pkg:"libreoffice-style-tango", ver:"1:4.3.3-2+deb8u7", rls
 if ((res = isdpkgvuln(pkg:"libreoffice-subsequentcheckbase", ver:"1:4.3.3-2+deb8u7", rls_regex:"DEB8.[0-9]+")) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"libreoffice-wiki-publisher", ver:"1:4.3.3-2+deb8u7", rls_regex:"DEB8.[0-9]+")) != NULL) {
+#This package has a different version in form of 1.1.2+LibO4.3.3-2+deb8u7
+if ((res = isdpkgvuln(pkg:"libreoffice-wiki-publisher", ver:"1.1.2+LibO4.3.3-2+deb8u7", rls_regex:"DEB8.[0-9]+")) != NULL) {
     report += res;
 }
 if ((res = isdpkgvuln(pkg:"libreoffice-writer", ver:"1:4.3.3-2+deb8u7", rls_regex:"DEB8.[0-9]+")) != NULL) {

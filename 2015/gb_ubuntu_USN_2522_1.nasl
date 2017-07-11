@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842117");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:51:21 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2013-1569", "CVE-2013-2383", "CVE-2013-2384", "CVE-2013-2419",
                 "CVE-2014-6585", "CVE-2014-6591", "CVE-2014-7923", "CVE-2014-7926",
@@ -69,7 +69,6 @@ the privileges of the user invoking the program. (CVE-2014-7940)");
   script_xref(name: "USN", value: "2522-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-March/002854.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of icu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

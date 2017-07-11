@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-008.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_ms15-008.nasl 6237 2017-05-29 13:53:57Z cfi $
 #
 # MS Windows Kernel-Mode Driver Privilege Elevation Vulnerability (3019215)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805038");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6237 $");
   script_cve_id("CVE-2015-0011");
   script_bugtraq_id(71960);
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:53:57 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-14 11:16:09 +0530 (Wed, 14 Jan 2015)");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerability (3019215)");
 
@@ -50,14 +50,20 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name: "affected" , value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows Server 2012/R2
+
   Microsoft Windows 8.1 x32/x64 Edition
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prioor
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name: "solution" , value: "Run Windows Update and update the
@@ -72,7 +78,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3019215");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-008");
 
-  script_summary("Check for the vulnerable 'Mrxdav.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

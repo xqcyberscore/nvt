@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_hp_smh_csrf_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # HP System Management Homepage Cross-site Request Forgery Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805692");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2015-2134");
   script_bugtraq_id(75961);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-27 14:14:07 +0530 (Mon, 27 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("HP System Management Homepage Cross-site Request Forgery Vulnerability");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04746490");
 
-  script_summary("Check for the vulnerable version of HP System Management Homepage (SMH)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

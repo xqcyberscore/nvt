@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3348.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3348.nasl 6345 2017-06-15 10:00:59Z teissa $
 # Auto-generated from advisory DSA 3348-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703348);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6345 $");
     script_cve_id("CVE-2015-3214", "CVE-2015-5154", "CVE-2015-5165", "CVE-2015-5225",
                   "CVE-2015-5745");
     script_name("Debian Security Advisory DSA 3348-1 (qemu - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-09-02 00:00:00 +0200 (Wed, 02 Sep 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3348.html");
 
-    script_summary("Debian Security Advisory DSA 3348-1 (qemu - security update)");
 
     script_category(ACT_GATHER_INFO);
 

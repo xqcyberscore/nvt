@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_bof_vul_jan15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_notepadpp_bof_vul_jan15.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Notepad++ Buffer overflow Vulnerability - Jan15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:don_ho:notepad++";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805318");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2014-9456");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:19:25 +0530 (Fri, 09 Jan 2015)");
   script_name("Notepad++ Buffer overflow Vulnerability - Jan15 (Windows)");
 
@@ -60,7 +60,6 @@ if(description)
 
   script_xref(name: "URL" , value : "http://www.exploit-db.com/exploits/35589");
   script_xref(name: "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2014-9456");
-  script_summary("Check if Notepad++ is prone to Buffer Overflow");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

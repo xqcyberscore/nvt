@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln01_dec15_win.nasl 5087 2017-01-24 11:37:34Z cfi $
+# $Id: gb_wordpress_mult_vuln01_dec15_win.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # WordPress Multiple Vulnerabilities-01 Dec15 (Windows)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806800");
-  script_version("$Revision: 5087 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-5734", "CVE-2015-5733", "CVE-2015-5732", "CVE-2015-5731",
                 "CVE-2015-5730", "CVE-2015-2213");
   script_bugtraq_id(76331,76160);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:37:34 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-15 13:15:38 +0530 (Tue, 15 Dec 2015)");
   script_name("WordPress Multiple Vulnerabilities-01 Dec15 (Windows)");
 
@@ -81,7 +81,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2015/q3/290");
   script_xref(name : "URL" , value : "https://wordpress.org/news/2015/08/wordpress-4-2-4-security-and-maintenance-release/");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of wordpress on windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");

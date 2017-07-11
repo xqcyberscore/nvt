@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0919.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-0919.nasl 6254 2017-05-31 09:04:18Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122140");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6254 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:13:41 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0919");
 script_tag(name: "insight", value: "ELSA-2011-0919 -  qemu-kvm security and bug fix update - [qemu-kvm-0.12.1.2-2.160.el6_1.2]- kvm-virtio-guard-against-negative-vq-notifies.patch [bz#717403]- Resolves: bz#717403 (qemu-kvm: OOB memory access caused by negative vq notifies [rhel-6.1.z])[qemu-kvm-0.12.1.2-2.160.el6_1]- kvm-Fix-phys-memory-client-pass-guest-physical-address-n.patch [bz#701771]- kvm-virtio-prevent-indirect-descriptor-buffer-overflow.patch [bz#713592]- Resolves: bz#701771 (Fix phys memory client for vhost)- Resolves: bz#713592 (EMBARGOED CVE-2011-2212 virtqueue: too-large indirect descriptor buffer overflow [rhel-6.1.z])"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-0919");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

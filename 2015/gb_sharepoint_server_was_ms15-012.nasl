@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_was_ms15-012.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_sharepoint_server_was_ms15-012.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3032328)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805047");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-0064");
   script_bugtraq_id(72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 12:05:18 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft SharePoint Server WAS Remote Code Execution Vulnerability (3032328)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3032328");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2920810");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms15-012");
-  script_summary("Check for the version of 'sword.dll' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

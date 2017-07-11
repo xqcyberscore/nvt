@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_mult_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_magento_mult_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Magento Web E-Commerce Platform Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805372");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-1397", "CVE-2015-1398", "CVE-2015-1399", "CVE-2015-3457",
                 "CVE-2015-3458");
   script_bugtraq_id(74298,74420,74412);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-29 17:25:37 +0530 (Wed, 29 Apr 2015)");
   script_name("Magento Web E-Commerce Platform Multiple Vulnerabilities");
 
@@ -73,7 +73,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://blog.checkpoint.com/2015/04/20/analyzing-magento-vulnerability/");
 
-  script_summary("Check for the vulnerable version of Magento Web E-Commerce Platform");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

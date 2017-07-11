@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842112");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-27 05:43:52 +0100 (Fri, 27 Feb 2015)");
   script_cve_id("CVE-2015-0239", "CVE-2013-7421", "CVE-2014-7970", "CVE-2014-8160",
                 "CVE-2014-9529", "CVE-2014-9584", "CVE-2014-9585", "CVE-2014-9644");
@@ -82,7 +82,6 @@ gain administrative privileges. (CVE-2014-9644)");
   script_xref(name: "USN", value: "2513-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-February/002842.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

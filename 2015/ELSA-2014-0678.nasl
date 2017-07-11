@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0678.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-0678.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123375");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:57 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0678");
 script_tag(name: "insight", value: "ELSA-2014-0678 -  kernel security update - [3.10.0-123.1.2]- Oracle Linux certificates (Alexey Petrenko)[3.10.0-123.1.2]- [tty] n_tty: Fix n_tty_write crash when echoing in raw mode (Aristeu Rozanski) [1094241 1094242] {CVE-2014-0196}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-0678");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

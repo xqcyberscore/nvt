@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printer_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_xerox_printer_detect.nasl 6315 2017-06-12 10:34:26Z cfischer $
 #
 # Xerox Printer Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103648");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 6315 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2013-01-30 14:31:24 +0100 (Wed, 30 Jan 2013)");
   script_name("Xerox Printer Detection");
   script_category(ACT_GATHER_INFO);
@@ -83,9 +83,8 @@ foreach url (keys(urls)) {
     pref = get_kb_item("global_settings/exclude_printers");
     if( pref  == "yes" )
     {
-      set_kb_item(name: "Host/dead", value: TRUE);
+      replace_kb_item( name:"Host/dead", value:TRUE );
       log_message( port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
-
     }
 
     exit(0);
@@ -106,7 +105,7 @@ foreach url (keys(urls)) {
     pref = get_kb_item("global_settings/exclude_printers");
     if( pref  == "yes" )
     {
-      set_kb_item(name: "Host/dead", value: TRUE);
+      replace_kb_item( name:"Host/dead", value:TRUE );
       log_message( port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
     }
 

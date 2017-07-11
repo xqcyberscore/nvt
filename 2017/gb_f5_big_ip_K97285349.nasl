@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_K97285349.nasl 4972 2017-01-10 09:50:17Z mime $
+# $Id: gb_f5_big_ip_K97285349.nasl 6433 2017-06-26 14:58:57Z teissa $
 #
 # F5 BIG-IP XSS vulnerability in the BIG-IP and Enterprise Manager Configuration utilities CVE-2016-7469
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140118");
  script_cve_id("CVE-2016-7469");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 4972 $");
+ script_tag(name:"cvss_base", value:"3.5");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+ script_version ("$Revision: 6433 $");
 
  script_name("F5 BIG-IP - XSS vulnerability in the BIG-IP and Enterprise Manager Configuration utilities CVE-2016-7469");
 
@@ -47,7 +47,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-10 10:50:17 +0100 (Tue, 10 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2017-01-10 09:33:08 +0100 (Tue, 10 Jan 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");

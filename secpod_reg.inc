@@ -1,7 +1,8 @@
 ##############################################################################
-# OpenVAS Vulnerability Test
-# $Id: secpod_reg.inc 4647 2016-11-30 05:12:39Z antu123 $
-# Description: Retrieving Windows Registry Related Queries
+# OpenVAS Include File
+# $Id: secpod_reg.inc 6246 2017-05-30 13:04:03Z cfi $
+#
+# Retrieving Windows Registry Related Queries
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
@@ -39,6 +40,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+# $Revision: 6246 $
+#
 ##############################################################################
 
  include("global_settings.inc");
@@ -470,7 +474,7 @@
                 }
         }
 
-        else if(win2016 &&  ("6.3" >< winVer) && ("Windows Server 2016" >< winName) && (arch == "x64"))
+        else if(win2016 &&  ("6.3" >< winVer) && ("Windows Server 2016" >< winName ) && (arch == "x64" ))
         {
                 SvPk = get_kb_item("SMB/Win2016/ServicePack");
                 if(SvPk){

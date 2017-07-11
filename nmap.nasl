@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 6174 2017-05-19 10:55:33Z cfi $
+# $Id: nmap.nasl 6315 2017-06-12 10:34:26Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 6174 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 12:55:33 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6315 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,7 +83,6 @@ include("network_func.inc");
 #nb: misc_func.inc is included down below only when needed
 
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
-if( get_kb_item( "Host/ping_failed" ) ) exit( 0 );
 
 # Check if this scanner supports scan phases
 phase = 0;
@@ -357,7 +356,7 @@ if (phase == 0)
   {
    mark_dead = get_kb_item("/ping_host/mark_dead");
    if("yes" >< mark_dead) {
-     set_kb_item(name: "Host/ping_failed", value: 1);
+     replace_kb_item( name:"Host/dead", value:TRUE );
    }
    exit(0);
   }

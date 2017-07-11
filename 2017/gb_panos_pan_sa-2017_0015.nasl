@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0015.nasl 6195 2017-05-23 10:02:52Z ckuerste $
+# $Id: gb_panos_pan_sa-2017_0015.nasl 6374 2017-06-20 02:46:53Z ckuersteiner $
 #
 # Palo Alto PAN-OS Kernel Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:altaware:palo_alto_networks_panos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106826");
-  script_version("$Revision: 6195 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 6374 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-20 04:46:53 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-05-23 15:33:39 +0700 (Tue, 23 May 2017)");
   script_tag(name: "cvss_base", value: "5.8");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -60,9 +60,9 @@ Information Disclosure.");
 allow an off-path attacker to leak certain information about a given connection by creating congestion on the
 global challenge ACK rate limit counter and then measuring the changes by probing packets.");
 
-  script_tag(name: "affected", value: "PAN-OS 6.1, PAN-OS 7.0, PAN-OS 7.1.9 and earlier.");
+  script_tag(name: "affected", value: "PAN-OS 6.1, PAN-OS 7.0.15 and earlier, PAN-OS 7.1.9 and earlier.");
 
-  script_tag(name: "solution", value: "Update to PAN-OS 7.1.10 or later.");
+  script_tag(name: "solution", value: "Update to PAN-OS 7.0.16, 7.1.10 or later.");
 
   script_xref(name: "URL", value: "https://securityadvisories.paloaltonetworks.com/Home/Detail/85");
 
@@ -77,14 +77,26 @@ if (!version = get_app_version(cpe: CPE))
 
 model = get_kb_item("palo_alto_pan_os/model");
 
-if (version_is_less(version: version, test_version: "7.1.10")) {
-  report = report_fixed_ver(installed_version: version, fixed_version: "7.1.10");
+if (version_is_less(version: version, test_version: "7.0.16")) {
+  report = report_fixed_ver(installed_version: version, fixed_version: "7.0.16");
 
   if (model)
     report += '\nModel:             ' + model;
 
   security_message(port: 0, data: report);
   exit(0);
+}
+
+if (version =~ "^7\.1\.") {
+  if (version_is_less(version: version, test_version: "7.1.10")) {
+    report = report_fixed_ver(installed_version: version, fixed_version: "7.1.10");
+
+    if (model)
+      report += '\nModel:             ' + model;
+
+    security_message(port: 0, data: report);
+    exit(0);
+  }
 }
 
 exit(99);

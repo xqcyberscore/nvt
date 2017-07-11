@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871307");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-28 06:10:35 +0100 (Wed, 28 Jan 2015)");
   script_cve_id("CVE-2015-0235");
   script_tag(name:"cvss_base", value:"10.0");
@@ -61,7 +61,6 @@ contain a backported patch to correct this issue.
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-January/msg00033.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

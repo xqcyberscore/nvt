@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0794.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-0794.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123137");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:49 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0794");
 script_tag(name: "insight", value: "ELSA-2015-0794 -  krb5 security update - [1.10.3-37]- fix for CVE-2014-5355 (#1193939) 'krb5: unauthenticated denial of service in recvauth_common() and others'[1.10.3-36]- fix for CVE-2014-5353 (#1174543) 'Fix LDAP misused policy name crash'[1.10.3-35]- Changelog fixes to make errata subsystem happy.[1.10.3-34]- fix for CVE-2014-5352 (#1179856) 'gss_process_context_token() incorrectly frees context (MITKRB5-SA-2015-001)'- fix for CVE-2014-9421 (#1179857) 'kadmind doubly frees partial deserialization results (MITKRB5-SA-2015-001)'- fix for CVE-2014-9422 (#1179861) 'kadmind incorrectly validates server principal name (MITKRB5-SA-2015-001)'"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-0794");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

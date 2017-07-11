@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868962");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-31 06:01:36 +0100 (Sat, 31 Jan 2015)");
   script_cve_id("CVE-2014-9637", "CVE-2015-1196", "CVE-2015-1395");
   script_tag(name:"cvss_base", value:"4.3");
@@ -51,7 +51,6 @@ applications.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-January/148953.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of patch");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

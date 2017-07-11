@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0376.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0376.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122679");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:51:01 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0376");
 script_tag(name: "insight", value: "ELSA-2007-0376 -  Important: kernel security and bug fix update - [2.6.18-8.1.6.0.1.el5] -Fix bonding primary=ethX so it picks correct network (Bert Barbe) [IT 101532] [ORA 5136660] -Add entropy module option to e1000 (John Sobecki) [ORA 6045759] -Add entropy module option to bnx2 (John Sobecki) [ORA 6045759] [2.6.18.8-1.6.el5] - [bluetooth] close information leaks in setsockopt (Marcel Holtmann ) [241862]{CVE-2007-1353} - [net] fix memory leak in PPPoE (Neil Horman ) [241863] {CVE-2007-2525} - [random] fix seeding of dev/random (Aristeu Rozanski ) [241888] [2.6.18-8.1.5.el5] - [fs] prevent oops in compat_sys_mount (Jeff Layton ) [240456] {CVE-2006-7203} - [e1000] fix watchdog timeout panics (Andy Gospodarek ) [238048] - [ext3] return ENOENT from ext3_link when racing with unlink (Eric Sandeen ) [239787]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0376");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

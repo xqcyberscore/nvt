@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln_nov15_lin.nasl 5088 2017-01-24 11:41:39Z cfi $
+# $Id: gb_mediawiki_mult_vuln_nov15_lin.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # MediaWiki Multiple Vulnerabilities - Nov15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806626");
-  script_version("$Revision: 5088 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-8005", "CVE-2015-8004", "CVE-2015-8003", "CVE-2015-8002",
                 "CVE-2015-8001");
   script_bugtraq_id(77378, 77375, 77374, 77372);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:41:39 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-25 16:45:17 +0530 (Wed, 25 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities - Nov15 (Linux)");
 
@@ -69,7 +69,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1034028");
   script_xref(name : "URL" , value : "https://lists.wikimedia.org/pipermail/mediawiki-announce/2015-October/000181.html");
-  script_summary("Check for the vulnerable version of Mediawiki on linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

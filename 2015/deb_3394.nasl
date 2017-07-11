@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3394.nasl 4299 2016-10-19 05:54:59Z cfi $
+# $Id: deb_3394.nasl 6369 2017-06-19 10:00:04Z teissa $
 # Auto-generated from advisory DSA 3394-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703394);
-    script_version("$Revision: 4299 $");
+    script_version("$Revision: 6369 $");
     script_cve_id("CVE-2015-4551", "CVE-2015-5212", "CVE-2015-5213", "CVE-2015-5214");
     script_name("Debian Security Advisory DSA 3394-1 (libreoffice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-10-19 07:54:59 +0200 (Wed, 19 Oct 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-11-05 00:00:00 +0100 (Thu, 05 Nov 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3394.html");
 
-    script_summary("Debian Security Advisory DSA 3394-1 (libreoffice - security update)");
 
     script_category(ACT_GATHER_INFO);
 

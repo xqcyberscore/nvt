@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_trace_req_dos_vuln.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_apache_traffic_trace_req_dos_vuln.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Apache Traffic Server HTTP TRACE Request Remote DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:traffic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805128");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2014-10022");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-21 11:00:56 +0530 (Wed, 21 Jan 2015)");
   script_name("Apache Traffic Server HTTP TRACE Request Remote DoS Vulnerability");
 
@@ -61,7 +61,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://issues.apache.org/jira/browse/TS-3223");
   script_xref(name: "URL" , value : "http://mail-archives.apache.org/mod_mbox/trafficserver-users/201412.mbox/thread");
-  script_summary("Check for the vulnerable version of Apache Traffic Server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web Servers");

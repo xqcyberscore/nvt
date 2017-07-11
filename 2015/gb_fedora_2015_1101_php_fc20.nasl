@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868982");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-06 05:44:20 +0100 (Fri, 06 Feb 2015)");
   script_cve_id("CVE-2015-0231", "CVE-2014-9427", "CVE-2015-0232", "CVE-2014-0185", "CVE-2013-6420", "CVE-2014-8142");
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,7 +51,6 @@ which adds support for the PHP language to Apache HTTP Server.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/149192.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

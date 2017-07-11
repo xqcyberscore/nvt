@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882116");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6415 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 05:39:38 +0100 (Wed, 11 Feb 2015)");
   script_cve_id("CVE-2014-3528", "CVE-2014-3580", "CVE-2014-8108");
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,6 @@ serving Subversion repositories via the svn:// protocol.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:0166");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-February/020931.html");
-  script_summary("Check for the Version of mod_dav_svn");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);

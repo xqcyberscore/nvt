@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3280.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: deb_3280.nasl 6408 2017-06-22 13:33:36Z cfischer $
 # Auto-generated from advisory DSA 3280-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703280);
-    script_version("$Revision: 6170 $");
+    script_version("$Revision: 6408 $");
     script_cve_id("CVE-2015-2783", "CVE-2015-3329", "CVE-2015-4021", "CVE-2015-4022",
                   "CVE-2015-4024", "CVE-2015-4025", "CVE-2015-4026");
     script_name("Debian Security Advisory DSA 3280-1 (php5 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-22 15:33:36 +0200 (Thu, 22 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-06-07 00:00:00 +0200 (Sun, 07 Jun 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -199,9 +199,10 @@ if ((res = isdpkgvuln(pkg:"libapache2-mod-php5filter", ver:"5.6.9+dfsg-1", rls_r
 if ((res = isdpkgvuln(pkg:"libphp5-embed", ver:"5.6.9+dfsg-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"php-pear", ver:"5.6.9+dfsg-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
-    report += res;
-}
+# On the final stretch release this package has version 1.10.1+submodules+notgz-9 which causes a false positive
+#if ((res = isdpkgvuln(pkg:"php-pear", ver:"5.6.9+dfsg-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
+#    report += res;
+#}
 if ((res = isdpkgvuln(pkg:"php5", ver:"5.6.9+dfsg-1", rls_regex:"DEB9.[0-9]+")) != NULL) {
     report += res;
 }

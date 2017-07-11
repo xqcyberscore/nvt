@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0897.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0897.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122548");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:46 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0897");
 script_tag(name: "insight", value: "ELSA-2008-0897 -  ruby security update - [1.8.5-5.el5_2.5]- Build with -fno-strict-aliasing.[1.8.5-5.el5_2.4]- security fixes. (#461590)- CVE-2008-3655: multiple insufficient safe mode restrictions.- CVE-2008-3656: WEBrick DoS vulnerability (CPU consumption).- CVE-2008-3657: missing taintness checks in dl module.- CVE-2008-3905: use of predictable source port and transaction id in DNS requests done by resolv.rb module.- CVE-2008-3443: Memory allocation failure in Ruby regex engine (remotely exploitable DoS).- CVE-2008-3790: DoS vulnerability in the REXML module."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0897");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

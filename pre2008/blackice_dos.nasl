@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: blackice_dos.nasl 5309 2017-02-16 11:37:40Z mime $
+# $Id: blackice_dos.nasl 6315 2017-06-12 10:34:26Z cfischer $
 #
 # BlackIce DoS (ping flood)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10927");
-  script_version("$Revision: 5309 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 12:37:40 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 6315 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4025);
   script_tag(name:"cvss_base", value:"7.5");
@@ -114,7 +114,7 @@ for( i = 0; i < fl; i++ ) {
 alive = end_denial();
 if( ! alive ) {
   security_message(port:0, proto:"icmp");
-  set_kb_item( name:"Host/dead", value:TRUE );
+  replace_kb_item( name:"Host/dead", value:TRUE );
   exit( 0 );
 }
 

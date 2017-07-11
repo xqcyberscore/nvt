@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3393.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3393.nasl 6431 2017-06-26 09:59:24Z teissa $
 # Auto-generated from advisory DSA 3393-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703393);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6431 $");
     script_cve_id("CVE-2015-4513", "CVE-2015-7181", "CVE-2015-7182", "CVE-2015-7183",
                   "CVE-2015-7188", "CVE-2015-7189", "CVE-2015-7193", "CVE-2015-7194",
                   "CVE-2015-7196", "CVE-2015-7197", "CVE-2015-7198", "CVE-2015-7199",
                   "CVE-2015-7200");
     script_name("Debian Security Advisory DSA 3393-1 (iceweasel - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-11-04 00:00:00 +0100 (Wed, 04 Nov 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3393.html");
 
-    script_summary("Debian Security Advisory DSA 3393-1 (iceweasel - security update)");
 
     script_category(ACT_GATHER_INFO);
 

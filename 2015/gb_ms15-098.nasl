@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-098.nasl 2373 2016-01-11 10:12:57Z antu123 $
+# $Id: gb_ms15-098.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (3089669)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805977");
-  script_version("$Revision: 2373 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-2513", "CVE-2015-2514", "CVE-2015-2516", "CVE-2015-2519",
                 "CVE-2015-2530");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-11 11:12:57 +0100 (Mon, 11 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 08:14:47 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (3089669)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3089669");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-098");
 
-  script_summary("Check for the vulnerable 'Journal.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_mult_dos_vuln_aug15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_clamav_mult_dos_vuln_aug15_win.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # ClamAV Multiple Denial of Service Vulnerabilities August15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:clamav:clamav";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806016");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-2668", "CVE-2015-2222", "CVE-2015-2221", "CVE-2015-2170");
   script_bugtraq_id(74472, 74443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-17 12:16:12 +0530 (Mon, 17 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Multiple Denial of Service Vulnerabilities August15 (Windows)");
@@ -69,7 +69,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://blog.clamav.net/2015/04/clamav-0987-has-been-released.html");
 
-  script_summary("Check for the vulnerable version of ClamAV");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842150");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-01 07:25:08 +0200 (Wed, 01 Apr 2015)");
   script_cve_id("CVE-2014-8127", "CVE-2014-8128", "CVE-2014-8129", "CVE-2014-8130",
                 "CVE-2014-9330", "CVE-2014-9655");
@@ -63,7 +63,6 @@ user privileges. (CVE-2014-9655)");
   script_xref(name: "USN", value: "2553-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-March/002888.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

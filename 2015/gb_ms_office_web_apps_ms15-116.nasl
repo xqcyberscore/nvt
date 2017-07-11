@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-116.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_office_web_apps_ms15-116.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Microsoft Office Web Apps Memory Corruption Vulnerability (3104540)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806168");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2015-6093");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 17:07:20 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps Memory Corruption Vulnerability (3104540)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101367");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-116");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

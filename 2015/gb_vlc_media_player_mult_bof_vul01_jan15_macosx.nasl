@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_macosx.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_macosx.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805310");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2011-3623");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-05 18:52:08 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Mac OS X)");
 
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.videolan.org/security/sa0901.html");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/cve/CVE-2011-3623");
-  script_summary("Check for the vulnerable version of VLC Media Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

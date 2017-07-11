@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809125");
-  script_version("$Revision: 5867 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 11:01:13 +0200 (Wed, 05 Apr 2017) $");
+  script_version("$Revision: 6433 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-08-18 05:56:45 +0200 (Thu, 18 Aug 2016)");
   script_cve_id("CVE-2016-3696", "CVE-2016-3704");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for pulp-docker FEDORA-2016-4373f7d32a");
   script_tag(name: "summary", value: "Check the version of pulp-docker");

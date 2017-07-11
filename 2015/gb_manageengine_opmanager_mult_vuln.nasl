@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine OpManager Multiple Vulnerabilities");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38174");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133596");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Sep/66");
-  script_summary("Checks if it is possible to login with default credentials.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Default Accounts");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_77124.nasl 3773 2016-07-29 10:23:46Z ckuerste $
+# $Id: gb_cisco_firesight_management_center_77124.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Cisco FireSIGHT Management Center for VMware Security Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-6335");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 3773 $");
+ script_version ("$Revision: 6357 $");
 
  script_name("Cisco FireSIGHT Management Center for VMware Security Bypass Vulnerability");
 
@@ -56,9 +56,8 @@ and executing commands on the underlying operating system. The user needs to log
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 12:23:46 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-10-29 13:50:58 +0100 (Thu, 29 Oct 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

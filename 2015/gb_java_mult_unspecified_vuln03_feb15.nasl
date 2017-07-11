@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_feb15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_java_mult_unspecified_vuln03_feb15.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Feb 2015 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805265");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-0412", "CVE-2015-0406", "CVE-2015-0403", "CVE-2015-0400",
                 "CVE-2014-6601", "CVE-2014-6587");
   script_bugtraq_id(72136, 72154, 72148, 72159, 72132, 72168);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-02 13:08:03 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Feb 2015 (Windows)");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/62215");
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
 
-  script_summary("Check the vulnerable version of Oracle Java SE on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

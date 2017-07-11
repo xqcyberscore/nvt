@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuu83280.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCuu83280.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Cisco ASA Multiple OpenSSL Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106049");
-  script_version("$Revision: 5000 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name : "creation_date", value : "2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
   script_tag(name : "cvss_base", value : "6.8");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name : "summary", value : "Cisco ASA is prone to multiple vulnerabilities in the OpenSSL
 library.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Checks the version.");
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1263.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1263.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123822");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:01 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1263");
 script_tag(name: "insight", value: "ELSA-2012-1263 -  postgresql and postgresql84 security update - [8.4.13-1]- Update to PostgreSQL 8.4.13, for various fixes described at http://www.postgresql.org/docs/8.4/static/release-8-4-13.html including the fixes for CVE-2012-3488, CVE-2012-3489Resolves: #852020"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1263");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

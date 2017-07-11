@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosls_mul_vul_oct_16.nasl 5351 2017-02-20 08:03:12Z mwiegand $#
+# $Id: gb_nagiosls_mul_vul_oct_16.nasl 6416 2017-06-23 10:02:44Z cfischer $#
 # Nagios Log Server Multiple Vulnerabilities
 #
 # Authors:
@@ -29,8 +29,8 @@ CPE = "cpe:/a:nagios:nagiosls";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107059");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6416 $");
+  script_tag(name:"last_modification", value: "$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name: "creation_date", value: "2016-10-12 13:26:09 +0700 (Wed, 12 Oct 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -71,8 +71,11 @@ include("url_func.inc");
 include("version_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-if ( !appVer = get_app_version( cpe:CPE, port: port) ) exit(0);
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+
+appVer = infos['version'];
+if( ! dir = infos['location'] ) exit( 0 );
+if( dir == "/" ) dir = "";
 
 host = get_host_ip();
 source_ip = this_host();
@@ -84,8 +87,6 @@ hmac_check = HMAC_SHA1(data: session, key: hexstr(encryption_key));
 cookie = string (session, hexstr(hmac_check));
 cookie2 = urlencode(str:cookie);
 
-if( dir == "/" ) dir = "";
-
 url = dir + "/index.php/dashboard/dashlet";
 
 req = http_post_req( port: port,
@@ -93,12 +94,9 @@ req = http_post_req( port: port,
                      accept_header:'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                      add_headers: make_array("Cookie", cookie2,
                                              "Content-Type", "application/x-www-form-urlencoded") );
-
-
 res = http_keepalive_send_recv(port:port, data:req);
 
-if ((res =~ "HTTP/1\.. 200") && (version_is_less_equal(version: appVer, test_version:"1.4.1")))
-{
+if ((res =~ "^HTTP/1\.[01] 200") && (version_is_less_equal(version: appVer, test_version:"1.4.1"))) {
    report = report_vuln_url( port:port, url:url ) + '\n\n';
    report += "It might be possible to bypass the authentication using the session cookie: " + cookie + '\n';
    security_message(port: port, data: report);
@@ -106,4 +104,3 @@ if ((res =~ "HTTP/1\.. 200") && (version_is_less_equal(version: appVer, test_ver
 }
 
 exit(99);
-

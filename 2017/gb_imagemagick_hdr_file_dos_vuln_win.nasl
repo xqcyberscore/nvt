@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_hdr_file_dos_vuln_win.nasl 5536 2017-03-10 13:04:45Z antu123 $
+# $Id: gb_imagemagick_hdr_file_dos_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # ImageMagick HDR File Processing Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810582");
-  script_version("$Revision: 5536 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2015-8900");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 14:04:45 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 12:18:46 +0530 (Thu, 09 Mar 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ImageMagick HDR File Processing Denial of Service Vulnerability (Windows)");
@@ -52,15 +52,13 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ImageMagick versions 6.x and 7.x
-  on Windows.");
+  script_tag(name: "affected" , value:"ImageMagick versions 6.x before 
+  6.9.0-5 Beta on Windows.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as
-  of 9th March, 2017. Information regarding this issue will be updated
-  once the solution details are available. For updates refer to
-  http://www.imagemagick.org");
+  script_tag(name: "solution" , value:"Upgrade to ImageMagick version
+  6.9.0-5 Beta or later. For updates refer to http://www.imagemagick.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/02/26/13");
   script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1195260");
@@ -86,9 +84,14 @@ if(!imVer = get_app_version(cpe:CPE)){
 }
 
 ## Grep for vulnerable version
-if(imVer =~ "^(7|6)\.")
+if(imVer =~ "^6\.")
 {
-  report = report_fixed_ver(installed_version:imVer, fixed_version:'NoneAvailable');
-  security_message(data:report);
-  exit(0);
+  if(version_in_range(version:imVer, test_version: "6.0", test_version2: "6.9.0.4"))
+  {
+    report = report_fixed_ver(installed_version:imVer, fixed_version:'6.9.0-5 Beta');
+    security_message(data:report);
+    exit(0);
+  }
 }
+
+exit( 0 );

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1269.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1269.nasl 6333 2017-06-14 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123813");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6333 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:54 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1269");
 script_tag(name: "insight", value: "ELSA-2012-1269 -  qpid security, bug fix, and enhancement update - python-qpid[0.14-11]- BZs: 825078- Resolves: rhbz#840053qpid-cpp[0.14-22.0.1.el6_3 ]- Update summary and description in specfile to be product neutral[0.14-22]- BZs: 609685, 849654, 854004[0.14-21]- BZs: 831365, 840982, 844618[0.14-20]- BZs: 683711, 689408, 825078, 834608, 841196, 841488[0.14-19]- BZs: 609685, 683711, 693444, 707682, 729311, 801465, 808090, 809357, 811481, 817283, 826989, 831365, 835628[0.14-18]- BZs: 609685, 729311, 808090, 809357, 817283qpid-qmf[0.14-14.0.1.el6_3]- Change build vendor[0.14-14]- BZs: 693845, 773700, 806869, 847331qpid-tools[0.14-6]- Resolves: rhbz#840058- Fixed: Bug 850111 - qpid-stat -c mech column data missing"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1269");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

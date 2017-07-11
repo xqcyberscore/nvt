@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3255.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3255.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3255-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703255);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2014-9721");
     script_name("Debian Security Advisory DSA 3255-1 (zeromq3 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-05-10 00:00:00 +0200 (Sun, 10 May 2015)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3255.html");
 
-    script_summary("Debian Security Advisory DSA 3255-1 (zeromq3 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

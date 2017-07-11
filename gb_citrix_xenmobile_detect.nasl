@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_xenmobile_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_citrix_xenmobile_detect.nasl 6385 2017-06-21 07:06:43Z ckuersteiner $
 #
 # Citrix XenMobile Server Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105569");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 6385 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-21 09:06:43 +0200 (Wed, 21 Jun 2017) $");
  script_tag(name:"creation_date", value:"2016-03-15 18:31:10 +0100 (Tue, 15 Mar 2016)");
  script_name("Citrix XenMobile Server Detection");
 
@@ -68,33 +68,21 @@ if( "<title>XenMobile" >!< buf || "Citrix Systems" >!< buf ) exit( 0 );
 cpe = 'cpe:/a:citrix:xenmobile_server';
 replace_kb_item( name:"citrix_xenmobile_server/installed", value:TRUE );
 
-co = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:buf );
+cookie = get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
 
-if( ! isnull( co[1] ) )
-{
-  cookie = co[1];
-  host = http_host_name( port:port );
-
-  req = 'GET /controlpoint/rest/xdmServices/general/version HTTP/1.1\r\n' +
-        'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
-        'Cookie: ' + cookie + '\r\n' +
-        'Referer: https://' + host + '/index_uc.html\r\n' +
-        'X-Requested-With: XMLHttpRequest\r\n' +
-        'Accept-Encoding: identify\r\n' + 
-        'Content-Type: application/json; charset=UTF-8\r\n' +
-        '\r\n';
+if (cookie) {
+  req = http_get_req(port: port, url: "/controlpoint/rest/xdmServices/general/version",
+                     add_headers: make_array("X-Requested-With", "XMLHttpRequest",
+                                             "Cookie", cookie,
+                                             "Referer", report_vuln_url(port:port, url: url, url_only: TRUE)));
 
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( buf =~ 'HTTP/1.. 200' && "<message>" >< buf )
-  {
+  if( buf =~ 'HTTP/1.. 200' && "<message>" >< buf ) {
     status = eregmatch( pattern:'<status>([^<]+)</status>', string: buf );
-    if( status[1] == 0 )
-    {
+    if( status[1] == 0 ) {
       version = eregmatch( pattern:'<message>([^<]+)</message>', string:buf );
-      if( ! isnull( version[1] ) )
-      {
+      if( ! isnull( version[1] ) ) {
         vers = version[1];
         cpe += ':' + vers;
         replace_kb_item( name:"citrix_xenmobile_server/version", value:vers );
@@ -116,47 +104,29 @@ if( user && pass )
   data = 'login=' + user + '&password=' + pass;
   len = strlen( data );
 
-  req = 'POST /zdm/cxf/login HTTP/1.1\r\n' + 
-        'Host: ' + host + '\r\n' + 
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-        'Accept: application/json, text/javascript, */*; q=0.01\r\n' +
-        'Accept-Language: en-US,en;q=0.5\r\n' + 
-        'Accept-Encoding: identity\r\n' + 
-        'DNT: 1\r\n' + 
-        'Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n' + 
-        'X-Requested-With: XMLHttpRequest\r\n' +
-        'Referer: https://' + host + '/zdm/login_xdm_uc.jsp\r\n' +
-        'Content-Length: ' + len + '\r\n';
-
-  if( ! isnull( co[1] ) )
-        req += 'Cookie: ' + co[1] + '\r\n';
-
-  req += 'Connection: keep-alive\r\n' + 
-         '\r\n' + 
-         data;
-
+  url = "/zdm/cxf/login";
+  ref = "/zdm/login_xdm_uc.jsp";
+  req = http_post_req(port: port, url: url, data: data,
+                      add_headers: make_array("X-Requested-With", "XMLHttpRequest",
+                                              "Cookie", cookie,
+                                              "Referer", report_vuln_url(port: port, url: ref, url_only: TRUE),
+                                              "Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"),
+                      accept_header: "application/json, text/javascript, */*; q=0.01");
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( '"status":"OK"' >< buf )
-  {
-    co = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:buf );
-    if( ! isnull( co[1] ) )
-    {
-      cookie = co[1];
-
-      req = 'GET /controlpoint/rest/releasemgmt/allupdates HTTP/1.1\r\n' +
-            'Host: ' + host + '\r\n' +
-            'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-            'Cookie: ' + cookie + '\r\n' +
-            'Referer: https://' + host + '/index_uc.html\r\n' +
-            'X-Requested-With: XMLHttpRequest\r\n' +
-            'Accept-Encoding: identify\r\n' +
-            'Content-Type: application/json; charset=UTF-8\r\n' +
-           '\r\n';
+  if( '"status":"OK"' >< buf ) {
+    cookie = get_cookie_from_header(buf: buf, pattern: "(JSESSIONID=[^;]+)");
+    if (cookie) {
+      url = '/controlpoint/rest/releasemgmt/allupdates';
+      ref = '/index_uc.html';
+      req = http_get_req(port: port, url: url,
+                         add_headers: make_array("Cookie", cookie,
+                                                 "Referer", report_vuln_url(port: port, url: ref, url_only: TRUE),
+                                                 "X-Requested-With", "XMLHttpRequest"));
 
       buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-      if( '"message":"Success"' >< buf )
-      {
+
+      if( '"message":"Success"' >< buf ) {
         login_success = TRUE;
 
         values = split( buf, sep:",", keep:FALSE );

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3290.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3290.nasl 6333 2017-06-14 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3290-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703290);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6333 $");
     script_cve_id("CVE-2015-1805", "CVE-2015-3636", "CVE-2015-4167");
     script_name("Debian Security Advisory DSA 3290-1 (linux - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-06-18 00:00:00 +0200 (Thu, 18 Jun 2015)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3290.html");
 
-    script_summary("Debian Security Advisory DSA 3290-1 (linux - security update)");
 
     script_category(ACT_GATHER_INFO);
 

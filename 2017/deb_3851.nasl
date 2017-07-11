@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3851.nasl 6137 2017-05-16 14:30:04Z teissa $
+# $Id: deb_3851.nasl 6249 2017-05-30 13:27:41Z teissa $
 # Auto-generated from advisory DSA 3851-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703851);
-    script_version("$Revision: 6137 $");
+    script_version("$Revision: 6249 $");
     script_cve_id("CVE-2017-7484", "CVE-2017-7485", "CVE-2017-7486");
     script_name("Debian Security Advisory DSA 3851-1 (postgresql-9.4 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-16 16:30:04 +0200 (Tue, 16 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
     script_tag(name: "creation_date", value: "2017-05-12 00:00:00 +0200 (Fri, 12 May 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"5.0");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

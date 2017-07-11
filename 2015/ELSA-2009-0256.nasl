@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-0256.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-0256.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122522");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:13 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-0256");
 script_tag(name: "insight", value: "ELSA-2009-0256 -  firefox security update - firefox:[3.0.6-1.0.1.el5]- Update firstrun and homepage URLs- Added firefox-oracle-default-prefs.js/firefox-oracle-default-bookmarks.html and removed the corresponding Red Hat ones- Added patch oracle-firefox-branding.patch[3.0.6-1]- Update to Firefox 3.0.6- Fixed #447390 (wrong size of icons)nss:[3.12.2.0-4]- exclude binary db files from change detection[3.12.2.0-3]- Update to NSS_3_12_2_WITH_CKBI_1_73_RTM- Add dependency to pkgconfig to devel package (bug456849)xulrunner:[1.9.0.6-1.0.1.el5]- Added xulrunner-oracle-default-prefs.js and removed xulrunner-redhat-default-prefs.js[1.9.0.6-1]- Update to 1.9.0.6"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-0256");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

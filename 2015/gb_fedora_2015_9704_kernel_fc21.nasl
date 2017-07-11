@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869459");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-21 05:55:37 +0200 (Sun, 21 Jun 2015)");
   script_cve_id("CVE-2015-1420", "CVE-2015-3636", "CVE-2015-3339", "CVE-2015-2150", "CVE-2015-2666", "CVE-2014-8159", "CVE-2015-2042", "CVE-2015-1421", "CVE-2015-0275", "CVE-2015-1593", "CVE-2015-0239", "CVE-2014-9585", "CVE-2014-9529", "CVE-2014-9419", "CVE-2014-9428", "CVE-2014-8989", "CVE-2014-8559", "CVE-2014-8133", "CVE-2014-8134", "CVE-2014-9090");
   script_tag(name:"cvss_base", value:"10.0");
@@ -43,7 +43,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2015-9704");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160328.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

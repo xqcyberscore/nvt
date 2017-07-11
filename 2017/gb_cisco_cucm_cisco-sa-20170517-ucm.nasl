@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_cucm_cisco-sa-20170517-ucm.nasl 6152 2017-05-18 05:28:16Z ckuerste $
+# $Id: gb_cisco_cucm_cisco-sa-20170517-ucm.nasl 6302 2017-06-10 17:10:53Z cfischer $
 #
 # Cisco Unified Communications Manager Cross-Site Scripting Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106815");
  script_cve_id("CVE-2017-6654");
- script_tag(name: "cvss_base", value: "6.4");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 6152 $");
+ script_tag(name:"cvss_base", value:"4.3");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+ script_version("$Revision: 6302 $");
 
  script_name("Cisco Unified Communications Manager Cross-Site Scripting Vulnerability");
 
@@ -57,7 +57,7 @@ code in the context of the interface or allow the attacker to access sensitive b
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-18 07:28:16 +0200 (Thu, 18 May 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
  script_tag(name: "creation_date", value: "2017-05-18 10:58:04 +0700 (Thu, 18 May 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

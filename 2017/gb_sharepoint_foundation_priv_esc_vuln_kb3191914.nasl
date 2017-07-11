@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_foundation_priv_esc_vuln_kb3191914.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_sharepoint_foundation_priv_esc_vuln_kb3191914.nasl 6231 2017-05-29 09:29:50Z teissa $
 #
 # Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3191914)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811035");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 6231 $");
   script_cve_id("CVE-2017-0255");
   script_bugtraq_id(98107);
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 14:25:39 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Foundation Privilege Elevation Vulnerability (3191914)");

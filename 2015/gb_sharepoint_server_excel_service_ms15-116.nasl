@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms15-116.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_sharepoint_server_excel_service_ms15-116.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # MS SharePoint Server Excel Services Multiple Vulnerabilities (3104540)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806166");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-6038", "CVE-2015-6094");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 16:35:07 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server Excel Services Multiple Vulnerabilities (3104540)");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101364");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms15-116");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_nmap.nasl 5296 2017-02-14 17:06:35Z cfi $
+# $Id: find_service_nmap.nasl 6294 2017-06-08 18:11:49Z cfischer $
 #
-# Identify Unknown Services with nmap
+# Identify unknown services with nmap
 #
 # Authors:
 # Thomas Reinke
@@ -38,12 +38,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.66286");
-  script_version("$Revision: 5296 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-14 18:06:35 +0100 (Tue, 14 Feb 2017) $");
+  script_version("$Revision: 6294 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-08 20:11:49 +0200 (Thu, 08 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-11-18 19:41:26 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Identify Unknown Services with nmap");
+  script_name("Identify unknown services with nmap");
   script_category(ACT_END);
   script_copyright("Copyright (c) 2009 E-Soft Inc. http://www.securityspace.com");
   script_family("Service detection");

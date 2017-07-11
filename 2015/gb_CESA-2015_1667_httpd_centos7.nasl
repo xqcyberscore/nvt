@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882255");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-3183", "CVE-2015-3185");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-26 09:18:26 +0200 (Wed, 26 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for httpd CESA-2015:1667 centos7 ");
@@ -59,7 +59,6 @@ updated packages, the httpd service will be restarted automatically.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1667");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-August/021346.html");
-  script_summary("Check for the Version of httpd");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_mult_vuln_4018271.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_ms_ie_mult_vuln_4018271.nasl 6377 2017-06-20 10:16:39Z santu $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4018271)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811032");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 6377 $");
   script_cve_id("CVE-2017-0064", "CVE-2017-0222", "CVE-2017-0226", "CVE-2017-0228",
                 "CVE-2017-0231", "CVE-2017-0238");
   script_bugtraq_id(98121, 98127, 98139, 98164, 98173, 98237);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:38:44 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4018271)");
@@ -98,14 +98,15 @@ iePath = "";
 iedllVer  = NULL;
 
 ## Check for OS and Service Pack
-if(hotfix_check_sp(win2008:3, win2008x64:3, win7:2, win7x64:2, win2008r2:2,
-                   win2012:1,  win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
+if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, winVistax64:3,
+                   win2008:3, win2008x64:3, win7:2, win7x64:2, win2008r2:2, win8:1,
+                   win8x64:1, win2012:1,  win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
 ##Get IE Version
 ieVer = get_app_version(cpe:CPE);
-if(!ieVer || !(ieVer =~ "^(9|10|11)")){
+if(!ieVer || !(ieVer =~ "^(8|9|10|11)")){
   exit(0);
 }
 
@@ -121,8 +122,9 @@ if(!iedllVer){
   exit(0);
 }
 
-##Server 2008
-if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
+
+##Server 2008 and vista
+if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
   ## Check for Mshtml.dll version
   if(version_in_range(version:iedllVer, test_version:"9.0.8112.16000", test_version2:"9.0.8112.16895"))
@@ -137,8 +139,19 @@ if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
   }
 }
 
-# Win 2012
-else if(hotfix_check_sp(win2012:1) > 0)
+## Windows XP Windows 2003, Windows XP SP2 64bit
+else if(hotfix_check_sp(xp:4, win2003:3, win2003x64:3, xpx64:3) > 0)
+{
+  ## Check for Mshtml.dll version, on 32bit xp sp3
+  if(version_is_less(version:iedllVer, test_version:"8.0.6001.23942"))
+  {
+    Vulnerable_range = "Less than 8.0.6001.23942";
+    VULN = TRUE ;
+  }
+}
+
+# Win 2012, Win 8
+else if(hotfix_check_sp(win2012:1, win8:1, win8x64:1) > 0)
 {
   ## Check for Mshtml.dll version
   if(version_is_less(version:iedllVer, test_version:"10.0.9200.22137"))

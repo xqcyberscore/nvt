@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_mult_info_disc_vuln_may17_win.nasl 6168 2017-05-19 07:06:42Z antu123 $
+# $Id: gb_postgresql_mult_info_disc_vuln_may17_win.nasl 6249 2017-05-30 13:27:41Z teissa $
 #
 # PostgreSQL Multiple Information Disclosure Vulnerabilities - May17 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810991");
-  script_version("$Revision: 6168 $");
+  script_version("$Revision: 6249 $");
   script_cve_id("CVE-2017-7484", "CVE-2017-7486");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 09:06:42 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-15 16:07:12 +0530 (Mon, 15 May 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("PostgreSQL Multiple Information Disclosure Vulnerabilities - May17 (Windows)");

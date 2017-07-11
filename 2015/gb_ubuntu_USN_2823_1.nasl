@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842544");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-02 06:42:24 +0100 (Wed, 02 Dec 2015)");
   script_cve_id("CVE-2015-5283", "CVE-2015-7872");
   script_tag(name:"cvss_base", value:"4.7");
@@ -51,7 +51,6 @@ attacker could use this to cause a denial of service (system crash).
   script_xref(name: "USN", value: "2823-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-December/003204.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851146");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-23 05:39:52 +0100 (Wed, 23 Dec 2015)");
   script_cve_id("CVE-2015-8000");
   script_tag(name:"cvss_base", value:"5.0");
@@ -47,7 +47,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "SUSE-SU", value: "2015:2341_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-12/msg00028.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of bind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

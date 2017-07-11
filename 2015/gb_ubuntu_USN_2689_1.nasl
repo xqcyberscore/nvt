@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842389");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-30 05:13:46 +0200 (Thu, 30 Jul 2015)");
   script_cve_id("CVE-2015-3290", "CVE-2015-1333", "CVE-2015-3291", "CVE-2015-5157");
   script_tag(name:"cvss_base", value:"7.2");
@@ -61,7 +61,6 @@ or potentially escalate privileges on the system. (CVE-2015-5157)");
   script_xref(name: "USN", value: "2689-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-July/003058.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-utopic");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

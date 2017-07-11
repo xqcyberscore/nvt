@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcserve_udp_74838.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_arcserve_udp_74838.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Arcserve Unified Data Protection Multiple Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4069","CVE-2015-4068");
  script_tag(name:"cvss_base", value:"9.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
- script_version ("$Revision: 2582 $");
+ script_version ("$Revision: 6431 $");
 
  script_name("Arcserve Unified Data Protection Multiple Vulnerabilities");
 
@@ -53,9 +53,8 @@ disclosure vulnerabilities and multiple directory traversal vulnerabilities..");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-06-11 17:46:01 +0200 (Thu, 11 Jun 2015)");
- script_summary("Determine if FIXME is FIXME");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851555");
-  script_version("$Revision: 6205 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 08:22:39 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6231 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-19 07:10:46 +0200 (Fri, 19 May 2017)");
   script_cve_id("CVE-2017-8849");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for smb4k openSUSE-SU-2017:1343-1 (smb4k)");
   script_tag(name: "summary", value: "Check the version of smb4k");

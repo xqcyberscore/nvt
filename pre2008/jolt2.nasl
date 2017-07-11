@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: jolt2.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: jolt2.nasl 6315 2017-06-12 10:34:26Z cfischer $
 # Description: jolt2
 #
 # Authors:
@@ -36,8 +36,8 @@ tag_solution = "contact your operating system vendor for a patch.";
 if(description)
 {
  script_id(11902);
- script_version("$Revision: 6053 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+ script_version("$Revision: 6315 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1312);
  script_tag(name:"cvss_base", value:"5.0");
@@ -85,5 +85,5 @@ alive = end_denial();
 if(!alive)
 {
 	security_message();
-	set_kb_item(name:"Host/dead", value:TRUE);
+	replace_kb_item( name:"Host/dead", value:TRUE );
 }

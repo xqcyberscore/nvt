@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806566");
-  script_version("$Revision: 3486 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 07:14:29 +0200 (Mon, 13 Jun 2016) $");
+  script_version("$Revision: 6357 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 07:57:47 +0100 (Mon, 02 Nov 2015)");
   script_cve_id("CVE-2015-3247", "CVE-2015-5260", "CVE-2015-5261");
   script_tag(name:"cvss_base", value:"7.2");
@@ -45,7 +45,6 @@ and the para-virtual graphics card QXL.
   script_xref(name: "FEDORA", value: "2015-7");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/170590.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mingw-spice-protocol");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

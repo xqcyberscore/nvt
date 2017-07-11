@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tls_npn_alpn_detect.nasl 5727 2017-03-24 17:35:04Z cfi $
+# $Id: gb_tls_npn_alpn_detect.nasl 6424 2017-06-23 17:49:05Z cfischer $
 #
 # SSL/TLS: NPN / ALPN Extension and Protocol Support Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108099");
-  script_version("$Revision: 5727 $");
+  script_version("$Revision: 6424 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 18:35:04 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 19:49:05 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:00:00 +0100 (Wed, 15 Mar 2017)");
   script_name("SSL/TLS: NPN / ALPN and Protocol Support Extension Detection");
   script_category(ACT_GATHER_INFO);
@@ -62,8 +62,10 @@ include("misc_func.inc");
 include("byte_func.inc");
 include("ssl_funcs.inc");
 
-npn_report  = 'The remote service advertises support for the following Network Protocol(s) via the NPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
-alpn_report = 'The remote service advertises support for the following Network Protocol(s) via the ALPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
+npn_report_header  = 'The remote service advertises support for the following Network Protocol(s) via the NPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
+alpn_report_header = 'The remote service advertises support for the following Network Protocol(s) via the ALPN extension:\n\nSSL/TLS Protocol:Network Protocol\n';
+npn_report_list    = make_list();
+alpn_report_list   = make_list();
 
 port = get_http_port( default:443, ignore_broken:TRUE, ignore_cgi_disabled:TRUE );
 
@@ -113,13 +115,11 @@ foreach version( versions ) {
 
       # Just to make sure that we're getting what we're expecting
       if( npn_prots ) {
-        # Sort to make sure that we're not reporting differences on delta reports if just the order is different
-        npn_prots = sort( npn_prots );
 
         # The server will report all supported protocols via NPN
         foreach npn_prot( npn_prots ) {
           npn_supported = TRUE;
-          npn_report += version_string[version] + ":" + npn_alpn_name_mapping[npn_prot] + '\n';
+          npn_report_list = make_list( npn_report_list, version_string[version] + ":" + npn_alpn_name_mapping[npn_prot] );
           set_kb_item( name:"tls_npn_supported/" + SSL_VER + "/" + port, value:TRUE );
           set_kb_item( name:"tls_npn_prot_supported/" + SSL_VER + "/" + port, value:npn_prot );
         }
@@ -183,7 +183,7 @@ foreach version( versions ) {
           # The server will choose only one protocol via ALPN, still iterating over the list here...
           foreach alpn_prot( alpn_prots ) {
             alpn_supported = TRUE;
-            alpn_report += version_string[version] + ":" + npn_alpn_name_mapping[alpn_prot] + '\n';
+            alpn_report_list = make_list( alpn_report_list, version_string[version] + ":" + npn_alpn_name_mapping[alpn_prot] );
             set_kb_item( name:"tls_alpn_supported/" + SSL_VER + "/" + port, value:TRUE );
             set_kb_item( name:"tls_alpn_prot_supported/" + SSL_VER + "/" + port, value:alpn_prot );
           }
@@ -200,8 +200,26 @@ foreach version( versions ) {
 }
 
 if( alpn_supported || npn_supported ) {
-  if( npn_supported )  report += npn_report;
-  if( alpn_supported ) report += '\n' + alpn_report;
+  if( npn_supported ) {
+    # Sort to make sure that we're not reporting differences on delta reports if just the order is different
+    npn_report_list = sort( npn_report_list );
+    report += npn_report_header;
+    foreach npn_report( npn_report_list ) {
+      report += npn_report + '\n';
+    }
+  }
+
+  if( alpn_supported && npn_supported ) report += '\n';
+
+  if( alpn_supported ) {
+    # Sort to make sure that we're not reporting differences on delta reports if just the order is different
+    alpn_report_list = sort( alpn_report_list );
+    report += alpn_report_header;
+    foreach alpn_report( alpn_report_list ) {
+      report += alpn_report + '\n';
+    }
+  }
+
   log_message( port:port, data:report );
 }
 

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3356.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3356.nasl 6214 2017-05-26 09:04:01Z teissa $
 # Auto-generated from advisory DSA 3356-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703356);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6214 $");
     script_cve_id("CVE-2015-6908");
     script_name("Debian Security Advisory DSA 3356-1 (openldap - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
     script_tag(name: "creation_date", value: "2015-09-12 00:00:00 +0200 (Sat, 12 Sep 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3356.html");
 
-    script_summary("Debian Security Advisory DSA 3356-1 (openldap - security update)");
 
     script_category(ACT_GATHER_INFO);
 

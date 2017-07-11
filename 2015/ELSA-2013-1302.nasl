@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1302.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1302.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123563");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:34 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1302");
 script_tag(name: "insight", value: "ELSA-2013-1302 -  xinetd security and bug fix update - [2:2.3.14-19] - Correctly backport patches that fix the descriptor leakage - Related: #852274 [-2:2.3.14-18] - Fix leaking file descriptors (#852274) - Fix: Service disabled due to bind failure (#811000) - CVE-2012-0862 xinetd: enables unintentional services over tcpmux port (#788795)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1302");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cisco-sa-20151130-wsa.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_wsa_cisco-sa-20151130-wsa.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Cisco Web Security Appliance Native FTP Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6386");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6369 $");
 
  script_name("Cisco Web Security Appliance Native FTP Denial of Service Vulnerability");
 
@@ -49,9 +49,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-01 16:10:38 +0100 (Tue, 01 Dec 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

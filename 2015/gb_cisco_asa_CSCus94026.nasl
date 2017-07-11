@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus94026.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCus94026.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # Cisco ASA VPN ISAKMP DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106051");
-  script_version("$Revision: 5000 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name : "creation_date", value : "2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
   script_tag(name : "cvss_base", value : "7.8");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,6 @@ if (description)
 
   script_tag(name : "summary", value : "A vulnerability in the IKE code of Cisco ASA may lead to a denial
 of service.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Checks the version.");
 

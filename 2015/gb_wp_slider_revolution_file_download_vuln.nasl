@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 3021 2016-04-11 06:20:06Z antu123 $
+# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Wordpress Slider Revolution Arbitrary File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805518");
-  script_version("$Revision: 3021 $");
+  script_version("$Revision: 6329 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-11 08:20:06 +0200 (Mon, 11 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-31 12:15:41 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Slider Revolution Arbitrary File Download Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36554");
   script_xref(name : "URL" , value : "http://www.homelab.it/index.php/2014/07/28/wordpress-slider-revolution-arbitrary-file-download");
-  script_summary("Determine if it is possible to download any file");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

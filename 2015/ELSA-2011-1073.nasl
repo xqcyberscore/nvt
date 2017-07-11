@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-1073.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-1073.nasl 6229 2017-05-29 09:04:10Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122123");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6229 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:13:27 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-1073");
 script_tag(name: "insight", value: "ELSA-2011-1073 -  bash security, bug fix, and enhancement update - [3.2-32]- Dont include backup files Resolves: #700157[3.2-31]- Use 'mktemp' for temporary files Resolves: #700157[3.2-30]- Added man page references to systemwide .bash_logout Resolves: #592979[3.2-29]- Readline glitch, when editing line with more spaces and resizing window Resolves: #525474[3.2-28]- Fix the memory leak in read builtin Resolves: #618393- Dont append slash to non-directories Resolves: #583919[3.2-27]- Test .dynamic section if has PROGBITS or NOBITS Resolves: #484809- Better random number generator Resolves: #492908- Allow to source scripts with embeded NULL chars Resolves: #503701[3.2-26]- vi mode redo insert fixed Resolves: #575076- Dont show broken pipe messages for builtins Resolves: #546529- Dont include loadables in doc dir Resolves: #663656- Enable system-wide .bash_logout for login shells Resolves: #592979[3.2-25]- Dont abort source builtin Resolves: #448508- Correctly place cursor Resolves: #463880- Minor man page clarification for trap builtin Resolves: #504904"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-1073");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

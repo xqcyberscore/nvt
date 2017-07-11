@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0413.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0413.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131100");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-26 09:35:58 +0200 (Mon, 26 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0413");
 script_tag(name: "insight", value: "It was found that ntpd did not correctly implement the threshold limitation for the '-g' option, which is used to set the time without any restrictions. A man-in-the-middle attacker able to intercept NTP traffic between a connecting client and an NTP server could use this flaw to force that client to make multiple steps larger than the panic threshold, effectively changing the time to an arbitrary value at any time (CVE-2015-5300). Slow memory leak in CRYPTO_ASSOC with autokey (CVE-2015-7701). Incomplete autokey data packet length checks could result in crash caused by a crafted packet (CVE-2015-7691, CVE-2015-7692, CVE-2015-7702). Clients that receive a KoD should validate the origin timestamp field (CVE-2015-7704). ntpq atoascii() Memory Corruption Vulnerability could result in ntpd crash caused by a crafted packet (CVE-2015-7852). Symmetric association authentication bypass via crypto-NAK (CVE-2015-7871)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0413");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0413");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

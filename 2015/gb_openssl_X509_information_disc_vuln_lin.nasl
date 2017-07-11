@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_X509_information_disc_vuln_lin.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_openssl_X509_information_disc_vuln_lin.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806656");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-3195");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-23 12:41:42 +0530 (Wed, 23 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Linux)");
@@ -61,7 +61,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://openssl.org/news/secadv/20151203.txt");
 
-  script_summary("Check for the vulnerable version of OpenSSL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

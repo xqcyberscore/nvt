@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3373.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3373.nasl 6369 2017-06-19 10:00:04Z teissa $
 # Auto-generated from advisory DSA 3373-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703373);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6369 $");
     script_cve_id("CVE-2015-4716", "CVE-2015-4717", "CVE-2015-4718", "CVE-2015-5953",
                   "CVE-2015-5954", "CVE-2015-6500", "CVE-2015-6670", "CVE-2015-7699");
     script_name("Debian Security Advisory DSA 3373-1 (owncloud - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-10-18 00:00:00 +0200 (Sun, 18 Oct 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3373.html");
 
-    script_summary("Debian Security Advisory DSA 3373-1 (owncloud - security update)");
 
     script_category(ACT_GATHER_INFO);
 

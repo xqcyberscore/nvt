@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvrmini.nasl 5170 2017-02-02 14:09:37Z cfi $
+# $Id: gb_nuuo_nvrmini.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # NUUO NVRmini 2 3.0.8 - Remote Root Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:nuuo:nuuo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107042");
-  script_version("$Revision: 5170 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2016-5674", "CVE-2016-5675", "CVE-2016-5676", "CVE-2016-5677",
                 "CVE-2016-5678", "CVE-2016-5679", "CVE-2016-5680");
   script_bugtraq_id(92318);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 15:09:37 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 13:16:06 +0200 (Tue, 23 Aug 2016)");
   script_name("NUUO NVRmini 2 3.0.8 - Remote Root Vulnerability");
 
@@ -66,7 +66,7 @@ if(description)
   script_tag(name: "affected" , value:"NUUO NVRmini Versions 2.3.0.8 and below");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  02th February, 2017. Information regarding this issue will be updated once the
+  31st May, 2017. Information regarding this issue will be updated once the
   solution details are made available. For updates refer to, http://www.nuuo.com.
 
   As a workaround, only allow connections from trusted hosts and networks.");

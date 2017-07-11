@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: labrea.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: labrea.nasl 6315 2017-06-12 10:34:26Z cfischer $
 # Description: scan for LaBrea tarpitted hosts
 #
 # Authors:
@@ -31,8 +31,8 @@ if(description)
 {
  script_id(10796);
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_version("$Revision: 6315 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  name = "scan for LaBrea tarpitted hosts";
@@ -117,7 +117,7 @@ if (flags & TH_RST) {
 
 
 if ( (winsize <= 10) && (flags & TH_ACK) ) {
-      set_kb_item(name:"Host/dead", value:TRUE);
+      replace_kb_item( name:"Host/dead", value:TRUE );
       exit(0);
 }
 
@@ -148,7 +148,7 @@ if ( (winsize <= 10) && (flags & TH_ACK) ) {
     winsize = get_tcp_element(tcp:reply2, element:"th_win");
     flags = get_tcp_element(tcp:reply2, element:"th_flags");
     if ( (flags & TH_ACK) && (flags & TH_SYN) && (winsize == 10) ) {
-        set_kb_item(name:"Host/dead", value:TRUE);
+        replace_kb_item( name:"Host/dead", value:TRUE );
         exit(0);
     }
 

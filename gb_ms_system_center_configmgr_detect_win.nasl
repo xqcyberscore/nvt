@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_system_center_configmgr_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_ms_system_center_configmgr_detect_win.nasl 6413 2017-06-23 09:16:58Z cfischer $
 #
 # Microsoft System Center Configuration Manager Version Detection
 #
@@ -36,11 +36,11 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803023";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 6413 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:47:47 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -185,7 +185,7 @@ foreach key (keylist)
       }
 
       ## Some Info about R2 and R3
-      ## Base installtion Key will be there always and will set the above key
+      ## Base installation Key will be there always and will set the above key
       ## InstallPath will be same as above and same can be used for R2/R3
       ## At time only one R2/R3 version can be installed not both.
       ## If R3 installed On R2, R2 key will be deleted from registry

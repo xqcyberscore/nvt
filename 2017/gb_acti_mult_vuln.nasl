@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_acti_mult_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_acti_mult_vuln.nasl 6421 2017-06-23 13:50:13Z cfischer $
 #
 # ACTi Cameras Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:acti:acti";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106649");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6421 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-23 15:50:13 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-03-14 12:58:36 +0700 (Tue, 14 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -69,7 +69,7 @@ device using default admin credentials. (CVE-2017-3186)");
   script_tag(name: "affected", value: "ACTi devices including D, B, I, and E series models using firmware version
 A1D-500-V6.11.31-AC");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 23th June, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/355151");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_referer_header_xss_vuln02_feb15.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_splunk_referer_header_xss_vuln02_feb15.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Splunk Enterprise 'Referer' Header Cross-Site Scripting Vulnerability -02 Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805333");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2014-8301");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-05 12:04:16 +0530 (Thu, 05 Feb 2015)");
   script_name("Splunk Enterprise 'Referer' Header Cross-Site Scripting Vulnerability -02 Feb15");
 
@@ -64,7 +64,6 @@ if(description)
   
   script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAANHS#announce4");
 
-  script_summary("Check if Splunk is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

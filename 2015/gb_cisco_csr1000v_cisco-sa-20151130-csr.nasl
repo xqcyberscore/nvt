@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csr1000v_cisco-sa-20151130-csr.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_csr1000v_cisco-sa-20151130-csr.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Cisco Cloud Services Router 1000V Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6385");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6229 $");
 
  script_name("Cisco Cloud Services Router 1000V Command Injection Vulnerability");
 
@@ -47,9 +47,8 @@ if (description)
  script_tag(name:"solution_type", value: "Workaround");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-12-01 17:22:52 +0100 (Tue, 01 Dec 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842518");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-06 06:02:42 +0100 (Fri, 06 Nov 2015)");
   script_cve_id("CVE-2015-4551", "CVE-2015-5212", "CVE-2015-5213", "CVE-2015-5214");
   script_tag(name:"cvss_base", value:"6.8");
@@ -63,7 +63,6 @@ execute arbitrary code. (CVE-2015-5214)");
   script_xref(name: "USN", value: "2793-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-November/003173.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libreoffice");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

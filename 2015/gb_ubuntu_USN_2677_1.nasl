@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842401");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-05 05:08:52 +0200 (Wed, 05 Aug 2015)");
   script_cve_id("CVE-2015-1270", "CVE-2015-1272", "CVE-2015-1276", "CVE-2015-1277",
                 "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1283", "CVE-2015-1284",
@@ -96,7 +96,6 @@ truncation point. If a user were tricked in to open ...
   script_xref(name: "USN", value: "2677-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-August/003071.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of oxide-qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

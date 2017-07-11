@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_cisco_prime_data_center_network_manager_73479.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # Cisco Data Center Network Manager Directory Traversal Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0666");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version ("$Revision: 5655 $");
+ script_version ("$Revision: 6345 $");
 
  script_name("Cisco Data Center Network Manager Directory Traversal Vulnerability");
 
@@ -51,9 +51,8 @@ vulnerability.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-14 14:19:43 +0200 (Tue, 14 Apr 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

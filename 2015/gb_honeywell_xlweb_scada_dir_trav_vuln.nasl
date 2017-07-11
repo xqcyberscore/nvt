@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # Honeywell Falcon XL Web Controller Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805540");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2015-0984");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:42:16 +0530 (Mon, 27 Apr 2015)");
   script_name("Honeywell Falcon XL Web Controller Directory Traversal Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Apr/79");
   script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-076-02");
-  script_summary("Check if Honeywell Falcon XL Web Controller is prone to directory traversal");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");

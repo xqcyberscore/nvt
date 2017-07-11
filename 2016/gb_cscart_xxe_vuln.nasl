@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cscart_xxe_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_cscart_xxe_vuln.nasl 6421 2017-06-23 13:50:13Z cfischer $
 #
 # CS-Cart XXE Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:cs-cart:cs-cart";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106398");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6421 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-23 15:50:13 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name: "creation_date", value: "2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
   script_tag(name: "cvss_base", value: "6.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:P");
 
   script_tag(name: "qod_type", value: "remote_analysis");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "VendorFix");
 
   script_name("CS-Cart XXE Vulnerability");
 
@@ -59,9 +59,13 @@ Addon and in the Amazon Payment Addon.");
   script_tag(name: "impact", value: "An unauthenticated attacker may read arbitrary files or conduct a denial
 of service attack.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "Update to CS-Cart 4.4.2 or later which:
 
+  - removes the vulnerable Twigmo Addon (depreacted)
+
+  - fixes the XXE vulnerability in the Amazon Payment Addon.");
+
+  script_xref(name: "URL", value: "http://docs.cs-cart.com/4.5.x/history/442.html#cs-cart-4-4-2-changelog");
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40770/");
 
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_dos_vuln_win.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_nodejs_dos_vuln_win.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Node.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805943");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-5380");
   script_bugtraq_id(75556);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-04 18:22:15 +0530 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Node.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://medium.com/node-js-javascript/important-security-upgrades-for-node-js-and-io-js-8ac14ece5852");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of node.js on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_nodejs_detect_win.nasl");

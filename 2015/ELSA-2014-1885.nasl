@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1885.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1885.nasl 6431 2017-06-26 09:59:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123243");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6431 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:11 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1885");
 script_tag(name: "insight", value: "ELSA-2014-1885 -  libxml2 security update - [2.6.26-2.1.25.0.1.el5_11]- Add libxml2-enterprise.patch- Replaced doc/redhat.gif in tarball with updated image[2.6.26-2.1.25.el5]- CVE-2014-3660 denial of service via recursive entity expansion (rhbz#1161841)[2.6.26-2.1.24.el5]- fixed one regexp bug and added a (rhbz#922450)- Another small change on the algorithm for the elimination of epsilon (rhbz#922450)[2.6.26-2.1.23.el5]- detect and stop excessive entities expansion upon replacement (rhbz#912573)[2.6.26-2.1.22.el5]- fix validation issues with some XSD (rhbz#877348)- xmlDOMWrapCloneNode discards namespace of the node parameter (rhbz#884707)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1885");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

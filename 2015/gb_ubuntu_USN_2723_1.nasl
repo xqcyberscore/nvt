@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842423");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-28 05:07:30 +0200 (Fri, 28 Aug 2015)");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
@@ -55,7 +55,6 @@ attacker could potentially exploit this to install a malicious addon.
   script_xref(name: "USN", value: "2723-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-August/003097.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

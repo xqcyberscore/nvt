@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_divi_auth_bypass_vuln.nasl 2873 2016-03-17 07:29:40Z antu123 $
+# $Id: gb_wp_divi_auth_bypass_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # WordPress Divi Theme Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805343");
-  script_version("$Revision: 2873 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-1579");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-17 08:29:40 +0100 (Thu, 17 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:19:45 +0530 (Fri, 06 Mar 2015)");
   script_name("WordPress Divi Theme Directory Traversal Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36039/");
-  script_summary("Check if Wordpress Divi Theme is prone to directory traversal vulnerability.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

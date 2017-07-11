@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_eol_win.nasl 5928 2017-04-11 07:28:59Z cfi $
+# $Id: gb_apache_tomcat_eol_win.nasl 6427 2017-06-24 10:33:44Z cfischer $
 #
 # Apache Tomcat End Of Life Detection (Windows)
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108134");
-  script_version("$Revision: 5928 $");
+  script_version("$Revision: 6427 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 09:28:59 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-24 12:33:44 +0200 (Sat, 24 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-27 11:48:20 +0100 (Mon, 27 Feb 2017)");
   script_name("Apache Tomcat End Of Life Detection (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -46,6 +46,7 @@ if(description)
   script_xref(name:"URL", value:"https://tomcat.apache.org/tomcat-60-eol.html");
   script_xref(name:"URL", value:"https://tomcat.apache.org/tomcat-55-eol.html");
   script_xref(name:"URL", value:"https://en.wikipedia.org/wiki/Apache_Tomcat#Releases");
+  script_xref(name:"URL", value:"https://tomcat.apache.org/whichversion.html");
 
   tag_summary = "The Apache Tomcat version on the remote host has reached the end of life and should
   not be used anymore.";

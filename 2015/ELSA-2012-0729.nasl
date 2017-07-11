@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0729.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-0729.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123905");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:06 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0729");
 script_tag(name: "insight", value: "ELSA-2012-0729 -  java-1.6.0-openjdk security update - [1:1.6.0.0-1.48.1.11.3]- Access gnome bridge jar is forced to have 644 permissions- Resolves: rhbz#828751[1:1.6.0.0-1.47.1.11.3]- Modified patch3, java-1.6.0-openjdk-java-access-bridge-security.patch: - com.sun.org.apache.xerces.internal.utils.,com.sun.org.apache.xalan.internal.utils. - packages added also to package.definition- Resolves: rhbz#828751[1:1.6.0.0-1.46.1.11.3]- Sync with 6.3:- Bump to IcedTea6 1.11.3- With removed patch8 - java-1.6.0-openjdk-jirafix_2820_2821.patch- Including patch7 - java-1.6.0-openjdk-jstack.patch- Including patch3, java-1.6.0-openjdk-java-access-bridge-security.patch modification- Resolves: rhbz#828751"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-0729");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

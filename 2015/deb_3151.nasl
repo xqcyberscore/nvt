@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3151.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3151.nasl 6214 2017-05-26 09:04:01Z teissa $
 # Auto-generated from advisory DSA 3151-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703151);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6214 $");
     script_cve_id("CVE-2015-0219", "CVE-2015-0220", "CVE-2015-0221");
     script_name("Debian Security Advisory DSA 3151-1 (python-django - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
     script_tag(name: "creation_date", value: "2015-02-03 00:00:00 +0100 (Tue, 03 Feb 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3151.html");
 
-    script_summary("Debian Security Advisory DSA 3151-1 (python-django - security update)");
 
     script_category(ACT_GATHER_INFO);
 

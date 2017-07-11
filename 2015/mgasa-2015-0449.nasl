@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0449.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0449.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131138");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-11-23 07:46:12 +0200 (Mon, 23 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0449");
 script_tag(name: "insight", value: "It was discovered that the std::random_device class in libstdc++ would not properly detect short reads and could return return predictable values if applications used it to obtain randomness from a blocking source such as /dev/random. (CVE-2015-5276)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0449");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0449");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

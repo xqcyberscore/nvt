@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_html5_mp3_player_path_disc_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wp_html5_mp3_player_path_disc_vuln.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # Wordpress Html5 Mp3 Player 'playlist.php' Path Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805120");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2014-9177");
   script_bugtraq_id(71512);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 12:56:08 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress Html5 Mp3 Player 'playlist.php' Path Disclosure Vulnerability");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/html5-mp3-player-with-playlist/changelog");
   script_xref(name : "URL" , value : "http://h4x0resec.blogspot.in/2014/11/wordpress-html5-mp3-player-with.html");
 
-  script_summary("Check if Wordpress HTML5 MP3 Player with Playlist Free is prone to path disclosure");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

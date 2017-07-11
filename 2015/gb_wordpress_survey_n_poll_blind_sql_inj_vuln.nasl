@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_survey_n_poll_blind_sql_inj_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wordpress_survey_n_poll_blind_sql_inj_vuln.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Wordpress Survey and Poll Blind SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805141");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6229 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-05 10:54:55 +0530 (Thu, 05 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Wordpress Survey and Poll Blind SQL Injection Vulnerability");
@@ -61,7 +61,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36054");
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/wp-survey-and-poll/changelog");
-  script_summary("Check if Wordpress Survey and Poll plugin is prone to blind sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

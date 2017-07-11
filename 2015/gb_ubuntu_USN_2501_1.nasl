@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842094");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6357 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-18 05:41:59 +0100 (Wed, 18 Feb 2015)");
   script_cve_id("CVE-2014-8142", "CVE-2015-0231", "CVE-2014-9427", "CVE-2014-9652",
                 "CVE-2015-0232", "CVE-2015-1351", "CVE-2015-1352");
@@ -76,7 +76,6 @@ Ubuntu 14.10. (CVE-2015-1352)");
   script_xref(name: "USN", value: "2501-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-February/002831.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

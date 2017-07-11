@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0218.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0218.nasl 6431 2017-06-26 09:59:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122585");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6431 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:48:38 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0218");
 script_tag(name: "insight", value: "ELSA-2008-0218 -  gnome-screensaver security update - [2.16.1-8]Resolves: #436522- rebuild against 5.1 nss[2.16.1-7]Resolves: #436522- dont unlock the screen when pwent lookup fails[2.16.1-6]Resolves: #245345- Add missing BuildRequires to fix fade in"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0218");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_dir_traversal_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_sysaid_dir_traversal_vuln.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # SysAid Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106007");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6333 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
@@ -53,7 +53,6 @@ if (description)
 
   script_tag(name: "summary", value: "SysAid Help Desktop Software is prone to a path traversal
 vulnerability");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Send a special crafted HTTP GET request and check the response.");
 

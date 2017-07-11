@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_data_center_network_manager_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_cisco_prime_data_center_network_manager_detect.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
 #
 # Cisco Prime Data Center Network Manager Detection
 #
@@ -30,34 +30,33 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105255");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 6292 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-14 12:45:24 +0200 (Tue, 14 Apr 2015)");
  script_name("Cisco Prime Data Center Network Manager Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
-request to the server and attempts to extract the version number
-from the reply.");
+ script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to
+extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
+ script_dependencies("find_service.nasl");
+ script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  exit(0);
 }
 
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-port = get_http_port( default:80 );
+port = get_http_port( default:443 );
 
 url = '/';
 install = url;
@@ -65,19 +64,32 @@ install = url;
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( "<title>Data Center Network Manager</title>" >!< buf || 'productFamily">Cisco Prime' >!< buf ) exit( 0 );
+if( "<title>Data Center Network Manager</title>" >!< buf ||
+  ('productFamily">Cisco Prime' >!< buf && "Failed to get information about DCNM" >!< buf) )
+  exit( 0 );
 
 set_kb_item(name:"cisco_prime_dcnm/installed",value:TRUE);
-cpe = ' cpe:/a:cisco:prime_data_center_network_manager';
+cpe = 'cpe:/a:cisco:prime_data_center_network_manager';
 
 vers = 'unknown';
 
 version = eregmatch( pattern:'productVersion">Version: ([^<]+)<', string:buf ); # For example: 7.1(1)
-if( ! isnull( version[1] ) )
-{
+if (!isnull(version[1])) {
   vers = version[1];
-  cpe += ':' + version[1];
-  set_kb_item( name:"cisco_prime_dcnm/version", value:version[1]);
+  cpe += ':' + vers;
+  set_kb_item( name:"cisco_prime_dcnm/version", value:vers);
+}
+else {
+  url = '/fm/fmrest/about/version';
+  req = http_get(port: port, item: url);
+  res = http_keepalive_send_recv(port: port, data: req);
+
+  version = eregmatch(pattern: '"version":"([^"]+)', string: res);
+  if (!isnull(version[1])) {
+    vers = version[1];
+    cpe += ':' + vers;
+    set_kb_item(name: "cisco_prime_dcnm/version", value: vers);
+  }
 }
 
 register_product( cpe:cpe, location:install, port:port );
@@ -86,9 +98,7 @@ log_message( data: build_detection_report( app:"Cisco Prime Data Center Network 
                                            version:vers,
                                            install:install,
                                            cpe:cpe,
-                                           concluded: version[0] ),
+                                           concluded: version[0], concludedUrl: url ),
              port:port );
 
-
 exit(0);
-

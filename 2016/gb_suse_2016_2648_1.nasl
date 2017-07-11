@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851424");
-  script_version("$Revision: 5557 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 6268 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-10-27 05:40:34 +0200 (Thu, 27 Oct 2016)");
   script_cve_id("CVE-2013-5653", "CVE-2016-7978", "CVE-2016-7979", "CVE-2016-8602");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for ghostscript openSUSE-SU-2016:2648-1 (ghostscript)");
   script_tag(name: "summary", value: "Check the version of ghostscript");

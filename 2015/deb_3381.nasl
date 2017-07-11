@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3381.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3381.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3381-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,14 +30,14 @@
 if(description)
 {
     script_id(703381);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2015-4734", "CVE-2015-4803", "CVE-2015-4805", "CVE-2015-4806",
                   "CVE-2015-4835", "CVE-2015-4840", "CVE-2015-4842", "CVE-2015-4843",
                   "CVE-2015-4844", "CVE-2015-4860", "CVE-2015-4871", "CVE-2015-4872",
                   "CVE-2015-4881", "CVE-2015-4882", "CVE-2015-4883", "CVE-2015-4893",
                   "CVE-2015-4903", "CVE-2015-4911");
     script_name("Debian Security Advisory DSA 3381-1 (openjdk-7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-10-27 00:00:00 +0100 (Tue, 27 Oct 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3381.html");
 
-    script_summary("Debian Security Advisory DSA 3381-1 (openjdk-7 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

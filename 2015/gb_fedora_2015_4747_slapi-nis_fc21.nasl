@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869206");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-07 06:52:39 +0200 (Tue, 07 Apr 2015)");
   script_cve_id("CVE-2015-1827", "CVE-2015-0283");
   script_tag(name:"cvss_base", value:"7.8");
@@ -53,7 +53,6 @@ for attributes from multiple entries in the tree.
   script_xref(name: "FEDORA", value: "2015-4747");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/154313.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of slapi-nis");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

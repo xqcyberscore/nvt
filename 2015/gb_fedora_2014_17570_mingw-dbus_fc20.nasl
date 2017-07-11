@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868788");
-  script_version("$Revision: 3472 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-10 07:37:16 +0200 (Fri, 10 Jun 2016) $");
+  script_version("$Revision: 6404 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-05 14:51:47 +0100 (Mon, 05 Jan 2015)");
   script_cve_id("CVE-2014-7824", "CVE-2014-3638", "CVE-2014-3639", "CVE-2014-3636",
                 "CVE-2014-3637", "CVE-2014-3635", "CVE-2014-3477", "CVE-2014-3533",
@@ -47,7 +47,6 @@ per-user-login-session messaging facility.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-January/147337.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of mingw-dbus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

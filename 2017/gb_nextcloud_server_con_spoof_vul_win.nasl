@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 5962 2017-04-18 08:01:50Z teissa $
+# $Id: gb_nextcloud_server_con_spoof_vul_win.nasl 6268 2017-06-01 14:48:58Z teissa $
 #
 # Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Windows)
 #
@@ -29,32 +29,63 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107146");
-  script_version("$Revision: 5962 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 10:01:50 +0200 (Tue, 18 Apr 2017) $");
+  script_version("$Revision: 6268 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-10 09:39:06 +0200 (Mon, 10 Apr 2017)");
-  script_cve_id("CVE-2017-0888");
-
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2017-0883", "CVE-2017-0884", "CVE-2017-0885", "CVE-2017-0886",
+                "CVE-2017-0887", "CVE-2017-0888");
+  script_bugtraq_id(97491);
+  script_tag(name:"cvss_base", value:"5.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_name(" Nextcloud Server CVE-2017-0888 Content Spoofing Vulnerability (Windows)");
-  script_tag(name: "summary", value: "Nextcloud Server is prone to a content-spoofing vulnerability.");
-  script_tag(name: "vuldetect", value: "Get the installed version with the help of detect NVT and check if the version is vulnerable or not.");
-  script_tag(name: "insight", value: "The top navigation bar displayed in the files list contained partially user-controllable input leading to a potential misrepresentation of information.");
-  script_tag(name: "impact" , value: "Attackers can exploit this issue to manipulate and spoof content, which may aid in further attacks.");
-  script_tag(name: "affected", value: "Versions prior to Nextcloud Server 9.0.55 and 10.0.2 are vulnerable");
-  script_tag(name: "solution", value: "Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name: "summary", value: "Nextcloud Server is prone to Multiple vulnerabilities.");
+
+  script_tag(name: "vuldetect", value: "Get the installed version with the help of
+  detect NVT and check if the version is vulnerable or not.");
+
+  script_tag(name: "insight", value: "Multiple flaw exist due to
+
+  - The top navigation bar displayed in the files list contained partially
+    user-controllable input leading to a potential misrepresentation of information.
+  
+  - Due to an error in the application logic an authenticated adversary may trigger
+    an endless recursion in the application.
+
+  - Due to not properly sanitizing values provided by the `OC-Total-Length` HTTP
+    header an authenticated adversary may be able to exceed their configured user
+    quota.
+
+  - Due to an error in the application logic an adversary with access to a
+    write-only share may enumerate the names of existing files and subfolders by
+    comparing the exception messages.
+ 
+  - A permission related issue within the OCS sharing API allowed an authenticated
+    adversary to reshare shared files with an increasing permission set.
+ 
+  - Due to a logical error in the file caching layer an authenticated adversary is
+    able to create empty folders inside a shared folder.");
+
+  script_tag(name: "impact" , value: "Successful exploitation will allow an attacker
+  to edit files in a share, lead to a potential misrepresentation of information,
+  and can cause denail of service condition.
+
+  Impact Level: Application");
+
+  script_tag(name: "affected", value: "Versions prior to Nextcloud Server 9.0.55
+  and 10.0.2 are vulnerable");
+
+  script_tag(name: "solution", value: "Updates are available. Please see the
+  references or vendor advisory for more information.");
 
   script_xref(name: "URL" , value: "http://www.securityfocus.com/bid/97491");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-
   script_family("Web application abuses");
-
   script_dependencies("gb_nextcloud_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("nextcloud/installed", "Host/runs_unixoide");
+  script_mandatory_keys("nextcloud/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
 
   exit(0);

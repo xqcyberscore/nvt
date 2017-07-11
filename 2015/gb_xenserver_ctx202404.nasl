@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx202404.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx202404.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Citrix XenServer Multiple Security Updates (CTX202404)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7835","CVE-2015-7969","CVE-2015-7970","CVE-2015-7971","CVE-2015-7972");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5595 $");
+ script_version ("$Revision: 6415 $");
 
  script_name("Citrix XenServer Multiple Security Updates (CTX202404)");
 
@@ -55,9 +55,8 @@ CVE-2015-7972 (Low): Populate-on-demand balloon size inaccuracy can crash guests
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-11-26 12:29:16 +0100 (Thu, 26 Nov 2015)");
- script_summary("Check the installed hotfixes");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

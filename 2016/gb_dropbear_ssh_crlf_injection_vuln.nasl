@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dropbear_ssh_crlf_injection_vuln.nasl 5557 2017-03-13 10:00:29Z teissa $
+# $Id: gb_dropbear_ssh_crlf_injection_vuln.nasl 6281 2017-06-06 06:45:07Z cfischer $
 #
 # Dropbear SSH CRLF Injection Vulnerability
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:matt_johnston:dropbear_ssh_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807740");
-  script_version("$Revision: 5557 $");
+  script_version("$Revision: 6281 $");
   script_cve_id("CVE-2016-3116");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 11:00:29 +0100 (Mon, 13 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 08:45:07 +0200 (Tue, 06 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:50 +0530 (Wed, 06 Apr 2016)");
   script_name("Dropbear SSH CRLF Injection Vulnerability");
 
-  script_tag(name:"summary", value:"This host is installed with dropbear ssh
+  script_tag(name:"summary", value:"This host is installed with Dropbear SSH
   and is prone to crlf injection vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
@@ -54,13 +54,13 @@ if(description)
   script_tag(name:"affected", value:"Dropbear SSH before 2016.72");
 
   script_tag(name:"solution", value:"Upgrade to Dropbear SSH version 2016.72 or
-  later. For updates refer to http://www.openssh.com");
+  later. For updates refer to https://matt.ucc.asn.au/dropbear/dropbear.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name:"qod_type", value:"remote_banner");
-
-  script_xref(name : "URL" , value :"https://github.com/tintinweb/pub/tree/master/pocs/cve-2016-3116");
+  script_xref(name:"URL", value:"https://matt.ucc.asn.au/dropbear/CHANGES");
+  script_xref(name:"URL", value:"https://github.com/tintinweb/pub/tree/master/pocs/cve-2016-3116");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

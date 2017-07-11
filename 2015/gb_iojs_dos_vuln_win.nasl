@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iojs_dos_vuln_win.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_iojs_dos_vuln_win.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # io.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:iojs:io.js:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805944");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-5380");
   script_bugtraq_id(75556);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-04 18:22:15 +0530 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("io.js 'V8 utf-8 decoder' Denial Of Service Vulnerability (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://medium.com/node-js-javascript/important-security-upgrades-for-node-js-and-io-js-8ac14ece5852");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of io.js on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_iojs_detect_win.nasl");

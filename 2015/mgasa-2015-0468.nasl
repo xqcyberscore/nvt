@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0468.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0468.nasl 6431 2017-06-26 09:59:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131148");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6431 $");
 script_tag(name:"creation_date", value:"2015-12-10 11:05:50 +0200 (Thu, 10 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0468");
 script_tag(name: "insight", value: "Adobe Flash Player 11.2.202.554 contains fixes to critical security vulnerabilities found in earlier versions that could potentially allow an attacker to take control of the affected system. This update resolves heap buffer overflow vulnerabilities that could lead to code execution (CVE-2015-8438, CVE-2015-8446). This update resolves memory corruption vulnerabilities that could lead to code execution (CVE-2015-8444, CVE-2015-8443, CVE-2015-8417, CVE-2015-8416, CVE-2015-8451, CVE-2015-8047, CVE-2015-8053, CVE-2015-8045, CVE-2015-8051, CVE-2015-8060, CVE-2015-8419, CVE-2015-8408). This update resolves security bypass vulnerabilities (CVE-2015-8453, CVE-2015-8440, CVE-2015-8409). This update resolves a stack overflow vulnerability that could lead to code execution (CVE-2015-8407). This update resolves a type confusion vulnerability that could lead to code execution (CVE-2015-8439). This update resolves an integer overflow vulnerability that could lead to code execution (CVE-2015-8445). This update resolves a buffer overflow vulnerability that could lead to code execution (CVE-2015-8415) This update resolves use-after-free vulnerabilities that could lead to code execution (CVE-2015-8050, CVE-2015-8049, CVE-2015-8437, CVE-2015-8450, CVE-2015-8449, CVE-2015-8448, CVE-2015-8436, CVE-2015-8452, CVE-2015-8048, CVE-2015-8413, CVE-2015-8412, CVE-2015-8410, CVE-2015-8411, CVE-2015-8424, CVE-2015-8422, CVE-2015-8420, CVE-2015-8421, CVE-2015-8423, CVE-2015-8425, CVE-2015-8433, CVE-2015-8432, CVE-2015-8431, CVE-2015-8426, CVE-2015-8430, CVE-2015-8427, CVE-2015-8428, CVE-2015-8429, CVE-2015-8434, CVE-2015-8435, CVE-2015-8414, CVE-2015-8052, CVE-2015-8059, CVE-2015-8058, CVE-2015-8055, CVE-2015-8057, CVE-2015-8056, CVE-2015-8061, CVE-2015-8067, CVE-2015-8066, CVE-2015-8062, CVE-2015-8068, CVE-2015-8064, CVE-2015-8065, CVE-2015-8063, CVE-2015-8405, CVE-2015-8404, CVE-2015-8402, CVE-2015-8403, CVE-2015-8071, CVE-2015-8401, CVE-2015-8406, CVE-2015-8069, CVE-2015-8070, CVE-2015-8441, CVE-2015-8442, CVE-2015-8447)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0468");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0468");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

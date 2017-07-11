@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1984.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1984.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123222");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:00:55 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1984");
 script_tag(name: "insight", value: "ELSA-2014-1984 -  bind security update - [32:9.9.4-14.0.1.el7_0.1]- Rebuild to fix libmysqlclient dependency[32:9.9.4-14.1]- Fix CVE-2014-8500 (#1171975)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1984");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

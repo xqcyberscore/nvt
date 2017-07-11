@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_airlive_rce_07_15.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_airlive_rce_07_15.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # AirLive Multiple Products OS Command Injection
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105315");
- script_version ("$Revision: 2582 $");
+ script_version ("$Revision: 6376 $");
  script_cve_id("CVE-2015-2279","CVE-2014-8389");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,9 +54,8 @@ Other devices may be affected too.");
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-07-07 14:11:14 +0200 (Tue, 07 Jul 2015)");
- script_summary("Determine if it is possible to execute the 'id/ifconfig' command");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

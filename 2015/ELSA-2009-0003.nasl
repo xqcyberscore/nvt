@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-0003.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-0003.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122532");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:23 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-0003");
 script_tag(name: "insight", value: "ELSA-2009-0003 -  xen security and bug fix update - [3.0.3-64.el5_2.9]- More fixes for Xenstore unsafe data access (CVE-2008-4405, rhbz #464817)- Fix block-detach regression due to (CVE-2008-4405, rhbz #473882)[3.0.3-64.el5_2.8]- Remove unneccessary patch & rebuild[3.0.3-64.el5_2.7]- Fix reboots after CVE-2008-4405 changes (rhbz #471588)[3.0.3-64.el5_2.6]- Remove qemu-dm.debug wrapper script (CVE-2008-4993, rhbz #470795)[3.0.3-64.el5_2.5]- Fix unsafe use of xenstore data (CVE-2008-4405, rhbz #464817)[3.0.3-64.el5_2.4]- Don't clobber wallclock on restore (rhbz #464455)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-0003");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_JSA10659.nasl 2675 2016-02-17 09:01:04Z benallard $
+# $Id: gb_junos_space_JSA10659.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Junos Space: Multiple vulnerabilities resolved by third party software upgrades
 #
@@ -33,7 +33,7 @@ if (description)
                "CVE-2013-5908");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2675 $");
+ script_version ("$Revision: 6369 $");
 
  script_name("Junos Space: Multiple vulnerabilities resolved by third party software upgrades");
 
@@ -50,9 +50,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:01:04 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-10-19 13:03:28 +0200 (Mon, 19 Oct 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("JunOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

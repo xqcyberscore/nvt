@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_esm_SB10137.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_mcafee_esm_SB10137.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # McAfee Enterprise Security Manager Authentication Bypass Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105479");
  script_cve_id("CVE-2015-8024");
- script_version ("$Revision: 2651 $");
+ script_version ("$Revision: 6431 $");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
@@ -48,9 +48,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-04 14:28:09 +0100 (Fri, 04 Dec 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

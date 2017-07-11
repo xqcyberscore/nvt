@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCur45455.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCur45455.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # Cisco ASA DHCPv6 Relay DoS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106053");
-  script_version("$Revision: 5000 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name : "creation_date", value : "2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
   script_tag(name : "cvss_base", value : "5.7");
   script_tag(name : "cvss_base_vector", value : "AV:A/AC:M/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,6 @@ if (description)
 
   script_tag(name : "summary", value : "A vulnerability in the DHCPv6 relay feature of Cisco ASA may
 lead to a denial of service.");
-  script_summary("Check the version");
 
   script_tag(name : "vuldetect", value : "Checks the version.");
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882342");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6329 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-16 05:50:17 +0100 (Wed, 16 Dec 2015)");
   script_cve_id("CVE-2015-2925", "CVE-2015-5307", "CVE-2015-7613", "CVE-2015-7872",
                 "CVE-2015-8104");
@@ -95,7 +95,6 @@ The provided upstream patch performs  ...
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:2636");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-December/021541.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_multiple_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_sysaid_multiple_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # SysAid Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106005");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -54,7 +54,6 @@ if (description)
 
   script_tag(name: "summary", value: "SysAid Help Desktop Software is prone to multiple
 vulnerabilities");
-  script_summary("Check the version");
 
   script_tag(name: "vuldetect", value: "Check the version.");
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0502.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0502.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123702");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:26 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0502");
 script_tag(name: "insight", value: "ELSA-2013-0502 -  Core X11 clients security, bug fix, and enhancement update - xorg-x11-apps[7.6-6]- x11perf 1.5.4 (CVE-2011-2504)[7.6-5]- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild[7.6-4]- Move xinput and xkill to xorg-x11-server-utils[7.6-3]- Rebuild for libpng 1.5[7.6-2]- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild[7.6-1]- x11perf 1.5.3[7.5-5]- xeyes 1.1.1[7.5-4]- xinput 1.5.3- xkill 1.0.3[7.5-3]- xclipboard 1.1.1[7.5-2]- oclock 1.0.2- xclock 1.0.5- xconsole 1.0.4- xbiff 1.0.2- luit 1.1.0- x11perf 1.5.2- xcursorgen 1.0.4- xeyes 1.1.0- xload 1.1.0- xlogo 1.0.3- xmag 1.0.4- xmessage 1.0.3- xfd 1.1.0- xfontsel 1.0.3- xvidtune 1.0.2[7.5-1]- xwd 1.0.4- xwud 1.0.3[7.4-14]- xinput 1.5.2[7.4-13]- xinput 1.5.1[7.4-12]- Add missing BR xorg-x11-xbitmaps[7.4-11]- Don't steal directory owned by filesystem packagexorg-x11-server-utils[7.5-13]- xinput 1.6.0[7.5-12]- Add libXinerama-devel requires for new xinput[7.5-11]- xinput 1.5.99.901[7.5-10]- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild[7.5-9]- xinput 1.5.4[7.5-8]- Move xinput and xkill here from xorg-x11-apps[7.5-7]- Fix BuildRequires ... xbitmaps-devel does not exist anymore (RHBZ #744751)- Upgrade to the latest upstream iceauth, rgb, sessreg, and xrandr[7.5-6]- xset 1.2.2xorg-x11-utils[7.5-6]- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild[7.5-5]- xlsclients 1.1.2- Rebuild for new xcb-util[7.5-4]- xdpyinfo 1.3.0[7.5-3]- xprop 1.2.1[7.5-2]- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild[7.5-1]- xvinfo 1.1.1- xev 1.1.0- xdpyinfo 1.2.0- xwininfo 1.1.0- xlsclients 1.1.0- xlsfonts 1.0.3[7.4-10]- xlsatoms 1.1.0- xlsclients 1.1.0[7.4-9]- edid-decode snapshot"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0502");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

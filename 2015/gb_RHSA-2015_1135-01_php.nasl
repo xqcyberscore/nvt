@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871379");
-  script_version("$Revision: 3374 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-24 09:01:05 +0200 (Tue, 24 May 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-24 06:13:17 +0200 (Wed, 24 Jun 2015)");
   script_cve_id("CVE-2014-8142", "CVE-2014-9652", "CVE-2014-9705", "CVE-2014-9709",
                 "CVE-2015-0231", "CVE-2015-0232", "CVE-2015-0273", "CVE-2015-2301",
@@ -102,7 +102,6 @@ A buffer over-read flaw  ...
   script_xref(name: "RHSA", value: "2015:1135-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-June/msg00023.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

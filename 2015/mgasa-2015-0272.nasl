@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0272.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0272.nasl 6391 2017-06-21 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130106");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6391 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:46 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0272");
 script_tag(name: "insight", value: "A recursive resolver that is performing DNSSEC validation can be deliberately terminated by any attacker who can cause a query to be performed against a maliciously constructed zone. This will result in a denial of service to clients who rely on that resolver (CVE-2015-4620). Note that DNSSEC validation is not enabled by default."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0272");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0272");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

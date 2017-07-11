@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vul02_jan15_macosx.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_vlc_media_player_bof_vul02_jan15_macosx.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # VLC Media Player 'real_get_rdt_chunk' BOF Vulnerability-02 Jan15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805311");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2010-2062");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-05 12:23:10 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player 'real_get_rdt_chunk' BOF Vulnerability-02 Jan15 (Mac OS X)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/36037/");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2009/Jul/418");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/cve/CVE-2010-2062");
-  script_summary("Check for the vulnerable version of VLC Media Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

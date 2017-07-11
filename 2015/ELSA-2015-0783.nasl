@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0783.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-0783.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123138");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:50 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0783");
 script_tag(name: "insight", value: "ELSA-2015-0783 -  kernel security and bug fix update - kernel[2.6.18-404]- [infiniband] core: Prevent integer overflow in ib_umem_get (Doug Ledford) [1179353] {CVE-2014-8159}[2.6.18-403]- [s390] zcrypt: Toleration of new crypto hardware (Hendrik Brueckner) [1182522]- [fs] cifs: Use pid from cifsFileInfo in wrt pages/set_file_size (Sachin Prabhu) [1169304]- [xen] x86: confine internally handled MMIO to solitary regions (Denys Vlasenko) [1164256] {CVE-2014-8867}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-0783");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

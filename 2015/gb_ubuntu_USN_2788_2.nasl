@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842527");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-10 06:11:20 +0100 (Tue, 10 Nov 2015)");
   script_cve_id("CVE-2015-7696", "CVE-2015-7697");
   script_tag(name:"cvss_base", value:"6.8");
@@ -61,7 +61,6 @@ hang, resulting in a denial of service. (CVE-2015-7697)");
   script_xref(name: "USN", value: "2788-2");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-November/003181.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of unzip");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-021.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-021.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # Microsoft Adobe Font Driver Remote Code Execution Vulnerabilities (3032323)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805052");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2015-0074", "CVE-2015-0087", "CVE-2015-0088", "CVE-2015-0089", 
                 "CVE-2015-0090", "CVE-2015-0091", "CVE-2015-0092", "CVE-2015-0093");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 08:54:31 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Adobe Font Driver Remote Code Execution Vulnerabilities (3032323)");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3032323");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-021");
 
-  script_summary("Check for the vulnerable file 'Atmfd.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

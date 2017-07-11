@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842209");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:05:18 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2015-3406", "CVE-2015-3407", "CVE-2015-3408", "CVE-2015-3409");
   script_tag(name:"cvss_base", value:"10.0");
@@ -61,7 +61,6 @@ during signature verification. (CVE-2015-3409)");
   script_xref(name: "USN", value: "2607-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-May/002950.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libmodule-signature-perl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

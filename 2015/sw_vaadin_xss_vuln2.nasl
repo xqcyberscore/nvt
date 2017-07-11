@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_xss_vuln2.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_vaadin_xss_vuln2.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Vaadin Framework src-attribute Cross Site Scripting Vulnerability
 #
@@ -31,15 +31,14 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105183");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_name("Vaadin Framework src-attribute Cross Site Scripting Vulnerability");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

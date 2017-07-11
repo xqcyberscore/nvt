@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firepower_management_center_cisco-sa-20170517-fpwr.nasl 6152 2017-05-18 05:28:16Z ckuerste $
+# $Id: gb_cisco_firepower_management_center_cisco-sa-20170517-fpwr.nasl 6249 2017-05-30 13:27:41Z teissa $
 #
 # Cisco FirePOWER System Software SSL Logging Denial of Service Vulnerability
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106810");
  script_cve_id("CVE-2017-6632");
- script_tag(name: "cvss_base", value: "5.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 6152 $");
+ script_tag(name:"cvss_base", value:"7.8");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+ script_version("$Revision: 6249 $");
 
  script_name("Cisco FirePOWER System Software SSL Logging Denial of Service Vulnerability");
 
@@ -57,7 +57,7 @@ success of an exploit is dependent on how an administrator has configured loggin
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-05-18 07:28:16 +0200 (Thu, 18 May 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
  script_tag(name: "creation_date", value: "2017-05-18 09:11:02 +0700 (Thu, 18 May 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

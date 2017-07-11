@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_qfp_dos_09_15.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_asr_1000_qfp_dos_09_15.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Cisco ASR 1000 Series Aggregation Services Routers Data-Plane Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6274");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6404 $");
 
  script_name("Cisco ASR 1000 Series Aggregation Services Routers Data-Plane Processing Denial of Service Vulnerability");
 
@@ -53,9 +53,8 @@ the Embedded Services Processor (ESP).");
  script_tag(name:"solution_type", value: "NoneAvailable");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-09-01 16:17:02 +0200 (Tue, 01 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

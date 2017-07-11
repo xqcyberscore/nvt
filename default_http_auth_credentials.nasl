@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 5467 2017-03-02 10:34:11Z cfi $
+# $Id: default_http_auth_credentials.nasl 6283 2017-06-06 10:01:29Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 5467 $");
+  script_version("$Revision: 6283 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 11:34:11 +0100 (Thu, 02 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 12:01:29 +0200 (Tue, 06 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -73,7 +73,7 @@ foreach url( urls ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  if( res !~ "HTTP/1.. 401" ) continue; # just to be sure
+  if( res !~ "^HTTP/1\.[01] 401" ) continue; # just to be sure
 
   c = 0;
 
@@ -109,7 +109,7 @@ foreach url( urls ) {
                   "\r\n" );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( res =~ "HTTP/1.. 30[12]" ) {
+    if( res =~ "^HTTP/1\.[01] 30[0-8]" ) {
 
       url = extract_location_from_redirect( port:port, data:res );
 
@@ -118,7 +118,7 @@ foreach url( urls ) {
         req = http_get( item:url, port:port );
         res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-        if( res =~ "HTTP/1.. 401" ) {
+        if( res =~ "^HTTP/1\.[01] 401" ) {
 
           req = string( "GET ", url, " HTTP/1.1\r\n",
                         "Host: ", host, "\r\n",
@@ -127,13 +127,13 @@ foreach url( urls ) {
                         "\r\n" );
           res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-          if( res && ! isnull( res ) && ( res !~ "HTTP/1.. 500" ) && ( res !~ "HTTP/1.. 40[0138]" ) ) {
+          if( res && ! isnull( res ) && ( res !~ "^HTTP/1\.[01] 50[0234]" ) && ( res !~ "^HTTP/1\.[01] 40[0138]" ) ) {
             c++;
             set_kb_item( name:"default_http_auth_credentials/" + port + "/credentials", value:url + "#-#" + user + ":" + pass );
           }
         }
       }
-    } else if( res && ! isnull( res ) && ( res !~ "HTTP/1.. 500" ) && ( res !~ "HTTP/1.. 40[0138]" ) ) {
+    } else if( res && ! isnull( res ) && ( res !~ "^HTTP/1\.[01] 50[0234]" ) && ( res !~ "^HTTP/1\.[01] 40[0138]" ) ) {
       c++;
       set_kb_item( name:"default_http_auth_credentials/" + port + "/credentials", value:url + "#-#" + user + ":" + pass );
     }

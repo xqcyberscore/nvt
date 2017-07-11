@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869095");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-15 06:46:32 +0100 (Sun, 15 Mar 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,7 +45,6 @@ collection of Tcl programmers.
   script_xref(name: "FEDORA", value: "2015-3235");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151847.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of tcllib");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

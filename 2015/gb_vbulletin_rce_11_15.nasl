@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_rce_11_15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_vbulletin_rce_11_15.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # vBulletin PreAuth Remote Code Execution
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105447");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6214 $");
  script_cve_id("CVE-2015-7808");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,9 +46,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
  script_tag(name:"creation_date", value:"2015-11-10 18:30:30 +0100 (Tue, 10 Nov 2015)");
- script_summary("Determine if it is possible to execute phpinfo()");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

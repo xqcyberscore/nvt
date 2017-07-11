@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresense_integrator_75939.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_telepresense_integrator_75939.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Cisco TelePresence Integrator C Series Authentication Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4271");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 2582 $");
+ script_version ("$Revision: 6376 $");
 
  script_name("Cisco TelePresence Integrator C Series Authentication Bypass Vulnerability");
 
@@ -60,9 +60,8 @@ sufficiently sanitize the user-supplied input.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-09-11 11:38:35 +0200 (Fri, 11 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

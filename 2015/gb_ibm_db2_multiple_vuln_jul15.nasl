@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # IBM DB2 Multiple Vulnerabilities - July15
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805940");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-1935", "CVE-2015-1922", "CVE-2015-1883", "CVE-2015-0157",
                 "CVE-2014-8910");
   script_bugtraq_id(75908, 75911, 75946, 75947, 75949);
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-29 14:18:25 +0530 (Wed, 29 Jul 2015)");
   script_name("IBM DB2 Multiple Vulnerabilities - July15");
 
@@ -83,7 +83,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21959650");
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21902661");
 
-  script_summary("Check for the vulnerable version of IBM DB2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Databases");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_339.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_339.nasl 6387 2017-06-21 09:03:11Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.339
 #
@@ -27,26 +27,26 @@
 if(description)
 {
   script_id(94243);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6387 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_name("IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows Vista und Windows 7");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04339.html");
-  script_summary  ("IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows Vista und Windows 7");
+  script_name("IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows-Clients ab Windows Vista");
+  script_xref(name : "URL" , value : " http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04339.html");
+  script_summary  ("IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows-Clients ab Windows Vista");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Tools/Present/wmi");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_CD-Autostart.nasl", "GSHB/GSHB_WMI_CD-FD-User-only-access.nasl", "GSHB/GSHB_WMI_AllowRemoteDASD.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_CD-Autostart.nasl", "GSHB/GSHB_WMI_Driver-Autostart.nasl", "GSHB/GSHB_WMI_CD-FD-User-only-access.nasl", "GSHB/GSHB_WMI_AllowRemoteDASD.nasl");
   script_require_keys("WMI/AllowRemoteDASD");
   script_tag(name : "summary" , value :
-"IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows Vista und Windows 7.
+"IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows-Clients ab Windows Vista.
 
-Stand: 14. Ergänzungslieferung (14. EL).
+Stand: 15. Ergänzungslieferung (15. EL).
 ");
 
   exit(0);
@@ -54,7 +54,7 @@ Stand: 14. Ergänzungslieferung (14. EL).
 
 include("itg.inc");
 
-name = 'IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows Vista und Windows 7\n';
+name = 'IT-Grundschutz M4.339: Verhindern unautorisierter Nutzung von Wechselmedien unter Windows-Clients ab Windows Vista\n';
 
 OSVER = get_kb_item("WMI/WMI_OSVER");
 OSTYPE = get_kb_item("WMI/WMI_OSTYPE");
@@ -64,7 +64,8 @@ fdalloc = get_kb_item("WMI/FD_Allocated");
 AllowRemoteDASD = get_kb_item("WMI/AllowRemoteDASD");
 AllowRemoteDASD = get_kb_item("WMI/AllowRemoteDASD/log");
 WMIOSLOG = get_kb_item("WMI/WMI_OS/log");
-
+driverauto = get_kb_item("WMI/Driver_Autoinstall");
+allowAdminInstall = get_kb_item("WMI/AllowAdminInstall");
 gshbm = "GSHB Maßnahme 4.339: ";
 
 if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System."){
@@ -74,15 +75,17 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   result = string("Fehler");
   if (!log)desc = string("Beim Testen des Systems trat ein Fehler auf.");
   if (log)desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
-}else if(OSVER  >=  "6.0" && OSTYPE == "1"){ 
-  if(cdauto >< "on" || cdalloc >< "off" || fdalloc >< "off" || AllowRemoteDASD != "0")
+}else if(OSVER  >=  "6.0" && OSTYPE == "1"){
+  if(cdauto >< "on" || cdalloc >< "off" || fdalloc >< "off" || AllowRemoteDASD != "0" || driverauto != "off" || allowAdminInstall >< "on")
   {
-    result = string("nicht erfüllt");  
+    result = string("nicht erfüllt");
     if(cdauto >< "on") desc = string('CD-Autostart ist nicht deaktiviert!\n');
     if(cdalloc >< "off") desc += string('CD-Zugriff ist weiterhin über Netzwerk möglich!\n');
     if(fdalloc >< "off") desc += string('FD-Zugriff ist weiterhin über Netzwerk möglich!\n');
     if(AllowRemoteDASD != "0") desc += string('Direkter Zugriff auf Wechselmedien in Remotesitzungen\nist weiterhin möglich.\n');
-  } else if(cdauto >< "off" && cdalloc >< "on" && fdalloc >< "on" && AllowRemoteDASD == "0")
+    if(driverauto !=  "off" ) desc += string('Die automatische Installation von Treibern ist möglich.\n');
+    if(allowAdminInstall >< "on") desc += string('Administratoren können keine Treiber unabhängig\nder Gruppenrichtlinie installieren oder aktualisieren.\n');
+  } else if(cdauto >< "off" && cdalloc >< "on" && fdalloc >< "on" && AllowRemoteDASD == "0" || driverauto == "off" || allowAdminInstall == "on")
   {
     result = string("erfüllt");
     desc = string("Das System entspricht der IT-Grundschutz Maßnahme\nM4.339.");

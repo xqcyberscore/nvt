@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_default_pw.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: cisco_default_pw.nasl 6282 2017-06-06 09:55:28Z ckuersteiner $
 # Description: Cisco default password
 #
 # Authors:
@@ -24,18 +24,6 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote device has a factory password set.
-
-Description :
-
-The remote CISCO router has a default password set.  
-This allows an attacker to get a lot information
-about the network, and possibly to shut it down if
-the 'enable' password is not set either or is also a default
-password.";
-
-tag_solution = "Access this device and set a password using 'enable secret'";
-
 # TODO:
 # - dump the device configuration to the knowdledge base (requires
 #   'enable' access being possible)
@@ -47,206 +35,198 @@ tag_solution = "Access this device and set a password using 'enable secret'";
 
 if(description) 
 {
- script_id(23938);
- script_version("$Revision: 6046 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.23938");
+ script_version("$Revision: 6282 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-06 11:55:28 +0200 (Tue, 06 Jun 2017) $");
  script_tag(name:"creation_date", value:"2007-11-04 00:32:20 +0100 (Sun, 04 Nov 2007)");
  script_cve_id("CVE-1999-0508");
  script_tag(name:"cvss_base", value:"4.6");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
 
-
- name = "Cisco default password";
-
- script_name(name);
-
-
-
- summary = "Checks for a default password";
+ script_name("Cisco default password");
 
  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_active");
-
+ script_tag(name:"qod_type", value:"remote_active");
 
  script_copyright("This script is Copyright (C) 2001 - 2006 Javier Fernandez-Sanguino and Renaud Deraison");
 
- family = "CISCO";
-
- script_family(family);
+ script_family("CISCO");
  script_dependencies("find_service2.nasl");
- script_require_ports("Services/telnet", 23);
+ script_require_ports("Services/telnet", "Services/ssh", 22, 23);
 
- script_add_preference(name:"Use complete password list (not only vendor specific passwords)", type:"checkbox", value: "no");
+ script_add_preference(name: "Use complete password list (not only vendor specific passwords)", type: "checkbox",
+                       value: "no");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name: "solution" , value: "Change the default password.");
+
+ script_tag(name: "summary" , value: "The remote CISCO router has a default password set. This allows an attacker
+to get a lot information about the network, and possibly to shut it down if the 'enable' password is not set
+either or is also a default password.");
+
  exit(0);
 }
 
-include('default_account.inc');
-include('telnet_func.inc');
-include('global_settings.inc');
+include("default_account.inc");
 include("default_credentials.inc");
-
-if ( supplied_logins_only ) exit(0);
+include("telnet_func.inc");
 
 # Function to connect to a Cisco system through telnet, send
 # a password
-
 function check_cisco_telnet(login, password, port)
 {
- soc = open_sock_tcp(port);
- if ( ! soc )
- 	{
-	  telnet_port = 0;
-	  return;
-	}
- msg = telnet_negotiate(socket:soc, pattern:"(ogin:|asscode:|assword:)");
-
- if(strlen(msg))
- {
-  # The Cisco device might be using an AAA access model
-  # or have configured users:
-  if ( stridx(msg, "sername:") != -1 || stridx(msg, "ogin:") != -1  )  {
-    send(socket:soc, data:string(login, "\r\n"));
-    msg=recv_until(socket:soc, pattern:"(assword:|asscode:)");
+  soc = open_sock_tcp(port);
+  if (!soc) {
+    telnet_port = 0;
+    return;
   }
 
-  # Device can answer back with {P,p}assword or {P,p}asscode
-  # if we don't get it then fail and close
-  if( isnull( msg ) || ( stridx( msg, "assword:" ) == -1 && stridx( msg, "asscode:" ) == -1  ) ) {
-    close( soc );
-    return( 0 );
-  }
+  msg = telnet_negotiate(socket: soc, pattern: "(ogin:|asscode:|assword:)");
 
-  send(socket:soc, data:string(password, "\r\n"));
-  r = recv(socket:soc, length:4096);
+  if(strlen(msg)) {
+    # The Cisco device might be using an AAA access model
+    # or have configured users:
+    if (stridx(msg, "sername:") != -1 || stridx(msg, "ogin:") != -1) {
+      send(socket: soc, data: string(login, "\r\n"));
+      msg = recv_until(socket:soc, pattern:"(assword:|asscode:)");
+    }
 
-  # TODO: could check for Cisco's prompt here, it is typically
-  # the device name followed by '>'  
-  # But the actual regexp is quite complex, from Net-Telnet-Cisco:
-  #  '/(?m:^[\r\b]?[\w.-]+\s?(?:\(config[^\)]*\))?\s?[\$\#>]\s?(?:\(enable\))?\s*$)/')
+    # Device can answer back with {P,p}assword or {P,p}asscode
+    # if we don't get it then fail and close
+    if(isnull(msg) || (stridx(msg, "assword:") == -1 && stridx(msg, "asscode:") == -1)) {
+      close(soc);
+      return 0;
+    }
+
+    send(socket: soc, data: string(password, "\r\n"));
+    r = recv(socket: soc, length: 4096);
+
+    # TODO: could check for Cisco's prompt here, it is typically
+    # the device name followed by '>'  
+    # But the actual regexp is quite complex, from Net-Telnet-Cisco:
+    #  '/(?m:^[\r\b]?[\w.-]+\s?(?:\(config[^\)]*\))?\s?[\$\#>]\s?(?:\(enable\))?\s*$)/')
   
-  # Send a 'show ver', most users (regardless of privilege level)
-  # should be able to do this
-  send(socket:soc, data:string("show ver\r\n"));
-  r = recv_until(socket:soc, pattern:"(Cisco (Internetwork Operating System|IOS) Software|assword:|asscode:|ogin:|% Bad password)");
+    # Send a 'show ver', most users (regardless of privilege level)
+    # should be able to do this
+    send(socket: soc, data: string("show ver\r\n"));
+    r = recv_until(socket: soc, pattern: "(Cisco (Internetwork Operating System|IOS) Software|assword:|asscode:|ogin:|% Bad password)");
 
-  # TODO: This is probably not generic enough. Some Cisco devices don't 
-  # use IOS but CatOS for example
+    # TODO: This is probably not generic enough. Some Cisco devices don't 
+    # use IOS but CatOS for example
 
-  # TODO: It might want to change the report so it tells which user / passwords
-  # have been found
-  if("Cisco Internetwork Operating System Software" >< r ||
-     "Cisco IOS Software" >< r) 
-	{
-	  report = 'It was possible to log in as \'' + login + '\'/\'' + password + '\'\n';
-	  security_message(port:port, data:report);
-	  exit(0);
-	}
+    # TODO: It might want to change the report so it tells which user / passwords
+    # have been found
+    if ("Cisco Internetwork Operating System Software" >< r || "Cisco IOS Software" >< r ||
+        r =~ "IOS(-| )X(E|R)") {
+      report = 'It was possible to log in as \'' + login + '\'/\'' + password + '\'\n';
+      security_message(port:port, data:report);
+      close(soc);
+      exit(0);
+    }
 
-# TODO: it could also try 'enable' here and see if it's capable
-# of accessing the privilege mode with the same password, or do it
-# in a separate module
+    # TODO: it could also try 'enable' here and see if it's capable
+    # of accessing the privilege mode with the same password, or do it
+    # in a separate module
 
-  close(soc);
-
- }
+    close(soc);
+  }
 }
 
 # Functions modified from the code available from default_accounts.inc
 # (which is biased to UNIX)
 function check_cisco_account(login, password)
 {
- local_var port, ret, banner, soc, res;
+  local_var port, ret, banner, soc, res;
 
+  if ((ssh_port && get_port_state(ssh_port)) && !isnull(login)) { 
+    # Prefer login through SSH rather than telnet
+    soc = open_sock_tcp(ssh_port);
+    if (soc) {
+      ret = ssh_login(socket: soc, login: login, password: password);
+      if (ret == 0) {
+        r = ssh_cmd(socket: soc, cmd: "show ver", timeout:60, nosh:TRUE);
 
- if ( ( ssh_port && get_port_state(ssh_port) ) && ! isnull( login ))
- { 
-  # Prefer login through SSH rather than telnet
-   soc = open_sock_tcp(ssh_port);
-   if ( soc )
-   {
-   ret = ssh_login(socket:soc, login:login, password:password);
-   if ( ret == 0 ) {
-        r = ssh_cmd(socket:soc, cmd: string("show ver\r\n"), timeout:60, nosh:TRUE);
-	if("Cisco Internetwork Operating System Software" >< r || "Cisco IOS Software" >< r) {
-  	  report = 'It was possible to log in as \'' + login + '\'/\'' + password + '\'\n';
-	  security_message(port:ssh_port, data:report);
-	  close(soc);
-	  exit(0);
-	}  
-   }
-   else {
-     close(soc);
-     return 0;
-   }   
-  }
-   else
-     ssh_port = 0;
- }
-
-
- if(telnet_port && get_port_state(telnet_port))
- {
-  if ( isnull(password) ) password = "";
-  if ( ! telnet_checked ) 
-  {
-  banner = get_telnet_banner(port:telnet_port);
-  if ( banner == NULL ) { telnet_port = 0 ; return 0; }
-  # Check for banner, covers the case of Cisco telnet as well as the case
-  # of a console server to a Cisco port
-  # Note: banners of cisco systems are not necessarily set, so this
-  # might lead to false negatives !
-  if ( stridx(banner,"User Access Verification") == -1 && stridx(banner,"assword:") == -1)  
-    {
-     telnet_port = 0;
-     return(0);
+        if ("Cisco Internetwork Operating System Software" >< r || "Cisco IOS Software" >< r ||
+            r =~ "IOS(-| )X(E|R)") {
+          report = 'It was possible to log in as \'' + login + '\'/\'' + password + '\'\n';
+          security_message(port:ssh_port, data:report);
+          close(soc);
+          exit(0);
+        }
+        close(soc);
+      }
+      else {
+        close(soc);
+        return 0;
+      }   
     }
-   telnet_checked ++;
+    else
+      ssh_port = 0;
   }
+
+
+  if (telnet_port && get_port_state(telnet_port)) {
+    if (isnull(password))
+      password = "";
+
+    if (!telnet_checked) {
+      banner = get_telnet_banner(port: telnet_port);
+      if (banner == NULL) {
+        telnet_port = 0 ;
+        return 0;
+      }
+
+      # Check for banner, covers the case of Cisco telnet as well as the case of a console server to a Cisco port
+      # Note: banners of cisco systems are not necessarily set, so this might lead to false negatives!
+      if (stridx(banner, "User Access Verification") == -1 && stridx(banner, "assword:") == -1) {
+        telnet_port = 0;
+        return 0;
+      }
+      telnet_checked++;
+    }
   
-  check_cisco_telnet(login:login, password:password, port:telnet_port);
- }
- return(0);
+    check_cisco_telnet(login: login, password: password, port: telnet_port);
+  }
+
+  return 0;
 }
 
 
-# SSH disabled for now
 ssh_port = get_kb_item("Services/ssh");
-if ( ! ssh_port ) ssh_port = 22;
+if (!ssh_port)
+  ssh_port = 22;
 
 
 telnet_port = get_kb_item("Services/telnet");
-if ( ! telnet_port ) telnet_port = 23;
+if (!telnet_port)
+  telnet_port = 23;
 
 telnet_checked = 0;
 
-check_cisco_account(login:"cisco", password:"cisco");
-check_cisco_account(login:"", password:"");
+check_cisco_account(login: "cisco", password: "cisco");
+check_cisco_account(login: "", password: "");
 
 p = script_get_preference("Use complete password list (not only vendor specific passwords)");
 
 if("yes" >< p) {
   clist = try();
 } else {
-  clist = try(vendor:"cisco"); # get all cisco relevant credentials
+  clist = try(vendor: "cisco"); # get all cisco relevant credentials
 }
 
-if ( safe_checks() == 0 )
-{
- foreach credential (clist) { 
-
-   user_pass = split(credential, sep:";",keep:FALSE);
-   if(isnull(user_pass[0]) || isnull(user_pass[1]))continue;
+if (safe_checks() == 0) {
+ foreach credential (clist) {
+   user_pass = split(credential, sep: ";",keep: FALSE);
+   if (isnull(user_pass[0]) || isnull(user_pass[1]))
+     continue;
 
    user = chomp(user_pass[0]);
    pass = chomp(user_pass[1]);
 
-   if(tolower(pass) == "none")pass = "";
+   if (tolower(pass) == "none")
+     pass = "";
 
    check_cisco_account(login:user, password:pass);
-
  }  
 }
 
+exit(0);

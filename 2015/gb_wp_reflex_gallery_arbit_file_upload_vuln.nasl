@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_wp_reflex_gallery_arbit_file_upload_vuln.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Wordpress Reflex Gallery Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805154");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6404 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-17 16:10:09 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Reflex Gallery Arbitrary File Upload Vulnerability");
@@ -60,7 +60,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36374");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130845");
-  script_summary("Determine if it is possible to upload a file");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

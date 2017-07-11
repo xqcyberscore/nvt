@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_premier_dll_loading_local_code_injection_vuln.nasl 6036 2017-04-27 06:04:46Z antu123 $
+# $Id: gb_avast_premier_dll_loading_local_code_injection_vuln.nasl 6271 2017-06-02 08:42:43Z cfischer $
 #
 # Avast Premier DoubleAgent Attack Local Code Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:avast:avast_premier";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810901");
-  script_version("$Revision: 6036 $");
+  script_version("$Revision: 6271 $");
   script_cve_id("CVE-2017-5567");
   script_bugtraq_id(97017);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 08:04:46 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-02 10:42:43 +0200 (Fri, 02 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-05 10:13:58 +0530 (Wed, 05 Apr 2017)");
   script_name("Avast Premier DoubleAgent Attack Local Code Injection Vulnerability");
 
@@ -59,17 +59,15 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"Avast Premier version 12.3 and prior.");
+  script_tag(name:"affected", value:"Avast Premier versions prior to 17.0");
 
-  script_tag(name:"solution", value:"No solution or patch is available as
-  of 5th April, 2017. Information regarding this issue will be updated
-  once the solution details are available. 
-  For updates refer to https://www.avast.com");
+  script_tag(name:"solution", value:"Upgrade to Avast Premier version
+  17.0 or later. For updates refer to https://www.avast.com");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
+  script_xref(name : "URL" , value : "https://forum.avast.com/index.php?topic=199290.0");
   script_xref(name : "URL" , value : "http://feeds.security-database.com/~r/Last100Alerts/~3/M6mwzAVFo-U/detail.php");
   script_xref(name : "URL" , value : "https://www.engadget.com/2017/03/21/doubleagent-attack-anti-virus-hijack-your-pc");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -79,7 +77,6 @@ if(description)
   script_mandatory_keys("Avast/Premier/Win/Ver");
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -93,9 +90,11 @@ if(!avastVer = get_app_version(cpe:CPE)){
 }
 
 ## Grep for vulnerable version
-if(version_is_less_equal(version:avastVer, test_version:"12.3"))
+if(version_is_less(version:avastVer, test_version:"17.0"))
 {
-  report = report_fixed_ver(installed_version:avastVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:avastVer, fixed_version:"17.0");
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

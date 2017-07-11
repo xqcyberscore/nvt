@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tcpbx_voip_lfi_vuln.nasl 5265 2017-02-10 15:05:48Z teissa $
+# $Id: gb_tcpbx_voip_lfi_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
 #
 # tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:tcpbx:tcpbx_voip";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809009");
-  script_version("$Revision: 5265 $");
+  script_version("$Revision: 6264 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 16:05:48 +0100 (Fri, 10 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-08-23 16:18:17 +0530 (Tue, 23 Aug 2016)");
   script_name("tcPbX 'tcpbx_lang' Parameter Local File Inclusion Vulnerability");
 
@@ -51,18 +51,17 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"tcPbX all versions.");
+  script_tag(name:"affected", value:"tcPbX versions prior to 1.2.1.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  10th February, 2017. Information regarding this issue will be updated once
-  solution details are available.
+  script_tag(name:"solution", value:"Update to version 1.2.1 or later.
   For updates refer to http://www.tcpbx.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40278");
+  script_xref(name : "URL" , value : "http://www.tcpbx.org/index.php/en/resources/updates");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");

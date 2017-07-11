@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872684");
-  script_version("$Revision: 6167 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 08:16:05 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6213 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-18 06:59:04 +0200 (Thu, 18 May 2017)");
   script_cve_id("CVE-2016-10369", "CVE-2017-8933", "CVE-2017-8934");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for menu-cache FEDORA-2017-6950ea5d05");
   script_tag(name: "summary", value: "Check the version of menu-cache");

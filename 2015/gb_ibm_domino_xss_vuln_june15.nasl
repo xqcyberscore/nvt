@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_xss_vuln_june15.nasl 5724 2017-03-24 15:54:58Z cfi $
+# $Id: gb_ibm_domino_xss_vuln_june15.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # IBM Domino Cross-Site Scripting Vulnerability - June15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805579");
-  script_version("$Revision: 5724 $");
+  script_version("$Revision: 6333 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-02 11:37:07 +0530 (Tue, 02 Jun 2015)");
   script_name("IBM Domino Cross-Site Scripting Vulnerability - June15");
 
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.zdnet.com/article/xss-flaw-exposed-in-ibm-domino-enterprise-platform");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Domino");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_lotus_domino_detect.nasl");

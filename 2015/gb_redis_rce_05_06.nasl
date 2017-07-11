@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_rce_05_06.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_redis_rce_05_06.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Redis EVAL Lua Sandbox Escape
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-4335");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6357 $");
 
  script_name("Redis EVAL Lua Sandbox Escape");
 
@@ -49,9 +49,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-06-05 16:01:37 +0200 (Fri, 05 Jun 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("Databases");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

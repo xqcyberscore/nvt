@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882719");
-  script_version("$Revision: 6205 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 08:22:39 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6268 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-23 07:03:15 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-8422");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for kdelibs CESA-2017:1264 centos7 ");
   script_tag(name: "summary", value: "Check the version of kdelibs");

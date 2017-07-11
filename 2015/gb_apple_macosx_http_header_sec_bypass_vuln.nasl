@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_apple_macosx_http_header_sec_bypass_vuln.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806127");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2015-7031");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:05:48 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Web Service component (HTTP header) Security Bypass Vulnerability");
 
@@ -60,7 +60,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://support.apple.com/en-us/HT205376");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Oct/msg00009.html");
-  script_summary("Check for the vulnerable version of Apple Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

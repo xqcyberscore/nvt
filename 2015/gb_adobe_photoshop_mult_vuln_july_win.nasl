@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_mult_vuln_july_win.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_photoshop_mult_vuln_july_win.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Adobe Photoshop CC Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805597");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-3112", "CVE-2015-3111", "CVE-2015-3110", "CVE-2015-3109");
   script_bugtraq_id(75245, 75240, 75243, 75242);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-02 10:41:14 +0530 (Thu, 02 Jul 2015)");
   script_name("Adobe Photoshop CC Multiple Vulnerabilities (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/photoshop/apsb15-12.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Adobe Photoshop CC on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect.nasl");

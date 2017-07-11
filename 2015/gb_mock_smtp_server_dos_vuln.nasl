@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mock_smtp_server_dos_vuln.nasl 4087 2016-09-16 11:31:47Z antu123 $
+# $Id: gb_mock_smtp_server_dos_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Mock SMTP Server Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805963");
-  script_version("$Revision: 4087 $");
+  script_version("$Revision: 6254 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 13:31:47 +0200 (Fri, 16 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-08-26 12:20:48 +0530 (Wed, 26 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Mock SMTP Server Remote Denial of Service Vulnerability");
@@ -62,7 +62,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37954");
 
-  script_summary("Check if Mock SMTP Server is vulnerable to denial of service");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

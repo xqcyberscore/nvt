@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869113");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6404 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-21 07:16:42 +0100 (Sat, 21 Mar 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,7 +44,6 @@ of detect NVT and check if the version is vulnerable or not.");
   script_xref(name: "FEDORA", value: "2015-3574");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/152471.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qt-creator");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

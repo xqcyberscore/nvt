@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0386.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0386.nasl 6214 2017-05-26 09:04:01Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122699");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6214 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:51:23 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0386");
 script_tag(name: "insight", value: "ELSA-2007-0386 -  Moderate: mutt security update - [5:1.4.1-12.0.3.el4] - fix overflow in gecos field handling (#240176, CVE-2007-2683) [5:1.4.1-12.0.2.el4] - buildrequire aspell [5:1.4.1-12.0.1.el4] - validate msgid in APOP authentication (#241201, CVE-2007-1558) - fix insecure temp file creation on NFS (#211085, CVE-2006-5297)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0386");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

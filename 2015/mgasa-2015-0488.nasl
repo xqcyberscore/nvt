@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0488.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0488.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131169");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-12-29 11:15:51 +0200 (Tue, 29 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0488");
 script_tag(name: "insight", value: "Updated perl-HTML-Scrubber package fixes security vulnerability: Cross-site scripting (XSS) vulnerability in the HTML-Scrubber module before 0.15 for Perl, when the comment feature is enabled, allows remote attackers to inject arbitrary web script or HTML via a crafted comment."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0488");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0488");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

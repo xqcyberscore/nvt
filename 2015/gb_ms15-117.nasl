@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-117.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-117.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Microsoft Windows NDIS Elevation of Privilege Vulnerability (3101722)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806615");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-6098");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 12:47:24 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows NDIS Elevation of Privilege Vulnerability (3101722)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101722");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-117");
 
-  script_summary("Check for the vulnerable 'Ndis.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

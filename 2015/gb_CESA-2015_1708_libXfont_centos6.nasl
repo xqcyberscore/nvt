@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882277");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6254 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-04 08:15:02 +0200 (Fri, 04 Sep 2015)");
   script_cve_id("CVE-2015-1802", "CVE-2015-1803", "CVE-2015-1804");
   script_tag(name:"qod_type", value:"package");
@@ -61,7 +61,6 @@ contains backported patches to correct these issues.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1708");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-September/021368.html");
-  script_summary("Check for the Version of libXfont");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

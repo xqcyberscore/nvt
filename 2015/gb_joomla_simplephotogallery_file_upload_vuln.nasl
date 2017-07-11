@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simplephotogallery_file_upload_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_joomla_simplephotogallery_file_upload_vuln.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Joomla! Simple Photo Gallery Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805155");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6333 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-17 18:20:26 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla! Simple Photo Gallery Arbitrary File Upload Vulnerability");
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36373");
 
-  script_summary("Determine if it is possible to upload a file");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

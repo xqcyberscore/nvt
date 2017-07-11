@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869091");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-15 06:39:41 +0100 (Sun, 15 Mar 2015)");
   script_cve_id("CVE-2015-1421", "CVE-2015-0275", "CVE-2015-1593", "CVE-2014-8160",
                 "CVE-2014-9585", "CVE-2014-9529", "CVE-2014-9419", "CVE-2014-9428",
@@ -66,7 +66,6 @@ allocation, device input and output, etc.
   script_xref(name: "FEDORA", value: "2015-3594");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151850.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

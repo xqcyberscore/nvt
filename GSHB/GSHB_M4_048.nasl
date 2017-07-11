@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_048.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_048.nasl 6387 2017-06-21 09:03:11Z emoss $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.048
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_id(94204);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6387 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.048: Passwortschutz unter Windows-Systemen");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04048.html");
+  script_xref(name : "URL" , value : " http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04048.html");
   script_summary  ("IT-Grundschutz M4.048: Passwortschutz unter Windows-Systemen.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
@@ -78,7 +78,7 @@ RLTCP = get_kb_item("WMI/lockoutpolicy/RequireLogonToChangePassword");
 PC = get_kb_item("WMI/lockoutpolicy/PasswordComplexity");
 FLWHE = get_kb_item("WMI/lockoutpolicy/ForceLogoffWhenHourExpire");
 CTP = get_kb_item("WMI/lockoutpolicy/ClearTextPassword");
-
+PINLOGIN = get_kb_item("WMI/passwdpolicy/pinLogin");
 log = get_kb_item("WMI/passwdpolicy/log");
 
 if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System."){
@@ -96,7 +96,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   result = string("Fehler");
   if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
   if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
-}else if(MINPA >= 1 && PHS >= 6 && LD >= 60 && RLC >= 30 && MPL >= 8 && LBC <= 3 && MAXPA <= 90 && RLTCP >< "False" && PC >< "True" && CTP >< "False"){
+}else if(MINPA >= 1 && PHS >= 6 && LD >= 60 && RLC >= 30 && MPL >= 8 && LBC <= 3 && MAXPA <= 90 && RLTCP >< "False" && PC >< "True" && CTP >< "False" && (PINLOGIN == TRUE || ! PINLOGIN)){
   result = string("erfüllt");
   desc = string("Die Kennwortrichtlinien und Kontosperrungsrichtlinien\nentsprechen der IT-Grundschutz Maßnahme 4.048.");
 }else{
@@ -111,6 +111,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
     if (MPL < 8)desc = desc + string("Die minimale Kennwortlänge beträgt nur: " + MPL + '\n');
     if (LBC > 3)desc = desc + string("Die Kontosperrungsschwelle beträgt " + LBC + '\nVersuche\n');
     if (MAXPA > 90)desc = desc + string("Das maximale Kennwortalter beträgt nur " + MAXPA + '\nTage\n');
+    if (PINLOGIN == FALSE)desc = desc + string('Die PIN-Anmeldung ist nicht deaktiviert (ab Windows 8)\n');
   }
   if (PP >!< "False")
   {

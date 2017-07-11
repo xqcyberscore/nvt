@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3277.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3277.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3277-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703277);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2015-3809", "CVE-2015-3810", "CVE-2015-3811", "CVE-2015-3812",
                   "CVE-2015-3813", "CVE-2015-3814", "CVE-2015-3815");
     script_name("Debian Security Advisory DSA 3277-1 (wireshark - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-06-02 00:00:00 +0200 (Tue, 02 Jun 2015)");
     script_tag(name:"cvss_base", value:"7.8");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -43,7 +43,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3277.html");
 
-    script_summary("Debian Security Advisory DSA 3277-1 (wireshark - security update)");
 
     script_category(ACT_GATHER_INFO);
 

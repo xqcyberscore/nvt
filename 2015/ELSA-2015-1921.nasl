@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1921.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1921.nasl 6333 2017-06-14 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122718");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6333 $");
 script_tag(name:"creation_date", value:"2015-10-22 08:30:59 +0300 (Thu, 22 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1921");
 script_tag(name: "insight", value: "ELSA-2015-1921 -  java-1.7.0-openjdk security update - [1:1.7.0.91-2.6.2.1.0.1]- Add oracle-enterprise.patch- Fix DISTRO_NAME to 'Oracle Linux'[1:1.7.0.91-2.6.2.1]- added and applied patch500 8072932or8074489.patch to fix tck failure- Resolves: rhbz#1271918[1:1.7.0.91-2.6.2.0]- Drop patch for PR2521/RH1242587 now resolved upstream.- Resolves: rhbz#1271918[1:1.7.0.91-2.6.2.0]- Bump to 2.6.2 and u91b00.- Resolves: rhbz#1271918"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1921");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

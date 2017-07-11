@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1752.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1752.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123519");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:58 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1752");
 script_tag(name: "insight", value: "ELSA-2013-1752 -  389-ds-base security update - [1.2.11.15-30] - Resolves: bug 1024977 CVE-2013-4485 389-ds-base: DoS due to improper handling of ger attr searches [1.2.11.15-29] - Bump version to 1.2.11.15-29 - Resolves: bug 1008013: DS91: ns-slapd stuck in DS_Sleep [1.2.11.15-28] - Bump version to 1.2.11.15-28 - Resolves: Bug 1016038 - Users from AD sub OU does not sync to IPA (ticket 47488) [1.2.11.15-27] - Bump version to 1.2.11.15-27 - Resolves: Bug 1013735 - CLEANALLRUV doesnt run across all replicas (ticket 47509) [1.2.11.15-26] - Bump version to 1.2.11.15-26 - Resolves: Bug 947583 - ldapdelete returns non-leaf entry error while trying to remove a leaf entry (ticket 47534) [1.2.11.15-25] - Bump version to 1.2.11.15-25 - Resolves: Bug 1006846 - 2Master replication with SASL/GSSAPI auth broken (ticket 47523) - Resolves: Bug 1007452 - Under specific values of nsDS5ReplicaName, replication may get broken or updates (ticket 47489) [1.2.11.15-24] - Bump version to 1.2.11.15-24 - Resolves: Bug 982325 - Overflow in nsslapd-disk-monitoring-threshold; Changed CONFIG_INT to CONFIG_LONG for nsslapd-disk-monioring-threshold (ticket 47427) [1.2.11.15-23] - Bump version to 1.2.11.15-23 - Resolves: Bug 1000632 - CVE-2013-4283 389-ds-base: ns-slapd crash due to bogus DN - Resolves: Bug 1002260 - server fails to start after upgrade(schema error) (ticket 47318)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1752");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

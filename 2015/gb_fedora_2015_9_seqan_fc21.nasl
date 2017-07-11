@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806534");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6415 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:14:33 +0100 (Thu, 05 Nov 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,6 @@ other libraries.
   script_xref(name: "FEDORA", value: "2015-9");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/170927.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of seqan");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

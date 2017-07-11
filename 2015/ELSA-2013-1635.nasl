@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1635.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1635.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123514");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:54 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1635");
 script_tag(name: "insight", value: "ELSA-2013-1635 -  pacemaker security, bug fix, and enhancement update - [1.1.10-14]- Log: crmd: Supply arguments in the correct order Resolves: rhbz#996850- Fix: Invalid formatting of log message causes crash Resolves: rhbz#996850[1.1.10-13]- Fix: cman: Start clvmd and friends from the init script if enabled[1.1.10-12]- Fix: Consistently use 'Slave' as the role for unpromoted master/slave resources Resolves: rhbz#1011618- Fix: pengine: Location constraints with role=Started should prevent masters from running at all Resolves: rhbz#902407- Fix: crm_resource: Observe --master modifier for --move Resolves: rhbz#902407[1.1.10-11]+ Fix: cman: Do not start pacemaker if cman startup fails + Fix: Fencing: Observe pcmk_host_list during automatic unfencing Resolves: rhbz#996850[1.1.10-10]- Remove unsupported resource agent Resolves: rhbz#1005678- Provide a meaningful error if --master is used for primitives and groups[1.1.10-9]+ Fix: xml: Location constraints are allowed to specify a role + Bug rhbz#902407 - crm_resource: Handle --ban for master/slave resources as advertised Resolves: rhbz#902407[1.1.10-8]+ Fix: mcp: Remove LSB hints that instruct chkconfig to start pacemaker at boot time Resolves: rhbz#997346[1.1.10-7]+ Fencing: Support agents that need the host to be unfenced at startup Resolves: rhbz#996850 + Fix: crm_report: Collect corosync quorum data Resolves: rhbz#989292[1.1.10-6]- Regenerate patches to have meaningful names[1.1.10-5]+ Fix: systemd: Prevent glib assertion - only call g_error_free with non-NULL arguments + Fix: systemd: Prevent additional use-of-NULL assertions in g_error_free + Fix: logging: glib CRIT messages should not produce core files in the background + Fix: crmd: Correcty update the history cache when recurring ops change their return code + Log: crm_mon: Unmangle the output for failed operations + Log: cib: Correctly log short-form xml diffs + Log: pengine: Better indicate when a resource has failed[1.1.10-4]+ Fix: crmd: Prevent crash by passing log arguments in the correct order + Fix: pengine: Do not re-allocate clone instances that are blocked in the Stopped state + Fix: pengine: Do not allow colocation with blocked clone instances[1.1.10-3]+ Fix: pengine: Do not restart resources that depend on unmanaged resources + Fix: crmd: Prevent recurring monitors being cancelled due to notify operations[1.1.10-2]- Drop rgmanager 'provides' directive[1.1.10-1]- Update source tarball to revision: Pacemaker-1.1.10- See included ChangeLog file or https://raw.github.com/ClusterLabs/pacemaker/master/ChangeLog for full details- Resolves: rhbz#891766- Resolves: rhbz#902407- Resolves: rhbz#908450- Resolves: rhbz#913093- Resolves: rhbz#951340- Resolves: rhbz#951371- Related: rhbz#987355"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1635");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

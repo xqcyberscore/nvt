@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1219.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-1219.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122455");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:45:42 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1219");
 script_tag(name: "insight", value: "ELSA-2009-1219 -  libvorbis security update - [1:1.1.2-3.el5.3] - fix CVE-2009-2663 Resolves: #516348"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-1219");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

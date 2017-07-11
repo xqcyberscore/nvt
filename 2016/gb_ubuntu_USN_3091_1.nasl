@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842906");
-  script_version("$Revision: 5527 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 11:00:25 +0100 (Thu, 09 Mar 2017) $");
+  script_version("$Revision: 6336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-10-08 05:44:27 +0200 (Sat, 08 Oct 2016)");
   script_cve_id("CVE-2016-5170", "CVE-2016-5171", "CVE-2016-5172", "CVE-2016-5175",
 		"CVE-2016-5178", "CVE-2016-5177", "CVE-2016-7549");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxide-qt USN-3091-1");
   script_tag(name: "summary", value: "Check the version of oxide-qt");

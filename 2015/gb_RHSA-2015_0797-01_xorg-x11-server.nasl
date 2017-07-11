@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871352");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-04-11 07:34:50 +0200 (Sat, 11 Apr 2015)");
   script_cve_id("CVE-2015-0255");
   script_tag(name:"cvss_base", value:"6.4");
@@ -58,7 +58,6 @@ which contain a backported patch to correct this issue.
   script_xref(name: "RHSA", value: "2015:0797-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-April/msg00015.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xorg-x11-server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

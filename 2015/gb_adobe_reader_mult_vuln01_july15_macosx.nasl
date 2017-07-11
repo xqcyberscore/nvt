@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805680");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-5115", "CVE-2015-5114", "CVE-2015-5113", "CVE-2015-5111",
                 "CVE-2015-5110", "CVE-2015-5109", "CVE-2015-5108", "CVE-2015-5107",
                 "CVE-2015-5106", "CVE-2015-5105", "CVE-2015-5104", "CVE-2015-5103",
@@ -46,7 +46,7 @@ if(description)
                     75738, 75743, 75737, 75735, 75402);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-21 11:27:48 +0530 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 July15 (Mac OS X)");
@@ -84,7 +84,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/75402");
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/acrobat/apsb15-15.html");
 
-  script_summary("Check for the vulnerable version of Adobe Reader on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

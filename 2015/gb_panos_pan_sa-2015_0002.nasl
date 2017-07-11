@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0002.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_panos_pan_sa-2015_0002.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0002
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6415 $");
 
  script_name("Palo Alto PAN-OS PAN-SA-2015-0002");
 
@@ -61,9 +61,8 @@ scheduled software maintenance update. (Ref # 74443)");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-23 13:30:05 +0200 (Thu, 23 Apr 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

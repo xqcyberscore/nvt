@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869958");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6329 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-25 07:18:05 +0200 (Fri, 25 Sep 2015)");
   script_cve_id("CVE-2015-5198", "CVE-2015-5199", "CVE-2015-5200");
   script_tag(name:"cvss_base", value:"7.2");
@@ -45,7 +45,6 @@ modern GPUs.
   script_xref(name: "FEDORA", value: "2015-14851");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-September/167469.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libvdpau");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

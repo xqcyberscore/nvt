@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3369.nasl 3486 2016-06-13 05:14:29Z antu123 $
+# $Id: deb_3369.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3369-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703369);
-    script_version("$Revision: 3486 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2015-5723");
     script_name("Debian Security Advisory DSA 3369-1 (zendframework - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-06-13 07:14:29 +0200 (Mon, 13 Jun 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-10-06 00:00:00 +0200 (Tue, 06 Oct 2015)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3369.html");
 
-    script_summary("Debian Security Advisory DSA 3369-1 (zendframework - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teampass_mult_vuln_jan16.nasl 5968 2017-04-18 14:00:24Z cfi $
+# $Id: gb_teampass_mult_vuln_jan16.nasl 6291 2017-06-07 12:58:24Z cfischer $
 #
 # TeamPass Multiple Security Vulnerabilities - Jan16
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:teampass:teampass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108141");
-  script_version("$Revision: 5968 $");
+  script_version("$Revision: 6291 $");
   script_cve_id("CVE-2015-7562", "CVE-2015-7563", "CVE-2015-7564");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 16:00:24 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-07 14:58:24 +0200 (Wed, 07 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-18 13:00:00 +0200 (Tue, 18 Apr 2017)");
   script_name("TeamPass Multiple Security Vulnerabilities - Jan16");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +54,7 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - Mulitple cross-site scripting (XSS) vulnerabilities in the (1) label value of an item or (2) name of a role.
+  - Multiple cross-site scripting (XSS) vulnerabilities in the (1) label value of an item or (2) name of a role.
 
   - Cross-site request forgery (CSRF) vulnerability.
 

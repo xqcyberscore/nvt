@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3078.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-3078.nasl 6254 2017-05-31 09:04:18Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123004");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6254 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:46:32 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3078");
 script_tag(name: "insight", value: "ELSA-2015-3078 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-98.2.2]- sctp: fix ASCONF list handling (Marcelo Ricardo Leitner) [Orabug: 21842668] {CVE-2015-3212}- KEYS: ensure we free the assoc array edit if edit is valid (Colin Ian King) [Orabug: 21842655] {CVE-2015-1333}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-3078");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

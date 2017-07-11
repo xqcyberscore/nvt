@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869569");
-  script_version("$Revision: 6012 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:25:14 +0200 (Tue, 07 Jul 2015)");
   script_cve_id("CVE-2014-8354", "CVE-2014-8355");
   script_tag(name:"cvss_base", value:"4.3");
@@ -56,7 +56,6 @@ ImageMagick-devel as well.
   script_xref(name: "FEDORA", value: "2015-3605");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151944.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ImageMagick");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850653");
-  script_version("$Revision: 3353 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-3456");
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-19 05:54:39 +0200 (Tue, 19 May 2015)");
   script_name("SuSE Update for qemu openSUSE-SU-2015:0894-1 (qemu)");
   script_tag(name: "summary", value: "Check the version of qemu");
@@ -49,7 +49,6 @@ if(description)
 
   script_xref(name: "openSUSE-SU", value: "2015:0894_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-05/msg00014.html");
-  script_summary("Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

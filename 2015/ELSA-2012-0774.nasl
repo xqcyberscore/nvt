@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0774.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-0774.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123886");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:51 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0774");
 script_tag(name: "insight", value: "ELSA-2012-0774 -  libguestfs security, bug fix, and enhancement update - [1:1.16.19-1]- Rebase to libguestfs 1.16.19 resolves: rhbz#719879- Rebuild against augeas 0.9.0-3.el6 related: rhbz#808662- Fix: Don't abort inspection if mdadm.conf ARRAY doesn't have a uuid.- Switch back to git for patch management.[1:1.16.18-2]- Rebase to libguestfs 1.16.18 resolves: rhbz#719879- Fix: guestfs_last_error not set when qemu fails early during launch resolves: rhbz#811673- Fix: RFE: virt-sysprep: hostname can not be changed on rhel system (RHBZ#811112)- Fix: RFE: virt-sysprep: net-hwaddr not removed from ifcfg-* files on rhel (RHBZ#811117)- Fix: inspection fails on ubuntu 10.04 guest with encrypted swap (RHBZ#811872)- Fix: cannot open disk images which are symlinks to files that contain ':' (colon) character (RHBZ#812092)- BR gettext-devel so we can rerun autoconf.[1:1.16.15-1]- Rebase to libguestfs 1.16.15 resolves: rhbz#719879- Fix: inspection doesn't recognize Fedora 17+ (RHBZ#809401)[1:1.16.14-1]- Rebase to libguestfs 1.16.14 resolves: rhbz#719879- virt-sysprep should use virt-inspector2 resolves: rhbz#807557- Fix: mkfs blocksize option breaks when creating btrfs resolves: rhbz#807905[1:1.16.12-1]- Rebase to libguestfs 1.16.12 resolves: rhbz#719879- Fix: could not locate HKLM\SYSTEM\MountedDevices resolves: rhbz#803699[1:1.16.10-1]- Rebase to libguestfs 1.16.10 resolves: rhbz#719879- Fix: libguestfs holds open file descriptors when handle is launched resolves: rhbz#801788- Fix: Document for set-pgroup need to be updated resolves: rhbz#801273- Fix: Possible null dereference and resource leaks resolves: rhbz#801298[1:1.16.8-1]- Rebase to libguestfs 1.16.8 resolves: rhbz#719879- Fix set_autosync function so it is not 'ConfigOnly' resolves: rhbz#796520- Fix header compilation for C++ resolves: rhbz#799695[1:1.16.6-1]- Rebase to libguesfs 1.16.6 resolves: rhbz#798197, rhbz#797760,rhbz#790958,rhbz#798980,rhbz#795322,rhbz#796520- Fix virt-inspector2 man page.[1:1.16.5-1]- Rebase to libguestfs 1.16.5 resolves: rhbz#679737, rhbz#789960[1:1.16.4-1]- Rebase to libguestfs 1.16.4 resolves: rhbz#788642[1:1.16.3-1]- Rebase to libguestfs 1.16.3 resolves: rhbz#679737, rhbz#769359, rhbz#785305[1:1.16.2-1]- Rebase to libguestfs 1.16.2 resolves: rhbz#719879[1:1.16.1-1]- Rebase to libguestfs 1.16.1- Disable tests (probably because we are hitting https://lists.gnu.org/archive/html/qemu-devel/2010-02/threads.html#00823 ) resolves: rhbz#719879[1:1.14.7-4]- Continue with rebase to libguestfs 1.14.7 resolves: rhbz#719879[1:1.14.7-1]- Rebase to libguestfs 1.14.7 resolves: rhbz#719879"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-0774");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

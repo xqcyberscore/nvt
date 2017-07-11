@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_monthly_rollup_kb4019264.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_ms_monthly_rollup_kb4019264.nasl 6377 2017-06-20 10:16:39Z santu $
 #
 # Microsoft Windows Monthly Rollup (KB4019264)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811114");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 6377 $");
   script_cve_id("CVE-2017-0064", "CVE-2017-0077", "CVE-2017-0171", "CVE-2017-0175", 
                 "CVE-2017-0190", "CVE-2017-0213", "CVE-2017-0214", "CVE-2017-0220", 
                 "CVE-2017-0222", "CVE-2017-0231", "CVE-2017-0242", "CVE-2017-0244", 
@@ -35,14 +35,14 @@ if(description)
                 "CVE-2017-0267", "CVE-2017-0268", "CVE-2017-0269", "CVE-2017-0270", 
                 "CVE-2017-0271", "CVE-2017-0272", "CVE-2017-0273", "CVE-2017-0274", 
                 "CVE-2017-0275", "CVE-2017-0276", "CVE-2017-0277", "CVE-2017-0278", 
-                "CVE-2017-0279", "CVE-2017-0280"); 
+                "CVE-2017-0279", "CVE-2017-0280", "CVE-2017-8552"); 
   script_bugtraq_id(98121, 98114, 98097, 98110, 98298, 98102, 98103, 98111, 98127,
                     98173, 98275, 98109, 98115, 98108, 98112, 98258, 98259, 98261,
                     98263, 98264, 98265, 98260, 98274, 98266, 98267, 98268, 98270,
                     98271, 98272, 98273);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:07:03 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Monthly Rollup (KB4019264)");

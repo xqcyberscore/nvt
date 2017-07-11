@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0519.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0519.nasl 6229 2017-05-29 09:04:10Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123714");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6229 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:34 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0519");
 script_tag(name: "insight", value: "ELSA-2013-0519 -  openssh security, bug fix and enhancement update - [5.3p1-84.1]- Add a 'netcat mode' (ssh -W) (#860809)[5.3p1-83]- fix the required authentications patch (#869903)[5.3p1-82]- check return value of PK11_Authenticate in ssh-add -n (#782912)- document available methods to RequiredAuthentications[12] (#821641)- fix ssh-copy-id (#836650)- fix segmentation fault in ssh client (#836655)- update pam_ssh_agent_auth to 0.9.3 upstream version- fix segfault in su when pam_ssh_agent_auth is used and the ssh-agent is not running (#834404)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0519");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

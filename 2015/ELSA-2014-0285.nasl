@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-0285.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-0285.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123451");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:03:59 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-0285");
 script_tag(name: "insight", value: "ELSA-2014-0285 -  kernel security, bug fix, and enhancement update - kernel[2.6.18-371.6.1]- [net] be2net: don't use skb_get_queue_mapping() (Ivan Vecera) [1066302 1063955]- [ipc] change refcount to atomic_t (Phillip Lougher) [1024866 1024868] {CVE-2013-4483}- [s390] qeth: buffer overflow in snmp ioctl (Jacob Tanenbaum) [1034402 1034404] {CVE-2013-6381}- [scsi] AACRAID Driver compat IOCTL missing capability check (Jacob Tanenbaum) [1033531 1033532] {CVE-2013-6383}- [xen] x86/AMD: work around erratum 793 (Radim Krcmar) [1035834 1035836] {CVE-2013-6885}- [xen] do not expose hypercalls to rings 1 and 2 of HVM guests (Andrew Jones) [1029112 1029113] {CVE-2013-4554}- [redhat] kabi: Adding symbol print_hex_dump (Jiri Olsa) [1054055 662558]- [scsi] Add 'eh_deadline' to limit SCSI EH runtime (Ewan Milne) [1050097 956132]- [scsi] remove check for 'resetting' (Ewan Milne) [1050097 956132]- [scsi] dc395: Move 'last_reset' into internal host structure (Ewan Milne) [1050097 956132]- [scsi] tmscsim: Move 'last_reset' into host structure (Ewan Milne) [1050097 956132]- [scsi] advansys: Remove 'last_reset' references (Ewan Milne) [1050097 956132]- [scsi] dpt_i2o: return SCSI_MLQUEUE_HOST_BUSY when in reset (Ewan Milne) [1050097 956132]- [scsi] dpt_i2o: Remove DPTI_STATE_IOCTL (Ewan Milne) [1050097 956132]- [net] ipv6: fix leaking uninit port number of offender sockaddr (Florian Westphal) [1035880 1035881] {CVE-2013-7264 CVE-2013-7265 CVE-2013-7281 CVE-2013-7263}- [net] fix addr_len/msg->msg_namelen assign in recv_error funcs (Florian Westphal) [1035880 1035881] {CVE-2013-7264 CVE-2013-7265 CVE-2013-7281 CVE-2013-7263}- [net] prevent leakage of uninitialized memory to user in recv (Florian Westphal) [1035880 1035881] {CVE-2013-7264 CVE-2013-7265 CVE-2013-7281 CVE-2013-7263}- [net] be2net: prevent Tx stall on SH-R when packet size < 32 (Ivan Vecera) [1051535 1007995]- [net] be2net: Trim padded packets for Lancer (Ivan Vecera) [1051535 1007995]- [net] be2net: Pad skb to meet min Tx pkt size in lancer (Ivan Vecera) [1051535 1007995]- [net] be2net: refactor HW workarounds in be_xmit() (Ivan Vecera) [1051535 1007995]- [fs] exec/ptrace: fix get_dumpable() incorrect tests (Petr Oros) [1039483 1039484] {CVE-2013-2929}[2.6.18-371.5.1]- [fs] cifs: stop trying to use virtual circuits (Sachin Prabhu) [1044328 1013469]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-0285");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_cisco-sa-20170118-nexus.nasl 5153 2017-02-01 08:40:43Z teissa $
+# $Id: gb_cisco_nx_os_cisco-sa-20170118-nexus.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
 #
 # Cisco Nexus 5000, 6000, and 7000 Series Switches Software IS-IS Packet Processing Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2017-3804");
  script_tag(name:"cvss_base", value:"5.7");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 5153 $");
+ script_version("$Revision: 6292 $");
 
  script_name("Cisco Nexus 5000, 6000, and 7000 Series Switches Software IS-IS Packet Processing Denial of Service Vulnerability");
 
@@ -57,7 +57,7 @@ device.");
  script_tag(name: "qod_type", value: "package");
  script_tag(name: "solution_type", value: "VendorFix");
 
- script_tag(name: "last_modification", value: "$Date: 2017-02-01 09:40:43 +0100 (Wed, 01 Feb 2017) $");
+ script_tag(name: "last_modification", value: "$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
  script_tag(name: "creation_date", value: "2017-01-19 11:24:12 +0700 (Thu, 19 Jan 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
@@ -76,7 +76,7 @@ if (!device || "Nexus" >!< device)
   exit(0);
 
 model = get_kb_item("cisco_nx_os/model");
-if (!model || nx_model !~ "^(5|6|7)[0-9]+")
+if (!model || model !~ "^(5|6|7)[0-9]+")
   exit(0);
 
 if (!version = get_app_version(cpe:CPE))

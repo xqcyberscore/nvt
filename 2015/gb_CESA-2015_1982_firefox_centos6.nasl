@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882319");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 06:16:48 +0100 (Thu, 05 Nov 2015)");
   script_cve_id("CVE-2015-4513", "CVE-2015-7188", "CVE-2015-7189", "CVE-2015-7193",
                 "CVE-2015-7194", "CVE-2015-7196", "CVE-2015-7197", "CVE-2015-7198");
@@ -70,7 +70,6 @@ the update, Firefox must be restarted for the changes to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1982");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-November/021471.html");
-  script_summary("Check for the Version of firefox");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

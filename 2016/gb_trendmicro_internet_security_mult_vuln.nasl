@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_internet_security_mult_vuln.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_trendmicro_internet_security_mult_vuln.nasl 6416 2017-06-23 10:02:44Z cfischer $
 #
 # TrendMicro Internet Security Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:trendmicro:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808638");
-  script_version("$Revision: 5782 $");
+  script_version("$Revision: 6416 $");
   script_cve_id("CVE-2016-1225", "CVE-2016-1226");
   script_bugtraq_id(90999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-08-05 12:51:56 +0530 (Fri, 05 Aug 2016)");
   script_name("TrendMicro Internet Security Multiple Vulnerabilities");
 
@@ -78,24 +78,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
+##Get the version and location from cpe
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 
-##initialize varaibles
-treVer = "";
-sysPath = "";
-sysVer = 0;
-minRequireVer = 0;
-
-##Get the version from cpe
-treVer = get_app_version(cpe:CPE);
-if(!treVer){
-  exit(0);
-}
-
-## Get the location
-sysPath = get_app_location(cpe:CPE);
-if(!sysPath){
-  exit(0);
-}
+treVer = infos['version'];
+sysPath = infos['location'];
+if( ! sysPath ) exit(0);
 
 ## Get plugDaemonHost.dll file version
 sysVer = fetch_file_version(sysPath, file_name:"Titanium\plugin\plugDaemonHost.dll");
@@ -105,24 +93,22 @@ if(!sysVer){
 
 ##Check for vulnerable version
 if(version_is_equal(version:treVer, test_version:"8.0") ||
-   version_is_equal(version:treVer, test_version:"10.0"))
-{
+   version_is_equal(version:treVer, test_version:"10.0")) {
   ## Set Minimum Required Version
   if(treVer =~ "^8"){
     minRequireVer = "8.0.0.2062";
-  }
-  else
-  {
+  } else {
     ## After installing version 10 gives 9.0.0.1265
     minRequireVer = "9.0.0.1265";
   }
 
   ## Checking fix already applied or not
   ## Check for the plugDaemonHost.dll version 
-  if(version_is_less(version:sysVer, test_version:minRequireVer))
-  {
+  if(version_is_less(version:sysVer, test_version:minRequireVer)) {
     report = report_fixed_ver(installed_version:treVer, fixed_version:"Apply the Patch");
     security_message(data:report);
     exit(0);
   }
 }
+
+exit( 99 );

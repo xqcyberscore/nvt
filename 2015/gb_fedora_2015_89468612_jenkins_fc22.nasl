@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806920");
-  script_version("$Revision: 3349 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:36 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6404 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-23 05:38:34 +0100 (Wed, 23 Dec 2015)");
   script_cve_id("CVE-2015-5317", "CVE-2015-5319", "CVE-2015-5324", "CVE-2015-5321",
                 "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5326");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name: "FEDORA", value: "2015-89468612");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-December/174273.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of jenkins");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

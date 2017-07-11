@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_93.nasl 4821 2016-12-21 07:18:13Z antu123 $
+# $Id: gb_ipfire_2_17_core_93.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # IPFire 2.17 - Core Update 93
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-5073");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 4821 $");
+ script_version ("$Revision: 6404 $");
 
  script_name("IPFire 2.17 - Core Update 93");
 
@@ -47,9 +47,8 @@ server and the Perl-compatible regular expressions library.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:18:13 +0100 (Wed, 21 Dec 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-08-18 13:36:54 +0200 (Tue, 18 Aug 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

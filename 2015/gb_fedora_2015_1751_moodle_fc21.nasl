@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868994");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-15 05:46:36 +0100 (Sun, 15 Feb 2015)");
   script_cve_id("CVE-2015-0211", "CVE-2015-0212", "CVE-2015-0213", "CVE-2015-0214", "CVE-2015-0215", "CVE-2015-0216", "CVE-2015-0217", "CVE-2015-0218");
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,7 +45,6 @@ effective online learning communities.
   script_xref(name: "FEDORA", value: "2015-1751");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/149920.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of moodle");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

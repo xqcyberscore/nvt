@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869323");
-  script_version("$Revision: 3348 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:08 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-01 05:49:28 +0200 (Fri, 01 May 2015)");
   script_cve_id("CVE-2015-1868");
   script_tag(name:"cvss_base", value:"7.8");
@@ -46,7 +46,6 @@ your network.
   script_xref(name: "FEDORA", value: "2015-7031");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/156725.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pdns-recursor");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

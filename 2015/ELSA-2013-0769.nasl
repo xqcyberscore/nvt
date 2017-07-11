@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0769.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0769.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123634");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:33 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0769");
 script_tag(name: "insight", value: "ELSA-2013-0769 -  glibc security and bug fix update - [2.5-107.4]- Add missing patch to avoid use after free (#816647).[2.5-107.3]- Fix multibyte character processing crash in regexp (CVE-2013-0242, #951130) - Fix getaddrinfo stack overflow resulting in application crash (CVE-2013-1914, #951130)[2.5-107.2]- Call feraiseexcept only if exceptions are not masked (#861871)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0769");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

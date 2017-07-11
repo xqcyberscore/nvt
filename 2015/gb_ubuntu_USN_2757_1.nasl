@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842477");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:43:23 +0200 (Tue, 06 Oct 2015)");
   script_cve_id("CVE-2015-1303", "CVE-2015-1304");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,6 @@ an attacker could potentially exploit these to bypass same-origin restrictions.
   script_xref(name: "USN", value: "2757-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-October/003136.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of oxide-qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

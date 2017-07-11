@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_xss_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_cms_made_simple_xss_vuln.nasl 6433 2017-06-26 14:58:57Z teissa $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106697");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6433 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-26 16:58:57 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-03-28 11:42:33 +0700 (Tue, 28 Mar 2017)");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
-  script_cve_id("CVE-2017-7255", "CVE-2017-7256", "CVE-2017-7257");
+  script_cve_id("CVE-2017-7255", "CVE-2017-7256", "CVE-2017-7257", "CVE-2017-9668");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -61,11 +61,14 @@ if (description)
 
 - XSS in the 'Content-->News-->Add Article' feature via the m1_summary parameter. (CVE-2017-7256)
 
-- XSS in the 'Content-->News-->Add Article' feature via the m1_content parameter. (CVE-2017-7257)");
+- XSS in the 'Content-->News-->Add Article' feature via the m1_content parameter. (CVE-2017-7257)
+
+- In admin\addgroup.php when adding a user group, there is no XSS filtering, resulting in storage-type XSS
+generation, via the description parameter in an addgroup action. (CVE-2017-9668)");
 
   script_tag(name: "affected", value: "CMS Made Simple version 2.1.6.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 23rd June, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.03i0.com/index.php/archives/113/");

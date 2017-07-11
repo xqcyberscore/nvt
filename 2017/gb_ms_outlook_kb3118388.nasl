@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_kb3118388.nasl 5945 2017-04-12 15:37:08Z antu123 $
+# $Id: gb_ms_outlook_kb3118388.nasl 6265 2017-06-01 13:06:15Z santu $
 #
 # Microsoft Office Outlook Security Bypass and Remote Code Execution Vulnerabilities (KB3118388)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810741");
-  script_version("$Revision: 5945 $");
+  script_version("$Revision: 6265 $");
   script_cve_id("CVE-2017-0106", "CVE-2017-0204");
   script_bugtraq_id(97413, 97458);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 17:37:08 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 15:06:15 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-12 14:43:05 +0530 (Wed, 12 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Outlook Security Bypass and Remote Code Execution Vulnerabilities (KB3118388)");
@@ -83,7 +83,7 @@ outlookFile = "";
 ## Check for Office outlook 2014
 outlookVer = get_kb_item("SMB/Office/Outlook/Version");
 
-if(outlookVer =~ "^14\."){
+if(!outlookVer || !(outlookVer =~ "^14\.")){
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpwiki_mult_vuln.nasl 4087 2016-09-16 11:31:47Z antu123 $
+# $Id: gb_phpwiki_mult_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # PhpWiki Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpwiki:phpwiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806034");
-  script_version("$Revision: 4087 $");
+  script_version("$Revision: 6431 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 13:31:47 +0200 (Fri, 16 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-02 11:34:10 +0530 (Wed, 02 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PhpWiki Multiple Vulnerabilities");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38027");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133382");
 
-  script_summary("Check if PhpWiki is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

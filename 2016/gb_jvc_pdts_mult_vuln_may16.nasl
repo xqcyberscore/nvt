@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jvc_pdts_mult_vuln_may16.nasl 5544 2017-03-10 17:38:36Z teissa $
+# $Id: gb_jvc_pdts_mult_vuln_may16.nasl 6313 2017-06-12 09:33:47Z teissa $
 #
 # JVC Multiple Products Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808200");
-  script_version("$Revision: 5544 $");
+  script_version("$Revision: 6313 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 18:38:36 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:33:47 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-05-20 14:37:04 +0530 (Fri, 20 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("JVC Multiple Products Multiple Vulnerabilities");
@@ -59,13 +59,9 @@ if(description)
   JVC HDR VR-809/816
   Network cameras VN-C*, VN-V*, VN-X* with firmwares 1.03 and 2.03");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as
-  of 10th March, 2017. Information regarding this issue will be updated
-  once the solution details are available.
-  For updates refer to 
-  http://www.orwelllabs.com/2016/04/jvc-multiple-products-multiple.html");
+  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/137034/OLSA-2016-04-01.txt");
   script_xref(name : "URL" , value : "http://www.orwelllabs.com/2016/04/jvc-multiple-products-multiple.html");
 

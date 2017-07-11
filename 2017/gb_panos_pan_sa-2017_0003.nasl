@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2017_0003.nasl 5396 2017-02-22 16:55:09Z mime $
+# $Id: gb_panos_pan_sa-2017_0003.nasl 6374 2017-06-20 02:46:53Z ckuersteiner $
 #
 # Palo Alto PAN-OS Kernel Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2016-5195");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5396 $");
+ script_version ("$Revision: 6374 $");
 
  script_name("Palo Alto PAN-OS Kernel Vulnerability");
 
@@ -49,7 +49,7 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-22 17:55:09 +0100 (Wed, 22 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-20 04:46:53 +0200 (Tue, 20 Jun 2017) $");
  script_tag(name:"creation_date", value:"2017-02-22 16:10:55 +0100 (Wed, 22 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("General");
@@ -69,8 +69,7 @@ model = get_kb_item( "palo_alto_pan_os/model" );
 
 if( version_is_less( version:version, test_version:"7.1.8" ) )
 {
-  report = 'Installed version: ' + version + '\n' +
-           'Fixed version:     ' + fix;
+  report = report_fixed_ver(installed_version: version, fixed_version: "7.1.8");
 
   if( model )
     report += '\nModel:             ' + model;

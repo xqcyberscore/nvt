@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850662");
-  script_version("$Revision: 3353 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2015-3411", "CVE-2015-3412", "CVE-2015-4598", "CVE-2015-4599",
                 "CVE-2015-4600", "CVE-2015-4601", "CVE-2015-4602", "CVE-2015-4603",
                 "CVE-2015-4604", "CVE-2015-4605", "CVE-2015-4643", "CVE-2015-4644");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:19:20 +0200 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for php5 openSUSE-SU-2015:1197-1 (php5)");
@@ -58,7 +58,6 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2015:1197_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-07/msg00012.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

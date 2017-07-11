@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869062");
-  script_version("$Revision: 3340 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:41:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-06 06:47:59 +0100 (Fri, 06 Mar 2015)");
   script_cve_id("CVE-2014-7818", "CVE-2014-7829", "CVE-2014-0130", "CVE-2014-0081",
                 "CVE-2013-6414", "CVE-2013-6415", "CVE-2013-6416", "CVE-2013-6417",
@@ -48,7 +48,6 @@ emphasis on enabling easy unit/integration testing that doesn't require a browse
   script_xref(name: "FEDORA", value: "2014-15371");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/150832.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of rubygem-actionpack");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

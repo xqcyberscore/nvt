@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_CSCuq04574.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_catalyst_4500_CSCuq04574.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Cisco Catalyst 4500 SNMP Polling Denial of Service Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-0687");
  script_tag(name:"cvss_base", value:"6.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6243 $");
 
  script_name("Cisco Catalyst 4500 SNMP Polling Denial of Service Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
  script_tag(name:"creation_date", value:"2015-09-21 14:18:25 +0200 (Mon, 21 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

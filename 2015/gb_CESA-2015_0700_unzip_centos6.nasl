@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882131");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6333 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-19 05:52:16 +0100 (Thu, 19 Mar 2015)");
   script_cve_id("CVE-2014-8139", "CVE-2014-8140", "CVE-2014-8141", "CVE-2014-9636");
   script_tag(name:"cvss_base", value:"5.0");
@@ -70,7 +70,6 @@ contain backported patches to correct these issues.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:0700");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-March/020981.html");
-  script_summary("Check for the Version of unzip");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

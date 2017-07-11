@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_format_string_vuln.nasl 4068 2016-09-15 10:05:53Z ckuerste $
+# $Id: gb_h2o_format_string_vuln.nasl 6213 2017-05-26 08:21:23Z teissa $
 #
 # H2O HTTP Server Format String Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:h2o_project:h2o';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106247");
-  script_version("$Revision: 4068 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-15 12:05:53 +0200 (Thu, 15 Sep 2016) $");
+  script_version("$Revision: 6213 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
   script_tag(name: "creation_date", value: "2016-09-15 15:47:03 +0700 (Thu, 15 Sep 2016)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2016-4864");
 

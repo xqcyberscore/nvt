@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810694");
-  script_version("$Revision: 6012 $");
+  script_version("$Revision: 6412 $");
   script_cve_id("CVE-2017-0197");
   script_bugtraq_id(97411);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 06:58:27 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:05:07 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-04-13 12:39:51 +0530 (Thu, 13 Apr 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote DLL Loading RCE Vulnerability Vulnerability (KB2589382)");
@@ -71,41 +71,29 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-exeVer = "";
-notePath = "";
+## Get 'OneNote.exe' Version and location
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 
-## Get 'OneNote.exe' Version
-exeVer = get_app_version(cpe:CPE);
-if(!exeVer){
-  exit(0);
+notePath = infos['location'];
+if( ! notePath || "Could not find the install location" >< notePath ) {
+  exit( 0 );
 }
 
-## Get location
-notePath = get_app_location(cpe:CPE);
-if(!notePath){
-  exit(0);
-}
-
-if(notePath)
-{
-  ##Check for 'onenotesyncpc.dll' file version
-  noteVer = fetch_file_version(sysPath:notePath, file_name:"onenotesyncpc.dll");
-  if(noteVer && noteVer =~ "^(14\.)")
-  {
-    if(version_in_range(version:noteVer, test_version:"14.0", test_version2:"14.0.7180.4999"))
-    {
-       report = 'File checked:     ' + notePath + "\onenotesyncpc.dll"  + '\n' +
-                'File version:     ' + noteVer  + '\n' +
-                'Vulnerable range: ' + "14.0 - 14.0.7180.4999" + '\n' ;
-       security_message(data:report);
-       exit(0);
-    }
+##Check for 'onenotesyncpc.dll' file version
+noteVer = fetch_file_version(sysPath:notePath, file_name:"onenotesyncpc.dll");
+if(noteVer && noteVer =~ "^(14\.)") {
+  if(version_in_range(version:noteVer, test_version:"14.0", test_version2:"14.0.7180.4999")) {
+     report = 'File checked:     ' + notePath + "\onenotesyncpc.dll"  + '\n' +
+              'File version:     ' + noteVer  + '\n' +
+              'Vulnerable range: ' + "14.0 - 14.0.7180.4999" + '\n' ;
+     security_message(data:report);
+     exit(0);
   }
 }
+
+exit( 99 );

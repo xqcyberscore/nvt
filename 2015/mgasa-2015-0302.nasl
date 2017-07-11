@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0302.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0302.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130076");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:26 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0302");
 script_tag(name: "insight", value: "In Moodle before 2.8.7, phishing is possible when redirecting to external site using referer headers in error messages (CVE-2015-3272). In Moodle before 2.8.7, several web services returning user information did not clean text in text custom profile fields, leading to possible XSS (CVE-2015-3274). In Moodle before 2.8.7, possible Javascript injection was discovered in the SCORM module (CVE-2015-3275). As Moodle 2.6 is no longer supported, users of this package on Mageia 4 are advised to migrate to Mageia 5."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0302");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0302");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 6107 2017-05-11 12:56:05Z cfi $
+# $Id: smb_nt.inc 6410 2017-06-23 08:17:07Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,12 +23,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6107 $
+# $Revision: 6410 $
 #
 ###############################################################################
 
-# Global TODO: - Deduplicate code of registry_open_hklm, registry_open_hku and registry_open_hkcu (See the note of registry_open_hklm)
-#              - Dedupliacte code tagged with <- START TODO: This duplicated code just makes this include huge and un-maintainable
+# Global TODO: - Dedupliacte code tagged with <- START TODO: This duplicated code just makes this include huge and un-maintainable
 #              - Check the # TBD: marked items
 
 global_var multiplex_id, g_mhi, g_mlo, s_sign_key, initial, seq_number, ntlmssp_flag, ntlmv2_flag, isSignActive, sign_key, smb;
@@ -49,7 +48,7 @@ if( _Workaround ) {
     if( ( "Windows Vista (TM) Ultimate 6001 Service Pack 1" >< Workaround ) ||
         ( "windows_vista" >< Workaround && "sp1" >< Workaround ) ||
         ( "Windows Server (R) 2008 Enterprise 6001 Service Pack 1" >< Workaround ) ||
-        ( "windows_server_2008" >< Workaround && "sp1" >< Workaround ) ) {
+        ( "windows_server_2008" >< Workaround && "sp1" >< Workaround && "r2" >!< Workaround ) ) {
       ntlmssp_flag = 0;
       break;
     }
@@ -104,6 +103,8 @@ function hextodec( str ) {
 
   local_var str, str_up, digits, len, i, j, flag;
 
+  if( isnull( str ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#str#-#hextodec" );
+
   str_up = toupper( str );
   digits = "0123456789ABCDEF";
   len = strlen( str_up ) - 1;
@@ -120,7 +121,7 @@ function hextodec( str ) {
 # Reads a SMB packet
 function smb_recv( socket ) {
 
-  local_var header, len, trailer;
+  local_var socket, header, len, trailer;
 
   if( ! socket ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#smb_recv" );
@@ -128,21 +129,16 @@ function smb_recv( socket ) {
   }
 
   header = recv( socket:socket, length:4, min:4 );
-  if( strlen( header ) < 4 ) {
-    return NULL;
-  }
+  if( strlen( header ) < 4 ) return NULL;
 
   len = 256 * ord( header[2] );
   len += ord( header[3] );
-  if( len == 0 ) {
-    return header;
-  }
+  if( len == 0 ) return header;
 
   trailer = recv( socket:socket, length:len, min:len );
-  if( strlen( trailer ) < len ) {
-    return NULL;
-  }
-  if(header && trailer){
+  if( strlen( trailer ) < len ) return NULL;
+
+  if( header && trailer ) {
     return strcat( header, trailer );
   }
 }
@@ -150,12 +146,14 @@ function smb_recv( socket ) {
 # Encode name and service to the netbios network format
 function netbios_encode( data, service ) {
 
-  local_var tmpdata, ret, i;
+  local_var data, service, tmpdata, ret, i, o, odiv, omod, c;
 
   if( ! data ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#netbios_encode" );
     return NULL;
   }
+
+  if( isnull( service ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#service#-#netbios_encode" );
 
   ret = "";
   tmpdata = data;
@@ -166,19 +164,24 @@ function netbios_encode( data, service ) {
 
   tmpdata += raw_string( service );
   for( i = 0; i < 16; i++ ) {
-    o = ord(tmpdata[i]);
+    o = ord( tmpdata[i] );
     odiv = o/16;
     odiv = odiv + ord("A");
     omod = o%16;
     omod = omod + ord("A");
-    c = raw_string(odiv, omod);
-    ret = ret + c;
+    c = raw_string( odiv, omod );
+    ret += c;
   }
   return ret;
 }
 
 # Convert a netbios name to the netbios network format
 function netbios_name( orig ) {
+
+  local_var orig;
+
+  if( isnull( orig ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#orig#-#netbios_name" );
+
   return netbios_encode( data:orig, service:0x20 );
 }
 
@@ -195,7 +198,7 @@ function netbios_redirector_name() {
 # return a 28 + strlen(data) + (odd(data)?0:1) long string
 function unicode( data ) {
 
-  local_var i, ret, len, even;
+  local_var data, len, ret, i, even;
 
   if( ! data ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#unicode" );
@@ -205,11 +208,11 @@ function unicode( data ) {
   len = strlen( data );
 
   if( len > 0 ) {
-    ret = raw_string(ord(data[0]));
+    ret = raw_string( ord( data[0] ) );
   }
 
   for( i = 1; i < len; i++ ) {
-    ret = string(ret, raw_string(0, ord(data[i])));
+    ret = string( ret, raw_string( 0, ord( data[i] ) ) );
   }
 
   if( ! ( len & 1 ) ) {
@@ -219,11 +222,11 @@ function unicode( data ) {
   }
 
   for( i = 0; i < 7; i++ ) {
-    ret += raw_string(0);
+    ret += raw_string( 0 );
   }
 
   if( even ) {
-    ret += raw_string(0x00, 0x00);
+    ret += raw_string( 0x00, 0x00 );
   }
   return ret;
 }
@@ -233,13 +236,15 @@ function unicode( data ) {
 #----------------------------------------------------------#
 function smb_session_request( soc, remote ) {
 
+  local_var soc, remote, trp, nb_remote, nb_local, session_request, r;
+
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_request" );
   if( isnull( remote ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#remote#-#smb_session_request" );
 
   trp = kb_smb_transport();
   # We don't need to request a session when talking on top of port 445
   if( trp == 445 ) {
-    return(TRUE);
+    return TRUE;
   }
 
   nb_remote = netbios_name( orig:remote );
@@ -253,12 +258,12 @@ function smb_session_request( soc, remote ) {
                     raw_string( 0x00 );
   send( socket:soc, data:session_request );
   r = smb_recv( socket:soc );
-  if( isnull( r ) ) return(FALSE);
+  if( isnull( r ) ) return FALSE;
 
   if( ord( r[0] ) == 0x82 ) {
-    return( r );
+    return r;
   } else {
-    return(FALSE);
+    return FALSE;
   }
 }
 
@@ -275,7 +280,7 @@ function session_extract_uid( reply ) {
 
   if( ord( reply[4] ) == 254 ) {
     uid = session_extract_sessionid( reply:reply );
-    return(uid);
+    return uid;
   } else {
 
     if( strlen( reply ) < 34 ) return FALSE;
@@ -284,7 +289,7 @@ function session_extract_uid( reply ) {
     high  = ord( reply[33] );
     uid   = high * 256;
     uid  += low;
-    return(uid);
+    return uid;
   }
 }
 
@@ -297,84 +302,98 @@ function session_extract_sessionid( reply ) {
 
   if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#session_extract_sessionid" );
 
-  if(strlen(reply) < 52){
-    return(FALSE);
-  }
+  if( strlen( reply ) < 52 ) return FALSE;
 
   start = stridx( reply, "SMB" ); # TBD: Whats the purpose of this? This will be replaced one line below again...
   start = 4 + 4 + 2 + 2 + 2 + 2 + 2 + 2 + 4 + 4 + 8 + 4 + 4;
 
   #NTLMSSP challenge is 8 bytes in size
   ssid = ( substr( reply, start, start + 7 ) );
-  return(ssid);
+  return ssid;
 }
 
- #-----------------------------------------------------------#
- # Negotiate (pseudo-negotiate actually) the protocol        #
- # of the session                                            #
- #-----------------------------------------------------------#
- function smb_neg_prot_cleartext(soc)
- {
-	neg_prot = raw_string(0x00,0x00,
-	 		      0x00, 0x89, 0xFF, 0x53, 0x4D, 0x42, 0x72, 0x00,
-	 		      0x00, 0x00, 0x00, 0x18, 0x01, 0x20, 0x00, 0x00,
-	 		      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-		              0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00,
-	 		      g_mlo, g_mhi, 0x00, 0x66, 0x00, 0x02, 0x50, 0x43,
-	 		      0x20, 0x4E, 0x45, 0x54, 0x57, 0x4F, 0x52, 0x4B,
-	 		      0x20, 0x50, 0x52, 0x4F, 0x47, 0x52, 0x41, 0x4D,
-	 	              0x20, 0x31, 0x2E, 0x30, 0x00, 0x02, 0x4D, 0x49,
-	 		      0x43, 0x52, 0x4F, 0x53, 0x4F, 0x46, 0x54, 0x20,
-			      0x4E, 0x45, 0x54, 0x57, 0x4F, 0x52, 0x4B, 0x53,
-			      0x20, 0x31, 0x2E, 0x30, 0x33, 0x00, 0x02, 0x4D,
-			      0x49, 0x43, 0x52, 0x4F, 0x53, 0x4F, 0x46, 0x54,
-			      0x20, 0x4E, 0x45, 0x54, 0x57, 0x4F, 0x52, 0x4B,
-			      0x53, 0x20, 0x33, 0x2e, 0x30, 0x00, 0x02, 0x4c,
-			      0x41, 0x4e, 0x4d, 0x41, 0x4e, 0x31, 0x2e, 0x30,
-			      0x00, 0x02, 0x4c, 0x4d, 0x31, 0x2e, 0x32, 0x58,
-			      0x30, 0x30, 0x32, 0x00, 0x02, 0x53, 0x61, 0x6d,
-			      0x62, 0x61, 0x00);
-	send(socket:soc, data:neg_prot);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 10){
-		return(FALSE);
-	}
-	if(ord(r[9])==0){
-		return(r);
-	}
-	else {
-		return(FALSE);
-	}
- }
+#-----------------------------------------------------------#
+# Negotiate (pseudo-negotiate actually) the protocol        #
+# of the session                                            #
+#-----------------------------------------------------------#
+function smb_neg_prot_cleartext( soc ) {
 
- function smb_neg_prot_NTLMSSP(soc)
- {
-   local_var neg_prot, r;
-   #constructing SMB header, also incudes the message type and length
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
-   neg_prot = raw_string(0x00, 0x00, 0x00, 0xd4, 0xff, 0x53, 0x4d, 0x42,
+  # g_mlo and g_mhi are global_vars !!!
+
+  local_var soc, neg_prot, r;
+
+  if( ! soc ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_neg_prot_cleartext" );
+    return FALSE;
+  }
+
+  neg_prot = raw_string( 0x00, 0x00,
+                         0x00, 0x89, 0xFF, 0x53, 0x4D, 0x42, 0x72, 0x00,
+                         0x00, 0x00, 0x00, 0x18, 0x01, 0x20, 0x00, 0x00,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00,
+                         g_mlo, g_mhi, 0x00, 0x66, 0x00, 0x02, 0x50, 0x43,
+                         0x20, 0x4E, 0x45, 0x54, 0x57, 0x4F, 0x52, 0x4B,
+                         0x20, 0x50, 0x52, 0x4F, 0x47, 0x52, 0x41, 0x4D,
+                         0x20, 0x31, 0x2E, 0x30, 0x00, 0x02, 0x4D, 0x49,
+                         0x43, 0x52, 0x4F, 0x53, 0x4F, 0x46, 0x54, 0x20,
+                         0x4E, 0x45, 0x54, 0x57, 0x4F, 0x52, 0x4B, 0x53,
+                         0x20, 0x31, 0x2E, 0x30, 0x33, 0x00, 0x02, 0x4D,
+                         0x49, 0x43, 0x52, 0x4F, 0x53, 0x4F, 0x46, 0x54,
+                         0x20, 0x4E, 0x45, 0x54, 0x57, 0x4F, 0x52, 0x4B,
+                         0x53, 0x20, 0x33, 0x2e, 0x30, 0x00, 0x02, 0x4c,
+                         0x41, 0x4e, 0x4d, 0x41, 0x4e, 0x31, 0x2e, 0x30,
+                         0x00, 0x02, 0x4c, 0x4d, 0x31, 0x2e, 0x32, 0x58,
+                         0x30, 0x30, 0x32, 0x00, 0x02, 0x53, 0x61, 0x6d,
+                         0x62, 0x61, 0x00 );
+
+  send( socket:soc, data:neg_prot );
+  r = smb_recv( socket:soc );
+
+  if( strlen( r ) < 10 ) return FALSE;
+
+  if( ord( r[9] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
+
+function smb_neg_prot_NTLMSSP( soc ) {
+
+  # g_mhi, g_mlo, multiplex_id, isSignActive and smb are global_vars!!!
+
+  local_var soc, neg_prot, r, sec_mode, SHA256, port;
+  local_var NEGOTIATE_SECURITY_SIGNATURES_ENABLED, NEGOTIATE_SECURITY_SIGNATURES_REQUIRED;
+  local_var NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2, NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_neg_prot_NTLMSSP" );
+
+  # constructing SMB header, also incudes the message type and length
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
+  neg_prot = raw_string( 0x00, 0x00, 0x00, 0xd4, 0xff, 0x53, 0x4d, 0x42,
                          0x72, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0xc8,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                          0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x33, 0x0c,
-                         0x00, 0x00, g_mlo, g_mhi);
+                         0x00, 0x00, g_mlo, g_mhi );
 
-   #constructing negotiation protocol request
-   #Requested Dialects:
-   #Dialect: PC NETWORK PROGRAM 1.0
-   #Dialect: MICROSOFT NETWORKS 1.03
-   #Dialect: MICROSOFT NETWORKS 3.0
-   # Dialect: LANMAN1.0
-   # Dialect: LM1.2X002
-   # Dialect: DOS LANMAN2.1
-   # Dialect: LANMAN2.1
-   # Dialect: Samba
-   # Dialect: NT LANMAN 1.0
-   # Dialect: NT LM 0.12
-   # Dialect: SMB 2.002
-   # Dialect: SMB 2.???
+  # constructing negotiation protocol request
+  # Requested Dialects:
+  # Dialect: PC NETWORK PROGRAM 1.0
+  # Dialect: MICROSOFT NETWORKS 1.03
+  # Dialect: MICROSOFT NETWORKS 3.0
+  # Dialect: LANMAN1.0
+  # Dialect: LM1.2X002
+  # Dialect: DOS LANMAN2.1
+  # Dialect: LANMAN2.1
+  # Dialect: Samba
+  # Dialect: NT LANMAN 1.0
+  # Dialect: NT LM 0.12
+  # Dialect: SMB 2.002
+  # Dialect: SMB 2.???
 
-   neg_prot += raw_string(0x00, 0xb1, 0x00, 0x02, 0x50, 0x43, 0x20, 0x4e,
+  neg_prot += raw_string( 0x00, 0xb1, 0x00, 0x02, 0x50, 0x43, 0x20, 0x4e,
                           0x45, 0x54, 0x57, 0x4f, 0x52, 0x4b, 0x20, 0x50,
                           0x52, 0x4f, 0x47, 0x52, 0x41, 0x4d, 0x20, 0x31,
                           0x2e, 0x30, 0x00, 0x02, 0x4d, 0x49, 0x43, 0x52,
@@ -396,233 +415,216 @@ function session_extract_sessionid( reply ) {
                           0x20, 0x30, 0x2e, 0x31, 0x32, 0x00, 0x02, 0x53,
                           0x4d, 0x42, 0x20, 0x32, 0x2e, 0x30, 0x30, 0x32,
                           0x00, 0x02, 0x53, 0x4d, 0x42, 0x20, 0x32, 0x2e,
-                          0x3f, 0x3f, 0x3f, 0x00);
+                          0x3f, 0x3f, 0x3f, 0x00 );
 
-   send(socket:soc, data:neg_prot);
-   r = smb_recv(socket:soc);
-        if(strlen(r) < 38){
-                return(NULL);
-        }
+  send( socket:soc, data:neg_prot );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 38 ) return NULL;
 
-   multiplex_id += 1;
-   local_var sec_mode;
-   sec_mode = smb_neg_prot_sm(prot:r);
+  multiplex_id += 1;
 
-   if(sec_mode == 7){
-     ##server supports signatured PDUs
-     NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
-   }
-   else if(sec_mode == 15){
-     ##server requires signatured PDUs
-     NEGOTIATE_SECURITY_SIGNATURES_REQUIRED = TRUE;
-     NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
-   }
-   else if(smb == "SMB2" && sec_mode == 3){
-     ##server requires signatured PDUs
-     NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 = TRUE;
-     NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 = TRUE;
-   }
-   else if(smb == "SMB2" && sec_mode == 1){
-     ##server supports signatured PDUs
-     NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 = TRUE;
-   }
+  sec_mode = smb_neg_prot_sm( prot:r );
 
-   ##old openvas, where get_smb2_signature function is not present
-   if(defined_func('get_smb2_signature')){
-     SHA256 = 1;
-   }
-   else{
-     SHA256 = "";
-   }
-
-   ##old openvas where get_smb2_signature function is not present, and server requires signatured PDUs only, send smb1 req only
-   if(!SHA256)
-   {
-     ##get_smb2_signature function is not present, send smb1 req only
-     if((smb == "SMB2") && (NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 && NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2))
-     {
-       local_var neg_prot, r;
-     #constructing SMB header, also incudes the message type and length
-     g_mhi = multiplex_id / 256;
-     g_mlo = multiplex_id % 256;
-     neg_prot = raw_string(0x00, 0x00, 0x00, 0xbe,
-                           0xff, 0x53, 0x4d, 0x42, 0x72, 0x00, 0x00, 0x00, 0x00,
-                           0x08, 0x01, 0xc8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x33,
-                           0x0c, 0x00, 0x00, g_mlo, g_mhi);
-    #constructing negotiation protocol request
-    #Requested Dialects:
-    #       Dialect: PC NETWORK PROGRAM 1.0
-    #       Dialect: MICROSOFT NETWORKS 1.03
-    #       Dialect: MICROSOFT NETWORKS 3.0
-    #       Dialect: LANMAN1.0
-    #       Dialect: LM1.2X002
-    #       Dialect: DOS LANMAN2.1
-    #       Dialect: LANMAN2.1
-    #       Dialect: Samba
-    #       Dialect: NT LANMAN 1.0
-    #       Dialect: NT LM 0.12
-            neg_prot += raw_string(0x00, 0x9b, 0x00, 0x02, 0x50, 0x43, 0x20, 0x4e,
-                                   0x45, 0x54, 0x57, 0x4f, 0x52, 0x4b, 0x20, 0x50,
-                                   0x52, 0x4f, 0x47, 0x52, 0x41, 0x4d, 0x20, 0x31,
-                                   0x2e, 0x30, 0x00, 0x02, 0x4d, 0x49, 0x43, 0x52,
-                                   0x4f, 0x53, 0x4f, 0x46, 0x54, 0x20, 0x4e, 0x45,
-                                   0x54, 0x57, 0x4f, 0x52, 0x4b, 0x53, 0x20, 0x31,
-                                   0x2e, 0x30, 0x33, 0x00, 0x02, 0x4d, 0x49, 0x43,
-                                   0x52, 0x4f, 0x53, 0x4f, 0x46, 0x54, 0x20, 0x4e,
-                                   0x45, 0x54, 0x57, 0x4f, 0x52, 0x4b, 0x53, 0x20,
-                                   0x33, 0x2e, 0x30, 0x00, 0x02, 0x4c, 0x41, 0x4e,
-                                   0x4d, 0x41, 0x4e, 0x31, 0x2e, 0x30, 0x00, 0x02,
-                                   0x4c, 0x4d, 0x31, 0x2e, 0x32, 0x58, 0x30, 0x30,
-                                   0x32, 0x00, 0x02, 0x44, 0x4f, 0x53, 0x20, 0x4c,
-                                   0x41, 0x4e, 0x4d, 0x41, 0x4e, 0x32, 0x2e, 0x31,
-                                   0x00, 0x02, 0x4c, 0x41, 0x4e, 0x4d, 0x41, 0x4e,
-                                   0x32, 0x2e, 0x31, 0x00, 0x02, 0x53, 0x61, 0x6d,
-                                   0x62, 0x61, 0x00, 0x02, 0x4e, 0x54, 0x20, 0x4c,
-                                   0x41, 0x4e, 0x4d, 0x41, 0x4e, 0x20, 0x31, 0x2e,
-                                   0x30, 0x00, 0x02, 0x4e, 0x54, 0x20, 0x4c, 0x4d,
-                                   0x20, 0x30, 0x2e, 0x31, 0x32, 0x00);
-
-    if(soc){
-      close(soc);
-    }
-
-    port = kb_smb_transport();
-    if(!port){
-        port = 139;
-    }
-
-    soc = open_sock_tcp(port);
-    if(!soc){
-      return(NULL);
-    }
-
-    send(socket:soc, data:neg_prot);
-    r = smb_recv(socket:soc);
-    if(strlen(r) < 38){
-      return(NULL);
-    }
-    multiplex_id += 1;
-    local_var sec_mode;
-    sec_mode = smb_neg_prot_sm(prot:r);
-    if(sec_mode == 7){
-         NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
-       }
-       else if(sec_mode == 15){
-         NEGOTIATE_SECURITY_SIGNATURES_REQUIRED = TRUE;
-         NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
-       }
-       if(sec_mode && (NEGOTIATE_SECURITY_SIGNATURES_ENABLED && NEGOTIATE_SECURITY_SIGNATURES_REQUIRED)){
-         isSignActive = 1;
-       }
-       else {
-         isSignActive = 0;
-       }
-       if(ord(r[9])==0){
-         return(string(r));
-       }
-       else {
-         return(NULL);
-       }
-     }
-
-   else if((smb == "SMB2") && (!NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2))
-   {
-       isSignActive = 0;
-       if(ord(r[12])==0){
-               return(string(r));
-       }
-       else {
-                return(NULL);
-       }
-   }
-
-   else if((smb != "SMB2") && (NEGOTIATE_SECURITY_SIGNATURES_REQUIRED && NEGOTIATE_SECURITY_SIGNATURES_ENABLED))
-   {
-       isSignActive = 1;
-       if(ord(r[9])==0){
-                return(string(r));
-       }
-       else {
-               return(NULL);
-       }
-
-   }else if((smb != "SMB2") && (!NEGOTIATE_SECURITY_SIGNATURES_REQUIRED))
-   {
-       isSignActive = 0;
-       if(ord(r[9])==0){
-                return(string(r));
-       }
-       else {
-             return(NULL);
-       }
-   }
+  if( sec_mode == 7 ) {
+    ##server supports signatured PDUs
+    NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
+  } else if( sec_mode == 15 ) {
+    ##server requires signatured PDUs
+    NEGOTIATE_SECURITY_SIGNATURES_REQUIRED = TRUE;
+    NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
+  } else if( smb == "SMB2" && sec_mode == 3 ) {
+    ##server requires signatured PDUs
+    NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 = TRUE;
+    NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 = TRUE;
+  } else if( smb == "SMB2" && sec_mode == 1 ) {
+    ##server supports signatured PDUs
+    NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 = TRUE;
   }
-  ##New Openvas which supports get_smb2_signature function
-  else if(SHA256)
-  {
-     if((sec_mode && (NEGOTIATE_SECURITY_SIGNATURES_ENABLED && NEGOTIATE_SECURITY_SIGNATURES_REQUIRED)) ||
-                (sec_mode && (NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 && NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2)))
 
-    {
+  # old openvas, where get_smb2_signature function is not present
+  if( defined_func( 'get_smb2_signature' ) ) {
+    SHA256 = TRUE;
+  } else {
+    SHA256 = FALSE;
+  }
+
+  # old openvas where get_smb2_signature function is not present, and server requires signatured PDUs only, send smb1 req only
+  if( ! SHA256 ) {
+
+    # get_smb2_signature function is not present, send smb1 req only
+    if( ( smb == "SMB2" ) && ( NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 && NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 ) ) {
+
+      # constructing SMB header, also incudes the message type and length
+      g_mhi = multiplex_id / 256;
+      g_mlo = multiplex_id % 256;
+      neg_prot = raw_string( 0x00, 0x00, 0x00, 0xbe,
+                             0xff, 0x53, 0x4d, 0x42, 0x72, 0x00, 0x00, 0x00, 0x00,
+                             0x08, 0x01, 0xc8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x33,
+                             0x0c, 0x00, 0x00, g_mlo, g_mhi );
+
+      # constructing negotiation protocol request
+      # Requested Dialects:
+      # Dialect: PC NETWORK PROGRAM 1.0
+      # Dialect: MICROSOFT NETWORKS 1.03
+      # Dialect: MICROSOFT NETWORKS 3.0
+      # Dialect: LANMAN1.0
+      # Dialect: LM1.2X002
+      # Dialect: DOS LANMAN2.1
+      # Dialect: LANMAN2.1
+      # Dialect: Samba
+      # Dialect: NT LANMAN 1.0
+      # Dialect: NT LM 0.12
+
+      neg_prot += raw_string( 0x00, 0x9b, 0x00, 0x02, 0x50, 0x43, 0x20, 0x4e,
+                              0x45, 0x54, 0x57, 0x4f, 0x52, 0x4b, 0x20, 0x50,
+                              0x52, 0x4f, 0x47, 0x52, 0x41, 0x4d, 0x20, 0x31,
+                              0x2e, 0x30, 0x00, 0x02, 0x4d, 0x49, 0x43, 0x52,
+                              0x4f, 0x53, 0x4f, 0x46, 0x54, 0x20, 0x4e, 0x45,
+                              0x54, 0x57, 0x4f, 0x52, 0x4b, 0x53, 0x20, 0x31,
+                              0x2e, 0x30, 0x33, 0x00, 0x02, 0x4d, 0x49, 0x43,
+                              0x52, 0x4f, 0x53, 0x4f, 0x46, 0x54, 0x20, 0x4e,
+                              0x45, 0x54, 0x57, 0x4f, 0x52, 0x4b, 0x53, 0x20,
+                              0x33, 0x2e, 0x30, 0x00, 0x02, 0x4c, 0x41, 0x4e,
+                              0x4d, 0x41, 0x4e, 0x31, 0x2e, 0x30, 0x00, 0x02,
+                              0x4c, 0x4d, 0x31, 0x2e, 0x32, 0x58, 0x30, 0x30,
+                              0x32, 0x00, 0x02, 0x44, 0x4f, 0x53, 0x20, 0x4c,
+                              0x41, 0x4e, 0x4d, 0x41, 0x4e, 0x32, 0x2e, 0x31,
+                              0x00, 0x02, 0x4c, 0x41, 0x4e, 0x4d, 0x41, 0x4e,
+                              0x32, 0x2e, 0x31, 0x00, 0x02, 0x53, 0x61, 0x6d,
+                              0x62, 0x61, 0x00, 0x02, 0x4e, 0x54, 0x20, 0x4c,
+                              0x41, 0x4e, 0x4d, 0x41, 0x4e, 0x20, 0x31, 0x2e,
+                              0x30, 0x00, 0x02, 0x4e, 0x54, 0x20, 0x4c, 0x4d,
+                              0x20, 0x30, 0x2e, 0x31, 0x32, 0x00 );
+
+      if( soc ) close( soc );
+
+      port = kb_smb_transport();
+      if( ! port ) port = 139;
+
+      soc = open_sock_tcp( port );
+      if( ! soc ) return NULL;
+
+      send( socket:soc, data:neg_prot );
+      r = smb_recv( socket:soc );
+      if( strlen( r ) < 38 ) return NULL;
+
+      multiplex_id += 1;
+
+      sec_mode = smb_neg_prot_sm( prot:r );
+
+      if( sec_mode == 7 ) {
+        NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
+      } else if( sec_mode == 15 ) {
+        NEGOTIATE_SECURITY_SIGNATURES_REQUIRED = TRUE;
+        NEGOTIATE_SECURITY_SIGNATURES_ENABLED = TRUE;
+      }
+
+      if( sec_mode && ( NEGOTIATE_SECURITY_SIGNATURES_ENABLED && NEGOTIATE_SECURITY_SIGNATURES_REQUIRED ) ) {
+        isSignActive = 1;
+      } else {
+        isSignActive = 0;
+      }
+
+      if( ord( r[9] ) == 0 ) {
+        return string( r );
+      } else {
+        return NULL;
+      }
+    }
+
+    else if( ( smb == "SMB2" ) && ( ! NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 ) ) {
+
+      isSignActive = 0;
+
+      if( ord( r[12] ) == 0 ) {
+        return string( r );
+      } else {
+        return NULL;
+      }
+    }
+
+    else if( ( smb != "SMB2" ) && ( NEGOTIATE_SECURITY_SIGNATURES_REQUIRED && NEGOTIATE_SECURITY_SIGNATURES_ENABLED ) ) {
+
       isSignActive = 1;
-    }else
-    {
-     isSignActive = 0;
+      if( ord( r[9] ) == 0 ) {
+        return string( r );
+      } else {
+        return NULL;
+      }
+    }
+
+    else if( ( smb != "SMB2" ) && ( ! NEGOTIATE_SECURITY_SIGNATURES_REQUIRED ) ) {
+
+      isSignActive = 0;
+
+      if( ord( r[9] ) == 0 ) {
+        return string( r );
+      } else {
+        return NULL;
+      }
+    }
+  }
+
+  # New Openvas which supports get_smb2_signature function
+  else if( SHA256 ) {
+
+    if( ( sec_mode && ( NEGOTIATE_SECURITY_SIGNATURES_ENABLED && NEGOTIATE_SECURITY_SIGNATURES_REQUIRED ) ) ||
+        ( sec_mode && ( NEGOTIATE_SECURITY_SIGNATURES_REQUIRED_v2 && NEGOTIATE_SECURITY_SIGNATURES_ENABLED_v2 ) ) ) {
+
+      isSignActive = 1;
+    } else {
+      isSignActive = 0;
     }
 
     # Check For SMB2
-    if (ord(r[4]) == 254)
-    {
-      if(ord(r[12])==0){
-        return(string(r));
+    if( ord( r[4] ) == 254 ) {
+      if( ord( r[12] ) == 0 ) {
+        return string( r );
       }
     }
     ##For SMB1
-    else if (ord(r[4]) == 255)
-    {
-      if(ord(r[9])==0)
-      {
-        return(string(r));
+    else if( ord( r[4] ) == 255 ) {
+      if( ord( r[9] ) == 0 ) {
+        return string( r );
       }
-    }
-    else {
-        return(NULL);
+    } else {
+      return NULL;
     }
   }
 }
 
- function smb_neg_prot_NTLMv1(soc)
- {
-	local_var neg_prot, r;
+function smb_neg_prot_NTLMv1( soc ) {
 
-	neg_prot = raw_string(0x00, 0x00, 0x00, 0xA4, 0xFF, 0x53,
-			      0x4D, 0x42, 0x72, 0x00, 0x00, 0x00, 0x00, 0x08,
-			      0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-	                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			      0x4D, 0x0B, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x81,
-	                      0x00, 0x02) + "PC NETWORK PROGRAM 1.0" +
-		   raw_string(0x00, 0x02) + "MICROSOFT NETWORKS 1.03" +
-		   raw_string(0x00, 0x02) + "MICROSOFT NETWORKS 3.0"  +
-		   raw_string(0x00, 0x02) + "LANMAN1.0" +
-		   raw_string(0x00, 0x02) + "LM1.2X002" +
-		   raw_string(0x00, 0x02) + "Samba" +
-		   raw_string(0x00, 0x02) + "NT LANMAN 1.0" +
-		   raw_string(0x00, 0x02) + "NT LM 0.12" +
-		   raw_string(0x00);
+  local_var soc, neg_prot, r;
 
-	send(socket:soc, data:neg_prot);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 38){
-		return(NULL);
-	}
-	if(ord(r[9])==0){
-		return(string(r));
-	}
-	else {
-		return(NULL);
-	}
- }
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_neg_prot_NTLMv1" );
+
+  neg_prot = raw_string( 0x00, 0x00, 0x00, 0xA4, 0xFF, 0x53,
+                         0x4D, 0x42, 0x72, 0x00, 0x00, 0x00, 0x00, 0x08,
+                         0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x4D, 0x0B, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x81,
+                         0x00, 0x02 ) + "PC NETWORK PROGRAM 1.0" +
+             raw_string( 0x00, 0x02 ) + "MICROSOFT NETWORKS 1.03" +
+             raw_string( 0x00, 0x02 ) + "MICROSOFT NETWORKS 3.0"  +
+             raw_string( 0x00, 0x02 ) + "LANMAN1.0" +
+             raw_string( 0x00, 0x02 ) + "LM1.2X002" +
+             raw_string( 0x00, 0x02 ) + "Samba" +
+             raw_string( 0x00, 0x02 ) + "NT LANMAN 1.0" +
+             raw_string( 0x00, 0x02 ) + "NT LM 0.12" +
+             raw_string( 0x00 );
+
+  send( socket:soc, data:neg_prot );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 38 ) return NULL;
+
+  if( ord( r[9] ) == 0 ) {
+    return string( r );
+  } else {
+    return NULL;
+  }
+}
 
 function smb_neg_prot_anonymous( soc ) {
 
@@ -634,6 +636,9 @@ function smb_neg_prot_anonymous( soc ) {
 }
 
 function smb_neg_prot( soc ) {
+
+  local_var soc;
+  # ntlmssp_flag is global_var!!!
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_neg_prot" );
 
@@ -653,152 +658,160 @@ function smb_neg_prot_value( prot ) {
 
   if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb_neg_prot_value" );
 
-  if(strlen(prot) < 38){
-    return (NULL);
-  }
+  if( strlen( prot ) < 38 ) return NULL;
 
   if( ord( prot[4] ) == 254 ) {
-    if(strlen(prot) < 74){
-      return (NULL);
-    }
+    if( strlen( prot ) < 74 ) return NULL;
+
     negotiated_prot_l = ord( prot[72] );
     negotiated_prot_h = ord( prot[73] );
+
     if( negotiated_prot_h ) {
       value = negotiated_prot_h * 256;
       value += negotiated_prot_l;
     } else {
       value = negotiated_prot_l;
     }
-    return( value );
+    return value;
   } else {
     return( ord( prot[37] ) );
   }
 }
 
- function smb_neg_prot_cs(prot){
-   if(smb_neg_prot_value(prot:prot) < 7){
-    return NULL;
-   }
-   if(strlen(prot) > 80){
-     return(substr(prot, 73, 73 + 7));
-   } else {
-      return NULL ;
-   }
- }
+function smb_neg_prot_cs( prot ) {
 
- function smb_neg_prot_sm(prot){
-    if(smb_neg_prot_value(prot:prot) < 7){
-             return(NULL);
-    }
-    if(strlen(prot) < 40){
-      return(NULL);
-    }
-    local_var sm, sec_mode_hex, sec_mode;
-    if(ord(prot[4]) == 254){
-      smb = "SMB2";
-      if(strlen(prot) > 70) {
-        sm = substr(prot, 70, 70);
-        sec_mode_hex = hexstr(sm);
-        sec_mode = hextodec(str:sec_mode_hex);
-        return(sec_mode);
-      }
-    } else {
-      sm = substr(prot, 39, 39);
+  local_var prot;
+
+  if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb_neg_prot_cs" );
+
+  if( smb_neg_prot_value( prot:prot ) < 7 ) return NULL;
+
+  if( strlen( prot ) > 80 ) {
+    return( substr( prot, 73, 73 + 7 ) );
+  } else {
+    return NULL ;
+  }
+}
+
+function smb_neg_prot_sm( prot ) {
+
+  # smb is global_var!!!
+
+  local_var prot, sm, sec_mode_hex, sec_mode;
+
+  if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb_neg_prot_sm" );
+
+  if( smb_neg_prot_value( prot:prot ) < 7 ) return NULL;
+
+  if( strlen( prot ) < 40 ) return NULL;
+
+  if( ord( prot[4] ) == 254 ) {
+
+    smb = "SMB2";
+
+    if( strlen( prot ) > 70 ) {
+      sm = substr(prot, 70, 70);
       sec_mode_hex = hexstr(sm);
-      sec_mode = hextodec(str:sec_mode_hex);
-      return(sec_mode);
+      sec_mode = hextodec( str:sec_mode_hex );
+      return sec_mode;
     }
- }
+  } else {
+    sm = substr( prot, 39, 39 );
+    sec_mode_hex = hexstr( sm );
+    sec_mode = hextodec( str:sec_mode_hex );
+    return sec_mode;
+  }
+}
 
- function smb_neg_prot_domain(prot)
- {
-	local_var i, ret;
-	ret = NULL;
-    if(strlen(prot) < 82){
-      return(NULL);
+function smb_neg_prot_domain( prot ) {
+
+  local_var prot, i, ret;
+  ret = NULL;
+
+  if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb_neg_prot_domain" );
+
+  if( strlen( prot ) < 82 ) return NULL;
+
+  for( i = 81; i < strlen( prot ); i += 2 ) {
+    if( ord( prot[i] ) == 0 ) {
+      break;
+    } else {
+      ret += prot[i];
     }
-	for(i=81; i<strlen(prot); i+=2)
-	{
-		if(ord(prot[i]) == 0) break;
-		else ret += prot[i];
-	}
-	return ret;
- }
+  }
+  return ret;
+}
 
- #------------------------------------------------------#
- # Set up a session                                     #
- #------------------------------------------------------#
- function smb_session_setup_cleartext(soc, login, password, domain)
- {
-  	local_var extra, native_os, native_lanmanager, len, bcc;
-  	local_var len_hi, len_lo, bcc_hi_n, bcc_lo;
-  	local_var pass_len_hi, pass_len_lo;
-  	extra = 0;
-  	native_os = "Unix";
-  	native_lanmanager = "OpenVAS";
+#------------------------------------------------------#
+# Set up a session                                     #
+#------------------------------------------------------#
+function smb_session_setup_cleartext( soc, login, password, domain ) {
 
-  	if(!domain){
-		domain = "MYGROUP";
-	}
+  local_var soc, login, password, domain;
+  local_var extra, native_os, native_lanmanager, len, bcc;
+  local_var len_hi, len_lo, bcc_hi_n, bcc_lo;
+  local_var pass_len_hi, pass_len_lo, st;
 
-  	if(domain){
-		extra = 3 + strlen(domain) + strlen(native_os) +
-			    strlen(native_lanmanager);
-	}
-  	else {
-		extra = strlen(native_os) + strlen(native_lanmanager) + 2;
-	}
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_setup_cleartext" );
+  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb_session_setup_cleartext" );
+  if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb_session_setup_cleartext" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb_session_setup_cleartext" );
 
-  	len = strlen(login) + strlen(password) + 57 + extra;
- 	bcc = 2 + strlen(login) + strlen(password) + extra;
+  extra = 0;
+  native_os = "Unix";
+  native_lanmanager = "OpenVAS";
 
- 	len_hi = len / 256;
- 	len_low = len % 256;
+  if( ! domain ) domain = "MYGROUP";
 
-	bcc_hi = bcc / 256;
-	bcc_lo = bcc % 256;
+  if( domain ) {
+    extra = 3 + strlen( domain ) + strlen( native_os ) + strlen( native_lanmanager );
+  } else {
+    extra = strlen( native_os ) + strlen( native_lanmanager ) + 2;
+  }
 
-	pass_len = strlen(password) + 1 ;
-	pass_len_hi = pass_len / 256;
-	pass_len_lo = pass_len % 256;
+  len = strlen( login ) + strlen( password ) + 57 + extra;
+  bcc = 2 + strlen( login ) + strlen( password ) + extra;
 
-  	#if (typeof(login) == "int")    display("HORROR! login=", login, "\n");
-  	#if (typeof(password) == "int") display("HORROR! password=", password, "\n");
-  	if(!login){
-		login="";
-	}
-	if(!password){
-		password="";
-	}
+  len_hi = len / 256;
+  len_low = len % 256;
 
-  	st = raw_string(0x00,0x00,
-    	  		len_hi, len_low, 0xFF, 0x53, 0x4D, 0x42, 0x73, 0x00,
-			0x00, 0x00, 0x00, 0x18, 0x01, 0x20, 0x00, 0x00,
-			0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00,
-			0x00, 0x00, 0x0A, 0xFF, 0x00, 0x00, 0x00, 0x04,
-			0x11, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			0x00, pass_len_lo,  pass_len_hi, 0x00, 0x00, 0x00, 0x00,
-			bcc_lo, bcc_hi) + password +
-	     raw_string(0) + login + raw_string(0x00);
+  bcc_hi = bcc / 256;
+  bcc_lo = bcc % 256;
 
-  	if(domain){
-  		st = st + domain + raw_string(0x00);
-	}
+  pass_len = strlen( password ) + 1 ;
+  pass_len_hi = pass_len / 256;
+  pass_len_lo = pass_len % 256;
 
-	st = st + native_os + raw_string(0x00) + native_lanmanager + raw_string(0x00);
-  	send(socket:soc, data:st);
-  	r = smb_recv(socket:soc);
-  	if(strlen(r) < 10){
-		return(NULL);
-	}
-	if(ord(r[9])==0){
-		return(r);
-	}
- 	else {
-		return(NULL);
-	}
- }
+  #if (typeof(login) == "int")    display("HORROR! login=", login, "\n");
+  #if (typeof(password) == "int") display("HORROR! password=", password, "\n");
+
+  if( ! login ) login = "";
+  if( ! password ) password = "";
+
+  st = raw_string( 0x00, 0x00,
+                   len_hi, len_low, 0xFF, 0x53, 0x4D, 0x42, 0x73, 0x00,
+                   0x00, 0x00, 0x00, 0x18, 0x01, 0x20, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00,
+                   0x00, 0x00, 0x0A, 0xFF, 0x00, 0x00, 0x00, 0x04,
+                   0x11, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, pass_len_lo, pass_len_hi, 0x00, 0x00, 0x00, 0x00,
+                   bcc_lo, bcc_hi ) + password +
+       raw_string( 0 ) + login + raw_string( 0x00 );
+
+  if( domain ) st += domain + raw_string( 0x00 );
+
+  st += native_os + raw_string( 0x00 ) + native_lanmanager + raw_string( 0x00 );
+  send( socket:soc, data:st );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 10 ) return NULL;
+
+  if( ord( r[9] ) == 0 ) {
+    return r;
+  } else {
+    return NULL;
+  }
+}
 
 #------------------------NTLMSSP utilities start--------------------------#
 
@@ -806,6 +819,8 @@ function smb_neg_prot_value( prot ) {
 function smb_session_setup_NTLMSSP_extract_chal( ret ) {
 
   local_var start, ret, cs;
+
+  if( isnull( ret ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ret#-#smb_session_setup_NTLMSSP_extract_chal" );
 
   start = stridx( ret, "NTLMSSP", 0 );
   start += 8 + 4 + 2 + 2 + 4 + 4; #ntlmssp(8) + message type(4) + domainlen(2) + domain maxlen(2) + offset(4) + flags(4)
@@ -817,12 +832,13 @@ function smb_session_setup_NTLMSSP_extract_chal( ret ) {
   }
 }
 
-
 # NTLMSSP extract server flags from type 2 message
 function smb_session_setup_NTLMSSP_extract_flag( ret ) {
 
   local_var start, i, ret;
   local_var flag, serv_flag, server_flag;
+
+  if( isnull( ret ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ret#-#smb_session_setup_NTLMSSP_extract_flag" );
 
   start = stridx( ret, "NTLMSSP",0 );
   start += 8 + 4 + 2 + 2 + 4; #ntlmssp(8) + message type(4) + domainlen(2) + domain maxlen(2) + offset(4)
@@ -843,12 +859,14 @@ function smb_session_setup_NTLMSSP_extract_addrlist( ret ) {
   local_var start, end, i, ret, addr_list, addrlist_len_str;
   local_var addrlist_offset_str, addrlist_offset;
 
+  if( isnull( ret ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ret#-#smb_session_setup_NTLMSSP_extract_addrlist" );
+
   start = stridx( ret, "NTLMSSP", 0 );
   # to find address list - length, shift byte postions
   start += 8 + 4; #ntlmssp(8) + message type(4)
   start += 2 + 2 + 4 + 4 + 8 + 8; # domainlen(2) + domain maxlen(2) + offset(4) + flags(4) + challenge(8) + reserved(8);
 
-  addrlist_len_str = ret[start+1];
+  addrlist_len_str  = ret[start+1];
   addrlist_len_str += ret[start];
   addrlist_len = hextodec( str:( hexstr( addrlist_len_str ) ) );
 
@@ -873,391 +891,426 @@ function smb_session_setup_NTLMSSP_extract_addrlist( ret ) {
   }
 }
 
- #NTLMSSP auth flags (based on server flags)
- function smb_session_setup_NTLMSSP_auth_flags(neg_flags)
- {
-        NTLMSSP_NEGOTIATE_UNICODE = 0x00000001;
-        NTLMSSP_NEGOTIATE_OEM = 0x00000002;
-        NTLMSSP_REQUEST_TARGET = 0x00000004;
-        NTLMSSP_NEGOTIATE_SIGN = 0x00000010; # Message integrity
-        NTLMSSP_NEGOTIATE_SEAL = 0x00000020; # Message confidentiality
-        NTLMSSP_NEGOTIATE_LM_KEY = 0x00000080;
-        NTLMSSP_NEGOTIATE_NTLM = 0x00000200;
-        NTLMSSP_NEGOTIATE_ALWAYS_SIGN = 0x00008000;
-        NTLMSSP_NEGOTIATE_NTLM2 = 0x00080000;
-        NTLMSSP_NEGOTIATE_128 = 0x20000000; # 128-bit encryption
-        NTLMSSP_NEGOTIATE_KEY_EXCH = 0x40000000;
-        NTLMSSP_NEGOTIATE_56 = 0x80000000;
+#NTLMSSP auth flags (based on server flags)
+function smb_session_setup_NTLMSSP_auth_flags( neg_flags ) {
 
-	local_var flags;
-        flags = 0;
-        if (neg_flags & NTLMSSP_NEGOTIATE_UNICODE) {
-                 flags += NTLMSSP_NEGOTIATE_UNICODE;
-        } else {
-                 flags += NTLMSSP_NEGOTIATE_OEM;
-        }
+  local_var neg_flags, flags, new_server_flags;
+  local_var NTLMSSP_NEGOTIATE_UNICODE, NTLMSSP_NEGOTIATE_OEM, NTLMSSP_REQUEST_TARGET, NTLMSSP_NEGOTIATE_SIGN;
+  local_var NTLMSSP_NEGOTIATE_SEAL, NTLMSSP_NEGOTIATE_LM_KEY, NTLMSSP_NEGOTIATE_NTLM, NTLMSSP_NEGOTIATE_ALWAYS_SIGN;
+  local_var NTLMSSP_NEGOTIATE_NTLM2, NTLMSSP_NEGOTIATE_128, NTLMSSP_NEGOTIATE_KEY_EXCH, NTLMSSP_NEGOTIATE_56;
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_LM_KEY) {
-                 flags += NTLMSSP_NEGOTIATE_LM_KEY;
-        }
+  if( isnull( neg_flags ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#neg_flags#-#smb_session_setup_NTLMSSP_auth_flags" );
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_ALWAYS_SIGN) {
-                 flags += NTLMSSP_NEGOTIATE_ALWAYS_SIGN;
-        }
+  NTLMSSP_NEGOTIATE_UNICODE = 0x00000001;
+  NTLMSSP_NEGOTIATE_OEM = 0x00000002;
+  NTLMSSP_REQUEST_TARGET = 0x00000004;
+  NTLMSSP_NEGOTIATE_SIGN = 0x00000010; # Message integrity
+  NTLMSSP_NEGOTIATE_SEAL = 0x00000020; # Message confidentiality
+  NTLMSSP_NEGOTIATE_LM_KEY = 0x00000080;
+  NTLMSSP_NEGOTIATE_NTLM = 0x00000200;
+  NTLMSSP_NEGOTIATE_ALWAYS_SIGN = 0x00008000;
+  NTLMSSP_NEGOTIATE_NTLM2 = 0x00080000;
+  NTLMSSP_NEGOTIATE_128 = 0x20000000; # 128-bit encryption
+  NTLMSSP_NEGOTIATE_KEY_EXCH = 0x40000000;
+  NTLMSSP_NEGOTIATE_56 = 0x80000000;
+  flags = 0;
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_NTLM2) {
-                 flags += NTLMSSP_NEGOTIATE_NTLM2;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_UNICODE ) {
+    flags += NTLMSSP_NEGOTIATE_UNICODE;
+  } else {
+    flags += NTLMSSP_NEGOTIATE_OEM;
+  }
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_128) {
-                 flags += NTLMSSP_NEGOTIATE_128;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_LM_KEY ) {
+    flags += NTLMSSP_NEGOTIATE_LM_KEY;
+  }
 
-	if (neg_flags & NTLMSSP_NEGOTIATE_56) {
-                 flags += NTLMSSP_NEGOTIATE_56;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_ALWAYS_SIGN ) {
+    flags += NTLMSSP_NEGOTIATE_ALWAYS_SIGN;
+  }
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_KEY_EXCH) {
-                 flags += NTLMSSP_NEGOTIATE_KEY_EXCH;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_NTLM2 ) {
+    flags += NTLMSSP_NEGOTIATE_NTLM2;
+  }
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_SIGN) {
-                 flags += NTLMSSP_NEGOTIATE_SIGN;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_128 ) {
+    flags += NTLMSSP_NEGOTIATE_128;
+  }
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_SEAL) {
-                 flags += NTLMSSP_NEGOTIATE_SEAL;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_56 ) {
+    flags += NTLMSSP_NEGOTIATE_56;
+  }
 
-        if (neg_flags & NTLMSSP_NEGOTIATE_NTLM) {
-                 flags += NTLMSSP_NEGOTIATE_NTLM;
-        }
+  if( neg_flags & NTLMSSP_NEGOTIATE_KEY_EXCH ) {
+    flags += NTLMSSP_NEGOTIATE_KEY_EXCH;
+  }
 
-        if (neg_flags & NTLMSSP_REQUEST_TARGET) {
-                flags += NTLMSSP_REQUEST_TARGET;
-        }
-        new_server_flags = dec2str(num:flags);
-        return(new_server_flags);
- }
+  if( neg_flags & NTLMSSP_NEGOTIATE_SIGN ) {
+    flags += NTLMSSP_NEGOTIATE_SIGN;
+  }
 
- #------------------------NTLMSSP utilities end----------------------------#
+  if( neg_flags & NTLMSSP_NEGOTIATE_SEAL ) {
+    flags += NTLMSSP_NEGOTIATE_SEAL;
+  }
+
+  if( neg_flags & NTLMSSP_NEGOTIATE_NTLM ) {
+    flags += NTLMSSP_NEGOTIATE_NTLM;
+  }
+
+  if( neg_flags & NTLMSSP_REQUEST_TARGET ) {
+    flags += NTLMSSP_REQUEST_TARGET;
+  }
+
+  new_server_flags = dec2str( num:flags );
+
+  return new_server_flags;
+}
+#------------------------NTLMSSP utilities end----------------------------#
 
 
- #--------------------NTLMSSP IMPLEMENTATION START-------------------------------------------------#
- #-------------------------------------------------------------------------------------------------#
+#--------------------NTLMSSP IMPLEMENTATION START-------------------------------------------------#
+#-------------------------------------------------------------------------------------------------#
 
- # NTLM SSP NEGOTIATION SMB2
- function smb2_neg_prot(soc, domain)
- {
-   multiplex_id =1;
-    g_mhi = multiplex_id / 256;
-    g_mlo = multiplex_id % 256;
+# NTLM SSP NEGOTIATION SMB2
+function smb2_neg_prot( soc ) {
 
-   #SMB2 header
-        st = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x24, 0x00);
+  # those are global_vars!!!
+  multiplex_id = 1;
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
-        st += raw_string(0x02, 0x00, 0x01, 0x00,
-                        0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02,
-                        0x10, 0x02);
-len = strlen(st);
-len_hi = len / 256;
-len_lo = len % 256;
+  local_var soc, st, len, len_hi, len_lo, r;
 
-     stt = raw_string(0x00, 0x00, len_hi, len_lo) + st;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_neg_prot" );
 
-        send(socket:soc, data:stt);
-        r = smb_recv(socket:soc);
-        multiplex_id += 1;
-        if ( r ) return(r);
- }
+  #SMB2 header
+  st = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                   0x00, 0x00, 0x00, 0x00, 0x24, 0x00 );
+
+  st += raw_string( 0x02, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x02,
+                    0x10, 0x02 );
+  len = strlen( st );
+  len_hi = len / 256;
+  len_lo = len % 256;
+
+  stt = raw_string( 0x00, 0x00, len_hi, len_lo ) + st;
+
+  send( socket:soc, data:stt );
+  r = smb_recv( socket:soc );
+  multiplex_id += 1;
+  if( r ) return r;
+}
 
 #SMB
-function smb_session_setup_NTLMSSP_NEGOT(soc, domain)
- {
-	g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-	local_var st, wsdomain, wsname, wsdomlen, wsnmlen, wsdomainoff, wsdomain_hi, wsdomain_lo, wsname_hi, wsname_lo;
-	local_var wsnameoffset_hi, wsnameoffset_lo, wsname_hi, wsname_lo, wsnameoffset_hi, wsnameoffset_lo;
-        #SMB header
-        st = raw_string(0xff, 0x53, 0x4d, 0x42, 0x73, 0x00, 0x00, 0x00,
-                        0x00, 0x08);
-	if(isSignActive){
-		st +=  raw_string(0x05, 0xc8);
-	}
-	else{
-		st += raw_string(0x01, 0xc8);
-	}
-	st += raw_string(0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                        0x00, 0x00, 0x33, 0x0c, 0x00, 0x00, g_mlo, g_mhi);
+function smb_session_setup_NTLMSSP_NEGOT( soc, domain ) {
 
-        #Session Setup AndX Request
-        st += raw_string(0x0c, 0xff, 0x00, 0x00, 0x00, 0xff, 0xff, 0x02,
-                         0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00);
+  # g_mhi, g_mlo, multiplex_id and isSignActive are global_vars!!!
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
+  local_var soc, domain, st, wsdomain, wsname, wsdomlen, wsnmlen, wsdomainoff, wsnameoff, wsdomain_hi, wsdomain_lo;
+  local_var wsname_hi, wsname_lo, wsdomoffset_hi, wsdomoffset_lo, wsname_hi, wsname_lo, wsnameoffset_hi, wsnameoffset_lo;
+  local_var wsdomainlen, wsnamelen, wsdomainoffset, wsnameoffset;
+  local_var os, native_os, lanman, native_lanmanager, ntlmssp;
+  local_var ntlmssplen, mechToken, mechType, negTokenInit, spnegolen, spnego, oid, gsslen, sec_blob_length_hi, sec_blob_length_lo;
+  local_var byte_count_hi, byte_count_lo, secblob, stt, r, len, len_hi, len_low;
 
-	wsdomain = domain;
-	wsname = "HostName";
-	wsdomlen = strlen(wsdomain);
-	wsnmlen = strlen(wsname);
-	wsdomainoff = 32;
-	wsnameoff = 32 + wsdomlen;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_setup_NTLMSSP_NEGOT" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb_session_setup_NTLMSSP_NEGOT" );
 
-	wsdomain_hi = wsdomlen / 256;
-	wsdomain_lo = wsdomlen % 256;
+  #SMB header
+  st = raw_string( 0xff, 0x53, 0x4d, 0x42, 0x73, 0x00, 0x00, 0x00,
+                   0x00, 0x08 );
 
-	wsname_hi = wsnmlen / 256;
-	wsname_lo = wsnmlen % 256;
+  if( isSignActive ) {
+    st +=  raw_string( 0x05, 0xc8 );
+  } else {
+    st += raw_string( 0x01, 0xc8 );
+  }
 
-	wsdomoffset_hi = wsdomainoff / 256;
-	wsdomoffset_lo = wsdomainoff % 256;
+  st += raw_string( 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x33, 0x0c, 0x00, 0x00, g_mlo, g_mhi );
 
-	wsnameoffset_hi = wsnameoff / 256;
-	wsnameoffset_lo = wsnameoff % 256;
+  #Session Setup AndX Request
+  st += raw_string( 0x0c, 0xff, 0x00, 0x00, 0x00, 0xff, 0xff, 0x02,
+                    0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-	local_var wsdomainlen, wsnamelen, wsdomainoffset, wsnameoffset;
-        wsdomainlen = raw_string(wsdomain_lo) + raw_string(wsdomain_hi); # length 2 bytes
-        wsnamelen = raw_string(wsname_lo) + raw_string(wsname_hi); # length 2 bytes
-        wsdomainoffset = raw_string(wsdomoffset_lo) + raw_string(wsdomoffset_hi) + raw_string(0x00, 0x00); # offset 4 bytes
-        wsnameoffset = raw_string(wsnameoffset_lo) + raw_string(wsnameoffset_hi) + raw_string(0x00, 0x00); # offset 4 bytes
+  wsdomain = domain;
+  wsname = "HostName";
+  wsdomlen = strlen( wsdomain );
+  wsnmlen = strlen( wsname );
+  wsdomainoff = 32;
+  wsnameoff = 32 + wsdomlen;
 
-	local_var os, native_os, lanman, native_lanmanager;
-	os = "Unix";
-        native_os = insert_hexzeros(in:os);
-        lanman = "OpenVAS";
-        native_lanmanager = insert_hexzeros(in:lanman);
+  wsdomain_hi = wsdomlen / 256;
+  wsdomain_lo = wsdomlen % 256;
 
-	#Creating NTLMSSP in Security Blob for the request
+  wsname_hi = wsnmlen / 256;
+  wsname_lo = wsnmlen % 256;
 
-	# raw string contains NTLMSSP: sign, type1 msgtype, flags
-	#flags: ntlm2+keyex(0x60088215), ntlm+keyex(0x60008215), ntlm2(0x20088215), ntlm(0x20008215)
-	local_var ntlmssp;
-        ntlmssp = raw_string(0x4e, 0x54, 0x4c, 0x4d, 0x53, 0x53, 0x50, 0x00,
-                        0x01, 0x00, 0x00, 0x00, 0x15, 0x82, 0x08, 0x60);
+  wsdomoffset_hi = wsdomainoff / 256;
+  wsdomoffset_lo = wsdomainoff % 256;
 
+  wsnameoffset_hi = wsnameoff / 256;
+  wsnameoffset_lo = wsnameoff % 256;
 
-	#adding workstation domain - length,maxLen,offset and workstation name - length,maxLen,offset
-	ntlmssp += wsdomainlen + wsdomainlen + wsdomainoffset + wsnamelen + wsnamelen + wsnameoffset;
+  wsdomainlen = raw_string( wsdomain_lo ) + raw_string( wsdomain_hi ); # length 2 bytes
+  wsnamelen = raw_string( wsname_lo ) + raw_string( wsname_hi ); # length 2 bytes
+  wsdomainoffset = raw_string( wsdomoffset_lo ) + raw_string( wsdomoffset_hi ) + raw_string( 0x00, 0x00 ); # offset 4 bytes
+  wsnameoffset = raw_string( wsnameoffset_lo ) + raw_string( wsnameoffset_hi ) + raw_string( 0x00, 0x00 ); # offset 4 bytes
 
-        # adding workstation domain
-        if(wsdomain){
-                ntlmssp += toupper(wsdomain);
-        }
+  os = "Unix";
+  native_os = insert_hexzeros( in:os );
+  lanman = "OpenVAS";
+  native_lanmanager = insert_hexzeros( in:lanman );
 
-        #adding workstation name
-        ntlmssp += toupper(wsname);
+  # Creating NTLMSSP in Security Blob for the request
 
-	local_var ntlmssplen, mechToken, mechType, negTokenInit, spnegolen, spnego, oid, gsslen, sec_blob_length_hi, sec_blob_length_lo;
+  # raw string contains NTLMSSP: sign, type1 msgtype, flags
+  #flags: ntlm2+keyex(0x60088215), ntlm+keyex(0x60008215), ntlm2(0x20088215), ntlm(0x20008215)
+  ntlmssp = raw_string( 0x4e, 0x54, 0x4c, 0x4d, 0x53, 0x53, 0x50, 0x00,
+                        0x01, 0x00, 0x00, 0x00, 0x15, 0x82, 0x08, 0x60 );
 
-	ntlmssplen = (16 + 16 + strlen(wsdomain) + strlen(wsname));
-	mechToken = raw_string(0xa2) + raw_string(ntlmssplen + 2) + raw_string(0x04) + raw_string(ntlmssplen);
+  #adding workstation domain - length,maxLen,offset and workstation name - length,maxLen,offset
+  ntlmssp += wsdomainlen + wsdomainlen + wsdomainoffset + wsnamelen + wsnamelen + wsnameoffset;
 
-	#mechType offset 10, value 1.3.6.1.4.1.311.2.2.10 (NTLMSSP)
-        mechType =  raw_string(0x06, 0x0a, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x02,
-                               0x02, 0x0a);
-	#Nogotiation Token Init : 0xa0 negTokenInit Identifier, offset 15, 0x30 seq identifier, offset 12
-	negTokenInit = raw_string(0xa0, 0x0e, 0x30, 0x0c);
+  # adding workstation domain
+  if( wsdomain ) ntlmssp += toupper( wsdomain );
 
-	spnegolen = 4 + 12 + 4 + ntlmssplen;
-	spnego = raw_string(0xa0) + raw_string(spnegolen + 2) + raw_string(0x30) + raw_string(spnegolen);
+  #adding workstation name
+  ntlmssp += toupper( wsname );
 
-	# identifier and OID 1.3.6.1.5.5.2 (SPNEGO)
-        oid =  raw_string(0x06, 0x06, 0x2b, 0x06, 0x01, 0x05, 0x05, 0x02);
+  ntlmssplen = ( 16 + 16 + strlen( wsdomain ) + strlen( wsname ) );
+  mechToken = raw_string( 0xa2 ) + raw_string( ntlmssplen + 2 ) + raw_string( 0x04 ) + raw_string( ntlmssplen );
 
-	gsslen = 8 + 4 + spnegolen;
+  #mechType offset 10, value 1.3.6.1.4.1.311.2.2.10 (NTLMSSP)
+  mechType = raw_string( 0x06, 0x0a, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82,
+                         0x37, 0x02, 0x02, 0x0a );
 
-	sec_blob_length_hi = (gsslen + 2) / 256;
-        sec_blob_length_lo = (gsslen + 2) % 256;
+  #Nogotiation Token Init : 0xa0 negTokenInit Identifier, offset 15, 0x30 seq identifier, offset 12
+  negTokenInit = raw_string( 0xa0, 0x0e, 0x30, 0x0c );
 
-	byte_count_hi = (gsslen + 2 + strlen(native_os) + 2 + strlen(native_lanmanager) + 2) / 256;
-        byte_count_lo = (gsslen + 2 + strlen(native_os) + 2 + strlen(native_lanmanager) + 2) % 256;
+  spnegolen = 4 + 12 + 4 + ntlmssplen;
+  spnego = raw_string( 0xa0 ) + raw_string( spnegolen + 2 ) + raw_string( 0x30 ) + raw_string( spnegolen );
 
-	 #Creating Security Blob for the request
-        secblob = raw_string(0x60) + raw_string(gsslen) + oid + spnego + negTokenInit + mechType + mechToken + ntlmssp;
+  # identifier and OID 1.3.6.1.5.5.2 (SPNEGO)
+  oid =  raw_string( 0x06, 0x06, 0x2b, 0x06, 0x01, 0x05, 0x05, 0x02 );
 
-        #appending security blob length to the request
-        st += raw_string(sec_blob_length_lo) + raw_string(sec_blob_length_hi);
+  gsslen = 8 + 4 + spnegolen;
 
-	#appending reserved and capabilities to the request
-        st += raw_string(0x00, 0x00, 0x00, 0x00, 0x5c, 0xc0, 0x00, 0x80);
+  sec_blob_length_hi = ( gsslen + 2 ) / 256;
+  sec_blob_length_lo = ( gsslen + 2 ) % 256;
 
-        #appending byte count to the request
-        st += raw_string(byte_count_lo) + raw_string(byte_count_hi);
+  byte_count_hi = ( gsslen + 2 + strlen( native_os ) + 2 + strlen( native_lanmanager ) + 2 ) / 256;
+  byte_count_lo = ( gsslen + 2 + strlen( native_os ) + 2 + strlen( native_lanmanager ) + 2 ) % 256;
 
-        #appending security blob, nativeOS, nativeLanManager
-        st += secblob + native_os + raw_string(0x00, 0x00) + native_lanmanager + raw_string(0x00, 0x00);
+  #Creating Security Blob for the request
+  secblob = raw_string( 0x60 ) + raw_string( gsslen ) + oid + spnego + negTokenInit + mechType + mechToken + ntlmssp;
 
-	#length of entire packet
-	len = strlen(st);
-	len_hi = len / 256;
-	len_lo = len % 256;
+  #appending security blob length to the request
+  st += raw_string( sec_blob_length_lo ) + raw_string( sec_blob_length_hi );
 
-	local_var stt, r;
-	stt = raw_string(0x00, 0x00, len_hi, len_lo) + st;
+  #appending reserved and capabilities to the request
+  st += raw_string( 0x00, 0x00, 0x00, 0x00, 0x5c, 0xc0, 0x00, 0x80 );
 
-        send(socket:soc, data:stt);
-        r = smb_recv(socket:soc);
-        if(strlen(r) < 10){
-                return(FALSE);
-        }
-	multiplex_id += 1;
-        if(ord(r[9])==22){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
+  #appending byte count to the request
+  st += raw_string( byte_count_lo ) + raw_string( byte_count_hi );
 
- }
+  #appending security blob, nativeOS, nativeLanManager
+  st += secblob + native_os + raw_string( 0x00, 0x00 ) + native_lanmanager + raw_string( 0x00, 0x00 );
+
+  #length of entire packet
+  len = strlen( st );
+  len_hi = len / 256;
+  len_lo = len % 256;
+
+  stt = raw_string( 0x00, 0x00, len_hi, len_lo ) + st;
+
+  send( socket:soc, data:stt );
+  r = smb_recv(socket:soc);
+  if( strlen( r ) < 10 ) return FALSE;
+
+  multiplex_id += 1;
+
+  if( ord( r[9] ) == 22 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
 
 # SMB2
-function smb2_session_setup_NTLMSSP_NEGOT(soc, domain)
-{
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
-   local_var st, wsdomain, wsname, wsdomlen, wsnmlen, wsdomainoff, wsdomain_hi, wsdomain_lo, wsname_hi, wsname_lo;
-   local_var wsnameoffset_hi, wsnameoffset_lo, wsname_hi, wsname_lo, wsnameoffset_hi, wsnameoffset_lo;
-   #SMB2 header
-   st = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+function smb2_session_setup_NTLMSSP_NEGOT( soc, domain ) {
+
+  # g_mhi, g_mlo, multiplex_id and isSignActive are global_vars!!!
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
+
+  local_var soc, domain, st, wsdomain, wsname, wsdomlen, wsnmlen, wsdomainoff, wsnameoff, wsdomain_hi, wsdomain_lo, wsname_hi, wsname_lo;
+  local_var wsdomoffset_hi, wsdomoffset_lo, wsnameoffset_hi, wsnameoffset_lo, wsname_hi, wsname_lo;
+  local_var wsdomainlen, wsnamelen, wsdomainoffset, wsnameoffset;
+  local_var os, native_os, lanman, native_lanmanager, ntlmssp;
+  local_var ntlmssplen, mechToken, mechType, negTokenInit, spnegolen, spnego, oid, gsslen, sec_blob_length_hi, sec_blob_length_lo;
+  local_var secblob, secblob_len, secblob_len_hi, secblob_len_lo, len, len_hi, len_lo, stt, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_session_setup_NTLMSSP_NEGOT" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb2_session_setup_NTLMSSP_NEGOT" );
+
+  #SMB2 header
+  st = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
                    0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                    g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-   #Session Setup AndX Request
-   st += raw_string(0x19, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x58, 0x00);
+  #Session Setup AndX Request
+  st += raw_string( 0x19, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x58, 0x00 );
 
+  wsdomain = domain;
+  wsname = "";
+  wsdomlen = strlen( wsdomain );
+  wsnmlen = strlen( wsname );
+  wsdomainoff = 32;
+  wsnameoff = 32 + wsdomlen;
 
-   wsdomain = domain;
-   wsname = "";
-   wsdomlen = strlen(wsdomain);
-   wsnmlen = strlen(wsname);
-   wsdomainoff = 32;
-   wsnameoff = 32 + wsdomlen;
+  wsdomain_hi = wsdomlen / 256;
+  wsdomain_lo = wsdomlen % 256;
 
-   wsdomain_hi = wsdomlen / 256;
-   wsdomain_lo = wsdomlen % 256;
+  wsname_hi = wsnmlen / 256;
+  wsname_lo = wsnmlen % 256;
 
-   wsname_hi = wsnmlen / 256;
-   wsname_lo = wsnmlen % 256;
+  wsdomoffset_hi = wsdomainoff / 256;
+  wsdomoffset_lo = wsdomainoff % 256;
 
-   wsdomoffset_hi = wsdomainoff / 256;
-   wsdomoffset_lo = wsdomainoff % 256;
+  wsnameoffset_hi = wsnameoff / 256;
+  wsnameoffset_lo = wsnameoff % 256;
 
-   wsnameoffset_hi = wsnameoff / 256;
-   wsnameoffset_lo = wsnameoff % 256;
+  wsdomainlen = raw_string( wsdomain_lo ) + raw_string( wsdomain_hi ) ; # length 2 bytes
+  wsnamelen = raw_string( wsname_lo ) + raw_string( wsname_hi ); # length 2 bytes
+  wsdomainoffset = raw_string( wsdomoffset_lo ) + raw_string( wsdomoffset_hi ) + raw_string( 0x00, 0x00 ); # offset 4 bytes
+  wsnameoffset = raw_string( wsnameoffset_lo ) + raw_string( wsnameoffset_hi ) + raw_string( 0x00, 0x00 ); # offset 4 bytes
 
-   local_var wsdomainlen, wsnamelen, wsdomainoffset, wsnameoffset;
+  os = "Unix";
+  native_os = insert_hexzeros( in:os );
+  lanman = "OpenVAS";
+  native_lanmanager = insert_hexzeros( in:lanman );
 
-    wsdomainlen = raw_string(wsdomain_lo) + raw_string(wsdomain_hi) ; # length 2 bytes
-    wsnamelen = raw_string(wsname_lo) + raw_string(wsname_hi); # length 2 bytes
-    wsdomainoffset = raw_string(wsdomoffset_lo) + raw_string(wsdomoffset_hi) + raw_string(0x00, 0x00); # offset 4 bytes
-    wsnameoffset = raw_string(wsnameoffset_lo) + raw_string(wsnameoffset_hi) + raw_string(0x00, 0x00); # offset 4 bytes
+  #Creating NTLMSSP in Security Blob for the request
+  #raw string contains NTLMSSP: sign, type1 msgtype, flags
+  #flags: ntlm2+keyex(0x60088215), ntlm+keyex(0x60008215), ntlm2(0x20088215), ntlm(0x20008215)
 
-    local_var os, native_os, lanman, native_lanmanager;
-    os = "Unix";
-    native_os = insert_hexzeros(in:os);
-    lanman = "OpenVAS";
-    native_lanmanager = insert_hexzeros(in:lanman);
+  ntlmssp = raw_string( 0x4e, 0x54, 0x4c, 0x4d, 0x53, 0x53, 0x50, 0x00,
+                        0x01, 0x00, 0x00, 0x00, 0x15, 0x82, 0x08, 0x60 );
 
-     #Creating NTLMSSP in Security Blob for the request
+  #adding workstation domain - length,maxLen,offset and workstation name - length,maxLen,offset
+  ntlmssp += wsdomainlen + wsdomainlen + wsdomainoffset + raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+  # raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 
-	# raw string contains NTLMSSP: sign, type1 msgtype, flags
-	#flags: ntlm2+keyex(0x60088215), ntlm+keyex(0x60008215), ntlm2(0x20088215), ntlm(0x20008215)
-	local_var ntlmssp;
-        ntlmssp = raw_string(0x4e, 0x54, 0x4c, 0x4d, 0x53, 0x53, 0x50, 0x00,
-                             0x01, 0x00, 0x00, 0x00, 0x15, 0x82, 0x08, 0x60);
+  # adding workstation domain
+  if( wsdomain ) ntlmssp += toupper( wsdomain );
 
+  #adding workstation name
+  # ntlmssp += toupper( wsname );
 
- #adding workstation domain - length,maxLen,offset and workstation name - length,maxLen,offset
- ntlmssp += wsdomainlen + wsdomainlen + wsdomainoffset + raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-# raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+  ntlmssplen = strlen( ntlmssp );
+  mechToken = raw_string( 0xa2 ) + raw_string( ntlmssplen + 2 ) + raw_string( 0x04 ) + raw_string( ntlmssplen );
 
-        # adding workstation domain
-        if(wsdomain){
-                ntlmssp += toupper(wsdomain);
-       }
+  #mechType offset 10, value 1.3.6.1.4.1.311.2.2.10 (NTLMSSP)
+  mechType =  raw_string( 0x06, 0x0a, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82,
+                          0x37, 0x02, 0x02, 0x0a );
 
-        #adding workstation name
-   #     ntlmssp += toupper(wsname);
+  #Nogotiation Token Init : 0xa0 negTokenInit Identifier, offset 15, 0x30 seq identifier, offset 12
+  negTokenInit = raw_string( 0xa0, 0x0e, 0x30, 0x0c );
 
-	local_var ntlmssplen, mechToken, mechType, negTokenInit, spnegolen, spnego, oid, gsslen, sec_blob_length_hi, sec_blob_length_lo;
+  spnegolen = 4 + 12 + 4 + ntlmssplen;
+  spnego = raw_string( 0xa0 ) + raw_string( spnegolen + 2 ) + raw_string( 0x30 ) + raw_string( spnegolen );
 
- ntlmssplen = strlen(ntlmssp);
- mechToken = raw_string(0xa2) + raw_string(ntlmssplen + 2) + raw_string(0x04) + raw_string(ntlmssplen);
+  # identifier and OID 1.3.6.1.5.5.2 (SPNEGO)
+  oid =  raw_string( 0x06, 0x06, 0x2b, 0x06, 0x01, 0x05, 0x05, 0x02 );
 
- #mechType offset 10, value 1.3.6.1.4.1.311.2.2.10 (NTLMSSP)
-        mechType =  raw_string(0x06, 0x0a, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x02,
-                               0x02, 0x0a);
- #Nogotiation Token Init : 0xa0 negTokenInit Identifier, offset 15, 0x30 seq identifier, offset 12
- negTokenInit = raw_string(0xa0, 0x0e, 0x30, 0x0c);
-
- spnegolen = 4 + 12 + 4 + ntlmssplen;
- spnego = raw_string(0xa0) + raw_string(spnegolen + 2) + raw_string(0x30) + raw_string(spnegolen);
-
- # identifier and OID 1.3.6.1.5.5.2 (SPNEGO)
-        oid =  raw_string(0x06, 0x06, 0x2b, 0x06, 0x01, 0x05, 0x05, 0x02);
-
- gsslen = 8 + 4 + spnegolen;
- sec_blob_length_hi = (gsslen + 2) / 256;
-        sec_blob_length_lo = (gsslen + 2) % 256;
-
+  gsslen = 8 + 4 + spnegolen;
+  sec_blob_length_hi = ( gsslen + 2 ) / 256;
+  sec_blob_length_lo = ( gsslen + 2 ) % 256;
 
   #Creating Security Blob for the request
-        secblob = raw_string(0x60) + raw_string(gsslen) + oid + spnego + negTokenInit + mechType + mechToken + ntlmssp;
+  secblob = raw_string( 0x60 ) + raw_string( gsslen ) + oid + spnego + negTokenInit + mechType + mechToken + ntlmssp;
 
- secblob_len = strlen(secblob);
- secblob_len_hi = secblob_len / 256;
- secblob_len_lo = secblob_len % 256;
- #appending security blob length to the request
- st += raw_string(secblob_len_lo + secblob_len_hi) + raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
- st += secblob ;
+  secblob_len = strlen( secblob );
+  secblob_len_hi = secblob_len / 256;
+  secblob_len_lo = secblob_len % 256;
 
- #length of entire packet
- len = strlen(st);
- len_hi = len / 256;
- len_lo = len % 256;
+  #appending security blob length to the request
+  st += raw_string( secblob_len_lo + secblob_len_hi ) + raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+  st += secblob;
 
-#local_var stt, r;
-  stt = raw_string(0x00, 0x00, len_hi, len_lo) + st;
+  #length of entire packet
+  len = strlen( st );
+  len_hi = len / 256;
+  len_lo = len % 256;
 
-        send(socket:soc, data:stt);
-        r = smb_recv(socket:soc);
+  stt = raw_string( 0x00, 0x00, len_hi, len_lo ) + st;
 
-        if(strlen(r) < 13){
-                return(FALSE);
-        }
+  send( socket:soc, data:stt );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 13 ) return FALSE;
 
-        multiplex_id += 1;
+  multiplex_id += 1;
 
-        ##More Processing required == 0x16 == 22
-        if(ord(r[12])==22){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
+  ##More Processing required == 0x16 == 22
+  if( ord( r[12] ) == 22 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
 
- }
+function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, cs, uid, server_flags, flag_str, addr_list ) {
 
-function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, cs, uid, server_flags, addr_list ) {
+  # s_sign_key, sign_key, g_mhi, g_mlo, multiplex_id and seq_number are global_vars!!!
 
-  local_var lm, nt, encrypted_session_key, st, r, NT_H, session_key;
+  local_var soc, login, password, domain, version, cs, uid, server_flags, flag_str, addr_list;
+  local_var NTLMSSP_NEGOTIATE_KEY_EXCH, NTLMSSP_NEGOTIATE_NTLM2;
+  local_var st, uid_hi, uid_lo, NT_H, ntlmv2_hash, result, lm, nt, session_key, encrypted_session_key;
+  local_var lm_resplen, ntlm_resplen, lmoff, ntlmoff, lm_resp_hi, lm_resp_lo, ntlm_resp_hi, ntlm_resp_lo;
+  local_var lm_resp_length, ntlm_resp_length, lm_resp_offset, ntlm_resp_offset;
+  local_var workstname, user, username;
+  local_var wsdomain, wsname, wsdomlen, wsnmlen, usernmlen, wsdomainoff, usernameoff, wsnameoff;
+  local_var wsdomain_hi, wsdomain_lo, wsname_hi, wsname_lo, username_hi, username_lo;
+  local_var wsdomoffset_hi, wsdomoffset_lo, wsnameoffset_hi, wsnameoffset_lo;
+  local_var usernameoffset_hi, usernameoffset_lo, wsdomainlen, wsnamelen, usernamelen;
+  local_var wsdomainoffset, wsnameoffset, usernameoffset;
+  local_var sec_key_len, sec_key_off, seckey_hi, seckey_lo, seckeyoff_hi, seckeyoff_lo;
+  local_var seckeylength, seckeyoffset, os, native_os, lanman, native_lanmanager;
+  local_var len, len_hi, len_lo, secblob, secbloblen, ntlmssp, ntlmssplen;
+  local_var secbloblen_hi, secbloblen_lo, bytecount, bytecount_hi, bytecount_lo;
+  local_var stt, req, r, server_resp, orig_sign, serv_sign;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( cs ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cs#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( server_flags ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#server_flags#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( flag_str ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#flag_str#-#smb_session_setup_NTLMSSP_AUTH" );
+  if( isnull( addr_list ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#addr_list#-#smb_session_setup_NTLMSSP_AUTH" );
 
   if( ! domain ) domain = "WORKGROUP";
 
@@ -1271,9 +1324,9 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
                    0x00, 0x00, 0x00, 0x00, 0x08 );
 
   if( isSignActive ) {
-    st +=  raw_string(0x05, 0xc8);
+    st += raw_string( 0x05, 0xc8 );
   } else {
-    st += raw_string(0x01, 0xc8);
+    st += raw_string( 0x01, 0xc8 );
   }
 
   st += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -1300,8 +1353,7 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
     result = ntlmv2_response( cryptkey:cs, user:login, domain:domain, ntlmv2_hash:ntlmv2_hash, address_list:addr_list, address_list_len:addr_list_len );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 40) {
+    if( strlen( result ) > 40 ) {
       lm = substr( result, 0, 23 );
       session_key = substr( result, 24, 39 );
       nt = substr( result, 40, strlen( result ) - 1 );
@@ -1315,8 +1367,7 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
     result = ntlm2_response( cryptkey:cs, password:password, nt_hash:NT_H );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 63) {
+    if( strlen( result ) > 63 ) {
       lm = substr( result, 0, 23 );
       nt = substr( result, 24, 47 );
       session_key = substr( result, 48, 63 );
@@ -1330,8 +1381,7 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
     result = ntlm_response( cryptkey:cs, password:password, nt_hash:NT_H, neg_flags:server_flags );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 63) {
+    if( strlen( result ) > 63 ) {
       lm = substr( result, 0, 23 );
       nt = substr( result, 24, 47 );
       session_key = substr(result, 48, 63);
@@ -1342,8 +1392,7 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
     result = key_exchange( cryptkey:cs, session_key:session_key, nt_hash:NT_H );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 31) {
+    if( strlen( result ) > 31 ) {
       session_key = substr( result, 0, 15 );
       encrypted_session_key = substr( result, 16, 31 );
     }
@@ -1533,11 +1582,8 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
+    if( ( strlen( server_resp ) < 24) || ( len < 24 ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen(server_resp) < 24) || (len < 24)) {
-      return(FALSE);
-    }
     orig_sign = substr( r, 18, 23 );
     serv_sign = substr( server_resp, 18, 23 );
     if( orig_sign != serv_sign ) {
@@ -1553,11 +1599,37 @@ function smb_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, 
   }
 }
 
-
 # SMB2 NTLMSSP AUTHENTICATION
-function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, cs, ssid, server_flags, addr_list ) {
+function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version, cs, ssid, server_flags, flag_str, addr_list ) {
 
-  local_var lm, nt, encrypted_session_key, st, r, NT_H, session_key;
+  # s_sign_key, sign_key, g_mhi, g_mlo, multiplex_id and seq_number are global_vars!!!
+
+  local_var soc, login, password, domain, version, cs, ssid, server_flags, flag_str, addr_list;
+  local_var NTLMSSP_NEGOTIATE_KEY_EXCH, NTLMSSP_NEGOTIATE_NTLM2;
+  local_var st, NT_H, ntlmv2_hash, addr_list_len, result, lm, session_key, nt, encrypted_session_key;
+  local_var lm_resplen, ntlm_resplen, lmoff, ntlmoff, lm_resp_hi, lm_resp_lo;
+  local_var ntlm_resp_hi, ntlm_resp_lo, lmoff_hi, lmoff_lo, ntlmoff_hi, ntlmoff_lo;
+  local_var lm_resp_length, ntlm_resp_length, lm_resp_offset, ntlm_resp_offset;
+  local_var workstname, user, username, wsdomain, wsname, wsdomlen, wsnmlen, usernmlen, wsdomainoff;
+  local_var usernameoff, wsnameoff, wsdomain_hi, wsdomain_lo, wsname_hi, wsname_lo, username_hi;
+  local_var username_lo, wsdomoffset_hi, wsdomoffset_lo, wsnameoffset_hi, wsnameoffset_lo;
+  local_var usernameoffset_hi, usernameoffset_lo, wsdomainlen, wsnamelen, usernamelen;
+  local_var usernameoffset, wsdomainoffset, wsnameoffset, sec_key_len, sec_key_off, seckey_hi, seckey_lo;
+  local_var seckeyoff_hi, seckeyoff_lo, seckeylength, seckeyoffset;
+  local_var os, native_os, lanman, native_lanmanager, ntlmssp, ntlmssplen;
+  local_var len, len_hi, len_lo, secblob, secbloblen, secbloblen_hi, secbloblen_lo;
+  local_var bytecount, bytecount_hi, bytecount_lo, stt, req, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( cs ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cs#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( ssid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#ssid#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( server_flags ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#server_flags#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( flag_str ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#flag_str#-#smb2_session_setup_NTLMSSP_AUTH" );
+  if( isnull( addr_list ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#addr_list#-#smb2_session_setup_NTLMSSP_AUTH" );
 
   if( ! domain ) domain = "WORKGROUP";
 
@@ -1598,8 +1670,7 @@ function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version,
     result = ntlmv2_response( cryptkey:cs, user:login, domain:domain, ntlmv2_hash:ntlmv2_hash, address_list:addr_list, address_list_len:addr_list_len );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 40) {
+    if( strlen( result ) > 40 ) {
       lm = substr( result, 0, 23 );
       session_key = substr( result, 24, 39 );
       nt = substr( result, 40, strlen( result ) - 1 );
@@ -1613,8 +1684,7 @@ function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version,
     result = ntlm2_response( cryptkey:cs, password:password, nt_hash:NT_H );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 63) {
+    if( strlen( result ) > 63 ) {
       lm = substr( result, 0, 23 );
       nt = substr( result, 24, 47 );
       session_key = substr( result, 48, 63 );
@@ -1628,8 +1698,7 @@ function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version,
     result = ntlm_response( cryptkey:cs, password:password, nt_hash:NT_H, neg_flags:server_flags );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 63) {
+    if( strlen( result ) > 63 ) {
       lm = substr( result, 0, 23 );
       nt = substr( result, 24, 47 );
       session_key = substr( result, 48, 63 );
@@ -1643,8 +1712,7 @@ function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version,
     result = key_exchange( cryptkey:cs, session_key:session_key, nt_hash:NT_H );
     if( isnull( result ) ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if(strlen(result) > 31) {
+    if( strlen( result ) > 31 ) {
       session_key = substr( result, 0, 15 );
       encrypted_session_key = substr( result, 16, 31 );
 
@@ -1835,11 +1903,18 @@ function smb2_session_setup_NTLMSSP_AUTH( soc, login, password, domain, version,
 
 function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
 
-  local_var extra, native_os, native_lanmanager, len, bcc;
-  local_var len_hi, len_lo, bcc_hi_n, bcc_lo;
-  local_var plen;
-  local_var NT_H, LM_H, lm, nt;
-  local_var ntlmv2_hash;
+  local_var soc, login, password, domain, cs, version;
+  local_var NT_H, LM_H, lm, nt, ntlmv2_hash;
+  local_var native_os, native_lanmanager, extra, len, bcc;
+  local_var len_hi, len_low, bcc_hi, bcc_lo;
+  local_var plen_lm, plen_nt, plen, st, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_setup_NTLMvN" );
+  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb_session_setup_NTLMvN" );
+  if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb_session_setup_NTLMvN" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb_session_setup_NTLMvN" );
+  if( isnull( cs ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cs#-#smb_session_setup_NTLMvN" );
+  if( isnull( version ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#version#-#smb_session_setup_NTLMvN" );
 
   if( version == 1 ) {
     if( password ) {
@@ -1861,7 +1936,7 @@ function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
       NT_H = nt_owf_gen( password );
       if( isnull( NT_H ) ) return FALSE;
 
-      ntlmv2_hash = ntv2_owf_gen(owf:NT_H, login:login, domain:domain);
+      ntlmv2_hash = ntv2_owf_gen( owf:NT_H, login:login, domain:domain );
       if( isnull( ntlmv2_hash ) ) return FALSE;
 
       lm = NTLMv2_HASH( cryptkey:cs, passhash:ntlmv2_hash, length:8 );
@@ -1878,10 +1953,9 @@ function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
   if( ! domain ) domain = "WORKGROUP";
 
   if( domain ) {
-    extra = 3 + strlen(domain) + strlen(native_os) +
-    strlen(native_lanmanager);
+    extra = 3 + strlen( domain ) + strlen( native_os ) + strlen( native_lanmanager );
   } else {
-    extra = strlen(native_os) + strlen(native_lanmanager) + 2;
+    extra = strlen( native_os ) + strlen( native_lanmanager ) + 2;
   }
 
   len = strlen( login ) + strlen( lm ) + strlen( nt ) + 62 + extra;
@@ -1894,8 +1968,8 @@ function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
   bcc_lo = bcc % 256;
 
   if( password ) {
-    plen_lm = strlen(lm);
-    plen_nt = strlen(nt);
+    plen_lm = strlen( lm );
+    plen_nt = strlen( nt );
   } else {
     plen_lm = 0;
     plen_nt = 0;
@@ -1937,8 +2011,10 @@ function smb_session_setup_NTLMvN( soc, login, password, domain, cs, version ) {
 
 function smb_session_setup( soc, login, password, domain, prot ) {
 
-  local_var ct, ret, ntlmv1, cs, flags, flg_str, uid;
-  local_var addr_list;
+  # ntlmv2_flag and ntlmssp_flag are global_vars!!!
+
+  local_var soc, login, password, domain, prot;
+  local_var ct, ntlmv1, prot2, r, ret, cs, flags, flg_str, uid, addr_list;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_session_setup" );
   if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb_session_setup" );
@@ -1959,18 +2035,18 @@ function smb_session_setup( soc, login, password, domain, prot ) {
   } else {
     if( ntlmssp_flag ) {
       # Check For SMB2
-      if(strlen( prot ) < 5 ) {
-        return(NULL);
+      if( strlen( prot ) < 5 ) {
+        return NULL;
       }
       if( ord( prot[4] ) == 254 ) {
         prot2 = smb2_neg_prot( soc:soc );
         if( ! prot2 ) {
-          close(soc);
-          return(login_defined);
+          close( soc );
+          return NULL;
         }
 
         r = smb2_session_setup( soc:soc, login:login, password:password, domain:domain, prot:prot2 );
-        return(r);
+        return r;
       } else {
         #Step 1: Negotiation
         ret = smb_session_setup_NTLMSSP_NEGOT( soc:soc, domain:domain );
@@ -1998,16 +2074,15 @@ function smb_session_setup( soc, login, password, domain, prot ) {
                                                   uid:uid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
           }
         }
-        return(ret);
+        return ret;
       }
     } else {
-      ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain,
-                                      cs:smb_neg_prot_cs( prot:prot ), version:2 );
+      cs = smb_neg_prot_cs( prot:prot );
+      ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:2 );
       if( ! ret && ! ntlmv1 ) {
-        ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain,
-                                        cs:smb_neg_prot_cs( prot:prot ), version:1 );
+        ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:1 );
       }
-      return(ret);
+      return ret;
     }
   }
 }
@@ -2015,8 +2090,16 @@ function smb_session_setup( soc, login, password, domain, prot ) {
 #SMB2 session setup
 function smb2_session_setup( soc, login, password, domain, prot ) {
 
-  local_var ct, ret, ntlmv1, cs, flags, flg_str, uid;
-  local_var addr_list;
+  # ntlmv2_flag and ntlmssp_flag are global_vars!!!
+
+  local_var soc, login, password, domain, prot;
+  local_var ct, ntlmv1, ret, cs, flags, flg_str, ssid, addr_list;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_session_setup" );
+  if( isnull( login ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#login#-#smb2_session_setup" );
+  if( isnull( password ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#password#-#smb2_session_setup" );
+  if( isnull( domain ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#domain#-#smb2_session_setup" );
+  if( isnull( prot ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#prot#-#smb2_session_setup" );
 
   ct = get_kb_item( "SMB/dont_send_in_cleartext" );
   ntlmv1 = get_kb_item( "SMB/dont_send_ntlmv1" );
@@ -2039,284 +2122,307 @@ function smb2_session_setup( soc, login, password, domain, prot ) {
     addr_list = smb_session_setup_NTLMSSP_extract_addrlist( ret:ret );
 
     # call the function to get address list from type 2 message
-    if(ntlmv2_flag){
+    if( ntlmv2_flag ) {
       ret = smb2_session_setup_NTLMSSP_AUTH( soc:soc, login:login, password:password,
-                                             domain:domain, version:2, cs:cs, uid:uid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
+                                             domain:domain, version:2, cs:cs, ssid:ssid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
     } else {
        ret = smb2_session_setup_NTLMSSP_AUTH( soc:soc, login:login, password:password,
-                                              domain:domain, version:2, cs:cs, uid:ssid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
+                                              domain:domain, version:2, cs:cs, ssid:ssid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
 
        if( ! ret ) {
          ret = smb2_session_setup_NTLMSSP_AUTH( soc:soc, login:login, password:password,
-                                                domain:domain, version:1, cs:cs, uid:uid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
+                                                domain:domain, version:1, cs:cs, ssid:ssid, server_flags:flags, flag_str:flg_str, addr_list:addr_list );
        }
     }
     return ret;
   } else {
-    ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password,
-                                    domain:domain, cs:smb_neg_prot_cs(prot:prot), version:2 );
+    cs = smb_neg_prot_cs( prot:prot );
+    ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:2 );
     if( ! ret && ! ntlmv1 ) {
-      ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password,
-                                      domain:domain, cs:smb_neg_prot_cs(prot:prot), version:1);
+      ret = smb_session_setup_NTLMvN( soc:soc, login:login, password:password, domain:domain, cs:cs, version:1 );
     }
     return ret;
   }
 }
 
- #------------------------------------------------------#
- # connection to a remote share                         #
- #------------------------------------------------------#
- #
- # connection to the remote IPC share
- #
+# connection to the remote IPC share
+function smb_tconx_NTLMSSP( soc, name, uid, share ) {
 
-function smb_tconx_NTLMSSP(soc, name, uid, share)
- {
-        high = uid / 256;
-        low = uid % 256;
-        local_var req, n, nm, sh;
-	n = chomp(name);
-        nm = insert_hexzeros(in:n);
-        sh = insert_hexzeros(in:share);
+  # s_sign_key, sign_key, isSignActive, g_mhi, g_mlo, seq_number and multiplex_id are global_vars!!!
 
-        ulen = 8 + strlen(nm) + strlen(sh) + 6;
-        len = 43 + ulen;
-        #Assuming case: NEGOTIATE_SECURITY_USER_LEVEL enabled
-        passlen = 1;
-        pwd = "";
+  local_var soc, name, uid, share;
+  local_var high, low, n, nm, sh, ulen, len, passlen, pwd;
+  local_var len_hi, len_lo, ulen_hi, ulen_lo, passlen_hi, passlen_lo;
+  local_var req, r, server_resp, orig_sign, serv_sign;
 
-        #TO DO: cases SECURITY_CHALLENGE_RESPONSE or otherwise
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_tconx_NTLMSSP" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smb_tconx_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb_tconx_NTLMSSP" );
+  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#smb_tconx_NTLMSSP" );
 
-        len += passlen;
-        ulen += passlen;
-        len_hi = len / 256;
-        len_lo = len % 256;
-        ulen_hi = ulen / 256;
-        ulen_lo = ulen % 256;
-        passlen_hi = passlen / 256;
-        passlen_lo = passlen % 256;
-        g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-        req = raw_string(0x00, 0x00) + raw_string(len_hi) + raw_string(len_lo) +
-        	 raw_string(0xFF, 0x53, 0x4D, 0x42, 0x75, 0x00,
-                            0x00, 0x00, 0x00, 0x08);
-        if(isSignActive){
-                req +=  raw_string(0x05, 0xc8);
-        }
-        else{
-                req += raw_string(0x01, 0xc8);
-        }
-        req += raw_string(0x00, 0x00);
-        #putting signature null initially
-        req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-        req += raw_string(0x00, 0x00, 0xff, 0xff, 0x33, 0x0c, low, high,
-                             g_mlo, g_mhi, 0x04, 0xFF, 0x00, 0x00, 0x00, 0x08,
-                             0x00, passlen_lo, passlen_hi, ulen_lo, ulen_hi);#43
-        if(passlen == 1)
-                req += raw_string(0x00);
-        else
-                req += pwd;
-        req += raw_string(0x5C, 0x00, 0x5C, 0x00) + nm + raw_string(0x5C, 0x00) + sh + raw_string(0x00, 0x00) + "?????" + raw_string(0x00);
+  high = uid / 256;
+  low = uid % 256;
+  n = chomp( name );
+  nm = insert_hexzeros( in:n );
+  sh = insert_hexzeros( in:share );
 
-        if( isSignActive ) {
-          len += 4;
-          seq_number += 1;
-          req = get_signature(key:s_sign_key, buf:req, buflen:len, seq_number:seq_number);
-          if( isnull( req ) ) return FALSE;
-        }
+  ulen = 8 + strlen( nm ) + strlen( sh ) + 6;
+  len = 43 + ulen;
+  #Assuming case: NEGOTIATE_SECURITY_USER_LEVEL enabled
+  passlen = 1;
+  pwd = "";
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	send( socket:soc, data:req );
-        r = smb_recv( socket:soc );
-        if( strlen( r ) < 10 ) {
-          return FALSE;
-        }
+  #TODO: cases SECURITY_CHALLENGE_RESPONSE or otherwise
 
-        multiplex_id += 1;
-        if( isSignActive ) {
-          # verify signature
-          seq_number += 1;
-          len = strlen( r );
-          server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-          if( isnull( server_resp ) ) return FALSE;
+  len += passlen;
+  ulen += passlen;
+  len_hi = len / 256;
+  len_lo = len % 256;
+  ulen_hi = ulen / 256;
+  ulen_lo = ulen % 256;
+  passlen_hi = passlen / 256;
+  passlen_lo = passlen % 256;
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
-          #TODO: Also check the response length here before accessing possible non-existing data
-          if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
-            return( FALSE );
-          }
-          orig_sign = substr( r, 18, 23 );
-          serv_sign = substr( server_resp, 18, 23 );
-          if( orig_sign != serv_sign ) {
-            return FALSE;
-          }
-        }
-        # -> END TODO
+  req = raw_string( 0x00, 0x00 ) + raw_string( len_hi ) + raw_string( len_lo ) +
+        raw_string( 0xFF, 0x53, 0x4D, 0x42, 0x75, 0x00,
+                    0x00, 0x00, 0x00, 0x08 );
 
-        if( ord(r[9] ) == 0 ){
-          return r;
-        } else {
-          return FALSE;
-        }
+  if( isSignActive ) {
+    req += raw_string( 0x05, 0xc8 );
+  } else {
+    req += raw_string( 0x01, 0xc8 );
+  }
+
+  req += raw_string( 0x00, 0x00 );
+  #putting signature null initially
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+  req += raw_string( 0x00, 0x00, 0xff, 0xff, 0x33, 0x0c, low, high,
+                     g_mlo, g_mhi, 0x04, 0xFF, 0x00, 0x00, 0x00, 0x08,
+                     0x00, passlen_lo, passlen_hi, ulen_lo, ulen_hi ); #43
+
+  if( passlen == 1 ) {
+    req += raw_string( 0x00 );
+  } else {
+    req += pwd;
+  }
+
+  req += raw_string( 0x5C, 0x00, 0x5C, 0x00 ) + nm + raw_string( 0x5C, 0x00 ) + sh + raw_string( 0x00, 0x00 ) + "?????" + raw_string( 0x00 );
+
+  if( isSignActive ) {
+    len += 4;
+    seq_number += 1;
+    req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number ); # TBD: This overwrites the previous declared req...
+    if( isnull( req ) ) return FALSE;
+  }
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 10 ) return FALSE;
+
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
+    len = strlen( r );
+    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+    if( isnull( server_resp ) ) return FALSE;
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
+    }
+
+    orig_sign = substr( r, 18, 23 );
+    serv_sign = substr( server_resp, 18, 23 );
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    }
+  }
+  # -> END TODO
+
+  if( ord(r[9] ) == 0 ){
+    return r;
+  } else {
+    return FALSE;
+  }
 }
 
 #NTLMSSP
-function smb2_tconx_NTLMSSP( soc, name, share, uid ) {
+function smb2_tconx_NTLMSSP( soc, name, uid, share ) {
 
-        local_var req, n, nm, sh;
-        n = chomp(name);
-        nm = insert_hexzeros(in:n);
-        sh = insert_hexzeros(in:share);
+  # sign_key, isSignActive, g_mhi, g_mlo, seq_number and multiplex_id are global_vars!!!
 
-        ulen = 8 + strlen(nm) + strlen(sh) + 6;
-        len = 43 + ulen;
-        #Assuming case: NEGOTIATE_SECURITY_USER_LEVEL enabled
-        passlen = 1;
-        pwd = "";
+  local_var soc, name, uid, share;
+  local_var n, nm, sh, ulen, len, passlen, pwd;
+  local_var len_hi, len_lo, ulen_hi, ulen_lo, passlen_hi, passlen_lo;
+  local_var req, tree, treelen, treelen_hi, treelen_lo, stt;
+  local_var r, status, status2, r_head, server_resp, orig_sign, serv_sign;
 
-        #TO DO: cases SECURITY_CHALLENGE_RESPONSE or otherwise
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_tconx_NTLMSSP" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smb2_tconx_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb2_tconx_NTLMSSP" );
+  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#smb2_tconx_NTLMSSP" );
 
-        len += passlen;
-        ulen += passlen;
-        len_hi = len / 256;
-        len_lo = len % 256;
-        ulen_hi = ulen / 256;
-        ulen_lo = ulen % 256;
-        passlen_hi = passlen / 256;
-        passlen_lo = passlen % 256;
-        g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
+  n = chomp( name );
+  nm = insert_hexzeros( in:n );
+  sh = insert_hexzeros( in:share );
 
-        req = raw_string(0xfe, 0x53, 0x4d, 0x42,
-        0x40, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-        0x03, 0x00, 0x81, 0x1f);
+  ulen = 8 + strlen( nm ) + strlen( sh ) + 6;
+  len = 43 + ulen;
+  #Assuming case: NEGOTIATE_SECURITY_USER_LEVEL enabled
+  passlen = 1;
+  pwd = "";
 
-        if(isSignActive){
-                req += raw_string(0x08, 0x00, 0x00, 0x00);
-       }
-       else
-       {
-                req += raw_string(0x00, 0x00, 0x00, 0x00);
-       }
+  #TODO: cases SECURITY_CHALLENGE_RESPONSE or otherwise
 
-        req += raw_string(0x00, 0x00, 0x00, 0x00, g_mlo,  g_mhi, 0x00,
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-        0x00, 0x00, 0x00, 0x00);
+  len += passlen;
+  ulen += passlen;
+  len_hi = len / 256;
+  len_lo = len % 256;
+  ulen_hi = ulen / 256;
+  ulen_lo = ulen % 256;
+  passlen_hi = passlen / 256;
+  passlen_lo = passlen % 256;
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
-        req += uid + raw_string(0x00, 0x00, 0x00, 0x00,
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-        0x00, 0x00, 0x00, 0x00);
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x81, 0x1f );
 
-      tree = raw_string(0x5c, 0x00, 0x5c, 0x00) + nm + raw_string(0x5C, 0x00) + sh ;
-      treelen = strlen(tree);
-      treelen_hi = treelen / 256;
-      treelen_lo = treelen % 256;
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string(0x00, 0x00, 0x00, 0x00);
+  }
 
-      req += raw_string(0x09, 0x00, 0x00, 0x00, 0x48, 0x00, treelen_lo, treelen_hi) + tree ;
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00 );
 
-#length of entire packet
-len = strlen(req);
-len_hi = len / 256;
-len_lo = len % 256;
+  req += uid + raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
 
-     if(isSignActive){
-        sig = get_smb2_signature( buf:req, key:sign_key );
-        if( isnull( sig ) ) {
-          set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smb2_tconx_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
-          return FALSE;
-        }
-        stt = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
-     }else {
-        stt = raw_string(0x00, 0x00, len_hi, len_lo) + req ;
-     }
+  tree = raw_string( 0x5c, 0x00, 0x5c, 0x00 ) + nm + raw_string( 0x5C, 0x00 ) + sh;
+  treelen = strlen( tree );
+  treelen_hi = treelen / 256;
+  treelen_lo = treelen % 256;
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        send(socket:soc, data:stt);
-        r = smb_recv(socket:soc);
-        if( strlen( r ) < 14 ) {
-          return( FALSE );
-        }
+  req += raw_string( 0x09, 0x00, 0x00, 0x00, 0x48, 0x00, treelen_lo, treelen_hi ) + tree ;
 
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if( strlen( r ) < 14 ) {
-             return( FALSE );
-           }
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
-        multiplex_id += 1;
-        if(isSignActive){
-                # verify signature
-                seq_number += 1;
-                len = strlen(r);
+  #length of entire packet
+  len = strlen( req );
+  len_hi = len / 256;
+  len_lo = len % 256;
 
-                r_head = substr(r, 0, 3);
-                r = substr(r, 4, strlen(r)-1);
-                server_resp = get_smb2_signature(buf:r, key:sign_key);
-                if( isnull( server_resp ) ) return FALSE;
-                if( (strlen( server_resp ) < 64 ) || (strlen( r )  < 64 ) ) {
-                  return(FALSE);
-                }
-                orig_sign = substr(r, 48, 63);
-                serv_sign = substr(server_resp, 48, 63);
-                if(orig_sign != serv_sign){
-                         return(FALSE);
-                }
-                else {
-                  r = r_head + r ;
-                }
-        }
-        # END TODO ->
+  if( isSignActive ) {
 
-        if(ord(r[12])==0){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
+    sig = get_smb2_signature( buf:req, key:sign_key );
 
- }
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smb2_tconx_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
+    }
 
-function smb_tconx_cleartext(soc, name, uid, share)
-{
+    stt = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+  } else {
+    stt = raw_string( 0x00, 0x00, len_hi, len_lo ) + req ;
+  }
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:stt );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 14 ) return FALSE;
+
+  ##If status is pending, wait for response
+  status = ord( r[12] );
+  status2 = ord( r[13] );
+
+  while( status == 3 && status2 == 1 ) {
+
+    ##PDU will arrive late
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 14 ) return FALSE;
+
+    status = ord( r[12] );
+    status2 = ord( r[13] );
+  }
+
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
+    len = strlen(r);
+
+    r_head = substr( r, 0, 3 );
+    r = substr( r, 4, strlen( r ) - 1 );
+    server_resp = get_smb2_signature( buf:r, key:sign_key );
+    if( isnull( server_resp ) ) return FALSE;
+
+    if( (strlen( server_resp ) < 64 ) || (strlen( r )  < 64 ) ) {
+      return FALSE;
+    }
+
+    orig_sign = substr( r, 48, 63 );
+    serv_sign = substr(server_resp, 48, 63);
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    } else {
+      r = r_head + r ;
+    }
+  }
+  # END TODO ->
+
+  if( ord( r[12] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
+
+function smb_tconx_cleartext( soc, name, uid, share ) {
+
+  local_var soc, name, uid, share;
+  local_var high, low, len, ulen, req, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_tconx_cleartext" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smb_tconx_cleartext" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb_tconx_cleartext" );
+  if( isnull( share ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#smb_tconx_cleartext" );
+
   high = uid / 256;
   low = uid % 256;
-  local_var req;
-  len = 48 + strlen(name) + strlen(share) + 6;
-  ulen = 5 + strlen(name) + strlen(share) + 6;
-  req = raw_string(0x00, 0x00, 0x00, len, 0xFF, 0x53, 0x4D,
-                   0x42, 0x75, 0x00, 0x00, 0x00, 0x00, 0x08,
-                   0xc8, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x28, low, high, 0x00,
-                   0x00, 0x04, 0xFF, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x01, 0x00, ulen, 0x00, 0x00, 0x5C,
-                   0x5C) + name + raw_string(0x5C) + share +
-                   raw_string(0x00) + "?????"  + raw_string(0x00);
+  len = 48 + strlen( name ) + strlen( share ) + 6;
+  ulen = 5 + strlen( name ) + strlen( share ) + 6;
 
-  send(socket:soc, data:req);
-  r = smb_recv(socket:soc);
+  req = raw_string( 0x00, 0x00, 0x00, len, 0xFF, 0x53, 0x4D,
+                    0x42, 0x75, 0x00, 0x00, 0x00, 0x00, 0x08,
+                    0xc8, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x00, 0x00, 0x28, low, high, 0x00,
+                    0x00, 0x04, 0xFF, 0x00, 0x00, 0x00, 0x00,
+                    0x00, 0x01, 0x00, ulen, 0x00, 0x00, 0x5C,
+                    0x5C ) + name + raw_string( 0x5C ) + share +
+                    raw_string( 0x00 ) + "?????"  + raw_string( 0x00 );
 
-  if(strlen(r) < 10){
-    return(FALSE);
-  }
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
 
-  if(ord(r[9])==0){
-    return(r);
-  }
-  else{
-    return(FALSE);
+  if( strlen( r ) < 10 ) return FALSE;
+
+  if( ord( r[9] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
   }
 }
 
 function smb_tconx( soc, name, uid, share ) {
 
-  local_var response;
+  # ntlmssp_flag is global_var!!!!
+
+  local_var soc, name, uid, share;
+  local_var response, high, low, len, ulen, req, r;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_tconx" );
   if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smb_tconx" );
@@ -2325,26 +2431,26 @@ function smb_tconx( soc, name, uid, share ) {
 
   if( strlen( uid ) == 8 ) {
     response = smb2_tconx( soc:soc, name:name, share:share, uid:uid );
-    return(response);
+    return response;
   } else {
     if( ntlmssp_flag ) {
       response = smb_tconx_NTLMSSP( soc:soc, name:name, uid:uid, share:share );
-      return(response);
+      return response;
     } else {
       high = uid / 256;
       low = uid % 256;
-      local_var req;
       len = 48 + strlen( name ) + strlen( share ) + 6;
       ulen = 5 + strlen( name ) + strlen( share ) + 6;
-      req = raw_string(0x00, 0x00, 0x00, len, 0xFF, 0x53, 0x4D, 0x42, 0x75, 0x00,
-                       0x00, 0x00, 0x00, 0x08, 0xc8, 0x01, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x28, low, high, 0x00, 0x00, 0x04, 0xFF, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x01, 0x00, ulen, 0x00, 0x00, 0x5C, 0x5C) + name +
-                       raw_string(0x5C) + share +raw_string(0x00) + "?????"  +
-                       raw_string(0x00);
-      send(socket:soc, data:req);
-      r = smb_recv(socket:soc);
+
+      req = raw_string( 0x00, 0x00, 0x00, len, 0xFF, 0x53, 0x4D, 0x42, 0x75, 0x00,
+                        0x00, 0x00, 0x00, 0x08, 0xc8, 0x01, 0x00, 0x00, 0x00, 0x00,
+                        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                        0x00, 0x28, low, high, 0x00, 0x00, 0x04, 0xFF, 0x00, 0x00,
+                        0x00, 0x00, 0x00, 0x01, 0x00, ulen, 0x00, 0x00, 0x5C, 0x5C ) + name +
+                        raw_string( 0x5C ) + share +raw_string( 0x00 ) + "?????"  +
+                        raw_string( 0x00 );
+      send( socket:soc, data:req );
+      r = smb_recv( socket:soc );
       if( strlen( r ) < 10 ) return FALSE ;
 
       if( ord( r[9] ) == 0 ) {
@@ -2358,36 +2464,37 @@ function smb_tconx( soc, name, uid, share ) {
 
 function smb2_tconx( soc, name, share, uid ) {
 
-  local_var response;
+  # ntlmssp_flag is global_var!!!!
+
+  local_var soc, name, uid, share;
+  local_var response, high, low, len, ulen, req, r;
 
   if( ntlmssp_flag ) {
-    response = smb2_tconx_NTLMSSP(soc:soc, name:name, share:share, uid:uid);
-    return(response);
-   } else {
-     high = uid / 256;
-     low = uid % 256;
-     local_var req;
-     len = 48 + strlen(name) + strlen(share) + 6;
-     ulen = 5 + strlen(name) + strlen(share) + 6;
-     req = raw_string(0x00, 0x00, 0x00, len, 0xFF, 0x53, 0x4D, 0x42, 0x75, 0x00,
+    response = smb2_tconx_NTLMSSP( soc:soc, name:name, share:share, uid:uid );
+    return response;
+  } else {
+    high = uid / 256;
+    low = uid % 256;
+    len = 48 + strlen( name ) + strlen( share ) + 6;
+    ulen = 5 + strlen( name ) + strlen( share ) + 6;
+
+    req = raw_string( 0x00, 0x00, 0x00, len, 0xFF, 0x53, 0x4D, 0x42, 0x75, 0x00,
                       0x00, 0x00, 0x00, 0x08, 0xc8, 0x01, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x28, low, high,
                       0x00, 0x00, 0x04, 0xFF, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x01, 0x00, ulen, 0x00, 0x00, 0x5C, 0x5C) + name +
-                      raw_string(0x5C) + share +raw_string(0x00) + "?????"  +
-                      raw_string(0x00);
-     send(socket:soc, data:req);
-     r = smb_recv(socket:soc);
-     if(strlen(r) < 10){
-			return(FALSE);
-		}
-		if(ord(r[9])==0){
-			return(r);
-		}
-		else {
-                	return(FALSE);
-        	}
+                      0x00, 0x01, 0x00, ulen, 0x00, 0x00, 0x5C, 0x5C ) + name +
+                      raw_string( 0x5C ) + share + raw_string( 0x00 ) + "?????"  +
+                      raw_string( 0x00 );
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 10 ) return FALSE;
+
+    if( ord( r[9] ) == 0 ) {
+      return r;
+    } else {
+      return FALSE;
+    }
   }
 }
 
@@ -2396,297 +2503,317 @@ function smb2_tconx( soc, name, share, uid ) {
 #------------------------------------------------------#
 function tconx_extract_tid( reply ) {
 
-  local_var ret;
+  local_var reply, ret, low, high;
 
   if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#tconx_extract_tid" );
 
-  if(strlen(reply) < 30){
-    return(FALSE);
-  }
+  if( strlen( reply ) < 30 ) return FALSE;
 
   if( ord( reply[4] ) == 254 ) {
-    ret = smb2_tconx_extract_tid( reply );
-    return(ret);
+    ret = smb2_tconx_extract_tid( reply:reply );
+    return ret;
   } else {
     low = ord( reply[28] );
     high = ord( reply[29] );
     ret = high * 256;
     ret = ret + low;
-    return(ret);
+    return ret;
   }
 }
 
- #------------------------------------------------------#
- # Extract the TID from the result of smb2_tconx()       #
- #------------------------------------------------------#
- function smb2_tconx_extract_tid(reply)
- {
-   if(strlen(reply) < 44){
-   return(FALSE);
-   }
+#------------------------------------------------------#
+# Extract the TID from the result of smb2_tconx()       #
+#------------------------------------------------------#
+function smb2_tconx_extract_tid( reply ) {
 
-   start = stridx(reply, "SMB"); # TBD: Whats the purpose of this? This will be replaced one line below again...
-   start = 4 + 4 + 2 + 2 + 2 + 2 + 2 + 2 + 4 + 4 + 8 + 4;
-   #NTLMSSP tid is 4 bytes in size
-   tid = (substr(reply, start, start+3));
-   return (tid);
- }
+  local_var reply, start, tid;
 
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#smb2_tconx_extract_tid" );
 
- #--------------------------------------------------------#
- # Request the creation of a pipe to name. Name must      #
- # contain '\'.                                           #
- # for NTLMSSP                                            #
- #--------------------------------------------------------#
+  if( strlen( reply ) < 44 ) return FALSE;
 
-function smbntcreatex_NTLMSSP(soc, uid, tid, name, always_return_blob)
- {
-
-        tid_high = tid / 256;
-        tid_low  = tid % 256;
-
-        uid_high = uid / 256;
-        uid_low  = uid % 256;
-
-        g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-
-        req = raw_string(0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00,
-                         0x00, 0x00, 0x00, 0x18);
-
-        if(isSignActive){
-                        req += raw_string(0x07, 0x00);
-        }
-        else
-                req += raw_string(0x03, 0x00);
-        req += raw_string(0x50, 0x81,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, tid_low, tid_high,0x33, 0x0c);
-        namelen = strlen(name);
-        name_hi = namelen / 256;
-        name_lo = namelen % 256;
-
-        req += raw_string(uid_low, uid_high,
-                         g_mlo, g_mhi, 0x18, 0xFF, 0x00, 0x00, 0x00, 0x00,
-                         name_lo, name_hi, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x9F, 0x01, 0x02, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
-                         0x00, 0x00, 0x00, (strlen(name)+1) % 256, 0x00) + name +
-              		 raw_string(0x00);
-	req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + req;
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	if( isSignActive ) {
-          len  = strlen( req );
-          seq_number += 1;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
- 	send( socket:soc, data:req );
-        r = smb_recv( socket:soc );
-        if( always_return_blob ) {
-          return r;
-        }
-
-        if( strlen(r) < 10){
-          return FALSE;
-        }
-
-	multiplex_id += 1;
-        if( isSignActive ) {
-          # verify signature
-          seq_number += 1;
-          len = strlen( r );
-          server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-          if( isnull( server_resp ) ) return FALSE;
-
-          #TODO: Also check the response length here before accessing possible non-existing data
-          if((strlen(server_resp) < 24) || (len < 24)){
-            return(FALSE);
-          }
-          orig_sign = substr( r, 18, 23 );
-          serv_sign = substr( server_resp, 18, 23 );
-          if( orig_sign != serv_sign ) {
-            return FALSE;
-          }
-        }
-        # -> END TODO
-
-        if( ord( r[9] ) == 0x00 ) {
-          return r;
-        } else {
-          return FALSE;
-        }
+  start = stridx( reply, "SMB" ); # TBD: Whats the purpose of this? This will be replaced one line below again...
+  start = 4 + 4 + 2 + 2 + 2 + 2 + 2 + 2 + 4 + 4 + 8 + 4;
+  #NTLMSSP tid is 4 bytes in size
+  tid = (substr( reply, start, start + 3 ) );
+  return tid;
 }
 
- function smb2ntcreatex_NTLMSSP(soc, uid, tid, name, always_return_blob)
- {
-        g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-        name_le = strlen(name);
-       name =  substr(name, 1, name_le-1);
-        uc = unicode(data:name);
 
+#--------------------------------------------------------#
+# Request the creation of a pipe to name. Name must      #
+# contain '\'.                                           #
+# for NTLMSSP                                            #
+#--------------------------------------------------------#
 
-        req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x60, 0x1f);
+function smbntcreatex_NTLMSSP( soc, uid, tid, name, always_return_blob ) {
 
-        if(isSignActive){
-                       req += raw_string(0x08, 0x00, 0x00, 0x00);
-        }
-        else
-        {
-                req += raw_string(0x00, 0x00, 0x00, 0x00);
-        }
+  # s_sign_key, sign_key, isSignActive, g_mhi, g_mlo, seq_number and multiplex_id are global_vars!!!
 
-            req += raw_string(0x00, 0x00, 0x00, 0x00,
-                         g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, tid, uid);
+  local_var soc, uid, tid, name, always_return_blob;
+  local_var tid_high, tid_low, uid_high, uid_low;
+  local_var req, namelen, name_hi, name_lo, len, r;
+  local_var server_resp, orig_sign, serv_sign;
 
-        ##Signature
-        req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-        namelen = strlen(name)+1;
-        name_hi = namelen / 256;
-        name_lo = namelen % 256;
-        req += raw_string(0x39, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x9f, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03,
-                          0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x40,
-                          0x00, 0x40, 0x00, 0x78, 0x00, 0x0c, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
-                          + uc;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smbntcreatex_NTLMSSP" );
+  if( isnull( uid) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smbntcreatex_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smbntcreatex_NTLMSSP" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smbntcreatex_NTLMSSP" );
 
-    if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smb2ntcreatex_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + sig;
+  tid_high = tid / 256;
+  tid_low  = tid % 256;
+
+  uid_high = uid / 256;
+  uid_low  = uid % 256;
+
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
+
+  req = raw_string( 0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00, 0x00, 0x00,
+                    0x00, 0x18 );
+
+  if( isSignActive ) {
+    req += raw_string( 0x07, 0x00 );
+  } else {
+    req += raw_string( 0x03, 0x00 );
+  }
+
+  req += raw_string( 0x50, 0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x33, 0x0c );
+
+  namelen = strlen( name );
+  name_hi = namelen / 256;
+  name_lo = namelen % 256;
+
+  req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x18, 0xFF, 0x00, 0x00,
+                     0x00, 0x00, name_lo, name_hi, 0x06, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x9F, 0x01, 0x02, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00,
+                     0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x02, 0x00, 0x00, 0x00, 0x00, ( strlen( name ) + 1 ) % 256, 0x00 ) + name +
+                     raw_string( 0x00 );
+  req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + req;
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  if( isSignActive ) {
+    len = strlen( req );
+    seq_number += 1;
+    req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number ); # TBD: This overwrites the previous declared req...
+    if( isnull( req ) ) return FALSE;
+  }
+
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( always_return_blob ) {
+    return r;
+  }
+
+  if( strlen( r ) < 10 ) return FALSE;
+
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
+    len = strlen( r );
+    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+    if( isnull( server_resp ) ) return FALSE;
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
     }
-    else{
-         req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + req ;
+
+    orig_sign = substr( r, 18, 23 );
+    serv_sign = substr( server_resp, 18, 23 );
+    if( orig_sign != serv_sign ) {
+      return FALSE;
     }
+  }
+  # -> END TODO
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
- 	send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-        if(strlen(r) < 14){
-          return(NULL);
-        }
+  if( ord( r[9] ) == 0x00 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
 
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-          ##PDU will arrive late
-          r = smb_recv(socket:soc);
-          if(strlen(r) < 14){
-            return(NULL);
-          }
-          status = ord(r[12]);
-          status2 = ord(r[13]);
-        }
-        if(always_return_blob){
-                return(r);
-        }
-	multiplex_id += 1;
-        if(isSignActive){
-                # verify signature
-                seq_number += 1;
+function smb2ntcreatex_NTLMSSP( soc, uid, tid, name, always_return_blob ) {
 
-                r_head = substr(r, 0, 3);
-                r = substr(r, 4, strlen(r)-1);
-                if(strlen(r) < 64){
-                  return(FALSE);
-                }
-                orig_sign = substr(r, 48, 63);
-                server_resp = get_smb2_signature(buf:r, key:sign_key);
-                if( isnull( server_resp ) ) return FALSE;
-                if(strlen(server_resp) < 64){
-                  return(FALSE);
-                }
-                serv_sign = substr(server_resp, 48, 63);
-                if(orig_sign != serv_sign){
-                         return(FALSE);
-                }
-                else {
-                  r = r_head + r ;
-                }
-        }
-        # END TODO ->
+  # sign_key, isSignActive, g_mhi, g_mlo, seq_number and multiplex_id are global_vars!!!
 
-        if(ord(r[12])==0){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
- }
+  local_var soc, uid, tid, name, always_return_blob;
+  local_var name_le, name, uc, req, namelen, name_hi, name_lo;
+  local_var r, status, status2, r_head, orig_sign, server_resp, serv_sign;
 
- #--------------------------------------------------------#
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2ntcreatex_NTLMSSP" );
+  if( isnull( uid) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb2ntcreatex_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smb2ntcreatex_NTLMSSP" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smb2ntcreatex_NTLMSSP" );
+
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
+  name_le = strlen( name );
+  name = substr( name, 1, name_le - 1 );
+  uc = unicode( data:name );
+
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x60, 0x1f );
+
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+  }
+
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid );
+
+  ##Signature
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+
+  namelen = strlen( name ) + 1;
+  name_hi = namelen / 256;
+  name_lo = namelen % 256;
+
+  req += raw_string( 0x39, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x9f, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                     0x40, 0x00, 0x40, 0x00, 0x78, 0x00, 0x0c, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ) + uc;
+
+  if( isSignActive ) {
+    sig = get_smb2_signature( buf:req, key:sign_key );
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#smb2ntcreatex_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
+    }
+    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + sig;
+  } else {
+    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + req ;
+  }
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 14 ) return NULL;
+
+  ##If status is pending, wait for response
+  status = ord( r[12] );
+  status2 = ord( r[13] );
+  while( status == 3 && status2 == 1 ) {
+
+    ##PDU will arrive late
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 14 ) return NULL;
+
+    status = ord( r[12] );
+          status2 = ord( r[13] );
+  }
+
+  if( always_return_blob ) {
+    return r;
+  }
+
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
+
+    r_head = substr( r, 0, 3 );
+    r = substr( r, 4, strlen( r ) - 1 );
+    if( strlen( r ) < 64 ) return FALSE;
+
+    orig_sign = substr( r, 48, 63 );
+    server_resp = get_smb2_signature( buf:r, key:sign_key );
+    if( isnull( server_resp ) ) return FALSE;
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
+    serv_sign = substr( server_resp, 48, 63 );
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    } else {
+      r = r_head + r ;
+    }
+  }
+  # END TODO ->
+
+  if( ord( r[12] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
+
+#--------------------------------------------------------#
 # Request the creation of a pipe to name. Name must      #
 # contain '\'.                                           #
 #--------------------------------------------------------#
 
 function smb2ntcreatex( soc, uid, tid, name, always_return_blob ) {
 
-  local_var response;
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, name, always_return_blob;
+  local_var response, tid_high, tid_low, uid_high, uid_low, req, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2ntcreatex" );
+  if( isnull( uid) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb2ntcreatex" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smb2ntcreatex" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smb2ntcreatex" );
 
   if( ntlmssp_flag ) {
-    response = smb2ntcreatex_NTLMSSP(soc:soc, uid:uid, tid:tid, name:name, always_return_blob:always_return_blob);
-    return(response);
+    response = smb2ntcreatex_NTLMSSP( soc:soc, uid:uid, tid:tid, name:name, always_return_blob:always_return_blob );
+    return response;
   } else {
     tid_high = tid / 256;
     tid_low  = tid % 256;
 
-     uid_high = uid / 256;
-     uid_low  = uid % 256;
+    uid_high = uid / 256;
+    uid_low  = uid % 256;
 
-     req = raw_string(0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x00, 0x50, 0x81,
+    #TBD: g_mlo and g_mhi are not set in this function
+    req = raw_string( 0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00, 0x00, 0x00,
+                      0x00, 0x18, 0x03, 0x00, 0x50, 0x81, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x18, 0xFF, 0x00, 0x00, 0x00, 0x00,
-                      0x07, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x9F, 0x01, 0x02, 0x00, 0x00, 0x00,
+                      tid_low, tid_high, 0x00, 0x28, uid_low, uid_high, g_mlo, g_mhi,
+                      0x18, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00,
+                      0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x9F, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
-                      0x00, 0x00, 0x00, (strlen(name)+1) % 256, 0x00) + name +
-                      raw_string(0x00);
+                      0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
+                      0x00, ( strlen( name ) + 1 ) % 256, 0x00 ) + name + raw_string( 0x00 );
 
-     req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + req;
+    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + req;
 
-       send(socket:soc, data:req);
-       r = smb_recv(socket:soc);
-       if(always_return_blob){
-                return r;
-        }
-        if(strlen(r) < 10){
-                return(FALSE);
-        }
-       if(ord(r[9])==0x00){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( always_return_blob ) return r;
+    if( strlen( r ) < 10 ) return FALSE;
+
+    if( ord( r[9] ) == 0x00 ) {
+      return r;
+    } else {
+      return FALSE;
+    }
   }
 }
 
 function smbntcreatex( soc, uid, tid, name, always_return_blob ) {
 
+  local_var soc, uid, tid, name, always_return_blob;
   local_var response;
 
   if( ! name ) name = "\winreg";
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smbntcreatex" );
+  if( isnull( uid) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smbntcreatex" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smbntcreatex" );
+  if( isnull( name ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#name#-#smbntcreatex" );
 
   if( strlen( uid ) == 8 ) {
     response = smb2ntcreatex( soc:soc, uid:uid, tid:tid, name:name, always_return_blob:always_return_blob );
@@ -2699,72 +2826,46 @@ function smbntcreatex( soc, uid, tid, name, always_return_blob ) {
 
 function smb1ntcreatex( soc, uid, tid, name, always_return_blob ) {
 
-  local_var response;
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, name, always_return_blob;
+  local_var response, tid_high, tid_low, uid_high, uid_low;
 
   if( ntlmssp_flag ) {
-    response = smbntcreatex_NTLMSSP(soc:soc, uid:uid, tid:tid, name:name, always_return_blob:always_return_blob);
-    return(response);
+    response = smbntcreatex_NTLMSSP( soc:soc, uid:uid, tid:tid, name:name, always_return_blob:always_return_blob );
+    return response;
   } else {
-     tid_high = tid / 256;
-     tid_low  = tid % 256;
+    tid_high = tid / 256;
+    tid_low  = tid % 256;
 
-     uid_high = uid / 256;
-     uid_low  = uid % 256;
+    uid_high = uid / 256;
+    uid_low  = uid % 256;
 
-     req = raw_string(0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x00, 0x50, 0x81,
+    #TBD: g_mlo and g_mhi are not set in this function
+    req = raw_string( 0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00, 0x00, 0x00,
+                      0x00, 0x18, 0x03, 0x00, 0x50, 0x81, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x18, 0xFF, 0x00, 0x00, 0x00, 0x00,
-                      0x07, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x9F, 0x01, 0x02, 0x00, 0x00, 0x00,
+                      tid_low, tid_high, 0x00, 0x28, uid_low, uid_high, g_mlo, g_mhi,
+                      0x18, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00,
+                      0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x9F, 0x01, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
-                      0x00, 0x00, 0x00, (strlen(name)+1) % 256, 0x00) + name +
-                      raw_string(0x00);
+                      0x03, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
+                      0x00, ( strlen( name ) + 1 ) % 256, 0x00 ) + name + raw_string( 0x00 );
 
-     req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + req;
+    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + req;
 
-       send(socket:soc, data:req);
-       r = smb_recv(socket:soc);
-       if(always_return_blob){
-                return r;
-        }
-        if(strlen(r) < 10){
-                return(FALSE);
-       }
-       if(ord(r[9])==0x00){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( always_return_blob ) return r;
+    if( strlen( r ) < 10 ) return FALSE;
 
-  }
-}
-
- #--------------------------------------------------------#
- # Extract the ID of our pipe from the result             #
- # of smbntcreatex()                                      #
- #--------------------------------------------------------#
-function smbntcreatex_extract_pipe( reply ) {
-
-  local_var ret;
-
-  if( strlen( reply ) < 44 ) {
-    return(FALSE);
-  }
-
-  if( ord( reply[4] ) == 254 ) {
-    ret = smb2ntcreatex_extract_pipe(reply);
-    return(ret);
-  } else {
-    low = ord(reply[42]);
-    high = ord(reply[43]);
-    ret = high * 256;
-    ret = ret + low;
-    return(ret);
+    if( ord( r[9] ) == 0x00 ) {
+      return r;
+    } else {
+      return FALSE;
+    }
   }
 }
 
@@ -2772,372 +2873,258 @@ function smbntcreatex_extract_pipe( reply ) {
 # Extract the ID of our pipe from the result             #
 # of smbntcreatex()                                      #
 #--------------------------------------------------------#
+function smbntcreatex_extract_pipe( reply ) {
 
+  local_var reply, ret, low, high;
+
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#smbntcreatex_extract_pipe" );
+  if( strlen( reply ) < 44 ) return FALSE;
+
+  if( ord( reply[4] ) == 254 ) {
+    ret = smb2ntcreatex_extract_pipe( reply:reply );
+    return ret;
+  } else {
+    low = ord( reply[42] );
+    high = ord( reply[43] );
+    ret = high * 256;
+    ret = ret + low;
+    return ret;
+  }
+}
+
+#--------------------------------------------------------#
+# Extract the ID of our pipe from the result             #
+# of smbntcreatex()                                      #
+#--------------------------------------------------------#
 function smb2ntcreatex_extract_pipe( reply ) {
 
-  local_var ret;
+  local_var reply, ret, start;
 
-  if(strlen(reply) < 148 ) {
-    return ( NULL );
-  }
-  start = stridx(reply, "SMB"); # TBD: Whats the purpose of this? This will be replaced one line below again...
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#smb2ntcreatex_extract_pipe" );
+  if( strlen( reply ) < 148 ) return NULL;
+
+  start = stridx( reply, "SMB" ); # TBD: Whats the purpose of this? This will be replaced one line below again...
   start = 64 + 64 + 4;
   #NTLMSSP challenge is 8 bytes in size
-  ret = (substr(reply, start, start+15));
-  return (ret);
+  ret = ( substr( reply, start, start + 15 ) );
+  return ret;
 }
 
- #---------------------------------------------------------#
- # Determines whether the registry is accessible           #
- #---------------------------------------------------------#
+#---------------------------------------------------------#
+# Determines whether the registry is accessible           #
+#---------------------------------------------------------#
+function pipe_accessible_registry_NTLMSSP( soc, uid, tid, pipe ) {
 
- function pipe_accessible_registry_NTLMSSP(soc, uid, tid, pipe)
- {
- 	tid_low = tid % 256;
- 	tid_high = tid / 256;
- 	uid_low = uid % 256;
- 	uid_high = uid / 256;
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-	g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
+  # s_sign_key, sign_key, isSignActive, g_mhi, g_mlo, seq_number and multiplex_id are global_vars!!!
 
-	req = raw_string(0x00, 0x00,
- 		 	 0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18);
-	if(isSignActive){
-                        req += raw_string(0x07, 0x00);
-        }
-        else
-                req += raw_string(0x03, 0x00);
-	req += raw_string(0x1b, 0x81,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_low, tid_high, 0x33, 0x0c, uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4C,
-			 0x00, 0x48, 0x00, 0x4C, 0x00, 0x02, 0x00);
-	req += raw_string(0x26, 0x00,
-			 pipe_low, pipe_high, 0x51, 0x00, 0x5C, 0x50, 0x49,
-			 0x50, 0x45, 0x5C, 0x00, 0x00, 0x00, 0x05, 0x00,
-			 0x0B, 0x00, 0x10, 0x00, 0x00, 0x00, 0x48, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x16,
-			 0x30, 0x16, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0xd0,
-			 0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31, 0xAA, 0xAA,
-			 0x90, 0x00, 0x38, 0x00, 0x10, 0x03, 0x01, 0x00,
-			 0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A, 0xEB, 0x1C,
-			 0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00, 0x2B, 0x10,
-			 0x48, 0x60, 0x02, 0x00, 0x00, 0x00);
+  local_var soc, uid, tid, pipe;
+  local_var tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+  local_var req, len, packet, r, server_resp, orig_sign, serv_sign;
 
-       # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-       if( isSignActive ) {
-         len = strlen( req );
-         seq_number += 1;
-         packet = req;
-         req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-         if( isnull( req ) ) return FALSE;
-        }
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#pipe_accessible_registry_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#pipe_accessible_registry_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#pipe_accessible_registry_NTLMSSP" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#pipe_accessible_registry_NTLMSSP" );
 
-	send( socket:soc, data:req );
-	r = smb_recv( socket:soc );
-        if( strlen( r ) < 10 ) {
-          return FALSE;
-        }
+  tid_low = tid % 256;
+  tid_high = tid / 256;
+  uid_low = uid % 256;
+  uid_high = uid / 256;
+  pipe_low = pipe % 256;
+  pipe_high = pipe / 256;
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
-        multiplex_id += 1;
-        if(isSignActive){
-          # verify signature
-          seq_number += 1;
-          len = strlen( r );
-          server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-          if( isnull( server_resp ) ) return FALSE;
+  req = raw_string( 0x00, 0x00, 0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42,
+                    0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
 
-          #TODO: Also check the response length here before accessing possible non-existing data
-          if((strlen(server_resp) < 24) || (len < 24)) {
-            return(FALSE);
-          }
+  if( isSignActive ) {
+    req += raw_string( 0x07, 0x00 );
+  } else {
+    req += raw_string( 0x03, 0x00 );
+  }
 
-          orig_sign = substr( r, 18, 23 );
-          serv_sign = substr( server_resp, 18, 23 );
-          if( orig_sign != serv_sign ) {
-            return FALSE;
-          }
-        }
-        # -> END TODO
+  req += raw_string( 0x1b, 0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x33, 0x0c,
+                     uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48,
+                     0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x4C, 0x00, 0x48, 0x00, 0x4C, 0x00, 0x02,
+                     0x00 );
 
-        if( ord( r[9] ) == 0 ) {
-          return r;
-	} else {
-          return FALSE;
-        }
+  req += raw_string( 0x26, 0x00, pipe_low, pipe_high, 0x51, 0x00, 0x5C, 0x50,
+                     0x49, 0x50, 0x45, 0x5C, 0x00, 0x00, 0x00, 0x05,
+                     0x00, 0x0B, 0x00, 0x10, 0x00, 0x00, 0x00, 0x48,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30,
+                     0x16, 0x30, 0x16, 0x00, 0x00, 0x00, 0x00, 0x01,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01,
+                     0xd0, 0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31, 0xAA,
+                     0xAA, 0x90, 0x00, 0x38, 0x00, 0x10, 0x03, 0x01,
+                     0x00, 0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A, 0xEB,
+                     0x1C, 0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00, 0x2B,
+                     0x10, 0x48, 0x60, 0x02, 0x00, 0x00, 0x00 );
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  if( isSignActive ) {
+    len = strlen( req );
+    seq_number += 1;
+    packet = req;
+    req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number ); # TBD: This overwrites the previous declared req...
+    if( isnull( req ) ) return FALSE;
+  }
+
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 10 ) return FALSE;
+
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
+    len = strlen( r );
+    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+    if( isnull( server_resp ) ) return FALSE;
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
+    }
+
+    orig_sign = substr( r, 18, 23 );
+    serv_sign = substr( server_resp, 18, 23 );
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    }
+  }
+  # -> END TODO
+
+  if( ord( r[9] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
 }
 
-function pipe2_accessible_registry_NTLMSSP(soc, uid, tid, pipe)
-{
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
+function pipe2_accessible_registry_NTLMSSP( soc, uid, tid, pipe ) {
 
-   req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
+  # sign_key, isSignActive, g_mhi, g_mlo, seq_number and multiplex_id are global_vars!!!
 
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
-   req += raw_string(0x00, 0x00, 0x00, 0x00,
-                    g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                    0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+  local_var soc, uid, tid, pipe;
+  local_var req, ioctl_req, sig, r, status, status2, r_head, orig_sign, server_resp, serv_sign;
 
-   #IOCTL Req
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#pipe2_accessible_registry_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#pipe2_accessible_registry_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#pipe2_accessible_registry_NTLMSSP" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#pipe2_accessible_registry_NTLMSSP" );
 
-   ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                          pipe, 0x78, 0x00, 0x00, 0x00, 0x48,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-                          0x0b, 0x03, 0x10, 0x00, 0x00, 0x00, 0x48, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x16,
-                          0x30, 0x16, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0xd0,
-                          0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31, 0xAA, 0xAA,
-                          0x90, 0x00, 0x38, 0x00, 0x10, 0x03, 0x01, 0x00,
-                          0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A, 0xEB, 0x1C,
-                          0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00, 0x2B, 0x10,
-                          0x48, 0x60, 0x02, 0x00, 0x00, 0x00);
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
-   req = req + ioctl_req;
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
 
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+  }
 
-    if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#pipe2_accessible_registry_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + sig;
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
+
+  #IOCTL Req
+  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                          pipe, 0x78, 0x00, 0x00, 0x00, 0x48, 0x00, 0x00,
+                          0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00,
+                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00,
+                          0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                          0x00, 0x05, 0x00, 0x0b, 0x03, 0x10, 0x00, 0x00,
+                          0x00, 0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                          0x00, 0x30, 0x16, 0x30, 0x16, 0x00, 0x00, 0x00,
+                          0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+                          0x00, 0x01, 0xd0, 0x8c, 0x33, 0x44, 0x22, 0xF1,
+                          0x31, 0xAA, 0xAA, 0x90, 0x00, 0x38, 0x00, 0x10,
+                          0x03, 0x01, 0x00, 0x00, 0x00, 0x04, 0x5D, 0x88,
+                          0x8A, 0xEB, 0x1C, 0xc9, 0x11, 0x9F, 0xE8, 0x08,
+                          0x00, 0x2B, 0x10, 0x48, 0x60, 0x02, 0x00, 0x00,
+                          0x00 );
+  req += ioctl_req;
+
+  if( isSignActive ) {
+    sig = get_smb2_signature( buf:req, key:sign_key );
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#pipe2_accessible_registry_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
     }
-    else{
-         req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + req ;
+    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + sig;
+  } else {
+    req = raw_string(0x00, 0x00, 0x00, (strlen(req)%256)) + req ;
+  }
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 14 ) return FALSE;
+
+  ##If status is pending, wait for response
+  status = ord( r[12] );
+  status2 = ord( r[13] );
+  while( status == 3 && status2 == 1 ) {
+    ##PDU will arrive late
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 14 ) return FALSE;
+    status = ord( r[12] );
+    status2 = ord( r[13] );
+  }
+
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
+
+    r_head = substr( r, 0, 3 );
+    r = substr( r, 4, strlen( r ) - 1 );
+    if( strlen( r ) < 64 ) return FALSE;
+
+    orig_sign = substr( r, 48, 63 );
+    server_resp = get_smb2_signature( buf:r, key:sign_key );
+    if( isnull( server_resp ) ) return FALSE;
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
+    serv_sign = substr( server_resp, 48, 63 );
+
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    } else {
+      r = r_head + r ;
     }
+  }
+  # END TODO ->
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-   if(strlen(r) < 14){
-     return(FALSE);
-   }
-
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if(strlen(r) < 14){
-             return(FALSE);
-           }
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
-
-   multiplex_id += 1;
-   if(isSignActive){
-     # verify signature
-     seq_number += 1;
-
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-
-             if(strlen(r) < 64){
-               return(FALSE);
-             }
-             orig_sign = substr(r, 48, 63);
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             if(strlen(server_resp) < 64){
-               return(FALSE);
-             }
-             serv_sign = substr(server_resp, 48, 63);
-
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else {
-               r = r_head + r ;
-             }
-   }
-   # END TODO ->
-
-   if(ord(r[12])==0){
-        return(r);
-   }
-        else {
-             return(FALSE);
-   }
- }
-
+  if( ord( r[12] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
 
 function pipe2_accessible_registry( soc, uid, tid, pipe ) {
 
-  local_var response;
+  # ntlmssp_flag, g_mhi and g_mlo are global_vars!!!
+
+  local_var soc, uid, tid, pipe;
+  local_var response, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, req, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#pipe2_accessible_registry" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#pipe2_accessible_registry" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#pipe2_accessible_registry" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#pipe2_accessible_registry" );
 
   if( ntlmssp_flag ) {
-    response = pipe2_accessible_registry_NTLMSSP(soc:soc, uid:uid, tid:tid, pipe:pipe);
-    return(response);
-  } else {
-      tid_low = tid % 256;
-      tid_high = tid / 256;
-      uid_low = uid % 256;
-      uid_high = uid / 256;
-      pipe_low = pipe % 256;
-      pipe_high = pipe / 256;
-
-      req = raw_string(0x00, 0x00,
-                       0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                       0x00, 0x00, 0x00, 0x18, 0x03, 0x00, 0x1B, 0x81,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                       g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48, 0x00, 0x00,
-                       0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4C,
-                       0x00, 0x48, 0x00, 0x4C, 0x00, 0x02, 0x00, 0x26,
-                       0x00, pipe_low, pipe_high, 0x51, 0x00, 0x5C, 0x50, 0x49,
-                       0x50, 0x45, 0x5C, 0x00, 0x00, 0x00, 0x05, 0x00,
-                       0x0B, 0x00, 0x10, 0x00, 0x00, 0x00, 0x48, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x16,
-                       0x30, 0x16, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0xd0,
-                       0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31, 0xAA, 0xAA,
-                       0x90, 0x00, 0x38, 0x00, 0x10, 0x03, 0x01, 0x00,
-                       0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A, 0xEB, 0x1C,
-                       0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00, 0x2B, 0x10,
-                       0x48, 0x60, 0x02, 0x00, 0x00, 0x00);
-
-     send(socket:soc, data:req);
-     r = smb_recv(socket:soc);
-     if(strlen(r) < 13){
-          return(FALSE);
-     }
-     if(ord(r[12])==0){
-         return(r);
-     }
-     else {
-           return(FALSE);
-     }
-  }
-}
-
-function pipe_accessible_registry( soc, uid, tid, pipe ) {
-
-  local_var res;
-
-  if( strlen( uid ) == 8 ) {
-    res = pipe2_accessible_registry(soc:soc, uid:uid, tid:tid, pipe:pipe);
-    return(res);
-  } else {
-    res = pipe1_accessible_registry(soc:soc, uid:uid, tid:tid, pipe:pipe);
-    return(res);
-  }
-}
-
-function pipe1_accessible_registry( soc, uid, tid, pipe ) {
-
-  local_var response;
-
-  if( ntlmssp_flag ) {
-    response = pipe_accessible_registry_NTLMSSP(soc:soc, uid:uid, tid:tid, pipe:pipe);
-    return(response);
-  } else {
-        tid_low = tid % 256;
-        tid_high = tid / 256;
-        uid_low = uid % 256;
-        uid_high = uid / 256;
-        pipe_low = pipe % 256;
-        pipe_high = pipe / 256;
-
-        req = raw_string(0x00, 0x00,
-                         0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                         0x00, 0x00, 0x00, 0x18, 0x03, 0x00, 0x1B, 0x81,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                         g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48, 0x00, 0x00,
-                         0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4C,
-                         0x00, 0x48, 0x00, 0x4C, 0x00, 0x02, 0x00, 0x26,
-                         0x00, pipe_low, pipe_high, 0x51, 0x00, 0x5C, 0x50, 0x49,
-                         0x50, 0x45, 0x5C, 0x00, 0x00, 0x00, 0x05, 0x00,
-                         0x0B, 0x00, 0x10, 0x00, 0x00, 0x00, 0x48, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x16,
-                         0x30, 0x16, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0xd0,
-                         0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31, 0xAA, 0xAA,
-                         0x90, 0x00, 0x38, 0x00, 0x10, 0x03, 0x01, 0x00,
-                         0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A, 0xEB, 0x1C,
-                         0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00, 0x2B, 0x10,
-                         0x48, 0x60, 0x02, 0x00, 0x00, 0x00);
-
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-        if(strlen(r) < 10){
-                return(FALSE);
-        }
-        if(ord(r[9])==0){
-                return(r);
-        }
-        else {
-                return(FALSE);
-        }
-  }
-}
-
-# TODO: Deduplicate code as the only difference between registry_open_hklm*,
-# registry_open_hku* and registry_open_hkcu* is the following in the larger raw_string:
-# 0x01 => OpenHKCU
-# 0x02 => OpenHKLM
-# 0x03 => OpenHKPD
-# 0x04 => OpenHKU
-
-#----------------------------------------------------------#
-# RegOpenHKLM()                                            #
-#----------------------------------------------------------#
-
-function registry_open_hklm( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, res;
-
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hklm" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hklm" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hklm" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hklm" );
-
-  if( strlen( uid ) == 8 ) {
-    res = registry2_open_hklm( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return res;
-  } else {
-    res = registry1_open_hklm( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return res;
-  }
-}
-
-function registry1_open_hklm( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, response;
-
-  if( ntlmssp_flag ) {
-    response = registry_open_hklm_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
+    response = pipe2_accessible_registry_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
     return response;
   } else {
-
-    local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
     tid_low = tid % 256;
     tid_high = tid / 256;
     uid_low = uid % 256;
@@ -3145,23 +3132,101 @@ function registry1_open_hklm( soc, uid, tid, pipe ) {
     pipe_low = pipe % 256;
     pipe_high = pipe / 256;
 
-    req = raw_string( 0x00, 0x00,
-                      0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x1D, 0x83,
+    #TBD: g_mlo and g_mhi are not set in this function
+    req = raw_string( 0x00, 0x00, 0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0x00,
+                      0x1B, 0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x00, 0x28,
+                      uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48,
+                      0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                      0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                      0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                      0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                      0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                      0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                      0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x10, 0xFF,
-                      0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                      0x00, 0x02 );
+                      0x00, 0x4C, 0x00, 0x48, 0x00, 0x4C, 0x00, 0x02,
+                      0x00, 0x26, 0x00, pipe_low, pipe_high, 0x51, 0x00, 0x5C,
+                      0x50, 0x49, 0x50, 0x45, 0x5C, 0x00, 0x00, 0x00,
+                      0x05, 0x00, 0x0B, 0x00, 0x10, 0x00, 0x00, 0x00,
+                      0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x30, 0x16, 0x30, 0x16, 0x00, 0x00, 0x00, 0x00,
+                      0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
+                      0x01, 0xd0, 0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31,
+                      0xAA, 0xAA, 0x90, 0x00, 0x38, 0x00, 0x10, 0x03,
+                      0x01, 0x00, 0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A,
+                      0xEB, 0x1C, 0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00,
+                      0x2B, 0x10, 0x48, 0x60, 0x02, 0x00, 0x00, 0x00 );
+
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 13 ) return FALSE;
+
+    if( ord( r[12] ) == 0 ) {
+      return r;
+    } else {
+      return FALSE;
+    }
+  }
+}
+
+function pipe_accessible_registry( soc, uid, tid, pipe ) {
+
+  local_var soc, uid, tid, pipe, res;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#pipe_accessible_registry" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#pipe_accessible_registry" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#pipe_accessible_registry" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#pipe_accessible_registry" );
+
+  if( strlen( uid ) == 8 ) {
+    res = pipe2_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
+    return res;
+  } else {
+    res = pipe1_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
+    return res;
+  }
+}
+
+function pipe1_accessible_registry( soc, uid, tid, pipe ) {
+
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe;
+  local_var response, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+  local_var req, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#pipe1_accessible_registry" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#pipe1_accessible_registry" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#pipe1_accessible_registry" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#pipe1_accessible_registry" );
+
+  if( ntlmssp_flag ) {
+    response = pipe_accessible_registry_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
+    return response;
+  } else {
+    tid_low = tid % 256;
+    tid_high = tid / 256;
+    uid_low = uid % 256;
+    uid_high = uid / 256;
+    pipe_low = pipe % 256;
+    pipe_high = pipe / 256;
+
+    #TBD: g_mlo and g_mhi are not set in this function
+    req = raw_string( 0x00, 0x00, 0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0x00,
+                      0x1B, 0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x00, 0x28,
+                      uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48,
+                      0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x4C, 0x00, 0x48, 0x00, 0x4C, 0x00, 0x02,
+                      0x00, 0x26, 0x00, pipe_low, pipe_high, 0x51, 0x00, 0x5C,
+                      0x50, 0x49, 0x50, 0x45, 0x5C, 0x00, 0x00, 0x00,
+                      0x05, 0x00, 0x0B, 0x00, 0x10, 0x00, 0x00, 0x00,
+                      0x48, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x30, 0x16, 0x30, 0x16, 0x00, 0x00, 0x00, 0x00,
+                      0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
+                      0x01, 0xd0, 0x8c, 0x33, 0x44, 0x22, 0xF1, 0x31,
+                      0xAA, 0xAA, 0x90, 0x00, 0x38, 0x00, 0x10, 0x03,
+                      0x01, 0x00, 0x00, 0x00, 0x04, 0x5D, 0x88, 0x8A,
+                      0xEB, 0x1C, 0xc9, 0x11, 0x9F, 0xE8, 0x08, 0x00,
+                      0x2B, 0x10, 0x48, 0x60, 0x02, 0x00, 0x00, 0x00 );
 
     send( socket:soc, data:req );
     r = smb_recv( socket:soc );
@@ -3175,10 +3240,154 @@ function registry1_open_hklm( soc, uid, tid, pipe ) {
   }
 }
 
-function registry_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
+function registry_open_hkcu( soc, uid, tid, pipe ) {
 
-  local_var soc, uid, tid, pipe;
+  local_var soc, uid, tid, pipe, res, reg_type;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hkcu" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hkcu" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hkcu" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hkcu" );
+
+  reg_type = raw_string( 0x01 ); # 0x01 => OpenHKCU
+
+  if( strlen( uid ) == 8 ) {
+    res = registry2_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  } else {
+    res = registry1_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  }
+}
+
+function registry_open_hklm( soc, uid, tid, pipe ) {
+
+  local_var soc, uid, tid, pipe, res, reg_type;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hklm" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hklm" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hklm" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hklm" );
+
+  reg_type = raw_string( 0x02 ); # 0x02 => OpenHKLM
+
+  if( strlen( uid ) == 8 ) {
+    res = registry2_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  } else {
+    res = registry1_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  }
+}
+
+function registry_open_hkpd( soc, uid, tid, pipe ) {
+
+  local_var soc, uid, tid, pipe, res, reg_type;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hkpd" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hkpd" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hkpd" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hkpd" );
+
+  reg_type = raw_string( 0x03 ); # 0x03 => OpenHKPD
+
+  if( strlen( uid ) == 8 ) {
+    res = registry2_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  } else {
+    res = registry1_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  }
+}
+
+function registry_open_hku( soc, uid, tid, pipe ) {
+
+  local_var soc, uid, tid, pipe, res, reg_type;
+
+  reg_type = raw_string( 0x04 ); # 0x04 => OpenHKU
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hku" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hku" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hku" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hku" );
+
+  if( strlen( uid ) == 8 ) {
+    res = registry2_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  } else {
+    res = registry1_open( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return res;
+  }
+}
+
+function registry1_open( soc, uid, tid, pipe, reg_type ) {
+
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reg_type, response;
   local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_open" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_open" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_open" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_open" );
+  if( isnull( reg_type ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reg_type#-#registry1_open" );
+
+  if( ntlmssp_flag ) {
+    response = registry_open_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
+    return response;
+  } else {
+
+    tid_low = tid % 256;
+    tid_high = tid / 256;
+    uid_low = uid % 256;
+    uid_high = uid / 256;
+    pipe_low = pipe % 256;
+    pipe_high = pipe / 256;
+
+    #TBD: g_mlo and g_mhi are not set in this function
+    req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0x80,
+                      0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x00, 0x28,
+                      uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24,
+                      0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x54, 0x00, 0x24, 0x00, 0x54, 0x00, 0x02,
+                      0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00,
+                      0x5c, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                      0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c,
+                      0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                      0x24, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                      0x0C, 0x00, 0x00, 0x00, 0x00, 0x00 ) + reg_type +
+          raw_string( 0x00, 0x10, 0xFF, 0x12, 0x00, 0x30, 0x39, 0x01,
+                      0x00, 0x00, 0x00, 0x00, 0x02 );
+
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 10 ) return FALSE;
+
+    if( ord( r[9] ) == 0 ) {
+      return r;
+    } else {
+      return FALSE;
+    }
+  }
+}
+
+function registry_open_NTLMSSP( soc, uid, tid, pipe, reg_type ) {
+
+  # s_sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reg_type;
+  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
+  local_var len, packet, server_resp, orig_sign, serv_sign;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_NTLMSSP" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_NTLMSSP" );
+  if( isnull( reg_type ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reg_type#-#registry_open_NTLMSSP" );
 
   tid_low = tid % 256;
   tid_high = tid / 256;
@@ -3198,20 +3407,20 @@ function registry_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
     req += raw_string( 0x03, 0x80 );
   }
 
-  req += raw_string( 0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, tid_low, tid_high, 0x33, 0x0c, uid_low, uid_high,
-                     g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                     0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                     0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                     0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                     0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                     0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                     0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                     0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x10, 0xFF,
-                     0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                     0x00, 0x02 );
+  req += raw_string( 0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x33, 0x0c,
+                     uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24,
+                     0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x54, 0x00, 0x24, 0x00, 0x54, 0x00, 0x02,
+                     0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00,
+                     0x5c, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                     0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c,
+                     0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                     0x24, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                     0x0C, 0x00, 0x00, 0x00, 0x00, 0x00 ) + reg_type +
+         raw_string( 0x00, 0x10, 0xFF, 0x12, 0x00, 0x30, 0x39, 0x01,
+                     0x00, 0x00, 0x00, 0x00, 0x02 );
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -3233,10 +3442,8 @@ function registry_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen(server_resp) < 24) || (len < 24)) {
-      return(FALSE);
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
     }
 
     orig_sign = substr( r, 18, 23 );
@@ -3254,16 +3461,23 @@ function registry_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
   }
 }
 
-function registry2_open_hklm( soc, uid, tid, pipe ) {
+function registry2_open( soc, uid, tid, pipe, reg_type ) {
 
-  local_var soc, uid, tid, pipe, response;
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reg_type, response;
+  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_open" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_open" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_open" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_open" );
+  if( isnull( reg_type ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reg_type#-#registry2_open" );
 
   if( ntlmssp_flag ) {
-    response = registry2_open_hklm_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
+    response = registry2_open_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe, reg_type:reg_type );
     return response;
   } else {
-
-    local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
 
     tid_low = tid % 256;
     tid_high = tid / 256;
@@ -3271,23 +3485,24 @@ function registry2_open_hklm( soc, uid, tid, pipe ) {
     uid_high = uid / 256;
     pipe_low = pipe % 256;
     pipe_high = pipe / 256;
-    req = raw_string( 0x00, 0x00,
-                      0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x1D, 0x83,
+
+    #TBD: g_mlo and g_mhi are not set in this function
+    req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0x80,
+                      0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x00, 0x28,
+                      uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24,
+                      0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                      0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                      0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                      0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                      0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                      0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                      0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x10, 0xFF,
-                      0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                      0x00, 0x02 );
+                      0x00, 0x54, 0x00, 0x24, 0x00, 0x54, 0x00, 0x02,
+                      0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00,
+                      0x5c, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                      0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c,
+                      0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                      0x24, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                      0x0C, 0x00, 0x00, 0x00, 0x00, 0x00 ) + reg_type +
+          raw_string( 0x00, 0x10, 0xFF, 0x12, 0x00, 0x30, 0x39, 0x01,
+                      0x00, 0x00, 0x00, 0x00, 0x02 );
 
     send( socket:soc, data:req );
     r = smb_recv( socket:soc );
@@ -3301,10 +3516,19 @@ function registry2_open_hklm( soc, uid, tid, pipe ) {
   }
 }
 
-function registry2_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
+function registry2_open_NTLMSSP( soc, uid, tid, pipe, reg_type ) {
 
-  local_var soc, uid, tid, pipe;
+  # sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reg_type;
   local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
+  local_var ioctl_req, status, status2, r_head, orig_sign, server_resp, serv_sign;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_open_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_open_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_open_NTLMSSP" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_open_NTLMSSP" );
+  if( isnull( reg_type ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reg_type#-#registry2_open_NTLMSSP" );
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
@@ -3318,30 +3542,29 @@ function registry2_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
     req += raw_string( 0x00, 0x00, 0x00, 0x00 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
 
   ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                          pipe, 0x78, 0x00, 0x00, 0x00, 0x24,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-                          0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                          0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x10, 0xFF,
-                          0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x02 );
+                          pipe, 0x78, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00,
+                          0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x00, 0x00,
+                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00,
+                          0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                          0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00,
+                          0x00, 0x24, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
+                          0x00, 0x34, 0x00, 0x00, 0x00, 0x00, 0x00 ) + reg_type +
+              raw_string( 0x00, 0x10, 0xFF, 0x12, 0x00, 0x30, 0x39, 0x01,
+                          0x00, 0x00, 0x00, 0x00, 0x02 );
 
   req += ioctl_req;
 
   if( isSignActive ) {
     sig = get_smb2_signature( buf:req, key:sign_key );
     if( isnull( sig ) ) {
-      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_open_hklm_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_open_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
       return FALSE;
     }
     req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + sig;
@@ -3352,9 +3575,7 @@ function registry2_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   send( socket:soc, data:req );
   r = smb_recv( socket:soc );
-  if(strlen(r) < 14){
-    return(NULL);
-  }
+  if( strlen( r ) < 14 ) return NULL;
 
   ##If status is pending, wait for response
   status = ord( r[12] );
@@ -3362,9 +3583,7 @@ function registry2_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
   while( status == 3 && status2 == 1 ) {
     ##PDU will arrive late
     r = smb_recv( socket:soc );
-    if(strlen(r) < 14){
-      return(NULL);
-    }
+    if( strlen( r ) < 14 ) return NULL;
     status = ord( r[12] );
     status2 = ord( r[13] );
   }
@@ -3375,15 +3594,13 @@ function registry2_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
     seq_number += 1;
     r_head = substr( r, 0, 3 );
     r = substr( r, 4, strlen( r ) - 1 );
-    if(strlen(r) < 64){
-      return(FALSE);
-    }
+    if( strlen( r ) < 64 ) return FALSE;
+
     orig_sign = substr( r, 48, 63 );
     server_resp = get_smb2_signature( buf:r, key:sign_key );
     if( isnull( server_resp ) ) return FALSE;
-    if(strlen(server_resp) < 64) {
-      return(FALSE);
-    }
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
     serv_sign = substr( server_resp, 48, 63 );
 
     if( orig_sign != serv_sign ) {
@@ -3402,969 +3619,241 @@ function registry2_open_hklm_NTLMSSP( soc, uid, tid, pipe ) {
 }
 
 #----------------------------------------------------------#
-# RegOpenHKU()                                            #
+# RegClose()                                               #
 #----------------------------------------------------------#
 
-function registry_open_hku( soc, uid, tid, pipe ) {
+#NTLMSSP
+function registry_close_NTLMSSP( soc, uid, tid, pipe, reply ) {
 
-  local_var soc, uid, tid, pipe, res;
+  # s_sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
 
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hku" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hku" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hku" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hku" );
+  local_var soc, uid, tid, pipe, reply;
+  local_var tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, magic, i;
+  local_var req, len, packet, r, server_resp, orig_sign, serv_sign;
 
-  if( strlen( uid ) == 8 ) {
-    res = registry2_open_hku( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return res;
-  } else {
-    res = registry1_open_hku( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return res;
-  }
-}
-
-function registry1_open_hku( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, response;
-
-  if( ntlmssp_flag ) {
-    response = registry_open_hku_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return response;
-  } else {
-
-    local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
-    tid_low = tid % 256;
-    tid_high = tid / 256;
-    uid_low = uid % 256;
-    uid_high = uid / 256;
-    pipe_low = pipe % 256;
-    pipe_high = pipe / 256;
-
-    req = raw_string( 0x00, 0x00,
-                      0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x1D, 0x83,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                      0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                      0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                      0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                      0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                      0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                      0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x10, 0xFF,
-                      0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                      0x00, 0x02 );
-
-    send( socket:soc, data:req );
-    r = smb_recv( socket:soc );
-    if( strlen( r ) < 10 ) return FALSE;
-
-    if( ord( r[9] ) == 0 ) {
-      return r;
-    } else {
-      return FALSE;
-    }
-  }
-}
-
-function registry_open_hku_NTLMSSP( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe;
-  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_close_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_close_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_close_NTLMSSP" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_close_NTLMSSP" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_close_NTLMSSP" );
 
   tid_low = tid % 256;
   tid_high = tid / 256;
+
   uid_low = uid % 256;
   uid_high = uid / 256;
+
   pipe_low = pipe % 256;
   pipe_high = pipe / 256;
-  g_mhi = multiplex_id / 256;
-  g_mlo = multiplex_id % 256;
-
-  req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D,
-                    0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
-
-  if( isSignActive ) {
-    req += raw_string( 0x07, 0x80 );
-  } else {
-    req += raw_string( 0x03, 0x80 );
-  }
-
-  req += raw_string( 0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, tid_low, tid_high, 0x33, 0x0c, uid_low, uid_high,
-                     g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                     0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                     0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                     0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                     0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                     0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                     0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                     0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x10, 0xFF,
-                     0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                     0x00, 0x02 );
-
-  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-  if( isSignActive ) {
-    len = strlen( req );
-    seq_number += 1;
-    packet = req;
-    req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-    if( isnull( req ) ) return FALSE;
-  }
-
-  send( socket:soc, data:req );
-  r = smb_recv( socket:soc );
-  if( strlen( r ) < 10 ) return FALSE;
-
-  multiplex_id += 1;
-  if( isSignActive ) {
-    # verify signature
-    seq_number += 1;
-    len = strlen( r );
-    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-    if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen(server_resp) < 24) || (len < 24)) {
-      return(FALSE);
-    }
-    orig_sign = substr( r, 18, 23 );
-    serv_sign = substr( server_resp, 18, 23 );
-    if( orig_sign != serv_sign ) {
-      return FALSE;
-    }
-  }
-  # -> END TODO
-
-  if( ord( r[9] ) == 0 ) {
-    return r;
-  } else {
-    return FALSE;
-  }
-}
-
-function registry2_open_hku( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, response;
-
-  if( ntlmssp_flag ) {
-    response = registry2_open_hku_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return response;
-  } else {
-
-    local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
-    tid_low = tid % 256;
-    tid_high = tid / 256;
-    uid_low = uid % 256;
-    uid_high = uid / 256;
-    pipe_low = pipe % 256;
-    pipe_high = pipe / 256;
-    req = raw_string( 0x00, 0x00,
-                      0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x1D, 0x83,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                      0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                      0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                      0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                      0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                      0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                      0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x10, 0xFF,
-                      0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                      0x00, 0x02 );
-
-    send( socket:soc, data:req );
-    r = smb_recv( socket:soc );
-    if( strlen( r ) < 10 ) return FALSE;
-
-    if( ord( r[9] ) == 0 ) {
-      return r;
-    } else {
-      return FALSE;
-    }
-  }
-}
-
-function registry2_open_hku_NTLMSSP( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe;
-  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
 
-  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
+  if( strlen( reply ) < 85 ) return FALSE ;
 
-  if( isSignActive ) {
-    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
-  } else {
-    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
-  }
-
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
-
-  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                          pipe, 0x78, 0x00, 0x00, 0x00, 0x24,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-                          0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                          0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x10, 0xFF,
-                          0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x02 );
-
-  req += ioctl_req;
-
-  if( isSignActive ) {
-    sig = get_smb2_signature( buf:req, key:sign_key );
-    if( isnull( sig ) ) {
-      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_open_hku_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
-      return FALSE;
-    }
-    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + sig;
-  } else {
-    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + req ;
-  }
-
-  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-  send( socket:soc, data:req );
-  r = smb_recv( socket:soc );
-  if(strlen(r) < 14){
-    return(FALSE);
-  }
-
-  ##If status is pending, wait for response
-  status = ord( r[12] );
-  status2 = ord( r[13] );
-  while( status == 3 && status2 == 1 ) {
-    ##PDU will arrive late
-    r = smb_recv( socket:soc );
-    if(strlen(r) < 14){
-      return(FALSE);
-    }
-    status = ord( r[12] );
-    status2 = ord( r[13] );
-  }
-
-  multiplex_id += 1;
-  if( isSignActive ) {
-
-    seq_number += 1;
-    r_head = substr( r, 0, 3 );
-    r = substr( r, 4, strlen( r ) - 1 );
-    if( strlen( r ) < 64 ) {
-      return(FALSE);
-    }
-
-    orig_sign = substr( r, 48, 63 );
-    server_resp = get_smb2_signature( buf:r, key:sign_key );
-    if( isnull( server_resp ) ) return FALSE;
-    if( strlen(server_resp) < 64 ) {
-      return(FALSE);
-    }
-
-    serv_sign = substr( server_resp, 48, 63 );
-
-    if( orig_sign != serv_sign ) {
-      return FALSE;
-    } else {
-      r = r_head + r;
+  magic = raw_string( ord( reply[84] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 84 + i ) ) {
+      magic += raw_string( ord( reply[84+i] ) );
     }
   }
-  # END TODO ->
-
-  if( strlen( r ) < 13 ) return FALSE;
-
-  if( ord( r[12] ) == 0 ) {
-    return r;
-  } else {
-    return FALSE;
-  }
-}
-
-#----------------------------------------------------------#
-# RegOpenHKCU()                                            #
-#----------------------------------------------------------#
-
-function registry_open_hkcu( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, res;
-
-  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_open_hkcu" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_open_hkcu" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_open_hkcu" );
-  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_open_hkcu" );
-
-  if( strlen( uid ) == 8 ) {
-    res = registry2_open_hkcu( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return res;
-  } else {
-    res = registry1_open_hkcu( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return res;
-  }
-}
-
-function registry1_open_hkcu( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, response;
-
-  if( ntlmssp_flag ) {
-    response = registry_open_hkcu_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return response;
-  } else {
-
-    local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
-    tid_low = tid % 256;
-    tid_high = tid / 256;
-    uid_low = uid % 256;
-    uid_high = uid / 256;
-    pipe_low = pipe % 256;
-    pipe_high = pipe / 256;
-
-    req = raw_string( 0x00, 0x00,
-                      0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x1D, 0x83,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                      0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                      0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                      0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                      0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                      0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                      0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x10, 0xFF,
-                      0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                      0x00, 0x02 );
-
-    send( socket:soc, data:req );
-    r = smb_recv( socket:soc );
-    if( strlen( r ) < 10 ) return FALSE;
-
-    if( ord( r[9] ) == 0 ) {
-      return r;
-    } else {
-      return FALSE;
-    }
-  }
-}
-
-function registry_open_hkcu_NTLMSSP( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe;
-  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
-  tid_low = tid % 256;
-  tid_high = tid / 256;
-  uid_low = uid % 256;
-  uid_high = uid / 256;
-  pipe_low = pipe % 256;
-  pipe_high = pipe / 256;
-  g_mhi = multiplex_id / 256;
-  g_mlo = multiplex_id % 256;
-
-  req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D,
-                    0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
-
-  if( isSignActive ) {
-    req += raw_string( 0x07, 0x80 );
-  } else {
-    req += raw_string( 0x03, 0x80 );
-  }
-
-  req += raw_string( 0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, tid_low, tid_high, 0x33, 0x0c, uid_low, uid_high,
-                     g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                     0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                     0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                     0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                     0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                     0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                     0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                     0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x10, 0xFF,
-                     0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                     0x00, 0x02 );
-
-  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-  if( isSignActive ) {
-    len = strlen( req );
-    seq_number += 1;
-    packet = req;
-    req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-    if( isnull( req ) ) return FALSE;
-  }
-
-  send( socket:soc, data:req );
-  r = smb_recv( socket:soc );
-  if( strlen( r ) < 10 ) return FALSE;
-
-  multiplex_id += 1;
-  if( isSignActive ) {
-    # verify signature
-    seq_number += 1;
-    len = strlen( r );
-    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-    if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen( server_resp) < 24)|| (len < 24)) {
-      return(FALSE);
-    }
-
-    orig_sign = substr( r, 18, 23 );
-    serv_sign = substr( server_resp, 18, 23 );
-    if( orig_sign != serv_sign ) {
-      return FALSE;
-    }
-  }
-  # -> END TODO
-
-  if( ord( r[9] ) == 0 ) {
-    return r;
-  } else {
-    return FALSE;
-  }
-}
-
-function registry2_open_hkcu( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe, response;
-
-  if( ntlmssp_flag ) {
-    response = registry2_open_hkcu_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe );
-    return response;
-  } else {
-
-    local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
-    tid_low = tid % 256;
-    tid_high = tid / 256;
-    uid_low = uid % 256;
-    uid_high = uid / 256;
-    pipe_low = pipe % 256;
-    pipe_high = pipe / 256;
-    req = raw_string( 0x00, 0x00,
-                      0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-                      0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x1D, 0x83,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-                      g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x24, 0x00, 0x00,
-                      0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-                      0x00, 0x24, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-                      0x00, pipe_low, pipe_high, 0x35, 0x00, 0x00, 0x5c, 0x00,
-                      0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-                      0x5C, 0x00, 0x00, 0x00, 0x00, 0x5c, 0x05, 0x00,
-                      0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                      0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x0C, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x10, 0xFF,
-                      0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                      0x00, 0x02 );
-
-    send( socket:soc, data:req );
-    r = smb_recv( socket:soc );
-    if( strlen( r ) < 10 ) return FALSE;
-
-    if( ord( r[9] ) == 0 ) {
-      return r;
-    } else {
-      return FALSE;
-    }
-  }
-}
-
-function registry2_open_hkcu_NTLMSSP( soc, uid, tid, pipe ) {
-
-  local_var soc, uid, tid, pipe;
-  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
-
-  g_mhi = multiplex_id / 256;
-  g_mlo = multiplex_id % 256;
-
-  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
-
-  if( isSignActive ) {
-    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
-  } else {
-    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
-  }
-
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
-
-  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                          pipe, 0x78, 0x00, 0x00, 0x00, 0x24,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-                          0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x24, 0x00,
-                          0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x10, 0xFF,
-                          0x12, 0x00, 0x30, 0x39, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x02 );
-
-  req += ioctl_req;
-
-  if( isSignActive ) {
-    sig = get_smb2_signature( buf:req, key:sign_key );
-    if( isnull( sig ) ) {
-      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_open_hkcu_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
-      return FALSE;
-    }
-    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + sig;
-  } else {
-    req = raw_string( 0x00, 0x00, 0x00, ( strlen( req ) % 256 ) ) + req ;
-  }
-
-  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-  send( socket:soc, data:req );
-  r = smb_recv( socket:soc );
-  if(strlen(r) < 14){
-    return(FALSE);
-  }
-
-  ##If status is pending, wait for response
-  status = ord( r[12] );
-  status2 = ord( r[13] );
-  while( status == 3 && status2 == 1 ) {
-    ##PDU will arrive late
-    r = smb_recv( socket:soc );
-    if(strlen(r) < 14){
-      return(FALSE);
-    }
-    status = ord( r[12] );
-    status2 = ord( r[13] );
-  }
-
-  multiplex_id += 1;
-  if( isSignActive ) {
-
-    seq_number += 1;
-    r_head = substr( r, 0, 3 );
-    r = substr( r, 4, strlen( r ) - 1 );
-    if( strlen( r ) < 64 ) {
-      return(FALSE);
-    }
-
-    orig_sign = substr( r, 48, 63 );
-    server_resp = get_smb2_signature( buf:r, key:sign_key );
-    if( isnull( server_resp ) ) return FALSE;
-    if( strlen(server_resp) < 64 ) {
-      return(FALSE);
-    }
-
-    serv_sign = substr( server_resp, 48, 63 );
-
-    if( orig_sign != serv_sign ) {
-      return FALSE;
-    } else {
-      r = r_head + r;
-    }
-  }
-  # END TODO ->
-
-  if( strlen( r ) < 13 ) return FALSE;
-
-  if( ord( r[12] ) == 0 ) {
-    return r;
-  } else {
-    return FALSE;
-  }
-}
-
- #----------------------------------------------------------#
- # RegFlush()						    #
- #----------------------------------------------------------#
- function registry_flush_NTLMSSP(soc, uid, tid, pipe, reply)
- {
-        local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, i, len;
-
-        tid_low = tid % 256;
-        tid_high = tid / 256;
-
-        uid_low = uid % 256;
-        uid_high = uid / 256;
-
-        pipe_low = pipe % 256;
-        pipe_high = pipe / 256;
-
-	g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-
-        if(strlen(reply) < 85) {
-          return FALSE ;
-        }
-        magic = raw_string(ord(reply[84]));
-        for(i=1; i<20; i=i+1){
-          if(strlen(reply) > (84+i)) {
-            magic = magic + raw_string(ord(reply[84+i]));
-          }
-        }
-
-        req = raw_string(0x00, 0x00, 0x00, 0x78, 0xFF, 0x53,
-                         0x4D, 0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x08);
-	if(isSignActive)
-		req += raw_string(0x05, 0x40);
-	else
-                req += raw_string(0x01, 0x40);
-	req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_low, tid_high,
-                         0x33, 0x0c, uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00,
-                         0x00, 0x2c, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x4c, 0x00, 0x2c, 0x00, 0x4c,
-                         0x00, 0x02, 0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35,
-                         0x00, 0x5c, 0x50, 0x49, 0x50, 0x45, 0x5c, 0x00,
-                         0x00, 0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00,
-                         0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01,
-                         0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x0b, 0x00) + magic;
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	if( isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
-        send( socket:soc, data:req );
-        r = smb_recv( socket:soc );
-	multiplex_id += 1;
-        if( r && isSignActive ) {
-          # verify signature
-          seq_number += 1;
-          len = strlen( r );
-          server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-          if( isnull( server_resp ) ) return FALSE;
-
-          #TODO: Also check the response length here before accessing possible non-existing data
-          if((strlen(server_resp) < 24) || (len < 24)) {
-            return(FALSE);
-          }
-          orig_sign = substr( r, 18, 23 );
-          serv_sign = substr( server_resp, 18, 23 );
-          if( orig_sign != serv_sign ) {
-            return FALSE;
-          }
-        }
-        # -> END TODO
-
-        if( r ) {
-          return substr(r, strlen(r) - 4, strlen(r) - 1);
-        }
-}
-
-function registry_flush( soc, uid, tid, pipe, reply ) {
-
-  local_var response;
-
-  if( ntlmssp_flag ) {
-    response = registry_flush_NTLMSSP(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(response);
-  } else {
-
- 	local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, i, len;
-
- 	tid_low = tid % 256;
-	tid_high = tid / 256;
-
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-
-    if(strlen(reply) < 85) {
-      return FALSE ;
-    } 
-    magic = raw_string(ord(reply[84]));
-	for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (84+i)){
-        magic = magic + raw_string(ord(reply[84+i]));
- 	  }
-    }
-    
- 	req = raw_string(0x00, 0x00, 0x00, 0x78, 0xFF, 0x53,
-			 0x4D, 0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x08,
-			 0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_low, tid_high,
-			 0x00, 0x28, uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00,
-			 0x00, 0x2c, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x4c, 0x00, 0x2c, 0x00, 0x4c,
-			 0x00, 0x02, 0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35,
-			 0x00, 0x5c, 0x50, 0x49, 0x50, 0x45, 0x5c, 0x00,
-			 0x00, 0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00,
-			 0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01,
-			 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x0b, 0x00) + magic;
-
- 	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-    if(strlen(r) < 4){
-      return(FALSE);
-    }
- 	if(r){
-		return substr(r, strlen(r) - 4, strlen(r) - 1);
- 	}
-  }
-}
-
- #----------------------------------------------------------#
- # RegClose()                                               #
- #----------------------------------------------------------#
-
- #NTLMSSP
- function registry_close_NTLMSSP(soc, uid, tid, pipe, reply)
- {
-        local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, i, len;
-
-        tid_low = tid % 256;
-        tid_high = tid / 256;
-
-        uid_low = uid % 256;
-        uid_high = uid / 256;
-
-        pipe_low = pipe % 256;
-        pipe_high = pipe / 256;
-
-        g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-
-        if(strlen(reply) < 85) {
-          return FALSE ;
-        }
-        magic = raw_string(ord(reply[84]));
-        for(i=1; i<20; i=i+1){
-          if(strlen(reply) > (84+i)) {
-            magic = magic + raw_string(ord(reply[84+i]));
-          }
-        }
         
-        req = raw_string(0x00, 0x00, 0x00, 0x78, 0xFF, 0x53,
-                         0x4D, 0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x08);
-        if(isSignActive)
-        req += raw_string(0x05, 0x40);
-        else
-        req += raw_string(0x01, 0x40);
-        req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_low, tid_high,
-                          0x33, 0x0c, uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00,
-                          0x00, 0x2c, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00,
-                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x4c, 0x00, 0x2c, 0x00, 0x4c,
-                          0x00, 0x02, 0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35,
-                          0x00, 0x5c, 0x50, 0x49, 0x50, 0x45, 0x5c, 0x00,
-                          0x00, 0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00,
-                          0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01,
-                          0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x05, 0x00) + magic;
+  req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42,
+                    0x25, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        if( isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
+  if( isSignActive ) {
+    req += raw_string( 0x05, 0x40 );
+  } else {
+    req += raw_string( 0x01, 0x40 );
+  }
 
-        send( socket:soc, data:req );
-        r = smb_recv( socket:soc );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x33, 0x0c,
+                     uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x2c,
+                     0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x4c, 0x00, 0x2c, 0x00, 0x4c, 0x00, 0x02,
+                     0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35, 0x00, 0x5c,
+                     0x50, 0x49, 0x50, 0x45, 0x5c, 0x00, 0x00, 0x00,
+                     0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                     0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01, 0x00, 0x00,
+                     0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00 ) + magic;
 
-        multiplex_id += 1;
-        if( r && isSignActive ) {
-          # verify signature
-          seq_number += 1;
-          len = strlen( r );
-          server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-          if( isnull( server_resp ) ) return FALSE;
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  if( isSignActive ) {
+    len = strlen( req );
+    seq_number += 1;
+    packet = req;
+    req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number ); # TBD: This overwrites the previous declared req...
+    if( isnull( req ) ) return FALSE;
+  }
 
-          #TODO: Also check the response length here before accessing possible non-existing data
-          if((strlen(server_resp) < 24) || (len < 24)) {
-            return(FALSE);
-          }
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
 
-          orig_sign = substr( r, 18, 23 );
-          serv_sign = substr( server_resp, 18, 23 );
-          if( orig_sign != serv_sign ) {
-            return FALSE;
-          }
-        }
-        # -> END TODO
+  multiplex_id += 1;
+  if( r && isSignActive ) {
+    # verify signature
+    seq_number += 1;
+    len = strlen( r );
+    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+    if( isnull( server_resp ) ) return FALSE;
 
-        if( r ) {
-          return(substr(r, strlen(r) - 4, strlen(r) - 1));
-        }
+    if( ( strlen( server_resp ) < 24) || ( len < 24 ) ) {
+      return FALSE;
+    }
+
+    orig_sign = substr( r, 18, 23 );
+    serv_sign = substr( server_resp, 18, 23 );
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    }
+  }
+  # -> END TODO
+
+  if( r && ( strlen( r ) > 4 ) ) {
+    return( substr( r, strlen( r ) - 4, strlen( r ) - 1 ) );
+  } else {
+    return FALSE;
+  }
 }
 
-function registry2_close_NTLMSSP(soc, uid, tid, pipe, reply)
-{
-   local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, i, len;
+function registry2_close_NTLMSSP( soc, uid, tid, pipe, reply ) {
 
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
+  # sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
 
-        req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
+  local_var soc, uid, tid, pipe, reply;
+  local_var ioctl_req, dcerpc_req1, dcerpc_req2, magic, i, x, x_lo, x_hi;
+  local_var rrs_req, len_rrs, len_rss_lo, len_rrs_hi, dcerpc_req, req;
+  local_var req_l, len_lo, len_hi, sig, r, status, status2;
+  local_var r_head, orig_sign, server_resp, serv_sign;
 
-        if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-        }
-        else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-        }
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_close_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_close_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_close_NTLMSSP" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_close_NTLMSSP" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_close_NTLMSSP" );
 
-                 req += raw_string(0x00, 0x00, 0x00, 0x00,
-                         g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
 
-        # Ioctl Req
-        ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                              pipe, 0x78, 0x00, 0x00, 0x00);
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
 
-        # Distributed Computing Environment / Remote Procedure Calls
-        dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
-        dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                                 0x00, 0x00, 0x00, 0x00, 0x05, 0x00);
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+  }
 
-          if(strlen(reply) < 140){
-            return FALSE ;
-          }
-          magic = raw_string(ord(reply[140]));
-          for(i=1; i<20; i=i+1){
-            if(strlen(reply) > (140+i)){
-              magic = magic + raw_string(ord(reply[140+i]));
-            } 
-          }
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
 
-        x = strlen(key) + strlen(key) + 2;
-        x_lo = x % 256;
-        x_hi = x / 256;
+  # Ioctl Req
+  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                          pipe, 0x78, 0x00, 0x00, 0x00 );
 
-        # Remote Registry Service Req
-        rrs_req = magic ;
+  # Distributed Computing Environment / Remote Procedure Calls
+  dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
+  dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
+                            0x00, 0x00, 0x00, 0x00, 0x05, 0x00 );
 
-        len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
-        len_rrs_lo = len_rrs % 256;
-        len_rrs_hi = len_rrs / 256;
+  if( strlen( reply ) < 140 ) return FALSE ;
+  magic = raw_string( ord( reply[140] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 140 + i ) ) {
+      magic += raw_string( ord( reply[140+i] ) );
+    }
+  }
 
-        dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
+  x = strlen( key ) + strlen( key ) + 2; # TBD: Where is key coming from???
+  x_lo = x % 256;
+  x_hi = x / 256;
 
-        ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                                0x00, 0x00, 0x00, 0x00);
+  # Remote Registry Service Req
+  rrs_req = magic ;
 
-        req = req + ioctl_req + dcerpc_req + rrs_req;
-        req_l = strlen(req);
-        len_lo =  req_l % 256;
-        len_hi = req_l / 256;
+  len_rrs = strlen( rrs_req ) + strlen( dcerpc_req1 ) + strlen( dcerpc_req2 ) + 2;
+  len_rrs_lo = len_rrs % 256;
+  len_rrs_hi = len_rrs / 256;
 
-        if(isSignActive)
-        {
-           sig = get_smb2_signature(buf:req, key:sign_key);
-           if( isnull( sig ) ) {
-             set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_close_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
-             return FALSE;
-           }
-           req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
-        }
-        else{
-           req = raw_string(0x00, 0x00, len_hi, len_lo) + req;
-        }
+  dcerpc_req = dcerpc_req1 + raw_string( len_rrs_lo, len_rrs_hi ) + dcerpc_req2;
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-        if(strlen(r) < 14){
-          return(FALSE);
-        }
+  ioctl_req += raw_string( len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00 );
 
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if(strlen(r) < 14){
-             return(FALSE);
-           }
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
+  req = req + ioctl_req + dcerpc_req + rrs_req;
+  req_l = strlen(req);
+  len_lo =  req_l % 256;
+  len_hi = req_l / 256;
 
-        multiplex_id += 1;
-        if(r && isSignActive){
-             # verify signature
-             seq_number += 1;
+  if( isSignActive ) {
+    sig = get_smb2_signature( buf:req, key:sign_key );
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_close_NTLMSSP: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
+    }
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+  } else {
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + req;
+  }
 
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-             if( strlen( r ) < 64 ) {
-               return(FALSE);
-             }
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 14 ) return FALSE;
 
-             orig_sign = substr(r, 48, 63);
+  ##If status is pending, wait for response
+  status = ord(r[12]);
+  status2 = ord(r[13]);
+  while( status == 3 && status2 == 1 ) {
+    ##PDU will arrive late
+    r = smb_recv(socket:soc);
+    if( strlen( r ) < 14 ) return FALSE;
+    status = ord( r[12] );
+    status2 = ord( r[13] );
+  }
 
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             if( strlen(server_resp) < 64 ) {
-               return(FALSE);
-             }
+  multiplex_id += 1;
+  if( r && isSignActive ) {
+    # verify signature
+    seq_number += 1;
 
-             serv_sign = substr(server_resp, 48, 63);
+    r_head = substr( r, 0, 3 );
+    r = substr( r, 4, strlen( r ) - 1 );
+    if( strlen( r ) < 64 ) return FALSE;
 
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else {
-               r = r_head + r ;
-             }
-         }
-         # END TODO ->
+    orig_sign = substr(r, 48, 63);
 
-        if(r){
-                return(substr(r, strlen(r) - 4, strlen(r) - 1));
-        }
- }
+    server_resp = get_smb2_signature( buf:r, key:sign_key );
+    if( isnull( server_resp ) ) return FALSE;
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
+    serv_sign = substr( server_resp, 48, 63 );
+
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    } else {
+      r = r_head + r ;
+    }
+  }
+  # END TODO ->
+
+  if( r && ( strlen( r ) > 4 ) ) {
+    return( substr( r, strlen( r ) - 4, strlen( r ) - 1 ) );
+  } else {
+    return FALSE;
+  }
+}
 
 function registry_close( soc, uid, tid, pipe, reply ) {
 
-  local_var res;
+  local_var soc, uid, tid, pipe, reply, res;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_close" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_close" );
@@ -4383,602 +3872,201 @@ function registry_close( soc, uid, tid, pipe, reply ) {
 
 function registry1_close( soc, uid, tid, pipe, reply ) {
 
-  local_var response;
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reply;
+  local_var response, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+  local_var magic, i, req, r;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_close" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_close" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_close" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_close" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_close" );
 
   if( ntlmssp_flag ) {
-    response = registry_close_NTLMSSP(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(response);
+    response = registry_close_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply );
+    return response;
   } else {
-      local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, i, len;
+    tid_low = tid % 256;
+    tid_high = tid / 256;
+    uid_low = uid % 256;
+    uid_high = uid / 256;
+    pipe_low = pipe % 256;
+    pipe_high = pipe / 256;
 
-      tid_low = tid % 256;
-      tid_high = tid / 256;
-      uid_low = uid % 256;
-      uid_high = uid / 256;
-      pipe_low = pipe % 256;
-      pipe_high = pipe / 256;
+    if( strlen( reply ) < 85 ) return FALSE ;
+    magic = raw_string( ord( reply[84] ) );
+    for( i = 1; i < 20; i++ ) {
+      if( strlen( reply ) > ( 84 + i ) ) {
+        magic += raw_string( ord( reply[84+i] ) );
+      }
+    }
 
-      if(strlen(reply) < 85){
-        return FALSE ;
-      }
-      magic = raw_string(ord(reply[84]));
-      for(i=1; i<20; i=i+1){
-        if(strlen(reply) > (84+i)){
-          magic = magic + raw_string(ord(reply[84+i]));
-        }
-      }
-      
-      req = raw_string(0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D,
-                       0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x08,
-                       0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       tid_low, tid_high, 0x00, 0x28, uid_low,
-                       uid_high, g_mlo, g_mhi, 0x10, 0x00,
-                       0x00, 0x2c, 0x00, 0x00, 0x00, 0x00, 0x08,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x00,
-                       0x2c, 0x00, 0x4c, 0x00, 0x02, 0x00, 0x26,
-                       0x00, pipe_low, pipe_high, 0x35, 0x00, 0x5c,
-                       0x50, 0x49, 0x50, 0x45, 0x5c, 0x00, 0x00,
-                       0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00,
-                       0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01,
-                       0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x05, 0x00) + magic;
+    req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x40,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x00, 0x28,
+                      uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x2c,
+                      0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x4c, 0x00, 0x2c, 0x00, 0x4c, 0x00, 0x02,
+                      0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35, 0x00, 0x5c,
+                      0x50, 0x49, 0x50, 0x45, 0x5c, 0x00, 0x00, 0x00,
+                      0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                      0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01, 0x00, 0x00,
+                      0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00 ) + magic;
 
-      send(socket:soc, data:req);
-      r = smb_recv(socket:soc);
-      if(r && (strlen(r) > 4)){
-         return substr(r, strlen(r) - 4, strlen(r) - 1);
-      }
-   }
- }
+    send( socket:soc, data:req );
+    r = smb_recv(socket:soc);
+    if( r && ( strlen( r ) > 4 ) ) {
+      return substr( r, strlen( r ) - 4, strlen( r ) - 1 );
+    } else {
+      return FALSE;
+    }
+  }
+}
 
 ###SMB2 Registry close#####
-
 function registry2_close( soc, uid, tid, pipe, reply ) {
 
-  local_var response;
+  # ntlmssp_flag, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reply;
+  local_var response, magic, i, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_close" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_close" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_close" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_close" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_close" );
 
   if( ntlmssp_flag ) {
-    response = registry2_close_NTLMSSP(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(response);
+    response = registry2_close_NTLMSSP( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply );
+    return response;
   } else {
-      local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, i, len;
-      if(strlen(reply) < 85){
-        return FALSE ;
+    if( strlen( reply ) < 85 ) return FALSE ;
+
+    magic = raw_string( ord( reply[84] ) );
+    for( i = 1; i < 20; i++ ) {
+      if( strlen( reply ) > ( 84 + i ) ) {          
+        magic += raw_string( ord( reply[84+i] ) );
       }
-
-      magic = raw_string(ord(reply[84]));
-      for(i=1; i<20; i=i+1){
-        if(strlen(reply) > (84+i)){          
-          magic = magic + raw_string(ord(reply[84+i]));
-        }
-      }
-
-      req = raw_string(0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D,
-                       0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x08,
-                       0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       tid_low, tid_high, 0x00, 0x28, uid_low,
-                       uid_high, g_mlo, g_mhi, 0x10, 0x00,
-                       0x00, 0x2c, 0x00, 0x00, 0x00, 0x00, 0x08,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x00, 0x00, 0x00, 0x00, 0x00, 0x4c, 0x00,
-                       0x2c, 0x00, 0x4c, 0x00, 0x02, 0x00, 0x26,
-                       0x00, pipe_low, pipe_high, 0x35, 0x00, 0x5c,
-                       0x50, 0x49, 0x50, 0x45, 0x5c, 0x00, 0x00,
-                       0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00,
-                       0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01,
-                       0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00,
-                       0x05, 0x00) + magic;
-      send(socket:soc, data:req);
-      r = smb_recv(socket:soc);
-      if(r){
-         return substr(r, strlen(r) - 4, strlen(r) - 1);
-      }
-   }
- }
-
-
-
- #----------------------------------------------------------#
- # RegDelKey()						    #
- #----------------------------------------------------------#
- function registry_delete_key(soc, uid, tid, pipe, key, reply )
- {
- 	local_var _na_start, i, error;
-
-	key_len = strlen(key) + 1;
-	key_len_hi = key_len / 256;
-	key_len_lo = key_len % 256;
-
-	tid_low = tid % 256;
-	tid_high = tid / 256;
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-	uc = unicode3(data:key);
-
-	len = 148 + strlen(uc);
-
-	len_hi = len / 256;
-	len_lo = len % 256;
-
- 	z = 40 + strlen(uc);
-	z_lo = z % 256;
-	z_hi = z / 256;
-
-	y = 81 + strlen(uc);
-	y_lo = y % 256;
-	y_hi = y / 256;
-
-	x = 64 + strlen(uc);
-	x_lo = x % 256;
-	x_hi = x / 256;
-
-	if(strlen(reply) < 18){
-		return NULL;
-	}
-	magic1 = raw_string(ord(reply[16]), ord(reply[17]));
-
-	req = raw_string(0x00, 0x00,
-			 len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18);
-	if(ntlmssp_flag){
-		g_mhi = multiplex_id / 256;
-        	g_mlo = multiplex_id % 256;
-		if(isSignActive)
-			req += raw_string(0x07, 0x80);
-		else
-			req += raw_string(0x03, 0x80);
-	}
-	else{
-		req += raw_string(0x03, 0x80);
-	}
-	req +=  magic1 +
-	      	raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00,tid_low, tid_high);
-	if(ntlmssp_flag)
-		req += raw_string(0x33, 0x0c);
-	else
-		req += raw_string(0x00, 0x28);
-	req += raw_string(uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, x_lo, x_hi, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, x_lo, x_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_low, pipe_high, y_lo, y_hi, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, x_lo, x_hi,
-			 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, z_lo, z_hi,
-			 0x00, 0x00, 0x00, 0x00, 0x07, 0x00);
-
-    if(strlen(reply) < 85){
-      return FALSE ;
-    }	  
-	magic = raw_string(ord(reply[84]));
-	for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (84+i)){        
-  	    magic = magic + raw_string(ord(reply[84+i]));
- 	  }
-    }
-    
-	x = strlen(key) + strlen(key) + 2;
-	x_lo = x % 256;
-	x_hi = x / 256;
-
-	req = req + magic +
-	      raw_string(x_lo, x_hi, x_lo, x_hi, 0x01, 0x00,
- 			 0x00, 0x00, key_len_lo, key_len_hi, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, key_len_lo, key_len_hi, 0x00) + uc +
-	      raw_string(0);
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	if( ntlmssp_flag && isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
- 	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	if( strlen( r ) < 10 ) {
-          return(1);
-	}
-
-	if( ntlmssp_flag ) {
-          multiplex_id += 1;
-          if( r && isSignActive ) {
-            # verify signature
-            seq_number += 1;
-            len = strlen( r );
-            server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-            if( isnull( server_resp ) ) return FALSE;
-
-            #TODO: Also check the response length here before accessing possible non-existing data
-            if((strlen(server_resp) < 24) || (len < 24)) {
-              return(FALSE);
-            }
-
-            orig_sign = substr( r, 18, 23 );
-            serv_sign = substr( server_resp, 18, 23 );
-            if( orig_sign != serv_sign ) {
-              return FALSE;
-            }
-          }
-	}
-        # -> END TODO
-   	error = substr(r, strlen(r) - 4, strlen(r) - 1);
-    if(strlen(error) < 4) {
-      return NULL ;
-    }
- 	return ((int(ord(error[3])) * 256 + int(ord(error[2]))) * 256 +
-    int(ord(error[1])) * 256) + int(ord(error[0]));
- }
-
- #----------------------------------------------------------#
- # RegDelValue()					    #
- #----------------------------------------------------------#
- function registry_delete_value(soc, uid, tid, pipe, value, reply )
- {
- 	local_var _na_start, i, error;
-
-	key_len = strlen(value) + 1;
-	key_len_hi = key_len / 256;
-	key_len_lo = key_len % 256;
-
- 	tid_low = tid % 256;
-	tid_high = tid / 256;
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-	uc = unicode3(data:value);
-
-	len = 148 + strlen(uc);
-
-	len_hi = len / 256;
-	len_lo = len % 256;
-
- 	z = 40 + strlen(uc);
-	z_lo = z % 256;
-	z_hi = z / 256;
-
-	y = 81 + strlen(uc);
-	y_lo = y % 256;
-	y_hi = y / 256;
-
-	x = 64 + strlen(uc);
-	x_lo = x % 256;
-	x_hi = x / 256;
-
-	if(strlen(reply) < 18){
-		return NULL;
-	}
-
- 	magic1 = raw_string(ord(reply[16]), ord(reply[17]));
-
-	req = raw_string(0x00, 0x00,
- 			 len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18);
-	if(ntlmssp_flag){
-                g_mhi = multiplex_id / 256;
-                g_mlo = multiplex_id % 256;
-                if(isSignActive)
-                        req += raw_string(0x07, 0x80);
-                else
-                        req += raw_string(0x03, 0x80);
-        }
-        else{
-                req += raw_string(0x03, 0x80);
-        }
-
-	req += magic1 +
-	      	raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00,tid_low, tid_high);
-	if(ntlmssp_flag)
-                req += raw_string(0x33, 0x0c);
-        else
-                req += raw_string(0x00, 0x28);
-	req += raw_string(uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, x_lo, x_hi, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, x_lo, x_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_low, pipe_high, y_lo, y_hi, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, x_lo, x_hi,
-			 0x00, 0x00, 0x97, 0x00, 0x00, 0x00, z_lo, z_hi,
-			 0x00, 0x00, 0x00, 0x00, 0x08, 0x00);
-
-    if(strlen(reply) < 85){
-      return FALSE ;
-    }		  
-	magic = raw_string(ord(reply[84]));
-	for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (84+i)){
-  		magic = magic + raw_string(ord(reply[84+i]));
- 	  }
-    }
-	x = strlen(value) + strlen(value) + 2;
-	x_lo = x % 256;
-	x_hi = x / 256;
-
-	req = req + magic +
-	      raw_string(x_lo, x_hi, x_lo, x_hi, 0x01, 0x00,
- 			 0x00, 0x00, key_len_lo, key_len_hi, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, key_len_lo, key_len_hi, 0x00) + uc +
-	      raw_string(0);
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	if( ntlmssp_flag && isSignActive ) {
-          len = strlen(req);
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
-	send( socket:soc, data:req );
-	r = smb_recv( socket:soc );
-	if( strlen( r ) < 10 ) {
-          return(1);
-	}
-
-	if( ntlmssp_flag ) {
-          multiplex_id += 1;
-          if( r && isSignActive ) {
-            # verify signature
-            seq_number += 1;
-            len = strlen( r );
-            server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-            if( isnull( server_resp ) ) return FALSE;
-
-            #TODO: Also check the response length here before accessing possible non-existing data
-            if((strlen(server_resp) < 24) || (len < 24)) {
-              return(FALSE);
-            }
-            orig_sign = substr( r, 18, 23 );
-            serv_sign = substr( server_resp, 18, 23 );
-            if( orig_sign != serv_sign ) {
-              return FALSE;
-            }
-          }
-        }
-        # -> END TODO
-
-	error = substr(r, strlen(r) - 4, strlen(r) - 1);
-    if(strlen(error) < 4) {
-      return NULL ;
     }
 
-	return ((int(ord(error[3])) * 256 + int(ord(error[2]))) * 256 +
-		 int(ord(error[1])) * 256) + int(ord(error[0]));
- }
+    tid_low = tid % 256;
+    tid_high = tid / 256;
+    uid_low = uid % 256;
+    uid_high = uid / 256;
+    pipe_low = pipe % 256;
+    pipe_high = pipe / 256;
 
- #--------------------------------------------------------------#
- # RegShutdown()                                                #
- #--------------------------------------------------------------#
- function registry_shutdown(soc, uid, tid, pipe, message, timeout, reboot, closeapps)
- {
- 	local_var _na_start, i, error, msg_len, msg_len_hi, msg_len_lo, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, uc;
-
-	msg_len = strlen(message) + 1;
-	msg_len_hi = msg_len / 256;
-	msg_len_lo = msg_len % 256;
-
- 	tid_low = tid % 256;
-	tid_high = tid / 256;
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-	uc = unicode4(data:message);
-
-	len = 146 + strlen(uc);
-
-	len_hi = len / 256;
-	len_lo = len % 256;
-
- 	z = 38 + strlen(uc);
-	z_lo = z % 256;
-	z_hi = z / 256;
-
-	y = 79 + strlen(uc);
-	y_lo = y % 256;
-	y_hi = y / 256;
-
-	x = 62 + strlen(uc);
-	x_lo = x % 256;
-	x_hi = x / 256;
-
- 	req = raw_string(0x00, 0x00,
- 		         len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18);
-	if(ntlmssp_flag){
-                g_mhi = multiplex_id / 256;
-                g_mlo = multiplex_id % 256;
-                if(isSignActive)
-                        req += raw_string(0x07, 0x80);
-                else
-                        req += raw_string(0x03, 0x80);
-        }
-        else{
-                req += raw_string(0x03, 0x80);
-        }
-
-	req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00,tid_low, tid_high);
-	if(ntlmssp_flag)
-                req += raw_string(0x33, 0x0c);
-        else
-                req += raw_string(0x00, 0x28);
-	req += raw_string(uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, x_lo, x_hi, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, x_lo, x_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_low, pipe_high, y_lo, y_hi, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, x_lo, x_hi,
-			 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, z_lo, z_hi,
-			 0x00, 0x00, 0x00, 0x00, 0x18, 0x00);
-
-	x = strlen(message) + strlen(message);
-	x_lo = x % 256;
-	x_hi = x / 256;
-	y = x + 2;
-	y_lo = y % 256;
-	y_hi = y / 256;
-
-	msg_len2 = msg_len - 1;
-	msg_len2_lo = msg_len2 % 256;
-	msg_len2_hi = msg_len2 / 256;
-
-	req += raw_string(0x01, 0x00, 0x00, 0x00,  # ptr_1
-			  0x01, 0x00, 0x00, 0x00,  # ptr_2
-			  0x01, 0x00, 0x00, 0x00,  # ptr_3
-			  x_lo, x_hi,		     # uni_str_len
-			  y_lo, y_hi,		     # max_str_len
-			  0x01, 0x00, 0x00, 0x00,  # buffer
-			  msg_len_lo, msg_len_hi, 0x00, 0x00,  # uni_max_len
-			  0x00, 0x00, 0x00, 0x00 , # undoc
-			  msg_len2_lo, msg_len2_hi, 0x00, 0x00);  # str_max_len
- 	req += uc;
-	req += raw_string(timeout % 256, (timeout/256) % 256, (timeout/(256*256)) % 256,
-			  timeout / (256*256*256));
- 	if( closeapps ) {
-          req += raw_string(0x01);
-        } else {
-          req += raw_string(0x00);
-        }
-
-        if( reboot ) {
-          req += raw_string(0x01);
-	} else {
-          req += raw_string(0x00);
-	}
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	if( ntlmssp_flag && isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
- 	send( socket:soc, data:req );
-	r = smb_recv( socket:soc );
-	if( strlen( r ) < 10 ) {
-          return( 1 );
-	}
-
-        if( ntlmssp_flag ) {
-          multiplex_id += 1;
-          if( r && isSignActive ) {
-            # verify signature
-            seq_number += 1;
-            len = strlen( r );
-            server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-            if( isnull( server_resp ) ) return FALSE;
-
-            #TODO: Also check the response length here before accessing possible non-existing data
-            if((strlen(server_resp) < 24) || (len < 24)) {
-              return(FALSE);
-            }
-
-            orig_sign = substr( r, 18, 23 );
-            serv_sign = substr( server_resp, 18, 23 );
-            if( orig_sign != serv_sign ) {
-              return FALSE;
-            }
-          }
-        }
-        # -> END TODO
-
-	error = substr(r, strlen(r) - 4, strlen(r) - 1);
-    if(strlen(error) < 4) {
-      return NULL ;
+    req = raw_string( 0x00, 0x00, 0x00, 0x78, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x40,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_low, tid_high, 0x00, 0x28,
+                      uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x2c,
+                      0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x4c, 0x00, 0x2c, 0x00, 0x4c, 0x00, 0x02,
+                      0x00, 0x26, 0x00, pipe_low, pipe_high, 0x35, 0x00, 0x5c,
+                      0x50, 0x49, 0x50, 0x45, 0x5c, 0x00, 0x00, 0x00,
+                      0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                      0x2c, 0x00, 0x00, 0x00, 0xcf, 0x01, 0x00, 0x00,
+                      0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00 ) + magic;
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( r && ( strlen( r ) > 4 ) ) {
+      return substr( r, strlen( r ) - 4, strlen( r ) - 1 );
+    } else {
+      return FALSE;
     }
- 	return ((int(ord(error[3])) * 256 + int(ord(error[2]))) * 256 +
-		 int(ord(error[1])) * 256 ) + int(ord(error[0]));
- }
+  }
+}
 
 #----------------------------------------------------------#
 # RegEnumKey()                                             #
 #----------------------------------------------------------#
 function registry_enum_key( soc, uid, tid, pipe, reply ) {
 
-  local_var res;
+  local_var soc, uid, tid, pipe, reply, res;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_enum_key" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_enum_key" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_enum_key" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_enum_key" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_enum_key" );
 
   if( strlen( uid ) == 8 ) {
-    res = registry2_enum_key(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(res);
+    res = registry2_enum_key( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply );
+    return res;
   } else {
-    res = registry1_enum_key(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(res);
+    res = registry1_enum_key( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply );
+    return res;
   }
 }
 
-function registry2_enum_key(soc, uid, tid, pipe, reply)
-{
-  local_var req, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, r;
+function registry2_enum_key( soc, uid, tid, pipe, reply ) {
+
+  # sign_key, isSignActive, seq_number, multiplex_id, g_mlo and g_mhi are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reply;
+  local_var list, magic, i, j, req, ioctl_req, dcerpc_req1, dcerpc_req2, x, x_lo, x_hi;
+  local_var rrs_req, len_rrs, len_rrs_lo, len_rrs_hi, dcerpc_req, req_l, len_lo, len_hi;
+  local_var sig, r, status, status2, r_head, orig_sign, server_resp, serv_sign, len, name;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_enum_key" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_enum_key" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_enum_key" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_enum_key" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_enum_key" );
+
   list = make_list();
-  if(strlen(reply) < 141) {
-    return NULL ;
-  }
-  magic = raw_string(ord(reply[140]));
-  for(i=1; i<20; i=i+1){
-    if(strlen(reply) > (140+i)){
-      magic = magic + raw_string(ord(reply[140+i]));
+
+  if( strlen( reply ) < 141 ) return NULL ;
+
+  magic = raw_string( ord( reply[140] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 140 + i ) ) {
+      magic += raw_string( ord( reply[140+i] ) );
     }
   }
 
+  for( j = 0; j >= 0; j++ ) {
 
-  for(j=0; j>=0; j++)
-  {
     g_mhi = multiplex_id / 256;
     g_mlo = multiplex_id % 256;
 
-    req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
+    req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
 
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
+    if( isSignActive ) {
+      req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+    } else {
+      req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+    }
 
+    req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00 );
 
-   req += raw_string(0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
     # Ioctl Req
-    ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                         pipe, 0x78, 0x00, 0x00, 0x00);
+    ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                            pipe, 0x78, 0x00, 0x00, 0x00 );
 
     # Distributed Computing Environment / Remote Procedure Calls
-    dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
-    dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                           0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00);
+    dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
+    dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
+                              0x00, 0x00, 0x00, 0x00, 0x09, 0x00 );
 
-
-    x = strlen(key) + strlen(key) + 2;
+    x = strlen( key ) + strlen( key ) + 2;  # TBD: Where is key coming from???
     x_lo = x % 256;
     x_hi = x / 256;
 
     # Remote Registry Service Req
-    rrs_req = magic + raw_string(j % 256, j / 256, 0x00, 0x00,  # key ID
+    rrs_req = magic + raw_string( j % 256, j / 256, 0x00, 0x00,  # key ID
                                   0x00, 0x00,     # key name len
                                   0x14, 0x04,      # unknown
                                   0x01, 0x00, 0x00, 0x00,   # ptr
@@ -4990,388 +4078,380 @@ function registry2_enum_key(soc, uid, tid, pipe, reply)
                                   0x00, 0x00, 0x00, 0x00,   # padding2
                                   0x01, 0x00, 0x00, 0x00,   # ptr3
                                   0xff, 0xff, 0xff, 0xff,   # smb_io_time low
-                                  0xff, 0xff, 0xff, 0x7f);   # smb_io_time high
+                                  0xff, 0xff, 0xff, 0x7f ); # smb_io_time high
 
-
-    len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
+    len_rrs = strlen( rrs_req ) + strlen( dcerpc_req1 ) + strlen( dcerpc_req2 ) + 2;
     len_rrs_lo = len_rrs % 256;
     len_rrs_hi = len_rrs / 256;
 
-    dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
+    dcerpc_req = dcerpc_req1 + raw_string( len_rrs_lo, len_rrs_hi ) + dcerpc_req2;
 
-    ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                            0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                            0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                            0x00, 0x00, 0x00, 0x00);
+    ioctl_req += raw_string( len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                             0x00, 0x00, 0x00, 0x00 );
 
     req = req + ioctl_req + dcerpc_req + rrs_req;
     req_l = strlen(req);
     len_lo =  req_l % 256;
     len_hi = req_l / 256;
 
-    if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_enum_key: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
-
-    }
-    else{
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + req;
+    if( isSignActive ) {
+      sig = get_smb2_signature( buf:req, key:sign_key );
+      if( isnull( sig ) ) {
+        set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_enum_key: buf or key passed to get_smb2_signature empty / too short" );
+        return FALSE;
+      }
+      req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+    } else {
+      req = raw_string( 0x00, 0x00, len_hi, len_lo ) + req;
     }
 
     # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-    send(socket:soc, data:req);
-    r = smb_recv(socket:soc);
-    if(strlen(r) < 14){
-      return(NULL);
-    }
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 14 ) return NULL;
 
     ##If status is pending, wait for response
     status = ord(r[12]);
     status2 = ord(r[13]);
-    while(status == 3 && status2 == 1)
-    {
+    while( status == 3 && status2 == 1 ) {
       ##PDU will arrive late
-      r = smb_recv(socket:soc);
-      if(strlen(r) < 14){
-        return(NULL);
-      }
-      status = ord(r[12]);
-      status2 = ord(r[13]);
+      r = smb_recv( socket:soc );
+      if( strlen( r ) < 14 ) return NULL;
+      status = ord( r[12] );
+      status2 = ord( r[13] );
     }
 
-    if(strlen(r) < 80)
-    {
-      return(NULL);
-    }
+    if( strlen( r ) < 80 ) return NULL;
+
     multiplex_id += 1;
-    if(isSignActive){
-             # verify signature
-             seq_number += 1;
+    if( isSignActive ) {
+      # verify signature
+      seq_number += 1;
 
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-             if( strlen( r ) < 64 ) {
-               return(FALSE);
-             }
+      r_head = substr( r, 0, 3 );
+      r = substr( r, 4, strlen( r ) - 1 );
+      if( strlen( r ) < 64 ) return FALSE;
 
-             orig_sign = substr(r, 48, 63);
+      orig_sign = substr( r, 48, 63 );
 
+      server_resp = get_smb2_signature( buf:r, key:sign_key );
+      if( isnull( server_resp ) ) return FALSE;
+      if( strlen( server_resp ) < 64 ) return FALSE;
 
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             if( strlen(server_resp) < 64 ) {
-               return(FALSE);
-             }
-
-             serv_sign = substr(server_resp, 48, 63);
-
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else {
-               r = r_head + r;
-             }
+      serv_sign = substr( server_resp, 48, 63 );
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      } else {
+        r = r_head + r;
+      }
     }
     # END TODO ->
 
-    if(strlen(r) > 156)
-    {
-      len = ord(r[156]);
-      if(!len){
-        break;
-      }
+    if( strlen( r ) > 156 ) {
+      len = ord( r[156] );
+      if( ! len ) break;
     } else {
       break;
     }
 
     name = "";
-    for(i=0; i<len - 1; i++){
-      if(strlen(r) > (159+i*2+1)) {
+    for( i = 0; i < len - 1; i++ ) {
+      if( strlen( r ) > ( 159 + i * 2 + 1 ) ) {
         name += r[159+i*2+1];
       }
     }
-    list = make_list(list, name);
+    list = make_list( list, name );
   }
   return list;
 }
 
+function registry1_enum_key( soc, uid, tid, pipe, reply ) {
 
-function registry1_enum_key(soc, uid, tid, pipe, reply)
-{
+  # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
-local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, list, i, j;
-list = make_list();
-tid_low = tid % 256;
-tid_high = tid / 256;
+  local_var soc, uid, tid, pipe, reply;
+  local_var list, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+  local_var magic, i, j, req, req2, len, packet, r, server_resp, orig_sign, serv_sign, name;
 
-uid_low = uid % 256;
-uid_high = uid / 256;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_enum_key" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_enum_key" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_enum_key" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_enum_key" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_enum_key" );
 
-pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
+  list = make_list();
+  tid_low = tid % 256;
+  tid_high = tid / 256;
 
-    if(strlen(reply) < 85) {
-      return NULL ;
-    } 
-	magic = raw_string(ord(reply[84]));
-	for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (84+i)){
-  		magic = magic + raw_string(ord(reply[84+i]));
-  	  }
+  uid_low = uid % 256;
+  uid_high = uid / 256;
+
+  pipe_low = pipe % 256;
+  pipe_high = pipe / 256;
+
+  if( strlen( reply ) < 85 ) return NULL;
+
+  magic = raw_string( ord( reply[84] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 84 + i ) ) {
+      magic += raw_string( ord( reply[84+i] ) );
     }
- 	for(j=0; j>=0; j++)
- 	{
-		req = raw_string(0x00, 0x00, 0x00, 0xa8, 0xFF, 0x53,
-				 0x4D, 0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x08);
-		if(isSignActive)
-                	req += raw_string(0x05, 0x40);
-        	else
-                	req += raw_string(0x01, 0x40);
-		req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_low, tid_high);
-		if(ntlmssp_flag)
-                	req += raw_string(0x33, 0x0c);
-        	else
-                	req += raw_string(0x00, 0x28);
-		req += raw_string(uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00,
-				 0x00, 0x5c, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00,
-				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0x00, 0x00, 0x00, 0x4c, 0x00, 0x5c, 0x00, 0x4c,
-				 0x00, 0x02, 0x00, 0x26, 0x00, pipe_low, pipe_high, 0x65,
-				 0x00, 0x5c, 0x50, 0x49, 0x50, 0x45, 0x5c, 0x00,
-				 0x00, 0x00, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00,
-				 0x00, 0x00, 0x5c, 0x00, 0x00, 0x00, 0xff, 0x00,
-				 0x00, 0x00, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0x09, 0x00);
+  }
 
-		req2= magic + raw_string(j % 256, j / 256, 0x00, 0x00,  # key ID
-					 0x00, 0x00, 		    # key name len
-					 0x14, 0x04,  		    # unknown
-					 0x01, 0x00, 0x00, 0x00,   # ptr
-					 0x0a, 0x02, 0x00, 0x00,   # unknown_2
-					 0x00, 0x00, 0x00, 0x00,   # padding
-					 0x00, 0x00, 0x00, 0x00,   # padding
-					 0x01, 0x00, 0x00, 0x00,   # ptr2
-					 0x00, 0x00, 0x00, 0x00,   # padding2
-					 0x00, 0x00, 0x00, 0x00,   # padding2
-					 0x01, 0x00, 0x00, 0x00,   # ptr3
-					 0xff, 0xff, 0xff, 0xff,   # smb_io_time low
-					 0xff, 0xff, 0xff, 0x7f);   # smb_io_time high
+  for( j = 0; j >= 0; j++ ) {
 
-	 	req += req2;
+    req = raw_string( 0x00, 0x00, 0x00, 0xa8, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
-                # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-		if( ntlmssp_flag && isSignActive ) {
-                  len = strlen( req );
-                  seq_number += 1;
-                  packet = req;
-                  req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-                  if( isnull( req ) ) return FALSE;
-        	}
-
-                send( socket:soc, data:req );
-                r = smb_recv( socket:soc );
-                if( strlen( r ) < 80 ) {
-                  return NULL;
-		}
-
-		if( ntlmssp_flag ) {
-                  multiplex_id += 1;
-                  if( r && isSignActive ) {
-                    # verify signature
-                    seq_number += 1;
-                    len = strlen( r );
-                    server_resp = get_signature(key:s_sign_key, buf:r, buflen:len, seq_number:seq_number);
-                    if( isnull( server_resp ) ) return FALSE;
-
-                    #TODO: Also check the response length here before accessing possible non-existing data
-                    if((strlen(server_resp) < 24) || (len < 24)) {
-                      return(FALSE);
-                    }
-                    orig_sign = substr( r, 18, 23 );
-                    serv_sign = substr( server_resp, 18, 23 );
-                    if( orig_sign != serv_sign ) {
-                      return FALSE;
-                    }
-                  }
-        	}
-                # -> END TODO
-        if(strlen(r) > 100) {
-		  len = ord(r[60+24+16]);
-		  if(!len){
-			break;
-		  }
-        } else {
-          break;
-        }
-
-		name = "";
-		for(i=0; i<len - 1; i++) {
-          if(strlen(r) > (60+43+i*2+1)) {
-		    name += r[60+43+i*2+1];
-		  }
-        }
-		list = make_list(list, name);
-	}
-	return list;
-
- }
-
- #----------------------------------------------------------#
- # RegEnumValue()                                           #
- #----------------------------------------------------------#
- # Author: Nicolas Pouvesle
- function registry_enum_value(soc, uid, tid, pipe, reply)
- {
- 	local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high, name, data, list, i, j;
-
-	tid_low = tid % 256;
-	tid_high = tid / 256;
-
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-
-    if(strlen(reply) < 85){
-      return FALSE ;
+    if( isSignActive ) {
+      req += raw_string( 0x05, 0x40 );
+    } else {
+      req += raw_string( 0x01, 0x40 );
     }
 
-	magic = raw_string(ord(reply[84]));
-	for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (84+i)) {
-  		magic = magic + raw_string(ord(reply[84+i]));
-	  }
+    req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, tid_low, tid_high );
+
+    if( ntlmssp_flag ) {
+      req += raw_string( 0x33, 0x0c );
+    } else {
+      req += raw_string( 0x00, 0x28 );
     }
-	for(j=0; j>=0; j++)
- 	{
-		req = raw_string(0x00, 0x00,
- 				 0x00, 0xC0, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-				 0x00, 0x00, 0x00, 0x18);
-		if(ntlmssp_flag){
-                	g_mhi = multiplex_id / 256;
-                	g_mlo = multiplex_id % 256;
-                	if(isSignActive)
-                        	req += raw_string(0x07, 0x80);
-                	else
-                        	req += raw_string(0x03, 0x80);
-        	}
-        	else{
-                	req += raw_string(0x03, 0x80);
-        	}
 
-		req += raw_string(0x00, 0x83,
-				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0x00, 0x00, tid_low, tid_high);
-		if(ntlmssp_flag)
-                        req += raw_string(0x33, 0x0c);
-                else
-                        req += raw_string(0x00, 0x28);
-		req += raw_string(uid_low, uid_high,
-				 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x6C, 0x00, 0x00,
-				 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-				 0x00, 0x6C, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-				 0x00, pipe_low, pipe_high, 0x59, 0x00, 0x00, 0x5C, 0x00,
-				 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-				 0x5C, 0x00, 0x00, 0x00, 0xEE, 0xD5, 0x05, 0x00,
-				 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x6C, 0x00,
-				 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x30, 0x00,
-				 0x00, 0x00, 0x00, 0x00, 0x0A, 0x00);
+    req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x5c,
+                       0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x4c, 0x00, 0x5c, 0x00, 0x4c, 0x00, 0x02,
+                       0x00, 0x26, 0x00, pipe_low, pipe_high, 0x65, 0x00, 0x5c,
+                       0x50, 0x49, 0x50, 0x45, 0x5c, 0x00, 0x00, 0x00,
+                       0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                       0x5c, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00,
+                       0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00 );
 
-  		req = req + magic +
-		      raw_string(j % 256, j / 256, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02,
-				 0xcc, 0xf9, 0x06, 0x00, 0x00, 0x01, 0x00, 0x00,
-				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0xa0, 0xf9, 0x06, 0x00, 0x59, 0xe6, 0x07, 0x00,
-				 0x00, 0xc4, 0x04, 0x01, 0x00, 0x80, 0x00, 0x00,
-				 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-				 0xb0, 0xf9, 0x06, 0x00, 0x00, 0x80, 0x00, 0x00,
-				 0x94, 0xf9, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00);
+    req2 = magic + raw_string( j % 256, j / 256, 0x00, 0x00, # key ID
+                               0x00, 0x00,                   # key name len
+                               0x14, 0x04,                   # unknown
+                               0x01, 0x00, 0x00, 0x00,       # ptr
+                               0x0a, 0x02, 0x00, 0x00,       # unknown_2
+                               0x00, 0x00, 0x00, 0x00,       # padding
+                               0x00, 0x00, 0x00, 0x00,       # padding
+                               0x01, 0x00, 0x00, 0x00,       # ptr2
+                               0x00, 0x00, 0x00, 0x00,       # padding2
+                               0x00, 0x00, 0x00, 0x00,       # padding2
+                               0x01, 0x00, 0x00, 0x00,       # ptr3
+                               0xff, 0xff, 0xff, 0xff,       # smb_io_time low
+                               0xff, 0xff, 0xff, 0x7f );     # smb_io_time high
 
-                # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-                if( ntlmssp_flag && isSignActive ) {
-                  len = strlen( req );
-                  seq_number += 1;
-                  packet = req;
-                  req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-                  if( isnull( req ) ) return FALSE;
-                }
+    req += req2;
 
-                send( socket:soc, data:req );
-                r = smb_recv( socket:soc );
-		if( strlen( r ) < 80 ) {
-                  return NULL;
-		}
+    # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+    if( ntlmssp_flag && isSignActive ) {
+      len = strlen( req );
+      seq_number += 1;
+      packet = req;
+      req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
+      if( isnull( req ) ) return FALSE;
+    }
 
-                if( ntlmssp_flag ) {
-                  multiplex_id += 1;
-                  if( r && isSignActive ) {
-                    # verify signature
-                    seq_number += 1;
-                    len = strlen( r );
-                    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-                    if( isnull( server_resp ) ) return FALSE;
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 80 ) return NULL;
 
-                    #TODO: Also check the response length here before accessing possible non-existing data
-                    if((strlen(server_resp) < 24) || (len < 24)) {
-                      return(FALSE);
-                    }
+    if( ntlmssp_flag ) {
+      multiplex_id += 1;
+      if( r && isSignActive ) {
+        # verify signature
+        seq_number += 1;
+        len = strlen( r );
+        server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+        if( isnull( server_resp ) ) return FALSE;
+        if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+          return FALSE;
+        }
+        orig_sign = substr( r, 18, 23 );
+        serv_sign = substr( server_resp, 18, 23 );
+        if( orig_sign != serv_sign ) {
+          return FALSE;
+        }
+      }
+    }
+    # -> END TODO
 
-                    orig_sign = substr( r, 18, 23 );
-                    serv_sign = substr( server_resp, 18, 23 );
-                    if( orig_sign != serv_sign ) {
-                      return FALSE;
-                    }
-                  }
-        	}
-                # -> END TODO
+    if( strlen( r ) > 100 ) {
+      len = ord( r[60+24+16] );
+      if( ! len ) break;
+    } else {
+      break;
+    }
 
-        if(strlen(r) > 84){
-		  len = ord(r[60+24]);
-		  if(!len){
-			break;
-		  }
-        } else {
-          break;
+    name = "";
+    for( i = 0; i < len - 1; i++ ) {
+      if( strlen( r ) > ( 60 + 43 + i * 2 + 1 ) ) {
+        name += r[60+43+i*2+1];
+      }
+    }
+    list = make_list( list, name );
+  }
+  return list;
+}
+
+#----------------------------------------------------------#
+# RegEnumValue()                                           #
+#----------------------------------------------------------#
+# Author: Nicolas Pouvesle
+function registry_enum_value( soc, uid, tid, pipe, reply ) {
+
+  # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
+
+  local_var soc, uid, tid, pipe, reply;
+  local_var tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+  local_var magic, i, j, req, len, packet, r, server_resp, orig_sign, serv_sign, name;
+  local_var dlen, data;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_enum_value" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_enum_value" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry_enum_value" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry_enum_value" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry_enum_value" );
+
+  tid_low = tid % 256;
+  tid_high = tid / 256;
+
+  uid_low = uid % 256;
+  uid_high = uid / 256;
+
+  pipe_low = pipe % 256;
+  pipe_high = pipe / 256;
+
+  if( strlen( reply ) < 85 ) return FALSE ;
+
+  magic = raw_string( ord(reply[84] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 84 + i ) ) {
+      magic += raw_string( ord( reply[84+i] ) );
+    }
+  }
+
+  for( j = 0; j >= 0; j++ ) {
+
+    req = raw_string( 0x00, 0x00, 0x00, 0xC0, 0xFF, 0x53, 0x4D, 0x42,
+                      0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
+
+    if( ntlmssp_flag ) {
+      g_mhi = multiplex_id / 256;
+      g_mlo = multiplex_id % 256;
+
+      if( isSignActive ) {
+        req += raw_string( 0x07, 0x80 );
+      } else {
+        req += raw_string( 0x03, 0x80 );
+      }
+    } else {
+      req += raw_string(0x03, 0x80);
+    }
+
+    req += raw_string( 0x00, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, tid_low, tid_high );
+
+    if( ntlmssp_flag ) {
+      req += raw_string( 0x33, 0x0c );
+    } else {
+      req += raw_string( 0x00, 0x28 );
+    }
+
+    req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x6C,
+                       0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                       0x00, 0x54, 0x00, 0x6C, 0x00, 0x54, 0x00, 0x02,
+                       0x00, 0x26, 0x00, pipe_low, pipe_high, 0x59, 0x00, 0x00,
+                       0x5C, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                       0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0xEE, 0xD5,
+                       0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                       0x6C, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00,
+                       0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x00 );
+
+    req = req + magic + raw_string( j % 256, j / 256, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02,
+                                    0xcc, 0xf9, 0x06, 0x00, 0x00, 0x01, 0x00, 0x00,
+                                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                    0xa0, 0xf9, 0x06, 0x00, 0x59, 0xe6, 0x07, 0x00,
+                                    0x00, 0xc4, 0x04, 0x01, 0x00, 0x80, 0x00, 0x00,
+                                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                    0xb0, 0xf9, 0x06, 0x00, 0x00, 0x80, 0x00, 0x00,
+                                    0x94, 0xf9, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00 );
+
+    # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+    if( ntlmssp_flag && isSignActive ) {
+      len = strlen( req );
+      seq_number += 1;
+      packet = req;
+      req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
+      if( isnull( req ) ) return FALSE;
+    }
+
+    send( socket:soc, data:req );
+    r = smb_recv( socket:soc );
+    if( strlen( r ) < 80 ) return NULL;
+
+    if( ntlmssp_flag ) {
+      multiplex_id += 1;
+      if( r && isSignActive ) {
+        # verify signature
+        seq_number += 1;
+        len = strlen( r );
+        server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+        if( isnull( server_resp ) ) return FALSE;
+        if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+          return FALSE;
         }
 
-		name = "";
-		for(i=0; i<len; i=i+2){
-            if(strlen(r) > (60+43+i+1)){
-			  name += r[60+43+i+1];
-            }
-		}
-
-        if(strlen(r) > (60+43+len+2)){
-		  if(!ord(r[60+43+len+2])){
-			len+=2;
-		  }
-        } else {
-          len+=2;
+        orig_sign = substr( r, 18, 23 );
+        serv_sign = substr( server_resp, 18, 23 );
+        if( orig_sign != serv_sign ) {
+          return FALSE;
         }
+      }
+    }
+    # -> END TODO
 
-        if(strlen(r) > (60+43+len+21)){
-  		  dlen = ord(r[60+43+len+21]);
-        }
+    if( strlen( r ) > 84 ) {
+      len = ord( r[60+24] );
+      if( ! len ) break;
+    } else {
+      break;
+    }
 
-		data = "";
-		for(i=0;i<dlen;i = i+2){
-            if(strlen(r) > (60+43+len+24+i+1)){
-			  data += r[60+43+len+24+i+1];
-            }
-		}
+    name = "";
+    for( i = 0; i < len; i = i + 2 ) {
+      if( strlen( r ) > ( 60 + 43 + i + 1 ) ) {
+        name += r[60+43+i+1];
+      }
+    }
 
-		list[j*2] = name;
-		list[j*2+1] = data;
-	}
-	return list;
+    if( strlen( r ) > ( 60 + 43 + len + 2 ) ) {
+      if( ! ord( r[60+43+len+2] ) ) {
+        len += 2;
+      }
+    } else {
+      len += 2;
+    }
+
+    if( strlen( r ) > ( 60 + 43 + len + 21 ) ) {
+      dlen = ord( r[60+43+len+21] );
+    }
+
+    data = "";
+    for( i = 0; i < dlen; i = i + 2 ) {
+      if( strlen( r ) > ( 60 + 43 + len + 24 + i + 1 ) ) {
+        data += r[60+43+len+24+i+1];
+      }
+    }
+
+    list[j*2] = name;
+    list[j*2+1] = data;
+  }
+  return list;
 }
 
 #---------------------------------------------------------------------#
@@ -5379,7 +4459,7 @@ pipe_low = pipe % 256;
 #---------------------------------------------------------------------#
 function registry_get_key( soc, uid, tid, pipe, key, reply ) {
 
-  local_var res;
+  local_var soc, uid, tid, pipe, key, reply, res;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry_get_key" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_get_key" );
@@ -5397,832 +4477,354 @@ function registry_get_key( soc, uid, tid, pipe, key, reply ) {
   }
 }
 
- function registry1_get_key(soc, uid, tid, pipe, key, reply, write)
- {
-   local_var _na_start, i, error, access_mask;
+function registry1_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
-   key_len = strlen(key) + 1;
-   key_len_hi = key_len / 256;
-   key_len_lo = key_len % 256;
+  # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
-   tid_low = tid % 256;
-   tid_high = tid / 256;
-   uid_low = uid % 256;
-   uid_high = uid / 256;
-   pipe_low = pipe % 256;
-   pipe_high = pipe / 256;
-   uc = unicode(data:key);
+  local_var soc, uid, tid, pipe, key, reply, write;
+  local_var key_len, key_len_hi, key_len_lo, tid_low, tid_high;
+  local_var uid_low, uid_high, pipe_low, pipe_high, uc, access_mask;
+  local_var len, len_hi, len_lo, z, z_lo, z_hi, y, y_lo, y_hi, x, x_lo, x_hi;
+  local_var magic1, req, magic, packet, r, server_resp, orig_sign, serv_sign;
+  local_var _na_start, _na_cnt, _na_data;
 
-   if(write){
-     access_mask = raw_string(0x19, 0x00, 0x02, 0x02);
-   }
-   else {
-    access_mask = raw_string(0x19, 0x00, 0x02, 0x00);
-   }
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_get_key" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_get_key" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_get_key" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_get_key" );
+  if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry1_get_key" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_get_key" );
 
-   uc += access_mask;
-   len = 148 + strlen(uc);
+  key_len = strlen( key ) + 1;
+  key_len_hi = key_len / 256;
+  key_len_lo = key_len % 256;
 
-   len_hi = len / 256;
-   len_lo = len % 256;
+  tid_low = tid % 256;
+  tid_high = tid / 256;
+  uid_low = uid % 256;
+  uid_high = uid / 256;
+  pipe_low = pipe % 256;
+  pipe_high = pipe / 256;
+  uc = unicode( data:key );
 
-   z = 40 + strlen(uc);
-   z_lo = z % 256;
-   z_hi = z / 256;
+  if( write ) {
+    access_mask = raw_string( 0x19, 0x00, 0x02, 0x02 );
+  } else {
+    access_mask = raw_string( 0x19, 0x00, 0x02, 0x00 );
+  }
 
-   y = 81 + strlen(uc);
-   y_lo = y % 256;
-   y_hi = y / 256;
+  uc += access_mask;
+  len = 148 + strlen( uc );
 
-   x = 64 + strlen(uc);
-   x_lo = x % 256;
-   x_hi = x / 256;
+  len_hi = len / 256;
+  len_lo = len % 256;
 
-   if(strlen(reply) < 18){
-     return NULL;
-   }
-   magic1 = raw_string(ord(reply[16]), ord(reply[17]));
+  z = 40 + strlen( uc );
+  z_lo = z % 256;
+  z_hi = z / 256;
 
-   req = raw_string(0x00, 0x00, len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-            0x00, 0x00, 0x00, 0x18);
-   if(ntlmssp_flag){
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
-   if(isSignActive)
-     req += raw_string(0x07, 0x80);
-   else
-     req += raw_string(0x03, 0x80);
-   }
-   else
-     req += raw_string(0x03, 0x80);
-     req += magic1 + raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00,tid_low, tid_high);
-    if(ntlmssp_flag)
+  y = 81 + strlen( uc );
+  y_lo = y % 256;
+  y_hi = y / 256;
+
+  x = 64 + strlen( uc );
+  x_lo = x % 256;
+  x_hi = x / 256;
+
+  if( strlen( reply ) < 18 ) return NULL;
+  magic1 = raw_string( ord( reply[16] ), ord( reply[17] ) );
+
+  req = raw_string( 0x00, 0x00, len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42,
+                    0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
+
+  if( ntlmssp_flag ) {
+    g_mhi = multiplex_id / 256;
+    g_mlo = multiplex_id % 256;
+    if( isSignActive ) {
+      req += raw_string( 0x07, 0x80 );
+    } else {
+      req += raw_string( 0x03, 0x80 );
+    }
+  } else {
+    req += raw_string(0x03, 0x80);
+  }
+
+  req += magic1 + raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                               0x00, 0x00,tid_low, tid_high );
+
+  if( ntlmssp_flag ) {
     req+= raw_string(0x33, 0x0c);
-    else
+  } else {
      req+= raw_string(0x00, 0x28);
-     req += raw_string(uid_low, uid_high,
- g_mlo, g_mhi, 0x10, 0x00, 0x00, x_lo, x_hi, 0x00,
- 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-0x00, x_lo, x_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
- 0x00, pipe_low, pipe_high, y_lo, y_hi, 0x00, 0x5C, 0x00,
-0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-0x5C, 0x00, 0x00, 0x00, 0x00, 0xb9, 0x05, 0x00,
-0x00, 0x03, 0x10, 0x00, 0x00, 0x00, x_lo, x_hi,
-0x00, 0x00, 0x02, 0x00, 0x00, 0x00, z_lo, z_hi,
-0x00, 0x00, 0x00, 0x00, 0x0F, 0x00);
-
- if(strlen(reply) < 85){
-   return FALSE ;
- }
-
-magic = raw_string(ord(reply[84]));
-for(i=1; i<20; i=i+1){
-  if(strlen(reply) > (84+i)){
-    magic = magic + raw_string(ord(reply[84+i]));
   }
-}
-x = strlen(key) + strlen(key) + 2;
-x_lo = x % 256;
-x_hi = x / 256;
 
-req = req + magic +
-      raw_string(x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC,
-  0xFD, 0x7F, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00,
- 0x00, 0x00, key_len_lo, key_len_hi, 0x00, 0x00) + uc;
+  req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, x_lo,
+                     x_hi, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x54, 0x00, x_lo, x_hi, 0x54, 0x00, 0x02,
+                     0x00, 0x26, 0x00, pipe_low, pipe_high, y_lo, y_hi, 0x00,
+                     0x5C, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                     0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0xb9,
+                     0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                     x_lo, x_hi, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
+                     z_lo, z_hi, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x00 );
 
-# <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-if( ntlmssp_flag ) {
-  if( isSignActive ) {
-    len = strlen( req );
-    seq_number += 1;
-    packet = req;
-    req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-    if( isnull( req ) ) return FALSE;
-  }
-}
+  if( strlen( reply ) < 85 ) return FALSE ;
 
-send(socket:soc, data:req);
-r = smb_recv(socket:soc);
-if(strlen(r) < 10){
-  return FALSE;
-}
-if( ntlmssp_flag ) {
-  multiplex_id += 1;
-  if( isSignActive ) {
-    # verify signature
-    seq_number += 1;
-    len = strlen( r );
-    server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-    if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen(server_resp) < 24) || (len < 24)) {
-      return(FALSE);
-    }
-
-    orig_sign = substr( r, 18, 23 );
-    serv_sign = substr( server_resp, 18, 23 );
-    if( orig_sign != serv_sign ) {
-      return FALSE;
+  magic = raw_string( ord(reply[84] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 84 + i ) ) {
+      magic += raw_string( ord( reply[84+i] ) );
     }
   }
-}
-# -> END TODO
 
-len = ord(r[2])*256;
-len = len + ord(r[3]);
-if(len < 100){
-return(FALSE);
-}
+  x = strlen( key ) + strlen( key ) + 2;
+  x_lo = x % 256;
+  x_hi = x / 256;
 
-# pull the last 4 bytes off the end
-_na_start = (strlen(r) - 4);
-for (_na_cnt = 0; _na_cnt < 4; _na_cnt++){
-_na_data = _na_data + r[_na_start + _na_cnt];
-}
+  req += magic + raw_string( x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC, 0xFD, 0x7F,
+                             0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             key_len_lo, key_len_hi, 0x00, 0x00 ) + uc;
 
-# access denied, returned by Windows XP+
-if(_na_data == raw_string(0x05,0x00,0x00,0x00) ||
-   _na_data == raw_string(0x02, 0x00, 0x00, 0x00)){
-return(FALSE);
-}
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  if( ntlmssp_flag ) {
+    if( isSignActive ) {
+      len = strlen( req );
+      seq_number += 1;
+      packet = req;
+      req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
+      if( isnull( req ) ) return FALSE;
+    }
+  }
 
-if(ord(r[9])==0){
-return(r);
-}
-else {
-return(FALSE);
-}
- }
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 10 ) return FALSE;
 
+  if( ntlmssp_flag ) {
+    multiplex_id += 1;
+    if( isSignActive ) {
+      # verify signature
+      seq_number += 1;
+      len = strlen( r );
+      server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+      if( isnull( server_resp ) ) return FALSE;
+      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        return FALSE;
+      }
+
+      orig_sign = substr( r, 18, 23 );
+      serv_sign = substr( server_resp, 18, 23 );
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      }
+    }
+  }
+  # -> END TODO
+
+  len = ord( r[2] ) * 256;
+  len = len + ord( r[3] );
+  if( len < 100 ) return FALSE;
+
+  # pull the last 4 bytes off the end
+  _na_start = ( strlen( r ) - 4 );
+  for( _na_cnt = 0; _na_cnt < 4; _na_cnt++ ) {
+    _na_data = _na_data + r[_na_start + _na_cnt];
+  }
+
+  # access denied, returned by Windows XP+
+  if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 ) ||
+      _na_data == raw_string( 0x02, 0x00, 0x00, 0x00 ) ) {
+    return FALSE;
+  }
+
+  if( ord( r[9] ) == 0 ) {
+    return r;
+  } else {
+    return FALSE;
+  }
+}
 
 ##########SMB2 Registry get key################
+function registry2_get_key( soc, uid, tid, pipe, key, reply, write ) {
 
-function registry2_get_key(soc, uid, tid, pipe, key, reply, write)
-{
-  local_var _na_start, i, error, access_mask;
+  # isSignActive, ntlmssp_flag, seq_number, sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
-  key_len = strlen(key) + 1;
+  local_var soc, uid, tid, pipe, key, reply, write;
+  local_var key_len, key_len_hi, key_len_lo, uc, access_mask, req;
+  local_var ioctl_req, dcerpc_req1, dcerpc_req2, magic, i, x, x_lo, x_hi;
+  local_var rrs_req, len_rrs, len_rrs_lo, len_rrs_hi, dcerpc_req;
+  local_var req_l, len_lo, len_hi, r, status, status2, r_head;
+  local_var orig_sign, server_resp, serv_sign, len;
+  local_var _na_start, _na_cnt, _na_data;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_get_key" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_get_key" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_get_key" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_get_key" );
+  if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry2_get_key" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_get_key" );
+
+  key_len = strlen( key ) + 1;
   key_len_hi = key_len / 256;
   key_len_lo = key_len % 256;
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
 
+  uc = unicode( data:key );
 
-  uc = unicode(data:key);
-
-  if(write){
-    access_mask = raw_string(0x19, 0x00, 0x02, 0x02);
-  }
-  else {
-    access_mask = raw_string(0x19, 0x00, 0x02, 0x00);
+  if( write ) {
+    access_mask = raw_string( 0x19, 0x00, 0x02, 0x02 );
+  } else {
+    access_mask = raw_string( 0x19, 0x00, 0x02, 0x00 );
   }
 
   uc += access_mask;
 
-  if(strlen(reply) < 17){
-    return NULL;
+  if( strlen( reply ) < 17 ) return NULL;
+
+  # SMB2 Header
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
+
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
   }
 
-# SMB2 Header
-  req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
 
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
+  # Ioctl Req
+  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                          pipe, 0x78, 0x00, 0x00, 0x00 );
 
+  # Distributed Computing Environment / Remote Procedure Calls
+  dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
+  dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
+                            0x00, 0x00, 0x00, 0x00, 0x0f, 0x00 );
 
-   req += raw_string(0x00, 0x00, 0x00, 0x00,
-                         g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-# Ioctl Req
-  ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                         pipe, 0x78, 0x00, 0x00, 0x00);
+  if( strlen( reply ) < 141 ) return FALSE ;
 
-# Distributed Computing Environment / Remote Procedure Calls
-  dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
-  dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                           0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x00);
-
-  if(strlen(reply) < 141){
-    return FALSE ;
+  magic = raw_string( ord( reply[140] ) );
+  for( i = 1; i < 20; i++ ){
+    if( strlen( reply ) > ( 140 + i ) ) {
+      magic += raw_string( ord( reply[140+i] ) );
+    }
   }
 
-  magic = raw_string(ord(reply[140]));
-  for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (140+i)){
-        magic = magic + raw_string(ord(reply[140+i]));
-      }
-  }
-
-  x = strlen(key) + strlen(key) + 2;
+  x = strlen( key ) + strlen( key ) + 2;
   x_lo = x % 256;
   x_hi = x / 256;
 
-# Remote Registry Service Req
-  rrs_req = magic + raw_string(x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC,
-                               0xFD, 0x7F, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00,
-                               0x00, 0x00, key_len_lo, key_len_hi, 0x00, 0x00) + uc;
+  # Remote Registry Service Req
+  rrs_req = magic + raw_string( x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC, 0xFD, 0x7F,
+                                0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                key_len_lo, key_len_hi, 0x00, 0x00 ) + uc;
 
-  len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
+  len_rrs = strlen( rrs_req ) + strlen( dcerpc_req1 ) + strlen( dcerpc_req2 ) + 2;
   len_rrs_lo = len_rrs % 256;
   len_rrs_hi = len_rrs / 256;
 
-  dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
+  dcerpc_req = dcerpc_req1 + raw_string( len_rrs_lo, len_rrs_hi ) + dcerpc_req2;
 
-  ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00);
+  ioctl_req += raw_string( len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00 );
 
-  req = req + ioctl_req + dcerpc_req + rrs_req;
-  req_l = strlen(req);
-  len_lo =  req_l % 256;
+  req += ioctl_req + dcerpc_req + rrs_req;
+  req_l = strlen( req );
+  len_lo = req_l % 256;
   len_hi = req_l / 256;
 
-   if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_key: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
+  if( isSignActive ) {
+    sig = get_smb2_signature( buf:req, key:sign_key );
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_key: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
     }
-    else{
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + req ;
-    }
-
-    # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-    send(socket:soc, data:req);
-    r = smb_recv(socket:soc);
-  if(strlen(r) < 14){
-     return(FALSE);
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+  } else {
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + req;
   }
 
-    ##If status is pending, wait for response
-    status = ord(r[12]);
-    status2 = ord(r[13]);
-    while(status == 3 && status2 == 1)
-    {
-      ##PDU will arrive late
-      r = smb_recv(socket:soc);
-      if(strlen(r) < 14){
-        return(FALSE);
-      }
-      status = ord(r[12]);
-      status2 = ord(r[13]);
-    }
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 14 ) return FALSE;
 
-  if(ntlmssp_flag){
+  ##If status is pending, wait for response
+  status = ord( r[12] );
+  status2 = ord( r[13] );
+  while( status == 3 && status2 == 1 ) {
+    ##PDU will arrive late
+    r = smb_recv(socket:soc);
+    if( strlen( r ) < 14 ) return FALSE;
+    status = ord( r[12] );
+    status2 = ord( r[13] );
+  }
+
+  if( ntlmssp_flag ) {
     multiplex_id += 1;
-    if(isSignActive){
-              # verify signature
-              seq_number += 1;
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-             if( strlen(r) < 64 ) {
-               return(FALSE);
-             }
+    if( isSignActive ) {
+      # verify signature
+      seq_number += 1;
+      r_head = substr( r, 0, 3 );
+      r = substr( r, 4, strlen( r ) - 1 );
+      if( strlen( r ) < 64 ) return FALSE;
 
-             orig_sign = substr(r, 48, 63);
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             if( strlen(server_resp) < 64 ) {
-               return(FALSE);
-             }
+      orig_sign = substr( r, 48, 63 );
+      server_resp = get_smb2_signature( buf:r, key:sign_key );
+      if( isnull( server_resp ) ) return FALSE;
+      if( strlen( server_resp ) < 64 ) return FALSE;
 
-             serv_sign = substr(server_resp, 48, 63);
+      serv_sign = substr( server_resp, 48, 63 );
 
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else{
-               r = r_head + r;
-             }
-   }
-}
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      } else {
+        r = r_head + r;
+      }
+    }
+  }
   # END TODO ->
 
-  len = ord(r[2])*256;
-  len = len + ord(r[3]);
-  if(len < 100){
-   return(FALSE);
-  }
+  len = ord( r[2] ) * 256;
+  len = len + ord( r[3] );
+  if( len < 100 ) return FALSE;
 
   # pull the last 4 bytes off the end
-  _na_start = (strlen(r) - 4);
-  for (_na_cnt = 0; _na_cnt < 4; _na_cnt++){
-  _na_data = _na_data + r[_na_start + _na_cnt];
+  _na_start = ( strlen( r ) - 4 );
+  for( _na_cnt = 0; _na_cnt < 4; _na_cnt++ ) {
+    _na_data += r[_na_start + _na_cnt];
   }
 
   # access denied, returned by Windows XP+
-  if(_na_data == raw_string(0x05,0x00,0x00,0x00) ||
-     _na_data == raw_string(0x02, 0x00, 0x00, 0x00)){
-   return(FALSE);
+  if( _na_data == raw_string( 0x05, 0x00, 0x00, 0x00 ) ||
+      _na_data == raw_string( 0x02, 0x00, 0x00, 0x00 ) ) {
+    return FALSE;
   }
+
   ## 8 + BIOS-4bytes
-  if(ord(r[12])==0){
-    return(r);
-  }
-  else {
-   return(FALSE);
-  }
-}
-
- #------------------------------------------------------------------#
- # Return TRUE if someone else than the admin group, the owner      #
- # and the local system can modify the key                          #
- #------------------------------------------------------------------#
- function registry_key_writeable_by_non_admin(security_descriptor)
- {
- 	local_var r, num_aces, size, start, s, i, mask, z, id_auth, num_auth, sub_auth, k, n, sid;
-	local_var WRITE, ADMIN_SID, LOCAL_SYSTEM_SID, CREATOR_OWNER_SID;
-
-	if(isnull(security_descriptor)){
-		return(NULL);
-	}
-
-	# write mask
-	WRITE = 0x00010000 | 0x00040000 | 0x00080000 | 0x00000002 | 0x000004;
-
-	# sids
-
-	ADMIN_SID = "1-000005-32-544";
-	LOCAL_SYSTEM_SID = "1-000005-18";
-	CREATOR_OWNER_SID = "1-000003-0";
-
- 	r = security_descriptor;
-    if(strlen(r) < 156){
-      return(NULL);
-	}
-	num_aces = 0;
-	num_aces = ord(r[135]);
-	num_aces = ord(r[134])+ num_aces*256;
-	num_aces = ord(r[133])+ num_aces*256;
-	num_aces = ord(r[132])+ num_aces*256;
-	start = 137;
- 	size = 0;
-	s = start;
-
-	for(i=0;i<num_aces;i=i+1)
- 	{
-		z = ord(r[s+2]);
-		z = ord(r[s+1])+z*256;
-		mask = ord(r[s+6]);
-		mask = ord(r[s+5])+mask*256;
-		mask = ord(r[s+4])+mask*256;
-		mask = ord(r[s+3])+mask*256;
-
-		id_auth = ord(r[s+14]);
-		id_auth = string(ord(r[s+13]), id_auth);
-		id_auth = string(ord(r[s+12]), id_auth);
-		id_auth = string(ord(r[s+11]), id_auth);
-		id_auth = string(ord(r[s+10]), id_auth);
-		id_auth = string(ord(r[s+9]), id_auth);
-
-		num_auths = ord(r[s+8]);
-		sub_auths = "";
-		k = 15;
-		for(c = 0;c < num_auths; c = c+1)
-		{
-          if(strlen(r) > (s+k+3)){
-			n = ord(r[s+k+3]);
-			n = ord(r[s+k+2])+n*256;
-			n = ord(r[s+k+1])+n*256;
-			n = ord(r[s+k])+n*256;
-			k = k + 4;
-			sub_auths = string(sub_auths,"-",n);
-          }
-		}
-
-		sid = string(ord(r[s+7]), "-", id_auth, sub_auths);
-		# display("sid = ", sid, "\n");
-		if(mask & WRITE)
-		{
-			#     display("writeable by ", sid, "\n");
-			#	  display(mask & WRITE, "\n");
-
-			if((sid != ADMIN_SID) && (sid != LOCAL_SYSTEM_SID) &&
-	    		   (sid != CREATOR_OWNER_SID))
-			{
-				#display("sid != ", CREATOR_OWNER_SID, "\n");
-				#display(mask, "\n");
-				return(TRUE);
-			}
-      		}
-		s = s + z;
- 	}
-	return(FALSE);
- }
-
-#---------------------------------------------------------------------#
-# Get the security descriptor for a key                               #
-#---------------------------------------------------------------------#
-function registry_get_key_security( soc, uid, tid, pipe, reply ) {
-
-  local_var ret;
-
-  if( ord( reply[4]) == 254 ) {
-    ret = registry2_get_key_security(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(ret);
+  if( ord( r[12] ) == 0 ) {
+    return r;
   } else {
-    ret = registry1_get_key_security(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:reply);
-    return(ret);
+   return FALSE;
   }
 }
-
- function registry1_get_key_security(soc, uid, tid, pipe, reply)
-{
- 	local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
-
-	tid_low = tid % 256;
-	tid_high = tid / 256;
-
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x90, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18);
-	if(ntlmssp_flag){
-                g_mhi = multiplex_id / 256;
-                g_mlo = multiplex_id % 256;
-                if(isSignActive)
-                        req += raw_string(0x07, 0x80);
-                else
-                        req += raw_string(0x03, 0x80);
-        }
-        else{
-                req += raw_string(0x03, 0x80);
-        }
-	req += raw_string(0x00, 0x83,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_low, tid_high);
-	if(ntlmssp_flag)
-        	req += raw_string(0x33, 0x0c);
-        else
-                req += raw_string(0x00, 0x28);
-	req += raw_string(uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x3C, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x3C, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_low, pipe_high, 0x4D, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0xEE, 0xD5, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x3C, 0x00,
-			 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x24, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00);
-
-	if(strlen(reply) < 104){
-		return(FALSE);
-	}
-
-	magic = raw_string(ord(reply[84]));
-	for(i=1;i<20;i=i+1){
-		magic = magic + raw_string(ord(reply[84+i]));
-	}
-
-	req = req + magic + raw_string(0x04) + crap(data:raw_string(0), length:15);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-    if(strlen(r) < 16){
-      return(FALSE);
-	}
-
-	len1 =  ord(r[strlen(r) - 16]);
-	len2 = ord(r[strlen(r) - 15]);
-	len3 = ord(r[strlen(r) - 14]);
-	len4 = ord(r[strlen(r) - 13]);
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x9C, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x03, 0x80, 0x00, 0x83,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_low, tid_high, 0x00, 0x28, uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x48, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x48, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_low, pipe_high, 0x59, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0xEE, 0xD5, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x48, 0x00,
-			 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x30, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00);
-
- 	req = req + magic +
-	      raw_string(0x04, 0x00, 0x00, 0x00, 0x38, 0x8d,
-			 0x07, 0x00, len1, len2, len3, len4, 0x00, 0x00,
-			 0x00, 0x00, len1, len2, len3, len4, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        if( ntlmssp_flag && isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
-        send( socket:soc, data:req );
-        r = smb_recv(socket:soc);
-        if( strlen( r ) < 150 ) {
-          return NULL;
-        }
-
-        if( ntlmssp_flag ) {
-          multiplex_id += 1;
-          if( r && isSignActive ) {
-            # verify signature
-            seq_number += 1;
-            len = strlen( r );
-            server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-            if( isnull( server_resp ) ) return FALSE;
-
-            #TODO: Also check the response length here before accessing possible non-existing data
-            if((strlen(server_resp) < 24) || (len < 24)) {
-              return(FALSE);
-            }
-            orig_sign = substr( r, 18, 23 );
-            serv_sign = substr( server_resp, 18, 23 );
-            if( orig_sign != serv_sign ) {
-              return FALSE;
-            }
-          }
-        }
-        # -> END TODO
-
-  return r;
-}
-
- function registry2_get_key_security(soc, uid, tid, pipe, reply)
- {
-   local_var magic, req, r, tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
-
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
-
-  req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
-
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
-  req += raw_string(0x00, 0x00, 0x00, 0x00,
-                   g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-
-# Ioctl Req
-  ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                         pipe, 0x78, 0x00, 0x00, 0x00);
-
-# Distributed Computing Environment / Remote Procedure Calls
- dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
- dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                                 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00);
-
-  if(strlen(reply) < 141){
-    return FALSE;
-  }
-
-  magic = raw_string(ord(reply[140]));
-  for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (140+i)){
-        magic = magic + raw_string(ord(reply[140+i]));
-      }
-  }
-
-  x = strlen(key) + strlen(key) + 2;
-  x_lo = x % 256;
-  x_hi = x / 256;
-
-# Remote Registry Service Req
-  rrs_req = magic + raw_string(0x04) + crap(data:raw_string(0), length:15);
-
-  len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
-  len_rrs_lo = len_rrs % 256;
-  len_rrs_hi = len_rrs / 256;
-
-  dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
-
-  ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00);
-
-  req = req + ioctl_req + dcerpc_req + rrs_req;
-  req_l = strlen(req);
-  len_lo =  req_l % 256;
-  len_hi = req_l / 256;
-
-   if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_key_security: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
-    }
-    else{
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + req ;
-    }
-
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-  if(strlen(r) < 14){
-     return(FALSE);
-  }
-
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if(strlen(r) < 14){
-             return(FALSE);
-           }
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
-
-
-  multiplex_id = multiplex_id + 1;
-  g_mhi = multiplex_id / 256;
-  g_mlo = multiplex_id % 256;
-
-  if(strlen(r) < 16){
-      return(FALSE);
-  }
-
- len1 =  ord(r[strlen(r) - 16]);
- len2 = ord(r[strlen(r) - 15]);
- len3 = ord(r[strlen(r) - 14]);
- len4 = ord(r[strlen(r) - 13]);
-
-  req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
-
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
-
-
-   req += raw_string(0x00, 0x00, 0x00, 0x00,
-                   g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-
-# Ioctl Req
-  ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                         pipe, 0x78, 0x00, 0x00, 0x00);
-
-# Distributed Computing Environment / Remote Procedure Calls
- dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
- dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                                 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00);
-
-  if(strlen(reply) < 141){
-    return FALSE;
-  }
-
-  magic = raw_string(ord(reply[140]));
-  for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (140+i)){
-        magic = magic + raw_string(ord(reply[140+i]));
-      }
-  }
-
-  x = strlen(key) + strlen(key) + 2;
-  x_lo = x % 256;
-  x_hi = x / 256;
-
-# Remote Registry Service Req
-  rrs_req = magic + raw_string(0x04, 0x00, 0x00, 0x00, 0x38, 0x8d, 0x07, 0x00,
-            len1, len2, len3, len4, 0x00, 0x00, 0x00, 0x00, len1, len2, len3,
-            len4, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-
-  len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
-  len_rrs_lo = len_rrs % 256;
-  len_rrs_hi = len_rrs / 256;
-
-  dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
-
-  ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00);
-
-  req = req + ioctl_req + dcerpc_req + rrs_req;
-  req_l = strlen(req);
-  len_lo =  req_l % 256;
-  len_hi = req_l / 256;
-
-   if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_key_security: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
-    }
-    else{
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + req ;
-    }
-
-          # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-
-        if(strlen(r) < 14){
-          return(NULL);
-        }
-
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if(strlen(r) < 14){
-             return(NULL);
-           }
-
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
-
-
- if(strlen(r) < 150){
-  return(NULL);
- }
- if(ntlmssp_flag){
-          multiplex_id += 1;
-          if(r && isSignActive){
-               # verify signature
-               seq_number += 1;
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-             if( strlen( r ) < 64 ) {
-               return(FALSE);
-             }
-
-             orig_sign = substr(r, 48, 63);
-
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             if( strlen(server_resp) < 64 ) {
-               return(FALSE);
-             }
-
-             serv_sign = substr(server_resp, 48, 63);
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else {
-               r = r_head + r ;
-             }
-        }
-    }
-        # END TODO ->
-
- return(r);
- }
 
 #---------------------------------------------------------------------#
-# returns 'TRUE' if <key> exists				       #
+# returns 'TRUE' if <key> exists                                      #
 #---------------------------------------------------------------------#
 function registry_key_exists( key, type ) {
 
-  local_var i, name, _smb_port, login, pass, domain, soc, uid, tid, r, prot, pipe, type;
+  local_var key, type, name, _smb_port, login, pass, domain, soc, r, prot, uid, tid, pipe, r2, i;
 
   if( ! key ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_key_exists" );
@@ -6249,72 +4851,72 @@ function registry_key_exists( key, type ) {
   domain = kb_smb_domain();
 
   if( ! login ) login = "";
-  if( ! pass )  pass = "";
+  if( ! pass )  pass  = "";
 
   soc = open_sock_tcp( _smb_port );
-  if( ! soc ) return(FALSE);
+  if( ! soc ) return FALSE;
 
   # Request the session
   r = smb_session_request( soc:soc, remote:name );
   if( ! r ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # Negotiate the protocol
   prot = smb_neg_prot( soc:soc );
   if( ! prot ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # Set up our session
   r = smb_session_setup( soc:soc, login:login, password:pass, domain:domain, prot:prot );
   if( ! r ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # and extract our uid
   uid = session_extract_uid( reply:r );
   if( ! uid ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # Connect to the remote IPC and extract the TID we are attributed
   r = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
   if( ! r ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # and extract our tree id
   tid = tconx_extract_tid( reply:r );
   if( ! tid ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # Create a pipe to \winreg
   r = smbntcreatex( soc:soc, uid:uid, tid:tid, name:"\winreg" );
   if( ! r ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # and extract its ID
   pipe = smbntcreatex_extract_pipe( reply:r );
   if( ! pipe ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   # Setup things
   r = pipe_accessible_registry( soc:soc, uid:uid, tid:tid, pipe:pipe );
   if( ! r ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   if( type == "HKLM" ) {
@@ -6324,13 +4926,13 @@ function registry_key_exists( key, type ) {
   } else if( type == "HKCU" ) {
     r = registry_open_hkcu( soc:soc, uid:uid, tid:tid, pipe:pipe );
   } else {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   if( ! r ) {
-    close(soc);
-    return(FALSE);
+    close( soc );
+    return FALSE;
   }
 
   r2 = registry_get_key( soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r );
@@ -6345,10 +4947,8 @@ function registry_key_exists( key, type ) {
   #flag = 0;
   if( strlen( uid ) == 8 ) {
     for( i = 1; i < 20; i++ ) {
-      if(strlen(r2) > (140+i))
-      {
-        if( ord( r2[140+i] ) != 0 )
-        {
+      if( strlen( r2 ) > ( 140 + i ) ) {
+        if( ord( r2[140+i] ) != 0 ) {
           return TRUE;
           #flag = 1;
         }
@@ -6356,8 +4956,8 @@ function registry_key_exists( key, type ) {
     }
   } else {
     for( i = 1; i < 20; i++ ) {
-      if(strlen(r2) > (84+i)) {
-        if( ord(r2[84+i]) != 0 ) {
+      if( strlen( r2 ) > ( 84 + i ) ) {
+        if( ord( r2[84+i] ) != 0 ) {
           return TRUE;
           #flag = 1;
         }
@@ -6367,132 +4967,14 @@ function registry_key_exists( key, type ) {
   return NULL;
 }
 
- #---------------------------------------------------------------------#
- # returns 'TRUE' if <key> is writeable				       #
- #---------------------------------------------------------------------#
- function registry_get_acl(key)
- {
-   local_var name, domain, _smb_port, login, pass, soc, r, uid, tid, pipe, ret, prot;
-
-   name =  kb_smb_name();
-   if(!name){
-     return NULL;
-   }
-
-   domain = kb_smb_domain();
-   _smb_port = kb_smb_transport();
-   if(!_smb_port){
-     return NULL;
-   }
-
-   if(!get_port_state(_smb_port)){
-     return(FALSE);
-   }
-
-   login = kb_smb_login();
-   pass  = kb_smb_password();
-
-   if(!login){
-     login = "";
-   }
-   if(!pass){
-     pass = "";
-   }
-
-   soc = open_sock_tcp(_smb_port);
-   if(!soc){
-     return NULL;
-   }
-
-   # Request the session
-   r = smb_session_request(soc:soc,  remote:name);
-   if(!r){
-     return(FALSE);
-   }
-
-   # Negotiate the protocol
-   prot = smb_neg_prot(soc:soc);
-   if(!prot){
-     return(FALSE);
-   }
-
-   # Set up our session
-   r = smb_session_setup(soc:soc, login:login, password:pass, domain:domain, prot:prot);
-   if(!r){
-      return(FALSE);
-   }
-
-     # and extract our uid
-     uid = session_extract_uid(reply:r);
-     if(!uid){
-       return(NULL);
-     }
-
-     # Connect to the remote IPC and extract the TID
-     # we are attributed
-     r = smb_tconx(soc:soc, name:name, uid:uid, share:"IPC$");
-     if(!r){
-       return(NULL);
-     }
-     # and extract our tree id
-     tid = tconx_extract_tid(reply:r);
-     if(!tid){
-       return(NULL);
-     }
-
-     # Create a pipe to \winreg
-     r = smbntcreatex(soc:soc, uid:uid, tid:tid, name:"\winreg");
-     if(!r){
-       return(NULL);
-     }
-     # and extract its ID
-     pipe = smbntcreatex_extract_pipe(reply:r);
-     if(!pipe){
-       return(FALSE);
-     }
-
-     # Setup things
-     r = pipe_accessible_registry(soc:soc, uid:uid, tid:tid, pipe:pipe);
-     if(!r){
-       return(FALSE);
-     }
-     r = registry_open_hklm(soc:soc, uid:uid, tid:tid, pipe:pipe);
-     if(!r){
-       return(FALSE);
-     }
-
-     if(key){
-       r2 = registry_get_key(soc:soc, uid:uid, tid:tid, pipe:pipe, key:key, reply:r);
-     }
-     else {
-      r2 = r;
-     }
-
-     if(r2)
-     {
-       r3 = registry_get_key_security(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2);
-       if(!r3){
-        return(FALSE);
-       }
-       registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2);
-       registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r);
-       close(soc);
-
-       if(strlen(r3) < 100){
-         return(NULL);
-       }
-       return(r3);
-     }
-     return(NULL);
-   }
-
-
 #---------------------------------------------------------------------#
 # Get an item of type reg_sz from the key                             #
 #---------------------------------------------------------------------#
 function unicode2( data ) {
 
-  local_var i, ret, len;
+  local_var data, len, ret, i;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#unicode2" );
 
   len = strlen(data);
   ret = raw_string(0, ord(data[0]));
@@ -6506,43 +4988,7 @@ function unicode2( data ) {
   } else {
     ret += raw_string(0x00, 0x00, 0x00, 0x63);
   }
-  return(ret);
-}
-
-function unicode3( data ) {
-
-  local_var i, ret, len;
-
-  len = strlen(data);
-  ret = raw_string(0, ord(data[0]));
-
-  for( i = 1; i < len; i++ ) {
-    ret += raw_string(0, ord(data[i]));
-  }
-
-  if( len & 1 ) {
-    ret += raw_string(0x00, 0x00);
-  } else {
-    ret += raw_string(0x00, 0x00, 0x00, 0x00);
-  }
-  return(ret);
-}
-
-function unicode4( data ) {
-
-  local_var i, ret, len;
-
-  len = strlen(data);
-  ret = raw_string(0, ord(data[0]));
-
-  for( i = 1; i < len; i++ ) {
-    ret += raw_string(ord(data[i]),0);
-  }
-
-  if( len & 1 ) {
-    ret += raw_string(0x00);
-  }
-  return(ret);
+  return ret;
 }
 
 function registry_get_item_sz( soc, uid, tid, pipe, item, reply ) {
@@ -6565,82 +5011,95 @@ function registry_get_item_sz( soc, uid, tid, pipe, item, reply ) {
   }
 }
 
- function registry1_get_item_sz(soc, uid, tid, pipe, item, reply)
- {
-   local_var i;
-   item_len = strlen(item) + 1;
-   item_len_lo = item_len % 256;
-   item_len_hi = item_len / 256;
+function registry1_get_item_sz( soc, uid, tid, pipe, item, reply ) {
 
-   uc2 = unicode2(data:item);
-   len = 188 + strlen(uc2);
-   len_lo = len % 256;
-   len_hi = len / 256;
-   tid_low = tid % 256;
-   tid_high = tid / 256;
-   uid_low = uid % 256;
-   uid_high = uid / 256;
-   pipe_low = pipe % 256;
-   pipe_high = pipe / 256;
+  # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
-   bcc = 121 + strlen(uc2);
-   bcc_lo = bcc % 256;
-   bcc_hi = bcc / 256;
+  local_var soc, uid, tid, pipe, item, reply;
+  local_var item_len, item_len_lo, item_len_hi, uc2, len, len_lo, len_hi;
+  local_var tid_low, tid_high, uid_low, uid_high, pipe_low, pipe_high;
+  local_var bcc, bcc_lo, bcc_hi, y, y_lo, y_hi, z, z_lo, z_hi, req;
+  local_var magic, i, x, x_lo, x_hi, packet, r, server_resp, orig_sign, serv_sign;
 
-   y = 80 + strlen(uc2);
-   y_lo = y % 256;
-   y_hi = y / 256;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_get_item_sz" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_get_item_sz" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_get_item_sz" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_get_item_sz" );
+  if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry1_get_item_sz" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_get_item_sz" );
 
-   z = 104 + strlen(uc2);
-   z_lo = z % 256;
-   z_hi = z / 256;
-   req = raw_string(0x00, 0x00, len_hi, len_lo, 0xFF, 0x53,
-                    0x4D, 0x42, 0x25, 0x00, 0x00, 0x00, 0x00, 0x18);
-   if(ntlmssp_flag){
-   g_mhi = multiplex_id / 256;
-   g_mlo = multiplex_id % 256;
-   if(isSignActive)
-     req += raw_string(0x07, 0x80);
-   else
-     req += raw_string(0x03, 0x80);
-   }
-   else{
-     req += raw_string(0x03, 0x80);
-   }
-   req += raw_string(0x1D, 0x83, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, tid_low, tid_high);
-   if(ntlmssp_flag)
-     req += raw_string(0x33, 0x0c);
-   else
-     req += raw_string(0x00, 0x28);
+  item_len = strlen( item ) + 1;
+  item_len_lo = item_len % 256;
+  item_len_hi = item_len / 256;
 
-  req +=  raw_string(uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00,
-                     0x00, z_lo, z_hi, 0x00, 0x00, 0x00, 0x04, 0x00,
+  uc2 = unicode2( data:item );
+  len = 188 + strlen( uc2 );
+  len_lo = len % 256;
+  len_hi = len / 256;
+  tid_low = tid % 256;
+  tid_high = tid / 256;
+  uid_low = uid % 256;
+  uid_high = uid / 256;
+  pipe_low = pipe % 256;
+  pipe_high = pipe / 256;
+
+  bcc = 121 + strlen( uc2 );
+  bcc_lo = bcc % 256;
+  bcc_hi = bcc / 256;
+
+  y = 80 + strlen( uc2 );
+  y_lo = y % 256;
+  y_hi = y / 256;
+
+  z = 104 + strlen( uc2 );
+  z_lo = z % 256;
+  z_hi = z / 256;
+
+  req = raw_string( 0x00, 0x00, len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42,
+                    0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
+
+  if( ntlmssp_flag ) {
+    g_mhi = multiplex_id / 256;
+    g_mlo = multiplex_id % 256;
+    if( isSignActive ) {
+     req += raw_string( 0x07, 0x80 );
+    } else {
+     req += raw_string( 0x03, 0x80 );
+    }
+  } else {
+    req += raw_string( 0x03, 0x80 );
+  }
+
+  req += raw_string( 0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_low, tid_high );
+
+  if( ntlmssp_flag ) {
+    req += raw_string( 0x33, 0x0c );
+  } else {
+    req += raw_string( 0x00, 0x28 );
+  }
+
+  req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, z_lo,
+                     z_hi, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x54, 0x00, z_lo, z_hi, 0x54,
-                     0x00, 0x02, 0x00, 0x26, 0x00, pipe_low, pipe_high,
-                     bcc_lo, bcc_hi, 0x00, 0x5C, 0x00, 0x50, 0x00, 0x49,
-                     0x00, 0x50, 0x00, 0x45, 0x00, 0x5C, 0x00, 0x00, 0x00,
-                     0x00, 0x5C, 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00,
-                     0x00, z_lo, z_hi, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00,
-                     y_lo, y_hi, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00);
+                     0x00, 0x54, 0x00, z_lo, z_hi, 0x54, 0x00, 0x02,
+                     0x00, 0x26, 0x00, pipe_low, pipe_high, bcc_lo, bcc_hi, 0x00,
+                     0x5C, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                     0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0x5C,
+                     0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                     z_lo, z_hi, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00,
+                     y_lo, y_hi, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00 );
 
-  if(strlen(reply) < 104){
-    return(FALSE);
-  }
+  if( strlen( reply ) < 104 ) return FALSE;
 
-  if(strlen(reply) < 85){
-    return FALSE ;
-  }
-  magic = raw_string(ord(reply[84]));
-  for(i=1;i<20;i=i+1){
-    if(strlen(reply) > (84+i)){
-      magic = magic + raw_string(ord(reply[84+i]));
+  magic = raw_string( ord( reply[84] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 84 + i ) ) {
+      magic += raw_string( ord( reply[84+i] ) );
     }
   }
 
-  x = 2 + strlen(item) + strlen(item);
+  x = 2 + strlen( item ) + strlen( item );
   x_lo = x % 256;
   x_hi = x / 256;
 
@@ -6648,23 +5107,24 @@ function registry_get_item_sz( soc, uid, tid, pipe, item, reply ) {
   y_lo = y % 256;
   y_hi = y / 256;
 
-  req = req + magic + raw_string(x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC,
-                      0xFD, 0x7F, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, item_len_lo, item_len_hi, 0x00) + uc2 +
-                      raw_string(0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10,
-                      0x40, 0x00, 0x18, 0x1E, 0x7c, 0x00, 0x00, 0x04, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x3C, 0xFF, 0x12, 0x00, 0x00, 0x04, 0x00, 0x00, 0x30,
-                      0xFF, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00);
+  req += magic + raw_string( x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC, 0xFD, 0x7F,
+                             0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             item_len_lo, item_len_hi, 0x00 ) + uc2 +
+                 raw_string( 0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10, 0x40,
+                             0x00, 0x18, 0x1E, 0x7c, 0x00, 0x00, 0x04, 0x00,
+                             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x00, 0x3C, 0xFF, 0x12, 0x00, 0x00, 0x04, 0x00,
+                             0x00, 0x30, 0xFF, 0x12, 0x00, 0x00, 0x00, 0x00,
+                             0x00 );
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( ntlmssp_flag ) {
     if( isSignActive ) {
       len = strlen( req );
-       seq_number += 1;
-       packet = req;
-       req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
-       if( isnull( req ) ) return FALSE;
+      seq_number += 1;
+      packet = req;
+      req = get_signature( key:s_sign_key, buf:packet, buflen:len, seq_number:seq_number );
+      if( isnull( req ) ) return FALSE;
     }
   }
 
@@ -6672,51 +5132,65 @@ function registry_get_item_sz( soc, uid, tid, pipe, item, reply ) {
   r = smb_recv( socket:soc );
 
   if( ntlmssp_flag ) {
-     multiplex_id += 1;
-     if( r && isSignActive ) {
-       # verify signature
-       seq_number += 1;
-       len = strlen( r );
-       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-       if( isnull( server_resp ) ) return FALSE;
+    multiplex_id += 1;
+    if( r && isSignActive ) {
+      # verify signature
+      seq_number += 1;
+      len = strlen( r );
+      server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+      if( isnull( server_resp ) ) return FALSE;
+      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        return FALSE;
+      }
 
-       #TODO: Also check the response length here before accessing possible non-existing data
-       if( (strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
-         return(FALSE);
-       }
-
-       orig_sign = substr( r, 18, 23 );
-       serv_sign = substr( server_resp, 18, 23 );
-       if( orig_sign != serv_sign ) {
-         return FALSE;
-       }
-     }
+      orig_sign = substr( r, 18, 23 );
+      serv_sign = substr( server_resp, 18, 23 );
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      }
+    }
   }
   # -> END TODO
 
   return r;
 }
 
-function registry2_get_item_sz(soc, uid, tid, pipe, item, reply)
-{
-  local_var i;
-  item_len = strlen(item) + 1;
+function registry2_get_item_sz( soc, uid, tid, pipe, item, reply ) {
+
+  # isSignActive, ntlmssp_flag, seq_number, sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
+
+  local_var soc, uid, tid, pipe, item, reply;
+  local_var item_len, item_len_lo, item_len_hi, uc2, len, len_lo, len_hi;
+  local_var bcc, bcc_lo, bcc_hi, y, y_lo, y_hi, z, z_lo, z_hi, req;
+  local_var ioctl_req, dcerpc_req, dcerpc_req1, dcerpc_req2, req_l; 
+  local_var magic, i, x, x_lo, x_hi, rrs_req, len_rrs, len_rrs_lo, len_rrs_hi;
+  local_var sig, r, status, status2, r_head, orig_sign, server_resp, serv_sign;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_get_item_sz" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_get_item_sz" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_get_item_sz" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_get_item_sz" );
+  if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry2_get_item_sz" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_get_item_sz" );
+
+  item_len = strlen( item ) + 1;
   item_len_lo = item_len % 256;
   item_len_hi = item_len / 256;
-  uc2 = unicode2(data:item);
-  len = 188 + strlen(uc2);
+  uc2 = unicode2( data:item );
+
+  len = 188 + strlen( uc2 );
   len_lo = len % 256;
   len_hi = len / 256;
 
-  bcc = 121 + strlen(uc2);
+  bcc = 121 + strlen( uc2 );
   bcc_lo = bcc % 256;
   bcc_hi = bcc / 256;
 
-  y = 80 + strlen(uc2);
+  y = 80 + strlen( uc2 );
   y_lo = y % 256;
   y_hi = y / 256;
 
-  z = 104 + strlen(uc2);
+  z = 104 + strlen( uc2 );
   z_lo = z % 256;
   z_hi = z / 256;
 
@@ -6724,316 +5198,299 @@ function registry2_get_item_sz(soc, uid, tid, pipe, item, reply)
   g_mlo = multiplex_id % 256;
 
   # SMB2 Header
-  req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
 
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
-   req += raw_string(0x00, 0x00, 0x00, 0x00,
-                   g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+  }
 
-  if(ntlmssp_flag){
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
+
+  if( ntlmssp_flag ) {
     g_mhi = multiplex_id / 256;
     g_mlo = multiplex_id % 256;
   }
 
   # Ioctl Req
-  ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                         pipe, 0x78, 0x00, 0x00, 0x00);
+  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                          pipe, 0x78, 0x00, 0x00, 0x00 );
 
   # Distributed Computing Environment / Remote Procedure Calls
-#  dcerpc_req = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
- #                         0x80, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-  #                        0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00);
+  # dcerpc_req = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+  #                          0x80, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+  #                          0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00 );
 
-  dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
-  dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
-                           0x00, 0x00, 0x00, 0x00, 0x11, 0x00);
+  dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
+  dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
+                            0x00, 0x00, 0x00, 0x00, 0x11, 0x00 );
 
-  if(strlen(reply) < 141){
-    return FALSE ;
+  if( strlen( reply ) < 141 ) return FALSE ;
+
+  magic = raw_string( ord( reply[140] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 140 + i ) ) {
+      magic += raw_string( ord( reply[140+i] ) );
+    }
   }
 
-  magic = raw_string(ord(reply[140]));
-  for(i=1; i<20; i=i+1){
-        if(strlen(reply) > (140+i)){
-          magic = magic + raw_string(ord(reply[140+i]));
-        }
-  }
-
-  x = strlen(item) + strlen(item) + 2;
+  x = strlen( item ) + strlen( item ) + 2;
   x_lo = x % 256;
   x_hi = x / 256;
 
   # Remote Registry Service Req
-  rrs_req = magic + raw_string(x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC,
-                               0xFD, 0x7F, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00,
-                               0x00, 0x00, item_len_lo, item_len_hi, 0x00) + uc2
-                  + raw_string(0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10,
-                      0x40, 0x00, 0x18, 0x1E, 0x7c, 0x00, 0x00, 0x04, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x3C, 0xFF, 0x12, 0x00, 0x00, 0x04, 0x00, 0x00, 0x30,
-                      0xFF, 0x12, 0x00, 0x00, 0x00, 0x00, 0x00);
+  rrs_req = magic + raw_string( x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC, 0xFD, 0x7F,
+                                0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                item_len_lo, item_len_hi, 0x00 ) + uc2
+                  + raw_string( 0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10, 0x40,
+                                0x00, 0x18, 0x1E, 0x7c, 0x00, 0x00, 0x04, 0x00,
+                                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                0x00, 0x3C, 0xFF, 0x12, 0x00, 0x00, 0x04, 0x00,
+                                0x00, 0x30, 0xFF, 0x12, 0x00, 0x00, 0x00, 0x00,
+                                0x00 );
 
-  len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
+  len_rrs = strlen( rrs_req ) + strlen( dcerpc_req1 ) + strlen( dcerpc_req2 ) + 2;
   len_rrs_lo = len_rrs % 256;
   len_rrs_hi = len_rrs / 256;
 
-  dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
+  dcerpc_req = dcerpc_req1 + raw_string( len_rrs_lo, len_rrs_hi ) + dcerpc_req2;
 
-  ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                          0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                          0x00, 0x00, 0x00, 0x00);
+  ioctl_req += raw_string( len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00 );
 
   req = req + ioctl_req + dcerpc_req + rrs_req;
-  req_l = strlen(req);
-  len_lo =  req_l % 256;
+  req_l = strlen( req );
+  len_lo = req_l % 256;
   len_hi = req_l / 256;
 
-  if(isSignActive){
-       sig = get_smb2_signature(buf:req, key:sign_key);
-       if( isnull( sig ) ) {
-         set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_item_sz: buf or key passed to get_smb2_signature empty / too short" );
-         return FALSE;
-       }
-       req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
-   }else {
-       req = raw_string(0x00, 0x00, len_hi, len_lo) + req;
-
+  if( isSignActive ) {
+    sig = get_smb2_signature( buf:req, key:sign_key );
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_item_sz: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
+    }
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+   } else {
+     req = raw_string(0x00, 0x00, len_hi, len_lo) + req;
    }
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
+   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+   send(socket:soc, data:req);
+   r = smb_recv(socket:soc);
+   if( strlen( r ) < 14 ) return FALSE;
 
-  if(strlen(r) < 14){
-     return(FALSE);
+   ##If status is pending, wait for response
+   status = ord( r[12] );
+   status2 = ord( r[13] );
+   while( status == 3 && status2 == 1 ) {
+     ##PDU will arrive late
+     r = smb_recv( socket:soc );
+     if( strlen( r ) < 14 ) return FALSE;
+     status = ord( r[12] );
+     status2 = ord( r[13] );
   }
 
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if(strlen(r) < 14){
-             return(FALSE);
-           }
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
+  if( ntlmssp_flag ) {
+    multiplex_id += 1;
+    if( isSignActive ) {
+      # verify signature
+      seq_number += 1;
 
-  if(ntlmssp_flag)
-  {
-     multiplex_id += 1;
-     if(isSignActive){
-       # verify signature
-             seq_number += 1;
+      r_head = substr( r, 0, 3 );
+      r = substr( r, 4, strlen( r ) - 1 );
+      if( strlen( r ) < 64 ) return FALSE;
 
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-             if( strlen( r ) < 64 ) {
-               return(FALSE);
-             }
+      orig_sign = substr( r, 48, 63 );
+      server_resp = get_smb2_signature( buf:r, key:sign_key );
+      if( isnull( server_resp ) ) return FALSE;
+      if( strlen( server_resp ) < 64 ) return FALSE;
+      serv_sign = substr( server_resp, 48, 63 );
 
-             orig_sign = substr(r, 48, 63);
-
-
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             #TODO: Also check the response length here before accessing possible non-existing data
-             if(strlen(server_resp) < 64) {
-               return(FALSE);
-             }
-             serv_sign = substr(server_resp, 48, 63);
-
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else{
-               r = r_head + r;
-             }
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      } else {
+        r = r_head + r;
       }
+    }
   }
   # END TODO ->
 
-return(r);
+  return r;
 }
 
+function registry1_decode_binary( data ) {
 
- function registry1_decode_binary(data)
- {
-    local_var i, o, len, index;
-    if(strlen(data) < 53){
-      return(NULL);
+  local_var data, len, data_offset, data_len, index, o, i;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry1_decode_binary" );
+
+  if( strlen( data ) < 53 ) return NULL;
+
+  len = ord(data[2])*256;
+  len = len + ord(data[3]);
+  if( len < 130 ) return NULL;
+
+  data_offset = ord( data[52] ) * 256;
+  data_offset = data_offset + ord( data[51] ) + 4;
+  if( strlen( data ) < ( data_offset + 45 ) ) {
+    return NULL;
+  }
+
+  data_len = ord( data[data_offset+43] );
+  data_len = data_len * 256;
+  data_len = data_len + ord( data[data_offset+44] );
+  index = data_offset + 48;
+
+  o = "";
+  for( i = 0; i < data_len; i++ ) {
+    if( strlen( data ) > ( index + i ) ) {
+      o = string( o, raw_string( ord( data[index+i] ) ) );
     }
-    len = ord(data[2])*256;
-    len = len + ord(data[3]);
-    if(len < 130){
-        return(NULL);
+  }
+  return o;
+}
+
+function registry2_decode_binary( data ) {
+
+  local_var data, len, data_offset, data_len, index, o, i;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry2_decode_binary" );
+
+  if( strlen( data ) < 102 ) return NULL;
+
+  len = ord( data[2] ) * 256;
+  len = len + ord( data[3] );
+  if( len < 181 ) return NULL;
+
+  data_offset = ord( data[101] ) * 256;
+  data_offset = data_offset + ord( data[100] ) + 4;
+  if( strlen( data ) < ( data_offset + 48 ) ) {
+    return NULL;
+  }
+
+  data_len = ord( data[data_offset+47] );
+  data_len = data_len * 256 + ord( data[data_offset+46] );
+  data_len = data_len * 256 + ord( data[data_offset+45] );
+  data_len = data_len * 256 + ord( data[data_offset+44] );
+  index = data_offset + 48;
+  o = "";
+
+  for( i = 0; i < data_len; i++ ) {
+    if( strlen( data ) > ( index + i ) ) {
+      o = string( o, raw_string( ord( data[index+i] ) ) );
     }
-    data_offset = ord(data[52])*256;
-    data_offset = data_offset + ord(data[51]) + 4;
-    if(strlen(data) < (data_offset+45)){
-      return(NULL);
-    }
-    data_len = ord(data[data_offset+43]);
-    data_len = data_len * 256;
-    data_len = data_len + ord(data[data_offset+44]);
-    index = data_offset + 48;
-    
-    o = "";
-    for(i=0; i<data_len; i=i+1){
-        if(strlen(data) > (index+i)){
-          o = string(o, raw_string(ord(data[index+i])));
-        }
-    }
-    return(o);
- }
-
- function registry2_decode_binary(data)
-{
-
-    local_var i, o, len, index;
-    local_var i, o, len, index;
-    if(strlen(data) < 102){
-      return(NULL);
-    }
-    len = ord(data[2])*256;
-    len = len + ord(data[3]);
-    if(len < 181){
-        return(NULL);
-    }
-
-   data_offset = ord(data[101])*256;
-   data_offset = data_offset + ord(data[100]) + 4;
-   if(strlen(data) < (data_offset + 48)){
-     return(NULL);
-   }
-   data_len = ord(data[data_offset+47]);
-   data_len = data_len * 256 + ord(data[data_offset+46]);
-   data_len = data_len * 256 + ord(data[data_offset+45]);
-   data_len = data_len * 256 + ord(data[data_offset+44]);
-   index = data_offset + 48;
-   o = "";
-
-   for(i=0; i<data_len; i=i+1){
-     if(strlen(data) > (index+i)){
-       o = string(o, raw_string(ord(data[index+i])));
-     }
-   }
-
-   return(o);
-
+  }
+  return o;
 }
 
 #------------------------------------------------------#
 # Decode the reply from the registry                   #
 #------------------------------------------------------#
-function registry_decode_binary( data ) {
+function registry_decode_binary( data, uid ) {
 
-  local_var res;
+  local_var data, uid, res;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry_decode_binary" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_decode_binary" );
 
   if( strlen( uid ) == 8 ) {
-    res = registry2_decode_binary(data:data);
-    return(res);
+    res = registry2_decode_binary( data:data );
+    return res;
   } else {
-    res = registry1_decode_binary(data:data);
-    return(res);
+    res = registry1_decode_binary( data:data );
+    return res;
   }
 }
 
-function registry_decode_sz( data ) {
+function registry_decode_sz( data, uid ) {
 
-  local_var res;
+  local_var data, uid, res;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry_decode_sz" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry_decode_sz" );
 
   if( strlen( uid ) == 8 ) {
-    res = registry2_decode_sz(data:data);
-    return(res);
+    res = registry2_decode_sz( data:data );
+    return res;
   } else {
-    res = registry1_decode_sz(data:data);
-    return(res);
+    res = registry1_decode_sz( data:data );
+    return res;
   }
 }
 
-function registry1_decode_sz(data)
-{
-   local_var i, o, len, index;
-   if(strlen(data) < 53){
-     return(NULL);
-   }
+function registry1_decode_sz( data ) {
 
-   len = ord(data[2])*256;
-   len = len + ord(data[3]);
-   if(len < 128){
-     return(NULL);
-   }
+  local_var data, len, data_offset, data_len, index, o, i;
 
-   data_offset = ord(data[52])*256;
-   data_offset = data_offset + ord(data[51]) + 4;
-   if(strlen(data) < (data_offset + 48)){
-     return(NULL);
-   }
-   data_len = ord(data[data_offset+47]);
-   data_len = data_len * 256 + ord(data[data_offset+46]);
-   data_len = data_len * 256 + ord(data[data_offset+45]);
-   data_len = data_len * 256 + ord(data[data_offset+44]);
-   index = data_offset + 48;
-   o = "";
-   data_len = data_len - 2;
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry1_decode_sz" );
 
-   for(i=0; i<data_len; i=i+2){
-     if(strlen(data) > (index+i)){
-       o = string(o, raw_string(ord(data[index+i])));
-     }
-   }
-   return(o);
+  if( strlen( data ) < 53 ) return NULL;
+
+  len = ord( data[2] ) * 256;
+  len = len + ord( data[3] );
+  if( len < 128 ) return NULL;
+
+  data_offset = ord( data[52] ) * 256;
+  data_offset = data_offset + ord( data[51] ) + 4;
+  if( strlen( data ) < ( data_offset + 48 ) ) {
+    return NULL;
+  }
+
+  data_len = ord( data[data_offset+47] );
+  data_len = data_len * 256 + ord( data[data_offset+46] );
+  data_len = data_len * 256 + ord( data[data_offset+45] );
+  data_len = data_len * 256 + ord( data[data_offset+44] );
+  index = data_offset + 48;
+  o = "";
+  data_len = data_len - 2;
+
+  for( i = 0; i < data_len; i = i + 2 ) {
+    if( strlen( data ) > ( index + i ) ) {
+      o = string( o, raw_string( ord( data[index+i] ) ) );
+    }
+  }
+  return o;
+}
+
+function registry2_decode_sz( data ) {
+
+  local_var data, len, data_offset, data_len, index, o, i;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry2_decode_sz" );
+
+  if( strlen( data ) < 102 ) return NULL;
+
+  len = ord( data[2] ) * 256;
+  len = len + ord( data[3] );
+  if( len < 128 ) return NULL;
+
+  data_offset = ord( data[101] ) * 256;
+  data_offset = data_offset + ord( data[100] ) + 4;
+  if( strlen( data ) < ( data_offset + 48 ) ) return NULL;
+
+  data_len = ord( data[data_offset+47] );
+  data_len = data_len * 256 + ord( data[data_offset+46] );
+  data_len = data_len * 256 + ord( data[data_offset+45] );
+  data_len = data_len * 256 + ord( data[data_offset+44] );
+  index = data_offset + 48;
+  o = "";
+  data_len = data_len - 2;
+
+  for( i = 0; i < data_len; i = i + 2 ) {
+    if( strlen( data ) > ( index + i ) ) {
+      o = string( o, raw_string( ord( data[index+i] ) ) );
+    }
+  }
+  return o;
  }
-
-function registry2_decode_sz(data)
- {
-   local_var i, o, len, index;
-   if(strlen(data) < 102){
-     return(NULL);
-   }
-
-   len = ord(data[2])*256;
-   len = len + ord(data[3]);
-   if(len < 128){
-     return(NULL);
-   }
-
-   data_offset = ord(data[101])*256;
-   data_offset = data_offset + ord(data[100]) + 4;
-   if(strlen(data) < (data_offset + 48)){
-     return(NULL);
-   }
-
-   data_len = ord(data[data_offset+47]);
-   data_len = data_len * 256 + ord(data[data_offset+46]);
-   data_len = data_len * 256 + ord(data[data_offset+45]);
-   data_len = data_len * 256 + ord(data[data_offset+44]);
-   index = data_offset + 48;
-   o = "";
-   data_len = data_len - 2;
-
-   for(i=0; i<data_len; i=i+2){
-     if(strlen(data) > (index+i)){
-       o = string(o, raw_string(ord(data[index+i])));
-     }
-   }
-   return(o);
- }
-
 
 #---------------------------------------------------------------------#
 # Get an item of type reg_dword from the key                          #
@@ -7058,364 +5515,375 @@ function registry_get_item_dword( soc, uid, tid, pipe, item, reply ) {
   }
 }
 
- function registry1_get_item_dword(soc, uid, tid, pipe, item, reply)
- {
- 	local_var item_len, item_len_lo, item_len_hi, uc2, len, len_lo, len_hi, tid_low, tid_high, uid_low, uid_high;
-	local_var pipe_low, pipe_high, bcc, bcc_lo, bcc_hi, y, y_lo, y_hi, z, z_lo, z_hi, req, i;
-	local_var magic, x, x_lo, x_hi;
-	item_len = strlen(item) + 1;
-	item_len_lo = item_len % 256;
-	item_len_hi = item_len / 256;
+function registry1_get_item_dword( soc, uid, tid, pipe, item, reply ) {
 
-	uc2 = unicode2(data:item);
-	len = 188 + strlen(uc2);
-	len_lo = len % 256;
-	len_hi = len / 256;
+  # isSignActive, ntlmssp_flag, seq_number, s_sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
-	tid_low = tid % 256;
-	tid_high = tid / 256;
-	uid_low = uid % 256;
-	uid_high = uid / 256;
-	pipe_low = pipe % 256;
-	pipe_high = pipe / 256;
+  local_var soc, uid, tid, pipe, item, reply;
+  local_var item_len, item_len_lo, item_len_hi, uc2, len, len_lo, len_hi, tid_low, tid_high, uid_low, uid_high;
+  local_var pipe_low, pipe_high, bcc, bcc_lo, bcc_hi, y, y_lo, y_hi, z, z_lo, z_hi, req, i;
+  local_var magic, x, x_lo, x_hi, packet, server_resp, orig_sign, serv_sign, r;
 
-	bcc = 121 + strlen(uc2);
-	bcc_lo = bcc % 256;
-	bcc_hi = bcc / 256;
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry1_get_item_dword" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry1_get_item_dword" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry1_get_item_dword" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry1_get_item_dword" );
+  if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry1_get_item_dword" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry1_get_item_dword" );
 
-	y = 80 + strlen(uc2);
-	y_lo = y % 256;
-	y_hi = y / 256;
+  item_len = strlen( item ) + 1;
+  item_len_lo = item_len % 256;
+  item_len_hi = item_len / 256;
 
-	z = 104 + strlen(uc2);
-	z_lo = z % 256;
-	z_hi = z / 256;
+  uc2 = unicode2( data:item );
+  len = 188 + strlen( uc2 );
+  len_lo = len % 256;
+  len_hi = len / 256;
 
-	req = raw_string(0x00, 0x00,
- 			 len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18);
-	if(ntlmssp_flag){
-                g_mhi = multiplex_id / 256;
-                g_mlo = multiplex_id % 256;
-                if(isSignActive)
-                        req += raw_string(0x07, 0x80);
-                else
-                        req += raw_string(0x03, 0x80);
-        }
-        else{
-                req += raw_string(0x03, 0x80);
-        }
-	req += raw_string(0x1D, 0x83,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_low, tid_high);
-	if(ntlmssp_flag)
-                req += raw_string(0x33, 0x0c);
-        else
-                req += raw_string(0x00, 0x28);
+  tid_low = tid % 256;
+  tid_high = tid / 256;
+  uid_low = uid % 256;
+  uid_high = uid / 256;
+  pipe_low = pipe % 256;
+  pipe_high = pipe / 256;
 
-	req += raw_string(uid_low, uid_high,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, z_lo, z_hi, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, z_lo, z_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_low, pipe_high, bcc_lo, bcc_hi, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0x5C, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, z_lo, z_hi,
-			 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, y_lo, y_hi,
-			 0x00, 0x00, 0x00, 0x00, 0x11, 0x00);
+  bcc = 121 + strlen( uc2 );
+  bcc_lo = bcc % 256;
+  bcc_hi = bcc / 256;
 
-    if(strlen(reply) < 85){
-      return FALSE ;
+  y = 80 + strlen( uc2 );
+  y_lo = y % 256;
+  y_hi = y / 256;
+
+  z = 104 + strlen( uc2 );
+  z_lo = z % 256;
+  z_hi = z / 256;
+
+  req = raw_string( 0x00, 0x00, len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42,
+                    0x25, 0x00, 0x00, 0x00, 0x00, 0x18 );
+
+  if( ntlmssp_flag ) {
+    g_mhi = multiplex_id / 256;
+    g_mlo = multiplex_id % 256;
+    if( isSignActive ) {
+      req += raw_string( 0x07, 0x80 );
+    } else {
+      req += raw_string( 0x03, 0x80 );
     }
+  } else {
+    req += raw_string( 0x03, 0x80 );
+  }
 
-	magic = raw_string(ord(reply[84]));
-	for(i=1; i<20; i=i+1){
-          if(strlen(reply) > (84+i)){
-   		magic = magic + raw_string(ord(reply[84+i]));
-	  }
-        }
- 	x = 2 + strlen(item) + strlen(item);
-	x_lo = x % 256;
-	x_hi = x / 256;
+  req += raw_string( 0x1D, 0x83, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_low, tid_high );
 
-	y = y + 3;
-	y_lo = y % 256;
-	y_hi = y / 256;
+  if( ntlmssp_flag ) {
+    req += raw_string( 0x33, 0x0c );
+  } else {
+    req += raw_string( 0x00, 0x28 );
+  }
 
-	req = req + magic +
-	      raw_string(x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC,
-			 0xFD, 0x7F, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, item_len_lo, item_len_hi, 0x00) + uc2 +
-	      raw_string(0x00, 0x34, 0xFF,
-			 0x12, 0x00, 0xEF, 0x10, 0x40, 0x00, 0x18, 0x1E,
-			 0x7c, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3C, 0xFF,
-			 0x12, 0x00, 0x00, 0x04, 0x00, 0x00, 0x30, 0xFF,
-			 0x12, 0x00, 0x00, 0x00, 0x00, 0x00);
+  req += raw_string( uid_low, uid_high, g_mlo, g_mhi, 0x10, 0x00, 0x00, z_lo,
+                     z_hi, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x54, 0x00, z_lo, z_hi, 0x54, 0x00, 0x02,
+                     0x00, 0x26, 0x00, pipe_low, pipe_high, bcc_lo, bcc_hi, 0x00,
+                     0x5C, 0x00, 0x50, 0x00, 0x49, 0x00, 0x50, 0x00,
+                     0x45, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0x5C,
+                     0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00,
+                     z_lo, z_hi, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00,
+                     y_lo, y_hi, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00 );
 
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-	if( ntlmssp_flag && isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
+  if( strlen( reply) < 85 ) return FALSE;
 
-	send( socket:soc, data:req );
-	r = smb_recv( socket:soc );
+  magic = raw_string( ord( reply[84] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 84 + i ) ) {
+      magic += raw_string( ord( reply[84+i] ) );
+    }
+  }
 
-	if( ntlmssp_flag ) {
-          multiplex_id += 1;
-          if( r && isSignActive ) {
-            # verify signature
-            seq_number += 1;
-            len = strlen( r );
-            server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-            if( isnull( server_resp ) ) return FALSE;
+  x = 2 + strlen( item ) + strlen( item );
+  x_lo = x % 256;
+  x_hi = x / 256;
 
-            #TODO: Also check the response length here before accessing possible non-existing data
-            if((strlen(server_resp) < 24) || (len < 24)) {
-              return(FALSE);
-            }
+  y = y + 3;
+  y_lo = y % 256;
+  y_hi = y / 256;
 
-            orig_sign = substr( r, 18, 23 );
-            serv_sign = substr( server_resp, 18, 23 );
-            if( orig_sign != serv_sign ) {
-              return FALSE;
-            }
-          }
-        }
-        # -> END TODO
+  req += magic + raw_string( x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC, 0xFD, 0x7F,
+                             0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             item_len_lo, item_len_hi, 0x00 )
+               + uc2
+               + raw_string( 0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10, 0x40,
+                             0x00, 0x18, 0x1E, 0x7c, 0x00, 0x00, 0x04, 0x00,
+                             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                             0x00, 0x3C, 0xFF, 0x12, 0x00, 0x00, 0x04, 0x00,
+                             0x00, 0x30, 0xFF, 0x12, 0x00, 0x00, 0x00, 0x00,
+                             0x00 );
+
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  if( ntlmssp_flag && isSignActive ) {
+    len = strlen( req );
+    seq_number += 1;
+    packet = req;
+    req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number ); # TBD: This overwrites the req declared previously
+    if( isnull( req ) ) return FALSE;
+  }
+
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+
+  if( ntlmssp_flag ) {
+    multiplex_id += 1;
+    if( r && isSignActive ) {
+      # verify signature
+      seq_number += 1;
+      len = strlen( r );
+      server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
+      if( isnull( server_resp ) ) return FALSE;
+      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        return FALSE;
+      }
+
+      orig_sign = substr( r, 18, 23 );
+      serv_sign = substr( server_resp, 18, 23 );
+      if( orig_sign != serv_sign ) {
+        return FALSE;
+      }
+    }
+  }
+  # -> END TODO
 
   return r;
 }
 
-function registry2_get_item_dword(soc, uid, tid, pipe, item, reply)
-{
-    local_var i;
-    g_mhi = multiplex_id / 256;
-    g_mlo = multiplex_id % 256;
-    item_len = strlen(item) + 1;
-    item_len_lo = item_len % 256;
-    item_len_hi = item_len / 256;
-    uc2 = unicode2(data:item);
+function registry2_get_item_dword( soc, uid, tid, pipe, item, reply ) {
 
-    req = raw_string(0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00);
+  # isSignActive, ntlmssp_flag, seq_number, sign_key, g_mlo, g_mhi and multiplex_id are global_vars!!!
 
-   if(isSignActive){
-                 req += raw_string(0x08, 0x00, 0x00, 0x00);
-   }
-   else {
-                 req += raw_string(0x00, 0x00, 0x00, 0x00);
-   }
-    req += raw_string(0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
+  local_var soc, uid, tid, pipe, item, reply;
+  local_var item_len, item_len_lo, item_len_hi, uc2, req, ioctl_req, dcerpc_req1, dcerpc_req2, magic, i;
+  local_var x, x_hi, x_lo, len_rrs, len_rrs_lo, len_rrs_hi, req_l, len_lo, len_hi, sig, r;
+  local_var status, status2, r_head, orig_sign, server_resp, serv_sign;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#registry2_get_item_dword" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#registry2_get_item_dword" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#registry2_get_item_dword" );
+  if( isnull( pipe ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#pipe#-#registry2_get_item_dword" );
+  if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry2_get_item_dword" );
+  if( isnull( reply ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#reply#-#registry2_get_item_dword" );
+
+  g_mhi = multiplex_id / 256;
+  g_mlo = multiplex_id % 256;
+  item_len = strlen( item ) + 1;
+  item_len_lo = item_len % 256;
+  item_len_hi = item_len / 256;
+  uc2 = unicode2( data:item );
+
+  req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
+                    0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x6f, 0x00 );
+
+  if( isSignActive ) {
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
+  } else {
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
+  }
+
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
-    # Ioctl Req
-    ioctl_req = raw_string(0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
-                         pipe, 0x78, 0x00, 0x00, 0x00);
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
 
-    # Distributed Computing Environment / Remote Procedure Calls
-    dcerpc_req1 = raw_string(0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00);
-    dcerpc_req2 = raw_string(0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                           0x34, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x00);
+  # Ioctl Req
+  ioctl_req = raw_string( 0x39, 0x00, 0x00, 0x00, 0x17, 0xc0, 0x11, 0x00,
+                          pipe, 0x78, 0x00, 0x00, 0x00 );
 
-    if(strlen(reply) < 141){
-      return FALSE ;
+  # Distributed Computing Environment / Remote Procedure Calls
+  dcerpc_req1 = raw_string( 0x05, 0x00, 0x00, 0x03, 0x10, 0x00, 0x00, 0x00 );
+  dcerpc_req2 = raw_string( 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x34, 0x00,
+                            0x00, 0x00, 0x00, 0x00, 0x11, 0x00 );
+
+  if( strlen( reply ) < 141 ) return FALSE;
+
+  magic = raw_string( ord( reply[140] ) );
+  for( i = 1; i < 20; i++ ) {
+    if( strlen( reply ) > ( 140 + i ) ) {
+      magic += raw_string( ord( reply[140+i] ) );
     }
+  }
 
-    magic = raw_string(ord(reply[140]));
-    for(i=1; i<20; i=i+1){
-      if(strlen(reply) > (140+i)){
-        magic = magic + raw_string(ord(reply[140+i]));
-      }
+  x = 2 + strlen( item ) + strlen( item );
+  x_lo = x % 256;
+  x_hi = x / 256;
+
+  # Remote Registry Service Req
+  rrs_req =  magic + raw_string( x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC, 0xFD, 0x7F,
+                                 0x05, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                 item_len_lo, item_len_hi, 0x00 )
+                   + uc2
+                   + raw_string( 0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10, 0x40,
+                                 0x00, 0x18, 0x1E, 0x7c, 0x00, 0x00, 0x04, 0x00,
+                                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                                 0x00, 0x3C, 0xFF, 0x12, 0x00, 0x00, 0x04, 0x00,
+                                 0x00, 0x30, 0xFF, 0x12, 0x00, 0x00, 0x00, 0x00,
+                                 0x00 );
+
+  len_rrs = strlen( rrs_req ) + strlen( dcerpc_req1 ) + strlen( dcerpc_req2 ) + 2;
+  len_rrs_lo = len_rrs % 256;
+  len_rrs_hi = len_rrs / 256;
+
+  dcerpc_req = dcerpc_req1 + raw_string( len_rrs_lo, len_rrs_hi ) + dcerpc_req2;
+
+  ioctl_req += raw_string( len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                           0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                           0x00, 0x00, 0x00, 0x00 );
+
+  req += ioctl_req + dcerpc_req + rrs_req;
+  req_l = strlen( req );
+  len_lo = req_l % 256;
+  len_hi = req_l / 256;
+
+  if( isSignActive ) {
+    sig = get_smb2_signature( buf:req, key:sign_key );
+    if( isnull( sig ) ) {
+      set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_item_dword: buf or key passed to get_smb2_signature empty / too short" );
+      return FALSE;
     }
-    x = 2 + strlen(item) + strlen(item);
-    x_lo = x % 256;
-    x_hi = x / 256;
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + sig;
+  } else {
+    req = raw_string( 0x00, 0x00, len_hi, len_lo ) + req;
+  }
 
-    # Remote Registry Service Req
-    rrs_req =  magic + raw_string(x_lo, x_hi, 0x0A, 0x02, 0x00, 0xEC,
-                               0xFD, 0x7F, 0x05, 0x01, 0x00, 0x00, 0x00, 0x00,
-                               0x00, 0x00, item_len_lo, item_len_hi, 0x00) + uc2
-               + raw_string(0x00, 0x34, 0xFF, 0x12, 0x00, 0xEF, 0x10, 0x40, 0x00, 0x18, 0x1E,
-                            0x7c, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00,
-                            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3C, 0xFF,
-                            0x12, 0x00, 0x00, 0x04, 0x00, 0x00, 0x30, 0xFF,
-                            0x12, 0x00, 0x00, 0x00, 0x00, 0x00);
+  # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
+  send( socket:soc, data:req );
+  r = smb_recv( socket:soc );
+  if( strlen( r ) < 14 ) return NULL;
 
+  ##If status is pending, wait for response
+  status = ord( r[12] );
+  status2 = ord( r[13] );
+  while( status == 3 && status2 == 1 ) {
+    ##PDU will arrive late
+    r = smb_recv(socket:soc);
+    if( strlen( r ) < 14 ) return NULL;
 
-    len_rrs = strlen(rrs_req) + strlen(dcerpc_req1) + strlen(dcerpc_req2) + 2;
-    len_rrs_lo = len_rrs % 256;
-    len_rrs_hi = len_rrs / 256;
+    status = ord( r[12] );
+    status2 = ord( r[13] );
+  }
 
-    dcerpc_req = dcerpc_req1 + raw_string(len_rrs_lo, len_rrs_hi) + dcerpc_req2;
+  if( strlen( r ) < 80 ) return FALSE;
 
-    ioctl_req += raw_string(len_rrs_lo, len_rrs_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                            0x78, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                            0x00, 0x04, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
-                            0x00, 0x00, 0x00, 0x00);
+  multiplex_id += 1;
+  if( isSignActive ) {
+    # verify signature
+    seq_number += 1;
 
-    req = req + ioctl_req + dcerpc_req + rrs_req;
-    req_l = strlen(req);
-    len_lo =  req_l % 256;
-    len_hi = req_l / 256;
+    r_head = substr( r, 0, 3 );
+    r = substr(r, 4, strlen( r ) - 1 );
+    if( strlen( r ) < 64 ) return FALSE;
 
-   if(isSignActive)
-    {
-         sig = get_smb2_signature(buf:req, key:sign_key);
-         if( isnull( sig ) ) {
-           set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#registry2_get_item_dword: buf or key passed to get_smb2_signature empty / too short" );
-           return FALSE;
-         }
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + sig;
+    orig_sign = substr(r, 48, 63);
+    server_resp = get_smb2_signature( buf:r, key:sign_key );
+    if( isnull( server_resp ) ) return FALSE;
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
+    serv_sign = substr( server_resp, 48, 63 );
+    if( orig_sign != serv_sign ) {
+      return FALSE;
+    } else {
+      r = r_head + r;
     }
-    else{
-         req = raw_string(0x00, 0x00, len_hi, len_lo) + req ;
-    }
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        send(socket:soc, data:req);
-        r = smb_recv(socket:soc);
-
-    if(strlen(r) < 14){
-      return(NULL);
-    }
-
-
-        ##If status is pending, wait for response
-        status = ord(r[12]);
-        status2 = ord(r[13]);
-        while(status == 3 && status2 == 1)
-        {
-           ##PDU will arrive late
-           r = smb_recv(socket:soc);
-           if(strlen(r) < 14){
-             return(NULL);
-           }
-
-           status = ord(r[12]);
-           status2 = ord(r[13]);
-        }
-
-    if(strlen(r) < 80){
-      return(FALSE);
-    }
-    multiplex_id += 1;
-    if(isSignActive){
-      # verify signature
-      seq_number += 1;
-
-             r_head = substr(r, 0, 3);
-             r = substr(r, 4, strlen(r)-1);
-             if( strlen( r ) < 64 ) {
-               return(FALSE);
-             }
-
-             orig_sign = substr(r, 48, 63);
-             server_resp = get_smb2_signature(buf:r, key:sign_key);
-             if( isnull( server_resp ) ) return FALSE;
-             if( strlen(server_resp) < 64 ) {
-               return(FALSE);
-             }
-             serv_sign = substr(server_resp, 48, 63);
-             if(orig_sign != serv_sign){
-              return(FALSE);
-             }
-             else {
-               r = r_head + r;
-             }
-      }
+  }
   # END TODO ->
 
-  return (r);
+  return r;
 }
 
+#------------------------------------------------------#
+# Decode the reply from the registry                   #
+#------------------------------------------------------#
+function registry_decode_dword( data ) {
 
- #------------------------------------------------------#
- # Decode the reply from the registry                   #
- #------------------------------------------------------#
- function registry_decode_dword(data)
- {
-   if(ord(data[4]) == 254)
-   {
-    value =  registry2_decode_dword(data:data);
-    return(value);
-   }
-   else{
-    value = registry1_decode_dword(data:data);
-    return(value);
-   }
- }
+  local_var data, value;
 
-function registry1_decode_dword(data)
-{
-	local_var i;
-        if(strlen(data) < 53){
-          return(NULL);
-        }
- 	len = ord(data[2])*256;
-	len = len + ord(data[3]);
-	if(len < 126)return(NULL);
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry_decode_dword" );
 
-	data_offset = ord(data[52])*256;
-	data_offset = data_offset + ord(data[51]) + 4;
-        if(strlen(data) < (data_offset + 45)){
-          return(NULL);
-        }
-	data_len = ord(data[data_offset+43]);
-	data_len = data_len * 256;
-	data_len = data_len + ord(data[data_offset+44]);
-	index = data_offset + 48;
-	o = "";
-	for(i=data_len; i>0; i=i-1)
-	{
-		t *= 256;
-        if(strlen(data) > (index+i-1)){
-		  t += ord(data[index+i-1]);
-        }
-	}
-	return(t);
- }
-
-function registry2_decode_dword(data)
-{
-  local_var i;
-
-  if(strlen(data) < 104){
-    return(NULL);
+  if( ord( data[4] ) == 254 ) {
+    value = registry2_decode_dword( data:data );
+    return value;
+  } else {
+    value = registry1_decode_dword( data:data );
+    return value;
   }
+}
 
-  len = ord(data[2])*256;
-  len = len + ord(data[3]);
-  if(len < 126)return(NULL);
-  data_offset = ord(data[103])*256;
-  data_offset = data_offset + ord(data[102])*256;
-  data_offset = data_offset + ord(data[101])*256;
-  data_offset = data_offset + ord(data[100]) + 4;
+function registry1_decode_dword( data ) {
 
-  if(strlen(data) < (data_offset+45)){
-    return(NULL);
-  }
-  data_len = ord(data[data_offset+43]);
+  local_var data, len, data_offset, data_len, index, o, i, t;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry1_decode_dword" );
+
+  if( strlen( data ) < 53 ) return NULL;
+
+  len = ord( data[2] ) * 256;
+  len = len + ord( data[3] );
+  if( len < 126 ) return NULL;
+
+  data_offset = ord( data[52] ) * 256;
+  data_offset = data_offset + ord( data[51] ) + 4;
+
+  if( strlen( data ) < ( data_offset + 45 ) ) return NULL;
+
+  data_len = ord( data[data_offset+43] );
   data_len = data_len * 256;
-  data_len = data_len + ord(data[data_offset+44]);
-
+  data_len = data_len + ord( data[data_offset+44] );
   index = data_offset + 48;
   o = "";
-  for(i=data_len; i>0; i=i-1)
-  {
+
+  for( i = data_len; i > 0; i = i - 1 ) {
     t *= 256;
-    if(strlen(data) > (index+i-1)){
-      t += ord(data[index+i-1]);
+    if( strlen( data ) > ( index + i - 1 ) ) {
+      t += ord( data[index+i-1] );
     }
   }
-  return(t);
+  return t;
+}
+
+function registry2_decode_dword( data ) {
+
+  local_var data, len, data_offset, data_len, index, o, i, t;
+
+  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#registry2_decode_dword" );
+
+  if( strlen( data ) < 104 ) return NULL;
+
+  len = ord( data[2] ) * 256;
+  len = len + ord( data[3] );
+  if( len < 126 ) return NULL;
+
+  data_offset = ord( data[103] ) * 256;
+  data_offset = data_offset + ord( data[102] ) * 256;
+  data_offset = data_offset + ord( data[101] ) * 256;
+  data_offset = data_offset + ord( data[100] ) + 4;
+
+  if( strlen( data ) < ( data_offset + 45 ) ) return NULL;
+
+  data_len = ord( data[data_offset+43] );
+  data_len = data_len * 256;
+  data_len = data_len + ord( data[data_offset+44] );
+  index = data_offset + 48;
+  o = "";
+
+  for( i = data_len; i > 0; i = i - 1 ) {
+    t *= 256;
+    if( strlen( data ) > ( index + i - 1 ) ) {
+      t += ord( data[index+i-1] );
+    }
+  }
+  return t;
 }
 
 #---------------------------------------------------------------------#
@@ -7430,8 +5898,9 @@ function registry2_decode_dword(data)
 #---------------------------------------------------------------------#
 function registry_get_dword( key, item, type ) {
 
-  local_var kb_proxy, kb_proxy_key, r3_value, key, item, type;
-  local_var name, _smb_port, login, pass, domain, soc, uid, tid, r, prot, pipe;
+  local_var key, item, type;
+  local_var kb_proxy_key, kb_proxy, name, _smb_port, login, pass, domain, soc;
+  local_var r, prot, uid, tid, pipe, r2, r3, r3_value;
 
   if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_get_dword" );
   if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry_get_dword" );
@@ -7441,8 +5910,8 @@ function registry_get_dword( key, item, type ) {
   # Query KB ("proxy") first.
   kb_proxy_key = "SMB//registry_get_dword//Registry//" + type + "//" + key + "//" + item;
   kb_proxy = get_kb_item( kb_proxy_key );
-  if( ! isnull( kb_proxy ) || kb_proxy )
-  return kb_proxy;
+  if( ! isnull( kb_proxy ) || kb_proxy ) 
+    return kb_proxy;
 
   # Value has not been previousle written to KB, fetch it.
   if( get_kb_item( "SMB/samba" ) ) {
@@ -7574,7 +6043,8 @@ function registry_get_dword( key, item, type ) {
 function registry_get_binary( key, item, type ) {
 
   local_var key, item, type;
-  local_var name, _smb_port, login, pass, domain, soc, uid, tid, r, prot, pipe, r3_value;
+  local_var name, _smb_port, login, pass, domain, soc, r, prot, uid, tid, pipe;
+  local_var r2, r3, r3_value;
 
   if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_get_binary" );
   if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry_get_binary" );
@@ -7594,15 +6064,15 @@ function registry_get_binary( key, item, type ) {
 
   if( ! get_port_state( _smb_port ) ) return(FALSE);
 
-  login = kb_smb_login();
-  pass  = kb_smb_password();
+  login  = kb_smb_login();
+  pass   = kb_smb_password();
   domain = kb_smb_domain();
 
   if( ! login ) login = "";
-  if( ! pass ) pass = "";
+  if( ! pass )  pass = "";
 
   soc = open_sock_tcp( _smb_port );
-  if( ! soc ) return(FALSE);
+  if( ! soc ) return FALSE;
 
   # Request the session
   r = smb_session_request( soc:soc, remote:name );
@@ -7688,12 +6158,12 @@ function registry_get_binary( key, item, type ) {
     r3 = registry_get_item_sz( soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:r2 );
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
-    r3_value = registry_decode_binary( data:r3 );
+    r3_value = registry_decode_binary( data:r3, uid:uid );
     close( soc );
-    return(r3_value);
+    return r3_value;
   }
-  close(soc);
-  return(FALSE);
+  close( soc );
+  return FALSE;
 }
 
 #---------------------------------------------------------------------#
@@ -7707,8 +6177,9 @@ function registry_get_binary( key, item, type ) {
 #---------------------------------------------------------------------#
 function registry_get_sz( key, item, type ) {
 
-  local_var kb_proxy, kb_proxy_key, r3_value, key, item, type;
-  local_var name, _smb_port, login, pass, domain, soc, uid, tid, r, prot, pipe;
+  local_var key, item, type;
+  local_var kb_proxy_key, kb_proxy, name, _smb_port, login, pass, domain, soc;
+  local_var r, prot, uid, tid, pipe, r2, r3, r3_value;
 
   if( isnull( key ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#key#-#registry_get_sz" );
   if( isnull( item ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#item#-#registry_get_sz" );
@@ -7830,8 +6301,7 @@ function registry_get_sz( key, item, type ) {
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2 );
     registry_close( soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r );
 
-    if( r3 ) r3_value = registry_decode_sz( data:r3 );
-
+    if( r3 ) r3_value = registry_decode_sz( data:r3, uid:uid );
     close( soc );
 
     # Place value into the KB
@@ -7840,1049 +6310,25 @@ function registry_get_sz( key, item, type ) {
     } else {
       r3_value = FALSE;
     }
-
     return r3_value;
   }
   close( soc );
   return FALSE;
 }
 
- #---------------------------------------------------------------------------#
- # SAM related functions							    #
- #---------------------------------------------------------------------------#
-
- #------------------------------------------------------#
- # Open a pipe to \samr                                 #
- #------------------------------------------------------#
- function OpenPipeToSamr(soc, uid, tid)
- {
-	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
- 	req = raw_string(0x00, 0x00,
- 			 0x00, 0x60, 0xFF, 0x53, 0x4D, 0x42, 0xA2, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi);
-	if(ntlmssp_flag){
-		 g_mhi = multiplex_id / 256;
-        	 g_mlo = multiplex_id % 256;
-                req += raw_string(0x33, 0x0c);
-	}
-        else
-                req += raw_string(0x00, 0x28);
-
-	req += raw_string(uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x18, 0xFF, 0x00, 0xDE, 0xDE, 0x00,
-			 0x0A, 0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x9F, 0x01, 0x02, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x01, 0x00,
-			 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x02, 0x00,
-			 0x00, 0x00, 0x03, 0x0D, 0x00, 0x00, 0x5C, 0x00,
-			 0x73, 0x00, 0x61, 0x00, 0x6D, 0x00, 0x72, 0x00,
-			 0x00, 0x00);
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        if( ntlmssp_flag && isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
-        send( socket:soc, data:req );
-        r = smb_recv( socket:soc );
-
-        if( ntlmssp_flag ) {
-          multiplex_id += 1;
-          if( r && isSignActive ) {
-            # verify signature
-            seq_number += 1;
-            len = strlen( r );
-            server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-            if( isnull( server_resp ) ) return FALSE;
-
-            #TODO: Also check the response length here before accessing possible non-existing data
-            if((strlen(server_resp) < 24) || (len < 24)) {
-              return(FALSE);
-            }
-
-            orig_sign = substr( r, 18, 23 );
-            serv_sign = substr( server_resp, 18, 23 );
-            if( orig_sign != serv_sign ) {
-              return FALSE;
-            }
-          }
-        }
-        # -> END TODO
-
-        if( strlen( r ) < 44 ) {
-          return( FALSE );
-	} else {
-          low = ord(r[42]);
-          hi  = ord(r[43]);
-          ret = hi * 256;
-          ret = ret + low;
-          return(ret);
-        }
-}
-
-function samr_smbwritex_NTLMSSP(soc, tid, uid, pipe) {
-
-        tid_hi = tid / 256;
-        tid_lo = tid % 256;
-
-        uid_hi = uid / 256;
-        uid_lo = uid % 256;
-
-        pipe_hi = pipe / 256;
-        pipe_lo = pipe % 256;
-
-	g_mhi = multiplex_id / 256;
-        g_mlo = multiplex_id % 256;
-
-        req = raw_string(0x00, 0x00,
-                         0x00, 0x88, 0xFF, 0x53, 0x4D, 0x42, 0x2F, 0x00,
-                         0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x00, tid_lo, tid_hi, 0x33, 0x0c, uid_lo, uid_hi,
-                         g_mlo, g_mhi, 0x0E, 0xFF, 0x00, 0xDE, 0xDE, pipe_lo,
-                         pipe_hi, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
-                         0xFF, 0x08, 0x00, 0x48, 0x00, 0x00, 0x00, 0x48,
-                         0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x49,
-                         0x00, 0xEE, 0x05, 0x00, 0x0B, 0x03, 0x10, 0x00,
-                         0x00, 0x00, 0x48, 0x00, 0x00, 0x00, 0x01, 0x00,
-                         0x00, 0x00, 0xB8, 0x10, 0xB8, 0x10, 0x00, 0x00,
-                         0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x01, 0x00, 0x78, 0x57, 0x34, 0x12, 0x34, 0x12,
-                         0xCD, 0xAB, 0xEF, 0x00, 0x01, 0x23, 0x45, 0x67,
-                         0x89, 0xAC, 0x01, 0x00, 0x00, 0x00, 0x04, 0x5D,
-                         0x88, 0x8A, 0xEB, 0x1C, 0xC9, 0x11, 0x9F, 0xE8,
-                         0x08, 0x00, 0x2B, 0x10, 0x48, 0x60, 0x02, 0x00,
-                         0x00, 0x00);
-
-        # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
-        if( isSignActive ) {
-          len = strlen( req );
-          seq_number += 1;
-          packet = req;
-          req = get_signature( key:s_sign_key, buf:req, buflen:len, seq_number:seq_number );
-          if( isnull( req ) ) return FALSE;
-        }
-
-        send( socket:soc, data:req );
-        r = smb_recv( socket:soc );
-
-	multiplex_id += 1;
-        if( r && isSignActive ) {
-          # verify signature
-          seq_number += 1;
-          len = strlen( r );
-          server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
-          if( isnull( server_resp ) ) return FALSE;
-
-          #TODO: Also check the response length here before accessing possible non-existing data
-          if((strlen(server_resp) < 24) || (len < 24)) {
-            return(FALSE);
-          }
-
-          orig_sign = substr( r, 18, 23 );
-          serv_sign = substr( server_resp, 18, 23 );
-          if( orig_sign != serv_sign ) {
-            return FALSE;
-          }
-        }
-        # -> END TODO
-
-  return r;
-}
-
-function samr_smbwritex( soc, tid, uid, pipe ) {
-
-  local_var response;
-
-  if( ntlmssp_flag ) {
-    response = samr_smbwritex_NTLMSSP(soc:soc, tid:tid, uid:uid, pipe:pipe);
-    return response;
-  } else {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x88, 0xFF, 0x53, 0x4D, 0x42, 0x2F, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x0E, 0xFF, 0x00, 0xDE, 0xDE, pipe_lo,
-			 pipe_hi, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
-			 0xFF, 0x08, 0x00, 0x48, 0x00, 0x00, 0x00, 0x48,
-			 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x49,
-			 0x00, 0xEE, 0x05, 0x00, 0x0B, 0x03, 0x10, 0x00,
-			 0x00, 0x00, 0x48, 0x00, 0x00, 0x00, 0x01, 0x00,
-			 0x00, 0x00, 0xB8, 0x10, 0xB8, 0x10, 0x00, 0x00,
-			 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x01, 0x00, 0x78, 0x57, 0x34, 0x12, 0x34, 0x12,
-			 0xCD, 0xAB, 0xEF, 0x00, 0x01, 0x23, 0x45, 0x67,
-			 0x89, 0xAC, 0x01, 0x00, 0x00, 0x00, 0x04, 0x5D,
-			 0x88, 0x8A, 0xEB, 0x1C, 0xC9, 0x11, 0x9F, 0xE8,
-			 0x08, 0x00, 0x2B, 0x10, 0x48, 0x60, 0x02, 0x00,
-			 0x00, 0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-  }
-}
-
- function samr_smbreadx(soc, tid, uid, pipe)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x3B, 0xFF, 0x53, 0x4D, 0x42, 0x2E, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x0C, 0xFF, 0x00, 0xDE, 0xDE, pipe_lo,
-			 pipe_hi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00,
-			 0x04, 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x04, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
- }
-
-#------------------------------------------------------#
-# Returns the unicode representation of <name>         #
-#------------------------------------------------------#
-function samr_uc( name ) {
-
-  local_var i, ret;
-
-  ret = "";
-
-  for( i = 0; i < strlen( name ); i++ ) {
-    ret += raw_string(0) + name[i];
-  }
-  return(ret);
-}
-
- #------------------------------------------------------#
- # Connects to the remote SAM                           #
- #------------------------------------------------------#
- function SamrConnect2(soc, tid, uid, pipe, name)
- {
-	local_var i;
- 	samr_smbwritex(soc:soc, tid:tid, uid:uid, pipe:pipe);
-	samr_smbreadx(soc:soc, tid:tid, uid:uid, pipe:pipe);
-
-	l = strlen(name);
-	odd = l % 2;
-
-	if(odd){
-		p = 0;
-	}
-	else {
-		p = 2;
-	}
-
-	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
- 	l = 3 + strlen(name);
-	l_h = l / 256;
-	l_l = l % 256;
-
-	tot_len = 134 + strlen(name) + strlen(name) + p;
-	tot_len_h = tot_len / 256;
-	tot_len_l = tot_len % 256;
-
-	bcc = 67 + strlen(name) + strlen(name) + p;
-	bcc_lo = bcc % 256;
-	bcc_hi = bcc / 256;
-
-	total_data_count = 50 + strlen(name) + strlen(name) + p;
-	total_data_count_lo = total_data_count % 256;
-	total_data_count_hi = total_data_count / 256;
-
-	req = raw_string(0x00, 0x00,
- 			 tot_len_h, tot_len_l, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00,total_data_count_lo, total_data_count_hi, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, total_data_count_lo, total_data_count_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, bcc_lo, bcc_hi, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0xAF, 0x47, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, total_data_count_lo, total_data_count_hi,
-			 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x28, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x39, 0x00, 0x60, 0x60,
-			 0x13, 0x00, l_l, l_h, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, l_l, l_h, 0x00, 0x00, 0x5C, 0x00,
-			 0x5C) + samr_uc(name:name) + raw_string(0x00, 0x00, 0x00);
-
-	if(p){
-		req = req + raw_string(0xC9, 0x11); # 0x02, 0x00, 0x00, 0x00);
-	}
-
-	req = req +  raw_string(0x30, 0x00, 0x00, 0x00);
-	#display(strlen(req), "\n");
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	#display("--->", strlen(r), "\n");
-
- 	# We return a handle to the remote SAM
-	samrhdl = "";
-	_len = strlen(r);
-	if(_len < 24){
-		return(FALSE);
-	}
-
-	_len = _len - 24;
-	for(i=0; i<20; i=i+1)
-	{
-		samrhdl = samrhdl + raw_string(ord(r[i+_len]));
-		#display(hex(ord(r[i+_len])), " ");
-	}
-	#display("\n");
-	#display("samhdl : ", strlen(samrhdl), "\n");
-	return (samrhdl);
- }
-
- #--------------------------------------------------------------#
- # This function is probably SamrEnumerateDomainsInSamServer()  #
- # but I'm not sure of that, so I changed its name to           #
- # _SamrEnumDomains()                                           #
- #                                                              #
- # This function only returns the first domain it obtains       #
- #--------------------------------------------------------------#
- function _SamrEnumDomains(soc, uid, tid, pipe, samrhdl)
- {
-	local_var i;
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x88, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x34, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x34, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x45, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0xAF, 0x47, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x34, 0x00,
-			 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x1C, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x06, 0x00) + samrhdl +
-	      raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 137){
-		return(FALSE);
-	}
-
-	len_lo = ord(r[136]);
-	len_hi = ord(r[137]);
-
-	len = len_hi * 256;
-	len = len + len_lo;
-	dom = "";
-	len = len*2;
-	maxlen = strlen(r);
-	if(maxlen < len)return(FALSE);
-	for(i=0; i<len; i=i+2)
-	{
-  		if(maxlen < 139+i){
-			return(FALSE);
-		}
-		dom = dom + raw_string(ord(r[139+i]), ord(r[140+i]));
- 	}
-	#display(dom, "\n");
-	return(dom);
- }
-
-
- #------------------------------------------------------#
- # Returns the sid from the domain <dom>                #
- #------------------------------------------------------#
- function SamrDom2Sid(soc, tid, uid, pipe, samrhdl, dom)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	#display(strlen(dom), "<-dom\n");
-	tot_len = 148 + strlen(dom);
-	tot_len_hi = tot_len / 256;
-	tot_len_lo = tot_len % 256;
-
-	bcc = 81 + strlen(dom);
-	bcc_lo = bcc % 256;
-	bcc_hi = bcc / 256;
-
-	tot_dat_count = 64 + strlen(dom);
-	tot_dat_count_lo = tot_dat_count % 256;
-	tot_dat_count_hi = tot_dat_count / 256;
-
-	dom_len = strlen(dom);
-	dom_len = dom_len / 2;
-	dom_len_lo = dom_len % 256;
-	dom_len_hi = dom_len / 256;
-
-	dom_t_len =  dom_len + 1;
-	dom_t_len_lo = dom_t_len % 256;
-	dom_t_len_hi = dom_t_len / 256;
-
-	dom_m_len = dom_len * 2;
-	dom_m_len_lo = dom_m_len % 256;
-	dom_m_len_hi = dom_m_len / 256;
-
-	dom_mm_len = dom_m_len + 2;
-	dom_mm_len_lo = dom_mm_len % 256;
-	dom_mm_len_hi = dom_mm_len / 256;
-
- 	req = raw_string(0x00, 0x00,
- 			 tot_len_hi, tot_len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, tot_dat_count_lo, tot_dat_count_hi, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, tot_dat_count_lo, tot_dat_count_hi, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, bcc_lo, bcc_hi, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0xAF, 0x47, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, tot_dat_count_lo, tot_dat_count_hi,
-			 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x38, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x05, 0x00) + samrhdl +
-	      raw_string(dom_m_len_lo, dom_m_len_hi, dom_mm_len_lo, dom_mm_len_hi, 0x40, 0x7B,
-			 0x13, 0x00, dom_t_len_lo, dom_t_len_hi, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, dom_len_lo, dom_len_hi, 0x00) + dom + raw_string(0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 88){
-		return(FALSE);
-	}
-	#display(ord(r[88]), "\n");
-  	_sid = "";
-  	for(i=0; i<28; i=i+1)
-	{
-		_sid = _sid + raw_string(ord(r[88+i]));
-		 #display(hex(ord(r[88+i])),  " ");
-  	}
-	#display("\n");
-	return (_sid);
- }
-
- #------------------------------------------------------#
- # Opens a policy handle to a given domain              #
- #------------------------------------------------------#
- function SamrOpenDomain(soc, tid, uid, pipe, samrhdl, sid)
- {
- 	#display("sid = ", strlen(sid), "\n");
-	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
- 	len = 132 + strlen(sid);
-	len_h = len / 256;
-	len_l = len % 256;
-
-	tdc = 48 + strlen(sid);
-	tdc_l = tdc % 256;
-	tdc_h = tdc / 256;
-
-	bcc = tdc + 17;
-	bcc_l = bcc % 256;
-	bcc_h = bcc / 256;
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0xA0, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x4C, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x4C, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x5D, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x33, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x4C, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x34, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x07, 0x00) + samrhdl +
-	      raw_string(0x00, 0x02, 0x00, 0x00) + sid;
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 30){
-		return(FALSE);
-	}
- 	#display(strlen(r),"\n");
-	samrhdl = "";
-	_len = strlen(r);
-	_len = _len - 24;
-	_z = 0;
-	for(i=0; i<20; i=i+1)
- 	{
-		if(ord(r[i+_len]) == 0)_z = _z + 1;
-		samrhdl = samrhdl + raw_string(ord(r[i+_len]));
-		#display(hex(ord(r[i+_len])), " ");
-	}
-	#display("\n");
-	#display("samhdl : ", strlen(samrhdl), "\n");
-	if(_z == 20){
-		return(NULL);
-	}
- 	return(samrhdl);
- }
-
- #------------------------------------------------------#
- # NetUserModalsGet - does not work yet		       #
- #------------------------------------------------------#
- function SamrQueryDomainInfo(soc, tid, uid, pipe, samrhdl, level)
- {
- 	#display("sid = ", strlen(sid), "\n");
-	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
- 	req = raw_string(0x00, 0x00,
- 			 0x00, 0x82, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x2e, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x2e, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x3f, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x45, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x2E, 0x00,
-			 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x16, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x08, 0x00) + samrhdl +
-	      raw_string(level % 256, level / 256);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 30){
-		return(FALSE);
-	}
-	return r;
- }
-
-
- function SamrOpenBuiltin(soc, tid, uid, pipe, samrhdl)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x94, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x40, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x40, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x51, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x40, 0x00,
-			 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x28, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x07, 0x00) + samrhdl +
-	      raw_string(0x80, 0x02, 0x00, 0x00, 0x01, 0x00,
-			 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x05, 0x20, 0x00, 0x00, 0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	builtinhdl = "";
-	_len = strlen(r);
-	_len = _len - 24;
-	_z  = 0;
-	for(i=0; i<20; i=i+1)
- 	{
-		if(ord(r[i+_len]) == 0){
-			_z = _z + 1;
-		}
-		builtinhdl = builtinhdl + raw_string(ord(r[i+_len]));
-		#display(hex(ord(r[i+_len])), " ");
- 	}
-	if(_z == 20){
-		return(NULL);
-	}
-	#display("\n");
-	#display("builtinhdl : ", strlen(builtinhdl), "\n");
-	return(builtinhdl);
- }
-
- #------------------------------------------------------#
- # Converts a username to its rid                       #
- #------------------------------------------------------#
- function SamrLookupNames(soc, uid, tid, pipe, name, domhdl)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	usr = samr_uc(name:name);
-	len = 164 + strlen(usr);
-	len_hi = len / 256;
-	len_lo = len % 256;
-
-	tdc = 80 + strlen(usr);
-	tdc_l = tdc % 256;
-	tdc_h = tdc / 256;
-
-	bcc = tdc + 17;
-	bcc_l = bcc % 256;
-	bcc_h = bcc / 256;
-
-	x = strlen(usr) / 2;
-	x_h = x / 256;
-	x_l = x % 256;
-
-	y = x + 1;
-	y_h = y / 256;
-	y_l = y % 256;
-
-	z = strlen(usr);
-	z_l = z % 256;
-	z_h = z / 256;
-
-	t = z + 2;
-	t_l = t % 256;
-	t_h = t / 256;
-
-	req = raw_string(0x00, 0x00,
- 			 len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, tdc_l, tdc_h, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, tdc_l, tdc_h, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, bcc_l, bcc_h, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0xAF, 0x47, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, tdc_l, tdc_h,
-			 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x44, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x11, 0x00) + domhdl +
-	      raw_string(0x01, 0x00, 0x00, 0x00, 0xE8, 0x03,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-			 0x00, 0x00, z_l, z_h, t_l, t_h, 0xD8, 0x0E,
-			 0x41, 0x00, y_l, y_h, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, x_l, x_h, 0x00) + usr +
-              raw_string(0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-
-	if(strlen(r) < 100){
-		return(FALSE);
-	}
-
-	_rid = "";
-	#display("RID : ");
-	_z = 0;
-	for(i=0; i<4; i=i+1)
-	{
-		if(ord(r[96+i]) == 0){
-			_z = _z + 1;
-		}
-		#display(hex(ord(r[96+i])), " ");
-		_rid = _rid + raw_string(ord(r[96+i]));
-	}
-	#display("\n");
-	if(_z == 4){
-		return(NULL);
-	}
-	return(_rid);
- }
-
- #--------------------------------------------------------#
- # Opens a policy handle to a given user                  #
- #--------------------------------------------------------#
- function SamrOpenUser(soc, uid, tid, pipe, samrhdl, rid)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	len = 176;
-	len_hi = len / 256;
-	len_lo = len % 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x88, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x34, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x34, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x45, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x33, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x34, 0x00,
-			 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x1c, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x22, 0x00) + samrhdl +
-	      raw_string(0x1B, 0x01, 0x02, 0x00) + rid;
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-	if(strlen(r) < 100){
-		return(FALSE);
-	}
-
-	_usrhdl = "";
-	_len = strlen(r);
-	_len = _len - 24;
-	#display("usrhdl = ");
-	_z = 0;
-	for(i=0; i<20; i=i+1)
-	{
-		if(ord(r[i+_len]) == 0){
-			_z = _z + 1;
-		}
-		_usrhdl = _usrhdl + raw_string(ord(r[i+_len]));
-		#display(hex(ord(r[i+_len])), " ");
- 	}
- 	if(_z == 20){
-		return(NULL);
-	}
-	#display("\n");
-	return(_usrhdl);
- }
-
- #----------------------------------------------------------#
- # Requests the list of groups to which the user belongs to #
- #----------------------------------------------------------#
- function SamrQueryUserGroups(soc, uid, tid, pipe, usrhdl)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x80, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x2C, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x2C, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x3D, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x2C, 0x00,
-			 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x14, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x27, 0x00) + usrhdl;
- 	send(socket:soc, data:req);
-	r = recv(socket:soc, length:4096);
-
- 	num_lo = ord(r[88]);
-	num_hi = ord(r[89]);
-
-	num = num_hi * 256;
-	num = num + num_lo;
-
-	# Ok. Our user is in <num> groups. Let's decode their RID
-
-	if(strlen(r) < 103){
-		return(FALSE);
-	}
-	base = 100;
-	rids = "";
-	for(i=0; i<num; i=i+1)
-	{
-		g_rid = string(hex(ord(r[base+3])), "-",
-		hex(ord(r[base+2])), "-",
-		hex(ord(r[base+1])), "-",
-		hex(ord(r[base])));
-
-		base = base + 8;
-		rids = rids + g_rid + string("\n");
- 	}
-	return(rids);
- }
-
- #------------------------------------------------------#
- # Queries information about a given user               #
- #------------------------------------------------------#
- function SamrQueryUserInfo(soc, uid, tid, pipe, usrhdl)
- {
-	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0x82, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x2E, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x2E, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x3F, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x33, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x2E, 0x00,
-			 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x16, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x24, 0x00) + usrhdl +
-	      raw_string(0x15, 0x00);
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-
-	return (r);
- }
-
- #-----------------------------------------------------------#
- # Requests the list of aliases to which the user belongs to #
- #-----------------------------------------------------------#
- function SamrQueryUserAliases(soc, uid, tid, pipe, usrhdl, sid, rid)
- {
- 	tid_hi = tid / 256;
-	tid_lo = tid % 256;
-	uid_hi = uid / 256;
-	uid_lo = uid % 256;
-
-	pipe_hi = pipe / 256;
-	pipe_lo = pipe % 256;
-
-	subsid = "";
-
-	for(i=0; i<20; i=i+1)
-	{
-		subsid = subsid + raw_string(ord(sid[8+i]));
-		#display(hex(ord(sid[8+i])), " ");
-	}
-	#display("\n");
-
-	req = raw_string(0x00, 0x00,
- 			 0x00, 0xB0, 0xFF, 0x53, 0x4D, 0x42, 0x25, 0x00,
-			 0x00, 0x00, 0x00, 0x18, 0x07, 0xC8, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28, uid_lo, uid_hi,
-			 g_mlo, g_mhi, 0x10, 0x00, 0x00, 0x5C, 0x00, 0x00,
-			 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x54,
-			 0x00, 0x5C, 0x00, 0x54, 0x00, 0x02, 0x00, 0x26,
-			 0x00, pipe_lo, pipe_hi, 0x6D, 0x00, 0x00, 0x5C, 0x00,
-			 0x50, 0x00, 0x49, 0x00, 0x50, 0x00, 0x45, 0x00,
-			 0x5C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00,
-			 0x00, 0x03, 0x10, 0x00, 0x00, 0x00, 0x5C, 0x00,
-			 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x44, 0x00,
-			 0x00, 0x00, 0x00, 0x00, 0x10, 0x00) + usrhdl +
-	      raw_string(0x01, 0x00, 0x00, 0x00, 0x88, 0x7C,
-       	 		 0x13, 0x00, 0x01, 0x00, 0x00, 0x00, 0x98, 0x7C,
-			 0x13, 0x00, 0x05, 0x00, 0x00, 0x00, 0x01, 0x05,
-			 0x00, 0x00) + subsid + rid;
-
-	send(socket:soc, data:req);
-	r = smb_recv(socket:soc);
-
-	if(strlen(r) < 100)
-	{
- 		#display("=====>", strlen(r), "<====\n");
-		return(FALSE);
-	}
-
- 	num_lo = ord(r[92]);
-	num_hi = ord(r[93]);
-
-	num = num_hi * 256;
-	num = num + num_lo;
-	#display("NUM EGAL : ", num, "\n");
-	base = 96;
-	rids = "";
-	for(i=0; i<num; i=i+1)
- 	{
-		_rid = string(hex(ord(r[base+3])), "-",
-  			      hex(ord(r[base+2])), "-",
-			      hex(ord(r[base+1])), "-",
-			      hex(ord(r[base])));
-  		rids = rids + _rid + string("\n");
-		base = base + 4;
-	}
-	return(rids);
- }
-
- function _ExtractTime(buffer, base)
- {
-	if(strlen(buffer) < base + 8){
-		return(FALSE);
-	}
-
-	return(string(hex(ord(buffer[base+7])), "-",
- 		      hex(ord(buffer[base+6])), "-",
-		      hex(ord(buffer[base+5])), "-",
-		      hex(ord(buffer[base+4])), "-",
-		      hex(ord(buffer[base+3])), "-",
-		      hex(ord(buffer[base+2])), "-",
-		      hex(ord(buffer[base+1])), "-",
-		      hex(ord(buffer[base]))));
- }
-
- #------------------------------------------------------#
- # Decodes the informations received about a given usr  #
- # This function is not part of MSDN, hence the under-  #
- # score in front of it                                 #
- #------------------------------------------------------#
- function _SamrDecodeUserInfo(info, count, type)
- {
- 	lim = strlen(info);
-
-	if(strlen(info) < 100){
- 		return(FALSE);
-	}
-
-	# Various times
- 	logon = _ExtractTime(buffer:info, base:92);
-	#display("Logon time : ", logon, "\n");
-
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/LogonTime"),
- 		    value:logon);
-
- 	logoff = _ExtractTime(buffer:info, base:100);
-	#display("Logoff time : ", logoff, "\n");
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/LogoffTime"),
- 		    value:logoff);
-
-	if(strlen(info) < 116){
-		return(FALSE);
-	}
-
- 	kickoff = _ExtractTime(buffer:info, base:108);
-	#display("Kickoff time : ", kickoff, "\n");
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/KickoffTime"),
- 		    value:kickoff);
-
-	base = 116;
-	pass_last_set = _ExtractTime(buffer:info, base:116);
-
-	if(strlen(info) < 124){
- 		return(FALSE);
- 	}
-
-	#display("Pass last set : ", pass_last_set, "\n");
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/PassLastSet"),
- 		    value:pass_last_set);
-
-	pass_can_change = _ExtractTime(buffer:info, base:124);
-	#display("Pass can change : ", pass_can_change,"\n");
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/PassCanChange"),
- 		    value:pass_can_change);
-
-	pass_must_change = _ExtractTime(buffer:info, base:132);
-
-	#display("Pass must change : ", pass_must_change, "\n");
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/PassMustChange"),
- 		    value:pass_must_change);
-
-	# ACB
- 	if(strlen(info) < 260){
-		return(FALSE);
- 	}
-
-	acb_lo = ord(info[260]);
-	acb_hi = ord(info[261]);
-	acb = acb_hi * 256;
-	acb = acb + acb_lo;
-	#display("ACB : ", hex(acb), "\n");
-
-	set_kb_item(name:string("SMB/", type, "/", count, "/Info/ACB"), value:acb);
-
- 	#if(acb & 0x01)display("  Account is disabled\n");
-	#if(acb & 0x04)display("  Password not required\n");
-	#if(acb & 0x10)display("  Normal account\n");
-	#if(acb & 0x0200)display("  Password does not expire\n");
-	#if(acb & 0x0400)display("  Account auto-locked\n");
-	#if(acb & 0x0800)display("  Password can't be changed\n");
-
-	#if(acb & 0x1000)display("  Smart card is required for interactive log on\n");
-	#if(acb & 0x2000)display("  Account is trusted for delegation\n");
-	#if(acb & 0x4000)display("  Account is sensitive an can not be delegated\n");
-	#if(acb & 0x8000)display("  Use DES encryption type for this account\n");
- }
-
 # Open file <file>
 function OpenAndX_NTLMSSP( socket, uid, tid, file ) {
 
-  local_var req, tid_lo, tid_hi, uid_lo, uid_hi, len_lo, len_hi, rep;
-  local_var fid_lo, fid_hi;
+  # isSignActive, seq_number, s_sign_key, multiplex_id, g_mhi and g_mlo are global_vars!!!
+
+  local_var socket, uid, tid, file;
+  local_var len_lo, len_hi, tid_lo, tid_hi, uid_lo, uid_hi, bcc_lo, bcc_hi, req, len;
+  local_var packet, rep, server_resp, orig_sign, serv_sign, fid_lo, fid_hi;
+
+  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#OpenAndX_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#OpenAndX_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#OpenAndX_NTLMSSP" );
+  if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#OpenAndX_NTLMSSP" );
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
@@ -8896,26 +6342,26 @@ function OpenAndX_NTLMSSP( socket, uid, tid, file ) {
   uid_lo = uid % 256;
   uid_hi = uid / 256;
 
-  bcc_lo = strlen(file) % 256;
-  bcc_hi = strlen(file) / 256;
+  bcc_lo = strlen( file ) % 256;
+  bcc_hi = strlen( file ) / 256;
   req = raw_string( 0x00, 0x00, len_hi, len_lo,   0xFF, 0x53,
                     0x4D, 0x42, 0x2D, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
   if( isSignActive ) {
-    req += raw_string(0x05, 0x40);
+    req += raw_string( 0x05, 0x40 );
   } else {
-    req += raw_string(0x01, 0x40);
+    req += raw_string( 0x01, 0x40 );
   }
 
-  req += raw_string(0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi,
-                    0x33, 0x0c, uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0xFF,
-                    0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x06,
-                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
-                    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                    0x00, 0x00, 0x00, 0x00, 0x00, bcc_lo, bcc_hi ) +
-         file +
-         raw_string( 0x00 );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi, 0x33, 0x0c,
+                     uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0xFF, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x40, 0x00, 0x06, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, bcc_lo, bcc_hi )
+       + file
+       + raw_string( 0x00 );
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -8936,11 +6382,10 @@ function OpenAndX_NTLMSSP( socket, uid, tid, file ) {
     len = strlen( rep );
     server_resp = get_signature( key:s_sign_key, buf:rep, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen(server_resp) < 24) || (len < 24)) {
-      return(FALSE);
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
     }
+
     orig_sign = substr( rep, 18, 23 );
     serv_sign = substr( server_resp, 18, 23 );
     if( orig_sign != serv_sign ) {
@@ -8954,21 +6399,29 @@ function OpenAndX_NTLMSSP( socket, uid, tid, file ) {
   } else {
     fid_lo = ord( rep[41] );
     fid_hi = ord( rep[42] );
-    return(fid_lo + (fid_hi * 256));
+    return( fid_lo + ( fid_hi * 256 ) );
   }
 }
 
 function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
 
-  local_var req, tid_lo, tid_hi, uid_lo, uid_hi, len_lo, len_hi, rep;
-  local_var fid_lo, fid_hi;
+  # isSignActive, seq_number, sign_key, multiplex_id, g_mhi and g_mlo are global_vars!!!
+
+  local_var socket, uid, tid, file;
+  local_var file_le, file_len, bcc_lo, bcc_hi, uc, req, namelen, name_hi, name_lo, sig, r;
+  local_var status, status2, r_head, orig_sign, server_resp, serv_sign;
+
+  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#OpenAndX2_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#OpenAndX2_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#OpenAndX2_NTLMSSP" );
+  if( isnull( file ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#file#-#OpenAndX2_NTLMSSP" );
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
   file_le = strlen( file ) + 1;
   file = substr( file, 1, file_le );
 
-  file_len = strlen(file) + strlen(file);
+  file_len = strlen( file ) + strlen( file );
 
   bcc_lo = file_len % 256;
   bcc_hi = file_len / 256;
@@ -8983,9 +6436,9 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
     req += raw_string( 0x00, 0x00, 0x00, 0x00 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid );
 
   req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
@@ -8997,11 +6450,11 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
   req += raw_string( 0x39, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07,
-                     0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x78, 0x00, bcc_lo, bcc_hi,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ) +
-         uc;
+                     0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x07, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x78, 0x00, bcc_lo, bcc_hi,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 )
+       + uc;
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -9017,30 +6470,21 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
 
   send( socket:socket, data:req );
   r = smb_recv( socket:socket );
+  if( strlen( r ) < 14 ) return NULL;
 
-  if(strlen(r) < 14){
-    return NULL;
-  }
   ##If status is pending, wait for response
   status = ord( r[12] );
   status2 = ord( r[13] );
-  while(status == 3 && status2 == 1 ) {
+  while( status == 3 && status2 == 1 ) {
     ##PDU will arrive late
     r = smb_recv( socket:socket );
-    if(strlen(r) < 14){
-      return NULL;
-    }
+    if( strlen( r ) < 14 ) return NULL;
     status = ord( r[12] );
     status2 = ord( r[13] );
   }
 
-  if( always_return_blob ){
-    return r;
-  }
-
-  if( strlen( r ) < 10 ) {
-    return FALSE;
-  }
+  if( always_return_blob ) return r;
+  if( strlen( r ) < 10 ) return FALSE;
 
   multiplex_id += 1;
   if( isSignActive ) {
@@ -9048,18 +6492,13 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
     seq_number += 1;
     r_head = substr( r, 0, 3 );
     r = substr( r, 4, strlen( r ) - 1 );
+    if( strlen( r ) < 64 ) return FALSE;
 
-    if( strlen( r ) < 64 ) {
-      return(FALSE);
-    }
     orig_sign = substr( r, 48, 63 );
-
     server_resp = get_smb2_signature( buf:r, key:sign_key );
     if( isnull( server_resp ) ) return FALSE;
+    if( strlen(server_resp) < 64 ) return FALSE;
 
-    if( strlen(server_resp) < 64 ) {
-      return(FALSE);
-    }
     serv_sign = substr( server_resp, 48, 63 );
     if( orig_sign != serv_sign ) {
       return FALSE;
@@ -9078,7 +6517,11 @@ function OpenAndX2_NTLMSSP( socket, uid, tid, file ) {
 
 function OpenAndX( socket, uid, tid, file ) {
 
-  local_var response;
+  # ntmlssp_flag is global_var!!!
+
+  local_var socket, uid, tid, file, response;
+  local_var len_lo, len_hi, tid_lo, tid_hi, uid_lo, uid_hi, bcc_lo, bcc_hi, req;
+  local_var rep, fid_lo, fid_hi;
 
   if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#OpenAndX" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#OpenAndX" );
@@ -9095,9 +6538,6 @@ function OpenAndX( socket, uid, tid, file ) {
     }
   } else {
 
-    local_var req, tid_lo, tid_hi, uid_lo, uid_hi, len_lo, len_hi, rep;
-    local_var fid_lo, fid_hi;
-
     len_lo = ( 66 + strlen( file ) ) % 256;
     len_hi = ( 66 + strlen( file ) ) / 256;
 
@@ -9110,21 +6550,21 @@ function OpenAndX( socket, uid, tid, file ) {
     bcc_lo = strlen( file ) % 256;
     bcc_hi = strlen( file ) / 256;
 
-    req = raw_string( 0x00, 0x00, len_hi, len_lo,   0xFF, 0x53,
-                      0x4D, 0x42, 0x2D, 0x00, 0x00, 0x00, 0x00, 0x08,
-                      0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi,
-                      0x00, 0x28, uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0xFF,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x06,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+    req = raw_string( 0x00, 0x00, len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42,
+                      0x2D, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x40,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, bcc_lo, bcc_hi ) +
-          file +
-          raw_string( 0x00 );
+                      0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28,
+                      uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0xFF, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x40, 0x00, 0x06, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, bcc_lo, bcc_hi )
+        + file
+        + raw_string( 0x00 );
 
     send( socket:socket, data:req );
     rep = smb_recv( socket:socket );
-    if( strlen( rep ) < 43){
+    if( strlen( rep ) < 43 ) {
       return NULL;
     } else {
       fid_lo = ord( rep[41] );
@@ -9137,6 +6577,22 @@ function OpenAndX( socket, uid, tid, file ) {
 # Read <count> bytes at offset <off>
 function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
 
+  # isSignActive, g_mhi, g_mlo, multiplex_id, seq_number and sign_key are global_vars!!!
+
+  local_var socket, uid, tid, fid, count, off;
+  local_var cnt_lo_lo, cnt_lo_hi, cnt_hi_lo, cnt_hi_hi;
+  local_var off_lo_lo, off_lo_lo_lo, off_lo_lo_hi, off_lo_hi, off_lo_hi_lo;
+  local_var off_lo_hi_hi, off_hi_lo, off_hi_hi;
+  local_var req, namelen, name_hi, name_lo, sig, r, status, status2;
+  local_var r_head, orig_sign, server_resp, serv_sign;
+
+  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ReadAndX2_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#ReadAndX2_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#ReadAndX2_NTLMSSP" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#ReadAndX2_NTLMSSP" );
+  if( isnull( count ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#ReadAndX2_NTLMSSP" );
+  if( isnull( off ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#off#-#ReadAndX2_NTLMSSP" );
+
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
   cnt_lo_lo = count % 256; count /= 256;
@@ -9144,13 +6600,13 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
   cnt_hi_lo = count % 256; count /= 256;
   cnt_hi_hi = count;
 
-  off_lo_lo = off % 256;  off /= 256;
+  off_lo_lo = off % 256;     off /= 256;
   off_lo_lo_lo = off % 256;  off /= 256;
   off_lo_lo_hi = off % 256;  off /= 256;
-  off_lo_hi = off % 256;  off /= 256;
+  off_lo_hi = off % 256;     off /= 256;
   off_lo_hi_lo = off % 256;  off /= 256;
   off_lo_hi_hi = off % 256;  off /= 256;
-  off_hi_lo = off % 256;  off /= 256;
+  off_hi_lo = off % 256;     off /= 256;
   off_hi_hi = off;
 
   req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
@@ -9162,9 +6618,9 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
     req += raw_string( 0x00, 0x00, 0x00, 0x00 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid );
 
   req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
@@ -9193,46 +6649,34 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
 
   send( socket:socket, data:req );
   r = smb_recv( socket:socket );
-        if(strlen(r) < 14){
-          return(NULL);
-        }
+  if( strlen( r ) < 14 ) return NULL;
 
   ##If status is pending, wait for response
-
-  #TODO: Also check the response length here before accessing possible non-existing data
   status = ord( r[12] );
   status2 = ord( r[13] );
   while( status == 3 && status2 == 1 ) {
     ##PDU will arrive late
     r = smb_recv( socket:socket );
-    #TODO: Also check the response length here before accessing possible non-existing data
-           if(strlen(r) < 14){
-             return(NULL);
-           }
+    if( strlen( r ) < 14 ) return NULL;
     status = ord( r[12] );
     status2 = ord( r[13] );
   }
 
-  if( always_return_blob ) {
-    return r;
-  }
+  if( always_return_blob ) return r;
+
   multiplex_id += 1;
   if( isSignActive ) {
     # verify signature
     seq_number += 1;
     r_head = substr( r, 0, 3 );
     r = substr( r, 4, strlen( r ) - 1 );
+    if( strlen( r ) < 64 ) return FALSE;
 
-    #TODO: Also check the response length here before accessing possible non-existing data
-             if( strlen( r ) < 64 ) {
-               return(FALSE);
-             }
     orig_sign = substr( r, 48, 63 );
     server_resp = get_smb2_signature( buf:r, key:sign_key );
     if( isnull( server_resp ) ) return FALSE;
-             if( strlen(server_resp) < 64 ) {
-               return(FALSE);
-             }
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
     serv_sign = substr( server_resp, 48, 63 );
     if( orig_sign != serv_sign ) {
       return FALSE;
@@ -9242,16 +6686,25 @@ function ReadAndX2_NTLMSSP( socket, uid, tid, fid, count, off ) {
   }
   # -> END TODO
 
-        if(strlen(r) < 85){
-          return(FALSE);
-        }
-
+  if( strlen( r ) < 85 ) return FALSE;
   return( substr( r, 84, strlen( r ) - 1 ) );
 }
 
 function ReadAndX1_NTLMSSP( socket, uid, tid, fid, count, off ) {
 
-  local_var r, req, uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, off_hi, off_lo, ret, i;
+  # isSignActive, seq_number, s_sign_key, multiplex_id, g_mhi and g_mlo are global_vars!!!
+
+  local_var socket, uid, tid, fid, count, off;
+  local_var uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, cnt_lo, cnt_hi;
+  local_var off_lo_lo, off_lo_hi, off_hi_lo, off_hi_hi, req, len, packet, r;
+  local_var server_resp, orig_sign, serv_sign;
+
+  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ReadAndX1_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#ReadAndX1_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#ReadAndX1_NTLMSSP" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#ReadAndX1_NTLMSSP" );
+  if( isnull( count ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#ReadAndX1_NTLMSSP" );
+  if( isnull( off ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#off#-#ReadAndX1_NTLMSSP" );
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
@@ -9266,8 +6719,8 @@ function ReadAndX1_NTLMSSP( socket, uid, tid, fid, count, off ) {
   off_hi_lo = off % 256;  off /= 256;
   off_hi_hi = off;
 
-  req = raw_string( 0x00, 0x00, 0x00, 0x37, 0xFF, 0x53,
-                    0x4D, 0x42, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x08 );
+  req = raw_string( 0x00, 0x00, 0x00, 0x37, 0xFF, 0x53, 0x4D, 0x42,
+                    0x2E, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
   if( isSignActive ) {
     req += raw_string( 0x05, 0x40 );
@@ -9275,12 +6728,12 @@ function ReadAndX1_NTLMSSP( socket, uid, tid, fid, count, off ) {
     req += raw_string( 0x01, 0x40 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi,
-                     0x33, 0x0c, uid_lo, uid_hi, g_mlo, g_mhi, 0x0A, 0xFF,
-                     0x00, 0x00, 0x00, fid_lo, fid_hi, off_lo_lo, off_lo_hi, off_hi_lo,
-                     off_hi_hi, cnt_lo, cnt_hi, cnt_lo, cnt_hi, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi, 0x33, 0x0c,
+                     uid_lo, uid_hi, g_mlo, g_mhi, 0x0A, 0xFF, 0x00, 0x00,
+                     0x00, fid_lo, fid_hi, off_lo_lo, off_lo_hi, off_hi_lo, off_hi_hi, cnt_lo,
+                     cnt_hi, cnt_lo, cnt_hi, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00 );
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -9301,11 +6754,9 @@ function ReadAndX1_NTLMSSP( socket, uid, tid, fid, count, off ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-          if((strlen(server_resp) < 24) || (len < 24)) {
-            return(FALSE);
-          }
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
+    }
 
     orig_sign = substr( r, 18, 23 );
     serv_sign = substr( server_resp, 18, 23 );
@@ -9315,21 +6766,20 @@ function ReadAndX1_NTLMSSP( socket, uid, tid, fid, count, off ) {
   }
   # -> END TODO
 
-  ret = "";
-  if( strlen( r ) < 37 + 28 ) {
-    return NULL;
-  }
-
+  if( strlen( r ) < 37 + 28 ) return NULL;
   return( substr( r, 36 + 28, strlen( r ) - 1 ) );
 }
 
 function ReadAndX( socket, uid, tid, fid, count, off ) {
 
-  local_var response;
+  local_var socket, uid, tid, fid, count, off, response;
+  local_var uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, cnt_lo, cnt_hi;
+  local_var off_lo_lo, off_lo_hi, off_hi_lo, off_hi_hi, req, r;
 
   if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#ReadAndX" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#ReadAndX" );
   if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#ReadAndX" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#ReadAndX" );
   if( isnull( count ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#count#-#ReadAndX" );
   if( isnull( off ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#off#-#ReadAndX" );
 
@@ -9343,8 +6793,6 @@ function ReadAndX( socket, uid, tid, fid, count, off ) {
     }
   } else {
 
-    local_var r, req, uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, off_hi, off_lo, ret, i;
-
     uid_lo = uid % 256; uid_hi = uid / 256;
     tid_lo = tid % 256; tid_hi = tid / 256;
     fid_lo = fid % 256; fid_hi = fid / 256;
@@ -9355,30 +6803,26 @@ function ReadAndX( socket, uid, tid, fid, count, off ) {
     off_hi_lo = off % 256;  off /= 256;
     off_hi_hi = off;
 
-    req = raw_string( 0x00, 0x00, 0x00, 0x37, 0xFF, 0x53,
-                      0x4D, 0x42, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x08,
-                      0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi,
-                      0x00, 0x28, uid_lo, uid_hi, g_mlo, g_mhi, 0x0A, 0xFF,
-                      0x00, 0x00, 0x00, fid_lo, fid_hi, off_lo_lo, off_lo_hi, off_hi_lo,
-                      off_hi_hi, cnt_lo, cnt_hi, cnt_lo, cnt_hi, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+    req = raw_string( 0x00, 0x00, 0x00, 0x37, 0xFF, 0x53, 0x4D, 0x42,
+                      0x2E, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x40,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28,
+                      uid_lo, uid_hi, g_mlo, g_mhi, 0x0A, 0xFF, 0x00, 0x00,
+                      0x00, fid_lo, fid_hi, off_lo_lo, off_lo_hi, off_hi_lo, off_hi_hi, cnt_lo,
+                      cnt_hi, cnt_lo, cnt_hi, 0x00, 0x00, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00 );
 
     send( socket:socket, data:req );
     r = smb_recv( socket:socket );
 
-    ret = "";
-    if( strlen( r ) < 37 + 28 ) {
-      return NULL;
-    }
-
+    if( strlen( r ) < 37 + 28 ) return NULL;
     return( substr( r, 36 + 28, strlen( r ) - 1 ) );
   }
 }
 
 function smb_close_request( soc, uid, tid, fid ) {
 
-  local_var ret;
+  local_var soc, uid, tid, fid, ret;
 
   if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb_close_request" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb_close_request" );
@@ -9396,6 +6840,16 @@ function smb_close_request( soc, uid, tid, fid ) {
 
 function smb2_close_request( soc, uid, tid, fid ) {
 
+  # isSignActive, g_mhi, g_mlo, multiplex_id, seq_number and sign_key are global_vars!!!
+
+  local_var soc, uid, tid, fid;
+  local_var req, close_req, sig, r, status, status2;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb2_close_request" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb2_close_request" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smb2_close_request" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#smb2_close_request" );
+
   g_mhi = multiplex_id / 256;
   g_mhi = multiplex_id % 256;
 
@@ -9403,20 +6857,20 @@ function smb2_close_request( soc, uid, tid, fid ) {
                     0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x60, 0x1f );
 
   if( isSignActive ) {
-    req += raw_string(0x08, 0x00, 0x00, 0x00);
+    req += raw_string( 0x08, 0x00, 0x00, 0x00 );
   } else {
-    req += raw_string(0x00, 0x00, 0x00, 0x00);
+    req += raw_string( 0x00, 0x00, 0x00, 0x00 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00 );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
 
   close_req = raw_string( 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, fid );
 
-  req = req + close_req;
+  req += close_req;
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -9432,24 +6886,19 @@ function smb2_close_request( soc, uid, tid, fid ) {
 
   send( socket:soc, data:req );
   r = smb_recv( socket:soc );
-  if(strlen(r) < 14 ){
-    return NULL;
-  }
+  if( strlen( r ) < 14 ) return NULL;
 
   ##If status is pending, wait for response
-  #TODO: Also check the response length here before accessing possible non-existing data
   status = ord( r[12] );
   status2 = ord( r[13] );
   while( status == 3 && status2 == 1 ) {
     ##PDU will arrive late
     r = smb_recv( socket:soc );
-    #TODO: Also check the response length here before accessing possible non-existing data
     status = ord( r[12] );
     status2 = ord( r[13] );
   }
   # -> END TODO
 
-  #TODO: Also check the response length here before accessing possible non-existing data
   if( ord( r[11] ) == 0 ) {
     return r;
   } else {
@@ -9457,17 +6906,25 @@ function smb2_close_request( soc, uid, tid, fid ) {
   }
 }
 
-
 function smb1_close_request( soc, uid, tid, fid ) {
 
-  local_var r, req, uid_lo, uid_hi, tid_lo, tid_hi, fid_hi, fid_lo;
+  # isSignActive, seq_number, s_sign_key, multiplex_id, g_mhi and g_mlo are global_vars!!!
+
+  local_var soc, uid, tid, fid;
+  local_var uid_lo, uid_hi, tid_lo, tid_hi, fid_hi, fid_lo, req;
+  local_var len, packet, server_resp, orig_sign, serv_sign;
+
+  if( isnull( soc ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#soc#-#smb1_close_request" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb1_close_request" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smb1_close_request" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#smb1_close_request" );
 
   uid_lo = uid % 256; uid_hi = uid / 256;
   tid_lo = tid % 256; tid_hi = tid / 256;
   fid_lo = fid % 256; fid_hi = fid / 256;
 
-  req = raw_string( 0x00, 0x00, 0x00, 0x29, 0xFF, 0x53,
-                    0x4D, 0x42, 0x04, 0x00, 0x00, 0x00, 0x00, 0x08 );
+  req = raw_string( 0x00, 0x00, 0x00, 0x29, 0xFF, 0x53, 0x4D, 0x42,
+                    0x04, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
   if( ntlmssp_flag ) {
     g_mhi = multiplex_id / 256;
@@ -9481,8 +6938,8 @@ function smb1_close_request( soc, uid, tid, fid ) {
     req += raw_string( 0x01, 0xc8 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi );
 
   if( ntlmssp_flag ) {
     req += raw_string( 0x33, 0x0c );
@@ -9490,8 +6947,8 @@ function smb1_close_request( soc, uid, tid, fid ) {
     req += raw_string( 0x00, 0x28 );
   }
 
-  req += raw_string( uid_lo, uid_hi, g_mlo, g_mhi, 0x03, fid_lo,
-                     fid_hi, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00 );
+  req += raw_string( uid_lo, uid_hi, g_mlo, g_mhi, 0x03, fid_lo, fid_hi, 0xff,
+                     0xff, 0xff, 0xff, 0x00, 0x00 );
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -9504,9 +6961,7 @@ function smb1_close_request( soc, uid, tid, fid ) {
 
   send( socket:soc, data:req );
   r = smb_recv( socket:soc );
-  if( strlen( r ) < 24 ) {
-    return NULL;
-  }
+  if( strlen( r ) < 24 ) return NULL;
 
   if( ntlmssp_flag ) {
     multiplex_id += 1;
@@ -9516,10 +6971,8 @@ function smb1_close_request( soc, uid, tid, fid ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-
-      #TODO: Also check the response length here before accessing possible non-existing data
-      if((strlen(server_resp) < 24) || (len < 24)) {
-        return(FALSE);
+      if( ( strlen(server_resp ) < 24 ) || ( len < 24 ) ) {
+        return FALSE;
       }
 
       orig_sign = substr( r, 18, 23 );
@@ -9541,9 +6994,19 @@ function smb1_close_request( soc, uid, tid, fid ) {
 # Returns the size of the file pointed by <fid>
 function smb2_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
 
+  # isSignActive, g_mhi, g_mlo, multiplex_id, seq_number and sign_key are global_vars!!!
+
+  local_var socket, uid, tid, fid;
+  local_var req, get_info, req_l, len_lo, len_hi, sig, r, status, status2;
+  local_var r_head, orig_sign, server_resp, serv_sign, ret;
+
+  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#smb2_get_file_size_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb2_get_file_size_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smb2_get_file_size_NTLMSSP" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#smb2_get_file_size_NTLMSSP" );
+
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
-
 
   req = raw_string( 0xfe, 0x53, 0x4d, 0x42, 0x40, 0x00, 0x01, 0x00,
                     0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x6f, 0x00 );
@@ -9554,19 +7017,19 @@ function smb2_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
     req += raw_string( 0x00, 0x00, 0x00, 0x00 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00,
-                     g_mlo, g_mhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, tid, uid, 0x00, 0x00,
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, g_mlo, g_mhi, 0x00, 0x00,
                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00 );
+                     tid, uid, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00 );
 
   get_info = raw_string( 0x29, 0x00, 0x01, 0x05, 0x04, 0x11, 0x00, 0x00,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                          fid );
-  req = req + get_info;
+  req += get_info;
   req_l = strlen( req );
-  len_lo =  req_l % 256;
+  len_lo = req_l % 256;
   len_hi = req_l / 256;
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
@@ -9583,41 +7046,32 @@ function smb2_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
 
   send( socket:socket, data:req );
   r = smb_recv( socket:socket );
- if(strlen(r) < 14 ){
-   return NULL;
- }
-   ##If status is pending
-    ##if status is pending , wait for response
+  if( strlen( r ) < 14 ) return NULL;
+
+  ##if status is pending , wait for response
   status = ord( r[12] );
   status2 = ord( r[13] );
   while( status == 3 && status2 == 1 ) {
     ##PDU will arrive late
     r = smb_recv( socket:socket );
-    #TODO: Also check the response length here before accessing possible non-existing data
-      if(strlen(r) < 14 ){
-        return NULL;
-      }
-    status = ord(r[12]);
-    status2 = ord(r[13]);
+    if( strlen( r ) < 14 ) return NULL;
+    status = ord( r[12] );
+    status2 = ord( r[13] );
   }
 
   multiplex_id += 1;
   if( r && isSignActive ) {
     # verify signature
     seq_number += 1;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
     r_head = substr( r, 0, 3 );
     r = substr( r, 4, strlen( r ) - 1 );
-          if( strlen( r ) < 64 ) {
-            return(FALSE);
-          }
+    if( strlen( r ) < 64 ) return FALSE;
+
     orig_sign = substr( r, 48, 63 );
     server_resp = get_smb2_signature( buf:r, key:sign_key );
     if( isnull( server_resp ) ) return FALSE;
-          if( strlen(server_resp) < 64 ) {
-            return(FALSE);
-          }
+    if( strlen( server_resp ) < 64 ) return FALSE;
+
     serv_sign = substr( server_resp, 48, 63 );
     if( orig_sign != serv_sign ) {
       return FALSE;
@@ -9627,11 +7081,7 @@ function smb2_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
   }
   # -> END TODO
 
-  #TODO: Also check the response length here before accessing possible non-existing data
-  if(strlen(r) < 88){
-    return NULL;
-  }
-
+  if( strlen( r ) < 88 ) return NULL;
   ret = ord( r[87] );
   ret = ret * 256 + ord( r[86] );
   ret = ret * 256 + ord( r[85] );
@@ -9639,10 +7089,18 @@ function smb2_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
   return ret;
 }
 
-
 function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
 
-  local_var r, req, uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, ret;
+  # isSignActive, seq_number, s_sign_key, multiplex_id, g_mhi and g_mlo are global_vars!!!
+
+  local_var socket, uid, tid, fid;
+  local_var uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, req;
+  local_var len, r, packet, server_resp, orig_sign, serv_sign, ret;
+
+  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#smb1_get_file_size_NTLMSSP" );
+  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb1_get_file_size_NTLMSSP" );
+  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#smb1_get_file_size_NTLMSSP" );
+  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#smb1_get_file_size_NTLMSSP" );
 
   g_mhi = multiplex_id / 256;
   g_mlo = multiplex_id % 256;
@@ -9651,8 +7109,8 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
   tid_lo = tid % 256; tid_hi = tid / 256;
   fid_lo = fid % 256; fid_hi = fid / 256;
 
-  req = raw_string( 0x00, 0x00, 0x00, 0x48, 0xFF, 0x53,
-                    0x4D, 0x42, 0x32, 0x00, 0x00, 0x00, 0x00, 0x08 );
+  req = raw_string( 0x00, 0x00, 0x00, 0x48, 0xFF, 0x53, 0x4D, 0x42,
+                    0x32, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
   if( isSignActive ) {
     req += raw_string( 0x05, 0x40 );
@@ -9660,14 +7118,14 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
     req += raw_string( 0x01, 0x40 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi,
-                     0x33, 0x0c, uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0x04,
-                     0x00, 0x00, 0x00, 0x02, 0x00, 0x04, 0x11, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x04, 0x00, 0x44, 0x00, 0x00, 0x00, 0x48,
-                     0x00, 0x01, 0x00, 0x07, 0x00, 0x07, 0x00, 0x00,
-                     0x44, 0x20, fid_lo, fid_hi, 0x07, 0x01 );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi, 0x33, 0x0c,
+                     uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0x04, 0x00, 0x00,
+                     0x00, 0x02, 0x00, 0x04, 0x11, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
+                     0x00, 0x44, 0x00, 0x00, 0x00, 0x48, 0x00, 0x01,
+                     0x00, 0x07, 0x00, 0x07, 0x00, 0x00, 0x44, 0x20,
+                     fid_lo, fid_hi, 0x07, 0x01 );
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( isSignActive ) {
@@ -9680,9 +7138,7 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
 
   send( socket:socket, data:req );
   r = smb_recv( socket:socket );
-  if( strlen( r ) < 116 ) {
-    return FALSE;
-  }
+  if( strlen( r ) < 116 ) return FALSE;
 
   multiplex_id += 1;
   if( r && isSignActive ) {
@@ -9691,10 +7147,8 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
     len = strlen( r );
     server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
     if( isnull( server_resp ) ) return FALSE;
-
-    #TODO: Also check the response length here before accessing possible non-existing data
-    if((strlen(server_resp) < 24) || (len < 24)) {
-      return(FALSE);
+    if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+      return FALSE;
     }
 
     orig_sign = substr( r, 18, 23 );
@@ -9705,7 +7159,7 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
   }
   # -> END TODO
 
-  #TODO: Also check the response length here before accessing possible non-existing data
+  if( strlen( r ) < 116 ) return NULL;
   ret = ord( r[115] );
   ret = ret * 256 + ord( r[114] );
   ret = ret * 256 + ord( r[113] );
@@ -9715,7 +7169,10 @@ function smb1_get_file_size_NTLMSSP( socket, uid, tid, fid ) {
 
 function smb_get_file_size( socket, uid, tid, fid ) {
 
-  local_var response;
+  # ntlmssp_flag is global_var!!!
+
+  local_var socket, uid, tid, fid, response;
+  local_var uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, req;
 
   if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#smb_get_file_size" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#smb_get_file_size" );
@@ -9732,30 +7189,25 @@ function smb_get_file_size( socket, uid, tid, fid ) {
     }
   } else {
 
-    local_var r, req, uid_lo, uid_hi, tid_lo, tid_hi, fid_lo, fid_hi, ret;
-
     uid_lo = uid % 256; uid_hi = uid / 256;
     tid_lo = tid % 256; tid_hi = tid / 256;
     fid_lo = fid % 256; fid_hi = fid / 256;
 
-    req = raw_string( 0x00, 0x00, 0x00, 0x48, 0xFF, 0x53,
-                      0x4D, 0x42, 0x32, 0x00, 0x00, 0x00, 0x00, 0x08,
-                      0x01, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi,
-                      0x00, 0x28, uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0x04,
-                      0x00, 0x00, 0x00, 0x02, 0x00, 0x04, 0x11, 0x00,
+    req = raw_string( 0x00, 0x00, 0x00, 0x48, 0xFF, 0x53, 0x4D, 0x42,
+                      0x32, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0x40,
                       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                      0x00, 0x04, 0x00, 0x44, 0x00, 0x00, 0x00, 0x48,
-                      0x00, 0x01, 0x00, 0x07, 0x00, 0x07, 0x00, 0x00,
-                      0x44, 0x20, fid_lo, fid_hi, 0x07, 0x01 );
+                      0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi, 0x00, 0x28,
+                      uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, 0x04, 0x00, 0x00,
+                      0x00, 0x02, 0x00, 0x04, 0x11, 0x00, 0x00, 0x00,
+                      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
+                      0x00, 0x44, 0x00, 0x00, 0x00, 0x48, 0x00, 0x01,
+                      0x00, 0x07, 0x00, 0x07, 0x00, 0x00, 0x44, 0x20,
+                      fid_lo, fid_hi, 0x07, 0x01 );
 
     send( socket:socket, data:req );
     r = smb_recv( socket:socket );
-    if( strlen( r ) < 116) {
-      return -1;
-    }
+    if( strlen( r ) < 116 ) return -1;
 
-    #TODO: Also check the response length correctly here before accessing possible non-existing data
     ret = ord( r[115] );
     ret = ret * 256 + ord( r[114] );
     ret = ret * 256 + ord( r[113] );
@@ -9765,16 +7217,18 @@ function smb_get_file_size( socket, uid, tid, fid ) {
 }
 
 # Gives the listing in the pattern <pattern>
-# If pattern is set to NULL, then we return the
-# content of the root (\*)
+# If pattern is set to NULL, then we return the content of the root (\*)
 function FindFirst2( socket, uid, tid, pattern ) {
 
-  local_var uid_lo, uid_hi, tid_lo, tid_hi, r, r2;
-  local_var t, nxt, off, name, ret, bcc, bcc_lo, bcc_hi;
-  local_var len, len_lo, len_hi;
-  local_var unicode_pattern, i;
-  local_var data_off, data_off_lo, data_off_hi, bcc2, bcc2_lo, bcc2_hi;
-  local_var eof, search_id, err;
+  # isSignActive, g_mhi, g_mlo, multiplex_id, seq_number and sign_key are global_vars!!!
+
+  local_var socket, uid, tid, pattern;
+  local_var i, unicode_pattern, ret, bcc, bcc2, len;
+  local_var uid_lo, uid_hi, tid_lo, tid_hi, bcc_lo, bcc_hi;
+  local_var bcc2_lo, bcc2_hi, len_lo, len_hi;
+  local_var data_off, data_off_lo, data_off_hi, req;
+  local_var packet, server_resp, orig_sign, serv_sign, r;
+  local_var err, search_id, off, eof, t, nxt, name;
 
   if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#FindFirst2" );
   if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#FindFirst2" );
@@ -9802,8 +7256,8 @@ function FindFirst2( socket, uid, tid, pattern ) {
   data_off = 80 + strlen( unicode_pattern );
   data_off_lo = data_off % 256; data_off_hi = data_off / 256;
 
-  req = raw_string( 0x00, 0x00, len_hi, len_lo,   0xFF, 0x53,
-                    0x4D, 0x42, 0x32, 0x00, 0x00, 0x00, 0x00, 0x08 );
+  req = raw_string( 0x00, 0x00, len_hi, len_lo, 0xFF, 0x53, 0x4D, 0x42,
+                    0x32, 0x00, 0x00, 0x00, 0x00, 0x08 );
 
   if( ntlmssp_flag && isSignActive ) {
     req += raw_string( 0x05, 0xC0 );
@@ -9811,8 +7265,8 @@ function FindFirst2( socket, uid, tid, pattern ) {
     req += raw_string( 0x01, 0xC0 );
   }
 
-  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi );
+  req += raw_string( 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, tid_lo, tid_hi );
 
   if( ntlmssp_flag ) {
     g_mhi = multiplex_id / 256;
@@ -9822,14 +7276,14 @@ function FindFirst2( socket, uid, tid, pattern ) {
     req += raw_string( 0x00, 0x28 );
   }
 
-  req += raw_string( uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, bcc2_lo,
-                     bcc2_hi, 0x00, 0x00, 0x0A, 0x00, 0x04, 0x11, 0x00,
-                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                     0x00, bcc2_lo, bcc2_hi, 0x44, 0x00, 0x00, 0x00, data_off_lo,
-                     data_off_hi, 0x01, 0x00, 0x01, 0x00, bcc_lo, bcc_hi, 0x00,
-                     0x44, 0x20, 0x16, 0x00, 0x00, 0x02, 0x06, 0x00,
-                     0x04, 0x01, 0x00, 0x00, 0x00, 0x00 ) +
-         unicode_pattern;
+  req += raw_string( uid_lo, uid_hi, g_mlo, g_mhi, 0x0F, bcc2_lo, bcc2_hi, 0x00,
+                     0x00, 0x0A, 0x00, 0x04, 0x11, 0x00, 0x00, 0x00,
+                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, bcc2_lo,
+                     bcc2_hi, 0x44, 0x00, 0x00, 0x00, data_off_lo, data_off_hi, 0x01,
+                     0x00, 0x01, 0x00, bcc_lo, bcc_hi, 0x00, 0x44, 0x20,
+                     0x16, 0x00, 0x00, 0x02, 0x06, 0x00, 0x04, 0x01,
+                     0x00, 0x00, 0x00, 0x00 )
+       + unicode_pattern;
 
   # <- START TODO: Deduplicate this code, this is duplicated many times in this include...
   if( ntlmssp_flag && isSignActive ) {
@@ -9842,9 +7296,7 @@ function FindFirst2( socket, uid, tid, pattern ) {
 
   send( socket:socket, data:req );
   r = smb_recv( socket:socket );
-  if( strlen( r ) < 80 ) {
-    return NULL;
-  }
+  if( strlen( r ) < 80 ) return NULL;
 
   if( ntlmssp_flag ) {
     multiplex_id += 1;
@@ -9854,10 +7306,8 @@ function FindFirst2( socket, uid, tid, pattern ) {
       len = strlen( r );
       server_resp = get_signature( key:s_sign_key, buf:r, buflen:len, seq_number:seq_number );
       if( isnull( server_resp ) ) return FALSE;
-
-      #TODO: Also check the response length here before accessing possible non-existing datadata
-      if((strlen(server_resp) < 24) || (len < 24)) {
-        return(FALSE);
+      if( ( strlen( server_resp ) < 24 ) || ( len < 24 ) ) {
+        return FALSE;
       }
 
       orig_sign = substr( r, 18, 23 );
@@ -9869,7 +7319,6 @@ function FindFirst2( socket, uid, tid, pattern ) {
   }
   # -> END TODO
 
-  #TODO: Also check the response length here before accessing possible non-existing data
   err = substr( r, 11, 12 );
   if( hexstr( err) != "0000" ) {
     return NULL;
@@ -9878,7 +7327,6 @@ function FindFirst2( socket, uid, tid, pattern ) {
   search_id = substr( r, 60, 61 );
   off = 72;
   while( TRUE ) {
-    #TODO: Also check the response length here before accessing possible non-existing data
     eof = ord( r[64] );
     while( TRUE ) {
       t = 1;
@@ -9911,7 +7359,7 @@ function FindFirst2( socket, uid, tid, pattern ) {
 
       name = NULL;
 
-      if(off+4+4+8+8+8+8+8+8+4+4+1+1+24+i+len > strlen(r)){
+      if( off + 4 + 4 + 8 + 8 + 8 + 8 + 8 + 8 + 4 + 4 + 1 + 1 + 24 + i + len > strlen( r ) ) {
         break;
       }
 
@@ -9927,7 +7375,7 @@ function FindFirst2( socket, uid, tid, pattern ) {
         }
       }
 
-      off = off + nxt;
+      off += nxt;
       if( nxt == 0 ) break;
 
       if( ( off >= strlen( r ) ) || off < 0 ) {
@@ -9945,13 +7393,13 @@ function FindFirst2( socket, uid, tid, pattern ) {
                         0x00, 0x0a, 0x00, 0x04, 0x11, 0x00, 0x00, 0x00,
                         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0e,
                         0x00, 0x44, 0x00, 0x00, 0x00, 0x52, 0x00, 0x01,
-                        0x00, 0x02, 0x00, 0x11, 0x00, 0x00, 0x44, 0x20) +
-            search_id +
-            raw_string( 0x00, 0x02, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x00, 0x00 );
+                        0x00, 0x02, 0x00, 0x11, 0x00, 0x00, 0x44, 0x20 )
+          + search_id
+          + raw_string( 0x00, 0x02, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00,
+                        0x0e, 0x00, 0x00, 0x00 );
 
       send( socket:socket, data:req );
       r = smb_recv( socket:socket );
-
       if( r && strlen( r ) > 12 ) {
         err = substr( r, 11, 12 );
       }
@@ -9969,47 +7417,6 @@ function FindFirst2( socket, uid, tid, pattern ) {
     }
   }
   return ret;
-}
-
-# GetFileVersion() returns the version of the file.
-function GetFileVersion( socket, uid, tid, fid ) {
-
-  local_var i, fsize, data, off, tmp, version, v, len;
-
-  if( isnull( socket ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#socket#-#GetFileVersion" );
-  if( isnull( uid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#uid#-#GetFileVersion" );
-  if( isnull( tid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#tid#-#GetFileVersion" );
-  if( isnull( fid ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#fid#-#GetFileVersion" );
-
-  fsize = smb_get_file_size( socket:socket, uid:uid, tid:tid, fid:fid );
-  if( fsize < 180224 ) {
-    off = 0;
-  } else {
-    off = fsize - 180224;
-  }
-
-  for( i = 0; off < fsize; i++ ) {
-    tmp = ReadAndX( socket:socket, uid:uid, tid:tid, fid:fid, count:16384, off:off );
-    if( tmp ) {
-      tmp = str_replace( find:raw_string(0), replace:"", string:tmp );
-      data += tmp;
-      version = strstr( data, "ProductVersion" );
-      if( version ) {
-        len = strlen( version );
-        for( i = strlen( "ProductVersion" ); i < len; i++ ) {
-          if( ( ord( version[i] ) < ord( "0" ) ||
-                ord( version[i] ) > ord( "9" ) ) &&
-                version[i] != "." ) {
-            return v;
-          } else {
-            v += version[i];
-          }
-        }
-      }
-      off += 16384;
-    }
-  }
-  return NULL;
 }
 
 function smb_get_systemroot() {
@@ -10046,17 +7453,16 @@ function smb_get_system32root() {
   item  = "Install Path";
   sroot = registry_get_sz( item:item, key:key );
 
-  if ("Windows\system32" >!< sroot)
-  {
+  if( "Windows\system32" >!< sroot ) {
     key = "SOFTWARE\Microsoft\Windows NT\CurrentVersion\";
-  if( ! registry_key_exists( key:key ) ) {
-    return FALSE;
-  }
+    if( ! registry_key_exists( key:key ) ) {
+      return FALSE;
+    }
     item  = "PathName";
 
-   sroot = registry_get_sz( item:item, key:key );
-    if('system32' >!< sroot){
-      sroot = sroot + "\system32";
+    sroot = registry_get_sz( item:item, key:key );
+    if( "system32" >!< sroot ) {
+      sroot += "\system32";
     }
   }
 

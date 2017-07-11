@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2015_0007.nasl 2435 2016-01-17 20:16:41Z jan $
+# $Id: gb_vcenter_VMSA-2015_0007.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # VMSA-2015-0007 VMware vCenter Server Multiple Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-5177","CVE-2015-2342","CVE-2015-1047");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2435 $");
+ script_version ("$Revision: 6345 $");
  script_name("VMSA-2015-0007 VMware vCenter Server Multiple Vulnerabilities");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0007.html");
@@ -63,9 +63,8 @@ VMware vCenter Server 5.0 prior to version 5.u update u3e");
  script_tag(name:"qod_type", value:"remote_banner");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-01-17 21:16:41 +0100 (Sun, 17 Jan 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-10-05 11:16:27 +0200 (Mon, 05 Oct 2015)");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

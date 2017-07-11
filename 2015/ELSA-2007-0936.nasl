@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0936.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0936.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122658");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:50:24 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0936");
 script_tag(name: "insight", value: "ELSA-2007-0936 -  Important: kernel security update - [2.6.18-8.1.14.0.2.el5] - Fix bonding primary=ethX (Bert Barbe) [IT 101532] [ORA 5136660] - Add entropy module option to e1000/bnx2 (John Sobecki) [ORA 6045759] [2.6.18-8.1.14.el5] - Revert changes back to 2.6.18-8.1.10. - [x86_64] Zero extend all registers after ptrace in 32bit entry path (Anton Arapov ) [297871] {CVE-2007-4573} [2.6.18-8.1.12.el5] - [x86_64] Don't leak NT bit into next task (Dave Anderson ) [298151] {CVE-2007-4574} - [fs] Reset current->pdeath_signal on SUID binary execution (Peter Zijlstra ) [252307] {CVE-2007-3848} - [misc] Bounds check ordering issue in random driver (Anton Arapov ) [275961] {CVE-2007-3105} - [usb] usblcd: Locally triggerable memory consumption (Anton Arapov ) [276001] {CVE-2007-3513} - [x86_64] Zero extend all registers after ptrace in 32bit entry path (Anton Arapov ) [297871] {CVE-2007-4573} - [net] igmp: check for NULL when allocating GFP_ATOMIC skbs (Neil Horman ) [303281] [2.6.18-8.1.11.el5] - [xen] Guest access to MSR may cause system crash/data corruption (Bhavana Nagendra ) [253312] {CVE-2007-3733} - [dlm] A TCP connection to DLM port blocks DLM operations (Patrick Caulfield ) [245922] {CVE-2007-3380} - [ppc] 4k page mapping support for userspace in 64k kernels (Scott Moser ) [275841] {CVE-2007-3850} - [ptrace] NULL pointer dereference triggered by ptrace (Anton Arapov ) [275981] {CVE-2007-3731} - [fs] hugetlb: fix prio_tree unit (Konrad Rzeszutek ) [253929] {CVE-2007-4133}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0936");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

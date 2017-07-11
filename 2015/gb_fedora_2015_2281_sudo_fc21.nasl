@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869030");
-  script_version("$Revision: 6092 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-23 05:41:44 +0100 (Mon, 23 Feb 2015)");
   script_cve_id("CVE-2014-9680");
   script_tag(name:"cvss_base", value:"2.1");
@@ -51,7 +51,6 @@ configuration file (sudoers) on many different machines.
   script_xref(name: "FEDORA", value: "2015-2281");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/150218.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of sudo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

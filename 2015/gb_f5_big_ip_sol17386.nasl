@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17386.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol17386.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # F5 BIG-IP - SOL17386 - vCMP DoS vulnerability CVE-2015-6546
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6546");
  script_tag(name:"cvss_base", value:"6.1");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6229 $");
 
  script_name("F5 BIG-IP - SOL17386 - vCMP DoS vulnerability CVE-2015-6546");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-10-19 10:55:12 +0200 (Mon, 19 Oct 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

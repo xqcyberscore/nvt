@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_traffic_syn_health_checks_dos_vuln.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_apache_traffic_syn_health_checks_dos_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Apache Traffic Server Synthetic Health Checks Remote DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:traffic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805129");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2014-3525");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-21 12:21:54 +0530 (Wed, 21 Jan 2015)");
   script_name("Apache Traffic Server Synthetic Health Checks Remote DoS Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_xref(name: "URL" , value : "http://secunia.com/advisories/60375");
   script_xref(name: "URL" , value : "http://xforce.iss.net/xforce/xfdb/95495");
   script_xref(name: "URL" , value : "http://mail-archives.apache.org/mod_mbox/trafficserver-users/201407.mbox/%3CBFCEC9C8-1BE9-4DCA-AF9C-B8FE798EEC07@yahoo-inc.com%3E");
-  script_summary("Check for the vulnerable version of Apache Traffic Server");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web Servers");

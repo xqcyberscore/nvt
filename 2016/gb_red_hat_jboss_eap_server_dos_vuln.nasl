@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_red_hat_jboss_eap_server_dos_vuln.nasl 5101 2017-01-25 11:40:28Z antu123 $
+# $Id: gb_red_hat_jboss_eap_server_dos_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Red Hat JBoss EAP Server Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:redhat:jboss_enterprise_application_platform";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810307");
-  script_version("$Revision: 5101 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2016-7065");
   script_bugtraq_id(93462);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 12:40:28 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2016-12-09 12:42:39 +0530 (Fri, 09 Dec 2016)");
   script_name("Red Hat JBoss EAP Server Denial of Service Vulnerability");
 
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"affected", value:"Red Hat JBoss EAP server version 4 and 5.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  25th January, 2017. Information regarding this issue will be updated once
+  31st May, 2017. Information regarding this issue will be updated once
   the solution details are available.
   For updates refer to http://jbossas.jboss.org");
 

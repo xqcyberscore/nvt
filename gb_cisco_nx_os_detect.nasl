@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_cisco_nx_os_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
 #
 # Cisco NX-OS Detection (SNMP)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103799");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version ("$Revision: 6239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
  script_tag(name:"creation_date", value:"2013-10-09 16:24:09 +0200 (Wed, 09 Oct 2013)");
  script_name("Cisco NX-OS Detection (SNMP)");
  script_category(ACT_GATHER_INFO);
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);

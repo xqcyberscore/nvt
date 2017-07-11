@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-588.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-588.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120511");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:28:16 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-588");
 script_tag(name: "insight", value: "As discussed upstream -- here  and here -- the Go project received notification of an HTTP request smuggling vulnerability in the net/http library.  Invalid headers are parsed as valid headers (like Content Length: with a space in the middle) and Double Content-length headers in a request does not generate a 400 error, the second Content-length is ignored."); 
 script_tag(name : "solution", value : "Run yum update golang docker to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-588");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

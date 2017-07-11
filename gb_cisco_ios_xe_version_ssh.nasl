@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_version_ssh.nasl 4891 2016-12-30 14:26:07Z cfi $
+# $Id: gb_cisco_ios_xe_version_ssh.nasl 6239 2017-05-30 01:48:49Z ckuerste $
 #
-# Get Cisco IOS XE Software Version (ssh)
+# Cisco IOS XE Software Version Detection (ssh)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,19 +29,19 @@ tag_summary = "Get Cisco IOS XE Software Version via SSH.";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105658");
-  script_version("$Revision: 4891 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 15:26:07 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 6239 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2016-05-09 15:41:31 +0200 (Mon, 09 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_name("Get Cisco IOS XE Software Version via SSH");
+  script_name("Cisco IOS XE Software Version Detection (ssh)");
 
   script_tag(name:"qod_type", value:"package");
   script_summary("Get Cisco IOS XE Software Version via SSH");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
-  script_family("Service detection");
+  script_family("Product detection");
   script_tag(name : "summary" , value : tag_summary);
   script_dependencies("gb_cisco_show_version.nasl");
   script_mandatory_keys("cisco/show_version");

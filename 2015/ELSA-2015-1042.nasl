@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1042.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1042.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123109");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:59:29 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1042");
 script_tag(name: "insight", value: "ELSA-2015-1042 -  kernel security and bug fix update - kernel[2.6.18-406]- [fs] pipe: fix pipe corruption and iovec overrun on partial copy (Mateusz Guzik) [1203787] {CVE-2015-1805}[2.6.18-405]- [net] tcp: zero retrans_stamp if all retrans were acked (Marcelo Leitner) [1205521]- [net] tcp: fix retrans_stamp advancing in error cases (Marcelo Leitner) [1205521]- [net] tcp: Fix inconsistency source (Marcelo Leitner) [1205521]- [ipc] sem: fix the potential use-after-free in freeary() (Oleg Nesterov) [1124574]- [scsi] lpfc: Fix crash in device reset handler (Rob Evers) [1070964]- [mm] fix broken max_reclaims_in_progress memory reclaim throttle (Lachlan McIlroy) [1164105]- [x86_64] fpu: save_i387() must clr TS_USEDFPU along with stts() (Oleg Nesterov) [1193505]- [block] virtio: Call revalidate_disk() upon online disk resize (Stefan Hajnoczi) [1200855]- [block] virtio: fix config handler race (Stefan Hajnoczi) [1200855]- [block] virtio: allow re-reading config space at runtime (Stefan Hajnoczi) [1200855]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1042");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3416.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3416.nasl 6254 2017-05-31 09:04:18Z teissa $
 # Auto-generated from advisory DSA 3416-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703416);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6254 $");
     script_cve_id("CVE-2015-8476");
     script_name("Debian Security Advisory DSA 3416-1 (libphp-phpmailer - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
     script_tag(name: "creation_date", value: "2015-12-13 00:00:00 +0100 (Sun, 13 Dec 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3416.html");
 
-    script_summary("Debian Security Advisory DSA 3416-1 (libphp-phpmailer - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-2538.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-2538.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123595");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:01 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-2538");
 script_tag(name: "insight", value: "ELSA-2013-2538 - unbreakable enterprise kernel security update - [2.6.39-400.109.3]- Revert 'be2net: enable interrupts in probe' (Jerry Snitselaar) [Orabug: 17179597][2.6.39-400.109.2]- be2net: enable interrupts in probe (Jerry Snitselaar) [Orabug: 17080364] - Bluetooth: RFCOMM - Fix missing msg_namelen update in rfcomm_sock_recvmsg() (Mathias Krause) [Orabug: 17173830] {CVE-2013-3225}- Bluetooth: fix possible info leak in bt_sock_recvmsg() (Mathias Krause) [Orabug: 17173830] {CVE-2013-3224}- atm: update msg_namelen in vcc_recvmsg() (Mathias Krause) [Orabug: 17173830] {CVE-2013-3222}- rtnl: fix info leak on RTM_GETLINK request for VF devices (Mathias Krause) [Orabug: 17173830] {CVE-2013-2635}- dcbnl: fix various netlink info leaks (Mathias Krause) [Orabug: 17173830] {CVE-2013-2634}- udf: avoid info leak on export (Mathias Krause) [Orabug: 17173830] {CVE-2012-6548}- tracing: Fix possible NULL pointer dereferences (Namhyung Kim) [Orabug: 17173830] {CVE-2013-3301}- b43: stop format string leaking into error msgs (Kees Cook) [Orabug: 17173830] {CVE-2013-2852}- signal: always clear sa_restorer on execve (Kees Cook) [Orabug: 17173830] {CVE-2013-0914}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-2538");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

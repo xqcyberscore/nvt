@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_juniper_screenos_ssh_backdoor_12_2015.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Backdoor in ScreenOS
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-7755", "CVE-2015-7754");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6431 $");
 
  script_name("Backdoor in ScreenOS");
 
@@ -50,9 +50,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-21 10:33:33 +0100 (Mon, 21 Dec 2015)");
- script_summary("Try to login with backdoor credentials");
  script_category(ACT_ATTACK);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

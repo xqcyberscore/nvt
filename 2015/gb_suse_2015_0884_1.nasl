@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850847");
-  script_version("$Revision: 5654 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:23:47 +0100 (Tue, 21 Mar 2017) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 12:15:01 +0200 (Thu, 15 Oct 2015)");
   script_cve_id("CVE-2013-4282");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,7 +50,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2015:0884_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-05/msg00035.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of spice");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

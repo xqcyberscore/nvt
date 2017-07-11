@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869908");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-28 05:03:37 +0200 (Fri, 28 Aug 2015)");
   script_cve_id("CVE-2015-3225");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,6 @@ web frameworks, web servers and layers of software in between
   script_xref(name: "FEDORA", value: "2015-12979");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-August/165180.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of rubygem-rack");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

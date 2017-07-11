@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_dir_trav_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_belkin_router_dir_trav_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Belkin Router Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806147");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2014-2962");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:12:25 +0530 (Thu, 29 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Belkin Router Directory Traversal Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.belkin.com/us/support-article?articleNum=109400");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133913/belkin-disclose.txt");
 
-  script_summary("Check if Belkin Router is prone to directory traversal vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

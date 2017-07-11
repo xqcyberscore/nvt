@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_revslider_mult_vuln.nasl 5643 2017-03-21 09:06:09Z teissa $
+# $Id: gb_wordpress_revslider_mult_vuln.nasl 6313 2017-06-12 09:33:47Z teissa $
 #
 # Wordpress Revslider Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808202");
-  script_version("$Revision: 5643 $");
+  script_version("$Revision: 6313 $");
   script_cve_id("CVE-2015-5151");
   script_bugtraq_id(68692);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 10:06:09 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:33:47 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-05-23 17:16:21 +0530 (Mon, 23 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Revslider Multiple Vulnerabilities");
@@ -61,12 +61,9 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress Revslider version 4.2.2");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  21th March, 2017. Information regarding this issue will be updated once the
-  solution details are available. For updates refer to
-  http://revolution.themepunch.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132366");
 

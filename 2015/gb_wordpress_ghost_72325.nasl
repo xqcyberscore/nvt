@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ghost_72325.nasl 2774 2016-03-04 08:00:52Z antu123 $
+# $Id: gb_wordpress_ghost_72325.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2774 $");
+ script_version ("$Revision: 6431 $");
 
  script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)");
 
@@ -52,9 +52,8 @@ vulnerability.");
 
  script_tag(name:"solution_type", value: "VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-04 09:00:52 +0100 (Fri, 04 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-01-31 15:37:56 +0100 (Sat, 31 Jan 2015)");
- script_summary("Check if it is possible to trigger the glibc heap-based buffer-overflow through Wordpress");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_analysis");
  script_family("Web application abuses");

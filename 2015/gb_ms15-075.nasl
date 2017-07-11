@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-075.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-075.nasl 6237 2017-05-29 13:53:57Z cfi $
 #
 # Microsoft Windows OLE Privilege Elevation Vulnerability (3072633)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805677");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6237 $");
   script_cve_id("CVE-2015-2416", "CVE-2015-2417");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:53:57 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 08:49:13 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows OLE Privilege Elevation Vulnerability (3072633)");
@@ -50,15 +50,22 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name: "affected" , value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows 8.1 x32/x64
+
   Microsoft Windows Server 2012
+
   Microsoft Windows Server 2012R2
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prioor
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
   script_tag(name: "solution" , value: "Run Windows Update and update the
@@ -71,7 +78,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3072633");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-075");
 
-  script_summary("Check for the vulnerable 'Ole32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

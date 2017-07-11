@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 6199 2017-05-23 15:06:57Z cfi $
+# $Id: ping_host.nasl 6315 2017-06-12 10:34:26Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 6199 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 17:06:57 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 6315 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -370,7 +370,7 @@ if( "yes" >< report_dead ) {
 }
 
 if( "yes" >< mark_dead ) {
-  set_kb_item( name:"Host/ping_failed", value:1 );
+  replace_kb_item( name:"Host/dead", value:TRUE );
 }
 
 exit( 0 );

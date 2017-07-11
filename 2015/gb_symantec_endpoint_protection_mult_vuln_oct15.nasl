@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_oct15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_oct15.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Oct15
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805982");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2014-9229", "CVE-2014-9228", "CVE-2014-9227");
   script_bugtraq_id(75204, 75202, 75203);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-09 11:10:42 +0530 (Fri, 09 Oct 2015)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Oct15");
 
@@ -67,7 +67,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
 
   script_xref(name: "URL" , value : "http://www.securitytracker.com/id/1032616");
-  script_summary("Check for the vulnerable version of Symantec Endpoint Protection");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

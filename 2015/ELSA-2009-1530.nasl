@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1530.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-1530.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122424");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:45:06 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1530");
 script_tag(name: "insight", value: "ELSA-2009-1530 -  firefox security update - firefox:[3.0.15-3.0.1.el5_4]- Update firstrun and homepage URLs in specfile- Added patch oracle-firefox-branding.patch- Added firefox-oracle-default-prefs.js/firefox-oracle-default-bookmarks.html and removed the corresponding Red Hat ones[3.0.15-3]- Rebuild due to Mozilla's respin[3.0.15-2]- Rebuild due to xulrunner changes[3.0.15-1]- Update to 3.0.15nspr:[4.7.6-1]- update to 4.7.6xulrunner:[1.9.0.15-3.0.1.el5_4]- Added xulrunner-oracle-default-prefs.js and removed the corresponding RedHat one.[1.9.0.15-3]- Rebuild due to Mozilla's respin[1.9.0.15-2]- Added remedy patch[1.9.0.15-1]- Update to 1.9.0.15"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-1530");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

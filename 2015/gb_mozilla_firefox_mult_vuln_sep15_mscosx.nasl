@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_sep15_mscosx.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mozilla_firefox_mult_vuln_sep15_mscosx.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Sep15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805755");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2015-7327", "CVE-2015-7180", "CVE-2015-7177", "CVE-2015-7176",
                 "CVE-2015-7175", "CVE-2015-7174", "CVE-2015-4522", "CVE-2015-4521",
                 "CVE-2015-4520", "CVE-2015-4519", "CVE-2015-4517", "CVE-2015-4516",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2015-4502", "CVE-2015-4501", "CVE-2015-4500");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-29 18:11:28 +0530 (Tue, 29 Sep 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Sep15 (Mac OS X)");
 
@@ -72,7 +72,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-114/");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

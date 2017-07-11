@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_064.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M5_064.nasl 6316 2017-06-12 12:16:18Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.064
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(95065);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6316 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 14:16:18 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,10 +65,12 @@ if(!port) port = get_kb_item("Services/ssh");
 if(!port) port = 22;
 
 sock = ssh_login_or_reuse_connection();
-if(!sock) sshsock = "no";
-else if(sock) sshsock = "yes";
-close(sock);
-
+if(!sock) {
+  sshsock = "no";
+} else if(sock) {
+  sshsock = "yes";
+  close(sock);
+}
 
 telnet = get_kb_item("Services/telnet");
 
@@ -96,8 +98,8 @@ if(sshbanner == "none" && sshsock = "no"){
     }else{
       result = string("erfüllt");
       desc = string('Es wurde auf Port ' + port + ', folgender SSH-Server gefunden:\n' + sshbanner + '\nVersionen vor OpenSSH 5.2 sind verwundbar.');
-    }  
-  } 
+    }
+  }
 }else{
   if (telnet){
     result = string("nicht erfüllt");
@@ -106,7 +108,7 @@ if(sshbanner == "none" && sshsock = "no"){
     result = string("unvollständig");
     desc = string('Es wurde auf Port ' + port + ', folgender SSH-Server gefunden:\n' + sshbanner + '\nIm Moment wird nur auf OpenSSH Server getestet.\nVersionen vor OpenSSH 5.2 sind verwundbar.');
   }
-} 
+}
 
 set_kb_item(name:"GSHB/M5_064/result", value:result);
 set_kb_item(name:"GSHB/M5_064/desc", value:desc);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-133.nasl 2378 2016-01-12 07:22:20Z antu123 $
+# $Id: gb_ms15-133.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Microsoft Windows PGM UAF Elevation of Privilege Vulnerability (3116130)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806775");
-  script_version("$Revision: 2378 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-6126");
   script_bugtraq_id(78509);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-12 08:22:20 +0100 (Tue, 12 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-09 08:11:32 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows PGM UAF Elevation of Privilege Vulnerability (3116130)");
 
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3109103");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-133");
 
-  script_summary("Check for the vulnerable 'Rmcast.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

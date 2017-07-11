@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_xss_vuln_oct15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_splunk_xss_vuln_oct15.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Splunk Enterprise Cross-Site Scripting Vulnerability -Oct15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805772");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2015-7604");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-30 10:45:47 +0530 (Fri, 30 Oct 2015)");
   script_name("Splunk Enterprise Cross-Site Scripting Vulnerability -Oct15");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.splunk.com/view/SP-CAAAPAM");
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1033655");
 
-  script_summary("Check for the vulnerable version of Splunk");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

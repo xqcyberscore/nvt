@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_3gp_file_dos_vul_lin.nasl 2513 2016-01-27 10:42:02Z antu123 $
+# $Id: gb_vlc_media_player_3gp_file_dos_vul_lin.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806087");
-  script_version("$Revision: 2513 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2015-5949");
   script_bugtraq_id(76448);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-27 11:42:02 +0100 (Wed, 27 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 16:14:33 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Linux)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133266");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/536287/100/0/threaded");
 
-  script_summary("Check for the vulnerable version of VLC Media Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");

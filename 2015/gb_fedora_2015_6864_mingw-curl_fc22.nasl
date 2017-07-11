@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869729");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:40:35 +0200 (Tue, 07 Jul 2015)");
   script_cve_id("CVE-2014-8150", "CVE-2015-3143", "CVE-2015-3148", "CVE-2015-3145",
                 "CVE-2015-3144");
@@ -51,7 +51,6 @@ This is the MinGW cross-compiled Windows library.
   script_xref(name: "FEDORA", value: "2015-6864");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/156945.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mingw-curl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

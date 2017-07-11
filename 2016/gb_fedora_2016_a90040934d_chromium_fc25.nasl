@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.872036");
-  script_version("$Revision: 4707 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 06:46:19 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-12-07 05:25:16 +0100 (Wed, 07 Dec 2016)");
   script_cve_id("CVE-2016-5177", "CVE-2016-5178");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for chromium FEDORA-2016-a90040934d");
   script_tag(name: "summary", value: "Check the version of chromium");

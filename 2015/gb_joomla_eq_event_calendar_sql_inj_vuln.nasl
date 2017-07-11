@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805801");
-  script_version("$Revision: 3626 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-4654");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:46:24 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-23 16:59:30 +0530 (Tue, 23 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla! EQ Event Calendar component SQL Injection Vulnerability");
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132220");
   script_xref(name : "URL" , value : "http://vulndb.blogspot.in/2015/06/eq-event-calendar-on-joomla-id-sql.html");
 
-  script_summary("Check if Joomla! component EQ Event Calendar is prone to SQL injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

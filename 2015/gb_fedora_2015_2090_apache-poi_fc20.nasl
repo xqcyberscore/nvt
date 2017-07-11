@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869038");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-25 05:41:46 +0100 (Wed, 25 Feb 2015)");
   script_cve_id("CVE-2014-9527", "CVE-2014-3574", "CVE-2014-3529");
   script_tag(name:"cvss_base", value:"5.0");
@@ -71,7 +71,6 @@ There are also projects for Visio (HDGF) and Publisher (HPBF).
   script_xref(name: "FEDORA", value: "2015-2090");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/150228.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of apache-poi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0397.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0397.nasl 6376 2017-06-20 10:00:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131096");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6376 $");
 script_tag(name:"creation_date", value:"2015-10-15 06:54:52 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0397");
 script_tag(name: "insight", value: "Qinghao Tang of QIHU 360 Inc. discovered an infinite loop issue in the NE2000 NIC emulation. A privileged guest user could use this flaw to mount a denial of service (QEMU process crash). (CVE-2015-5278) Qinghao Tang of QIHU 360 Inc. discovered a heap buffer overflow flaw in the NE2000 NIC emulation. A privileged guest user could use this flaw to mount a denial of service (QEMU process crash), or potentially to execute arbitrary code on the host with the privileges of the hosting QEMU process. (CVE-2015-5279) A flaw has been discovered in the QEMU emulator built with Virtual Network Device(virtio-net) support. If the guest's virtio-net driver did not support big or mergeable receive buffers, an issue could occur while receiving large packets over the tuntap/ macvtap interfaces. An attacker on the local network could use this flaw to disable the guest's networking; the user could send a large number of jumbo frames to the guest, which could exhaust all receive buffers, and lead to a denial of service. (CVE-2015-7295)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0397");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0397");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_detect_win.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_wireshark_detect_win.nasl 6235 2017-05-29 13:45:48Z cfi $
 #
 # Wireshark Version Detection (Windows)
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800038");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 6235 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:45:48 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2008-10-24 15:11:55 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Wireshark Version Detection (Windows)");
@@ -129,7 +129,7 @@ if("Wireshark" >< wireName)
         cpe = 'cpe:/a:wireshark:wireshark:x64';
     }
 
-    register_product(cpe:cpe, location:loc);
+    register_product(cpe:cpe, location:path);
 
     log_message(data: build_detection_report(app: wireName,
                                              version: wiresharkVer,

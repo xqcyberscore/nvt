@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_56408_55508.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_apache_axis2_56408_55508.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Apache Axis2 1.6.2 Multiple Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111004");
- script_version("$Revision: 2568 $");
- script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+ script_version("$Revision: 6369 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-03-17 08:00:00 +0100 (Tue, 17 Mar 2015)");
 
  script_tag(name:"cvss_base", value:"6.4");
@@ -43,7 +43,6 @@ if (description)
 
  script_name("Apache Axis2 1.6.2 Multiple Vulnerabilities");
 
- script_summary("Determine if installed Apache Axis2 version is vulnerable");
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882215");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-03 06:11:00 +0200 (Fri, 03 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for openssl CESA-2015:1197 centos5 ");
@@ -76,7 +76,6 @@ the system rebooted.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1197");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-July/021230.html");
-  script_summary("Check for the Version of openssl");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

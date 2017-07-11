@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869798");
-  script_version("$Revision: 6044 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 10:14:10 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-22 06:53:33 +0200 (Wed, 22 Jul 2015)");
   script_cve_id("CVE-2015-4645", "CVE-2015-4646");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,6 @@ contains the utilities for manipulating squashfs filesystems.
   script_xref(name: "FEDORA", value: "2015-10760");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/162226.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of squashfs-tools");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

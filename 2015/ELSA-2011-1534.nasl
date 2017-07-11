@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-1534.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-1534.nasl 6254 2017-05-31 09:04:18Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122043");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6254 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:12:07 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-1534");
 script_tag(name: "insight", value: "ELSA-2011-1534 -  nfs-utils security, bug fix, and enhancement update - [1.2.3-15]- mout.nfs: Don't roll back to IPv4 whe IPv6 fails (bz 744657)- rpcdebug: Added pNFS and FSCache debugging (bz 747400)[1.2.3-14]- mount.nfs: Backported how upstream handles the SIGXFSZ signal (bz 697981)[1.2.3-13]- mount.nfs: Reworked the code that deals with RLIMIT_FSIZE (bz 697981)[1.2.3-12]- Removed the stripping of debugging information from rpcdebug (bz 729001)[1.2.3-11]- mount.nfs: Fixed problem in mount error verbosity patch (bz 731693)[1.2.3-10]- mount.nfs: add error verbosity to invalid versions (bz 731693)[1.2.3-9]- umount.nfs: Got IPV6 unmounts working again (bz 732673)- mountd: return multiple hosts exporting the same directory (bz 726112) - mount: Better error message for invalid version (bz 723780)[1.2.3-8]- initscripts: just try to mount rpc_pipefs always (bz 692702) - Rely on crypto module autoloading in init scripts- svcgssd: Document '-n' for svcgssd (bz 697359)- mount.nfs: anticipate RLIMIT_FSIZE (bz 697981)- exportfs manpage: Ipv6 update (bz 715078)- mountd: Stop segfault in mtab code (bz 723438)- exportfs: wilcards in exports can lead to unintended mounts (bz 715391)- umount: allow spaces in unmount paths (bz 702273)- specfile: reordered how libgssglue is linked in (bz 720479)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-1534");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

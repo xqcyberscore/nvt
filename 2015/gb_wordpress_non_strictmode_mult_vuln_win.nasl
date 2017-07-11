@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_non_strictmode_mult_vuln_win.nasl 5087 2017-01-24 11:37:34Z cfi $
+# $Id: gb_wordpress_non_strictmode_mult_vuln_win.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # WordPress 'Non-Strict Mode' Multiple Cross-Site Scripting Vulnerabilities (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805987");
-  script_version("$Revision: 5087 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-3438");
   script_bugtraq_id(74269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:37:34 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-12 14:03:09 +0530 (Mon, 12 Oct 2015)");
   script_name("WordPress 'Non-Strict Mode' Multiple Cross-Site Scripting Vulnerabilities (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://zoczus.blogspot.in/2015/04/plupload-same-origin-method-execution.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of wordpress on windows");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");

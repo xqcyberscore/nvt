@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 5724 2017-03-24 15:54:58Z cfi $
+# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805543");
-  script_version("$Revision: 5724 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-0135");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:54:58 +0100 (Fri, 24 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-04 17:48:30 +0530 (Mon, 04 May 2015)");
   script_name("IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21701647");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Domino");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_lotus_domino_detect.nasl");

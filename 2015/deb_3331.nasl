@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3331.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3331.nasl 6214 2017-05-26 09:04:01Z teissa $
 # Auto-generated from advisory DSA 3331-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703331);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6214 $");
     script_cve_id("CVE-2015-3184", "CVE-2015-3187");
     script_name("Debian Security Advisory DSA 3331-1 (subversion - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
     script_tag(name: "creation_date", value: "2015-08-10 00:00:00 +0200 (Mon, 10 Aug 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3331.html");
 
-    script_summary("Debian Security Advisory DSA 3331-1 (subversion - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer_ms15-070.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_word_viewer_ms15-070.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Microsoft Office Word Viewer Memory Corruption Vulnerability (3072620)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805814");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-2379");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:17:26 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Memory Corruption Vulnerability (3072620)");
@@ -61,7 +61,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054958");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-070");
 
-  script_summary("Check for the vulnerable file 'Wordview.exe' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

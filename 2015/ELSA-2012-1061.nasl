@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1061.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1061.nasl 6214 2017-05-26 09:04:01Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123869");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6214 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:38 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1061");
 script_tag(name: "insight", value: "ELSA-2012-1061 -  kernel security and bug fix update - [2.6.18-308.11.1.el5]- [net] ixgbe: remove flow director stats (Andy Gospodarek) [832169 830226]- [net] ixgbe: fix default return value for ixgbe_cache_ring_fdir (Andy Gospodarek) [832169 830226]- [net] ixgbe: reverting setup redirection table for multiple packet buffers (Andy Gospodarek) [832169 830226][2.6.18-308.10.1.el5]- [xen] x86_64: check address on trap handlers or guest callbacks (Paolo Bonzini) [813430 813431] {CVE-2012-0217}- [xen] x86_64: Do not execute sysret with a non-canonical return address (Paolo Bonzini) [813430 813431] {CVE-2012-0217}- [xen] x86: prevent hv boot on AMD CPUs with Erratum 121 (Laszlo Ersek) [824969 824970] {CVE-2012-2934}- [scsi] qla2xxx: Use ha->pdev->revision in 4Gbps MSI-X check. (Chad Dupuis) [816373 800653]- [fs] sunrpc: do array overrun check in svc_recv before page alloc (J. Bruce Fields) [820358 814626]- [fs] knfsd: fix an NFSD bug with full size non-page-aligned reads (J. Bruce Fields) [820358 814626]- [fs] sunrpc: fix oops due to overrunning server's page array (J. Bruce Fields) [820358 814626]- [fs] epoll: clear the tfile_check_list on -ELOOP (Jason Baron) [829670 817131]- [x86_64] sched: Avoid unnecessary overflow in sched_clock (Prarit Bhargava) [824654 818787]- [net] sunrpc: Don't use list_for_each_entry_safe in rpc_wake_up (Steve Dickson) [817571 809937]- [s390] qeth: add missing wake_up call (Hendrik Brueckner) [829059 790900][2.6.18-308.9.1.el5]- [fs] jbd: clear b_modified before moving the jh to a different transaction (Josef Bacik) [827205 563247]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1061");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

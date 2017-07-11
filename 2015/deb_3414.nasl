@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3414.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3414.nasl 6243 2017-05-30 09:04:14Z teissa $
 # Auto-generated from advisory DSA 3414-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703414);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6243 $");
     script_cve_id("CVE-2015-3259", "CVE-2015-3340", "CVE-2015-5307", "CVE-2015-6654",
                   "CVE-2015-7311", "CVE-2015-7812", "CVE-2015-7813", "CVE-2015-7814",
                   "CVE-2015-7969", "CVE-2015-7970", "CVE-2015-7971", "CVE-2015-7972",
                   "CVE-2015-8104");
     script_name("Debian Security Advisory DSA 3414-1 (xen - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
     script_tag(name: "creation_date", value: "2015-12-09 00:00:00 +0100 (Wed, 09 Dec 2015)");
     script_tag(name:"cvss_base", value:"6.8");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
@@ -45,7 +45,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3414.html");
 
-    script_summary("Debian Security Advisory DSA 3414-1 (xen - security update)");
 
     script_category(ACT_GATHER_INFO);
 

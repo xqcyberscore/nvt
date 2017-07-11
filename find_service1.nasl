@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 5482 2017-03-04 12:50:11Z cfi $
+# $Id: find_service1.nasl 6315 2017-06-12 10:34:26Z cfischer $
 #
 # Identify unknown services with 'GET'
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 5482 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-04 13:50:11 +0100 (Sat, 04 Mar 2017) $");
+  script_version("$Revision: 6315 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -104,7 +104,8 @@ if (r0 =~ '^(\\|/dev/[a-z0-9/-]+\\|[^|]*\\|[^|]*\\|[^|]\\|)+$')
  exit(0);
 }
 
-if (match(string: r0, pattern: '220 *FTP Server ready\r\n'))
+if (match(string: r0, pattern: '220 *FTP Server ready\r\n') ||
+    match(string: r0, pattern: '220 *FTP server ready.\r\n') ) # e.g. 220 AP9630 Network Management Card AOS v6.0.6 FTP server ready.
 {
  report_service(port: port, svc: 'ftp');
  exit(0);

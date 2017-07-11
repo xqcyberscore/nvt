@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842448");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6333 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-18 10:43:31 +0200 (Fri, 18 Sep 2015)");
   script_cve_id("CVE-2015-3308", "CVE-2015-6251");
   script_tag(name:"cvss_base", value:"7.5");
@@ -50,7 +50,6 @@ code. (CVE-2015-6251)");
   script_xref(name: "USN", value: "2727-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-September/003099.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gnutls28");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

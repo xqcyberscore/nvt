@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_mult_vuln01_sep15.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_pfsense_mult_vuln01_sep15.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # pfSense Multiple Vulnerabilities -01 Sep15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805970");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2014-4687", "CVE-2014-4688", "CVE-2014-4689", "CVE-2014-4690",
                 "CVE-2014-4691", "CVE-2014-4692");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-04 14:53:21 +0530 (Fri, 04 Sep 2015)");
   script_name("pfSense Multiple Vulnerabilities -01 Sep15");
 
@@ -84,7 +84,6 @@ if (description)
   script_xref(name : "URL" , value : "https://pfsense.org/security/advisories/pfSense-SA-14_11.webgui.asc");
   script_xref(name : "URL" , value : "https://pfsense.org/security/advisories/pfSense-SA-14_12.webgui.asc");
 
-  script_summary("Check for the vulnerable version of pfSense");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

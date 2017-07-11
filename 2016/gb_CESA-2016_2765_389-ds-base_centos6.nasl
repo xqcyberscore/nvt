@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882594");
-  script_version("$Revision: 4603 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-23 11:16:11 +0100 (Wed, 23 Nov 2016) $");
+  script_version("$Revision: 6396 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:37:13 +0100 (Sun, 20 Nov 2016)");
   script_cve_id("CVE-2016-4992", "CVE-2016-5405", "CVE-2016-5416");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for 389-ds-base CESA-2016:2765 centos6 ");
   script_tag(name: "vuldetect", value: "Get the installed version with the help 

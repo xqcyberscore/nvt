@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869142");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-31 07:08:00 +0200 (Tue, 31 Mar 2015)");
   script_cve_id("CVE-2015-0252");
   script_tag(name:"cvss_base", value:"5.0");
@@ -49,7 +49,6 @@ the XML 1.0 recommendation and associated standards
   script_xref(name: "FEDORA", value: "2015-4228");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/153887.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mingw-xerces-c");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

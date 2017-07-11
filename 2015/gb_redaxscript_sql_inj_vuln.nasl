@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redaxscript_sql_inj_vuln.nasl 5843 2017-04-03 13:42:51Z cfi $
+# $Id: gb_redaxscript_sql_inj_vuln.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Redaxscript SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:redaxscript:redaxscript';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105954");
-  script_version("$Revision: 5843 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-04-03 15:42:51 +0200 (Mon, 03 Apr 2017) $");
+  script_version("$Revision: 6357 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name : "creation_date", value : "2015-02-06 14:11:04 +0700 (Fri, 06 Feb 2015)");
   script_tag(name : "cvss_base", value : "7.5");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,7 +57,6 @@ if (description)
 
   script_tag(name : "vuldetect", value : "Check the version or if no version detected try to perform
 an SQL injection.");
-  script_summary("Check the version");
 
   script_tag(name : "insight", value : "The search_post function in includes/search.php is prone to
 an SQL injection vulnerability in the search_terms parameter.");

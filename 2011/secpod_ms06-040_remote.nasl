@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms06-040_remote.nasl 5571 2017-03-14 13:04:41Z cfi $
+# $Id: secpod_ms06-040_remote.nasl 6228 2017-05-29 08:25:09Z cfi $
 #
 # Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902782");
-  script_version("$Revision: 5571 $");
+  script_version("$Revision: 6228 $");
   script_bugtraq_id(19409);
   script_cve_id("CVE-2006-3439");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2011-12-30 11:26:07 +0530 (Fri, 30 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 14:04:41 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 10:25:09 +0200 (Mon, 29 May 2017) $");
   script_name("Microsoft Windows Server Service Remote Code Execution Vulnerability (921883)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
@@ -81,13 +81,13 @@ if(description)
 
 include("smb_nt.inc");
 
-name   = kb_smb_name();
-port   = kb_smb_transport();
+name = kb_smb_name();
+port = kb_smb_transport();
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
-##SMB Negotiate Protocol Request
+## SMB Negotiate Protocol Request
 smb_neg_req = raw_string(0x00, 0x00, 0x00, 0x85, 0xff, 0x53, 0x4d, 0x42,
                          0x72, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0xc8,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -108,13 +108,15 @@ smb_neg_req = raw_string(0x00, 0x00, 0x00, 0x85, 0xff, 0x53, 0x4d, 0x42,
                          0x00);
 
 send( socket:soc, data:smb_neg_req );
+
+## SMB Negotiate Protocol Response
 smb_neg_resp = smb_recv( socket:soc );
 if( ! smb_neg_resp ) {
   close( soc );
   exit( 0 );
 }
 
-# SMB Session Setup AndX Request, NTLMSSP_NEGOTIATE
+## SMB Session Setup AndX Request, NTLMSSP_NEGOTIATE
 smb_sess_req = raw_string(0x00, 0x00, 0x00, 0xec, 0xff, 0x53, 0x4d, 0x42,
                           0x73, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0xc8,
                           0x00, 0x00, 0x42, 0x53, 0x52, 0x53, 0x50, 0x59,
@@ -147,9 +149,22 @@ smb_sess_req = raw_string(0x00, 0x00, 0x00, 0xec, 0xff, 0x53, 0x4d, 0x42,
                           0x2e, 0x00, 0x31, 0x00, 0x00, 0x00, 0x00, 0x00);
 
 send( socket:soc, data:smb_sess_req );
+
+## SMB Session Setup AndX Response, NTLMSSP_CHALLENGE,
+## Error: STATUS_MORE_PROCESSING_REQUIRED
 smb_sess_resp = smb_recv( socket:soc );
 if( ! smb_sess_resp ) {
   close( soc );
+  exit( 0 );
+}
+
+##Extract UID from Session Setup AndX Response
+if( smb_sess_resp && strlen( smb_sess_resp ) > 33 ) {
+  uid_low = ord( smb_sess_resp[32] );
+  uid_high = ord( smb_sess_resp[33] );
+  uid = uid_high * 256;
+  uid += uid_low;
+} else {
   exit( 0 );
 }
 
@@ -157,8 +172,9 @@ if( ! smb_sess_resp ) {
 smb_sess_andx_req = raw_string(0x00, 0x00, 0x01, 0x02, 0xff, 0x53, 0x4d, 0x42,
                                0x73, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0xc8,
                                0x00, 0x00, 0x42, 0x53, 0x52, 0x53, 0x50, 0x59,
-                               0x4c, 0x20, 0x00, 0x00, 0x00, 0x00, 0xc5, 0xa6,
-                               0x00, 0x08, 0x80, 0x00, 0x0c, 0xff, 0x00, 0x00,
+                               0x4c, 0x20, 0x00, 0x00, 0x00, 0x00, 0xc5, 0xa6)
+                               + raw_string( uid_low, uid_high ) +  
+                               raw_string( 0x80, 0x00, 0x0c, 0xff, 0x00, 0x00,
                                0x00, 0x00, 0x44, 0x01, 0x00, 0x00, 0x00, 0x00,
                                0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00, 0x00,
                                0x00, 0xdc, 0x02, 0x00, 0x80, 0xc7, 0x00, 0xa1,
@@ -189,13 +205,16 @@ smb_sess_andx_req = raw_string(0x00, 0x00, 0x01, 0x02, 0xff, 0x53, 0x4d, 0x42,
                                0x31, 0x00, 0x00, 0x00, 0x00, 0x00);
 
 send( socket:soc, data:smb_sess_andx_req );
+
+## SMB	Session Setup AndX Response
 smb_sess_andx_resp = smb_recv( socket:soc );
 if( ! smb_sess_andx_resp ) {
   close( soc );
   exit( 0 );
 }
 
-smb_tree_resp = smb_tconx( soc:soc, name:name, uid:"2048", share:"IPC$" );
+## SMB Tree Connect AndX Request, Path: \\xxx.xxx.xxx.xxx\IPC$
+smb_tree_resp = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
 if( ! smb_tree_resp ) {
   close( soc );
   exit( 0 );

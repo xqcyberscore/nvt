@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3193.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3193.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3193-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703193);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2015-0261", "CVE-2015-2153", "CVE-2015-2154", "CVE-2015-2155");
     script_name("Debian Security Advisory DSA 3193-1 (tcpdump - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-03-17 00:00:00 +0100 (Tue, 17 Mar 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3193.html");
 
-    script_summary("Debian Security Advisory DSA 3193-1 (tcpdump - security update)");
 
     script_category(ACT_GATHER_INFO);
 

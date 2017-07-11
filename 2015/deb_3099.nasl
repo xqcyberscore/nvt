@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3099.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3099.nasl 6333 2017-06-14 10:00:49Z teissa $
 # Auto-generated from advisory DSA 3099-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703099);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6333 $");
     script_cve_id("CVE-2014-3636", "CVE-2014-7824");
     script_name("Debian Security Advisory DSA 3099-1 (dbus - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
     script_tag(name: "creation_date", value: "2014-12-11 00:00:00 +0100 (Thu, 11 Dec 2014)");
     script_tag(name:"cvss_base", value:"2.1");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-3099.html");
 
-    script_summary("Debian Security Advisory DSA 3099-1 (dbus - security update)");
 
     script_category(ACT_GATHER_INFO);
 

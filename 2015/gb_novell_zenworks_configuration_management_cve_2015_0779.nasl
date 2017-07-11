@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_configuration_management_cve_2015_0779.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_novell_zenworks_configuration_management_cve_2015_0779.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Novell ZENworks Configuration Management Arbitrary File Upload
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-0779");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6404 $");
 
  script_name("Novell ZENworks Configuration Management Arbitrary File Upload");
 
@@ -50,9 +50,8 @@ arbitrary file upload vulnerability");
 
  script_tag(name: "qod_type", value: "exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-10 20:01:11 +0200 (Fri, 10 Apr 2015)");
- script_summary("Determine if it is possible to execute jsp code in a .jsc file");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");

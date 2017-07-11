@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1272.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1272.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123571");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:40 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1272");
 script_tag(name: "insight", value: "ELSA-2013-1272 -  libvirt security and bug fix update - [0.10.2-18.0.1.el6_4.14]- Replace docs/et.png in tarball with blank image[0.10.2-18.el6_4.14]- spec: Update requirements to pick up rebuilt polkit (CVE-2013-4311)[0.10.2-18.el6_4.13]- spec: Fix messed up dependency on polkit (CVE-2013-4311)[0.10.2-18.el6_4.12]- Introduce APIs for splitting/joining strings (rhbz#1006265)- Rename virKillProcess to virProcessKill (rhbz#1006265)- Rename virPid{Abort, Wait} to virProcess{Abort, Wait} (rhbz#1006265)- Rename virCommandTranslateStatus to virProcessTranslateStatus (rhbz#1006265)- Move virProcessKill into virprocess.{h, c} (rhbz#1006265)- Move virProcess{Kill, Abort, TranslateStatus} into virprocess.{c, h} (rhbz#1006265)- Include process start time when doing polkit checks (rhbz#1006265)- Add support for using 3-arg pkcheck syntax for process (CVE-2013-4311)[0.10.2-18.el6_4.11]- Fix crash in remoteDispatchDomainMemoryStats (CVE-2013-4296)[0.10.2-18.el6_4.10]- qemu: Avoid leaking uri in qemuMigrationPrepareDirect (rhbz#984578)- qemu: Fix double free in qemuMigrationPrepareDirect (rhbz#984578)[when parsing a single device (rhbz#1003934)]- Plug leak in virCgroupMoveTask (rhbz#984556)- Fix invalid read in virCgroupGetValueStr (rhbz#984561)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1272");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,9 +1,11 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ids_evasion.nasl 4489 2016-11-14 08:23:54Z teissa $
-# Description: NIDS evasion
+# $Id: ids_evasion.nasl 6283 2017-06-06 10:01:29Z cfischer $
+#
+# NIDS evasion
 #
 # Authors:
-# Michel Arboi <arboi@alussinan.org> 
+# Michel Arboi <arboi@alussinan.org>
 # Renaud Deraison
 #
 # Copyright:
@@ -21,25 +23,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 tag_summary = "This plugin configures OpenVAS for NIDS evasion (see the 'Prefs' panel).
 NIDS evasion options are useful if you want to determine
 the quality of the expensive NIDS you just bought.
 
 TCP Evasion techniques :
+
 - Split : send data one byte at a time. This confuses
   NIDSes which do not perform stream reassembly
-  
+
 - Injection : same as split, but malformed TCP packets
-  containing bogus data are sent between normal packets. 
-  Here, a 'malformed' tcp packet means a legitimate TCP packet 
+  containing bogus data are sent between normal packets.
+  Here, a 'malformed' tcp packet means a legitimate TCP packet
   with a bogus checksum.
   This confuses NIDSes which perform stream reassembly but do
   not accurately verify the checksum of the packets or
   which do not determine if the remote host actually
-  receives the packets seen ;
-  
+  receives the packets seen;
+
 - Short TTL : same as split, but a valid TCP packets
   containing bogus data are sent between normal packets.
   These packets have a short (N-1), meaning that if
@@ -48,19 +51,19 @@ TCP Evasion techniques :
   host.
   This confuses NIDSes which perform stream reassembly
   but do not accurately check if the packet can actually
-  reach the remote host or which do not determine if the 
+  reach the remote host or which do not determine if the
   remote host actually receives the packets seen ;
 
-- Fake RST : each time a connection is established, OpenVAS 
+- Fake RST : each time a connection is established, OpenVAS
   will send a RST packet with a bogus tcp checksum or
   a bogus ttl (depending on the options you chose above),
   thus making the IDS believe the connection was closed
   abruptly.
   This confuses badly written NIDSes which believe
   anything they see.
-  
-Warning: those features are experimental and some 
-options may result in false negatives!
+
+Warning: those features are experimental and some options may result in false negatives!
+
 This plugin does not do any security check.";
 
 # The HTTP IDS evasion mode comes from Whisker, by RFP.
@@ -71,85 +74,61 @@ This plugin does not do any security check.";
 
 if(description)
 {
- script_id(80011);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
- script_tag(name:"creation_date", value:"2008-10-24 19:16:58 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.80011");
+  script_version("$Revision: 6283 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 12:01:29 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-24 19:16:58 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("NIDS evasion");
+  script_category(ACT_SETTINGS);
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi / Renaud Deraison");
+  script_family("Settings");
 
- name = "NIDS evasion";
- 
- script_name(name);
- 
+  script_add_preference(name:"TCP evasion technique", type:"radio", value:"none;split;injection;short ttl");
+  script_add_preference(name:"Send fake RST when establishing a TCP connection", type:"checkbox", value:"no");
 
+  script_tag(name:"summary" , value:tag_summary);
 
- summary = "NIDS evasion options";
- 
- script_category(ACT_SETTINGS);
   script_tag(name:"qod_type", value:"general_note");
- 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi / Renaud Deraison");
- family = "Settings";
- script_family(family);
- 
- script_add_preference(name:"TCP evasion technique", type:"radio", value:"none;split;injection;short ttl");
 
- script_add_preference(name:"Send fake RST when establishing a TCP connection",
- 	type:"checkbox", value:"no");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
-pref =  script_get_preference("TCP evasion technique");
-if(!pref)exit(0);
+pref = script_get_preference( "TCP evasion technique" );
+if( ! pref ) exit( 0 );
+if( pref == "none" ) exit( 0 );
+if( pref == "none;split;injection;short ttl" ) exit( 0 );
 
-if(pref == "none")exit(0);
+# Generic key for network.c of scanner/libs
+set_kb_item( name:"NIDS/TCP/enabled", value:TRUE );
 
+if( pref == "split" ) {
+  set_kb_item( name:"NIDS/TCP/split", value:"yes" );
 
-if(pref == "none;split;injection;short ttl")exit(0);
+  if( ! get_kb_item( "/Settings/Whisker/NIDS" ) )
+    set_kb_item( name:"/Settings/Whisker/NIDS", value:"9" );
 
-if(pref == "split")
-{
- set_kb_item(name:"NIDS/TCP/split", value:"yes");
-
-  if (! get_kb_item("/Settings/Whisker/NIDS"))
-    set_kb_item(name:"/Settings/Whisker/NIDS", value: "9");
-
-w="TCP split NIDS evasion function is enabled. Some tests might
-run slowly and you may get some false negative results";
- log_message(port:0, protocol:"tcp", data:w);
+  log_message( port:0, data:"TCP split NIDS evasion function is enabled. Some tests might run slowly and you may get some false negative results." );
 }
 
-if(pref == "injection")
-{
- set_kb_item(name:"NIDS/TCP/inject", value:"yes");
-w="TCP inject NIDS evasion function is enabled. Some tests might
-run slowly and you may get some false negative results.";
- log_message(port:0, protocol:"tcp", data:w);
+if( pref == "injection" ) {
+  set_kb_item( name:"NIDS/TCP/inject", value:"yes" );
+  log_message( port:0, data:"TCP inject NIDS evasion function is enabled. Some tests might run slowly and you may get some false negative results." );
 }
 
-
-if(pref == "short ttl")
- {
- set_kb_item(name:"NIDS/TCP/short_ttl", value:"yes");
-w="TCP short ttl NIDS evasion function is enabled. Some tests might
-run slowly and you may get some false negative results.";
- log_message(port:0, protocol:"tcp", data:w);
- }
-
-
-pref = script_get_preference("Send fake RST when establishing a TCP connection");
-if(!pref) exit(0);
-
-if(pref == "no")exit(0);
-
-
-
-if(pref == "yes") {
- set_kb_item(name:"NIDS/TCP/fake_rst", value:"yes");
-w="TCP fake RST NIDS evasion function is enabled. Some tests might
-run slowly and you may get some false negative results.";
- log_message(port:0, protocol:"tcp", data:w);
+if( pref == "short ttl" ) {
+  set_kb_item( name:"NIDS/TCP/short_ttl", value:"yes" );
+  log_message( port:0, data:"TCP short ttl NIDS evasion function is enabled. Some tests might run slowly and you may get some false negative results." );
 }
 
+pref = script_get_preference( "Send fake RST when establishing a TCP connection" );
+if( ! pref ) exit( 0 );
+if( pref == "no" ) exit( 0 );
+
+if( pref == "yes" ) {
+  set_kb_item( name:"NIDS/TCP/fake_rst", value:"yes" );
+  log_message( port:0, data:"TCP fake RST NIDS evasion function is enabled. Some tests might run slowly and you may get some false negative results." );
+}
+
+exit( 0 );

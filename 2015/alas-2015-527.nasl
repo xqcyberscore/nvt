@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-527.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-527.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120057");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:16:25 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-527");
 script_tag(name: "insight", value: "It was discovered that JBoss Web / Apache Tomcat did not limit the length of chunk sizes when using chunked transfer encoding. A remote attacker could use this flaw to perform a denial of service attack against JBoss Web / Apache Tomcat by streaming an unlimited quantity of data, leading to excessive consumption of server resources. (CVE-2014-0075 )It was found that the org.apache.catalina.servlets.DefaultServlet implementation in JBoss Web / Apache Tomcat allowed the definition of XML External Entities (XXEs) in provided XSLTs. A malicious application could use this to circumvent intended security restrictions to disclose sensitive information. (CVE-2014-0096 )It was found that JBoss Web / Apache Tomcat did not check for overflowing values when parsing request content length headers. A remote attacker could use this flaw to perform an HTTP request smuggling attack on a JBoss Web / Apache Tomcat server located behind a reverse proxy that processed the content length header correctly. (CVE-2014-0099 )It was discovered that the ChunkedInputFilter in Tomcat did not fail subsequent attempts to read input after malformed chunked encoding was detected. A remote attacker could possibly use this flaw to make Tomcat process part of the request body as new request, or cause a denial of service. (CVE-2014-0227 )"); 
 script_tag(name : "solution", value : "Run yum update tomcat8 to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-527");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

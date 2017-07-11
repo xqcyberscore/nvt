@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-027.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-027.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Microsoft Windows NETLOGON Spoofing Vulnerability (3002657)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805145");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6333 $");
   script_cve_id("CVE-2015-0005");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:N");  
- script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 11:03:39 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows NETLOGON Spoofing Vulnerability (3002657)");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3002657");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-027");
 
-  script_summary("Check for the vulnerable file 'Netlogon.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_sep15_lin.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_flash_player_mult_vuln_sep15_lin.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # Adobe Flash Player Multiple Vulnerabilities Sep15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805742");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-5567", "CVE-2015-5568", "CVE-2015-5570", "CVE-2015-5571",
                 "CVE-2015-5572", "CVE-2015-5573", "CVE-2015-5574", "CVE-2015-5575",
                 "CVE-2015-5576", "CVE-2015-5577", "CVE-2015-5578", "CVE-2015-5579",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2015-6678", "CVE-2015-6679", "CVE-2015-6682");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-24 13:05:29 +0530 (Thu, 24 Sep 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities Sep15 (Linux)");
 
@@ -72,7 +72,6 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
 
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-23.html");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

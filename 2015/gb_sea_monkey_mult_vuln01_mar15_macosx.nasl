@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_mar15_macosx.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_sea_monkey_mult_vuln01_mar15_macosx.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # SeaMonkey Multiple Vulnerabilities -01 Mar15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805513");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2015-0817", "CVE-2015-0818");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-27 14:54:29 +0530 (Fri, 27 Mar 2015)");
   script_name("SeaMonkey Multiple Vulnerabilities -01 Mar15 (Mac OS X)");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-29");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-28");
 
-  script_summary("Check for the vulnerable version of SeaMonkey on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

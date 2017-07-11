@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_out_of_bounds_vuln_feb15_macosx.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_adobe_acrobat_out_of_bounds_vuln_feb15_macosx.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Adobe Acrobat Out-of-bounds Vulnerability Feb15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805441");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2014-9161");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 18:23:00 +0530 (Tue, 03 Feb 2015)");
   script_name("Adobe Acrobat Out-of-bounds Vulnerability Feb15 (Mac OS X)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/reader/apsb15-10.html");
   script_xref(name : "URL" , value : "http://code.google.com/p/google-security-research/issues/detail?id=149");
-  script_summary("Check for the vulnerable version of Adobe Acrobat on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

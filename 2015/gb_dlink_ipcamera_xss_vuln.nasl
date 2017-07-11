@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcamera_xss_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_dlink_ipcamera_xss_vuln.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805034");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2014-9517");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-08 11:21:29 +0530 (Thu, 08 Jan 2015)");
   script_name("D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability");
 
@@ -59,7 +59,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129609");
 
-  script_summary("Check if D-link IP camera DCS-2103 is vulnerable to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

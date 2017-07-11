@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_netextender_privilege_escalation_vuln.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_dell_sonicwall_netextender_privilege_escalation_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Dell SonicWall NetExtender Privilege Escalation Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/o:dell:sonicwall_netextender";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806043");
-  script_version("$Revision: 2617 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-4173");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:38:49 +0530 (Tue, 08 Sep 2015)");
   script_name("Dell SonicWall NetExtender Privilege Escalation Vulnerability (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133302");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Dell SonicWall NetExtender on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_dell_sonicwall_netextender_detect_win.nasl");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-571.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-571.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120044");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:16:04 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-571");
 script_tag(name: "insight", value: "Multiple flaws were discovered in the 2D, CORBA, JMX, Libraries and RMI components in OpenJDK. An untrusted Java application or applet could use these flaws to bypass Java sandbox restrictions. (CVE-2015-4760 , CVE-2015-2628 , CVE-2015-4731 , CVE-2015-2590 , CVE-2015-4732 , CVE-2015-4733 )A flaw was found in the way the Libraries component of OpenJDK verified Online Certificate Status Protocol (OCSP) responses. An OCSP response with no nextUpdate date specified was incorrectly handled as having unlimited validity, possibly causing a revoked X.509 certificate to be interpreted as valid. (CVE-2015-4748 )It was discovered that the JCE component in OpenJDK failed to use constant time comparisons in multiple cases. An attacker could possibly use these flaws to disclose sensitive information by measuring the time used to perform operations using these non-constant time comparisons. (CVE-2015-2601 )It was discovered that the GCM (Galois Counter Mode) implementation in the Security component of OpenJDK failed to properly perform a null check. This could cause the Java Virtual Machine to crash when an application performed encryption using a block cipher in the GCM mode. (CVE-2015-2659 )A flaw was found in the RC4 encryption algorithm. When using certain keys for RC4 encryption, an attacker could obtain portions of the plain text from the cipher text without the knowledge of the encryption key. (CVE-2015-2808 )Please note that with this update, OpenJDK now disables RC4 TLS/SSL cipher suites by default to address the CVE-2015-2808  issue.A flaw was found in the way the TLS protocol composed the Diffie-Hellman (DH) key exchange. A man-in-the-middle attacker could use this flaw to force the use of weak 512 bit export-grade keys during the key exchange, allowing them do decrypt all traffic. (CVE-2015-4000 )Please note that this update forces the TLS/SSL client implementation in OpenJDK to reject DH key sizes below 768 bits, which prevents sessions to be downgraded to export-grade keys.It was discovered that the JNDI component in OpenJDK did not handle DNS resolutions correctly. An attacker able to trigger such DNS errors could cause a Java application using JNDI to consume memory and CPU time, and possibly block further DNS resolution. (CVE-2015-4749 )Multiple information leak flaws were found in the JMX and 2D components in OpenJDK. An untrusted Java application or applet could use this flaw to bypass certain Java sandbox restrictions. (CVE-2015-2621 , CVE-2015-2632 )A flaw was found in the way the JSSE component in OpenJDK performed X.509 certificate identity verification when establishing a TLS/SSL connection to a host identified by an IP address. In certain cases, the certificate was accepted as valid if it was issued for a host name to which the IP address resolves rather than for the IP address. (CVE-2015-2625 )Multiple insecure temporary file use issues were found in the way the Hotspot component in OpenJDK created performance statistics and error log files. A local attacker could possibly make a victim using OpenJDK overwrite arbitrary files using a symlink attack."); 
 script_tag(name : "solution", value : "Run yum update java-1.8.0-openjdk to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-571");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

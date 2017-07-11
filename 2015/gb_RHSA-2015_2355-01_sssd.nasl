@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871488");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:21:28 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2015-5292");
   script_tag(name:"cvss_base", value:"6.8");
@@ -101,7 +101,6 @@ longer crashes. (BZ#1204203)
   script_xref(name: "RHSA", value: "2015:2355-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00040.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of sssd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

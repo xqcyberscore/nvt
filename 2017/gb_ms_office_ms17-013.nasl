@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms17-013.nasl 5821 2017-03-31 13:22:18Z antu123 $
+# $Id: gb_ms_office_ms17-013.nasl 6342 2017-06-15 04:47:00Z santu $
 #
 # Microsoft Office Multiple RCE nd Information Disclosure Vulnerabilities (4013075)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810834");
-  script_version("$Revision: 5821 $");
+  script_version("$Revision: 6342 $");
   script_cve_id("CVE-2017-0060", "CVE-2017-0073", "CVE-2017-0108", "CVE-2017-0014");
   script_bugtraq_id(96713, 96637, 96722, 96013);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 15:22:18 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 06:47:00 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-30 14:40:25 +0530 (Thu, 30 Mar 2017)");
   script_name("Microsoft Office Multiple RCE nd Information Disclosure Vulnerabilities (4013075)");
 
@@ -91,7 +91,9 @@ msdllVer = "";
 offPath = "";
 
 ## MS Office 2007/2010
-if(get_kb_item("MS/Office/Ver") !~ "^(12|14).*"){
+
+OfficeVer = get_kb_item("MS/Office/Ver");
+if(!OfficeVer  || OfficeVer !~ "^(12|14).*"){
   exit(0);
 }
 

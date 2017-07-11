@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0168.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2010-0168.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122379");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:17:49 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0168");
 script_tag(name: "insight", value: "ELSA-2010-0168 -  httpd security and enhancement update - [2.2.3-31.0.1.el5_4.4]- Replace index.html with Oracle's index page oracle_index.html- Update vstring and distro in specfile[2.2.3-31.4]- require and BR a version of OpenSSL with the secure reneg API (#567980)[2.2.3-31.3]- mod_ssl: add SSLInsecureRenegotiation (#567980)- add security fixes for CVE-2010-0408, CVE-2010-0434 (#570440)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2010-0168");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

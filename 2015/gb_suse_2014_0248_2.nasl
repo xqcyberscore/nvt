@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850949");
-  script_version("$Revision: 3352 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:34:58 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:52:32 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-1477", "CVE-2014-1479", "CVE-2014-1480", "CVE-2014-1481", "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1484", "CVE-2014-1485", "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1488", "CVE-2014-1489", "CVE-2014-1490", "CVE-2014-1491");
   script_tag(name:"cvss_base", value:"10.0");
@@ -139,7 +139,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2014:0248_2");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-02/msg00011.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of Mozilla");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

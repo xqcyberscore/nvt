@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869084");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-14 05:26:42 +0100 (Sat, 14 Mar 2015)");
   script_cve_id("CVE-2014-3566", "CVE-2015-0278");
   script_tag(name:"cvss_base", value:"10.0");
@@ -48,7 +48,6 @@ distributed devices.
   script_xref(name: "FEDORA", value: "2015-2310");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151464.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of nodejs");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

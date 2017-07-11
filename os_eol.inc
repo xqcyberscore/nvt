@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: os_eol.inc 6055 2017-05-02 08:50:13Z cfi $
+# $Id: os_eol.inc 6425 2017-06-24 08:33:41Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -389,16 +389,19 @@ eol_cpes['cpe:/o:greenbone:greenbone_os:2.0.0'] = '31 Jan 2014';
 eol_cpes['cpe:/o:greenbone:greenbone_os:1.7.0'] = '30 Jun 2013';
 eol_cpes['cpe:/o:greenbone:greenbone_os:1.6.0'] = 'unknown';
 
-#Windows for Workgroups 3.1 (http://support.microsoft.com/lifecycle/?p1=3127)
-eol_urls['cpe:/o:microsoft:windows:3.1'] = 'http://support.microsoft.com/lifecycle/?p1=3127';
+
+# General notes for windows: https://support.microsoft.com/en-us/help/13853/windows-lifecycle-fact-sheet
+
+#Windows for Workgroups 3.1 (https://support.microsoft.com/en-us/lifecycle/?p1=3127)
+eol_urls['cpe:/o:microsoft:windows:3.1'] = 'https://support.microsoft.com/en-us/lifecycle/?p1=3127';
 eol_cpes['cpe:/o:microsoft:windows:3.1'] = '31 Dec 2001';
 
-#Windows for Workgroups 3.11 (http://support.microsoft.com/lifecycle/?p1=3128)
-eol_urls['cpe:/o:microsoft:windows:3.11'] = 'http://support.microsoft.com/lifecycle/?p1=3128';
+#Windows for Workgroups 3.11 (https://support.microsoft.com/en-us/lifecycle/?p1=3128)
+eol_urls['cpe:/o:microsoft:windows:3.11'] = 'https://support.microsoft.com/en-us/lifecycle/?p1=3128';
 eol_cpes['cpe:/o:microsoft:windows:3.11'] = '31 Dec 2001';
 
-#Windows 95 (http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+95&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_95'] = 'http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+95&Filter=FilterNO';
+#Windows 95 (https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+95&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_95'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+95&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_95'] = '31 Dec 2001';
 eol_cpes['cpe:/o:microsoft:windows_95::gold'] = '31 Dec 2001';
 eol_cpes['cpe:/o:microsoft:windows_95::osr2'] = '31 Dec 2001';
@@ -407,8 +410,8 @@ eol_cpes['cpe:/o:microsoft:windows_95::osr2.5'] = '31 Dec 2001';
 eol_cpes['cpe:/o:microsoft:windows_95::sp1'] = '31 Dec 2001';
 eol_cpes['cpe:/o:microsoft:windows_95::sr2'] = '31 Dec 2001';
 
-#Windows 98 (http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+98&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_98'] = 'http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+98&Filter=FilterNO';
+#Windows 98 (https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+98&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_98'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+98&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_98'] = '11 Jul 2006';
 eol_cpes['cpe:/o:microsoft:windows_98::beta'] = '11 Jul 2006';
 eol_cpes['cpe:/o:microsoft:windows_98::gold'] = '11 Jul 2006';
@@ -417,13 +420,13 @@ eol_cpes['cpe:/o:microsoft:windows_98:beta'] = '11 Jul 2006';
 eol_cpes['cpe:/a:microsoft:windows_98_plus_pack'] = '11 Jul 2006';
 eol_cpes['cpe:/o:microsoft:windows_98se'] = '11 Jul 2006';
 
-#Windows Millennium Edition (http://support.microsoft.com/lifecycle/?p1=6519)
-eol_cpes['cpe:/o:microsoft:windows_me'] = 'http://support.microsoft.com/lifecycle/?p1=6519';
+#Windows Millennium Edition (httpen-us://support.microsoft.com/en-us/lifecycle/?p1=6519)
+eol_cpes['cpe:/o:microsoft:windows_me'] = 'httpen-us://support.microsoft.com/en-us/lifecycle/?p1=6519';
 eol_cpes['cpe:/o:microsoft:windows_me'] = '11 Jul 2006';
 eol_cpes['cpe:/o:microsoft:windows_me::gold'] = '11 Jul 2006';
 
-#Windows NT (http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+NT&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_nt'] = 'http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+NT&Filter=FilterNO';
+#Windows NT (https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+NT&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_nt'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+NT&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_nt:3.0.1'] = 'unknown';
 eol_cpes['cpe:/o:microsoft:windows_nt:3.1'] = '31 Dec 2000';
 eol_cpes['cpe:/o:microsoft:windows_nt:3.5'] = 'unknown';
@@ -490,8 +493,8 @@ eol_cpes['cpe:/o:microsoft:windows_nt:4.0:sru:server'] = '31 Dec 2002';
 eol_cpes['cpe:/o:microsoft:windows_nt:4.0:sru:terminal_server'] = '31 Dec 2002';
 eol_cpes['cpe:/o:microsoft:windows_nt:4.0:sru:workstation'] = '30 Jun 2002';
 
-#Windows 2000 (http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+2000&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_2000'] = 'http://support.microsoft.com/lifecycle/search/default.aspx?sort=PN&alpha=Windows+2000&Filter=FilterNO';
+#Windows 2000 (https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+2000&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_2000'] = 'https://support.microsoft.com/en-us/lifecycle/search/default.aspx?sort=PN&alpha=Windows+2000&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_2000'] = '13 Jul 2010';
 eol_cpes['cpe:/o:microsoft:windows_2000::beta3'] = '13 Jul 2010';
 eol_cpes['cpe:/o:microsoft:windows_2000::gold'] = '13 Jul 2010';
@@ -523,8 +526,8 @@ eol_cpes['cpe:/o:microsoft:windows_2000::sp4:professional'] = '13 Jul 2010';
 eol_cpes['cpe:/o:microsoft:windows_2000::sp4:server'] = '13 Jul 2010';
 eol_cpes['cpe:/o:microsoft:windows_2000:beta3'] = '13 Jul 2010';
 
-#Windows XP (https://support.microsoft.com/de-de/lifecycle/search?sort=PN&qid=&alpha=Microsoft%20Windows%20XP&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_xp'] = 'https://support.microsoft.com/de-de/lifecycle/search?sort=PN&qid=&alpha=Microsoft%20Windows%20XP&Filter=FilterNO';
+#Windows XP (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20XP&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_xp'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20XP&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_xp'] = '08 Apr 2014';
 eol_cpes['cpe:/o:microsoft:windows_xp:::x64'] = '08 Apr 2014';
 eol_cpes['cpe:/o:microsoft:windows_xp:::x86'] = '08 Apr 2014';
@@ -561,8 +564,8 @@ eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:professional'] = '08 Apr 2014';
 eol_cpes['cpe:/o:microsoft:windows_xp:-:sp3:tablet_pc'] = '08 Apr 2014';
 eol_cpes['cpe:/o:microsoft:windows_xp:sp3:unknown:english'] = '08 Apr 2014';
 
-#Windows 2003 (https://support.microsoft.com/de-de/lifecycle/search?sort=PN&qid=&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_2003_server'] = 'https://support.microsoft.com/de-de/lifecycle/search?sort=PN&qid=&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO';
+#Windows 2003 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_2003_server'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_2003_server'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_2003_server::gold'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_2003_server::gold:compute_cluster'] = '14 Jul 2015';
@@ -603,12 +606,21 @@ eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:storage'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_2003_server::sp2:x64'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_2003_server:-:r2_sp2'] = '14 Jul 2015';
 
-#Windows 2003 (https://support.microsoft.com/de-de/lifecycle/search?sort=PN&qid=&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
-eol_urls['cpe:/o:microsoft:windows_server_2003'] = 'https://support.microsoft.com/de-de/lifecycle/search?sort=PN&qid=&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO';
+#Windows 2003 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_server_2003'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Microsoft%20Windows%20Server%202003&Filter=FilterNO';
 eol_cpes['cpe:/o:microsoft:windows_server_2003:::x64'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_server_2003::sp2'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_server_2003::sp2:itanium'] = '14 Jul 2015';
 eol_cpes['cpe:/o:microsoft:windows_server_2003::sp2:x64'] = '14 Jul 2015';
+
+#Windows 7 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%207&Filter=FilterNO)
+eol_urls['cpe:/o:microsoft:windows_7'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%207&Filter=FilterNO';
+eol_cpes['cpe:/o:microsoft:windows_7:-:-:x32'] = '09 Apr 2013';
+eol_cpes['cpe:/o:microsoft:windows_7:::x32'] = '09 Apr 2013';
+eol_cpes['cpe:/o:microsoft:windows_7:-:-:x64'] = '09 Apr 2013';
+eol_cpes['cpe:/o:microsoft:windows_7:::x64'] = '09 Apr 2013';
+eol_cpes['cpe:/o:microsoft:windows_7:-:-:'] = '09 Apr 2013';
+eol_cpes['cpe:/o:microsoft:windows_7:::'] = '09 Apr 2013';
 
 #Windows 8 (https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%208&Filter=FilterNO)
 eol_urls['cpe:/o:microsoft:windows_8'] = 'https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=Windows%208&Filter=FilterNO';
@@ -647,6 +659,10 @@ eol_cpes['cpe:/o:microsoft:windows_vista::sp1:x64-home_premium'] = '11 Apr 2017'
 eol_cpes['cpe:/o:microsoft:windows_vista::sp2'] = '11 Apr 2017';
 eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x86'] = '11 Apr 2017';
 eol_cpes['cpe:/o:microsoft:windows_vista::sp2:x64'] = '11 Apr 2017';
+
+#Windows 10 (https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet)
+eol_urls['cpe:/o:microsoft:windows_10'] = 'https://support.microsoft.com/en-US/help/13853/windows-lifecycle-fact-sheet';
+eol_cpes['cpe:/o:microsoft:windows_10:1507'] = '09 May 2017';
 
 function get_eol_url(cpe) {
 

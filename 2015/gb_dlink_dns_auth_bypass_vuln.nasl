@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dns_auth_bypass_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_dlink_dns_auth_bypass_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # D-Link DNS Devices Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106017");
-  script_version("$Revision: 3694 $");
-  script_tag(name : "last_modification", value : "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name : "creation_date", value : "2015-07-10 14:32:27 +0700 (Fri, 10 Jul 2015)");
   script_tag(name : "cvss_base", value : "10.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,6 @@ if (description)
   script_mandatory_keys("host_is_dlink_dns");
 
   script_tag(name : "summary", value : "Authentication bypass vulnerability in D-Link DNS devices.");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name : "vuldetect", value : "Send a special crafted HTTP GET request and check the response.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov15_win.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mozilla_firefox_mult_vuln_nov15_win.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Nov15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806550");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-7200", "CVE-2015-7199", "CVE-2015-7198", "CVE-2015-7197",
                 "CVE-2015-7196", "CVE-2015-7195", "CVE-2015-7194", "CVE-2015-7193",
                 "CVE-2015-7189", "CVE-2015-7188", "CVE-2015-7187", "CVE-2015-4518",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(77412, 77415, 77416);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-09 14:40:31 +0530 (Mon, 09 Nov 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Nov15 (Windows)");
 
@@ -91,7 +91,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-131");
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-129");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

@@ -26,14 +26,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882243");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4475", "CVE-2015-4478", "CVE-2015-4479",
                 "CVE-2015-4480", "CVE-2015-4484", "CVE-2015-4485", "CVE-2015-4486",
                 "CVE-2015-4487", "CVE-2015-4488", "CVE-2015-4489", "CVE-2015-4491",
                 "CVE-2015-4492", "CVE-2015-4493");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-12 05:07:48 +0200 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for firefox CESA-2015:1586 centos7 ");
@@ -65,7 +65,6 @@ update, Firefox must be restarted for the changes to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1586");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-August/021305.html");
-  script_summary("Check for the Version of firefox");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

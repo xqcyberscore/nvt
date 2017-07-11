@@ -1,5 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
+# $Id: portscan-strobe.nasl 6228 2017-05-29 08:25:09Z cfi $
 #
 # NASL wrapper around strobe portscanner 
 #
@@ -24,40 +25,39 @@
 # - report back banners grabbed
 # 
 
-tag_summary = "This plugin runs strobe to find open ports.
-Strobe is a small TCP port scanner.";
-
 if(description)
 {
- script_id(80009);
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4489 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-14 09:23:54 +0100 (Mon, 14 Nov 2016) $");
- script_tag(name:"creation_date", value:"2008-10-26 10:11:20 +0100 (Sun, 26 Oct 2008)");
- name = "strobe (NASL wrapper)";
- script_name(name);
- script_tag(name:"cvss_base", value:"0.0");
- 
+  script_oid("1.3.6.1.4.1.25623.1.0.80009");
+  script_version("$Revision: 6228 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 10:25:09 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"creation_date", value:"2008-10-26 10:11:20 +0100 (Sun, 26 Oct 2008)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("strobe (NASL wrapper)");
+  script_category(ACT_SCANNER);
+  script_copyright("This script is Copyright (C) 2008-2010 Vlatko Kosturjak");
+  script_family("Port scanners");
+  script_dependencies("toolcheck.nasl", "ping_host.nasl");
+  script_mandatory_keys("Tools/Present/strobe");
 
- summary = "Performs portscan";
- 
- script_category(ACT_SCANNER);
+  script_add_preference(name:"Strobe timeout", type:"entry", value: "");
+  script_add_preference(name:"Strobe number of sockets in parallel", type:"entry", value: "");
+  script_add_preference(name:"Strobe local port to bind outgoing requests", type:"entry", value: "");
+  script_add_preference(name:"Disable usage of getpeername", type:"checkbox", value: "no");
+
+  script_tag(name:"summary", value:"This plugin runs strobe to find open ports.
+  Strobe is a small TCP port scanner.
+
+  This wrapper is deprecated due to the non-free license of strobe.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- 
- script_copyright("This script is Copyright (C) 2008-2010 Vlatko Kosturjak");
- family = "Port scanners";
- script_family(family);
 
- script_add_preference(name:"Strobe timeout", type:"entry", value: "");
- script_add_preference(name:"Strobe number of sockets in parallel", type:"entry", value: "");
- script_add_preference(name:"Strobe local port to bind outgoing requests", type:"entry", value: "");
- script_add_preference(name:"Disable usage of getpeername", type:"checkbox", value: "no");
- script_dependencies("toolcheck.nasl", "ping_host.nasl");
- script_mandatory_keys("Tools/Present/strobe");
+  script_tag(name:"deprecated", value:TRUE);
 
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
+
+exit(66);
 
 ip = get_host_ip();
 esc_ip = ""; l = strlen(ip);

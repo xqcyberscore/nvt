@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-3076.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-3076.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123300");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:58 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-3076");
 script_tag(name: "insight", value: "ELSA-2014-3076 -  bash security update - [4.2.45-5.2.0.1]- Preliminary fix for CVE-2014-7169"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-3076");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0966.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2010-0966.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122290");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:16:06 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0966");
 script_tag(name: "insight", value: "ELSA-2010-0966 -  firefox security update - firefox: [3.6.13-1.0.1.el6_0] - Added firefox-oracle-default-prefs.js and removed firefox-redhat-default-prefs.js [bugz 11762] [3.6.13-2] - Update to 3.6.13 build3 [3.6.13-1] - Update to 3.6.13 [3.6.12-1] - Update to 3.6.12 [3.6.11-1] - Update to 3.6.11 xulrunner: [1.9.2.13-3.0.1.el6_0] - Added xulrunner-oracle-default-prefs.js and removed the corresponding RedHat one. Bug#11487 [1.9.2.13-3] - Update to 1.9.2.13 build3 [1.9.2.13-2] - Update to 1.9.2.13 build2 [1.9.2.13-1] - Update to 1.9.2.13 [1.9.2.12-1] - Update to 1.9.2.12 [1.9.2.11-1] - Update to 1.9.2.1"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2010-0966");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

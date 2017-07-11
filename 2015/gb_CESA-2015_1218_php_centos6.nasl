@@ -26,7 +26,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882219");
-  script_version("$Revision: 3388 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2014-9425", "CVE-2014-9705", "CVE-2014-9709", "CVE-2015-0232",
                 "CVE-2015-0273", "CVE-2015-2301", "CVE-2015-2783", "CVE-2015-2787",
                 "CVE-2015-3307", "CVE-2015-3329", "CVE-2015-3411", "CVE-2015-3412",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2015-4600", "CVE-2015-4601", "CVE-2015-4602", "CVE-2015-4603");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-26 08:22:21 +0200 (Thu, 26 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-10 06:08:37 +0200 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for php CESA-2015:1218 centos6 ");
@@ -100,7 +100,6 @@ take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1218");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-July/021237.html");
-  script_summary("Check for the Version of php");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

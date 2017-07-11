@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869748");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6391 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 06:19:31 +0200 (Wed, 15 Jul 2015)");
   script_cve_id("CVE-2015-4411", "CVE-2015-4410");
   script_tag(name:"cvss_base", value:"10.0");
@@ -49,7 +49,6 @@ an implementation of the Mongo Wire Protocol, and the driver itself.
   script_xref(name: "FEDORA", value: "2015-11070");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/161964.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of rubygem-moped");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

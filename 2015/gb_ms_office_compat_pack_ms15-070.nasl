@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-070.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_office_compat_pack_ms15-070.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # Microsoft Office Compatibility Pack Multiple Vulnerabilities (3072620)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805813");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-2376", "CVE-2015-2377", "CVE-2015-2415", "CVE-2015-2378");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:01:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Multiple Vulnerabilities (3072620)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2965208");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-070");
 
-  script_summary("Check for the version of 'excelconv.exe' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

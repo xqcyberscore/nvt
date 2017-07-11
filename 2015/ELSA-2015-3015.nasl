@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3015.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-3015.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123160");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:48:40 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3015");
 script_tag(name: "insight", value: "ELSA-2015-3015 - Unbreakable Enterprise kernel security update - kernel-uek[2.6.32-400.37.2uek]- netfilter: conntrack: disable generic tracking for known protocols (Florian Westphal) [Orabug: 20679631] {CVE-2014-8160}- mac80211: fix fragmentation code, particularly for encryption (Johannes Berg) [Orabug: 20673314] {CVE-2014-8709}- tracing/syscalls: Ignore numbers outside NR_syscalls' range (Rabin Vincent) [Orabug: 20673165] {CVE-2014-7825} {CVE-2014-7826}- tracing/syscalls: Fix perf syscall tracing when syscall_nr == -1 (Will Deacon) [Orabug: 20673165] {CVE-2014-7825} {CVE-2014-7826}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-3015");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

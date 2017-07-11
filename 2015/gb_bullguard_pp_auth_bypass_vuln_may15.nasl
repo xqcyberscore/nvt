@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_pp_auth_bypass_vuln_may15.nasl 3549 2016-06-17 12:10:37Z antu123 $
+# $Id: gb_bullguard_pp_auth_bypass_vuln_may15.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # BullGuard Premium Protection Authentication Bypass Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:bullguard:premium_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805624");
-  script_version("$Revision: 3549 $");
+  script_version("$Revision: 6376 $");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-17 14:10:37 +0200 (Fri, 17 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-20 12:26:57 +0530 (Wed, 20 May 2015)");
   script_name("BullGuard Premium Protection Authentication Bypass Vulnerability");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131810");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of BullGuard Premium Protection on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_bullguard_premium_protection_detect.nasl");

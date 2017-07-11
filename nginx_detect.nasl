@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: nginx_detect.nasl 6355 2017-06-16 08:59:27Z cfischer $
 #
 # nginx Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100274");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 6355 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 10:59:27 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("nginx Detection");
   script_category(ACT_GATHER_INFO);
@@ -51,20 +51,18 @@ if(description)
 }
 
 include("http_func.inc");
-include("global_settings.inc");
+include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
 banner = get_http_banner( port:port );
-if( ! banner ) exit( 0 );
 
-if( egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
+if( banner && egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
 
   vers = "unknown";
+  installed = TRUE;
 
-  ### try to get version 
   version = eregmatch( string:banner, pattern:"Server: nginx/([0-9.]+)", icase:TRUE );
 
   if( ! isnull( version[1] ) ) {
@@ -86,21 +84,40 @@ if( egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
       vers = chomp( version[1] );
     }
   }
+} else {
 
+  # If the banner is hidden we still can try to see
+  # if nginx is installed from the default 404 page
+  url = "/non-existent.html";
+  req = http_get( port:port, item:url );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE, fetch404:TRUE );
+
+  # This is the default page of nginx shipped on Debian/Ubuntu
+  if( res =~ "^HTTP/1\.[01] [3-5].*" && "<hr><center>nginx</center>" >< res ) {
+    vers = "unknown";
+    installed = TRUE;
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+    replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: nginx" );
+  }
+}
+
+if( installed ) {
+
+  install = port + "/tcp";
   set_kb_item( name:"nginx/" + port + "/version", value:vers );
-  set_kb_item( name:"nginx/installed", value:TRUE );
+  replace_kb_item( name:"nginx/installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:nginx:nginx:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:nginx:nginx';
 
-  register_product( cpe:cpe, location:port + '/tcp', port:port );
+  register_product( cpe:cpe, location:install, port:port );
 
   log_message( data:build_detection_report( app:"nginx",
                                             version:vers,
-                                            install:port + '/tcp',
+                                            install:install,
                                             cpe:cpe,
+                                            concludedUrl:conclUrl,
                                             concluded:version[0] ),
                                             port:port );
 }

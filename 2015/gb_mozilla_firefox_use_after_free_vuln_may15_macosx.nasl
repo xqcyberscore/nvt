@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_use_after_free_vuln_may15_macosx.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_mozilla_firefox_use_after_free_vuln_may15_macosx.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Mozilla Firefox Plugin Initialization Use-after-free Vulnerability-Apr15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805545");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-2706");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-04 14:39:13 +0530 (Mon, 04 May 2015)");
   script_name("Mozilla Firefox Plugin Initialization Use-after-free Vulnerability- Apr15 (Mac OS X)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-45");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

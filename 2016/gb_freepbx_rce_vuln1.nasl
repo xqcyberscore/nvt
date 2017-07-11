@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_rce_vuln1.nasl 4190 2016-09-30 09:47:48Z ckuerste $
+# $Id: gb_freepbx_rce_vuln1.nasl 6416 2017-06-23 10:02:44Z cfischer $
 #
 # FreePBX Remote Command Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:freepbx:freepbx';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106318");
-  script_version("$Revision: 4190 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-30 11:47:48 +0200 (Fri, 30 Sep 2016) $");
+  script_version("$Revision: 6416 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name: "creation_date", value: "2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -76,13 +76,17 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE))
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: TRUE))
   exit(0);
+
+version = infos['version'];
 
 if (version =~ "^13\.") {
   if (version_is_less(version: version, test_version: "13.0.188.1")) {
-    if (!dir = get_app_location(cpe: CPE, port: port))
+
+    if( !dir = infos['location'] )
       exit(0);
+
     if (dir == "/")
       dir = "";
 
@@ -103,4 +107,4 @@ if (version =~ "^13\.") {
   }
 }
 
-exit(0);
+exit(99);

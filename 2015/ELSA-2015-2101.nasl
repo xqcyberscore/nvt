@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-2101.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-2101.nasl 6229 2017-05-29 09:04:10Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122760");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6229 $");
 script_tag(name:"creation_date", value:"2015-11-24 10:17:32 +0200 (Tue, 24 Nov 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-2101");
 script_tag(name: "insight", value: "ELSA-2015-2101 -  python security, bug fix, and enhancement update - [2.7.5-34.0.1]- Add Oracle Linux distribution in platform.py [orabug 20812544][2.7.5-34]- Revert fix for rhbz#1117751 as it leads to regressionsResolves: rhbz#1117751[2.7.5-33]- Only restore SIG_PIPE when Popen called with restore_sigpipeResolves: rhbz#1117751[2.7.5-32]- Backport SSLSocket.version function- Temporary disable test_gdb on ppc64le rhbz#1260558Resolves: rhbz#1259421[2.7.5-31]- Update load_cert_chain function to accept None keyfileResolves: rhbz#1250611[2.7.5-30]- Change Patch224 according to latest update in PEP493Resolves:rhbz#1219108[2.7.5-29]- Popen shouldn't ignore SIG_PIPEResolves: rhbz#1117751[2.7.5-28]- Exclude python subprocess temp files from cleaningResolves: rhbz#1058482[2.7.5-27]- Add list for cprofile sort optionResolves:rhbz#1237107[2.7.5-26]- Add switch to toggle cert verification on or off globallyResolves:rhbz#1219108[2.7.5-25]- PEP476 enable cert verifications by defaultResolves:rhbz#1219110[2.7.5-24]- Massive backport of ssl module from python3 aka PEP466Resolves: rhbz#1111461[2.7.5-23]- Fixed CVE-2013-1753, CVE-2013-1752, CVE-2014-4616, CVE-2014-4650, CVE-2014-7185Resolves: rhbz#1206574[2.7.5-22]- Fix importing readline producing erroneous outputResolves: rhbz#1189301[2.7.5-21]- Add missing import in bdist_rpmResolves: rhbz#1177613[2.7.5-20]- Avoid double close of subprocess pipesResolves: rhbz#1103452[2.7.5-19]- make multiprocessing ignore EINTRResolves: rhbz#1181624"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-2101");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

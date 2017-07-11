@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-003.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-003.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Microsoft Windows User Profile Service Privilege Escalation (3021674)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805126");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-0004");
   script_bugtraq_id(71967);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-14 09:49:42 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows User Profile Service Privilege Escalation (3021674)");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3021674");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-003");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

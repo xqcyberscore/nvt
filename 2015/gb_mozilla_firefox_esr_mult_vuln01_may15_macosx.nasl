@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_may15_macosx.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_may15_macosx.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 May15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805628");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713",
                 "CVE-2015-2716");
   script_bugtraq_id(74611, 74615);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:31:24 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
@@ -72,7 +72,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-54");
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2015/mfsa2015-47.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox ESR on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xnview_detect_win.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: secpod_xnview_detect_win.nasl 6378 2017-06-20 11:53:10Z cfischer $
 #
 # XnView Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900751");
-  script_version("$Revision: 6040 $");
+  script_version("$Revision: 6378 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 13:53:10 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-03-30 16:15:33 +0200 (Tue, 30 Mar 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("XnView Version Detection");
@@ -91,7 +91,7 @@ if(isnull(key)){
 ## Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XnView_is1"))
 {
-  if(!registry_key_exists("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\XnView_is1")){
+  if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\XnView_is1")){
     exit(0);
   }
 }

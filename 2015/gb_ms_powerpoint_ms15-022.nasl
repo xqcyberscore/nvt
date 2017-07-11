@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms15-022.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_powerpoint_ms15-022.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (3038999)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805059");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2015-0085", "CVE-2015-0086", "CVE-2015-0097");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 14:31:32 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (3038999)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2920812");
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2899580");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-022");
-  script_summary("Check for the vulnerable file 'Ppcore.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-627.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-627.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,23 +24,22 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120617");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:28 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-627");
 script_tag(name: "insight", value: "A vulnerability in perl-IPTables-Parse was found, when using predictable file names for its temporary files. This vulnerability allows attacker on a multi-user system to set up symlinks to overwrite any file the current user has write access to."); 
 script_tag(name : "solution", value : "Run yum update perl-IPTables-Parse to update your system.");
 script_tag(name : "solution_type", value : "VendorFix");
 script_xref(name : "URL" , value : "https://alas.aws.amazon.com/ALAS-2015-627.html");
 script_cve_id("CVE-2015-8326");
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+script_tag(name:"cvss_base", value:"3.6");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-627");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

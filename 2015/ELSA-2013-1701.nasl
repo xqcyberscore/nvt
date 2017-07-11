@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1701.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1701.nasl 6391 2017-06-21 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123520");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6391 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:58 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1701");
 script_tag(name: "insight", value: "ELSA-2013-1701 -  sudo security, bug fix and enhancement update - [1.8.6p3-12] - added patches for CVE-2013-1775 CVE-2013-2777 CVE-2013-2776 Resolves: rhbz#1015355 [1.8.6p3-11] - sssd: fixed a bug in ipa_hostname processing Resolves: rhbz#853542 [1.8.6p3-10] - sssd: fixed buffer size for the ipa_hostname value Resolves: rhbz#853542 [1.8.6p3-9] - sssd: match against ipa_hostname from sssd.conf too when checking sudoHost Resolves: rhbz#853542 [1.8.6p3-8] - updated man-page - fixed handling of RLIMIT_NPROC resource limit - fixed alias cycle detection code - added debug messages for tracing of netgroup matching - fixed aborting on realloc when displaying allowed commands - show the SUDO_USER in logs, if running commands as root - sssd: filter netgroups in the sudoUser attribute Resolves: rhbz#856901 Resolves: rhbz#947276 Resolves: rhbz#886648 Resolves: rhbz#994563 Resolves: rhbz#848111 Resolves: rhbz#994626 Resolves: rhbz#973228 Resolves: rhbz#880150"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1701");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

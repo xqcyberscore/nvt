@@ -27,26 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808087");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6306 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-11 21:08:57 +0200 (Sun, 11 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-21 12:44:48 +0530 (Tue, 21 Jun 2016)");
   script_name("Elasticsearch Kibana Version Detection");
-  script_tag(name : "summary" , value : "Detection of installed version
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 9200, 5601);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"summary", value:"Detection of installed version
   of Elasticsearch Kibana.
 
   This script sends HTTP GET request and try to ensure the presence of
   Elasticsearch Kibana from the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("kibana/banner");
-  script_require_ports("Services/www", 9200, 5601);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -55,49 +56,41 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialisation
-kibanaPort = 0;
-vers = "";
-version = "";
-banner = "";
+port = get_http_port( default:5601 );
 
-##Get HTTP Port
-kibanaPort = get_http_port(default:5601);
-if(!kibanaPort){
-  exit(0);
+foreach dir( make_list_unique( "/", "/kibana", cgi_dirs( port:port ) ) ) {
+
+  if( dir == "/" ) dir = "";
+
+  url = dir + "/app/kibana";
+  res = http_get_cache( item:url, port:port );
+
+  if( res =~ "^HTTP/1\.[01] 200" && ( "kbn-name: kibana" >< res || "<title>Kibana</title>" >< res ) ) {
+
+    version = "unknown";
+    vers = eregmatch( pattern:"kbn-version: ([0-9.]+)", string:res );
+    if( vers[1] ) {
+      version = vers[1];
+    } else {
+      vers = eregmatch( pattern:"version&quot;:&quot;([0-9.]+)", string:res );
+      if( vers[1] ) version = vers[1];
+    }
+
+    replace_kb_item( name:"Elasticsearch/Kibana/Installed", value:TRUE );
+
+    cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:elasticsearch:kibana:" );
+    if( ! cpe )
+      cpe = "cpe:/a:elasticsearch:kibana";
+
+    register_product( cpe:cpe, location:url, port:port );
+
+    log_message( data:build_detection_report( app:"Elasticsearch Kibana",
+                                              version:version,
+                                              install:url,
+                                              cpe:cpe,
+                                              concluded:vers[0] ),
+                                              port:port );
+  }
 }
 
-## Confirm the application from banner
-banner = get_http_banner( port:kibanaPort);
-if("kbn-name: kibana" >!< banner) {
-  exit(0);
-}
-
-## Grep the version from banner
-vers = eregmatch(pattern:"kbn-version: ([0-9.]+)", string:banner);
-if(vers[1]){
-  version = vers[1];
-}
-else{
-  version ="Unknown";
-}
-
-## Set the KB
-set_kb_item(name:"www/" + kibanaPort + "Elasticsearch/Kibana", value:version);
-set_kb_item(name:"Elasticsearch/Kibana/Installed", value:TRUE);
-
-## build cpe and store it as host_detail
-cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:elasticsearch:kibana:");
-if(!cpe)
-  cpe= "cpe:/a:elasticsearch:kibana";
-
-register_product(cpe:cpe, location:'/app/kibana', port:kibanaPort);
-
-log_message(data: build_detection_report(app: "Elasticsearch Kibana",
-                                         version: version,
-                                         install:'/app/kibana',
-                                         cpe: cpe,
-                                         concluded: version),
-                                         port: kibanaPort);
-exit(0);
-
+exit( 0 );

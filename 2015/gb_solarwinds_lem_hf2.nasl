@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_lem_hf2.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_solarwinds_lem_hf2.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # SolarWinds Log and Event Manager XML External Entity Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105451");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6345 $");
 
  script_name("SolarWinds Log and Event Manager XML External Entity Injection Vulnerability");
 
@@ -49,9 +49,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-11-13 11:00:23 +0100 (Fri, 13 Nov 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

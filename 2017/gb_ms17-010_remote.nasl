@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010_remote.nasl 5866 2017-04-05 08:13:01Z teissa $
+# $Id: gb_ms17-010_remote.nasl 6223 2017-05-26 12:27:08Z antu123 $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810676");
-  script_version("$Revision: 5866 $");
+  script_version("$Revision: 6223 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 10:13:01 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 14:27:08 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2017-03-22 17:51:25 +0530 (Wed, 22 Mar 2017)");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities-Remote (4013389)");
 
@@ -183,12 +183,25 @@ if( ! smb_sess_resp )
   exit( 0 );
 }
 
+##Extract UID from Session Setup AndX Response
+if(smb_sess_resp && strlen(smb_sess_resp) > 33)
+{
+  uid_low   = ord(smb_sess_resp[32]);
+  uid_high  = ord(smb_sess_resp[33]);
+  uid   = uid_high * 256;
+  uid  += uid_low;
+}
+else {
+  exit(0);
+}
+
 ## SMB Session Setup AndX Request, NTLMSSP_AUTH, User: \
 smb_sess_andx_req = raw_string(0x00, 0x00, 0x01, 0x02, 0xff, 0x53, 0x4d, 0x42,
                                0x73, 0x00, 0x00, 0x00, 0x00, 0x18, 0x03, 0xc8,
                                0x00, 0x00, 0x42, 0x53, 0x52, 0x53, 0x50, 0x59,
-                               0x4c, 0x20, 0x00, 0x00, 0x00, 0x00, 0xc5, 0xa6,
-                               0x00, 0x08, 0x80, 0x00, 0x0c, 0xff, 0x00, 0x00,
+                               0x4c, 0x20, 0x00, 0x00, 0x00, 0x00, 0xc5, 0xa6)
+                               + raw_string(uid_low, uid_high) +  
+                               raw_string( 0x80, 0x00, 0x0c, 0xff, 0x00, 0x00,
                                0x00, 0x00, 0x44, 0x01, 0x00, 0x00, 0x00, 0x00,
                                0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00, 0x00,
                                0x00, 0xdc, 0x02, 0x00, 0x80, 0xc7, 0x00, 0xa1,
@@ -229,19 +242,30 @@ if( ! smb_sess_andx_resp )
 }
 
 ## SMB Tree Connect AndX Request, Path: \\xxx.xxx.xxx.xxx\IPC$
-smb_tree_resp = smb_tconx( soc:soc, name:name, uid:"2048", share:"IPC$" );
+smb_tree_resp = smb_tconx( soc:soc, name:name, uid:uid, share:"IPC$" );
 if(! smb_tree_resp )
 {
   close( soc );
   exit( 0 );
 }
 
+##Extract Tree ID from SMB Tree Connect Response
+if(smb_tree_resp && strlen(smb_tree_resp) > 29)
+{
+  tid_low = ord(smb_tree_resp[28] );
+  tid_high = ord(smb_tree_resp[29] );
+}
+else {
+  exit(0);
+}
+
 # SMB Pipe PeekNamedPipe Request, FID: 0x0000
 smbtrans_request = raw_string(0x00, 0x00, 0x00, 0x4a, 0xff, 0x53, 0x4d, 0x42, 
                               0x25, 0x00, 0x00, 0x00, 0x00, 0x18, 0x01, 0x28, 
                               0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-                              0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0xf5, 0x5e, 
-                              0x00, 0x08, 0x26, 0x76, 0x10, 0x00, 0x00, 0x00, 
+                              0x00, 0x00, 0x00, 0x00)+raw_string(tid_low, tid_high) +
+                              raw_string( 0xf5, 0x5e)+raw_string(uid_low, uid_high) +
+                              raw_string(0x26, 0x76, 0x10, 0x00, 0x00, 0x00, 
                               0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 
                               0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
                               0x00, 0x4a, 0x00, 0x00, 0x00, 0x4a, 0x00, 0x02, 

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_344.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_344.nasl 6422 2017-06-23 14:42:44Z teissa $
 #
-# IT-Grundschutz, 14. EL, Maﬂnahme 4.344
+# IT-Grundschutz, 15. EL, Maﬂnahme 4.344
 #
 # Authors:
 # Thomas Rotter <thomas.rotter@greenbone.net>
@@ -27,26 +27,26 @@
 if(description)
 {
   script_id(94248);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6422 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 16:42:44 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_name("IT-Grundschutz M4.344: ‹berwachung von Windows Vista-, Windows 7 und Windows Server 2008-Systemen");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
-  script_summary  ("IT-Grundschutz M4.344: ‹berwachung von Windows Vista-, Windows 7 und Windows Server 2008-Systemen.");
+  script_name("IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008");
+  script_xref(name : "URL" , value : " http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
+  script_summary  ("IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Tools/Present/wmi");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "GSHB/GSHB_WMI_AdvancedPolicySettings.nasl"); 
   script_require_keys("WMI/ELCP/GENERAL");
   script_tag(name : "summary" , value :
-"IT-Grundschutz M4.344: ‹berwachung von Windows Vista-, Windows 7 und Windows Server 2008-Systemen.
+"IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008
 
-Stand: 14. Erg‰nzungslieferung (14. EL).
+Stand: 15. Erg‰nzungslieferung (15. EL).
 ");
 
   exit(0);
@@ -54,7 +54,7 @@ Stand: 14. Erg‰nzungslieferung (14. EL).
 
 include("itg.inc");
 
-name = 'IT-Grundschutz M4.344: ‹berwachung von Windows Vista-, Windows 7 und Windows Server 2008-Systemen\n';
+name = 'IT-Grundschutz M4.344: ‹berwachung von Windows-Systemen ab Windows Vista und Windows Server 2008\n';
 
 include("http_func.inc");
 
@@ -93,105 +93,107 @@ if (ELCP == "ok" && Domainrole != "0"){
   SysEventLChannelAccess = get_kb_item("WMI/ELCP/SysEventLChannelAccess");
   SetEventLEnable = get_kb_item("WMI/ELCP/SetEventLEnable");
 
-CPSGENERAL = get_kb_item("WMI/cps/GENERAL");
-AuditAccountLogon = get_kb_item("WMI/cps/AuditAccountLogon");
-AuditAccountManage = get_kb_item("WMI/cps/AuditAccountManage");
-AuditPrivilegeUse = get_kb_item("WMI/cps/AuditPrivilegeUse");
-AuditObjectAccess = get_kb_item("WMI/cps/AuditObjectAccess");
-AuditPolicyChange = get_kb_item("WMI/cps/AuditPolicyChange");
-AuditLogonEvents = get_kb_item("WMI/cps/AuditLogonEvents");
-AuditSystemEvents = get_kb_item("WMI/cps/AuditSystemEvents");
-MaximumLogSizeApp = get_kb_item("WMI/cps/MaximumLogSizeApp");
-MaximumLogSizeEvent = get_kb_item("WMI/cps/MaximumLogSizeEvent");
-MaximumLogSizeSec = get_kb_item("WMI/cps/MaximumLogSizeSec");
+  CPSGENERAL = get_kb_item("WMI/cps/GENERAL");
+  AuditAccountLogon = get_kb_item("WMI/cps/AuditAccountLogon");
+  AuditAccountManage = get_kb_item("WMI/cps/AuditAccountManage");
+  AuditPrivilegeUse = get_kb_item("WMI/cps/AuditPrivilegeUse");
+  AuditObjectAccess = get_kb_item("WMI/cps/AuditObjectAccess");
+  AuditPolicyChange = get_kb_item("WMI/cps/AuditPolicyChange");
+  AuditLogonEvents = get_kb_item("WMI/cps/AuditLogonEvents");
+  AuditSystemEvents = get_kb_item("WMI/cps/AuditSystemEvents");
+  MaximumLogSizeApp = get_kb_item("WMI/cps/MaximumLogSizeApp");
+  MaximumLogSizeEvent = get_kb_item("WMI/cps/MaximumLogSizeEvent");
+  MaximumLogSizeSec = get_kb_item("WMI/cps/MaximumLogSizeSec");
 
-if (AuditAccountLogon != "None")
-{
-  AuditAccountLogon = split(AuditAccountLogon, sep:'\n', keep:0);
-  AuditAccountLogon = split(AuditAccountLogon[1], sep:'|', keep:0);
-}
-if (AuditAccountManage != "None")
-{
-  AuditAccountManage = split(AuditAccountManage, sep:'\n', keep:0);
-  AuditAccountManage = split(AuditAccountManage[1], sep:'|', keep:0);
-}
-if (AuditPrivilegeUse != "None")
-{
-  AuditPrivilegeUse = split(AuditPrivilegeUse, sep:'\n', keep:0);
-  AuditPrivilegeUse = split(AuditPrivilegeUse[1], sep:'|', keep:0);
-}
-if (AuditObjectAccess != "None")
-{
-  AuditObjectAccess = split(AuditObjectAccess, sep:'\n', keep:0);
-  AuditObjectAccess = split(AuditObjectAccess[1], sep:'|', keep:0);
-}
-if (AuditPolicyChange != "None")
-{
-  AuditPolicyChange = split(AuditPolicyChange, sep:'\n', keep:0);
-  AuditPolicyChange = split(AuditPolicyChange[1], sep:'|', keep:0);
-}
-if (AuditLogonEvents != "None")
-{
-  AuditLogonEvents = split(AuditLogonEvents, sep:'\n', keep:0);
-  AuditLogonEvents = split(AuditLogonEvents[1], sep:'|', keep:0);
-}
-if (AuditSystemEvents != "None")
-{
-  AuditSystemEvents = split(AuditSystemEvents, sep:'\n', keep:0);
-  AuditSystemEvents = split(AuditSystemEvents[1], sep:'|', keep:0);
-}
-if(AppEventLMaxSize == "None" && MaximumLogSizeApp == "None"){
-  MaximumLogSizeApp = "20480";
-}else if(AppEventLMaxSize == "None" || !AppEventLMaxSize){
-  if (MaximumLogSizeApp != "None")
+  AuditRemovableStorage = get_kb_item("WMI/AdvancedPolicy/RemovableStorage");
+
+  if (AuditAccountLogon != "None")
   {
-    MaximumLogSizeApp = split(MaximumLogSizeApp, sep:'\n', keep:0);
-    MaximumLogSizeApp = split(MaximumLogSizeApp[1], sep:'|', keep:0);
-    MaximumLogSizeApp = MaximumLogSizeApp[2];
+    AuditAccountLogon = split(AuditAccountLogon, sep:'\n', keep:0);
+    AuditAccountLogon = split(AuditAccountLogon[1], sep:'|', keep:0);
   }
-}else{
-  if (AppEventLMaxSize != "0")MaximumLogSizeApp = hex2dec(xvalue:AppEventLMaxSize);
-}
-
-if(SecEventLMaxSize == "None" && MaximumLogSizeSec == "None"){
-  MaximumLogSizeSec = "20480";
-}else if(SecEventLMaxSize == "None" || !SecEventLMaxSize){
-  if (MaximumLogSizeSec != "None")
+  if (AuditAccountManage != "None")
   {
-    MaximumLogSizeSec = split(MaximumLogSizeSec, sep:'\n', keep:0);
-    MaximumLogSizeSec = split(MaximumLogSizeSec[1], sep:'|', keep:0);
-    MaximumLogSizeSec = MaximumLogSizeSec[2];
+    AuditAccountManage = split(AuditAccountManage, sep:'\n', keep:0);
+    AuditAccountManage = split(AuditAccountManage[1], sep:'|', keep:0);
   }
-}else{
-  if (SysEventLMaxSize != "0")MaximumLogSizeSec = hex2dec(xvalue:SecEventLMaxSize);
-}
-
-if(SysEventLMaxSize == "None" && MaximumLogSizeEvent == "None"){
-  MaximumLogSizeEvent = "20480";
-}else if(SysEventLMaxSize == "None" || !SysEventLMaxSize){
-  if (MaximumLogSizeEvent != "None")
+  if (AuditPrivilegeUse != "None")
   {
-    MaximumLogSizeEvent = split(MaximumLogSizeEvent, sep:'\n', keep:0);
-    MaximumLogSizeEvent = split(MaximumLogSizeEvent[1], sep:'|', keep:0);
-    MaximumLogSizeEvent = MaximumLogSizeEvent[2];
+    AuditPrivilegeUse = split(AuditPrivilegeUse, sep:'\n', keep:0);
+    AuditPrivilegeUse = split(AuditPrivilegeUse[1], sep:'|', keep:0);
   }
-}else{
-  if (SysEventLMaxSize != "0")MaximumLogSizeEvent = hex2dec(xvalue:SysEventLMaxSize);
-}
+  if (AuditObjectAccess != "None")
+  {
+    AuditObjectAccess = split(AuditObjectAccess, sep:'\n', keep:0);
+    AuditObjectAccess = split(AuditObjectAccess[1], sep:'|', keep:0);
+  }
+  if (AuditPolicyChange != "None")
+  {
+    AuditPolicyChange = split(AuditPolicyChange, sep:'\n', keep:0);
+    AuditPolicyChange = split(AuditPolicyChange[1], sep:'|', keep:0);
+  }
+  if (AuditLogonEvents != "None")
+  {
+    AuditLogonEvents = split(AuditLogonEvents, sep:'\n', keep:0);
+    AuditLogonEvents = split(AuditLogonEvents[1], sep:'|', keep:0);
+  }
+  if (AuditSystemEvents != "None")
+  {
+    AuditSystemEvents = split(AuditSystemEvents, sep:'\n', keep:0);
+    AuditSystemEvents = split(AuditSystemEvents[1], sep:'|', keep:0);
+  }
+  if(AppEventLMaxSize == "None" && MaximumLogSizeApp == "None"){
+    MaximumLogSizeApp = "20480";
+  }else if(AppEventLMaxSize == "None" || !AppEventLMaxSize){
+    if (MaximumLogSizeApp != "None")
+    {
+      MaximumLogSizeApp = split(MaximumLogSizeApp, sep:'\n', keep:0);
+      MaximumLogSizeApp = split(MaximumLogSizeApp[1], sep:'|', keep:0);
+      MaximumLogSizeApp = MaximumLogSizeApp[2];
+    }
+  }else{
+    if (AppEventLMaxSize != "0")MaximumLogSizeApp = hex2dec(xvalue:AppEventLMaxSize);
+  }
 
-if (SetEventLMaxSize != "0" && SetEventLMaxSize != "None") MaximumLogSizeSetup = hex2dec(xvalue:SetEventLMaxSize);
-else if (SetEventLMaxSize == "None") MaximumLogSizeSetup = "20480";
-else MaximumLogSizeSetup = SetEventLMaxSize;
+  if(SecEventLMaxSize == "None" && MaximumLogSizeSec == "None"){
+    MaximumLogSizeSec = "20480";
+  }else if(SecEventLMaxSize == "None" || !SecEventLMaxSize){
+    if (MaximumLogSizeSec != "None")
+    {
+      MaximumLogSizeSec = split(MaximumLogSizeSec, sep:'\n', keep:0);
+      MaximumLogSizeSec = split(MaximumLogSizeSec[1], sep:'|', keep:0);
+      MaximumLogSizeSec = MaximumLogSizeSec[2];
+    }
+  }else{
+    if (SysEventLMaxSize != "0")MaximumLogSizeSec = hex2dec(xvalue:SecEventLMaxSize);
+  }
 
-SeSecurityPrivilege = get_kb_item("WMI/cps/SeSecurityPrivilege");
-SeSecurityPrivilege = split(SeSecurityPrivilege, sep:'\n', keep:0);
-SeSecurityPrivilege = split(SeSecurityPrivilege[1], sep:'|', keep:0);
+  if(SysEventLMaxSize == "None" && MaximumLogSizeEvent == "None"){
+    MaximumLogSizeEvent = "20480";
+  }else if(SysEventLMaxSize == "None" || !SysEventLMaxSize){
+    if (MaximumLogSizeEvent != "None")
+    {
+      MaximumLogSizeEvent = split(MaximumLogSizeEvent, sep:'\n', keep:0);
+      MaximumLogSizeEvent = split(MaximumLogSizeEvent[1], sep:'|', keep:0);
+      MaximumLogSizeEvent = MaximumLogSizeEvent[2];
+    }
+  }else{
+    if (SysEventLMaxSize != "0")MaximumLogSizeEvent = hex2dec(xvalue:SysEventLMaxSize);
+  }
 
-for(i=0; i<max_index(SeSecurityPrivilege); i++)
-{
-  if(SeSecurityPrivilege[i] == "1" || SeSecurityPrivilege[i] == "SeSecurityPrivilege") continue;
-  SeSecurityPrivilegeUser += SeSecurityPrivilege[i] + ";";
-}
+  if (SetEventLMaxSize != "0" && SetEventLMaxSize != "None") MaximumLogSizeSetup = hex2dec(xvalue:SetEventLMaxSize);
+  else if (SetEventLMaxSize == "None") MaximumLogSizeSetup = "20480";
+  else MaximumLogSizeSetup = SetEventLMaxSize;
+
+  SeSecurityPrivilege = get_kb_item("WMI/cps/SeSecurityPrivilege");
+  SeSecurityPrivilege = split(SeSecurityPrivilege, sep:'\n', keep:0);
+  SeSecurityPrivilege = split(SeSecurityPrivilege[1], sep:'|', keep:0);
+
+  for(i=0; i<max_index(SeSecurityPrivilege); i++)
+  {
+    if(SeSecurityPrivilege[i] == "1" || SeSecurityPrivilege[i] == "SeSecurityPrivilege") continue;
+    SeSecurityPrivilegeUser += SeSecurityPrivilege[i] + ";";
+  }
 
 }
 
@@ -241,7 +243,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   if(Domainrole == "1")  #Hier beginnt die Pr¸fung f¸r Domainmitglieder
   {
 
-    if(AuditAccountLogon[1] == "True" &&  AuditAccountLogon[3] == "True" && AuditLogonEvents[1] == "True" &&  AuditLogonEvents[3] == "True" && AuditPrivilegeUse[1] == "True" && AuditPolicyChange[1] == "True" &&  AuditPolicyChange[3] == "True" && AuditSystemEvents[1] == "True" &&  AuditSystemEvents[3] == "True" && AuditAccountManage[1] == "True" &&  AuditAccountManage[3] == "True" && AuditObjectAccess[1] == "True" && MaximumLogSizeApp >= 30080 &&  MaximumLogSizeEvent >= 30080 &&  MaximumLogSizeSec >= 100992 && MaximumLogSizeSetup < 30080 && domain >< NtpServer[0]  && ((AppEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && AppEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") || AppEventLChannelAccess =~ "\(D;;0x.*;;;BG\)") &&  (SecEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && SecEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") &&  ((SetEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && SetEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") || SetEventLChannelAccess =~ "\(D;;0x.*;;;BG\)") &&  ((SysEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && SysEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") || SysEventLChannelAccess =~ "\(D;;0x.*;;;BG\)"))  
+    if(AuditAccountLogon[1] == "True" &&  AuditAccountLogon[3] == "True" && AuditLogonEvents[1] == "True" &&  AuditLogonEvents[3] == "True" && AuditPrivilegeUse[1] == "True" && AuditPolicyChange[1] == "True" &&  AuditPolicyChange[3] == "True" && AuditSystemEvents[1] == "True" &&  AuditSystemEvents[3] == "True" && AuditAccountManage[1] == "True" &&  AuditAccountManage[3] == "True" && AuditObjectAccess[1] == "True" && MaximumLogSizeApp >= 30080 &&  MaximumLogSizeEvent >= 30080 &&  MaximumLogSizeSec >= 100992 && MaximumLogSizeSetup < 30080 && domain >< NtpServer[0]  && ((AppEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && AppEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") || AppEventLChannelAccess =~ "\(D;;0x.*;;;BG\)") &&  (SecEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && SecEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") &&  ((SetEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && SetEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") || SetEventLChannelAccess =~ "\(D;;0x.*;;;BG\)") &&  ((SysEventLChannelAccess !~ "\(A;;0x.*;;;BG\)" && SysEventLChannelAccess !~ "\(A;;0x.*;;;AN\)") || SysEventLChannelAccess =~ "\(D;;0x.*;;;BG\)") && (AuditRemovableStorage == "None" || AuditRemovableStorage == "Success and Failure"))
     {
       result = string("erf¸llt");
       desc = string('Soweit konfigurierbar, entspricht das System der\nIT-Grundschutz Maﬂnahme M4.344.');
@@ -318,6 +320,8 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
          if (SysEventLChannelAccess =~ "\(A;;0x.*;;;BG\)") val += '\n' + "Auf das Systemprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests-\nZugriff gew‰hrt";
          if (SysEventLChannelAccess =~ "\(A;;0x.*;;;AN\)") val += '\n' + "Auf das Systemprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, -Anonymous logon- Zugriff gew‰hrt";
        }       if(domain >!< NtpServer[0]) val += '\n' + "Auf dem System wurde NTP-Server hinterlegt, der nicht\naus der lokalen Domain stammt: " + NtpServer[0];
+
+       if (AuditRemovableStorage != "None" || AuditRemovableStorage != "Success and Failure") val += '\n' + 'Der Zugriff auf Wechselmedien sollte ¸berwacht werden (ab Windows 7 ¸ber "Erweiterte ‹berwachungsrichtlinienkonfiguration" aktivierbar).';
 
        desc = string('\nDas System entspricht nicht dem konfigurierbaren Teil\nder IT-Grundschutz Maﬂnahme M4.344.\n' + val);
     }

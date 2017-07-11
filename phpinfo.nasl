@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpinfo.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: phpinfo.nasl 6355 2017-06-16 08:59:27Z cfischer $
 #
 # phpinfo() output accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11229");
-  script_version("$Revision: 5815 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 6355 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 10:59:27 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -41,10 +41,13 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"Delete them or restrict access to the listened files.");
+
   script_tag(name:"summary", value:"Many PHP installation tutorials instruct the user to create
   a file called phpinfo.php or similar containing the phpinfo() statement. Such a file is often times
   left in webserver directory after completion.");
+
   script_tag(name:"impact", value:"Some of the information that can be gathered from this file includes:
+
   The username of the user who installed php, if they are a SUDO user, the IP address of the host, the web server 
   version, the system version(unix / linux), and the root directory of the web server.");
 
@@ -59,6 +62,8 @@ include("http_keepalive.inc");
 
 function get_php_version( data ) {
 
+  local_var data, vers;
+
   if( isnull( data ) ) return;
 
   vers = eregmatch( pattern:'>PHP Version ([^<]+)<', string:data );
@@ -71,7 +76,8 @@ report = 'The following files are calling the function phpinfo() which disclose 
 files = make_list( "/phpinfo.php", "/info.php", "/test.php", "/php_info.php", "/index.php" );
 
 port = get_http_port( default:80 );
-if( ! can_host_php( port:port ) ) exit( 0 );
+# nb: Don't use can_host_php() here as this NVT is reporting PHP as well
+# and can_host_php() could fail if no PHP was detected before
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

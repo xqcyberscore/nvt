@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850829");
-  script_version("$Revision: 3352 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:34:58 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:01 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-2016", "CVE-2013-4344", "CVE-2013-4541", "CVE-2014-0142",
                 "CVE-2014-0143", "CVE-2014-0144", "CVE-2014-0145", "CVE-2014-0146",
@@ -84,7 +84,6 @@ http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0147");
   script_xref(name: "SUSE-SU", value: "2014:0623_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-05/msg00002.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kvm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

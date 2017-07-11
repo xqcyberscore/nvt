@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0306.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-0306.nasl 6243 2017-05-30 09:04:14Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123967");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6243 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:57 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0306");
 script_tag(name: "insight", value: "ELSA-2012-0306 -  krb5 security and bug fix update - [1.6.1-70.el5]- add upstream patch for telnetd buffer overflow (CVE-2011-4862, #770351)[1.6.1-69.el5]- ftp: fix a static analysis should-never-happen NULL dereference (#750823)[1.6.1-68.el5]- backport fixes to teach libkrb5 to use descriptors higher than FD_SETSIZE to talk to a KDC by using poll() if it's detected at compile-time, revised (#701444, RT#6905)[1.6.1-67.el5]- add backported patch by way of jbarbuc to free subkeys created by the KDC while processing TGS requests (#708516)[1.6.1-66.el5]- add backported patch by way of several people to better avoid false detection of replay attacks when talking to systems with coarse time resolution (#713500)[1.6.1-65.el5]- ftpd: add backported patch to check for errors when calling setegid (MITKRB5-SA-2011-005, CVE-2011-1526, #719098)[1.6.1-64.el5]- klist: don't trip over referral entries when invoked with -s (#729067, RT#6915)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-0306");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

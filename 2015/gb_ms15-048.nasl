@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805178");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-1672", "CVE-2015-1673");
   script_bugtraq_id(74482, 74487);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 09:21:10 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (3057134)");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3057134");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-048");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

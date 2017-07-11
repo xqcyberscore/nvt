@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_dos_vuln_june15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ibm_websphere_mq_dos_vuln_june15.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # IBM WebSphere MQ 'PCF Response Message Handling' DoS Vulnerability - June 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805580");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2014-4771");
   script_bugtraq_id(74326);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-04 13:10:30 +0530 (Thu, 04 Jun 2015)");
   script_name("IBM WebSphere MQ 'PCF Response Message Handling' DoS Vulnerability - June 2015");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21696120");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM WebSphere MQ");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");

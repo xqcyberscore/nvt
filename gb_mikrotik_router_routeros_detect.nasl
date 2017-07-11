@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
+# $Id: gb_mikrotik_router_routeros_detect.nasl 6272 2017-06-02 09:59:57Z santu $
 #
 # MikroTik Router RouterOS (OS Of RouterBOARD) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810608");
-  script_version("$Revision: 5829 $");
+  script_version("$Revision: 6272 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-02 11:59:57 +0200 (Fri, 02 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:28:48 +0530 (Thu, 09 Mar 2017)");
   script_name("MikroTik Router RouterOS (OS Of RouterBOARD) Detection");
 
@@ -72,7 +72,7 @@ if(">RouterOS router configuration page<" >< res && "mikrotik<" >< res && ">Logi
 
   set_kb_item(name:"mikrotik/detected", value: TRUE);
 
-  vers = eregmatch(pattern: ">RouterOS v([0-9.]+)<", string: res);
+  vers = eregmatch(pattern: ">RouterOS v([A-Za-z0-9.]+)<", string: res);
   if(vers[1])
   {
     mikVer = vers[1];
@@ -80,7 +80,7 @@ if(">RouterOS router configuration page<" >< res && "mikrotik<" >< res && ">Logi
   }
 
   ## No cpe name available, assigning CPE = cpe:/a:mikrotik:routeros
-  cpe = build_cpe(value: mikVer, exp: "^([0-9.]+)", base: "cpe:/a:mikrotik:routeros:");
+  cpe = build_cpe(value: mikVer, exp: "^([A-Za-z0-9.]+)", base: "cpe:/a:mikrotik:routeros:");
   if (!cpe)
     cpe = "cpe:/a:mikrotik:routeros";
 

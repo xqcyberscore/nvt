@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_version.nasl 4199 2016-09-30 17:25:54Z mime $
+# $Id: gb_f5_big_ip_version.nasl 6255 2017-05-31 09:56:25Z teissa $
 #
 # F5 Networks BIG-IP Detection
 #
@@ -30,15 +30,14 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105159");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 4199 $");
- script_tag(name:"last_modification", value:"$Date: 2016-09-30 19:25:54 +0200 (Fri, 30 Sep 2016) $");
+ script_tag(name:"qod_type", value:"package");
+ script_version("$Revision: 6255 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:56:25 +0200 (Wed, 31 May 2017) $");
  script_tag(name:"creation_date", value:"2015-01-09 11:58:46 +0100 (Fri, 09 Jan 2015)");
  script_name("F5 Networks BIG-IP Detection");
 
  script_tag(name: "summary" , value: "This script performs SSH based detection of F5 Networks BIG-IP");
 
- script_summary("This script performs SSH based detection of F5 Networks BIG-IP");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

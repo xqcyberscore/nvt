@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-013.nasl 5582 2017-03-15 15:50:24Z antu123 $
+# $Id: gb_ms17-013.nasl 6400 2017-06-22 05:47:08Z santu $
 #
 # Microsoft Graphics Component Multiple Vulnerabilities (4013075)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810811");
-  script_version("$Revision: 5582 $");
+  script_version("$Revision: 6400 $");
   script_cve_id("CVE-2017-0001", "CVE-2017-0005", "CVE-2017-0025", "CVE-2017-0047",
                 "CVE-2017-0060", "CVE-2017-0062", "CVE-2017-0073", "CVE-2017-0061",
                 "CVE-2017-0063", "CVE-2017-0038", "CVE-2017-0108", "CVE-2017-0014");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 16:50:24 +0100 (Wed, 15 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 07:47:08 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 11:04:14 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component Multiple Vulnerabilities (4013075)");
@@ -56,16 +56,25 @@ if(description)
   Impact Level: System");
 
   script_tag(name:"affected", value:"
+  Microsoft Windows 8 x86/x64
+
+  Microsoft Windows XP SP2 x64 / SP3 x86
+
   Microsoft Windows 8.1 x32/x64 Edition
-  Microsoft Windows 10 x32/x64
-  Microsoft Windows Server 2012/2012R2
-  Microsoft Windows 10 Version 1511 x32/x64
-  Microsoft Windows 10 Version 1607 x32/x64
+
+  Microsoft Windows 10/1511/1607 x32/x64
+
+  Microsoft Windows Server 2012/2012R2/2016
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.
-  Microsoft Windows Server 2016.");
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
@@ -99,24 +108,26 @@ uspVer  = "";
 icmVer = "";
 
 ## Check for OS and Service Pack
-if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, winVistax64:3,
+if(hotfix_check_sp(winVista:3, winVistax64:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
                    win2008x64:3, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win10:1,
-                   win10x64:1, win2016:1) <= 0){
+                   win10x64:1, win2016:1, win8:1, win8x64:1, xp:4, xpx64:3, win2003:3,
+                   win2003x64:3) <= 0){
   exit(0);
 }
 
 ## Get System Path
-sysPath = smb_get_systemroot();
+sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
 ## Fetch the version of 'Win32k.sys, Usp10.dll'
-uspVer = fetch_file_version(sysPath, file_name:"System32\Usp10.dll");
-winVer = fetch_file_version(sysPath, file_name:"System32\Win32k.sys");
-icmVer = fetch_file_version(sysPath, file_name:"System32\icm32.dll");
+uspVer = fetch_file_version(sysPath, file_name:"Usp10.dll");
+winVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
+icmVer = fetch_file_version(sysPath, file_name:"icm32.dll");
+gdiVer = fetch_file_version(sysPath, file_name:"gdi32.dll");
 
-if(!uspVer && !winVer && !icmVer){
+if(!uspVer && !winVer && !icmVer && !gdiVer){
   exit(0);
 }
 
@@ -223,9 +234,43 @@ else if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) > 0)
   }
 }
 
+## Windows XP
+else if(hotfix_check_sp(xp:4) > 0)
+{
+  ## Check for 'GDI32.dll'  version, on 32bit xp sp3
+  if(gdiVer && version_is_less(version:gdiVer, test_version:"5.1.2600.7209"))
+  {
+    Vulnerable_range3 = "Less than 5.1.2600.7209";
+    VULN3 = TRUE ;
+  }
+}
+
+## Windows 2003, Windows XP SP2 64bit
+else if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0)
+{
+  ## Check for 'GDI32.dll'  version, on 32bit xp sp3
+  if(gdiVer && version_is_less(version:gdiVer, test_version:"5.2.3790.6022"))
+  {
+    Vulnerable_range3 = "Less than 5.2.3790.6022";
+    VULN3 = TRUE ;
+  }
+}
+
+else if(hotfix_check_sp(win8:1, win8x64:1) > 0)
+{
+  ## Check for 'GDI32.dll'  version, on 32bit xp sp3
+  if(gdiVer && version_is_less(version:gdiVer, test_version:"6.2.9200.22084"))
+  {
+    Vulnerable_range3 = "Less than 6.2.9200.22084";
+    VULN3 = TRUE ;
+  }
+}
+
+
+
 if(VULN)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Win32k.sys" + '\n' +
+  report = 'File checked:     ' + sysPath + "\Win32k.sys" + '\n' +
            'File version:     ' + winVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range + '\n' ;
   security_message(data:report);
@@ -234,18 +279,27 @@ if(VULN)
 
 else if(VULN1)
 {
-  report = 'File checked:     ' + sysPath + "\System32\Usp10.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\Usp10.dll" + '\n' +
            'File version:     ' + uspVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range1 + '\n' ;
   security_message(data:report);
   exit(0);
 }
 
-else if(VULN1)
+else if(VULN2)
 {
-  report = 'File checked:     ' + sysPath + "\System32\icm32.dll" + '\n' +
+  report = 'File checked:     ' + sysPath + "\icm32.dll" + '\n' +
            'File version:     ' + icmVer  + '\n' +
            'Vulnerable range: ' + Vulnerable_range2 + '\n' ;
+  security_message(data:report);
+  exit(0);
+}
+
+else if(VULN3)
+{
+  report = 'File checked:     ' + sysPath + "\gdi32.dll" + '\n' +
+           'File version:     ' + gdiVer  + '\n' +
+           'Vulnerable range: ' + Vulnerable_range3 + '\n' ;
   security_message(data:report);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_photo_station_rce_xss_05_15.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_synology_photo_station_rce_xss_05_15.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Synology Photo Station Command Injection and multiple Cross Site Scripting Vulnerabilities
 #
@@ -31,7 +31,7 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105280");
  script_cve_id("CVE-2015-4656");
- script_version("$Revision: 2748 $");
+ script_version("$Revision: 6329 $");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
  script_name("Synology Photo Station Command Injection and multiple Cross Site Scripting Vulnerabilities");
@@ -64,9 +64,8 @@ because it fails to sanitize user-supplied input.");
  script_tag(name: "solution_type", value:"VendorFix");
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-05-26 14:30:57 +0200 (Tue, 26 May 2015)");
- script_summary("Check if Synology Photo Station is vulnerable to XSS");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

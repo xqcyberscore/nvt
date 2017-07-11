@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-053.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ms15-053.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Microsoft Windows JScript & VBScript Security Bypass Vulnerability (3057263)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805614");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-1684", "CVE-2015-1686");
   script_bugtraq_id(74530, 74522);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:43:10 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows JScript & VBScript Security Bypass Vulnerability (3057263)");
 
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3050945");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-053");
 
-  script_summary("Check for the vulnerable 'Vbscript.dll' and 'Jscript.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

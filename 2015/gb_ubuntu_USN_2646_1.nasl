@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842248");
-  script_version("$Revision: 4668 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-05 09:01:26 +0100 (Mon, 05 Dec 2016) $");
+  script_version("$Revision: 6357 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-16 06:14:53 +0200 (Tue, 16 Jun 2015)");
   script_cve_id("CVE-2015-1328");
   script_tag(name:"cvss_base", value:"7.2");
@@ -45,7 +45,6 @@ could exploit this flaw to gain administrative privileges on the system.");
   script_xref(name: "USN", value: "2646-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-June/002993.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850975");
-  script_version("$Revision: 3352 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:34:58 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:20:35 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2013-1860", "CVE-2013-4162", "CVE-2013-7266", "CVE-2013-7267", "CVE-2013-7268", "CVE-2013-7269", "CVE-2013-7270", "CVE-2013-7271", "CVE-2014-0203", "CVE-2014-3144", "CVE-2014-3145", "CVE-2014-3917", "CVE-2014-4508", "CVE-2014-4652", "CVE-2014-4653", "CVE-2014-4654", "CVE-2014-4655", "CVE-2014-4656", "CVE-2014-4667", "CVE-2014-4699", "CVE-2014-4943", "CVE-2014-5077");
   script_tag(name:"cvss_base", value:"6.9");
@@ -88,7 +88,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2014:1138_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-09/msg00023.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of the kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

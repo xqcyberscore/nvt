@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_37611.nasl 3373 2016-05-23 18:32:02Z jan $
+# $Id: sw_magento_37611.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # Magento Multiple HTML Injection Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105225");
-  script_version("$Revision: 3373 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-23 20:32:02 +0200 (Mon, 23 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -43,7 +43,6 @@ if(description)
 
   script_name("Magento Multiple HTML Injection Vulnerabilities");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

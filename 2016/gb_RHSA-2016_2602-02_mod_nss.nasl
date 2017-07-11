@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871692");
-  script_version("$Revision: 5850 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 11:01:03 +0200 (Tue, 04 Apr 2017) $");
+  script_version("$Revision: 6396 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 05:41:57 +0100 (Fri, 04 Nov 2016)");
   script_cve_id("CVE-2016-3099");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for mod_nss RHSA-2016:2602-02");
   script_tag(name: "summary", value: "Check the version of mod_nss");

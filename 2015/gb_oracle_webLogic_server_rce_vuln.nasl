@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webLogic_server_rce_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_oracle_webLogic_server_rce_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Oracle WebLogic Server Remote Code Execution Vulnerability 
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806622");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2015-4852");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-17 14:28:17 +0530 (Tue, 17 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle WebLogic Server Remote Code Execution Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/alert-cve-2015-4852-2763333.html");
   script_xref(name : "URL" , value : "http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/");
 
-  script_summary("Check if Oracle WebLogic Server is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_vuln_may15_win.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_libreoffice_mult_vuln_may15_win.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # LibreOffice Multiple Vulnerabilities May15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805604");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-1774");
   script_bugtraq_id(74338);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-05 12:05:22 +0530 (Tue, 05 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Multiple Vulnerabilities May15 (Windows)");
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.libreoffice.org/about-us/security/advisories/cve-2015-1774");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache OpenOffice on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_libre_office_detect_win.nasl");

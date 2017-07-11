@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-625.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-625.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120615");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:26 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-625");
 script_tag(name: "insight", value: "A flaw was found in the way OpenSSH handled PAM authentication when using privilege separation. An attacker with valid credentials on the system and able to fully compromise a non-privileged pre-authentication process using a different flaw could use this flaw to authenticate as other users.It was discovered that the OpenSSH sshd daemon did not check the list of keyboard-interactive authentication methods for duplicates. A remote attacker could use this flaw to bypass the MaxAuthTries limit, making it easier to perform password guessing attacks.A use-after-free flaw was found in OpenSSH. An attacker able to fully compromise a non-privileged pre-authentication process using a different flaw could possibly cause sshd to crash or execute arbitrary code with root privileges."); 
 script_tag(name : "solution", value : "Run yum update openssh to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-625");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

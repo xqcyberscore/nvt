@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-0016.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-0016.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123206");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:00:43 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-0016");
 script_tag(name: "insight", value: "ELSA-2015-0016 -  glibc security and bug fix update - [2.12-1.149.4]- Fix recursive dlopen() (#1173469).[2.12-1.149.3]- Fix typo in res_send and res_query (#rh1172023).[2.12-1.149.2]- Fix crashes on invalid input in IBM gconv modules (CVE-2014-6040, #1139571).[2.12-1.149.1]- Fix wordexp() to honour WRDE_NOCMD (CVE-2014-7817, #1170121)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-0016");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

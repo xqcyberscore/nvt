@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joo_smf_sh_up.nasl 5212 2017-02-06 16:45:27Z teissa $
+# $Id: gb_joo_smf_sh_up.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Joomla SmartFormer 2.4.1 Shell Upload
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107023");
-  script_version("$Revision: 5212 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 17:45:27 +0100 (Mon, 06 Feb 2017) $");
+  script_version("$Revision: 6257 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"creation_date", value:"2016-07-06 06:40:16 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,7 @@ The script detects the version of joomla Smartformer component on remote host an
   script_tag(name : "impact" , value : "Successful exploitation will allow an
 unauthenticated remote attacker to upload shell files in an affected site..");
   script_tag(name : "affected" , value : "Joomla Smartformer 2.4.1.");
-  script_tag(name : "solution" , value : "No solution or patch is available as of 06th February, 2017. Check with vendor. Refer to https://www.itoris.com/joomla-extensions/ ");
+  script_tag(name : "solution" , value : "No solution or patch is available as of 31st May, 2017. Check with vendor. Refer to https://www.itoris.com/joomla-extensions/ ");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);

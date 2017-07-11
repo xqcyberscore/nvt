@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_mult_vuln01_sep15_win.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_shockwave_mult_vuln01_sep15_win.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities -01 Sep15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805980");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2015-6680", "CVE-2015-6681");
   script_bugtraq_id(76664);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-14 10:49:07 +0530 (Mon, 14 Sep 2015)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities -01 Sep15 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/shockwave/apsb15-22.html");
 
-  script_summary("Check for the vulnerable version of Adobe Shockwave Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

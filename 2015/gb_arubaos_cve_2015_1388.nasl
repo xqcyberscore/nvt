@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_cve_2015_1388.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_arubaos_cve_2015_1388.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # ArubaOS Remote Access Point (RAP) Command Injection
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-1388");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2582 $");
+ script_version ("$Revision: 6333 $");
 
  script_name("ArubaOS Remote Access Point (RAP) Command Injection");
 
@@ -61,9 +61,8 @@ Aruba access points operating in Remote AP mode.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-07 14:06:08 +0200 (Tue, 07 Apr 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

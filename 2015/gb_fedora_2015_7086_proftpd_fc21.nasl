@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869352");
-  script_version("$Revision: 3348 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:08 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6333 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-11 05:51:44 +0200 (Mon, 11 May 2015)");
   script_cve_id("CVE-2015-3306");
   script_tag(name:"cvss_base", value:"10.0");
@@ -51,7 +51,6 @@ scripts to have it run by xinetd instead are included.
   script_xref(name: "FEDORA", value: "2015-7086");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/157581.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of proftpd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

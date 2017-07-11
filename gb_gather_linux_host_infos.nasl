@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gather_linux_host_infos.nasl 5113 2017-01-26 09:44:21Z cfi $
+# $Id: gb_gather_linux_host_infos.nasl 6246 2017-05-30 13:04:03Z cfi $
 #
 # Gather Linux Host Information
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105525");
-  script_version("$Revision: 5113 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-26 10:44:21 +0100 (Thu, 26 Jan 2017) $");
+  script_version("$Revision: 6246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:04:03 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2016-01-22 13:42:01 +0100 (Fri, 22 Jan 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,8 +57,8 @@ if( ! sock ) exit( 0 );
 
 uptime = ssh_cmd( socket:sock, cmd:'cat /proc/uptime' );
 
-if( uptime && uptime =~ "^[0-9]+\.[0-9]+" )
-{
+if( uptime && uptime =~ "^[0-9]+\.[0-9]+" ) {
+
   now = unixtime();
 
   ut = split( uptime, sep:".", keep:FALSE );
@@ -72,21 +72,23 @@ if( uptime && uptime =~ "^[0-9]+\.[0-9]+" )
 
 uname = get_kb_item( "Host/uname" );
 
-if( uname && "Linux" >< uname )
-{
+if( uname && "Linux" >< uname ) {
+
   un = split( uname );
-  foreach line( un )
-  {
-    if( line =~ "^Linux" )
-    {
+  foreach line( un ) {
+
+    if( line =~ "^Linux" ) {
+
       kv = eregmatch( pattern:'^Linux [^ ]+ ([^ ]+) #([0-9])+', string:line );
-      if( ! isnull( kv[1] ) )
-        set_kb_item( name:"Host/running_kernel_version", value: kv[1] );
+
+      if( ! isnull( kv[1] ) ) {
+        set_kb_item( name:"Host/running_kernel_version", value:kv[1] );
+        register_host_detail( name:"Running-Kernel", value:kv[1] );
+      }
 
       if( ! isnull( kv[2] ) )
-        set_kb_item( name:"Host/running_kernel_build_version", value: kv[2] );
+        set_kb_item( name:"Host/running_kernel_build_version", value:kv[2] );
 
-      register_host_detail( name:"Running-Kernel", value:kv[1] );
       break;
     }
   }

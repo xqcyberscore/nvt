@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 6091 2017-05-09 17:33:47Z cfi $
+# $Id: gb_nmap_os_detection.nasl 6226 2017-05-26 21:05:06Z cfi $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 6091 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 19:33:47 +0200 (Tue, 09 May 2017) $");
+  script_version("$Revision: 6226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 23:05:06 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
-  script_dependencies("toolcheck.nasl", "find_service.nasl", "secpod_open_tcp_ports.nasl");
+  script_dependencies("toolcheck.nasl", "ping_host.nasl", "secpod_open_tcp_ports.nasl");
   script_mandatory_keys("Tools/Present/nmap", "TCP/PORTS");
 
   script_xref(name:"URL", value:"https://nmap.org/book/man-os-detection.html");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 5800 2017-03-30 17:07:21Z mime $
+# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805269");
-  script_version("$Revision: 5800 $");
+  script_version("$Revision: 6333 $");
   script_cve_id("CVE-2014-5212", "CVE-2014-5213");
   script_bugtraq_id(71741, 71748);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 19:07:21 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-06 12:01:38 +0530 (Fri, 06 Feb 2015)");
   script_name("Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
@@ -64,7 +64,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1031408");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/534284");
   script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=3426981");
-  script_summary("Check the version of Novell eDirectory is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

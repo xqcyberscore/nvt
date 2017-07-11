@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_detect.nasl 4249 2016-10-12 06:05:18Z cfi $
+# $Id: secpod_apache_detect.nasl 6411 2017-06-23 08:20:27Z cfischer $
 #
 # Apache Web Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900498");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4249 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-12 08:05:18 +0200 (Wed, 12 Oct 2016) $");
+  script_version("$Revision: 6411 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 10:20:27 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Web Server Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -49,69 +49,112 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-include("global_settings.inc");
 
 port = get_http_port( default:80 );
-
-server_info_banner = get_kb_item( 'www/server-info/banner/' + port );
 banner = get_http_banner( port:port );
 
-sndReq = http_get( item: "/non-existent", port:port );
-rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:FALSE );
+# Just the default server banner without catching e.g. Apache-Tomcat
+if( banner && "Apache" >< banner && "Apache-" >!< banner ) {
 
-# If banner is changed by e.g. mod_security but default error page still exists
-errorPage = eregmatch( pattern:"<address>.* Server at .* Port ([0-9.]+)</address>", string:rcvRes );
+  version = "unknown";
+  installed = TRUE;
 
-if( ( "Apache" >!< banner || "Apache-" >< banner ) && "Apache" >!< server_info_banner && isnull( errorPage ) ) {
-  exit( 0 );
+  vers = eregmatch( pattern:"Server: Apache/([0-9]\.[0-9]+\.[0-9][0-9]?)", string:banner );
+  if( ! isnull( vers[1] ) ) version = chomp( vers[1] );
 }
 
-tmpVer = eregmatch( pattern:"Server: Apache/([0-9]\.[0-9]+\.[0-9][0-9]?)",
-                    string:banner );
+if( ! version || version == "unknown" ) {
 
-if( isnull ( tmpVer[1] ) ) {
-  tmpVer = eregmatch( pattern:"Server: Apache/([0-9]\.[0-9]+\.[0-9][0-9]?)",
-                      string:server_info_banner );
-}  
+  # From apache_server_info.nasl
+  server_info = get_kb_item( "www/server-info/banner/" + port );
 
-if( tmpVer[1] ) {
-  apacheVer = tmpVer[1];
-} else {
+  if( server_info ) {
 
-  ## Send and Receive the response
-  req = http_get( item:"/manual/en/index.html",  port:port );
-  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+    url = "/server-info";
+    version = "unknown";
+    installed = TRUE;
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-  tmpVer = eregmatch( pattern:"<title>Apache HTTP Server Version ([0-9]\.[0-9]+).*Documentation - Apache HTTP Server.*</title>",
-                      string:res );
-
-  if( tmpVer[1] ) {
-    apacheVer = tmpVer[1];
-  } else {
-    apacheVer = 'unknown';
+    vers = eregmatch( pattern:"Server: Apache/([0-9]\.[0-9]+\.[0-9][0-9]?)", string:server_info );
+    if( ! isnull( vers[1] ) ) {
+      version = vers[1];
+      replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache/" + version );
+    } else {
+      replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache" );
+    }
   }
 }
 
-set_kb_item( name:"www/" + port + "/Apache", value:apacheVer );
+if( ! version || version == "unknown" ) {
 
-set_kb_item( name:'apache/installed', value:TRUE );
+  url = "/non-existent.html";
+  req = http_get( item:url, port:port );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE, fetch404:TRUE );
+
+  # If banner is changed by e.g. mod_security but default error page still exists
+  if( res =~ "^HTTP/1\.[01] [3-5].*" && res =~ "<address>.* Server at .* Port.*</address>" ) {
+
+    version = "unknown";
+    installed = TRUE;
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+    vers = eregmatch( pattern:"<address>Apache/([0-9]\.[0-9]+\.[0-9][0-9]?).* Server at .* Port ([0-9.]+)</address>", string:res );
+    if( ! isnull( vers[1] ) ) {
+      version = vers[1];
+      replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache/" + version );
+    } else {
+      replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache" );
+    }
+  }
+}
+
+if( ! version || version == "unknown" ) {
+
+  url = "/manual/en/index.html";
+  req = http_get( item:url, port:port );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+  # From the apache docs, this is only providing the major release (e.g. 2.4)
+  if( res =~ "^HTTP/1\.[01] 200" && "<title>Apache HTTP Server Version" >< res && "Documentation - Apache HTTP Server" >< res ) {
+
+    version = "unknown";
+    installed = TRUE;
+    conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+
+    vers = eregmatch( pattern:"<title>Apache HTTP Server Version ([0-9]\.[0-9]+).*Documentation - Apache HTTP Server.*</title>", string:res );
+
+    if( ! isnull( vers[1] ) ) {
+      version = vers[1];
+      replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache/" + version );
+    } else {
+      replace_kb_item( name:"www/real_banner/" + port + "/", value:"Server: Apache" );
+    }
+  }
+}
+
+if( installed ) {
+
+  install = port + "/tcp";
+
+  set_kb_item( name:"www/" + port + "/Apache", value:version );
+  replace_kb_item( name:"apache/installed", value:TRUE );
    
-## build cpe and store it as host_detail
-cpe = build_cpe( value:apacheVer, exp:"^([0-9.]+)", base:"cpe:/a:apache:http_server:" );
-if( isnull( cpe ) )
-   cpe = "cpe:/a:apache:http_server";
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:http_server:" );
+  if( isnull( cpe ) )
+    cpe = "cpe:/a:apache:http_server";
 
-register_product( cpe:cpe, location:port + '/tcp', port:port );
-log_message( data:build_detection_report( app:"Apache",
-                                          version:apacheVer,
-                                          install:port + '/tcp',
-                                          cpe:cpe,
-                                          concluded: tmpVer[0] ),
-                                          port:port );
+  register_product( cpe:cpe, location:install, port:port );
+  log_message( data:build_detection_report( app:"Apache",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concludedUrl:conclUrl,
+                                            concluded:vers[0] ),
+                                            port:port );
+}
 
 exit( 0 );

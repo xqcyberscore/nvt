@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_webdorado_event_cal_sql_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wp_webdorado_event_cal_sql_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # WordPress Webdorado Spider Event Calendar SQL Injection
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805349");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-2196");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-09 18:19:33 +0530 (Mon, 09 Mar 2015)");
   script_name("WordPress Webdorado Spider Event Calendar SQL Injection");
 
@@ -65,7 +65,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36061/");
 
-  script_summary("Check if Wordpress Spider Event Calendar plugin is prone to sql injection.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

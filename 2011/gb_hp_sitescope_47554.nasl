@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_47554.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_hp_sitescope_47554.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
 #
 # HP SiteScope Cross Site Scripting and HTML Injection Vulnerabilities
 #
@@ -24,26 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "HP SiteScope is prone to a cross-site scripting vulnerability and an
-HTML-injection vulnerability because it fails to properly sanitize user-
-supplied input before using it in dynamically generated content.
-
-Successful exploits will allow attacker-supplied HTML and script
-code to run in the context of the affected browser, potentially
-allowing the attacker to steal cookie-based authentication
-credentials or to control how the site is rendered to the user.
-Other attacks are also possible.
-
-HP SiteScope versions 9.54, 10.13, 11.01, and 11.1 are affected.";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
+CPE = "cpe:/a:hp:sitescope";
 
 if (description)
 {
- script_id(103149);
- script_version("$Revision: 5390 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103149");
+ script_version("$Revision: 6367 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
  script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
  script_bugtraq_id(47554);
  script_cve_id("CVE-2011-1726","CVE-2011-1727");
@@ -58,35 +45,40 @@ if (description)
  script_category(ACT_GATHER_INFO);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl", "http_version.nasl");
- script_mandatory_keys("SiteScope/banner");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_dependencies("gb_hp_sitescope_detect.nasl");
+ script_mandatory_keys("hp/sitescope/installed");
+
+ script_tag(name : "solution" , value : "Vendor updates are available. Please see the references for more
+information.");
+
+ script_tag(name : "summary" , value : "HP SiteScope is prone to a cross-site scripting vulnerability and an
+HTML-injection vulnerability because it fails to properly sanitize user-supplied input before using it in
+dynamically generated content.
+
+Successful exploits will allow attacker-supplied HTML and script code to run in the context of the affected
+browser, potentially allowing the attacker to steal cookie-based authentication credentials or to control how the
+site is rendered to the user. Other attacks are also possible.
+
+HP SiteScope versions 9.54, 10.13, 11.01, and 11.1 are affected.");
+
  script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/47554");
  script_xref(name : "URL" , value : "https://h10078.www1.hp.com/cda/hpms/display/main/hpms_content.jsp?zn=bto&cp=1-11-15-25%5E849_4000_100__");
  script_xref(name : "URL" , value : "http://www11.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02807712");
  exit(0);
 }
 
-include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
    
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-if(!banner = get_http_banner(port:port))exit(0);
-if("Server: SiteScope/" >!< banner)exit(0);
+if (!version = get_app_version(cpe: CPE, port: port))
+  exit(0);
 
-version = eregmatch(pattern:"Server: SiteScope/([^ ]+)", string:banner);
-if(isnull(version[1]))exit(0);
-
-if(version_is_equal(version:version[1], test_version:"9.54")  ||
-   version_is_equal(version:version[1], test_version:"10.13") ||
-   version_is_equal(version:version[1], test_version:"11.01")) {
+if(version_is_equal(version:version, test_version:"9.54")  ||
+   version_is_equal(version:version, test_version:"10.13") ||
+   version_is_equal(version:version, test_version:"11.01")) {
      security_message(port:port);
   exit(0);
 }  

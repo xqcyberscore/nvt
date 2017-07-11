@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871737");
-  script_version("$Revision: 4960 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-06 11:53:40 +0100 (Fri, 06 Jan 2017) $");
+  script_version("$Revision: 6302 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-01-05 05:42:26 +0100 (Thu, 05 Jan 2017)");
   script_cve_id("CVE-2013-5653", "CVE-2016-7977", "CVE-2016-7978", "CVE-2016-7979", "CVE-2016-8602");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for ghostscript RHSA-2017:0013-01");
   script_tag(name: "summary", value: "Check the version of ghostscript");

@@ -1,6 +1,6 @@
 ###################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_dos_vuln_jan15_win.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_activeperl_dos_vuln_jan15_win.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Perl Denial of Service Vulnerability Jan 2015 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:perl:perl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805416");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2014-4330");
   script_bugtraq_id(70142);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-20 12:06:15 +0530 (Tue, 20 Jan 2015)");
   script_name("Perl Denial of Service Vulnerability Jan 2015 (Windows)");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name:"URL" , value:"http://secunia.com/advisories/61441");
   script_xref(name:"URL" , value:"http://www.securityfocus.com/archive/1/archive/1/533543/100/0/threaded");
 
-  script_summary("Check the vulnerable version of Perl");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850912");
-  script_version("$Revision: 3352 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:34:58 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 14:10:31 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2012-4412", "CVE-2013-0242", "CVE-2013-4237", "CVE-2013-4332", "CVE-2013-4788", "CVE-2014-4043", "CVE-2014-5119");
   script_tag(name:"cvss_base", value:"7.5");
@@ -82,7 +82,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2014:1122_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-09/msg00013.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

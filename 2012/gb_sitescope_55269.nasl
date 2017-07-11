@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitescope_55269.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_sitescope_55269.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
 #
 # HP SiteScope Multiple Security Bypass Vulnerabilities
 #
@@ -25,6 +25,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:hp:sitescope";
+
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103560");
@@ -33,21 +35,21 @@ if (description)
  script_bugtraq_id(55269,55273);
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5841 $");
+ script_version ("$Revision: 6367 $");
 
  script_name("HP SiteScope Multiple Security Bypass Vulnerabilities");
 
  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55269");
  script_xref(name : "URL" , value : "http://www.hp.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
  script_tag(name:"creation_date", value:"2012-09-07 17:11:57 +0200 (Fri, 07 Sep 2012)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_dependencies("gb_hp_sitescope_detect.nasl");
+ script_mandatory_keys("hp/sitescope/installed");
  script_require_ports("Services/www", 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
 
  script_tag(name : "summary" , value : "HP SiteScope is prone to multiple security-bypass vulnerabilities.");
  script_tag(name : "impact" , value : "Successful exploits may allow attackers to bypass the bypass security
@@ -59,16 +61,18 @@ if (description)
  exit(0);
 }
 
+include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default:8080);
+if (!port = get_app_port(cpe: CPE))
+  exit(0);
 
-url = '/SiteScope/';
-req = http_get(item:url, port:port);
-buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
+if (!dir = get_app_location(cpe: CPE, port: port))
+  exit(0);
 
-if("Server: SiteScope" >!< buf && "<TITLE>Login - SiteScope" >!< buf && "<small>SiteScope" >!< buf)exit(0);
+if (dir == "/")
+  dir = "";
 
 host = http_host_name(port:port);
 
@@ -98,7 +102,7 @@ foreach file(keys(files)) {
 
   len = strlen(soap);
 
-  req = string("POST /SiteScope/services/APIMonitorImpl HTTP/1.1\r\n",
+  req = string("POST " + dir + "/services/APIMonitorImpl HTTP/1.1\r\n",
                "Host: ",host,"\r\n",
                "User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
                'SOAPAction: ""',"\r\n",

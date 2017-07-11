@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3042058.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_microsoft_security_advisory_3042058.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Microsoft Cryptographic Cipher Suite Prioritization Advisory (3042058)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806091");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6243 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-15 10:51:26 +0530 (Thu, 15 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Cryptographic Cipher Suite Prioritization Advisory (3042058)");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3042058");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3042058");
 
-  script_summary("Check for the vulnerable 'Schannel.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows");

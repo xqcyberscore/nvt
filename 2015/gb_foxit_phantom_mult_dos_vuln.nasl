@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805378");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-3633", "CVE-2015-3632");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-05 10:41:19 +0530 (Tue, 05 May 2015)");
   script_name("Foxit PhantomPDF Multiple Denial of Service Vulnerabilities");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.foxitsoftware.com/support/security_bulletins.php#FRD-27");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check the version of Foxit PhantomPDF");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");

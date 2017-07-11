@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_default_web_credentials.nasl 4090 2016-09-16 12:25:57Z cfi $
+# $Id: gb_cisco_wsa_default_web_credentials.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Cisco Web Security Appliance Web Interface Default Credentials
 #
@@ -28,13 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105443");
-  script_version("$Revision: 4090 $");
+  script_version("$Revision: 6243 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Web Security Appliance Web Interface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 14:25:57 +0200 (Fri, 16 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-09 14:41:14 +0100 (Mon, 09 Nov 2015)");
-  script_summary("Determine if it is possible to login with default credentials");
   script_category(ACT_ATTACK);
   script_family("CISCO");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

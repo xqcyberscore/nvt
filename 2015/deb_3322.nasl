@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3322.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3322.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3322-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703322);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2015-3225");
     script_name("Debian Security Advisory DSA 3322-1 (ruby-rack - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-07-31 00:00:00 +0200 (Fri, 31 Jul 2015)");
     script_tag(name:"cvss_base", value:"5.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3322.html");
 
-    script_summary("Debian Security Advisory DSA 3322-1 (ruby-rack - security update)");
 
     script_category(ACT_GATHER_INFO);
 

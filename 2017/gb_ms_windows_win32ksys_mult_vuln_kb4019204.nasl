@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_win32ksys_mult_vuln_kb4019204.nasl 6106 2017-05-11 10:32:49Z antu123 $
+# $Id: gb_ms_windows_win32ksys_mult_vuln_kb4019204.nasl 6377 2017-06-20 10:16:39Z santu $
 #
 # Microsoft Windows 'Win32k.sys' Multiple Vulnerabilities (KB4019204)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811028");
-  script_version("$Revision: 6106 $");
-  script_cve_id("CVE-2017-0245", "CVE-2017-0246", "CVE-2017-0263");
+  script_version("$Revision: 6377 $");
+  script_cve_id("CVE-2017-0245", "CVE-2017-0246", "CVE-2017-0263", "CVE-2017-8552");
   script_bugtraq_id(98115, 98108);
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 12:32:49 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 10:30:09 +0530 (Wed, 10 May 2017)");
   script_name("Microsoft Windows 'Win32k.sys' Multiple Vulnerabilities (KB4019204)");
 
@@ -59,6 +59,14 @@ if(description)
   Impact Level: System");
 
   script_tag(name:"affected", value:"
+  Microsoft Windows XP SP2 x64
+
+  Microsoft Windows XP SP3 x86
+
+  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -93,7 +101,9 @@ sysPath = "";
 winVer = "";
 
 ## Check for OS and Service Pack
-if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
+## Windows XP, server2003 and windows 8
+if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3,
+                   win2008:3, winVistax64:3, win2008x64:3) <= 0){
   exit(0);
 }
 
@@ -109,19 +119,44 @@ if(!winVer){
   exit(0);
 }
 
-##Check for version
-if(version_is_less(version:winVer, test_version:"6.0.6002.19778"))
+## Windows Vista and Server 2008
+if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
-  Vulnerable_range = "Less than 6.0.6002.19778";
-  VULN = TRUE ;
+  ##Check for version
+  if(version_is_less(version:winVer, test_version:"6.0.6002.19778"))
+  {
+    Vulnerable_range = "Less than 6.0.6002.19778";
+    VULN = TRUE ;
+  }
+
+  else if(version_in_range(version:winVer, test_version:"6.0.6002.24000", test_version2:"6.0.6002.24094"))
+  {
+    Vulnerable_range = "6.0.6002.24000 - 6.0.6002.24094";
+    VULN = TRUE ;
+  }
+
 }
 
-else if(version_in_range(version:winVer, test_version:"6.0.6002.24000", test_version2:"6.0.6002.24094"))
+## Windows XP
+else if(hotfix_check_sp(xp:4) > 0)
 {
-  Vulnerable_range = "6.0.6002.24000 - 6.0.6002.24095";
-  VULN = TRUE ;
+  ## Check for win32k.sys version, on 32bit xp sp3
+  if(version_is_less(version:winVer, test_version:"5.1.2600.7258"))
+  {
+    Vulnerable_range = "Less than 5.1.2600.7258";
+    VULN = TRUE ;
+  }
 }
 
+## Windows 2003, Windows XP SP2 64bit
+else if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0)
+{
+  if(version_is_less(version:winVer, test_version:"5.2.3790.6080"))
+  {
+    Vulnerable_range = "Less than 5.2.3790.6080";
+    VULN = TRUE ;
+  }
+}
 
 if(VULN)
 {
@@ -131,5 +166,4 @@ if(VULN)
   security_message(data:report);
   exit(0);
 }
-
 exit(0);

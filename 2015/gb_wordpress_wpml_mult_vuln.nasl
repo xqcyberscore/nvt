@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpml_mult_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wordpress_wpml_mult_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Wordpress WPML Multiple vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805153");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-2314", "CVE-2015-2315");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-17 12:10:32 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress WPML Multiple vulnerabilities");
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130810");
   script_xref(name : "URL" , value : "http://wpml.org/2015/03/wpml-security-update-bug-and-fix");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/534862/30/0/threaded");
-  script_summary("Check if Wordpress WPML plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869139");
-  script_version("$Revision: 3345 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:53:29 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-30 07:02:41 +0200 (Mon, 30 Mar 2015)");
   script_cve_id("CVE-2015-2296");
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,7 +45,6 @@ and file POST abilities.
   script_xref(name: "FEDORA", value: "2015-4084");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/153595.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python-urllib3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

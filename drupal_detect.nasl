@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: drupal_detect.nasl 4323 2016-10-22 13:01:12Z cfi $
+# $Id: drupal_detect.nasl 6319 2017-06-13 07:06:12Z cfischer $
 #
 # Drupal Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100169");
-  script_version("$Revision: 4323 $");
+  script_version("$Revision: 6319 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-22 15:01:12 +0200 (Sat, 22 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 09:06:12 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_name("Drupal Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -50,14 +50,12 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit(0);
 
 brokenDr = 0;
@@ -81,7 +79,7 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
       '<meta name="generator" content="Drupal' >< res2 ||
       "/misc/drupal.js?" >< res2 ) {
 
-    if( dir == "" ) rootInstalled = 1;
+    if( dir == "" ) rootInstalled = TRUE;
     version = "unkown";
 
     if( egrep( pattern:"Access denied for user", string:res, icase:TRUE ) ) brokenDr++;
@@ -95,7 +93,7 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
     ver = eregmatch( pattern:'Drupal ([0-9.]+), [0-9]{4}-[0-9]{2}-[0-9]{2}', string:res, icase:TRUE );
 
     if( ! isnull( ver[1] ) ) {
-      conclUrl = url;
+      conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
       version = chomp( ver[1] );
     } else {
 
@@ -130,11 +128,9 @@ foreach dir( make_list_unique( "/", "/drupal", "/cms", cgi_dirs( port:port ) ) )
     }
 
     tmp_ver = version + " under " + install;
-
     set_kb_item( name:"www/" + port + "/drupal", value:tmp_ver );
-    set_kb_item( name:"drupal/installed", value:TRUE );
+    replace_kb_item( name:"drupal/installed", value:TRUE );
 
-    ## build cpe and register
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:drupal:drupal:" );
     if( ! cpe )
       cpe = "cpe:/a:drupal:drupal";

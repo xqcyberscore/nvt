@@ -1,6 +1,6 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: version_func.inc 6155 2017-05-18 06:34:14Z cfi $
+# OpenVAS Include File
+# $Id: version_func.inc 6246 2017-05-30 13:04:03Z cfi $
 #
 # Helper functions for SSH-based target host access
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6155 $
+# $Revision: 6246 $
 #
 ###############################################################################
 
@@ -172,6 +172,9 @@ function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
   if( sock ) {
     r = ssh_cmd( socket:sock, cmd:full_prog_name + " " + version_argv, timeout:60 );
   }
+
+  # e.g. /bin/sh: 1: /usr/share/bash-completion/completions/xfreerdp: Permission denied
+  if( ": Permission denied" >< r ) return;
 
   loc_version = eregmatch( pattern:ver_pattern, string:r );
   if( loc_version != NULL ) loc_version[max_index( loc_version )] = r;

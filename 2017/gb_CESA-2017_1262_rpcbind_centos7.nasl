@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882718");
-  script_version("$Revision: 6205 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 08:22:39 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6213 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-23 07:03:12 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-8779");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for rpcbind CESA-2017:1262 centos7 ");
   script_tag(name: "summary", value: "Check the version of rpcbind");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806707");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6329 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:19:18 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2015-7236");
   script_tag(name:"cvss_base", value:"5.0");
@@ -46,7 +46,6 @@ host to be able to make RPC calls on a server on that machine.
   script_xref(name: "FEDORA", value: "2015-9");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/172152.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of rpcbind");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

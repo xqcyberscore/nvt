@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-0600.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-0600.nasl 6391 2017-06-21 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122173");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6391 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:14:14 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-0600");
 script_tag(name: "insight", value: "ELSA-2011-0600 -  dovecot security and enhancement update - [2.0.9-2]- fix issues and assert crashes found in 2.0.9 (lmtp,dotlock,zlib)[2.0.9-1]- dovecot updated to 2.0.9- fixed a high system CPU usage / high context switch count performance problem- lda: Fixed a crash when trying to send 'out of quota' reply[2.0.8-1]- dovecot updated to 2.0.8 (fixes #654226), pigeonhole updated to 0.2.2- IMAP: Fixed SELECT QRESYNC not to crash on mailbox close if a lot of changes were being sent. - Fixed leaking fds when writing to dovecot.mailbox.log.- Fixed rare dovecot.index.cache corruption- zlib: Fixed several crashes, which mainly showed up with mbox.- acl: Fixed crashing when sometimes listing shared mailboxes via dict proxy.- mdbox: Fixed potential assert-crash when saving multiple messages in one transaction- dsync: a lot of fixes- fixed lda + sieve crash"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-0600");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_hudson_groovy_console.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_hudson_groovy_console.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Hudson CI Groovy Console accessible
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:oracle:hudson";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111003");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-02 12:00:00 +0100 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_name("Hudson CI Groovy Console accessible");
 
-  script_summary("Checks for an unprotected access to the Hudson CI Groovy Console.");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

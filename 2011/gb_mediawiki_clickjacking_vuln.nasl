@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_clickjacking_vuln.nasl 3570 2016-06-21 07:49:45Z benallard $
+# $Id: gb_mediawiki_clickjacking_vuln.nasl 6284 2017-06-06 11:43:39Z cfischer $
 #
 # MediaWiki Frames Processing Clickjacking Information Disclosure Vulnerability
 #
@@ -24,65 +24,69 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let remote attackers to hijack the victim's
-  click actions and possibly launch further attacks against the victim.
-
-  Impact level: Application";
-
-tag_affected = "MediaWiki version prior to 1.16.1";
-tag_insight = "The flaw is caused by input validation errors when processing certain data
-  via frames, which could allow clickjacking attacks.";
-tag_solution = "Upgrade to MediaWiki 1.16.1 or later,
-  For updates refer to http://www.mediawiki.org/wiki/Download";
-tag_summary = "This host is running MediaWiki and clickjacking information disclosure
-  vulnerability.";
+CPE = "cpe:/a:mediawiki:mediawiki";
 
 if(description)
 {
-  script_id(801900);
-  script_version("$Revision: 3570 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 09:49:45 +0200 (Tue, 21 Jun 2016) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801900");
+  script_version("$Revision: 6284 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-03-04 14:32:35 +0100 (Fri, 04 Mar 2011)");
   script_cve_id("CVE-2011-0003");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("MediaWiki Frames Processing Clickjacking Information Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42810");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/64476");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2011/0017");
-  script_xref(name : "URL" , value : "http://lists.wikimedia.org/pipermail/mediawiki-announce/2011-January/000093.html");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_summary("Check for the version of MediaWiki");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_mediawiki_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("MediaWiki/Version");
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
+  script_mandatory_keys("mediawiki/installed");
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42810");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64476");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0017");
+  script_xref(name:"URL", value:"http://lists.wikimedia.org/pipermail/mediawiki-announce/2011-January/000093.html");
+
+  tag_impact = "Successful exploitation will let remote attackers to hijack the victim's
+  click actions and possibly launch further attacks against the victim.
+
+  Impact level: Application";
+
+  tag_affected = "MediaWiki version prior to 1.16.1";
+
+  tag_insight = "The flaw is caused by input validation errors when processing certain data
+  via frames, which could allow clickjacking attacks.";
+
+  tag_solution = "Upgrade to MediaWiki 1.16.1 or later,
+  For updates refer to http://www.mediawiki.org/wiki/Download";
+
+  tag_summary = "This host is running MediaWiki and clickjacking information disclosure
+  vulnerability.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-
-include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-wikiPort = get_http_port(default:80);
-if(!wikiPort){
-  exit(0);
-}
-
-mediawikiVer = get_kb_item("MediaWiki/Version");
-if(!mediawikiVer){
-  exit(0);
-}
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 ## Grep for affected MediaWiki Versions less than 1.16.1
-if(version_is_less(version:mediawikiVer, test_version:"1.16.1")){
-  security_message(wikiPort);
+if( version_is_less( version:vers, test_version:"1.16.1" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.16.1" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
+
+exit( 99 );

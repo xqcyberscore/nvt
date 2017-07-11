@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_auth_bypass_02_15.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_netgear_auth_bypass_02_15.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # NetGear WNDR Authentication Bypass / Information Disclosure
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105223");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6376 $");
 
  script_name("NetGear WNDR Authentication Bypass / Information Disclosure");
 
@@ -62,9 +62,8 @@ router parameters. This SOAP service is prone to an authentication bypass.");
  script_tag(name:"solution_type", value: "Workaround");
  script_tag(name:"qod_type", value:"remote_vul");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-02-19 16:42:31 +0100 (Thu, 19 Feb 2015)");
- script_summary("Check if it is possible to read the password");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

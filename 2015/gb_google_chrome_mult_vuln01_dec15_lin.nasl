@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec15_lin.nasl 2581 2016-02-05 08:26:01Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_dec15_lin.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806762");
-  script_version("$Revision: 2581 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2015-6764", "CVE-2015-6765", "CVE-2015-6766", "CVE-2015-6767",
                 "CVE-2015-6768", "CVE-2015-6770", "CVE-2015-6771", "CVE-2015-6772",
                 "CVE-2015-6773", "CVE-2015-6774", "CVE-2015-6775", "CVE-2015-6776",
@@ -40,7 +40,7 @@ if(description)
   script_bugtraq_id(78209, 78416);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:26:01 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-07 16:07:20 +0530 (Mon, 07 Dec 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec15 (Linux)");
 
@@ -85,7 +85,6 @@ if(description)
   script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/12/stable-channel-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Google Chrome on Linux");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");

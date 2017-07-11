@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl 6195 2017-05-23 10:02:52Z ckuerste $
+# $Id: gb_mcafee_epolicy_orchestrator_dir_trav_vuln.nasl 6302 2017-06-10 17:10:53Z cfischer $
 #
 # McAfee ePolicy Orchestrator Directory Traversal Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:mcafee:epolicy_orchestrator';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106824");
-  script_version("$Revision: 6195 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 6302 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-05-23 11:00:56 +0700 (Tue, 23 May 2017)");
-  script_tag(name: "cvss_base", value: "7.1");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-3980");
 

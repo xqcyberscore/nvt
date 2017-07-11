@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csm_default_admin_ssh.nasl 3859 2016-08-19 09:18:21Z ckuerste $
+# $Id: gb_cisco_csm_default_admin_ssh.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Cisco Appliance Admin SSH Default Credentials
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105434");
- script_version("$Revision: 3859 $");
+ script_version("$Revision: 6243 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Cisco Appliance Admin SSH Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2016-08-19 11:18:21 +0200 (Fri, 19 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
  script_tag(name:"creation_date", value:"2015-11-06 13:18:30 +0100 (Fri, 06 Nov 2015)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

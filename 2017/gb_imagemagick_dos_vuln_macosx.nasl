@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_dos_vuln_macosx.nasl 6212 2017-05-25 11:42:03Z cfi $
+# $Id: gb_imagemagick_dos_vuln_macosx.nasl 6249 2017-05-30 13:27:41Z teissa $
 #
 # ImageMagick coders/rle.c Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107205");
-  script_version("$Revision: 6212 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 13:42:03 +0200 (Thu, 25 May 2017) $");
+  script_version("$Revision: 6249 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:27:41 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-23 19:30:51 +0200 (Tue, 23 May 2017)");
   script_cve_id("CVE-2017-9144");
   script_bugtraq_id(98603);
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick coders/rle.c Denial of Service Vulnerability (Mac OS X)");

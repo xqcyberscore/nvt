@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_xss_vuln.nasl 3661 2016-07-05 17:17:52Z mime $
+# $Id: gb_fortiweb_xss_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # FortiWeb Multiple Reflected Cross Site Scripting Vulnerabilities - June 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:fortinet:fortiweb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805645");
-  script_version("$Revision: 3661 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2014-8619");
   script_bugtraq_id(74679);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-05 19:17:52 +0200 (Tue, 05 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-08 11:54:11 +0530 (Mon, 08 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiWeb Multiple Reflected Cross Site Scripting Vulnerabilities - June 2015");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.fortiguard.com/advisory/FG-IR-15-005");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Fortinet FortiOS");
   script_category(ACT_GATHER_INFO);
   script_family("FortiOS Local Security Checks");
   script_dependencies("gb_fortiweb_version.nasl");

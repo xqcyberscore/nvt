@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-057.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-057.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Microsoft Windows Media Player Remote Code Execution Vulnerability (3033890)
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805649");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-1728");
   script_bugtraq_id(75029);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:37:49 +0530 (Wed, 10 Jun 2015)");
   script_name("Microsoft Windows Media Player Remote Code Execution Vulnerability (3033890)");
 
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3033890");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-057");
 
-  script_summary("Check for the vulnerable 'Wmp.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

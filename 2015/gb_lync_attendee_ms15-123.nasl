@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-123.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_lync_attendee_ms15-123.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Microsoft Lync Attendee Information Disclosure Vulnerability (3105872)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806156");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2015-6061");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 10:21:46 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Lync Attendee Information Disclosure Vulnerability (3105872)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3096735");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-123");
 
-  script_summary("Check for the vulnerable file 'Rtmpltfm.dll' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

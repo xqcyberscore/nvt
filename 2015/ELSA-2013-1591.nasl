@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1591.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1591.nasl 6229 2017-05-29 09:04:10Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123517");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6229 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:04:56 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1591");
 script_tag(name: "insight", value: "ELSA-2013-1591 -  openssh security, bug fix, and enhancement update - [5.3p1-94]- use dracut-fips package to determine if a FIPS module is installed (#1001565)[5.3p1-93]- use dist tag in suffixes for hmac checksum files (#1001565)[5.3p1-92]- use hmac_suffix for ssh{,d} hmac checksums (#1001565)[5.3p1-91]- fix NSS keys support (#1004763)[5.3p1-90]- change default value of MaxStartups - CVE-2010-5107 - #908707- add -fips subpackages that contains the FIPS module files (#1001565)[5.3p1-89]- don't use SSH_FP_MD5 for fingerprints in FIPS mode (#998835)[5.3p1-88]- do ssh_gssapi_krb5_storecreds() twice - before and after pam sesssion (#974096)[5.3p1-87]- bump the minimum value of SSH_USE_STRONG_RNG to 14 according to SP800-131A (#993577)- fixed an issue with broken 'ssh -I pkcs11' (#908038)- abort non-subsystem sessions to forced internal sftp-server (#993509)- reverted 'store krb5 credentials after a pam session is created (#974096)'[5.3p1-86]- Add support for certificate key types for users and hosts (#906872)- Apply RFC3454 stringprep to banners when possible (#955792)[5.3p1-85]- fix chroot logging issue (#872169)- change the bad key permissions error message (#880575)- fix a race condition in ssh-agent (#896561)- backport support for PKCS11 from openssh-5.4p1 (#908038)- add a KexAlgorithms knob to the client and server configuration (#951704)- fix parsing logic of ldap.conf file (#954094)- Add HMAC-SHA2 algorithm support (#969565)- store krb5 credentials after a pam session is created (#974096)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1591");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

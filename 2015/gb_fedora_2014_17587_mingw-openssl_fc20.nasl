@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868705");
-  script_version("$Revision: 3340 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:41:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6329 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-05 14:43:54 +0100 (Mon, 05 Jan 2015)");
   script_cve_id("CVE-2014-3505", "CVE-2014-3506", "CVE-2014-3507", "CVE-2014-3511",
                 "CVE-2014-3510", "CVE-2014-3508", "CVE-2014-3509", "CVE-2014-0221",
@@ -52,7 +52,6 @@ This package contains Windows (MinGW) libraries and development tools.
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-January/147323.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_summary("Check for the Version of mingw-openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

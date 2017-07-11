@@ -26,11 +26,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871439");
-  script_version("$Revision: 3339 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:26:32 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-28 05:04:45 +0200 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for firefox RHSA-2015:1693-01");
@@ -66,7 +66,6 @@ the update, Firefox must be restarted for the changes to take effect.
   script_xref(name: "RHSA", value: "2015:1693-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-August/msg00063.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

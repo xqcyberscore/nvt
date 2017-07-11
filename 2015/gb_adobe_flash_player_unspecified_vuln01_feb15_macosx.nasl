@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_unspecified_vuln01_feb15_macosx.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_adobe_flash_player_unspecified_vuln01_feb15_macosx.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Adobe Flash Player Unspecified Vulnerability - 01 Feb15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805443");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-0313", "CVE-2015-0314", "CVE-2015-0315", "CVE-2015-0316",
                 "CVE-2015-0317", "CVE-2015-0318", "CVE-2015-0319", "CVE-2015-0320",
                 "CVE-2015-0321", "CVE-2015-0322", "CVE-2015-0323", "CVE-2015-0324",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(72429, 72514);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-10 11:38:12 +0530 (Tue, 10 Feb 2015)");
   script_name("Adobe Flash Player Unspecified Vulnerability - 01 Feb15 (Mac OS X)");
 
@@ -74,7 +74,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-04.html");
 
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

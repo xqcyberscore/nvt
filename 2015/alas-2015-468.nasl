@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-468.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-468.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120455");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:26:45 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-468");
 script_tag(name: "insight", value: "An out-of-bounds read flaw was found in the way glibc's iconv() function converted certain encoded data to UTF-8. An attacker able to make an application call the iconv() function with a specially crafted argument could use this flaw to crash that application. (CVE-2014-6040 )It was found that the wordexp() function would perform command substitution even when the WRDE_NOCMD flag was specified. An attacker able to provide specially crafted input to an application using the wordexp() function, and not sanitizing the input correctly, could potentially use this flaw to execute arbitrary commands with the credentials of the user running that application. (CVE-2014-7817 )"); 
 script_tag(name : "solution", value : "Run yum update glibc to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-468");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

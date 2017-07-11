@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-3045.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-3045.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123092");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-06 09:47:47 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-3045");
 script_tag(name: "insight", value: "ELSA-2015-3045 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-68.3.3]- x86/asm/entry/64: Remove a bogus 'ret_from_fork' optimization (Andy Lutomirski) [Orabug: 21308309] {CVE-2015-2830}- x86, mm/ASLR: Fix stack randomization on 64-bit systems (Hector Marco-Gisbert) [Orabug: 21307919] {CVE-2015-1593} {CVE-2015-1593}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-3045");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: java_jre_jdk_dos.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: java_jre_jdk_dos.nasl 6410 2017-06-23 08:17:07Z cfischer $
 # Description: Sun Java Runtime Environment DoS
 #
 # Authors:
@@ -31,8 +31,8 @@ tag_solution = "Upgrade to SDK and JRE 1.4.2_04
 if(description)
 {
  script_id(12244);
- script_version("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 6410 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-23 10:17:07 +0200 (Fri, 23 Jun 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_cve_id("CVE-2004-0651");
  script_bugtraq_id(10301);
@@ -133,7 +133,7 @@ if ( key_h )
  # Is the remote machine using the JRE?
  item= "CurrentVersion";
  data = registry_get_item_sz(soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:key_h);
- value = registry_decode_sz(data:data);
+ value = registry_decode_sz(data:data, uid:uid);
 }
 
 if ( value && ("1.4" >< value) )
@@ -159,7 +159,7 @@ if ( key_h )
  # Is the remote machine using the JRE?
  item= "CurrentVersion";
  data = registry_get_item_sz(soc:soc, uid:uid, tid:tid, pipe:pipe, item:item, reply:key_h);
- value = registry_decode_sz(data:data);
+ value = registry_decode_sz(data:data, uid:uid);
 }
 
 if ( value && ("1.4" >< value) )

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-067.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_ms15-067.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Microsoft Windows Remote Desktop Remote Code Execution Vulnerability (3073094)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805077");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-2373");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 11:26:05 +0530 (Wed, 15 Jul 2015)");
   script_name("Microsoft Windows Remote Desktop Remote Code Execution Vulnerability (3073094)");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3067904");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-067");
 
-  script_summary("Check for the vulnerable 'Rdpcorets.dll' and 'mstsc.exe' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

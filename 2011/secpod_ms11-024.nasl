@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-024.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: secpod_ms11-024.nasl 6235 2017-05-29 13:45:48Z cfi $
 #
 # Windows Fax Cover Page Editor Remote Code Execution Vulnerability (2527308)
 #
@@ -31,11 +31,16 @@ tag_impact = "Successful exploitation could allow attackers to gain the same use
   the logged-on user. Users whose accounts are configured to have fewer user
   rights on the system could be less impacted than users who operate with
   administrative user rights.
+
   Impact Level: System/Application";
 tag_affected = "Micorsoft Windows 7 Service Pack 1 and prior
+
   Microsoft Windows XP Service Pack 3 and prior
+
   Microsoft Windows 2K3 Service Pack 2 and prior
+
   Microsoft Windows Vista Service Pack 2 and prior
+
   Microsoft Windows Server 2008 Service Pack 2 and prior";
 tag_insight = "The flaw is due to error in fax cover page editor, when user opened a
   specially crafted fax cover page file (.cov) using the windows fax cover page
@@ -50,8 +55,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902408);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6235 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:45:48 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2011-04-13 17:05:53 +0200 (Wed, 13 Apr 2011)");
   script_cve_id("CVE-2010-3974");
   script_tag(name:"cvss_base", value:"7.6");
@@ -103,20 +108,11 @@ if(!sysPath ){
 ## Get Version from Win32k.sys version and Mfc42.dll
 sysVer1 = fetch_file_version(sysPath, file_name:"system32\fxscover.exe");
 sysVer2 = fetch_file_version(sysPath, file_name:"system32\Mfc42.dll");
+if( ! sysVer1 && ! sysVer2 ) exit( 0 );
 
-## Assign null to sysVer1 if fetch_file_version() returns 0 
-if(sysVer1 == 0){
- sysVer1 = "";
-}
-
-## Assign null to sysVer2 if fetch_file_version() returns 0 
-if(sysVer2 == 0){
- sysVer2 = "";
-}
-
-if(isnull(sysVer1) && isnull(sysVer2)){
-  exit(0);
-}
+## Avoid passing FALSE values to the version_* functions later if fetch_file_version() returns FALSE
+if( ! sysVer1 ) sysVer1 = "unknown";
+if( ! sysVer2 ) sysVer2 = "unknown";
 
 ## Windows XP
 if(hotfix_check_sp(xp:4) > 0)

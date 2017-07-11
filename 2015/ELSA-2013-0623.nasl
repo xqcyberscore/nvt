@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0623.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0623.nasl 6431 2017-06-26 09:59:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123666");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6431 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:07:00 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0623");
 script_tag(name: "insight", value: "ELSA-2013-0623 -  tomcat6 security update - [0:6.0.24-52]- Related: rhbz 882010 rhbz 883692 rhbz 883705- Javadoc generation did not work. Using targetrhel-6.4.Z-noarch-candidate- to avoid building on ppc64, ppc, and x390x.[0:6.0.24-50]- Resolves: rhbz 882010 CVE-2012-3439 CVE-2012-5885 CVE-2012-5886 CVE-2012-5887- three DIGEST authentication issues- Resolves: rhbz 883692 CVE-2012-4534 Denial of service when using- SSL NIO sendfile- Resolves: rhbz 883705 CVE-2012-3546 Bypass of Realm security constraints"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0623");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

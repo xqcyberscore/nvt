@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850769");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6415 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:19:28 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2015-1802", "CVE-2015-1803", "CVE-2015-1804");
   script_tag(name:"cvss_base", value:"8.5");
@@ -78,7 +78,6 @@ http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1804");
   script_xref(name: "SUSE-SU", value: "2015:0674_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-04/msg00002.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xorg-x11-libs");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

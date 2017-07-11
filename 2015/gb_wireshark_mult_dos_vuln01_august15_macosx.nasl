@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_august15_macosx.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wireshark_mult_dos_vuln01_august15_macosx.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-01 August15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806030");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2015-6241", "CVE-2015-6242", "CVE-2015-6243", "CVE-2015-6244",
                 "CVE-2015-6245", "CVE-2015-6246", "CVE-2015-6247", "CVE-2015-6248",
                 "CVE-2015-6249");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-28 12:21:03 +0530 (Fri, 28 Aug 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 August15 (Mac OS X)");
 
@@ -86,7 +86,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11358");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11373");
 
-  script_summary("Check for the vulnerable version of Wireshark on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

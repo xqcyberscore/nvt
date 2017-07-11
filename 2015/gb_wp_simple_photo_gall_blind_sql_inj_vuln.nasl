@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805193");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6357 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-28 16:25:29 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Wordpess Simple Photo Gallery Blind SQL Injection Vulnerability");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37113");
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/simple-photo-gallery/changelog");
 
-  script_summary("Check if Wordpress Simple Photo Gallery is prone to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

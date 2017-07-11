@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_collaboration_assurance_xss_vuln.nasl 4883 2016-12-30 07:47:11Z antu123 $
+# $Id: gb_cisco_prime_collaboration_assurance_xss_vuln.nasl 6292 2017-06-08 06:36:42Z ckuersteiner $
 #
 # Cisco Prime Collaboration Assurance Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cisco:prime_collaboration_assurance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809770");
-  script_version("$Revision: 4883 $");
+  script_version("$Revision: 6292 $");
   script_cve_id("CVE-2016-9200");
   script_bugtraq_id(94806);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 08:47:11 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-08 08:36:42 +0200 (Thu, 08 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-12-22 19:49:38 +0530 (Thu, 22 Dec 2016)");
   script_name("Cisco Prime Collaboration Assurance Cross-Site Scripting Vulnerability");
 
@@ -71,7 +71,7 @@ if (description)
   script_family("CISCO");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_dependencies("gb_cisco_pca_version.nasl");
-  script_mandatory_keys("cisco_pcp/version");
+  script_mandatory_keys("cisco_pca/detected");
   exit(0);
 }
 

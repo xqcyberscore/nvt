@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869385");
-  script_version("$Revision: 3349 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:36 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:45:14 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2013-1438", "CVE-2015-3885");
   script_tag(name:"cvss_base", value:"4.3");
@@ -45,7 +45,6 @@ tool to decode raw image data downloaded from digital cameras.
   script_xref(name: "FEDORA", value: "2015-8647");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/159479.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of dcraw");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

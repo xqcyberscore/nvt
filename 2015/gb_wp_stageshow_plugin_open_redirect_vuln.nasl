@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Wordpress StageShow Plugin Open Redirect Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805901");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6431 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 13:33:29 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress StageShow Plugin Open Redirect Vulnerability");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://wordpress.org/plugins/stageshow/changelog");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/07/06/2");
 
-  script_summary("Check if Wordpress StageShow Plugin is vulnerable to open redirect");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

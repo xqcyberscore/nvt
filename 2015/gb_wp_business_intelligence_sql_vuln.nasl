@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805366");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6431 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-10 12:21:47 +0530 (Fri, 10 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("WordPress Business Intelligence Lite SQL Injection Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36600");
 
-  script_summary("Check if Wordpress Business Intelligence Lite plugin is prone to sql injection.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

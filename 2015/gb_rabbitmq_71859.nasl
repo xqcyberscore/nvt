@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_71859.nasl 4961 2017-01-06 11:11:38Z ckuerste $
+# $Id: gb_rabbitmq_71859.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-9494");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 4961 $");
+ script_version ("$Revision: 6415 $");
 
  script_name("RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability");
 
@@ -55,9 +55,8 @@ crafted X-Forwareded-For header.");
 
  script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-06 12:11:38 +0100 (Fri, 06 Jan 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-01-22 16:55:31 +0100 (Thu, 22 Jan 2015)");
- script_summary("Determine if it is possible to bypass authentication");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

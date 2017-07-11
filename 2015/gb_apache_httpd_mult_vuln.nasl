@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mult_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_apache_httpd_mult_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Apache HTTP Server Multiple Vulnerabilities May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805638");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2014-3523", "CVE-2014-0118", "CVE-2014-0226", "CVE-2014-0231");
   script_bugtraq_id(73040);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Multiple Vulnerabilities May15");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "http://httpd.apache.org/security/vulnerabilities_24.html");
   script_xref(name : "URL" , value : "http://www.rapid7.com/db/vulnerabilities/apache-httpd-cve-2014-8109");
 
-  script_summary("Check for the vulnerable version of Apache HTTP Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");

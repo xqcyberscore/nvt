@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_wincc_default_sql_password.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_wincc_default_sql_password.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Siemens WinCC MSSQL Default Credentials
 #
@@ -30,15 +30,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111057");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:00:00 +0100 (Tue, 24 Nov 2015)");
   script_bugtraq_id(41753);
   script_cve_id("CVE-2010-2772");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Siemens WinCC MSSQL Default Credentials");
-  script_summary("Determine if it is possible to login with default credentials.");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

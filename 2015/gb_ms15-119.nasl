@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-119.nasl 2374 2016-01-11 12:21:23Z antu123 $
+# $Id: gb_ms15-119.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # MS Windows Winsock Elevation of Privilege Vulnerability (3104521)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805774");
-  script_version("$Revision: 2374 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-2478");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-11 13:21:23 +0100 (Mon, 11 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_name("MS Windows Winsock Elevation of Privilege Vulnerability (3104521)");
 
@@ -72,7 +72,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3092601");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-119");
-  script_summary("Check for the vulnerable 'Afd.sys' file version");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 5748 2017-03-28 13:15:16Z teissa $
+# $Id: gb_vpet_engine_sql_inj_n_backdoor_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
 #
 # VPet Engine SQL Injection and Backdoor Account Vulnerabilities
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:vpet:vpet_engine";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808174");
-  script_version("$Revision: 5748 $");
+  script_version("$Revision: 6264 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 15:15:16 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 12:52:04 +0530 (Mon, 27 Jun 2016)");
   script_name("VPet Engine SQL Injection and Backdoor Account Vulnerabilities");
 
@@ -57,7 +57,7 @@ if (description)
   script_tag(name: "affected" , value:"vPet Engine Version 2.1");
 
   script_tag(name: "solution" , value:"No solution or patch is available as of
-  28th March, 2017. Information regarding this issue will be updated once the
+  01st June, 2017. Information regarding this issue will be updated once the
   solution details are available.  
   For updates refer to http://webscripts.softpedia.com/script/Games/vPet-Engine-40487.html");
 

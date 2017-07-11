@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_smb_mult_vuln_kb4018466.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_ms_smb_mult_vuln_kb4018466.nasl 6377 2017-06-20 10:16:39Z santu $
 #
 # Microsoft SMB Multiple Vulnerabilities (KB4018466)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811117");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 6377 $");
   script_cve_id("CVE-2017-0267", "CVE-2017-0268", "CVE-2017-0269", "CVE-2017-0270", 
         		"CVE-2017-0271", "CVE-2017-0272", "CVE-2017-0273", "CVE-2017-0274", 
 		        "CVE-2017-0275", "CVE-2017-0276", "CVE-2017-0277", "CVE-2017-0278", 
         		"CVE-2017-0279", "CVE-2017-0280");
   script_bugtraq_id(98259, 98261, 98263, 98264, 98265, 98260, 98274, 98266,
                     98267, 98268, 98270, 98271, 98272, 98273);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:16:39 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:51:18 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SMB Multiple Vulnerabilities (KB4018466)");
@@ -59,6 +59,14 @@ if(description)
   Impact Level: System");
 
   script_tag(name:"affected", value:"
+  Microsoft Windows XP SP2 x64
+
+  Microsoft Windows XP SP3 x86
+
+  Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -69,6 +77,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-gb/help/4018466");
+  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4025687");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -88,8 +97,10 @@ include("secpod_smb_func.inc");
 sysPath = "";
 asVer  = "";
 
+
 ## Check for OS and Service Pack
-if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
+if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3,
+                   win2008:3, winVistax64:3, win2008x64:3) <= 0){
   exit(0);
 }
 
@@ -104,19 +115,44 @@ if(!asVer = fetch_file_version(sysPath, file_name:"drivers\srv.sys")){
   exit(0);
 }
 
-## Check for srv.sys version 
-if(version_is_less(version:asVer, test_version:"6.0.6002.19765"))
+## Windows Vista and Server 2008
+if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
-  Vulnerable_range = "Less than 6.0.6002.19765";
-  VULN = TRUE ;
+
+  ## Check for srv.sys version 
+  if(version_is_less(version:asVer, test_version:"6.0.6002.19765"))
+  {
+    Vulnerable_range = "Less than 6.0.6002.19765";
+    VULN = TRUE ;
+  }
+
+  else if(version_in_range(version:asVer, test_version:"6.0.6002.22000", test_version2:"6.0.6002.24088"))
+  {
+    Vulnerable_range = "6.0.6002.22000 - 6.0.6002.24088";
+    VULN = TRUE ;
+  }
 }
 
-else if(version_in_range(version:asVer, test_version:"6.0.6002.22000", test_version2:"6.0.6002.24088"))
+## Windows XP
+else if(hotfix_check_sp(xp:4) > 0)
 {
-  Vulnerable_range = "6.0.6002.22000 - 6.0.6002.24088";
-  VULN = TRUE ;
+  ## Check for win32k.sys version, on 32bit xp sp3
+  if(version_is_less(version:asVer, test_version:"5.1.2600.7238"))
+  {
+    Vulnerable_range = "Less than 5.1.2600.7238";
+    VULN = TRUE ;
+  }
 }
 
+## Windows 2003, Windows XP SP2 64bit
+else if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0)
+{
+  if(version_is_less(version:asVer, test_version:"5.2.3790.6051"))
+  {
+    Vulnerable_range = "Less than 5.2.3790.6051";
+    VULN = TRUE ;
+  }
+}
 
 if(VULN)
 {

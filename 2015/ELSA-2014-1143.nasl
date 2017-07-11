@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1143.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1143.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123320");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:02:14 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1143");
 script_tag(name: "insight", value: "ELSA-2014-1143 -  kernel security and bug fix update - kernel[2.6.18-371.12.1]- [audit] auditsc: audit_krule mask accesses need bounds checking (Denys Vlasenko) [1102702 1102703] {CVE-2014-3917}- [mm] writeback: Fix hang when low on memory due to NFS traffic (Larry Woodman) [1125246 1080194]- [net] tg3: Fix Read DMA workaround for 5719 A0 (Ivan Vecera) [1121017 924590]- [fs] jbd: don't wake kjournald unnecessarily (Denys Vlasenko) [1116027 1081785]- [fs] jbd: don't wait (forever) for stale tid caused by wraparound (Denys Vlasenko) [1116027 1081785]- [fs] ext4: fix waiting and sending of barrier in ext4_sync_file() (Denys Vlasenko) [1116027 1081785]- [fs] jbd2: Add function jbd2_trans_will_send_data_barrier() (Denys Vlasenko) [1116027 1081785]- [fs] jbd2: fix sending of data flush on journal commit (Denys Vlasenko) [1116027 1081785]- [fs] ext4, jbd2: Add barriers for file systems with ext journals (Denys Vlasenko) [1116027 1081785]- [fs] jbd: fix fsync() tid wraparound bug (Denys Vlasenko) [1116027 1081785]- [fs] ext4: fix fdatasync() for files with only i_size changes (Eric Sandeen) [1117665 1102768]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1143");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

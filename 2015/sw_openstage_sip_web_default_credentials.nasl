@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_openstage_sip_web_default_credentials.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_openstage_sip_web_default_credentials.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # OpenStage SIP Webinterface Default Password
 #
@@ -28,13 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111058");
-  script_version("$Revision: 2568 $");
+  script_version("$Revision: 6404 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenStage SIP Webinterface Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-24 14:00:00 +0100 (Tue, 24 Nov 2015)");
-  script_summary("Determine if it is possible to login as an Admin with the default password");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

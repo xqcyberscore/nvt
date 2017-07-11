@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 3514 2016-06-14 11:29:47Z mime $
+# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805121");
-  script_version("$Revision: 3514 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2014-9176");
   script_bugtraq_id(71511);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-14 13:29:47 +0200 (Tue, 14 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:32:41 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://h4x0resec.blogspot.in/2014/11/wordpress-sexy-squeeze-pages-plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_summary("Check if Wordpress InstaSqueeze Sexy Squeeze Pages plugin is prone to xss");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

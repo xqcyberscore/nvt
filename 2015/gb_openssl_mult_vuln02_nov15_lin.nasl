@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_nov15_lin.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_openssl_mult_vuln02_nov15_lin.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # OpenSSL Multiple Vulnerabilities -02 Nov15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806731");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-0293", "CVE-2015-0289", "CVE-2015-0288", "CVE-2015-0287",
                 "CVE-2015-0286", "CVE-2015-0209");
   script_bugtraq_id(73232,73231, 73237, 73227, 73225,73239);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-26 11:33:57 +0530 (Thu, 26 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -02 Nov15 (Linux)");
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bto.bluecoat.com/security-advisory/sa92");
   script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20150319.txt");
 
-  script_summary("Check for the vulnerable version of OpenSSL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

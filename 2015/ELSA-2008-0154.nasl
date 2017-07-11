@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0154.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0154.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122604");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:49:06 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0154");
 script_tag(name: "insight", value: "ELSA-2008-0154 -  Important: kernel security and bug fix update - [2.6.18-53.1.14.0.1.el5] - [NET] Add entropy support to e1000 and bnx2 (John Sobecki) [orabug 6045759] - [NET] Fix msi issue with kexec/kdump (Michael Chan) [orabug 6219364] - [MM] Fix alloc_pages_node() static `nid' race made kernel crash (Joe Jin) [orabug 6187457] - [splice] Fix bad unlock_page() in error case (Jens Axboe) [orabug 6263574] - [dio] fix error-path crashes (Linus Torvalds) [orabug 6242289] [2.6.18-53.1.14.el5] - merge from 2.6.18-53.1.13 to 2.6.18-53.1.12 - [nfs] potential file corruption issue when writing (Jeff Layton ) [432078] - [ppc] chrp: fix possible strncmp NULL pointer usage (Vitaly Mayatskikh ) [396821] - [isdn] i4l: fix memory overruns (Vitaly Mayatskikh ) [425171] - [isdn] fix possible isdn_net buffer overflows (Aristeu Rozanski ) [392151] {CVE-2007-6063} - [mm] hugepages: leak due to pagetable page sharing (Larry Woodman ) [431522] - [net] NULL dereference in iwl driver (Vitaly Mayatskikh ) [401421] {CVE-2007-5938} - [misc] Denial of service with wedged processes (Jerome Marchand ) [221403] - [xen] ia64: hvm guest memory range checking (Jarod Wilson ) [408701]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0154");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

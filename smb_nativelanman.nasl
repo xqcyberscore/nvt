@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Network Vulnerability Test
-# $Id: smb_nativelanman.nasl 5924 2017-04-11 06:17:24Z cfi $
+# $Id: smb_nativelanman.nasl 6425 2017-06-24 08:33:41Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 5924 $");
+  script_version("$Revision: 6425 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 08:17:24 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-24 10:33:41 +0200 (Sat, 24 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
@@ -75,9 +75,9 @@ if( ! prot ) {
   exit( 0 );
 }
 
-ret = smb_session_setup_NTLMvN( soc:soc, login:"", password:"", domain:"",
-                                cs:smb_neg_prot_cs( prot:prot ), version:1 );
+cs = smb_neg_prot_cs( prot:prot );
 
+ret = smb_session_setup_NTLMvN( soc:soc, login:"", password:"", domain:"", cs:cs, version:1 );
 if( ! ret ) {
   close( soc );
   exit( 0 );
@@ -85,9 +85,9 @@ if( ! ret ) {
 
 close( soc );
 
-s = hexstr( r );  # convert response packet to a "string" hex
+s = hexstr( ret ); # convert response packet to a "string" hex
 l = strlen( s );
-c = 0;            # counter
+c = 0; # counter
 
 # according to www.snia.org/tech_activities/CIFS/CIFS-TR-1p00_FINAL.pdf
 # domain, server & os info are the last 3 strings in the packet
@@ -155,14 +155,16 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
 
       if( os_str && ! isnull( os_str ) ) {
 
-        # At least Samba 4.2.10 on Debian stable has a os_str of "Windows 6.1"
-        # but we can identify it from the smb_str: Samba 4.2.10-Debian
+        # At least Samba 4.2.10, 4.2.14 and 4.5.8 on Debian jessieand stretch has a os_str of "Windows 6.1"
+        # but we can identify it from the smb_str: Samba 4.2.10-Debian, Samba 4.5.8-Debian
         # Older Debian versions have "Unix" as os_str and smb_str: like Samba 3.0.20-Debian
         if( samba && ( "windows" >< tolower( os_str ) || ( "unix" >< tolower( os_str ) && "debian" >< tolower( smb_str ) ) ) ) {
           if( "debian" >< tolower( smb_str ) ) {
-            # 4.2.10 was 8.6 and 4.2.14 8.7
+            # 4.2.10 was up to 8.6 and 4.2.14 was 8.7 or later
             if( "Samba 4.2.10-Debian" >< smb_str || "Samba 4.2.14-Debian" >< smb_str ) {
-              os_str = "Debian GNU/Linux 8";
+              os_str = "Debian GNU/Linux 8.0";
+            } else if( "Samba 4.5.8-Debian" >< smb_str ) {
+              os_str = "Debian GNU/Linux 9.0";
             } else {
               os_str = "Debian GNU/Linux";
             }
@@ -187,12 +189,18 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
           #smb_str: Windows 10 Home 6.3, os_str: Windows 10 Home 10586
           #smb_str: Windows 2000 LAN Manager, os_str: Windows 5.1 -> Windows XP SP3, 32bit, German
           #smb_str: Windows 7 Enterprise 6.1, os_str: Windows 7 Enterprise 7601 Service Pack 1
+          #smb_str: Windows 7 Enterprise 6.1, os_str: Windows 7 Enterprise 7600 -> No Service Pack
           #smb_str: Windows Server 2008 R2 Datacenter 6.1, os_str: Windows Server 2008 R2 Datacenter 7601 Service Pack 1
           #smb_str: Windows XP 5.2, os_str: Windows XP 3790 Service Pack 2 -> Windows XP SP2, 64bit
           #OS String: Windows Server 2016 Standard 14393; SMB String: Windows Server 2016 Standard 6.3
-          #TODO: Add more patterns
           if( "windows 10 " >< tolower( os_str ) ) {
-            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_10", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+            cpe = "cpe:/o:microsoft:windows_10";
+            # https://en.wikipedia.org/wiki/Windows_10_version_history for the version <> build mapping
+            if( "10240" >< os_str ) cpe += ":1507";
+            if( "10586" >< os_str ) cpe += ":1511";
+            if( "14393" >< os_str ) cpe += ":1607";
+            if( "15063" >< os_str ) cpe += ":1703";
+            register_and_report_os( os:os_str, cpe:cpe, banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 5.1" >< tolower( os_str ) ) {
             register_and_report_os( os:"Windows XP", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows xp 5.2" >< tolower( smb_str ) && "service pack 2" >< tolower( os_str ) ) {
@@ -211,8 +219,10 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista:-:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows vista " >< tolower( os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          } else if( "windows 7 " >< tolower( os_str ) && "service pack 1" >< tolower( os_str ) ) {
+          } else if( "windows 7 " >< tolower( os_str ) && ( "service pack 1" >< tolower( os_str ) || "7601" >< os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_7:-:sp1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
+          } else if( "windows 7 " >< tolower( os_str ) && "7600" >< os_str ) {
+            register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_7:-:-:", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 7 " >< tolower( os_str ) ) {
             register_and_report_os( os:os_str, cpe:"cpe:/o:microsoft:windows_7", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           } else if( "windows 8.1 " >< tolower( os_str ) ) {
@@ -243,8 +253,10 @@ for( x = l-3; x > 0 && c < 3; x = x - 2 ) {
         } else if( "vxworks" >< tolower( os_str ) ) {
           register_and_report_os( os:"Wind River VxWorks", cpe:"cpe:/o:windriver:vxworks", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unknown" ); # TBD: What to set here? unixoide?
         } else if( "debian" >< tolower( os_str ) ) {
-          if( "8" >< os_str ) {
-            register_and_report_os( os:"Debian GNU/Linux", version:"8", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          if( "8.0" >< os_str ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:"8.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+          } else if( "9.0" >< os_str ) {
+            register_and_report_os( os:"Debian GNU/Linux", version:"9.0", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           } else {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0466.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0466.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131144");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-12-08 11:03:38 +0200 (Tue, 08 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0466");
 script_tag(name: "insight", value: "If a client receives a ServerKeyExchange for an anonymous DH ciphersuite with the value of p set to 0 then a seg fault can occur leading to a possible denial of service attack (CVE-2015-1794). Loic Jonas Etienne of Qnective AG discovered that the signature verification routines will crash with a NULL pointer dereference if presented with an ASN.1 signature using the RSA PSS algorithm and absent mask generation function parameter. A remote attacker can exploit this flaw to crash any certificate verification operation and mount a denial of service attack (CVE-2015-3194). Adam Langley of Google/BoringSSL discovered that OpenSSL will leak memory when presented with a malformed X509_ATTRIBUTE structure (CVE-2015-3195). A race condition flaw in the handling of PSK identify hints was discovered, potentially leading to a double free of the identify hint data (CVE-2015-3196)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0466");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0466");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

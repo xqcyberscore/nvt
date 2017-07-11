@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809494");
-  script_version("$Revision: 4693 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-07 07:10:20 +0100 (Wed, 07 Dec 2016) $");
+  script_version("$Revision: 6396 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-12-02 14:04:49 +0100 (Fri, 02 Dec 2016)");
   script_cve_id("CVE-2016-5416");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for 389-ds-base FEDORA-2016-8660c7656f");
   script_tag(name: "summary", value: "Check the version of 389-ds-base");

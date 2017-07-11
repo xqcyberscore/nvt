@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3859.nasl 6186 2017-05-22 11:18:16Z teissa $
+# $Id: deb_3859.nasl 6231 2017-05-29 09:29:50Z teissa $
 # Auto-generated from advisory DSA 3859-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703859);
-    script_version("$Revision: 6186 $");
+    script_version("$Revision: 6231 $");
     script_cve_id("CVE-2017-9078", "CVE-2017-9079");
     script_name("Debian Security Advisory DSA 3859-1 (dropbear - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-22 13:18:16 +0200 (Mon, 22 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2017-05-19 00:00:00 +0200 (Fri, 19 May 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"9.3");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

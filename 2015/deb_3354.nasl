@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3354.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3354.nasl 6357 2017-06-16 10:00:29Z teissa $
 # Auto-generated from advisory DSA 3354-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703354);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6357 $");
     script_cve_id("CVE-2015-3247");
     script_name("Debian Security Advisory DSA 3354-1 (spice - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-09-08 00:00:00 +0200 (Tue, 08 Sep 2015)");
     script_tag(name:"cvss_base", value:"6.9");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3354.html");
 
-    script_summary("Debian Security Advisory DSA 3354-1 (spice - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar15_macosx.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_google_chrome_mult_vuln01_mar15_macosx.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Google Chrome Multiple Vulnerabilities-01 Mar15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805504");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2015-1213", "CVE-2015-1214", "CVE-2015-1215", "CVE-2015-1216",
                 "CVE-2015-1217", "CVE-2015-1218", "CVE-2015-1219", "CVE-2015-1220",
                 "CVE-2015-1221", "CVE-2015-1222", "CVE-2015-1223", "CVE-2015-1224",
@@ -40,7 +40,7 @@ if(description)
   script_bugtraq_id(72901, 72916);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-13 14:48:07 +0530 (Fri, 13 Mar 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Mar15 (Mac OS X)");
 
@@ -76,7 +76,6 @@ if(description)
   script_xref(name : "URL" , value : "googlechromereleases.blogspot.com/2015/03/stable-channel-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Google Chrome on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");

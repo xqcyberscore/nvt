@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mariadb_dos_vuln_feb17_lin.nasl 5445 2017-02-28 12:32:29Z antu123 $
+# $Id: gb_mariadb_dos_vuln_feb17_lin.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # MariaDB Denial Of Service Vulnerability Feb17 (Linux)
 #
@@ -23,16 +23,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:mariadb:mariadb";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810606");
-  script_version("$Revision: 5445 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2017-3302");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 13:32:29 +0100 (Tue, 28 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-16 15:44:39 +0530 (Thu, 16 Feb 2017)");
   script_name("MariaDB Denial Of Service Vulnerability Feb17 (Linux)");
 
@@ -43,8 +44,10 @@ if(description)
   of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple errors exists as,
+
   - In sql-common/client.c script 'mysql_prune_stmt_list' function, the for loop
     adds elements to pruned_list without removing it from the existing list.
+
   - If application gets disconnected just before it tries to prepare a new
     statement, 'mysql_prune_stmt_list' tries to detach all previously prepared
     statements.");
@@ -57,11 +60,9 @@ if(description)
   script_tag(name: "affected" , value:"MariaDB through 5.5.54, 10.0.x through
   10.0.29, 10.1.x through 10.1.21, and 10.2.x through 10.2.3 on Linux");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  16th Feb, 2017. Information regarding this issue will be updated once solution
-  details are available. For details refer to https://mariadb.org");
+  script_tag(name:"solution", value:"Update to MariaDB 5.5.55, 10.2.5, 10.1.22, 10.0.30 or later. For details refer to https://mariadb.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
@@ -102,7 +103,7 @@ if(mariadbVer =~ "^(10\.2\.)")
   if(version_is_less_equal(version:mariadbVer, test_version:"10.2.3"))
   {
     VULN = TRUE;
-    fix = "NoneAvailable";
+    fix = "10.2.5";
   }
 }
 
@@ -112,7 +113,7 @@ else if(mariadbVer =~ "^(10\.1\.)")
   if(version_is_less_equal(version:mariadbVer, test_version:"10.1.21"))
   {
     VULN = TRUE;
-    fix = "NoneAvailable";
+    fix = "10.1.22";
   }
 }
 
@@ -122,7 +123,7 @@ else if(mariadbVer =~ "^(10\.0\.)")
   if(version_is_less_equal(version:mariadbVer, test_version:"10.0.29"))
   {
     VULN = TRUE;
-    fix = "NoneAvailable";
+    fix = "10.0.30";
   }
 }
 
@@ -130,7 +131,7 @@ else if(mariadbVer =~ "^(10\.0\.)")
 else if(version_is_less_equal(version:mariadbVer, test_version:"5.5.54"))
 {
   VULN = TRUE;
-  fix = "NoneAvailable";
+  fix = "5.5.55";
 }
 
 if(VULN)

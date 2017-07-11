@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 5917 2017-04-10 13:36:42Z teissa $
+# $Id: gb_mikrotik_routeros_l2tp_mitm_attack_vuln.nasl 6270 2017-06-02 08:02:50Z cfischer $
 #
 # MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mikrotik:routeros";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810609");
-  script_version("$Revision: 5917 $");
+  script_version("$Revision: 6270 $");
   script_cve_id("CVE-2017-6297");
   script_bugtraq_id(96447);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 15:36:42 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-02 10:02:50 +0200 (Fri, 02 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-09 16:21:26 +0530 (Thu, 09 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MikroTik RouterOS 'L2TP' Man-in-the-Middle Attack Vulnerability");
@@ -58,17 +58,13 @@ if(description)
   script_tag(name: "affected" , value:"MikroTik RouterOS versions 6.83.3 and
   6.37.4");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  10th April, 2017. Information regarding this issue will be updated once the
-  solution details are made available. For updates refer https://mikrotik.com.
+  script_tag(name: "solution" , value:"Update to version 6.37.5, 6.83.4 or later.
+  For updates refer https://mikrotik.com.");
 
-  Workaround is available about a configuration or deployment scenario that can
-  be used to avoid exposure to the vulnerability.
-  For details refer to the reference links.");
-
-  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "https://blog.milne.it/2017/02/24/mikrotik-routeros-security-vulnerability-l2tp-tunnel-unencrypted-cve-2017-6297");
+  script_xref(name : "URL" , value : "https://mikrotik.com/download/changelogs/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3849.nasl 6137 2017-05-16 14:30:04Z teissa $
+# $Id: deb_3849.nasl 6268 2017-06-01 14:48:58Z teissa $
 # Auto-generated from advisory DSA 3849-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(703849);
-    script_version("$Revision: 6137 $");
+    script_version("$Revision: 6268 $");
     script_cve_id("CVE-2017-6410", "CVE-2017-8422");
     script_name("Debian Security Advisory DSA 3849-1 (kde4libs - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-16 16:30:04 +0200 (Tue, 16 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
     script_tag(name: "creation_date", value: "2017-05-12 00:00:00 +0200 (Fri, 12 May 2017)");
-    script_tag(name: "cvss_base", value: "10.0");
-    script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+    script_tag(name:"cvss_base", value:"7.2");
+    script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

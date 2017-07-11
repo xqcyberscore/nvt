@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_fastback_mult_bof_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ibm_tsm_fastback_mult_bof_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # IBM Tivoli Storage Manager FastBack Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager_fastback";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805599");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-1896", "CVE-2015-0120");
   script_bugtraq_id(74024, 74021);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-03 09:35:08 +0530 (Fri, 03 Jul 2015)");
   script_name("IBM Tivoli Storage Manager FastBack Multiple Buffer Overflow Vulnerabilities");
 
@@ -70,7 +70,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21700536");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Tivoli Storage Manager FastBack on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("gb_ibm_tsm_fastback_detect.nasl");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-614.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-614.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120604");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:18 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-614");
 script_tag(name: "insight", value: "A NULL pointer derefernce flaw was found in the way OpenSSL verified signatures using the RSA PSS algorithm. A remote attacked could possibly use this flaw to crash a TLS/SSL client using OpenSSL, or a TLS/SSL server using OpenSSL if it enabled client authentication. (CVE-2015-3194 )A memory leak vulnerability was found in the way OpenSSL parsed PKCS#7 and CMS data. A remote attacker could use this flaw to cause an application that parses PKCS#7 or CMS data from untrusted sources to use an excessive amount of memory and possibly crash. (CVE-2015-3195 )A race condition flaw, leading to a double free, was found in the way OpenSSL handled pre-shared key (PSK) identify hints. A remote attacker could use this flaw to crash a multi-threaded SSL/TLS client using OpenSSL. (CVE-2015-3196 )"); 
 script_tag(name : "solution", value : "Run yum update openssl to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-614");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

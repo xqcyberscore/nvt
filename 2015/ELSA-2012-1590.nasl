@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1590.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1590.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123770");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:18 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1590");
 script_tag(name: "insight", value: "ELSA-2012-1590 -  libtiff security update - [3.9.4-9]- Still more fixes to make test case for CVE-2012-5581 work on all platformsResolves: #885310[3.9.4-8]- Fix incomplete patch for CVE-2012-3401- Add libtiff-tiffinfo-exif.patch so that our test case for CVE-2012-5581 works with pre-4.0.2 libtiffResolves: #885310[3.9.4-7]- Add fixes for CVE-2012-3401, CVE-2012-4447, CVE-2012-4564, CVE-2012-5581Resolves: #885310"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1590");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869081");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6357 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-14 05:26:36 +0100 (Sat, 14 Mar 2015)");
   script_cve_id("CVE-2015-0886");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,6 @@ Blowfish password hashing code.
   script_xref(name: "FEDORA", value: "2015-3032");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151786.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of jBCrypt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

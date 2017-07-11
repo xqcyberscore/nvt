@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_eol_lin.nasl 5580 2017-03-15 10:00:34Z teissa $
+# $Id: gb_php_eol_lin.nasl 6428 2017-06-26 07:51:28Z cfischer $
 #
 # PHP End Of Life Detection (Linux)
 #
@@ -32,18 +32,19 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105889");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5580 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_version("$Revision: 6428 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 09:51:28 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-09-15 07:00:00 +0200 (Thu, 15 Sep 2016)");
   script_name("PHP End Of Life Detection (Linux)");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_php_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("php/installed","Host/runs_unixoide");
+  script_mandatory_keys("php/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
 
   script_xref(name:"URL", value:"https://secure.php.net/supported-versions.php");
+  script_xref(name:"URL", value:"https://secure.php.net/eol.php");
 
   tag_summary = "The PHP version on the remote host has reached the end of life and should
   not be used anymore.";
@@ -62,15 +63,12 @@ if(description)
 
   tag_solution = "Update the PHP version on the remote host to a still supported version.";
 
-  tag_affected = "PHP versions below PHP 5.6";
-
   tag_vuldetect = "Get the installed version with the help of the detect NVT and check if the version is unsupported.";
 
   script_tag(name:"summary", value:tag_summary);
   script_tag(name:"impact", value:tag_impact);
   script_tag(name:"insight", value:tag_insight);
   script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"affected", value:tag_affected);
   script_tag(name:"vuldetect", value:tag_vuldetect);
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -79,17 +77,20 @@ if(description)
   exit(0);
 }
 
+include("misc_func.inc");
+include("products_eol.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-if( host_runs( "Linux" ) != "yes" ) exit( 0 );
-
 if( isnull( port = get_app_port( cpe:CPE ) ) ) exit( 0 );
-if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
+if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-# Check https://secure.php.net/supported-versions.php and update this
-if( version_is_less( version:vers, test_version:"5.6" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"5.6/7.0" );
+if( ret = product_reached_eol( cpe:CPE, version:version ) ) {
+  report = 'The PHP version has reached the end of life.\n\n' +
+           'Installed version: ' + version + '\n' +
+           'EOL version:       ' + ret['eol_version'] + '\n' +
+           'EOL date:          ' + ret['eol_date'] + '\n';
+
   security_message( port:port, data:report );
   exit( 0 );
 }

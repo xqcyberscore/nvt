@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 2675 2016-02-17 09:01:04Z benallard $
+# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability
 #
@@ -32,7 +32,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105243");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2675 $");
+ script_version ("$Revision: 6404 $");
 
  script_name("Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability");
 
@@ -50,9 +50,8 @@ to sufficiently sanitize user-supplied data before using it in an SQL query.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:01:04 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-03-24 13:13:33 +0100 (Tue, 24 Mar 2015)");
- script_summary("Check for SQL Injection");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

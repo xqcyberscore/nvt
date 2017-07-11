@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-559.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-559.nasl 6229 2017-05-29 09:04:10Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120032");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6229 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:15:44 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-559");
 script_tag(name: "insight", value: "A string reference count bug was found in cupsd, causing premature freeing of string objects. An attacker can submit a malicious print job that exploits this flaw to dismantle ACLs protecting privileged operations, allowing a replacement configuration file to be uploaded which in turn allows the attacker to run arbitrary code in the CUPS server (CVE-2015-1158 )A cross-site scripting flaw was found in the cups web templating engine. An attacker could use this flaw to bypass the default configuration settings  that bind the CUPS scheduler to the 'localhost' or loopback interface. (CVE-2015-1159 )An integer overflow leading to a heap-based buffer overflow was found in the way cups handled compressed raster image files. An attacker could create a specially-crafted image file, which when passed via the cups Raster filter, could cause the cups filter to crash. (CVE-2014-9679 )"); 
 script_tag(name : "solution", value : "Run yum update cups to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-559");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

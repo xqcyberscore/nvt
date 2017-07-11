@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869698");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6329 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-07 06:37:09 +0200 (Tue, 07 Jul 2015)");
   script_cve_id("CVE-2014-9655", "CVE-2015-1547");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,7 +50,6 @@ image files.
   script_xref(name: "FEDORA", value: "2015-6907");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/156769.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of mingw-libtiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 5943 2017-04-12 14:44:26Z antu123 $#
+# $Id: secpod_office_products_version_900032.nasl 6413 2017-06-23 09:16:58Z cfischer $#
 #
 # MS Office Products Version Detection
 #
@@ -27,7 +27,7 @@
 # Updated to include detect mechanism for Office Visio Viewer 2007
 #  - By Sharath S <sharaths@secpod.com> On 2009-10-29 #5269
 #
-# Updated to check office installtion by adding registrty key check
+# Updated to check office installation by adding registrty key check
 #  - By Antu Sanadi <santu@secpod.com> on 2010-03-10 #7621
 #
 # Updated By : Antu Sanadi <santu@secpod.com> on 2012-02-15
@@ -58,8 +58,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5943 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6413 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms07-042.nasl 5362 2017-02-20 12:46:39Z cfi $
+# $Id: gb_ms07-042.nasl 6235 2017-05-29 13:45:48Z cfi $
 #
 # Microsoft XML Core Services Remote Code Execution Vulnerability (936227)
 #
@@ -28,13 +28,20 @@ tag_impact = "Successful exploitation will allow the attacker to execute arbitra
   the context of the user running the application.
   Impact Level: System/Application";
 tag_affected = "Microsoft XML Core Services 3.0/4.0/5.0/6.0
-  Microsoft Windows 2K Service Pack 4 and prior.
-  Microsoft Windows XP Service Pack 3 and prior.
-  Microsoft Windows 2003 Service Pack 2 and prior.
+
+  Microsoft Windows 2K Service Pack 4 and prior
+
+  Microsoft Windows XP Service Pack 3 and prior
+
+  Microsoft Windows 2003 Service Pack 2 and prior
+
   Microsoft Windows Vista
-  Microsoft Office 2003 Service Pack 2.
+
+  Microsoft Office 2003 Service Pack 2
+
   Microsoft Office 2007
-  Microsoft Office Compatibility Pack for Word/Excel/PowerPoint 2007 File Formats.";
+
+  Microsoft Office Compatibility Pack for Word/Excel/PowerPoint 2007 File Formats";
 tag_insight = "The flaw is due to an integer overflow error in the 'substringData()'
   method of an XMLDOM/TextNode JavaScript object.";
 tag_solution = "Run Windows Update and update the listed hotfixes or download and
@@ -46,8 +53,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(801715);
-  script_version("$Revision: 5362 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 13:46:39 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6235 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:45:48 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2011-01-14 09:03:25 +0100 (Fri, 14 Jan 2011)");
   script_cve_id("CVE-2007-2223");
   script_bugtraq_id(25301);
@@ -58,6 +65,7 @@ if(description)
   script_xref(name : "URL" , value : "http://securitytracker.com/alerts/2007/Aug/1018559.html");
   script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms07-042.mspx");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
@@ -150,6 +158,12 @@ if(sysPath)
   dllVer3 = fetch_file_version(sysPath, file_name:"Msxml6.dll");
   if(dllVer || dllVer2 || dllVer3)
   {
+
+    ## Avoid passing FALSE values to the version_* functions later if fetch_file_version() returns FALSE
+    if( ! dllVer ) dllVer = "unknown";
+    if( ! dllVer2 ) dllVer2 = "unknown";
+    if( ! dllVer3 ) dllVer3 = "unknown";
+
     # Windows 2K, 2k3 and xp
     if(hotfix_check_sp(win2k:5, xp:4, win2003:3) > 0)
     {
@@ -174,6 +188,12 @@ dllVer2 = fetch_file_version(sysPath, file_name:"system32\Msxml4.dll");
 dllVer3 = fetch_file_version(sysPath, file_name:"system32\Msxml6.dll");
 if(dllVer || dllVer2 || dllVer3)
 {
+
+  ## Avoid passing FALSE values to the version_* functions later if fetch_file_version() returns FALSE
+  if( ! dllVer ) dllVer = "unknown";
+  if( ! dllVer2 ) dllVer2 = "unknown";
+  if( ! dllVer3 ) dllVer3 = "unknown";
+
   ## Windows Vista
   if(hotfix_check_sp(winVista:3) > 0)
   {
@@ -194,6 +214,3 @@ if(dllVer || dllVer2 || dllVer3)
     }
   }
 }
-
-
-

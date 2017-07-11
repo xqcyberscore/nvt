@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dcetest.nasl 5247 2017-02-09 10:21:21Z cfi $
+# $Id: dcetest.nasl 6319 2017-06-13 07:06:12Z cfischer $
 #
-# DCE Services Enumeration
+# DCE/RPC and MSRPC Services Enumeration
 #
 # Authors:
 # This code is 100% based on 'dcetest', by Dave Aitel, a free (GPL'ed)
@@ -40,22 +40,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108044");
-  script_version("$Revision: 5247 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:21:21 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 6319 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 09:06:12 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("DCE Services Enumeration");
+  script_name("DCE/RPC and MSRPC Services Enumeration");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 Dave Aitel (ported to NASL by rd and Pavel Kankovsky)");
   script_family("Windows");
   script_dependencies("find_service.nasl");
   script_require_ports(135);
 
-  script_tag(name:"summary", value:"Distributed Computing Environment (DCE) services running on the remote host
-  can be enumerated by connecting on port 135 and doing the appropriate queries.
+  script_tag(name:"summary", value:"Distributed Computing Environment / Remote Procedure Calls (DCE/RPC) or MSRPC services running
+  on the remote host can be enumerated by connecting on port 135 and doing the appropriate queries.
 
-  The actual reporting takes place in the NVT 'DCE Services Enumeration Reporting'
+  The actual reporting takes place in the NVT 'DCE/RPC and MSRPC Services Enumeration Reporting'
   (OID: 1.3.6.1.4.1.25623.1.0.10736)");
 
   script_tag(name:"impact", value:"An attacker may use this fact to gain more knowledge
@@ -653,11 +653,13 @@ function dce_parse( result ) {
 
     if( ( proto == "udp" ) || ( proto == "tcp" ) ) {
       if( proto == "tcp" ) {
-        register_service( port:ncaport, proto:"msrpc", ipproto:"tcp" );
+        if( get_port_state( ncaport ) )
+          register_service( port:ncaport, proto:"msrpc", ipproto:"tcp", message:"A DCE/RPC or MSRPC service seems to be running on this port" );
         set_kb_item( name:"dcetest/" + port + "/enumerated/tcp/ports", value:ncaport );
         set_kb_item( name:"dcetest/" + port + "/enumerated/tcp/" + ncaport + "/report", value:report );
       } else {
-        register_service( port:ncaport, proto:"msrpc", ipproto:"udp" );
+        if( get_udp_port_state( ncaport ) )
+          register_service( port:ncaport, proto:"msrpc", ipproto:"udp", message:"A DCE/RPC or MSRPC service seems to be running on this port" );
         set_kb_item( name:"dcetest/" + port + "/enumerated/udp/ports", value:ncaport );
         set_kb_item( name:"dcetest/" + port + "/enumerated/udp/" + ncaport, value:report );
       }

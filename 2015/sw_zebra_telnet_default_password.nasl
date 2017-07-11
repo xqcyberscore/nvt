@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_zebra_telnet_default_password.nasl 2965 2016-03-26 20:17:38Z cfi $
+# $Id: sw_zebra_telnet_default_password.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Zebra PrintServer Telnet Default Password
 #
@@ -28,13 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111061");
-  script_version("$Revision: 2965 $");
+  script_version("$Revision: 6229 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Zebra PrintServer Telnet Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-26 21:17:38 +0100 (Sat, 26 Mar 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-25 11:00:00 +0100 (Wed, 25 Nov 2015)");
-  script_summary("Determine if it is possible to login with a default password.");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

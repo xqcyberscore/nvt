@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_file_upload_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wordpress_simple_ads_manager_file_upload_vuln.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Wordpress Simple Ads Manager Plugin File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805530");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2015-2825");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-08 18:02:38 +0530 (Wed, 08 Apr 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Simple Ads Manager Plugin File Upload Vulnerability");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36614");
   script_xref(name : "URL" , value : "http://www.itas.vn/news/ITAS-Team-found-out-multiple-critical-vulnerabilities-in-Hakin9-IT-Security-Magazine-78.html?language=en");
 
-  script_summary("Determine if it is possible to upload a file");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

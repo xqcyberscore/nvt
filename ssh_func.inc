@@ -1,7 +1,8 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: ssh_func.inc 5990 2017-04-20 13:39:40Z cfi $
-# Description: Methods for handling SSH
+# OpenVAS Include File
+# $Id: ssh_func.inc 6355 2017-06-16 08:59:27Z cfischer $
+#
+# Methods for handling SSH
 #
 # Authors:
 # Nicolas Pouvesle
@@ -22,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 5990 $
+# $Revision: 6355 $
 #
 ###############################################################################
 
@@ -52,8 +53,11 @@ ssh_host_key_algos = make_list( "ssh-rsa",
                                 "ssh-dss",
                                 "ecdsa-sha2-nistp256",
                                 "ecdsa-sha2-nistp384",
-                                "ecdsa-sha2-nistp521",
-                                "ssh-ed25519"); # libssh >= 0.6.4 is needed for ecdsa-sha2-nistp384 and ecdsa-sha2-nistp521, libssh >= 0.7.0 for ed25519
+                                "ecdsa-sha2-nistp521", # libssh >= 0.6.4 is needed for ecdsa-sha2-nistp384 and ecdsa-sha2-nistp521
+                                "ssh-ed25519" ); # libssh >= 0.7.0 for ed25519
+
+                                #"rsa-sha2-256", # Those two seems to be currently unsupported in libssh
+                                #"rsa-sha2-512" );
 
 # ssh_hex2raw() copied from misc_func.inc as we don't want to taint ssh_func.inc with
 # a third-party include

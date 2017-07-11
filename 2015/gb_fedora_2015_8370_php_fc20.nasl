@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869423");
-  script_version("$Revision: 3349 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:36 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6333 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:54:55 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2006-7243", "CVE-2014-0185", "CVE-2013-6420", "CVE-2015-4025",
                 "CVE-2015-4021", "CVE-2015-4026", "CVE-2015-4024", "CVE-2015-4022");
@@ -53,7 +53,6 @@ support for the PHP language to Apache HTTP Server.
   script_xref(name: "FEDORA", value: "2015-8370");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/159031.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_jul15_win.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_jul15_win.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Jul15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805913");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-2740", "CVE-2015-2739", "CVE-2015-2738", "CVE-2015-2737",
                 "CVE-2015-2736", "CVE-2015-2735", "CVE-2015-2734", "CVE-2015-2724",
                 "CVE-2015-2721", "CVE-2015-2725", "CVE-2015-2741", "CVE-2015-2731",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-08 15:59:57 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Jul15 (Windows)");
 
@@ -88,7 +88,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-59");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Windows.");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_thunderbird_detect_win.nasl");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16121.nasl 4335 2016-10-24 15:25:45Z mime $
+# $Id: gb_f5_big_ip_sol16121.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # F5 BIG-IP - BIG-IP directory traversal vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2014-8727");
  script_tag(name:"cvss_base", value:"6.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:C/A:C");
- script_version ("$Revision: 4335 $");
+ script_version ("$Revision: 6345 $");
 
  script_name("F5 BIG-IP - BIG-IP directory traversal vulnerability");
 
@@ -54,9 +54,8 @@ to (1) tmui/Control/jspmap/tmui/system/archive/properties.jsp or (2) tmui/Contro
  script_tag(name: "affected" , value:"F5 BIG-IP before 10.2.2");
 
  script_tag(name:"qod_type", value:"package");
- script_tag(name:"last_modification", value:"$Date: 2016-10-24 17:25:45 +0200 (Mon, 24 Oct 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-02-17 08:08:36 +0100 (Tue, 17 Feb 2015)");
- script_summary("Check the installed version");
  script_category(ACT_GATHER_INFO);
  script_family("F5 Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

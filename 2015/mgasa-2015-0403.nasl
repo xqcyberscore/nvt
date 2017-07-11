@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0403.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0403.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.131097");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-10-16 08:44:13 +0300 (Fri, 16 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0403");
 script_tag(name: "insight", value: "Updated wireshark packages fix security vulnerabilities: In Wireshark before 1.12.8, the pcapng file parser could crash while copying an interface filter. It may be possible to make Wireshark crash by injecting a malformed packet onto the wire or by convincing someone to read a malformed packet trace file (CVE-2015-7830)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0403");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0403");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

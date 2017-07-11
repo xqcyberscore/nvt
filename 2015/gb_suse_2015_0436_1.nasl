@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850758");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:07:39 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-6501", "CVE-2014-9652", "CVE-2015-0273");
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,7 +55,6 @@ http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-6501");
   script_xref(name: "SUSE-SU", value: "2015:0436_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-03/msg00003.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of PHP");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

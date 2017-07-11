@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869044");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-27 05:42:24 +0100 (Fri, 27 Feb 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,6 @@ order of importance, are as follows:
   script_xref(name: "FEDORA", value: "2015-2223");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/150472.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libhtp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-013.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-013.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # Microsoft Office Security Feature Bypass Vulnerability (3033857)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805041");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2014-6362");
   script_bugtraq_id(72467);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 08:59:35 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Security Feature Bypass Vulnerability (3033857)");
 
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2920748");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2920795");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-013");
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adh_webserver_ip_cameras_mult_vuln.nasl 4263 2016-10-13 11:24:25Z antu123 $
+# $Id: gb_adh_webserver_ip_cameras_mult_vuln.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # ADH-Web Server IP-Cameras Multiple Improper Access Restrictions Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806058");
-  script_version("$Revision: 4263 $");
+  script_version("$Revision: 6229 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-13 13:24:25 +0200 (Thu, 13 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-09-22 15:57:38 +0530 (Tue, 22 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ADH-Web Server IP-Cameras Multiple Improper Access Restrictions Vulnerabilities");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38245");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133634");
 
-  script_summary("Check if ADH-Web Server IP-Camera is vulnerable to information disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

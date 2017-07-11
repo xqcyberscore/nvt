@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869390");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:45:46 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2014-0165", "CVE-2014-0166", "CVE-2015-3438", "CVE-2015-3439",
                 "CVE-2015-3440");
@@ -49,7 +49,6 @@ Important information in /usr/share/doc/wordpress/README.fedora
   script_xref(name: "FEDORA", value: "2015-6790");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/158278.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of wordpress");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

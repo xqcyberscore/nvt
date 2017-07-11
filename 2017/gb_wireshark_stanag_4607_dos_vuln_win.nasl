@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_stanag_4607_dos_vuln_win.nasl 5399 2017-02-23 07:02:00Z antu123 $
+# $Id: gb_wireshark_stanag_4607_dos_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807399");
-  script_version("$Revision: 5399 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2017-6014");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 08:02:00 +0100 (Thu, 23 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 14:26:53 +0530 (Tue, 21 Feb 2017)");
   script_name("Wireshark 'STANAG 4607' Capture File Denial of Service Vulnerability (Windows)");
 
@@ -59,12 +59,10 @@ if(description)
   script_tag(name: "affected" , value: "Wireshark versions 2.2.4 and prior
   on Windows.");
 
-  script_tag(name: "solution" , value: "No solution or patch is available as of
-  21st February, 2017. Information regarding this issue will be updated once the
-  solution details are made available.
+  script_tag(name: "solution" , value: "Update to Wireshark 2.2.5 or later.
   For updates refer to https://www.wireshark.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
   script_xref(name : "URL" , value : "http://git.net/ml/general/2017-02/msg20415.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=13416");
@@ -91,7 +89,7 @@ if(!wirversion = get_app_version(cpe:CPE)){
 ## Check the vulnerable version
 if(version_is_less_equal(version: wirversion, test_version:"2.2.4"))
 {
-  report = report_fixed_ver(installed_version:wirversion, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:wirversion, fixed_version:"2.2.5");
   security_message(data:report);
   exit(0);
 }

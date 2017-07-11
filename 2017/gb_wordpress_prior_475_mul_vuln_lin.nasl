@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_prior_475_mul_vuln_lin.nasl 6204 2017-05-24 05:59:56Z emoss $
+# $Id: gb_wordpress_prior_475_mul_vuln_lin.nasl 6268 2017-06-01 14:48:58Z teissa $
 #
 # WordPress Prior to 4.7.5 Multiple Security Vulnerabilities (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107201");
-  script_version("$Revision: 6204 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 07:59:56 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6268 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 16:48:58 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-22 17:40:57 +0200 (Mon, 22 May 2017)");
   script_cve_id("CVE-2017-9061", "CVE-2017-9062", "CVE-2017-9063", "CVE-2017-9064", "CVE-2017-9065", "CVE-2017-9066");
 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869455");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-21 05:54:51 +0200 (Sun, 21 Jun 2015)");
   script_cve_id("CVE-2015-0203", "CVE-2015-0223");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,6 @@ the AMQP protocol.
   script_xref(name: "FEDORA", value: "2015-9503");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160354.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qpid-cpp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

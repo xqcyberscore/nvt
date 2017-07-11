@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_sqli.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_firepass_sqli.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # F5 Firepass SQL injection vulnerability in my.activation.php3
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111017");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6357 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,6 @@ if(description)
 
   script_name("F5 Firepass SQL injection vulnerability in my.activation.php3");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

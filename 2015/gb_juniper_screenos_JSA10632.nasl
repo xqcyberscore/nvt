@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10632.nasl 2675 2016-02-17 09:01:04Z benallard $
+# $Id: gb_juniper_screenos_JSA10632.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Juniper NetScreen Firewall DNS lookup/Malformed IPv6 packet Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-3814");
  script_tag(name:"cvss_base", value:"7.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2675 $");
+ script_version ("$Revision: 6243 $");
 
  script_name("Juniper NetScreen Firewall DNS lookup/Malformed IPv6 packet Denial of Service Vulnerability");
 
@@ -62,9 +62,8 @@ vendor advisory for more information.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:01:04 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
  script_tag(name:"creation_date", value:"2015-05-08 15:40:14 +0200 (Fri, 08 May 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

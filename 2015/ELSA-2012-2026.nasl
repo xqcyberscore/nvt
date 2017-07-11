@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-2026.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-2026.nasl 6333 2017-06-14 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123862");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6333 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:33 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-2026");
 script_tag(name: "insight", value: "ELSA-2012-2026 - Unbreakable Enterprise kernel Security update - [2.6.32-300.29.2]- epoll: epoll_wait() should not use timespec_add_ns() (Eric Dumazet)- epoll: clear the tfile_check_list on -ELOOP (Joe Jin) {CVE-2012-3375}- Don't limit non-nested epoll paths (Jason Baron)- epoll: kabi fixups for epoll limit wakeup paths (Joe Jin) {CVE-2011-1083}- epoll: limit paths (Jason Baron) {CVE-2011-1083}- eventpoll: fix comment typo 'evenpoll' (Paul Bolle)- epoll: fix compiler warning and optimize the non-blocking path (Shawn Bohrer)- epoll: move ready event check into proper inline (Davide Libenzi)- epoll: make epoll_wait() use the hrtimer range feature (Shawn Bohrer)- select: rename estimate_accuracy() to select_estimate_accuracy() (Andrew Morton)- cred: copy_process() should clear child->replacement_session_keyring (Oleg Nesterov) {CVE-2012-2745}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-2026");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

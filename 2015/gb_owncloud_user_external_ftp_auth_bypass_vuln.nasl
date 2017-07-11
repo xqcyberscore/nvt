@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_user_external_ftp_auth_bypass_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_owncloud_user_external_ftp_auth_bypass_vuln.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # ownCloud FTP Backend 'user_external' Password Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805281");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2014-9045");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-19 16:04:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud FTP Backend 'user_external' Password Authentication Bypass Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-022");
 
-  script_summary("Check for the vulnerable version of ownCloud");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

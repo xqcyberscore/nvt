@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_dns_server_dos_kb4018196.nasl 6096 2017-05-10 15:16:10Z antu123 $
+# $Id: gb_ms_dns_server_dos_kb4018196.nasl 6231 2017-05-29 09:29:50Z teissa $
 #
 # Microsoft Windows DNS Server Denial of Service Vulnerability (KB4018196)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811115");
-  script_version("$Revision: 6096 $");
+  script_version("$Revision: 6231 $");
   script_cve_id("CVE-2017-0171");
   script_bugtraq_id(98097);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 17:16:10 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 12:41:18 +0530 (Wed, 10 May 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows DNS Server Denial of Service Vulnerability (KB4018196)");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_MediaWiki_42019.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_MediaWiki_42019.nasl 6284 2017-06-06 11:43:39Z cfischer $
 #
 # MediaWiki 'api.php' Information Disclosure Vulnerability
 #
@@ -24,60 +24,60 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "MediaWiki is prone to an information-disclosure vulnerability.
+CPE = "cpe:/a:mediawiki:mediawiki";
 
-An attacker can exploit this vulnerability to gain access to sensitive
-information, that may aid in further attacks.
-
-MediaWiki 1.8 through 1.15.4 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
+if(description)
 {
- script_id(100733);
- script_version("$Revision: 5306 $");
- script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
- script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100733");
+  script_version("$Revision: 6284 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
+  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2010-2787");
- script_bugtraq_id(42019);
+  script_bugtraq_id(42019);
+  script_name("MediaWiki 'api.php' Information Disclosure Vulnerability");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("secpod_mediawiki_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("mediawiki/installed");
 
- script_name("MediaWiki 'api.php' Information Disclosure Vulnerability");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42019");
+  script_xref(name:"URL", value:"http://lists.wikimedia.org/pipermail/mediawiki-announce/2010-July/000092.html");
+  script_xref(name:"URL", value:"http://wikipedia.sourceforge.net/");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42019");
- script_xref(name : "URL" , value : "http://lists.wikimedia.org/pipermail/mediawiki-announce/2010-July/000092.html");
- script_xref(name : "URL" , value : "http://wikipedia.sourceforge.net/");
+  tag_summary = "MediaWiki is prone to an information-disclosure vulnerability.";
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("secpod_mediawiki_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  tag_impact = "An attacker can exploit this vulnerability to gain access to sensitive
+  information, that may aid in further attacks.";
+
+  tag_affected = "MediaWiki 1.8 through 1.15.4 are vulnerable.";
+
+  tag_solution = "Updates are available. Please see the references for more information.";
+
+  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:tag_summary);
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
-include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if (!can_host_php(port:port)) exit(0);
-
-if(!vers = get_kb_item(string("MediaWiki/Version")))exit(0);
-if(!isnull(vers) && vers >!< "unknown") {
-
-  if(version_in_range(version: vers, test_version: "1.8",test_version2:"1.15.4")) {
-    security_message(port:port);
-    exit(0);
-  }
+if( version_in_range( version:vers, test_version:"1.8", test_version2:"1.15.4" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"1.15.5" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-exit(0);
-
+exit( 99 );

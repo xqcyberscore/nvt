@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_file_upload_vuln.nasl 6041 2017-04-27 14:49:50Z ckuerste $
+# $Id: gb_magento_file_upload_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
 #
 # Magento Arbitrary File Upload Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:magentocommerce:magento";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106792");
-  script_version("$Revision: 6041 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-27 16:49:50 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6264 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-04-27 10:41:56 +0200 (Thu, 27 Apr 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -61,7 +61,7 @@ uses an additional Cross Site Request Forgery vulnerability.");
 
   script_tag(name: "affected", value: "Magento version 2.1.6 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 27th April, 2017. Information
+  script_tag(name: "solution", value: "No solution or patch is available as of 01st June, 2017. Information
 regarding this issue will be updated once the solution details are available.");
 
   script_xref(name: "URL", value: "http://www.defensecode.com/advisories/DC-2017-04-003_Magento_Arbitrary_File_Upload.pdf");

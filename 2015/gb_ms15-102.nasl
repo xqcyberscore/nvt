@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-102.nasl 4589 2016-11-22 08:40:50Z cfi $
+# $Id: gb_ms15-102.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # MS Windows Task Management Privilege Elevation Vulnerabilities (3089657)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806045");
-  script_version("$Revision: 4589 $");
+  script_version("$Revision: 6345 $");
   script_cve_id("CVE-2015-2524", "CVE-2015-2525", "CVE-2015-2528");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:40:50 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:27:35 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Task Management Privilege Elevation Vulnerabilities (3089657)");
@@ -74,7 +74,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3084135");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-102");
 
-  script_summary("Check for the vulnerable 'Schedsvc.dll' and 'Authui.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

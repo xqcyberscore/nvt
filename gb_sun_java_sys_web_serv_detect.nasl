@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_detect.nasl 6089 2017-05-09 13:03:19Z cfi $
+# $Id: gb_sun_java_sys_web_serv_detect.nasl 6226 2017-05-26 21:05:06Z cfi $
 #
 # Sun/Oracle Web Server Version Detection
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800810");
-  script_version("$Revision: 6089 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 15:03:19 +0200 (Tue, 09 May 2017) $");
+  script_version("$Revision: 6226 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 23:05:06 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2009-06-19 09:45:44 +0200 (Fri, 19 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,6 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 443, 8080, 8800, 8989, 8888);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

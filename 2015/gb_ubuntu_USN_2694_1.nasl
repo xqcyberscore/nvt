@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842393");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6333 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-30 05:15:02 +0200 (Thu, 30 Jul 2015)");
   script_cve_id("CVE-2014-8964", "CVE-2015-2325", "CVE-2015-2326", "CVE-2015-3210",
                 "CVE-2015-5073");
@@ -66,7 +66,6 @@ arbitrary code. This issue only affected Ubuntu 12.04 LTS and 14.04 LTS.
   script_xref(name: "USN", value: "2694-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-July/003063.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of pcre3");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

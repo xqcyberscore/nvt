@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_147.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_147.nasl 6387 2017-06-21 09:03:11Z emoss $
 #
-# IT-Grundschutz, 14. EL, Maßnahme 4.147
+# IT-Grundschutz, 15. EL, Maßnahme 4.147
 #
 # Authors:
 # Thomas Rotter <thomas.rotter@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94217);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6387 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,12 +41,12 @@ if(description)
   script_family("IT-Grundschutz");
   script_mandatory_keys("Tools/Present/wmi");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("GSHB/GSHB_WMI_EFS.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SMB_SDDL.nasl", "GSHB/GSHB_WMI_Hibernate.nasl");  
+  script_dependencies("GSHB/GSHB_WMI_EFS.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SMB_SDDL.nasl", "GSHB/GSHB_WMI_Hibernate.nasl");
   script_require_keys("WMI/WMI_EncrDir", "WMI/WMI_EncrFile", "WMI/WMI_EFSAlgorithmID");
   script_tag(name : "summary" , value :
 "IT-Grundschutz M4.147: Sichere Nutzung von EFS unter Windows.
 
-Stand: 14. Ergänzungslieferung (14. EL).
+Stand: 15. Ergänzungslieferung (15. EL).
 ");
 
   exit(0);
@@ -62,9 +62,9 @@ OSSP = get_kb_item("WMI/WMI_OSSP");
 OSTYPE = get_kb_item("WMI/WMI_OSTYPE");
 WMIOSLOG = get_kb_item("WMI/WMI_OS/log");
 EncrFile = get_kb_item("WMI/WMI_EncrFile");
-EncrFile = ereg_replace(pattern:'Name\n', string:EncrFile, replace:''); 
+EncrFile = ereg_replace(pattern:'Name\n', string:EncrFile, replace:'');
 EncrDir = get_kb_item("WMI/WMI_EncrDir");
-EncrDir = ereg_replace(pattern:'Name\n', string:EncrDir, replace:''); 
+EncrDir = ereg_replace(pattern:'Name\n', string:EncrDir, replace:'');
 EFSAlgorithmID = get_kb_item("WMI/WMI_EFSAlgorithmID");
 AUTOEXECSDDL = get_kb_item("GSHB/AUTOEXECSDDL");
 log = get_kb_item("WMI/WMI_EFS/log");
@@ -132,14 +132,14 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
       result = string("nicht zutreffend");
       desc = string("Auf dem Systems gibt es keine EFS-verschlüsselten\nDaten.");
     }
-    
+
     else{
-    
+
       if (OSVER > '5.0'){
         result = string("erfüllt");
         desc = string('Auf dem Systems gibt es folgende EFS-verschlüsselten\nDaten:\n' + EncrDir +  EncrFile + '\nDabei wird folgendes Verschlüsselungsverfahren\neingesetzt: ' + EFSAlgorithmID + '\nBitte beachten Sie auch, dass Sie ein dediziertes\nKonto für den Wiederherstellungsagenten erzeugen und\ndessen privaten Schlüssel sichern und aus dem System\nentfernen sollten. Außerdem sollten Sie die syskey-\nVerschlüsselung mit Passwort verwendet, wenn EFS mit\nlokalen Konten eingesetzt wird');
       }else{
-      
+
         if(USER){
           result = string("nicht erfüllt");
           desc = string('Auf dem System existieren EFS-verschlüsselte Dateien.\nDabei haben folgende Benutzer\n' + USER + '\nzugriff auf die Datei autoexec.bat.\nDie Windows Boot-Datei autoexec.bat muss vor\nVerschlüsselung geschützt werden, indem für Benutzer\nder Schreibzugriff unterbunden wird, da sonst eine\nDenial-of-Service-Attacke möglich ist.');
@@ -147,10 +147,10 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
         result = string("erfüllt");
         desc = string('Auf dem Systems gibt es folgende EFS-verschlüsselten\nDaten:\n' + EncrDir +  EncrFile + '\nDabei wird folgendes Verschlüsselungsverfahren\neingesetzt: ' + EFSAlgorithmID + '\nBitte beachten Sie auch, dass Sie ein dediziertes\nKonto für den Wiederherstellungsagenten erzeugen und\\ndessen privaten Schlüssel sichern und aus dem System\nentfernen sollten. Außerdem sollten Sie die syskey-\nVerschlüsselung mit Passwort verwendet, wenn EFS mit\nlokalen Konten eingesetzt wird');
         }
-      
+
       }
     }
-   
+
 } else{
   result = string("nicht zutreffend");
   desc = string("Das System ist kein Windows Client");

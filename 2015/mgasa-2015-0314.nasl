@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0314.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0314.nasl 6333 2017-06-14 10:00:49Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130065");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6333 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:17 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0314");
 script_tag(name: "insight", value: "In ownCloud before 6.0.8 and 8.0.4, a bug in the SDK used to connect ownCloud against the Dropbox server might allow the owner of Dropbox.com to gain access to any files on the ownCloud server if an external Dropbox storage was mounted (CVE-2015-4715). In ownCloud before 6.0.8 and 8.0.4, the sanitization component for filenames was vulnerable to DoS when parsing specially crafted file names passed via specific endpoints. Effectively this lead to a endless loop filling the log file until the system is not anymore responsive (CVE-2015-4717). In ownCloud before 6.0.8 and 8.0.4, the external SMB storage of ownCloud was not properly neutralizing all special elements which allows an adversary to execute arbitrary SMB commands. This was caused by improperly sanitizing the ';' character which is interpreted as command separator by smbclient (the used software to connect to SMB shared by ownCloud). Effectively this allows an attacker to gain access to any file on the system or overwrite it, finally leading to a PHP code execution in the case of ownClouds config file (CVE-2015-4718)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0314");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0314");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

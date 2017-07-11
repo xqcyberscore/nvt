@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3123479.nasl 5460 2017-03-02 05:43:13Z antu123 $
+# $Id: gb_microsoft_security_advisory_3123479.nasl 6262 2017-06-01 11:47:33Z santu $
 #
 # Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806663");
-  script_version("$Revision: 5460 $");
+  script_version("$Revision: 6262 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-02 06:43:13 +0100 (Thu, 02 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 13:47:33 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-01-14 13:09:43 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Root Certificate Program SHA-1 Deprecation Advisory (3123479)");
@@ -62,7 +62,18 @@ if(description)
   script_tag(name: "solution" , value: "Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
-  https://technet.microsoft.com/en-us/library/security/3123479");
+
+  https://technet.microsoft.com/en-us/library/security/3123479
+
+  https://support.microsoft.com/en-in/help/3197869
+
+  https://support.microsoft.com/en-in/help/3197875
+
+  https://support.microsoft.com/en-in/help/3198585
+
+  https://support.microsoft.com/en-in/help/3198586
+
+  https://support.microsoft.com/en-us/help/3200970");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -82,41 +93,62 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-#Hotfix check
-if(hotfix_missing(name:"3197869") == 0){
-  exit(0);
-}
-
 ## Variables Initialization
 sysPath = "";
 dllVer = "";
 
-## Check for OS and Service Pack
+##Check for OS
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win2008:3, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-key = "SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CertDllCreateCertificateChainEngine\Config\Default";
+## Follwing KBs already covered: KB3198585, KB3198586,
+## KB3200970 in 2016/gb_ms16-129.nasl
 
-#After applying patch:
-#Key added:
-#HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CertDllCreateCertificateChainEngine\Config\Default
-# Item WeakSha1ThirdPartyAfterTime and WeakSha1ThirdPartyFlags
 
-#After removing patch
-#Key deleted:
-#HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CertDllCreateCertificateChainEngine\Config\Default
-# Item WeakSha1ThirdPartyAfterTime and WeakSha1ThirdPartyFlags
-
-wshatpat = registry_get_binary(key:key, item:"WeakSha1ThirdPartyAfterTime");
-wshatpf = registry_get_dword(key:key, item:"WeakSha1ThirdPartyFlags");
-
-if(!wshatpat || !wshatpf)
-{
-  report = 'Registry Entry Checked: ' + key + "\WeakSha1ThirdPartyAfterTime and " + key + "\WeakSha1ThirdPartyFlags" + '\n' +
-           'Fix:                    Apply Updates\n' ;
-  security_message(data:report);
+## KB3197869, KB3197875
+## Get System Path
+sysPath = smb_get_system32root();
+if(!sysPath ){
   exit(0);
+}
+
+##Fetch Win32k.sys version
+winVer = fetch_file_version(sysPath, file_name:"Win32k.sys");
+if(winVer)
+{
+  ##https://support.microsoft.com/en-in/help/3197875
+  ## Windows 8.1 and Windows Server 2012 R2
+  if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
+  {
+    ## Check for win32k.sys version
+    if(version_is_less(version:winVer, test_version:"6.3.9600.18524"))
+    {
+      Vulnerable_range = "Less than 6.3.9600.18524";
+      VULN = TRUE ;
+    }
+  }
+
+  ## https://support.microsoft.com/en-in/help/3197869
+  ## Windows 7 SP1 and Windows Server 2008 R2 SP1
+  else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
+  {
+    ## Check for win32k.sys version
+    if(version_is_less(version:winVer, test_version:"6.1.7601.23584"))
+    {
+      Vulnerable_range = "Less than 6.1.7601.23584";
+      VULN = TRUE ;
+    }
+  }
+
+  if(VULN)
+  {
+     report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
+              'File version:     ' + winVer  + '\n' +
+              'Vulnerable range: ' + Vulnerable_range + '\n' ;
+     security_message(data:report);
+     exit(0);
+  }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2868725.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_microsoft_security_advisory_2868725.nasl 6234 2017-05-29 10:42:27Z cfi $
 #
 # Microsoft RC4 Disabling Security Advisory (2868725)
 #
@@ -28,10 +28,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804142";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 6234 $");
   script_tag(name:"cvss_base", value:"8.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 12:42:27 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2013-11-14 11:28:18 +0530 (Thu, 14 Nov 2013)");
   script_name("Microsoft RC4 Disabling Security Advisory (2868725)");
 
@@ -111,7 +111,7 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
         ## Check for Schannel.dll version
   if(version_is_less(version:schannelVer, test_version:"6.1.7601.18270") ||
-     version_in_range(version:exeVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22464")){
+     version_in_range(version:schannelVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22464")){
     security_message(0);
   }
   exit(0);

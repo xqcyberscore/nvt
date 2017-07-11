@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_enterprise_manager_sol15236.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_f5_enterprise_manager_sol15236.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-2927");
  script_tag(name:"cvss_base", value:"9.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2617 $");
+ script_version ("$Revision: 6229 $");
 
  script_name("F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)");
 
@@ -50,9 +50,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-24 14:31:00 +0200 (Wed, 24 Jun 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

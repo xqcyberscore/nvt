@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasig_cas_mult_xss_vuln.nasl 2675 2016-02-17 09:01:04Z benallard $
+# $Id: gb_jasig_cas_mult_xss_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Jasig Cas Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apereo:central_authentication_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806502");
-  script_version("$Revision: 2675 $");
+  script_version("$Revision: 6415 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:01:04 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:02:46 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Jasig Cas Server Multiple Cross Site Scripting Vulnerabilities");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2015/Sep/88");
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133630");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/536510");
-  script_summary("Check if Jasig CAS server is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_mq_websockets_listener_xss_vuln.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_ibm_websphere_mq_websockets_listener_xss_vuln.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # IBM WebSphere MQ XR WebSockets listener Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:ibm:websphere_mq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805547");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2015-0176");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-06 12:12:34 +0530 (Wed, 06 May 2015)");
   script_name("IBM WebSphere MQ XR WebSockets listener Cross-Site Scripting Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21699549");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM WebSphere MQ");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_ibm_websphere_mq_detect.nasl");

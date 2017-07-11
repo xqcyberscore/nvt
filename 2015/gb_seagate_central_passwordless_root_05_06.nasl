@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_central_passwordless_root_05_06.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_seagate_central_passwordless_root_05_06.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Seagate Central Remote Root Security Bypass Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105288");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6229 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -43,9 +43,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-06-05 14:40:09 +0200 (Fri, 05 Jun 2015)");
- script_summary("Try to login as root without password");
  script_category(ACT_GATHER_INFO);
  script_family("FTP");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

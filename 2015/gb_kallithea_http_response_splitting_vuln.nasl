@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kallithea_http_response_splitting_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_kallithea_http_response_splitting_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Kallithea 'came_from' parameter HTTP Response Splitting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:kallithea:kallithea";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806613");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-5285");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-06 12:57:52 +0530 (Fri, 06 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Kallithea 'came_from' parameter HTTP Response Splitting Vulnerability");
@@ -63,7 +63,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133897");
   script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2015-5267.php");
 
-  script_summary("Check if Kallithea is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

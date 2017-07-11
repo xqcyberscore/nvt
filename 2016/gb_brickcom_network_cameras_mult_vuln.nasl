@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_cameras_mult_vuln.nasl 6025 2017-04-25 14:47:21Z teissa $
+# $Id: gb_brickcom_network_cameras_mult_vuln.nasl 6313 2017-06-12 09:33:47Z teissa $
 #
 # Brickcom Network Cameras Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808159");
-  script_version("$Revision: 6025 $");
+  script_version("$Revision: 6313 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 16:47:21 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:33:47 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-10 17:32:08 +0530 (Fri, 10 Jun 2016)");
   script_name("Brickcom Network Cameras Multiple Vulnerabilities");
 
@@ -60,12 +60,9 @@ if (description)
   script_tag(name:"affected", value:"For information on affected products and 
   firmware version refer the link mentioned in reference.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  25th April, 2017. Information regarding this issue will be addressed once the
-  updates are available.  
-  For updates refer to http://www.brickcom.com");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

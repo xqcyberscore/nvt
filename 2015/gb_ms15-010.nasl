@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805337");
-  script_version("$Revision: 6170 $");
+  script_version("$Revision: 6237 $");
   script_cve_id("CVE-2015-0003", "CVE-2015-0010", "CVE-2015-0057", "CVE-2015-0058",
                 "CVE-2015-0059", "CVE-2015-0060");
   script_bugtraq_id(72457, 72461, 72466, 72468, 72470, 72472);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:53:57 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 16:14:14 +0530 (Wed, 11 Feb 2015)");
   script_name("MS Windows Kernel-Mode Driver RCE Vulnerabilities (3036220)");
 
@@ -51,14 +51,20 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name: "affected" , value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows Server 2012/R2
+
   Microsoft Windows 8.1 x32/x64 Edition
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prioor
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name: "solution" , value: "Run Windows Update and update the

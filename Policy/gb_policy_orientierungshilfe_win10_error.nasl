@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10_error.nasl 5944 2017-04-12 14:55:50Z cfi $
+# $Id: gb_policy_orientierungshilfe_win10_error.nasl 6327 2017-06-13 13:38:15Z cfischer $
 #
 # AKIF Orientierungshilfe Windows 10: Fehler
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108081");
-  script_version("$Revision: 5944 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:55:50 +0200 (Wed, 12 Apr 2017) $");
+  script_version("$Revision: 6327 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 15:38:15 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,6 +48,7 @@ if(description)
 }
 
 error = get_kb_item( "policy/orientierungshilfe_win10/error" );
+if( ! error ) exit( 0 );
 
 if( "Es koennen keine Ueberpruefungen durchgefuehrt werden." >< error ) {
   report = 'Es trat folgender Fehler auf:\n' + error + '\n';

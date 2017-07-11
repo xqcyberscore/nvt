@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_pinger_icmp_n_icmp6_mult_vuln.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_squid_pinger_icmp_n_icmp6_mult_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Squid Pinger ICMP Processing Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806105");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2014-7141", "CVE-2014-7142", "CVE-2014-6270");
   script_bugtraq_id(69688, 70022, 69686);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 15:37:01 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Pinger ICMP Processing Multiple Vulnerabilities");
@@ -70,7 +70,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2014_4.txt");
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2014_3.txt");
-  script_summary("Check for the vulnerable version of Squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

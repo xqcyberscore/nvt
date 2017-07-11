@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_kanboard_68340.nasl 2568 2016-02-03 15:43:36Z benallard $
+# $Id: sw_kanboard_68340.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Kanboard CVE-2014-3920 Cross Site Request Forgery Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111063");
-  script_version("$Revision: 2568 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:43:36 +0100 (Wed, 03 Feb 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-04 13:00:00 +0100 (Fri, 04 Dec 2015)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
   script_name("Kanboard CVE-2014-3920 Cross Site Request Forgery Vulnerability");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

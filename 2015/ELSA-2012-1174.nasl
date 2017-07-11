@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1174.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1174.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123841");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:16 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1174");
 script_tag(name: "insight", value: "ELSA-2012-1174 -  kernel security and bug fix update - kernel[2.6.18-308.13.1.el5]- [net] e1000e: Cleanup logic in e1000_check_for_serdes_link_82571 (Dean Nelson) [841370 771366]- [net] e1000e: Correct link check logic for 82571 serdes (Dean Nelson) [841370 771366]- [mm] NULL pointer dereference in __vm_enough_memory (Jerome Marchand) [840077 836244]- [fs] dlm: fix slow rsb search in dir recovery (David Teigland) [838140 753244]- [fs] autofs: propogate LOOKUP_DIRECTORY flag only for last comp (Ian Kent) [830264 814418]- [fs] ext4: properly dirty split extent nodes (Eric Sandeen) [840946 839770]- [scsi] don't offline devices with a reservation conflict (David Jeffery) [839196 835660]- [fs] ext4: Fix overflow caused by missing cast in ext4_fallocate (Lukas Czerner) [837226 830351]- [net] dl2k: Clean up rio_ioctl (Weiping Pan) [818822 818823] {CVE-2012-2313}- [x86] sched: Avoid unnecessary overflow in sched_clock (Prarit Bhargava) [835450 834562]- [net] tg3: Fix TSO handling (John Feeney) [833182 795672]- [input] evdev: use after free from open/disconnect race (David Jeffery) [832448 822166][2.6.18-308.12.1.el5]- [fs] nfs: Don't allow multiple mounts on same mntpnt with -o noac (Sachin Prabhu) [839806 839753]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1174");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_wordpress_kento_post_viewer_counter_plugin_mult_vuln.nasl 5251 2017-02-09 15:54:34Z teissa $
+# $Id: sw_wordpress_kento_post_viewer_counter_plugin_mult_vuln.nasl 6269 2017-06-01 15:05:20Z cfischer $
 #
 # Wordpress Kento Post Viewer Counter Plugin Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111105");
-  script_version("$Revision: 5251 $");
+  script_version("$Revision: 6269 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 16:54:34 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 17:05:20 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-13 16:12:12 +0200 (Mon, 13 Jun 2016)");
   script_name("Wordpress Kento Post Viewer Counter Plugin Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -49,30 +49,38 @@ if(description)
 
   script_tag(name:"summary", value:"The host is installed with Wordpress
   Kento Post Viewer Counter Plugin and is prone to multiple vulnerabilities.");
+
   script_tag(name:"vuldetect", value:"Send crafted data via HTTP POST request and check
   whether it is possible to read a cookie or not.");
+
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The wp-content\plugins\kento-post-view-counter\index.php script not properly sanitizing
     user-supplied input to the 'kento_pvc_geo' POST parameter.
+
   - The wp-content\plugins\kento-post-view-counter\kento-pvc-admin.php script not properly
     sanitizing user-supplied input to the 'kento_pvc_numbers_lang', 'kento_pvc_today_text'
     and 'kento_pvc_total_text' parameter.
+
   - No CSRF token used for POST forms");
+
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attacker to execute arbitrary script code in a user's browser
   session within the trust relationship.
 
   Impact Level: Application");
-  script_tag(name:"affected", value:"Wordpress Kento Post Viewer Counter Plugin <= 2.8");
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  09th February, 2017. Information regarding this issue will be updated once the
-  solution details are available.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"affected", value:"Wordpress Kento Post Viewer Counter Plugin <= 2.8");
+
+  script_tag(name:"solution", value:"This plugin is deprecated and the plugin author is inactive, likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace
+  the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -88,7 +96,7 @@ data = "action=kento_pvc_top_geo&kento_pvc_geo=<script>alert(document.cookie);</
 req = http_post_req( port:port, url:url, data:data, add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
 res = http_keepalive_send_recv( port:port, data:req );
 
-if( res =~ "HTTP/1\.. 200" && egrep( pattern:"<script>alert\(document.cookie\);</script>", string:res, icase:TRUE ) ) {
+if( res =~ "^HTTP/1\.[0-1] 200" && egrep( pattern:"<script>alert\(document.cookie\);</script>", string:res, icase:TRUE ) ) {
   report = report_vuln_url( url:url, port:port );
   security_message( port:port, data:report );
   exit( 0 );

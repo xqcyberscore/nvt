@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806535");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 07:58:11 +0100 (Mon, 02 Nov 2015)");
   script_cve_id("CVE-2015-5211");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for springframework FEDORA-2015-9295");
   script_tag(name: "summary", value: "Check the version of springframework");

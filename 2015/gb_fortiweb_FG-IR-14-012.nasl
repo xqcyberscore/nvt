@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-012.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_fortiweb_FG-IR-14-012.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # FortiOS: FortiWeb Cross-Site Scripting Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-4738");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 2617 $");
+ script_version ("$Revision: 6404 $");
 
  script_name("FortiOS: FortiWeb Cross Site Scripting Vulnerabilities");
 
@@ -56,9 +56,8 @@ input filtering. ");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-02-11 12:16:13 +0100 (Wed, 11 Feb 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("FortiOS Local Security Checks");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

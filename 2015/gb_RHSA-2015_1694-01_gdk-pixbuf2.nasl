@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871441");
-  script_version("$Revision: 3339 $");
+  script_version("$Revision: 6376 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:26:32 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-01 06:48:34 +0200 (Tue, 01 Sep 2015)");
   script_cve_id("CVE-2015-4491");
   script_tag(name:"qod_type", value:"package");
@@ -61,7 +61,6 @@ which contain a backported patch to correct this issue.
   script_xref(name: "RHSA", value: "2015:1694-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-August/msg00064.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gdk-pixbuf2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

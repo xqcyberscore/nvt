@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_lua_dos_vuln01.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_apache_mod_lua_dos_vuln01.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Apache HTTP Server Mod_Lua Denial of service Vulnerability -01 May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805616");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-0228");
   script_bugtraq_id(73041);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-05-18 13:29:48 +0530 (Mon, 18 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Mod_Lua Denial of service Vulnerability -01 May15");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://bugs.mageia.org/show_bug.cgi?id=15428");
   script_xref(name : "URL" , value : "http://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/CHANGES");
 
-  script_summary("Check for the vulnerable version of Apache HTTP Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsweeper_mult_vuln_aug15.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_netsweeper_mult_vuln_aug15.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Netsweeper Multiple Vulnerabilities - Aug15
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:netsweeper:netsweeper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805962");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2014-9612", "CVE-2014-9605", "CVE-2014-9610", "CVE-2014-9619");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-25 14:52:59 +0530 (Tue, 25 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Netsweeper Multiple Vulnerabilities - Aug15");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37929");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37932");
 
-  script_summary("Check if Netsweeper is prone to sql injection vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-058_ms_sql_remote.nasl 2646 2016-02-12 08:18:48Z benallard $
+# $Id: gb_ms15-058_ms_sql_remote.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Microsoft SQL Server Multiple Vulnerabilities (3065718) - Remote
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sql_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805815");
-  script_version("$Revision: 2646 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2015-1761", "CVE-2015-1762", "CVE-2015-1763");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:48 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:57:38 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Microsoft SQL Server Multiple Vulnerabilities (3065718) - Remote");
@@ -71,7 +71,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3065718");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-058");
 
-  script_summary("Check for the vulnerable version of Microsoft SQL Server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

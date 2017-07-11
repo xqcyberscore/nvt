@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-0327.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-0327.nasl 6376 2017-06-20 10:00:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122681");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6376 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:51:03 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-0327");
 script_tag(name: "insight", value: "ELSA-2007-0327 -  Important: tomcat security update - jakarta-commons-modeler-1.1-8jpp.1.0.2.el5 [1.1-8jpp.1.0.2.el5] - rebuild after the fix for bug 238139 made it into the build root - Resolves: bug 238694 [1.1-8jpp.1.0.1.el5] - Add patch to fix jira task: MODELER-15 to allow tomcat5 5.5.23 to build against j-c-modeler - Resolves: bug 238694 tomcat5-5.5.23-0jpp.1.0.3.el5 [5.5.23-0jpp.1.0.3.el5] - Rebuild since brp-repack-jars has been fixed to not mangle INDEX.LIST files - (bug 238139) - Resolves: bug 237089 [5.5.23-0jpp.1.0.2.el5] - Add catalina.out to the rpm and set explicit permissions; tomcat ownership - Resolves: bug 237089 [5.5.23-0jpp.1.0.1.el5] - Backport 0:5.5.23-0jpp.2.el5 to the Z-stream - Resolves: bug 237089 [5.5.23-0jpp.1] - Merge 0:5.5.17-8jpp.2 with sources/patches from 5.5.23 - Build against jakarta-commons-modeler 1.1 with MODELER-15 patch"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-0327");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

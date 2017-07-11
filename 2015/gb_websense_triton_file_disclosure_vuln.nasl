@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_websense_triton_file_disclosure_vuln.nasl 3694 2016-07-13 08:45:20Z mime $
+# $Id: gb_websense_triton_file_disclosure_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Websense Triton File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:websense:triton';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106003");
-  script_version("$Revision: 3694 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-07-13 10:45:20 +0200 (Wed, 13 Jul 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name: "creation_date", value: "2015-06-04 11:08:10 +0700 (Thu, 04 Jun 2015)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,6 @@ if (description)
 
   script_tag(name: "summary", value: "Websense Triton is vulnerable to a file disclosure
 vulnerability.");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Send a crafted data via HTTP GET request and check
 the response");

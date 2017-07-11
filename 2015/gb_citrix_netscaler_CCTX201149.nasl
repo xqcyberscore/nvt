@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CCTX201149.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_citrix_netscaler_CCTX201149.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Citrix NetScaler Arbitrary Command Injection (CTX201149)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-5080");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6254 $");
 
  script_name("Citrix NetScaler Arbitrary Command Injection (CTX201149)");
 
@@ -59,9 +59,8 @@ Version 10.1 earlier than 10.1.132.8");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
  script_tag(name:"creation_date", value:"2015-07-01 13:34:32 +0200 (Wed, 01 Jul 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

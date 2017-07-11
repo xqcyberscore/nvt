@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882281");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6345 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 06:27:33 +0200 (Wed, 09 Sep 2015)");
   script_cve_id("CVE-2015-0248", "CVE-2015-0251", "CVE-2015-3184", "CVE-2015-3187");
   script_tag(name:"qod_type", value:"package");
@@ -79,7 +79,6 @@ serving Subversion repositories via the svn:// protocol.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1742");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-September/021377.html");
-  script_summary("Check for the Version of mod_dav_svn");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

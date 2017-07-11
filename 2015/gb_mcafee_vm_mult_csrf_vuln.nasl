@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_vm_mult_csrf_vuln.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_mcafee_vm_mult_csrf_vuln.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # McAfee Vulnerability Manager Multiple Cross Site Request Forgery Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:vulnerability_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806611");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-7612");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-05 15:43:08 +0530 (Thu, 05 Nov 2015)");
   script_name("McAfee Vulnerability Manager Multiple Cross Site Request Forgery Vulnerabilities");
 
@@ -67,7 +67,6 @@ if(description)
   script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10135");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of McAfee Vulnerability Manager");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_mcafee_vulnerability_manager_detect.nasl");

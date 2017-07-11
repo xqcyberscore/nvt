@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_kanboard_admin_default_credentials.nasl 5255 2017-02-10 08:56:42Z cfi $
+# $Id: sw_kanboard_admin_default_credentials.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Kanboard admin default credentials
 #
@@ -30,13 +30,12 @@ CPE = 'cpe:/a:kanboard:kanboard';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.111064");
- script_version("$Revision: 5255 $");
+ script_version("$Revision: 6229 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Kanboard admin default credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-02-10 09:56:42 +0100 (Fri, 10 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-12-04 13:00:00 +0100 (Fri, 04 Dec 2015)");
- script_summary("Determine if it is possible to login with default credentials");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

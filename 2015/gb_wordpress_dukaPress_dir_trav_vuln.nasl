@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_dukaPress_dir_trav_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wordpress_dukaPress_dir_trav_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # Wordpress DukaPress 'src' Parameter Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805122");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2014-8799");
   script_bugtraq_id(71294);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-09 15:07:11 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress DukaPress 'src' Parameter Directory Traversal Vulnerability");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/98943");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35346");
 
-  script_summary("Check if DukaPress plugin is prone to directory traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806797");
-  script_version("$Revision: 3341 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:44:01 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-06 07:02:22 +0100 (Sun, 06 Dec 2015)");
   script_cve_id("CVE-2015-8124", "CVE-2015-8125");
   script_tag(name:"cvss_base", value:"7.5");
@@ -56,7 +56,6 @@ engine for PHP.
   script_xref(name: "FEDORA", value: "2015-0");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-December/173300.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php-twig");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

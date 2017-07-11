@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842149");
-  script_version("$Revision: 2737 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:54:46 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6345 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-31 07:10:45 +0200 (Tue, 31 Mar 2015)");
   script_cve_id("CVE-2015-0254");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,7 +47,6 @@ XML entity attacks.");
   script_xref(name: "USN", value: "2551-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-March/002887.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of jakarta-taglibs-standard");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

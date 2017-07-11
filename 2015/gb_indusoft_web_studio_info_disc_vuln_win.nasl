@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_info_disc_vuln_win.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_indusoft_web_studio_info_disc_vuln_win.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # InduSoft Web Studio Information Disclosure Vulnerability August15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806002");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-1009");
   script_tag(name:"cvss_base", value:"1.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-19 15:48:22 +0530 (Wed, 19 Aug 2015)");
   script_name("InduSoft Web Studio Information Disclosure Vulnerability August15 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name: "URL" , value : "http://www.scip.ch/en/?vuldb.76853");
   script_xref(name: "URL" , value : "http://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2015-100-01");
 
-  script_summary("Check for the vulnerable version of InduSoft Web Studio on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

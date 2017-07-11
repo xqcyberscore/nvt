@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-613.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-613.nasl 6431 2017-06-26 09:59:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120603");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6431 $");
 script_tag(name:"creation_date", value:"2015-12-15 02:51:17 +0200 (Tue, 15 Dec 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-613");
 script_tag(name: "insight", value: "A flaw was found in the way the git-remote-ext helper processed certain URLs. If a user had Git configured to automatically clone submodules from untrusted repositories, an attacker could inject commands into the URL of a submodule, allowing them to execute arbitrary code on the user's system."); 
 script_tag(name : "solution", value : "Run yum update git to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-613");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

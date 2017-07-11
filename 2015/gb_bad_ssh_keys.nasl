@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bad_ssh_keys.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_bad_ssh_keys.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Static SSH Key Used
 #
@@ -28,13 +28,12 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105398");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6229 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Static SSH Key Used");
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-10-14 11:48:40 +0200 (Wed, 14 Oct 2015)");
- script_summary("Determine if it is possible to login using a known static private key");
  script_category(ACT_ATTACK);
  script_family("Gain a shell remotely");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

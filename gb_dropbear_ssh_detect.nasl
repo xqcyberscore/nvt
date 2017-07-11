@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dropbear_ssh_detect.nasl 4549 2016-11-17 07:32:56Z cfi $
+# $Id: gb_dropbear_ssh_detect.nasl 6278 2017-06-04 16:24:30Z cfischer $
 #
 # Dropbear SSH Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105112");
+  script_version("$Revision: 6278 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version ("$Revision: 4549 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 08:32:56 +0100 (Thu, 17 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-04 18:24:30 +0200 (Sun, 04 Jun 2017) $");
   script_tag(name:"creation_date", value:"2014-11-11 10:04:39 +0100 (Tue, 11 Nov 2014)");
   script_name("Dropbear SSH Detection");
   script_category(ACT_GATHER_INFO);
@@ -54,65 +54,53 @@ include("host_details.inc");
 include("misc_func.inc");
 include("ssh_func.inc");
 
-version = "";
+port = get_kb_item( "Services/ssh" );
+if( ! port ) port = 22;
+if( ! get_port_state( port ) ) exit( 0 );
 
-sshPort = get_kb_item( "Services/ssh" );
-if( ! sshPort ) sshPort = 22;
-if( ! get_port_state( sshPort ) ) exit( 0 );
+banner = get_kb_item( "SSH/banner/" + port );
 
-banner = get_kb_item("SSH/banner/" + sshPort );
+if( banner && "dropbear" >< tolower( banner ) ) {
 
-if(banner && "dropbear" >< tolower(banner))
-{
-  ## Grep for the version
-  version = eregmatch( pattern:"SSH-.*dropbear[_-]([0-9.]+)", string:banner);
-  if(version[1]){
-    version = version[1];
-  } else {
-    version = "Unknown";
-  }
+  version = "unknown";
+  vers = eregmatch( pattern:"SSH-.*dropbear[_-]([0-9.]+)", string:banner );
+  if( vers[1] ) version = vers[1];
 }
 
+if( ! banner || version == "unknown" ) {
 
-if(!banner || version == "Unknown")
-{
   # The ssh_get_server_banner function will only be available after
-  # we switch to libssh 0.6.  Thus for the time being, we use a
-  # workaround.
-  soc = open_sock_tcp( sshPort );
+  # we switch to libssh 0.6.  Thus for the time being, we use a workaround.
+  soc = open_sock_tcp( port );
   if ( ! soc ) exit( 0 );
 
-  ## Confirm the application
-  buf = recv_line(socket:soc, length:1024);
-  if(buf && "dropbear" >< buf)
-  {
-    ## Grep for the version
-    version = eregmatch( pattern:"SSH-.*dropbear[_-]([0-9.]+)", string:buf );
-    if(version[1]){
-      version = version[1];
-    } else {
-      version = "Unknown";
-    }
+  buf = recv_line( socket:soc, length:1024 );
+  if( buf && "dropbear" >< buf ) {
+
+    version = "unknown";
+    vers = eregmatch( pattern:"SSH-.*dropbear[_-]([0-9.]+)", string:buf );
+    if( vers[1] ) version = vers[1];
   }
-  close(soc);
+  close( soc );
 }
 
-if (version)
-{
-  set_kb_item(name:"dropbear/installed", value:TRUE);
+if( version ) {
 
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:matt_johnston:dropbear_ssh_server:");
-  if(isnull(cpe))
+  replace_kb_item( name:"dropbear/installed", value:TRUE );
+  install = port + "/tcp";
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:matt_johnston:dropbear_ssh_server:" );
+  if( isnull( cpe ) )
     cpe = "cpe:/a:matt_johnston:dropbear_ssh_server";
 
-  register_product(cpe:cpe, location:string(sshPort, "/tcp"), port:sshPort);
+  register_product( cpe:cpe, location:install, port:port );
 
-  log_message( data: build_detection_report(app:"Dropbear",
-                                           version:version,
-                                            install:sshPort + '/tcp',
+  log_message( data:build_detection_report( app:"Dropbear",
+                                            version:version,
+                                            install:install,
                                             cpe:cpe,
-                                            concluded:version),
-                                            port:sshPort);
+                                            concluded:vers[0] ),
+                                            port:port );
 }
-exit(0);
+
+exit( 0 );

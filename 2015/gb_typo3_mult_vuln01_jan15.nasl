@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln01_jan15.nasl 3674 2016-07-07 17:35:10Z cfi $
+# $Id: gb_typo3_mult_vuln01_jan15.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # TYPO3 Multiple Vulnerabilities-01 Jan-2015 (SA-2014-003)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805247");
-  script_version("$Revision: 3674 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2014-9508", "CVE-2014-9509");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2016-07-07 19:35:10 +0200 (Thu, 07 Jul 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-19 12:19:42 +0530 (Mon, 19 Jan 2015)");
   script_name("TYPO3 Multiple Vulnerabilities-01 Jan-2015 (SA-2014-003)");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name: "URL" , value : "http://secunia.com/advisories/60371");
   script_xref(name: "URL" , value : "http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2014-003");
-  script_summary("Check for the vulnerable version of TYPO3");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

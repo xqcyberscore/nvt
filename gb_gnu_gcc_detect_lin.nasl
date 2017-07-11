@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_gcc_detect_lin.nasl 6212 2017-05-25 11:42:03Z cfi $
+# $Id: gb_gnu_gcc_detect_lin.nasl 6246 2017-05-30 13:04:03Z cfi $
 #
 # GCC Version Detection (Linux)
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.806083");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6212 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 13:42:03 +0200 (Thu, 25 May 2017) $");
+  script_version("$Revision: 6246 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 15:04:03 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 11:46:09 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("GCC Version Detection (Linux)");
@@ -48,50 +48,44 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-gcc_sock = "";
-gccName = "";
-gccVer = "";
-
 gcc_sock = ssh_login_or_reuse_connection();
-if(!gcc_sock){
-  exit(0);
-}
+if( ! gcc_sock ) exit( 0 );
 
-gccName = find_file(file_name:"gcc", file_path:"/", useregex:TRUE,
-                    regexpar:"$", sock:gcc_sock);
+gccName = find_file( file_name:"gcc", file_path:"/", useregex:TRUE,
+                     regexpar:"$", sock:gcc_sock );
 
-foreach binary_gccName (gccName)
-{
-  binary_name = chomp(binary_gccName);
-  gccVer = get_bin_version(full_prog_name:binary_name, sock:gcc_sock,
-                           version_argv:"-v", ver_pattern:"gcc-" +
-                           "([0-9.]+)");
+foreach binary_gccName( gccName ) {
 
-  if(gccVer[1])
-  {
+  binary_name = chomp( binary_gccName );
+  gccVer = get_bin_version( full_prog_name:binary_name, sock:gcc_sock,
+                            version_argv:"-v", ver_pattern:"gcc-" +
+                            "([0-9.]+)" );
+
+  if( gccVer[1] ) {
+
     ##If version ends with '.' remove that, example 1.2.3.
-    gccVersion = ereg_replace(string:gccVer[1], pattern:"\.$", replace:"");
+    gccVersion = ereg_replace( string:gccVer[1], pattern:"\.$", replace:"" );
 
-    set_kb_item(name:"gcc/Linux/Ver", value:gccVersion);
+    set_kb_item( name:"gcc/Linux/Ver", value:gccVersion );
 
-    ## build cpe and store it as host_detail
-    cpe = build_cpe(value:gccVersion, exp:"^([0-9.]+)", base:"cpe:/a:gnu:gcc:");
-    if(isnull(cpe))
-      cpe ="cpe:/a:gnu:gcc";
+    cpe = build_cpe( value:gccVersion, exp:"^([0-9.]+)", base:"cpe:/a:gnu:gcc:" );
+    if( isnull( cpe ) )
+      cpe = "cpe:/a:gnu:gcc";
 
-    register_product(cpe:cpe, location:binary_gccName);
+    register_product( cpe:cpe, location:binary_name );
 
-    log_message(data: build_detection_report(app: "GNU GCC", version:gccVersion,
-                                         install: binary_gccName,
-                                         cpe: cpe,
-                                         concluded: gccVer[0]));
+    log_message( data:build_detection_report( app:"GNU GCC",
+                                              version:gccVersion,
+                                              install:binary_name,
+                                              cpe:cpe,
+                                              concluded:gccVer[0] ) );
   }
 }
+
 ssh_close_connection();
+exit( 0 );

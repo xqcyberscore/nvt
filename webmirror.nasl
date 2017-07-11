@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 5907 2017-04-10 07:09:24Z cfi $
+# $Id: webmirror.nasl 6283 2017-06-06 10:01:29Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 5907 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 09:09:24 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 6283 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 12:01:29 +0200 (Tue, 06 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -130,6 +130,11 @@ function add_30x( url ) {
 function add_auth( url ) {
 
   if( isnull( URLs_auth_hash[url] ) ) {
+
+    # Skiping if the "Test for servers which return 401 for everything" was successful.
+    # But at least add the "/" root folder to it.
+    if( ! Check401 && url != "/" ) return;
+
     set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
     replace_kb_item( name:"www/content/auth_required", value:TRUE );
     URLs_auth_hash[url] = 1;
@@ -477,15 +482,13 @@ function retr( port, page ) {
   }
 
   if( res !~ "^HTTP/1\.[01] 200" ) {
-    if( res =~ "^HTTP/1\.[01] 401" ||
-        res =~ "^HTTP/1\.[01] 403" ) {
+    if( res =~ "^HTTP/1\.[01] 40[13]" ) {
       if( egrep( pattern:"^WWW-Authenticate:", string:res, icase:TRUE ) ) {
         add_auth( url:page );
       }
       return NULL;
     }
-    if( res =~ "^HTTP/1\.[01] 301" ||
-        res =~ "^HTTP/1\.[01] 302" ) {
+    if( res =~ "^HTTP/1\.[01] 30[0-8]" ) {
       q = egrep( pattern:"^Location:.*", string:res, icase:TRUE );
       add_30x( url:page );
 
@@ -926,6 +929,7 @@ Dirs = make_list();
 URLs_30x_hash = make_list();
 URLs_auth_hash = make_list();
 Code404 = make_list();
+Check401 = TRUE;
 
 URLs_hash[start_page] = 0;
 cnt = 0;
@@ -933,6 +937,15 @@ cnt = 0;
 RootPasswordProtected = FALSE;
 Apache = FALSE;
 iPlanet = FALSE;
+
+# Test for servers which return 401 for everything
+req = http_get( item:"/NonExistant" + rand() + "/", port:port );
+res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+if( res =~ "^HTTP/1\.[01] 401" ) {
+  if( debug ) display( "*** This server requires authentication for non-existent directories, disabling 401 checks.\n" );
+  Check401 = FALSE;
+}
 
 foreach URL( URLs ) {
   if( ! URLs_hash[URL] ) {

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869072");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-10 06:31:56 +0100 (Tue, 10 Mar 2015)");
   script_cve_id("CVE-2015-2060");
   script_tag(name:"cvss_base", value:"10.0");
@@ -45,7 +45,6 @@ files from cabinet (.cab) archives.
   script_xref(name: "FEDORA", value: "2015-2730");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151147.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of cabextract");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_xss_n_session_fixation_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_hp_sitescope_xss_n_session_fixation_vuln.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
 #
 # HP SiteScope Cross-Site Scripting and Session Fixation Vulnerabilities
 #
@@ -24,33 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the patch from below link,
-  For updates refer to http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02940969
-
-  *****
-  NOTE : Ignore this warning if above mentioned patch is applied already.
-  *****";
-
-tag_impact = "Successful exploitation could allow execution of scripts or actions written
-  by an attacker. In addition, an attacker may conduct session fixation attacks
-  to hijack the target user's session.
-  Impact Level: Application";
-tag_affected = "HP SiteScope version 9.x, 10.x, and 11.x";
-tag_insight = "Multiple flaws are due to,
-  - Certain unspecified input is not properly sanitised before being returned
-    to the user. This can be exploited to execute arbitrary HTML and script
-    code in a user's browser session in context of an affected site.
-  - An error in the handling of sessions can be exploited to hijack another
-    user's session by tricking the user into logging in after following a
-    specially crafted link.";
-tag_summary = "This host is running HP SiteScope and is prone to cross-site
-  scripting and session fixation vulnerabilities.";
+CPE = "cpe:/a:hp:sitescope";
 
 if(description)
 {
-  script_id(801976);
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.801976");
+  script_version("$Revision: 6367 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_cve_id("CVE-2011-2400", "CVE-2011-2401");
   script_bugtraq_id(48916, 48913);
@@ -71,45 +51,43 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("SiteScope/banner");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name : "impact" , value : "Successful exploitation could allow execution of scripts or actions
+written by an attacker. In addition, an attacker may conduct session fixation attacks to hijack the target
+user's session.
+
+Impact Level: Application");
+  script_tag(name : "affected" , value : "HP SiteScope version 9.x, 10.x, and 11.x");
+
+  script_tag(name : "insight" , value : "Multiple flaws are due to,
+
+- Certain unspecified input is not properly sanitised before being returned to the user. This can be exploited
+to execute arbitrary HTML and script code in a user's browser session in context of an affected site.
+
+- An error in the handling of sessions can be exploited to hijack another user's session by tricking the user
+into logging in after following a specially crafted link.");
+
+  script_tag(name : "summary" , value : "This host is running HP SiteScope and is prone to cross-site scripting
+and session fixation vulnerabilities.");
+
+  script_tag(name : "solution" , value : "Apply the patch from below link, For updates refer to
+http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c02940969");
+
   exit(0);
 }
 
 
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
-include("http_keepalive.inc");
 
-## Get HTTP Port
-port = get_http_port(default:80);
-if(!port){
+if (!port = get_app_port(cpe: CPE))
   exit(0);
-}
 
-## Get the server banner
-banner = get_http_banner(port:port);
-if(!banner){
+if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
-}
-
-## Confirm the server
-if("Server: SiteScope/" >!< banner){
-  exit(0);
-}
-
-## Match the version
-version = eregmatch(pattern:"Server: SiteScope/([^ ]+)", string:banner);
-if(isnull(version[1])){
-  exit(0);
-}
 
 ## Check for the version 9.x, 10.x, and 11.x
-if(version_is_less_equal(version:version[1], test_version:"9.54") ||
-   version_in_range(version:version[1], test_version:"11.0", test_version2:"11.10") ||
-   version_in_range(version:version[1], test_version:"10.0", test_version2:"10.14")) {
+if(version_is_less_equal(version:version, test_version:"9.54") ||
+   version_in_range(version:version, test_version:"11.0", test_version2:"11.10") ||
+   version_in_range(version:version, test_version:"10.0", test_version2:"10.14")) {
   security_message(port:port);
 }

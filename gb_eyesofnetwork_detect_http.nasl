@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_detect_http.nasl 6209 2017-05-24 14:42:39Z cfi $
+# $Id: gb_eyesofnetwork_detect_http.nasl 6256 2017-05-31 12:15:45Z cfi $
 #
 # Eyes Of Network (EON) Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108165");
-  script_version("$Revision: 6209 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 16:42:39 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6256 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 14:15:45 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-22 09:21:05 +0200 (Mon, 22 May 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,8 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 buf = http_get_cache( item:"/login.php", port:port );
 
 if( buf =~ "^HTTP/1\.[0-1] 200" && ( "<title>EyesOfNetwork</title>" >< buf || "> Network and system Monitoring solution <" >< buf ||
-                                     '<a href="http://www.eyesofnetwork.com" target="_blank">EyesOfNetwork</a>' >< buf ) ) {
+                                     '<a href="http://www.eyesofnetwork.com" target="_blank">EyesOfNetwork</a>' >< buf ||
+                                     "product under GPL2 license, sponsored by AXIANS" >< buf ) ) {
 
   version = "unknown";
 

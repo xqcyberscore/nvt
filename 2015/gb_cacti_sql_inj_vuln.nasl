@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_sql_inj_vuln.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cacti_sql_inj_vuln.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Cacti SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806025");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-4634");
   script_bugtraq_id(75984);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-20 16:27:33 +0530 (Thu, 20 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cacti SQL Injection Vulnerability");
@@ -63,7 +63,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://bugs.cacti.net/view.php?id=2577");
   script_xref(name : "URL" , value : "http://www.cacti.net/release_notes_0_8_8e.php");
-  script_summary("Check if Cacti is prone to SQL Injection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

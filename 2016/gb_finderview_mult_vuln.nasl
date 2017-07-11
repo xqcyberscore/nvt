@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_finderview_mult_vuln.nasl 5507 2017-03-07 16:31:47Z teissa $
+# $Id: gb_finderview_mult_vuln.nasl 6264 2017-06-01 12:53:37Z cfischer $
 #
 # FinderView Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:finderview:finderview";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808097");
-  script_version("$Revision: 5507 $");
+  script_version("$Revision: 6264 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 17:31:47 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-27 14:33:21 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("FinderView Multiple Vulnerabilities");
@@ -55,11 +55,11 @@ if(description)
 
   script_tag(name: "affected" , value:"FinderView version 0.1");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of
-  07th March, 2017. Information regarding this issue will be updated once solution
-  details are available. For updates refer to https://github.com/proin");
+  script_tag(name:"solution", value:"The last release of this product was in 2014, likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace
+  the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40011");
 

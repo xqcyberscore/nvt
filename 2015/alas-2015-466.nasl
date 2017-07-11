@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-466.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-466.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120452");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:26:41 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-466");
 script_tag(name: "insight", value: "Multiple off-by-one flaws, leading to heap-based buffer overflows, were found in the way JasPer decoded JPEG 2000 image files. A specially crafted file could cause an application using JasPer to crash or, possibly, execute arbitrary code. (CVE-2014-9029 )A heap-based buffer overflow flaw was found in the way JasPer decoded JPEG 2000 image files. A specially crafted file could cause an application using JasPer to crash or, possibly, execute arbitrary code. (CVE-2014-8138 )A double free flaw was found in the way JasPer parsed ICC color profiles in JPEG 2000 image files. A specially crafted file could cause an application using JasPer to crash or, possibly, execute arbitrary code. (CVE-2014-8137 )"); 
 script_tag(name : "solution", value : "Run yum update jasper to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-466");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

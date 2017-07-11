@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_pcapng_dos_vuln_nov15_win.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wireshark_pcapng_dos_vuln_nov15_win.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Wireshark Pcapng File Parser Denial-of-Service Vulnerability Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806703");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-7830");
   script_bugtraq_id(77101);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-19 11:50:54 +0530 (Thu, 19 Nov 2015)");
   script_name("Wireshark Pcapng File Parser Denial-of-Service Vulnerability Nov15 (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2015-30.html");
   script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11455");
 
-  script_summary("Check for the vulnerable version of Wireshark on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

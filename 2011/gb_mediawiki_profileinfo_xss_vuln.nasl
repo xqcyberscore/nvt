@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_profileinfo_xss_vuln.nasl 3100 2016-04-18 14:41:20Z benallard $
+# $Id: gb_mediawiki_profileinfo_xss_vuln.nasl 6284 2017-06-06 11:43:39Z cfischer $
 #
 # MediaWiki 'profileinfo.php' Cross Site Scripting Vulnerability
 #
@@ -29,67 +29,63 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801877");
-  script_version("$Revision: 3100 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-18 16:41:20 +0200 (Mon, 18 Apr 2016) $");
+  script_version("$Revision: 6284 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-06 13:43:39 +0200 (Tue, 06 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_cve_id("CVE-2010-2788");
   script_bugtraq_id(42024);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
   script_name("MediaWiki 'profileinfo.php' Cross Site Scripting Vulnerability");
-  script_summary("Check if MediaWiki is vulnerable to Cross-Site Scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("secpod_mediawiki_detect.nasl");
-  script_mandatory_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("mediawiki/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in context of an affected site.
+
   Impact Level: Application");
-  script_tag(name : "affected" , value : "MediaWiki versions before 1.15.5");
-  script_tag(name : "insight" , value : "The flaw is caused by improper validation of user-supplied input passed via
+
+  script_tag(name:"affected", value:"MediaWiki versions before 1.15.5");
+
+  script_tag(name:"insight", value:"The flaw is caused by improper validation of user-supplied input passed via
   the 'filter' parameter to profileinfo.php, which allows attackers to execute
   arbitrary HTML and script code on the web server.");
-  script_tag(name : "solution" , value : "Upgrade to MediaWiki versions 1.16.0 or 1.15.5.
+
+  script_tag(name:"solution", value:"Upgrade to MediaWiki versions 1.16.0 or 1.15.5.
   For updates refer to http://www.mediawiki.org/wiki/Download");
-  script_tag(name : "summary" , value : "This host is running MediaWiki and is prone to cross site scripting
+
+  script_tag(name:"summary", value:"This host is running MediaWiki and is prone to cross site scripting
   vulnerability.");
 
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=620225");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=620226");
-  script_xref(name : "URL" , value : "http://svn.wikimedia.org/viewvc/mediawiki?view=revision&revision=69984");
-  script_xref(name : "URL" , value : "http://svn.wikimedia.org/viewvc/mediawiki?view=revision&revision=69952");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=620225");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=620226");
+  script_xref(name:"URL", value:"http://svn.wikimedia.org/viewvc/mediawiki?view=revision&revision=69984");
+  script_xref(name:"URL", value:"http://svn.wikimedia.org/viewvc/mediawiki?view=revision&revision=69952");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get MediaWiki Port
-if(!port = get_app_port(cpe:CPE)) exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit(0);
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## Get MediaWiki Location
-if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);
-
-if(dir == "/") dir = "";
-
+if( dir == "/" ) dir = "";
 url = dir + '/profileinfo.php?filter="><script>alert(document.cookie)</script>';
 
-## Try XSS and check the response to confirm vulnerability
-if(http_vuln_check(port:port, url:url, check_header: TRUE,
-   pattern:"><script>alert\(document.cookie\)</script>"))
-{
-  report = report_vuln_url(port:port, url:url);
-  security_message(port:port, report:report);
-  exit(0);
+if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"><script>alert\(document\.cookie\)</script>" ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, report:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

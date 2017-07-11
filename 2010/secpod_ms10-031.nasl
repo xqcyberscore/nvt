@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms10-031.nasl 5361 2017-02-20 11:57:13Z cfi $
+# $Id: secpod_ms10-031.nasl 6413 2017-06-23 09:16:58Z cfischer $
 #
 # Microsoft Visual Basic Remote Code Execution Vulnerability (978213)
 #
@@ -44,8 +44,8 @@ tag_summary = "This host is missing a critical security update according to
 if(description)
 {
   script_id(902178);
-  script_version("$Revision: 5361 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 12:57:13 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6413 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-05-13 09:36:55 +0200 (Thu, 13 May 2010)");
   script_cve_id("CVE-2010-0815");
   script_tag(name:"cvss_base", value:"9.3");
@@ -86,7 +86,7 @@ if(hotfix_check_sp(xp:4, win2003:3, win2k:5) <= 0){
   exit(0);
 }
 
-## Confirm installtion of Visual Basic for Applications IDE
+## Confirm installation of Visual Basic for Applications IDE
 key = registry_key_exists(key:"SOFTWARE\Microsoft\Shared Tools\AddIn Designer" +
                               "\Visual Basic for Applications IDE");
 
@@ -108,7 +108,7 @@ if((officeVer =~ "^(10|11|12)\..*") || !isnull(key))
     exit(0);
   }
 
-  ## Check for VBE6.DLL file instralled location.
+  ## Check for VBE6.DLL file installed location.
   dllPath = dllPath + "\Common Files\Microsoft Shared\VBA\VBA6\VBE6.DLL";
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:dllPath);
   file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:dllPath);

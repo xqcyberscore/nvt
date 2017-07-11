@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 5435 2017-02-27 13:35:00Z cfi $
+# $Id: os_detection.nasl 6356 2017-06-16 09:38:18Z ckuersteiner $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 5435 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 14:35:00 +0100 (Mon, 27 Feb 2017) $");
+  script_version("$Revision: 6356 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 11:38:18 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,6 +52,7 @@ if(description)
                       "gb_arista_eos_snmp_detect.nasl", "gb_xenserver_version.nasl",
                       "gb_cisco_ios_xe_version.nasl", "gb_mcafee_email_gateway_version.nasl",
                       "gb_brocade_netiron_snmp_detect.nasl", "gb_arubaos_detect.nasl",
+                      "gb_cyberoam_umt_ngfw_detect.nasl", "gb_aerohive_hiveos_detect.nasl",
                       "gb_windows_cpe_detect.nasl", "gather-package-list.nasl",
                       "gb_cisco_pis_version.nasl", "gb_smb_windows_detect.nasl",
                       "gb_ssh_os_detection.nasl", "gb_junos_snmp_version.nasl",
@@ -147,7 +148,7 @@ foreach oid( OS_CPE_SRC ) {
 }
 
 if( ! found_best ) {
-  report += "No Best matching OS identified. Please see below for possible ways to identify this OS.";
+  report += "No Best matching OS identified.";
 } else {
   # TBD: Move into host_details.nasl?
   set_kb_item( name:"HostDetails/OS/BestMatch", value:best_match );
@@ -159,6 +160,8 @@ if( found_os )
 
 unknown_banners = get_kb_list( "os_detection_report/unknown_os_banner/*/banner" );
 if( unknown_banners ) {
+
+  if( ! found_best ) report += " Please see below for possible ways to identify this OS.";
 
   report += '\n\nUnknown banners have been collected which might help to identify the OS running on this host. ';
   report += 'If these banners containing information about the host OS please report the following information ';

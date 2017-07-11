@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_excel_service_ms15-022.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_sharepoint_server_excel_service_ms15-022.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # Microsoft SharePoint Server Excel Services RCE Vulnerability (3038999)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805148");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-0085");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C"); 
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 13:06:24 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server Excel Services RCE Vulnerability (3038999)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2956143");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-022");
 
-  script_summary("Check for the vulnerable file 'ACEWSTR.DLL' version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

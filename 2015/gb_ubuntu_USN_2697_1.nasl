@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842400");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-31 07:24:01 +0200 (Fri, 31 Jul 2015)");
   script_cve_id("CVE-2015-3228");
   script_tag(name:"cvss_base", value:"6.8");
@@ -46,7 +46,6 @@ a denial of service or possibly execute arbitrary code.");
   script_xref(name: "USN", value: "2697-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-July/003066.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

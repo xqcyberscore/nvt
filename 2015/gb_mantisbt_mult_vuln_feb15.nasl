@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_feb15.nasl 5067 2017-01-23 16:23:44Z cfi $
+# $Id: gb_mantisbt_mult_vuln_feb15.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # MantisBT Multiple Vulnerabilities - Feb15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805267");
-  script_version("$Revision: 5067 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-23 17:23:44 +0100 (Mon, 23 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:35:43 +0530 (Tue, 03 Feb 2015)");
   script_name("MantisBT Multiple Vulnerabilities - Feb15");
 
@@ -76,7 +76,6 @@ if(description)
   script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23243");
   script_xref(name:"URL", value:"https://www.mantisbt.org/bugs/view.php?id=17937");
 
-  script_summary("Check the version MantisBT is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

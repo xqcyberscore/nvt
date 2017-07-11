@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808089");
-  script_version("$Revision: 5684 $");
+  script_version("$Revision: 6264 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 09:51:50 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-01 14:53:37 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-22 14:45:59 +0530 (Wed, 22 Jun 2016)");
   script_name("Joomla BT Media Component SQL Injection Vulnerability");
 
@@ -52,17 +52,15 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"Joomla BT Media 1.0");
+  script_tag(name:"affected", value:"Joomla BT Media 1.4.0 and prior");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  23th March, 2017. Information regarding this issue will be updated once the
-  solution details are available. 
+  script_tag(name:"solution", value:"Update to version 1.4.1 or later.
   For updates refer to http://extensions.joomla.org/extension/bt-media-gallery");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
+  script_xref(name:"URL", value:"http://bowthemes.com/joomla-extensions/bt-media-gallery.html#btshowcase-changelog");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39977");
 
   script_category(ACT_ATTACK);

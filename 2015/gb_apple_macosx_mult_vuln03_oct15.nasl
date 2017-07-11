@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln03_oct15.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_apple_macosx_mult_vuln03_oct15.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Apple Mac OS X Multiple Vulnerabilities-03 October-15
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806153");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2015-5779", "CVE-2015-5783", "CVE-2015-5772", "CVE-2015-5771", 
                 "CVE-2015-5768", "CVE-2015-5763", "CVE-2015-5754", "CVE-2015-5753", 
                 "CVE-2015-5751", "CVE-2015-5750", "CVE-2015-5748", "CVE-2015-5747", 
@@ -41,7 +41,7 @@ if(description)
                 "CVE-2013-7422", "CVE-2015-5784");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-29 13:43:34 +0530 (Thu, 29 Oct 2015)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-03 October-15");
 
@@ -72,7 +72,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://support.apple.com/en-in/HT205031");
   script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Aug/msg00001.html");
-  script_summary("Check for the vulnerable version of Apple Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wideimage_demo_code_xss_vuln.nasl 2580 2016-02-05 08:23:59Z benallard $
+# $Id: gb_wideimage_demo_code_xss_vuln.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # WideImage Demo Code Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wideimage:wideimage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805683");
-  script_version("$Revision: 2580 $");
+  script_version("$Revision: 6376 $");
   script_cve_id("CVE-2015-5519");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:23:59 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-03 12:38:23 +0530 (Mon, 03 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WideImage Demo Code Cross Site Scripting Vulnerability");
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/30");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/132584");
 
-  script_summary("Check if WideImage is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

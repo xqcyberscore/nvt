@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0879.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0879.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122554");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:52 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0879");
 script_tag(name: "insight", value: "ELSA-2008-0879 -  firefox security update - devhelp:[0.12-19]- Rebuild against xulrunnerfirefox:[3.0.2-3.0.1.el5]- Added firefox-oracle-default-prefs.js/firefox-oracle-default-bookmarks.html- Removed the corresponding files of Red Hat.- Added patch oracle-firefox-branding.patch- Update firstrun URL[3.0.2-3]- Update to Firefox 3.0.2 build 6[3.0.2-2]- Update to Firefox 3.0.2 build 4[3.0.2-1]- Update to Firefox 3.0.2[3.0.1-2]- Fixed #447535 - RHEL 5.2 beta / upstream Firefox 3 beta 5 autoConfig broken- Fixed #445304 - HTML/index.html always redirects to en-US/index.html parallel compiles and -debuginfo packagesnss:[3.12.1.1-1]- Update to NSS_3_12_1_RC2[3.12.1.0-1]- Update to NSS_3_12_1_RC1xulrunner:[1.9.0.2-5.0.1]- Added xulrunner-oracle-default-prefs.js- Remove its corresponding of Red Hat.[1.9.0.2-5]- Update to 1.9.0.2 build 6[1.9.0.2-4]- Fixed firefox dependency (#445391)[1.9.0.2-3]- Update to 1.9.0.2 build 4[1.9.0.2-2]- Fixed gecko version[1.9.0.2-1]- Update to 1.9.0.2[1.9.0.1-2]- Updated provided gecko versionyelp:[2.16.0-21]- rebuild against xulrunner"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0879");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

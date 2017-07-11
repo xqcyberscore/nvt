@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2014-1956.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2014-1956.nasl 6376 2017-06-20 10:00:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123235");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6376 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:01:06 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2014-1956");
 script_tag(name: "insight", value: "ELSA-2014-1956 -  wpa_supplicant security update - [1:2.0-13]- Use os_exec() for action script execution (CVE-2014-3686)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2014-1956");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

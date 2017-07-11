@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serendipity_205.nasl 5210 2017-02-06 14:44:04Z cfi $
+# $Id: gb_serendipity_205.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Serendipity <= 2.0.5 Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:s9y:serendipity";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108060");
-  script_version("$Revision: 5210 $");
+  script_version("$Revision: 6257 $");
   script_bugtraq_id(95652, 95656, 95659);
   script_cve_id("CVE-2017-5474", "CVE-2017-5475", "CVE-2017-5476", "CVE-2017-5609");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-06 15:44:04 +0100 (Mon, 06 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-01-30 11:00:00 +0100 (Mon, 30 Jan 2017)");
   script_name("Serendipity <= 2.0.5 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95652");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95656");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/95659");
-  script_xref(name:"URL", value:"http://www.s9y.org/");
+  script_xref(name:"URL", value:"https://blog.s9y.org/archives/272-Serendipity-2.1-First-Release-Candidate.html");
 
   script_tag(name:"summary", value:"Serendipity is prone to multiple vulnerabilities because of
   insufficient CSRF protection / sanitized user-supplied input.");
@@ -80,10 +80,10 @@ if(description)
 
   script_tag(name:"affected", value:"Serendipity versions up to 2.0.5.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 30th January, 2017. Information
-  regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"Update to version 2.1-rc1 or later. For updates refer to
+  http://www.s9y.org/");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -96,7 +96,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"2.0.5" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"None Available" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"2.1-rc1 or later" );
   security_message( port:port, data:report );
   exit( 0 );
 }

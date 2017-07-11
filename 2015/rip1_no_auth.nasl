@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip1_no_auth.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: rip1_no_auth.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # RIP-1 Poisoning Routing Table
 #
@@ -30,7 +30,7 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105236");
  script_tag(name:"cvss_base", value:"5.8");
  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6376 $");
 
  script_name("RIP-1 Poisoning Routing Table");
 
@@ -49,9 +49,8 @@ RIP-2 and implement authentication'");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
- script_summary("Check if MongoDB is protected");
  script_category(ACT_ATTACK);
  script_family("Databases");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

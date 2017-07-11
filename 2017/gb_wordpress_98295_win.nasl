@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_98295_win.nasl 6181 2017-05-19 14:58:21Z teissa $
+# $Id: gb_wordpress_98295_win.nasl 6303 2017-06-10 17:29:16Z cfischer $
 #
 # WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Windows)
 #
@@ -31,12 +31,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108156");
-  script_version("$Revision: 6181 $");
+  script_version("$Revision: 6303 $");
   script_cve_id("CVE-2017-8295");
   script_bugtraq_id(98295);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 16:58:21 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:29:16 +0200 (Sat, 10 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-05-08 11:00:15 +0200 (Mon, 08 May 2017)");
   script_name("WordPress Password Reset CVE-2017-8295 Security Bypass Vulnerability (Windows)");
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
@@ -64,12 +64,16 @@ if(description)
   script_tag(name:"impact", value:"Attackers can exploit this issue to bypass certain security restrictions to perform unauthorized actions.
   This may aid in further attacks.");
 
-  script_tag(name:"affected", value:"WordPress versions 4.7.4 and prior.");
+  script_tag(name:"affected", value:"WordPress versions 4.7.5 and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 08th May, 2017. Information
-  regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No solution or patch is available as of 10th June, 2017. Information
+  regarding this issue will be updated once the solution details are available.
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  As a temporary solution users can enable UseCanonicalName to enforce static SERVER_NAME value
+
+  https://httpd.apache.org/docs/2.4/mod/core.html#usecanonicalname");
+
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
@@ -83,7 +87,7 @@ if( host_runs( "Windows" ) != "yes" ) exit( 0 );
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if( version_is_less_equal( version:vers, test_version:"4.7.4" ) ) {
+if( version_is_less_equal( version:vers, test_version:"4.7.5" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"None" );
   security_message( data:report, port:port );
   exit( 0 );

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869303");
-  script_version("$Revision: 3346 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:12 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-28 05:16:24 +0200 (Tue, 28 Apr 2015)");
   script_cve_id("CVE-2014-0103", "CVE-2014-9465");
   script_tag(name:"cvss_base", value:"5.0");
@@ -55,7 +55,6 @@ and benefits of the Zarafa Collaboration Platform (ZCP).
   script_xref(name: "FEDORA", value: "2015-5823");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/156112.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of zarafa");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

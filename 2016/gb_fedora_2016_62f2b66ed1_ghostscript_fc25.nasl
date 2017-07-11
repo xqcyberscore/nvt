@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871895");
-  script_version("$Revision: 4707 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 06:46:19 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 6302 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-12-07 05:19:50 +0100 (Wed, 07 Dec 2016)");
   script_cve_id("CVE-2016-8602", "CVE-2016-7977");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ghostscript FEDORA-2016-62f2b66ed1");
   script_tag(name: "summary", value: "Check the version of ghostscript");

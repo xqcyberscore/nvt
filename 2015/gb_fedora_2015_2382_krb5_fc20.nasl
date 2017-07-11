@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869070");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6254 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-10 06:31:15 +0100 (Tue, 10 Mar 2015)");
   script_cve_id("CVE-2014-5352", "CVE-2014-9421", "CVE-2014-9422", "CVE-2014-9423",
                 "CVE-2014-5351", "CVE-2014-5353", "CVE-2014-4345", "CVE-2014-4344",
@@ -50,7 +50,6 @@ unencrypted form.
   script_xref(name: "FEDORA", value: "2015-2382");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151103.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of krb5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

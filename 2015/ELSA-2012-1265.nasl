@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1265.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1265.nasl 6376 2017-06-20 10:00:24Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123820");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6376 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:59 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1265");
 script_tag(name: "insight", value: "ELSA-2012-1265 -  libxslt security update - [1.1.26-2.0.2.el6_3.1]- Increment release to avoid ULN conflict with previous release.[1.1.26-2.0.1.el6_3.1]- Added libxslt-oracle-enterprise.patch and replaced doc/redhat.gif in tarball[1.1.26-2.el6_3.1]- fixes CVE-2011-1202 CVE-2011-3970 CVE-2012-2825 CVE-2012-2871 CVE-2012-2870- Fix direct pattern matching bug- Fix popping of vars in xsltCompilerNodePop- Fix bug 602515- Fix generate-id() to not expose object addresses (CVE-2011-1202)- Fix some case of pattern parsing errors (CVE-2011-3970)- Fix a bug in selecting XSLT elements (CVE-2012-2825)- Fix portability to upcoming libxml2-2.9.0- Fix default template processing on namespace nodes (CVE-2012-2871)- Cleanup of the pattern compilation code (CVE-2012-2870)- Hardening of code checking node types in various entry point (CVE-2012-2870)- Hardening of code checking node types in EXSLT (CVE-2012-2870)- Fix system-property with unknown namespace- Xsltproc should return an error code if xinclude fails- Fix a dictionary string usage- Avoid a heap use after free error"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1265");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

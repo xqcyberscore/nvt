@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3050995.nasl 2651 2016-02-12 10:45:45Z benallard $
+# $Id: gb_microsoft_security_advisory_3050995.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # Microsoft Digital Certificates Security Advisory (3050995)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805507");
-  script_version("$Revision: 2651 $");
+  script_version("$Revision: 6357 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 11:45:45 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 18:58:02 +0530 (Wed, 25 Mar 2015)");
   script_name("Microsoft Digital Certificates Security Advisory (3050995)");
 
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://support.microsoft.com/en-us/kb/3050995");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3050995");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows");

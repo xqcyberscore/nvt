@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_photocrati_theme_xss_vuln.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_wp_photocrati_theme_xss_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Wordpress Photocrati Theme 'prod_id' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802089");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2014-100016");
   script_bugtraq_id(65238);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:44:09 +0530 (Thu, 22 Jan 2015)");
   script_name("Wordpress Photocrati Theme 'prod_id' Cross-Site Scripting Vulnerability");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/56690");
   script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90812");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124986");
-  script_summary("Check if Wordpress Photocrati theme is prone to cross-site scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

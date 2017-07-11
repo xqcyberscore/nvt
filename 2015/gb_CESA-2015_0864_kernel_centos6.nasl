@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882174");
-  script_version("$Revision: 3327 $");
+  script_version("$Revision: 6345 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-23 07:33:49 +0200 (Thu, 23 Apr 2015)");
   script_cve_id("CVE-2014-3215", "CVE-2014-3690", "CVE-2014-7825", "CVE-2014-7826", 
                 "CVE-2014-8171", "CVE-2014-8884", "CVE-2014-9529", "CVE-2014-9584",
@@ -93,7 +93,6 @@ device could use this flaw to crash ...
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:0864");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-April/021083.html");
-  script_summary("Check for the Version of kernel");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

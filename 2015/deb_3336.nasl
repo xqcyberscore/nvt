@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3336.nasl 2734 2016-02-26 10:37:23Z benallard $
+# $Id: deb_3336.nasl 6329 2017-06-13 15:39:42Z teissa $
 # Auto-generated from advisory DSA 3336-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703336);
-    script_version("$Revision: 2734 $");
+    script_version("$Revision: 6329 $");
     script_cve_id("CVE-2015-2721", "CVE-2015-2730");
     script_name("Debian Security Advisory DSA 3336-1 (nss - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:37:23 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-08-17 00:00:00 +0200 (Mon, 17 Aug 2015)");
     script_tag(name:"cvss_base", value:"4.3");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3336.html");
 
-    script_summary("Debian Security Advisory DSA 3336-1 (nss - security update)");
 
     script_category(ACT_GATHER_INFO);
 

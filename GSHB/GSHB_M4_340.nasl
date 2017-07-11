@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_340.nasl 3312 2016-05-13 07:08:19Z benallard $
+# $Id: GSHB_M4_340.nasl 6387 2017-06-21 09:03:11Z emoss $
 #
-# IT-Grundschutz, 14. EL, Maßnahme 4.340
+# IT-Grundschutz, 15. EL, Maßnahme 4.340
 #
 # Authors:
 # Thomas Rotter <thomas.rotter@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_id(94245);
-  script_version("$Revision: 3312 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-13 09:08:19 +0200 (Fri, 13 May 2016) $");
+  script_version("$Revision: 6387 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:03:11 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,7 +46,7 @@ if(description)
   script_tag(name : "summary" , value :
 "IT-Grundschutz M4.340: Einsatz der Windows Benutzerkontensteuerung UAC ab Windows Vista.
 
-Stand: 14. Ergänzungslieferung (14. EL).
+Stand: 15. Ergänzungslieferung (15. EL).
 ");
 
   exit(0);
@@ -94,7 +94,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
         result = string("erfüllt");
         desc = string("Das System Entspricht der IT-Grundschutz\nMaßnahme M4.340.");
     }
-  } 
+  }
 }else{
   result = string("nicht zutreffend");
   desc = string("Das System ist kein Microsoft Windows System größer gleich Windows Vista.");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869826");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-07-31 07:17:52 +0200 (Fri, 31 Jul 2015)");
   script_cve_id("CVE-2015-5600");
   script_tag(name:"cvss_base", value:"8.5");
@@ -55,7 +55,6 @@ install openssh-clients, openssh-server, or both.
   script_xref(name: "FEDORA", value: "2015-11981");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-July/162955.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of openssh");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

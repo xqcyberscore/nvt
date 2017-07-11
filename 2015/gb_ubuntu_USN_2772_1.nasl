@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842490");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 09:26:55 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-5288", "CVE-2015-5289");
   script_tag(name:"cvss_base", value:"6.4");
@@ -53,7 +53,6 @@ of service attack. This issue only affected Ubuntu 14.04 LTS and Ubuntu
   script_xref(name: "USN", value: "2772-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-October/003149.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of postgresql-9.4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

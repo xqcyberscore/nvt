@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zeeways_multiple_vuln.nasl 5520 2017-03-08 17:02:55Z teissa $
+# $Id: gb_zeeways_multiple_vuln.nasl 6313 2017-06-12 09:33:47Z teissa $
 #
 # ZeewaysCMS Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:zeewayscms:zeeway';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808108");
-  script_version("$Revision: 5520 $");
+  script_version("$Revision: 6313 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 18:02:55 +0100 (Wed, 08 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 11:33:47 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-06-03 17:28:28 +0530 (Fri, 03 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ZeewaysCMS Multiple Vulnerabilities");
@@ -59,12 +59,9 @@ if(description)
 
   script_tag(name:"affected", value:"ZeewaysCMS");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  08th March, 2017. Information regarding this issue will be updated once
-  the solution details are available. For updates refer to
-  http://www.zeewayscms.com/");
+  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39784/");
 

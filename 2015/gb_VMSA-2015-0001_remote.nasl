@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2015-0001_remote.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_VMSA-2015-0001_remote.nasl 6357 2017-06-16 10:00:29Z teissa $
 #
 # VMSA-2015-0001: VMware vCenter Server, ESXi, Workstation, Player, and Fusion updates address security issues (remote check)
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2014-8370","CVE-2015-1043","CVE-2015-1044","CVE-2014-3513","CVE-2014-3567","CVE-2014-3566","CVE-2014-3568","CVE-2014-3660");
  script_tag(name:"cvss_base", value:"7.1");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 2748 $");
+ script_version ("$Revision: 6357 $");
  script_name("VMSA-2015-0001: VMware vCenter Server, ESXi, Workstation, Player, and Fusion updates address security issues (remote check)");
 
  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
@@ -70,11 +70,10 @@ ESXi 5.5 without patch ESXi550-201403102-SG, ESXi550-201501101-SG
 ESXi 5.1 without patch ESXi510-201404101-SG
 ESXi 5.0 without patch ESXi500-201405101-SG");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-01-30 12:05:45 +0100 (Fri, 30 Jan 2015)");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_summary("Check the build number");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

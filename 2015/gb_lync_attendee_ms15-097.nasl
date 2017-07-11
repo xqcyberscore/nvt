@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lync_attendee_ms15-097.nasl 6156 2017-05-18 06:51:25Z cfi $
+# $Id: gb_lync_attendee_ms15-097.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Microsoft Lync Attendee Buffer Overflow Vulnerability (3089656)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806118");
-  script_version("$Revision: 6156 $");
+  script_version("$Revision: 6333 $");
   script_cve_id("CVE-2015-2510");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 08:51:25 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-09 14:36:41 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Lync Attendee Buffer Overflow Vulnerability (3089656)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3081089");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-097");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

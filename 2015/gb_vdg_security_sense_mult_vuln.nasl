@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vdg_security_sense_mult_vuln.nasl 5629 2017-03-20 15:36:33Z cfi $
+# $Id: gb_vdg_security_sense_mult_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # VDG Security Sense Multiple Security Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805033");
-  script_version("$Revision: 5629 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2014-9451", "CVE-2014-9452");
   script_bugtraq_id(71736);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-20 16:36:33 +0100 (Mon, 20 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-06 15:11:26 +0530 (Tue, 06 Jan 2015)");
   script_name("VDG Security Sense Multiple Security Vulnerabilities");
 
@@ -78,7 +78,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Dec/76");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129656");
-  script_summary("Check if VDG Security Sense is prone to directory traversal vulnerability");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

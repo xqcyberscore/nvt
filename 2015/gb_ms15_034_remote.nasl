@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15_034_remote.nasl 5655 2017-03-21 10:44:19Z cfi $
+# $Id: gb_ms15_034_remote.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-1635");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5655 $");
+ script_version ("$Revision: 6431 $");
 
  script_name("MS15-034 HTTP.sys Remote Code Execution Vulnerability (remote check)");
 
@@ -67,9 +67,8 @@ Microsoft Windows 7 x32/x64 Service Pack 1 and prior");
 
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-21 11:44:19 +0100 (Tue, 21 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-15 18:02:08 +0200 (Wed, 15 Apr 2015)");
- script_summary("Send a special crafted http get request");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

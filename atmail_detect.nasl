@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_detect.nasl 5720 2017-03-24 14:15:57Z cfi $
+# $Id: atmail_detect.nasl 6296 2017-06-09 10:10:42Z ckuersteiner $
 #
 # Atmail Detection
 #
@@ -24,19 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of Atmail.
-
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100148";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.100148");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5720 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 15:15:57 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 6296 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-09 12:10:42 +0200 (Fri, 09 Jun 2017) $");
  script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Atmail Detection");  
@@ -47,7 +40,10 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name: "summary", value: "Detection of Atmail.
+
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
+
  exit(0);
 }
 
@@ -55,47 +51,56 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-
-## Constant values
-SCRIPT_DESC = "Atmail Detection";
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-files = make_list("/index.php/admin/","/index.php");
+files = make_list("/index.php", "index.php/admin");
 
 foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:port ) ) ) {
-
   install = dir;
   if( dir == "/" ) dir = "";
 
   foreach file ( files ) {
     url = dir + file;
     buf = http_get_cache( item:url, port:port );
-    if( buf == NULL )continue;
  
-    if(
-      egrep(pattern: "Powered by Atmail", string: buf, icase: TRUE) ||
-      egrep(pattern: "<title>Login to Atmail</title>", string: buf) ||
-      egrep(pattern: "For more information on the WebMail service.*Atmail PHP [0-9.]+", string: buf)) 
-   { 
-    
-      vers = string("unknown");
+    if (egrep(pattern: "Powered by Atmail", string: buf, icase: TRUE) ||
+        egrep(pattern: "<title>Login to Atmail</title>", string: buf) ||
+        egrep(pattern: "For more information on the WebMail service.*Atmail PHP [0-9.]+", string: buf) ||
+        "Use an enhanced accessible version of Atmail" >< buf) { 
+      vers = "unknown";
 
       ### try to get version.
       version = eregmatch(string: buf, pattern: "Powered by Atmail ([0-9.]+)",icase:TRUE);
-    
-       if ( !isnull(version[1]) ) {
-          vers=version[1];
-       } else {
+      if (!isnull(version[1])) {
+        vers = version[1];
+        set_kb_item(name: "Atmail/version", value: vers);
+      }
+      else {
+        version = eregmatch(string: buf,
+                            pattern: "For more information on the WebMail service, please contact.*Atmail PHP ([0-9.]+)",
+                            icase:TRUE);
 
-         version = eregmatch(string: buf, pattern: "For more information on the WebMail service, please contact.*Atmail PHP ([0-9.]+)",icase:TRUE);
-
-         if ( !isnull(version[1]) ) {
-	   vers=version[1];
-         }	 
-       }  
+        if (!isnull(version[1])) {
+	   vers = version[1];
+           set_kb_item(name: "Atmail/version", value: vers);
+        }
+        else {
+          version = eregmatch(string: buf, pattern: "login\?([0-9.]+)");
+          if (!isnull(version[1])) {
+            vers = version[1];
+            set_kb_item(name: "Atmail/version", value: vers);
+          }
+          else {
+            version = eregmatch(string: buf, pattern: "favicon-admin.ico\?([0-9.]+)");
+            if (!isnull(version[1])) {
+              vers = version[1];
+              set_kb_item(name: "Atmail/version", value: vers);
+            }
+          }
+        }
+      }  
     
       tmp_version = string(vers," under ",install);
       set_kb_item(name: string("www/", port, "/atmail"), value: tmp_version);
@@ -106,14 +111,15 @@ foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:po
       if(isnull(cpe))
         cpe = 'cpe:/a:atmail:atmail';
 
-      register_product(cpe:cpe, location:install, nvt:SCRIPT_OID, port:port);
+      register_product(cpe:cpe, location:install, port:port);
 
-      log_message(data: build_detection_report(app:"Atmail", version:vers, install:install, cpe:cpe, concluded: version[0]),
+      log_message(data: build_detection_report(app: "Atmail", version: vers, install: install, cpe: cpe,
+                                               concluded: version[0]),
                   port:port);
 
       exit(0);
+    }
   }
- }
 }
 
 exit(0);

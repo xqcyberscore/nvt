@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: http_w98_devname_dos.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: http_w98_devname_dos.nasl 6315 2017-06-12 10:34:26Z cfischer $
 # Description: HTTP Windows 98 MS/DOS device names DOS
 #
 # Authors:
@@ -54,8 +54,8 @@ HTTP server that filters those names out.";
 if(description)
 {
  script_id(10930);
- script_version("$Revision: 6056 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+ script_version("$Revision: 6315 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(1043, 2575, 2608, 2622, 2649, 2704, 3929, 6659, 6662);
  script_xref(name:"IAVA", value:"2003-t-0003");
@@ -141,7 +141,7 @@ alive = end_denial();
 if(!alive)
 {
  security_message(port);
- set_kb_item(name:"Host/dead", value:TRUE);
+ replace_kb_item( name:"Host/dead", value:TRUE );
  exit(0);
 }
 

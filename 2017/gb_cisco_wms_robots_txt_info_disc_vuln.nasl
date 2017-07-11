@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wms_robots_txt_info_disc_vuln.nasl 6144 2017-05-17 12:26:22Z antu123 $
+# $Id: gb_cisco_wms_robots_txt_info_disc_vuln.nasl 6222 2017-05-26 11:25:28Z cfi $
 #
 # Cisco WebEx Meetings Server 'robots.txt' Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:cisco:webex_meetings_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811043");
-  script_version("$Revision: 6144 $");
+  script_version("$Revision: 6222 $");
   script_cve_id("CVE-2017-6651");
   script_bugtraq_id(98387);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 14:26:22 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 13:25:28 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-16 13:24:42 +0530 (Tue, 16 May 2017)");
   script_name("Cisco WebEx Meetings Server 'robots.txt' Information Disclosure Vulnerability");
 
@@ -75,12 +75,16 @@ if(description)
   script_dependencies("gb_cisco_webex_meetings_server_detect.nasl");
   script_mandatory_keys("cisco/webex/detected");
   script_require_ports("Services/www", 443);
+
+  script_tag(name:"deprecated", value:TRUE); 
+
   exit(0);
 }
 
-##
-## Code Starts Here
-##
+# gb_cisco_webex_meetings_server_detect.nasl is currently only able to gather
+# the major version like "2.7". The check for the minor version later can't work
+# as expected.
+exit(66); 
 
 include("host_details.inc");
 include("version_func.inc");

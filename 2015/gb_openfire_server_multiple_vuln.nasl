@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_server_multiple_vuln.nasl 4431 2016-11-07 14:02:24Z antu123 $
+# $Id: gb_openfire_server_multiple_vuln.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # OpenFire Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806061");
-  script_version("$Revision: 4431 $");
+  script_version("$Revision: 6391 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 15:02:24 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:36:42 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenFire Server Multiple Vulnerabilities");
@@ -75,7 +75,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38191");
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38192");
 
-  script_summary("Check if OpenFire Server is installed with vulnerable version or not");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

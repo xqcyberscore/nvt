@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_vuln02_feb15_win.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_oracle_virtualbox_mult_vuln02_feb15_win.nasl 6243 2017-05-30 09:04:14Z teissa $
 #
 # Oracle Virtualbox Multiple Vulnerabilities - Feb15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805431");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6243 $");
   script_cve_id("CVE-2015-0427", "CVE-2014-6595", "CVE-2014-6590", "CVE-2014-6589",
                 "CVE-2014-6588");
   script_bugtraq_id(72216, 72206, 72213, 72202, 72196);
   script_tag(name:"cvss_base", value:"3.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-02 10:11:39 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Virtualbox Multiple Vulnerabilities - Feb15 (Windows)");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.68800");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle VirtualBox on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_family("General");

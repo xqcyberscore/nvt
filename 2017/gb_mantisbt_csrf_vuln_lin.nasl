@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_csrf_vuln_lin.nasl 6195 2017-05-23 10:02:52Z ckuerste $
+# $Id: gb_mantisbt_csrf_vuln_lin.nasl 6302 2017-06-10 17:10:53Z cfischer $
 #
 # MantisBT CSRF Vulnerability (Linux)
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:mantisbt:mantisbt';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106823");
-  script_version("$Revision: 6195 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-23 12:02:52 +0200 (Tue, 23 May 2017) $");
+  script_version("$Revision: 6302 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-10 19:10:53 +0200 (Sat, 10 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-05-23 10:37:27 +0700 (Tue, 23 May 2017)");
-  script_tag(name: "cvss_base", value: "5.1");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-7620");
 

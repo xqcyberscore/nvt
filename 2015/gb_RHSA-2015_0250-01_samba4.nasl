@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871319");
-  script_version("$Revision: 3338 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:25:35 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-25 05:42:24 +0100 (Wed, 25 Feb 2015)");
   script_cve_id("CVE-2015-0240");
   script_tag(name:"cvss_base", value:"10.0");
@@ -64,7 +64,6 @@ update, the smb service will be restarted automatically.
   script_xref(name: "RHSA", value: "2015:0250-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-February/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of samba4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

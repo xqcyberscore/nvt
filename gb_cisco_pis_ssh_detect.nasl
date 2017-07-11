@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_ssh_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_cisco_pis_ssh_detect.nasl 6233 2017-05-29 10:07:04Z ckuerste $
 #
 # Cisco Prime Infrastructure Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105612");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version ("$Revision: 6233 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 12:07:04 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2016-04-20 15:22:13 +0200 (Wed, 20 Apr 2016)");
  script_name("Cisco Prime Infrastructure Detection (SSH)");
 
@@ -40,7 +40,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
 
  script_category(ACT_GATHER_INFO);
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gather-package-list.nasl");
  script_mandatory_keys("cisco_pis/show_ver");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_bof_vul02_jan15_win.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_vlc_media_player_bof_vul02_jan15_win.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # VLC Media Player 'real_get_rdt_chunk' BOF Vulnerability-02 Jan15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805313");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2010-2062");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-02 12:58:41 +0530 (Fri, 02 Jan 2015)");
   script_name("VLC Media Player 'real_get_rdt_chunk' BOF Vulnerability-02 Jan15 (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "http://secunia.com/advisories/36037/");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2009/Jul/418");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/cve/CVE-2010-2062");
-  script_summary("Check for the vulnerable version of VLC Media Player on Windows");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

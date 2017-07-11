@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2015-1417.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2015-1417.nasl 6214 2017-05-26 09:04:01Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123059");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6214 $");
 script_tag(name:"creation_date", value:"2015-10-06 13:58:50 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2015-1417");
 script_tag(name: "insight", value: "ELSA-2015-1417 -  mailman security and bug fix update - [3:2.1.12-25]- fix CVE-2002-0389 - local users able to read private mailing list archives[3:2.1.12-24]- fix CVE-2015-2775 - directory traversal in MTA transports[3:2.1.12-23]- fix #1095359 - handle update when some mailing lists have been created by newer Mailman than this one[3:2.1.12-22]- fix #1095359 - add support for DMARC[3:2.1.12-21]- fix #1056366 - fix bad subject of the welcome email when creating list using newlist command[3:2.1.12-20]- fix #745409 - do not set Indexes in httpd configuration for public archive- fix #1008139 - fix traceback when list_data_dir is not a child of var_prefix[3:2.1.12-19]- fix #765807 - fix traceback when message is received to moderated list"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2015-1417");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

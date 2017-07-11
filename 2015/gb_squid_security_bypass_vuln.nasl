@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_security_bypass_vuln.nasl 4585 2016-11-21 17:31:42Z cfi $
+# $Id: gb_squid_security_bypass_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Squid 'cache_peer' Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806518");
-  script_version("$Revision: 4585 $");
+  script_version("$Revision: 6431 $");
   script_cve_id("CVE-2015-5400");
   script_bugtraq_id(75553);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-21 18:31:42 +0100 (Mon, 21 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-28 17:35:29 +0530 (Wed, 28 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid 'cache_peer' Security Bypass Vulnerability");
@@ -62,7 +62,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2015_2.txt");
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/07/09/12");
 
-  script_summary("Check for the vulnerable version of Squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

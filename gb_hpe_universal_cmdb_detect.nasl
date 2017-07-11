@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_detect.nasl 5919 2017-04-10 15:17:44Z ckuerste $
+# $Id: gb_hpe_universal_cmdb_detect.nasl 6320 2017-06-13 09:57:25Z ckuersteiner $
 #
 # HPE Universal CMDB Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808250");
-  script_version("$Revision: 5919 $");
+  script_version("$Revision: 6320 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 17:17:44 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 11:57:25 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-07-14 16:30:56 +0530 (Thu, 14 Jul 2016)");
   script_name("HPE Universal CMDB Version Detection");
 
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("http_version.nasl", "find_service.nasl");
+  script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
@@ -58,22 +58,22 @@ include("host_details.inc");
 
 
 ##Get HTTP Port
-if(!ucmdbPort = get_http_port(default:8080)){
-  exit(0);
-}
+ucmdbPort = get_http_port(default:8080);
 
 ## Send and receive response
 rcvRes = http_get_cache(item:"/ucmdb-ui/login_page.jsp", port:ucmdbPort);
 
 ## Confirm the application
-if(rcvRes =~ 'HTTP/1.. 200' && '<title>HP Universal CMDB</title>' >< rcvRes &&
-   rcvRes =~ 'Copyright.*Hewlett-Packard' && 'User Login:' >< rcvRes) 
-{
+if(rcvRes =~ '<title>HP(E)? Universal CMDB</title>' >< rcvRes &&
+   'STATE_LOGIN_FAILS' >< rcvRes && 'User Login:' >< rcvRes) {
   version = "unknown";
 
   ## Grep for the version
-  ver = eregmatch(pattern:'>HP Universal CMDB ([0-9.]+)', string:rcvRes);
-  if(ver[1]) version = ver[1];
+  ver = eregmatch(pattern:'class="version">HP(E)? Universal CMDB ([0-9.]+)', string:rcvRes);
+  if(!isnull(ver[2])) {
+    version = ver[2];
+    set_kb_item(name: "HP/UCMDB/version", value: version);
+  }
 
   ## Set the KB value
   set_kb_item(name:"HP/UCMDB/Installed", value:TRUE);
@@ -91,6 +91,8 @@ if(rcvRes =~ 'HTTP/1.. 200' && '<title>HP Universal CMDB</title>' >< rcvRes &&
                                           cpe:cpe,
                                           concluded:ver[0]),
                                           port:ucmdbPort);
+
+  exit(0);
 }
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_client_certificate_bypass_vuln.nasl 2748 2016-02-29 10:19:10Z benallard $
+# $Id: gb_squid_client_certificate_bypass_vuln.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Squid SSL-Bump Certificate Validation Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806104");
-  script_version("$Revision: 2748 $");
+  script_version("$Revision: 6333 $");
   script_cve_id("CVE-2015-3455");
   script_bugtraq_id(74438);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-29 11:19:10 +0100 (Mon, 29 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 14:34:34 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid SSL-Bump Certificate Validation Bypass Vulnerability");
@@ -69,7 +69,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1032221");
   script_xref(name : "URL" , value : "http://advisories.mageia.org/MGASA-2015-0191.html");
   script_xref(name : "URL" , value : "http://www.squid-cache.org/Advisories/SQUID-2015_1.txt");
-  script_summary("Check for the vulnerable version of Squid");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

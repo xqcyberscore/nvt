@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_CSCuv93130.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_asr_1000_CSCuv93130.nasl 6431 2017-06-26 09:59:24Z teissa $
 #
 # Cisco ASR 1000 Series Root Shell License Bypass Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6383");
  script_tag(name:"cvss_base", value:"7.2");
  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6431 $");
 
  script_name("Cisco ASR 1000 Series Root Shell License Bypass Vulnerability");
 
@@ -51,9 +51,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-01 14:48:03 +0100 (Tue, 01 Dec 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

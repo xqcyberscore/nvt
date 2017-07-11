@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 6209 2017-05-24 14:42:39Z cfi $
+# $Id: gather-package-list.nasl 6381 2017-06-20 12:13:27Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 6209 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 16:42:39 +0200 (Wed, 24 May 2017) $");
+  script_version("$Revision: 6381 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 14:13:27 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -201,6 +201,7 @@ OS_CPE = make_array(
     "FC1",  "cpe:/o:fedoraproject:fedora_core:1",
 
     # Debian
+    "DEB9.0", "cpe:/o:debian:debian_linux:9.0",
     "DEB8.8", "cpe:/o:debian:debian_linux:8.8",
     "DEB8.7", "cpe:/o:debian:debian_linux:8.7",
     "DEB8.6", "cpe:/o:debian:debian_linux:8.6",
@@ -371,27 +372,21 @@ OS_CPE = make_array(
     "FortiOS", "cpe:/o:fortinet:fortios"
 );
 
-port = get_preference("auth_port_ssh");
-if(!port) {
-    port = get_kb_item("Services/ssh");
-}
-if(!port) {
-    port = 22;
-}
+port = get_preference( "auth_port_ssh" );
+if( ! port ) port = get_kb_item( "Services/ssh" );
+if( ! port ) port = 22;
 
 sock = ssh_login_or_reuse_connection();
-if(!sock) {
-    exit(0);
-}
+if( ! sock ) exit( 0 );
 
 # First command: Grab uname -a of the remote system
-uname = ssh_cmd(socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:60, retry:30);
-if(isnull(uname))exit(0);
+uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:60, retry:30 );
+if( isnull( uname ) ) exit( 0 );
 
 if( "Following disconnected ssh sessions are available to resume" >< uname )
 {
   replace_kb_item( name:"ssh/send_extra_ln", value:TRUE );
-  uname = ssh_cmd(socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10);
+  uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:20, retry:10 );
 }
 
 if( "Welcome to Data Domain OS" >< uname )
@@ -401,19 +396,20 @@ if( "Welcome to Data Domain OS" >< uname )
   exit( 0 );
 }
 
-set_kb_item(name: "ssh/login/uname", value:uname);
-set_kb_item(name: "Host/uname", value:uname);
+set_kb_item( name:"ssh/login/uname", value:uname );
+set_kb_item( name:"Host/uname", value:uname );
 
 if( "linux" >< tolower( uname ) )
 {
   un = egrep( pattern:'(Linux[^\r\n]+)', string:uname );
   if( un )
   {
-    u = eregmatch( pattern:'(Linux[^\r\n]+)', string:un );
+    u = eregmatch( pattern:'(Linux [^ ]+ [^ ]+ #[0-9]+ [^\n]+)', string:un );
+
     if( ! isnull( u[1] ) )
     {
-      replace_kb_item(name: "ssh/login/uname", value:u[1]);
-      replace_kb_item(name: "Host/uname", value:u[1]);
+      replace_kb_item( name:"ssh/login/uname", value:u[1] );
+      replace_kb_item( name:"Host/uname", value:u[1] );
     }
   }
 }
@@ -1117,7 +1113,7 @@ if( "EyesOfNetwork release" >< rls ) {
 
   # EON 4.0 has a wrong cpe:/o:centos:linux in the system-release-cpe
   buf = str_replace( string:buf, find:"centos:linux", replace:"centos:centos" );
-  
+
   os_ver = eregmatch( pattern:"cpe:/o:centos:centos:([0-9])", string:buf );
   if( ! isnull( os_ver[1] ) ) {
     oskey = "CentOS" + os_ver[1];

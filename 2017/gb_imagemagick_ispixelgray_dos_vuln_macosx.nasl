@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_ispixelgray_dos_vuln_macosx.nasl 5441 2017-02-28 08:41:33Z cfi $
+# $Id: gb_imagemagick_ispixelgray_dos_vuln_macosx.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # ImageMagick 'IsPixelGray' Function Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810558");
-  script_version("$Revision: 5441 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2016-9773");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-28 09:41:33 +0100 (Tue, 28 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 09:22:03 +0530 (Tue, 21 Feb 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick 'IsPixelGray' Function Denial of Service Vulnerability (Mac OS X)");
@@ -52,13 +52,11 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ImageMagick version 7.0.3.8 on Mac OS X.");
+  script_tag(name: "affected" , value:"ImageMagick version 7.0.3-8 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 22nd
-  February, 2017. Information regarding this issue will be updated once the solution
-  details are available. For updates refer to http://www.imagemagick.org");
+  script_tag(name: "solution" , value:"Update to version 7.0.3-9 or later. For updates refer to http://www.imagemagick.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2016/12/02/11");
   script_xref(name : "URL" , value : "https://blogs.gentoo.org/ago/2016/12/01/imagemagick-heap-based-buffer-overflow-in-ispixelgray-pixel-accessor-h-incomplete-fix-for-cve-2016-9556");
@@ -86,7 +84,9 @@ if(!imVer = get_app_version(cpe:CPE)){
 ## Grep for vulnerable version
 if(imVer == "7.0.3.8")
 {
-  report = report_fixed_ver(installed_version:imVer, fixed_version:'NoneAvailable');
+  report = report_fixed_ver(installed_version:imVer, fixed_version:'7.0.3-9');
   security_message(data:report);
   exit(0);
 }
+
+exit(99);

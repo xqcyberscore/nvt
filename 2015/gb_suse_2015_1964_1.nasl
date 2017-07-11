@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851133");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-13 06:32:23 +0100 (Fri, 13 Nov 2015)");
   script_cve_id("CVE-2014-0222", "CVE-2015-4037", "CVE-2015-5154", "CVE-2015-5165",
                 "CVE-2015-5166", "CVE-2015-5239", "CVE-2015-6815", "CVE-2015-7311",
@@ -74,7 +74,6 @@ if(description)
   script_xref(name: "openSUSE-SU", value: "2015:1964_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-11/msg00018.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

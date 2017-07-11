@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_server_ms15-046.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_sharepoint_server_ms15-046.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Microsoft SharePoint Server RCE Vulnerability (3057181)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805187");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-1682", "CVE-2015-1683");
   script_bugtraq_id(74481, 74484);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-13 18:04:49 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server RCE Vulnerability (3057181)");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3039736");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-046");
 
-  script_summary("Check for the vulnerable file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2903.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_2903.nasl 6431 2017-06-26 09:59:24Z teissa $
 # Auto-generated from advisory DSA 2903-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(702903);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6431 $");
     script_cve_id("CVE-2014-2338");
     script_name("Debian Security Advisory DSA 2903-1 (strongswan - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
     script_tag(name: "creation_date", value: "2014-04-14 00:00:00 +0200 (Mon, 14 Apr 2014)");
     script_tag(name:"cvss_base", value:"6.4");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -41,7 +41,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2903.html");
 
-    script_summary("Debian Security Advisory DSA 2903-1 (strongswan - security update)");
 
     script_category(ACT_GATHER_INFO);
 

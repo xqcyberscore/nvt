@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_iPOLis_manager_buffer_overflow_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_samsung_iPOLis_manager_buffer_overflow_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # Samsung iPOLiS Device Manager Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:samsung:ipolis_device_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805482");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-0555");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 15:38:22 +0530 (Fri, 20 Mar 2015)");
   script_name("Samsung iPOLiS Device Manager Buffer Overflow Vulnerability");
 
@@ -63,7 +63,6 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Feb/81");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Samsung iPOLiS Device Manager on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_samsung_iPOLis_manager_detect.nasl");

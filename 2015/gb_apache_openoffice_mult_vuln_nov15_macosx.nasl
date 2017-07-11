@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_mult_vuln_nov15_macosx.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_apache_openoffice_mult_vuln_nov15_macosx.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Apache OpenOffice Multiple Vulnerabilities Nov15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806702");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-5214", "CVE-2015-5213", "CVE-2015-5212", "CVE-2015-4551");
   script_bugtraq_id(77486);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-16 18:28:06 +0530 (Mon, 16 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apache OpenOffice Multiple Vulnerabilities Nov15 (Mac OS X)");
@@ -72,7 +72,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2015-5212.html");
   script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2015-4551.html");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Apache OpenOffice on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_openoffice_detect_macosx.nasl");

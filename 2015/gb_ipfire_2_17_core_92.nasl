@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_92.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_ipfire_2_17_core_92.nasl 6376 2017-06-20 10:00:24Z teissa $
 #
 # IPFire 2.17 - Core Update 92
 #
@@ -31,7 +31,7 @@ if (description)
  script_cve_id("CVE-2015-1793","CVE-2015-5400");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 2676 $");
+ script_version ("$Revision: 6376 $");
 
  script_name("IPFire 2.17 - Core Update 92");
 
@@ -52,9 +52,8 @@ This update comes with a patched version of squid to fix SQUID-2015:2.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-08-18 13:35:54 +0200 (Tue, 18 Aug 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

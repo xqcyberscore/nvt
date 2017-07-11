@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871511");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6329 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 06:13:14 +0100 (Tue, 01 Dec 2015)");
   script_cve_id("CVE-2015-7501");
   script_tag(name:"cvss_base", value:"10.0");
@@ -66,7 +66,6 @@ restarted for the update to take effect.
   script_xref(name: "RHSA", value: "2015:2522-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00071.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of apache-commons-collections");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_windows_gdi32dll_info_disclose_vuln.nasl 5542 2017-03-10 15:39:04Z teissa $
+# $Id: gb_microsoft_windows_gdi32dll_info_disclose_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Microsoft Graphics Component 'gdi32.dll' Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809889");
-  script_version("$Revision: 5542 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2017-0038");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 16:39:04 +0100 (Fri, 10 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2017-02-21 17:10:32 +0530 (Tue, 21 Feb 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Graphics Component 'gdi32.dll' Information Disclosure Vulnerability");
@@ -50,22 +50,28 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8.1 x32/x64 Edition
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 x32/x64 Edition
+
   Microsoft Windows 10 x32/x64
+
   Microsoft Windows Server 2012/2012R2
+
   Microsoft Windows 10 Version 1511, 1607 x32/x64
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 21st
-  February 2017, Information regarding this issue will be update once the solution
-  details are made available.
-  For updates refer to https://technet.microsoft.com");
+  script_tag(name:"solution", value:"Run Windows Update and update the
+  listed hotfixes or download and update mentioned hotfixes in the advisory
+  from the below link,
+  https://technet.microsoft.com/library/security/MS17-013");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "https://bugs.chromium.org/p/project-zero/issues/detail?id=992");
 
   script_category(ACT_GATHER_INFO);

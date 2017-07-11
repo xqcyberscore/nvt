@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842497");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-10-21 07:12:33 +0200 (Wed, 21 Oct 2015)");
   script_cve_id("CVE-2015-6031");
   script_tag(name:"cvss_base", value:"6.8");
@@ -49,7 +49,6 @@ an application that uses the MiniUPnP library.");
   script_xref(name: "USN", value: "2780-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-October/003159.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of miniupnpc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

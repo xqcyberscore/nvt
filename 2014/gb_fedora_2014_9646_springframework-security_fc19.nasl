@@ -28,12 +28,12 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868152");
-  script_version("$Revision: 2806 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-03-08 16:06:45 +0100 (Tue, 08 Mar 2016) $");
+  script_version("$Revision: 6336 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2014-08-31 05:53:43 +0200 (Sun, 31 Aug 2014)");
   script_cve_id("CVE-2014-3527", "CVE-2014-0097");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Fedora Update for springframework-security FEDORA-2014-9646");
 
   tag_insight = "Spring Security is a Java/Java EE framework that provides advanced

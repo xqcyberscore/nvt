@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libupnp_heap_bo_vuln.nasl 5552 2017-03-13 07:50:17Z teissa $
+# $Id: gb_libupnp_heap_bo_vuln.nasl 6378 2017-06-20 11:53:10Z cfischer $
 #
 # libupnp Heap Buffer Overflow Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:libupnp_project:libupnp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106377");
-  script_version("$Revision: 5552 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-13 08:50:17 +0100 (Mon, 13 Mar 2017) $");
+  script_version("$Revision: 6378 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 13:53:10 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-11-04 14:37:33 +0700 (Fri, 04 Nov 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to version 1.6.21 or later,
   For updates refer to http://pupnp.sourceforge.net/");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);

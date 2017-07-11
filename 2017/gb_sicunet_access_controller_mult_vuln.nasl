@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sicunet_access_controller_mult_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_sicunet_access_controller_mult_vuln.nasl 6395 2017-06-21 12:24:37Z teissa $
 #
 # SICUNET Access Controller Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106672");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6395 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-21 14:24:37 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-03-21 09:07:37 +0700 (Tue, 21 Mar 2017)");
   script_tag(name: "cvss_base", value: "10.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -72,6 +72,7 @@ regarding this issue will be updated once the solution details are available.");
 
   exit(0);
 }
+
 
 include("http_func.inc");
 include("http_keepalive.inc");

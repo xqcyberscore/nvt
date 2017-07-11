@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_file_discl.nasl 6135 2017-05-16 11:33:09Z cfi $
+# $Id: gb_apache_ambari_file_discl.nasl 6213 2017-05-26 08:21:23Z teissa $
 #
 # Apache Ambari Sensitive Data Exposure
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:apache:ambari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108161");
-  script_version("$Revision: 6135 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 13:33:09 +0200 (Tue, 16 May 2017) $");
+  script_version("$Revision: 6213 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 10:21:23 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-16 07:42:44 +0200 (Tue, 16 May 2017)");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
   script_cve_id("CVE-2017-5655");
   script_name("Apache Ambari Sensitive Data Exposure");
   script_category(ACT_GATHER_INFO);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-504.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-504.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120373");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:24:56 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-504");
 script_tag(name: "insight", value: "A buffer overflow was found in the way unzip uncompressed certain extra fields of a file. A specially crafted Zip archive could cause unzip to crash or, possibly, execute arbitrary code when the archive was tested with unzip's '-t' option. (CVE-2014-9636 )A buffer overflow flaw was found in the way unzip computed the CRC32 checksum of certain extra fields of a file. A specially crafted Zip archive could cause unzip to crash when the archive was tested with unzip's '-t' option. (CVE-2014-8139 )An integer underflow flaw, leading to a buffer overflow, was found in the way unzip uncompressed certain extra fields of a file. A specially crafted Zip archive could cause unzip to crash when the archive was tested with unzip's '-t' option. (CVE-2014-8140 )A buffer overflow flaw was found in the way unzip handled Zip64 files. A specially crafted Zip archive could possibly cause unzip to crash when the archive was uncompressed. (CVE-2014-8141 )"); 
 script_tag(name : "solution", value : "Run yum update unzip to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-504");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

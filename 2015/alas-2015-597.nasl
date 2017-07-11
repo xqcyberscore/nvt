@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-597.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-597.nasl 6415 2017-06-23 09:59:48Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120217");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6415 $");
 script_tag(name:"creation_date", value:"2015-09-25 11:17:59 +0300 (Fri, 25 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-597");
 script_tag(name: "insight", value: "An integer overflow flaw was found in the way libXfont processed certain Glyph Bitmap Distribution Format (BDF) fonts. A malicious, local user could use this flaw to crash the X.Org server or, potentially, execute arbitrary code with the privileges of the X.Org server. (CVE-2015-1802 )An integer truncation flaw was discovered in the way libXfont processed certain Glyph Bitmap Distribution Format (BDF) fonts. A malicious, local user could use this flaw to crash the X.Org server or, potentially, execute arbitrary code with the privileges of the X.Org server. (CVE-2015-1804 )A NULL pointer dereference flaw was discovered in the way libXfont processed certain Glyph Bitmap Distribution Format (BDF) fonts. A malicious, local user could use this flaw to crash the X.Org server. (CVE-2015-1803 )"); 
 script_tag(name : "solution", value : "Run yum update libXfont to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-597");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

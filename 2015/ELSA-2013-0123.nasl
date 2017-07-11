@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0123.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0123.nasl 6214 2017-05-26 09:04:01Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123752");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6214 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:08:04 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0123");
 script_tag(name: "insight", value: "ELSA-2013-0123 -  OpenIPMI security, bug fix, and enhancement update - [2.0.16-16.el5] - ipmitool: fix ipmi command retry shifts replies (#863310) [2.0.16-15.el5] - ipmitool: added -b, -B, -l and -T options to ipmitool man page (#846596) - ipmitool: fixed man page documentation for delloem setled command (#797050) [2.0.16-14.el5] - ipmitool: fixed wrong permissions on ipmievd.pid (#834190) [2.0.16-13.el5] - ipmitool: updated delloem commands (#797050) - ipmitool: fixed exit code of 'ipmitool -o list' command (#740780) - ipmitool: disabled automatic bridging of SDR readings to IPMB in verbose mode (#749796) - ipmitool: fixed reporting of usage of various delloem subcommands (#658762) - added path to /sbin to lsmod and modprobe (#829705)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0123");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

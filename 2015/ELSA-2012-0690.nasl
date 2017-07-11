@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0690.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-0690.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123914");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:14 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0690");
 script_tag(name: "insight", value: "ELSA-2012-0690 -  kernel security and bug fix update - [2.6.18-308.8.1.el5]- [net] sock: validate data_len before allocating skb in sock_alloc_send_pskb() (Jason Wang) [816290 816106] {CVE-2012-2136}- [net] tg3: Fix VLAN tagging assignments (John Feeney) [817691 797011]- [net] ixgbe: do not stop stripping VLAN tags in promiscuous mode (Andy Gospodarek) [809791 804800]- [s390] zcrypt: Fix parameter checking for ZSECSENDCPRB ioctl (Hendrik Brueckner) [810123 808489]- [x86] unwind information fix for the vsyscall DSO (Prarit Bhargava) [807930 805799][2.6.18-308.7.1.el5]- [fs] epoll: Don't limit non-nested epoll paths (Jason Baron) [809380 804778][2.6.18-308.6.1.el5]- [scsi] fc class: fix scanning when devs are offline (Mike Christie) [816684 799530]- [md] dm-multipath: delay retry of bypassed pg (Mike Christie) [816684 799530]- [net] bonding: properly unset current_arp_slave on slave link up (Veaceslav Falico) [811927 800575]- [net] bonding: remove {master,vlan}_ip and query devices instead (Andy Gospodarek) [810321 772216][2.6.18-308.5.1.el5]- [scsi] skip sense logging for some ATA PASS-THROUGH cdbs (David Milburn) [807265 788777]"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-0690");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

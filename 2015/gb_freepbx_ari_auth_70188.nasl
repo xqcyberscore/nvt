@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_ari_auth_70188.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_freepbx_ari_auth_70188.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # FreePBX 'index.php' Remote Command Execution Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-7235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 2617 $");
+ script_version ("$Revision: 6254 $");
 
  script_name("FreePBX 'index.php' Remote Command Execution Vulnerability");
 
@@ -59,9 +59,8 @@ the application fails to sufficiently sanitize input data.");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
  script_tag(name:"creation_date", value:"2015-02-06 16:04:47 +0100 (Fri, 06 Feb 2015)");
- script_summary("Determine if it is possible to bypass authentication");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

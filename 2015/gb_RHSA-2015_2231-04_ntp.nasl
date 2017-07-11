@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871492");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-20 06:22:17 +0100 (Fri, 20 Nov 2015)");
   script_cve_id("CVE-2014-9297", "CVE-2014-9298", "CVE-2014-9750", "CVE-2014-9751",
                 "CVE-2015-1798", "CVE-2015-1799", "CVE-2015-3405");
@@ -96,7 +96,6 @@ of 65537, and generating keys in FIPS mode now works as expected.
   script_xref(name: "RHSA", value: "2015:2231-04");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-November/msg00032.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of ntp");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

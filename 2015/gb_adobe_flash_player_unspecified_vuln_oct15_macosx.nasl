@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_unspecified_vuln_oct15_macosx.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_adobe_flash_player_unspecified_vuln_oct15_macosx.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Adobe Flash Player Unspecified Vulnerability Oct15 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806099");
-  script_version("$Revision: 2582 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-7645", "CVE-2015-7647", "CVE-2015-7648");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 15:42:14 +0530 (Fri, 16 Oct 2015)");
   script_name("Adobe Flash Player Unspecified Vulnerability Oct15 (Mac OS X)");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsa15-05.html");
   script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb15-27.html");
   script_xref(name: "URL" , value :"http://blog.trendmicro.com/trendlabs-security-intelligence/new-adobe-flash-zero-day-used-in-pawn-storm-campaign");
-  script_summary("Check for the vulnerable version of Adobe Flash Player on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

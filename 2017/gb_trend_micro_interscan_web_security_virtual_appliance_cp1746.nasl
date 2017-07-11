@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1746.nasl 5803 2017-03-31 05:06:31Z ckuerste $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_cp1746.nasl 6261 2017-06-01 10:22:21Z ckuersteiner $
 #
 # Trend Micro InternScan Web Security Virtual Appliance 6.5 Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:trendmicro:interscan_web_security_virtual_appliance";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106708");
-  script_version("$Revision: 5803 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-31 07:06:31 +0200 (Fri, 31 Mar 2017) $");
+  script_version("$Revision: 6261 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-01 12:22:21 +0200 (Thu, 01 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-03-31 09:02:03 +0700 (Fri, 31 Mar 2017)");
   script_tag(name: "cvss_base", value: "9.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -55,13 +55,24 @@ potentially allow a remote attacker to execute artibtrary code on vulnerable ins
 
   script_tag(name: "vuldetect", value: "Checks the version.");
 
-  script_tag(name: "insight", value: "EMC Isilon OneFS is affected by a path traversal vulnerability. Attackers
-could potentially exploit this vulnerability to access unauthorized information by supplying specially crafted
-strings in input parameters of the application.");
+  script_tag(name: "insight", value: " Trend Micro InterScan Web Security Virtual Appliance (IWSVA) is prone to
+multiple vulnerabilities:
+
+- Command Injection Remote Command Execution (RCE)
+
+- Directory Traversal
+
+- Privilege Escalation
+
+- Authentication Bypass
+
+- Information Disclosure
+
+- Stored Cross-Site Scripting (XSS)");
 
   script_tag(name: "affected", value: "Version 6.5");
 
-  script_tag(name: "solution", value: "pdate to version 6.5 CP 1746 or newer.");
+  script_tag(name: "solution", value: "Update to version 6.5 CP 1746 or newer.");
 
   script_xref(name: "URL", value: "https://success.trendmicro.com/solution/1116960");
 

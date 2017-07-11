@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Mageia Linux security check 
-# $Id: mgasa-2015-0322.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: mgasa-2015-0322.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.130061");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-15 10:42:12 +0300 (Thu, 15 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Mageia Linux Local Check: mgasa-2015-0322");
 script_tag(name: "insight", value: "It was reported that GnuTLS does not check whether the two signature algorithms match on certificate import (CVE-2015-0294). Kurt Roeckx discovered that decoding a specific certificate with very long DistinguishedName (DN) entries leads to double free. A remote attacker can take advantage of this flaw by creating a specially crafted certificate that, when processed by an application compiled against GnuTLS, could cause the application to crash resulting in a denial of service (CVE-2015-6251)."); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name : "summary", value : "Mageia Linux Local Security Checks mgasa-2015-0322");
-script_summary("Mageia Linux Local Security Checks mgasa-2015-0322");
 script_copyright("Eero Volotinen");
 script_family("Mageia Linux Local Security Checks");
 exit(0);

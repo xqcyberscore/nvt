@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_bof_vuln_nov15.nasl 5701 2017-03-23 16:10:36Z mime $
+# $Id: gb_ibm_domino_mult_bof_vuln_nov15.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # IBM Domino Multiple Buffer Overflow Vulnerabilities - Nov15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806610");
-  script_version("$Revision: 5701 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-4994", "CVE-2015-5040");
   script_bugtraq_id(77322, 77324);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 17:10:36 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-04 11:23:23 +0530 (Wed, 04 Nov 2015)");
   script_name("IBM Domino Multiple Buffer Overflow Vulnerabilities - Nov15");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21969050");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of IBM Domino");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_lotus_domino_detect.nasl");

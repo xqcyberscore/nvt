@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_pss_param_dos_vuln_lin.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_openssl_pss_param_dos_vuln_lin.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # OpenSSL 'PSS' parameter Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806652");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6229 $");
   script_cve_id("CVE-2015-3194");
   script_bugtraq_id(78623);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-12-18 08:50:22 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL 'PSS' parameter Denial of Service Vulnerability (Linux)");
@@ -64,7 +64,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://openssl.org/news/secadv/20151203.txt");
 
-  script_summary("Check for the vulnerable version of OpenSSL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-1009.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-1009.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123873");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:09:41 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-1009");
 script_tag(name: "insight", value: "ELSA-2012-1009 -  java-1.7.0-openjdk security and bug fix update - [1.7.0.5-2.2.1.0.1.el6]- Modify DISTRO_NAME for Oracle[1.7.0.5-2.2.1.el6]- Updated priority to be > 17000 and to depend on buildver variable- Variable buildver increased to 5 as it should be- Resolves: rhbz#828759[1.7.0.3-2.2.1.el6]- Used newly prepared tarball with security fixes- Bump to icedtea7-forest-2.2.1- _mandir/man1/jcmd-name.1 added to alternatives- Updated rhino.patch- Updated java-1.7.0-openjdk-java-access-bridge-security.patch- Modified partially upstreamed patch302 - systemtap.patch- Temporarly disabled patch102 - java-1.7.0-openjdk-size_t.patch- Removed already upstreamed patches 104,108,109,301,110: - java-1.7.0-openjdk-arm-ftbfs.patch - java-1.7.0-openjdk-system-zlib.patch - java-1.7.0-openjdk-remove-mimpure-opt.patch - systemtap-alloc-size-workaround.patch - java-1.7.0-fix-gio-detection.patch- Access gnome bridge jar forced to be 644- Added patch303 - java-1.7.0-openjdk-jstack.patch which resolved RH804632 for openjdk6- Resolves: rhbz#828759"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-1009");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

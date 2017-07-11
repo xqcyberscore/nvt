@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869104");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6214 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-20 06:55:56 +0100 (Fri, 20 Mar 2015)");
   script_cve_id("CVE-2014-8242");
   script_tag(name:"cvss_base", value:"5.8");
@@ -48,7 +48,6 @@ and server farms.
   script_xref(name: "FEDORA", value: "2015-3366");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/152356.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of csync2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

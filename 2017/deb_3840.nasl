@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3840.nasl 6092 2017-05-10 07:02:40Z cfi $
+# $Id: deb_3840.nasl 6291 2017-06-07 12:58:24Z cfischer $
 # Auto-generated from advisory DSA 3840-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703840);
-    script_version("$Revision: 6092 $");
+    script_version("$Revision: 6291 $");
     script_cve_id("CVE-2017-3523");
     script_name("Debian Security Advisory DSA 3840-1 (mysql-connector-java - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2017-05-10 09:02:40 +0200 (Wed, 10 May 2017) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-07 14:58:24 +0200 (Wed, 07 Jun 2017) $");
     script_tag(name: "creation_date", value: "2017-05-02 00:00:00 +0200 (Tue, 02 May 2017)");
     script_tag(name:"cvss_base", value:"6.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
@@ -61,7 +61,7 @@ version 5.1.41-1.
 We recommend that you upgrade your mysql-connector-java packages.");
     script_tag(name: "summary",   value: "Thijs Alkemade discovered that unexpected automatic deserialisation of
 Java objects in the MySQL Connector/J JDBC driver may result in the
-execution of arbitary code. For additional details, please refer to the
+execution of arbitrary code. For additional details, please refer to the
 advisory at
 https://www.computest.nl/advisories/CT-2017-0425_MySQL-Connector-J.txt");
     script_tag(name: "vuldetect", value: "This check tests the installed software version using the apt package manager.");

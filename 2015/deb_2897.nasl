@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2897.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_2897.nasl 6376 2017-06-20 10:00:24Z teissa $
 # Auto-generated from advisory DSA 2897-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(702897);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6376 $");
     script_cve_id("CVE-2013-2067", "CVE-2013-2071", "CVE-2013-4286", "CVE-2013-4322",
                   "CVE-2014-0050");
     script_name("Debian Security Advisory DSA 2897-1 (tomcat7 - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
     script_tag(name: "creation_date", value: "2014-04-08 00:00:00 +0200 (Tue, 08 Apr 2014)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2897.html");
 
-    script_summary("Debian Security Advisory DSA 2897-1 (tomcat7 - security update)");
 
     script_category(ACT_GATHER_INFO);
 

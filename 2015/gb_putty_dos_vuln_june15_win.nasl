@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_dos_vuln_june15_win.nasl 3626 2016-06-30 06:46:24Z antu123 $
+# $Id: gb_putty_dos_vuln_june15_win.nasl 6345 2017-06-15 10:00:59Z teissa $
 #
 # PuTTY Denial Of Service Vulnerability June15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805705");
-  script_version("$Revision: 3626 $");
+  script_version("$Revision: 6345 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-30 08:46:24 +0200 (Thu, 30 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-19 15:32:15 +0530 (Fri, 19 Jun 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Denial Of Service Vulnerability June15 (Windows)");
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37291/");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of PuTTY on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_putty_version.nasl");

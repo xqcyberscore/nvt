@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Python_detection.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_Python_detection.nasl 6234 2017-05-29 10:42:27Z cfi $
 #
 # Python Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107020");
-  script_version("$Revision: 5390 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_version("$Revision: 6234 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 12:42:27 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2016-07-04 19:31:49 +0200 (Mon, 04 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,7 +63,7 @@ if( ve = egrep( pattern:'Server[^\r\n]+(C)?Python/[0-9]+', string:banner ) ) {
   vers = "unknown";
 
   ### try to get version
-  version = eregmatch( string:ve, pattern:"[C| ]Python/(([0-9])\.([0-9])\.([0-9]))", icase:TRUE );
+  version = eregmatch( string:ve, pattern:"C?Python/([0-9.]+)", icase:TRUE );
 
   if( ! isnull( version[0] ) ) {
     concluded = chomp( version[0] );

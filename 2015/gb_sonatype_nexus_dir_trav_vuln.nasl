@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_dir_trav_vuln.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_sonatype_nexus_dir_trav_vuln.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Sonatype Nexus OSS/Pro Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sonatype:nexus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805325");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6333 $");
   script_cve_id("CVE-2014-9389");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Directory Traversal Vulnerability -Jan15");
 
@@ -60,7 +60,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://secunia.com/advisories/61134");
   script_xref(name : "URL" , value : "http://www.sonatype.org/advisories/archive/2014-12-23-Nexus/");
-  script_summary("Check if Nexus OSS/Pro is prone to Directory Traversal");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 5050 2017-01-20 07:19:57Z antu123 $
+# $Id: gb_firefox_detect_win.nasl 6241 2017-05-30 07:00:16Z antu123 $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
@@ -42,10 +42,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 5050 $");
+  script_version("$Revision: 6241 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-20 08:19:57 +0100 (Fri, 20 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 09:00:16 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Firefox Version Detection (Windows)");
@@ -248,7 +248,7 @@ foreach key (key_list)
         }
       }
     }
-    if(ESR)
+    if(ESR && location)
     {
       set_kb_item(name:"Firefox-ESR/Win/Ver", value:foxVer);
   
@@ -268,7 +268,7 @@ foreach key (key_list)
 
       appName = 'Mozilla Firefox ESR';
     }
-    else
+    else if(location)
     {
       set_kb_item(name:"Firefox/Win/Ver", value:foxVer);
 
@@ -290,9 +290,14 @@ foreach key (key_list)
       appName = 'Mozilla Firefox';
     }
 
-    ##Currently only 32-bit application is available
-    register_product(cpe:cpe, location:appPath);
-    log_message(data: build_detection_report(app: appName, version: foxVer,
-                                         install: location, cpe:cpe, concluded:foxVer));
+    ##To detect only Firefox versions for which location is available
+    ##Old versions removed still keep registry entries but location is not available for them
+    if(location)
+    {
+      ##Currently only 32-bit application is available
+      register_product(cpe:cpe, location:appPath);
+      log_message(data: build_detection_report(app: appName, version: foxVer,
+                                           install: location, cpe:cpe, concluded:foxVer));
+    }
   }
 }

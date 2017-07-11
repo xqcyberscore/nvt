@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_eps_sanbox_escape_sec_bypass_vuln.nasl 5249 2017-02-09 10:46:07Z teissa $
+# $Id: gb_avast_eps_sanbox_escape_sec_bypass_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Avast Endpoint Protection Suite Sandbox Escape Security Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:avast:endpoint_protection_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810217");
-  script_version("$Revision: 5249 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2016-4025");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 11:46:07 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 14:26:59 +0530 (Thu, 24 Nov 2016)");
   script_name("Avast Endpoint Protection Suite Sandbox Escape Security Bypass Vulnerability");
 
@@ -56,7 +56,7 @@ if(description)
   through 8.0.1609");
 
   script_tag(name:"solution", value:"No solution or patch is available as
-  of 09th February, 2017. Information regarding this issue will be updated
+  of 31st May, 2017. Information regarding this issue will be updated
   once the solution details are available.
   For updates refer to https://www.avast.com");
 

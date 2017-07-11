@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869367");
-  script_version("$Revision: 3349 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:55:36 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6376 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-09 10:42:05 +0200 (Tue, 09 Jun 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,6 @@ included with hostapd.
   script_xref(name: "FEDORA", value: "2015-8336");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-May/158813.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of hostapd");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

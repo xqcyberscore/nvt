@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_insight_diag_xss_vuln_win.nasl 5375 2017-02-20 16:39:23Z cfi $
+# $Id: gb_hp_smh_insight_diag_xss_vuln_win.nasl 6413 2017-06-23 09:16:58Z cfischer $
 #
 # HP SMH Insight Diagnostics Cross Site Scripting Vulnerability - Windows
 #
@@ -40,8 +40,8 @@ tag_summary = "The host is running HP SMH with Insight Diagnostics and is prone
 if(description)
 {
   script_id(800192);
-  script_version("$Revision: 5375 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 17:39:23 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6413 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:16:58 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-01-18 07:48:41 +0100 (Tue, 18 Jan 2011)");
   script_cve_id("CVE-2010-4111");
   script_tag(name:"cvss_base", value:"4.3");
@@ -100,7 +100,7 @@ foreach item (registry_enum_keys(key:key))
     continue;
   }
 
-  ## Get installtion dir
+  ## Get installation dir
   hp_smh_diag_path = registry_get_sz(key:key + item, item:"InstallLocation");
   if(!hp_smh_diag_path){
     exit(0);

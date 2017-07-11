@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_qcp_dos_vuln_win.nasl 5251 2017-02-09 15:54:34Z teissa $
+# $Id: gb_realplayer_qcp_dos_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # RealNetworks RealPlayer 'QCP' Denial of Service Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809399");
-  script_version("$Revision: 5251 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2016-9018");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-09 16:54:34 +0100 (Thu, 09 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2016-11-03 11:05:43 +0530 (Thu, 03 Nov 2016)");
   script_name("RealNetworks RealPlayer 'QCP' Denial of Service Vulnerability (Windows)");
 
@@ -55,7 +55,7 @@ if(description)
   on Windows.");
 
   script_tag(name:"solution", value:"No solution or patch is available as of
-  09th February, 2017. Information regarding this issue will be updated once the
+  31st May, 2017. Information regarding this issue will be updated once the
   solution details are made available. For updates refer http://www.real.com");
 
   script_tag(name:"qod_type", value:"registry");

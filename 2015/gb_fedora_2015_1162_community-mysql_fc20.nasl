@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.868996");
-  script_version("$Revision: 3342 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6229 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-02-15 05:47:02 +0100 (Sun, 15 Feb 2015)");
   script_cve_id("CVE-2015-0411", "CVE-2015-0382", "CVE-2015-0381", "CVE-2015-0432",
                 "CVE-2014-6568", "CVE-2015-0374", "CVE-2014-2440", "CVE-2014-0384",
@@ -50,7 +50,6 @@ contains the standard MySQL client programs and generic MySQL files.
   script_xref(name: "FEDORA", value: "2015-1162");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-February/149929.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of community-mysql");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

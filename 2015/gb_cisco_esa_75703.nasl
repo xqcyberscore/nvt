@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_75703.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_cisco_esa_75703.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Cisco AsyncOS for Email Security Appliance Denial of Service Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4236");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 2583 $");
+ script_version ("$Revision: 6415 $");
 
  script_name("Cisco AsyncOS for Email Security Appliance Denial of Service Vulnerability");
 
@@ -57,9 +57,8 @@ the affected system to become unresponsive on the clustering and SSH configured 
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-09-01 11:09:10 +0200 (Tue, 01 Sep 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

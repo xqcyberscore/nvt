@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_picasa_phase_one_tags_bof_vuln_win.nasl 2581 2016-02-05 08:26:01Z benallard $
+# $Id: gb_google_picasa_phase_one_tags_bof_vuln_win.nasl 6254 2017-05-31 09:04:18Z teissa $
 #
 # Google Picasa 'Phase One Tags' Buffer Overflow Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:google:picasa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806628");
-  script_version("$Revision: 2581 $");
+  script_version("$Revision: 6254 $");
   script_cve_id("CVE-2015-8096");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:26:01 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2015-11-26 12:49:36 +0530 (Thu, 26 Nov 2015)");
   script_name("Google Picasa 'Phase One Tags' Buffer Overflow Vulnerability (Windows)");
 
@@ -64,7 +64,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/134084");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/536761/100/0/threaded");
 
-  script_summary("Check for the vulnerable version of Google Picasa on Windows");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

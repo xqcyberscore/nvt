@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-498.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-498.nasl 6404 2017-06-22 10:00:06Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120164");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6404 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:18:57 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-498");
 script_tag(name: "insight", value: "A use-after-free flaw was found in the way OpenSSL importrf certain Elliptic Curve private keys. An attacker could use this flaw to crash OpenSSL, if a specially-crafted certificate was imported. (CVE-2015-0209 )A denial of service flaw was found in the way OpenSSL handled certain SSLv2 messages. A malicious client could send a specially crafted SSLv2 CLIENT-MASTER-KEY message that would cause an OpenSSL server that both supports SSLv2 and enables EXPORT-grade cipher suites to crash.  (CVE-2015-0293 )An out-of-bounds write flaw was found in the way OpenSSL reused certain ASN.1 structures. A remote attacker could use a specially crafted ASN.1 structure that, when parsed by an application, would cause that application to crash. (CVE-2015-0287 )A flaw was found in the the ASN (Abstract Syntax Notation) parsing code of OpenSSL. An attacker could present a specially crafted certificate, which when verified by an OpenSSL client or server could cause it to crash. (CVE-2015-0286 )A null-pointer dereference was found in the way OpenSSL handled certain PKCS#7 blobs. An attacker could cause OpenSSL to crash, when applications verify, decrypt or parsed these ASN.1 encoded PKCS#7 blobs. OpenSSL clients and servers are not affected. (CVE-2015-0289 )A NULL pointer dereference flaw was found in OpenSSL's x509 certificate handling implementation. A remote attacker could use this flaw to crash an OpenSSL server using an invalid certificate key. (CVE-2015-0288 )"); 
 script_tag(name : "solution", value : "Run yum update openssl to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-498");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

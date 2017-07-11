@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2007-1017.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2007-1017.nasl 6369 2017-06-19 10:00:04Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122634");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6369 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:49:54 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2007-1017");
 script_tag(name: "insight", value: "ELSA-2007-1017 -  Critical: samba security update - [3.0.25b-0.el5_1.1] - Security fix for CVE-2007-4138 - Security fix for CVE-2007-4572 - Security fix for CVE-2007-5398 - Multilib Fix - resolves: #351501 - resolves: #350761 - resolves: #359151 - resolves: #356851 -------------- next part -------------- An HTML attachment was scrubbed... URL: http://oss.oracle.com/pipermail/el-errata/attachments/20071123/ec47524f/attachment.html"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2007-1017");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

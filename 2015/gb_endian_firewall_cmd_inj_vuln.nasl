@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_endian_firewall_cmd_inj_vuln.nasl 2617 2016-02-09 08:24:24Z benallard $
+# $Id: gb_endian_firewall_cmd_inj_vuln.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Endian Firewall OS Command Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:endian_firewall:endian_firewall";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805758");
-  script_version("$Revision: 2617 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-5082");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 09:24:24 +0100 (Tue, 09 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-12 17:26:17 +0530 (Mon, 12 Oct 2015)");
   script_name("Endian Firewall OS Command Injection Vulnerability");
 
@@ -63,7 +63,6 @@ if (description)
 
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/37426");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/37428");
-  script_summary("Determine if Endian Firewall is prone to command injection vulnerability.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

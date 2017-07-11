@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-061.nasl 6176 2017-05-19 12:35:07Z cfi $
+# $Id: gb_ms15-061.nasl 6237 2017-05-29 13:53:57Z cfi $
 #
 # MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3057839)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805582");
-  script_version("$Revision: 6176 $");
+  script_version("$Revision: 6237 $");
   script_cve_id("CVE-2015-1719", "CVE-2015-1720", "CVE-2015-1721", "CVE-2015-1722",
                 "CVE-2015-1723", "CVE-2015-1724", "CVE-2015-1725", "CVE-2015-1726",
                 "CVE-2015-1727", "CVE-2015-1768", "CVE-2015-2360");
@@ -35,7 +35,7 @@ if(description)
                     75008, 75024, 75025);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 14:35:07 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:53:57 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-06-10 08:00:55 +0530 (Wed, 10 Jun 2015)");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3057839)");
 
@@ -68,14 +68,20 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name: "affected" , value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows Server 2012/R2
+
   Microsoft Windows 8.1 x32/x64 Edition
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prioor
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name: "solution" , value: "Run Windows Update and update the

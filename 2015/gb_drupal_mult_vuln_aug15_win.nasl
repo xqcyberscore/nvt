@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_aug15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_drupal_mult_vuln_aug15_win.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Drupal Multiple Vulnerabilities - August15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806103");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-6661", "CVE-2015-6660", "CVE-2015-6658");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-08-28 11:55:16 +0530 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Multiple Vulnerabilities - August15 (Windows)");
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name : "URL" , value : "https://www.drupal.org/SA-CORE-2015-003");
 
-  script_summary("Check for the vulnerable version of Drupal on Windows.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

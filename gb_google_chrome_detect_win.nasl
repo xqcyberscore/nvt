@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_detect_win.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_google_chrome_detect_win.nasl 6410 2017-06-23 08:17:07Z cfischer $
 #
 # Google Chrome Version Detection (Windows)
 #
@@ -32,10 +32,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800120";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 6410 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 10:17:07 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-10-31 15:07:51 +0100 (Fri, 31 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google Chrome Version Detection (Windows)");
@@ -167,7 +167,7 @@ function hku_registry_get_sz(key, item)
     registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r2);
     registry_close(soc:soc, uid:uid, tid:tid, pipe:pipe, reply:r);
     if(r3){
-      value = registry_decode_sz(data:r3);
+      value = registry_decode_sz(data:r3, uid:uid);
     }
     close(soc);
     return value;

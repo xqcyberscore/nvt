@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bitbucket_dir_trav_vuln.nasl 5974 2017-04-19 05:55:40Z ckuerste $
+# $Id: gb_atlassian_bitbucket_dir_trav_vuln.nasl 6291 2017-06-07 12:58:24Z cfischer $
 #
 # Atlassian Bitbucket Directory Traversal Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:atlassian:bitbucket';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106760");
-  script_version("$Revision: 5974 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-04-19 07:55:40 +0200 (Wed, 19 Apr 2017) $");
+  script_version("$Revision: 6291 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-07 14:58:24 +0200 (Wed, 07 Jun 2017) $");
   script_tag(name: "creation_date", value: "2017-04-18 11:24:13 +0200 (Tue, 18 Apr 2017)");
   script_tag(name: "cvss_base", value: "4.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:S/C:P/I:N/A:N");
@@ -61,7 +61,7 @@ arbitrary file via a directory traversal attack on the pull requests resource.")
 
   script_tag(name: "affected", value: "Atlassian Bitbucket prior to version 4.7.1.");
 
-  script_tag(name: "solution", value: "Update to verion 4.7.1 or later.");
+  script_tag(name: "solution", value: "Update to version 4.7.1 or later.");
 
   script_xref(name: "URL", value: "https://jira.atlassian.com/browse/BSERV-8819");
 

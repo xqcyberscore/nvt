@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-122.nasl 2379 2016-01-12 11:02:51Z antu123 $
+# $Id: gb_ms15-122.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806556");
-  script_version("$Revision: 2379 $");
+  script_version("$Revision: 6329 $");
   script_cve_id("CVE-2015-6095");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-01-12 12:02:51 +0100 (Tue, 12 Jan 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:59:53 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)");
 
@@ -73,7 +73,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3105256");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-122");
 
-  script_summary("Check for the vulnerable 'Kerberos.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

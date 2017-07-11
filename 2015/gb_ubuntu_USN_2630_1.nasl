@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842235");
-  script_version("$Revision: 2739 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:39:55 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6431 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-11 06:30:50 +0200 (Thu, 11 Jun 2015)");
   script_cve_id("CVE-2015-3209", "CVE-2015-4037", "CVE-2015-4103", "CVE-2015-4104",
                 "CVE-2015-4105", "CVE-2015-4106");
@@ -76,7 +76,6 @@ Ubuntu 14.10 and Ubuntu 15.04. (CVE-2015-4106)");
   script_xref(name: "USN", value: "2630-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-June/002977.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

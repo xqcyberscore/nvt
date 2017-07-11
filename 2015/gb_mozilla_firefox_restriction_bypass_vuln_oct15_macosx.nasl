@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_restriction_bypass_vuln_oct15_macosx.nasl 2569 2016-02-03 15:47:26Z benallard $
+# $Id: gb_mozilla_firefox_restriction_bypass_vuln_oct15_macosx.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Mozilla Firefox Cross-Origin Restriction Bypass Vulnerability Oct15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806515");
-  script_version("$Revision: 2569 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-7184");
   script_bugtraq_id(77100);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-03 16:47:26 +0100 (Wed, 03 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-27 18:31:09 +0530 (Tue, 27 Oct 2015)");
   script_name("Mozilla Firefox Cross-Origin Restriction Bypass Vulnerability Oct15 (Mac OS X)");
 
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2015/mfsa2015-115.html");
 
-  script_summary("Check for the vulnerable version of Mozilla Firefox on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

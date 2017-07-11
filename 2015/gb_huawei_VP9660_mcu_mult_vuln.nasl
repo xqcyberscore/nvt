@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_huawei_VP9660_mcu_mult_vuln.nasl 6369 2017-06-19 10:00:04Z teissa $
 #
 # Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/o:huawei:vp_9660_firmware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806637");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6369 $");
   script_cve_id("CVE-2015-8227");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-01 12:03:03 +0530 (Tue, 01 Dec 2015)");
   script_name("Huawei VP9660 Multi-Point Control Unit Multiple Vulnerabilities");
 
@@ -64,7 +64,6 @@ if(description)
 
   script_xref(name : "URL" , value : "http://www1.huawei.com/en/security/psirt/security-bulletins/security-advisories/hw-461216.htm");
 
-  script_summary("Check for the vulnerable version of Huawei VP9660 Multi-Point Control Unit");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

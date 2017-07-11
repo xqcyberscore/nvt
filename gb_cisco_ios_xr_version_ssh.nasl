@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_version_ssh.nasl 4891 2016-12-30 14:26:07Z cfi $
+# $Id: gb_cisco_ios_xr_version_ssh.nasl 6239 2017-05-30 01:48:49Z ckuerste $
 #
 # Cisco IOS XR Detection (SSH)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105530");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4891 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-30 15:26:07 +0100 (Fri, 30 Dec 2016) $");
+ script_version ("$Revision: 6239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
  script_tag(name:"creation_date", value:"2016-01-26 17:59:41 +0100 (Tue, 26 Jan 2016)");
  script_name("Cisco IOS XR Detection (SSH)");
 
@@ -40,7 +40,7 @@ if (description)
  script_tag(name:"qod_type", value:"package");
  script_summary("Checks for the presence of Cisco IOS XR");
  script_category(ACT_GATHER_INFO);
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_show_version.nasl");
  script_mandatory_keys("cisco/show_version");

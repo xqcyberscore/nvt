@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869280");
-  script_version("$Revision: 3347 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:54:40 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6415 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 07:21:23 +0200 (Wed, 22 Apr 2015)");
   script_cve_id("CVE-2013-5123");
   script_tag(name:"cvss_base", value:"10.0");
@@ -47,7 +47,6 @@ licensed under an MIT-style permissive license.
   script_xref(name: "FEDORA", value: "2015-6006");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-April/155291.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of python-virtualenv");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

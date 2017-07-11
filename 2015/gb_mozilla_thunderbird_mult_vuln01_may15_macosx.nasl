@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_may15_macosx.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_may15_macosx.nasl 6391 2017-06-21 09:59:48Z teissa $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 May15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805630");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6391 $");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713",
                 "CVE-2015-2716");
   script_bugtraq_id(74615, 74611);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:33:07 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
@@ -72,7 +72,6 @@ if(description)
   script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2015/mfsa2015-47.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Mozilla Thunderbird on Mac OS X.");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");

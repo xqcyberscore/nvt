@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharp_printer_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_sharp_printer_detect.nasl 6315 2017-06-12 10:34:26Z cfischer $
 # OVAS-B-A10
 #
 # Sharp Printer Detection
@@ -31,8 +31,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103779");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 6315 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-12 12:34:26 +0200 (Mon, 12 Jun 2017) $");
   script_tag(name:"creation_date", value:"2013-09-02 14:31:24 +0100 (Mon, 02 Sep 2013)");
   script_name("Sharp Printer Detection");
   script_category(ACT_GATHER_INFO);
@@ -91,7 +91,7 @@ foreach url (keys(urls)) {
     pref = get_kb_item("global_settings/exclude_printers");
     if( pref  == "yes" )
     {
-      set_kb_item(name: "Host/dead", value: TRUE);
+      replace_kb_item( name:"Host/dead", value:TRUE );
       log_message( port:port, data:'The remote host is a printer. The scan has been disabled against this host.\nIf you want to scan the remote host, uncheck the "Exclude printers from scan" option and re-scan it.');
     }
 

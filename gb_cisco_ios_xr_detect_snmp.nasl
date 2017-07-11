@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_detect_snmp.nasl 4940 2017-01-04 14:04:37Z cfi $
+# $Id: gb_cisco_ios_xr_detect_snmp.nasl 6239 2017-05-30 01:48:49Z ckuerste $
 #
 # Cisco IOS XR Detection
 #
@@ -30,15 +30,15 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105079");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4940 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-04 15:04:37 +0100 (Wed, 04 Jan 2017) $");
+ script_version ("$Revision: 6239 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
  script_tag(name:"creation_date", value:"2014-09-04 09:48:32 +0200 (Thu, 04 Sep 2014)");
  script_name("Cisco IOS XR Detection");
 
  script_tag(name: "summary" , value: "This script performs SNMP based detection of Cisco IOS XR.");
 
  script_category(ACT_GATHER_INFO);
- script_family("Service detection");
+ script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_snmp_sysdesc.nasl");
  script_require_udp_ports("Services/udp/snmp", 161);

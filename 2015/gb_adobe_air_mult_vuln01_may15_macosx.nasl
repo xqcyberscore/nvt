@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_may15_macosx.nasl 3496 2016-06-13 12:01:56Z benallard $
+# $Id: gb_adobe_air_mult_vuln01_may15_macosx.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Adobe Air Multiple Vulnerabilities - 01 May15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805621");
-  script_version("$Revision: 3496 $");
+  script_version("$Revision: 6404 $");
   script_cve_id("CVE-2015-3077", "CVE-2015-3078", "CVE-2015-3079", "CVE-2015-3080",
                 "CVE-2015-3081", "CVE-2015-3082", "CVE-2015-3083", "CVE-2015-3084",
                 "CVE-2015-3085", "CVE-2015-3086", "CVE-2015-3087", "CVE-2015-3088",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(74614, 74605, 74612, 74608, 74613, 74610, 74616, 74609, 74617);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:01:56 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-05-15 14:07:44 +0530 (Fri, 15 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Air Multiple Vulnerabilities - 01 May15 (Mac OS X)");
@@ -81,7 +81,6 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-09.html");
-  script_summary("Check for the vulnerable version of Adobe Air on Mac OS X");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

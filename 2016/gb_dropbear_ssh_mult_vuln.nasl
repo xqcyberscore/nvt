@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dropbear_ssh_mult_vuln.nasl 5511 2017-03-08 08:17:42Z teissa $
+# $Id: gb_dropbear_ssh_mult_vuln.nasl 6278 2017-06-04 16:24:30Z cfischer $
 #
 # Dropbear SSH Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:matt_johnston:dropbear_ssh_server";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106381");
-  script_version("$Revision: 5511 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-03-08 09:17:42 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 6278 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-04 18:24:30 +0200 (Sun, 04 Jun 2017) $");
   script_tag(name: "creation_date", value: "2016-11-10 14:18:45 +0700 (Thu, 10 Nov 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-7406", "CVE-2016-7407", "CVE-2016-7408", "CVE-2016-7409");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name: "qod_type", value: "remote_banner_unreliable");
 
   script_tag(name: "solution_type", value: "VendorFix");
 

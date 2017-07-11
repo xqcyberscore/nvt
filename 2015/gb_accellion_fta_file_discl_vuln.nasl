@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 5246 2017-02-09 09:23:09Z ckuerste $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 6416 2017-06-23 10:02:44Z cfischer $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 5246 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-09 10:23:09 +0100 (Thu, 09 Feb 2017) $");
+  script_version("$Revision: 6416 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name: "creation_date", value: "2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
   script_tag(name: "cvss_base", value: "5.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -52,7 +52,6 @@ if (description)
   script_mandatory_keys("accellion_fta/installed");
 
   script_tag(name: "summary", value: "Accellion FTA is prone to a file disclosure vulnerability");
-  script_summary("Send a special crafted HTTP GET request and check the response");
 
   script_tag(name: "vuldetect", value: "Send a crafted GET request and check if we can read system files.");
 
@@ -79,7 +78,10 @@ include("version_func.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-version = get_app_version(cpe: CPE, port: port);
+if (!infos = get_app_version_and_location(cpe: CPE, port: port, exit_no_version: FALSE))
+  exit(0);
+
+version = infos['version'];
 
 if (version) {
   if (version_is_less(version: version, test_version: "9.11.210")) {
@@ -89,8 +91,12 @@ if (version) {
   }
 }
 else {
-  if (!dir = get_app_location(cpe: CPE, port: port))
+
+  if( !dir = infos['location'] )
     exit(0);
+
+  if (dir == "/")
+    dir = "";
 
   host = http_host_name(port: port);
   url = dir + '/intermediate_login.html';
@@ -108,4 +114,4 @@ else {
   }
 }
 
-exit(0);
+exit(99);

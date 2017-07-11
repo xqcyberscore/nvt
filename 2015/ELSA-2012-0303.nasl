@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2012-0303.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2012-0303.nasl 6329 2017-06-13 15:39:42Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123960");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6329 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:10:51 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2012-0303");
 script_tag(name: "insight", value: "ELSA-2012-0303 -  xorg-x11-server security and bug fix update - [1.1.1-48.90.0.1.el5]- Added oracle-enterprise-detect.patch- Replaced 'Red Hat' in spec file[1.1.1-48.90]- cve-2011-4028.patch: File existence disclosure vulnerability.[1.1.1-48.88]- cve-2011-4818.patch: Multiple input sanitization flaws in Render and GLX- xorg-x11-server-1.1.0-mesa-copy-sub-buffer.patch: Likewise.[1.1.1-48.87]- xserver-1.1.1-fbdev-iterate-modes.patch: fix fbdev driver not iterating across all modes of a certain dimension (#740497)[1.1.1-48.86]- xserver-1.1.1-midc-double-free.patch: Don't double-free the picture for the root window when using the mi (software) cursor path. (#674741)[1.1.1-48.85]- xserver-1.1.1-bigreqs-buffer-size.patch: Fix BIG-REQUESTS buffer size (#555000)[1.1.1-48.84]- xserver-1.1.1-xinerama-crash.patch: Fix a crash in XineramaQueryScreens when client is swapped (#588346)[1.1.1-48.83]- xserver-1.1.1-xephyr-keymap.patch: Fix types in Xephyr keymap setup (#454409)[1.1.1-48.82]- xserver-1.1.1-wideline-overflow.patch: Fix integer overflow in wide line renderer (#649810)[1.1.1-48.81]- Fix mouse stuck on edge (#529717)[1.1.1-48.80]- xserver-1.1.1-bs-crash.patch: Fix a crash in backing store. (#676270)[1.1.1-48.79]- xserver-1.1.1-randr-fix-mouse-crossing.patch: fix zaphod mouse crossing (#559964)[1.1.1-48.78]- cve-2010-1166.patch: Fix broken modulo math in Render and arc code. Identical to xserver-1.1.1-mod-macro-parens.patch in 5.5.z. (#582651)[1.1.1-48.77]- xserver-1.1.1-dbe-validate-gc.patch: Validate the GC against both front and back buffers (#596899)"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2012-0303");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

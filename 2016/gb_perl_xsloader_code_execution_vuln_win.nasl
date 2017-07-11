@@ -1,6 +1,6 @@
 ###################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_xsloader_code_execution_vuln_win.nasl 5168 2017-02-02 14:02:42Z teissa $
+# $Id: gb_perl_xsloader_code_execution_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
 #
 # Perl 'XSLoader Method' Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:perl:perl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809819");
-  script_version("$Revision: 5168 $");
+  script_version("$Revision: 6257 $");
   script_cve_id("CVE-2016-6185");
   script_bugtraq_id(91685);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-02 15:02:42 +0100 (Thu, 02 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 21:21:51 +0530 (Thu, 24 Nov 2016)");
   script_name("Perl 'XSLoader Method' Code Execution Vulnerability (Windows)");
 
@@ -55,12 +55,10 @@ if(description)
 
   script_tag(name: "affected" , value: "Perl 5.24.0.24 and before on Windows");
 
-  script_tag(name: "solution" , value: "No solution or patch is available as of
-  02th February, 2017, Information regarding this issue will be updated once the
-  solution details are made available.
+  script_tag(name: "solution" , value: "Update Perl to version 5.24.1.2402 or later.
   For updates refer to https://www.perl.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL" , value:"https://www.debian.org/security/2016/dsa-3628");
   script_xref(name:"URL" , value:"http://www.openwall.com/lists/oss-security/2016/07/07/1");

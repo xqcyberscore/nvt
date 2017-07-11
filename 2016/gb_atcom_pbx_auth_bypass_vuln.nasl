@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atcom_pbx_auth_bypass_vuln.nasl 6166 2017-05-19 05:29:49Z ckuerste $
+# $Id: gb_atcom_pbx_auth_bypass_vuln.nasl 6405 2017-06-22 10:10:31Z cfischer $
 #
 # ATCOM PBX Authentication Bypass Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106102");
-  script_version("$Revision: 6166 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-05-19 07:29:49 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 6405 $");
+  script_tag(name: "last_modification", value: "$Date: 2017-06-22 12:10:31 +0200 (Thu, 22 Jun 2017) $");
   script_tag(name: "creation_date", value: "2016-06-20 16:19:47 +0700 (Mon, 20 Jun 2016)");
   script_tag(name: "cvss_base", value: "9.4");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:N");
 
   script_tag(name: "qod_type", value: "remote_vul");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name: "solution_type", value: "WillNotFix");
 
   script_name("ATCOM PBX Authentication Bypass Vulnerability");
 
@@ -57,9 +57,12 @@ a cookie with the value username to bypass authentication checks.");
 
   script_tag(name: "impact", value: "A remote attacker may gain administrative access to the web UI.");
 
-  script_tag(name: "affected", value: "ATCOM all versions on ATCOM IP01 , IP08 , IP4G and ip2G4A.");
+  script_tag(name: "affected", value: "ATCOM all versions on ATCOM IP01 , IP08 , IP4G and IP2G4A.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 19th May, 2017. Information regarding this issue will be updated once the solution details are available.");
+  script_tag(name: "solution", value: "No solution or patch was made available for at least one
+  year since disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
   script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/39962/");
 

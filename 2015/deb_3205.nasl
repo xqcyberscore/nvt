@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3205.nasl 2733 2016-02-26 10:26:36Z benallard $
+# $Id: deb_3205.nasl 6345 2017-06-15 10:00:59Z teissa $
 # Auto-generated from advisory DSA 3205-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703205);
-    script_version("$Revision: 2733 $");
+    script_version("$Revision: 6345 $");
     script_cve_id("CVE-2015-0250");
     script_name("Debian Security Advisory DSA 3205-1 (batik - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:26:36 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-03-27 00:00:00 +0100 (Fri, 27 Mar 2015)");
     script_tag(name:"cvss_base", value:"6.4");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3205.html");
 
-    script_summary("Debian Security Advisory DSA 3205-1 (batik - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms17-010.nasl 6128 2017-05-15 13:09:29Z antu123 $
+# $Id: gb_ms17-010.nasl 6225 2017-05-26 19:21:16Z cfi $
 #
 # Microsoft Windows SMB Server Multiple Vulnerabilities (4013389) 
 #
@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810810");
-  script_version("$Revision: 6128 $");
+  script_version("$Revision: 6225 $");
   script_cve_id("CVE-2017-0143", "CVE-2017-0144", "CVE-2017-0145", "CVE-2017-0146",
                 "CVE-2017-0147", "CVE-2017-0148");
   script_bugtraq_id(96703, 96704, 96705, 96707, 96709, 96706);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 15:09:29 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 21:21:16 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2017-03-15 09:07:19 +0530 (Wed, 15 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows SMB Server Multiple Vulnerabilities (4013389)");
@@ -126,8 +126,6 @@ if(!sysPath ){
 
 ##Fetch the version of files
 vistVer = fetch_file_version(sysPath, file_name:"drivers\srv.sys");
-winVer  = fetch_file_version(sysPath, file_name:"Win32k.sys");
-
 if(vistVer)
 {
   ## Windows Vista and Server 2008
@@ -149,9 +147,9 @@ if(vistVer)
  
   ## Windows XP
   ## http://www.catalog.update.microsoft.com/Search.aspx?q=KB4012598
-  else if(hotfix_check_sp(xp:4, xpx64:3) > 0)
+  else if(hotfix_check_sp(xp:4) > 0)
   {
-    ## Check for srv.sys version
+    ## Check for srv.sys version, on 32bit xp sp3
     if(version_is_less(version:vistVer, test_version:"5.1.2600.7208"))
     {
       Vulnerable_range1 = "Less than 5.1.2600.7208";
@@ -159,9 +157,9 @@ if(vistVer)
     }
   }
 
-  ## Windows 2003
+  ## Windows 2003, Windows XP SP2 64bit
   ## http://www.catalog.update.microsoft.com/Search.aspx?q=KB4012598
-  else if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
+  else if(hotfix_check_sp(win2003:3, win2003x64:3, xpx64:3) > 0)
   {
     if(version_is_less(version:vistVer, test_version:"5.2.3790.6021"))
     {
@@ -190,46 +188,50 @@ if(vistVer)
     exit(0);
   }
 }
- 
-## Windows 7 and Windows Server 2008 R2
-if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && winVer)
-{
-  if(version_is_less(version:winVer, test_version:"6.1.7601.23677"))
-  {
-    Vulnerable_range = "Less than 6.1.7601.23677";
-    VULN = TRUE ;
-  }
-}
 
-## Windows Server 2012
-else if(hotfix_check_sp(win2012:1) > 0)
+winVer  = fetch_file_version(sysPath, file_name:"Win32k.sys");
+if(winVer)
 {
-  ## Check for win32k.sys version
-  if(version_is_less(version:winVer, test_version:"6.2.9200.22097"))
+  ## Windows 7 and Windows Server 2008 R2
+  if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && winVer)
   {
-    Vulnerable_range = "Less than 6.2.9200.22097";
-    VULN = TRUE ;
+    if(version_is_less(version:winVer, test_version:"6.1.7601.23677"))
+    {
+      Vulnerable_range = "Less than 6.1.7601.23677";
+      VULN = TRUE ;
+   }
   }
-}
 
-## Windows 8.1 and Server 2012 R2
-else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
-{
-  ## Check for win32k.sys version
-  if(version_is_less(version:winVer, test_version:"6.3.9600.18603"))
+  ## Windows Server 2012
+  else if(hotfix_check_sp(win2012:1) > 0)
   {
-    Vulnerable_range = "Less than 6.3.9600.18603";
-    VULN = TRUE ;
+    ## Check for win32k.sys version
+    if(version_is_less(version:winVer, test_version:"6.2.9200.22097"))
+    {
+      Vulnerable_range = "Less than 6.2.9200.22097";
+      VULN = TRUE ;
+    }
   }
-}
 
-if(VULN)
-{
-   report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
-            'File version:     ' + winVer  + '\n' +
-            'Vulnerable range: ' + Vulnerable_range + '\n' ;
-   security_message(data:report);
-   exit(0);
+  ## Windows 8.1 and Server 2012 R2
+  else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
+  {
+    ## Check for win32k.sys version
+    if(version_is_less(version:winVer, test_version:"6.3.9600.18603"))
+    {
+      Vulnerable_range = "Less than 6.3.9600.18603";
+      VULN = TRUE ;
+    }
+  }
+
+  if(VULN)
+  {
+     report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +
+              'File version:     ' + winVer  + '\n' +
+              'Vulnerable range: ' + Vulnerable_range + '\n' ;
+     security_message(data:report);
+     exit(0);
+  }
 }
 
 ##Fetch the version of 'Edgehtml.dll'

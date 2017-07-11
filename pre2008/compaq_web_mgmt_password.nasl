@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compaq_web_mgmt_password.nasl 6040 2017-04-27 09:02:38Z teissa $
-# Description: Compaq Web-based Management Login
+# $Id: compaq_web_mgmt_password.nasl 6300 2017-06-09 21:31:52Z cfischer $
+#
+# Compaq Web-based Management Login
 #
 # Authors:
 # Christoff Breytenbach <christoff@sensepost.com>
@@ -20,7 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 # - Checks only for passwords on Compaq Web-based / HP System Management
 #   Agent on HTTPS (2381/tcp), and not on older versions with login
@@ -30,25 +32,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11879");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 6300 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-09 23:31:52 +0200 (Fri, 09 Jun 2017) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Compaq Web-based Management Login");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 SensePost");
-
-  script_family("General");
-  script_dependencies("http_version.nasl");
+  script_family("Default Accounts");
+  script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 2381);
+  script_mandatory_keys("CompaqHTTPServer/banner");
 
-  script_tag(name : "summary" , value : "Checks the administrator account on Compaq Web-based Management / HP System Management
+  script_tag(name:"summary", value:"Checks the administrator account on Compaq Web-based Management / HP System Management
   agents for the default or predictable passwords.");
-  script_tag(name : "solution" , value : "Ensure that all passwords for Compaq Web-based Management / HP System Management Agent
+
+  script_tag(name:"solution", value:"Ensure that all passwords for Compaq Web-based Management / HP System Management Agent
   accounts are set to stronger, less easily guessable, alternatives. As a further precaution, use the 'IP Restricted Logins'
   setting to allow only authorised IP's to manage this agent.");
-  script_tag(name : "insight" , value : "The Compaq Web-based Management / HP System Management Agent active on the remote host
+
+  script_tag(name:"insight", value:"The Compaq Web-based Management / HP System Management Agent active on the remote host
   is configured with the default, or a predictable, administrator password.
 
   Depending on the agents integrated, this allows an attacker to view sensitive and verbose system information, and may even
@@ -60,58 +64,42 @@ if(description)
   Log in with a username/password combination of administrator/");
 
   script_tag(name:"qod_type", value:"remote_app");
-
-  script_tag(name : "solution_type", value : "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   exit(0);
 }
 
-include("global_settings.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Check starts here
+passlist = make_list( 'administrator', 'admin', 'cim', 'cim7', 'password' );
 
-debug = 0;
+port = get_http_port( default:8086 );
 
-passlist = make_list ('administrator', 'admin', 'cim', 'cim7', 'password');
+req = http_get( item:"/cpqlogin.htm?RedirectUrl=/&RedirectQueryString=", port:port );
+res = http_keepalive_send_recv( port:port, data:req );
+if( isnull( res ) ) exit( 0 );
 
-port = get_http_port(default:2381);
+if( ( res =~ "^HTTP/1\.[01] 200" ) && ( "Server: CompaqHTTPServer/" >< res ) && ( "Set-Cookie: Compaq" >< res ) ) {
 
-req = http_get(item: "/cpqlogin.htm?RedirectUrl=/&RedirectQueryString=", port:port);
+  foreach pass( passlist ) {
 
-if(debug==1) display(req);
+    cookie = eregmatch( pattern:"Set-Cookie: (.*);", string:res );
+    if( isnull( cookie[1] ) ) exit( 0 );
 
-retval = http_keepalive_send_recv(port:port, data:req);
-if(retval == NULL) exit(0);
-
-if(debug == 1) display(retval);
-
-if((retval =~ "HTTP/1.[01] 200") && ("Server: CompaqHTTPServer/" >< retval) && ("Cookie: Compaq" >< retval))
-{
-    foreach pass (passlist) {
-        temp1 = strstr(retval, "Set-Cookie: ");
-        temp2 = strstr(temp1, ";");
-        cookie = temp1 - temp2;
-        cookie = str_replace(string:cookie, find:"Set-Cookie", replace:"Cookie");
-        poststr = string("redirecturl=&redirectquerystring=&user=administrator&password=", pass);
-        
-        req = string("POST /proxy/ssllogin HTTP/1.0\r\n", cookie, 
-"\r\nContent-Length: ", strlen(poststr), "\r\n\r\n", poststr, "\r\n");
-
-        if(debug==1) display("\n\n***********************\n\n", req);
-
-        retval = http_keepalive_send_recv(port:port, data:req);
-
-        if(debug==1) display(retval);
-
-        if("CpqElm-Login: success" >< retval)
-        {
-            report = "It was possible to login with the password'" + pass + "'."; 
-            security_message(port:port, data:report);
-            exit(0);
-        }
+    poststr = string( "redirecturl=&redirectquerystring=&user=administrator&password=", pass );
+    req = string( "POST /proxy/ssllogin HTTP/1.0\r\n",
+                  "Cookie: " + cookie[1], "\r\n",
+                  "Content-Length: ", strlen( poststr ),
+                  "\r\n\r\n",
+                  poststr, "\r\n" );
+    res = http_keepalive_send_recv( port:port, data:req );
+    if( "CpqElm-Login: success" >< res ) {
+      report = "It was possible to login with the password'" + pass + "'."; 
+      security_message( port:port, data:report );
+      exit( 0 );
     }
+  }
 }
 
-exit(99);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 3497 2016-06-13 12:28:47Z benallard $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805238");
-  script_version("$Revision: 3497 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-0922", "CVE-2015-0921");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 14:28:47 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-01-12 20:02:18 +0530 (Mon, 12 Jan 2015)");
   script_name("McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129827");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jan/8");
   script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10095");
-  script_summary("Check if the version McAfee ePolicy Orchestrator is vulnerable or not");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869094");
-  script_version("$Revision: 3344 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:52:57 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6243 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-15 06:46:26 +0100 (Sun, 15 Mar 2015)");
   script_cve_id("CVE-2014-3591", "CVE-2015-0837", "CVE-2013-4576");
   script_tag(name:"cvss_base", value:"2.1");
@@ -49,7 +49,6 @@ symmetric-key encryption, which is patented worldwide).
   script_xref(name: "FEDORA", value: "2015-3253");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/151852.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of gnupg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

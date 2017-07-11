@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_onenote_ms16-099.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_ms_onenote_ms16-099.nasl 6412 2017-06-23 09:05:07Z cfischer $
 #
 # Microsoft OneNote Information Disclosure Vulnerability (3177451)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:onenote";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807871");
-  script_version("$Revision: 5689 $");
+  script_version("$Revision: 6412 $");
   script_cve_id("CVE-2016-3315");
   script_bugtraq_id(92294);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:05:07 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-08-10 10:27:21 +0530 (Wed, 10 Aug 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft OneNote Information Disclosure Vulnerability (3177451)");
@@ -79,60 +79,46 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-exeVer = "";
-notePath = "";
+## Get 'OneNote.exe' Version and location
+if( ! infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE ) ) exit( 0 );
 
-## Get 'OneNote.exe' Version
-exeVer = get_app_version(cpe:CPE);
-if(!exeVer){
-  exit(0);
+notePath = infos['location'];
+if( ! notePath || "Could not find the install location" >< notePath ) {
+  exit( 0 );
 }
-
-## Get location
-notePath = get_app_location(cpe:CPE);
-if(!notePath){
-  exit(0);
-}
-
 
 ##Check for onmain.dll file
-if(notePath)
-{
-  noteVer = fetch_file_version(sysPath:notePath, file_name:"onmain.dll");
-  if(noteVer)
-  {
-    if(noteVer =~ "^(12|14|15|16).*")
-    {
-      if(noteVer =~ "^(12)"){
-        Vulnerable_range  =  "12 - 12.0.6753.4999";
-      }
-      else if(noteVer =~ "^(14)"){
-        Vulnerable_range  =  "14 - 14.0.7172.4999";
-      }
-      else if(noteVer =~ "^(15)"){
-        Vulnerable_range  =  "15 - 15.0.4849.0999";
-      }
-      else if(noteVer =~ "^(16)"){
-        Vulnerable_range  =  "16 - 16.0.4417.0999";
-      }
+noteVer = fetch_file_version(sysPath:notePath, file_name:"onmain.dll");
+if(noteVer) {
+  if(noteVer =~ "^(12|14|15|16).*") {
+    if(noteVer =~ "^(12)"){
+      Vulnerable_range  =  "12 - 12.0.6753.4999";
     }
-    if(version_in_range(version:noteVer, test_version:"12.0", test_version2:"12.0.6753.4999") ||
-       version_in_range(version:noteVer, test_version:"14.0", test_version2:"14.0.7172.4999") ||
-       version_in_range(version:noteVer, test_version:"15.0", test_version2:"15.0.4849.0999") ||
-       version_in_range(version:noteVer, test_version:"16.0", test_version2:"16.0.4417.0999"))
-    {
-       report = 'File checked:     ' + notePath + "\onmain.dll"  + '\n' +
-                'File version:     ' + exeVer  + '\n' +
-                'Vulnerable range: ' + Vulnerable_range + '\n' ;
-       security_message(data:report);
-       exit(0);
+    else if(noteVer =~ "^(14)"){
+      Vulnerable_range  =  "14 - 14.0.7172.4999";
+    }
+    else if(noteVer =~ "^(15)"){
+      Vulnerable_range  =  "15 - 15.0.4849.0999";
+    }
+    else if(noteVer =~ "^(16)"){
+      Vulnerable_range  =  "16 - 16.0.4417.0999";
     }
   }
+  if(version_in_range(version:noteVer, test_version:"12.0", test_version2:"12.0.6753.4999") ||
+     version_in_range(version:noteVer, test_version:"14.0", test_version2:"14.0.7172.4999") ||
+     version_in_range(version:noteVer, test_version:"15.0", test_version2:"15.0.4849.0999") ||
+     version_in_range(version:noteVer, test_version:"16.0", test_version2:"16.0.4417.0999")) {
+    report = 'File checked:     ' + notePath + "\onmain.dll"  + '\n' +
+             'File version:     ' + noteVer  + '\n' +
+             'Vulnerable range: ' + Vulnerable_range + '\n' ;
+    security_message(data:report);
+    exit(0);
+  }
 }
+
+exit( 99 );

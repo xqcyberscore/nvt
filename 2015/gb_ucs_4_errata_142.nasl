@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ucs_4_errata_142.nasl 3911 2016-08-30 13:08:37Z mime $
+# $Id: gb_ucs_4_errata_142.nasl 6329 2017-06-13 15:39:42Z teissa $
 #
 # Univention Corporate Server 4.0 erratum 142
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-0209","CVE-2015-0286","CVE-2015-0287","CVE-2015-0288","CVE-2015-0289","CVE-2015-0292");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 3911 $");
+ script_version ("$Revision: 6329 $");
  script_name("Univention Corporate Server 4.0 erratum 142");
 
  script_xref(name:"URL", value:"http://errata.univention.de/ucs/4.0/142.html");
@@ -56,9 +56,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-08-30 15:08:37 +0200 (Tue, 30 Aug 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-09 10:45:33 +0200 (Thu, 09 Apr 2015)");
- script_summary("Checks for installed patches.");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

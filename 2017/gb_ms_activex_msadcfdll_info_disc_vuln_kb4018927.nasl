@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_activex_msadcfdll_info_disc_vuln_kb4018927.nasl 6169 2017-05-19 08:26:16Z antu123 $
+# $Id: gb_ms_activex_msadcfdll_info_disc_vuln_kb4018927.nasl 6231 2017-05-29 09:29:50Z teissa $
 #
 # Microsoft ActiveX 'Msadcf.dll' Information Disclosure Vulnerability (KB4018927)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811031");
-  script_version("$Revision: 6169 $");
+  script_version("$Revision: 6231 $");
   script_cve_id("CVE-2017-0242");
   script_bugtraq_id(98275);
-  script_tag(name:"cvss_base", value:"6.9");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 10:26:16 +0200 (Fri, 19 May 2017) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:29:50 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2017-05-10 11:36:48 +0530 (Wed, 10 May 2017)");
   script_name("Microsoft ActiveX 'Msadcf.dll' Information Disclosure Vulnerability (KB4018927)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_detect.nasl 2622 2016-02-09 13:03:15Z antu123 $
+# $Id: gb_cisco_ironport_csma_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
 #
 # Cisco IronPort Content Security Management Appliance Detection
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803753");
-  script_version("$Revision: 2622 $");
+  script_version("$Revision: 6239 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-09 14:03:15 +0100 (Tue, 09 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
   script_tag(name:"creation_date", value:"2013-09-03 18:58:59 +0530 (Tue, 03 Sep 2013)");
   script_name("Cisco IronPort Content Security Management Appliance Web Interface Detection");
 
@@ -40,7 +40,7 @@ if (description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_summary("Checks for the presence of Cisco IronPort Security Management Appliance");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 443);

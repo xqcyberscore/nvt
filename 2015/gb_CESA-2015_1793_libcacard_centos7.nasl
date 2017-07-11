@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882284");
-  script_version("$Revision: 3327 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-17 10:03:06 +0200 (Tue, 17 May 2016) $");
+  script_version("$Revision: 6369 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-17 06:17:39 +0200 (Thu, 17 Sep 2015)");
   script_cve_id("CVE-2015-5165");
   script_tag(name:"cvss_base", value:"5.0");
@@ -57,7 +57,6 @@ have shut down, start them again for this update to take effect.
   script_tag(name: "solution", value: "Please Install the Updated Packages.");
   script_xref(name: "CESA", value: "2015:1793");
   script_xref(name: "URL" , value: "http://lists.centos.org/pipermail/centos-announce/2015-September/021384.html");
-  script_summary("Check for the Version of libcacard");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_winword_ms15-012.nasl 2645 2016-02-12 08:18:34Z benallard $
+# $Id: gb_ms_winword_ms15-012.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805044");
-  script_version("$Revision: 2645 $");
+  script_version("$Revision: 6333 $");
   script_cve_id("CVE-2015-0064", "CVE-2015-0065");
   script_bugtraq_id(72463, 72465);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-12 09:18:34 +0100 (Fri, 12 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-11 10:47:57 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (3032328)");
 
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2956099");
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2956066");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms15-012");
-  script_summary("Check for the version of 'Winword.exe' file");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

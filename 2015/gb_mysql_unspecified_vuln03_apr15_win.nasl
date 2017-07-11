@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln03_apr15_win.nasl 5082 2017-01-24 11:14:23Z cfi $
+# $Id: gb_mysql_unspecified_vuln03_apr15_win.nasl 6415 2017-06-23 09:59:48Z teissa $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-03 Apr15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805172");
-  script_version("$Revision: 5082 $");
+  script_version("$Revision: 6415 $");
   script_cve_id("CVE-2015-2571", "CVE-2015-0505", "CVE-2015-0501", "CVE-2015-0499");
   script_bugtraq_id(74095, 74112, 74070, 74115);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:M/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-24 12:14:23 +0100 (Tue, 24 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-22 18:48:05 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-03 Apr15 (Windows)");
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2015-2365600.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_summary("Check for the vulnerable version of Oracle MySQL on windows");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");

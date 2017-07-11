@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871716");
-  script_version("$Revision: 4575 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 14:52:01 +0100 (Fri, 18 Nov 2016) $");
+  script_version("$Revision: 6396 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-21 17:28:58 +0200 (Wed, 21 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-11-16 05:07:02 +0100 (Wed, 16 Nov 2016)");
   script_cve_id("CVE-2016-4992", "CVE-2016-5405", "CVE-2016-5416");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for 389-ds-base RHSA-2016:2765-01");
   script_tag(name: "summary", value: "Check the version of 389-ds-base");

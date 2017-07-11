@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3427.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3427.nasl 6345 2017-06-15 10:00:59Z teissa $
 # Auto-generated from advisory DSA 3427-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703427);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6345 $");
     script_cve_id("CVE-2015-8612");
     script_name("Debian Security Advisory DSA 3427-1 (blueman - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-12-18 00:00:00 +0100 (Fri, 18 Dec 2015)");
     script_tag(name:"cvss_base", value:"7.2");
     script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3427.html");
 
-    script_summary("Debian Security Advisory DSA 3427-1 (blueman - security update)");
 
     script_category(ACT_GATHER_INFO);
 

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-1135.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-1135.nasl 6345 2017-06-15 10:00:59Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123588");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6345 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:05:55 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-1135");
 script_tag(name: "insight", value: "ELSA-2013-1135 -  nss and nspr security, bug fix, and enhancement update - nspr[4.9.2-4]- Resolves: rhbz#924741 - Rebase to nspr-4.9.5nss[3.14.3-6]- Resolves: rhbz#986969 - nssutil_ReadSecmodDB() leaks memory[3.14.3-5]- Define -DNO_FORK_CHECK when compiling softoken for ABI compatibility- Remove the unused and obsolete nss-nochktest.patch- Resolves: rhbz#949845 - [RFE][RHEL5] Rebase to nss-3.14.3 to fix the lucky-13 issue[3.14.3-4]- Fix rpmdiff test reported failures and remove other unwanted changes- Resolves: rhbz#949845 - [RFE][RHEL5] Rebase to nss-3.14.3 to fix the lucky-13 issue[3.14.3-3]- Update to NSS_3_14_3_RTM- Rework the rebase to preserve needed idiosynchracies- Ensure we install frebl/softoken from the extra build tree- Don't include freebl static library or its private headers- Add patch to deal with system sqlite not being recent enough- Don't install nss-sysinit nor sharedb- Resolves: rhbz#949845 - [RFE][RHEL5] Rebase to nss-3.14.3 to fix the lucky-13 issue[3.14.3-2]- Restore the freebl-softoken source tar ball updated to 3.14.3- Renumbering of some sources for clarity- Resolves: rhbz#918870 - [RFE][RHEL5] Rebase to nss-3.14.3 to fix the lucky-13 issue[3.14.3-1]- Update to NSS_3_14_3_RTM- Resolves: rhbz#918870 - [RFE][RHEL5] Rebase to nss-3.14.3 to fix the lucky-13 issue"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-1135");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0978.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0978.nasl 6357 2017-06-16 10:00:29Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122542");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6357 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:47:39 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0978");
 script_tag(name: "insight", value: "ELSA-2008-0978 -  firefox security update - devhelp:[0.12-20]- Rebuild against xulrunnerfirefox:[3.0.4-1.0.1.el5]- Added firefox-oracle-default-prefs.js/firefox-oracle-default-bookmarks.html Removed the corresponding files of Red Hat.- Added patch oracle-firefox-branding.patch- Update firstrun URL in spec file[3.0.4-5]- Update to Firefox 3.0.4- Removed firefox-2.0-getstartpage.patch (#454283)nss:[3.12.1.1-3]- Update to NSS_3_12_1_WITH_CKBI_1_72_RTMxulrunner:[1.9.0.4-1.0.1]- Added xulrunner-oracle-default-prefs.js[1.9.0.4-1]- Update to 1.9.0.4[1.9.0.2-6]- Enabled safe-browsing (#463157)yelp:[2.16.0-22]- rebuild against xulrunner"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0978");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

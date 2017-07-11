@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_70964.nasl 2582 2016-02-05 08:32:27Z benallard $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_70964.nasl 6404 2017-06-22 10:00:06Z teissa $
 #
 # Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2014-8510");
  script_tag(name:"cvss_base", value:"4.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 2582 $");
+ script_version ("$Revision: 6404 $");
 
  script_name("Trend Micro InterScan Web Security Virtual Appliance Multiple Information Disclosure Vulnerabilities");
 
@@ -60,9 +60,8 @@ multiple information-disclosure vulnerabilities.");
 
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:32:27 +0100 (Fri, 05 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-04-08 10:22:02 +0200 (Wed, 08 Apr 2015)");
- script_summary("Check the version/build");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

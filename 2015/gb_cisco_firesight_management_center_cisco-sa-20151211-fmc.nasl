@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_cisco-sa-20151211-fmc.nasl 3773 2016-07-29 10:23:46Z ckuerste $
+# $Id: gb_cisco_firesight_management_center_cisco-sa-20151211-fmc.nasl 6333 2017-06-14 10:00:49Z teissa $
 #
 # Cisco FireSIGHT Management Center GET Request Information Disclosure Vulnerability 
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6419");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 3773 $");
+ script_version ("$Revision: 6333 $");
 
  script_name("Cisco FireSIGHT Management Center GET Request Information Disclosure Vulnerability ");
 
@@ -52,9 +52,8 @@ if (description)
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-07-29 12:23:46 +0200 (Fri, 29 Jul 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-15 10:41:43 +0100 (Tue, 15 Dec 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

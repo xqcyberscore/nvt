@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exim_ghost_72325.nasl 2861 2016-03-15 18:18:35Z mime $
+# $Id: gb_exim_ghost_72325.nasl 6229 2017-05-29 09:04:10Z teissa $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Exim)
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0235");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C"); 
- script_version ("$Revision: 2861 $");
+ script_version ("$Revision: 6229 $");
 
  script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Exim)");
 
@@ -51,9 +51,8 @@ context of the affected application. Failed exploit attempts may crash the appli
 vulnerability.");
  script_tag(name:"solution_type", value: "VendorFix"); # Workaround" | "Mitigation" | "VendorFix" | "NoneAvailable" | "WillNotFix
 
- script_tag(name:"last_modification", value:"$Date: 2016-03-15 19:18:35 +0100 (Tue, 15 Mar 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
  script_tag(name:"creation_date", value:"2015-01-29 15:17:02 +0100 (Thu, 29 Jan 2015)");
- script_summary("Check for HELO overflow");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
  script_family("SMTP problems");

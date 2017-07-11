@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871389");
-  script_version("$Revision: 3339 $");
+  script_version("$Revision: 6357 $");
   script_cve_id("CVE-2011-5321", "CVE-2015-1593", "CVE-2015-2830",
                 "CVE-2015-2922", "CVE-2015-3636");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:26:32 +0200 (Wed, 18 May 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-07-15 06:19:46 +0200 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for kernel RHSA-2015:1221-01");
@@ -89,7 +89,6 @@ enhancement. The system must be rebooted for this update to take effect.
   script_xref(name: "RHSA", value: "2015:1221-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-July/msg00007.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of kernel");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

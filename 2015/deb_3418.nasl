@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3418.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_3418.nasl 6229 2017-05-29 09:04:10Z teissa $
 # Auto-generated from advisory DSA 3418-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,10 +30,10 @@
 if(description)
 {
     script_id(703418);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6229 $");
     script_cve_id("CVE-2015-6788", "CVE-2015-6789", "CVE-2015-6790", "CVE-2015-6791");
     script_name("Debian Security Advisory DSA 3418-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
     script_tag(name: "creation_date", value: "2015-12-14 00:00:00 +0100 (Mon, 14 Dec 2015)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3418.html");
 
-    script_summary("Debian Security Advisory DSA 3418-1 (chromium-browser - security update)");
 
     script_category(ACT_GATHER_INFO);
 

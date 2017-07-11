@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2905.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_2905.nasl 6369 2017-06-19 10:00:04Z teissa $
 # Auto-generated from advisory DSA 2905-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,13 +30,13 @@
 if(description)
 {
     script_id(702905);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6369 $");
     script_cve_id("CVE-2014-1716", "CVE-2014-1717", "CVE-2014-1718", "CVE-2014-1719",
                   "CVE-2014-1720", "CVE-2014-1721", "CVE-2014-1722", "CVE-2014-1723",
                   "CVE-2014-1724", "CVE-2014-1725", "CVE-2014-1726", "CVE-2014-1727",
                   "CVE-2014-1728", "CVE-2014-1729");
     script_name("Debian Security Advisory DSA 2905-1 (chromium-browser - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
     script_tag(name: "creation_date", value: "2014-04-15 00:00:00 +0200 (Tue, 15 Apr 2014)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -44,7 +44,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2905.html");
 
-    script_summary("Debian Security Advisory DSA 2905-1 (chromium-browser - security update)");
 
     script_category(ACT_GATHER_INFO);
 

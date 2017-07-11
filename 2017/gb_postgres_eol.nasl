@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgres_eol.nasl 5294 2017-02-14 15:05:25Z mime $
+# $Id: gb_postgres_eol.nasl 6428 2017-06-26 07:51:28Z cfischer $
 #
-# PostgreSQL End Of Life Detection
+# PostgreSQL End Of Life Detection (Linux)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -32,16 +32,15 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140158");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 5294 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-14 16:05:25 +0100 (Tue, 14 Feb 2017) $");
+  script_version("$Revision: 6428 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-26 09:51:28 +0200 (Mon, 26 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:48:20 +0100 (Tue, 14 Feb 2017)");
-  script_name("PostgreSQL End Of Life Detection");
-  script_summary("Determine if the PostgreSQL version on the remote host has reached the end of life");
+  script_name("PostgreSQL End Of Life Detection (Linux)");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
-  script_dependencies("postgresql_detect.nasl");
-  script_mandatory_keys("PostgreSQL/installed");
+  script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
+  script_mandatory_keys("PostgreSQL/installed", "Host/runs_unixoide");
   script_require_ports("Services/postgresql", 5432);
 
   script_xref(name:"URL", value:"https://www.postgresql.org/support/versioning/");
@@ -77,7 +76,7 @@ if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( ret = product_reached_eol( cpe:CPE, version:version ) )
 {
-  report = 'The PostgreSQL version has reached the end of life.\n\n' + 
+  report = 'The PostgreSQL version has reached the end of life.\n\n' +
            'Installed version: ' + version + '\n' +
            'EOL version:       ' + ret['eol_version'] + '\n' +
            'EOL date:          ' + ret['eol_date'] + '\n';

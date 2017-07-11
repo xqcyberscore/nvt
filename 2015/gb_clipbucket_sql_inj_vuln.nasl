@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_sql_inj_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_clipbucket_sql_inj_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
 #
 # ClipBucket 'view_item.php' SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805347");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 6214 $");
   script_cve_id("CVE-2015-2102");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-05 15:20:26 +0530 (Thu, 05 Mar 2015)");
   script_name("ClipBucket 'view_item.php' SQL Injection Vulnerability");
 
@@ -65,7 +65,6 @@ if(description)
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36156/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130485");
 
-  script_summary("Check if ClipBucket is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-020.nasl 3006 2016-04-07 12:32:11Z antu123 $
+# $Id: gb_ms15-020.nasl 6237 2017-05-29 13:53:57Z cfi $
 #
 # Microsoft Windows Remote Code Execution Vulnerabilities (3041836)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805053");
-  script_version("$Revision: 3006 $");
+  script_version("$Revision: 6237 $");
   script_cve_id("CVE-2015-0081", "CVE-2015-0096");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-07 14:32:11 +0200 (Thu, 07 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-05-29 15:53:57 +0200 (Mon, 29 May 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 10:25:04 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Remote Code Execution Vulnerabilities (3041836)");
@@ -43,7 +43,9 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name: "insight" , value: "Multiple flaws are exists when,
+
   - Windows Text Services improperly handles objects in memory and
+
   - Microsoft Windows improperly handles the loading of DLL files.");
 
   script_tag(name: "impact" , value: "Successful exploitation will allow remote
@@ -52,14 +54,20 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name: "affected" , value:"Microsoft Windows 8 x32/x64
+
   Microsoft Windows Server 2012/R2
+
   Microsoft Windows 8.1 x32/x64 Edition
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prioor
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
+
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
   script_tag(name: "solution" , value: "Run Windows Update and update the
@@ -72,7 +80,6 @@ if(description)
   script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3039066");
   script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-020");
 
-  script_summary("Check for the vulnerable 'Msctf.dll' and 'Shell32.dll' file version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
