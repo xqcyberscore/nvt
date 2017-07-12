@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851167");
-  script_version("$Revision: 5580 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-15 11:00:34 +0100 (Wed, 15 Mar 2017) $");
+  script_version("$Revision: 6438 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 10:20:44 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-01-26 06:11:06 +0100 (Tue, 26 Jan 2016)");
   script_cve_id("CVE-2015-4000", "CVE-2015-6908");
   script_tag(name:"cvss_base", value:"5.0");
@@ -63,8 +63,7 @@ of detect NVT and check if the version is vulnerable or not.");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/release");
-  script_require_keys("HostDetails/OS/cpe:/o:suse:linux_enterprise_desktop", "HostDetails/OS/cpe:/o:suse:linux_enterprise_server");
+  script_mandatory_keys("login/SSH/success", "ssh/login/release", "SuSeLinuxEnterprise/Desktop_or_Server/Installed");
   exit(0);
 }
 

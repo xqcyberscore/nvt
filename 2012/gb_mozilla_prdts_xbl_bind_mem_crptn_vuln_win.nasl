@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products XBL Binding Memory Corruption Vulnerability - (Windows)
 #
@@ -49,12 +49,12 @@ tag_summary = "The host is installed with Mozilla firefox/seamonkey/thunderbird
 if(description)
 {
   script_id(802592);
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2012-0452");
   script_bugtraq_id(51975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-02-14 15:40:12 +0530 (Tue, 14 Feb 2012)");
   script_name("Mozilla Products XBL Binding Memory Corruption Vulnerability - (Windows)");
 
@@ -67,8 +67,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver",
-                      "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

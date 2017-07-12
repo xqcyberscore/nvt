@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_macosx.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Mac OS X)
 #
@@ -43,12 +43,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird and is pr
 if(description)
 {
   script_id(802870);
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 6445 $");
   script_cve_id("CVE-2012-1939");
   script_bugtraq_id(53797);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-06-19 15:21:15 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Mac OS X)");
 
@@ -61,8 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version",
-                      "ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

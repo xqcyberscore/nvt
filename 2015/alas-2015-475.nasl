@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-475.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-475.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120292");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:22:58 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Amazon Linux Local Check: alas-2015-475");
 script_tag(name: "insight", value: "sapi/cgi/cgi_main.c in the CGI component in PHP through 5.4.36, 5.5.x through 5.5.20, and 5.6.x through 5.6.4, when mmap is used to read a .php file, does not properly consider the mapping's length during processing of an invalid file that begins with a # character and lacks a newline character, which causes an out-of-bounds read and might (1) allow remote attackers to obtain sensitive information from php-cgi process memory by leveraging the ability to upload a .php file or (2) trigger unexpected code execution if a valid PHP script is present in memory locations adjacent to the mapping. (CVE-2014-9427 )Use-after-free vulnerability in the process_nested_data function in ext/standard/var_unserializer.re in PHP before 5.4.37, 5.5.x before 5.5.21, and 5.6.x before 5.6.5 allows remote attackers to execute arbitrary code via a crafted unserialize call that leverages improper handling of duplicate numerical keys within the serialized properties of an object. NOTE: this vulnerability exists because of an incomplete fix for CVE-2014-8142 . (CVE-2015-0231 )The exif_process_unicode function in ext/exif/exif.c in PHP before 5.4.37, 5.5.x before 5.5.21, and 5.6.x before 5.6.5 allows remote attackers to execute arbitrary code or cause a denial of service (uninitialized pointer free and application crash) via crafted EXIF data in a JPEG image. (CVE-2015-0232 )"); 
 script_tag(name : "solution", value : "Run yum update php54 to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks alas-2015-475");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

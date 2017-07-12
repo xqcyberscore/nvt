@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 6381 2017-06-20 12:13:27Z cfischer $
+# $Id: gather-package-list.nasl 6438 2017-06-27 08:20:44Z santu $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 6381 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 14:13:27 +0200 (Tue, 20 Jun 2017) $");
+  script_version("$Revision: 6438 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 10:20:44 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -2608,6 +2608,7 @@ rls = ssh_cmd(socket:sock, cmd:"cat /etc/SuSE-release");
 if("SUSE Linux Enterprise Server 12" ><rls && "PATCHLEVEL = 0" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 12 SP0"));
     register_detected_os(os:"SuSE Linux Enterprise Server 12 SP0", oskey:"SLES12.0SP0");
     exit(0);
@@ -2615,6 +2616,7 @@ if("SUSE Linux Enterprise Server 12" ><rls && "PATCHLEVEL = 0" >< rls) {
 
 if("SUSE Linux Enterprise Server 12" ><rls && "PATCHLEVEL = 1" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 12 SP1"));
     register_detected_os(os:"SuSE Linux Enterprise Server 12 SP1", oskey:"SLES12.0SP1");
@@ -2623,6 +2625,7 @@ if("SUSE Linux Enterprise Server 12" ><rls && "PATCHLEVEL = 1" >< rls) {
 
 if("SUSE Linux Enterprise Desktop 12" ><rls && "PATCHLEVEL = 0" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Desktop 12 SP0"));
     register_detected_os(os:"SuSE Linux Enterprise Desktop 12 SP0", oskey:"SLED12.0SP0");
@@ -2631,6 +2634,7 @@ if("SUSE Linux Enterprise Desktop 12" ><rls && "PATCHLEVEL = 0" >< rls) {
 
 if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 4" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Desktop 11 SP4"));
     register_detected_os(os:"SuSE Linux Enterprise Desktop 11 SP4", oskey:"SLED11.0SP4");
@@ -2639,6 +2643,7 @@ if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 4" >< rls) {
 
 if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 3" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Desktop 11 SP3"));
     register_detected_os(os:"SuSE Linux Enterprise Desktop 11 SP3", oskey:"SLED11.0SP3");
@@ -2647,6 +2652,7 @@ if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 3" >< rls) {
 
 if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 2" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Desktop 11 SP2"));
     register_detected_os(os:"SuSE Linux Enterprise Desktop 11 SP2", oskey:"SLED11.0SP2");
@@ -2655,6 +2661,7 @@ if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 2" >< rls) {
 
 if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 1" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Desktop 11 SP1"));
     register_detected_os(os:"SuSE Linux Enterprise Desktop 11 SP1", oskey:"SLED11.0SP1");
@@ -2663,6 +2670,7 @@ if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 1" >< rls) {
 
 if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 0" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Desktop 11 SP0"));
     register_detected_os(os:"SuSE Linux Enterprise Desktop 11 SP0", oskey:"SLED11.0SP0");
@@ -2671,6 +2679,7 @@ if("SUSE Linux Enterprise Desktop 11" ><rls && "PATCHLEVEL = 0" >< rls) {
 
 if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 1" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 11 SP1"));
     register_detected_os(os:"SuSE Linux Enterprise Server 11 SP1", oskey:"SLES11.0SP1");
@@ -2679,6 +2688,7 @@ if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 1" >< rls) {
 
 if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 2" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 11 SP2"));
     register_detected_os(os:"SuSE Linux Enterprise Server 11 SP2", oskey:"SLES11.0SP2");
@@ -2687,6 +2697,7 @@ if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 2" >< rls) {
 
 if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 3" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 11 SP3"));
     register_detected_os(os:"SuSE Linux Enterprise Server 11 SP3", oskey:"SLES11.0SP3");
@@ -2696,6 +2707,7 @@ if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 3" >< rls) {
 
 if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 4" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 11 SP4"));
     register_detected_os(os:"SuSE Linux Enterprise Server 11 SP4", oskey:"SLES11.0SP4");
@@ -2704,6 +2716,7 @@ if("SUSE Linux Enterprise Server 11 " ><rls && "PATCHLEVEL = 4" >< rls) {
 
 if("SUSE Linux Enterprise Server 11 "><rls && "PATCHLEVEL = 0" >< rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 11"));
     register_detected_os(os:"SuSE Linux Enterprise Server 11", oskey:"SLES11.0");
@@ -2712,6 +2725,7 @@ if("SUSE Linux Enterprise Server 11 "><rls && "PATCHLEVEL = 0" >< rls) {
 
 if("SUSE Linux Enterprise Server 10 "><rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 10"));
     register_detected_os(os:"SuSE Linux Enterprise Server 10", oskey:"SLES10.0");
@@ -2720,6 +2734,7 @@ if("SUSE Linux Enterprise Server 10 "><rls) {
 
 if("SUSE LINUX Enterprise Server 9 "><rls) {
     buf = ssh_cmd(socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'");
+    replace_kb_item( name:"SuSeLinuxEnterprise/Desktop_or_Server/Installed", value:TRUE );
     set_kb_item(name: "ssh/login/rpms", value: ";" + buf);
     log_message(port:port, data:string("We are able to login and detect that you are running SuSE Linux Enterprise Server 9"));
     register_detected_os(os:"SuSE Linux Enterprise Server 9", oskey:"SLES9.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trojan_horses1.nasl 3373 2016-05-23 18:32:02Z jan $
+# $Id: gb_trojan_horses1.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Possible Trojan Horses
 #
@@ -28,15 +28,14 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105237");
- script_version("$Revision: 3373 $");
- script_tag(name:"last_modification", value:"$Date: 2016-05-23 20:32:02 +0200 (Mon, 23 May 2016) $");
+ script_version("$Revision: 6443 $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-03-16 10:53:07 +0100 (Mon, 16 Mar 2015)");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
  script_name("Possible Trojan Horses");
- script_summary("Look for potential trojan horses");
  script_category(ACT_ATTACK);
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
  script_family("Malware");

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.850773");
-  script_version("$Revision: 3352 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:34:58 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-13 18:35:00 +0530 (Tue, 13 Oct 2015)");
   script_cve_id("CVE-2013-2212", "CVE-2013-6400", "CVE-2013-6885", "CVE-2014-1642",
                 "CVE-2014-1666", "CVE-2014-1891", "CVE-2014-1892", "CVE-2014-1893",
@@ -121,7 +121,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2014:0373_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2014-03/msg00011.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of Xen");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_jar_remote_code_exec_vuln_macosx.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mozilla_prdts_jar_remote_code_exec_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products jar Files Remote Code Execution Vulnerability (MAC OS X)
 #
@@ -44,12 +44,12 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird and is pro
 if(description)
 {
   script_id(902777);
-  script_version("$Revision: 3113 $");
+  script_version("$Revision: 6445 $");
   script_cve_id("CVE-2011-3666");
   script_bugtraq_id(51139);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-12-22 13:17:34 +0530 (Thu, 22 Dec 2011)");
   script_name("Mozilla Products jar Files Remote Code Execution Vulnerability (MAC OS X)");
 
@@ -61,8 +61,7 @@ if(description)
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version",
-                      "ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

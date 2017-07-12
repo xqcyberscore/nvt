@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871518");
-  script_version("$Revision: 2736 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 11:49:21 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-10 06:35:05 +0100 (Thu, 10 Dec 2015)");
   script_cve_id("CVE-2015-7981", "CVE-2015-8126", "CVE-2015-8472");
   script_tag(name:"cvss_base", value:"7.5");
@@ -64,7 +64,6 @@ contain backported patches to correct these issues.
   script_xref(name: "RHSA", value: "2015:2595-01");
   script_xref(name: "URL" , value: "https://www.redhat.com/archives/rhsa-announce/2015-December/msg00030.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libpng12");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Red Hat Local Security Checks");

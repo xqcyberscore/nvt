@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_ms16-127.nasl 5662 2017-03-21 11:54:36Z antu123 $
+# $Id: gb_flash_player_ms16-127.nasl 6434 2017-06-27 05:32:09Z santu $
 #
 # Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (3194343)
 #
@@ -30,14 +30,14 @@ CPE = "cpe:/a:adobe:flash_player_internet_explorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810638");
-  script_version("$Revision: 5662 $");
+  script_version("$Revision: 6434 $");
   script_cve_id("CVE-2016-4273", "CVE-2016-4286", "CVE-2016-6981", "CVE-2016-6982",
                 "CVE-2016-6983", "CVE-2016-6984", "CVE-2016-6985", "CVE-2016-6986",
                 "CVE-2016-6987", "CVE-2016-6989", "CVE-2016-6990", "CVE-2016-6992");
   script_bugtraq_id(93490, 93497, 93492);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:54:36 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 07:32:09 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2017-03-17 17:49:38 +0530 (Fri, 17 Mar 2017)");
   script_name("Microsoft IE And Microsoft Edge Flash Player Multiple Vulnerabilities (3194343)");
 
@@ -79,7 +79,7 @@ if(description)
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_flash_player_within_ie_edge_detect.nasl");
-  script_require_keys("AdobeFlashPlayer/IE/Ver", "AdobeFlashPlayer/EDGE/Ver");
+  script_mandatory_keys("AdobeFlash/IE_or_EDGE/Installed");
   exit(0);
 }
 

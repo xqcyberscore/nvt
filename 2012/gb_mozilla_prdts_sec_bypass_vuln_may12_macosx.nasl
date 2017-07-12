@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)
 #
@@ -48,12 +48,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802843);
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 6445 $");
   script_cve_id("CVE-2012-0475");
   script_bugtraq_id(53230);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:29:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)");
 
@@ -66,8 +66,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version",
-                      "SeaMonkey/MacOSX/Version", "ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

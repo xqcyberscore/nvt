@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_nov11_macosx.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mozilla_prdts_mult_vuln_nov11_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products Multiple Vulnerabilities (MAC OS X)
 #
@@ -47,12 +47,12 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird and is pro
 if(description)
 {
   script_id(802514);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6445 $");
   script_cve_id("CVE-2011-3654", "CVE-2011-3653", "CVE-2011-3652");
   script_bugtraq_id(50602, 50592, 50600);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-11-14 12:41:48 +0530 (Mon, 14 Nov 2011)");
   script_name("Mozilla Products Multiple Vulnerabilities (MAC OS X)");
 
@@ -63,8 +63,7 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version",
-                  "ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

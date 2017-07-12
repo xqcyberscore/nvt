@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_win.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Windows)
 #
@@ -43,12 +43,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird and is pr
 if(description)
 {
   script_id(802869);
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2012-1939");
   script_bugtraq_id(53797);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-06-19 15:21:15 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Windows)");
 
@@ -61,7 +61,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

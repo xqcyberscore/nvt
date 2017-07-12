@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mem_corr_vuln_aug12_win.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_mozilla_prdts_mem_corr_vuln_aug12_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Memory Corruption Vulnerabilities - August12 (Windows)
 #
@@ -54,12 +54,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(803013);
-  script_version("$Revision: 5931 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2012-1956", "CVE-2012-1971", "CVE-2012-3971", "CVE-2012-3975");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-08-30 1:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Memory Corruption Vulnerabilities - August12 (Windows)");
 
@@ -75,7 +75,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_win.nasl 5343 2017-02-18 17:30:37Z cfi $
+# $Id: gb_mozilla_prdts_necko_dns_info_disc_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Necko DNS Information Disclosure Vulnerability (Windows)
 #
@@ -45,8 +45,8 @@ tag_summary = "The host is installed with Thundebird/Seamonkey and is prone to
 if(description)
 {
   script_id(800455);
-  script_version("$Revision: 5343 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 18:30:37 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 6444 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-02-04 12:53:38 +0100 (Thu, 04 Feb 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -60,8 +60,7 @@ if(description)
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_seamonkey_detect_win.nasl", "gb_thunderbird_detect_win.nasl");
-  script_mandatory_keys("SMB/WindowsVersion");
-
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_exec_cmd_code_exec_vuln.nasl 4016 2016-09-09 07:23:34Z cfi $
+# $Id: gb_hp_data_protector_exec_cmd_code_exec_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Client 'EXEC_CMD' Remote Code Execution Vulnerability
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801946");
-  script_version("$Revision: 4016 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 09:23:34 +0200 (Fri, 09 Sep 2016) $");
+  script_version("$Revision: 6435 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-06-13 15:28:04 +0200 (Mon, 13 Jun 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-0923");
   script_bugtraq_id(46234);
   script_name("HP (OpenView Storage) Data Protector Client 'EXEC_CMD' Remote Code Execution Vulnerability");
-  script_summary("Check the remote code execution vulnerability in HP (OpenView Storage) Data Protector");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("hp_data_protector_installed.nasl");
   script_require_ports("Services/hp_dataprotector", 5555);
-  script_mandatory_keys("Hp/data_protector/installed");
+  script_mandatory_keys("hp_data_protector/installed");
 
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-055/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/101766/hpdp-exec.txt");
@@ -81,6 +80,7 @@ if(description)
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+get_app_location( cpe:CPE, port:port ); # To have a reference to the Detection NVT within the GSA
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );

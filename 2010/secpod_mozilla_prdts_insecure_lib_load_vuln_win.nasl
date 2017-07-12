@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_insecure_lib_load_vuln_win.nasl 5394 2017-02-22 09:22:42Z teissa $
+# $Id: secpod_mozilla_prdts_insecure_lib_load_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Insecure Library Loading Vulnerability (Windows)
 #
@@ -49,8 +49,8 @@ and is prone to insecure library loading vulnerability.";
 if(description)
 {
   script_id(902242);
-  script_version("$Revision: 5394 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-22 10:22:42 +0100 (Wed, 22 Feb 2017) $");
+  script_version("$Revision: 6444 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -66,8 +66,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                        "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Thunderbird/Win/Ver",
-                      "Seamonkey/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

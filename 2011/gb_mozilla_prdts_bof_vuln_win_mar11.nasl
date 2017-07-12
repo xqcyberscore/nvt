@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_bof_vuln_win_mar11.nasl 3112 2016-04-19 08:52:10Z antu123 $
+# $Id: gb_mozilla_prdts_bof_vuln_win_mar11.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Buffer Overflow Vulnerability March-11 (Windows)
 #
@@ -47,8 +47,8 @@ tag_summary = "The host is installed with Mozilla Firefox/Seamonkey/Thunderbird 
 if(description)
 {
   script_id(801904);
-  script_version("$Revision: 3112 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 10:52:10 +0200 (Tue, 19 Apr 2016) $");
+  script_version("$Revision: 6444 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-03-10 13:33:28 +0100 (Thu, 10 Mar 2011)");
   script_cve_id("CVE-2011-0061");
   script_tag(name:"cvss_base", value:"9.3");
@@ -65,7 +65,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

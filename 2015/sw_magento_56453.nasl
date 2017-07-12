@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_56453.nasl 3373 2016-05-23 18:32:02Z jan $
+# $Id: sw_magento_56453.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Magento SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105226");
-  script_version("$Revision: 3373 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-23 20:32:02 +0200 (Mon, 23 May 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -44,7 +44,6 @@ if(description)
 
   script_name("Magento SSL Certificate Validation Security Bypass Vulnerability");
 
-  script_summary("Check the version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_family("Web application abuses");

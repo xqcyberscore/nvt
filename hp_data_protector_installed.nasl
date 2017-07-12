@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_data_protector_installed.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: hp_data_protector_installed.nasl 6436 2017-06-27 06:33:28Z cfischer $
 #
-# HP (OpenView Storage) Data Protector Detection
+# HP/HPE (OpenView Storage) Data Protector Detection
 #
 # Authors:
 # Josh Zlatin-Amishav (josh at ramat dot cc)
@@ -27,24 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19601");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 6436 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:33:28 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("HP (OpenView Storage) Data Protector Detection");
+  script_name("HP/HPE (OpenView Storage) Data Protector Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2005 Josh Zlatin-Amishav");
   script_require_ports("Services/hp_dataprotector", 5555);
   script_dependencies("find_service2.nasl");
 
-  script_tag(name:"summary", value:"Detection of HP (OpenView Storage) Data Protector.
+  script_tag(name:"summary", value:"Detection of HP/HPE (OpenView Storage) Data Protector.
 
-  The script sends a connection request to the HP (OpenView Storage) Data Protector
+  The script sends a connection request to the HP/HPE (OpenView Storage) Data Protector
   and attempts to extract the version number from the reply.");
 
-  script_xref(name:"URL", value:"http://www8.hp.com/us/en/software-solutions/data-protector-backup-recovery-software/index.html");
+  script_xref(name:"URL", value:"https://saas.hpe.com/en-us/software/data-protector");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -63,6 +63,7 @@ soc = open_sock_tcp( port) ;
 if( ! soc ) exit( 0 );
 
 # HP Data Protector A.06.10: INET, internal build 611, built on 2008
+# HPE Data Protector A.09.09: INET, internal build 114, built on Tuesday, March 28, 2017, 5:02 PM
 # HP OpenView Storage Data Protector A.06.00: INET, internal build 331
 # HP OpenView Storage Data Protector A.05.50: INET, internal build 330
 versionpat = 'Data Protector ([^:]+)';
@@ -73,7 +74,9 @@ response = recv( socket:soc, length:4096, timeout:20 );
 close( soc );
 
 if( "HP OpenView Storage Data Protector" >< response ||
-    "HP Data Protector" >< response ) {
+    "HP Data Protector" >< response ||
+    "HPE Data Protector" >< response ) {
+
   versionmatches = egrep( pattern:versionpat, string:response );
   if( versionmatches ) {
     foreach versionmatch( split( versionmatches ) ) {
@@ -96,25 +99,24 @@ if( "HP OpenView Storage Data Protector" >< response ||
   # In case the service wasn't identified before
   register_service( port:port, proto:"hp_dataprotector" );
 
-  set_kb_item( name:"Hp/data_protector/installed", value:TRUE );
-  set_kb_item( name:"Hp/data_protector/version", value:versions[1] );
-  set_kb_item( name:"Hp/data_protector/build", value:builds[1] );
+  replace_kb_item( name:"hp_data_protector/installed", value:TRUE );
+  set_kb_item( name:"hp_data_protector/" + port + "/version", value:versions[1] );
+  set_kb_item( name:"hp_data_protector/" + port + "/build", value:builds[1] );
 
   ## build cpe and store it as host_detail
-  cpe = build_cpe( value:versions[1], exp:"^[a-zA-Z]\.([0-9.]+)",
-                   base:"cpe:/a:hp:data_protector:" );
+  cpe = build_cpe( value:versions[1], exp:"^[a-zA-Z]\.([0-9.]+)", base:"cpe:/a:hp:data_protector:" );
   if( isnull( cpe ) )
     cpe = "cpe:/a:hp:data_protector";
 
-  register_product( cpe:cpe, location:port + "/tcp", port:port );
+  install = port + "/tcp";
+  register_product( cpe:cpe, location:install, port:port );
 
-  result_txt = 'Detected HP (OpenView Storage) Data Protector: ' + versions[1] + ' ' + builds[1];
-  result_txt += '\nCPE: '+ cpe;
-  result_txt += '\n\nConcluded from remote probe dump:\n';
-  result_txt += response;
-  result_txt += '\n';
-
-  log_message( port:port, data:result_txt );
+  log_message( data:build_detection_report( app:"HP/HPE (OpenView Storage) Data Protector",
+                                            version:versions[1] + ' build ' + builds[1],
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:response ),
+                                            port:port );
 }
 
 exit( 0 );

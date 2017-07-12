@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCun10916.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCun10916.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Cisco ASA Smart Call Home Digital Certificate Validation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105987");
-  script_version("$Revision: 5000 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name : "last_modification", value : "$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name : "creation_date", value : "2015-03-13 13:47:16 +0700 (Fri, 13 Mar 2015)");
   script_tag(name : "cvss_base", value : "5.0");
   script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -54,7 +54,6 @@ if (description)
 
   script_tag(name : "summary", value : "The Smart Call Home feature of Cisco ASA is prone to a certificate
 validation vulnerability.");
-  script_summary("Checks the version");
 
   script_tag(name : "vuldetect", value : "Checks the version.");
 

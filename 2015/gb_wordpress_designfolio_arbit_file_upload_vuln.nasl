@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 3574 2016-06-21 09:32:00Z benallard $
+# $Id: gb_wordpress_designfolio_arbit_file_upload_vuln.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805156");
-  script_version("$Revision: 3574 $");
+  script_version("$Revision: 6443 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-21 11:32:00 +0200 (Tue, 21 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-18 14:31:11 +0530 (Wed, 18 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress DesignFolio Plus Theme Arbitrary File Upload Vulnerability");
@@ -61,7 +61,6 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36372");
-  script_summary("Determine if it is possible to upload a file");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

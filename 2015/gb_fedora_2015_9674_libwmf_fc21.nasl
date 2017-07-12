@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869463");
-  script_version("$Revision: 3350 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:56:09 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-06-25 06:31:38 +0200 (Thu, 25 Jun 2015)");
   script_cve_id("CVE-2015-0848", "CVE-2015-4588");
   script_tag(name:"cvss_base", value:"6.8");
@@ -45,7 +45,6 @@ Windows MetaFile vector graphics (WMF).
   script_xref(name: "FEDORA", value: "2015-9674");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-June/160668.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of libwmf");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

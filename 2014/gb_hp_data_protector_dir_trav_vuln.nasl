@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 4016 2016-09-09 07:23:34Z cfi $
+# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2013-6194");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 4016 $");
+  script_version("$Revision: 6435 $");
   script_name("HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 09:23:34 +0200 (Fri, 09 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2014-02-11 11:34:29 +0700 (Tue, 11 Feb 2014)");
   script_summary("HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal which can lead to execute arbitrary code.");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("hp_data_protector_installed.nasl");
   script_require_ports("Services/hp_dataprotector", 5555);
-  script_mandatory_keys("Hp/data_protector/version");
+  script_mandatory_keys("hp_data_protector/installed");
 
   script_xref(name:"URL", value:"https://h20566.www2.hp.com/portal/site/hpsc/public/kb/docDisplay/?docId=emr_na-c03822422");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31181/");
@@ -69,6 +69,7 @@ if(description)
   script_tag(name:"insight", value:tag_insight);
   script_tag(name:"summary", value:tag_summary);
   script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"vuldetect", value:tag_vuldetect);
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

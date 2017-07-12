@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetty_shared_buffers_info_leak_vuln.nasl 4294 2016-10-18 11:48:46Z antu123 $
+# $Id: gb_jetty_shared_buffers_info_leak_vuln.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Jetty Shared Buffers Information Leakage Vulnerability
 #
@@ -30,11 +30,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805051");
   script_cve_id("CVE-2015-2080");
-  script_version("$Revision: 4294 $");
+  script_version("$Revision: 6443 $");
   script_bugtraq_id(72768);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-18 13:48:46 +0200 (Tue, 18 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-02 14:50:23 +0530 (Mon, 02 Mar 2015)");
   script_name("Jetty Shared Buffers Information Leakage Vulnerability");
 
@@ -66,7 +66,6 @@ if(description)
   script_xref(name : "URL" , value : "http://dev.eclipse.org/mhonarc/lists/jetty-announce/msg00075.html");
   script_xref(name : "URL" , value : "http://blog.gdssecurity.com/labs/2015/2/25/jetleak-vulnerability-remote-leakage-of-shared-buffers-in-je.html");
 
-  script_summary("Check for the information leakage in Jetty.");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web Servers");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_mult_xss_vuln_jan15.nasl 3499 2016-06-13 13:18:43Z benallard $
+# $Id: gb_twiki_mult_xss_vuln_jan15.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # TWiki Multiple Cross-Site Scripting Vulnerabilities - Jan15
 #
@@ -29,15 +29,14 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805234");
-  script_version("$Revision: 3499 $");
+  script_version("$Revision: 6443 $");
   script_cve_id("CVE-2014-9325");
   script_bugtraq_id(71735);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-06-13 15:18:43 +0200 (Mon, 13 Jun 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-01-06 12:20:18 +0530 (Tue, 06 Jan 2015)");
   script_name("TWiki Multiple Cross-Site Scripting Vulnerabilities - Jan15");
-  script_summary("Check if TWiki is prone to XSS");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

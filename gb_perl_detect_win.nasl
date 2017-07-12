@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_detect_win.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_perl_detect_win.nasl 6441 2017-06-27 09:19:17Z santu $
 #
 # Perl Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800966");
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6441 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 11:19:17 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Perl Version Detection (Windows)");
@@ -115,6 +115,7 @@ foreach key (key_list)
       {
         set_kb_item(name:"Strawberry/Perl/Ver", value:perlVer[1]);
         set_kb_item(name:"Strawberry/Perl/Loc", value:perlLoc);
+        replace_kb_item( name:"Perl/Strawberry_or_Active/Installed", value:TRUE );
 
         ## build cpe and store it as host_detail
         cpe = build_cpe(value:perlVer[1], exp:"^([0-9.]+)",
@@ -151,6 +152,7 @@ foreach key (key_list)
       {
         set_kb_item(name:"ActivePerl/Ver", value:perlVer[1]);
         set_kb_item(name:"ActivePerl/Loc", value:perlLoc);
+        replace_kb_item( name:"Perl/Strawberry_or_Active/Installed", value:TRUE );  
 
         ## build cpe and store it as host_detail
         cpe = build_cpe(value:perlVer[1], exp:"^([0-9.]+)", base:"cpe:/a:perl:perl:");

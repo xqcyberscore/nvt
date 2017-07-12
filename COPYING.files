@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 11 Jul 2017 08:39:29 +0200
+# Automatically created on:  Wed, 12 Jul 2017 08:55:16 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -47646,6 +47646,8 @@
 2017/deb_3894.nasl: GPLv2+
 2017/deb_3895.nasl: GPLv2+
 2017/deb_3896.nasl: GPLv2+
+2017/deb_3897.nasl: GPLv2+
+2017/deb_3898.nasl: GPLv2+
 2017/gb_accellion_fta_multi_vuln.nasl: GPLv2+
 2017/gb_acti_mult_vuln.nasl: GPLv2+
 2017/gb_adobe_acrobat_apsb17-01_macosx.nasl: GPLv2+
@@ -48931,6 +48933,7 @@
 2017/gb_ibm_was_soap_info_disclosure_vuln.nasl: GPLv2+
 2017/gb_ibm_websphere_app_server_csrf_vuln.nasl: GPLv2+
 2017/gb_ibm_websphere_cve_2017_1121.nasl: GPLv2+
+2017/gb_ibm_websphere_mq_dos_vuln.nasl: GPLv2+
 2017/gb_ibm_websphere_mq_mult_dos_vuln_mar17.nasl: GPLv2+
 2017/gb_ibm_websphere_mq_mult_vuln_feb17.nasl: GPLv2+
 2017/gb_ibm_websphere_portal_access_ctl_bypass_vuln_swg21968474.nasl: GPLv2+

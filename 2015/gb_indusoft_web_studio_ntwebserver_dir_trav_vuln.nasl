@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_ntwebserver_dir_trav_vuln.nasl 2676 2016-02-17 09:05:41Z benallard $
+# $Id: gb_indusoft_web_studio_ntwebserver_dir_trav_vuln.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # InduSoft Web Studio 'NTWebServer' Directory Traversal Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806642");
-  script_version("$Revision: 2676 $");
+  script_version("$Revision: 6443 $");
   script_cve_id("CVE-2014-0780");
   script_bugtraq_id(67056);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-17 10:05:41 +0100 (Wed, 17 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-12-07 13:44:29 +0530 (Mon, 07 Dec 2015)");
   script_name("InduSoft Web Studio 'NTWebServer' Directory Traversal Vulnerability (Windows)");
 
@@ -66,7 +66,6 @@ if(description)
 
   script_xref(name: "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-14-107-02");
 
-  script_summary("Check for the vulnerable version of InduSoft Web Studio on Windows");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");

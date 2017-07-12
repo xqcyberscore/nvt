@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_macosx01.nasl 5931 2017-04-11 09:02:04Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_macosx01.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Mac OS X 01)
 #
@@ -56,13 +56,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(802823);
-  script_version("$Revision: 5931 $");
+  script_version("$Revision: 6445 $");
   script_cve_id("CVE-2012-0451", "CVE-2012-0454", "CVE-2012-0459", "CVE-2012-0460",
                  "CVE-2012-0462");
   script_bugtraq_id(52463, 52455, 52457, 52456, 52467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 11:02:04 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-03-20 13:52:53 +0530 (Tue, 20 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Mac OS X 01)");
 
@@ -77,8 +77,7 @@ if(description)
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version", "SeaMonkey/MacOSX/Version",
-                      "ThunderBird/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

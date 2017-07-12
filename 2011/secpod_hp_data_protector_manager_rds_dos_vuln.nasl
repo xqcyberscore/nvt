@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_manager_rds_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_hp_data_protector_manager_rds_dos_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Manager RDS Service Denial of Service Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900291");
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6435 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-06-24 16:31:03 +0200 (Fri, 24 Jun 2011)");
   script_cve_id("CVE-2011-0514");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("HP (OpenView Storage) Data Protector Manager RDS Service Denial of Service Vulnerability");
-  script_summary("Check for the version of HP (OpenView Storage) Data Protector Manager");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Denial of Service");
   script_dependencies("hp_data_protector_installed.nasl");
   script_require_ports("Services/hp_dataprotector", 5555, 1530);
-  script_mandatory_keys("Hp/data_protector/installed");
+  script_mandatory_keys("hp_data_protector/installed");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64549");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15940/");
@@ -81,6 +80,7 @@ if(description)
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+get_app_location( cpe:CPE, port:port ); # To have a reference to the Detection NVT within the GSA
 
 ## HP (OpenView Storage) Data Protector Manager default port
 hpMgrPort = 1530;

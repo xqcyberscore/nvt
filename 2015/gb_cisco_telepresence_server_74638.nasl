@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_74638.nasl 2686 2016-02-17 17:41:55Z mime $
+# $Id: gb_cisco_telepresence_server_74638.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Cisco TelePresence Server Remote Command Injection Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-0713");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 2686 $");
+ script_version ("$Revision: 6443 $");
 
  script_name("Cisco TelePresence Server Remote Command Injection Vulnerability");
 
@@ -60,9 +60,8 @@ injection vulnerability because it fails to properly sanitize user-supplied inpu
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-17 18:41:55 +0100 (Wed, 17 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-06-03 12:10:07 +0200 (Wed, 03 Jun 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

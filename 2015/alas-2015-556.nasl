@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Amazon Linux security check 
-# $Id: alas-2015-556.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: alas-2015-556.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@iki.fi> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.120039");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-09-08 13:15:54 +0200 (Tue, 08 Sep 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Amazon Linux Local Check: ALAS-2015-556");
 script_tag(name: "insight", value: "A double-free flaw was found in the connection handling. An unauthenticated attacker could exploit this flaw to crash the PostgreSQL back end by disconnecting at approximately the same time as the authentication time out is triggered. (CVE-2015-3165 )It was discovered that PostgreSQL did not properly check the return values of certain standard library functions. If the system is in a state that would cause the standard library functions to fail, for example memory exhaustion, an authenticated user could exploit this flaw to disclose partial memory contents or cause the GSSAPI authentication to use an incorrect keytab file. (CVE-2015-3166 )It was discovered that the pgcrypto module could return different error messages when decrypting certain data with an incorrect key. This can help an authenticated user to launch a possible cryptographic attack, although no suitable attack is currently known. (CVE-2015-3167 )"); 
 script_tag(name : "solution", value : "Run yum update postgresql8 to update your system.");
@@ -40,7 +40,6 @@ script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("HostDetails/OS/cpe:/o:amazon:linux", "login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
 script_tag(name:"summary", value:"Amazon Linux Local Security Checks");
-script_summary("Amazon Linux Local Security Checks ALAS-2015-556");
 script_copyright("Eero Volotinen");
 script_family("Amazon Linux Local Security Checks");
 exit(0);

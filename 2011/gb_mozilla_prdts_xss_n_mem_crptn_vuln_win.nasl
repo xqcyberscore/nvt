@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xss_n_mem_crptn_vuln_win.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mozilla_prdts_xss_n_mem_crptn_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products XSS and Memory Corruption Vulnerabilities (Windows)
 #
@@ -45,12 +45,12 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird and is pro
 if(description)
 {
   script_id(802518);
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2011-3650", "CVE-2011-3648");
   script_bugtraq_id(50595, 50593);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-11-14 13:23:08 +0530 (Mon, 14 Nov 2011)");
   script_name("Mozilla Products XSS and Memory Corruption Vulnerabilities (Windows)");
 
@@ -63,7 +63,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl",
                            "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

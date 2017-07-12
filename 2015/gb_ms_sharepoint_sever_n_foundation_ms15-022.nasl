@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-022.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-022.nasl 6442 2017-06-27 09:37:57Z santu $
 #
 # Microsoft SharePoint Server and Foundation Multiple Vulnerabilities (3038999)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805151");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 6442 $");
   script_cve_id("CVE-2015-0085", "CVE-2015-1633", "CVE-2015-1636");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 11:37:57 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-11 16:48:56 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft SharePoint Server and Foundation Multiple Vulnerabilities (3038999)");
@@ -75,7 +75,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
-  script_require_keys("MS/SharePoint/Server/Ver", "MS/SharePoint/Foundation/Ver");
+  script_mandatory_keys("MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   exit(0);
 }
 

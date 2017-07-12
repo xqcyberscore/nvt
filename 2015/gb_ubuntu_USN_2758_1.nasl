@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842472");
-  script_version("$Revision: 2740 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:42:49 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-01 07:12:58 +0200 (Thu, 01 Oct 2015)");
   script_cve_id("CVE-2015-5589", "CVE-2015-5590", "CVE-2015-6831", "CVE-2015-6834",
                 "CVE-2015-6835", "CVE-2015-6832", "CVE-2015-6833", "CVE-2015-6836",
@@ -77,7 +77,6 @@ resulting in a denial of service. (CVE-2015-6837)");
   script_xref(name: "USN", value: "2758-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-September/003132.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of php5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_mult_code_exec_vuln.nasl 4016 2016-09-09 07:23:34Z cfi $
+# $Id: secpod_hp_data_protector_mult_code_exec_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902454");
-  script_version("$Revision: 4016 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 09:23:34 +0200 (Fri, 09 Sep 2016) $");
+  script_version("$Revision: 6435 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2011-1865", "CVE-2011-1514", "CVE-2011-1515", "CVE-2011-1866");
   script_bugtraq_id(48486);
   script_name("HP (OpenView Storage) Data Protector Multiple Remote Code Execution Vulnerabilities");
-  script_summary("Check the remote code execution vulnerability in HP (OpenView Storage) Data Protector");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("General");
   script_dependencies("hp_data_protector_installed.nasl");
   script_require_ports("Services/hp_dataprotector", 5555);
-  script_mandatory_keys("Hp/data_protector/installed");
+  script_mandatory_keys("hp_data_protector/installed");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17458/");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Jun/552");
@@ -55,7 +54,9 @@ if(description)
   features, remove the product or replace the product by another one.
 
   A Workaround is to apply below mentioned steps,
+
   1. Upgrade to HP (OpenView Storage) Data Protector A.06.20 or subsequent.
+
   2. Enable encrypted control communication services on cell server
   and all clients in cell.";
 
@@ -87,6 +88,7 @@ if(description)
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+get_app_location( cpe:CPE, port:port ); # To have a reference to the Detection NVT within the GSA
 
 soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
@@ -139,7 +141,7 @@ if( ! soc ) {
   exit( 0 );
 } else {
   response = recv( socket:soc, length:4096, timeout:20 );
-  if( "HP Data Protector" >!< response && "HP OpenView Storage Data Protector" >!< response ) {
+  if( "HP Data Protector" >!< response && "HPE Data Protector" >!< response && "HP OpenView Storage Data Protector" >!< response ) {
     security_message( port:port );
     exit( 0 );
   }

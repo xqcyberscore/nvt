@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10713.nasl 3153 2016-04-22 12:52:52Z antu123 $
+# $Id: gb_juniper_screenos_JSA10713.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Multiple Security issues with ScreenOS (JSA10713)
 #
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-7755", "CVE-2015-7754", "CVE-2015-7756");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 3153 $");
+ script_version ("$Revision: 6443 $");
 
  script_name("Multiple Security issues with ScreenOS (JSA10713)");
 
@@ -56,9 +56,8 @@ in a system crash could lead to remote code execution. This issue can affect any
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2016-04-22 14:52:52 +0200 (Fri, 22 Apr 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
  script_tag(name:"creation_date", value:"2015-12-18 09:58:55 +0100 (Fri, 18 Dec 2015)");
- script_summary("Check the version");
  script_category(ACT_GATHER_INFO);
  script_family("General");
  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3123.nasl 2732 2016-02-26 10:24:03Z benallard $
+# $Id: deb_3123.nasl 6443 2017-06-27 10:00:22Z teissa $
 # Auto-generated from advisory DSA 3123-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,11 +30,11 @@
 if(description)
 {
     script_id(703123);
-    script_version("$Revision: 2732 $");
+    script_version("$Revision: 6443 $");
     script_cve_id("CVE-2014-8484", "CVE-2014-8485", "CVE-2014-8501", "CVE-2014-8502",
                   "CVE-2014-8503", "CVE-2014-8504", "CVE-2014-8737", "CVE-2014-8738");
     script_name("Debian Security Advisory DSA 3123-1 (binutils - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:24:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
     script_tag(name: "creation_date", value: "2015-01-09 00:00:00 +0100 (Fri, 09 Jan 2015)");
     script_tag(name:"cvss_base", value:"7.5");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,7 +42,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2015/dsa-3123.html");
 
-    script_summary("Debian Security Advisory DSA 3123-1 (binutils - security update)");
 
     script_category(ACT_GATHER_INFO);
 

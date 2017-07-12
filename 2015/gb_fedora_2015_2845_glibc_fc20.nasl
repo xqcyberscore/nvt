@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.869060");
-  script_version("$Revision: 3343 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 09:45:38 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-03-05 05:43:08 +0100 (Thu, 05 Mar 2015)");
   script_cve_id("CVE-2014-6040", "CVE-2014-7817", "CVE-2014-5119", "CVE-2014-0475");
   script_tag(name:"cvss_base", value:"7.5");
@@ -49,7 +49,6 @@ Linux system will not function.
   script_xref(name: "FEDORA", value: "2015-2845");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-March/150631.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of glibc");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

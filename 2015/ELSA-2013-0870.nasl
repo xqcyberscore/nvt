@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2013-0870.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2013-0870.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.123618");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:06:21 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2013-0870");
 script_tag(name: "insight", value: "ELSA-2013-0870 -  tomcat5 security update - [0:5.5.23-0jpp.40]- Related: CVE-2013-1976 It was found during additional testing- that the tomcat5 init may fail to start because the user- shell is set to sbin/nologin. Fixed in init scrip. SU now- uses -s /bin/sh during startup[0:5.5.23-0jpp.39]- Resolves: CVE-2013-1976 Improper TOMCAT_LOG management in- initscript. Change location of TOMCAT_LOG to /var/log so- only root can write to it. Touching TOMCAT_LOG is no longer- required during initscript startup. Permissions and ownership- changed to 0755 tomcat:root for logdir"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2013-0870");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

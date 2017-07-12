@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851011");
-  script_version("$Revision: 6345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_version("$Revision: 6439 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 10:37:25 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 16:38:59 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2014-1518", "CVE-2014-1520", "CVE-2014-1523", "CVE-2014-1524",
                 "CVE-2014-1529", "CVE-2014-1530", "CVE-2014-1531", "CVE-2014-1532",
@@ -93,8 +93,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("login/SSH/success", "ssh/login/release");
-  script_require_keys("HostDetails/OS/cpe:/o:suse:linux_enterprise_desktop", "HostDetails/OS/cpe:/o:suse:linux_enterprise_server");
+  script_mandatory_keys("login/SSH/success", "ssh/login/release", "SuSeLinuxEnterprise/Desktop_or_Server/Installed");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jun12_win.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_mozilla_prdts_mult_vuln_jun12_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Multiple Vulnerabilities - June12 (Windows)
 #
@@ -64,7 +64,7 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802865);
-  script_version("$Revision: 5999 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2012-1937", "CVE-2012-1940", "CVE-2012-1944", "CVE-2012-1945",
                 "CVE-2012-1946", "CVE-2012-1947", "CVE-2012-3105", "CVE-2012-1941",
                 "CVE-2012-0441", "CVE-2012-1938");
@@ -72,7 +72,7 @@ if(description)
                     53229, 53227, 53224, 53798, 53796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-06-19 11:00:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - June12 (Windows)");
 
@@ -90,7 +90,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

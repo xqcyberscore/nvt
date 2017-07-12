@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_detect_macosx.nasl 5871 2017-04-05 13:33:48Z antu123 $
+# $Id: gb_mozilla_prdts_detect_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products Version Detection (Mac OS X)
 #
@@ -38,10 +38,10 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802179";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 5871 $");
+  script_version("$Revision: 6445 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-05 15:33:48 +0200 (Wed, 05 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Products Version Detection (Mac OS X)");
@@ -139,7 +139,7 @@ if(!isnull(ffVer) && "does not exist" >!< ffVer)
     else
     {
       set_kb_item(name: "Mozilla/Firefox/MacOSX/Version", value:ffVer);
-
+      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE ); 
       ## Build CPE
       cpe = build_cpe(value:ffVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:firefox:");
       if(isnull(cpe))
@@ -175,7 +175,7 @@ if(!isnull(smVer) && "does not exist" >!< smVer)
 
   ## Set the version in KB
   set_kb_item(name: "SeaMonkey/MacOSX/Version", value:smVer);
-
+  replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
   ## build cpe
   cpe = build_cpe(value:smVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:seamonkey:");
   if(isnull(cpe))
@@ -225,6 +225,7 @@ if(!isnull(tbVer) && "does not exist" >!< tbVer)
     if(thuVer)
     {
       set_kb_item(name: "ThunderBird-ESR/MacOSX/Version", value:tbVer);
+      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed", value:TRUE );
 
       ## build cpe
       cpe = build_cpe(value:tbVer, exp:"^([0-9.]+)([a-zA-Z0-9]+)?", base:"cpe:/a:mozilla:thunderbird_esr:");

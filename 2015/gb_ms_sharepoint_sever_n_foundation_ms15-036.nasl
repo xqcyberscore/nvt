@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-036.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-036.nasl 6442 2017-06-27 09:37:57Z santu $
 #
 # MS SharePoint Server and Foundation Elevation of Privilege Vulnerability (3052044)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805167");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 6442 $");
   script_cve_id("CVE-2015-1653");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 11:37:57 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-04-15 15:21:41 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server and Foundation Elevation of Privilege Vulnerability (3052044)");
@@ -69,7 +69,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
-  script_require_keys("MS/SharePoint/Server/Ver", "MS/SharePoint/Foundation/Ver");
+  script_mandatory_keys("MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   exit(0);
 }
 

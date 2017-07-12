@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 6241 2017-05-30 07:00:16Z antu123 $
+# $Id: gb_firefox_detect_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
@@ -42,10 +42,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 6241 $");
+  script_version("$Revision: 6444 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 09:00:16 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Mozilla Firefox Version Detection (Windows)");
@@ -271,6 +271,7 @@ foreach key (key_list)
     else if(location)
     {
       set_kb_item(name:"Firefox/Win/Ver", value:foxVer);
+      replace_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE ); 
 
       ## build cpe
       cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)([0-9a-zA-Z]*)", base:"cpe:/a:mozilla:firefox:");

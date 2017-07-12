@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win01_jul11.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_mozilla_prdts_mult_vuln_win01_jul11.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Multiple Vulnerabilities July-11 (Windows) - 01
 #
@@ -51,8 +51,8 @@ tag_summary = "The host is installed with Mozilla Firefox, Seamonkey or Thunderb
 if(description)
 {
   script_id(802216);
-  script_version("$Revision: 5351 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_version("$Revision: 6444 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-07-07 15:43:33 +0200 (Thu, 07 Jul 2011)");
   script_cve_id("CVE-2011-2371", "CVE-2011-2373", "CVE-2011-2377");
   script_bugtraq_id(48372, 48373, 48369);
@@ -71,7 +71,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

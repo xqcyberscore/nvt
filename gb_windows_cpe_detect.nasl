@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 5964 2017-04-18 09:30:30Z cfi $
+# $Id: gb_windows_cpe_detect.nasl 6447 2017-06-27 14:23:05Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 5964 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:30:30 +0200 (Tue, 18 Apr 2017) $");
+  script_version("$Revision: 6447 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 16:23:05 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,39 +60,35 @@ include("secpod_smb_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-host      = get_host_ip();
-usrname   = kb_smb_login();
-domain    = kb_smb_domain();
-transport = kb_smb_transport();
-passwd    = kb_smb_password();
-
-if( ! host || ! usrname || ! passwd ) {
-  exit( 0 );
-}
-
-if( domain ) {
-  usrname = domain + '\\' + usrname;
-}
-
-errorval = "none";
-
-lanman = get_kb_item( "SMB/NativeLanManager" );
-samba  = get_kb_item( "SMB/samba" );
-
-if( samba || "samba" >< tolower( lanman ) || ! transport ) exit( 0 );
-
-function split_ver(value)
-{
-  val = split(value, keep:0);
-  if ("(x86)" >< val[1])
-  {
-    val = split(val[1], sep:"(x86)", keep:0);
+function split_ver( value ) {
+  val = split( value, keep:FALSE );
+  if( "(x86)" >< val[1] ) {
+    val = split( val[1], sep:"(x86)", keep:FALSE );
   }
   return val[1];
 }
 
 SCRIPT_DESC = "Windows Application CPE Detection";
 BANNER_TYPE = "Registry access via SMB";
+
+lanman = get_kb_item( "SMB/NativeLanManager" );
+samba  = get_kb_item( "SMB/samba" );
+
+if( samba || "samba" >< tolower( lanman ) ) exit( 0 );
+
+host      = get_host_ip();
+usrname   = kb_smb_login();
+domain    = kb_smb_domain();
+transport = kb_smb_transport();
+passwd    = kb_smb_password();
+
+if( ! host || ! usrname || ! passwd || ! transport ) {
+  exit( 0 );
+}
+
+if( domain ) usrname = domain + '\\' + usrname;
+
+errorval = "none";
 app = "App";
 
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
@@ -115,12 +111,11 @@ SharePoint_Designer = "SPDESIGN.exe";
 SharePoint_Workspace = "GROOVE.exe";
 Word = "WINWORD.exe";
 Visio = "VISLIB.dll";
- 
+
 #WMI Part deactivated until Mantis 52166 is fixed.
 #handle = wmi_connect(host:host, username:usrname, password:passwd);
 #handlereg = wmi_connect_reg(host:host, username:usrname, password:passwd);
 
-  
 ###SMB Part starts here:
 if(!handle || !handlereg){
   OSSYSDIR = smb_get_systemroot();
@@ -133,7 +128,10 @@ if(!handle || !handlereg){
   type = registry_get_sz(key:"SYSTEM\CurrentControlSet\Control\ProductOptions", item:"ProductType");
   version = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CurrentVersion");
   smbosname = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"ProductName");
-  spver = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion",  item:"CSDVersion");
+  build = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CurrentBuild");
+  if( isnull( build ) || ! build ) build = "unknown";
+
+  spver = registry_get_sz(key:"SOFTWARE\Microsoft\Windows NT\CurrentVersion", item:"CSDVersion");
   if( isnull( spver ) || ! spver ) spver = "0";
   if( spver != "0" ) {
     spver = eregmatch( pattern:'(Service Pack) ([0-9]+)', string:spver );
@@ -179,7 +177,7 @@ if(!handle || !handlereg){
       }
     }
   }
-  
+
   netfrmregentries = registry_enum_keys(key:netfrm);
   foreach entrie (netfrmregentries)
   {
@@ -193,7 +191,7 @@ if(!handle || !handlereg){
 
   ComFilesDir = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
   ComFilesDirx86 = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir (x86)");
-  
+
   officeregentries = registry_enum_keys(key:officekey);
   if (officeregentries){
     foreach entrie (officeregentries)
@@ -218,7 +216,7 @@ if(!handle || !handlereg){
             if (valv )VisioRegVer = valv;
           }
         }
-      }      
+      }
     }
   }
   worksregentries = registry_enum_keys(key:works);
@@ -232,7 +230,7 @@ if(!handle || !handlereg){
         worksVer = ver;
       }
     }
-  }    
+  }
 
   if (x64){
     officeregentriesx = registry_enum_keys(key:officexkey);
@@ -248,7 +246,7 @@ if(!handle || !handlereg){
           OfficeVer = entrie;
         }
         if(!visiopath)visiopath = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\visio.exe", item:"Path");
-        if (visiopath){ 
+        if (visiopath){
           if(!VisioCRV)VisioCRV = registry_get_sz(key:officexkey + entrie + "\Visio\", item:"CurrentlyRegisteredVersion");
           if(!VisioRegVer)xvalv = registry_get_sz(key:officexkey + entrie + "\Visio\", item:"InstalledVersion");
           if (xvalv )VisioRegVer = xvalv;
@@ -259,7 +257,7 @@ if(!handle || !handlereg){
             for(v=0; v<max_index(Visioentrie); v++){
               xvalv = registry_get_sz(key:officexkey + entrie + "\Visio\" + Visioentrie[v], item:"InstalledVersion");
               if (xvalv )VisioRegVer = xvalv;
-            } 
+            }
           }
         }
       }
@@ -277,7 +275,7 @@ if(!handle || !handlereg){
       }
     }
   }
-  
+
   if (OfficeVer == "10.0")Outlook = "OutLLib.dll";
   else Outlook = "OUTLOOK.exe";
 
@@ -317,10 +315,10 @@ if(!handle || !handlereg){
   iever = registry_get_sz(key:"SOFTWARE\Microsoft\Internet Explorer", item:"Version");
   oever= registry_get_sz(key:"SOFTWARE\Microsoft\Outlook Express\Version Info", item:"Current");
   if(oever)oever = ereg_replace(pattern:",", replace:".", string:oever);
-  
+
   #wmplayer = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wmplayer.exe", item:"Path");
   #wmplayerver = fetch_file_version(sysPath:wmplayer, file_name:"wmplayer.exe");
-  
+
   wmplayerver = registry_get_sz(key:"SOFTWARE\Microsoft\MediaPlayer\PlayerUpgrade",item:"PlayerVersion");
   if (wmplayerver)wmplayerver = ereg_replace(pattern:",", replace:".", string:wmplayerver);
 
@@ -329,7 +327,7 @@ if(!handle || !handlereg){
 
   IISMinorVersion = registry_get_dword(key:"SOFTWARE\Microsoft\INetStp", item:"MinorVersion");
   IISMajorVersion = registry_get_dword(key:"SOFTWARE\Microsoft\INetStp", item:"MajorVersion");
-  
+
   ExchProductMajor = registry_get_dword(key:"SOFTWARE\Microsoft\Exchange\Setup", item:"MsiProductMajor");
   ExchProductMinor = registry_get_dword(key:"SOFTWARE\Microsoft\Exchange\Setup", item:"MsiProductMinor");
   ExchSPBuild = registry_get_dword(key:"SOFTWARE\Microsoft\Exchange\Setup", item:"ServicePackBuild");
@@ -382,15 +380,15 @@ if(!handle || !handlereg){
   VS2010path = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\10.0", item:"Installdir");
   if (VS2010path) VS2010 = fetch_file_version(sysPath:VS2010path, file_name:"devenv.exe");
   if (VS2010path) VS2010SP = registry_get_dword(key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\10.0", item:"SP");
-  
+
   VS2012path = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\11.0", item:"Installdir");
   if (VS2012path) VS2012 = fetch_file_version(sysPath:VS2012path, file_name:"devenv.exe");
   if (VS2012path) VS2012SP = registry_get_dword(key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\11.0", item:"SP");
-    
+
   VS2013path = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\12.0", item:"Installdir");
   if (VS2013path) VS2013 = fetch_file_version(sysPath:VS2013path, file_name:"devenv.exe");
   if (VS2013path) VS2013SP = registry_get_dword(key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\12.0", item:"SP");
-  
+
   VS2015path = registry_get_sz(key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\14.0", item:"Installdir");
   if (VS2015path) VS2015 = fetch_file_version(sysPath:VS2015path, file_name:"devenv.exe");
   if (VS2015path) VS2015SP = registry_get_dword(key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\14.0", item:"SP");
@@ -413,25 +411,25 @@ if(!handle || !handlereg){
   VS2010path = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\10.0", item:"Installdir");
   if (VS2010path) VS2010 = fetch_file_version(sysPath:VS2010path, file_name:"devenv.exe");
   if (VS2010path) VS2010SP = registry_get_dword(key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\10.0", item:"SP");
-  
+
   VS2012path = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\11.0", item:"Installdir");
   if (VS2012path) VS2012 = fetch_file_version(sysPath:VS2012path, file_name:"devenv.exe");
   if (VS2012path) VS2012SP = registry_get_dword(key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\11.0", item:"SP");
-    
+
   VS2013path = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\12.0", item:"Installdir");
   if (VS2013path) VS2013 = fetch_file_version(sysPath:VS2013path, file_name:"devenv.exe");
   if (VS2013path) VS2013SP = registry_get_dword(key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\12.0", item:"SP");
-  
+
   VS2015path = registry_get_sz(key:"SOFTWARE\Microsoft\VisualStudio\14.0", item:"Installdir");
   if (VS2015path) VS2015 = fetch_file_version(sysPath:VS2015path, file_name:"devenv.exe");
   if (VS2015path) VS2015SP = registry_get_dword(key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\14.0", item:"SP");
  }
-    
+
   NDPv4Client = registry_get_dword(key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client", item:"Install");
   NDPv4ClientVer = registry_get_sz(key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client", item:"Version");
   NDPv4Full = registry_get_dword(key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full", item:"Install");
   NDPv4FullVer = registry_get_sz(key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full", item:"Version");
-  
+
   MVS2005STen = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\0EEDF7F0258333042A16F38A4BEC64C6\InstallProperties", item:"DisplayName");
   MVS2005STja = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\67EC4B5345C7E7347BBA24CFF8B977B6\InstallProperties", item:"DisplayName");
 
@@ -441,7 +439,7 @@ if(!handle || !handlereg){
   MVS2005R2 = registry_get_sz(key:"SOFTWARE\Classes\Installer\Products\768AAF4834783C442BE25B1A2554D677", item:"ProductName");
   MVS2005R2ST = registry_get_sz(key:"SOFTWARE\Classes\Installer\Products\96CF2B3B315599C4A9E75C85A4295880", item:"ProductName");
   MVS2005R2ENT = registry_get_sz(key:"SOFTWARE\Classes\Installer\Products\2ACE96BF53CE47C46B808783D50059D9", item:"ProductName");
-  
+
   MVP2004 = registry_get_sz(key:"SOFTWARE\Classes\Installer\Products\B56328045890A99429D04E4D14D45CF8", item:"ProductName");
   MVP2004SP1  = registry_get_sz(key:"SOFTWARE\Classes\Installer\Products\EDDFACCCCECE4EA4DB79400767BB4D9A", item:"ProductName");
 
@@ -460,7 +458,9 @@ else if(handle && handlereg){
   query7 = 'select OperatingSystemSKU from Win32_OperatingSystem';
   query8 = 'select OSType from Win32_OperatingSystem';
   query9 = "Select version from CIM_DataFile Where FileName = 'wmplayer' AND Extension = 'exe'";
-  
+
+  #TODO: Also query Windows Build Number for Windows 10 once the WMI Part is enabled
+
   OSVER = wmi_os_version(handle:handle);
 
   OSSP =  wmi_os_sp(handle:handle);
@@ -501,7 +501,7 @@ else if(handle && handlereg){
   if (ComFilesDirx86)ComFilesDirx86 = ereg_replace(pattern:"\\", replace:"\\", string:ComFilesDirx86);
 
   OSPRODS = wmi_query(wmi_handle:handle, query:query3);
-  if (OSPRODS){  
+  if (OSPRODS){
     OSPRODS = split(OSPRODS, sep:'\n', keep:0);
     if (OSVER <= 6){
       OSPRODS = split(OSPRODS[1], sep:'|', keep:0);
@@ -547,7 +547,7 @@ else if(handle && handlereg){
     else OSOTD = OSOTD[1];
   }
   OSSIUM = wmi_query(wmi_handle:handle, query:query5);
-  if (OSSIUM){  
+  if (OSSIUM){
     OSSIUM = split(OSSIUM, sep:'\n', keep:0);
     if (OSVER <= 6){
       OSSIUM = split(OSSIUM[1], sep:'|', keep:0);
@@ -714,7 +714,7 @@ else if(handle && handlereg){
           OfficeVer = entrie[i];
         }
         if(!visiopath)visiopath = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\visio.exe", key_name:"Path");
-        if (visiopath){ 
+        if (visiopath){
           if(!VisioCRV)VisioCRV = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\", key_name:"CurrentlyRegisteredVersion");
           if(!VisioRegVer)xvalv = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\", key_name:"InstalledVersion");
           if (xvalv )VisioRegVer = xvalv;
@@ -725,7 +725,7 @@ else if(handle && handlereg){
             for(v=0; v<max_index(Visioentrie); v++){
               xvalv = wmi_reg_get_sz(wmi_handle:handlereg, key:officexkey + entrie[i] + "\Visio\" + Visioentrie[v], key_name:"InstalledVersion");
               if (xvalv )VisioRegVer = xvalv;
-            } 
+            }
           }
         }
       }
@@ -802,20 +802,19 @@ else if(handle && handlereg){
   if(oever)oever = ereg_replace(pattern:",", replace:".", string:oever);
   wmplayer = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wmplayer.exe", key_name:"Path");
   wmplayerver = fetch_file_version(sysPath:wmplayer, file_name:"wmplayer.exe");
-  
+
   mdacfullver = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DataAccess", key_name:"FullInstallVer");
   mdacver = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DataAccess", key_name:"Version");
-  
+
   IISMinorVersion = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\INetStp", val_name:"MinorVersion");
   IISMajorVersion = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\INetStp", val_name:"MajorVersion");
-  
 
   ipnathlp = wmi_file_check_file_exists(wmi_handle:handle, filePath:OSSYSDIR + "\\ipnathlp.dll");
-  
+
   ExchProductMajor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Exchange\Setup", val_name:"MsiProductMajor");
   ExchProductMinor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Exchange\Setup", val_name:"MsiProductMinor");
   ExchSPBuild = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Exchange\Setup", val_name:"ServicePackBuild");
-  
+
   Exch2010ProductMajor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"Software\Microsoft\ExchangeServer\v14\Setup", val_name:"MsiProductMajor");
   Exch2010ProductMinor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"Software\Microsoft\ExchangeServer\v14\Setup", val_name:"MsiProductMinor");
   Exch2010BuildMajor = wmi_reg_get_dword_val(wmi_handle:handlereg, keyy:"Software\Microsoft\ExchangeServer\v14\Setup", val_name:"MsiBuildMajor");
@@ -829,24 +828,23 @@ else if(handle && handlereg){
   if (x64)msxml5 = wmi_file_check_file_exists(wmi_handle:handle, filePath:ComFilesDirx86 + "\\Microsoft Shared\\OFFICE11\\msxml5.dll");
   else msxml5 = wmi_file_check_file_exists(wmi_handle:handle, filePath:ComFilesDir + "\\Microsoft Shared\\OFFICE11\\msxml5.dll");
   msxml6 = wmi_file_check_file_exists(wmi_handle:handle, filePath:OSSYSDIR + "\\msxml6.dll");
-  
+
   NDPv4Client = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client", val_name:"Install");
   NDPv4ClientVer = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client", key_name:"Version");
   NDPv4Full = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full", val_name:"Install");
   NDPv4FullVer = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full", key_name:"Version");
 
 #  wlmessenger = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{A85FD55B-891B-4314-97A5-EA96C0BD80B5}", key_name:"DisplayVersion")
- 
 
   sqlregentries = wmi_reg_enum_key(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Microsoft SQL Server");
   if (x64)sqlregentriesx = wmi_reg_enum_key(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server");
 
   messenger = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Active Setup\Installed Components\{5945c046-1e7d-11d1-bc44-00c04fd912be}", key_name:"Version");
   if (messenger)messenger = ereg_replace(pattern:",", replace:".", string:messenger);
-  
+
   crmver = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\NCompass\Resolution Content Server\VersionInfo", key_name:"Version");
   if(crmver)crmsp = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\NCompass\Resolution Content Server\VersionInfo", key_name:"Patches");
-  
+
   isapath = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Fpc", key_name:"InstallDirectory");
   if (isapath){
     isapath = ereg_replace(pattern:"\\", replace:"\\", string:isapath);
@@ -859,7 +857,7 @@ else if(handle && handlereg){
  if (x64){
   VS2002path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\7.0", key_name:"Installdir");
   if (VS2002path){
-    VS2002path = ereg_replace(pattern:"\\", replace:"\\", string:VS2002path); 
+    VS2002path = ereg_replace(pattern:"\\", replace:"\\", string:VS2002path);
     VS2002 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2002path + "devenv.exe");
   }
   VS2003path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\7.1", key_name:"Installdir");
@@ -874,8 +872,8 @@ else if(handle && handlereg){
     VS2005SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\8.0", val_name:"SP");
   }
   VS2008path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\9.0", key_name:"Installdir");
-  if (VS2008path){ 
-    VS2008path = ereg_replace(pattern:"\\", replace:"\\", string:VS2008path);  
+  if (VS2008path){
+    VS2008path = ereg_replace(pattern:"\\", replace:"\\", string:VS2008path);
     VS2008 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2008path + "devenv.exe");
     VS2008SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\9.0", val_name:"SP");
   }
@@ -890,24 +888,24 @@ else if(handle && handlereg){
     VS2012path = ereg_replace(pattern:"\\", replace:"\\", string:VS2012path);
     VS2012 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2012path + "devenv.exe");
     VS2012SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\11.0", val_name:"SP");
-  }  
+  }
   VS2013path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\12.0", key_name:"Installdir");
   if (VS2013path){
     VS2013path = ereg_replace(pattern:"\\", replace:"\\", string:VS2013path);
     VS2013 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2013path + "devenv.exe");
     VS2013SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\12.0", val_name:"SP");
-  }  
+  }
   VS2015path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\14.0", key_name:"Installdir");
   if (VS2015path){
     VS2015path = ereg_replace(pattern:"\\", replace:"\\", string:VS2015path);
     VS2015 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2015path + "devenv.exe");
     VS2015SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\14.0", val_name:"SP");
-  }  
+  }
  }
  else{
   VS2002path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\7.0", key_name:"Installdir");
   if (VS2002path){
-    VS2002path = ereg_replace(pattern:"\\", replace:"\\", string:VS2002path); 
+    VS2002path = ereg_replace(pattern:"\\", replace:"\\", string:VS2002path);
     VS2002 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2002path + "devenv.exe");
   }
   VS2003path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\7.1", key_name:"Installdir");
@@ -922,8 +920,8 @@ else if(handle && handlereg){
     VS2005SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\8.0", val_name:"SP");
   }
   VS2008path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\9.0", key_name:"Installdir");
-  if (VS2008path){ 
-    VS2008path = ereg_replace(pattern:"\\", replace:"\\", string:VS2008path);  
+  if (VS2008path){
+    VS2008path = ereg_replace(pattern:"\\", replace:"\\", string:VS2008path);
     VS2008 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2008path + "devenv.exe");
     VS2008SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\9.0", val_name:"SP");
   }
@@ -938,19 +936,19 @@ else if(handle && handlereg){
     VS2012path = ereg_replace(pattern:"\\", replace:"\\", string:VS2012path);
     VS2012 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2012path + "devenv.exe");
     VS2012SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\11.0", val_name:"SP");
-  }  
+  }
   VS2013path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\12.0", key_name:"Installdir");
   if (VS2013path){
     VS2013path = ereg_replace(pattern:"\\", replace:"\\", string:VS2013path);
     VS2013 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2013path + "devenv.exe");
     VS2013SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\12.0", val_name:"SP");
-  }  
+  }
   VS2015path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\14.0", key_name:"Installdir");
   if (VS2015path){
     VS2015path = ereg_replace(pattern:"\\", replace:"\\", string:VS2015path);
     VS2015 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2015path + "devenv.exe");
     VS2015SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\14.0", val_name:"SP");
-  }  
+  }
  }
 
   MVS2005STen = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\0EEDF7F0258333042A16F38A4BEC64C6\InstallProperties", key_name:"DisplayName");
@@ -958,11 +956,11 @@ else if(handle && handlereg){
 
   MVS2005ENTen = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\813ACF1D304B0FB43A2E440E1CF2ADD3\InstallProperties", key_name:"DisplayName");
   MVS2005ENTja = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\C31148E7379AA7C48BF2343AB582C3D8\InstallProperties", key_name:"DisplayName");
-  
+
   MVS2005R2 = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Classes\Installer\Products\768AAF4834783C442BE25B1A2554D677", key_name:"ProductName");
   MVS2005R2ST = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Classes\Installer\Products\96CF2B3B315599C4A9E75C85A4295880", key_name:"ProductName");
   MVS2005R2ENT = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Classes\Installer\Products\2ACE96BF53CE47C46B808783D50059D9", key_name:"ProductName");
-  
+
   MVP2004 = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Classes\Installer\Products\B56328045890A99429D04E4D14D45CF8", key_name:"ProductName");
   MVP2004SP1  = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Classes\Installer\Products\EDDFACCCCECE4EA4DB79400767BB4D9A", key_name:"ProductName");
 
@@ -972,7 +970,6 @@ else if(handle && handlereg){
 #  wmi_close(wmi_handle:handle);
 #  wmi_close(wmi_handle:handlereg);
 }
-
 
 ##Check if keylist exists and set missing wmi variable for future work
 if (!keylist) keylist = smbkeylist;
@@ -1010,7 +1007,7 @@ else if (OSVER == "4.0"){
 }
 if (OSVER == "5.0"){
   cpe = "cpe:/o:microsoft:windows_2000";
-  
+
   if (OSSP == "0" ) register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold", desc:SCRIPT_DESC);
   else if (OSSP != "0") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp" + OSSP, desc:SCRIPT_DESC);
   else if (OSSP == "0" && ("ServerNT" >< type || "LanmanNT">< type))register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:server", desc:SCRIPT_DESC);
@@ -1080,7 +1077,7 @@ if (OSVER == "5.2"){
         if (OSSP == "2" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + "::sp2:x64", desc:SCRIPT_DESC);
         else if (OSSP == "0" && OSCPU == "9") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe1 + ":::x64", desc:SCRIPT_DESC);
       }
-      
+
       if (OSSP == "0" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::gold:itanium", desc:SCRIPT_DESC);
       if (OSSP == "1" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows-nt:2003:sp1:itanium", desc:SCRIPT_DESC);
       if (OSSP == "2" && OSCPU == "6") register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::sp2:itanium", desc:SCRIPT_DESC);
@@ -1333,7 +1330,6 @@ if (OSVER == "6.0"){
   }
 }
 
-
 if (OSVER == "6.1"){
   cpe = "cpe:/o:microsoft:windows_7";
   if(OSTYPE == "1"){#Windows 7
@@ -1351,7 +1347,7 @@ if (OSVER == "6.1"){
       }
       if (OSSP == "1"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
-      }      
+      }
     }
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2008 R2
@@ -1359,7 +1355,7 @@ if (OSVER == "6.1"){
     if (OSSP == "0"){
       if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2008:r2", desc:SCRIPT_DESC);
       if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::x64", desc:SCRIPT_DESC);
-      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::itanium", desc:SCRIPT_DESC);      
+      if (OSSKU == "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + "::itanium", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
       if (OSSKU != "15")register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":sp1:x64", desc:SCRIPT_DESC);
@@ -1396,11 +1392,11 @@ if (OSVER == "6.1"){
         }
         if (OSSP == "1"){
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
-        }      
+        }
       }
-    }  
+    }
   }
-  
+
 }
 if (OSVER == "6.2"){
   cpe = "cpe:/o:microsoft:windows_8";
@@ -1419,7 +1415,7 @@ if (OSVER == "6.2"){
       }
       if (OSSP == "1"){
         #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
-      }      
+      }
     }
   }
   else if(OSTYPE == "2" || OSTYPE == "3"){#Windows 2012
@@ -1430,7 +1426,7 @@ if (OSVER == "6.2"){
     }
   }
   #SMB fallback. Is not so exactly as wmi.
-  else if(!OSTYPE){  
+  else if(!OSTYPE){
     if ("Windows Server 2012" >< OSNAME){
       if (OSSP == "0"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
@@ -1454,13 +1450,13 @@ if (OSVER == "6.2"){
         }
         if (OSSP == "1"){
           #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
-        }      
+        }
       }
-    }  
+    }
   }
 }
 
-# TODO: Add Windows 10 and Server 2016 support via WMI
+# TODO: Add Windows 10, Server 2016 and Windos Embedded support via WMI
 if (OSVER == "6.3"){
   if(OSTYPE == "1"){#Windows 8.1
     register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_8.1", desc:SCRIPT_DESC);
@@ -1488,7 +1484,16 @@ if (OSVER == "6.3"){
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2016", desc:SCRIPT_DESC);
     }
     else if ("Windows 10" >< OSNAME){
-      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_10", desc:SCRIPT_DESC);
+      cpe = "cpe:/o:microsoft:windows_10";
+      # https://en.wikipedia.org/wiki/Windows_10_version_history for the version <> build mapping
+      if( build == "10240" ) cpe += ":1507";
+      if( build == "10586" ) cpe += ":1511";
+      if( build == "14393" ) cpe += ":1607";
+      if( build == "15063" ) cpe += ":1703";
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe, desc:SCRIPT_DESC);
+    }
+    else if ("Windows Embedded 8.1" >< OSNAME){
+      register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_embedded_8.1", desc:SCRIPT_DESC );
     }
   }
 }
@@ -1519,7 +1524,7 @@ if(netfrmkeylist){
     else if (val[0] == "v2.0.50727"){
       if (!val[2]){
         if (val[1] == "2.0.50727.42")register_host_detail(name:app, value:cpe + ":2.0:gold", desc:SCRIPT_DESC);
-      }      
+      }
       else if (val[2] == "1"){
         register_host_detail(name:app, value:cpe + ":2.0:sp1", desc:SCRIPT_DESC);
       }
@@ -1548,7 +1553,7 @@ if(netfrmkeylist){
       else register_host_detail(name:app, value:cpe + ":3.5", desc:SCRIPT_DESC);
     }
     #if (!val[0]) register_host_detail(name:app, value:"cpe:/a:microsoft:.net_framework", desc:SCRIPT_DESC);
-  }  
+  }
 }
 
 if (NDPv4Client || NDPv4Full){
@@ -1604,7 +1609,7 @@ if (OfficeVer){
         else if ("Microsoft Office Standard" >< val[0])register_host_detail(name:app, value:cpe + ":2007::standard", desc:SCRIPT_DESC);
         else NOD++;
       }
-      if ( NOD == i)register_host_detail(name:app, value:cpe + ":2007", desc:SCRIPT_DESC);    
+      if ( NOD == i)register_host_detail(name:app, value:cpe + ":2007", desc:SCRIPT_DESC);
     }
     else if (version_in_range(version:OfficeFileVer, test_version:"12.0.6213.1000", test_version2:"12.0.6425.1000"))
     {
@@ -1614,7 +1619,7 @@ if (OfficeVer){
         if ("Microsoft Office Professional 2007">< val[0])register_host_detail(name:app, value:cpe + ":2007:sp1:professional", desc:SCRIPT_DESC);
         else NOD++;
       }
-      if ( NOD == i) register_host_detail(name:app, value:cpe + ":2007:sp1", desc:SCRIPT_DESC);    
+      if ( NOD == i) register_host_detail(name:app, value:cpe + ":2007:sp1", desc:SCRIPT_DESC);
     }
     else if (version_in_range(version:OfficeFileVer, test_version:"12.0.6425.1000", test_version2:"13.0.0.0"))
     {
@@ -1623,8 +1628,8 @@ if (OfficeVer){
         val = split(instprg[i], sep:";", keep:0);
         if ("Microsoft Office Professional 2007">< val[0])register_host_detail(name:app, value:cpe + ":2007:sp2:professional", desc:SCRIPT_DESC);
         else NOD++;
-      } 
-      if ( NOD == i) register_host_detail(name:app, value:cpe + ":2007:sp2", desc:SCRIPT_DESC);   
+      }
+      if ( NOD == i) register_host_detail(name:app, value:cpe + ":2007:sp2", desc:SCRIPT_DESC);
     }
     else if (version_in_range(version:OfficeFileVer, test_version:"14.0.4760.1000", test_version2:"14.0.6023.1000"))register_host_detail(name:app, value:cpe + ":2010", desc:SCRIPT_DESC);
     else if (version_in_range(version:OfficeFileVer, test_version:"14.0.6023.1000", test_version2:"15.0.0.0"))register_host_detail(name:app, value:cpe + ":2010:sp1", desc:SCRIPT_DESC);
@@ -1654,7 +1659,7 @@ if (OfficeVer){
         else if ("Microsoft Office Ultimate" >< val[0])register_host_detail(name:app, value:cpe + ":2007::ultimate", desc:SCRIPT_DESC);
         else if ("Microsoft Office Standard" >< val[0])register_host_detail(name:app, value:cpe + ":2007::standard", desc:SCRIPT_DESC);
         else register_host_detail(name:app, value:cpe + ":2007", desc:SCRIPT_DESC);
-      }    
+      }
     }
     else if (OfficeVer == "14.0" )
     {
@@ -1664,7 +1669,7 @@ if (OfficeVer){
     {
       register_host_detail(name:app, value:cpe + ":2013", desc:SCRIPT_DESC);
     }
-    
+
     else register_host_detail(name:app, value:cpe + " debug:" + OfficeVer + " debug:" + OfficeFileVer, desc:SCRIPT_DESC);
   }
 }
@@ -1969,7 +1974,7 @@ if (iever){
     register_host_detail(name:app, value:cpe + ":5.0", desc:SCRIPT_DESC);
   }
   else if (version_is_equal(version:iever, test_version:"5.00.2516.1900"))register_host_detail(name:app, value:cpe + ":5.00.2516.1900", desc:SCRIPT_DESC);
-  
+
   else if (version_is_equal(version:iever, test_version:"5.00.2614.3500"))
   {
     register_host_detail(name:app, value:cpe + ":5.00.2614.3500", desc:SCRIPT_DESC);
@@ -1985,7 +1990,7 @@ if (iever){
     register_host_detail(name:app, value:cpe + ":5.01", desc:SCRIPT_DESC);
   }
   else if (version_is_equal(version:iever, test_version:"5.00.2919.800"))register_host_detail(name:app, value:cpe + ":5.00.2919.800", desc:SCRIPT_DESC);
-  
+
   else if (version_is_equal(version:iever, test_version:"5.00.2920.0000"))
   {
     register_host_detail(name:app, value:cpe + ":5.00.2920.0000", desc:SCRIPT_DESC);
@@ -2037,7 +2042,7 @@ if (iever){
     register_host_detail(name:app, value:cpe + ":5.5:preview", desc:SCRIPT_DESC);
     register_host_detail(name:app, value:cpe + ":5.50.3825.1300", desc:SCRIPT_DESC);
   }
-  else if (version_is_equal(version:iever, test_version:"5.50.4030.2400"))register_host_detail(name:app, value:cpe + ":5.50.4030.2400", desc:SCRIPT_DESC);  
+  else if (version_is_equal(version:iever, test_version:"5.50.4030.2400"))register_host_detail(name:app, value:cpe + ":5.50.4030.2400", desc:SCRIPT_DESC);
   else if (version_is_equal(version:iever, test_version:"5.50.4134.0100"))register_host_detail(name:app, value:cpe + ":5.50.4134.0100", desc:SCRIPT_DESC);
   else if (version_is_equal(version:iever, test_version:"5.50.4134.0600"))register_host_detail(name:app, value:cpe + ":5.50.4134.0600", desc:SCRIPT_DESC);
   else if (version_is_equal(version:iever, test_version:"5.50.4308.2900"))register_host_detail(name:app, value:cpe + ":5.50.4308.2900", desc:SCRIPT_DESC);
@@ -2152,7 +2157,7 @@ if(wmplayerver){
   else if (version_in_range(version:wmplayerver, test_version:"7.01.00.3055", test_version2:"8.0.0.0"))register_host_detail(name:app, value:cpe + ":7.1", desc:SCRIPT_DESC);
   else if (version_is_equal(version:wmplayerver, test_version:"8.00.00.4477"))register_host_detail(name:app, value:cpe + ":8.00.00.4477", desc:SCRIPT_DESC);
   else if (version_in_range(version:wmplayerver, test_version:"8.00.00.4477", test_version2:"9.00.0.0"))
-  { 
+  {
     register_host_detail(name:app, value:cpe + ":xp", desc:SCRIPT_DESC);
     register_host_detail(name:app, value:cpe + ":8", desc:SCRIPT_DESC);
   }
@@ -2213,10 +2218,10 @@ if (IISMajorVersion >= "1" && IISMinorVersion){
   else if (IISMajorVersion == "5" && IISMinorVersion == "1"){
     register_host_detail(name:app, value:cpe + ":5.1", desc:SCRIPT_DESC);
     register_host_detail(name:app, value:cpe1 + ":5.1", desc:SCRIPT_DESC);
-  }    
+  }
   else if (IISMajorVersion == "6" && IISMinorVersion == "0"){
     register_host_detail(name:app, value:cpe + ":6.0", desc:SCRIPT_DESC);
-	    register_host_detail(name:app, value:cpe1 + ":6.0", desc:SCRIPT_DESC);
+    register_host_detail(name:app, value:cpe1 + ":6.0", desc:SCRIPT_DESC);
   }
   else if (IISMajorVersion == "7" && IISMinorVersion == "0"){
     register_host_detail(name:app, value:cpe1 + ":7.0", desc:SCRIPT_DESC);
@@ -2350,7 +2355,7 @@ if (sqlregentries || sqlregentriesx){
     if(!entrie)entrie = sqlregentriesx;
     for(i=0; i<max_index(entrie); i++)
     {
-      val = NULL;    
+      val = NULL;
       if(handlereg)val = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entrie[i] + "\MSSQLServer\CurrentVersion", key_name:"CurrentVersion");
       else val = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft SQL Server\" + entrie[i] + "\MSSQLServer\CurrentVersion", item:"CurrentVersion");
 
@@ -2381,7 +2386,7 @@ if (sqlregentries || sqlregentriesx){
       else if (version_in_range(version:val, test_version:"9.00.2047", test_version2:"9.00.3042"))register_host_detail(name:app, value:cpe + ":2005:sp1", desc:SCRIPT_DESC);
       else if (version_in_range(version:val, test_version:"9.00.3042", test_version2:"9.00.4035"))register_host_detail(name:app, value:cpe + ":2005:sp2", desc:SCRIPT_DESC);
       else if (version_in_range(version:val, test_version:"9.00.4035", test_version2:"9.00.5000"))register_host_detail(name:app, value:cpe + ":2005:sp3", desc:SCRIPT_DESC);
-      else if (version_in_range(version:val, test_version:"9.00.5000", test_version2:"10.00.0"))register_host_detail(name:app, value:cpe + ":2005:sp4", desc:SCRIPT_DESC);      
+      else if (version_in_range(version:val, test_version:"9.00.5000", test_version2:"10.00.0"))register_host_detail(name:app, value:cpe + ":2005:sp4", desc:SCRIPT_DESC);
       else if (version_in_range(version:val, test_version:"10.00.1600.22", test_version2:"10.00.2531.00"))register_host_detail(name:app, value:cpe + ":2008", desc:SCRIPT_DESC);
       else if (version_in_range(version:val, test_version:"10.00.2531.00", test_version2:"10.00.4000.00"))register_host_detail(name:app, value:cpe + ":2008:sp1", desc:SCRIPT_DESC);
       else if (version_in_range(version:val, test_version:"10.00.4000.00", test_version2:"10.00.5500.00"))register_host_detail(name:app, value:cpe + ":2008:sp2", desc:SCRIPT_DESC);
@@ -2417,7 +2422,7 @@ if (crmver){
   else if ( crmver =~ '^5.0..*' && "SP2" >< crmsp)register_host_detail(name:app, value:"cpe:/a:microsoft:content_management_server:2002:sp2", desc:SCRIPT_DESC);
   else if ( crmver =~ '^5.0..*')register_host_detail(name:app, value:"cpe:/a:microsoft:content_management_server:2002", desc:SCRIPT_DESC);
   else register_host_detail(name:app, value:"cpe:/a:microsoft:content_management_server", desc:SCRIPT_DESC);
-  
+
 }
 
 if (IsaVer){
@@ -2480,7 +2485,7 @@ if(MVS2005ENTen || MVS2005ENTja)register_host_detail(name:app, value:"cpe:/a:mic
 if("Microsoft Virtual Server 2005 R2 SP1" >< MVS2005R2)register_host_detail(name:app, value:"cpe:/a:microsoft:virtual_server:2005:r2", desc:SCRIPT_DESC);
 if(MVS2005R2ST)register_host_detail(name:app, value:"cpe:/a:microsoft:virtual_server:2005:r2:std", desc:SCRIPT_DESC);
 if(MVS2005R2ENT)register_host_detail(name:app, value:"cpe:/a:microsoft:virtual_server:2005:r2:enterprise", desc:SCRIPT_DESC);
-  
+
 if(MVP2004){
   cpe = "cpe:/a:microsoft:virtual_pc:2004";
   if (MVP2004SP1)register_host_detail(name:app, value:cpe + ":SP1", desc:SCRIPT_DESC);
@@ -2532,7 +2537,7 @@ if (instprg){
       else if (version_in_range(version:val[1], test_version:"6.0.0.0", test_version2:"6.1.0.0"))register_host_detail(name:app, value:cpe + ":6.0", desc:SCRIPT_DESC);
       else if (version_in_range(version:val[1], test_version:"6.1.0.0", test_version2:"6.2.0.0"))register_host_detail(name:app, value:cpe + ":6.1", desc:SCRIPT_DESC);
       else register_host_detail(name:app, value:cpe + "_service", desc:SCRIPT_DESC);
-    }  
+    }
     if ("Microsoft Commerce Server" >< val[0]){
       cpe = "cpe:/a:microsoft:commerce_server";
       if("Microsoft Commerce Server 2000 Service Pack 1" >< val[0])

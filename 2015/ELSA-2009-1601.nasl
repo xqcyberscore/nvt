@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2009-1601.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2009-1601.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122417");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:44:54 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2009-1601");
 script_tag(name: "insight", value: "ELSA-2009-1601 -  kdelibs security update - [3.5.4-25.0.1.el5_4.1]- Remove Version branding- Maximum rpm trademark logos removed (pics/crystalsvg/*-mime-rpm*) in tarball[3.5.4-25.1]- bump release[3.5.4-22.2]- Resolves: #539716, CVE-2009-0689, kdelibs remote array overrun"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2009-1601");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

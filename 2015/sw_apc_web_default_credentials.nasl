@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apc_web_default_credentials.nasl 4080 2016-09-16 09:49:57Z cfi $
+# $Id: sw_apc_web_default_credentials.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # APC Network Management Card Webinterface Default Credentials
 #
@@ -28,13 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111052"); 
-  script_version("$Revision: 4080 $");
+  script_version("$Revision: 6443 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("APC Network Management Card Webinterface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-16 11:49:57 +0200 (Fri, 16 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-12 15:00:00 +0100 (Thu, 12 Nov 2015)");
-  script_summary("Determine if it is possible to login with default credentials");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");

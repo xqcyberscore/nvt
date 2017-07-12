@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2010-0321.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2010-0321.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122372");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:17:42 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2010-0321");
 script_tag(name: "insight", value: "ELSA-2010-0321 -  automake security update - [1.9.6-2.3]- increase delay in self checks- add delays in aclocal7 self check http://osdir.com/ml/sysutils.automake.bugs/2006-09/msg00012.html- preserve timestamps of configure files[1.9.6-2.2]- add fix for CVE-2009-4029"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2010-0321");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

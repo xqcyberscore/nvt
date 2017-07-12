@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_recovery_key_info_disc_vuln_macosx.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_mozilla_prdts_recovery_key_info_disc_vuln_macosx.nasl 6445 2017-06-27 12:31:06Z santu $
 #
 # Mozilla Products 'Firefox Recovery Key.html' Information Disclosure Vulnerability (MAC OS X)
 #
@@ -44,8 +44,8 @@ tag_summary = "The host is installed with Mozilla firefox/seamonkey and is prone
 if(description)
 {
   script_id(802582);
-  script_version("$Revision: 6022 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_version("$Revision: 6445 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 14:31:06 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-02-06 14:03:00 +0530 (Mon, 06 Feb 2012)");
   script_cve_id("CVE-2012-0450");
   script_bugtraq_id(51787);
@@ -59,8 +59,7 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_require_keys("Mozilla/Firefox/MacOSX/Version",
-                      "SeaMonkey/MacOSX/Version");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

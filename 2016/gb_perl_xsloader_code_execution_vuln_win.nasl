@@ -1,6 +1,6 @@
 ###################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_xsloader_code_execution_vuln_win.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_perl_xsloader_code_execution_vuln_win.nasl 6441 2017-06-27 09:19:17Z santu $
 #
 # Perl 'XSLoader Method' Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:perl:perl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809819");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 6441 $");
   script_cve_id("CVE-2016-6185");
   script_bugtraq_id(91685);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 11:19:17 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2016-11-24 21:21:51 +0530 (Thu, 24 Nov 2016)");
   script_name("Perl 'XSLoader Method' Code Execution Vulnerability (Windows)");
 
@@ -68,7 +68,7 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_perl_detect_win.nasl");
-  script_require_keys("ActivePerl/Ver", "Strawberry/Perl/Ver");
+  script_mandatory_keys("Perl/Strawberry_or_Active/Installed");
   exit(0);
 }
 

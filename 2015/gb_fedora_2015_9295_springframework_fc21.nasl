@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806535");
-  script_version("$Revision: 6336 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 15:49:57 +0200 (Wed, 14 Jun 2017) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-02 07:58:11 +0100 (Mon, 02 Nov 2015)");
   script_cve_id("CVE-2015-5211");
   script_tag(name:"cvss_base", value:"9.3");
@@ -46,7 +46,6 @@ Development by Rod Johnson (Wrox, 2002).
   script_xref(name: "FEDORA", value: "2015-9295");
   script_xref(name: "URL" , value: "https://lists.fedoraproject.org/pipermail/package-announce/2015-November/170611.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of springframework");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Fedora Local Security Checks");

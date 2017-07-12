@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851099");
-  script_version("$Revision: 3353 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-05-18 14:36:03 +0200 (Wed, 18 May 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-10-16 20:00:42 +0200 (Fri, 16 Oct 2015)");
   script_cve_id("CVE-2015-3044", "CVE-2015-3077", "CVE-2015-3078", "CVE-2015-3079", "CVE-2015-3080", "CVE-2015-3081", "CVE-2015-3082", "CVE-2015-3083", "CVE-2015-3084", "CVE-2015-3085", "CVE-2015-3086", "CVE-2015-3087", "CVE-2015-3088", "CVE-2015-3089", "CVE-2015-3090", "CVE-2015-3091", "CVE-2015-3092", "CVE-2015-3093");
   script_tag(name:"cvss_base", value:"10.0");
@@ -54,7 +54,6 @@ if(description)
   script_xref(name: "SUSE-SU", value: "2015:0878_1");
   script_xref(name: "URL" , value: "http://lists.opensuse.org/opensuse-security-announce/2015-05/msg00007.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of flash-player");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("SuSE Local Security Checks");

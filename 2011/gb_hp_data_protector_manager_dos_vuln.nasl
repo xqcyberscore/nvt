@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_manager_dos_vuln.nasl 4533 2016-11-16 09:16:30Z cfi $
+# $Id: gb_hp_data_protector_manager_dos_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Manager Remote Denial of Service Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801579");
-  script_version("$Revision: 4533 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 10:16:30 +0100 (Wed, 16 Nov 2016) $");
+  script_version("$Revision: 6435 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-01-27 07:47:27 +0100 (Thu, 27 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -41,7 +41,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("hp_data_protector_installed.nasl");
   script_require_ports("Services/hp_dataprotector", 5555);
-  script_mandatory_keys("Hp/data_protector/version");
+  script_mandatory_keys("hp_data_protector/installed");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15940/");
   script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2011/0064");

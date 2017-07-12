@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_75994.nasl 2701 2016-02-19 05:11:04Z antu123 $
+# $Id: gb_cisco_apic_75994.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Cisco Application Policy Infrastructure Controller Access Control Vulnerability
 #
@@ -34,7 +34,7 @@ if (description)
  script_cve_id("CVE-2015-4235");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 2701 $");
+ script_version ("$Revision: 6443 $");
 
  script_name("Cisco Application Policy Infrastructure Controller Access Control Vulnerability ");
 
@@ -50,9 +50,8 @@ if (description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2016-02-19 06:11:04 +0100 (Fri, 19 Feb 2016) $");
+ script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
  script_tag(name:"creation_date", value:"2016-02-10 12:54:47 +0100 (Wed, 10 Feb 2016)");
- script_summary("Check the APIC version");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_windows_detect.nasl 5573 2017-03-14 15:27:46Z cfi $
+# $Id: gb_smb_windows_detect.nasl 6446 2017-06-27 14:18:53Z cfischer $
 #
 # SMB Windows Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103621");
-  script_version("$Revision: 5573 $");
+  script_version("$Revision: 6446 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-14 16:27:46 +0100 (Tue, 14 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 16:18:53 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Windows Detection");
   script_category(ACT_GATHER_INFO);
@@ -53,23 +53,19 @@ include("cpe.inc");
 
 SCRIPT_DESC = "SMB Windows Detection";
 
-winVal  = get_kb_item("SMB/WindowsVersion");
+winVal = get_kb_item( "SMB/WindowsVersion" );
+if( ! winVal ) exit( 0 );
 
-if(!winVal)exit(0);
+winName = get_kb_item( "SMB/WindowsName" );
+csdVer  = get_kb_item( "SMB/CSDVersion" );
+arch    = get_kb_item( "SMB/Windows/Arch" );
+build   = get_kb_item( "SMB/WindowsBuild" );
 
-winName = get_kb_item("SMB/WindowsName");
-csdVer  = get_kb_item("SMB/CSDVersion");
-arch    = get_kb_item("SMB/Windows/Arch");
-
-if(isnull(csdVer)){
+if( isnull( csdVer ) ) {
   csdVer = "";
 } else {
-
-  csdVer = eregmatch(pattern:"Service Pack [0-9]+", string:csdVer);
-  if(!isnull(csdVer[0])){
-    csdVer = csdVer[0];
-  }
-
+  csdVer = eregmatch( pattern:"Service Pack [0-9]+", string:csdVer );
+  if( ! isnull( csdVer[0] ) ) csdVer = csdVer[0];
 }
 
 function register_win_version( cpe_base, win_vers, servpack, os_name, is64bit ) {
@@ -78,15 +74,14 @@ function register_win_version( cpe_base, win_vers, servpack, os_name, is64bit ) 
 
   servpack = ereg_replace( string:servpack, pattern:"Service Pack ", replace:"sp", icase:TRUE );
 
-  if (!isnull(servpack) && strlen(servpack) > 0) {
+  if( ! isnull( servpack ) && strlen( servpack ) > 0 ) {
 
-    if (isnull(win_vers))
-      win_vers = "";
+    if( isnull( win_vers ) ) win_vers = "";
 
-    cpe = string(cpe_base, ":", win_vers, ":", servpack);
+    cpe = cpe_base + ":" + win_vers + ":" + servpack;
     if( is64bit ) cpe += ":x64";
-  } else if (!isnull(win_vers) && strlen(win_vers) > 0) {
-    cpe = string(cpe_base, ":", win_vers);
+  } else if( ! isnull( win_vers ) && strlen( win_vers ) > 0 ) {
+    cpe = cpe_base + ":" + win_vers;
     if( is64bit ) cpe += "::x64";
   } else {
     cpe = cpe_base;
@@ -171,9 +166,22 @@ if((winVal == "6.3") && ("Windows 8.1" >< winName)){
   register_win_version( cpe_base:"cpe:/o:microsoft:windows_8.1", win_vers:"", servpack:csdVer, os_name:winName );
 }
 
+## Check for Windows Embedded
+if((winVal == "6.3") && ("Windows Embedded 8.1" >< winName)){
+  register_win_version( cpe_base:"cpe:/o:microsoft:windows_embedded_8.1", win_vers:"", servpack:csdVer, os_name:winName );
+} else if(("Windows Embedded" >< winName)){
+  register_win_version( cpe_base:"cpe:/o:microsoft:windows_embedded", win_vers:"", servpack:csdVer, os_name:winName );
+}
+
 ## Check for Windows 10
 if((winVal == "6.3") && ("Windows 10" >< winName)){
-  register_win_version( cpe_base:"cpe:/o:microsoft:windows_10", win_vers:"", servpack:csdVer, os_name:winName );
+  # https://en.wikipedia.org/wiki/Windows_10_version_history for the version <> build mapping
+  vers = "";
+  if( build == "10240" ) vers = "1507";
+  if( build == "10586" ) vers = "1511";
+  if( build == "14393" ) vers = "1607";
+  if( build == "15063" ) vers = "1703";
+  register_win_version( cpe_base:"cpe:/o:microsoft:windows_10", win_vers:vers, servpack:csdVer, os_name:winName );
 }
 
 ## Check for Windows Sever 2016 (has only x64 bit support)

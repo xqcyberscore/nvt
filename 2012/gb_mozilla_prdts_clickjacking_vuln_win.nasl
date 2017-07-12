@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_mozilla_prdts_clickjacking_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)
 #
@@ -52,12 +52,12 @@ tag_summary = "This host is installed with Mozilla firefox/thunderbird/seamonkey
 if(description)
 {
   script_id(802893);
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2012-1964");
   script_bugtraq_id(54581);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Windows)");
 
@@ -71,7 +71,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_firefox_detect_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver", "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);

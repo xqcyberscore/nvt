@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_mult_vuln_sep15.nasl 2583 2016-02-05 08:40:30Z benallard $
+# $Id: gb_centreon_mult_vuln_sep15.nasl 6443 2017-06-27 10:00:22Z teissa $
 #
 # Centreon Multiple Vulnerabilities - Sep15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805974");
-  script_version("$Revision: 2583 $");
+  script_version("$Revision: 6443 $");
   script_cve_id("CVE-2015-1560", "CVE-2015-1561");
   script_bugtraq_id(75602, 75605);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-05 09:40:30 +0100 (Fri, 05 Feb 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:07:40 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Centreon Multiple Vulnerabilities - Sep15");
@@ -68,7 +68,6 @@ if(description)
   script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132607");
   script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535961/100/0/threaded");
 
-  script_summary("Check if Centreon is vulnerable to sql injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

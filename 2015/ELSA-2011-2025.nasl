@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2011-2025.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2011-2025.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122102");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-10-06 14:13:06 +0300 (Tue, 06 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2011-2025");
 script_tag(name: "insight", value: "ELSA-2011-2025 -  Unbreakable Enterprise kernel security and bug fix update - [2.6.32-200.19.1.el6uek]- Apply new fix for CVE-2011-1576.[2.6.32-200.18.1.el6uek]- Revert 'proc: fix a race in do_io_accounting'[2.6.32-200.17.1.el6uek]- net: Fix memory leak/corruption on VLAN GRO_DROP {CVE-2011-1576}- iommu-api: Extension to check for interrupt remapping {CVE-2011-1898}- KVM: IOMMU: Disable device assignment without interrupt remapping {CVE-2011-1898}- ext4: Fix max file size and logical block counting of extent format file {CVE-2011-2695}- nl80211: fix overflow in ssid_len {CVE-2011-2517}- Bluetooth: Prevent buffer overflow in l2cap config request {CVE-2011-2497}- proc: fix a race in do_io_accounting() {CVE-2011-2495}- proc: restrict access to /proc/PID/io {CVE-2011-2495}- Bluetooth: l2cap and rfcomm: fix 1 byte infoleak to userspace {CVE-2011-2492}- NLM: Don't hang forever on NLM unlock requests {CVE-2011-2491}- ksm: fix NULL pointer dereference in scan_get_next_rmap_item() {CVE-2011-2183}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2011-2025");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

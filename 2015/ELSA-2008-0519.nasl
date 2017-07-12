@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2008-0519.nasl 4513 2016-11-15 09:37:48Z cfi $
+# $Id: ELSA-2008-0519.nasl 6443 2017-06-27 10:00:22Z teissa $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.com> 
@@ -24,9 +24,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122573");
-script_version("$Revision: 4513 $");
+script_version("$Revision: 6443 $");
 script_tag(name:"creation_date", value:"2015-10-08 14:48:24 +0300 (Thu, 08 Oct 2015)");
-script_tag(name:"last_modification", value:"$Date: 2016-11-15 10:37:48 +0100 (Tue, 15 Nov 2016) $");
+script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
 script_name("Oracle Linux Local Check: ELSA-2008-0519");
 script_tag(name: "insight", value: "ELSA-2008-0519 -  kernel security and bug fix update - [2.6.18-92.1.6.0.2.el5]- [NET] Add entropy support to e1000 and bnx2 (John Sobecki) [orabug 6045759]- [splice] Fix bad unlock_page() in error case (Jens Axboe) [orabug 6263574]- [dio] fix error-path crashes (Linus Torvalds) [orabug 6242289]- [NET] fix netpoll race (Tina Yang) [orabugz 5791][2.6.18-92.1.6.el5]- [x86] sanity checking for read_tsc on i386 (Brian Maly ) [447686 443435][2.6.18-92.1.5.el5]- [x86_64] copy_user doesn't zero tail bytes on page fault (Vitaly Mayatskikh) [451275 451276] {CVE-2008-2729}[2.6.18-92.1.4.el5]- Revert: [misc] ttyS1 loses interrupt and stops transmitting (Simon McGrath ) [443071 440121][2.6.18-92.1.3.el5]- [x86_64] fix possible data leaks in copy_from_user() routine (Anton Arapov ) [433944 433945] {CVE-2008-0598}[2.6.18-92.1.2.el5]- [misc] ttyS1 loses interrupt and stops transmitting (Simon McGrath ) [443071 440121]- [net] DCCP sanity check feature length (Anton Arapov ) [447395 447396] {CVE-2008-2358}- [misc] fix possible buffer overflow in ASN.1 parsing routine (Anton Arapov ) [444464 444465] {CVE-2008-1673}"); 
 script_tag(name : "solution", value : "update software");
@@ -40,7 +40,6 @@ script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("login/SSH/success", "ssh/login/release");
 script_category(ACT_GATHER_INFO);
-script_summary("Oracle Linux Local Security Checks ELSA-2008-0519");
 script_copyright("Eero Volotinen");
 script_family("Oracle Linux Local Security Checks");
 exit(0);

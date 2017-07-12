@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_2906.nasl 2735 2016-02-26 10:40:03Z benallard $
+# $Id: deb_2906.nasl 6443 2017-06-27 10:00:22Z teissa $
 # Auto-generated from advisory DSA 2906-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,7 +30,7 @@
 if(description)
 {
     script_id(702906);
-    script_version("$Revision: 2735 $");
+    script_version("$Revision: 6443 $");
     script_cve_id("CVE-2013-0343", "CVE-2013-2147", "CVE-2013-2889", "CVE-2013-2893",
                   "CVE-2013-2929", "CVE-2013-4162", "CVE-2013-4299", "CVE-2013-4345",
                   "CVE-2013-4512", "CVE-2013-4587", "CVE-2013-6367", "CVE-2013-6380",
@@ -39,7 +39,7 @@ if(description)
                   "CVE-2014-1444", "CVE-2014-1445", "CVE-2014-1446", "CVE-2014-1874",
                   "CVE-2014-2039", "CVE-2014-2523");
     script_name("Debian Security Advisory DSA 2906-1 (linux-2.6 - privilege escalation/denial of service/information leak)");
-    script_tag(name: "last_modification", value: "$Date: 2016-02-26 11:40:03 +0100 (Fri, 26 Feb 2016) $");
+    script_tag(name: "last_modification", value: "$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
     script_tag(name: "creation_date", value: "2014-04-24 00:00:00 +0200 (Thu, 24 Apr 2014)");
     script_tag(name: "cvss_base", value: "10.0");
     script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -47,7 +47,6 @@ if(description)
 
     script_xref(name: "URL", value: "http://www.debian.org/security/2014/dsa-2906.html");
 
-    script_summary("Debian Security Advisory DSA 2906-1 (linux-2.6 - privilege escalation/denial of service/information leak)");
 
     script_category(ACT_GATHER_INFO);
 

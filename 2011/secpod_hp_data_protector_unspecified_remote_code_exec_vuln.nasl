@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_data_protector_unspecified_remote_code_exec_vuln.nasl 4016 2016-09-09 07:23:34Z cfi $
+# $Id: secpod_hp_data_protector_unspecified_remote_code_exec_vuln.nasl 6435 2017-06-27 06:17:04Z cfischer $
 #
 # HP (OpenView Storage) Data Protector Unspecified Remote Code Execution Vulnerability
 #
@@ -29,21 +29,20 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902531");
-  script_version("$Revision: 4016 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-09 09:23:34 +0200 (Fri, 09 Sep 2016) $");
+  script_version("$Revision: 6435 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 08:17:04 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_cve_id("CVE-2011-1864");
   script_bugtraq_id(48178);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("HP (OpenView Storage) Data Protector Unspecified Remote Code Execution Vulnerability");
-  script_summary("Check for the version of HP (OpenView Storage) Data Protector");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("General");
   script_dependencies("hp_data_protector_installed.nasl");
   script_require_ports("Services/hp_dataprotector", 5555);
-  script_mandatory_keys("Hp/data_protector/version");
+  script_mandatory_keys("hp_data_protector/installed");
 
   script_xref(name:"URL", value:"http://www.itrc.hp.com/service/cki/docDisplay.do?docId=emr_na-c02712867");
 

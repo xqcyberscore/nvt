@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842522");
-  script_version("$Revision: 2741 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-02-26 14:45:36 +0100 (Fri, 26 Feb 2016) $");
+  script_version("$Revision: 6443 $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
   script_tag(name:"creation_date", value:"2015-11-10 06:11:15 +0100 (Tue, 10 Nov 2015)");
   script_cve_id("CVE-2015-5307");
   script_tag(name:"cvss_base", value:"4.9");
@@ -46,7 +46,6 @@ a denial of service (system crash) in the host OS.");
   script_xref(name: "USN", value: "2804-1");
   script_xref(name: "URL" , value: "https://lists.ubuntu.com/archives/ubuntu-security-announce/2015-November/003187.html");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_summary("Check for the Version of linux-lts-trusty");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");

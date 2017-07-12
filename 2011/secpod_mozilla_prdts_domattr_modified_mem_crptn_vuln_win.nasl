@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_win.nasl 3113 2016-04-19 09:57:04Z benallard $
+# $Id: secpod_mozilla_prdts_domattr_modified_mem_crptn_vuln_win.nasl 6444 2017-06-27 11:24:02Z santu $
 #
 # Mozilla Products DOMAttrModified Memory Corruption Vulnerability (Windows)
 #
@@ -49,13 +49,13 @@ tag_summary = "The host is installed with Mozilla firefox/thunderbird/seamonkey 
 if(description)
 {
   script_id(902774);
-  script_version("$Revision: 3113 $");
+  script_version("$Revision: 6444 $");
   script_cve_id("CVE-2011-3658");
   script_bugtraq_id(51138);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-22 11:48:05 +0530 (Thu, 22 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2016-04-19 11:57:04 +0200 (Tue, 19 Apr 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2017-06-27 13:24:02 +0200 (Tue, 27 Jun 2017) $");
   script_name("Mozilla Products DOMAttrModified Memory Corruption Vulnerability (Windows)");
 
   script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51138/info");
@@ -68,8 +68,7 @@ if(description)
   script_dependencies("gb_firefox_detect_win.nasl",
                       "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_win.nasl");
-  script_require_keys("Firefox/Win/Ver", "Seamonkey/Win/Ver",
-                       "Thunderbird/Win/Ver");
+  script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name : "impact" , value : tag_impact);
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
